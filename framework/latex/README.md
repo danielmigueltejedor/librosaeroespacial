@@ -55,3 +55,7 @@ Ejemplo:
   \AeroDownLoad{3}{0}{1.5}{$P$}
 \end{tikzpicture}
 ```
+
+## Dependencias TeX en CI
+
+El workflow instala explícitamente `latexmk`, `biber`, `texlive-latex-extra`, `texlive-bibtex-extra`, `texlive-science`, `texlive-lang-spanish` y Latin Modern para que la compilación sea reproducible en GitHub Actions.
