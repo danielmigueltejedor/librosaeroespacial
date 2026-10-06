@@ -1,0 +1,120 @@
+\end{ejercicio}
+
+\begin{solucion}
+\[
+\varepsilon_{xx}=\frac{\partial u}{\partial x}=\boxed{2\times10^{-3}}.
+\]
+\[
+\varepsilon_{yy}=\frac{\partial v}{\partial y}=\boxed{1\times10^{-3}}.
+\]
+Además:
+\[
+\varepsilon_{xy}
+=\frac12\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right).
+\]
+Por tanto:
+\[
+\varepsilon_{xy}
+=\frac12\left(10^{-3}-0.5\times10^{-3}\right)
+=\boxed{2.5\times10^{-4}}.
+\]
+La deformación angular ingenieril es:
+\[
+\gamma_{xy}=2\varepsilon_{xy}=\boxed{5\times10^{-4}}.
+\]
+\end{solucion}
+
+\begin{ejercicio}[6: Viga con carga uniforme y fuerza puntual]
+Una viga simplemente apoyada de longitud $L=\qty{6}{\metre}$ está sometida a $q=\qty{2}{\kilo\newton\per\metre}$ en toda su longitud y a una fuerza $P=\qty{6}{\kilo\newton}$ en el centro.
+
+Obtener reacciones, cortante y momento flector.
+\end{ejercicio}
+
+\begin{solucion}
+El problema es simétrico.
+
+Carga total:
+\[
+qL+P=12+6=\qty{18}{\kilo\newton}.
+\]
+Por simetría:
+\[
+\boxed{R_A=R_B=\qty{9}{\kilo\newton}}.
+\]
+Para $0\leq x<3$:
+\[
+\boxed{V(x)=9-2x},
+\qquad
+\boxed{M(x)=9x-x^2}.
+\]
+Justo antes de la fuerza puntual:
+\[
+V(3^-)=3.
+\]
+La carga $P$ produce un salto:
+\[
+V(3^+)=3-6=-3.
+\]
+Para $3<x\leq6$:
+\[
+\boxed{V(x)=3-2x}.
+\]
+El momento es continuo:
+\[
+M(x)=9x-x^2-6(x-3),
+\]
+es decir:
+\[
+\boxed{M(x)=3x-x^2+18}.
+\]
+Como el cortante cambia de positivo a negativo en $x=3$:
+\[
+M_{\max}=M(3)=\boxed{\qty{18}{\kilo\newton\metre}}.
+\]
+
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+\centering
+\begin{tikzpicture}[x=1.0cm,y=0.95cm,>=Latex,
+  loadarrow/.style={-{Latex[length=2.2mm]},BookOrange,line width=.85pt},
+  reactarrow/.style={-{Latex[length=2.2mm]},BookBlue,line width=.95pt}
+]
+  % Viga
+  \draw[BookGray,line width=2.0pt] (0,0)--(8,0);
+
+  % Apoyos
+  \draw[BookGray,line width=.85pt] (0.55,0)--(0.18,-0.52)--(0.92,-0.52)--cycle;
+  \draw[BookGray,line width=.85pt] (7.45,0)--(7.08,-0.46)--(7.82,-0.46)--cycle;
+  \draw[BookGray,line width=.75pt] (7.18,-0.64) circle (0.09);
+  \draw[BookGray,line width=.75pt] (7.72,-0.64) circle (0.09);
+  \draw[BookGray,line width=.75pt] (6.98,-0.79)--(7.92,-0.79);
+
+  % Carga distribuida uniforme
+  \draw[BookOrange,line width=1.0pt] (0.70,1.30)--(7.30,1.30);
+  \foreach \x in {0.70,1.20,...,7.20}{
+    \draw[loadarrow] (\x,1.30)--(\x,0.10);
+  }
+  \node[font=\sffamily\small,text=BookOrange!90!black] at (2.20,1.62)
+    {$q=\qty{2}{\kilo\newton\per\metre}$};
+
+  % Carga puntual
+  \draw[loadarrow,line width=1.15pt] (4.00,2.10)--(4.00,0.10);
+  \node[font=\sffamily\small,text=BookOrange!90!black] at (4.00,2.38)
+    {$P=\qty{6}{\kilo\newton}$};
+
+  % Reacciones
+  \draw[reactarrow] (0.55,-1.38)--(0.55,-0.08);
+  \draw[reactarrow] (7.45,-1.38)--(7.45,-0.08);
+  \node[font=\small,text=BookBlue,left] at (0.42,-1.25) {$R_A$};
+  \node[font=\small,text=BookBlue,right] at (7.58,-1.25) {$R_B$};
+
+  % Cotas
+  \draw[BookGray!75,|<->|,line width=.55pt] (0.55,-1.75)--(4.00,-1.75)
+    node[midway,fill=white,inner sep=1.5pt,font=\scriptsize] {\qty{3}{\metre}};
+  \draw[BookGray!75,|<->|,line width=.55pt] (4.00,-1.75)--(7.45,-1.75)
+    node[midway,fill=white,inner sep=1.5pt,font=\scriptsize] {\qty{3}{\metre}};
+
+  \node[font=\small] at (0.55,-0.72) {$A$};
+  \node[font=\small] at (7.45,-0.72) {$B$};
+\end{tikzpicture}
+\captionof{figure}{Viga simplemente apoyada del ejercicio 6, con carga uniforme y fuerza puntual centrada.}
