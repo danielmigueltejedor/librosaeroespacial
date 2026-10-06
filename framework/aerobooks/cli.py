@@ -706,6 +706,120 @@ def set_edition(slug: str, number: int, date_label: str | None) -> None:
     print(f"✓ Metadatos sincronizados en {generated.relative_to(repo_root())}")
 
 
+def add_source(args: argparse.Namespace) -> int:
+    root, _ = load_book(args.slug)
+    path = root / "sources" / "manifest.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+    else:
+        data = {"schema_version": 1, "book": args.slug, "sources": []}
+
+    sources = data.setdefault("sources", [])
+    if any(s.get("id") == args.id for s in sources):
+        raise SystemExit(f"Ya existe una fuente con id {args.id}")
+
+    item = {
+        "id": args.id,
+        "title": args.title,
+        "kind": args.kind,
+        "tier": args.tier,
+        "role": args.role,
+        "status": args.status,
+        "citation_key": args.citation_key,
+        "locator": args.locator,
+        "rights": args.rights,
+        "notes": args.notes,
+    }
+    sources.append(item)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"✓ Fuente añadida: {args.id}")
+    print(f"  {path.relative_to(repo_root())}")
+    return 0
+
+
+def add_claim(args: argparse.Namespace) -> int:
+    root, _ = load_book(args.slug)
+    path = root / "claims" / "ledger.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    existing_ids: set[str] = set()
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            try:
+                existing_ids.add(json.loads(line).get("id", ""))
+            except json.JSONDecodeError:
+                pass
+
+    if args.id in existing_ids:
+        raise SystemExit(f"Ya existe un claim con id {args.id}")
+
+    item = {
+        "id": args.id,
+        "claim": args.claim,
+        "type": args.type,
+        "risk": args.risk,
+        "status": args.status,
+        "sources": args.source or [],
+        "derivation": args.derivation,
+        "scope": args.scope,
+        "notes": args.notes,
+    }
+
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(item, ensure_ascii=False) + "\n")
+
+    print(f"✓ Claim añadido: {args.id}")
+    print(f"  {path.relative_to(repo_root())}")
+    return 0
+
+
+def show_status(slug: str) -> int:
+    root, config = load_book(slug)
+    manifest_path = root / "sources" / "manifest.json"
+    claims_path = root / "claims" / "ledger.jsonl"
+    conflicts_path = root / "sources" / "conflicts.jsonl"
+
+    manifest = {"sources": []}
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+
+    claims = []
+    if claims_path.exists():
+        for line in claims_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#"):
+                try:
+                    claims.append(json.loads(line))
+                except json.JSONDecodeError:
+                    pass
+
+    conflict_count = 0
+    if conflicts_path.exists():
+        conflict_count = sum(
+            1 for line in conflicts_path.read_text(encoding="utf-8").splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        )
+
+    chapters = list((root / "chapters").rglob("*.tex")) if (root / "chapters").exists() else []
+    meta = config.get("book", {})
+    verified_claims = sum(1 for x in claims if x.get("status") in {"verified", "derived"})
+    pending_claims = sum(1 for x in claims if x.get("status") == "pending")
+
+    print(f"{meta.get('title', slug)}")
+    print(f"  Edición:   {meta.get('edition_name', '-')}")
+    print(f"  Estado:    {meta.get('status', '-')}")
+    print(f"  Capítulos: {len(chapters)} archivo(s) .tex")
+    print(f"  Fuentes:   {len(manifest.get('sources', []))}")
+    print(f"  Claims:    {len(claims)} ({verified_claims} verificados/derivados, {pending_claims} pendientes)")
+    print(f"  Conflictos:{' ' if conflict_count < 10 else ''}{conflict_count}")
+    return 0
+
+
 def doctor() -> int:
     tools = {
         "python": sys.executable,
@@ -841,6 +955,45 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("sync", help="Generar metadatos LaTeX desde book.toml.")
     p.add_argument("slug")
     p.set_defaults(func=cmd_sync)
+
+    p = sub.add_parser("status", help="Resumir el estado académico y editorial de un libro.")
+    p.add_argument("slug")
+    p.set_defaults(func=lambda args: show_status(args.slug))
+
+    p = sub.add_parser("source-add", help="Registrar una fuente en el manifest.")
+    p.add_argument("slug")
+    p.add_argument("--id", required=True)
+    p.add_argument("--title", required=True)
+    p.add_argument("--kind", required=True)
+    p.add_argument("--tier", choices=["A", "B", "C", "D", "E"], required=True)
+    p.add_argument("--role", action="append", default=[], help="Puede repetirse.")
+    p.add_argument("--status", choices=["verified", "provided", "pending", "rejected"], default="pending")
+    p.add_argument("--citation-key")
+    p.add_argument("--locator")
+    p.add_argument("--rights")
+    p.add_argument("--notes")
+    p.set_defaults(func=add_source)
+
+    p = sub.add_parser("claim-add", help="Registrar un claim crítico.")
+    p.add_argument("slug")
+    p.add_argument("--id", required=True)
+    p.add_argument("--claim", required=True)
+    p.add_argument(
+        "--type",
+        choices=[
+            "scientific", "mathematical", "historical", "biographical",
+            "numerical", "definition", "exam_pattern", "interpretation",
+            "derived_result"
+        ],
+        required=True,
+    )
+    p.add_argument("--risk", choices=["low", "medium", "high"], default="medium")
+    p.add_argument("--status", choices=["verified", "derived", "pending", "rejected"], default="pending")
+    p.add_argument("--source", action="append", default=[], help="ID SRC-...; puede repetirse.")
+    p.add_argument("--derivation")
+    p.add_argument("--scope")
+    p.add_argument("--notes")
+    p.set_defaults(func=add_claim)
 
     p = sub.add_parser("check", help="Ejecutar comprobaciones estáticas.")
     p.add_argument("slug")
