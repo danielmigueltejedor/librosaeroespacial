@@ -1129,7 +1129,8 @@ def build_parser() -> argparse.ArgumentParser:
         choices=[
             "scientific", "mathematical", "historical", "biographical",
             "numerical", "definition", "exam_pattern", "interpretation",
-            "derived_result"
+            "derived_result", "regulatory", "statistical", "experimental",
+            "computational", "institutional", "terminological", "safety"
         ],
         required=True,
     )
