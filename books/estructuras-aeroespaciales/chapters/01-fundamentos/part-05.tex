@@ -1,0 +1,120 @@
+Por tanto:
+\[
+\varepsilon=\frac{\sigma}{E}.
+\]
+
+Para una barra prismática:
+\[
+\sigma=\frac{N}{A}
+\qquad\text{y}\qquad
+\varepsilon=\frac{N}{EA}.
+\]
+
+Como
+\[
+\varepsilon=\frac{\dd u}{\dd x},
+\]
+obtenemos:
+\[
+\frac{\dd u}{\dd x}=\frac{N}{EA}.
+\]
+
+Si $N$, $E$ y $A$ son constantes:
+\[
+\Delta L=\frac{NL}{EA}.
+\]
+
+\safesection{Diagrama tensión--deformación}
+El comportamiento típico de un acero dúctil puede representarse esquemáticamente como:
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=0.95cm,y=0.82cm,>=Latex]
+  % Ejes
+  \draw[-{Latex[length=2.5mm]},BookGray,line width=.9pt] (0,0)--(10.4,0)
+    node[below right,font=\sffamily\small] {$\varepsilon$};
+  \draw[-{Latex[length=2.5mm]},BookGray,line width=.9pt] (0,0)--(0,6.35)
+    node[above left,font=\sffamily\small] {$\sigma$};
+
+  % Curva nominal de acero dúctil (esquema)
+  \draw[BookBlue,line width=2.0pt]
+    (0,0)
+    -- (2.10,3.55)
+    .. controls (2.35,3.82) and (2.65,3.62) .. (3.15,3.62)
+    .. controls (4.20,3.62) and (5.55,4.60) .. (7.10,5.10)
+    .. controls (7.75,5.28) and (8.60,4.60) .. (9.25,3.85);
+
+  % Puntos y líneas auxiliares
+  \fill[BookBlue] (2.10,3.55) circle (1.7pt);
+  \fill[BookBlue] (7.10,5.10) circle (1.7pt);
+  \fill[BookRed]  (9.25,3.85) circle (1.7pt);
+
+  \draw[densely dashed,BookGray!70] (2.10,0)--(2.10,3.55);
+  \draw[densely dashed,BookGray!70] (7.10,0)--(7.10,5.10);
+  \draw[densely dashed,BookGray!70] (0,3.55)--(2.10,3.55);
+  \draw[densely dashed,BookGray!70] (0,5.10)--(7.10,5.10);
+
+  \node[left,font=\small] at (0,3.55) {$\sigma_y$};
+  \node[left,font=\small] at (0,5.10) {$\sigma_u$};
+
+  % Regiones
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (1.15,-0.58)
+    {zona\\elástica};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (2.80,-0.58)
+    {fluencia};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (5.25,-0.58)
+    {endurecimiento\\plástico};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (8.35,-0.58)
+    {estricción};
+
+  % Etiquetas de puntos
+  \node[anchor=west,font=\sffamily\scriptsize,text=BookBlue] at (2.35,3.95)
+    {inicio de fluencia};
+  \node[anchor=west,font=\sffamily\scriptsize,text=BookBlue] at (7.25,5.38)
+    {tensión última};
+  \node[anchor=west,font=\sffamily\scriptsize,text=BookRed] at (9.35,3.82)
+    {rotura};
+
+  % Pendiente inicial
+  \draw[BookGreen!75!black,-{Latex[length=1.8mm]},line width=.7pt]
+    (1.05,2.45)--(1.68,3.48);
+  \node[font=\sffamily\scriptsize,text=BookGreen!65!black] at (1.10,2.85)
+    {$E=\mathrm{d}\sigma/\mathrm{d}\varepsilon$};
+\end{tikzpicture}
+\caption{Diagrama tensión-deformación nominal esquemático de un acero dúctil. La pendiente inicial representa el módulo de Young.}
+\label{fig:diagrama-tension-deformacion}
+\end{figure}
+
+Podemos distinguir:
+\begin{description}
+  \item[Límite de proporcionalidad:] termina la proporcionalidad lineal.
+  \item[Límite elástico:] por debajo de él no quedan deformaciones permanentes significativas.
+  \item[Fluencia:] aparece deformación plástica apreciable.
+  \item[Tensión última:] máximo de tensión nominal.
+  \item[Estricción:] reducción localizada de la sección.
+  \item[Rotura:] separación final de la probeta.
+\end{description}
+
+\begin{ojo}
+Después de iniciarse la estricción, la \textbf{tensión nominal} puede disminuir porque sigue utilizando $A_0$. Eso no implica necesariamente que la tensión verdadera local también disminuya.
+\end{ojo}
+
+% ============================================================
+\safechapter{El problema general de la elasticidad}
+% ============================================================
+
+La estructura lógica del problema elástico puede resumirse mediante tres grupos de ecuaciones.
+
+\safesection{Equilibrio}
+En el volumen:
+\[
+\nabla\cdot\mat{\sigma}+\vect b=\vect 0,
+\]
+donde $\vect b$ representa fuerzas por unidad de volumen.
+
+En una parte de la frontera:
+\[
+\mat{\sigma}\vect n=\bar{\vect t}.
+\]
+
+\safesection{Compatibilidad / cinemática}
