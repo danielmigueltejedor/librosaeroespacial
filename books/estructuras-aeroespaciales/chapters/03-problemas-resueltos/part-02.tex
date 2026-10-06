@@ -1,0 +1,120 @@
+=\frac{L}{4}.
+\]
+Así:
+\[
+\boxed{\bar x=\qty{1}{\metre}}.
+\]
+\end{solucion}
+
+\begin{ejercicio}[2: Reacciones bajo carga triangular]
+Una viga simplemente apoyada de longitud $L=\qty{6}{\metre}$ soporta una carga triangular descendente con intensidad máxima $q_0=\qty{12}{\kilo\newton\per\metre}$ en el apoyo izquierdo y cero en el derecho.
+
+Calcular las reacciones.
+\end{ejercicio}
+
+\begin{solucion}
+La resultante vale:
+\[
+Q=\frac12q_0L=\frac12(12)(6)=\qty{36}{\kilo\newton}.
+\]
+Está situada a:
+\[
+\bar x=\frac{L}{3}=\qty{2}{\metre}
+\]
+desde el extremo de máxima intensidad.
+
+Equilibrio vertical:
+\[
+R_A+R_B=36.
+\]
+Momentos respecto a $A$:
+\[
+R_B(6)-36(2)=0.
+\]
+Luego:
+\[
+\boxed{R_B=\qty{12}{\kilo\newton}},
+\qquad
+\boxed{R_A=\qty{24}{\kilo\newton}}.
+\]
+
+\begin{tip}
+Una comprobación física inmediata: como la carga está concentrada más cerca de $A$, necesariamente debe cumplirse $R_A>R_B$.
+\end{tip}
+\end{solucion}
+
+\begin{ejercicio}[3: Tensión y deformación nominal/verdadera]
+Una probeta tiene:
+\[
+L_0=\qty{100}{\milli\metre},\qquad A_0=\qty{200}{\milli\metre\squared}.
+\]
+Durante el ensayo:
+\[
+L=\qty{112}{\milli\metre},\qquad A=\qty{175}{\milli\metre\squared},\qquad F=\qty{30}{\kilo\newton}.
+\]
+Calcular tensión nominal, tensión verdadera, deformación nominal y deformación verdadera.
+\end{ejercicio}
+
+\begin{solucion}
+Tensión nominal:
+\[
+\sigma_{\mathrm{nom}}=\frac{30000}{200}=\boxed{\qty{150}{\mega\pascal}}.
+\]
+Tensión verdadera:
+\[
+\sigma_{\mathrm{real}}=\frac{30000}{175}=\boxed{\qty{171.43}{\mega\pascal}}.
+\]
+Deformación nominal:
+\[
+\varepsilon_{\mathrm{nom}}=\frac{112-100}{100}=\boxed{0.12}.
+\]
+Deformación verdadera:
+\[
+\varepsilon_{\mathrm{real}}=\ln\left(\frac{112}{100}\right)=\boxed{0.1133}.
+\]
+
+\begin{idea}
+La diferencia entre ambas medidas comienza a ser apreciable cuando la deformación deja de ser pequeña.
+\end{idea}
+\end{solucion}
+
+\begin{ejercicio}[4: Barra elástica sometida a axil]
+Una barra de aluminio tiene:
+\[
+A=\qty{600}{\milli\metre\squared},\qquad
+L=\qty{1.2}{\metre},\qquad
+E=\qty{70}{\giga\pascal}.
+\]
+Está sometida a $N=\qty{90}{\kilo\newton}$ de tracción.
+
+Calcular $\sigma$, $\varepsilon$ y $\Delta L$.
+\end{ejercicio}
+
+\begin{solucion}
+Como $1\ \mathrm{N/mm^2}=1\ \mathrm{MPa}$:
+\[
+\sigma=\frac{90000}{600}=\boxed{\qty{150}{\mega\pascal}}.
+\]
+Por Hooke:
+\[
+\varepsilon=\frac{\sigma}{E}=\frac{150}{70000}=\boxed{2.143\times10^{-3}}.
+\]
+Finalmente:
+\[
+\Delta L=\varepsilon L.
+\]
+Trabajando en milímetros:
+\[
+\Delta L=2.143\times10^{-3}(1200)=\boxed{\qty{2.57}{\milli\metre}}.
+\]
+\end{solucion}
+
+\begin{ejercicio}[5: Tensor de pequeñas deformaciones]
+El campo de desplazamientos plano es:
+\[
+u=2\times10^{-3}x+1\times10^{-3}y,
+\]
+\[
+v=-0.5\times10^{-3}x+1\times10^{-3}y.
+\]
+Calcular $\varepsilon_{xx}$, $\varepsilon_{yy}$, $\varepsilon_{xy}$ y $\gamma_{xy}$.
