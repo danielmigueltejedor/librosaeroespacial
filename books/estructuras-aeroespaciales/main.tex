@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+% ============================================================
+% DATOS EDITORIALES
+% ============================================================
+\newcommand{\BookTitle}{Estructuras Aeroespaciales}
+\newcommand{\BookTitleShort}{Estructuras Aeroespaciales}
+\newcommand{\BookSubtitle}{Fundamentos, modelización y resolución de problemas}
+\newcommand{\BookVolume}{Volumen I}
+\newcommand{\BookVolumeSubtitle}{Conceptos básicos y modelo monodimensional}
+\newcommand{\BookAuthor}{Daniel Miguel Tejedor}
+\newcommand{\BookEdition}{Tercera edición}
+\newcommand{\BookDate}{Octubre de 2026}
+
+\usepackage{style/estructuras}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% ============================================================
+% PORTADA
+% ============================================================
+\begin{titlepage}
+\thispagestyle{empty}
+
+% Fondo y elementos editoriales
+\begin{tikzpicture}[remember picture,overlay]
+  % Fondo marfil muy claro
+  \fill[white] (current page.south west) rectangle (current page.north east);
+
+  % Banda lateral principal
+  \fill[BookBlue]
+    (current page.north west)
+    rectangle ([xshift=1.45cm]current page.south west);
+
+  % Filete de acento
+  \fill[BookOrange]
+    ([xshift=1.45cm]current page.north west)
+    rectangle ([xshift=1.54cm]current page.south west);
+
+  % Marca gráfica superior derecha
+  \fill[BookBlueLight]
+    ([xshift=-3.6cm,yshift=-1.25cm]current page.north east)
+    rectangle ([yshift=-1.43cm]current page.north east);
+\end{tikzpicture}
+
+% Bloque de título
+\vspace*{1.65cm}
+\hspace*{0.85cm}
+\begin{minipage}{0.83\textwidth}
+  {\sffamily\color{BookGray}\large
+    \BookVolume\par}
+  \vspace{0.18cm}
+  {\sffamily\color{BookBlue}\fontsize{35}{39}\selectfont\bfseries
+    Estructuras\\[-0.08em]
+    Aeroespaciales\par}
+  \vspace{0.42cm}
+  {\sffamily\color{BookGray}\fontsize{16.5}{21}\selectfont
+    \BookSubtitle\par}
+  \vspace{0.72cm}
+  {\color{BookBlue}\rule{0.72\linewidth}{1.15pt}\par}
+  \vspace{0.42cm}
+  {\sffamily\color{BookBlue}\Large\bfseries
+    \BookVolumeSubtitle\par}
+\end{minipage}
+
+% Esquema estructural central
+\vspace{2.15cm}
+\hspace*{0.7cm}
+\begin{center}
+\begin{tikzpicture}[x=0.86cm,y=0.86cm]
+  % Viga y empotramiento
+  \draw[BookBlue,line width=2.2pt] (0,0)--(10.6,0);
+  \draw[BookBlue,line width=1.8pt] (0,-0.82)--(0,0.82);
+  \foreach \y in {-0.70,-0.42,...,0.70}{
+    \draw[BookBlue!65] (-0.42,\y-0.15)--(0,\y);
+  }
+
+  % Carga triangular
+  \draw[BookOrange,line width=1.25pt] (0.75,1.55)--(9.15,0.55);
+  \foreach \x in {0.75,1.35,...,9.15}{
+    \pgfmathsetmacro{\ytop}{1.6392857-0.1190476*\x}
+    \draw[-{Latex[length=2.5mm]},BookOrange,line width=0.95pt]
+      (\x,\ytop)--(\x,0.10);
+  }
+
+  % Línea de lectura conceptual
+  \node[anchor=west,text=BookGray,font=\sffamily\small]
+    at (0,-1.28)
+    {cargas $\longrightarrow$ equilibrio $\longrightarrow$ esfuerzos internos};
+\end{tikzpicture}
+\end{center}
+
+\vfill
+
+% Autor y datos de edición
+\hspace*{0.85cm}
+\begin{minipage}{0.83\textwidth}
+  {\sffamily\color{BookBlue}\fontsize{16}{19}\selectfont\bfseries
+    \BookAuthor\par}
+  \vspace{0.48cm}
+  {\sffamily\color{BookGray}\large
+    \BookEdition\par}
+  {\sffamily\color{BookGray}\normalsize
+    \BookDate\par}
+  \vspace{0.7cm}
+  {\sffamily\color{BookGray}\small
+    Grado en Ingeniería Aeroespacial\par
+    Universidad de León\par}
+\end{minipage}
+
+\vspace*{1.0cm}
+\end{titlepage}
+
+% ============================================================
+% PÁGINA DE EDICIÓN
+% ============================================================
+\clearpage
+\thispagestyle{empty}
+\null
+\vfill
+\begin{minipage}{0.86\textwidth}
+{\small
+\textbf{\BookTitle}\par
+\BookSubtitle\par
+\BookVolume: \BookVolumeSubtitle\par
+\vspace{0.65cm}
+\textbf{Autor:} \BookAuthor\par
+\textbf{Edición:} \BookEdition\par
+\textbf{Fecha:} \BookDate\par
+\vspace{0.65cm}
+Edición de estudio independiente para la asignatura Teoría de Estructuras del Grado en Ingeniería Aeroespacial. No constituye una publicación oficial de la Universidad de León ni de su profesorado.\par
+}
+\end{minipage}
+\vspace*{1.2cm}
+
+\hypersetup{pageanchor=true}
+
+\frontmatter
+\include{chapters/00-preface}
+\include{chapters/00-roadmap}
+\include{appendices/notation}
+
+\tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\listoffigures
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de cuadros}
+\listoftables
+\cleardoublepage
+
+\mainmatter
+\part{Fundamentos}
+\include{chapters/01-fundamentos}
+
+\part{Modelo monodimensional y leyes de esfuerzos}
+\include{chapters/02-modelo-monodimensional}
+
+\part{Problemas resueltos}
+\include{chapters/03-problemas-resueltos}
+
+\part{Preparación de exámenes}
+\include{chapters/04-preparacion-examen}
+
+\part{Formulario y repaso}
+\include{chapters/05-formulario-repaso}
+
+\appendix
+\include{appendices/source-audit}
+\include{appendices/revision-critica}
+\include{appendices/checklist}
+\include{appendices/bibliography-notes}
+
+\backmatter
+\include{chapters/99-conclusion}
+\printindex
+
+\end{document}
