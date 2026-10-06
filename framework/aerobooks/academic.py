@@ -32,6 +32,10 @@ REVIEW_PROMPTS = {
     "copyright": "COPYRIGHT_REVIEWER.md",
     "units": "UNIT_DIMENSION_REVIEWER.md",
     "conflict": "CONFLICT_RESOLVER.md",
+    "blueprint": "BOOK_BLUEPRINT_ARCHITECT.md",
+    "claim": "CLAIM_EXTRACTOR.md",
+    "evidence": "EVIDENCE_MAPPER.md",
+    "agent": "AEROBOOKS_AGENT.md",
 }
 
 DEFAULT_REQUIRED_REVIEWS = [
