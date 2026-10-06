@@ -1,0 +1,48 @@
+[book]
+slug = "mecanica-fluidos"
+title = "Mecánica de Fluidos"
+title_short = "Mecánica de Fluidos"
+title_display_tex = "Mecánica de Fluidos"
+subtitle = "Fundamentos, modelización y resolución de problemas"
+volume = "Volumen I"
+volume_title = "Fundamentos"
+edition_number = 1
+edition_name = "Primera edición"
+date = "Octubre de 2026"
+language = "es"
+status = "draft"
+legal_notice = "Edición de estudio independiente."
+
+[author]
+name = "Daniel Miguel Tejedor"
+
+[institution]
+programme = "Grado en Ingeniería Aeroespacial"
+name = "Universidad de León"
+
+[ai]
+research_mode = "source_plus_research"
+source_first = true
+fail_closed = true
+record_claims = true
+record_conflicts = true
+
+[quality]
+require_source_audit = true
+require_claim_ledger = true
+require_claim_links = true
+require_list_of_figures = true
+require_list_of_tables = true
+require_visual_review = true
+
+[academic]
+required_reviews = ["source", "scientific", "citation", "latex", "pedagogy", "copyright", "red-team", "release"]
+require_historical_when_claims = true
+require_red_team = true
+require_evidence_for_high_risk = true
+
+[latex]
+entrypoint = "main.tex"
+engine = "pdflatex"
+bibliography = "biber"
+index = "makeindex"
