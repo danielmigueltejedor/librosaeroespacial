@@ -1,0 +1,40 @@
+# AeroBooks default policy
+
+[framework]
+name = "AeroBooks"
+policy_version = 1
+
+[sources]
+allowed_tiers = ["A", "B", "C", "D", "E"]
+default_research_mode = "source_plus_research"
+fail_closed = true
+record_external_sources = true
+record_conflicts = true
+
+[claims]
+require_sources_for_verified = true
+require_derivation_or_source_for_high_risk = true
+types = [
+  "scientific",
+  "mathematical",
+  "historical",
+  "biographical",
+  "numerical",
+  "definition",
+  "exam_pattern",
+  "interpretation",
+  "derived_result"
+]
+
+[latex]
+require_caption_for_figures = true
+require_label_for_figures = true
+require_caption_for_tables = true
+require_label_for_tables = true
+require_biblatex = true
+
+[release]
+strict_static_check = true
+compile_required = true
+visual_review_required = true
+changelog_required = true
