@@ -22,16 +22,17 @@ Crea o actualiza:
 ### 3. Outline
 El esquema del libro debe derivarse del temario real y de las fuentes, no de una plantilla genérica.
 
-Cada capítulo debe declarar:
+Cada capítulo debe declarar en un chapter spec:
 - objetivos;
 - prerrequisitos;
 - fuentes principales;
-- conceptos;
+- claims críticos;
 - derivaciones;
-- ejemplos;
+- figuras;
 - ejercicios;
-- errores frecuentes;
-- checklist.
+- estado editorial.
+
+El spec es el contrato de alcance del capítulo. Si la IA necesita salirse de él, debe actualizarlo explícitamente en vez de ampliar el manuscrito en silencio.
 
 ### 4. Redacción
 Usa este patrón:
@@ -59,6 +60,8 @@ Cuando un claim de riesgo alto esté registrado en `claims/ledger.jsonl`, enláz
 ```
 
 La macro es invisible en el PDF, pero permite que AeroBooks compruebe que el claim auditado está realmente conectado con el texto que pretende respaldar.
+
+Además, el claim debe tener una entrada en `evidence/map.jsonl` con fuente/localizador o derivación.
 
 No uses `\claimref` como sustituto de una cita bibliográfica visible cuando el lector necesite la referencia.
 
