@@ -1,0 +1,72 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aerobook-diagrams}[2026/10/06 AeroBooks technical diagram primitives]
+
+% Requiere TikZ y la paleta de aerobook-core.
+\tikzset{
+  aero/beam/.style={draw=BookGray,line width=2.0pt},
+  aero/outline/.style={draw=BookGray,line width=1.0pt},
+  aero/primary/.style={draw=BookBlue,line width=2.0pt},
+  aero/secondary/.style={draw=BookGreen!80!black,line width=.75pt},
+  aero/load/.style={-{Latex[length=2.4mm]},draw=BookOrange,line width=.95pt},
+  aero/reaction/.style={-{Latex[length=2.4mm]},draw=BookBlue,line width=1.0pt},
+  aero/dimension/.style={{Latex[length=2mm]}-{Latex[length=2mm]},draw=BookGray!75,line width=.55pt},
+  aero/axis/.style={-{Latex[length=2mm]},draw=BookGray,line width=.7pt},
+  aero/guide/.style={draw=BookGray!60,line width=.55pt},
+  aero/label/.style={font=\sffamily\small,text=BookGray},
+  aero/smalllabel/.style={font=\sffamily\scriptsize,text=BookGray}
+}
+
+\newcommand{\AeroBeam}[4]{%
+  \draw[aero/beam] (#1,#2)--(#3,#4);%
+}
+
+\newcommand{\AeroPinSupport}[2]{%
+  \begin{scope}[shift={(#1,#2)}]
+    \draw[aero/outline] (0,0)--(-.38,-.52)--(.38,-.52)--cycle;
+    \draw[aero/outline] (-.60,-.52)--(.60,-.52);
+    \foreach \x in {-.45,-.15,.15,.45}{
+      \draw[aero/guide] (\x,-.52)--(\x-.18,-.72);
+    }
+  \end{scope}%
+}
+
+\newcommand{\AeroRollerSupport}[2]{%
+  \begin{scope}[shift={(#1,#2)}]
+    \draw[aero/outline] (0,0)--(-.38,-.48)--(.38,-.48)--cycle;
+    \draw[aero/outline] (-.28,-.62) circle (.08);
+    \draw[aero/outline] (.28,-.62) circle (.08);
+    \draw[aero/outline] (-.58,-.78)--(.58,-.78);
+    \foreach \x in {-.45,-.15,.15,.45}{
+      \draw[aero/guide] (\x,-.78)--(\x-.18,-.98);
+    }
+  \end{scope}%
+}
+
+\newcommand{\AeroFixedSupport}[2]{%
+  \begin{scope}[shift={(#1,#2)}]
+    \draw[BookGray,line width=1.8pt] (0,-.85)--(0,.85);
+    \foreach \y in {-.70,-.42,-.14,.14,.42,.70}{
+      \draw[aero/guide] (-.36,\y-.18)--(0,\y);
+    }
+  \end{scope}%
+}
+
+\newcommand{\AeroDownLoad}[4]{%
+  \draw[aero/load] (#1,{#2+#3})--(#1,#2);
+  \if\relax\detokenize{#4}\relax\else
+    \node[font=\sffamily\small,text=BookOrange!90!black,above] at (#1,{#2+#3}) {#4};
+  \fi
+}
+
+\newcommand{\AeroUpReaction}[4]{%
+  \draw[aero/reaction] (#1,{#2-#3})--(#1,#2);
+  \if\relax\detokenize{#4}\relax\else
+    \node[font=\sffamily\small,text=BookBlue,left] at (#1,{#2-.55*#3}) {#4};
+  \fi
+}
+
+\newcommand{\AeroDimension}[6]{%
+  \draw[aero/dimension] (#1,#2)--(#3,#4)
+    node[midway,fill=white,inner sep=1.5pt,font=\scriptsize] {#5};
+  % #6 reservado para futuras opciones sin romper la interfaz.
+}
