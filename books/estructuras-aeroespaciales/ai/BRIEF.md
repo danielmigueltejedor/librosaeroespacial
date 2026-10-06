@@ -31,6 +31,22 @@ La Tercera edición es el **Volumen I: Conceptos básicos y modelo monodimension
 
 Esos temas pueden investigarse para futuras ediciones, pero no deben aparecer como si estuvieran respaldados por el mismo corpus docente actual.
 
+## Criterios de aceptación
+
+La Tercera edición se considera académicamente madura cuando:
+
+- el alcance del Bloque I queda cubierto sin presentar como oficial contenido posterior no documentado;
+- las fórmulas centrales declaran convenio e hipótesis;
+- todos los claims de alto riesgo tienen evidence entry o derivación reproducible;
+- los problemas resueltos han sido recalculados de forma independiente;
+- las figuras han sido contrastadas con la física que representan;
+- Wuolah se usa solo para patrón de examen;
+- pasan revisión científica, matemática, dimensional, de figuras, ejercicios, citas, pedagogía, copyright/source-use, red-team y release;
+- `aerobooks check --strict` y `aerobooks-ai coverage --strict` pasan;
+- el PDF compila sin errores ni desbordamientos relevantes;
+- se realiza inspección visual;
+- el release manifest congela el estado exacto de la edición.
+
 ## Autoridad y convenciones
 
 Para el **criterio de signos, notación y enfoque de la asignatura**, prevalece el material del profesor cuando no exista un error demostrable.
@@ -42,6 +58,13 @@ Fuentes abiertas y textbooks sirven para:
 - verificar derivaciones.
 
 No deben sustituir silenciosamente el convenio local.
+
+## Política ante conflictos
+
+- Si dos fuentes usan convenios distintos, se conserva el convenio del curso y se documenta la traducción.
+- Si una solución no oficial contradice teoría superior, se registra el conflicto y no se adopta silenciosamente.
+- Si una discrepancia puede explicarse por hipótesis o edición, se explicita.
+- Si no puede resolverse con la evidencia disponible, el claim queda pendiente.
 
 ## Wuolah
 
@@ -61,6 +84,24 @@ La corrección de enero de 2025 se usa como fuente **Tier D**:
 - figuras técnicas limpias;
 - evitar cajas decorativas sin función;
 - autor solo en portada, créditos y metadatos.
+
+## Perfil visual
+
+- identidad común AeroBooks;
+- figuras técnicas limpias y no decorativas;
+- captions y labels obligatorios;
+- índice de figuras y cuadros;
+- colores reservados a función semántica;
+- densidad de página propia de manual universitario;
+- evitar cajas innecesarias.
+
+## Reglas de copyright / uso de fuentes
+
+- material docente: citar/parafrasear, no reconstruir de forma sustitutiva;
+- libros comerciales: referencia y contraste, no reproducción;
+- Wuolah: patrón de examen y contexto, no copia de soluciones;
+- recursos abiertos: respetar licencia y atribución;
+- una fuente encontrada online no se considera automáticamente open access.
 
 ## Quality gate
 
