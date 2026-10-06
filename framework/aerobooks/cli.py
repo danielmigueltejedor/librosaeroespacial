@@ -859,6 +859,14 @@ def add_source(args: argparse.Namespace) -> int:
         "status": args.status,
         "citation_key": args.citation_key,
         "locator": args.locator,
+        "url": args.url,
+        "authors": args.author or [],
+        "published": args.published,
+        "edition": args.edition,
+        "accessed": args.accessed,
+        "checksum_sha256": args.sha256,
+        "license": args.license,
+        "open_access": args.open_access,
         "rights": args.rights,
         "notes": args.notes,
     }
@@ -1100,6 +1108,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--status", choices=["verified", "provided", "pending", "rejected"], default="pending")
     p.add_argument("--citation-key")
     p.add_argument("--locator")
+    p.add_argument("--url")
+    p.add_argument("--author", action="append", default=[], help="Puede repetirse.")
+    p.add_argument("--published", help="Fecha/año de publicación.")
+    p.add_argument("--edition")
+    p.add_argument("--accessed", help="Fecha de consulta, preferiblemente ISO.")
+    p.add_argument("--sha256", help="Checksum SHA-256 si existe una copia local autorizada.")
+    p.add_argument("--license")
+    p.add_argument("--open-access", action="store_true")
     p.add_argument("--rights")
     p.add_argument("--notes")
     p.set_defaults(func=add_source)
