@@ -102,3 +102,44 @@ aerobooks build <slug>
 ```
 
 No declares que un libro está “perfecto” si no se ha pasado el quality gate correspondiente.
+
+## Workflow de capítulo
+
+Cuando exista `specs/<chapter-id>.json`, la IA debe trabajar dentro de ese contrato.
+
+Flujo preferido:
+
+```bash
+aerobooks-ai chapter-pack <slug> <chapter-id> <role>
+```
+
+El paquete de capítulo es preferible a cargar todo el repositorio indiscriminadamente.
+
+Para claims de alto riesgo:
+- registrar el claim;
+- registrar al menos una evidencia localizada o una derivación;
+- enlazarlo desde el manuscrito cuando la política lo exija;
+- someterlo a una revisión independiente.
+
+## Independencia de revisión
+
+El autor no puede autoaprobar una edición.
+
+Una revisión debe declarar si la hizo:
+- el mismo modelo en una pasada nueva;
+- un modelo independiente;
+- una persona;
+- un flujo híbrido.
+
+Para claims centrales, prioriza una revisión más independiente cuando sea posible.
+
+## Cierre académico
+
+Además del gate LaTeX, ejecutar:
+
+```bash
+aerobooks-ai coverage <slug> --strict
+aerobooks-ai gate <slug>
+```
+
+No crear un release manifest hasta que el estado académico esté suficientemente maduro.
