@@ -1,0 +1,120 @@
+
+\chapter*{Cómo se han utilizado los exámenes de Wuolah}
+\addcontentsline{toc}{chapter}{Cómo se han utilizado los exámenes de Wuolah}
+
+La edición incorpora como fuente de contraste el material de \textbf{Teoría de Estructuras de 3.º de Ingeniería Aeroespacial (ULe) publicado en Wuolah}. En particular, la corrección de la convocatoria ordinaria de enero de 2025 comienza con un ejercicio centrado en \textbf{reacciones y leyes de esfuerzos}; los ejercicios posteriores avanzan hacia dimensionado a flexión, idealización de secciones, flujo cortante y torsión de secciones cerradas.\autocite{wuolah-examen-2025}
+
+Esto no se utiliza para reproducir la corrección, sino para identificar el \textbf{tipo de habilidad que se exige}: plantear correctamente el equilibrio, respetar el criterio de signos, construir diagramas y conectar el resultado con el comportamiento de la sección.
+
+\begin{exambox}{Patrón de resolución observado en examen}
+\begin{enumerate}
+  \item Dibujar el diagrama de cuerpo libre y resolver reacciones.
+  \item Dividir la estructura en tramos definidos por cambios de carga o articulaciones.
+  \item Obtener $N(x)$, $V(x)$ y $M(x)$ con un convenio de signos explícito.
+  \item Localizar extremos usando $V=\mathrm dM/\mathrm dx$.
+  \item Comprobar valores en apoyos, rótulas y extremos libres.
+\end{enumerate}
+\end{exambox}
+
+\begin{problembox}{Problema tipo examen derivado: reacciones y leyes}
+Una viga de longitud total $6\,\mathrm m$ está empotrada en $A$, posee una rótula interna en $B$ situada a $4\,\mathrm m$ de $A$ y termina en un apoyo móvil en $D$. Sobre $AB$ actúa una carga uniforme descendente de $1\,\mathrm{kN/m}$. En el punto medio de $BD$ actúa una carga puntual descendente de $2\,\mathrm{kN}$. Determina las reacciones y las leyes de cortante y momento flector.
+\end{problembox}
+
+\begin{solutionbox}
+\textbf{Datos.} $AB=4\,\mathrm m$, $BD=2\,\mathrm m$, $q=1\,\mathrm{kN/m}$ sobre $AB$ y $P=2\,\mathrm{kN}$ en el centro de $BD$.\par
+\textbf{Qué nos piden.} Reacciones exteriores y leyes $V$--$M$ en ambos tramos.\par
+\textbf{Idea física.} La rótula interna impone $M_B=0$ y permite separar la estructura en dos sólidos. Conviene resolver primero $BD$, que es una viga simplemente apoyada con una carga centrada.\par
+\textbf{Estrategia.} En $BD$, por simetría,
+\[
+R_B^{(BD)}=R_D=\frac{P}{2}=1\,\mathrm{kN}.
+\]
+Por acción y reacción, el tramo $AB$ recibe en $B$ una fuerza descendente de $1\,\mathrm{kN}$. La carga uniforme sobre $AB$ equivale a $4\,\mathrm{kN}$ aplicada a $2\,\mathrm m$ de $A$.\par
+\textbf{Desarrollo.} Para el tramo $AB$,
+\[
+R_A-4-1=0 \quad\Longrightarrow\quad \boxed{R_A=5\,\mathrm{kN}},
+\]
+\[
+M_A^{\mathrm{reac}}-4(2)-1(4)=0
+\quad\Longrightarrow\quad
+\boxed{M_A^{\mathrm{reac}}=12\,\mathrm{kN\,m}}.
+\]
+Con $x$ medido desde $A$ y el convenio del curso,
+\[
+\boxed{V_{AB}(x)=5-x},\qquad 0<x<4,
+\]
+\[
+\boxed{M_{AB}(x)=-12+5x-\frac{x^2}{2}},\qquad 0\le x\le4.
+\]
+Se comprueba inmediatamente que $M_{AB}(4)=0$, como exige la rótula.\par
+En $BD$, usando $s$ desde $B$,
+\[
+V_{BD}(s)=
+\begin{cases}
+1, & 0<s<1,\\
+-1, & 1<s<2,
+\end{cases}
+\]
+\[
+M_{BD}(s)=
+\begin{cases}
+s, & 0\le s\le1,\\
+2-s, & 1\le s\le2,
+\end{cases}
+\qquad [\mathrm{kN\,m}].
+\]
+Por tanto, $M_{\max}=1\,\mathrm{kN\,m}$ en el punto de aplicación de $P$.\par
+\textbf{Comprobación.} $M_B=M_D=0$; el salto de cortante en $s=1$ es $-2\,\mathrm{kN}$, exactamente igual a la carga puntual; y las reacciones verticales globales suman $5+1=6\,\mathrm{kN}$, igual a la carga total $4+2=6\,\mathrm{kN}$.\par
+\textbf{Interpretación.} La rótula hace que el momento se anule en $B$ pero no impide transmitir cortante. El empotramiento absorbe casi toda la solicitación de $AB$, mientras $BD$ trabaja como una viga simplemente apoyada.\par
+\textbf{Errores habituales.} Introducir un momento en la rótula, olvidar la acción--reacción entre los dos tramos o usar una única ley $V(x)$ para toda la estructura.\par
+\textbf{Método rápido para examen.} Marca antes de calcular los puntos con $M=0$ y resuelve primero el subtramo con menos incógnitas.
+\end{solutionbox}
+
+% ============================================================
+
+\safechapter{Ejercicios fundamentales}
+
+\begin{ejercicio}[1: Resultantes de cargas distribuidas]
+Calcular la fuerza equivalente y su posición en los siguientes casos:
+\begin{enumerate}[label=\alph*)]
+  \item carga uniforme $q_0=\qty{6}{\kilo\newton\per\metre}$ sobre $L=\qty{4}{\metre}$;
+  \item carga triangular de máximo $q_0=\qty{9}{\kilo\newton\per\metre}$ sobre $L=\qty{6}{\metre}$, máxima en el extremo izquierdo;
+  \item carga
+  \[
+  q(x)=8\left(1-\frac{x}{4}\right)^2\quad[\mathrm{kN/m}]
+  \]
+  para $0\leq x\leq4$.
+\end{enumerate}
+\end{ejercicio}
+
+\begin{solucion}
+\textbf{a) Uniforme}
+\[
+Q=q_0L=6\cdot4=\boxed{\qty{24}{\kilo\newton}}.
+\]
+Actúa en
+\[
+\boxed{\bar x=\qty{2}{\metre}}.
+\]
+
+\textbf{b) Triangular}
+\[
+Q=\frac12q_0L=\frac12(9)(6)=\boxed{\qty{27}{\kilo\newton}}.
+\]
+La resultante actúa a un tercio desde el extremo de mayor intensidad:
+\[
+\boxed{\bar x=\qty{2}{\metre}}.
+\]
+
+\textbf{c) Parabólica}
+\[
+Q=\int_0^4 8\left(1-\frac{x}{4}\right)^2\dd x
+=\frac{8\cdot4}{3}.
+\]
+Por tanto:
+\[
+\boxed{Q=\qty{10.667}{\kilo\newton}}
+\]
+y
+\[
+\bar x
+=\frac{\int_0^4xq(x)\dd x}{Q}
