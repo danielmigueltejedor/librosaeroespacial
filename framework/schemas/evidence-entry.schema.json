@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/evidence-entry.schema.json",
+  "title": "AeroBooks Evidence Entry",
+  "type": "object",
+  "required": [
+    "schema_version", "id", "chapter", "support",
+    "status", "confidence"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "id": {"type": "string", "minLength": 1},
+    "chapter": {"type": "string", "minLength": 1},
+    "claim": {"type": ["string", "null"]},
+    "source": {"type": ["string", "null"]},
+    "locator": {"type": ["string", "null"]},
+    "support": {
+      "enum": [
+        "direct", "derived", "corroborates",
+        "contradicts", "contextual", "exam_pattern"
+      ]
+    },
+    "status": {"enum": ["verified", "pending", "rejected"]},
+    "confidence": {"enum": ["low", "medium", "high"]},
+    "derivation": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
