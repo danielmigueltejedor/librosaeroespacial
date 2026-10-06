@@ -1,0 +1,120 @@
+\]
+
+\begin{idea}
+Saint-Venant justifica una gran parte de la Resistencia de Materiales: en vez de describir cada contacto real, tornillo o unión en detalle, trabajamos con sus resultantes.
+\end{idea}
+
+\safesection{Existencia y unicidad}
+Bajo unas condiciones de contorno adecuadas y una ley constitutiva elástica estable, el problema lineal bien planteado posee una solución única.
+
+En la práctica esto exige eliminar los movimientos de sólido rígido.
+
+Por ejemplo, una viga simplemente apoyada está correctamente vinculada porque no puede trasladarse libremente como cuerpo rígido.
+
+% ============================================================
+\safechapter{Tensión}
+% ============================================================
+
+\safesection{Por qué aparece el concepto de tensión}
+Supongamos un cuerpo en equilibrio.
+
+Realizamos un corte imaginario de normal $\vect{n}$.
+
+La parte eliminada ejercía sobre la parte restante fuerzas distribuidas a través de la superficie de corte.
+
+La intensidad local de esas fuerzas se caracteriza mediante el \textbf{vector tensión}:
+\[
+\vect{t}^{(\vect n)}
+=
+\lim_{\Delta A\rightarrow 0}
+\frac{\Delta \vect F}{\Delta A}.
+\]
+
+Sus unidades son fuerza dividida por área:
+\[
+[\text{tensión}]=\frac{\mathrm{N}}{\mathrm{m^2}}=\mathrm{Pa}.
+\]
+
+Una unidad extremadamente cómoda en estructuras es:
+\[
+1\ \mathrm{MPa}=1\ \mathrm{N/mm^2}.
+\]
+
+\safesubsection{Nota sobre una conversión habitual}
+En algunos apuntes clásicos aparece aproximadamente
+\[
+1\ \mathrm{MPa}\simeq 10\ \mathrm{kp/cm^2}.
+\]
+El valor más preciso es
+\[
+1\ \mathrm{MPa}\simeq 10.197\ \mathrm{kp/cm^2}.
+\]
+Para cálculo moderno conviene trabajar directamente en SI.
+
+\safesection{Tensión normal y tangencial}
+\index{tensión!vector tensión}El vector tensión puede descomponerse en una componente normal y otra tangencial.
+
+La componente normal es
+\[
+\sigma_n=\vect{t}^{(\vect n)}\cdot\vect n
+\]
+y la parte tangencial:
+\[
+\vect{\tau}=\vect{t}^{(\vect n)}-\sigma_n\vect n.
+\]
+
+Así distinguimos:
+\[
+\text{tensión normal }\sigma
+\qquad\text{y}\qquad
+\text{tensión tangencial }\tau.
+\]
+
+La tensión normal está asociada principalmente a tracción/compresión y flexión. La tensión tangencial aparece de forma importante en cortadura y torsión.
+
+\safesection{Tensor de tensiones}
+La tensión depende de la orientación del plano de corte.
+
+El teorema de Cauchy conduce a
+\[
+\vect t^{(\vect n)}=\mat{\sigma}\vect n
+\]
+donde
+\[
+\mat{\sigma}=
+\begin{bmatrix}
+\sigma_{xx}&\tau_{xy}&\tau_{xz}\\
+\tau_{yx}&\sigma_{yy}&\tau_{yz}\\
+\tau_{zx}&\tau_{zy}&\sigma_{zz}
+\end{bmatrix}.
+\]
+
+En ausencia de pares internos clásicos, el equilibrio angular implica
+\[
+\tau_{xy}=\tau_{yx},\qquad
+\tau_{xz}=\tau_{zx},\qquad
+\tau_{yz}=\tau_{zy}.
+\]
+
+\safesection{Tensión nominal y tensión verdadera}
+En un ensayo uniaxial:
+\[
+\sigma_{\mathrm{nom}}=\frac{F}{A_0}
+\]
+utiliza el área inicial.
+
+La tensión verdadera utiliza el área instantánea:
+\[
+\sigma_{\mathrm{real}}=\frac{F}{A}.
+\]
+
+Cuando la deformación es pequeña, $A\simeq A_0$ y ambas son prácticamente iguales.
+
+% ============================================================
+\safechapter{Deformación}
+% ============================================================
+
+\safesection{Desplazamiento no es deformación}
+Un cuerpo puede desplazarse sin deformarse.
+
+Por ejemplo, una traslación rígida
