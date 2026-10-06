@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/claim.schema.json",
+  "title": "AeroBooks claim ledger item",
+  "type": "object",
+  "required": ["id", "claim", "type", "risk", "status", "sources"],
+  "properties": {
+    "id": {"type": "string"},
+    "claim": {"type": "string"},
+    "type": {
+      "enum": [
+        "scientific", "mathematical", "historical", "biographical",
+        "numerical", "definition", "exam_pattern", "interpretation",
+        "derived_result"
+      ]
+    },
+    "risk": {"enum": ["low", "medium", "high"]},
+    "status": {"enum": ["verified", "derived", "pending", "rejected"]},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "derivation": {"type": ["string", "null"]},
+    "scope": {"type": ["string", "null"]},
+    "notes": {"type": ["string", "null"]}
+  }
+}
