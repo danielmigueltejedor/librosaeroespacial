@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aerobooks-framework"
-version = "0.1.0"
+version = "0.2.0"
 description = "Framework editorial reproducible para libros académicos en LaTeX"
 requires-python = ">=3.11"
 authors = [
@@ -14,6 +14,7 @@ dependencies = []
 
 [project.scripts]
 aerobooks = "framework.aerobooks.cli:main"
+aerobooks-ai = "framework.aerobooks.academic:main"
 
 [tool.setuptools]
 packages = ["framework", "framework.aerobooks"]
