@@ -1,52 +1,116 @@
 # Release Gate
 
-Una edición no debe considerarse cerrada hasta pasar estas puertas.
+Una edición no debe considerarse cerrada hasta superar todas las puertas aplicables.
 
-## G1 — Alcance
-- temario explícito;
-- lagunas declaradas;
-- edición y fecha correctas;
-- no hay capítulos “rellenados” sin fuente.
+## G0 — Blueprint
 
-## G2 — Fuentes
-- manifest actualizado;
+- misión explícita;
+- audiencia y nivel explícitos;
+- alcance y exclusiones;
+- criterios de aceptación;
+- convenciones que no pueden cambiarse;
+- política ante conflictos;
+- perfil didáctico/visual.
+
+## G1 — Fuentes
+
+- source intake completado cuando proceda;
+- `sources/manifest.json` actualizado;
 - bibliografía resoluble;
-- fuentes externas añadidas;
+- fuentes externas registradas;
+- autoridad/edición/contexto razonablemente auditados;
+- derechos/restricciones documentados;
+- ninguna fuente `rejected` usada.
+
+## G2 — Procedencia
+
+- chapter specs presentes;
+- claims críticos registrados;
+- evidence map actualizado;
+- localizadores suficientes;
 - conflictos documentados;
-- derechos/restricciones razonablemente identificados.
+- claims de alto riesgo sin estado `pending`.
 
 ## G3 — Exactitud
-- claims críticos revisados;
-- derivaciones comprobadas;
+
+- derivaciones recalculadas;
+- ecuaciones dimensionalmente coherentes;
 - unidades consistentes;
+- signos y convenios revisados;
 - fechas y atribuciones verificadas;
-- no quedan marcadores `[SOURCE NEEDED]`.
+- casos límite comprobados cuando aporten evidencia;
+- ninguna incertidumbre material ocultada.
 
 ## G4 — Didáctica
-- objetivos;
+
 - prerrequisitos;
+- objetivos;
+- secuencia lógica;
 - ejemplos;
 - problemas;
 - comprobaciones;
-- errores frecuentes.
+- errores frecuentes;
+- autoevaluación;
+- dificultad graduada cuando proceda.
 
-## G5 — Editorial
+## G5 — Figuras y editorial
+
 - portada estándar;
 - índices;
-- figuras y cuadros;
+- figuras y cuadros con caption/label;
+- figuras científicamente correctas;
 - referencias cruzadas;
 - autor sin repetición innecesaria;
-- nomenclatura editorial de edición.
+- nomenclatura editorial de edición;
+- ausencia de desbordamientos relevantes.
 
-## G6 — Técnica
-- `aerobooks check <slug> --strict`;
-- compilación limpia;
+## G6 — Revisión independiente
+
+Debe existir `pass` para todos los roles requeridos por el perfil de riesgo.
+
+AeroBooks puede exigir dinámicamente:
+- source;
+- scientific;
+- mathematical;
+- units;
+- derivation;
+- historical;
+- figure;
+- exercise-review;
+- citation;
+- pedagogy;
+- copyright;
+- latex;
+- red-team;
+- release.
+
+No basta con que el autor se relea a sí mismo.
+
+## G7 — Machine gates
+
+```bash
+aerobooks check <slug> --strict
+aerobooks-ai coverage <slug> --strict
+aerobooks-ai gate <slug>
+aerobooks build <slug>
+```
+
+Además:
 - sin referencias rotas;
-- sin overfull relevantes;
+- sin citas indefinidas;
+- sin errores de compilación;
 - PDF inspeccionado visualmente.
 
-## G7 — Publicación
+## G8 — Reproducibilidad y publicación
+
 - changelog;
+- edition metadata;
+- `aerobooks-ai release-manifest`;
+- manifest verificado;
 - snapshot/tag de la edición;
 - PDF final como release/artifact;
-- rama main preparada para la edición siguiente.
+- rama principal preparada para la edición siguiente.
+
+## Regla
+
+Un gate puede decir **FAIL** aunque el PDF sea visualmente perfecto. La composición no sustituye la corrección académica.
