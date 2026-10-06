@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/book.schema.json",
+  "title": "AeroBooks book.toml conceptual schema",
+  "description": "Contrato documental para book.toml. El CLI valida un subconjunto sin dependencias externas.",
+  "type": "object",
+  "required": ["book", "author", "institution", "ai", "quality", "latex"],
+  "properties": {
+    "book": {
+      "type": "object",
+      "required": [
+        "slug", "title", "subtitle", "volume", "volume_title",
+        "edition_number", "edition_name", "date", "language", "status"
+      ]
+    },
+    "author": {
+      "type": "object",
+      "required": ["name"]
+    },
+    "institution": {
+      "type": "object"
+    },
+    "ai": {
+      "type": "object",
+      "required": ["research_mode"]
+    },
+    "quality": {
+      "type": "object"
+    },
+    "latex": {
+      "type": "object",
+      "required": ["entrypoint"]
+    }
+  }
+}
