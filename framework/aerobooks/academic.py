@@ -454,6 +454,9 @@ def _protocol_bundle() -> list[Path]:
     names = [
         "AI_AUTHORING_PROTOCOL.md",
         "AI_WORKFLOW.md",
+        "AI_ORCHESTRATION.md",
+        "BOOK_BLUEPRINT_PROTOCOL.md",
+        "QUALITY_RUBRIC.md",
         "SOURCE_POLICY.md",
         "FACT_CHECK_PROTOCOL.md",
         "RESEARCH_PROTOCOL.md",
