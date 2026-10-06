@@ -1,0 +1,120 @@
+\[
+\vect u=\text{constante}
+\]
+cambia la posición de todos los puntos pero no las distancias relativas entre ellos.
+
+También una pequeña rotación rígida puede cambiar la orientación sin producir deformación.
+
+\begin{idea}
+La deformación mide el \textbf{cambio relativo entre puntos próximos}, no el movimiento absoluto del cuerpo.
+\end{idea}
+
+\safesection{Deformación longitudinal}
+Para una barra de longitud inicial $L_0$ que pasa a medir $L$:
+\[
+\Delta L=L-L_0.
+\]
+
+La deformación longitudinal nominal es
+\[
+\varepsilon=\frac{\Delta L}{L_0}
+\]
+y es adimensional.
+
+Si $\varepsilon>0$ hay alargamiento. Si $\varepsilon<0$ hay acortamiento.
+
+\safesection{Deformación verdadera}
+La deformación verdadera incremental se define como
+\[
+\dd\varepsilon_{\mathrm{real}}=\frac{\dd L}{L}.
+\]
+Integrando:
+\[
+\varepsilon_{\mathrm{real}}=\ln\left(\frac{L}{L_0}\right).
+\]
+Para deformaciones pequeñas:
+\[
+\ln(1+x)\simeq x,
+\]
+y, por tanto,
+\[
+\varepsilon_{\mathrm{real}}\simeq\varepsilon_{\mathrm{nom}}.
+\]
+
+\safesection{Tensor de pequeñas deformaciones}
+Sea el campo de desplazamientos
+\[
+\vect u=(u_1,u_2,u_3).
+\]
+En pequeñas deformaciones:
+\[
+\varepsilon_{ij}
+=\frac{1}{2}
+\left(
+\frac{\partial u_i}{\partial x_j}
++
+\frac{\partial u_j}{\partial x_i}
+\right).
+\]
+
+De forma compacta:
+\[
+\mat{\varepsilon}
+=\frac12
+\left[
+\nabla\vect u+(\nabla\vect u)^T
+\right].
+\]
+
+En dos dimensiones:
+\[
+\varepsilon_{xx}=\frac{\partial u}{\partial x},\qquad
+\varepsilon_{yy}=\frac{\partial v}{\partial y},
+\]
+\[
+\varepsilon_{xy}
+=\frac12\left(
+\frac{\partial u}{\partial y}
++
+\frac{\partial v}{\partial x}
+\right).
+\]
+
+La deformación angular ingenieril es
+\[
+\gamma_{xy}=2\varepsilon_{xy}.
+\]
+
+\begin{errorbox}
+No confundas $\gamma_{xy}$ con $\varepsilon_{xy}$. En la convención tensorial:
+\[
+\gamma_{xy}=2\varepsilon_{xy}.
+\]
+\end{errorbox}
+
+% ============================================================
+\safechapter{Leyes de comportamiento}
+% ============================================================
+
+\safesection{Ley constitutiva}
+El equilibrio y la cinemática no bastan.
+
+Necesitamos relacionar
+\[
+\text{tensiones}\longleftrightarrow\text{deformaciones}
+\]
+mediante una ley constitutiva.
+
+En elasticidad lineal general:
+\[
+\sigma_{ij}=C_{ijkl}\varepsilon_{kl},
+\]
+donde $C_{ijkl}$ contiene las propiedades elásticas del material.
+
+\safesection{Ley de Hooke uniaxial}
+Para una barra sometida a tensión uniaxial dentro del régimen elástico lineal:
+\[
+\sigma=E\varepsilon,
+\]
+donde $E$ es el módulo de Young.
+
