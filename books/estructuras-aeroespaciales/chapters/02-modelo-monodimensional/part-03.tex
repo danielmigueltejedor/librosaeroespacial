@@ -1,0 +1,120 @@
+\safesection{Esfuerzo axil}
+$N_x$ es la resultante de fuerzas normal a la sección.
+
+Convención de la asignatura:
+\[
+N_x>0\Longleftrightarrow\text{tracción},
+\qquad
+N_x<0\Longleftrightarrow\text{compresión}.
+\]
+
+\safesection{Esfuerzo cortante}
+En un problema plano:
+\[
+C_y
+\]
+o, en muchos libros,
+\[
+V.
+\]
+En este manual se utilizan indistintamente:
+\[
+V\equiv C_y.
+\]
+La convención utilizada en las diapositivas puede recordarse como:
+\[
+C_y>0:\ \text{levanta la cara izquierda}.
+\]
+
+\safesection{Momento flector}
+En el plano $xy$:
+\[
+M_z.
+\]
+La convención del curso es:
+\[
+M_z>0:\ \text{comprime la parte superior}.
+\]
+
+\safesection{Momento torsor}
+El momento alrededor de la directriz:
+\[
+M_x=T.
+\]
+Según el criterio mostrado en el material docente, $T>0$ corresponde al sentido antihorario observado sobre la cara frontal.
+
+\safesection{Esfuerzo interno no es tensión}
+Un esfuerzo interno es una resultante:
+\[
+N,\quad V,\quad M,\quad T.
+\]
+Una tensión describe cómo se distribuye esa resultante sobre el área:
+\[
+\sigma,\quad\tau.
+\]
+Por ejemplo:
+\[
+N=\int_A\sigma_{xx}\dd A.
+\]
+
+\flowbox{$\text{esfuerzo}\neq\text{tensión}$}
+
+\begin{errorbox}
+Decir ``la tensión axil vale $30\ \mathrm{kN}$'' es dimensionalmente incorrecto. $30\ \mathrm{kN}$ es una fuerza interna; una tensión debería expresarse, por ejemplo, en $\mathrm{MPa}$.
+\end{errorbox}
+
+% ============================================================
+\safechapter{Equilibrio estático, equilibrio elástico e isostaticidad}
+% ============================================================
+
+\safesection{Equilibrio global}
+Para una estructura plana:
+\[
+\sum F_x=0,\qquad
+\sum F_y=0,\qquad
+\sum M=0.
+\]
+Estas ecuaciones permiten calcular reacciones cuando la estructura es estáticamente determinada.
+
+\safesection{Equilibrio de cualquier parte}
+No basta con que el conjunto esté en equilibrio. \textbf{Cualquier porción} de la estructura obtenida mediante un corte también debe estarlo. Ésta es la base del método de las secciones.
+
+\safesection{Estructura isostática}
+\index{estructura!isostática}Una estructura es isostática cuando todas sus reacciones y esfuerzos pueden determinarse únicamente mediante equilibrio.
+
+Para cargas mecánicas ordinarias:
+\flowbox{los esfuerzos de una estructura isostática no dependen de $E$, $A$ o $I$ para poder ser obtenidos por equilibrio}
+
+\safesection{Estructura hiperestática}
+\index{estructura!hiperestática}En una estructura hiperestática existen incógnitas redundantes. Equilibrio por sí solo no basta.
+
+Debemos añadir compatibilidad de deformaciones y ley constitutiva. Por ello los esfuerzos pueden depender de
+\[
+E,\qquad A,\qquad I,\qquad GJ,\ldots
+\]
+
+\begin{idea}
+La diferencia esencial es:
+\begin{center}
+\begin{tabular}{c@{\hspace{2cm}}c}
+\fbox{\parbox{0.30\linewidth}{\centering \textbf{Isostática}\\[2mm]equilibrio}}
+&
+\fbox{\parbox{0.38\linewidth}{\centering \textbf{Hiperestática}\\[2mm]equilibrio + compatibilidad + material}}
+\end{tabular}
+\end{center}
+\end{idea}
+
+% ============================================================
+\safechapter{Método de las secciones}
+% ============================================================
+
+\index{método de las secciones}El método fundamental para obtener esfuerzos internos es:
+\begin{enumerate}
+  \item calcular las reacciones;
+  \item realizar un corte en una posición genérica $x$;
+  \item conservar uno de los dos lados;
+  \item sustituir la parte eliminada por $N$, $V$, $M$;
+  \item imponer equilibrio;
+  \item repetir cuando cambie la ley de carga.
+\end{enumerate}
+
