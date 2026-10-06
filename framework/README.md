@@ -118,3 +118,139 @@ aerobooks ai-pack <slug>
 ```
 
 que crea `books/<slug>/build/AI_CONTEXT.md`.
+
+## Capa académica v0.2
+
+AeroBooks separa ahora el tooling editorial del tooling de evidencia.
+
+El CLI principal sigue siendo:
+
+```bash
+aerobooks ...
+```
+
+La capa académica se invoca con:
+
+```bash
+aerobooks-ai ...
+```
+
+### Chapter specs
+
+Cada capítulo importante puede tener un contrato machine-readable:
+
+```text
+books/<slug>/specs/CH-01.json
+```
+
+Ese contrato fija:
+- alcance;
+- objetivos;
+- prerrequisitos;
+- fuentes autorizadas;
+- claims;
+- derivaciones;
+- figuras;
+- ejercicios;
+- estado editorial.
+
+### Evidence map
+
+```text
+books/<slug>/evidence/map.jsonl
+```
+
+Conecta:
+
+```text
+capítulo → claim → evidencia → source ID + locator
+```
+
+Esto permite que una IA reproduzca la procedencia de una ecuación, fecha o afirmación crítica sin depender de memoria conversacional.
+
+### Paquetes de capítulo para IAs
+
+```bash
+aerobooks-ai chapter-pack estructuras-aeroespaciales CH-01-FUNDAMENTOS author
+aerobooks-ai chapter-pack estructuras-aeroespaciales CH-01-FUNDAMENTOS red-team
+```
+
+El paquete contiene únicamente:
+- reglas globales;
+- protocolo académico;
+- spec del capítulo;
+- fuentes relevantes;
+- claims relevantes;
+- evidence map;
+- manuscrito actual;
+- prompt del rol.
+
+Esto reduce ruido de contexto y hace más reproducible el trabajo de una IA.
+
+### Revisiones independientes
+
+```bash
+aerobooks-ai review-template <slug> \
+  --id REV-SCI-001 \
+  --role scientific \
+  --scope CH-01
+```
+
+Los informes registran también el grado de independencia del revisor:
+- mismo modelo, nueva pasada;
+- modelo independiente;
+- humano;
+- híbrido.
+
+### Academic gate
+
+```bash
+aerobooks-ai coverage <slug> --strict
+aerobooks-ai gate <slug>
+```
+
+El gate bloquea una edición si quedan, entre otros:
+- claims críticos pendientes;
+- conflictos sin resolver;
+- chapter specs no preparados;
+- revisiones obligatorias ausentes;
+- revisiones con errores/blockers.
+
+### Release reproducible
+
+```bash
+aerobooks-ai release-manifest <slug> --label ed4-candidate
+aerobooks-ai verify-manifest <slug> ed4-candidate
+```
+
+El manifest guarda SHA-256 del manuscrito y de las reglas del framework que afectan a la edición. Sirve para demostrar que una edición candidata corresponde exactamente a un estado concreto del proyecto.
+
+## Modelo de calidad
+
+AeroBooks no promete una IA infalible. Una herramienta seria no puede garantizar ausencia absoluta de errores. En su lugar aplica defensa en profundidad:
+
+```text
+fuentes
+  ↓
+manifest
+  ↓
+chapter spec
+  ↓
+claim ledger
+  ↓
+evidence map
+  ↓
+autoría
+  ↓
+revisión matemática / científica / histórica
+  ↓
+red team
+  ↓
+quality gates
+  ↓
+build + inspección visual
+  ↓
+release manifest
+```
+
+La filosofía es que un error crítico tenga que atravesar varias barreras independientes antes de llegar a una edición publicada.
