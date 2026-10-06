@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/source-manifest.schema.json",
+  "title": "AeroBooks Source Manifest",
+  "type": "object",
+  "required": ["schema_version", "book", "sources"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "book": {"type": "string"},
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "kind", "tier", "role", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "kind": {"type": "string"},
+          "tier": {"enum": ["A", "B", "C", "D", "E"]},
+          "role": {"type": "array", "items": {"type": "string"}},
+          "status": {"enum": ["verified", "provided", "pending", "rejected"]},
+          "citation_key": {"type": ["string", "null"]},
+          "locator": {"type": ["string", "null"]},
+          "rights": {"type": ["string", "null"]},
+          "notes": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
