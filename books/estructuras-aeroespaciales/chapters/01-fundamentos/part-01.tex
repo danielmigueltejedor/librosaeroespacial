@@ -1,0 +1,120 @@
+\chapter*{Fuentes y alcance de esta parte}\addcontentsline{toc}{chapter}{Fuentes y alcance de esta parte}
+Esta parte reconstruye el Bloque I a partir de la guía docente de la Universidad de León, las transparencias de los temas iniciales y el material introductorio de estructuras aeronáuticas proporcionado para la asignatura. Se contrasta con textos abiertos de mecánica de sólidos y materiales de MIT OpenCourseWare, TU Delft OpenCourseWare y Cervera--Blanco.\autocite{ule-guia-2026,lanza-temas12a,lanza-temas12b,ule-estructuras-intro,bucciarelli2002,tudelft-mom,cervera2015}
+
+\begin{warningbox}
+La notación del profesor se conserva cuando afecta directamente a la resolución de ejercicios. Cuando una fuente externa usa otro convenio de signos, se explica la equivalencia antes de aplicar sus resultados.
+\end{warningbox}
+
+% ============================================================
+
+\safechapter{Introducción a las estructuras aeronáuticas}
+
+\safesection{¿Qué es una estructura?}
+\index{estructura}Una estructura es un sistema resistente cuya función es recibir cargas, transmitirlas entre sus distintos elementos y llevarlas finalmente hasta los apoyos o uniones capaces de equilibrarlas.
+
+Desde el punto de vista mecánico podemos resumirlo como
+
+\flowbox{carga $\longrightarrow$ camino de carga $\longrightarrow$ elementos resistentes $\longrightarrow$ reacciones}
+
+En una aeronave este camino de carga es especialmente importante, porque la estructura debe proporcionar simultáneamente:
+
+\begin{itemize}
+  \item resistencia;
+  \item rigidez;
+  \item estabilidad;
+  \item bajo peso;
+  \item tolerancia al daño y a la fatiga.
+\end{itemize}
+
+\begin{idea}
+En ingeniería aeroespacial no gana necesariamente la estructura que ``aguanta más'', sino la que satisface todos los requisitos con la \textbf{menor penalización de masa posible}.
+\end{idea}
+
+\safesection{Elementos estructurales principales de una aeronave}
+
+\safesubsection{Fuselaje}
+El fuselaje constituye el cuerpo principal de la aeronave. Debe:
+
+\begin{itemize}
+  \item alojar pasajeros, carga y sistemas;
+  \item transmitir las cargas entre alas, empenaje y tren;
+  \item resistir la presurización;
+  \item soportar flexión, torsión y cargas concentradas.
+\end{itemize}
+
+En aviación moderna es frecuente la estructura \textbf{semimonocasco}, formada por revestimiento resistente y refuerzos internos.
+
+Los principales elementos son:
+
+\begin{description}
+  \item[Cuadernas:] elementos transversales que mantienen la geometría.
+  \item[Larguerillos:] refuerzos longitudinales.
+  \item[Revestimiento:] piel estructural exterior.
+  \item[Mamparos:] elementos transversales de elevada rigidez, especialmente importantes para cerrar zonas presurizadas.
+\end{description}
+
+\safesubsection{Ala}
+En una idealización sencilla, el ala puede imaginarse como una gran viga en voladizo sometida a una distribución de sustentación.
+
+Sus elementos principales son:
+
+\begin{description}
+  \item[Largueros:] vigas longitudinales principales; soportan gran parte de la flexión.
+  \item[Costillas:] mantienen la forma aerodinámica y transfieren cargas del revestimiento a los largueros.
+  \item[Larguerillos:] rigidizan el revestimiento y ayudan a evitar inestabilidades locales.
+  \item[Revestimiento:] distribuye presión aerodinámica y participa en la resistencia a flexión, cortadura y torsión.
+\end{description}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=0.92cm,y=0.92cm,>=Latex]
+  % Contorno del ala (vista en planta simplificada)
+  \fill[BookBlueLight!55]
+    (0,2.25) -- (9.3,1.35) -- (9.3,0.65) -- (0,0.20) -- cycle;
+  \draw[BookGray,line width=1.05pt]
+    (0,2.25) -- (9.3,1.35) -- (9.3,0.65) -- (0,0.20) -- cycle;
+
+  % Largueros
+  \draw[BookBlue,line width=2.15pt] (0.55,1.78)--(8.85,1.17);
+  \draw[BookBlue,line width=2.15pt] (0.55,0.72)--(8.85,0.78);
+
+  % Costillas
+  \foreach \x in {0.8,1.8,2.8,3.8,4.8,5.8,6.8,7.8,8.7}{
+    \pgfmathsetmacro{\ytop}{2.25-0.09677*\x}
+    \pgfmathsetmacro{\ybot}{0.20+0.04839*\x}
+    \draw[BookOrange!88!black,line width=.72pt] (\x,\ybot)--(\x,\ytop);
+  }
+
+  % Larguerillos / stringers
+  \draw[BookGreen!80!black,line width=.75pt] (0.7,1.99)--(8.9,1.27);
+  \draw[BookGreen!80!black,line width=.75pt] (0.7,1.48)--(8.9,1.06);
+  \draw[BookGreen!80!black,line width=.75pt] (0.7,1.02)--(8.9,0.86);
+  \draw[BookGreen!80!black,line width=.75pt] (0.7,0.48)--(8.9,0.69);
+
+  % Raíz
+  \draw[BookGray,line width=2.4pt] (0,0.20)--(0,2.25);
+  \node[rotate=90,font=\sffamily\scriptsize,text=BookGray] at (-0.28,1.23) {raíz};
+
+  % Etiquetas con líneas guía
+  \node[anchor=west,font=\sffamily\small,text=BookBlue] (labSpar) at (9.7,1.82) {largueros};
+  \draw[BookBlue,-{Latex[length=2mm]}] (labSpar.west)--(7.4,1.12);
+
+  \node[anchor=west,font=\sffamily\small,text=BookOrange!88!black] (labRib) at (9.7,1.23) {costillas};
+  \draw[BookOrange!88!black,-{Latex[length=2mm]}] (labRib.west)--(6.8,1.52);
+
+  \node[anchor=west,font=\sffamily\small,text=BookGreen!70!black] (labStr) at (9.7,0.66) {larguerillos};
+  \draw[BookGreen!70!black,-{Latex[length=2mm]}] (labStr.west)--(7.0,0.88);
+
+  \node[font=\sffamily\scriptsize,text=BookGray] at (4.5,-0.15)
+    {esquema estructural simplificado, no a escala};
+\end{tikzpicture}
+\caption{Idealización de los principales elementos resistentes de un ala: largueros, costillas, larguerillos y revestimiento.}
+\label{fig:ala-elementos-estructurales}
+\end{figure}
+
+\begin{tip}
+Cuando veas un ala en un problema elemental, piensa primero en una \textbf{viga en voladizo}. La sustentación genera un cortante y un momento flector máximos cerca de la raíz.
+\end{tip}
+
+\safesection{De la estructura real al modelo}
+Una estructura real es demasiado compleja para introducir directamente todos sus detalles en las ecuaciones.
