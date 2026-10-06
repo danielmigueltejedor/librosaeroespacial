@@ -1,0 +1,52 @@
+\chapter*{Mapa de prerrequisitos y método de estudio}
+\addcontentsline{toc}{chapter}{Mapa de prerrequisitos y método de estudio}
+
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex,
+  node distance=9mm and 11mm,
+  box/.style={
+    rounded corners=2mm,
+    minimum width=3.15cm,
+    minimum height=1.05cm,
+    align=center,
+    font=\sffamily\small,
+    line width=.75pt
+  },
+  base/.style={box,draw=BookGray!70,fill=BookGrayLight},
+  core/.style={box,draw=BookBlue,fill=BookBlueLight},
+  constit/.style={box,draw=BookGreen,fill=BookGreenLight},
+  laws/.style={box,draw=BookOrange,fill=BookOrangeLight},
+  arr/.style={-{Latex[length=2.4mm]},line width=.9pt,draw=BookBlue!85}
+]
+\node[base] (stat) {Estática\\fuerzas y momentos};
+\node[core,right=of stat] (model) {Modelización\\barra y sección};
+\node[core,right=of model] (int) {Esfuerzos internos\\$N,\ V,\ M,\ T$};
+
+\node[constit,below=of model] (stress) {Tensión\\$\sigma,\ \tau$};
+\node[constit,left=of stress] (strain) {Deformación\\$\varepsilon,\ \gamma$};
+\node[constit,right=of stress] (hooke) {Ley constitutiva\\material elástico};
+
+\node[laws,below=of int] (qvm) {Leyes de esfuerzos\\$V'=-q,\quad M'=V$};
+
+\draw[arr] (stat)--(model);
+\draw[arr] (model)--(int);
+\draw[arr] (int)--(stress);
+\draw[arr] (stress)--(strain);
+\draw[arr] (strain)--(hooke);
+\draw[arr] (int)--(qvm);
+\draw[arr] (stat) |- (qvm);
+
+\node[font=\sffamily\scriptsize,text=BookGray,below=3mm of strain]
+  {cinemática};
+\node[font=\sffamily\scriptsize,text=BookGray,below=3mm of hooke]
+  {comportamiento};
+\end{tikzpicture}
+\end{center}
+
+\begin{tipbox}
+Para cada capítulo sigue cuatro pasadas: \textbf{(1)} lectura física, \textbf{(2)} derivación con lápiz, \textbf{(3)} problema sin mirar, \textbf{(4)} auditoría de signos/unidades. Este patrón evita confundir reconocimiento de una solución con dominio real.
+\end{tipbox}
+
+\section*{Método universal de resolución}
+El curso puede organizarse alrededor de cuatro principios: diagrama de cuerpo libre, equilibrio, compatibilidad de desplazamientos y relación tensión--deformación. TU Delft presenta explícitamente esta estructura como marco común para los problemas de mecánica de materiales.\autocite{tudelft-four-principles}
