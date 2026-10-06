@@ -253,3 +253,21 @@ aerobooks-ai release-manifest <slug> --label candidate
 ```
 
 Los protocolos se encuentran en `framework/ai/` y son parte del producto: especifican cómo investigar, derivar, diseñar ejercicios, tratar incertidumbre, revisar figuras y mantener procedencia.
+
+## Atajo para iniciar un libro con IA
+
+Después de `aerobooks new`, genera un único paquete de arranque:
+
+```bash
+aerobooks-ai bootstrap <slug>
+```
+
+Ese paquete obliga a la IA a completar primero el blueprint, la auditoría de fuentes, los conflictos y la arquitectura antes de redactar.
+
+Cuando el manuscrito esté maduro, prepara todas las revisiones que el perfil de riesgo del libro exige:
+
+```bash
+aerobooks-ai review-suite <slug>
+```
+
+AeroBooks calcula dinámicamente si además hacen falta revisiones de matemáticas, unidades, derivaciones, figuras, ejercicios o historia a partir de los claims y chapter specs.
