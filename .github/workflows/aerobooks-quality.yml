@@ -49,3 +49,15 @@ jobs:
           if [ "$found" -eq 0 ]; then
             echo "No AeroBooks books found."
           fi
+
+      - name: Academic coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          for cfg in books/*/book.toml; do
+            [ -e "$cfg" ] || continue
+            slug="$(basename "$(dirname "$cfg")")"
+            echo "::group::AeroBooks academic coverage $slug"
+            aerobooks-ai coverage "$slug" --strict
+            echo "::endgroup::"
+          done
