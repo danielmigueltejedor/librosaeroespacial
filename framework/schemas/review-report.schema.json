@@ -3,12 +3,27 @@
   "$id": "https://aerobooks.local/schemas/review-report.schema.json",
   "title": "AeroBooks AI review report",
   "type": "object",
-  "required": ["review_type", "book", "status", "checked", "findings"],
+  "required": [
+    "schema_version", "review_id", "review_type", "book",
+    "scope", "status", "reviewer", "independence",
+    "checked", "findings"
+  ],
   "properties": {
-    "review_type": {"type": "string"},
-    "book": {"type": "string"},
-    "status": {"enum": ["pass", "pass_with_changes", "fail"]},
+    "schema_version": {"type": "integer", "minimum": 1},
+    "review_id": {"type": "string", "minLength": 1},
+    "review_type": {"type": "string", "minLength": 1},
+    "book": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "status": {"enum": ["pending", "pass", "pass_with_changes", "fail"]},
+    "reviewer": {"type": "string"},
+    "independence": {
+      "enum": ["same_model_new_pass", "independent_model", "human", "hybrid"]
+    },
     "checked": {"type": "array", "items": {"type": "string"}},
+    "claims_checked": {"type": "array", "items": {"type": "string"}},
+    "sources_consulted": {"type": "array", "items": {"type": "string"}},
+    "tests_reperformed": {"type": "array", "items": {"type": "string"}},
+    "residual_uncertainty": {"type": "array", "items": {"type": "string"}},
     "findings": {
       "type": "array",
       "items": {
@@ -19,9 +34,12 @@
           "claim_or_location": {"type": "string"},
           "issue": {"type": "string"},
           "evidence": {"type": ["string", "null"]},
-          "action": {"type": "string"}
-        }
+          "action": {"type": "string"},
+          "resolved": {"type": "boolean"}
+        },
+        "additionalProperties": false
       }
     }
-  }
+  },
+  "additionalProperties": false
 }
