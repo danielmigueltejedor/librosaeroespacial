@@ -299,13 +299,14 @@ def load_source_manifest(root: Path, report: Report) -> tuple[dict, set[str]]:
     return data, seen
 
 
-def check_claim_ledger(root: Path, source_ids: set[str], report: Report) -> None:
+def check_claim_ledger(root: Path, source_ids: set[str], report: Report) -> dict[str, dict]:
     path = root / "claims" / "ledger.jsonl"
     if not path.exists():
         report.add("warning", "CLM001", "No existe claims/ledger.jsonl", path)
-        return
+        return {}
 
     seen: set[str] = set()
+    items: dict[str, dict] = {}
     for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         line = line.strip()
         if not line or line.startswith("#"):
@@ -323,6 +324,7 @@ def check_claim_ledger(root: Path, source_ids: set[str], report: Report) -> None
         if cid in seen:
             report.add("error", "CLM004", f"Claim duplicado: {cid}", path)
         seen.add(cid)
+        items[cid] = item
 
         if not item.get("claim"):
             report.add("error", "CLM005", f"{cid}: falta claim", path)
@@ -348,6 +350,8 @@ def check_claim_ledger(root: Path, source_ids: set[str], report: Report) -> None
                     "error", "CLM009",
                     f"{cid}: claim de alto riesgo sin fuente ni derivación", path
                 )
+
+    return items
 
 
 def check_figures_and_tables(tex: str, report: Report) -> None:
@@ -457,7 +461,23 @@ def static_check(slug: str, strict: bool = False) -> Report:
             conflicts_path,
         )
 
-    check_claim_ledger(root, source_ids, report)
+    claim_items = check_claim_ledger(root, source_ids, report)
+
+    claim_refs = set(re.findall(r"\\claimref\{([^}]+)\}", tex))
+    for cid in sorted(claim_refs - set(claim_items)):
+        report.add("error", "CLM010", f"\\claimref apunta a un claim inexistente: {cid}")
+
+    if policy.get("require_claim_links", False):
+        required_claims = {
+            cid for cid, item in claim_items.items()
+            if item.get("risk") == "high"
+            and item.get("status") in {"verified", "derived"}
+        }
+        for cid in sorted(required_claims - claim_refs):
+            report.add(
+                "warning", "CLM011",
+                f"Claim de alto riesgo no enlazado desde el LaTeX: {cid}",
+            )
 
     if policy.get("require_list_of_figures", False) and r"\listoffigures" not in tex:
         report.add("error", "QA002", "Se exige índice de figuras y main.tex no lo incluye.")
