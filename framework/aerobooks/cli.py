@@ -656,6 +656,9 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
     protocol_files = [
         framework_dir() / "ai" / "AI_AUTHORING_PROTOCOL.md",
         framework_dir() / "ai" / "AI_WORKFLOW.md",
+        framework_dir() / "ai" / "AI_ORCHESTRATION.md",
+        framework_dir() / "ai" / "BOOK_BLUEPRINT_PROTOCOL.md",
+        framework_dir() / "ai" / "QUALITY_RUBRIC.md",
         framework_dir() / "ai" / "SOURCE_POLICY.md",
         framework_dir() / "ai" / "FACT_CHECK_PROTOCOL.md",
         framework_dir() / "ai" / "RESEARCH_PROTOCOL.md",
