@@ -777,6 +777,22 @@ def _required_reviews(root: Path, config: dict, claims: dict[str, dict]) -> list
         and item.get("status") != "rejected"
         for item in claims.values()
     ) or any(spec.get("historical_scope") for spec in specs)
+    has_regulatory = any(
+        item.get("type") == "regulatory" and item.get("status") != "rejected"
+        for item in claims.values()
+    )
+    has_statistics = any(
+        item.get("type") == "statistical" and item.get("status") != "rejected"
+        for item in claims.values()
+    )
+    has_computational = any(
+        item.get("type") == "computational" and item.get("status") != "rejected"
+        for item in claims.values()
+    )
+    has_experimental = any(
+        item.get("type") == "experimental" and item.get("status") != "rejected"
+        for item in claims.values()
+    )
     has_derivations = any(spec.get("derivations") for spec in specs)
     has_figures = any(spec.get("figures") for spec in specs)
     has_exercises = any(spec.get("exercises") for spec in specs)
@@ -787,6 +803,14 @@ def _required_reviews(root: Path, config: dict, claims: dict[str, dict]) -> list
         ensure("units")
     if academic.get("require_historical_when_claims", True) and has_history:
         ensure("historical")
+    if has_regulatory:
+        ensure("regulatory")
+    if has_statistics:
+        ensure("statistical")
+    if has_computational:
+        ensure("computational")
+    if has_experimental:
+        ensure("experimental")
     if has_derivations:
         ensure("derivation")
     if has_figures:
