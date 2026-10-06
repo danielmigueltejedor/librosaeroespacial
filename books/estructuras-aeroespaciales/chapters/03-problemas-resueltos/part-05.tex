@@ -1,0 +1,120 @@
+
+La carga repartida sobre $AB$ equivale a:
+\[
+Q=qL=4(3)=\qty{12}{\kilo\newton}
+\]
+aplicada a $\qty{1.5}{\metre}$ de $A$.
+
+Equilibrio vertical de $AB$:
+\[
+R_A-12-3=0
+\]
+y por tanto:
+\[
+\boxed{R_A=\qty{15}{\kilo\newton}}.
+\]
+
+Momentos sobre $A$:
+\[
+M_A-12(1.5)-3(3)=0,
+\]
+luego:
+\[
+\boxed{M_A=\qty{27}{\kilo\newton\metre}}.
+\]
+
+La condición esencial es:
+\[
+\boxed{M_B=0}
+\]
+por existir una rótula interna.
+
+\begin{tip}
+Cuando aparezca una rótula interna, muchas veces conviene \textbf{separar la estructura en dos}. La ecuación $M_{\text{rótula}}=0$ es información adicional muy valiosa.
+\end{tip}
+\end{solucion}
+
+\begin{ejercicio}[10: Ala idealizada como voladizo]
+Una semiala se idealiza como un voladizo de $L=\qty{8}{\metre}$. La sustentación es triangular, máxima en la raíz:
+\[
+q_L(0)=\qty{15}{\kilo\newton\per\metre}
+\]
+y nula en la punta.
+
+Calcular el cortante y el momento transmitidos en la raíz.
+\end{ejercicio}
+
+\begin{solucion}
+La fuerza aerodinámica total es:
+\[
+L_{\mathrm{tot}}=\frac12q_0L
+=\frac12(15)(8)
+=\boxed{\qty{60}{\kilo\newton}}.
+\]
+El centroide está a:
+\[
+\frac{L}{3}=\frac83=\qty{2.667}{\metre}
+\]
+desde la raíz.
+
+El momento aerodinámico respecto a la raíz es:
+\[
+60\frac83=\boxed{\qty{160}{\kilo\newton\metre}}.
+\]
+
+Por tanto, en magnitud, la unión ala--fuselaje debe transmitir:
+\[
+\boxed{|V_{\text{raíz}}|=\qty{60}{\kilo\newton}}
+\]
+y
+\[
+\boxed{|M_{\text{raíz}}|=\qty{160}{\kilo\newton\metre}}.
+\]
+
+\begin{idea}
+Esto explica por qué la zona de raíz del ala es estructuralmente crítica: al acercarnos al fuselaje se ha acumulado prácticamente toda la carga aerodinámica de la semiala.
+\end{idea}
+\end{solucion}
+
+% ============================================================
+\safechapter{Problemas para practicar}
+% ============================================================
+
+Resuelve primero estos ejercicios sin mirar los resultados.
+
+\Needspace{5\baselineskip}\section*{Problema 1}
+Viga simplemente apoyada:
+\[
+L=\qty{5}{\metre},\qquad q=\qty{4}{\kilo\newton\per\metre}.
+\]
+Obtener reacciones, $V(x)$, $M(x)$ y $M_{\max}$.
+
+\subsection*{Resultado}
+\[
+R_A=R_B=\qty{10}{\kilo\newton}
+\]
+\[
+V(x)=10-4x
+\]
+\[
+M(x)=10x-2x^2
+\]
+\[
+M_{\max}=\boxed{\qty{12.5}{\kilo\newton\metre}}
+\quad\text{en}\quad
+x=\qty{2.5}{\metre}.
+\]
+
+\Needspace{5\baselineskip}\section*{Problema 2}
+Voladizo:
+\[
+L=\qty{2.5}{\metre}
+\]
+con $P=\qty{8}{\kilo\newton}$ descendente en el extremo libre.
+
+\subsection*{Resultado}
+\[
+R_A=\qty{8}{\kilo\newton}
+\]
+\[
+M_A^{\text{reacción}}=\qty{20}{\kilo\newton\metre}
