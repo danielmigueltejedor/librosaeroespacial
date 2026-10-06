@@ -1,0 +1,120 @@
+\label{fig:ejercicio6-viga}
+\end{minipage}
+\end{center}
+\end{solucion}
+
+\begin{ejercicio}[7: Voladizo con carga triangular]
+Un voladizo de longitud $L=\qty{4}{\metre}$ soporta una carga descendente:
+\[
+q(x)=9\left(1-\frac{x}{4}\right)\quad[\mathrm{kN/m}],
+\]
+máxima en el empotramiento y nula en el extremo libre.
+
+Obtener $V(x)$ y $M(x)$.
+\end{ejercicio}
+
+\begin{solucion}
+Carga total:
+\[
+Q=\frac12(9)(4)=\qty{18}{\kilo\newton}.
+\]
+Actúa a:
+\[
+\bar x=\frac43\ \mathrm{m}
+\]
+desde el empotramiento.
+
+La reacción vertical es:
+\[
+R_A=\qty{18}{\kilo\newton}.
+\]
+El momento de reacción vale:
+\[
+M_A^{\text{reacción}}=18\frac43=\qty{24}{\kilo\newton\metre}.
+\]
+El valor \textbf{interno} del momento justo a la derecha del empotramiento, con el convenio de momento flector positivo del curso, es:
+\[
+M(0)=-24\ \mathrm{kN\,m}.
+\]
+
+Como
+\[
+\frac{\dd V}{\dd x}=-q(x),
+\]
+integramos:
+\[
+V(x)=18-\int_0^x9\left(1-\frac{s}{4}\right)\dd s,
+\]
+y queda
+\[
+\boxed{V(x)=18-9x+\frac98x^2}.
+\]
+Se comprueba $V(4)=0$.
+
+Ahora:
+\[
+\frac{\dd M}{\dd x}=V.
+\]
+Integrando desde $x=0$:
+\[
+\boxed{M(x)=-24+18x-\frac92x^2+\frac38x^3}.
+\]
+Y $M(4)=0$.
+
+\begin{tip}
+En un extremo libre sin carga puntual ni momento aplicado:
+\[
+V(L)=0,\qquad M(L)=0.
+\]
+Estas condiciones son una comprobación excelente.
+\end{tip}
+\end{solucion}
+
+\begin{ejercicio}[8: Reconstruir la carga a partir del momento]
+En un tramo de viga:
+\[
+M(x)=12x-3x^2\quad[\mathrm{kN\,m}].
+\]
+Determinar el cortante y la carga distribuida.
+\end{ejercicio}
+
+\begin{solucion}
+Sabemos:
+\[
+V(x)=\frac{\dd M}{\dd x}.
+\]
+Por tanto:
+\[
+\boxed{V(x)=12-6x\quad[\mathrm{kN}]}.
+\]
+A continuación:
+\[
+\frac{\dd V}{\dd x}=-q.
+\]
+Como $\dd V/\dd x=-6$, resulta:
+\[
+\boxed{q=\qty{6}{\kilo\newton\per\metre}}.
+\]
+
+\begin{idea}
+Los diagramas contienen información física suficiente para reconstruir las cargas:
+\flowbox{$M\xrightarrow{\text{derivar}}V\xrightarrow{\text{derivar y cambiar signo}}q$}
+\end{idea}
+\end{solucion}
+
+\begin{ejercicio}[9: Viga con rótula interna]
+Una viga está empotrada en $A$. Entre $A$ y una rótula interna $B$ hay $AB=\qty{3}{\metre}$. Entre $B$ y un apoyo móvil $C$ hay $BC=\qty{2}{\metre}$.
+
+Sobre $AB$ actúa $q=\qty{4}{\kilo\newton\per\metre}$ descendente. En el centro de $BC$ actúa $P=\qty{6}{\kilo\newton}$ descendente.
+
+Calcular las reacciones.
+\end{ejercicio}
+
+\begin{solucion}
+La clave es comenzar por el tramo $BC$. La rótula $B$ no transmite momento.
+
+El tramo $BC$ es una viga simplemente apoyada con carga centrada, de modo que:
+\[
+R_B^{(BC)}=R_C=\frac{P}{2}=\boxed{\qty{3}{\kilo\newton}}.
+\]
+Por acción y reacción, el tramo $AB$ recibe en $B$ una fuerza descendente de $\qty{3}{\kilo\newton}$.
