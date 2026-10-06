@@ -27,6 +27,7 @@ REVIEW_PROMPTS = {
     "red-team": "RED_TEAM_REVIEWER.md",
     "derivation": "DERIVATION_AUDITOR.md",
     "exercise": "EXERCISE_AUTHOR.md",
+    "exercise-review": "EXERCISE_REVIEWER.md",
     "figure": "FIGURE_REVIEWER.md",
     "pedagogy": "PEDAGOGICAL_REVIEWER.md",
     "copyright": "COPYRIGHT_REVIEWER.md",
@@ -41,9 +42,10 @@ REVIEW_PROMPTS = {
 DEFAULT_REQUIRED_REVIEWS = [
     "source",
     "scientific",
-    "mathematical",
     "citation",
     "latex",
+    "pedagogy",
+    "copyright",
     "red-team",
     "release",
 ]
@@ -606,19 +608,48 @@ def cmd_review_template(args: argparse.Namespace) -> int:
     return 0
 
 
-def _required_reviews(config: dict, claims: dict[str, dict]) -> list[str]:
+def _required_reviews(root: Path, config: dict, claims: dict[str, dict]) -> list[str]:
     academic = config.get("academic", {})
-    required = academic.get("required_reviews") or DEFAULT_REQUIRED_REVIEWS
-    required = list(dict.fromkeys(required))
+    required = list(
+        dict.fromkeys(academic.get("required_reviews") or DEFAULT_REQUIRED_REVIEWS)
+    )
+    specs = _chapter_specs(root)
 
-    if academic.get("require_historical_when_claims", True):
-        if any(
-            item.get("type") in {"historical", "biographical"}
-            and item.get("status") != "rejected"
-            for item in claims.values()
-        ):
-            if "historical" not in required:
-                required.append("historical")
+    def ensure(role: str) -> None:
+        if role not in required:
+            required.append(role)
+
+    has_math = any(
+        item.get("type") in {"mathematical", "numerical", "derived_result"}
+        and item.get("status") != "rejected"
+        for item in claims.values()
+    )
+    has_science_numbers = any(
+        item.get("type") in {"scientific", "mathematical", "numerical", "derived_result"}
+        and item.get("status") != "rejected"
+        for item in claims.values()
+    )
+    has_history = any(
+        item.get("type") in {"historical", "biographical"}
+        and item.get("status") != "rejected"
+        for item in claims.values()
+    ) or any(spec.get("historical_scope") for spec in specs)
+    has_derivations = any(spec.get("derivations") for spec in specs)
+    has_figures = any(spec.get("figures") for spec in specs)
+    has_exercises = any(spec.get("exercises") for spec in specs)
+
+    if has_math or has_derivations:
+        ensure("mathematical")
+    if has_science_numbers or has_derivations:
+        ensure("units")
+    if academic.get("require_historical_when_claims", True) and has_history:
+        ensure("historical")
+    if has_derivations:
+        ensure("derivation")
+    if has_figures:
+        ensure("figure")
+    if has_exercises:
+        ensure("exercise-review")
 
     return required
 
@@ -626,7 +657,7 @@ def _required_reviews(config: dict, claims: dict[str, dict]) -> list[str]:
 def _review_gate(root: Path, config: dict) -> dict:
     claims = _claim_map(root)
     reports = _reviews(root)
-    required = _required_reviews(config, claims)
+    required = _required_reviews(root, config, claims)
 
     latest: dict[str, dict] = {}
     for report in reports:
