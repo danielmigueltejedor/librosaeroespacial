@@ -19,7 +19,7 @@ except ModuleNotFoundError as exc:
     raise SystemExit("AeroBooks requiere Python 3.11 o superior.") from exc
 
 FRAMEWORK_NAME = "AeroBooks"
-FRAMEWORK_VERSION = "0.1.0"
+FRAMEWORK_VERSION = "0.2.0"
 TEXT_EXTENSIONS = {".tex", ".md", ".toml", ".json", ".bib", ".txt", ".yml", ".yaml"}
 
 EDITION_NAMES = {
@@ -658,6 +658,13 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
         framework_dir() / "ai" / "AI_WORKFLOW.md",
         framework_dir() / "ai" / "SOURCE_POLICY.md",
         framework_dir() / "ai" / "FACT_CHECK_PROTOCOL.md",
+        framework_dir() / "ai" / "RESEARCH_PROTOCOL.md",
+        framework_dir() / "ai" / "PROVENANCE_PROTOCOL.md",
+        framework_dir() / "ai" / "DERIVATION_PROTOCOL.md",
+        framework_dir() / "ai" / "EXERCISE_PROTOCOL.md",
+        framework_dir() / "ai" / "FIGURE_PROTOCOL.md",
+        framework_dir() / "ai" / "UNCERTAINTY_PROTOCOL.md",
+        framework_dir() / "ai" / "AI_ORCHESTRATION.md",
         framework_dir() / "ai" / "LATEX_PROTOCOL.md",
         framework_dir() / "ai" / "RELEASE_GATE.md",
         repo_root() / "shared" / "STYLE_GUIDE.md",
