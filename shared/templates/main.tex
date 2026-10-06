@@ -1,0 +1,42 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+% ============================================================
+% METADATOS DEL LIBRO
+% ============================================================
+\newcommand{\BookTitle}{Título del libro}
+\newcommand{\BookTitleShort}{Título corto}
+\newcommand{\BookSubtitle}{Subtítulo}
+\newcommand{\BookVolume}{Volumen I}
+\newcommand{\BookVolumeSubtitle}{Subtítulo del volumen}
+\newcommand{\BookAuthor}{Daniel Miguel Tejedor}
+\newcommand{\BookEdition}{Primera edición}
+\newcommand{\BookDate}{Mes de año}
+
+% Copia el estilo base a style/book.sty o adáptalo desde shared/.
+\usepackage{style/book}
+
+\begin{document}
+
+% Portada: mantener la misma jerarquía visual de la colección.
+% Añadir una figura técnica específica del libro, no decorativa.
+
+\frontmatter
+\tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\listoffigures
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de cuadros}
+\listoftables
+\cleardoublepage
+
+\mainmatter
+% \include{chapters/01-...}
+
+\appendix
+% \include{appendices/...}
+
+\backmatter
+\printindex
+
+\end{document}
