@@ -1,0 +1,120 @@
+\chapter*{Qué parece valorar el examen disponible}\addcontentsline{toc}{chapter}{Qué parece valorar el examen disponible}
+A partir de la corrección ordinaria de enero de 2025 disponible en el material proporcionado y en la página pública de la asignatura en Wuolah, puede afirmarse que el examen disponible exige encadenar equilibrio global, leyes de esfuerzos y análisis de sección. No se infieren frecuencias estadísticas: se utiliza únicamente como referencia de estilo y nivel.\autocite{wuolah-examen-2025,wuolah-ule-page}
+
+% ============================================================
+
+\safechapter{Cómo resolver problemas de leyes de esfuerzos}
+
+\safesection{Algoritmo general}
+Utiliza siempre este orden:
+
+\begin{tcolorbox}[
+  colback=grisclaro,
+  colframe=gris,
+  boxrule=0.6pt,
+  arc=1.5mm,
+  left=6pt,right=6pt,top=6pt,bottom=6pt
+]
+\centering
+\small
+\textbf{1. Modelo} $\rightarrow$ \textbf{2. Reacciones} $\rightarrow$ \textbf{3. Tramos} $\rightarrow$ \textbf{4. Cortes}\\[1.5mm]
+$\rightarrow$ \textbf{5. $N,V,M$} $\rightarrow$ \textbf{6. Diagramas} $\rightarrow$ \textbf{7. Comprobaciones}
+\end{tcolorbox}
+
+\safesection{Paso 1: dibuja el modelo}
+Marca claramente $A$, $B$, $C$, etc., además de longitudes, cargas, apoyos y ejes.
+
+\safesection{Paso 2: calcula reacciones}
+Sustituye apoyos por reacciones. Después:
+\[
+\sum F_x=0,\qquad\sum F_y=0,\qquad\sum M=0.
+\]
+
+\safesection{Paso 3: divide en tramos}
+Debes crear un nuevo tramo siempre que aparezca:
+\begin{itemize}
+  \item una carga puntual;
+  \item un momento puntual;
+  \item inicio o final de una carga repartida;
+  \item cambio de expresión de $q(x)$;
+  \item una articulación;
+  \item un cambio de geometría.
+\end{itemize}
+
+\safesection{Paso 4: realiza el corte}
+Coloca
+\[
+N(x),\qquad V(x),\qquad M(x)
+\]
+siguiendo siempre el mismo criterio de signos.
+
+\safesection{Paso 5: comprueba con las relaciones diferenciales}
+Una vez obtenidas las ecuaciones:
+\[
+N'=-q_x,\qquad V'=-q_y,\qquad M'=V.
+\]
+Si no se cumplen, existe casi con seguridad un error de signo o integración.
+
+\safesection{Paso 6: comprueba puntos especiales}
+Busca $V=0$ para localizar extremos de $M$.
+
+Comprueba $M=0$ en articulaciones y extremos simplemente apoyados.
+
+En un extremo libre sin carga puntual:
+\[
+V=M=0.
+\]
+
+\safesection{Paso 7: piensa físicamente}
+Pregúntate:
+\begin{itemize}
+  \item ¿las reacciones tienen sentido?;
+  \item ¿las unidades son correctas?;
+  \item ¿el diagrama es continuo donde debe serlo?;
+  \item ¿hay un salto donde existe una carga puntual?;
+  \item ¿la curva tiene el grado esperado?
+\end{itemize}
+
+% ============================================================
+\safechapter{Errores típicos que cuestan puntos}
+% ============================================================
+
+\safesection{Confundir carga distribuida con fuerza}
+$q$ tiene unidades $\mathrm{kN/m}$, mientras que su resultante
+\[
+Q=\int q\dd x
+\]
+tiene unidades $\mathrm{kN}$.
+
+\safesection{Usar mal el centroide de una carga triangular}
+La resultante está a $L/3$ del lado de mayor intensidad, no del lado donde la carga vale cero.
+
+\safesection{Confundir esfuerzo con tensión}
+\[
+N,V\rightarrow\text{fuerzas},
+\qquad
+M,T\rightarrow\text{momentos},
+\qquad
+\sigma,\tau\rightarrow\text{fuerza/área}.
+\]
+
+\safesection{No separar una estructura en una rótula}
+En una rótula interna:
+\[
+M=0.
+\]
+Es una ecuación adicional.
+
+\safesection{Cambiar el criterio de signos a mitad de ejercicio}
+Un criterio distinto puede ser matemáticamente válido. Mezclar dos criterios no lo es.
+
+\begin{tip}
+Dibuja en una esquina del examen tu convenio positivo para $N$, $V$ y $M$ y no lo cambies.
+\end{tip}
+
+\safesection{Dibujar diagramas incompatibles con las derivadas}
+Si $q=\text{cte.}$ no puedes dibujar $V=\text{cte.}$ porque $V'=-q\neq0$.
+
+Y si $V$ es lineal, entonces $M$ es parabólico.
+
+% ============================================================
