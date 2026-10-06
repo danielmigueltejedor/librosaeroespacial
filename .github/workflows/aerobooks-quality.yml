@@ -1,0 +1,44 @@
+name: AeroBooks quality
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install AeroBooks
+        run: python -m pip install -e .
+
+      - name: Doctor
+        run: aerobooks --version
+
+      - name: Static checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
+          for cfg in books/*/book.toml; do
+            [ -e "$cfg" ] || continue
+            found=1
+            slug="$(basename "$(dirname "$cfg")")"
+            echo "::group::AeroBooks check $slug"
+            aerobooks check "$slug"
+            echo "::endgroup::"
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "No AeroBooks books found."
+          fi
