@@ -133,7 +133,15 @@ Esto crea un único contexto para la IA con:
 aerobooks list
 aerobooks new <slug> --title "..." --subtitle "..."
 aerobooks sync <slug>
+aerobooks status <slug>
+aerobooks source-add <slug> --id SRC-001 --title "..." --kind textbook --tier B --role theory
+aerobooks claim-add <slug> --id CLM-001 --claim "..." --type scientific --risk high --source SRC-001
 aerobooks ai-pack <slug>
+aerobooks review-pack <slug> scientific
+aerobooks review-pack <slug> mathematical
+aerobooks review-pack <slug> historical
+aerobooks review-pack <slug> citation
+aerobooks review-pack <slug> latex
 aerobooks check <slug>
 aerobooks check <slug> --strict
 aerobooks build <slug>
