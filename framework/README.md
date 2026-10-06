@@ -254,3 +254,21 @@ release manifest
 ```
 
 La filosofía es que un error crítico tenga que atravesar varias barreras independientes antes de llegar a una edición publicada.
+
+## Atajo para iniciar un libro con IA
+
+Después de `aerobooks new`, genera un único paquete de arranque:
+
+```bash
+aerobooks-ai bootstrap <slug>
+```
+
+Ese paquete obliga a la IA a completar primero el blueprint, la auditoría de fuentes, los conflictos y la arquitectura antes de redactar.
+
+Cuando el manuscrito esté maduro, prepara todas las revisiones que el perfil de riesgo del libro exige:
+
+```bash
+aerobooks-ai review-suite <slug>
+```
+
+AeroBooks calcula dinámicamente si además hacen falta revisiones de matemáticas, unidades, derivaciones, figuras, ejercicios o historia a partir de los claims y chapter specs.
