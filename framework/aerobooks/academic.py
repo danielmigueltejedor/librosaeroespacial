@@ -205,6 +205,54 @@ def cmd_init(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_intake(args: argparse.Namespace) -> int:
+    root, _ = load_book(args.slug)
+    directory = Path(args.dir).expanduser().resolve()
+    if not directory.exists() or not directory.is_dir():
+        raise SystemExit(f"No existe el directorio de fuentes: {directory}")
+
+    allowed = {
+        ".pdf", ".docx", ".pptx", ".xlsx", ".xls", ".csv",
+        ".tex", ".md", ".txt", ".html", ".htm", ".epub",
+    }
+    records = []
+    for path in sorted(directory.rglob("*")):
+        if not path.is_file() or path.suffix.lower() not in allowed:
+            continue
+        stat = path.stat()
+        records.append({
+            "filename": path.name,
+            "relative_path": str(path.relative_to(directory)),
+            "extension": path.suffix.lower(),
+            "bytes": stat.st_size,
+            "sha256": _hash_file(path),
+            "classification": "pending",
+            "notes": None,
+        })
+
+    payload = {
+        "schema_version": 1,
+        "book": args.slug,
+        "source_directory_name": directory.name,
+        "files": records,
+        "warning": (
+            "Este inventario NO clasifica autoridad ni derechos. "
+            "Un source auditor debe decidir qué archivos entran en manifest.json."
+        ),
+    }
+
+    output = (
+        Path(args.output)
+        if args.output
+        else root / "build" / "SOURCE_INTAKE.json"
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    _write_json(output, payload)
+    print(f"✓ Source intake: {output}")
+    print(f"  {len(records)} archivo(s) inventariado(s); ninguno se copió al repositorio.")
+    return 0
+
+
 def cmd_bootstrap(args: argparse.Namespace) -> int:
     root, config = load_book(args.slug)
     _ensure_scaffold(root)
@@ -841,6 +889,83 @@ def cmd_review_suite(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_next(args: argparse.Namespace) -> int:
+    root, config = load_book(args.slug)
+    manifest = _manifest(root)
+    specs = _chapter_specs(root)
+    coverage = _coverage(root)
+    claims = _claim_map(root)
+    review_gate = _review_gate(root, config)
+
+    print(f"AeroBooks next — {args.slug}")
+
+    if not manifest.get("sources"):
+        print("→ No hay fuentes registradas.")
+        print(f"  Ejecuta: aerobooks-ai bootstrap {args.slug}")
+        print("  Después audita fuentes y completa sources/manifest.json.")
+        return 0
+
+    if not specs:
+        print("→ Hay fuentes, pero no chapter specs.")
+        print(f"  Ejecuta: aerobooks-ai bootstrap {args.slug}")
+        print("  Después crea specs con aerobooks-ai chapter-spec.")
+        return 0
+
+    if coverage["issues"]:
+        print("→ Hay problemas de cobertura/procedencia.")
+        print(f"  Ejecuta: aerobooks-ai coverage {args.slug} --strict")
+        return 0
+
+    unfinished = [
+        spec for spec in specs if spec.get("status") in {"planned", "draft"}
+    ]
+    if unfinished:
+        spec = unfinished[0]
+        print(f"→ Siguiente capítulo a redactar: {spec.get('id')} — {spec.get('title')}")
+        print(
+            f"  Ejecuta: aerobooks-ai chapter-pack {args.slug} "
+            f"{spec.get('id')} author"
+        )
+        return 0
+
+    in_review = [spec for spec in specs if spec.get("status") == "review"]
+    if in_review:
+        print(f"→ {len(in_review)} capítulo(s) están en revisión.")
+        missing = [
+            issue["message"]
+            for issue in review_gate["issues"]
+            if issue["code"] == "REV001"
+        ]
+        if missing:
+            print(f"  Ejecuta: aerobooks-ai review-suite {args.slug}")
+        first = in_review[0]
+        print(
+            f"  Para revisión focal: aerobooks-ai chapter-pack {args.slug} "
+            f"{first.get('id')} red-team"
+        )
+        return 0
+
+    pending_high = [
+        cid for cid, item in claims.items()
+        if item.get("risk") == "high" and item.get("status") == "pending"
+    ]
+    if pending_high:
+        print("→ Quedan claims de alto riesgo pendientes: " + ", ".join(pending_high))
+        return 0
+
+    if review_gate["issues"]:
+        print("→ Faltan revisiones o no están en PASS.")
+        print(f"  Ejecuta: aerobooks-ai review-suite {args.slug}")
+        return 0
+
+    print("→ El contenido y las revisiones están maduros para gate final.")
+    print(f"  aerobooks check {args.slug} --strict")
+    print(f"  aerobooks-ai gate {args.slug}")
+    print(f"  aerobooks build {args.slug}")
+    print(f"  aerobooks-ai release-manifest {args.slug} --label candidate")
+    return 0
+
+
 def cmd_gate(args: argparse.Namespace) -> int:
     root, config = load_book(args.slug)
     coverage = _coverage(root)
@@ -1048,6 +1173,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("slug")
     p.set_defaults(func=cmd_init)
 
+    p = sub.add_parser("intake", help="Inventariar fuentes locales sin copiarlas al repositorio.")
+    p.add_argument("slug")
+    p.add_argument("--dir", required=True)
+    p.add_argument("--output")
+    p.set_defaults(func=cmd_intake)
+
     p = sub.add_parser("bootstrap", help="Generar el paquete inicial para crear un libro desde sus fuentes.")
     p.add_argument("slug")
     p.add_argument("--output")
@@ -1122,6 +1253,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--force", action="store_true")
     p.set_defaults(func=cmd_review_suite)
+
+    p = sub.add_parser("next", help="Indicar el siguiente paso recomendado del workflow.")
+    p.add_argument("slug")
+    p.set_defaults(func=cmd_next)
 
     p = sub.add_parser("gate", help="Puerta académica: cobertura + claims + reviews + conflictos.")
     p.add_argument("slug")
