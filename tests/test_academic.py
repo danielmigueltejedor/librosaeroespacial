@@ -8,6 +8,7 @@ from framework.aerobooks.academic import (
     _coverage,
     _evidence_entries,
     _claim_map,
+    _required_reviews,
 )
 from framework.aerobooks.cli import book_dir, framework_dir
 
@@ -35,6 +36,16 @@ class AeroBooksAcademicTests(unittest.TestCase):
                 f"{item['code']}: {item['message']}"
                 for item in report["issues"]
             ),
+        )
+
+    def test_structures_risk_profile_requires_specialized_reviews(self) -> None:
+        root = book_dir("estructuras-aeroespaciales")
+        import tomllib
+        with (root / "book.toml").open("rb") as fh:
+            config = tomllib.load(fh)
+        required = set(_required_reviews(root, config, _claim_map(root)))
+        self.assertTrue(
+            {"mathematical", "units", "derivation", "figure", "exercise-review", "red-team"}.issubset(required)
         )
 
     def test_high_risk_claims_have_verified_evidence(self) -> None:
