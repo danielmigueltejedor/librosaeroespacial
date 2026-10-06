@@ -1,7 +1,8 @@
 # Estructuras Aeroespaciales — Volumen I
 
 **Autor:** Daniel Miguel Tejedor  
-**Edición actual:** Tercera edición — octubre de 2026
+**Edición actual:** Tercera edición — octubre de 2026  
+**Framework:** AeroBooks
 
 ## Alcance
 
@@ -17,30 +18,68 @@ Volumen dedicado a los conceptos básicos y al modelo monodimensional de Teoría
 - leyes de esfuerzos;
 - problemas resueltos y preparación de examen.
 
-## Compilación
+## Fuente canónica de metadatos
 
-Desde esta carpeta:
-
-```bash
-latexmk -pdf -interaction=nonstopmode main.tex
+```text
+book.toml
 ```
 
-El proyecto utiliza BibLaTeX/Biber e índice analítico. `latexmk` ejecuta las etapas necesarias.
+No cambies autor, edición, fecha o título directamente en LaTeX. Sincroniza con:
+
+```bash
+aerobooks sync estructuras-aeroespaciales
+```
+
+## Contexto para IA
+
+El brief específico está en:
+
+```text
+ai/BRIEF.md
+```
+
+Las fuentes y claims se gestionan en:
+
+```text
+sources/manifest.json
+sources/conflicts.jsonl
+claims/ledger.jsonl
+```
+
+Para crear un paquete único de contexto:
+
+```bash
+aerobooks ai-pack estructuras-aeroespaciales
+```
+
+## Comprobación
+
+```bash
+aerobooks check estructuras-aeroespaciales --strict
+```
+
+## Compilación
+
+Desde la raíz del repositorio:
+
+```bash
+aerobooks build estructuras-aeroespaciales
+```
+
+o:
+
+```bash
+make book BOOK=estructuras-aeroespaciales
+```
+
+La clase, portada, cajas y estilo base proceden de `framework/latex/`.
 
 ## Ediciones
 
-La fuente de esta carpeta representa siempre la edición en desarrollo más reciente. Las ediciones publicadas se conservarán con tags/releases del repositorio, no duplicando carpetas completas.
-
-Convención sugerida:
+La carpeta no se duplica por edición. `main` contiene la edición en desarrollo y los estados publicados se conservan mediante snapshots/tags/releases.
 
 ```text
 estructuras-aeroespaciales-ed3
 estructuras-aeroespaciales-ed4
 ...
 ```
-
-## Estilo editorial
-
-Esta edición es la referencia inicial para el estándar visual documentado en `../../shared/STYLE_GUIDE.md`.
-
-En futuras revisiones se irá trasladando al estándar compartido cualquier elemento reutilizable de portada, cajas, tipografía y composición.
