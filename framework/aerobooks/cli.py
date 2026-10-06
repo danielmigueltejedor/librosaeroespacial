@@ -438,13 +438,36 @@ def static_check(slug: str, strict: bool = False) -> Report:
             root / "sources" / "manifest.json",
         )
 
+    manifest_by_citation: dict[str, dict] = {}
     for source in manifest.get("sources", []):
         key = source.get("citation_key")
+        if key:
+            manifest_by_citation[key] = source
         if key and key not in bib:
             report.add(
                 "error", "SRC008",
                 f"{source.get('id', '?')}: citation_key '{key}' no existe en references.bib",
                 root / "sources" / "manifest.json",
+            )
+
+    if config.get("ai", {}).get("source_first", False):
+        for key in sorted(used_citations - set(manifest_by_citation)):
+            report.add(
+                "error", "SRC010",
+                f"La cita '{key}' se usa en el manuscrito pero no está registrada en sources/manifest.json.",
+            )
+
+    for key in sorted(used_citations & set(manifest_by_citation)):
+        status = manifest_by_citation[key].get("status")
+        if status == "rejected":
+            report.add(
+                "error", "SRC011",
+                f"La cita '{key}' usa una fuente marcada como rejected.",
+            )
+        elif status == "pending":
+            report.add(
+                "warning", "SRC012",
+                f"La cita '{key}' usa una fuente aún pendiente de verificación.",
             )
 
     policy = config.get("quality", {})
