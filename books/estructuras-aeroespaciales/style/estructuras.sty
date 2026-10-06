@@ -1,0 +1,147 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style/estructuras}[2026/10/06 Tercera edicion - estilo de Estructuras Aeroespaciales]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{fix-cm}
+\RequirePackage{lmodern}
+\RequirePackage[spanish,es-nodecimaldot,es-noquoting]{babel}
+\RequirePackage{microtype}
+\RequirePackage{geometry}
+\geometry{top=2.15cm,bottom=2.3cm,inner=2.55cm,outer=2.15cm,headheight=15pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\raggedbottom
+\emergencystretch=3em
+
+\RequirePackage{amsmath,amssymb,mathtools}
+\RequirePackage{siunitx}
+\sisetup{output-decimal-marker={,},per-mode=symbol}
+\allowdisplaybreaks[2]
+
+\RequirePackage{booktabs,longtable,tabularx,array}
+\RequirePackage{enumitem,multicol,needspace}
+\RequirePackage{tocloft}
+\setlength{\cftchapnumwidth}{3.0em}
+\setlength{\cftsecnumwidth}{3.6em}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+
+\RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing,patterns,shapes.geometric,babel}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins,theorems}
+\captionsetup{
+  font=small,
+  labelfont={bf,color=BookBlue},
+  textfont=small,
+  justification=centering,
+  singlelinecheck=false,
+  skip=6pt
+}
+\addto\captionsspanish{
+  \renewcommand{\figurename}{Figura}
+  \renewcommand{\tablename}{Cuadro}
+  \renewcommand{\listfigurename}{Índice de figuras}
+  \renewcommand{\listtablename}{Índice de cuadros}
+}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{imakeidx}
+\RequirePackage{hyperref}
+\RequirePackage[nameinlink,noabbrev]{cleveref}
+\RequirePackage{csquotes}
+\RequirePackage[backend=biber,style=authoryear,sorting=nyt,maxcitenames=2,maxbibnames=99]{biblatex}
+\addbibresource{references.bib}
+\makeindex[intoc,title=Índice analítico]
+
+\definecolor{BookBlue}{HTML}{173F6F}
+\definecolor{BookBlueLight}{HTML}{EAF1F8}
+\definecolor{BookGreen}{HTML}{1F7656}
+\definecolor{BookGreenLight}{HTML}{EAF7F1}
+\definecolor{BookOrange}{HTML}{C96D1A}
+\definecolor{BookOrangeLight}{HTML}{FFF1E4}
+\definecolor{BookRed}{HTML}{A43B32}
+\definecolor{BookRedLight}{HTML}{FBECEB}
+\definecolor{BookGray}{HTML}{556270}
+\definecolor{BookGrayLight}{HTML}{F3F5F6}
+\definecolor{BookPurple}{HTML}{635985}
+\definecolor{BookPurpleLight}{HTML}{F0EEF7}
+
+% Alias cromáticos de la edición 1.x para compatibilidad
+\colorlet{azul}{BookBlue}
+\colorlet{azulclaro}{BookBlueLight}
+\colorlet{verde}{BookGreen}
+\colorlet{verdeclaro}{BookGreenLight}
+\colorlet{naranja}{BookOrange}
+\colorlet{naranjaclaro}{BookOrangeLight}
+\colorlet{rojo}{BookRed}
+\colorlet{rojoclaro}{BookRedLight}
+\colorlet{gris}{BookGray}
+\colorlet{grisclaro}{BookGrayLight}
+
+\hypersetup{colorlinks=true,linkcolor=BookBlue,citecolor=BookGreen,urlcolor=BookBlue,hypertexnames=false,
+  pdftitle={Estructuras Aeroespaciales: Fundamentos, modelización y resolución de problemas},
+  pdfauthor={Daniel Miguel Tejedor},pdfsubject={Teoría de Estructuras},pdfkeywords={estructuras aeroespaciales, teoría de estructuras, ingeniería aeroespacial}}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{BookBlue}}
+  {\filleft\fontsize{48}{52}\selectfont\thechapter}
+  {0.3ex}
+  {\titlerule[1.2pt]\vspace{1ex}\Huge}
+\titlespacing*{\chapter}{0pt}{-12pt}{22pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\BookTitleShort}
+\fancyhead[RO]{\small\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.45pt}
+
+\crefname{chapter}{capítulo}{capítulos}
+\crefname{section}{sección}{secciones}
+\crefname{figure}{figura}{figuras}
+\crefname{table}{cuadro}{cuadros}
+\crefname{equation}{ecuación}{ecuaciones}
+
+\newtcolorbox{definitionbox}[1][]{enhanced,breakable,colback=BookBlueLight,colframe=BookBlue,
+ fonttitle=\bfseries,title={Definición\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{theorembox}[1][]{enhanced,breakable,colback=BookPurpleLight,colframe=BookPurple,
+ fonttitle=\bfseries,title={Resultado\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{intuitionbox}[1][]{enhanced,breakable,colback=BookBlueLight,colframe=BookBlue,
+ fonttitle=\bfseries,title={Intuición física\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{examplebox}[1][]{enhanced,breakable,colback=white,colframe=BookGray,
+ fonttitle=\bfseries,title={Ejemplo\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{problembox}[1][]{enhanced,breakable,colback=white,colframe=BookBlue,
+ fonttitle=\bfseries,title={Problema\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=1pt,arc=2mm,before skip=10pt,after skip=10pt}
+\newtcolorbox{solutionbox}[1][]{enhanced,breakable,colback=BookGreenLight,colframe=BookGreen,
+ fonttitle=\bfseries,title={Solución\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=10pt}
+\newtcolorbox{tipbox}[1][]{enhanced,breakable,colback=BookGreenLight,colframe=BookGreen,
+ fonttitle=\bfseries,title={Tip de estudio / examen\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{warningbox}[1][]{enhanced,breakable,colback=BookOrangeLight,colframe=BookOrange,
+ fonttitle=\bfseries,title={Advertencia\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{exambox}[1][]{enhanced,breakable,colback=BookPurpleLight,colframe=BookPurple,
+ fonttitle=\bfseries,title={Clave de examen\if\relax\detokenize{#1}\relax\else: #1\fi},boxrule=.9pt,arc=2mm,before skip=9pt,after skip=9pt}
+
+% Compatibilidad con la edición anterior
+\newenvironment{idea}{\begin{intuitionbox}}{\end{intuitionbox}}
+\newenvironment{tip}{\begin{tipbox}}{\end{tipbox}}
+\newenvironment{ojo}{\begin{warningbox}}{\end{warningbox}}
+\newtcolorbox{errorbox}{enhanced,breakable,colback=BookRedLight,colframe=BookRed,fonttitle=\bfseries,title=Error típico,boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{resumen}{enhanced,breakable,colback=BookGrayLight,colframe=BookGray,fonttitle=\bfseries,title=Resumen,boxrule=.8pt,arc=2mm,before skip=9pt,after skip=9pt}
+\newtcolorbox{ejercicio}[1][]{enhanced,breakable,colback=white,colframe=BookBlue,fonttitle=\bfseries,title=Ejercicio resuelto #1,boxrule=1pt,arc=2mm,before={\par\Needspace{10\baselineskip}},before skip=10pt,after skip=10pt}
+\newenvironment{solucion}{\begin{solutionbox}}{\end{solutionbox}}
+
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\mat}[1]{\boldsymbol{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\flowbox}[1]{\begin{center}\setlength{\fboxsep}{6pt}\fbox{\parbox{.88\linewidth}{\centering #1}}\end{center}}
+\newcommand{\safechapter}[1]{\chapter{#1}}
+\newcommand{\safesection}[1]{\Needspace{5\baselineskip}\section{#1}}
+\newcommand{\safesubsection}[1]{\Needspace{4\baselineskip}\subsection{#1}}
+
+\tikzset{beam/.style={line width=2pt},load/.style={-{Latex[length=3mm]},thick,red!75!black},reaction/.style={-{Latex[length=3mm]},thick,BookBlue},dim/.style={{Latex[length=2mm]}-{Latex[length=2mm]},thin},axis/.style={-{Latex[length=2mm]},thin}}
