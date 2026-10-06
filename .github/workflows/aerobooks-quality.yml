@@ -36,7 +36,7 @@ jobs:
             found=1
             slug="$(basename "$(dirname "$cfg")")"
             echo "::group::AeroBooks check $slug"
-            aerobooks check "$slug"
+            aerobooks check "$slug" --strict
             echo "::endgroup::"
           done
           if [ "$found" -eq 0 ]; then
