@@ -1,0 +1,141 @@
+\chapter{Navier--Stokes y soluciones exactas}
+\label{ch:navier}
+\index{Navier-Stokes}
+\index{Couette}
+\index{Poiseuille}
+
+La guía pide la ecuación de Euler, las de Navier--Stokes para un newtoniano incompresible, y los flujos laminares de Couette y de Poiseuille \parencite{uleGuia2026}. Este capítulo las deriva y las resuelve en geometrías en las que el término convectivo se simplifica.
+
+\section{De la integral a la ecuación local}
+
+En un volumen material, \(\sum\vect{F}=\mathrm{d}/\mathrm{d}t\int\rho\vect{v}\,\mathrm{d}V\). La fuerza de superficie es \(\int\mat{\sigma}\vect{n}\,\mathrm{d}A=\int\nabla\cdot\mat{\sigma}\,\mathrm{d}V\). La fuerza de volumen es \(\int\rho\vect{g}\,\mathrm{d}V\). El teorema de Reynolds convierte el momento en \(\int\rho\,\mathrm{D}\vect{v}/\mathrm{D}t\,\mathrm{d}V\) cuando se usa la continuidad. Como el volumen es arbitrario,
+\begin{equation}
+\label{eq:cauchy-momento}
+\rho\frac{D\vect{v}}{Dt}=\nabla\cdot\mat{\sigma}+\rho\vect{g}.
+\end{equation}
+Con la ley~\eqref{eq:newton-inc} y \(\mu\) constante, \(\nabla\cdot\mat{\sigma}=-\nabla p+\mu\nabla^2\vect{v}\). El laplaciano vectorial es el de cartesianas, o el que define la identidad~\eqref{eq:vector-id}. Queda
+\begin{equation}
+\label{eq:ns}
+\rho\left(\frac{\partial\vect{v}}{\partial t}+(\vect{v}\cdot\nabla)\vect{v}\right)
+=-\nabla p+\mu\nabla^2\vect{v}+\rho\vect{g},
+\end{equation}
+junto con \(\nabla\cdot\vect{v}=0\).\claimref{CLM-NS}
+
+Hipótesis, todas necesarias para esta forma: continuo, newtoniano, incompresible, viscosidad dinámica constante, fuerza másica igual al peso, y ausencia de pares internos. Si \(\mu=0\), sobrevive la ecuación de Euler,
+\begin{equation}
+\label{eq:euler}
+\rho\frac{D\vect{v}}{Dt}=-\nabla p+\rho\vect{g}.
+\end{equation}
+Euler no impone no deslizamiento.
+
+\begin{errorbox}
+En coordenadas cilíndricas no se puede sustituir \(\nabla^2\vect{v}\) por el laplaciano de cada componente física. El capítulo~\ref{ch:vectorial} ya aisló ese error. Las soluciones de abajo parten del balance de fuerzas en la dirección del movimiento, no de esa sustitución.
+\end{errorbox}
+
+\section{Couette plano}
+
+Dos placas en \(y=0\) y \(y=h\). La inferior está fija y la superior se mueve con velocidad \(U\vect{e}_x\). El flujo es estacionario, \(u=u(y)\), \(v=w=0\), y \(\partial p/\partial x=0\). La continuidad se cumple. La aceleración material es nula porque el perfil no cambia a lo largo de \(x\). La ecuación~\eqref{eq:ns} en \(x\) se reduce a \(\mu\,\mathrm{d}^2u/\mathrm{d}y^2=0\). Integrando y usando las dos paredes,
+\begin{equation}
+\label{eq:couette}
+u(y)=U\frac{y}{h},
+\qquad
+\tau_{xy}=\mu\frac{U}{h}.
+\end{equation}
+\claimref{CLM-COUETTE} Si \(U=0\), el fluido se queda en reposo. Si aparece un gradiente \(\mathrm{d}p/\mathrm{d}x\) constante, se suma el perfil parabólico de Poiseuille plano.
+
+\section{Poiseuille plano y de tubo}
+
+Entre dos placas fijas en \(y=0\) y \(y=h\), con \(\mathrm{d}p/\mathrm{d}x\) constante y \(u=u(y)\),
+\[
+\mu\frac{\mathrm{d}^2u}{\mathrm{d}y^2}=\frac{\mathrm{d}p}{\mathrm{d}x}.
+\]
+Las paredes obligan \(u(0)=u(h)=0\), y
+\begin{equation}
+\label{eq:poiseuille-plano}
+u(y)=\frac{1}{2\mu}\left(-\frac{\mathrm{d}p}{\mathrm{d}x}\right)y(h-y).
+\end{equation}
+El máximo está en \(y=h/2\) y vale \(h^2(-\mathrm{d}p/\mathrm{d}x)/(8\mu)\). Hace falta \(-\mathrm{d}p/\mathrm{d}x>0\) para que \(u\) sea positiva.
+
+En un tubo circular de radio \(R\), estacionario, laminar, con \(v_z=v_z(r)\) y sin giro ni componente radial, el balance axial sobre un cilindro interior de radio \(r\) y longitud \(L\) evita el laplaciano cilíndrico. La fuerza de presión \((p_1-p_2)\pi r^2\) se equilibra con el cortante en la pared lateral, \(\tau_{rz}\cdot 2\pi r L\), de sentido opuesto al flujo. Con \(\tau_{rz}=\mu\,\mathrm{d}v_z/\mathrm{d}r\) negativo si \(v_z\) decrece con \(r\),
+\[
+\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}v_z}{\mathrm{d}r}\right)=\frac{1}{\mu}\frac{\mathrm{d}p}{\mathrm{d}z}.
+\]
+Velocidad finita en el eje y \(v_z(R)=0\) dan
+\begin{equation}
+\label{eq:poiseuille}
+v_z(r)=\frac{1}{4\mu}\left(-\frac{\mathrm{d}p}{\mathrm{d}z}\right)(R^2-r^2).
+\end{equation}
+El caudal es la integral \( \int_0^R v_z\,2\pi r\,\mathrm{d}r \):
+\begin{equation}
+\label{eq:caudal-poiseuille}
+Q=\frac{\pi R^4}{8\mu}\frac{\Delta p}{L},
+\end{equation}
+donde \(\Delta p/L=-\mathrm{d}p/\mathrm{d}z>0\).\claimref{CLM-POISEUILLE} La velocidad media es la mitad de la máxima. Si \(R\) se duplica y \(\Delta p/L\) no cambia, \(Q\) se multiplica por 16. Esa potencia es la firma del régimen laminar newtoniano; no se exporta a un tubo turbulento.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  \draw[aero/outline] (0,0)--(0,2.4);
+  \draw[aero/outline] (3.4,0)--(3.4,2.4);
+  \draw[aero/primary,domain=0:2.4,smooth,variable=\y] plot ({3.2*sin(180*\y/2.4)},\y);
+  \draw[aero/axis] (0,1.2)--(3.6,1.2) node[right,aero/label] {\(v_z\)};
+  \node[aero/smalllabel,left] at (0,0) {\(r=R\)};
+  \node[aero/smalllabel,left] at (0,2.4) {\(r=R\)};
+  \node[aero/label] at (1.7,1.45) {eje};
+\end{tikzpicture}
+\caption{Perfil parabólico de Poiseuille. La velocidad es máxima en el eje y nula en la pared. El dibujo es simétrico: no hay un sentido privilegiado en \(r\).}
+\label{fig:poiseuille}
+\end{figure}
+
+\section{Cilindro giratorio en un fluido extenso}
+
+Un cilindro de radio \(R\) gira a velocidad angular \(\Omega\) constante dentro de un fluido newtoniano incompresible que ocupa \(r>R\) y está en reposo en el infinito. No hay gravedad efectiva en el plano, el régimen es estacionario y laminar, y \(v_r=v_z=0\), \(v_\theta=v_\theta(r)\).
+
+La continuidad~\eqref{eq:div-cil} se cumple. La componente acimutal del balance, sin aceleración convectiva en \(\theta\) para este campo, se reduce a
+\begin{equation}
+\label{eq:ode-cilindro}
+\frac{\mathrm{d}}{\mathrm{d}r}\left[\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}(r v_\theta)\right]=0.
+\end{equation}
+Luego \((1/r)\,\mathrm{d}(r v_\theta)/\mathrm{d}r=C\). Si la vorticidad ha de mantenerse acotada en el infinito, \(C=0\), y \(v_\theta=K/r\). La pared impone \(v_\theta(R)=\Omega R\), así que
+\begin{equation}
+\label{eq:cilindro}
+v_\theta(r)=\Omega\frac{R^2}{r}.
+\end{equation}
+La ecuación radial no determina \(v_\theta\). Con \(v_r=0\) queda \(\partial p/\partial r=\rho v_\theta^2/r\): la presión crece hacia fuera y el gradiente apunta hacia el eje, que es la aceleración centrípeta del giro. Fuera del eje el flujo es irrotacional, como ya se vio en el capítulo~\ref{ch:vectorial}, pero la pared sufre un cortante. La componente física es
+\[
+\tau_{r\theta}=\mu\left(\frac{\partial v_\theta}{\partial r}-\frac{v_\theta}{r}\right)
+=\mu\left(-\frac{K}{r^2}-\frac{K}{r^2}\right)
+=-2\mu\frac{K}{r^2}.
+\]
+En \(r=R\), \(\tau_{r\theta}=-2\mu\Omega\).
+
+La disipación por unidad de volumen de un newtoniano incompresible es \(\Phi=2\mu\mat{D}:\mat{D}\). Aquí el único ritmo de deformación no nulo es \(D_{r\theta}=-K/r^2\), y \(\mat{D}:\mat{D}=2D_{r\theta}^2\), de modo que \(\Phi=4\mu K^2/r^4\). Integrada en \(r>R\) y en un radián completo, por unidad de longitud,
+\[
+P'=\int_R^{\infty}4\mu\frac{K^2}{r^4}\,2\pi r\,\mathrm{d}r
+=\frac{4\pi\mu K^2}{R^2}.
+\]
+Con \(K=\Omega R^2\),
+\begin{equation}
+\label{eq:potencia-cilindro}
+P'=4\pi\mu\Omega^2 R^2.
+\end{equation}
+\claimref{CLM-CILINDRO} Es positiva: el motor que mantiene \(\Omega\) aporta esa potencia y el fluido la disipa. Si \(\Omega=0\), \(P'=0\). Si \(\mu=0\), el cortante desaparece y también la potencia, aunque el campo \(K/r\) siga siendo una solución cinemática de Euler.
+
+\begin{problembox}[Avanzado]
+Comprueba la potencia por unidad de longitud para \(R=\qty{0.05}{\metre}\), \(\Omega=\qty{10}{\per\second}\) y \(\mu=\qty{0.2}{\pascal\second}\).
+\end{problembox}
+\begin{solutionbox}
+\[
+P'=4\pi\cdot 0.2\cdot 100\cdot 0.0025
+=4\pi\cdot 0.05
+=\qty{0.628}{\watt\per\metre},
+\]
+con \(\pi=3.1416\). El resultado escala con \(\Omega^2\) y con \(R^2\), no con \(\Omega\) a la primera. Una lectura que se quede en el par y olvide multiplicar por \(\Omega\) da una potencia con unidades de par.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item Enumera las hipótesis de la ecuación~\eqref{eq:ns} que no están en Euler.
+\item ¿Por qué el caudal laminar escala con \(R^4\)?
+\item En el cilindro, ¿dónde está la vorticidad si el fluido exterior es irrotacional?
+\end{enumerate}

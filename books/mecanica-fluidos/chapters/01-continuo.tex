@@ -1,0 +1,129 @@
+\chapter{El fluido como continuo}
+\label{ch:continuo}
+\index{continuo}
+
+\section{La asignatura y el mapa del libro}
+
+La ficha oficial del plan sitúa Mecánica de Fluidos en el segundo curso, primer semestre, con 6~ECTS, carácter obligatorio y código 0710311 \parencite{ulePlan2026}. El responsable es Miguel Zorita Calvo y el responsable suplente es Eduardo García Ortega. La guía firmada para 2026/2027 describe el objetivo como ampliar la mecánica de fluidos y aplicarla a la cinemática y a la dinámica de fluidos ideales y newtonianos \parencite{uleGuia2026}.\claimref{CLM-CURSO}
+
+La evaluación de esa guía tiene dos piezas. El examen escrito final pesa el 70~\% y debe alcanzar al menos 5 puntos sobre 10. Los ejercicios hechos en clase pesan el 30~\% y se mantienen en la segunda convocatoria del mismo curso, no en cursos posteriores. Si el examen no llega a 5, la calificación de la convocatoria es la del examen \parencite{uleGuia2026}.\claimref{CLM-EVAL}
+
+\begin{table}[ht]
+\centering
+\caption{Temas de la guía 2026/2027 y capítulos de este libro.}
+\label{tab:mapa-temas}
+\begin{tabular}{@{}clp{0.46\textwidth}@{}}
+\toprule
+Tema & Título en la guía & Capítulos \\
+\midrule
+1 & Mecánica clásica & \ref{ch:clasica} \\
+2 & Fundamentos de dinámica de fluidos & \ref{ch:continuo}, \ref{ch:cinematica} \\
+3 & Estudio de casos & \ref{ch:hidrostatica}, \ref{ch:navier}, \ref{ch:aplicaciones} \\
+4 & Similaridad dinámica & \ref{ch:semejanza}, \ref{ch:aplicaciones} \\
+5 & Formalismo matemático & \ref{ch:vectorial}, \ref{ch:cinematica}, \ref{ch:conservacion}, \ref{ch:esfuerzos}, \ref{ch:bernoulli} \\
+6 & Navier--Stokes & \ref{ch:conservacion}, \ref{ch:navier}, \ref{ch:aproximaciones} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El orden de lectura no es el orden de la guía. Los casos del tema~3 se entienden mejor cuando ya existen la cinemática, la estática y el balance de cantidad de movimiento. Couette y Poiseuille se derivan en el capítulo~\ref{ch:navier} a partir de Navier--Stokes, aunque la guía los enuncie antes.
+
+\section{Sólido y fluido}
+
+\index{fluido}
+En un sólido elástico, un esfuerzo cortante pequeño produce una deformación angular que se detiene. En un fluido, un esfuerzo cortante, por pequeño que sea, mantiene el movimiento relativo de capas vecinas mientras el esfuerzo siga aplicado. Esa es la distinción operativa de este curso, no una clasificación química.
+
+En un ensayo de corte simple la deformación angular de un sólido es un número. En un fluido lo que se observa es una \emph{velocidad} de deformación. Si la única componente de velocidad es \(u(y)\), la magnitud relevante es \(\mathrm{d}u/\mathrm{d}y\).
+
+\begin{definitionbox}[Fluido]
+Un fluido es un continuo que no soporta un esfuerzo cortante en equilibrio estático. Mientras exista un cortante, hay movimiento relativo.
+\end{definitionbox}
+
+\section{Hipótesis del continuo}
+\index{hipótesis del continuo}
+
+La materia es molecular. A la escala de un ala, de una tubería o de la atmósfera cercana al avión, no se sigue cada molécula. Se sustituye el medio por campos: densidad, velocidad y presión definidos en cada punto y en cada instante.
+
+La hipótesis dice que existe una escala intermedia. Esa escala es grande frente a la distancia entre moléculas y pequeña frente a la longitud del problema. En ese volumen de prueba hay suficientes partículas para definir medias estables, y el volumen todavía puede tratarse como un punto del campo.\claimref{CLM-CONTINUO}
+
+\begin{warningbox}
+La hipótesis falla cuando el camino libre medio es comparable a la longitud del cuerpo. Ocurre en gases muy enrarecidos. Este libro no desarrolla ese régimen. Todo el modelo posterior supone que los campos son funciones suficientemente regulares para derivarlas.
+\end{warningbox}
+
+La densidad en un punto, en este modelo, es el límite de masa entre volumen cuando el volumen de prueba tiende a esa escala intermedia, no cuando tiende a cero en sentido molecular:
+\begin{equation}
+\label{eq:densidad}
+\rho(\vect{x},t)=\frac{\mathrm{d}m}{\mathrm{d}V}.
+\end{equation}
+La unidad SI es \(\si{\kilogram\per\cubic\metre}\).
+
+\section{Presión y viscosidad}
+
+La presión \(p\) es la parte isótropa del esfuerzo. En un fluido en reposo es la única: la fuerza de contacto sobre un elemento de área \(\mathrm{d}A\) con normal saliente \(\vect{n}\) es \(-p\,\vect{n}\,\mathrm{d}A\). El signo menos indica compresión. La unidad coherente es el pascal, \(1\,\si{\pascal}=1\,\si{\newton\per\square\metre}\), porque la presión es fuerza entre área.
+
+La viscosidad dinámica \(\mu\) mide la resistencia al corte. En un flujo de corte simple, estacionario, con \(u=u(y)\) y el resto de componentes nulas, la ley newtoniana se reduce a
+\begin{equation}
+\label{eq:newton-1d}
+\tau=\mu\frac{\mathrm{d}u}{\mathrm{d}y}.
+\end{equation}
+\(\tau\) es el esfuerzo cortante, en pascales, y \(\mu\) se mide en \(\si{\pascal\second}\). Esta igualdad no es la ley general. Es el caso de una sola derivada. El tensor completo está en el capítulo~\ref{ch:esfuerzos}.\claimref{CLM-NEWTONIANO-1D}
+
+La viscosidad cinemática es \(\nu=\mu/\rho\), en \(\si{\square\metre\per\second}\).
+
+\begin{definitionbox}[Fluido newtoniano]
+En el sentido de este curso, un fluido newtoniano tiene esfuerzos viscosos lineales en el tensor velocidad de deformación, con coeficientes que no dependen de esa velocidad de deformación. En corte simple, \(\mu\) de la ecuación~\eqref{eq:newton-1d} no depende de \(\mathrm{d}u/\mathrm{d}y\). Puede depender de la temperatura.
+\end{definitionbox}
+
+Un fluido ideal, en el convenio de este libro y de la guía, es un fluido sin viscosidad: \(\mu=0\). La guía trata aparte los fluidos y los flujos incompresibles. Ideal no significa incompresible.\claimref{CLM-IDEAL}
+
+\begin{errorbox}
+Escribir \(\mu\to 0\) y, en la misma frase, «densidad constante» mezcla dos hipótesis. Euler no viscoso admite densidad variable. Un líquido viscoso puede modelarse como incompresible.
+\end{errorbox}
+
+\section{Compresibilidad, régimen y contorno}
+
+Un flujo se llama incompresible cuando la densidad de cada partícula no cambia por el movimiento, en el sentido que precisará la ecuación de continuidad: \(\nabla\cdot\vect{v}=0\) si la densidad es uniforme y constante. Un fluido puede ser compresible y aun así moverse, en un problema concreto, de forma casi incompresible. El criterio cuantitativo aparece con el número de Mach en asignaturas posteriores. Aquí basta no identificar las dos palabras.
+
+La guía distingue flujos laminares y turbulentos, y exige condiciones iniciales y de contorno \parencite{uleGuia2026}. El número de Reynolds del capítulo~\ref{ch:semejanza} es la herramienta para esa distinción. No se afirma un umbral universal: el valor en el que un tubo se hace turbulento depende del tubo y de las perturbaciones.
+
+En una pared impermeable la componente normal de la velocidad del fluido coincide con la de la pared. Si el fluido es viscoso y la pared es sólida, se añade la condición de no deslizamiento: la velocidad tangencial también coincide. En un fluido ideal no hay no deslizamiento; la pared solo impone la velocidad normal.
+
+\section{Qué queda fuera}
+
+La guía 2026/2027 no incluye cohetes ni una atmósfera patrón. Las guías de 2022/2023 y 2024/2025 sí mencionaban cohetes, y hay apuntes de estudiante con una tabla de atmósfera. Esas fuentes no amplían el programa vigente.\claimref{CLM-ALCANCE} El motor a reacción sí está en el tema~3 de la guía actual y se estudia en el capítulo~\ref{ch:aplicaciones} con un volumen de control fijo.
+
+\section{Ejemplo}
+\begin{examplebox}[Corte simple]
+Dos placas paralelas distan \(h\). La inferior está fija y la superior se mueve a velocidad \(U\) en su plano. El fluido entre ellas es newtoniano, el movimiento es estacionario y no hay gradiente de presión. El perfil compatible con las paredes es \(u(y)=Uy/h\).
+
+El esfuerzo es constante:
+\[
+\tau=\mu\frac{U}{h}.
+\]
+La fuerza sobre un área \(A\) de la placa móvil, opuesta al movimiento, tiene módulo \(\tau A\).
+
+Comprobación dimensional: \(\mu U/h\) tiene unidades
+\(\si{\pascal\second}\cdot\si{\metre\per\second}/\si{\metre}=\si{\pascal}\).
+Si \(U=0\), el esfuerzo desaparece. Si \(h\) crece y \(U\) se mantiene, el cortante baja. Las dos respuestas coinciden con el enunciado.
+\end{examplebox}
+
+\begin{problembox}[Básico]
+Un aceite newtoniano con \(\mu=\qty{0.4}{\pascal\second}\) llena el hueco de \(\qty{2}{\milli\metre}\) entre una placa fija y una placa de área \(\qty{0.08}{\square\metre}\) que se desplaza a \(\qty{1.5}{\metre\per\second}\). No hay gradiente de presión. Calcula el esfuerzo y la fuerza sobre la placa móvil.
+\end{problembox}
+\begin{solutionbox}
+Hipótesis: corte simple, perfil lineal, \(\mu\) constante. De la ecuación~\eqref{eq:newton-1d},
+\[
+\tau=\frac{\qty{0.4}{\pascal\second}\cdot\qty{1.5}{\metre\per\second}}{\qty{0.002}{\metre}}=\qty{300}{\pascal}.
+\]
+\[
+F=\tau A=\qty{300}{\pascal}\cdot\qty{0.08}{\square\metre}=\qty{24}{\newton}.
+\]
+El sentido de la fuerza del fluido sobre la placa móvil es contrario a la velocidad. Si la placa se parara, \(F\) tendería a cero con \(U\).
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿Qué escala intermedia exige la hipótesis del continuo?
+\item ¿Por qué \(\tau=\mu\,\mathrm{d}u/\mathrm{d}y\) no es todavía la ley de Navier--Stokes?
+\item Un flujo puede ser ideal e incompresible a la vez. Cita un contraejemplo de cada implicación falsa: ideal no implica incompresible, e incompresible no implica ideal.
+\end{enumerate}

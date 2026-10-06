@@ -1,0 +1,79 @@
+\chapter{Preparar el examen}
+\label{ch:examen}
+
+La guía 2026/2027 evalúa con un examen escrito, 70~\%, en el que hay que razonar conceptos y resolver problemas, y con ejercicios de clase, 30~\%, hechos de forma presencial y con modelos \parencite{uleGuia2026}. El examen no sustituye al mínimo de 5 sobre 10: por debajo de esa nota, la convocatoria vale lo que vale el examen.\claimref{CLM-EVAL}
+
+El examen ordinario 2025/2026 es anterior a esta guía. Sirve para reconocer habilidades que el programa vigente sigue pidiendo: un balance con resistencia, una función de corriente, una solución viscosa con geometría cilíndrica y un argumento de semejanza. No se copia ninguno de sus enunciados. Los problemas de este libro son otros.
+
+\section{Qué se demuestra y qué se usa}
+
+\begin{table}[ht]
+\centering
+\caption{Resultados que conviene saber reconstruir, no solo nombrar.}
+\label{tab:reconstruir}
+\begin{tabular}{@{}p{0.34\textwidth}p{0.56\textwidth}@{}}
+\toprule
+Resultado & Comprobación mínima \\
+\midrule
+Continuidad \(\nabla\cdot\vect{v}=0\) & dimensiones y caso en reposo \\
+Bernoulli~\eqref{eq:bernoulli} & hipótesis; Poiseuille como contraejemplo \\
+Couette~\eqref{eq:couette} & las dos paredes \\
+Poiseuille~\eqref{eq:caudal-poiseuille} & \(Q\propto R^4\); \(V=v_{\max}/2\) \\
+Cilindro~\eqref{eq:potencia-cilindro} & \(P'=0\) si \(\Omega=0\) \\
+Reynolds y \(f=64/\mathrm{Re}_D\) & solo en laminar; \(D\) en el Reynolds \\
+Disco actuador~\eqref{eq:betz} & hipótesis; no es un dato de catálogo \\
+Geostrofía~\eqref{eq:geostrofico-comp} & presión alta a la derecha si \(\Omega>0\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Errores que cambian el signo o el régimen}
+
+\begin{enumerate}[leftmargin=1.4em]
+\item Tomar \(\partial\vect{v}/\partial t\) por aceleración.
+\item Llamar ideal a un fluido solo porque es incompresible.
+\item Aplicar Bernoulli en un tramo viscoso.
+\item Situar la fuerza hidrostática en el centroide.
+\item Usar \(f=64/\mathrm{Re}\) con el radio, o fuera del laminar.
+\item Leer \(16/27\) como rendimiento de un aerogenerador real.
+\item Confundir el empuje de un volumen de control fijo con la ecuación del cohete, que este programa no pide.
+\end{enumerate}
+
+\section{Problema de síntesis}
+
+\begin{problembox}[Tipo examen, original]
+Un líquido de densidad \(\rho\) y viscosidad \(\mu\), ambas dadas como símbolos, baja en régimen estacionario y laminar por un tubo vertical de radio \(R\) y longitud \(L\), abierto a la misma presión en los dos extremos. El eje \(z\) apunta hacia arriba. Plantea el perfil \(v_z(r)\) y el caudal. Después adimensionaliza el caudal con \(\rho\), \(g\), \(R\) y \(\mu\), y di de qué grupo depende.
+\end{problembox}
+\begin{solutionbox}
+Hipótesis: flujo desarrollado, \(v_z=v_z(r)\) solamente, newtoniano, incompresible, \(\mu\) constante, extremos a la misma presión. En un flujo desarrollado la presión depende solo de \(z\), y la ecuación axial de Navier--Stokes queda
+\[
+0=-\frac{\mathrm{d}p}{\mathrm{d}z}-\rho g+\mu\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}v_z}{\mathrm{d}r}\right).
+\]
+Como \(p\) vale lo mismo en los dos extremos y \(\mathrm{d}p/\mathrm{d}z\) es constante, \(\mathrm{d}p/\mathrm{d}z=0\). El peso no está compensado por un gradiente de presión:
+\[
+\frac{1}{r}\frac{\mathrm{d}}{\mathrm{d}r}\left(r\frac{\mathrm{d}v_z}{\mathrm{d}r}\right)=\frac{\rho g}{\mu}.
+\]
+El eje \(z\) apunta hacia arriba, así que \(v_z\) sale negativa. Con velocidad finita en el eje y \(v_z(R)=0\),
+\[
+v_z(r)=-\frac{\rho g}{4\mu}(R^2-r^2).
+\]
+El caudal hacia abajo es la integral de \(-v_z\):
+\[
+Q_{\downarrow}=\frac{\pi\rho g R^4}{8\mu}.
+\]
+No depende de \(L\). Cada rebanada se equilibra sola: el peso por unidad de volumen es constante y el cortante lo compensa. \(L\) entraría si los extremos impusieran presiones distintas.
+
+Quedan cinco magnitudes, \(Q_{\downarrow}\), \(\rho\), \(g\), \(R\) y \(\mu\), y un solo grupo adimensional,
+\[
+\Pi=\frac{\mu Q_{\downarrow}}{\rho g R^4}=\frac{\pi}{8}.
+\]
+El teorema Pi deja libre una constante. La derivación la fija. El régimen laminar es hipótesis de partida. Reynolds se construye después, con \(V=Q_{\downarrow}/(\pi R^2)\) y longitud \(2R\), y solo entonces se comprueba si la hipótesis era coherente.
+\end{solutionbox}
+
+\begin{tipbox}
+En un problema simbólico, la última línea tiene que sobrevivir a tres preguntas: unidades, un caso en el que el resultado sea cero, y el sentido del vector. Si una de las tres falla, el álgebra todavía no ha terminado.
+\end{tipbox}
+
+\section{Lecturas}
+
+La guía lista, entre otras, Taylor para la mecánica, Shaughnessy, Tritton, White, Kundu y Powers para el fluido, Boas para el aparato matemático y Strogatz para el caos \parencite{taylor2005,shaughnessy2005,tritton2011,white2016,kundu2016,powers2024,boas2006,strogatz2018}. Esas obras no se resumen aquí. Los vídeos del profesor son el recurso que la propia guía enlaza \parencite{zoritaVideos}. Las herramientas de Mathematica están indicadas como apoyo de cálculo, no como fuente de las leyes \parencite{wolframResources}.

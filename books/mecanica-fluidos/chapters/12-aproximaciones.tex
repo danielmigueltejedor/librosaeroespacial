@@ -1,0 +1,92 @@
+\chapter{Aproximaciones de la guía}
+\label{ch:aproximaciones}
+\index{Stokes}
+\index{Boussinesq}
+\index{geostrófico}
+
+El tema~6 de la guía, después de Navier--Stokes, pide la forma adimensional, el flujo de Stokes, los flujos cuasibidimensionales con la aproximación hidrostática, los flujos con densidad variable en la aproximación de Boussinesq, y los flujos en sistemas giratorios con equilibrio geostrófico \parencite{uleGuia2026}. Cada una es un límite. Ninguna sustituye a la ecuación~\eqref{eq:ns} fuera de su régimen.
+
+\section{Forma adimensional}
+
+Se eligen escalas \(L\), \(V\) y un tiempo \(L/V\). La presión se mide en unidades \(\rho V^2\). Si la viscosidad es constante y el peso se absorbe en una presión modificada, \(P=p+\rho g z\), la ecuación~\eqref{eq:ns} queda, en variables sin dimensiones,
+\begin{equation}
+\label{eq:ns-adim}
+\frac{D\vect{v}^\star}{Dt^\star}=-\nabla^\star P^\star+\frac{1}{\mathrm{Re}}\nabla^{\star 2}\vect{v}^\star.
+\end{equation}
+El único parámetro es Reynolds. Dos geometrías iguales con el mismo Reynolds tienen el mismo problema adimensional, que es la semejanza dinámica de este modelo. Si la densidad deja de ser constante o aparece una superficie libre con gravedad, entran más grupos.
+
+\section{Stokes}
+\index{flujo de Stokes}
+
+Si \(\mathrm{Re}\to 0\), el término de inercia se retira frente al viscoso:
+\begin{equation}
+\label{eq:stokes-flow}
+\vect{0}=-\nabla P+\mu\nabla^2\vect{v},
+\qquad
+\nabla\cdot\vect{v}=0.
+\end{equation}
+\claimref{CLM-STOKES} Es lineal. Sirve para movimientos lentos o longitudes muy pequeñas, no para el ala de un avión de transporte. Al retirar la inercia se pierde la estela convectiva de los Reynolds altos. El límite no es uniforme en todo el espacio: lejos de un cuerpo, la inercia puede volver a importar. Este libro enuncia ese límite y no calcula la resistencia de Stokes de la esfera, cuya deducción en armónicos es más larga que el hueco que la guía deja al tema.
+
+\section{Hidrostática en un flujo casi horizontal}
+
+Si el movimiento es casi horizontal y las escalas verticales son pequeñas, la aceleración vertical y la viscosidad vertical pueden ser despreciables frente al peso y al gradiente de presión. La componente vertical de~\eqref{eq:ns} vuelve a \(\partial p/\partial z=-\rho g\). Es la aproximación hidrostática. No significa que el fluido esté en reposo: la velocidad horizontal puede ser grande. Significa que esa velocidad no se sostiene con un desequilibrio vertical.
+
+\section{Boussinesq}
+\index{aproximación de Boussinesq}
+
+Cuando la densidad varía poco, se escribe \(\rho=\rho_0+\rho'\) con \(|\rho'|\ll\rho_0\). En la inercia y en la continuidad se usa \(\rho_0\), y \(\nabla\cdot\vect{v}=0\). En el peso se conserva \(\rho'\). Restando el equilibrio hidrostático de \(\rho_0\),
+\begin{equation}
+\label{eq:boussinesq}
+\rho_0\frac{D\vect{v}}{Dt}=-\nabla p'+\mu\nabla^2\vect{v}+\rho'\vect{g}.
+\end{equation}
+\claimref{CLM-BOUSSINESQ} \(p'\) es la presión menos la hidrostática de referencia. La aproximación no vale para un gas a alta velocidad, donde la densidad cambia por la propia presión dinámica. Sirve para convección a baja velocidad, que es el contexto en el que la guía la nombra junto al giro.
+
+\section{Equilibrio geostrófico}
+
+En un sistema que gira con velocidad angular \(\vect{\Omega}=\Omega\vect{e}_z\) constante, la ecuación~\eqref{eq:ficticias} añade Coriolis y la centrífuga. La centrífuga se puede absorber en un potencial junto con la gravedad. Si el número de Rossby \(V/(\Omega L)\) es pequeño, la aceleración relativa y la viscosidad quedan por debajo de Coriolis y del gradiente de presión. El balance horizontal es
+\begin{equation}
+\label{eq:geostrofico}
+2\vect{\Omega}\times\vect{v}=-\frac{1}{\rho}\nabla_h p.
+\end{equation}
+Con \(\Omega>0\) según \(z\),
+\begin{equation}
+\label{eq:geostrofico-comp}
+u=-\frac{1}{2\Omega\rho}\frac{\partial p}{\partial y},
+\qquad
+v=\frac{1}{2\Omega\rho}\frac{\partial p}{\partial x}.
+\end{equation}
+\claimref{CLM-GEO} La velocidad es paralela a las isobaras. Si la presión crece hacia el este, \(v>0\): el movimiento tiene la presión alta a su derecha. Esa frase usa \(\Omega>0\) y el eje \(z\) hacia arriba. En el hemisferio sur el signo de la componente vertical de \(\vect{\Omega}\) cambia y la derecha se convierte en izquierda. No es un resultado nuevo: es el mismo producto vectorial.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.05]
+  \draw[aero/outline] (0,0) circle (1.5);
+  \draw[aero/outline] (0,0) circle (0.9);
+  \node[aero/smalllabel] at (0,0) {alta \(p\)};
+  \draw[aero/reaction] (1.15,0.15) arc[start angle=8,end angle=70,radius=1.2];
+  \node[aero/label] at (1.55,0.85) {\(\vect{v}\)};
+  \draw[aero/axis] (0,0)--(0.55,0.35);
+\end{tikzpicture}
+\caption{Equilibrio geostrófico con \(\Omega>0\) según la vertical: la velocidad deja la presión más alta a su derecha. El dibujo es el plano horizontal.}
+\label{fig:geostrofico}
+\end{figure}
+
+\begin{problembox}[Intermedio]
+\(\Omega=\qty{7.3e-5}{\per\second}\) es un dato del enunciado, no una constante que el libro mida. \(\rho=\qty{1.2}{\kilogram\per\cubic\metre}\) y \(\partial p/\partial x=\qty{1e-3}{\pascal\per\metre}\), con \(\partial p/\partial y=0\). Calcula \(u\) y \(v\) en el equilibrio~\eqref{eq:geostrofico-comp}.
+\end{problembox}
+\begin{solutionbox}
+\(u=0\) porque no hay gradiente en \(y\).
+\[
+v=\frac{1\cdot 10^{-3}}{2\cdot 7.3\cdot 10^{-5}\cdot 1.2}
+=\frac{1\cdot 10^{-3}}{1.752\cdot 10^{-4}}
+=\qty{5.71}{\metre\per\second}.
+\]
+El movimiento es hacia el norte si \(x\) es el este. La presión alta queda al este, a la derecha de \(\vect{v}\). Si el gradiente fuera solo una fluctuación pequeña frente a la hidrostática vertical, la aproximación hidrostática puede convivir con este balance horizontal. Si Rossby no es pequeño, la cuenta no se aplica.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿Qué término de Navier--Stokes apaga el límite de Stokes?
+\item ¿Dónde se conserva la variación de densidad en Boussinesq, y dónde se tira?
+\item En el equilibrio geostrófico, ¿la velocidad cruza las isobaras o las sigue?
+\end{enumerate}

@@ -1,0 +1,28 @@
+\chapter{Formulario con hipótesis}
+\label{ch:formulario}
+
+Cada línea falla si se ignora la condición de al lado.
+
+\begin{longtable}{@{}p{.42\textwidth}p{.48\textwidth}@{}}
+\toprule
+\textbf{Relación} & \textbf{Hipótesis mínima}\\
+\midrule
+\endhead
+\(\tau=\mu\,\mathrm{d}u/\mathrm{d}y\) & corte simple, newtoniano \\
+\(\nabla p=\rho\vect{g}\) & reposo \\
+\(p=p_0+\rho g h\) & reposo, \(\rho\) y \(g\) constantes, \(h\) hacia abajo \\
+\(D\rho/Dt+\rho\nabla\cdot\vect{v}=0\) & continuo, volumen material regular \\
+\(\nabla\cdot\vect{v}=0\) & densidad de partícula constante \\
+\(\rho D\vect{v}/Dt=-\nabla p+\mu\nabla^2\vect{v}+\rho\vect{g}\) & newtoniano, incompresible, \(\mu\) constante, cartesianas o laplaciano bien definido \\
+Euler & la anterior con \(\mu=0\) \\
+\(u=Uy/h\) & Couette plano, sin gradiente de presión \\
+\(Q=\pi R^4\Delta p/(8\mu L)\) & Poiseuille laminar de tubo \\
+\(v_\theta=\Omega R^2/r\), \(P'=4\pi\mu\Omega^2 R^2\) & cilindro en fluido en reposo en el infinito \\
+\(v^2/2+p/\rho+gz=\mathrm{const.}\) & Euler, \(\rho\) constante, estacionario, una línea de corriente \\
+\(\mathrm{Re}=\rho VL/\mu\) & definición; \(L\) del enunciado \\
+\(f=64/\mathrm{Re}_D\) & laminar, tubo circular, Darcy, diámetro en Reynolds \\
+\(C_P\le 16/27\) & disco actuador ideal \\
+\(F=\dot m(v_e-v_0)\) & volumen de control fijo, presión de salida adaptada, un gasto \\
+\(2\vect{\Omega}\times\vect{v}=-(1/\rho)\nabla_h p\) & Rossby pequeño, viscosidad despreciable \\
+\bottomrule
+\end{longtable}

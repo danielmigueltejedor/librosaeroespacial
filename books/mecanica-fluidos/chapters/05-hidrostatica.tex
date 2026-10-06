@@ -1,0 +1,110 @@
+\chapter{Hidrostática}
+\label{ch:hidrostatica}
+\index{hidrostática}
+
+En reposo, \(\vect{v}=\vect{0}\) y los esfuerzos cortantes desaparecen. La guía pide la presión hidrostática y las fuerzas y momentos sobre superficies \parencite{uleGuia2026}. El peso es \(\rho\vect{g}\) por unidad de volumen, con \(\vect{g}=-g\vect{e}_z\) y \(g>0\).
+
+\section{Ecuación de la estática}
+
+Sobre un volumen fijo \(V\), la fuerza de presión en la frontera es \(-\int_S p\vect{n}\,\mathrm{d}A=-\int_V\nabla p\,\mathrm{d}V\), por el teorema de Gauss aplicado a cada componente. El peso es \(\int_V\rho\vect{g}\,\mathrm{d}V\). En equilibrio la suma es nula para todo \(V\), luego
+\begin{equation}
+\label{eq:hidrostatica}
+\nabla p=\rho\vect{g}=-\rho g\vect{e}_z.
+\end{equation}
+En componentes, \(\partial p/\partial x=\partial p/\partial y=0\) y
+\begin{equation}
+\label{eq:dpdz}
+\frac{\mathrm{d}p}{\mathrm{d}z}=-\rho g.
+\end{equation}
+\claimref{CLM-HIDRO} La presión solo varía en vertical. Dos puntos a la misma cota, dentro de un fluido en reposo y conectados por él, tienen la misma presión aunque \(\rho\) dependa de \(z\).
+
+Si \(\rho\) y \(g\) son constantes,
+\begin{equation}
+\label{eq:hidro-lineal}
+p(z)=p(z_0)-\rho g\,(z-z_0).
+\end{equation}
+Con la profundidad \(h=z_0-z\) medida hacia abajo desde una superficie libre donde \(p=p_0\),
+\begin{equation}
+\label{eq:profundidad}
+p=p_0+\rho g h.
+\end{equation}
+Dimensiones: \(\rho g h\) es \(\si{\kilogram\per\cubic\metre}\cdot\si{\metre\per\second\squared}\cdot\si{\metre}=\si{\pascal}\). Si \(h=0\), se recupera \(p_0\). Si se invierte el eje \(z\), hay que invertir el signo de la ecuación~\eqref{eq:dpdz}; el resultado~\eqref{eq:profundidad} no cambia.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  \draw[aero/primary] (0,0) rectangle (1.6,3.0);
+  \draw[BookBlue,line width=1.2pt] (0,2.5)--(1.6,2.5);
+  \draw[aero/axis] (2.0,0)--(2.0,3.2) node[above,aero/label] {\(z\)};
+  \draw[aero/load] (0.8,2.5)--(0.8,1.3);
+  \node[aero/label,right] at (0.9,1.9) {\(h\)};
+  \node[aero/smalllabel] at (0.8,2.7) {\(p_0\)};
+  \node[aero/smalllabel,below] at (0.8,0) {fondo};
+\end{tikzpicture}
+\caption{Profundidad \(h\) medida hacia abajo desde la superficie libre. El eje \(z\) del libro apunta hacia arriba, así que \(h\) y \(z\) crecen en sentidos opuestos.}
+\label{fig:hidrostatica}
+\end{figure}
+
+\section{Fuerza sobre una superficie plana}
+
+Sea una superficie plana de área \(A\), inclinada un ángulo \(\theta\) respecto de la horizontal, mojada por un líquido de densidad constante. La presión relativa a la atmósfera, si la superficie libre está a presión atmosférica y se trabaja en presiones manométricas, es \(p=\rho g h\), con \(h\) la profundidad del punto.
+
+La fuerza perpendicular a la cara, empujando la superficie desde el líquido, tiene módulo
+\begin{equation}
+\label{eq:fuerza-plana}
+F=\rho g h_c A,
+\end{equation}
+donde \(h_c\) es la profundidad del centroide. Sale de integrar \(p\,\mathrm{d}A\) y de la definición del centroide. No es la presión en un punto arbitrario multiplicada por el área si ese punto no es el centroide.
+
+El centro de presión queda más hondo que el centroide, porque la presión crece con la profundidad. Sea \(y\) la coordenada a lo largo del plano, medida desde la superficie libre hacia abajo, y sea \(\theta\) el ángulo del plano con la horizontal. Entonces la profundidad es \(h=y\sin\theta\) y \(p=\rho g y\sin\theta\). El centro de presión queda en
+\begin{equation}
+\label{eq:ycp}
+y_{cp}=y_c+\frac{I_c}{y_c A},
+\end{equation}
+donde \(I_c=\int (y-y_c)^2\,\mathrm{d}A\) es el momento de inercia del área respecto de un eje horizontal contenido en el plano y que pasa por el centroide. En esta fórmula \(y\) no es la profundidad: el seno ya está absorbido en la definición de \(y\). En una compuerta vertical, \(\theta=90^{\circ}\) y \(y=h\).
+
+\begin{errorbox}
+Situar la fuerza en el centroide acierta el módulo de la ecuación~\eqref{eq:fuerza-plana} y falla el momento. El centro de presión está más abajo.
+\end{errorbox}
+
+\section{Empuje de Arquímedes}
+
+Sobre un cuerpo sumergido, la fuerza de presión del fluido en reposo equivale al peso del fluido desplazado, hacia arriba, aplicado en el centroide del volumen desplazado. Se ve al convertir \(-\int p\vect{n}\,\mathrm{d}A\) en \(-\int\nabla p\,\mathrm{d}V\) y usar \(\nabla p=\rho\vect{g}\):
+\begin{equation}
+\label{eq:arquimedes}
+\vect{E}=-\rho\vect{g}\,V_{\mathrm{des}}= \rho g V_{\mathrm{des}}\,\vect{e}_z.
+\end{equation}
+Hace falta densidad constante, o bien interpretar \(\rho V\) como la integral de \(\rho\) si la densidad varía; en ese caso el punto de aplicación deja de ser el centroide geométrico. Este capítulo usa densidad constante.
+
+\begin{problembox}[Tipo examen, original]
+Una compuerta rectangular vertical tiene anchura \(b=\qty{1.2}{\metre}\) y altura \(\qty{2.0}{\metre}\). Su borde superior está \(\qty{1.5}{\metre}\) bajo la superficie libre de un líquido con \(\rho=\qty{1000}{\kilogram\per\cubic\metre}\). Toma \(g=\qty{9.81}{\metre\per\second\squared}\) como dato. Calcula el módulo de la fuerza manométrica y la profundidad del centro de presión.
+\end{problembox}
+\begin{solutionbox}
+El centroide está a media altura de la compuerta: \(h_c=\qty{1.5}{\metre}+\qty{1.0}{\metre}=\qty{2.5}{\metre}\).
+El área es \(A=\qty{2.4}{\square\metre}\).
+\[
+F=\rho g h_c A
+=1000\cdot 9.81\cdot 2.5\cdot 2.4
+=\qty{58860}{\newton}.
+\]
+Para un rectángulo vertical, \(I_c=b H^3/12=1.2\cdot 8/12=\qty{0.8}{\metre\tothe{4}}\). Como la compuerta es vertical, \(y=h\) y
+\[
+h_{cp}=2.5+\frac{0.8}{2.5\cdot 2.4}=2.5+\frac{0.8}{6}=\qty{2.633}{\metre}.
+\]
+Está \(\qty{0.133}{\metre}\) por debajo del centroide. Si la compuerta creciera hasta la superficie, \(h_c\) bajaría respecto de la fórmula mal aplicada «presión del fondo por área», que sobrestimaría la fuerza.
+\end{solutionbox}
+
+\section{Gas en reposo, sin tabla patrón}
+
+Si el fluido es un gas ideal en el sentido termodinámico, \(p=\rho R_e T\), con \(R_e\) la constante específica, la ecuación~\eqref{eq:dpdz} se integra solo cuando se da \(T(z)\). Para temperatura constante,
+\[
+\frac{\mathrm{d}p}{p}=-\frac{g}{R_e T}\,\mathrm{d}z,
+\]
+y la presión es exponencial. Este libro no adopta una atmósfera patrón ni las constantes de un apunte. Si un problema necesita \(T\), \(R_e\) o \(g\), tienen que venir en el enunciado.
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿En qué dirección puede variar \(p\) en un fluido en reposo con \(\vect{g}\) vertical?
+\item ¿Por qué \(F=\rho g h_c A\) no dice todavía dónde se aplica la fuerza?
+\item Si \(\rho\) no es constante, ¿qué le ocurre a la ecuación~\eqref{eq:hidro-lineal}?
+\end{enumerate}

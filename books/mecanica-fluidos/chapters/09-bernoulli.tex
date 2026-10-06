@@ -1,0 +1,80 @@
+\chapter{Ecuación de Bernoulli}
+\label{ch:bernoulli}
+\index{Bernoulli}
+
+La guía pide la ecuación de Bernoulli dentro del formalismo, después de la vorticidad y del potencial \parencite{uleGuia2026}. No es una ley sin hipótesis. Este capítulo las separa, porque juntarlas es el error más caro del tema.
+
+\section{A lo largo de una línea de corriente}
+
+Se parte de Euler, ecuación~\eqref{eq:euler}, con densidad constante y peso \(\vect{g}=-\nabla(gz)\):
+\[
+\frac{\partial\vect{v}}{\partial t}+(\vect{v}\cdot\nabla)\vect{v}
+=-\frac{1}{\rho}\nabla p-\nabla(gz).
+\]
+La identidad vectorial
+\[
+(\vect{v}\cdot\nabla)\vect{v}
+=\nabla\left(\frac{v^2}{2}\right)-\vect{v}\times(\nabla\times\vect{v})
+\]
+convierte la ecuación en
+\begin{equation}
+\label{eq:euler-crocco}
+\frac{\partial\vect{v}}{\partial t}
++\nabla\left(\frac{v^2}{2}+\frac{p}{\rho}+gz\right)
+=\vect{v}\times\vect{\omega}.
+\end{equation}
+Se proyecta sobre un vector tangente a una línea de corriente. Ese vector es paralelo a \(\vect{v}\), y \(\vect{v}\cdot(\vect{v}\times\vect{\omega})=0\). Si además el flujo es estacionario, \(\partial\vect{v}/\partial t=\vect{0}\), y la proyección del gradiente es la derivada direccional. Por tanto
+\begin{equation}
+\label{eq:bernoulli}
+\frac{v^2}{2}+\frac{p}{\rho}+gz
+=\text{constante a lo largo de la línea}.
+\end{equation}
+\claimref{CLM-BERNOULLI}
+
+Hipótesis usadas: Euler (no viscoso), densidad constante, gravedad uniforme, flujo estacionario, y evaluación a lo largo de una línea de corriente. No se ha usado \(\vect{\omega}=\vect{0}\).
+
+\section{Cuándo la constante es global}
+
+Si el flujo es también irrotacional, \(\vect{v}\times\vect{\omega}=\vect{0}\) en todo el dominio y \(\vect{v}=\nabla\varphi\). En estacionario, el gradiente de la ecuación~\eqref{eq:euler-crocco} es nulo y la constante es la misma en todo el dominio conexo donde valgan las hipótesis. En no estacionario e irrotacional aparece \(\partial\varphi/\partial t\) dentro de la suma, y la «constante» puede depender del tiempo.
+
+\begin{errorbox}
+Exigir irrotacionalidad para usar Bernoulli entre dos puntos de la misma línea de corriente añade una hipótesis que la derivación no necesita. Olvidar que la constante puede cambiar de una línea a otra, en un flujo con vorticidad, es el error contrario.
+\end{errorbox}
+
+La viscosidad rompe el paso de Euler. Un tubo de Poiseuille es estacionario e incompresible, y \(p+\rho gz\) cae en la dirección del movimiento precisamente porque hay cortante. Aplicar~\eqref{eq:bernoulli} ahí contradice el capítulo~\ref{ch:navier}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  \draw[aero/primary] (0,0) .. controls (1.2,0.2) and (1.6,1.4) .. (3.4,1.5);
+  \fill (0.3,0.05) circle (1.4pt) node[below,aero/smalllabel] {1};
+  \fill (3.1,1.45) circle (1.4pt) node[above,aero/smalllabel] {2};
+  \node[aero/label,below] at (1.8,0.15) {misma línea};
+\end{tikzpicture}
+\caption{La constante de~\eqref{eq:bernoulli} se comparte entre 1 y 2 solo si ambos están en la misma línea de corriente y se cumplen las hipótesis. Otra línea puede llevar otra constante.}
+\label{fig:bernoulli-linea}
+\end{figure}
+
+\section{Salida de un depósito}
+
+Un depósito grande, superficie libre a presión \(p_0\) y altura \(H\) sobre un orificio pequeño abierto a la misma presión. El flujo se modela como estacionario, no viscoso e incompresible, y la línea va de un punto de la superficie, donde la velocidad es despreciable, al orificio. La ecuación~\eqref{eq:bernoulli} da
+\begin{equation}
+\label{eq:torricelli}
+V=\sqrt{2gH}.
+\end{equation}
+Si \(H=0\), \(V=0\). Si se duplica \(H\), \(V\) crece con \(\sqrt{2}\), no con 2. La viscosidad y la contracción de la vena reducen el caudal real frente a \(A\sqrt{2gH}\). Esos coeficientes no salen de Euler: hay que medirlos o resolver el flujo viscoso. Este libro no inventa un coeficiente de descarga.
+
+\begin{problembox}[Básico]
+Superficie libre a \(\qty{4}{\metre}\) sobre el orificio, \(g=\qty{9.81}{\metre\per\second\squared}\) dato, mismas presiones. Calcula \(V\) y la velocidad si la altura pasa a \(\qty{1}{\metre}\).
+\end{problembox}
+\begin{solutionbox}
+\(V=\sqrt{2\cdot 9.81\cdot 4}=\sqrt{78.48}=\qty{8.86}{\metre\per\second}\).
+A \(\qty{1}{\metre}\), \(V=\sqrt{19.62}=\qty{4.43}{\metre\per\second}\), la mitad, porque la altura se ha dividido por cuatro. Si el orificio estuviera a la misma cota que la superficie, la fórmula daría cero y el modelo de chorro dejaría de describir un desagüe.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿En qué paso se usa que no hay viscosidad?
+\item ¿Para qué hace falta la irrotacionalidad?
+\item ¿Por qué Poiseuille no obedece~\eqref{eq:bernoulli}?
+\end{enumerate}

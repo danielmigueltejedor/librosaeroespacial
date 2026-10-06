@@ -1,0 +1,20 @@
+\chapter{Auditoría de fuentes}
+\label{ch:auditoria}
+
+La autoridad de alcance es la guía docente firmada de Mecánica de Fluidos para 2026/2027, código 0710311 \parencite{uleGuia2026}. La ficha del plan confirma curso, semestre y créditos \parencite{ulePlan2026}. La copia consultada el 7 de octubre de 2026 está resumida en \texttt{sources/manifest.json}. El estado de la guía en el visor institucional es firmada: aprobación el 24 de mayo de 2026 y firma del PDF el 18 de agosto de 2026.
+
+\section{Qué manda y qué no}
+
+Las lecturas de la guía se registran con el año y el ISBN que la propia guía escribe, cuando lo escribe \parencite{taylor2005,shaughnessy2005,tritton2011,white2016,kundu2016,powers2024,boas2006,strogatz2018,anderson1995}. No se citan páginas que no se han abierto. Los resultados matemáticos de los capítulos se sostienen en las derivaciones, no en una transcripción.
+
+Las guías de 2024/2025 y de 2022/2023 son documentos oficiales de cursos anteriores \parencite{uleGuia2024,uleGuia2022}. Documentan que el programa cambió: aquellos cursos incluían cohetes y no incluían el bloque actual de Boussinesq y geostrofía. No mandan sobre esta edición.
+
+Tritton figura en 2011 en la guía vigente y en 1988 en la de 2024/2025. White figura en 2016 y, en la guía anterior, en 2015. Powers tiene fecha de catálogo 29 de junio de 2023 y portadilla de primera publicación en 2024, con el ISBN que la guía repite. Esas diferencias están cerradas en \texttt{sources/conflicts.jsonl} sin inventar un número de edición.
+
+\section{Material de estudiantes}
+
+Hay tres PDF de Wuolah inventariados fuera del repositorio, con suma SHA-256 en el manifiesto. No se copian aquí. Se usaron para ver qué habilidades y qué nombres aparecen: líneas de corriente, Bernoulli, Poiseuille, Couette circular, Reynolds, Buckingham, resistencia y, en los apuntes, cohete y atmósfera. Esos dos últimos no están en la guía vigente y no entran en el libro. Varios pasajes de los apuntes contradicen las derivaciones: fluido ideal identificado con incompresible, aceleración nula en todo flujo estacionario, e irrotacionalidad exigida siempre para Bernoulli. El libro se queda con las derivaciones y registra el conflicto. No reproduce enunciados ni tablas numéricas de ese material.
+
+\section{Lagunas declaradas}
+
+No se ha consultado el cuerpo de los tratados de la bibliografía, así que este volumen no atribuye a una página de White, Kundu o Powers un teorema concreto. Los parámetros numéricos habituales de las ecuaciones de Lorenz no se fijan, porque no se abrió la página de 1963. La resistencia de Stokes de la esfera no se calcula. El factor de Darcy turbulento no se da mediante una correlación. Esas omisiones son deliberadas.

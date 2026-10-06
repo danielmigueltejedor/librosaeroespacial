@@ -1,0 +1,108 @@
+\chapter{Cálculo vectorial del curso}
+\label{ch:vectorial}
+\index{cálculo vectorial}
+
+La guía pide gradiente, divergencia, rotacional, laplaciano y los teoremas de Gauss, Stokes y Helmholtz, además de flujo y circulación \parencite{uleGuia2026}. Boas está en la bibliografía como apoyo matemático \parencite{boas2006}. Aquí solo se fijan las identidades que los capítulos de fluido usan, con el convenio de signos del brief.
+
+\section{Operadores}
+
+En cartesianas, con el eje \(z\) hacia arriba,
+\begin{align}
+\nabla\phi&=\frac{\partial\phi}{\partial x}\vect{e}_x+\frac{\partial\phi}{\partial y}\vect{e}_y+\frac{\partial\phi}{\partial z}\vect{e}_z,\\
+\nabla\cdot\vect{a}&=\frac{\partial a_x}{\partial x}+\frac{\partial a_y}{\partial y}+\frac{\partial a_z}{\partial z},\\
+\nabla\times\vect{a}
+&=\begin{vmatrix}
+\vect{e}_x&\vect{e}_y&\vect{e}_z\\
+\partial_x&\partial_y&\partial_z\\
+a_x&a_y&a_z
+\end{vmatrix}.
+\end{align}
+El laplaciano de un escalar es \(\nabla^2\phi=\nabla\cdot(\nabla\phi)\). El laplaciano de un vector, en cartesianas y solo en cartesianas, es el vector de los laplacianos de las componentes. En cilíndricas esa frase es falsa: hay que partir de \(\nabla(\nabla\cdot\vect{a})-\nabla\times(\nabla\times\vect{a})\).
+
+Identidades que se usarán sin volver a demostrarlas, y que el lector puede comprobar en cartesianas componente a componente:
+\begin{align}
+\nabla\times(\nabla\phi)&=\vect{0},\\
+\nabla\cdot(\nabla\times\vect{a})&=0,\\
+\label{eq:vector-id}
+\nabla\times(\nabla\times\vect{a})&=\nabla(\nabla\cdot\vect{a})-\nabla^2\vect{a}.
+\end{align}
+La última define \(\nabla^2\vect{a}\) cuando las coordenadas no son cartesianas.
+
+\section{Flujo y circulación}
+
+El flujo de \(\vect{a}\) a través de una superficie orientada \(S\) es \(\int_S\vect{a}\cdot\vect{n}\,\mathrm{d}A\). La circulación a lo largo de una curva orientada \(C\) es \(\oint_C\vect{a}\cdot\mathrm{d}\vect{r}\).
+
+El teorema de Gauss, para un volumen \(V\) de frontera \(S\) orientada hacia fuera y un campo suficientemente regular,
+\begin{equation}
+\label{eq:gauss}
+\int_V\nabla\cdot\vect{a}\,\mathrm{d}V=\int_S\vect{a}\cdot\vect{n}\,\mathrm{d}A.
+\end{equation}
+El teorema de Stokes, para una superficie \(S\) con borde \(C\) orientado de forma compatible,
+\begin{equation}
+\label{eq:stokes}
+\int_S(\nabla\times\vect{a})\cdot\vect{n}\,\mathrm{d}A=\oint_C\vect{a}\cdot\mathrm{d}\vect{r}.
+\end{equation}
+La compatibilidad es la de la mano derecha: con los dedos en el sentido de \(C\), el pulgar apunta como \(\vect{n}\).
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  \draw[aero/primary] (0,0) rectangle (3.2,2.2);
+  \draw[aero/reaction] (1.6,1.1)--(1.6,2.05);
+  \node[aero/label,right] at (1.65,1.7) {\(\vect{n}\)};
+  \draw[aero/load] (3.2,1.1) arc[start angle=0,end angle=70,radius=0.55];
+  \node[aero/smalllabel] at (3.55,1.55) {\(C\)};
+  \node[aero/label] at (1.6,0.7) {\(S\)};
+\end{tikzpicture}
+\caption{Orientación de Stokes: el borde \(C\) y la normal \(\vect{n}\) forman un triedro a derechas. Si se invierte uno, hay que invertir el otro.}
+\label{fig:stokes-orientacion}
+\end{figure}
+
+\section{Helmholtz}
+
+En un dominio que lo permita, un campo vectorial regular se descompone en un campo irrotacional y otro solenoidal,
+\begin{equation}
+\label{eq:helmholtz}
+\vect{a}=-\nabla\phi+\nabla\times\vect{b},
+\end{equation}
+con una libertad de gauge en \(\vect{b}\). La guía lo lista junto a Gauss y Stokes \parencite{uleGuia2026}. En el fluido sirve para separar un potencial de velocidad, cuando el rotacional es nulo, de una parte con vorticidad. No se usa aquí la versión con decaimiento en el infinito y unicidad: eso exige hipótesis de dominio que cada problema tendrá que repetir.
+
+\begin{theorembox}[Campo irrotacional]
+Si \(\nabla\times\vect{v}=\vect{0}\) en un dominio simplemente conexo, existe \(\varphi\) tal que \(\vect{v}=\nabla\varphi\). La circulación en toda curva cerrada de ese dominio es nula, por Stokes.
+\end{theorembox}
+
+El signo \(\vect{v}=\nabla\varphi\), y no \(-\nabla\varphi\), es el convenio cinemático de este libro. El potencial de una fuerza conservativa sí lleva el menos. Son dos potenciales distintos.
+
+\section{Cilíndricas que usará Navier--Stokes}
+
+Para un campo meridional con simetría de revolución, las componentes físicas \((v_r,v_\theta,v_z)\) cumplen
+\begin{equation}
+\label{eq:div-cil}
+\nabla\cdot\vect{v}
+=\frac{1}{r}\frac{\partial}{\partial r}(r v_r)+\frac{1}{r}\frac{\partial v_\theta}{\partial\theta}+\frac{\partial v_z}{\partial z}.
+\end{equation}
+La componente \(\theta\) del rotacional que hace falta para un giro \(v_\theta(r)\) es
+\begin{equation}
+\label{eq:rot-cil}
+(\nabla\times\vect{v})_z=\frac{1}{r}\frac{\partial}{\partial r}(r v_\theta)
+\end{equation}
+cuando \(v_r=v_z=0\) y no hay dependencia angular. Un vórtice \(v_\theta=K/r\) tiene esa componente nula fuera del origen: es irrotacional en \(r>0\), y toda la circulación está en el eje.
+
+\begin{problembox}[Básico]
+Comprueba en cartesianas que \(\nabla\cdot(\nabla\times\vect{a})=0\) para \(\vect{a}=(y^2,xz,0)\). Calcula además \(\nabla\times\vect{a}\).
+\end{problembox}
+\begin{solutionbox}
+\begin{align*}
+(\nabla\times\vect{a})_x&=\partial_y(0)-\partial_z(xz)=-x,\\
+(\nabla\times\vect{a})_y&=\partial_z(y^2)-\partial_x(0)=0,\\
+(\nabla\times\vect{a})_z&=\partial_x(xz)-\partial_y(y^2)=z-2y.
+\end{align*}
+La divergencia de \((-x,0,z-2y)\) es \(\partial_x(-x)+\partial_z(z)=-1+1=0\). El cálculo no demuestra la identidad en general; solo verifica este campo. La identidad general se comprueba derivando las componentes y viendo que las segundas derivadas cruzadas se cancelan.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿En qué coordenadas es lícito calcular el laplaciano vectorial componente a componente?
+\item Si inviertes \(\vect{n}\) en Stokes y no inviertes \(C\), ¿qué le ocurre a la igualdad?
+\item ¿Por qué \(v_\theta=K/r\) puede ser irrotacional y aun así tener circulación alrededor del origen?
+\end{enumerate}

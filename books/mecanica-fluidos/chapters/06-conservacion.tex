@@ -1,0 +1,97 @@
+\chapter{Balances integrales}
+\label{ch:conservacion}
+\index{teorema de transporte de Reynolds}
+
+La guía pide el teorema de transporte de Reynolds y la conservación de masa, de momento lineal, de momento angular y de energía \parencite{uleGuia2026}. Este capítulo trabaja con un volumen que se mueve con el fluido y con un volumen de control fijo. Las dos cuentas son la misma ley escrita en sitios distintos.
+
+\section{Transporte de Reynolds}
+
+Sea \(V(t)\) un volumen material: su frontera viaja con la velocidad del fluido. Para un campo \(\phi\) por unidad de volumen,
+\begin{equation}
+\label{eq:rtt}
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{V(t)}\phi\,\mathrm{d}V
+=\int_{V(t)}\frac{\partial\phi}{\partial t}\,\mathrm{d}V
++\int_{S(t)}\phi\,\vect{v}\cdot\vect{n}\,\mathrm{d}A.
+\end{equation}
+La normal sale del volumen. El primer término del segundo miembro es el cambio local. El segundo es el flujo que la frontera barre al moverse. Con el teorema de Gauss, si \(\phi\vect{v}\) es regular,
+\begin{equation}
+\label{eq:rtt-local}
+\frac{\mathrm{d}}{\mathrm{d}t}\int_{V(t)}\phi\,\mathrm{d}V
+=\int_{V(t)}\left(\frac{\partial\phi}{\partial t}+\nabla\cdot(\phi\vect{v})\right)\mathrm{d}V.
+\end{equation}
+\claimref{CLM-RTT} La hipótesis es que el volumen es material y que los campos permiten derivar bajo la integral. Un choque dentro de \(V\) rompe esa regularidad: hay que partir el volumen.
+
+\section{Masa}
+
+Con \(\phi=\rho\), la masa del volumen material no cambia. El primer miembro de~\eqref{eq:rtt-local} es cero para todo volumen, y por tanto
+\begin{equation}
+\label{eq:continuidad}
+\frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\vect{v})=0,
+\end{equation}
+que también se escribe
+\begin{equation}
+\label{eq:continuidad-material}
+\frac{D\rho}{Dt}+\rho\nabla\cdot\vect{v}=0.
+\end{equation}
+\claimref{CLM-CONTINUIDAD}
+
+Si cada partícula conserva su densidad, \(D\rho/Dt=0\) y \(\nabla\cdot\vect{v}=0\). Si además \(\rho\) es uniforme en el espacio, el flujo es incompresible en el sentido de este curso. Un líquido no es, por decreto, incompresible: lo es el modelo cuando esa hipótesis es aceptable.
+
+En un tubo delgado y estacionario, integrar~\eqref{eq:continuidad} entre dos secciones da
+\begin{equation}
+\label{eq:caudal}
+\rho_1 V_1 A_1=\rho_2 V_2 A_2,
+\end{equation}
+si la velocidad se representa por un valor único en cada sección. Es un modelo unidimensional. \(V\) aquí es el módulo de la velocidad media, no un volumen.
+
+\section{Cantidad de movimiento}
+
+La suma de fuerzas sobre un volumen material es la derivada de su momento. Con \(\phi=\rho\vect{v}\) en~\eqref{eq:rtt},
+\begin{equation}
+\label{eq:momento-integral}
+\sum\vect{F}
+=\frac{\mathrm{d}}{\mathrm{d}t}\int_{V(t)}\rho\vect{v}\,\mathrm{d}V.
+\end{equation}
+Las fuerzas son de volumen, \(\int\rho\vect{f}\,\mathrm{d}V\), y de superficie, \(\int_S\vect{t}\,\mathrm{d}A\). En un fluido en reposo, \(\vect{t}=-p\vect{n}\). En movimiento, \(\vect{t}=\mat{\sigma}\vect{n}\), con el convenio de Cauchy del capítulo~\ref{ch:esfuerzos}.
+
+Para un volumen de control fijo y un flujo estacionario, el término local desaparece y las fuerzas igualan al flujo neto de momento que sale:
+\begin{equation}
+\label{eq:momento-vc}
+\sum\vect{F}=\int_S\rho\vect{v}\,(\vect{v}\cdot\vect{n})\,\mathrm{d}A.
+\end{equation}
+La normal sigue saliendo. Un chorro que entra aporta momento negativo en esa integral, porque \(\vect{v}\cdot\vect{n}<0\).
+
+\section{Momento angular y energía}
+
+El momento de las fuerzas exteriores iguala a la derivada del momento angular del volumen material, respecto del mismo punto. En el límite de un elemento pequeño, esa ley obliga a que el tensor de esfuerzos sea simétrico si no hay pares distribuidos. La guía lo incluye en el tema~6 \parencite{uleGuia2026}. No se añade un par interno en los modelos de este libro.
+
+La energía mecánica no se conserva sola en un fluido viscoso: la viscosidad convierte trabajo de deformación en energía interna. El balance completo necesita la energía interna y el flujo de calor. La guía nombra también el transporte por difusión y conducción, leyes de Fick y de Fourier \parencite{uleGuia2026}. En este volumen se registran como relaciones lineales de cierre,
+\begin{equation}
+\label{eq:fick-fourier}
+\vect{j}=-D\nabla c,
+\qquad
+\vect{q}=-k\nabla T,
+\end{equation}
+con \(D\) y \(k\) dados por el problema. No se deriva su valor microscópico. El balance que sí se cierra sin termodinámica extra es el de energía mecánica a lo largo de una línea de corriente cuando la viscosidad se desprecia: es Bernoulli, en el capítulo~\ref{ch:bernoulli}.
+
+\begin{problembox}[Intermedio]
+Un chorro estacionario de agua, densidad dada \(\rho=\qty{1000}{\kilogram\per\cubic\metre}\), sale a \(\qty{8}{\metre\per\second}\) por una boquilla de sección \(\qty{4e-4}{\square\metre}\) y choca contra una placa plana perpendicular. El fluido abandona la placa en dirección tangente, sin componente según la normal de la placa. Calcula la fuerza horizontal de la placa sobre el fluido y la del fluido sobre la placa.
+\end{problembox}
+\begin{solutionbox}
+Hipótesis: volumen de control estacionario, presión manométrica despreciable en los chorros libres, gravedad fuera del balance horizontal, una sola componente de entrada. El caudal másico es
+\[
+\dot m=\rho VA=1000\cdot 8\cdot\qty{4e-4}{\square\metre}=\qty{3.2}{\kilogram\per\second}.
+\]
+El momento horizontal que entra es \(\dot m\cdot 8\). El que sale en horizontal es cero. La ecuación~\eqref{eq:momento-vc}, con normal saliente, dice que la fuerza horizontal sobre el fluido es
+\[
+F_x=\dot m(0-8)=\qty{-25.6}{\newton}.
+\]
+El signo menos indica que la placa frena el chorro: empuja el fluido hacia atrás. La fuerza del fluido sobre la placa es la opuesta, \(\qty{25.6}{\newton}\) en el sentido del chorro incidente. Si la placa no destruyera toda la componente normal, el resultado sería menor.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿Qué frontera exige el teorema de Reynolds en la forma~\eqref{eq:rtt}?
+\item Escribe la continuidad de un flujo incompresible.
+\item En un volumen de control fijo, ¿hacia dónde apunta \(\vect{n}\)?
+\end{enumerate}

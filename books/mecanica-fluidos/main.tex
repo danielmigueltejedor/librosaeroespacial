@@ -1,0 +1,53 @@
+\documentclass{aerobook}
+
+% Metadatos canónicos generados desde book.toml.
+\input{generated/metadata}
+
+% La figura técnica es específica del libro; la portada es común.
+\newcommand{\BookCoverGraphic}{%
+  \input{figures/cover-graphic}%
+}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\input{aerobook-cover}
+\hypersetup{pageanchor=true}
+
+\frontmatter
+\include{chapters/00-preface}
+\include{appendices/notation}
+
+\tableofcontents
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\listoffigures
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Índice de cuadros}
+\listoftables
+\cleardoublepage
+
+\mainmatter
+\include{chapters/01-continuo}
+\include{chapters/02-clasica}
+\include{chapters/03-vectorial}
+\include{chapters/04-cinematica}
+\include{chapters/05-hidrostatica}
+\include{chapters/06-conservacion}
+\include{chapters/07-esfuerzos}
+\include{chapters/08-navier-stokes}
+\include{chapters/09-bernoulli}
+\include{chapters/10-semejanza}
+\include{chapters/11-aplicaciones}
+\include{chapters/12-aproximaciones}
+\include{chapters/13-examen}
+
+\appendix
+\include{appendices/formulario}
+\include{appendices/source-audit}
+
+\backmatter
+\nocite{*}
+\printbibliography[heading=bibintoc,title={Bibliografía}]
+\printindex
+
+\end{document}

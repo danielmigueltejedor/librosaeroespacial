@@ -1,0 +1,68 @@
+\chapter{Esfuerzos y fluido newtoniano}
+\label{ch:esfuerzos}
+\index{tensor de esfuerzos}
+
+La guía separa fuerzas de volumen y de superficie, introduce el tensor de esfuerzos y el modelo constitutivo newtoniano \parencite{uleGuia2026}. Este capítulo construye ese tensor antes de escribir Navier--Stokes.
+
+\section{Tracción de Cauchy}
+
+La fuerza de contacto sobre un elemento de área no es un escalar. Depende de la orientación. El teorema de Cauchy, en un continuo sin pares concentrados en la superficie, dice que existe un tensor \(\mat{\sigma}\) tal que
+\begin{equation}
+\label{eq:cauchy}
+\vect{t}^{(\vect{n})}=\mat{\sigma}\vect{n}.
+\end{equation}
+\(\vect{t}^{(\vect{n})}\) es la fuerza por unidad de área que el material del lado de \(\vect{n}\) ejerce sobre el material del lado contrario. \(\vect{n}\) sale del material que recibe la fuerza. Es el convenio de este libro.
+
+En componentes cartesianas, \(\sigma_{ij}\) es la componente \(i\) de la tracción sobre la cara cuya normal es \(\vect{e}_j\). La presión de un fluido en reposo es \(\mat{\sigma}=-p\mat{I}\). El signo menos hace que la tracción sobre una cara apunte hacia dentro.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.15]
+  \draw[aero/primary] (0,0) rectangle (2.2,2.2);
+  \draw[aero/reaction] (2.2,1.1)--(3.2,1.1);
+  \node[aero/label,above] at (2.75,1.15) {\(\vect{n}\)};
+  \draw[aero/load] (2.2,1.1)--(1.25,1.1);
+  \node[aero/label,above] at (1.55,1.15) {\(\vect{t}\)};
+  \node[aero/smalllabel] at (1.1,0.55) {recibe \(\vect{t}\)};
+\end{tikzpicture}
+\caption{Reposo: \(\vect{n}\) sale del material que sufre la tracción y \(\vect{t}=-p\vect{n}\) apunta hacia dentro. El convenio \(\vect{t}=\mat{\sigma}\vect{n}\) es el mismo cuando, en movimiento, \(\vect{t}\) deja de ser paralela a \(\vect{n}\).}
+\label{fig:cauchy}
+\end{figure}
+
+\section{Simetría}
+
+El balance de momento angular de un cubo elemental, dividido por el volumen y pasado al límite, da \(\sigma_{ij}=\sigma_{ji}\) si no hay un par por unidad de volumen independiente del tamaño del cubo. Este libro no incluye ese par. El tensor que se usa a partir de aquí es simétrico.
+
+\section{Ley newtoniana}
+
+Se separa la presión de la parte viscosa, \(\mat{\sigma}=-p\mat{I}+\mat{\tau}\). En un fluido newtoniano isótropo, \(\mat{\tau}\) es lineal en el tensor velocidad de deformación \(D_{ij}\) de la ecuación~\eqref{eq:tensor-d}. La forma más general compatible con la isotropía es
+\begin{equation}
+\label{eq:newtoniano}
+\tau_{ij}=2\mu D_{ij}+\lambda (\nabla\cdot\vect{v})\,\delta_{ij}.
+\end{equation}
+\(\mu\) es la viscosidad dinámica. \(\lambda\) es un segundo coeficiente. En un flujo incompresible, \(\nabla\cdot\vect{v}=0\) y el segundo término desaparece:
+\begin{equation}
+\label{eq:newton-inc}
+\mat{\sigma}=-p\mat{I}+2\mu\mat{D}.
+\end{equation}
+\claimref{CLM-NEWTONIANO-1D} En corte simple, \(u=u(y)\), la única componente relevante es \(\tau_{xy}=\mu\,\mathrm{d}u/\mathrm{d}y\), que recupera la ecuación~\eqref{eq:newton-1d}. El resto del tensor no es cero en un flujo general: por ejemplo, una extensión uniaxial viscos genera esfuerzos normales viscosos.
+
+\begin{warningbox}
+La presión \(p\) de la ecuación~\eqref{eq:newton-inc} es el multiplicador que impone la incompresibilidad. Coincide con el esfuerzo normal mecánico cambiado de signo solo cuando los esfuerzos viscosos normales se anulan o se absorben en la definición. En un flujo incompresible con \(\nabla\cdot\vect{v}=0\) y viscosidad constante, la media de los esfuerzos normales sigue siendo \(-p\).
+\end{warningbox}
+
+La guía también nombra el transporte difusivo de masa, energía y momento \parencite{uleGuia2026}. El momento difunde por \(\mat{\tau}\). La masa y el calor, en el modelo lineal, difunden por las leyes~\eqref{eq:fick-fourier}. Las tres relaciones son constitutivas: no salen solo de un balance.
+
+\begin{problembox}[Básico]
+Un campo \(u=Cy\), \(v=w=0\), con \(C\) constante, llena un fluido newtoniano incompresible de viscosidad \(\mu\). Escribe \(\mat{\tau}\) y comprueba que su divergencia es nula.
+\end{problembox}
+\begin{solutionbox}
+\(D_{xy}=D_{yx}=C/2\) y el resto de \(D\) es cero. Luego \(\tau_{xy}=\tau_{yx}=\mu C\). Las derivadas de esas componentes respecto de \(x\) o de \(y\) son cero, así que \(\nabla\cdot\mat{\tau}=\vect{0}\). Hace falta un gradiente de presión o una aceleración nula para cerrar el balance: el esfuerzo es constante y no deja fuerza neta por unidad de volumen. Es el corte de Couette del capítulo siguiente, visto aquí solo como constitutiva.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿A qué lado del área apunta \(\vect{n}\) en \(\vect{t}=\mat{\sigma}\vect{n}\)?
+\item ¿Qué término de~\eqref{eq:newtoniano} muere si el flujo es incompresible?
+\item ¿Por qué \(\tau=\mu\,\mathrm{d}u/\mathrm{d}y\) no informa de los esfuerzos normales viscosos?
+\end{enumerate}

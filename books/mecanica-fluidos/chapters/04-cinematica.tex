@@ -1,0 +1,137 @@
+\chapter{Cinemática}
+\label{ch:cinematica}
+\index{cinemática}
+
+La cinemática describe el movimiento sin preguntar todavía qué fuerza lo mantiene. La guía pide las descripciones lagrangiana y euleriana, las tres curvas de visualización, la derivada material, la aceleración, los flujos estacionarios, unidimensionales, bidimensionales y axisimétricos, y la vorticidad \parencite{uleGuia2026}.
+
+\section{Dos descripciones}
+
+En la descripción lagrangiana se sigue una partícula etiquetada, por ejemplo por su posición \(\vect{X}\) en un instante de referencia. Su trayectoria es \(\vect{x}=\vect{x}(\vect{X},t)\).
+
+En la descripción euleriana se mira un punto fijo del espacio y se registra el campo \(\vect{v}(\vect{x},t)\). El fluido de este curso se escribe casi siempre en euleriano. El paso de una descripción a la otra es la derivada material.
+
+\begin{definitionbox}[Derivada material]
+La derivada material de un campo escalar \(f\) es la derivada temporal siguiendo a la partícula que en ese instante ocupa \(\vect{x}\):
+\begin{equation}
+\label{eq:material}
+\frac{Df}{Dt}=\frac{\partial f}{\partial t}+\vect{v}\cdot\nabla f.
+\end{equation}
+Para un vector se aplica a cada componente cartesiana, y se escribe \(\mathrm{D}\vect{v}/\mathrm{D}t=\partial\vect{v}/\partial t+(\vect{v}\cdot\nabla)\vect{v}\).
+\end{definitionbox}
+
+La aceleración que entra en la ley de Newton es \(\mathrm{D}\vect{v}/\mathrm{D}t\), no \(\partial\vect{v}/\partial t\).
+
+\begin{definitionbox}[Flujo estacionario]
+El flujo es estacionario cuando los campos eulerianos no dependen del tiempo: \(\partial/\partial t=0\). La aceleración puede no ser nula, porque sobrevive \((\vect{v}\cdot\nabla)\vect{v}\).\claimref{CLM-ACEL-EST}
+\end{definitionbox}
+
+\begin{errorbox}
+Poner la aceleración a cero en cuanto el enunciado dice «estacionario» borra el término convectivo. En una contracción de un tubo estacionario el fluido se acelera.
+\end{errorbox}
+
+\section{Tres curvas}
+\index{línea de corriente}
+\index{trayectoria}
+\index{línea de traza}
+
+La guía usa los nombres ingleses streamline, pathline y streakline \parencite{uleGuia2026}. Este libro los traduce así, y mantiene la traducción fija.
+
+\begin{itemize}[leftmargin=1.2em]
+\item Línea de corriente, streamline: curva tangente a \(\vect{v}\) en un instante \(t\) congelado. Cumple \(\mathrm{d}\vect{x}\times\vect{v}=\vect{0}\), o bien \(\mathrm{d}x/u=\mathrm{d}y/v=\mathrm{d}z/w\) con \(t\) constante.
+\item Trayectoria, pathline: camino de una partícula. Cumple \(\mathrm{d}\vect{x}/\mathrm{d}t=\vect{v}(\vect{x},t)\), ahora con \(t\) variable.
+\item Línea de traza, streakline: lugar de las partículas que han pasado por un punto fijo. Es lo que marca un chorro de tinta continuo.
+\end{itemize}
+
+\begin{theorembox}[Flujo estacionario]
+Si \(\vect{v}=\vect{v}(\vect{x})\) no depende del tiempo, las tres curvas que pasan por un mismo punto coinciden. La integración de la trayectoria ya no distingue el instante, y la tinta recorre la misma curva que la tangente al campo.
+\end{theorembox}
+
+Si el campo depende del tiempo, las tres curvas se separan. Confundir los nombres en un flujo no estacionario cambia el problema.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.05]
+  \draw[aero/axis] (0,0)--(4.4,0) node[right,aero/label] {\(x\)};
+  \draw[aero/axis] (0,0)--(0,2.4) node[above,aero/label] {\(y\)};
+  \draw[aero/primary,domain=0.2:4,smooth] plot (\x,{0.35*\x});
+  \draw[aero/reaction] (3.2,1.05)--(3.7,1.22);
+  \node[aero/smalllabel] at (3.5,0.75) {\(\vect{v}\)};
+  \fill (2.2,0.77) circle (1.3pt);
+  \node[aero/label,below] at (2.2,0.55) {punto fijo};
+\end{tikzpicture}
+\caption{En un campo estacionario la tangente a la velocidad, la trayectoria y la traza que sale del punto marcado son la misma curva.}
+\label{fig:streamline}
+\end{figure}
+
+\section{Vorticidad y deformación}
+\index{vorticidad}
+
+La vorticidad es
+\begin{equation}
+\label{eq:vorticidad}
+\vect{\omega}=\nabla\times\vect{v}.
+\end{equation}
+Su unidad es \(\si{\per\second}\). En un entorno pequeño, el movimiento relativo se parte en una rotación de cuerpo rígido, de velocidad angular \(\vect{\omega}/2\), y en una deformación pura descrita por la parte simétrica del gradiente de velocidad,
+\begin{equation}
+\label{eq:tensor-d}
+D_{ij}=\frac12\left(\frac{\partial v_i}{\partial x_j}+\frac{\partial v_j}{\partial x_i}\right).
+\end{equation}
+La parte antisimétrica no deforma longitudes a primer orden: las gira. Por eso un fluido ideal, sin esfuerzos cortantes, todavía puede tener vorticidad. Lo que no puede hacer es disipar esa deformación por viscosidad.
+
+Un flujo irrotacional cumple \(\vect{\omega}=\vect{0}\). En un dominio simplemente conexo existe entonces un potencial \(\varphi\) con \(\vect{v}=\nabla\varphi\).
+
+\section{Función de corriente}
+\index{función de corriente}
+
+En un flujo bidimensional e incompresible, \(\partial u/\partial x+\partial v/\partial y=0\). Existe \(\psi(x,y,t)\) tal que
+\begin{equation}
+\label{eq:psi}
+u=\frac{\partial\psi}{\partial y},
+\qquad
+v=-\frac{\partial\psi}{\partial x}.
+\end{equation}
+El signo es el convenio de este libro.\claimref{CLM-PSI} Con él, la continuidad en dos dimensiones se cumple de forma idéntica:
+\[
+\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}
+=\frac{\partial^2\psi}{\partial x\partial y}-\frac{\partial^2\psi}{\partial y\partial x}=0.
+\]
+Las curvas \(\psi=\mathrm{constante}\) son líneas de corriente, porque \(\mathrm{d}\psi=u\,\mathrm{d}y-v\,\mathrm{d}x\) y sobre la tangente \(\mathrm{d}y/\mathrm{d}x=v/u\) se obtiene \(\mathrm{d}\psi=0\).
+
+El caudal volumétrico por unidad de longitud perpendicular al plano, entre dos líneas \(\psi_1\) y \(\psi_2\), es \(\psi_2-\psi_1\). Sale de integrar \(u\,\mathrm{d}y-v\,\mathrm{d}x\).
+
+La vorticidad perpendicular al plano es
+\begin{equation}
+\label{eq:omega-psi}
+\omega_z=-\nabla^2\psi.
+\end{equation}
+Si el flujo es también irrotacional, \(\psi\) es armónica. No todo flujo con función de corriente es irrotacional: la función de corriente solo ha usado la continuidad.
+
+\begin{examplebox}[Corriente uniforme y punto de estancamiento]
+\(\psi=Uy\) da \((u,v)=(U,0)\). \(\psi=Axy\) da \(u=Ax\) y \(v=-Ay\). La divergencia es \(A-A=0\). El origen es un punto de estancamiento. \(\omega_z=-\nabla^2(Axy)=0\): este ejemplo es irrotacional. No lo son todos.
+\end{examplebox}
+
+\begin{problembox}[Tipo examen, original]
+Un flujo plano, incompresible y estacionario tiene
+\[
+\psi=U y+\frac{B}{2}y^2,
+\]
+con \(U\) y \(B\) constantes. Obtén \(\vect{v}\) y \(\omega_z\). Discute si puede ser un fluido ideal en todo el plano.
+\end{problembox}
+\begin{solutionbox}
+\(u=\partial\psi/\partial y=U+By\), \(v=-\partial\psi/\partial x=0\). Es un corte lineal superpuesto a una corriente uniforme.
+\[
+\omega_z=-\nabla^2\psi=-\partial^2\psi/\partial y^2=-B.
+\]
+La vorticidad es uniforme. Un fluido ideal puede transportar vorticidad, pero este campo no cumple por sí solo el equilibrio: hay que volver a Navier--Stokes. Si \(B\neq 0\), el laplaciano de la velocidad no es cero y, con viscosidad, aparece un esfuerzo. La pregunta «¿puede ser ideal?» no se cierra solo con la cinemática. Se cierra cuando el capítulo~\ref{ch:navier} imponga el balance. Lo que sí queda cerrado es que el flujo es viscoso en su deformación: \(D_{xy}=B/2\).
+\end{solutionbox}
+
+\section{Axisimétrico y unidimensional}
+
+Un flujo axisimétrico no depende del ángulo alrededor de un eje y no tiene componente acimutal, o la tiene de forma que el problema conserve esa simetría. La guía lo separa del flujo bidimensional plano \parencite{uleGuia2026}. Un flujo unidimensional, en el sentido de conducto, retiene una sola componente de velocidad media y guarda el resto dentro de coeficientes. Esa reducción es un modelo, no una propiedad del fluido.
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item Escribe \(\mathrm{D}\vect{v}/\mathrm{D}t\) y tacha el término que muere en un flujo estacionario.
+\item ¿Qué hipótesis hace falta, además de \(\psi\), para que \(\nabla^2\psi=0\)?
+\item En un flujo no estacionario, ¿pueden coincidir trayectoria y línea de corriente?
+\end{enumerate}

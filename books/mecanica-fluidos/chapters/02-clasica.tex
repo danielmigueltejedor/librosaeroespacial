@@ -1,0 +1,165 @@
+\chapter{Mecánica clásica que el fluido va a usar}
+\label{ch:clasica}
+\index{mecánica clásica}
+
+La guía abre el curso con Newton, el momento lineal y angular, el sólido rígido, los sistemas no inerciales, el teorema de la energía, los campos, la mecánica lagrangiana y una introducción a tres sistemas caóticos: el mapa logístico, el problema de los tres cuerpos y las ecuaciones de Lorenz \parencite{uleGuia2026}. Taylor es la lectura de mecánica que la propia guía lista \parencite{taylor2005}. Este capítulo fija solo lo que después se traduce al fluido. No sustituye un curso de mecánica.
+
+\section{Cantidad de movimiento}
+
+Para una partícula, la segunda ley de Newton en un sistema inercial es
+\begin{equation}
+\label{eq:newton}
+\vect{F}=m\vect{a}= \frac{\mathrm{d}\vect{p}}{\mathrm{d}t},
+\qquad \vect{p}=m\vect{v},
+\end{equation}
+con \(m\) constante. En un sistema de partículas de masas constantes, la suma de fuerzas exteriores iguala a la derivada del momento total. Las fuerzas interiores, si cumplen la tercera ley por parejas, se cancelan en esa suma. El centro de masa se mueve como si toda la masa y toda la fuerza exterior estuvieran concentradas en él.
+
+El momento angular respecto de un punto fijo, o respecto del centro de masa, cambia por el momento de las fuerzas exteriores. En un sólido rígido eso cierra la dinámica de la rotación. Un fluido no es un sólido rígido: el análogo local es la simetría del tensor de esfuerzos, que se obtiene al exigir que el momento angular de un elemento no explote cuando el elemento se hace pequeño. Ese paso está en el capítulo~\ref{ch:esfuerzos}.
+
+\section{Trabajo y fuerzas conservativas}
+
+El trabajo de \(\vect{F}\) a lo largo de una trayectoria es \(\int \vect{F}\cdot\mathrm{d}\vect{r}\). Si la masa es constante y \(\vect{F}=m\vect{a}\),
+\[
+\int_{1}^{2}\vect{F}\cdot\mathrm{d}\vect{r}=\tfrac12 mv_2^2-\tfrac12 mv_1^2.
+\]
+Es el teorema de la energía cinética. No es todavía un balance de energía del fluido: falta el trabajo de la presión y de la viscosidad, y la energía interna.
+
+Una fuerza es conservativa cuando proviene de un potencial, \(\vect{F}=-\nabla V\). El trabajo entre dos puntos no depende del camino. El peso cercano a la superficie, \(\vect{F}=-mg\vect{e}_z\) si \(z\) apunta hacia arriba, tiene \(V=mgz\) más una constante. El campo eléctrico entra en el curso solo como ejemplo de campo vectorial, no como modelo de un fluido cargado.
+
+\begin{errorbox}
+En un sistema de masa variable la igualdad \(\vect{F}=m\vect{a}\) con \(m\) fuera de la derivada no es la segunda ley. La guía 2026/2027 no pide la ecuación del cohete. No se usa en este libro.\claimref{CLM-ALCANCE}
+\end{errorbox}
+
+\section{Sistemas no inerciales}
+\index{fuerza ficticia}
+
+Sea \(O\) el origen de un sistema que se traslada y gira respecto de un inercial. La relación cinemática entre la aceleración inercial de un punto y la aceleración medida en el sistema móvil es
+\begin{equation}
+\label{eq:aceleracion-no-inercial}
+\vect{a}_{\mathrm{in}}
+=\vect{a}_{\mathrm{rel}}
++\vect{a}_{O}
++\vect{\alpha}\times\vect{r}
++\vect{\omega}\times(\vect{\omega}\times\vect{r})
++2\vect{\omega}\times\vect{v}_{\mathrm{rel}}.
+\end{equation}
+Aquí \(\vect{r}\) y \(\vect{v}_{\mathrm{rel}}\) son la posición y la velocidad relativas al sistema móvil, \(\vect{\omega}\) es la velocidad angular de ese sistema y \(\vect{\alpha}=\dot{\vect{\omega}}\).
+
+Newton se escribe con \(\vect{a}_{\mathrm{in}}\). Al despejar \(m\vect{a}_{\mathrm{rel}}\) aparecen cuatro términos que el observador móvil puede escribir como fuerzas ficticias:
+\begin{equation}
+\label{eq:ficticias}
+m\vect{a}_{\mathrm{rel}}
+=\vect{F}_{\mathrm{real}}
+-m\vect{a}_{O}
+-m\vect{\alpha}\times\vect{r}
+-m\vect{\omega}\times(\vect{\omega}\times\vect{r})
+-2m\vect{\omega}\times\vect{v}_{\mathrm{rel}}.
+\end{equation}
+El penúltimo es la contribución centrífuga. El último es Coriolis. No son interacciones nuevas: son la cinemática del cambio de sistema. El equilibrio geostrófico del capítulo~\ref{ch:aproximaciones} retiene Coriolis y el gradiente de presión, y desprecia el resto bajo hipótesis que allí se escriben.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.05]
+  \draw[aero/axis] (0,0)--(3.2,0) node[right,aero/label] {\(x\)};
+  \draw[aero/axis] (0,0)--(0,2.6) node[above,aero/label] {\(z\)};
+  \draw[aero/primary] (0.2,0.15) circle (0.18);
+  \draw[aero/load] (0.2,1.7)--(0.2,0.45);
+  \node[aero/label,right] at (0.35,1.1) {\(m\vect{g}\)};
+  \draw[aero/reaction] (0.2,0.15)--(1.5,0.15);
+  \node[aero/label,above] at (1.05,0.2) {centrífuga};
+  \node[aero/smalllabel,below] at (1.6,-0.15) {sistema en rotación};
+\end{tikzpicture}
+\caption{En un sistema giratorio el peso sigue definido hacia abajo. La contribución centrífuga es un término de la ecuación~\eqref{eq:ficticias}, no un peso nuevo.}
+\label{fig:no-inercial}
+\end{figure}
+
+\section{Ecuaciones de Euler--Lagrange}
+\index{Euler-Lagrange}
+
+Para un sistema holónomo de un grado de libertad \(q\), con lagrangiano \(L=T-V\), la acción entre dos instantes fijos es \(S=\int_{t_1}^{t_2} L(q,\dot q,t)\,\mathrm{d}t\). Si \(q(t_1)\) y \(q(t_2)\) están fijados, una variación \(\delta q\) nula en los extremos da
+\[
+\delta S=\int_{t_1}^{t_2}\left(\frac{\partial L}{\partial q}\delta q+\frac{\partial L}{\partial \dot q}\delta\dot q\right)\mathrm{d}t.
+\]
+Se integra por partes el segundo término. El borde desaparece y queda
+\begin{equation}
+\label{eq:euler-lagrange}
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\partial L}{\partial \dot q}\right)-\frac{\partial L}{\partial q}=0,
+\end{equation}
+si se exige \(\delta S=0\) para toda variación admisible.\claimref{CLM-EL} Con varias coordenadas, la misma cuenta vale para cada \(q_i\), siempre que las variaciones sean independientes. Si hay una fuerza no conservativa \(Q\) en esa coordenada, el segundo miembro es \(Q\).
+
+\begin{examplebox}[Oscilador armónico]
+\(T=\tfrac12 m\dot x^2\), \(V=\tfrac12 kx^2\), \(L=T-V\). La ecuación~\eqref{eq:euler-lagrange} devuelve \(m\ddot x+kx=0\). El mismo resultado sale de Newton. El lagrangiano no añade física: cambia el camino.
+\end{examplebox}
+
+\section{Oscilaciones amortiguadas y forzadas}
+\index{resonancia}
+
+La guía pide sistemas amortiguados, forzados y resonancia \parencite{uleGuia2026}. El modelo de un grado de libertad es
+\begin{equation}
+\label{eq:oscilador}
+m\ddot x+c\dot x+kx=F\cos(\omega t),
+\end{equation}
+con \(m>0\), \(c\ge 0\) y \(k>0\). El término \(c\dot x\) es un modelo lineal de disipación, no una deducción microscópica.
+
+La solución general es la suma de la homogénea, que decae si \(c>0\), y una particular. Se busca \(x_p=D\cos(\omega t-\phi)\). El módulo es
+\begin{equation}
+\label{eq:amplitud}
+D(\omega)=\frac{F}{\sqrt{(k-m\omega^2)^2+(c\omega)^2}}.
+\end{equation}
+Para localizar el máximo se minimiza el cuadrado del denominador, \(f(\omega)=(k-m\omega^2)^2+c^2\omega^2\). La derivada se anula en \(\omega=0\) y, si \(k/m>c^2/(2m^2)\), en
+\begin{equation}
+\label{eq:resonancia}
+\omega_{\mathrm{res}}=\sqrt{\frac{k}{m}-\frac{c^2}{2m^2}}.
+\end{equation}
+Esa frecuencia maximiza el desplazamiento. La velocidad responde con otro máximo, en \(\sqrt{k/m}\), porque la potencia de la fuerza depende de \(\dot x\). Llamar resonancia sin decir qué variable se mira cambia el resultado.
+
+Si \(c=0\) y \(\omega=\sqrt{k/m}\), el denominador de \(D\) se anula y el modelo lineal sin rozamiento deja de tener solución periódica acotada: la particular crece como \(t\sin(\omega t)\).
+
+\begin{problembox}[Intermedio]
+Una masa \(m=\qty{2}{\kilogram}\) y un resorte \(k=\qty{200}{\newton\per\metre}\) tienen amortiguamiento \(c=\qty{4}{\newton\second\per\metre}\). Una fuerza de amplitud \(F=\qty{10}{\newton}\) actúa con frecuencia angular variable. Calcula \(\omega_{\mathrm{res}}\) y \(D\) en ese punto. Comprueba que el pico existe.
+\end{problembox}
+\begin{solutionbox}
+\(k/m=\qty{100}{\per\second\squared}\) y \(c^2/(2m^2)=16/(2\cdot 4)=\qty{2}{\per\second\squared}\). Como \(100>2\),
+\[
+\omega_{\mathrm{res}}=\sqrt{98}=\qty{9.90}{\per\second}
+\]
+con tres cifras, usando \(\sqrt{100}=10\) y \(\sqrt{98}=\sqrt{100\cdot 0.98}\approx 9.90\).
+En la ecuación~\eqref{eq:amplitud}, \(k-m\omega^2=c^2/(2m)=8/2=\qty{4}{\newton\per\metre}\) y \(c\omega_{\mathrm{res}}=4\cdot\sqrt{98}\approx\qty{39.6}{\newton\second\per\metre}\).
+\[
+D\approx\frac{10}{\sqrt{4^2+39.6^2}}\approx\frac{10}{39.8}\approx\qty{0.251}{\metre}.
+\]
+Sin amortiguamiento, \(D\) divergiría en \(\omega=\qty{10}{\per\second}\). El término \(c\) lo impide.
+\end{solutionbox}
+
+\section{Mapa logístico}
+\index{mapa logístico}
+
+El mapa que la guía nombra es la recurrencia
+\begin{equation}
+\label{eq:logistico}
+x_{n+1}=r x_n(1-x_n),
+\end{equation}
+con \(x_n\in[0,1]\) y \(r\in[0,4]\), de modo que la imagen no sale del intervalo. Es un modelo matemático discreto, no una ley de un fluido.
+
+Los puntos fijos cumplen \(x=rx(1-x)\). Son \(x=0\) y, si \(r\neq 0\), \(x_\star=1-1/r\). Este segundo punto está en \((0,1)\) cuando \(r>1\).
+
+La derivada es \(f'(x)=r(1-2x)\). Un punto fijo es atractivo si \(|f'(x)|<1\). En el origen, \(f'(0)=r\), así que es atractivo para \(0\le r<1\). En \(x_\star\), \(f'(x_\star)=2-r\), y \(|2-r|<1\) equivale a \(1<r<3\). En \(r=3\) esa derivada vale \(-1\) y nace el ciclo de periodo~2. No hace falta un catálogo mayor para la introducción que pide la guía. La constante de Feigenbaum no se usa: no hay en este libro un localizador consultado que la fije.
+
+\section{Tres cuerpos y Lorenz}
+
+\(N\) masas puntuales con gravedad newtoniana obedecen, en un inercial,
+\begin{equation}
+\label{eq:n-cuerpos}
+m_i\ddot{\vect{r}}_i
+=\sum_{j\neq i} G m_i m_j\frac{\vect{r}_j-\vect{r}_i}{|\vect{r}_j-\vect{r}_i|^3}.
+\end{equation}
+Para dos cuerpos el movimiento relativo se reduce a un problema de un cuerpo en \(1/r\). Para tres cuerpos esa reducción no vale con datos iniciales arbitrarios. La guía pide la introducción del problema, no un catálogo de soluciones particulares. La constante \(G\) no se necesita numéricamente mientras no haya un dato.
+
+Las ecuaciones de Lorenz son el otro ejemplo nombrado en la guía: un sistema de tres ecuaciones diferenciales ordinarias, acopladas y no lineales, usado como modelo reducido de convección. Esta edición no fija el trío numérico de parámetros. No se ha abierto la página de Lorenz de 1963 ni la página correspondiente de Strogatz \parencite{strogatz2018}, y no se va a inventar el valor. Lo que sí se exige es reconocer la diferencia entre una ecuación y su régimen: el mismo sistema puede tender a un punto fijo o separar trayectorias próximas según los parámetros, igual que el mapa logístico cambia en \(r=3\).
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item Escribe las cuatro contribuciones cinemáticas que Newton convierte en fuerzas ficticias.
+\item ¿La frecuencia~\eqref{eq:resonancia} maximiza el desplazamiento o la velocidad?
+\item Calcula \(f'(x_\star)\) del mapa logístico y explica por qué \(r=3\) es una frontera.
+\end{enumerate}

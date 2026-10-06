@@ -1,0 +1,75 @@
+\chapter{Flujos externos, internos y aplicaciones}
+\label{ch:aplicaciones}
+\index{resistencia}
+\index{sustentación}
+
+La guía agrupa en el tema~3 la estática, el movimiento de cuerpos, la resistencia y la sustentación, los conductos, Couette, Poiseuille, las oscilaciones, los aerogeneradores y los motores a reacción \parencite{uleGuia2026}. La estática y las soluciones laminares ya están derivadas. Este capítulo cierra los balances que quedan.
+
+\section{Resistencia y sustentación}
+
+Sobre un cuerpo en una corriente uniforme de velocidad \(V\) según \(x\), se llama resistencia a la componente de la fuerza aerodinámica opuesta a \(V\), y sustentación a la componente perpendicular, en el plano de interés. Los coeficientes son los de la ecuación~\eqref{eq:cd} y su análogo \(C_L\). El área \(A\) se declara: en un ala suele ser la planta; en un cuerpo romo, la sección frontal. Cambiar \(A\) cambia el número.
+
+Una fuerza de resistencia cuadrática se escribe \(F_D=\tfrac12\rho C_D A V^2\) solo después de haber definido \(C_D\). Si el enunciado da un coeficiente dimensional \(c\) tal que \(F_D=c V^2\), entonces \(c=\tfrac12\rho C_D A\) y no es adimensional. Hay que leer el nombre.
+
+\begin{examplebox}[Velocidad terminal]
+Una esfera cae en vertical. El peso es \(mg\) hacia abajo, el empuje \(\rho g V_{\mathrm{ol}}\) hacia arriba y la resistencia \(\tfrac12\rho C_D A V^2\) opuesta a la velocidad. En régimen permanente la aceleración es nula. Si baja,
+\[
+mg-\rho g V_{\mathrm{ol}}-\tfrac12\rho C_D A V_t^2=0.
+\]
+\(V_t\) sale de esa igualdad. Si \(C_D\) depende de Reynolds, la ecuación es implícita y no se despeja en un paso. Los datos que no estén en el enunciado no se inventan.
+\end{examplebox}
+
+\section{Disco actuador}
+\index{aerogenerador}
+
+Un aerogenerador ideal se modela como un disco poroso de área \(A\) que extrae cantidad de movimiento axial. Hipótesis: flujo estacionario, incompresible y sin viscosidad fuera del disco; velocidad axial uniforme en cada sección; sin giro; la presión lejos aguas arriba y aguas abajo vuelve al mismo valor \(p_\infty\); el tubo de corriente no tiene otra fuerza axial.
+
+Sean \(V_\infty\) la velocidad incidente, \(v_d\) la velocidad en el disco y \(V_w\) la de la estela lejana. Bernoulli entre el infinito de aguas arriba y la cara delantera, y entre la cara trasera y la estela, da un salto de presión
+\[
+\Delta p=\tfrac12\rho(V_\infty^2-V_w^2).
+\]
+El empuje sobre el fluido es \(T=\Delta p\, A\), hacia atrás. El balance de momento del tubo dice \(T=\rho A v_d(V_\infty-V_w)\). Igualando,
+\begin{equation}
+\label{eq:disco}
+v_d=\frac{V_\infty+V_w}{2}.
+\end{equation}
+La potencia extraída es \(P=T v_d\), porque el disco trabaja contra el fluido a la velocidad \(v_d\). Con \(a=V_w/V_\infty\in(0,1)\),
+\[
+C_P=\frac{P}{\tfrac12\rho A V_\infty^3}=\tfrac12(1-a)(1+a)^2.
+\]
+La derivada respecto de \(a\) se anula en \(a=1/3\), y
+\begin{equation}
+\label{eq:betz}
+C_{P,\max}=\frac{16}{27}.
+\end{equation}
+Es un máximo del modelo, no un rendimiento medido. Si hay giro, viscosidad o una estela no uniforme, el modelo ya no promete ese número. Un aerogenerador real queda por debajo.
+
+\section{Motor a reacción}
+
+Se usa un volumen de control fijo alrededor de un motor que traga aire y lo expulsa. Flujo estacionario, una entrada y una salida, presión lateral igual a la ambiente. El empuje sobre el motor, reacción de la fuerza que el motor hace sobre el fluido, es
+\begin{equation}
+\label{eq:empuje}
+F=\dot m_e v_e-\dot m_0 v_0+(p_e-p_a)A_e,
+\end{equation}
+con velocidades en la dirección del vuelo, \(v_e\) la de salida y \(v_0\) la de vuelo.\claimref{CLM-EMPUJE} \(\dot m_e\) incluye el combustible si se ha añadido masa. Si esa masa es despreciable frente al aire, \(\dot m_e\approx\dot m_0\). Esta fórmula no es la ecuación de un cohete de masa variable: el volumen de control no pierde la masa del vehículo.
+
+\begin{problembox}[Aplicación aeroespacial]
+Un motor en vuelo a \(v_0=\qty{200}{\metre\per\second}\) expulsa \(\dot m=\qty{80}{\kilogram\per\second}\) a \(v_e=\qty{450}{\metre\per\second}\). La presión de salida iguala a la ambiente y el gasto de combustible se desprecia. Calcula el empuje.
+\end{problembox}
+\begin{solutionbox}
+\[
+F=80\cdot(450-200)=\qty{20000}{\newton}.
+\]
+Si \(v_e\) cayera hasta \(v_0\), el empuje de esta fórmula se anularía. Si la tobera no estuviera adaptada, faltaría el término \((p_e-p_a)A_e\), que aquí es un dato nulo, no una deducción.
+\end{solutionbox}
+
+\section{Oscilaciones}
+
+El modelo lineal amortiguado y forzado está en la ecuación~\eqref{eq:oscilador}. En un fluido aparece cuando un cuerpo elástico sostiene una fuerza que depende de la velocidad, por ejemplo una resistencia linealizada alrededor de un punto de trabajo. La frecuencia~\eqref{eq:resonancia} sigue siendo la del desplazamiento. No se traslada a un modo aeroelástico sin escribir de nuevo las fuerzas: la guía pide el sistema mecánico, no un curso de flameo.
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿Qué hipótesis del disco actuador prohíbe usar \(16/27\) como rendimiento de catálogo?
+\item ¿En qué se distingue el empuje~\eqref{eq:empuje} de un cohete de masa variable?
+\item Si \(C_D\) se define con la planta y el dato venía con la sección frontal, ¿qué hay que rehacer?
+\end{enumerate}

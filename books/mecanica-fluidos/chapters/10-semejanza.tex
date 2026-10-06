@@ -1,0 +1,109 @@
+\chapter{Semejanza y análisis dimensional}
+\label{ch:semejanza}
+\index{Reynolds}
+\index{Buckingham}
+
+La guía pide semejanza geométrica y dinámica, el número de Reynolds, los coeficientes aerodinámicos y de sustentación, el factor de Darcy--Weisbach y el teorema Pi de Buckingham \parencite{uleGuia2026}.
+
+\section{Reynolds}
+\index{número de Reynolds}
+
+Se comparan dos términos de la ecuación~\eqref{eq:ns} sin gravedad ni parcial temporal: la inercia \(\rho V^2/L\) y la viscosidad \(\mu V/L^2\). Su cociente es
+\begin{equation}
+\label{eq:reynolds}
+\mathrm{Re}=\frac{\rho V L}{\mu}=\frac{V L}{\nu}.
+\end{equation}
+\claimref{CLM-RE} \(L\) es una longitud del problema y hay que nombrarla. En un tubo es el diámetro, salvo que el enunciado diga radio. Reynolds bajo significa que la viscosidad pesa más que la inercia en esa escala. Reynolds alto significa lo contrario. No es, por sí solo, un interruptor universal entre laminar y turbulento: el tránsito depende de la geometría y de las perturbaciones. La guía sí usa Reynolds para hablar de semejanza y de régimen \parencite{uleGuia2026}.
+
+\section{Teorema Pi}
+
+Sean \(n\) magnitudes ligadas por una relación física, y sea \(k\) el rango de la matriz de sus dimensiones en una base de unidades independientes. El teorema Pi afirma que la relación equivale a otra entre \(n-k\) grupos adimensionales, si las magnitudes entran mediante productos de potencias \parencite{uleGuia2026}. Los grupos no son únicos: se pueden multiplicar entre sí.\claimref{CLM-BUCKINGHAM}
+
+El procedimiento que se usa en los problemas es este.
+
+\begin{enumerate}[leftmargin=1.4em]
+\item Listar las magnitudes y sus dimensiones. No se añade una magnitud que el fenómeno no usa, ni se omite una que cambia el resultado.
+\item Elegir \(k\) magnitudes repetidoras que no formen entre ellas un grupo adimensional y que arrastren todas las dimensiones básicas.
+\item Cada magnitud restante aporta un grupo. Se ajustan los exponentes para que el grupo no tenga dimensiones.
+\item La relación entre grupos se deja sin determinar. El teorema no da la función.
+\end{enumerate}
+
+\begin{examplebox}[Resistencia]
+Se supone \(F=f(\rho,V,L,\mu)\). Hay cinco magnitudes y tres dimensiones, M, L y T. Salen dos grupos. Con repetidoras \(\rho\), \(V\) y \(L\),
+\[
+\Pi_1=\frac{F}{\rho V^2 L^2},
+\qquad
+\Pi_2=\frac{\mu}{\rho V L}=\frac{1}{\mathrm{Re}}.
+\]
+Luego \(F=\rho V^2 L^2\,\Phi(\mathrm{Re})\). El coeficiente
+\begin{equation}
+\label{eq:cd}
+C_D=\frac{F_D}{\tfrac12\rho V^2 A}
+\end{equation}
+es ese grupo, escrito con el convenio \(\tfrac12\) y con un área \(A\) declarada.\claimref{CLM-CD} El teorema no calcula \(\Phi\). La sustentación se adimensionaliza igual y define \(C_L\).
+\end{examplebox}
+
+\section{Darcy--Weisbach}
+
+En un tubo de diámetro \(D\) y longitud \(L\), el balance axial entre caída de presión y cortante de pared es
+\[
+\Delta p\,\frac{\pi D^2}{4}=\tau_w\,\pi D L,
+\]
+así que \(\tau_w=(\Delta p) D/(4L)\). Se define el factor de Darcy por
+\begin{equation}
+\label{eq:darcy-def}
+\tau_w=f\frac{\rho V^2}{8}.
+\end{equation}
+Entonces
+\begin{equation}
+\label{eq:darcy}
+\frac{\Delta p}{\rho g}=f\frac{L}{D}\frac{V^2}{2g}.
+\end{equation}
+\claimref{CLM-DARCY} El \(8\) del denominador está elegido para que aparezca \(V^2/(2g)\), la misma carga cinética de Bernoulli. Otro convenio, el de Fanning, mueve un factor \(4\) y no se usa aquí.
+
+En régimen laminar de tubo circular, \(V=Q/(\pi R^2)\) y la ecuación~\eqref{eq:caudal-poiseuille} dan \(\Delta p=(8\mu L V)/R^2\). Con \(D=2R\),
+\[
+f=\frac{64}{\mathrm{Re}_D},
+\qquad
+\mathrm{Re}_D=\frac{\rho V D}{\mu}.
+\]
+Esta fórmula muere cuando el régimen deja de ser el de Poiseuille. En turbulento, \(f\) sigue dependiendo de Reynolds y de la rugosidad relativa, y esa función no se deriva en este capítulo: habría que medirla o citar una correlación con su dominio. No se copia un ábaco.
+
+\begin{problembox}[Tipo examen, original]
+Un desagüe laminar de longitud \(L=\qty{2}{\metre}\) y diámetro \(D=\qty{4}{\milli\metre}\) lleva un líquido de \(\rho=\qty{900}{\kilogram\per\cubic\metre}\) y \(\mu=\qty{0.02}{\pascal\second}\) a velocidad media \(V=\qty{0.5}{\metre\per\second}\). Calcula \(\mathrm{Re}_D\), comprueba que la fórmula laminar es el modelo coherente con Reynolds bajo, y obtén \(\Delta p\).
+\end{problembox}
+\begin{solutionbox}
+\[
+\mathrm{Re}_D=\frac{900\cdot 0.5\cdot 0.004}{0.02}=90.
+\]
+Está muy por debajo de los miles en los que un tubo liso suele transicionar. Se usa \(f=64/90=0.711\).
+\[
+\Delta p=f\frac{L}{D}\frac{\rho V^2}{2}
+=0.711\cdot\frac{2}{0.004}\cdot\frac{900\cdot 0.25}{2}
+=0.711\cdot 500\cdot 112.5
+=\qty{4.00e4}{\pascal}.
+\]
+Comprobación con Poiseuille: \(R=\qty{0.002}{\metre}\), \(\Delta p=8\mu L V/R^2=8\cdot 0.02\cdot 2\cdot 0.5 / 4\cdot 10^{-6}=\qty{4.00e4}{\pascal}\). Coinciden. Si alguien usa el radio como longitud de Reynolds y además \(f=64/\mathrm{Re}\), el factor deja de ser el de esta definición.
+\end{solutionbox}
+
+\section{Semejanza}
+
+Dos flujos del mismo \(\Phi\) son dinámicamente semejantes, para este fenómeno, cuando sus grupos Pi coinciden y la geometría es semejante. Igualar solo Reynolds y cambiar la forma del cuerpo no basta. Igualar la geometría y cambiar Reynolds tampoco.
+
+\begin{problembox}[Aplicación]
+La fuerza de resistencia de un cuerpo depende de \(\rho\), \(V\), \(L\) y \(\mu\). Un modelo a escala \(1:10\) se ensaya en el mismo fluido. ¿Qué relación han de guardar las velocidades para igualar Reynolds? ¿Qué le ocurre entonces al cociente de fuerzas?
+\end{problembox}
+\begin{solutionbox}
+\(\rho\) y \(\mu\) no cambian, así que \(V_m L_m=V_p L_p\). Con \(L_m=L_p/10\), \(V_m=10 V_p\). Como \(C_D\) depende solo de Reynolds en la lista de variables supuesta, \(C_D\) coincide y
+\[
+\frac{F_m}{F_p}=\frac{\rho V_m^2 L_m^2}{\rho V_p^2 L_p^2}=\frac{100}{100}=1.
+\]
+La fuerza del modelo iguala a la del prototipo bajo estas hipótesis. Si el fluido del ensayo fuera otro, o si apareciera la gravedad como variable, el resultado cambiaría: faltaría otro grupo.
+\end{solutionbox}
+
+\section{Autoevaluación}
+\begin{enumerate}[leftmargin=1.4em]
+\item ¿Qué no entrega el teorema Pi?
+\item ¿Por qué \(f=64/\mathrm{Re}_D\) lleva el diámetro en Reynolds?
+\item Escribe \(C_D\) y di qué área hay que declarar.
+\end{enumerate}
