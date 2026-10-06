@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/release-manifest.schema.json",
+  "title": "AeroBooks Release Manifest",
+  "type": "object",
+  "required": [
+    "schema_version", "book", "edition_number", "edition_name",
+    "framework_version", "academic_tool_version",
+    "generated_at", "tree_sha256", "files"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "book": {"type": "string"},
+    "title": {"type": ["string", "null"]},
+    "edition_number": {"type": ["integer", "null"]},
+    "edition_name": {"type": ["string", "null"]},
+    "framework_version": {"type": "string"},
+    "academic_tool_version": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "tree_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256", "bytes"],
+        "properties": {
+          "path": {"type": "string"},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
