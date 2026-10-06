@@ -567,9 +567,11 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
 
     protocol_files = [
         framework_dir() / "ai" / "AI_AUTHORING_PROTOCOL.md",
+        framework_dir() / "ai" / "AI_WORKFLOW.md",
         framework_dir() / "ai" / "SOURCE_POLICY.md",
         framework_dir() / "ai" / "FACT_CHECK_PROTOCOL.md",
         framework_dir() / "ai" / "LATEX_PROTOCOL.md",
+        framework_dir() / "ai" / "RELEASE_GATE.md",
         repo_root() / "shared" / "STYLE_GUIDE.md",
     ]
     for path in protocol_files:
