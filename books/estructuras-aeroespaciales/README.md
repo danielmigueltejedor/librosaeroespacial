@@ -52,6 +52,39 @@ Para crear un paquete único de contexto:
 aerobooks ai-pack estructuras-aeroespaciales
 ```
 
+## Trazabilidad académica
+
+La Tercera edición sirve también como implementación de referencia de AeroBooks 0.2:
+
+```text
+specs/                 contratos de capítulos
+evidence/map.jsonl     claim → evidencia → fuente/localizador
+claims/ledger.jsonl    afirmaciones críticas
+sources/manifest.json  universo de fuentes
+reviews/               revisiones independientes
+release/               manifests reproducibles
+```
+
+Para saber cuál es el siguiente paso:
+
+```bash
+aerobooks-ai next estructuras-aeroespaciales
+```
+
+Para revisar la cobertura:
+
+```bash
+aerobooks-ai coverage estructuras-aeroespaciales --strict
+```
+
+Cuando llegue la revisión de la edición:
+
+```bash
+aerobooks-ai review-suite estructuras-aeroespaciales
+```
+
+El framework añadirá automáticamente revisiones de matemáticas, unidades, derivaciones, figuras y ejercicios porque este libro contiene esos tipos de contenido.
+
 ## Comprobación
 
 ```bash
