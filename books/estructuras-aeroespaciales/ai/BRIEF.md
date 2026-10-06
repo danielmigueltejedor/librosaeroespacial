@@ -74,7 +74,7 @@ La corrección de enero de 2025 se usa como fuente **Tier D**:
 - no reproducir de forma sustitutiva;
 - no inferir estadísticas de frecuencia a partir de un único examen.
 
-## Estilo
+## Perfil didáctico
 
 - libro universitario, no apuntes rápidos;
 - español claro y técnico;
