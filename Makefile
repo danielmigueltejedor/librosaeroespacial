@@ -1,7 +1,8 @@
 BOOK ?= estructuras-aeroespaciales
+ROLE ?= scientific
 PYTHON ?= python3
 
-.PHONY: install doctor list new sync ai-pack check audit book clean
+.PHONY: install doctor list new sync ai-pack review-pack check audit book clean
 
 install:
 	$(PYTHON) -m pip install -e .
@@ -20,6 +21,9 @@ sync:
 
 ai-pack:
 	$(PYTHON) -m framework.aerobooks.cli ai-pack $(BOOK)
+
+review-pack:
+	$(PYTHON) -m framework.aerobooks.cli review-pack $(BOOK) $(ROLE)
 
 check:
 	$(PYTHON) -m framework.aerobooks.cli check $(BOOK)
