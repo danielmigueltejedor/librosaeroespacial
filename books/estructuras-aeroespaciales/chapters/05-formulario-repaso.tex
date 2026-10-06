@@ -1,0 +1,127 @@
+\chapter*{Cómo usar el formulario}\addcontentsline{toc}{chapter}{Cómo usar el formulario}
+El formulario no sustituye a las hipótesis. Cada ecuación debe asociarse a su significado, unidades, convenio de signos y dominio de validez. Esta edición adopta como idea organizadora el esquema \emph{diagrama de cuerpo libre $\rightarrow$ equilibrio $\rightarrow$ compatibilidad $\rightarrow$ relación constitutiva}, en línea con el enfoque docente de TU Delft.\autocite{tudelft-four-principles}
+
+% ============================================================
+
+\safechapter{Formulario esencial}
+
+\Needspace{5\baselineskip}\section*{Estática}
+\[
+\boxed{\sum F_x=0,\qquad \sum F_y=0,\qquad \sum M=0}
+\]
+
+\Needspace{5\baselineskip}\section*{Resultante distribuida}
+\[
+\boxed{Q=\int q(x)\dd x}
+\]
+\[
+\boxed{\bar x=\frac{\int xq(x)\dd x}{\int q(x)\dd x}}
+\]
+
+\Needspace{5\baselineskip}\section*{Tensión}
+\[
+\boxed{\vect t^{(\vect n)}=\lim_{\Delta A\to0}\frac{\Delta\vect F}{\Delta A}}
+\]
+\[
+\boxed{\vect t^{(\vect n)}=\mat\sigma\vect n}
+\]
+\[
+\boxed{\sigma=\frac{N}{A}\quad\text{(axil uniforme)}}
+\]
+
+\Needspace{5\baselineskip}\section*{Deformación}
+\[
+\boxed{\varepsilon=\frac{\Delta L}{L_0}}
+\]
+\[
+\boxed{\varepsilon_{\mathrm{real}}=\ln\left(\frac{L}{L_0}\right)}
+\]
+\[
+\boxed{\varepsilon_{ij}=\frac12(u_{i,j}+u_{j,i})}
+\]
+
+\Needspace{5\baselineskip}\section*{Hooke}
+\[
+\boxed{\sigma=E\varepsilon}
+\]
+\[
+\boxed{\Delta L=\frac{NL}{EA}}
+\]
+para $N$, $E$, $A$ constantes.
+
+\Needspace{5\baselineskip}\section*{Equilibrio interno}
+\[
+\boxed{\frac{\dd N}{\dd x}=-q_x},\qquad
+\boxed{\frac{\dd V}{\dd x}=-q_y}
+\]
+\[
+\boxed{\frac{\dd M}{\dd x}=V},\qquad
+\boxed{\frac{\dd^2M}{\dd x^2}=-q_y}
+\]
+
+\Needspace{5\baselineskip}\section*{Signos del curso}
+\[
+\boxed{N>0\Rightarrow\text{tracción}}
+\]
+\[
+\boxed{V>0\Rightarrow\text{levanta cara izquierda}}
+\]
+\[
+\boxed{M>0\Rightarrow\text{comprime arriba}}
+\]
+
+\Needspace{5\baselineskip}\section*{Relaciones cualitativas}
+\[
+q=0\Rightarrow V=\text{cte.}\Rightarrow M=\text{lineal}
+\]
+\[
+q=\text{cte.}\Rightarrow V=\text{lineal}\Rightarrow M=\text{parabólico}
+\]
+\[
+q=\text{lineal}\Rightarrow V=\text{parabólico}\Rightarrow M=\text{cúbico}
+\]
+\[
+V=0\Rightarrow M\text{ posee un extremo local}.
+\]
+
+% ============================================================
+\safechapter{Preguntas rápidas de autoevaluación}
+% ============================================================
+
+Intenta responderlas verbalmente antes de consultar la respuesta.
+
+\Needspace{5\baselineskip}\section*{1. ¿Qué diferencia hay entre una tensión y un esfuerzo interno?}
+El esfuerzo interno es una resultante sobre una sección. La tensión es una magnitud local por unidad de área.
+
+\Needspace{5\baselineskip}\section*{2. ¿Por qué necesitamos una ley constitutiva?}
+Porque equilibrio y compatibilidad no relacionan por sí solos tensión y deformación.
+
+\Needspace{5\baselineskip}\section*{3. ¿Qué significa material homogéneo?}
+Que sus propiedades no dependen de la posición.
+
+\Needspace{5\baselineskip}\section*{4. ¿Qué significa material isótropo?}
+Que sus propiedades no dependen de la dirección.
+
+\Needspace{5\baselineskip}\section*{5. ¿Cuándo puedo utilizar superposición?}
+Cuando el modelo pueda considerarse lineal.
+
+\Needspace{5\baselineskip}\section*{6. ¿Qué momento transmite una rótula ideal?}
+\[
+\boxed{M=0}.
+\]
+
+\Needspace{5\baselineskip}\section*{7. ¿Qué significa $M'=V$?}
+Que el cortante es la pendiente del diagrama de momentos.
+
+\Needspace{5\baselineskip}\section*{8. Si $V$ es constante, ¿cómo es $M$?}
+Lineal.
+
+\Needspace{5\baselineskip}\section*{9. Si $M$ tiene un máximo suave, ¿qué vale $V$ allí?}
+\[
+\boxed{V=0}.
+\]
+
+\Needspace{5\baselineskip}\section*{10. ¿Por qué los esfuerzos de una estructura isostática no necesitan $E$ ni $I$ para cargas mecánicas ordinarias?}
+Porque pueden obtenerse únicamente mediante equilibrio.
+
+% ============================================================
