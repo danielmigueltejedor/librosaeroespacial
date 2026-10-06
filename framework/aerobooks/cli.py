@@ -617,6 +617,60 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
     return output
 
 
+REVIEW_PROMPTS = {
+    "author": "MASTER_AUTHOR.md",
+    "source": "SOURCE_AUDITOR.md",
+    "outline": "OUTLINE_ARCHITECT.md",
+    "scientific": "SCIENTIFIC_REVIEWER.md",
+    "historical": "HISTORICAL_REVIEWER.md",
+    "mathematical": "MATHEMATICAL_REVIEWER.md",
+    "citation": "CITATION_AUDITOR.md",
+    "latex": "LATEX_EDITOR.md",
+    "release": "RELEASE_REVIEWER.md",
+    "exact": "EXACT_REPRODUCER.md",
+}
+
+
+def make_review_pack(slug: str, role: str, output: Path | None = None) -> Path:
+    if role not in REVIEW_PROMPTS:
+        raise SystemExit(
+            f"Rol desconocido '{role}'. Roles: {', '.join(sorted(REVIEW_PROMPTS))}"
+        )
+
+    ai_context = make_ai_pack(slug)
+    prompt_path = framework_dir() / "prompts" / REVIEW_PROMPTS[role]
+    if not prompt_path.exists():
+        raise SystemExit(f"No existe el prompt {prompt_path}")
+
+    root, config = load_book(slug)
+    if output is None:
+        output = root / "build" / "reviews" / f"{role.upper()}_CONTEXT.md"
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    content = [
+        f"# AeroBooks Review Pack — {role}",
+        "",
+        f"Libro: {config.get('book', {}).get('title', slug)}",
+        "",
+        "## ROL ESPECIALIZADO",
+        "",
+        prompt_path.read_text(encoding="utf-8").rstrip(),
+        "",
+        "## CONTEXTO CANÓNICO",
+        "",
+        ai_context.read_text(encoding="utf-8").rstrip(),
+        "",
+        "## CONTRATO DE SALIDA",
+        "",
+        "Cuando el rol sea de revisión, devuelve findings concretos. "
+        "Si produces JSON, usa framework/schemas/review-report.schema.json. "
+        "No declares PASS si quedan blockers o claims críticos pendientes.",
+        "",
+    ]
+    output.write_text("\n".join(content), encoding="utf-8")
+    return output
+
+
 def replace_toml_scalar(path: Path, section: str, key: str, value: str | int) -> None:
     text = path.read_text(encoding="utf-8")
     lines = text.splitlines()
@@ -753,6 +807,13 @@ def cmd_ai_pack(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review_pack(args: argparse.Namespace) -> int:
+    output = Path(args.output) if args.output else None
+    path = make_review_pack(args.slug, args.role, output=output)
+    print(f"✓ Review context: {path}")
+    return 0
+
+
 def cmd_edition(args: argparse.Namespace) -> int:
     set_edition(args.slug, args.number, args.date)
     return 0
@@ -801,6 +862,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("slug")
     p.add_argument("--output")
     p.set_defaults(func=cmd_ai_pack)
+
+    p = sub.add_parser("review-pack", help="Generar contexto especializado para una IA revisora.")
+    p.add_argument("slug")
+    p.add_argument(
+        "role",
+        choices=sorted(REVIEW_PROMPTS),
+        help="Rol: author/source/outline/scientific/historical/mathematical/citation/latex/release/exact",
+    )
+    p.add_argument("--output")
+    p.set_defaults(func=cmd_review_pack)
 
     p = sub.add_parser("edition", help="Cambiar la edición editorial del libro.")
     p.add_argument("slug")
