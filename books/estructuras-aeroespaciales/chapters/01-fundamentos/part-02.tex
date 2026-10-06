@@ -1,0 +1,120 @@
+
+Por ello construimos un \textbf{modelo estructural}.
+
+Modelizar significa conservar aquello que domina la respuesta mecánica y eliminar detalles secundarios.
+
+Por ejemplo:
+\[
+\text{ala real}\longrightarrow\text{viga equivalente}
+\]
+
+o
+\[
+\text{larguero}\longrightarrow\text{barra de directriz recta}.
+\]
+
+\begin{ojo}
+Un modelo no es una copia exacta de la realidad. Es una \textbf{idealización útil} de la realidad.
+\end{ojo}
+
+% ============================================================
+\safechapter{Sólido rígido, sólido deformable e hipótesis básicas}
+% ============================================================
+
+\safesection{Sólido rígido}
+Un sólido rígido es una idealización en la que las distancias entre sus puntos permanecen constantes.
+
+Las fuerzas pueden producir traslación y rotación, pero no cambio de forma.
+
+La estática elemental estudia principalmente el equilibrio de este modelo mediante
+\[
+\sum F_x=0,\qquad \sum F_y=0,\qquad \sum M=0.
+\]
+
+\safesection{Sólido deformable}
+Una estructura real se deforma cuando está cargada.
+
+En un sólido elástico ideal, una vez retirada la carga que originó la deformación, el sólido recupera su configuración inicial.
+
+La Teoría de Estructuras necesita, por tanto, añadir al equilibrio:
+\[
+\text{cinemática}+\text{ley constitutiva}
+\]
+porque ahora queremos conocer no solo si el cuerpo está en equilibrio, sino también cómo se deforma.
+
+\safesection{Hipótesis de comportamiento lineal}
+En este bloque se trabaja fundamentalmente con un modelo de \textbf{elasticidad lineal}.
+
+Las hipótesis esenciales son:
+\begin{enumerate}
+  \item desplazamientos suficientemente pequeños;
+  \item deformaciones suficientemente pequeñas;
+  \item comportamiento material elástico y lineal.
+\end{enumerate}
+
+Con ellas podemos plantear muchas ecuaciones sobre la geometría no deformada.
+
+\begin{idea}
+Hay dos linealidades diferentes:
+\[
+\text{linealidad geométrica}
+\]
+asociada a pequeños desplazamientos/deformaciones, y
+\[
+\text{linealidad material}
+\]
+asociada a una relación lineal entre tensión y deformación.
+\end{idea}
+
+\safesection{Material homogéneo e isótropo}
+\safesubsection{Homogeneidad}
+Un material homogéneo posee las mismas propiedades en todos sus puntos.
+\[
+E(\vect{x})=E=\text{cte.}
+\]
+
+\safesubsection{Isotropía}
+Un material isótropo posee las mismas propiedades mecánicas en todas las direcciones.
+
+\begin{ojo}
+\textbf{Homogéneo} e \textbf{isótropo} no significan lo mismo.
+
+Un material puede ser homogéneo y anisótropo, como ocurre aproximadamente en muchas láminas de material compuesto.
+\end{ojo}
+
+\safesection{Problema estático e isotermo}
+En el modelo básico se considera:
+\begin{itemize}
+  \item un problema cuasiestático, sin efectos inerciales relevantes;
+  \item temperatura constante o ausencia de deformaciones térmicas.
+\end{itemize}
+Esto permite centrarnos en la respuesta mecánica debida a cargas.
+
+\safesection{Principio de superposición}
+Si el problema es lineal, la respuesta producida por varias cargas puede obtenerse sumando las respuestas individuales.
+
+Si
+\[
+\mathcal{L}(u_1)=F_1,\qquad \mathcal{L}(u_2)=F_2,
+\]
+y $\mathcal{L}$ es lineal,
+\[
+\mathcal{L}(u_1+u_2)=F_1+F_2.
+\]
+Por tanto,
+\[
+u(F_1+F_2)=u(F_1)+u(F_2).
+\]
+
+Lo mismo puede aplicarse a reacciones, esfuerzos, tensiones y deformaciones.
+
+\begin{errorbox}
+No puedes utilizar superposición sin comprobar primero que el problema pueda considerarse lineal.
+\end{errorbox}
+
+\safesection{Principio de Saint-Venant}
+\index{Saint-Venant, principio de}El principio de Saint-Venant permite sustituir una distribución complicada de carga por otra estáticamente equivalente cuando estudiamos puntos suficientemente alejados de la zona donde se aplica.
+
+Lo importante lejos de la zona local es conservar:
+\[
+\text{resultante de fuerzas}\qquad\text{y}\qquad\text{resultante de momentos}.
