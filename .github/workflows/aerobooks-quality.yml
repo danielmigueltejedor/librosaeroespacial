@@ -26,6 +26,9 @@ jobs:
       - name: Doctor
         run: aerobooks --version
 
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
       - name: Static checks
         shell: bash
         run: |
