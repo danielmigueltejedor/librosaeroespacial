@@ -1,0 +1,120 @@
+\begin{tip}
+Elige el lado del corte que tenga \textbf{menos cargas y menos incógnitas}. No existe premio por escoger siempre el lado izquierdo.
+\end{tip}
+
+% ============================================================
+\safechapter{Equilibrio interno y leyes de esfuerzos}
+% ============================================================
+
+\safesection{Rebanada diferencial}
+Consideremos una barra recta sometida a cargas distribuidas:
+\[
+q_x(x),\qquad q_y(x).
+\]
+Tomamos una rebanada de longitud $\dd x$.
+
+En una cara actúan
+\[
+N_x(x),\qquad C_y(x),\qquad M_z(x)
+\]
+y en la otra
+\[
+N_x+\dd N_x,\qquad C_y+\dd C_y,\qquad M_z+\dd M_z.
+\]
+
+\safesection{Equilibrio axial}
+Aplicando equilibrio en $x$:
+\[
+N_x+\dd N_x-N_x+q_x\dd x=0.
+\]
+Dividiendo por $\dd x$:
+\[
+\frac{\dd N_x}{\dd x}=-q_x(x).
+\]
+
+\safesection{Equilibrio transversal}
+Con la convención de signos del curso:
+\[
+\frac{\dd C_y}{\dd x}=-q_y(x).
+\]
+
+\safesection{Equilibrio de momentos}
+Despreciando términos de segundo orden:
+\[
+\frac{\dd M_z}{\dd x}=C_y(x),
+\]
+y, combinando:
+\[
+\frac{\dd^2M_z}{\dd x^2}=-q_y(x).
+\]
+
+\safesection{Interpretación geométrica}
+De
+\[
+\frac{\dd M}{\dd x}=V
+\]
+se deduce:
+\flowbox{$V$ = pendiente del diagrama de momentos}
+
+Por tanto, $V=0$ indica un extremo local de $M$.
+
+Además:
+\[
+\frac{\dd V}{\dd x}=-q.
+\]
+Así:
+\flowbox{$q$ = menos la pendiente del diagrama de cortantes}
+
+\safesection{Regla de grados}
+Si $q(x)$ es un polinomio de grado $n$, entonces, dentro de un tramo sin cargas concentradas:
+\[
+q(x)\sim x^n,
+\qquad
+V(x)\sim x^{n+1},
+\qquad
+M(x)\sim x^{n+2}.
+\]
+
+\begin{table}[htbp]
+\centering
+\caption{Relación entre el grado de la carga distribuida y la forma de las leyes de cortante y momento.}
+\label{tab:regla-grados-qvm}
+\begin{tabular}{ccc}
+\toprule
+Carga $q$ & Cortante $V$ & Momento $M$\\
+\midrule
+$0$ & constante & lineal\\
+constante & lineal & parabólico\\
+lineal & parabólico & cúbico\\
+cuadrático & cúbico & grado 4\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{tip}
+Esta tabla permite dibujar muchas leyes \textbf{a estima} sin resolver completamente las ecuaciones.
+\end{tip}
+
+\safesection{Discontinuidades}
+Una carga puntual transversal produce un salto en $V$. Un momento puntual produce un salto en $M$. Una carga repartida finita no produce saltos: cambia la pendiente.
+
+\[
+\text{fuerza puntual}\longrightarrow\text{salto en cortante}
+\]
+\[
+\text{momento puntual}\longrightarrow\text{salto en momento}
+\]
+
+\safesection{Condiciones en puntos especiales}
+
+\safesubsection{Extremo libre}
+Si no hay carga aplicada justo en el extremo:
+\[
+N=0,\qquad V=0,\qquad M=0.
+\]
+
+\safesubsection{Rótula interna}
+Una rótula no transmite momento:
+\[
+M=0.
+\]
