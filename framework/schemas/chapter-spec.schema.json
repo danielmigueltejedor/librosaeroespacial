@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/chapter-spec.schema.json",
+  "title": "AeroBooks Chapter Spec",
+  "type": "object",
+  "required": [
+    "schema_version", "id", "title", "path", "status",
+    "objectives", "prerequisites", "sources", "claims",
+    "derivations", "figures", "exercises"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "id": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "path": {"type": "string", "minLength": 1},
+    "status": {"enum": ["planned", "draft", "review", "ready"]},
+    "objectives": {"type": "array", "items": {"type": "string"}},
+    "prerequisites": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "claims": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "derivations": {"type": "array", "items": {"type": "string"}},
+    "figures": {"type": "array", "items": {"type": "string"}},
+    "exercises": {"type": "array", "items": {"type": "string"}},
+    "historical_scope": {"type": "boolean"},
+    "notes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": false
+}
