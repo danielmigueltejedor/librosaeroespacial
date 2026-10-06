@@ -698,6 +698,34 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
     if claims_path.exists():
         sections.append(("LEDGER DE CLAIMS", claims_path.read_text(encoding="utf-8")))
 
+    evidence_path = root / "evidence" / "map.jsonl"
+    if evidence_path.exists():
+        sections.append(("MAPA DE EVIDENCIA", evidence_path.read_text(encoding="utf-8")))
+
+    conflicts_path = root / "sources" / "conflicts.jsonl"
+    if conflicts_path.exists():
+        sections.append(("CONFLICTOS ENTRE FUENTES", conflicts_path.read_text(encoding="utf-8")))
+
+    specs_dir = root / "specs"
+    if specs_dir.exists():
+        spec_chunks = []
+        for spec_path in sorted(specs_dir.glob("*.json")):
+            spec_chunks.append(
+                f"### {spec_path.name}\n\n"
+                + spec_path.read_text(encoding="utf-8").rstrip()
+            )
+        if spec_chunks:
+            sections.append(("CHAPTER SPECS", "\n\n".join(spec_chunks)))
+
+    reviews_dir = root / "reviews"
+    if reviews_dir.exists():
+        review_index = "\n".join(
+            f"- {p.relative_to(root)}"
+            for p in sorted(reviews_dir.glob("*.json"))
+        )
+        if review_index:
+            sections.append(("REVISIONES REGISTRADAS", review_index))
+
     chapters = "\n".join(
         f"- {p.relative_to(root)}" for p in sorted((root / "chapters").rglob("*.tex"))
     )
