@@ -5,20 +5,30 @@
 % ============================================================
 \newcommand{\BookTitle}{Título del libro}
 \newcommand{\BookTitleShort}{Título corto}
+\newcommand{\BookTitleDisplay}{Título\\del libro}
 \newcommand{\BookSubtitle}{Subtítulo}
 \newcommand{\BookVolume}{Volumen I}
 \newcommand{\BookVolumeSubtitle}{Subtítulo del volumen}
 \newcommand{\BookAuthor}{Daniel Miguel Tejedor}
 \newcommand{\BookEdition}{Primera edición}
 \newcommand{\BookDate}{Mes de año}
+\newcommand{\BookProgramme}{Grado en Ingeniería Aeroespacial}
+\newcommand{\BookInstitution}{Universidad de León}
+\newcommand{\BookLegalNotice}{Edición de estudio independiente.}
 
-% Copia el estilo base a style/book.sty o adáptalo desde shared/.
 \usepackage{style/book}
 
-\begin{document}
+% Cada libro aporta únicamente su figura técnica.
+\newcommand{\BookCoverGraphic}{%
+  \begin{tikzpicture}
+    % figura técnica específica del libro
+  \end{tikzpicture}%
+}
 
-% Portada: mantener la misma jerarquía visual de la colección.
-% Añadir una figura técnica específica del libro, no decorativa.
+\begin{document}
+\hypersetup{pageanchor=false}
+\input{../../shared/templates/cover}
+\hypersetup{pageanchor=true}
 
 \frontmatter
 \tableofcontents
