@@ -1,0 +1,120 @@
+\chapter*{Fuentes y alcance de esta parte}\addcontentsline{toc}{chapter}{Fuentes y alcance de esta parte}
+La modelización unidimensional y las leyes de esfuerzos siguen prioritariamente las convenciones de las transparencias del curso. Para el método de resolución se contrastan además los cuatro principios de mecánica de materiales de TU Delft y los capítulos abiertos de equilibrio, esfuerzos internos y tensión de MIT OCW.\autocite{lanza-temas12b,tudelft-four-principles,bucciarelli2002}
+
+% ============================================================
+
+\safechapter{Modelización de barras y secciones}
+
+\safesection{Pieza prismática}
+Una barra puede construirse conceptualmente trasladando una sección $S$ a lo largo de una curva llamada \textbf{directriz}.
+
+En una barra recta:
+\[
+x\in[0,L]
+\]
+es la coordenada natural a lo largo de la directriz.
+
+\safesection{Sección y rebanada}
+Una sección transversal es un corte normal a la directriz.
+
+Dos secciones próximas separadas una distancia $\dd x$ delimitan una \textbf{rebanada diferencial}.
+
+\flowbox{rebanada = porción de barra entre $x$ y $x+\dd x$}
+
+Esta idea permite obtener las ecuaciones de equilibrio interno.
+
+\safesection{Cara frontal y cara dorsal}
+Cada corte genera dos caras.
+
+Las acciones internas que una parte de la barra ejerce sobre la otra son iguales y opuestas, de acuerdo con acción y reacción.
+
+Por eso un mismo esfuerzo interno aparece con flechas opuestas en las dos caras de la rebanada.
+
+% ============================================================
+\safechapter{Cargas exteriores}
+% ============================================================
+
+\safesection{Cargas puntuales}
+Una fuerza concentrada se representa por $P$, con unidades de fuerza, por ejemplo $\mathrm{N}$ o $\mathrm{kN}$.
+
+\safesection{Cargas distribuidas}
+Una carga distribuida sobre una barra se representa mediante $q(x)$ y posee unidades
+\[
+\frac{\mathrm{fuerza}}{\mathrm{longitud}},
+\]
+por ejemplo $\mathrm{kN/m}$.
+
+\safesection{Resultante equivalente}
+La resultante de una carga distribuida es
+\[
+Q=\int_a^b q(x)\dd x
+\]
+y actúa en el centroide de la distribución:
+\[
+\bar x=
+\frac{\displaystyle\int_a^b xq(x)\dd x}
+{\displaystyle\int_a^b q(x)\dd x}.
+\]
+
+\begin{tip}
+No memorices diez posiciones de centroides si sabes hacer estas dos integrales.
+\end{tip}
+
+\safesection{Casos importantes}
+
+\safesubsection{Carga uniforme}
+\[
+q(x)=q_0,
+\qquad
+Q=q_0L,
+\qquad
+\bar x=\frac{L}{2}.
+\]
+
+\safesubsection{Carga triangular}
+Si
+\[
+q(x)=q_0\left(1-\frac{x}{L}\right),
+\]
+con el máximo en $x=0$:
+\[
+Q=\frac{q_0L}{2},
+\qquad
+\bar x=\frac{L}{3},
+\]
+medida desde el extremo de máxima intensidad.
+
+\safesubsection{Carga parabólica cuadrática}
+Si
+\[
+q(x)=q_0\left(1-\frac{x}{L}\right)^2,
+\]
+entonces
+\[
+Q=\frac{q_0L}{3},
+\qquad
+\bar x=\frac{L}{4}.
+\]
+
+\safesubsection{Otra parábola habitual}
+Si
+\[
+q(x)=q_0\left[1-\left(\frac{x}{L}\right)^2\right],
+\]
+entonces
+\[
+Q=\frac{2q_0L}{3},
+\qquad
+\bar x=\frac{3L}{8}.
+\]
+
+% ============================================================
+\safechapter{Vinculaciones exteriores y reacciones}
+% ============================================================
+
+\safesection{Apoyo móvil o carrito}
+En un problema plano sobre una superficie horizontal:
+\[
+\text{1 reacción}
+\]
+normal a la superficie.
