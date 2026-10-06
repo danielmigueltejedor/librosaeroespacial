@@ -3,22 +3,79 @@
   "$id": "https://aerobooks.local/schemas/claim.schema.json",
   "title": "AeroBooks claim ledger item",
   "type": "object",
-  "required": ["id", "claim", "type", "risk", "status", "sources"],
+  "required": [
+    "id",
+    "claim",
+    "type",
+    "risk",
+    "status",
+    "sources"
+  ],
   "properties": {
-    "id": {"type": "string"},
-    "claim": {"type": "string"},
+    "id": {
+      "type": "string"
+    },
+    "claim": {
+      "type": "string"
+    },
     "type": {
       "enum": [
-        "scientific", "mathematical", "historical", "biographical",
-        "numerical", "definition", "exam_pattern", "interpretation",
-        "derived_result"
+        "scientific",
+        "mathematical",
+        "historical",
+        "biographical",
+        "numerical",
+        "definition",
+        "exam_pattern",
+        "interpretation",
+        "derived_result",
+        "regulatory",
+        "statistical",
+        "experimental",
+        "computational",
+        "institutional",
+        "terminological",
+        "safety"
       ]
     },
-    "risk": {"enum": ["low", "medium", "high"]},
-    "status": {"enum": ["verified", "derived", "pending", "rejected"]},
-    "sources": {"type": "array", "items": {"type": "string"}},
-    "derivation": {"type": ["string", "null"]},
-    "scope": {"type": ["string", "null"]},
-    "notes": {"type": ["string", "null"]}
+    "risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "status": {
+      "enum": [
+        "verified",
+        "derived",
+        "pending",
+        "rejected"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "derivation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   }
 }
