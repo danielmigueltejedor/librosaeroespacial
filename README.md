@@ -222,3 +222,34 @@ aerodinamica-ed2
 ## PDFs
 
 El repositorio principal guarda código fuente y recursos editoriales. Los PDFs finales deben publicarse como releases o artefactos para no mezclar archivos generados con las fuentes.
+
+## Flujo de máxima calidad para IA
+
+Para trabajo serio sobre un capítulo:
+
+```bash
+aerobooks-ai chapter-spec <slug> ...
+aerobooks-ai evidence-add <slug> ...
+aerobooks-ai chapter-pack <slug> <chapter-id> author
+```
+
+Después de redactar, generar revisiones independientes:
+
+```bash
+aerobooks-ai chapter-pack <slug> <chapter-id> derivation
+aerobooks-ai chapter-pack <slug> <chapter-id> scientific
+aerobooks-ai chapter-pack <slug> <chapter-id> red-team
+aerobooks-ai chapter-pack <slug> <chapter-id> figure
+```
+
+Antes de una edición candidata:
+
+```bash
+aerobooks check <slug> --strict
+aerobooks-ai coverage <slug> --strict
+aerobooks-ai gate <slug>
+aerobooks build <slug>
+aerobooks-ai release-manifest <slug> --label candidate
+```
+
+Los protocolos se encuentran en `framework/ai/` y son parte del producto: especifican cómo investigar, derivar, diseñar ejercicios, tratar incertidumbre, revisar figuras y mantener procedencia.
