@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import tempfile
 import unittest
+from pathlib import Path
 
 from framework.aerobooks.cli import (
     citation_keys,
@@ -9,6 +11,7 @@ from framework.aerobooks.cli import (
     latex_escape,
     ref_keys,
     static_check,
+    inspect_latex_log,
 )
 
 
@@ -39,6 +42,19 @@ class AeroBooksUnitTests(unittest.TestCase):
         """
         self.assertEqual(set(label_keys(tex)), {"fig:a", "eq:b"})
         self.assertEqual(ref_keys(tex), {"fig:a", "eq:b"})
+
+    def test_latex_log_inspection(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "main.log"
+            path.write_text(
+                "Overfull \\hbox (2.0pt too wide)\n"
+                "LaTeX Warning: There were undefined references.\n",
+                encoding="utf-8",
+            )
+            findings = inspect_latex_log(path)
+            codes = {f.code for f in findings}
+            self.assertIn("PDF002", codes)
+            self.assertIn("PDF004", codes)
 
     def test_structures_book_passes_strict_static_gate(self) -> None:
         report = static_check("estructuras-aeroespaciales", strict=True)
