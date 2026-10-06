@@ -380,6 +380,13 @@ def static_check(slug: str, strict: bool = False) -> Report:
             report.add("error", "FS001", "Archivo obligatorio ausente", path)
 
     meta = config.get("book", {})
+    if meta.get("slug") and meta.get("slug") != slug:
+        report.add(
+            "error", "META000",
+            f"book.slug='{meta.get('slug')}' no coincide con la carpeta '{slug}'",
+            root / "book.toml",
+        )
+
     for field_name in (
         "title", "subtitle", "edition_number", "edition_name",
         "date", "language",
@@ -420,6 +427,13 @@ def static_check(slug: str, strict: bool = False) -> Report:
     check_figures_and_tables(tex, report)
 
     manifest, source_ids = load_source_manifest(root, report)
+    if manifest.get("book") and manifest.get("book") != slug:
+        report.add(
+            "error", "SRC000",
+            f"manifest.book='{manifest.get('book')}' no coincide con '{slug}'",
+            root / "sources" / "manifest.json",
+        )
+
     for source in manifest.get("sources", []):
         key = source.get("citation_key")
         if key and key not in bib:
@@ -429,7 +443,36 @@ def static_check(slug: str, strict: bool = False) -> Report:
                 root / "sources" / "manifest.json",
             )
 
+    policy = config.get("quality", {})
+    claims_path = root / "claims" / "ledger.jsonl"
+    if policy.get("require_claim_ledger", False) and not claims_path.exists():
+        report.add("error", "CLM000", "Se exige claim ledger y no existe.", claims_path)
+
+    conflicts_path = root / "sources" / "conflicts.jsonl"
+    ai_policy = config.get("ai", {})
+    if ai_policy.get("record_conflicts", False) and not conflicts_path.exists():
+        report.add(
+            "error", "SRC009",
+            "La política exige registrar conflictos y falta sources/conflicts.jsonl.",
+            conflicts_path,
+        )
+
     check_claim_ledger(root, source_ids, report)
+
+    if policy.get("require_list_of_figures", False) and r"\listoffigures" not in tex:
+        report.add("error", "QA002", "Se exige índice de figuras y main.tex no lo incluye.")
+    if policy.get("require_list_of_tables", False) and r"\listoftables" not in tex:
+        report.add("error", "QA003", "Se exige índice de cuadros y main.tex no lo incluye.")
+
+    author_name = config.get("author", {}).get("name")
+    if author_name:
+        for path in list((root / "chapters").rglob("*.tex")) + list((root / "appendices").rglob("*.tex")):
+            if path.exists() and author_name in path.read_text(encoding="utf-8"):
+                report.add(
+                    "warning", "ED001",
+                    "El nombre del autor aparece dentro del contenido; debería limitarse a portada/créditos/metadatos.",
+                    path,
+                )
 
     generated = root / "generated" / "metadata.tex"
     if not generated.exists():
@@ -439,7 +482,6 @@ def static_check(slug: str, strict: bool = False) -> Report:
             generated,
         )
 
-    policy = config.get("quality", {})
     if policy.get("require_source_audit", False):
         audit = root / "appendices" / "source-audit.tex"
         if not audit.exists():
@@ -531,6 +573,13 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
         repo_root() / "shared" / "STYLE_GUIDE.md",
     ]
     for path in protocol_files:
+        if path.exists():
+            sections.append((path.name, path.read_text(encoding="utf-8")))
+
+    for path in (
+        framework_dir() / "prompts" / "MASTER_AUTHOR.md",
+        framework_dir() / "prompts" / "EXACT_REPRODUCER.md",
+    ):
         if path.exists():
             sections.append((path.name, path.read_text(encoding="utf-8")))
 
