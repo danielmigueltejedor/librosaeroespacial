@@ -1,0 +1,120 @@
+\safechapter{Simulacro de Bloque I}
+% ============================================================
+
+Tiempo recomendado:
+\[
+\boxed{60\text{--}75\ \text{minutos}}
+\]
+sin consultar apuntes.
+
+\Needspace{5\baselineskip}\section*{Pregunta 1 --- Teoría}
+Explica brevemente:
+\begin{enumerate}[label=\alph*)]
+  \item diferencia entre sólido rígido y sólido deformable;
+  \item homogeneidad e isotropía;
+  \item principio de Saint-Venant;
+  \item principio de superposición;
+  \item diferencia entre esfuerzo y tensión.
+\end{enumerate}
+
+\subsection*{Respuesta orientativa}
+Un sólido rígido no cambia de forma mientras que un sólido deformable sí modifica distancias relativas entre puntos.
+
+Homogeneidad significa independencia de la posición. Isotropía significa independencia de la dirección.
+
+Saint-Venant permite reemplazar sistemas de carga estáticamente equivalentes lejos de la zona local de aplicación.
+
+La superposición requiere linealidad.
+
+Un esfuerzo es una resultante sobre la sección; la tensión es una magnitud local por unidad de área.
+
+\Needspace{5\baselineskip}\section*{Pregunta 2 --- Tensión y deformación}
+Una barra de acero tiene:
+\[
+A=\qty{500}{\milli\metre\squared},\qquad
+L=\qty{1.5}{\metre},\qquad
+E=\qty{200}{\giga\pascal}.
+\]
+Se somete a $N=\qty{50}{\kilo\newton}$. Calcular tensión, deformación y alargamiento.
+
+\subsection*{Solución}
+\[
+\sigma=\frac{50000}{500}=\boxed{\qty{100}{\mega\pascal}}
+\]
+\[
+\varepsilon=\frac{100}{200000}=\boxed{5\times10^{-4}}
+\]
+\[
+\Delta L=5\times10^{-4}(1500)=\boxed{\qty{0.75}{\milli\metre}}.
+\]
+
+\Needspace{5\baselineskip}\section*{Pregunta 3 --- Leyes de esfuerzos}
+Una viga simplemente apoyada de $L=\qty{4}{\metre}$ soporta $q=\qty{3}{\kilo\newton\per\metre}$ uniforme.
+
+Determina $R_A$, $R_B$, $V(x)$, $M(x)$ y $M_{\max}$.
+
+\subsection*{Solución}
+Por simetría:
+\[
+R_A=R_B=\frac{qL}{2}=\boxed{\qty{6}{\kilo\newton}}.
+\]
+\[
+\boxed{V(x)=6-3x}
+\]
+\[
+\boxed{M(x)=6x-\frac32x^2}.
+\]
+El máximo momento aparece cuando $V=0$:
+\[
+6-3x=0\Longrightarrow x=\qty{2}{\metre}.
+\]
+\[
+M_{\max}=6(2)-\frac32(4)=\boxed{\qty{6}{\kilo\newton\metre}}.
+\]
+
+\Needspace{5\baselineskip}\section*{Pregunta 4 --- Interpretación}
+Una zona de una viga tiene un diagrama de momento parabólico. ¿Qué puede afirmarse del cortante y de la carga repartida?
+
+\subsection*{Solución}
+Si $M(x)$ es de segundo grado, $V=M'$ es lineal. Además, $q=-V'$ es constante.
+
+Por tanto:
+\[
+\boxed{M\text{ parabólico}\Rightarrow V\text{ lineal}\Rightarrow q\text{ uniforme}}.
+\]
+
+% ============================================================
+\safechapter{Plan de estudio del Bloque I}
+% ============================================================
+
+\safesection{Día 1 --- Estructuras e hipótesis}
+Domina
+\[
+\text{estructura real}\rightarrow\text{modelo}
+\]
+y las hipótesis: pequeños desplazamientos, pequeñas deformaciones, elasticidad lineal, homogeneidad, isotropía, Saint-Venant y superposición.
+
+\safesection{Día 2 --- Tensión y deformación}
+Debes poder explicar de memoria:
+\[
+\vect t^{(\vect n)},\qquad \sigma,\tau,
+\]
+\[
+\varepsilon=\frac{\Delta L}{L},
+\qquad
+\varepsilon_{ij}=\frac12(u_{i,j}+u_{j,i}),
+\qquad
+\sigma=E\varepsilon.
+\]
+
+\safesection{Día 3 --- Modelo monodimensional}
+Practica directriz, sección, rebanada, carga puntual, carga repartida, apoyo, articulación y empotramiento.
+
+\safesection{Día 4 --- Esfuerzos internos}
+Dibuja hasta poder hacerlo automáticamente:
+\[
+N^+,\qquad V^+,\qquad M^+,\qquad T^+.
+\]
+Practica cortes.
+
+\safesection{Día 5 --- Leyes de esfuerzos}
