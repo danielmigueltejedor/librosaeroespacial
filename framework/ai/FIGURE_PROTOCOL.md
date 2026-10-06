@@ -13,6 +13,10 @@ Una figura técnica forma parte del argumento académico.
 - referencia en el texto;
 - ausencia de información engañosa.
 
+## Ficha de revisión
+
+Toda figura científica que un capítulo 0.3 da por lista tiene una entrada en `figures/ledger.jsonl`. La revisión deja en `pass` el sentido, el signo, los vectores, los ejes, las unidades, las condiciones de contorno, la escala conceptual y la coherencia con el texto. `status: fail` es un blocker.
+
 ## Diagramas físicos
 
 Comprobar:

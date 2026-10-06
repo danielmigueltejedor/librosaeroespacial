@@ -135,6 +135,12 @@ aerobooks-ai release-manifest <slug> --label candidate
 aerobooks-ai verify-manifest <slug> candidate
 ```
 
+## Curso mínimo (0.3)
+
+Si el libro nace con `aerobooks new-course`, `aerobooks-ai next` marca la fase. El orden es descubrimiento del curso, investigación bibliográfica, matriz de cobertura, blueprint, specs, claims, autoría por capítulo, revisión y release. El procedimiento con y sin PDFs locales está en `MINIMAL_COURSE_WORKFLOW.md`.
+
+Los paquetes `course-discovery-pack`, `research-pack`, `source-audit-pack`, `blueprint-pack`, `derivation-pack`, `exercise-pack` y `release-pack` no incluyen el corpus completo.
+
 ## Handoffs
 
 Cada fase deja artefactos en Git o en `build/`, nunca solo un “revisado”.

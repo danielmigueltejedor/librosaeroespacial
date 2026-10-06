@@ -143,3 +143,11 @@ aerobooks-ai gate <slug>
 ```
 
 No crear un release manifest hasta que el estado académico esté suficientemente maduro.
+
+## AeroBooks 0.3
+
+Un curso nuevo puede empezar solo con la asignatura y la institución. Las fuentes locales son opcionales. Si no están, el siguiente paso es descubrirlas: `aerobooks-ai next` lo dice con `COURSE DISCOVERY REQUIRED`. El procedimiento está en `framework/ai/MINIMAL_COURSE_WORKFLOW.md`.
+
+Los libros ya existentes siguen en el contrato 0.2. No se les aplica la matriz de cobertura ni el ledger de ejercicios nuevos.
+
+El sistema no es infalible. Corta el paso cuando falta la capa correspondiente: sin fuente no hay investigación cerrada, sin evidencia no hay claim, sin verificación no hay ejercicio publicado, sin revisión independiente no pasa un resultado de alto riesgo, sin cobertura no hay capítulo, y sin gates en verde no hay release.

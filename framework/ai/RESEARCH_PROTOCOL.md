@@ -13,6 +13,12 @@ Antes de buscar, formula:
 3. qué fecha/edición/contexto importa;
 4. qué grado de autoridad necesita el claim.
 
+## Contrato 0.3
+
+La investigación queda en `sources/research-log.jsonl`: consulta, fecha, agente, candidatos, aceptados, rechazados y motivo. La guía de herramientas (Crossref, OpenAlex, repositorios, NASA NTRS, ESA, NIST, sociedades profesionales y preprints) está en `framework/prompts/LITERATURE_RESEARCHER.md`.
+
+Para teoría consolidada se prefieren libros y material universitario. Para el estado del arte, reviews y artículos revisados. Para un resultado concreto, el trabajo primario. Un preprint se etiqueta como preprint.
+
 ## Orden de preferencia
 
 1. fuentes primarias y documentación oficial;

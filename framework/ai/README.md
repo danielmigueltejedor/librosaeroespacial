@@ -58,3 +58,5 @@ AeroBooks v0.2 añade:
 - `QUALITY_RUBRIC.md`: blockers y dimensiones de calidad.
 
 Para tareas acotadas por capítulo usa `aerobooks-ai chapter-pack`. Es preferible a proporcionar a la IA un contexto masivo no filtrado.
+
+AeroBooks 0.3 añade `MINIMAL_COURSE_WORKFLOW.md`: el camino desde una asignatura y una institución, sin fuentes locales, hasta un corpus registrable. Los paquetes de descubrimiento, investigación, derivación, ejercicios y release llevan solo esa fase.

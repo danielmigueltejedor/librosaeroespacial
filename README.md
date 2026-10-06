@@ -87,6 +87,20 @@ python3 -m pip install -e .
 aerobooks doctor
 ```
 
+## Curso con solo la asignatura
+
+AeroBooks 0.3 no exige PDFs de partida. Con la asignatura y la institución deja el libro listo para que un agente con web busque la guía oficial y la bibliografía. El ejemplo completo, con y sin carpeta de Moodle, está en `framework/ai/MINIMAL_COURSE_WORKFLOW.md`.
+
+```bash
+aerobooks new-course fluidos \
+  --course "Mecánica de Fluidos" \
+  --institution "Universidad de León"
+
+aerobooks-ai next fluidos
+```
+
+La primera respuesta es `COURSE DISCOVERY REQUIRED`. El marco no navega solo: entrega el paquete `aerobooks-ai course-discovery-pack` y no acepta una fuente que nadie haya abierto.
+
 ## Crear un libro nuevo
 
 ```bash

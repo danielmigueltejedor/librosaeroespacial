@@ -12,6 +12,26 @@ Una edición no debe considerarse cerrada hasta superar todas las puertas aplica
 - política ante conflictos;
 - perfil didáctico/visual.
 
+## G0.3 — Investigación, solo contrato 0.3
+
+Además de G0–G6, un libro creado con `new-course` no cierra si ocurre cualquiera de estos:
+
+- claim de alto riesgo sin evidencia suficiente, o apoyado solo en fuentes D/E;
+- fuente aceptada que no se consultó, o que solo se vio como snippet o ficha;
+- metadatos inventados, o DOI/ISBN falso o sin verificación;
+- conflicto material abierto;
+- derivación fundamental sin auditoría independiente;
+- error dimensional;
+- ejercicio resuelto sin revisión matemática, de unidades, solución independiente y verificación computacional cuando aplica;
+- número que no se reproduce dentro de la tolerancia;
+- figura con sentido, signo, ejes o contorno sin revisar, o marcada como errónea;
+- revisión obligatoria ausente;
+- violación de copyright, o preprint presentado como peer-reviewed;
+- tema fundamental en `GAP`;
+- error de compilación.
+
+El detalle operativo está en `MINIMAL_COURSE_WORKFLOW.md`.
+
 ## G1 — Fuentes
 
 - source intake completado cuando proceda;

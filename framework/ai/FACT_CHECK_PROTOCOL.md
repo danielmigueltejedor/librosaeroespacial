@@ -94,6 +94,12 @@ source ID + locator / derivación
 sources/manifest.json
 ```
 
+## Corroboración en el contrato 0.3
+
+Un claim científico de alto riesgo no se cierra con una sola web. Hacen falta dos fuentes independientes de tier suficiente, o una fuente canónica (guía oficial, norma o libro de referencia) junto con una derivación comprobada. También valen, y hay que declararlas, una norma oficial, una definición oficial o un resultado matemático derivado.
+
+Dos fichas que salen del mismo original comparten `origin_id` o `derived_from` y cuentan como una. Una fuente D puede describir un examen; no basta para el claim.
+
 ## Resultado de revisión
 
 El revisor debe informar:

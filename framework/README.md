@@ -119,6 +119,23 @@ aerobooks ai-pack <slug>
 
 que crea `books/<slug>/build/AI_CONTEXT.md`.
 
+## Curso mínimo v0.3
+
+`aerobooks.toml`, en la raíz, concentra autor, institución, programa, criterios editoriales y de copyright. Un libro solo escribe lo que cambia.
+
+```bash
+aerobooks new-course fluidos \
+  --course "Mecánica de Fluidos" \
+  --institution "Universidad de León"
+aerobooks-ai next fluidos
+aerobooks-ai course-discovery-pack fluidos
+aerobooks-ai research-pack fluidos
+```
+
+Sin `--sources` el flujo sigue. Con `--sources` se inventarían los archivos y ninguno queda aceptado hasta auditarlo. La guía de las dos variantes está en `framework/ai/MINIMAL_COURSE_WORKFLOW.md`.
+
+Los libros 0.2 no reciben estos blockers.
+
 ## Capa académica v0.2
 
 AeroBooks separa ahora el tooling editorial del tooling de evidencia.

@@ -2,6 +2,10 @@
 
 Los problemas son contenido académico, no decoración.
 
+## Ledger de soluciones
+
+Un ejercicio que se publica en el contrato 0.3 se registra en `exercises/ledger.jsonl` con enunciado original (`origin: aerobooks`), datos, incógnitas, hipótesis, solución, resultado, unidades, tolerancia si el resultado es numérico, comprobaciones y revisor. Tiene que pasar revisión matemática, de unidades, una solución independiente y la verificación computacional de `COMPUTATIONAL_VERIFIER.md` cuando haya álgebra o números. Si no pasa, se queda en `draft` y no entra en la release.
+
 ## Origen
 
 Cada ejercicio debe ser uno de:

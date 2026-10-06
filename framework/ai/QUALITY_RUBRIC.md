@@ -78,6 +78,19 @@ Bloquean una edición:
 - error de compilación;
 - referencia rota relevante.
 
+## Defensa en profundidad
+
+Ningún gate promete que el libro sea infalible. El contrato 0.3 corta el avance cuando falta una capa:
+
+- sin fuente consultada, toca investigar;
+- sin evidencia, no hay claim;
+- sin verificación, no se publica el ejercicio resuelto;
+- sin revisión independiente, no pasa un resultado de alto riesgo;
+- con un tema fundamental en `GAP`, no se redacta el capítulo;
+- con un gate en rojo, no hay release.
+
+Una puntuación de autoridad describe la ficha. No absuelve ni condena un enunciado por sí sola.
+
 ## Regla de aprobación
 
 Una edición es candidata cuando:

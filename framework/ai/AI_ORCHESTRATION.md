@@ -4,6 +4,15 @@ El objetivo es impedir que una sola pasada de una IA investigue, escriba, se aut
 
 ## Roles
 
+### Course discovery
+Localiza la guía oficial vigente. No basta el nombre de la asignatura.
+
+### Literature researcher
+Busca bibliografía consultable y deja el research log. No cita un resultado de buscador como si hubiera leído la obra.
+
+### Computational verifier
+Recalcula ejercicios con Python o SymPy y no publica una solución que no reproduce.
+
 ### Source auditor
 Construye el universo de evidencia.
 

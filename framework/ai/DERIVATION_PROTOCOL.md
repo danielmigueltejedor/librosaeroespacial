@@ -2,6 +2,10 @@
 
 Toda derivación importante debe poder ser reproducida por una persona o por una IA revisora que no confíe en el resultado anterior.
 
+## Ledger
+
+En el contrato 0.3 cada derivación vive en `derivations/ledger.jsonl`: identificador, hipótesis, ecuaciones de partida, pasos, resultado, fuentes, análisis dimensional, condiciones, casos límite, revisor y estado. Una derivación fundamental queda en `audited` solo con revisor independiente (`independent_model`, `human` o `hybrid`). `dimensional_status: fail` bloquea el gate.
+
 ## Contrato mínimo
 
 1. declarar hipótesis;
