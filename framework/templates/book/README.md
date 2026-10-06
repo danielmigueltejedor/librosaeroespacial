@@ -5,27 +5,56 @@ Libro gestionado por AeroBooks.
 ## Primeros pasos
 
 1. Completa `book.toml`.
-2. Completa `ai/BRIEF.md`.
-3. Registra las fuentes en `sources/manifest.json`.
+2. Completa `ai/BRIEF.md`: es el blueprint que define exactamente qué libro quieres.
+3. Registra todas las fuentes en `sources/manifest.json`.
 4. Añade bibliografía real en `references.bib`.
-5. Genera el contexto para IA:
+5. Inicializa la capa académica:
+
+```bash
+aerobooks-ai init {{SLUG}}
+```
+
+6. Audita las fuentes y crea chapter specs antes de redactar:
+
+```bash
+aerobooks-ai chapter-spec {{SLUG}} \
+  --id CH-01 \
+  --title "Introducción" \
+  --path chapters/01-introduction.tex \
+  --status planned
+```
+
+7. Genera contexto para IA:
 
 ```bash
 aerobooks ai-pack {{SLUG}}
 ```
 
-6. Comprueba:
+Para un capítulo concreto es preferible:
 
 ```bash
-aerobooks check {{SLUG}}
+aerobooks-ai chapter-pack {{SLUG}} CH-01 author
 ```
 
-7. Compila:
+8. Mantén `claims/ledger.jsonl` y `evidence/map.jsonl`.
+
+9. Comprueba:
 
 ```bash
+aerobooks check {{SLUG}} --strict
+aerobooks-ai coverage {{SLUG}} --strict
+```
+
+10. Antes de publicar una edición:
+
+```bash
+aerobooks-ai gate {{SLUG}}
 aerobooks build {{SLUG}}
+aerobooks-ai release-manifest {{SLUG}} --label candidate
 ```
 
-## Regla
+## Regla fundamental
 
 No redactes contenido material antes de auditar las fuentes.
+
+Una IA puede equivocarse incluso con un buen prompt. AeroBooks usa trazabilidad, revisiones independientes y gates para que los errores sean detectables y no dependan de confiar en una sola pasada del modelo.
