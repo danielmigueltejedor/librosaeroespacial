@@ -50,6 +50,18 @@ intuición
 
 No es obligatorio usar todos los pasos en cada sección, pero no elimines hipótesis o condiciones de validez para hacer el texto “más sencillo”.
 
+### 4.5. Trazabilidad de claims críticos
+
+Cuando un claim de riesgo alto esté registrado en `claims/ledger.jsonl`, enlázalo desde el LaTeX con:
+
+```latex
+\claimref{CLM-001}
+```
+
+La macro es invisible en el PDF, pero permite que AeroBooks compruebe que el claim auditado está realmente conectado con el texto que pretende respaldar.
+
+No uses `\claimref` como sustituto de una cita bibliográfica visible cuando el lector necesite la referencia.
+
 ### 5. Problemas
 Un problema resuelto de calidad debe incluir, cuando corresponda:
 - datos;
