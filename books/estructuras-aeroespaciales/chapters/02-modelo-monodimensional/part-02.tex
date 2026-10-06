@@ -1,0 +1,120 @@
+
+Permite desplazamiento horizontal y giro. Impide desplazamiento vertical.
+
+\safesection{Articulación}
+En dos dimensiones:
+\[
+\text{2 reacciones},\qquad R_x,\ R_y.
+\]
+Impide las dos traslaciones y permite el giro.
+
+\safesection{Empotramiento}
+En dos dimensiones:
+\[
+\text{3 reacciones},\qquad R_x,\ R_y,\ M.
+\]
+Impide
+\[
+u_x=0,\qquad u_y=0,\qquad\theta=0.
+\]
+
+\safesection{Esquema}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=0.90cm,y=0.90cm,>=Latex,
+  force/.style={-{Latex[length=2.3mm]},BookBlue,line width=1.0pt},
+  support/.style={draw=BookGray,line width=.95pt},
+  beamline/.style={draw=BookGray,line width=2.0pt}
+]
+% -------------------- APOYO MÓVIL --------------------
+\begin{scope}[xshift=0cm]
+  \draw[beamline] (0.2,2.55)--(3.2,2.55);
+  \draw[support] (1.00,2.55)--(0.62,2.03)--(1.38,2.03)--cycle;
+  \draw[support] (0.72,1.86) circle (0.10);
+  \draw[support] (1.28,1.86) circle (0.10);
+  \draw[support] (0.40,1.66)--(1.60,1.66);
+  \foreach \x in {0.50,0.80,1.10,1.40}{
+    \draw[BookGray!60,line width=.55pt] (\x,1.66)--(\x-0.22,1.45);
+  }
+  \draw[force] (1.00,0.72)--(1.00,1.72);
+  \node[font=\small,text=BookBlue,right] at (1.05,1.10) {$R_y$};
+  \node[font=\sffamily\small\bfseries,text=BookBlue] at (1.7,3.18) {Apoyo móvil};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (1.7,0.15)
+    {impide una\\traslación};
+\end{scope}
+
+% -------------------- ARTICULACIÓN --------------------
+\begin{scope}[xshift=5cm]
+  \draw[beamline] (0.2,2.55)--(3.2,2.55);
+  \draw[support] (1.00,2.55)--(0.52,1.88)--(1.48,1.88)--cycle;
+  \draw[support] (0.35,1.68)--(1.65,1.68);
+  \foreach \x in {0.50,0.80,1.10,1.40}{
+    \draw[BookGray!60,line width=.55pt] (\x,1.68)--(\x-0.22,1.47);
+  }
+  \draw[force] (1.00,0.72)--(1.00,1.78);
+  \draw[force] (-0.05,2.55)--(0.86,2.55);
+  \node[font=\small,text=BookBlue,right] at (1.05,1.10) {$R_y$};
+  \node[font=\small,text=BookBlue,above] at (0.35,2.57) {$R_x$};
+  \node[font=\sffamily\small\bfseries,text=BookBlue] at (1.7,3.18) {Articulación};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (1.7,0.15)
+    {impide dos\\traslaciones};
+\end{scope}
+
+% -------------------- EMPOTRAMIENTO --------------------
+\begin{scope}[xshift=10cm]
+  \draw[beamline] (0.35,2.55)--(3.35,2.55);
+  \draw[BookGray,line width=1.8pt] (0.35,1.35)--(0.35,3.45);
+  \foreach \y in {1.50,1.80,...,3.30}{
+    \draw[BookGray!60,line width=.55pt] (-0.02,\y-0.22)--(0.35,\y);
+  }
+  \draw[force] (0.35,0.72)--(0.35,1.95);
+  \draw[force] (-0.90,2.55)--(0.22,2.55);
+  \draw[BookBlue,line width=1.0pt,-{Latex[length=2.3mm]}]
+    (1.05,3.15) arc[start angle=55,end angle=-215,radius=0.56];
+  \node[font=\small,text=BookBlue,right] at (0.40,1.10) {$R_y$};
+  \node[font=\small,text=BookBlue,above] at (-0.40,2.58) {$R_x$};
+  \node[font=\small,text=BookBlue] at (1.35,3.05) {$M$};
+  \node[font=\sffamily\small\bfseries,text=BookBlue] at (1.85,3.82) {Empotramiento};
+  \node[font=\sffamily\scriptsize,text=BookGray,align=center] at (1.85,0.15)
+    {impide traslaciones\\y giro};
+\end{scope}
+\end{tikzpicture}
+\caption{Vinculaciones exteriores habituales en un problema plano y reacciones asociadas.}
+\label{fig:vinculaciones-planas}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Grados de libertad restringidos y reacciones de las vinculaciones planas básicas.}
+\label{tab:vinculaciones-planas}
+\begin{tabular}{lccc}
+\toprule
+Vinculación & Traslación $x$ & Traslación $y$ & Giro $\theta$\\
+\midrule
+Apoyo móvil & libre & impedida & libre\\
+Articulación & impedida & impedida & libre\\
+Empotramiento & impedida & impedida & impedido\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{tip}
+Antes de escribir una sola ecuación de equilibrio, \textbf{sustituye todos los apoyos por sus reacciones}. Ese dibujo es tu verdadero problema mecánico.
+\end{tip}
+
+% ============================================================
+\safechapter{Esfuerzos internos}
+% ============================================================
+
+\safesection{Concepto}
+Realizamos un corte en una barra.
+
+Para que cada una de las dos partes continúe en equilibrio debemos introducir las acciones que la parte eliminada ejercía sobre la parte conservada.
+
+Estas resultantes se denominan \textbf{esfuerzos internos}.
+
+En tres dimensiones pueden aparecer:
+\[
+N_x,\qquad C_y,\ C_z,\qquad M_x,\ M_y,\ M_z.
+\]
+
