@@ -1061,7 +1061,7 @@ def _hash_file(path: Path) -> str:
 
 
 def _release_files(root: Path) -> list[Path]:
-    allowed = {".tex", ".bib", ".toml", ".json", ".jsonl", ".md", ".sty", ".cls"}
+    allowed = {".tex", ".bib", ".toml", ".json", ".jsonl", ".md", ".sty", ".cls", ".py"}
     files: list[Path] = []
 
     for path in root.rglob("*"):
@@ -1078,6 +1078,8 @@ def _release_files(root: Path) -> list[Path]:
         framework_dir() / "ai",
         framework_dir() / "prompts",
         framework_dir() / "policies",
+        framework_dir() / "schemas",
+        framework_dir() / "aerobooks",
     ):
         if not base.exists():
             continue
