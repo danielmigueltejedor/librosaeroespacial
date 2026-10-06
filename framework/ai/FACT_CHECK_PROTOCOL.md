@@ -45,8 +45,8 @@ Para cada claim de riesgo alto:
 1. Escribe el claim de forma atómica.
 2. Identifica qué evidencia lo respaldaría.
 3. Comprueba la fuente exacta.
-4. Registra el ID de fuente.
-5. Si es derivado, registra la derivación o ecuación.
+4. Registra el ID de fuente y un localizador preciso en `evidence/map.jsonl`.
+5. Si es derivado, registra la derivación o ecuación como evidencia `derived`.
 6. Comprueba unidades y orden de magnitud.
 7. Busca conflicto con otras fuentes relevantes.
 8. Asigna estado:
@@ -87,7 +87,9 @@ frase/ecuación en LaTeX
         ↓
 claims/ledger.jsonl
         ↓
-source IDs / derivación
+evidence/map.jsonl
+        ↓
+source ID + locator / derivación
         ↓
 sources/manifest.json
 ```
