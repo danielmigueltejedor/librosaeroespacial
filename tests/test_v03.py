@@ -91,8 +91,8 @@ def _log(root: Path) -> None:
 
 class AeroBooksV03Tests(unittest.TestCase):
     def test_versions(self) -> None:
-        self.assertEqual(FRAMEWORK_VERSION, "0.3.0")
-        self.assertEqual(ACADEMIC_TOOL_VERSION, "0.3.0")
+        self.assertEqual(FRAMEWORK_VERSION, "0.4.0")
+        self.assertEqual(ACADEMIC_TOOL_VERSION, "0.4.0")
 
     def test_global_config_and_book_override(self) -> None:
         issues = validate_global_config({"author": {"name": ""}})

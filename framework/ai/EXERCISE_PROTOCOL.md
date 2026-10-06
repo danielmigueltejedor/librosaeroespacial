@@ -2,6 +2,21 @@
 
 Los problemas son contenido académico, no decoración.
 
+## AeroBooks 0.4
+
+Publicar un ejercicio no es «la IA lo resolvió y otro agente dijo que está bien». Hace falta, y el gate lo ejecuta de nuevo:
+
+- la solución del autor;
+- una solución independiente recalculada;
+- unidades coherentes;
+- cumplimiento de la ecuación original;
+- casos límite;
+- 100 casos paramétricos con semilla;
+- fuentes que respaldan esas ecuaciones;
+- un candado de dependencias que falla si la fuente o la derivación cambian después.
+
+El contrato está en `verification` dentro de `exercises/ledger.jsonl`. Lo comprueba `framework/aerobooks/exercise_check.py`.
+
 ## Ledger de soluciones
 
 Un ejercicio que se publica en el contrato 0.3 se registra en `exercises/ledger.jsonl` con enunciado original (`origin: aerobooks`), datos, incógnitas, hipótesis, solución, resultado, unidades, tolerancia si el resultado es numérico, comprobaciones y revisor. Tiene que pasar revisión matemática, de unidades, una solución independiente y la verificación computacional de `COMPUTATIONAL_VERIFIER.md` cuando haya álgebra o números. Si no pasa, se queda en `draft` y no entra en la release.

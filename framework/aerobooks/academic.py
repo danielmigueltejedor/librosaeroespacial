@@ -19,7 +19,7 @@ from .research import (
 )
 
 
-ACADEMIC_TOOL_VERSION = "0.3.0"
+ACADEMIC_TOOL_VERSION = "0.4.0"
 
 REVIEW_PROMPTS = {
     "source": "SOURCE_AUDITOR.md",

@@ -36,6 +36,9 @@ jobs:
       - name: AeroBooks 0.3 contracts
         run: python -m unittest tests.test_v03 -v
 
+      - name: AeroBooks 0.4 exercise gate
+        run: python -m unittest tests.test_v04 -v
+
       - name: Static checks
         shell: bash
         run: |

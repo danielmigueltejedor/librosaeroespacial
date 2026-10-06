@@ -679,6 +679,18 @@ def derivation_issues(root: Path) -> list[dict]:
     return issues
 
 
+def _source_index(root: Path) -> dict[str, dict]:
+    return {item.get("id"): item for item in _manifest_sources(root) if item.get("id")}
+
+
+def _derivation_index(root: Path) -> dict[str, dict]:
+    return {
+        item.get("id"): item
+        for item in _read_jsonl(root / "derivations" / "ledger.jsonl")
+        if item.get("id")
+    }
+
+
 def numeric_reproducible(expected: float, actual: float, tolerance: float) -> bool:
     return abs(float(expected) - float(actual)) <= float(tolerance)
 
@@ -723,6 +735,9 @@ def exercise_issues(root: Path) -> list[dict]:
         for case in computational.get("random_cases") or []:
             if not isinstance(case, dict) or "seed" not in case or "tolerance" not in case:
                 issues.append(issue("V03EX", f"{eid}: caso aleatorio sin semilla o tolerancia"))
+        from .exercise_check import exercise_v04_issues
+
+        issues.extend(exercise_v04_issues(row, _source_index(root), _derivation_index(root)))
     ready_ids = set()
     for spec in _chapter_specs(root):
         if spec.get("status") == "ready":

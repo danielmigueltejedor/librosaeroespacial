@@ -19,7 +19,7 @@ except ModuleNotFoundError as exc:
     raise SystemExit("AeroBooks requiere Python 3.11 o superior.") from exc
 
 FRAMEWORK_NAME = "AeroBooks"
-FRAMEWORK_VERSION = "0.3.0"
+FRAMEWORK_VERSION = "0.4.0"
 TEXT_EXTENSIONS = {".tex", ".md", ".toml", ".json", ".bib", ".txt", ".yml", ".yaml"}
 
 EDITION_NAMES = {

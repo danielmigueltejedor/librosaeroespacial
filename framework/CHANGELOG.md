@@ -2,6 +2,12 @@
 
 AeroBooks es software, por lo que su versión técnica es independiente de las ediciones editoriales de los libros.
 
+## 0.4.0 — octubre de 2026
+
+Un ejercicio resuelto ya no se publica porque otro agente diga que está bien.
+
+El gate vuelve a ejecutar la solución independiente, las unidades, la ecuación original, los casos límite y 100 casos paramétricos. Las ecuaciones tienen que apuntar a fuentes que no sean de tier D/E. Si una de esas fuentes o derivaciones cambia después de la revisión, el candado de dependencias deja el ejercicio en rojo.
+
 ## 0.3.0 — octubre de 2026
 
 Un libro puede arrancar con la asignatura y la institución. Las fuentes locales son opcionales.

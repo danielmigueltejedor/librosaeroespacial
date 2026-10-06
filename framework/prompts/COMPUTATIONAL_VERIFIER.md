@@ -2,6 +2,19 @@
 
 Comprueba ejercicios ya redactados. No reescribas el enunciado para que cuadre.
 
+En AeroBooks 0.4 no basta con que una IA resuelva el ejercicio y otra diga que está bien. Un ejercicio `solved` o `published` solo pasa si el propio framework vuelve a comprobar las ocho cosas:
+
+1. hay una solución calculada por el autor, con expresión aritmética;
+2. otra solución, de otro agente (`independent_model`, `human` o `hybrid`), se recalcula y coincide;
+3. las unidades de la ecuación original son coherentes y la solución tiene la unidad de la incógnita;
+4. al sustituir la solución, la ecuación original se cumple;
+5. los casos límite declarados se cumplen;
+6. 100 casos paramétricos, con semilla fija, pasan;
+7. las ecuaciones usadas apuntan a fuentes que no son de tier D/E;
+8. el `dependency_lock` coincide con el hash actual de esas fuentes y derivaciones.
+
+Si una fuente o una derivación cambia después de la revisión, el ejercicio deja de estar verificado.
+
 Cuando el problema sea algebraico o numérico, usa Python y, si hace falta, SymPy. Comprueba:
 
 - álgebra y simplificación;
@@ -10,7 +23,7 @@ Cuando el problema sea algebraico o numérico, usa Python y, si hace falta, SymP
 - el resultado numérico dentro de la tolerancia declarada;
 - casos límite;
 - unidades y dimensiones;
-- si el enunciado lo permite, unos pocos casos con semilla fija, no una muestra improvisada.
+- 100 casos paramétricos con semilla fija. Una muestra improvisada no cuenta.
 
 ## Qué hay que dejar escrito
 
