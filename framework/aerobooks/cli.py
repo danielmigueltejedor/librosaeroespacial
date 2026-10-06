@@ -536,6 +536,28 @@ def print_report(report: Report, strict: bool = False, json_output: bool = False
         print("✗ Quality gate NO superado.")
 
 
+def inspect_latex_log(log_path: Path) -> list[Finding]:
+    if not log_path.exists():
+        return [Finding("error", "PDF001", "No se generó el log de LaTeX.", str(log_path))]
+
+    text = log_path.read_text(encoding="utf-8", errors="replace")
+    checks = [
+        ("warning", "PDF002", r"Overfull \\hbox", "Hay cajas horizontales desbordadas."),
+        ("warning", "PDF003", r"Overfull \\vbox", "Hay cajas verticales desbordadas."),
+        ("error", "PDF004", r"There were undefined references", "Quedan referencias indefinidas."),
+        ("error", "PDF005", r"Citation .* undefined", "Hay citas bibliográficas indefinidas."),
+        ("error", "PDF006", r"Reference .* undefined", "Hay referencias cruzadas indefinidas."),
+        ("warning", "PDF007", r"multiply[- ]defined", "Hay labels definidos más de una vez."),
+        ("error", "PDF008", r"! LaTeX Error:", "El log contiene un error de LaTeX."),
+    ]
+
+    findings: list[Finding] = []
+    for level, code, pattern, message in checks:
+        if re.search(pattern, text, flags=re.IGNORECASE):
+            findings.append(Finding(level, code, message, str(log_path)))
+    return findings
+
+
 def texinputs_env(root: Path) -> dict[str, str]:
     env = os.environ.copy()
     paths = [
@@ -548,7 +570,7 @@ def texinputs_env(root: Path) -> dict[str, str]:
     return env
 
 
-def run_build(slug: str, halt_on_error: bool = True) -> int:
+def run_build(slug: str, halt_on_error: bool = True, strict_log: bool = False) -> int:
     root, config = load_book(slug)
     write_metadata(root, config)
     latex = config.get("latex", {})
@@ -564,7 +586,30 @@ def run_build(slug: str, halt_on_error: bool = True) -> int:
     cmd.append(entry)
 
     print(f"→ Compilando {slug}: {' '.join(cmd)}")
-    return subprocess.call(cmd, cwd=root, env=texinputs_env(root))
+    code = subprocess.call(cmd, cwd=root, env=texinputs_env(root))
+    if code != 0:
+        return code
+
+    entry_path = Path(entry)
+    log_path = root / entry_path.with_suffix(".log")
+    pdf_path = root / entry_path.with_suffix(".pdf")
+    findings = inspect_latex_log(log_path)
+
+    for finding in findings:
+        marker = "✗" if finding.level == "error" else "!"
+        print(f"{marker} {finding.level.upper():7} {finding.code}: {finding.message}")
+
+    if not pdf_path.exists() or pdf_path.stat().st_size == 0:
+        print(f"✗ ERROR   PDF009: no se generó un PDF válido en {pdf_path}")
+        return 2
+
+    if any(f.level == "error" for f in findings):
+        return 2
+    if strict_log and findings:
+        return 2
+
+    print(f"✓ PDF: {pdf_path}")
+    return 0
 
 
 def make_ai_pack(slug: str, output: Path | None = None) -> Path:
@@ -922,7 +967,7 @@ def cmd_audit(args: argparse.Namespace) -> int:
         return 1
     if args.no_build:
         return 0
-    return run_build(args.slug)
+    return run_build(args.slug, strict_log=True)
 
 
 def cmd_build(args: argparse.Namespace) -> int:
