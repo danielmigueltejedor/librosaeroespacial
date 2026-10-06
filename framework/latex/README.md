@@ -7,6 +7,7 @@ Esta carpeta contiene la identidad visual y estructural común de la colección.
 - `aerobook.cls`: clase base. Extiende `book`.
 - `aerobook-core.sty`: tipografía, geometría, cajas, referencias, bibliografía, índices, paleta y utilidades.
 - `aerobook-cover.tex`: composición de portada y página de edición.
+- `aerobook-diagrams.sty`: estilos y primitivas TikZ comunes para vigas, apoyos, cargas, reacciones y cotas.
 
 ## Cómo se resuelve la clase
 
@@ -39,3 +40,18 @@ No debe duplicar:
 ## Compatibilidad
 
 La capa común conserva algunos alias de las primeras ediciones para que los libros existentes puedan migrarse sin reescribir todo el contenido de una vez.
+
+## Diagramas técnicos
+
+Para evitar que cada libro dibuje apoyos, cargas o vigas con estilos distintos, usa las primitivas de `aerobook-diagrams.sty` siempre que encajen con la figura.
+
+Ejemplo:
+
+```latex
+\begin{tikzpicture}
+  \AeroBeam{0}{0}{6}{0}
+  \AeroPinSupport{0.5}{0}
+  \AeroRollerSupport{5.5}{0}
+  \AeroDownLoad{3}{0}{1.5}{$P$}
+\end{tikzpicture}
+```
