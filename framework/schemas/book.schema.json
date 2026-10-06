@@ -27,6 +27,19 @@
     "quality": {
       "type": "object"
     },
+    "academic": {
+      "type": "object",
+      "properties": {
+        "required_reviews": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "require_historical_when_claims": {"type": "boolean"},
+        "require_red_team": {"type": "boolean"},
+        "require_evidence_for_high_risk": {"type": "boolean"}
+      }
+    },
     "latex": {
       "type": "object",
       "required": ["entrypoint"]
