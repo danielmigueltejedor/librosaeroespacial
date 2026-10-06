@@ -449,6 +449,33 @@ def _coverage(root: Path) -> dict:
                     "message": f"{cid}: claim de alto riesgo sin entrada de evidencia verificada.",
                 })
 
+    brief_path = root / "ai" / "BRIEF.md"
+    required_brief_sections = [
+        "## Misión",
+        "## Alcance",
+        "## Criterios de aceptación",
+        "## Autoridad y convenciones",
+        "## Política ante conflictos",
+        "## Perfil didáctico",
+        "## Perfil visual",
+        "## Quality gate",
+    ]
+    if not brief_path.exists():
+        issues.append({
+            "severity": "error",
+            "code": "BRF001",
+            "message": "Falta ai/BRIEF.md.",
+        })
+    else:
+        brief = brief_path.read_text(encoding="utf-8")
+        for heading in required_brief_sections:
+            if heading not in brief:
+                issues.append({
+                    "severity": "warning",
+                    "code": "BRF002",
+                    "message": f"Blueprint incompleto: falta {heading}.",
+                })
+
     unresolved_conflicts = [
         c for c in conflicts
         if c.get("status", "open") not in {"resolved", "accepted_difference", "closed"}
