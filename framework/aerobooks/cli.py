@@ -677,8 +677,12 @@ def make_ai_pack(slug: str, output: Path | None = None) -> Path:
             sections.append((path.name, path.read_text(encoding="utf-8")))
 
     for path in (
+        framework_dir() / "prompts" / "AEROBOOKS_AGENT.md",
+        framework_dir() / "prompts" / "BOOK_BLUEPRINT_ARCHITECT.md",
         framework_dir() / "prompts" / "MASTER_AUTHOR.md",
         framework_dir() / "prompts" / "EXACT_REPRODUCER.md",
+        framework_dir() / "prompts" / "CLAIM_EXTRACTOR.md",
+        framework_dir() / "prompts" / "EVIDENCE_MAPPER.md",
     ):
         if path.exists():
             sections.append((path.name, path.read_text(encoding="utf-8")))
