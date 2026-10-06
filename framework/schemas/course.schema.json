@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/course.schema.json",
+  "title": "AeroBooks course identity",
+  "type": "object",
+  "required": ["schema_version", "slug", "course", "institution", "mode"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "slug": {"type": "string"},
+    "course": {"type": "string", "minLength": 1},
+    "institution": {"type": "string", "minLength": 1},
+    "degree": {"type": ["string", "null"]},
+    "academic_year": {"type": ["string", "null"]},
+    "code": {"type": ["string", "null"]},
+    "language": {"type": "string"},
+    "sources": {"type": ["string", "null"]},
+    "mode": {"enum": ["source-discovery", "intake"]}
+  },
+  "additionalProperties": false
+}

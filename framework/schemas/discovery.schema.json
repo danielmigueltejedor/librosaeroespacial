@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/discovery.schema.json",
+  "title": "Official course discovery record",
+  "type": "object",
+  "required": ["schema_version", "status", "identity", "verification"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["required", "in_progress", "verified", "failed"]},
+    "identity": {
+      "type": "object",
+      "required": ["course", "institution"],
+      "properties": {
+        "course": {"type": "string"},
+        "institution": {"type": "string"},
+        "degree": {"type": ["string", "null"]},
+        "academic_year": {"type": ["string", "null"]},
+        "code": {"type": ["string", "null"]},
+        "year_of_study": {"type": ["string", "null"]},
+        "semester": {"type": ["string", "null"]},
+        "ects": {"type": ["number", "string", "null"]},
+        "language": {"type": ["string", "null"]}
+      }
+    },
+    "official_url": {"type": ["string", "null"]},
+    "guide_url": {"type": ["string", "null"]},
+    "verification": {
+      "type": "object",
+      "required": ["name_match_sufficient", "academic_year_checked", "programme_checked"],
+      "properties": {
+        "name_match_sufficient": {"const": false},
+        "academic_year_checked": {"type": "boolean"},
+        "programme_checked": {"type": "boolean"},
+        "identity_notes": {"type": "string"}
+      }
+    },
+    "faculty": {"type": "array"},
+    "competences": {"type": "array"},
+    "outcomes": {"type": "array"},
+    "syllabus": {"type": "array"},
+    "assessment": {},
+    "bibliography": {"type": "array"}
+  }
+}

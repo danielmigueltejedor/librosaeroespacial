@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/derivation.schema.json",
+  "title": "Derivation ledger entry",
+  "type": "object",
+  "required": [
+    "id",
+    "starting_assumptions",
+    "starting_equations",
+    "steps",
+    "result",
+    "sources",
+    "dimensional_analysis",
+    "conditions",
+    "limit_cases",
+    "reviewer",
+    "status"
+  ],
+  "properties": {
+    "id": {"type": "string"},
+    "fundamental": {"type": "boolean"},
+    "starting_assumptions": {"type": "array", "items": {"type": "string"}},
+    "starting_equations": {"type": "array", "items": {"type": "string"}},
+    "steps": {"type": "array", "items": {"type": "string"}},
+    "result": {"type": "string"},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "dimensional_analysis": {"type": "string"},
+    "dimensional_status": {"enum": ["pending", "pass", "fail"]},
+    "conditions": {"type": "array", "items": {"type": "string"}},
+    "limit_cases": {"type": "array", "items": {"type": "string"}},
+    "reviewer": {"type": "string"},
+    "independence": {
+      "enum": ["same_model_new_pass", "independent_model", "human", "hybrid"]
+    },
+    "status": {"enum": ["pending", "audited", "rejected"]}
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/research-log.schema.json",
+  "title": "Research log entry",
+  "type": "object",
+  "required": [
+    "id",
+    "query",
+    "date",
+    "agent",
+    "candidates",
+    "accepted",
+    "rejected",
+    "reason"
+  ],
+  "properties": {
+    "id": {"type": "string"},
+    "query": {"type": "string"},
+    "date": {"type": "string"},
+    "agent": {"type": "string"},
+    "candidates": {"type": "array"},
+    "accepted": {"type": "array"},
+    "rejected": {"type": "array"},
+    "reason": {"type": "string"}
+  }
+}

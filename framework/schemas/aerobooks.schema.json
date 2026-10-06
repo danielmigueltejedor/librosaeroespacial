@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/aerobooks.schema.json",
+  "title": "AeroBooks global configuration",
+  "type": "object",
+  "required": [
+    "author",
+    "institution",
+    "program",
+    "editorial",
+    "pedagogy",
+    "research",
+    "quality",
+    "copyright"
+  ],
+  "properties": {
+    "author": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1}
+      }
+    },
+    "institution": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1}
+      }
+    },
+    "program": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string"},
+        "language": {"type": "string"}
+      }
+    },
+    "editorial": {
+      "type": "object",
+      "properties": {
+        "subtitle": {"type": "string"},
+        "volume": {"type": "string"},
+        "volume_title": {"type": "string"},
+        "legal_notice": {"type": "string"},
+        "units": {"type": "string"},
+        "citation_style": {"type": "string"}
+      }
+    },
+    "pedagogy": {"type": "object"},
+    "research": {
+      "type": "object",
+      "properties": {
+        "mode": {"type": "string"},
+        "fail_closed": {"type": "boolean"},
+        "allow_snippet_evidence": {"type": "boolean"},
+        "high_risk_min_independent_sources": {"type": "integer", "minimum": 2}
+      }
+    },
+    "quality": {"type": "object"},
+    "copyright": {
+      "type": "object",
+      "properties": {
+        "reproduce_student_notes": {"type": "boolean"},
+        "verbatim_policy": {"type": "string"},
+        "student_material_tier": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

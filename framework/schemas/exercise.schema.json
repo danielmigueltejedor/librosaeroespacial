@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/exercise.schema.json",
+  "title": "Solved exercise ledger entry",
+  "type": "object",
+  "required": [
+    "id",
+    "statement",
+    "origin",
+    "data",
+    "unknowns",
+    "hypotheses",
+    "solution",
+    "result",
+    "units",
+    "checks",
+    "reviewer",
+    "status"
+  ],
+  "properties": {
+    "id": {"type": "string"},
+    "statement": {"type": "string"},
+    "origin": {"const": "aerobooks"},
+    "data": {"type": "object"},
+    "unknowns": {"type": "array"},
+    "hypotheses": {"type": "array", "items": {"type": "string"}},
+    "solution": {"type": "string"},
+    "result": {"type": "string"},
+    "units": {"type": "string"},
+    "numerical_tolerance": {"type": ["number", "null"]},
+    "checks": {"type": "array"},
+    "reviewer": {"type": "string"},
+    "status": {"enum": ["draft", "solved", "published", "rejected"]},
+    "reviews": {
+      "type": "object",
+      "properties": {
+        "mathematical": {"type": "string"},
+        "units": {"type": "string"},
+        "independent_solution": {"type": "string"},
+        "computational": {"type": "string"}
+      }
+    },
+    "computational": {"type": "object"}
+  }
+}

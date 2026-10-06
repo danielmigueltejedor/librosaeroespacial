@@ -9,9 +9,17 @@ from pathlib import Path
 from typing import Iterable
 
 from .cli import FRAMEWORK_VERSION, book_dir, framework_dir, load_book, repo_root
+from .research import (
+    authoring_block_reason,
+    build_issue,
+    contract_version,
+    v03_coverage_issues,
+    v03_next_messages,
+    write_pack,
+)
 
 
-ACADEMIC_TOOL_VERSION = "0.2.0"
+ACADEMIC_TOOL_VERSION = "0.3.0"
 
 REVIEW_PROMPTS = {
     "source": "SOURCE_AUDITOR.md",
@@ -41,6 +49,9 @@ REVIEW_PROMPTS = {
     "claim": "CLAIM_EXTRACTOR.md",
     "evidence": "EVIDENCE_MAPPER.md",
     "agent": "AEROBOOKS_AGENT.md",
+    "course-discovery": "COURSE_DISCOVERY_AGENT.md",
+    "literature": "LITERATURE_RESEARCHER.md",
+    "computational-verifier": "COMPUTATIONAL_VERIFIER.md",
 }
 
 DEFAULT_REQUIRED_REVIEWS = [
@@ -554,6 +565,8 @@ def _coverage(root: Path) -> dict:
         if count == 0 and sources[sid].get("status") == "verified"
     ]
 
+    issues.extend(v03_coverage_issues(root))
+
     return {
         "book": root.name,
         "chapters": len(specs),
@@ -627,6 +640,9 @@ def cmd_chapter_pack(args: argparse.Namespace) -> int:
             f"No existe spec '{args.chapter}'. Crea uno con aerobooks-ai chapter-spec."
         )
     spec = specs[args.chapter]
+    blocked = authoring_block_reason(root, spec, args.role)
+    if blocked:
+        raise SystemExit(blocked)
 
     sources = _source_map(root)
     claims = _claim_map(root)
@@ -668,13 +684,14 @@ def cmd_chapter_pack(args: argparse.Namespace) -> int:
         "",
     ]
 
-    agents = repo_root() / "AGENTS.md"
-    if agents.exists():
-        chunks += ["## CONTRATO GLOBAL", "", agents.read_text(encoding="utf-8").rstrip(), ""]
+    if contract_version(root, config) != "0.3":
+        agents = repo_root() / "AGENTS.md"
+        if agents.exists():
+            chunks += ["## CONTRATO GLOBAL", "", agents.read_text(encoding="utf-8").rstrip(), ""]
 
-    for path in _protocol_bundle():
-        if path.exists():
-            chunks += [f"## {path.name}", "", path.read_text(encoding="utf-8").rstrip(), ""]
+        for path in _protocol_bundle():
+            if path.exists():
+                chunks += [f"## {path.name}", "", path.read_text(encoding="utf-8").rstrip(), ""]
 
     chunks += [
         "## BOOK.TOML",
@@ -919,13 +936,17 @@ def cmd_review_suite(args: argparse.Namespace) -> int:
 
 def cmd_next(args: argparse.Namespace) -> int:
     root, config = load_book(args.slug)
+    print(f"AeroBooks next — {args.slug}")
+    if contract_version(root, config) == "0.3":
+        for line in v03_next_messages(root, args.slug):
+            print(line)
+        return 0
+
     manifest = _manifest(root)
     specs = _chapter_specs(root)
     coverage = _coverage(root)
     claims = _claim_map(root)
     review_gate = _review_gate(root, config)
-
-    print(f"AeroBooks next — {args.slug}")
 
     if not manifest.get("sources"):
         print("→ No hay fuentes registradas.")
@@ -999,6 +1020,12 @@ def cmd_gate(args: argparse.Namespace) -> int:
     coverage = _coverage(root)
     review_gate = _review_gate(root, config)
     issues = list(coverage["issues"]) + list(review_gate["issues"])
+    if contract_version(root, config) == "0.3" and not any(
+        item.get("code") == "V03DIS" for item in issues
+    ):
+        build = build_issue(root)
+        if build:
+            issues.append(build)
 
     for spec in _chapter_specs(root):
         if spec.get("status") != "ready":
@@ -1188,6 +1215,14 @@ def cmd_verify_manifest(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_pack(args: argparse.Namespace) -> int:
+    root, _ = load_book(args.slug)
+    output = Path(args.output) if args.output else None
+    path = write_pack(root, args.pack, args.slug, output)
+    print(f"✓ Pack {args.pack}: {path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="aerobooks-ai",
@@ -1208,6 +1243,20 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--dir", required=True)
     p.add_argument("--output")
     p.set_defaults(func=cmd_intake)
+
+    def add_pack(name: str, help_text: str) -> None:
+        parser = sub.add_parser(name, help=help_text)
+        parser.add_argument("slug")
+        parser.add_argument("--output")
+        parser.set_defaults(func=cmd_pack, pack=name.removesuffix("-pack"))
+
+    add_pack("course-discovery-pack", "Paquete para localizar la guía docente oficial.")
+    add_pack("research-pack", "Paquete para descubrir y auditar bibliografía.")
+    add_pack("source-audit-pack", "Paquete para auditar fuentes ya candidatas.")
+    add_pack("blueprint-pack", "Paquete para cerrar el BRIEF del libro.")
+    add_pack("derivation-pack", "Paquete para auditar derivaciones.")
+    add_pack("exercise-pack", "Paquete para verificar ejercicios resueltos.")
+    add_pack("release-pack", "Paquete para la revisión de release.")
 
     p = sub.add_parser("bootstrap", help="Generar el paquete inicial para crear un libro desde sus fuentes.")
     p.add_argument("slug")

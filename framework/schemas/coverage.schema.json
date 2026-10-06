@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/coverage.schema.json",
+  "title": "Official syllabus coverage matrix",
+  "type": "object",
+  "required": ["schema_version", "topics"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "chapter": {"type": ["string", "null"]},
+          "fundamental": {"type": "boolean"},
+          "sources": {"type": "array", "items": {"type": "string"}},
+          "claims": {"type": "array", "items": {"type": "string"}},
+          "derivations": {"type": "array", "items": {"type": "string"}},
+          "figures": {"type": "array", "items": {"type": "string"}},
+          "exercises": {"type": "array", "items": {"type": "string"}},
+          "status": {"enum": ["GAP", "RESEARCHING", "SUPPORTED", "READY"]}
+        }
+      }
+    }
+  }
+}

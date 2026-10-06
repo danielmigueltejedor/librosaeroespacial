@@ -19,7 +19,7 @@ except ModuleNotFoundError as exc:
     raise SystemExit("AeroBooks requiere Python 3.11 o superior.") from exc
 
 FRAMEWORK_NAME = "AeroBooks"
-FRAMEWORK_VERSION = "0.2.0"
+FRAMEWORK_VERSION = "0.3.0"
 TEXT_EXTENSIONS = {".tex", ".md", ".toml", ".json", ".bib", ".txt", ".yml", ".yaml"}
 
 EDITION_NAMES = {
@@ -123,7 +123,9 @@ def load_book(slug: str) -> tuple[Path, dict]:
         raise SystemExit(
             f"No existe {config}. Migra el libro al framework o usa 'aerobooks new'."
         )
-    return root, load_toml(config)
+    from .research import resolve_book_config
+
+    return root, resolve_book_config(load_toml(config))
 
 
 def current_spanish_date() -> str:
@@ -183,8 +185,14 @@ def write_metadata(root: Path, config: dict) -> Path:
     return path
 
 
-def copy_template(slug: str, title: str, subtitle: str, author: str) -> Path:
-    target = book_dir(slug)
+def copy_template(
+    slug: str,
+    title: str,
+    subtitle: str,
+    author: str,
+    dest: Path | None = None,
+) -> Path:
+    target = dest if dest is not None else book_dir(slug)
     if target.exists():
         raise SystemExit(f"Ya existe {target}")
 
@@ -1020,6 +1028,27 @@ def cmd_new(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_new_course(args: argparse.Namespace) -> int:
+    from .research import create_course
+
+    sources = Path(args.sources).expanduser() if args.sources else None
+    target = create_course(
+        slug=args.slug,
+        course=args.course,
+        institution=args.institution,
+        dest=book_dir(args.slug),
+        degree=args.degree,
+        academic_year=args.academic_year,
+        code=args.code,
+        language=args.language,
+        sources=sources,
+        author=args.author,
+    )
+    print(f"✓ Curso creado: {target.relative_to(repo_root())}")
+    print(f"  Siguiente paso: aerobooks-ai next {args.slug}")
+    return 0
+
+
 def cmd_sync(args: argparse.Namespace) -> int:
     root, config = load_book(args.slug)
     path = write_metadata(root, config)
@@ -1085,6 +1114,21 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--subtitle", default="Manual académico")
     p.add_argument("--author", default="Daniel Miguel Tejedor")
     p.set_defaults(func=cmd_new)
+
+    p = sub.add_parser(
+        "new-course",
+        help="Crear un libro 0.3 con asignatura e institución. Las fuentes locales son opcionales.",
+    )
+    p.add_argument("slug")
+    p.add_argument("--course", required=True, help="Nombre de la asignatura.")
+    p.add_argument("--institution", required=True)
+    p.add_argument("--degree")
+    p.add_argument("--academic-year")
+    p.add_argument("--code")
+    p.add_argument("--language")
+    p.add_argument("--sources", help="Carpeta local opcional. No se copian los archivos.")
+    p.add_argument("--author")
+    p.set_defaults(func=cmd_new_course)
 
     p = sub.add_parser("list", help="Listar libros gestionados por AeroBooks.")
     p.add_argument("--json", action="store_true")

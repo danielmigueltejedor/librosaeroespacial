@@ -130,7 +130,34 @@
           },
           "open_access": {
             "type": "boolean"
-          }
+          },
+          "tier_detail": {
+            "enum": ["A0", "A1", "A2", "A3", "B0", "B1", "B2", "C0", "C1", "D0", "D1", "D2", "E"]
+          },
+          "lifecycle": {
+            "enum": ["candidate", "accepted", "rejected"]
+          },
+          "content_access": {
+            "enum": ["full", "snippet", "metadata-only"]
+          },
+          "consulted": {"type": "boolean"},
+          "doi": {"type": ["string", "null"]},
+          "doi_verified": {"type": "boolean"},
+          "doi_check_method": {"type": ["string", "null"]},
+          "isbn": {"type": ["string", "null"]},
+          "isbn_verified": {"type": "boolean"},
+          "peer_reviewed": {"type": "boolean"},
+          "peer_review_status": {"type": ["string", "null"]},
+          "publisher": {"type": ["string", "null"]},
+          "origin_id": {"type": ["string", "null"]},
+          "derived_from": {"type": "array", "items": {"type": "string"}},
+          "discovered_from": {"type": ["string", "null"]},
+          "discovery_log": {"type": ["string", "null"]},
+          "metadata_origin": {"enum": ["declared", "verified", "invented"]},
+          "direct_relevance": {"type": ["integer", "null"]},
+          "relevance_reason": {"type": ["string", "null"]},
+          "currency_relevant": {"type": "boolean"},
+          "copyright_status": {"type": ["string", "null"]}
         },
         "additionalProperties": false
       }

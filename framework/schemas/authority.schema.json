@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aerobooks.local/schemas/authority.schema.json",
+  "title": "Source authority assessment",
+  "description": "Perfil reproducible. Ninguna cifra aislada decide si una afirmación es verdadera.",
+  "type": "object",
+  "required": [
+    "authority",
+    "editorial_process",
+    "direct_relevance",
+    "corroboration",
+    "currency",
+    "content_access",
+    "independence",
+    "reasons"
+  ],
+  "properties": {
+    "authority": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "editorial_process": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "direct_relevance": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "corroboration": {"type": "null"},
+    "currency": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "content_access": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "independence": {"type": ["integer", "null"], "minimum": 0, "maximum": 3},
+    "reasons": {"type": "object"}
+  },
+  "additionalProperties": false
+}
