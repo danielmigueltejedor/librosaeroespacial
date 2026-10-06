@@ -1,12 +1,10 @@
-\documentclass[11pt,a4paper,openany]{book}
+\documentclass{aerobook}
 
 % ============================================================
 % DATOS EDITORIALES
 % ============================================================
 % book.toml es la fuente canónica. AeroBooks genera este archivo.
 \input{generated/metadata}
-
-\usepackage{style/estructuras}
 
 % Figura técnica específica del libro; la composición de portada es compartida.
 \newcommand{\BookCoverGraphic}{%
@@ -34,7 +32,7 @@
 \hypersetup{pageanchor=false}
 
 % Portada y página de edición estandarizadas para toda la colección.
-\input{../../shared/templates/cover}
+\input{aerobook-cover}
 
 \hypersetup{pageanchor=true}
 
