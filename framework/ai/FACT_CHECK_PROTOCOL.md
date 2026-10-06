@@ -74,6 +74,24 @@ No conviertas una simplificación docente en una afirmación historiográfica. D
 
 Si las fuentes usan criterios diferentes, el texto debe decirlo.
 
+## Enlace con el manuscrito
+
+Los claims de riesgo alto verificados o derivados deben enlazarse desde el LaTeX mediante `\claimref{CLM-...}` cuando la política del libro active `require_claim_links`.
+
+Esto crea una cadena auditable:
+
+```text
+frase/ecuación en LaTeX
+        ↓
+   \claimref
+        ↓
+claims/ledger.jsonl
+        ↓
+source IDs / derivación
+        ↓
+sources/manifest.json
+```
+
 ## Resultado de revisión
 
 El revisor debe informar:
