@@ -73,7 +73,11 @@ aerobooks build aerodinamica
 | `aerobooks new` | crea un libro desde la plantilla |
 | `aerobooks list` | lista libros gestionados |
 | `aerobooks sync` | genera metadatos LaTeX desde `book.toml` |
+| `aerobooks status` | resume fuentes, claims, conflictos y capítulos |
+| `aerobooks source-add` | registra una fuente sin editar JSON a mano |
+| `aerobooks claim-add` | registra un claim crítico |
 | `aerobooks ai-pack` | genera un contexto canónico para una IA |
+| `aerobooks review-pack` | genera contexto especializado para un revisor IA |
 | `aerobooks check` | comprueba fuentes, citas, labels, figuras y claims |
 | `aerobooks audit` | quality gate estricto + compilación |
 | `aerobooks build` | comprueba y compila |
