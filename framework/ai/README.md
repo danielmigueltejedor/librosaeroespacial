@@ -42,3 +42,19 @@ aerobooks ai-pack <slug>
 ```
 
 genera un único `AI_CONTEXT.md` con protocolos, brief, manifest y ledger.
+
+## Evidencia y reproducibilidad
+
+AeroBooks v0.2 añade:
+
+- `BOOK_BLUEPRINT_PROTOCOL.md`: captura exacta de la intención del libro;
+- `RESEARCH_PROTOCOL.md`: investigación externa trazable;
+- `PROVENANCE_PROTOCOL.md`: cadena claim → evidencia → fuente;
+- `DERIVATION_PROTOCOL.md`: reproducción matemática independiente;
+- `EXERCISE_PROTOCOL.md`: diseño y validación de problemas;
+- `FIGURE_PROTOCOL.md`: control científico de figuras;
+- `UNCERTAINTY_PROTOCOL.md`: lenguaje y estados de incertidumbre;
+- `AI_ORCHESTRATION.md`: separación de roles;
+- `QUALITY_RUBRIC.md`: blockers y dimensiones de calidad.
+
+Para tareas acotadas por capítulo usa `aerobooks-ai chapter-pack`. Es preferible a proporcionar a la IA un contexto masivo no filtrado.
