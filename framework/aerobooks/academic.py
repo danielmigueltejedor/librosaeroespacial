@@ -205,6 +205,70 @@ def cmd_init(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_bootstrap(args: argparse.Namespace) -> int:
+    root, config = load_book(args.slug)
+    _ensure_scaffold(root)
+
+    files = [
+        repo_root() / "AGENTS.md",
+        framework_dir() / "prompts" / "AEROBOOKS_AGENT.md",
+        framework_dir() / "prompts" / "BOOK_BLUEPRINT_ARCHITECT.md",
+        framework_dir() / "prompts" / "SOURCE_AUDITOR.md",
+        framework_dir() / "prompts" / "OUTLINE_ARCHITECT.md",
+        framework_dir() / "ai" / "BOOK_BLUEPRINT_PROTOCOL.md",
+        framework_dir() / "ai" / "RESEARCH_PROTOCOL.md",
+        framework_dir() / "ai" / "SOURCE_POLICY.md",
+        framework_dir() / "ai" / "PROVENANCE_PROTOCOL.md",
+        root / "ai" / "BRIEF.md",
+        root / "sources" / "manifest.json",
+        root / "sources" / "conflicts.jsonl",
+    ]
+
+    chunks = [
+        f"# AeroBooks Bootstrap Pack — {config.get('book', {}).get('title', args.slug)}",
+        "",
+        "Este paquete sirve para iniciar o reconstruir un libro a partir de fuentes.",
+        "No redactes capítulos todavía. Primero completa blueprint, source audit, conflictos y chapter specs.",
+        "",
+    ]
+    for path in files:
+        if path.exists():
+            try:
+                label = str(path.relative_to(repo_root()))
+            except ValueError:
+                label = path.name
+            chunks += [
+                f"## {label}",
+                "",
+                path.read_text(encoding="utf-8").rstrip(),
+                "",
+            ]
+
+    chunks += [
+        "## SALIDA OBLIGATORIA DE LA FASE DE BOOTSTRAP",
+        "",
+        "1. ai/BRIEF.md completo;",
+        "2. sources/manifest.json auditado;",
+        "3. sources/conflicts.jsonl actualizado;",
+        "4. mapa de cobertura del temario;",
+        "5. chapter specs para el contenido que se vaya a redactar;",
+        "6. lista explícita de lagunas que NO deben rellenarse todavía;",
+        "",
+        "Después de eso puede comenzar la autoría por chapter-pack.",
+        "",
+    ]
+
+    output = (
+        Path(args.output)
+        if args.output
+        else root / "build" / "ai" / "BOOTSTRAP.md"
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(chunks), encoding="utf-8")
+    print(f"✓ Bootstrap pack: {output}")
+    return 0
+
+
 def cmd_chapter_spec(args: argparse.Namespace) -> int:
     root, _ = load_book(args.slug)
     _ensure_scaffold(root)
@@ -698,6 +762,58 @@ def _review_gate(root: Path, config: dict) -> dict:
     }
 
 
+def cmd_review_suite(args: argparse.Namespace) -> int:
+    root, config = load_book(args.slug)
+    _ensure_scaffold(root)
+    claims = _claim_map(root)
+    required = _required_reviews(root, config, claims)
+    existing = {
+        item.get("review_type")
+        for item in _reviews(root)
+        if item.get("review_type")
+    }
+
+    created = []
+    skipped = []
+    for role in required:
+        if role in existing and not args.force:
+            skipped.append(role)
+            continue
+
+        safe = role.upper().replace("-", "_")
+        path = root / "reviews" / f"REV-{safe}-001.json"
+        if path.exists() and not args.force:
+            skipped.append(role)
+            continue
+
+        report = {
+            "schema_version": 1,
+            "review_id": f"REV-{safe}-001",
+            "review_type": role,
+            "book": args.slug,
+            "scope": "book",
+            "status": "pending",
+            "reviewer": "independent-reviewer",
+            "independence": args.independence,
+            "checked": [],
+            "findings": [],
+            "claims_checked": [],
+            "sources_consulted": [],
+            "tests_reperformed": [],
+            "residual_uncertainty": [],
+        }
+        _write_json(path, report)
+        created.append(role)
+
+    print("✓ Review suite preparada.")
+    if created:
+        print("  creadas: " + ", ".join(created))
+    if skipped:
+        print("  ya existentes: " + ", ".join(skipped))
+    print("  Rellena cada informe usando su review-pack/chapter-pack correspondiente.")
+    return 0
+
+
 def cmd_gate(args: argparse.Namespace) -> int:
     root, config = load_book(args.slug)
     coverage = _coverage(root)
@@ -905,6 +1021,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("slug")
     p.set_defaults(func=cmd_init)
 
+    p = sub.add_parser("bootstrap", help="Generar el paquete inicial para crear un libro desde sus fuentes.")
+    p.add_argument("slug")
+    p.add_argument("--output")
+    p.set_defaults(func=cmd_bootstrap)
+
     p = sub.add_parser("chapter-spec", help="Crear o reemplazar el contrato de un capítulo.")
     p.add_argument("slug")
     p.add_argument("--id", required=True)
@@ -964,6 +1085,16 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--force", action="store_true")
     p.set_defaults(func=cmd_review_template)
+
+    p = sub.add_parser("review-suite", help="Crear plantillas para todas las revisiones exigidas por el riesgo del libro.")
+    p.add_argument("slug")
+    p.add_argument(
+        "--independence",
+        choices=["same_model_new_pass", "independent_model", "human", "hybrid"],
+        default="same_model_new_pass",
+    )
+    p.add_argument("--force", action="store_true")
+    p.set_defaults(func=cmd_review_suite)
 
     p = sub.add_parser("gate", help="Puerta académica: cobertura + claims + reviews + conflictos.")
     p.add_argument("slug")
