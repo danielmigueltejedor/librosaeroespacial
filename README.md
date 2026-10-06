@@ -8,9 +8,11 @@ La idea es mantener aquí una base editorial común para que todos los libros co
 
 ```text
 books/
+  README.md
   estructuras-aeroespaciales/
     main.tex
     references.bib
+    CHANGELOG.md
     chapters/
     appendices/
     style/
@@ -19,6 +21,11 @@ shared/
   README.md
   STYLE_GUIDE.md
   templates/
+    main.tex
+    cover.tex
+
+scripts/
+  build-book.sh
 ```
 
 ## Libros
@@ -43,9 +50,19 @@ estructuras-aeroespaciales-ed3
 aerodinamica-ed4
 ```
 
-## Estándar editorial
+## Estándar editorial común
 
-Los elementos que deberían ser comunes a todos los libros se documentan en `shared/`:
+Los elementos compartidos se documentan en `shared/`.
+
+La portada de la colección está centralizada en:
+
+```text
+shared/templates/cover.tex
+```
+
+Cada libro define únicamente sus metadatos y una figura técnica propia mediante `\BookCoverGraphic`. De esta forma se puede cambiar la composición general de las portadas de toda la colección desde un único archivo sin perder la identidad técnica de cada asignatura.
+
+El estándar común fija además:
 
 - jerarquía de portada;
 - paleta y tipografía;
@@ -57,15 +74,24 @@ Los elementos que deberían ser comunes a todos los libros se documentan en `sha
 - metadatos PDF;
 - convenciones de nombres y estructura de carpetas.
 
-Cada libro puede añadir figuras y macros específicas sin romper ese estándar.
-
 ## Compilación
 
-Cada libro incluye sus propias instrucciones. Para Estructuras Aeroespaciales:
+Para compilar el libro por defecto:
 
 ```bash
-cd books/estructuras-aeroespaciales
-latexmk -pdf -interaction=nonstopmode main.tex
+make book
+```
+
+Para indicar otro libro:
+
+```bash
+make book BOOK=slug-del-libro
+```
+
+O directamente:
+
+```bash
+bash scripts/build-book.sh estructuras-aeroespaciales
 ```
 
 El proyecto usa BibLaTeX/Biber e índice analítico, por lo que `latexmk` es la forma recomendada de compilarlo.
