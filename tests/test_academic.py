@@ -10,7 +10,8 @@ from framework.aerobooks.academic import (
     _claim_map,
     _required_reviews,
 )
-from framework.aerobooks.cli import book_dir, framework_dir
+from framework.aerobooks.cli import framework_dir
+from tests.native_fixtures import native_book_dir as book_dir
 
 
 class AeroBooksAcademicTests(unittest.TestCase):

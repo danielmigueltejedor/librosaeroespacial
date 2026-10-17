@@ -4,10 +4,13 @@ import json
 import tempfile
 import tomllib
 import unittest
+from unittest.mock import patch
+
+from tests.native_fixtures import native_book_dir
 from pathlib import Path
 
 from framework.aerobooks.academic import ACADEMIC_TOOL_VERSION, _coverage
-from framework.aerobooks.cli import FRAMEWORK_VERSION, book_dir, load_book, static_check
+from framework.aerobooks.cli import FRAMEWORK_VERSION, load_book, static_check
 from framework.aerobooks.research import (
     assess_authority,
     authoring_block_reason,
@@ -89,6 +92,7 @@ def _log(root: Path) -> None:
     })
 
 
+@patch("framework.aerobooks.cli.book_dir", native_book_dir)
 class AeroBooksV03Tests(unittest.TestCase):
     def test_versions(self) -> None:
         self.assertEqual(FRAMEWORK_VERSION, "0.4.0")
@@ -118,7 +122,7 @@ class AeroBooksV03Tests(unittest.TestCase):
 
     def test_existing_books_stay_on_v02(self) -> None:
         for slug in ("mecanica-fluidos", "estructuras-aeroespaciales"):
-            root = book_dir(slug)
+            root = native_book_dir(slug)
             self.assertEqual(contract_version(root), "0.2")
             report = _coverage(root)
             self.assertEqual(

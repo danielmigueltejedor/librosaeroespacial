@@ -1,0 +1,424 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1060,         20]
+NotebookDataLength[     15106,        402]
+NotebookOptionsPosition[     14705,        392]
+NotebookOutlinePosition[     15023,        406]
+CellTagsIndexPosition[     14980,        403]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Pr\[AAcute]ctica 6. An\[AAcute]lisis dimensional", "Title",ExpressionUUID->"aff47bdc-1088-414a-a10d-99c92ad1fecf"],
+
+Cell["\<\
+Mec\[AAcute]nica de Fluidos (ULE 0710311), segunda edici\[OAcute]n. Material \
+original; se explica en la parte 7 del libro.\
+\>", "Text",ExpressionUUID->"5259faab-0306-41db-a8ce-61b34207f266"],
+
+Cell[TextData[{
+ "Eval\[UAcute]e las celdas en orden. Las figuras se exportan a la carpeta ",
+ Cell["figures/", "InlineCode",ExpressionUUID->
+  "b2fa530f-6086-4c8f-ab3c-4a0109696354"],
+ " junto al cuaderno."
+}], "Text",ExpressionUUID->"d4f304d5-960a-4bce-9c02-b516a4a586bf"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"Quiet", "[", 
+   RowBox[{"CreateDirectory", "[", "\"\<figures\>\"", "]"}], "]"}], 
+  ";"}]], "Input",ExpressionUUID->"559b3ce5-2fa3-4b20-a2dd-f96d3b57e878"],
+
+Cell["Bloque A: teorema Pi con la matriz dimensional", "Chapter",ExpressionUUID->"dad769cf-8773-44fa-b95f-ec5568664b21"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"vars", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"\"\<Uc\>\"", ",", " ", "\"\<d\>\"", ",", " ", "\"\<mu\>\"", ",",
+       " ", "\"\<rho\>\"", ",", " ", "\"\<B\>\""}], "}"}]}], ";"}], 
+  "                ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"B", " ", "=", " ", 
+    RowBox[{"Delta", 
+     RowBox[{"(", 
+      RowBox[{"rho", " ", "g"}], ")"}], " ", "en", " ", 
+     RowBox[{"N", "/", 
+      RowBox[{"m", "^", "3"}]}]}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"columnas", ":", " ", 
+     RowBox[{"exponentes", " ", "de", " ", "M"}]}], ",", " ", "L", ",", " ", 
+    RowBox[{"T", " ", "de", " ", "cada", " ", "variable"}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"dim", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "1", ",", " ", "0"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", 
+       RowBox[{"-", "1"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "3"}], ",", " ", "0"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "2"}], ",", " ", 
+       RowBox[{"-", "2"}]}], "}"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"matriz", " ", "=", " ", 
+   RowBox[{"Transpose", "[", "dim", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: rango de la matriz dimensional = \>\"", ",", " ", 
+    RowBox[{"MatrixRank", "[", "matriz", "]"}], ",", 
+    " ", "\"\<, numero de grupos = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"Length", "[", "vars", "]"}], " ", "-", " ", 
+     RowBox[{"MatrixRank", "[", "matriz", "]"}]}]}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"nulos", " ", "=", " ", 
+   RowBox[{"NullSpace", "[", "matriz", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<A: base del espacio nulo (exponentes de \>\"", ",", " ", 
+     "vars", ",", " ", "\"\<): \>\"", ",", " ", "nulos"}], "]"}], ";"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Una", " ", "base", " ", "equivalente", " ", "y", " ", "mas", " ", 
+    RowBox[{"legible", ":", " ", 
+     RowBox[{"Re", " ", 
+      RowBox[{"(", 
+       RowBox[{"exponente", " ", "1", " ", "en", " ", "Uc"}], ")"}], " ", "y",
+       " ", "Ar", " ", 
+      RowBox[{"(", 
+       RowBox[{"sin", " ", "Uc"}], ")"}]}]}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"re", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", " ", "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0"}], "}"}]}], ";", " ", 
+  RowBox[{"ar", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", " ", "3", ",", " ", 
+     RowBox[{"-", "2"}], ",", " ", "1", ",", " ", "1"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: Re y Ar son adimensionales: \>\"", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"matriz", " ", ".", " ", "re"}], ",", " ", 
+      RowBox[{"matriz", " ", ".", " ", "ar"}]}], "}"}], ",", 
+    " ", "\"\<, independientes: \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"MatrixRank", "[", 
+      RowBox[{"{", 
+       RowBox[{"re", ",", " ", "ar"}], "}"}], "]"}], " ", "==", " ", "2"}]}], 
+   "]"}], ";"}]}], "Input",ExpressionUUID->"bc9dbc1a-8f81-4e6c-b240-\
+80a0c8c7bfc9"],
+
+Cell["Bloque B: comprobacion automatica con cantidades y unidades", "Chapter",ExpressionUUID->"1b008b92-e312-49ca-9d45-0df59e4b1538"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"q", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Quantity", "[", 
+      RowBox[{"0.0648", ",", " ", 
+       RowBox[{"\"\<Meters\>\"", "/", "\"\<Seconds\>\""}]}], "]"}], ",", " ", 
+     
+     RowBox[{"Quantity", "[", 
+      RowBox[{"4", ",", " ", "\"\<Millimeters\>\""}], "]"}], ",", " ", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"\"\<Millipascals\>\"", " ", "\"\<Seconds\>\""}]}], "]"}], ",",
+      "\n", "     ", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"1000", ",", " ", 
+       RowBox[{"\"\<Kilograms\>\"", "/", 
+        RowBox[{"\"\<Meters\>\"", "^", "3"}]}]}], "]"}], ",", " ", 
+     RowBox[{"Quantity", "[", 
+      RowBox[{"80", ",", " ", 
+       RowBox[{"\"\<Newtons\>\"", "/", 
+        RowBox[{"\"\<Meters\>\"", "^", "3"}]}]}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Reynolds", " ", "=", " ", 
+   RowBox[{"UnitSimplify", "[", 
+    RowBox[{
+     RowBox[{"q", "[", 
+      RowBox[{"[", "4", "]"}], "]"}], " ", 
+     RowBox[{"q", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], " ", 
+     RowBox[{
+      RowBox[{"q", "[", 
+       RowBox[{"[", "2", "]"}], "]"}], "/", 
+      RowBox[{"q", "[", 
+       RowBox[{"[", "3", "]"}], "]"}]}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Arq", " ", "=", " ", 
+   RowBox[{"UnitSimplify", "[", 
+    RowBox[{
+     RowBox[{"q", "[", 
+      RowBox[{"[", "4", "]"}], "]"}], " ", 
+     RowBox[{"q", "[", 
+      RowBox[{"[", "5", "]"}], "]"}], " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"q", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "^", "3"}], "/", 
+      RowBox[{
+       RowBox[{"q", "[", 
+        RowBox[{"[", "3", "]"}], "]"}], "^", "2"}]}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: Re = \>\"", ",", " ", "Reynolds", ",", 
+    " ", "\"\<, Ar = \>\"", ",", " ", "Arq", ",", " ", "\"\<, Ri = \>\"", ",",
+     " ", 
+    RowBox[{"UnitSimplify", "[", 
+     RowBox[{
+      RowBox[{"q", "[", 
+       RowBox[{"[", "5", "]"}], "]"}], " ", 
+      RowBox[{
+       RowBox[{"q", "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"q", "[", 
+          RowBox[{"[", "4", "]"}], "]"}], " ", 
+         RowBox[{
+          RowBox[{"q", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "^", "2"}]}], ")"}]}]}], "]"}]}], 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: DimensionalCombinations para Uc, d, mu, rho: \>\"", ",", 
+    "\n", "  ", 
+    RowBox[{"DimensionalCombinations", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"QuantityVariable", "[", 
+        RowBox[{"\"\<Uc\>\"", ",", " ", "\"\<Speed\>\""}], "]"}], ",", " ", 
+       RowBox[{"QuantityVariable", "[", 
+        RowBox[{"\"\<d\>\"", ",", " ", "\"\<Length\>\""}], "]"}], ",", "\n", 
+       "    ", 
+       RowBox[{"QuantityVariable", "[", 
+        RowBox[{"\"\<mu\>\"", ",", " ", "\"\<DynamicViscosity\>\""}], "]"}], ",",
+        " ", 
+       RowBox[{"QuantityVariable", "[", 
+        RowBox[{"\"\<rho\>\"", ",", " ", "\"\<MassDensity\>\""}], "]"}]}], 
+      "}"}], "]"}]}], "]"}], ";"}]}], "Input",ExpressionUUID->"497cf9a2-c93f-\
+4e48-b3e3-459660f5ddc3"],
+
+Cell["\<\
+Bloque C: datos (sinteticos) y ajuste de una correlacion Re = C Ar^n\
+\>", "Chapter",ExpressionUUID->"8ec64c02-5528-4f3f-b737-913313b1316a"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Bdat", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "5", ",", " ", "10", ",", " ", "20", ",", " ", "40", ",", " ", "80"}], 
+     "}"}]}], ";", " ", 
+   RowBox[{"Udat", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "28.2", ",", " ", "34.7", ",", " ", "42.8", ",", " ", "52.7", ",", " ", 
+       "64.8"}], "}"}], " ", 
+     RowBox[{"10", "^", 
+      RowBox[{"-", "3"}]}]}]}], ";"}], "   ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"tabla", " ", "del", " ", "capitulo", " ", "10"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"dBoq", " ", "=", " ", "0.004"}], ";", " ", 
+  RowBox[{"muAgua", " ", "=", " ", "1.0*^-3"}], ";", " ", 
+  RowBox[{"rhoAgua", " ", "=", " ", "1000."}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ReDat", " ", "=", " ", 
+   RowBox[{"rhoAgua", " ", "Udat", " ", 
+    RowBox[{"dBoq", "/", "muAgua"}]}]}], ";", " ", 
+  RowBox[{"ArDat", " ", "=", " ", 
+   RowBox[{"rhoAgua", " ", "Bdat", " ", 
+    RowBox[{
+     RowBox[{"dBoq", "^", "3"}], "/", 
+     RowBox[{"muAgua", "^", "2"}]}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ajuste", " ", "=", " ", 
+   RowBox[{"FindFit", "[", 
+    RowBox[{
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Log", "[", "ArDat", "]"}], ",", " ", 
+        RowBox[{"Log", "[", "ReDat", "]"}]}], "}"}], "]"}], ",", " ", 
+     RowBox[{"lc", " ", "+", " ", 
+      RowBox[{"n", " ", "la"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"lc", ",", " ", "n"}], "}"}], ",", " ", "la"}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"cC", " ", "=", " ", 
+   RowBox[{"Exp", "[", 
+    RowBox[{"lc", " ", "/.", " ", "ajuste"}], "]"}]}], ";", " ", 
+  RowBox[{"nn", " ", "=", " ", 
+   RowBox[{"n", " ", "/.", " ", "ajuste"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: ajuste Re = C Ar^n con C = \>\"", ",", " ", "cC", ",", 
+    " ", "\"\<, n = \>\"", ",", " ", "nn"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"figC", " ", "=", " ", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ListLogLogPlot", "[", 
+      RowBox[{
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", 
+         RowBox[{"ArDat", ",", " ", "ReDat"}], "}"}], "]"}], ",", " ", 
+       RowBox[{"PlotStyle", " ", "->", " ", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", " ", 
+          RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}]}], "]"}], ",", 
+     "\n", "   ", 
+     RowBox[{"LogLogPlot", "[", 
+      RowBox[{
+       RowBox[{"cC", " ", 
+        RowBox[{"a", "^", "nn"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"a", ",", " ", "200", ",", " ", "8000"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", " ", "->", " ", "Blue"}]}], "]"}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<Ar\>\"", ",", " ", "\"\<Re crit\>\""}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "380"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<figures/m06-ajuste.png\>\"", ",", " ", 
+    RowBox[{"Rasterize", "[", 
+     RowBox[{"figC", ",", " ", 
+      RowBox[{"Background", " ", "->", " ", "White"}], ",", " ", 
+      RowBox[{"ImageResolution", " ", "->", " ", "96"}]}], "]"}]}], "]"}], 
+  ";"}]}], "Input",ExpressionUUID->"29a02d16-1d63-4be4-86f3-824807a71947"],
+
+Cell["Bloque D: prediccion de ensayos modificados", "Chapter",ExpressionUUID->"d6819c01-d2eb-40a5-9cb1-d3173b2e7143"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"prediccion", "[", 
+    RowBox[{"B_", ",", " ", "d_", ",", " ", "mu_", ",", " ", "rho_"}], "]"}], 
+   " ", ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"a", " ", "=", " ", 
+       RowBox[{"rho", " ", "B", " ", 
+        RowBox[{
+         RowBox[{"d", "^", "3"}], "/", 
+         RowBox[{"mu", "^", "2"}]}]}]}], "}"}], ",", " ", 
+     RowBox[{"cC", " ", 
+      RowBox[{"a", "^", "nn"}], " ", 
+      RowBox[{"mu", "/", 
+       RowBox[{"(", 
+        RowBox[{"rho", " ", "d"}], ")"}]}]}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<D: ensayo d = 8 mm, B = 10 N/m^3: correlacion = \>\"", ",", 
+    " ", 
+    RowBox[{"1000", " ", 
+     RowBox[{"prediccion", "[", 
+      RowBox[{
+      "10", ",", " ", "0.008", ",", " ", "muAgua", ",", " ", "rhoAgua"}], 
+      "]"}]}], ",", " ", "\"\< mm/s; semejanza exacta = \>\"", ",", " ", 
+    RowBox[{"1000", " ", "0.0648", " ", 
+     RowBox[{"0.004", "/", "0.008"}]}], ",", " ", "\"\< mm/s\>\""}], "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<D: ensayo d = 4 mm, B = 30 N/m^3: correlacion = \>\"", ",", 
+    " ", 
+    RowBox[{"1000", " ", 
+     RowBox[{"prediccion", "[", 
+      RowBox[{
+      "30", ",", " ", "0.004", ",", " ", "muAgua", ",", " ", "rhoAgua"}], 
+      "]"}]}], ",", " ", "\"\< mm/s\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<D: ensayo mu = 2 mPa s, d = 4 mm, B = 80 N/m^3: correlacion = \
+\>\"", ",", " ", 
+    RowBox[{"1000", " ", 
+     RowBox[{"prediccion", "[", 
+      RowBox[{
+      "80", ",", " ", "0.004", ",", " ", "2.0*^-3", ",", " ", "rhoAgua"}], 
+      "]"}]}], ",", " ", "\"\< mm/s\>\""}], "]"}], ";"}]}], "Input",Expression\
+UUID->"ccbe2929-73b4-4241-8e59-bbd7c5693cae"]
+},
+FrontEndVersion->"15.0 para Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e7e6c970-7f3c-4dcf-8ea1-ef6c7ac3eb8e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1460, 33, 120, 0, 70, "Title",ExpressionUUID->"aff47bdc-1088-414a-a10d-99c92ad1fecf"],
+Cell[1583, 35, 203, 3, 70, "Text",ExpressionUUID->"5259faab-0306-41db-a8ce-61b34207f266"],
+Cell[1789, 40, 274, 5, 70, "Text",ExpressionUUID->"d4f304d5-960a-4bce-9c02-b516a4a586bf"],
+Cell[2066, 47, 285, 6, 70, "Input",ExpressionUUID->"559b3ce5-2fa3-4b20-a2dd-f96d3b57e878"],
+Cell[2354, 55, 120, 0, 70, "Chapter",ExpressionUUID->"dad769cf-8773-44fa-b95f-ec5568664b21"],
+Cell[2477, 57, 3498, 93, 70, "Input",ExpressionUUID->"bc9dbc1a-8f81-4e6c-b240-80a0c8c7bfc9"],
+Cell[5978, 152, 133, 0, 70, "Chapter",ExpressionUUID->"1b008b92-e312-49ca-9d45-0df59e4b1538"],
+Cell[6114, 154, 3196, 90, 70, "Input",ExpressionUUID->"497cf9a2-c93f-4e48-b3e3-459660f5ddc3"],
+Cell[9313, 246, 150, 2, 70, "Chapter",ExpressionUUID->"8ec64c02-5528-4f3f-b737-913313b1316a"],
+Cell[9466, 250, 3294, 87, 70, "Input",ExpressionUUID->"29a02d16-1d63-4be4-86f3-824807a71947"],
+Cell[12763, 339, 117, 0, 70, "Chapter",ExpressionUUID->"d6819c01-d2eb-40a5-9cb1-d3173b2e7143"],
+Cell[12883, 341, 1818, 49, 70, "Input",ExpressionUUID->"ccbe2929-73b4-4241-8e59-bbd7c5693cae"]
+}
+]
+*)
+
+(* End of internal cache information *)

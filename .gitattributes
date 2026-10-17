@@ -1,4 +1,9 @@
 # Matplotlib writes multi-line SVG path attributes with spaces before newlines.
 *.svg whitespace=-blank-at-eol
+# PDF figure streams are binary, even when a short stream contains no NUL byte.
+*.pdf binary
+# Notebook strings and historical test data retain their original bytes.
+*.nb whitespace=-blank-at-eol
+tests/fixtures/native-v02/** whitespace=-blank-at-eol
 # Preserve the original coordinate files byte for byte.
 books/turbomaquinas/practice/*.csv -text whitespace=cr-at-eol

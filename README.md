@@ -63,16 +63,11 @@ AGENTS.md
 │   └── templates/book/        # plantilla de libro nuevo
 │
 ├── books/
-│   └── estructuras-aeroespaciales/
-│       ├── book.toml
-│       ├── main.tex
-│       ├── references.bib
-│       ├── ai/
-│       ├── sources/
-│       ├── claims/
-│       ├── chapters/
-│       ├── appendices/
-│       └── generated/
+│   └── <libro>/
+│       ├── studium-import.json # procedencia y documentos editables
+│       ├── README.md
+│       ├── latex/             # o publication/, según el proyecto
+│       └── figures/           # recursos necesarios para recompilar
 │
 ├── shared/                    # compatibilidad / guía editorial histórica
 └── scripts/
@@ -213,8 +208,8 @@ Principios centrales:
 
 | Libro | Proyecto | Edición |
 | --- | --- | --- |
-| [Estructuras Aeroespaciales](books/estructuras-aeroespaciales/) | AeroBooks | Tercera edición |
-| [Mecánica de Fluidos](books/mecanica-fluidos/) | AeroBooks | Primera edición |
+| [Teoría de Estructuras](books/estructuras-aeroespaciales/) | Studium importado | Segunda edición completa, manuscrito v3 |
+| [Mecánica de Fluidos](books/mecanica-fluidos/) | Studium importado | Portada I edición, revisión científica fase 6 |
 | [Turbomáquinas](books/turbomaquinas/) | Studium importado | Primera edición |
 | [Tecnología Aeroespacial](books/tecnologia-aeroespacial/) | Studium importado | Primera edición |
 | [Motores Cohete](books/motores-cohete/) | Studium importado | Primera edición |
@@ -222,16 +217,20 @@ Principios centrales:
 
 ## Editar los libros importados de Studium
 
-Turbomáquinas, Tecnología Aeroespacial y Motores Cohete conservan sus fuentes y su diseño original. Cada carpeta incluye **manual, problemas y simulacros**, además de figuras editables, bibliografía e informes de comprobación. No se incluyen los apuntes, escaneos ni exámenes privados utilizados como referencia.
+Los cinco libros conservan sus fuentes y su diseño Studium. Estructuras y Fluidos contienen un manual cada uno; Turbomáquinas, Tecnología Aeroespacial y Motores Cohete incluyen **manual, problemas y simulacros**. Se guardan también los recursos necesarios para recompilar. No se incluyen los apuntes, escaneos ni exámenes privados utilizados como referencia.
+
+Las antiguas ediciones AeroBooks de Estructuras y Fluidos se han sustituido por sus manuscritos actuales y permanecen recuperables en el historial de Git. Estructuras recupera el texto completo de 270 páginas: la copia de clase tenía un salto de la página impresa 98 a la 230. Fluidos incorpora las correcciones hasta la fase 6 (290 páginas).
 
 ```bash
 python3 scripts/build-studium-books.py all --check
+python3 scripts/build-studium-books.py estructuras-aeroespaciales
+python3 scripts/build-studium-books.py mecanica-fluidos
 python3 scripts/build-studium-books.py motores-cohete
 python3 scripts/build-studium-books.py tecnologia-aeroespacial
 python3 scripts/build-studium-books.py turbomaquinas
 ```
 
-Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los nueve PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
+Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los once PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
 
 Consulta el README de cada libro para saber qué `.tex` editar. Estos proyectos existentes están archivados como importaciones; sus registros académicos no se convierten automáticamente al contrato AeroBooks y no se asignan aprobaciones. Para ellos se usa el compilador anterior, y para los libros nativos se mantiene `aerobooks build`.
 

@@ -1,0 +1,439 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1060,         20]
+NotebookDataLength[     15106,        417]
+NotebookOptionsPosition[     14703,        407]
+NotebookOutlinePosition[     15021,        421]
+CellTagsIndexPosition[     14978,        418]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Pr\[AAcute]ctica 4. Bernoulli y vol\[UAcute]menes de control", "Title",ExpressionUUID->"515c4c3e-9bca-43c6-bc36-3d3c3acfa632"],
+
+Cell["\<\
+Mec\[AAcute]nica de Fluidos (ULE 0710311), segunda edici\[OAcute]n. Material \
+original; se explica en la parte 7 del libro.\
+\>", "Text",ExpressionUUID->"98b45007-f5e7-4870-9cbc-9620ad06e0ae"],
+
+Cell[TextData[{
+ "Eval\[UAcute]e las celdas en orden. Las figuras se exportan a la carpeta ",
+ Cell["figures/", "InlineCode",ExpressionUUID->
+  "36af922c-cadb-45cb-9ddd-320c70e4976e"],
+ " junto al cuaderno."
+}], "Text",ExpressionUUID->"e544f7fd-a3bc-4958-9b6a-e45a0b85b277"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"Quiet", "[", 
+   RowBox[{"CreateDirectory", "[", "\"\<figures\>\"", "]"}], "]"}], 
+  ";"}]], "Input",ExpressionUUID->"b71c6572-0542-47e5-9355-dbda73aacc89"],
+
+Cell["Bloque A: medidor Venturi y estudio parametrico", "Chapter",ExpressionUUID->"221c6c13-32df-4107-be78-758d17630358"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"rho", ",", " ", "d1", ",", " ", "d2"}], "}"}], " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"998.", ",", " ", "0.100", ",", " ", "0.050"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"area", "[", "d_", "]"}], " ", ":=", " ", 
+   RowBox[{"Pi", " ", 
+    RowBox[{
+     RowBox[{"d", "^", "2"}], "/", "4"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"caudal", "[", 
+    RowBox[{"dp_", ",", " ", "beta_"}], "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"area", "[", 
+     RowBox[{"beta", " ", "d1"}], "]"}], " ", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"2", " ", 
+      RowBox[{"dp", "/", 
+       RowBox[{"(", 
+        RowBox[{"rho", " ", 
+         RowBox[{"(", 
+          RowBox[{"1", " ", "-", " ", 
+           RowBox[{"beta", "^", "4"}]}], ")"}]}], ")"}]}]}], "]"}]}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: Q para dp = 20 kPa y beta = 0.5: \>\"", ",", " ", 
+    RowBox[{"caudal", "[", 
+     RowBox[{"20000.", ",", " ", "0.5"}], "]"}], ",", " ", "\"\< m^3/s\>\""}],
+    "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"dpNecesaria", " ", "=", " ", 
+   RowBox[{"dp", " ", "/.", " ", 
+    RowBox[{
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"caudal", "[", 
+         RowBox[{"dp", ",", " ", "0.5"}], "]"}], " ", "==", " ", "0.020"}], ",",
+        " ", "dp"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: dp necesaria para Q = 20 l/s: \>\"", ",", " ", 
+    "dpNecesaria", ",", " ", "\"\< Pa\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"figA", " ", "=", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"Evaluate", "[", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"1000", " ", 
+         RowBox[{"caudal", "[", 
+          RowBox[{"dp", ",", " ", "b"}], "]"}]}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"b", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"0.4", ",", " ", "0.5", ",", " ", "0.6", ",", " ", "0.7"}],
+            "}"}]}], "}"}]}], "]"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"dp", ",", " ", "0", ",", " ", "40000"}], "}"}], ",", "\n", 
+     "   ", 
+     RowBox[{"PlotLegends", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<d2/d1: 0.4\>\"", ",", " ", "\"\<0.5\>\"", ",", 
+        " ", "\"\<0.6\>\"", ",", " ", "\"\<0.7\>\""}], "}"}]}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<dp (Pa)\>\"", ",", " ", "\"\<Q (l/s)\>\""}], "}"}]}], ",",
+      " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "400"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<figures/m04-venturi.png\>\"", ",", " ", 
+    RowBox[{"Rasterize", "[", 
+     RowBox[{"figA", ",", " ", 
+      RowBox[{"Background", " ", "->", " ", "White"}], ",", " ", 
+      RowBox[{"ImageResolution", " ", "->", " ", "96"}]}], "]"}]}], "]"}], 
+  ";"}]}], "Input",ExpressionUUID->"6136b9eb-2c7c-4792-a322-908ea9e1daf9"],
+
+Cell["\<\
+Bloque B: vaciado de un deposito (Torricelli, DSolve y NDSolve)\
+\>", "Chapter",ExpressionUUID->"05dd10ff-1d67-4979-a6d1-13e11a3990f8"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"g", " ", "=", " ", "9.81"}], ";", " ", 
+  RowBox[{"At", " ", "=", " ", "0.50"}], ";", " ", 
+  RowBox[{"ao", " ", "=", " ", "0.0010"}], ";", " ", 
+  RowBox[{"h0", " ", "=", " ", "2.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"sols", " ", "=", " ", 
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"h", "'"}], "[", "t", "]"}], " ", "==", " ", 
+         RowBox[{
+          RowBox[{"-", 
+           RowBox[{"(", 
+            RowBox[{"ao", "/", "At"}], ")"}]}], " ", 
+          RowBox[{"Sqrt", "[", 
+           RowBox[{"2", " ", "g", " ", 
+            RowBox[{"h", "[", "t", "]"}]}], "]"}]}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"h", "[", "0", "]"}], " ", "==", " ", "h0"}]}], "}"}], ",", 
+      " ", 
+      RowBox[{"h", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], ";"}], "  ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"dos", " ", 
+    RowBox[{"ramas", ":", " ", 
+     RowBox[{"hay", " ", "que", " ", "elegir"}]}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"hAn", "[", "t_", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Sqrt", "[", "h0", "]"}], " ", "-", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"ao", "/", "At"}], ")"}], " ", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"g", "/", "2"}], "]"}], " ", "t"}]}], ")"}], "^", "2"}]}], 
+   ";"}], "   ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"rama", " ", 
+    RowBox[{"fisica", ":", " ", 
+     RowBox[{"el", " ", "nivel", " ", "baja", " ", "desde", " ", "h0"}]}]}], 
+   " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"tVac", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"At", "/", "ao"}], ")"}], " ", 
+    RowBox[{"Sqrt", "[", 
+     RowBox[{"2", " ", 
+      RowBox[{"h0", "/", "g"}]}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: ramas de DSolve = \>\"", ",", " ", 
+    RowBox[{"Length", "[", "sols", "]"}], ",", 
+    " ", "\"\<, residuo de la rama fisica = \>\"", ",", " ", 
+    RowBox[{"Simplify", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"hAn", "'"}], "[", "t", "]"}], " ", "+", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"ao", "/", "At"}], ")"}], " ", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{"2", " ", "g", " ", 
+          RowBox[{"hAn", "[", "t", "]"}]}], "]"}]}]}], ",", " ", 
+      RowBox[{"0", " ", "<", " ", "t", " ", "<", " ", "tVac"}]}], "]"}], ",", 
+    " ", "\"\<, tiempo de vaciado analitico = \>\"", ",", " ", "tVac", ",", 
+    " ", "\"\< s\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: tiempo analitico hasta h = 1 mm = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"At", "/", "ao"}], ")"}], " ", 
+     RowBox[{"Sqrt", "[", 
+      RowBox[{"2", "/", "g"}], "]"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Sqrt", "[", "h0", "]"}], " ", "-", " ", 
+       RowBox[{"Sqrt", "[", "0.001", "]"}]}], ")"}]}], ",", 
+    " ", "\"\< s\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"NDSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"H", "'"}], "[", "t", "]"}], " ", "==", " ", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"(", 
+           RowBox[{"ao", "/", "At"}], ")"}]}], " ", 
+         RowBox[{"Sqrt", "[", 
+          RowBox[{"2", " ", "g", " ", 
+           RowBox[{"Max", "[", 
+            RowBox[{
+             RowBox[{"H", "[", "t", "]"}], ",", " ", "0"}], "]"}]}], 
+          "]"}]}]}], ",", " ", 
+       RowBox[{
+        RowBox[{"H", "[", "0", "]"}], " ", "==", " ", "h0"}], ",", "\n", 
+       "    ", 
+       RowBox[{"WhenEvent", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"H", "[", "t", "]"}], " ", "<", " ", "0.001"}], ",", " ", 
+         RowBox[{
+          RowBox[{"tEnd", " ", "=", " ", "t"}], ";", 
+          " ", "\"\<StopIntegration\>\""}]}], "]"}]}], "}"}], ",", " ", "H", ",",
+      " ", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", " ", "0", ",", " ", "2000"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: tiempo hasta h = 1 mm con NDSolve = \>\"", ",", " ", 
+    "tEnd", ",", " ", "\"\< s\>\""}], "]"}], ";"}]}], "Input",ExpressionUUID->\
+"74da9ac1-1579-4a8a-9e9b-4b58c156e9ae"],
+
+Cell["Bloque C: coeficiente de presion sobre un cilindro y fuerzas", "Chapter",ExpressionUUID->"50bd8128-5e85-4b58-ba51-1ae78442721b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"cp", "[", 
+     RowBox[{"th_", ",", " ", "G_"}], "]"}], " ", ":=", " ", 
+    RowBox[{"1", " ", "-", " ", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", " ", 
+         RowBox[{"Sin", "[", "th", "]"}]}], " ", "+", " ", "G"}], ")"}], "^", 
+      "2"}]}]}], ";"}], "          ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"G", " ", "=", " ", 
+    RowBox[{"Gamma", "/", 
+     RowBox[{"(", 
+      RowBox[{"2", " ", "pi", " ", "R", " ", "U"}], ")"}]}]}], " ", 
+   "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"drag", "[", "G_", "]"}], " ", ":=", " ", 
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"Integrate", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"cp", "[", 
+          RowBox[{"th", ",", " ", "G"}], "]"}], " ", 
+         RowBox[{"Cos", "[", "th", "]"}]}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"th", ",", " ", "0", ",", " ", 
+          RowBox[{"2", " ", "Pi"}]}], "}"}]}], "]"}]}], "/", "2"}]}], ";"}], 
+  "   ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "coeficiente", " ", "por", " ", "unidad", " ", "de", " ", "longitud", " ", 
+    "y", " ", "de", " ", "diametro"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lift", "[", "G_", "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Integrate", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"cp", "[", 
+         RowBox[{"th", ",", " ", "G"}], "]"}], " ", 
+        RowBox[{"Sin", "[", "th", "]"}]}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"th", ",", " ", "0", ",", " ", 
+         RowBox[{"2", " ", "Pi"}]}], "}"}]}], "]"}]}], "/", "2"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: Cd(G) = \>\"", ",", " ", 
+    RowBox[{"Simplify", "[", 
+     RowBox[{"drag", "[", "G", "]"}], "]"}], ",", " ", "\"\<, Cl(G) = \>\"", ",",
+     " ", 
+    RowBox[{"Simplify", "[", 
+     RowBox[{"lift", "[", "G", "]"}], "]"}], ",", 
+    " ", "\"\< (Kutta-Joukowski: Cl = 2 pi G)\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"figC", " ", "=", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"cp", "[", 
+        RowBox[{
+         RowBox[{"th", " ", "Degree"}], ",", " ", "0"}], "]"}], ",", " ", 
+       RowBox[{"cp", "[", 
+        RowBox[{
+         RowBox[{"th", " ", "Degree"}], ",", " ", "0.5"}], "]"}]}], "}"}], ",",
+      " ", 
+     RowBox[{"{", 
+      RowBox[{"th", ",", " ", "0", ",", " ", "360"}], "}"}], ",", " ", 
+     RowBox[{"AxesLabel", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<theta (grados)\>\"", ",", " ", "\"\<Cp\>\""}], "}"}]}], ",",
+      "\n", "   ", 
+     RowBox[{"PlotLegends", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<sin circulacion\>\"", ",", " ", "\"\<G = 0.5\>\""}], 
+       "}"}]}], ",", " ", 
+     RowBox[{"PlotStyle", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", " ", "Blue"}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "400"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<figures/m04-cilindro.png\>\"", ",", " ", 
+    RowBox[{"Rasterize", "[", 
+     RowBox[{"figC", ",", " ", 
+      RowBox[{"Background", " ", "->", " ", "White"}], ",", " ", 
+      RowBox[{"ImageResolution", " ", "->", " ", "96"}]}], "]"}]}], "]"}], 
+  ";"}]}], "Input",ExpressionUUID->"64c3fe7d-6461-4929-bcad-06005dce5f40"],
+
+Cell["\<\
+Bloque D: fuerza de un chorro sobre un alabe (balance de cantidad de \
+movimiento)\
+\>", "Chapter",ExpressionUUID->"3166b22d-df07-4ae7-9cd6-461de1a8aa02"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"V", " ", "=", " ", "20."}], ";", " ", 
+  RowBox[{"Q", " ", "=", " ", "0.005"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"fuerza", "[", "beta_", "]"}], " ", ":=", " ", 
+   RowBox[{"rho", " ", "Q", " ", "V", " ", 
+    RowBox[{"(", 
+     RowBox[{"1", " ", "-", " ", 
+      RowBox[{"Cos", "[", "beta", "]"}]}], ")"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<D: fuerza para desvio de 90, 120 y 180 grados: \>\"", ",", 
+    " ", 
+    RowBox[{"fuerza", " ", "/@", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"90", " ", "Degree"}], ",", " ", 
+       RowBox[{"120", " ", "Degree"}], ",", " ", 
+       RowBox[{"180", " ", "Degree"}]}], "}"}]}], ",", " ", "\"\< N\>\""}], 
+   "]"}], ";"}]}], "Input",ExpressionUUID->"d4e02acb-7e7e-4026-9c71-\
+5500bb8cb012"]
+},
+FrontEndVersion->"15.0 para Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e7e6c970-7f3c-4dcf-8ea1-ef6c7ac3eb8e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1460, 33, 132, 0, 70, "Title",ExpressionUUID->"515c4c3e-9bca-43c6-bc36-3d3c3acfa632"],
+Cell[1595, 35, 203, 3, 70, "Text",ExpressionUUID->"98b45007-f5e7-4870-9cbc-9620ad06e0ae"],
+Cell[1801, 40, 274, 5, 70, "Text",ExpressionUUID->"e544f7fd-a3bc-4958-9b6a-e45a0b85b277"],
+Cell[2078, 47, 285, 6, 70, "Input",ExpressionUUID->"b71c6572-0542-47e5-9355-dbda73aacc89"],
+Cell[2366, 55, 121, 0, 70, "Chapter",ExpressionUUID->"221c6c13-32df-4107-be78-758d17630358"],
+Cell[2490, 57, 3129, 86, 70, "Input",ExpressionUUID->"6136b9eb-2c7c-4792-a322-908ea9e1daf9"],
+Cell[5622, 145, 145, 2, 70, "Chapter",ExpressionUUID->"05dd10ff-1d67-4979-a6d1-13e11a3990f8"],
+Cell[5770, 149, 4401, 127, 70, "Input",ExpressionUUID->"74da9ac1-1579-4a8a-9e9b-4b58c156e9ae"],
+Cell[10174, 278, 134, 0, 70, "Chapter",ExpressionUUID->"50bd8128-5e85-4b58-ba51-1ae78442721b"],
+Cell[10311, 280, 3390, 96, 70, "Input",ExpressionUUID->"64c3fe7d-6461-4929-bcad-06005dce5f40"],
+Cell[13704, 378, 164, 3, 70, "Chapter",ExpressionUUID->"3166b22d-df07-4ae7-9cd6-461de1a8aa02"],
+Cell[13871, 383, 828, 22, 70, "Input",ExpressionUUID->"d4e02acb-7e7e-4026-9c71-5500bb8cb012"]
+}
+]
+*)
+
+(* End of internal cache information *)

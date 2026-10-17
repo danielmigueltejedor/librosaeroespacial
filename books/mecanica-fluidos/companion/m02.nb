@@ -1,0 +1,672 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Wolfram 15.0' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1060,         20]
+NotebookDataLength[     23330,        650]
+NotebookOptionsPosition[     22925,        640]
+NotebookOutlinePosition[     23243,        654]
+CellTagsIndexPosition[     23200,        651]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["Pr\[AAcute]ctica 2. Mec\[AAcute]nica cl\[AAcute]sica y ecuaciones \
+diferenciales", "Title",ExpressionUUID->"8212246d-a768-499e-a114-\
+903ac2da175a"],
+
+Cell["\<\
+Mec\[AAcute]nica de Fluidos (ULE 0710311), segunda edici\[OAcute]n. Material \
+original; se explica en la parte 7 del libro.\
+\>", "Text",ExpressionUUID->"9749df83-4321-463a-af86-6b7c1a86e6ad"],
+
+Cell[TextData[{
+ "Eval\[UAcute]e las celdas en orden. Las figuras se exportan a la carpeta ",
+ Cell["figures/", "InlineCode",ExpressionUUID->
+  "35b3cdd2-5555-4c93-9a9f-2c89424f5129"],
+ " junto al cuaderno."
+}], "Text",ExpressionUUID->"677e3403-4f77-4334-b75b-09d5348ce94b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";", " ", 
+  RowBox[{"Quiet", "[", 
+   RowBox[{"CreateDirectory", "[", "\"\<figures\>\"", "]"}], "]"}], 
+  ";"}]], "Input",ExpressionUUID->"7bf10855-5b37-4f1b-b4f1-f2aa0485cbec"],
+
+Cell["Bloque A: proyectil sin resistencia (DSolve)", "Chapter",ExpressionUUID->"394b9c28-3c39-4d9e-95c2-52799e3a8078"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"g", " ", "=", " ", "9.81"}], ";", " ", 
+  RowBox[{"v0", " ", "=", " ", "30."}], ";", " ", 
+  RowBox[{"th", " ", "=", " ", 
+   RowBox[{"40", " ", "Degree"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"solA", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "''"}], "[", "t", "]"}], " ", "==", " ", "0"}], ",", 
+        " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"y", "''"}], "[", "t", "]"}], " ", "==", " ", 
+         RowBox[{"-", "g"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"x", "[", "0", "]"}], " ", "==", " ", "0"}], ",", " ", 
+        RowBox[{
+         RowBox[{"y", "[", "0", "]"}], " ", "==", " ", "0"}], ",", "\n", 
+        "    ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "'"}], "[", "0", "]"}], " ", "==", " ", 
+         RowBox[{"v0", " ", 
+          RowBox[{"Cos", "[", "th", "]"}]}]}], ",", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"y", "'"}], "[", "0", "]"}], " ", "==", " ", 
+         RowBox[{"v0", " ", 
+          RowBox[{"Sin", "[", "th", "]"}]}]}]}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "[", "t", "]"}], ",", " ", 
+        RowBox[{"y", "[", "t", "]"}]}], "}"}], ",", " ", "t"}], "]"}], " ", "//",
+     " ", "First"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"tFlight", " ", "=", " ", 
+   RowBox[{"t", " ", "/.", " ", 
+    RowBox[{"Last", "[", 
+     RowBox[{"Solve", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"y", "[", "t", "]"}], " ", "/.", " ", "solA"}], ")"}], " ", 
+        "==", " ", "0"}], ",", " ", "t"}], "]"}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: x(t), y(t) = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], ",", " ", 
+       RowBox[{"y", "[", "t", "]"}]}], "}"}], " ", "/.", " ", "solA"}]}], 
+   "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<A: tiempo de vuelo = \>\"", ",", " ", "tFlight", ",", 
+    " ", "\"\< s, alcance = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], " ", "/.", " ", "solA"}], ")"}], " ", "/.",
+      " ", 
+     RowBox[{"t", " ", "->", " ", "tFlight"}]}], ",", 
+    " ", "\"\< m, formula v0^2 sin(2 th)/g = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"v0", "^", "2"}], " ", 
+     RowBox[{
+      RowBox[{"Sin", "[", 
+       RowBox[{"2", " ", "th"}], "]"}], "/", "g"}]}]}], "]"}], 
+  ";"}]}], "Input",ExpressionUUID->"008775dd-c001-402e-9ef8-ed0c1c4d968b"],
+
+Cell["\<\
+Bloque B: proyectil con resistencia cuadratica (NDSolve y WhenEvent)\
+\>", "Chapter",ExpressionUUID->"d982e232-7c82-4512-956c-4fda3d47d0db"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"m", ",", " ", "diam", ",", " ", "rho", ",", " ", "cd"}], "}"}], 
+    " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{"0.057", ",", " ", "0.067", ",", " ", "1.2", ",", " ", "0.55"}], 
+     "}"}]}], ";"}], "   ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"pelota", " ", "de", " ", "tenis"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"kq", " ", "=", " ", 
+    RowBox[{"rho", " ", "cd", " ", "Pi", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"diam", "^", "2"}], "/", "4"}], "/", "2"}]}]}], ";"}], 
+  "                       ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"k", " ", "=", " ", 
+     RowBox[{"rho", " ", "Cd", " ", 
+      RowBox[{"A", " ", "/", " ", "2"}]}]}], ",", " ", 
+    RowBox[{"en", " ", 
+     RowBox[{"kg", "/", "m"}]}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"eqs", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"X", "''"}], "[", "t", "]"}], " ", "==", " ", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"(", 
+         RowBox[{"kq", "/", "m"}], ")"}]}], " ", 
+       RowBox[{"Sqrt", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"X", "'"}], "[", "t", "]"}], "^", "2"}], " ", "+", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Y", "'"}], "[", "t", "]"}], "^", "2"}]}], "]"}], " ", 
+       RowBox[{
+        RowBox[{"X", "'"}], "[", "t", "]"}]}]}], ",", "\n", "       ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Y", "''"}], "[", "t", "]"}], " ", "==", " ", 
+      RowBox[{
+       RowBox[{"-", "g"}], " ", "-", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"kq", "/", "m"}], ")"}], " ", 
+        RowBox[{"Sqrt", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"X", "'"}], "[", "t", "]"}], "^", "2"}], " ", "+", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Y", "'"}], "[", "t", "]"}], "^", "2"}]}], "]"}], " ", 
+        RowBox[{
+         RowBox[{"Y", "'"}], "[", "t", "]"}]}]}]}], ",", "\n", "       ", 
+     RowBox[{
+      RowBox[{"X", "[", "0", "]"}], " ", "==", " ", "0"}], ",", " ", 
+     RowBox[{
+      RowBox[{"Y", "[", "0", "]"}], " ", "==", " ", "0"}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"X", "'"}], "[", "0", "]"}], " ", "==", " ", 
+      RowBox[{"v0", " ", 
+       RowBox[{"Cos", "[", "th", "]"}]}]}], ",", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Y", "'"}], "[", "0", "]"}], " ", "==", " ", 
+      RowBox[{"v0", " ", 
+       RowBox[{"Sin", "[", "th", "]"}]}]}], ",", "\n", "       ", 
+     RowBox[{"WhenEvent", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Y", "[", "t", "]"}], " ", "<", " ", "0"}], ",", " ", 
+       RowBox[{
+        RowBox[{"tImpact", " ", "=", " ", "t"}], ";", 
+        " ", "\"\<StopIntegration\>\""}]}], "]"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"solB", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NDSolve", "[", 
+     RowBox[{"eqs", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"X", ",", " ", "Y"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", "0", ",", " ", "10"}], "}"}]}], "]"}], " ", "//",
+     " ", "First"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: k = \>\"", ",", " ", "kq", ",", 
+    " ", "\"\< kg/m, tiempo de vuelo = \>\"", ",", " ", "tImpact", ",", 
+    " ", "\"\< s, alcance con resistencia = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"X", "[", "tImpact", "]"}], " ", "/.", " ", "solB"}], ",", 
+    " ", "\"\< m\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"figB", " ", "=", " ", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"x", "[", "t", "]"}], ",", " ", 
+          RowBox[{"y", "[", "t", "]"}]}], "}"}], " ", "/.", " ", "solA"}], ",",
+        " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "tFlight"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", " ", "->", " ", 
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", " ", "Black"}], "}"}]}]}], "]"}], ",", "\n", 
+     "   ", 
+     RowBox[{"ParametricPlot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"X", "[", "t", "]"}], ",", " ", 
+          RowBox[{"Y", "[", "t", "]"}]}], "}"}], " ", "/.", " ", "solB"}], ",",
+        " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "tImpact"}], "}"}], ",", " ", 
+       RowBox[{"PlotStyle", " ", "->", " ", "Blue"}]}], "]"}], ",", "\n", 
+     "   ", 
+     RowBox[{"AxesLabel", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<x (m)\>\"", ",", " ", "\"\<y (m)\>\""}], "}"}]}], ",", 
+     " ", 
+     RowBox[{"PlotRange", " ", "->", " ", "All"}], ",", " ", 
+     RowBox[{"AspectRatio", " ", "->", " ", "0.45"}], ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "420"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<figures/m02-proyectil.png\>\"", ",", " ", 
+     RowBox[{"Rasterize", "[", 
+      RowBox[{"figB", ",", " ", 
+       RowBox[{"Background", " ", "->", " ", "White"}], ",", " ", 
+       RowBox[{"ImageResolution", " ", "->", " ", "96"}]}], "]"}]}], "]"}], 
+   ";"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Verificacion", ":", " ", 
+    RowBox[{
+    "la", " ", "energia", " ", "mecanica", " ", "debe", " ", "disminuir", " ",
+      "monotonamente", " ", "con", " ", "resistencia"}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"energia", "[", "t_", "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", "2"}], ")"}], " ", "m", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"X", "'"}], "[", "t", "]"}], "^", "2"}], " ", "+", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Y", "'"}], "[", "t", "]"}], "^", "2"}]}], ")"}]}], " ", "+",
+      " ", 
+     RowBox[{"m", " ", "g", " ", 
+      RowBox[{"Y", "[", "t", "]"}]}]}], " ", "/.", " ", "solB"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<B: energia inicial y final (J) = \>\"", ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"energia", "[", "0", "]"}], ",", " ", 
+      RowBox[{"energia", "[", "tImpact", "]"}]}], "}"}], ",", 
+    " ", "\"\<, trabajo disipado = \>\"", ",", " ", 
+    RowBox[{
+     RowBox[{"energia", "[", "0", "]"}], " ", "-", " ", 
+     RowBox[{"energia", "[", "tImpact", "]"}]}]}], "]"}], ";"}]}], "Input",Exp\
+ressionUUID->"327696bc-9387-4d34-ac11-f82271ebef0c"],
+
+Cell["\<\
+Bloque C: pendulo lineal y no lineal; periodo frente a amplitud\
+\>", "Chapter",ExpressionUUID->"b308bfe4-fba7-4a0a-bbaf-05ca8f9b5b0b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"L", " ", "=", " ", "1.0"}], ";", " ", 
+  RowBox[{"w0", " ", "=", " ", 
+   RowBox[{"Sqrt", "[", 
+    RowBox[{"g", "/", "L"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"lin", " ", "=", " ", 
+   RowBox[{"DSolveValue", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"q", "''"}], "[", "t", "]"}], " ", "+", " ", 
+         RowBox[{
+          RowBox[{"w0", "^", "2"}], " ", 
+          RowBox[{"q", "[", "t", "]"}]}]}], " ", "==", " ", "0"}], ",", " ", 
+       RowBox[{
+        RowBox[{"q", "[", "0", "]"}], " ", "==", " ", "q0"}], ",", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"q", "'"}], "[", "0", "]"}], " ", "==", " ", "0"}]}], "}"}], 
+     ",", " ", 
+     RowBox[{"q", "[", "t", "]"}], ",", " ", "t"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: solucion lineal = \>\"", ",", " ", "lin", ",", 
+    " ", "\"\<, periodo lineal = \>\"", ",", " ", 
+    RowBox[{"2", " ", 
+     RowBox[{"Pi", "/", "w0"}]}], ",", " ", "\"\< s\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"periodo", "[", 
+     RowBox[{"amp_", "?", "NumericQ"}], "]"}], " ", ":=", " ", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"qq", ",", " ", 
+        RowBox[{"tc", " ", "=", " ", 
+         RowBox[{"{", "}"}]}]}], "}"}], ",", "\n", "   ", 
+      RowBox[{
+       RowBox[{"NDSolve", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{
+              RowBox[{"qq", "''"}], "[", "t", "]"}], " ", "+", " ", 
+             RowBox[{
+              RowBox[{"w0", "^", "2"}], " ", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"qq", "[", "t", "]"}], "]"}]}]}], " ", "==", " ", 
+            "0"}], ",", " ", 
+           RowBox[{
+            RowBox[{"qq", "[", "0", "]"}], " ", "==", " ", "amp"}], ",", " ", 
+           
+           RowBox[{
+            RowBox[{
+             RowBox[{"qq", "'"}], "[", "0", "]"}], " ", "==", " ", "0"}], ",",
+            "\n", "      ", 
+           RowBox[{"WhenEvent", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"qq", "[", "t", "]"}], " ", "==", " ", "0"}], ",", " ", 
+             
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"tc", ",", " ", "t"}], "]"}]}], "]"}]}], "}"}], ",", 
+         " ", "qq", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", " ", "0", ",", " ", "20"}], "}"}], ",", " ", 
+         RowBox[{"MaxStepSize", " ", "->", " ", "0.005"}]}], "]"}], ";", "\n",
+        "   ", 
+       RowBox[{"2", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"tc", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], " ", "-", " ", 
+          RowBox[{"tc", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], ")"}]}]}]}], "]"}]}], ";"}], 
+  "                       ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "dos", " ", "pasos", " ", "por", " ", "cero", " ", "consecutivos"}], " ", 
+    "=", " ", 
+    RowBox[{"medio", " ", "periodo"}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"periodoExacto", "[", "amp_", "]"}], " ", ":=", " ", 
+   RowBox[{"4", " ", 
+    RowBox[{
+     RowBox[{"EllipticK", "[", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"amp", "/", "2"}], "]"}], "^", "2"}], "]"}], "/", "w0"}]}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: periodo a 90 grados: NDSolve = \>\"", ",", " ", 
+    RowBox[{"periodo", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{"Pi", "/", "2"}], "]"}], "]"}], ",", 
+    " ", "\"\< s, integral eliptica = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"periodoExacto", "[", 
+      RowBox[{"Pi", "/", "2"}], "]"}], "]"}], ",", " ", "\"\< s\>\""}], "]"}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: periodo a 10 grados: NDSolve = \>\"", ",", " ", 
+    RowBox[{"periodo", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{"10", " ", "Degree"}], "]"}], "]"}], ",", 
+    " ", "\"\< s, lineal = \>\"", ",", " ", 
+    RowBox[{"2", " ", 
+     RowBox[{"Pi", "/", "w0"}]}], ",", " ", "\"\< s\>\""}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"figC", " ", "=", " ", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"periodoExacto", "[", 
+        RowBox[{"a", " ", "Degree"}], "]"}], ",", " ", 
+       RowBox[{"2", " ", 
+        RowBox[{"Pi", "/", "w0"}]}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", " ", "1", ",", " ", "170"}], "}"}], ",", " ", 
+     RowBox[{"PlotStyle", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"Blue", ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", " ", "Black"}], "}"}]}], "}"}]}], ",", "\n", 
+     "   ", 
+     RowBox[{"AxesLabel", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<amplitud (grados)\>\"", ",", " ", "\"\<T (s)\>\""}], 
+       "}"}]}], ",", " ", 
+     RowBox[{"PlotRange", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", " ", "6"}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "400"}], ",", "\n", "   ", 
+     RowBox[{"Epilog", " ", "->", " ", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", " ", 
+        RowBox[{"PointSize", "[", "0.015", "]"}], ",", " ", 
+        RowBox[{"Point", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"#", ",", " ", 
+             RowBox[{"periodo", "[", 
+              RowBox[{"N", "[", 
+               RowBox[{"#", " ", "Degree"}], "]"}], "]"}]}], "}"}], " ", 
+           "&"}], " ", "/@", " ", 
+          RowBox[{"{", 
+           RowBox[{
+           "30", ",", " ", "60", ",", " ", "90", ",", " ", "120", ",", " ", 
+            "150"}], "}"}]}], "]"}]}], "}"}]}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Export", "[", 
+    RowBox[{"\"\<figures/m02-periodo.png\>\"", ",", " ", 
+     RowBox[{"Rasterize", "[", 
+      RowBox[{"figC", ",", " ", 
+       RowBox[{"Background", " ", "->", " ", "White"}], ",", " ", 
+       RowBox[{"ImageResolution", " ", "->", " ", "96"}]}], "]"}]}], "]"}], 
+   ";"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Conservacion", " ", "de", " ", "la", " ", "energia", " ", "como", " ", 
+    "comprobacion", " ", "del", " ", "integrador"}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"solC", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NDSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"p", "''"}], "[", "t", "]"}], " ", "+", " ", 
+          RowBox[{
+           RowBox[{"w0", "^", "2"}], " ", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"p", "[", "t", "]"}], "]"}]}]}], " ", "==", " ", "0"}], ",",
+         " ", 
+        RowBox[{
+         RowBox[{"p", "[", "0", "]"}], " ", "==", " ", 
+         RowBox[{"Pi", "/", "2"}]}], ",", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"p", "'"}], "[", "0", "]"}], " ", "==", " ", "0"}]}], "}"}],
+       ",", " ", "p", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", "0", ",", " ", "20"}], "}"}]}], "]"}], " ", "//",
+     " ", "First"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"en", "[", "t_", "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "/", "2"}], ")"}], " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"p", "'"}], "[", "t", "]"}], "^", "2"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"w0", "^", "2"}], " ", 
+      RowBox[{"(", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"p", "[", "t", "]"}], "]"}]}], ")"}]}]}], " ", "/.", " ", 
+    "solC"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<C: deriva relativa maxima de la energia en 20 s = \>\"", ",", 
+    " ", 
+    RowBox[{"Max", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Abs", "[", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"en", "[", "t", "]"}], " ", "-", " ", 
+           RowBox[{"en", "[", "0", "]"}]}], ")"}], "/", 
+         RowBox[{"en", "[", "0", "]"}]}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", " ", "0", ",", " ", "20", ",", " ", "0.01"}], 
+        "}"}]}], "]"}], "]"}]}], "]"}], ";"}]}], "Input",ExpressionUUID->\
+"22ed7152-d1b3-444f-a576-3eeba4d0debe"],
+
+Cell["\<\
+Bloque D: vehiculo a potencia constante en una pendiente (capitulo 1)\
+\>", "Chapter",ExpressionUUID->"f3e5ed6c-e8c9-4f38-ae63-467dbec298c5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"M", " ", "=", " ", "85"}], ";", " ", 
+  RowBox[{"P", " ", "=", " ", "250"}], ";", " ", 
+  RowBox[{"phi", " ", "=", " ", 
+   RowBox[{"ArcTan", "[", "0.04", "]"}]}], ";", " ", 
+  RowBox[{"kd", " ", "=", " ", 
+   RowBox[{"0.5", " ", "rho", " ", "0.35"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"vmax", " ", "=", " ", 
+   RowBox[{"v", " ", "/.", " ", 
+    RowBox[{"FindRoot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"P", "/", "v"}], " ", "-", " ", 
+        RowBox[{"M", " ", "g", " ", 
+         RowBox[{"Sin", "[", "phi", "]"}]}], " ", "-", " ", 
+        RowBox[{"kd", " ", 
+         RowBox[{"v", "^", "2"}]}]}], " ", "==", " ", "0"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"v", ",", " ", "5"}], "}"}]}], "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"solD", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"NDSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"M", " ", 
+          RowBox[{
+           RowBox[{"V", "'"}], "[", "t", "]"}]}], " ", "==", " ", 
+         RowBox[{
+          RowBox[{"P", "/", 
+           RowBox[{"V", "[", "t", "]"}]}], " ", "-", " ", 
+          RowBox[{"M", " ", "g", " ", 
+           RowBox[{"Sin", "[", "phi", "]"}]}], " ", "-", " ", 
+          RowBox[{"kd", " ", 
+           RowBox[{
+            RowBox[{"V", "[", "t", "]"}], "^", "2"}]}]}]}], ",", " ", 
+        RowBox[{
+         RowBox[{"V", "[", "0", "]"}], " ", "==", " ", "1"}], ",", "\n", 
+        "    ", 
+        RowBox[{"WhenEvent", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"V", "[", "t", "]"}], " ", ">", " ", 
+           RowBox[{"0.95", " ", "vmax"}]}], ",", " ", 
+          RowBox[{"t95", " ", "=", " ", "t"}]}], "]"}]}], "}"}], ",", " ", 
+      "V", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", " ", "0", ",", " ", "200"}], "}"}]}], "]"}], " ", "//",
+     " ", "First"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<D: velocidad maxima = \>\"", ",", " ", "vmax", ",", 
+    " ", "\"\< m/s, tiempo hasta el 95 % partiendo de 1 m/s = \>\"", ",", " ",
+     "t95", ",", " ", "\"\< s\>\""}], "]"}], ";"}]}], "Input",ExpressionUUID->\
+"2d12a6da-b28f-4a88-991d-ccf3bac6779f"]
+},
+FrontEndVersion->"15.0 para Mac OS X ARM (64-bit) (July 2, 2026)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e7e6c970-7f3c-4dcf-8ea1-ef6c7ac3eb8e"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1460, 33, 155, 2, 70, "Title",ExpressionUUID->"8212246d-a768-499e-a114-903ac2da175a"],
+Cell[1618, 37, 203, 3, 70, "Text",ExpressionUUID->"9749df83-4321-463a-af86-6b7c1a86e6ad"],
+Cell[1824, 42, 274, 5, 70, "Text",ExpressionUUID->"677e3403-4f77-4334-b75b-09d5348ce94b"],
+Cell[2101, 49, 285, 6, 70, "Input",ExpressionUUID->"7bf10855-5b37-4f1b-b4f1-f2aa0485cbec"],
+Cell[2389, 57, 118, 0, 70, "Chapter",ExpressionUUID->"394b9c28-3c39-4d9e-95c2-52799e3a8078"],
+Cell[2510, 59, 2749, 79, 70, "Input",ExpressionUUID->"008775dd-c001-402e-9ef8-ed0c1c4d968b"],
+Cell[5262, 140, 150, 2, 70, "Chapter",ExpressionUUID->"d982e232-7c82-4512-956c-4fda3d47d0db"],
+Cell[5415, 144, 6613, 186, 70, "Input",ExpressionUUID->"327696bc-9387-4d34-ac11-f82271ebef0c"],
+Cell[12031, 332, 145, 2, 70, "Chapter",ExpressionUUID->"b308bfe4-fba7-4a0a-bbaf-05ca8f9b5b0b"],
+Cell[12179, 336, 8366, 237, 70, "Input",ExpressionUUID->"22ed7152-d1b3-444f-a576-3eeba4d0debe"],
+Cell[20548, 575, 151, 2, 70, "Chapter",ExpressionUUID->"f3e5ed6c-e8c9-4f38-ae63-467dbec298c5"],
+Cell[20702, 579, 2219, 59, 70, "Input",ExpressionUUID->"2d12a6da-b28f-4a88-991d-ccf3bac6779f"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -74,4 +74,6 @@ jobs:
         with:
           name: aerobooks-pdfs
           path: books/*/main.pdf
-          if-no-files-found: error
+          # Current books are Studium imports, compiled by studium-books.yml.
+          # This workflow remains available for future native AeroBooks books.
+          if-no-files-found: warn

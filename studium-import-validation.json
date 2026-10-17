@@ -54,6 +54,18 @@
       "pages": 8,
       "sha256": "bdf1b8237347d47c74de2c1eb1e4caa6796dac83a95d3c1c11f4447ad5b141cb",
       "editorial_label_absent": true
+    },
+    {
+      "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-manual.pdf",
+      "pages": 270,
+      "sha256": "1d556ba2e8a850df7a37c9e1ccf51f8cbd44186d49f0eaf54b06b17ba7152c31",
+      "editorial_label_absent": true
+    },
+    {
+      "file": "dist/studium/mecanica-fluidos/mecanica-fluidos-manual.pdf",
+      "pages": 290,
+      "sha256": "787df43f60f94f3ecedee01cff54b129aaf84b20db110f02c5bb3020a784cde6",
+      "editorial_label_absent": true
     }
   ],
   "aerobooks_gates": [
@@ -116,6 +128,26 @@
       "command": "aerobooks-ai gate turbomaquinas",
       "status": "not_configured_for_import",
       "detail": "Proyecto Studium existente, no migrado a AeroBooks. No se asigna aprobación."
+    },
+    {
+      "command": "aerobooks check estructuras-aeroespaciales --strict",
+      "status": "not_configured_for_import",
+      "detail": "Ejecutado: no existe book.toml porque la edición actual es Studium. La compilación usa scripts/build-studium-books.py; sin aprobación académica nueva."
+    },
+    {
+      "command": "aerobooks build estructuras-aeroespaciales",
+      "status": "not_configured_for_import",
+      "detail": "Ejecutado: no existe book.toml porque la edición actual es Studium. La compilación usa scripts/build-studium-books.py; sin aprobación académica nueva."
+    },
+    {
+      "command": "aerobooks check mecanica-fluidos --strict",
+      "status": "not_configured_for_import",
+      "detail": "Ejecutado: no existe book.toml porque la edición actual es Studium. La compilación usa scripts/build-studium-books.py; sin aprobación académica nueva."
+    },
+    {
+      "command": "aerobooks build mecanica-fluidos",
+      "status": "not_configured_for_import",
+      "detail": "Ejecutado: no existe book.toml porque la edición actual es Studium. La compilación usa scripts/build-studium-books.py; sin aprobación académica nueva."
     }
   ],
   "repository_unit_tests": "30 passed",
@@ -185,7 +217,24 @@
       "pages": 8,
       "all_page_text_identical_ignoring_extraction_whitespace": true,
       "pages_with_only_extraction_spacing_differences": []
+    },
+    {
+      "file": "estructuras-aeroespaciales-manual.pdf",
+      "pages": 270,
+      "comparison_source": "teoria-estructuras-ule-ed2-20261016_144206-v3.pdf",
+      "body_text_identical_ignoring_extraction_whitespace_and_removed_Borrador_footer": true,
+      "cover_recomposed_from_editable_latex": true,
+      "complete_manuscript_preserved": true
+    },
+    {
+      "file": "mecanica-fluidos-manual.pdf",
+      "pages": 290,
+      "comparison_source": "mecanica-fluidos-edicion-revisada-fase6.pdf",
+      "body_text_identical_ignoring_extraction_whitespace_and_removed_Borrador_footer": true,
+      "cover_recomposed_from_editable_latex": false,
+      "complete_manuscript_preserved": true
     }
   ],
-  "visual_review": "Nueve portadas y páginas representativas de Turbomáquinas; sin problemas observados."
+  "visual_review": "Once portadas y páginas representativas de los manuales importados; sin problemas observados en las páginas inspeccionadas.",
+  "native_test_fixtures": "Las dos ediciones AeroBooks antiguas se conservan como datos de prueba históricos en tests/fixtures/native-v02; no pertenecen al catálogo."
 }

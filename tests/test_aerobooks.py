@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import tempfile
 import unittest
+from unittest.mock import patch
+
+from tests.native_fixtures import native_book_dir
 from pathlib import Path
 
 from framework.aerobooks.cli import (
@@ -15,6 +18,7 @@ from framework.aerobooks.cli import (
 )
 
 
+@patch("framework.aerobooks.cli.book_dir", native_book_dir)
 class AeroBooksUnitTests(unittest.TestCase):
     def test_edition_names(self) -> None:
         self.assertEqual(edition_name(1), "Primera edición")

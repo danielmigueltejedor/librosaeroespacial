@@ -1,0 +1,199 @@
+\thispagestyle{empty}
+
+\definecolor{coverNavy}{HTML}{142C40}
+\definecolor{coverTeal}{HTML}{00B8CD}
+\definecolor{coverSoft}{HTML}{D4E7EF}
+
+\begin{tikzpicture}[remember picture,overlay]
+
+    % ========================================================
+    % 1. IMAGEN DE FONDO
+    % ========================================================
+
+    \node[
+        anchor=center,
+        inner sep=0pt,
+        outer sep=0pt
+    ] at (current page.center) {
+        \includegraphics[
+            height=\paperheight
+        ]{../figures/cover.jpeg}
+    };
+
+
+    % ========================================================
+    % 2. CABECERA SUPERIOR
+    % ========================================================
+
+    \path[
+        fill=white,
+        opacity=.88
+    ]
+        (current page.north west)
+        rectangle ++(\paperwidth,-3.15cm);
+
+
+    % Marca editorial
+    \node[
+        anchor=north west,
+        xshift=1.8cm,
+        yshift=-1.08cm,
+        inner sep=0pt,
+        text=coverNavy,
+        font=\sffamily\bfseries\fontsize{18}{22}\selectfont
+    ] at (current page.north west) {
+        STUDIUM
+    };
+
+
+    % Línea de acento
+    \node[
+        anchor=north west,
+        xshift=1.8cm,
+        yshift=-2.17cm,
+        inner sep=0pt
+    ] at (current page.north west) {
+        {\color{coverTeal}\rule{1.05cm}{2pt}}
+    };
+
+
+    % Colección
+    \node[
+        anchor=north west,
+        xshift=3.15cm,
+        yshift=-2.12cm,
+        inner sep=0pt,
+        text=coverNavy,
+        font=\sffamily\fontsize{9}{12}\selectfont
+    ] at (current page.north west) {
+        BIBLIOTECA DE INGENIERÍA
+    };
+
+
+    % ========================================================
+    % 3. BLOQUE INFERIOR
+    % ========================================================
+
+    \path[
+        fill=coverNavy,
+        opacity=.97
+    ]
+        (current page.south west)
+        rectangle ++(\paperwidth,9.05cm);
+
+
+    % Categoría
+    \node[
+        anchor=south west,
+        xshift=1.8cm,
+        yshift=8.13cm,
+        inner sep=0pt,
+        text=coverTeal,
+        font=\sffamily\bfseries\fontsize{10}{13}\selectfont
+    ] at (current page.south west) {
+        MANUAL UNIVERSITARIO
+    };
+
+
+    % ========================================================
+    % 4. TÍTULO PRINCIPAL
+    % ========================================================
+
+    \node[
+        anchor=north west,
+        xshift=1.8cm,
+        yshift=7.42cm,
+        inner sep=0pt,
+        align=left,
+        text=white,
+        font=\rmfamily\bfseries\fontsize{35}{41}\selectfont
+    ] at (current page.south west) {
+        TEORÍA\\
+        DE ESTRUCTURAS
+    };
+
+
+    % Subtítulo
+    \node[
+        anchor=west,
+        xshift=1.8cm,
+        yshift=3.88cm,
+        inner sep=0pt,
+        text=coverSoft,
+        font=\sffamily\fontsize{11}{15}\selectfont
+    ] at (current page.south west) {
+        Fundamentos, análisis y problemas de ingeniería
+    };
+
+
+    % ========================================================
+    % 5. INFORMACIÓN ACADÉMICA
+    % ========================================================
+
+    \node[
+        anchor=west,
+        xshift=1.8cm,
+        yshift=3.03cm,
+        inner sep=0pt,
+        text=white,
+        font=\sffamily\bfseries\fontsize{10}{13}\selectfont
+    ] at (current page.south west) {
+        GRADO EN INGENIERÍA AEROESPACIAL
+    };
+
+
+    \node[
+        anchor=west,
+        xshift=1.8cm,
+        yshift=2.48cm,
+        inner sep=0pt,
+        text=coverSoft,
+        font=\sffamily\fontsize{10}{13}\selectfont
+    ] at (current page.south west) {
+        Universidad de León
+    };
+
+
+    % ========================================================
+    % 6. PIE EDITORIAL
+    % ========================================================
+
+    \node[
+        anchor=south west,
+        xshift=1.8cm,
+        yshift=1.93cm,
+        inner sep=0pt
+    ] at (current page.south west) {
+        {\color{coverSoft}\rule{15.5cm}{0.45pt}}
+    };
+
+
+    % Año
+    \node[
+        anchor=west,
+        xshift=1.8cm,
+        yshift=1.17cm,
+        inner sep=0pt,
+        text=coverSoft,
+        font=\sffamily\fontsize{10}{13}\selectfont
+    ] at (current page.south west) {
+        2026
+    };
+
+
+    % Edición
+    \node[
+        anchor=east,
+        xshift=-1.8cm,
+        yshift=1.17cm,
+        inner sep=0pt,
+        text=white,
+        font=\sffamily\bfseries\fontsize{10}{13}\selectfont
+    ] at (current page.south east) {
+        II Edición
+    };
+
+\end{tikzpicture}
+
+\null
+\clearpage
