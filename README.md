@@ -159,13 +159,18 @@ aerobooks edition <slug> 4
 aerobooks doctor
 ```
 
-También:
+`make book` y `make check` seleccionan el compilador correspondiente al proyecto:
 
 ```bash
 make book BOOK=estructuras-aeroespaciales
 make check BOOK=estructuras-aeroespaciales
-make audit BOOK=estructuras-aeroespaciales
-make ai-pack BOOK=estructuras-aeroespaciales
+```
+
+Los paquetes de IA y la auditoría AeroBooks requieren un libro nativo con `book.toml`, como el creado en el ejemplo anterior:
+
+```bash
+make audit BOOK=aerodinamica
+make ai-pack BOOK=aerodinamica
 ```
 
 ## Flujo académico recomendado

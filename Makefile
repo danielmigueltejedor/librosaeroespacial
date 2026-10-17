@@ -44,13 +44,21 @@ release-manifest:
 	$(PYTHON) -m framework.aerobooks.academic release-manifest $(BOOK)
 
 check:
-	$(PYTHON) -m framework.aerobooks.cli check $(BOOK)
+	@if [ -f "books/$(BOOK)/studium-import.json" ]; then \
+		$(PYTHON) scripts/build-studium-books.py $(BOOK) --check; \
+	else \
+		$(PYTHON) -m framework.aerobooks.cli check $(BOOK); \
+	fi
 
 audit:
 	$(PYTHON) -m framework.aerobooks.cli audit $(BOOK)
 
 book:
-	$(PYTHON) -m framework.aerobooks.cli build $(BOOK)
+	@if [ -f "books/$(BOOK)/studium-import.json" ]; then \
+		$(PYTHON) scripts/build-studium-books.py $(BOOK); \
+	else \
+		$(PYTHON) -m framework.aerobooks.cli build $(BOOK); \
+	fi
 
 clean:
 	cd books/$(BOOK) && latexmk -C

@@ -188,8 +188,8 @@ Esto permite que una IA reproduzca la procedencia de una ecuación, fecha o afir
 ### Paquetes de capítulo para IAs
 
 ```bash
-aerobooks-ai chapter-pack estructuras-aeroespaciales CH-01-FUNDAMENTOS author
-aerobooks-ai chapter-pack estructuras-aeroespaciales CH-01-FUNDAMENTOS red-team
+aerobooks-ai chapter-pack <libro-nativo> <capitulo> author
+aerobooks-ai chapter-pack <libro-nativo> <capitulo> red-team
 ```
 
 El paquete contiene únicamente:
