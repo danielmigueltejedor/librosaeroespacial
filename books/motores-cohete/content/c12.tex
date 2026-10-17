@@ -1,0 +1,82 @@
+\chapter{Balística interna y balances de presión}\label{ch:12}
+\objetivos{Cerrar generación y descarga mediante conservación de masa; derivar la presión cuasiestacionaria; cuantificar sensibilidades y mantener explícitas las limitaciones de los modelos normalizados.}
+\section{Equilibrio de generación y descarga}
+El volumen de control contiene el gas de cámara, limitado por la superficie en regresión y por la descarga. La generación desde el sólido es una entrada de masa al gas. En aproximación cuasiestacionaria, el almacenamiento gaseoso se desprecia frente a las corrientes y
+\[
+ \rho_pA_b r_b=\dot m_e.
+\]
+Para descarga ahogada se representa $\dot m_e=p_cA_t/c^*$. Se supone $c^*$ constante en el intervalo y se utiliza \eqref{eq:burnlaw}. El equilibrio resulta
+\[
+ \rho_pA_br_{ref}\left(\frac{p_c}{p_{ref}}\right)^n
+ =\frac{p_cA_t}{c^*}.
+\]
+Definiendo $P=p_c/p_{ref}$ y
+\[
+ \kappa=\frac{\rho_pr_{ref}c^*A_b}{p_{ref}A_t},
+\]
+se obtiene $P^{1-n}=\kappa$ y, para $n\ne1$,
+\begin{equation}\label{eq:solidP}
+ \boxed{P=\kappa^{1/(1-n)}}.
+\end{equation}
+El grupo $\kappa$ es adimensional: el numerador tiene dimensiones de presión por área, igual que el denominador. No hacen falta constantes dimensionales ambiguas para estudiar la dependencia geométrica.
+\section{Cocientes y sensibilidad}
+Al comparar dos estados con propiedades y garganta constantes,
+\begin{equation}\label{eq:solidratio}
+ \frac{p_2}{p_1}=\left(\frac{A_{b,2}}{A_{b,1}}\right)^{1/(1-n)}.
+\end{equation}
+La descarga ahogada hace que $\dot m_2/\dot m_1=p_2/p_1$. Si $C_F$ también permanece fijo y se desprecia la variación ambiental, el empuje tiene el mismo cociente. No se mantiene constante por el mero hecho de conservar masa total o volumen inicial.
+
+La derivada logarítmica general es
+\begin{equation}
+ d\ln p_c=\frac{d\ln\rho_p+d\ln r_{ref}+d\ln c^*
+ +d\ln A_b-d\ln A_t}{1-n}
+\end{equation}
+si se fija $n$ y $p_{ref}$. La sensibilidad geométrica $1/(1-n)$ crece mucho al acercarse $n$ a uno. Para incertidumbre de $n$ se deriva $\ln P=\ln\kappa/(1-n)$:
+\[
+ \frac{\partial\ln P}{\partial n}=\frac{\ln\kappa}{(1-n)^2}.
+\]
+El valor depende de la referencia y de cómo se mantengan los parámetros ajustados: si $r_{ref}$ y $n$ proceden de un mismo ajuste, pueden estar correlacionados. Variarlos independientemente sin esa información puede dar una incertidumbre poco representativa.
+\section{Crecimiento de garganta y compensaciones}
+Si tanto superficie activa como garganta cambian, el cociente relevante es
+\[
+ \frac{p_2}{p_1}=\left[
+ \frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}
+ \right]^{1/(1-n)}
+\]
+con el resto constante. Una garganta creciente reduce presión respecto al caso de garganta fija. Sin embargo, $F=C_Fp_cA_t$ contiene el área directamente, y $C_F$ puede variar porque cambia $A_e/A_t$ y $p_a/p_c$. No basta con aplicar el cociente de presión al empuje si esas magnitudes cambian.
+
+Una erosión de garganta no es una estrategia de regulación deducible de esta igualdad; es un fenómeno que requiere un modelo y datos propios. Aquí sólo se identifica su efecto algebraico dentro de una aproximación declarada.
+\section{Balance con almacenamiento y volumen variable}
+La conservación exacta de masa gaseosa del modelo concentrado es
+\begin{equation}
+ \frac{dm_g}{dt}=\rho_pA_br_b-\frac{p_cA_t}{c^*}.
+\end{equation}
+Con gas ideal uniforme y $m_g=p_cV_g/(RT_g)$, al derivar,
+\begin{equation}\label{eq:solidDynamic}
+ V_g\frac{dp_c}{dt}=RT_g\left(\rho_pA_br_b-\frac{p_cA_t}{c^*}\right)
+ -p_c\frac{dV_g}{dt}+\frac{p_cV_g}{T_g}\frac{dT_g}{dt},
+\end{equation}
+si $R$ es constante. El signo del término de temperatura es positivo: calentar una masa a volumen fijo eleva presión. El término de volumen es negativo: aumentar cavidad reduce presión para la misma masa y temperatura. Omitirlo equivale a fijar volumen, no a aplicar una identidad general.
+
+Para regresión normal uniforme, $dV_g/dt=A_br_b$ si toda la cavidad nueva se incorpora al volumen gaseoso. El modelo simplificado de temperatura constante conserva ese término geométrico. Para predecir $T_g$ hace falta además un balance de energía con entalpías de entrada y salida y calor a la pared; la ecuación de masa por sí sola no determina temperatura.
+\section{Cuándo es válida la aproximación cuasiestacionaria}
+Una escala de residencia gaseosa es $\tau_g=m_g/\dot m_e$. Una escala geométrica es $\tau_A=|A_b/\dot A_b|$. Si $\tau_g\ll\tau_A$ y las demás propiedades evolucionan lentamente, el gas puede aproximarse a una secuencia de equilibrios. Cerca de cambios rápidos, al inicio o al final del intervalo, el almacenamiento puede ser importante.
+
+El equilibrio usado al comienzo también desprecia el efecto de expansión de cavidad sobre presión. Comparando $\rho_pA_br_b$ con la masa necesaria para llenar cavidad nueva, $\rho_gA_br_b$, la corrección relativa contiene $\rho_g/\rho_p$. Si esta razón es pequeña, el llenado de volumen nuevo consume una parte pequeña de la masa generada. Esta justificación debe comprobarse; no se sustituye por la palabra estacionario.
+\section{Un modelo normalizado para integración}
+Con volumen fijo y temperatura constante, sea $p_0$ un equilibrio y $\theta=t/\tau_0$, con $\tau_0=V_gc^*/(RT_gA_t)$. Definiendo $P=p_c/p_0$ y $a=A_b/A_{b,0}$,
+\begin{equation}\label{eq:solidNorm}
+ \frac{dP}{d\theta}=aP^n-P.
+\end{equation}
+La ecuación permite estudiar una perturbación sin asignar una formulación ni parámetros de un motor específico. El equilibrio es $P_{eq}=a^{1/(1-n)}$. Una integración numérica debe mantener presión positiva y verificar que el residuo de masa tiende a cero en el estado estacionario.
+
+Si se hace evolucionar $a$ rápidamente, la presión no sigue exactamente su valor cuasiestacionario. Ese desfase es consecuencia del almacenamiento, no necesariamente de inestabilidad. La comparación entre integración y equilibrio proporciona una medida de la validez de la aproximación para el modelo considerado.
+\figura{c12}{Modelo normalizado de equilibrio generación-descarga. Una superficie variable produce presión variable; no es una predicción de un propulsante real.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Para $n=0.40$ y aumento de área activa del 15\,\%, calcule los cocientes de presión y caudal con garganta fija.
+\item Determine qué cociente de área activa produciría un incremento de presión del 8\,\% con $n=0.30$.
+\item Reproduzca la derivación de \eqref{eq:solidDynamic} y compruebe signos con calentamiento a volumen y masa constantes.
+\item Integre \eqref{eq:solidNorm} para un pequeño escalón de $a$ y compare su límite con \eqref{eq:solidratio}; no lo interprete como ensayo de un motor real.
+\end{enumerate}
+\resumen{La presión resulta del acoplamiento entre generación y descarga. Su sensibilidad aumenta cerca de $n=1$. El almacenamiento, la cavidad creciente y la temperatura requieren términos explícitos. Los cocientes normalizados permiten comprobar física y álgebra sin extrapolar a un sistema real.}

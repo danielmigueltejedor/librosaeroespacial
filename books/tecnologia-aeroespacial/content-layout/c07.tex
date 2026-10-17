@@ -1,0 +1,155 @@
+\chapter{Ecuaciones fundamentales de la mecánica de fluidos}\label{ch:07}
+\objetivos{Plantear balances de masa, cantidad de movimiento y energía en un volumen de control; reconocer el cierre necesario para resolverlos; derivar Euler y Bernoulli bajo sus hipótesis; interpretar medidas Pitot y fuerzas sobre conductos.}
+
+Las ecuaciones de conservación organizan el movimiento de un fluido. No dicen que cada magnitud permanezca constante en cada punto: relacionan su acumulación con los transportes y acciones sobre una región. Los materiales del curso introducen continuidad, Navier--Stokes, Euler y Bernoulli \cite{TAE3}. Aquí las construimos con convenciones de signo explícitas y distinguimos el balance general de las aproximaciones que permiten resolver ejemplos sencillos.
+
+\section{Sistema material y volumen de control}
+Un sistema material contiene siempre las mismas partículas. Un volumen de control es una región elegida para observar el flujo, que puede permanecer fija o moverse. Para un motor es cómodo rodear la entrada y la salida con una superficie; para una masa de gas en expansión puede convenir seguir sus partículas. Cambiar la elección no modifica las leyes físicas, pero sí los términos de transporte.
+
+Para una propiedad extensiva $B$ y su valor por unidad de masa $b$, el teorema de transporte de Reynolds, aplicado a un volumen fijo $\mathcal V$ con superficie $\mathcal S$, expresa
+\begin{equation}\label{eq:07-RTT}
+ \frac{dB_{\mathrm{sist}}}{dt}=
+ \frac{\partial}{\partial t}\int_{\mathcal V}\rho b\,d\mathcal V+
+ \int_{\mathcal S}\rho b\,\boldsymbol{v}\cdot\boldsymbol{n}\,dS.
+\end{equation}
+La normal $\boldsymbol{n}$ apunta hacia fuera: una salida aporta flujo positivo y una entrada negativo. El primer término es acumulación y el segundo transporte neto saliente. Para una superficie móvil aparece la velocidad relativa entre fluido y frontera en el transporte; no basta con conservar sin cambios la fórmula de volumen fijo.
+
+La utilidad del teorema consiste en aplicar una ley material a una región observable. No es una ley adicional de conservación ni presupone que el flujo sea estacionario. Antes de simplificar conviene dibujar las fronteras, identificar entradas y salidas y declarar los sentidos de fuerza y velocidad.
+
+\section{Conservación de masa}
+Tomando $b=1$ y sabiendo que la masa del sistema material no cambia,
+\begin{equation}\label{eq:07-masa-int}
+ \frac{\partial}{\partial t}\int_{\mathcal V}\rho\,d\mathcal V+
+ \int_{\mathcal S}\rho\boldsymbol{v}\cdot\boldsymbol{n}\,dS=0.
+\end{equation}
+El teorema de la divergencia y la validez para cualquier volumen dan la forma diferencial
+\begin{equation}\label{eq:07-masa-dif}
+ \frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\boldsymbol{v})=0,
+ \qquad \frac{D\rho}{Dt}+\rho\nabla\cdot\boldsymbol{v}=0.
+\end{equation}
+Si la densidad de cada partícula permanece constante, $D\rho/Dt=0$ y $\nabla\cdot\boldsymbol{v}=0$. La continuidad no afirma en general que la divergencia sea nula: eso requiere la aproximación incompresible.
+
+En un conducto estacionario de una entrada y una salida, sin fugas, $\dot m_1=\dot m_2$. Si los estados y velocidades son uniformes en cada sección normal al flujo,
+\begin{equation}
+ \dot m=\rho_1U_1A_1=\rho_2U_2A_2.
+\end{equation}
+Para densidad constante se reduce a $U_1A_1=U_2A_2$. Cuando el perfil no es uniforme se integra $\rho u_n$ sobre el área o se define una velocidad media apropiada. Un caudal volumétrico puede cambiar en un gas compresible aunque el caudal másico permanezca constante.
+
+\section{Cantidad de movimiento y esfuerzos}
+La segunda ley de Newton para un sistema material dice que la derivada de su cantidad de movimiento es la suma de fuerzas exteriores. Para un volumen fijo,
+\begin{equation}\label{eq:07-momento-int}
+ \frac{\partial}{\partial t}\int_{\mathcal V}\rho\boldsymbol{v}\,d\mathcal V+
+ \int_{\mathcal S}\rho\boldsymbol{v}(\boldsymbol{v}\cdot\boldsymbol{n})\,dS
+ =\int_{\mathcal V}\rho\boldsymbol{g}\,d\mathcal V+
+ \int_{\mathcal S}(-p\boldsymbol{n}+\boldsymbol{\tau}\cdot\boldsymbol{n})\,dS.
+\end{equation}
+Aquí $\boldsymbol{\tau}$ es el tensor de esfuerzos viscosos. La presión actúa hacia dentro del volumen: de ahí el signo negativo. Las fuerzas de paredes y soportes deben identificarse con cuidado cuando no se modela el esfuerzo superficial local sino una reacción resultante.
+
+La forma diferencial, usando continuidad, es
+\begin{equation}\label{eq:07-NS}
+ \rho\frac{D\boldsymbol{v}}{Dt}=-\nabla p+\nabla\cdot\boldsymbol{\tau}+\rho\boldsymbol{g}.
+\end{equation}
+Para un fluido newtoniano incompresible de viscosidad constante, $\nabla\cdot\boldsymbol{\tau}=\mu\nabla^2\boldsymbol{v}$, y obtenemos la forma habitual de Navier--Stokes. Esta simplificación no debe trasladarse automáticamente a viscosidad variable o a cualquier flujo compresible.
+
+Para un fluido newtoniano compresible isotrópico puede escribirse
+\begin{equation}
+ \boldsymbol{\tau}=2\mu\boldsymbol{S}+\lambda(\nabla\cdot\boldsymbol{v})\boldsymbol{I},\quad
+ \boldsymbol{S}=\tfrac12[\nabla\boldsymbol{v}+(\nabla\boldsymbol{v})^{T}],
+\end{equation}
+con un segundo coeficiente viscoso $\lambda$. La hipótesis de Stokes $\lambda=-2\mu/3$ es una elección constitutiva aproximada, no una consecuencia de conservar masa. En medios o frecuencias donde la viscosidad volumétrica importe debe reconsiderarse.
+
+\section{Energía y cierre del problema}
+Sea $e$ energía interna específica y $E=e+V^2/2$ energía total específica sin potencial gravitatorio. Un balance local consistente es
+\begin{equation}\label{eq:07-energia}
+ \frac{\partial(\rho E)}{\partial t}+
+ \nabla\cdot[(\rho E+p)\boldsymbol{v}]
+ =\nabla\cdot(\boldsymbol{\tau}\cdot\boldsymbol{v})-
+ \nabla\cdot\boldsymbol{q}+\rho\boldsymbol{g}\cdot\boldsymbol{v}+\dot q_v,
+\end{equation}
+con flujo conductivo $\boldsymbol{q}$ y aporte volumétrico de calor $\dot q_v$. El término con presión representa trabajo de compresión y transporte asociado; el de esfuerzos, trabajo viscoso. Si se incluye energía potencial en $E$, debe reorganizarse el término gravitatorio para no contarlo dos veces.
+
+En un dispositivo estacionario con una entrada y una salida uniformes, una forma por unidad de masa es
+\begin{equation}\label{eq:07-energia-1d}
+ q-w_s=h_2-h_1+\frac{V_2^2-V_1^2}{2}+g(z_2-z_1),
+\end{equation}
+con $q$ calor recibido por unidad de masa, $w_s$ trabajo de eje entregado hacia fuera y $h=e+p/\rho$ entalpía. Los símbolos $q$ y $\boldsymbol{q}$ representan aquí objetos diferentes y se distinguen por contexto y negrita. En otros capítulos $q$ designará presión dinámica; siempre se declarará su significado.
+
+Las conservaciones no cierran por sí solas todas las incógnitas. Se necesitan ecuación de estado, relaciones caloríficas, ley de viscosidad y ley de conducción, además de condiciones iniciales y de contorno. Para aire caloríficamente perfecto, $p=\rho RT$, $e=c_vT$ y $h=c_pT$. En una pared viscosa se impone no deslizamiento; en una idealización inviscida se exige impermeabilidad, pero no se puede exigir en general la misma condición tangencial.
+
+\section{Euler y Bernoulli: derivación y dominio}
+Despreciando esfuerzos viscosos en \eqref{eq:07-NS} resulta la ecuación de Euler. En una corriente estacionaria, proyectada sobre una línea de corriente de coordenada $s$, con gravedad conservativa,
+\begin{equation}
+ U\,dU+\frac{dp}{\rho}+g\,dz=0.
+\end{equation}
+Si la densidad es constante, la integración proporciona
+\begin{equation}\label{eq:07-bern}
+ p+\frac12\rho U^2+\rho gz=C.
+\end{equation}
+Los tres términos tienen unidades de presión; al dividir por $\rho$ son energías por unidad de masa. La constante pertenece a la línea de corriente considerada. Para afirmar que es la misma entre líneas distintas se requieren condiciones adicionales, como irrotacionalidad en una región conexa apropiada.
+
+Bernoulli no dice que una presión baja sea una causa universal de velocidad alta en cualquier situación. Relaciona estados dentro de un modelo que ya satisface ciertas hipótesis. No puede aplicarse sin modificaciones entre entrada y salida de un ventilador, a través de una pérdida viscosa importante o de una onda de choque. Un flujo puede ser estacionario y seguir incumpliendo las demás condiciones.
+
+Si dos puntos tienen alturas distintas, omitir $\rho gz$ exige mostrar que su diferencia es pequeña frente a las otras energías. Para un líquido incluso una diferencia moderada de cota puede ser decisiva. En un gas de velocidad alta se debe retener la variación de densidad y suele ser más útil la conservación de entalpía de remanso que la forma incompresible de Bernoulli.
+
+\section{Pitot, presión estática y presión total}
+Una toma estática intenta medir la presión local sin frenar el flujo de forma que altere la lectura. Una toma Pitot orientada a la corriente conduce a un punto de remanso. En la aproximación estacionaria, incompresible y de frenado sin pérdidas,
+\begin{equation}
+ p_t=p_s+\frac12\rho V^2,\qquad
+ V=\sqrt{\frac{2(p_t-p_s)}{\rho}}.
+\end{equation}
+La diferencia $p_t-p_s$ se denomina presión de impacto; solo coincide con presión dinámica en la aproximación incompresible. En gas compresible se utiliza una relación termodinámica y, si la corriente incidente es supersónica, también el choque delante de la sonda.
+
+La orientación, la ubicación de tomas, las perturbaciones del avión y la respuesta del conducto introducen errores de instalación. Por ello un valor medido no se convierte automáticamente en velocidad verdadera sin conocer densidad y calibración. Aun en un ensayo lento, sustituir una densidad ISA cuando el túnel está más caliente puede sesgar el resultado.
+
+\figura{pitot}{Esquema original de toma de remanso y toma estática con lectura diferencial. Las presiones se asocian a procesos de medida distintos y su diferencia requiere un modelo de conversión.}
+
+\section{Correcciones y selección del modelo}
+Cuando la velocidad no es uniforme en una sección, la velocidad media que conserva masa no conserva automáticamente el flujo de momento. Para densidad constante, puede definirse un coeficiente de corrección $\beta_m=\int_Au^2\,dA/(AU_m^2)$, de modo que el flujo axial de momento sea $\rho\beta_m AU_m^2$. Un coeficiente distinto corrige el transporte de energía cinética, que depende de la integral de $u^3$. En un problema introductorio se toman ambos próximos a uno solo cuando el perfil lo permite o cuando el error admitido lo justifica.
+
+Las pérdidas de energía mecánica pueden representarse en una conducción mediante un término positivo de pérdida de carga. No destruyen energía: la convierten en energía interna y favorecen producción de entropía. En un tramo sin máquina, el balance entre dos secciones puede escribirse con una disminución de energía mecánica útil. Introducir una pérdida con signo arbitrario para ajustar una respuesta puede producir energía mecánica sin fuente; su sentido debe derivarse del balance.
+
+Finalmente, la constante de Bernoulli no es universal en un remolino. Dos líneas de corriente con distinta historia pueden tener distintos valores aunque cada una admita una relación local de energía. En un flujo irrotacional exterior a una región de vorticidad, la conclusión puede ser otra. Estas distinciones explican por qué dos puntos próximos no son necesariamente intercambiables: proximidad geométrica y conexión física mediante las hipótesis son preguntas diferentes.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: velocidad, presión y carga de un convergente}
+\begin{studiumworked}{Problema resuelto: velocidad, presión y carga de un convergente}
+
+\begin{enumerate}
+\item \textbf{Enunciado.} Un conducto horizontal convergente transporta aire. Hallar velocidad y presión de salida y fuerza axial del fluido sobre la pared, empleando un modelo ideal de baja velocidad.
+\item \textbf{Datos.} $A_1=0.12\,\mathrm{m^2}$, $A_2=0.06\,\mathrm{m^2}$, $U_1=22\,\mathrm{m\,s^{-1}}$, $\rho=1.19\,\mathrm{kg\,m^{-3}}$, $p_{1,g}=3200\,\mathrm{Pa}$. La presión exterior uniforme es la referencia manométrica.
+\item \textbf{Incógnitas.} $U_2$, $p_{2,g}$ y fuerza axial neta asociada al conducto, positiva hacia la salida.
+\item \textbf{Esquema verbal.} Volumen de control con caras de entrada y salida y pared lateral; las presiones de las caras actúan en sentidos opuestos.
+\item \textbf{Hipótesis.} Flujo estacionario, secciones uniformes, densidad constante, pérdidas despreciables, misma cota y presión exterior uniforme incluida mediante presiones manométricas. Se ignoran pesos para el balance axial.
+\item \textbf{Modelo.} Continuidad, Bernoulli y balance de cantidad de movimiento. La fuerza de pared se obtiene como resultante, aunque no se modele su distribución de presión.
+\item \textbf{Ecuaciones.} $A_1U_1=A_2U_2$; $p_{1,g}+\rho U_1^2/2=p_{2,g}+\rho U_2^2/2$; $p_{1,g}A_1-p_{2,g}A_2+F_{w\to f}=\dot m(U_2-U_1)$.
+\item \textbf{Despeje.} $U_2=U_1A_1/A_2$; $p_{2,g}=p_{1,g}+\rho(U_1^2-U_2^2)/2$; $F_{f\to w}=-F_{w\to f}$.
+\item \textbf{Sustitución.} $\dot m=1.19\cdot22\cdot0.12=3.1416\,\mathrm{kg\,s^{-1}}$; la caída de presión es $863.94\,\mathrm{Pa}$ y la fuerza neta de caras es $243.84\,\mathrm{N}$.
+\item \textbf{Resultado.} $U_2=44.0\,\mathrm{m\,s^{-1}}$, $p_{2,g}=2336.1\,\mathrm{Pa}$ y $F_{f\to w}=+174.7\,\mathrm{N}$. El soporte debe compensar esta carga axial en la idealización descrita.
+\item \textbf{Interpretación.} La presión de caras impulsa más que lo necesario para el cambio de momento y la pared ejerce una fuerza hacia la entrada sobre el fluido; la reacción del fluido apunta hacia la salida.
+\item \textbf{Comprobación independiente.} $q_1=287.98\,\mathrm{Pa}$ y $q_2=1151.92\,\mathrm{Pa}$: $p_{1,g}+q_1=p_{2,g}+q_2=3487.98\,\mathrm{Pa}$. Si $T\simeq290\,\mathrm{K}$, $M_2\simeq0.129$, compatible con una primera aproximación de densidad constante.
+\item \textbf{Limitaciones.} Un conducto real tiene pérdidas y perfiles no uniformes. La carga sobre una instalación requiere incluir geometría exterior, uniones y condiciones reales; aquí se ha definido una referencia exterior uniforme.
+\end{enumerate}
+
+\end{studiumworked}
+
+\section{Lectura crítica y comprobaciones}
+Antes de usar una ecuación conviene formular qué se conserva y cómo cruza la frontera elegida. En una bifurcación no se iguala cada velocidad con la de entrada: se suman caudales másicos. En una tobera no basta continuidad para conocer velocidad y temperatura: hace falta energía y una relación termodinámica. En un codo, la cantidad de movimiento es vectorial y sus componentes deben conservar signos.
+
+Un cierre numérico puede comprobarse por residuos: masa entrante menos saliente, fuerzas menos flujo de momento y energía recibida menos cambio de energía. Que esos residuos sean pequeños confirma coherencia con las ecuaciones utilizadas; no demuestra que las pérdidas omitidas sean pequeñas. Esa segunda pregunta requiere datos, un modelo de mayor fidelidad o comparación experimental.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Un caudal másico de $2.4\,\mathrm{kg\,s^{-1}}$ atraviesa un área de $0.08\,\mathrm{m^2}$ con densidad $1.2\,\mathrm{kg\,m^{-3}}$. Hallar velocidad media.
+\item \textbf{Intermedio.} Un Pitot mide $p_t-p_s=720\,\mathrm{Pa}$ con $\rho=1.20\,\mathrm{kg\,m^{-3}}$. Hallar velocidad y decir qué hipótesis se necesita.
+\item \textbf{Examen.} Repetir el balance de momento del problema con salida a $90^\circ$ respecto a entrada, usando los mismos caudales y presiones. Escribir las dos componentes de la fuerza de pared, sin modelar el tramo curvo.
+\item \textbf{Conceptual.} Explicar por qué la conservación de energía no implica conservación de presión total en un flujo real adiabático.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. $25\,\mathrm{m\,s^{-1}}$. 2. $34.64\,\mathrm{m\,s^{-1}}$ con frenado ideal e incompresible. 3. Si la salida es $+y$, $F_{w\to f,x}=-\dot mU_1-p_{1,g}A_1=-453.1\,\mathrm{N}$ y $F_{w\to f,y}=\dot mU_2+p_{2,g}A_2=278.4\,\mathrm{N}$; la fuerza del fluido es la opuesta. 4. La irreversibilidad puede aumentar entropía y reducir presión total aunque la energía total se conserve.
+
+\resumen{Los balances integrales relacionan acumulación, transporte y acciones exteriores. Su forma diferencial conduce a continuidad, cantidad de movimiento y energía, que necesitan relaciones constitutivas y contornos. Bernoulli es una consecuencia restringida de Euler; Pitot requiere un modelo de frenado. Las fuerzas deben calcularse vectorialmente y con una referencia de presión coherente.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Qué cambia si el volumen de control se mueve?
+\item ¿Por qué continuidad sola no cierra el flujo compresible en una tobera?
+\item ¿Cómo distinguiría una comprobación numérica de una validación física del modelo?
+\end{enumerate}

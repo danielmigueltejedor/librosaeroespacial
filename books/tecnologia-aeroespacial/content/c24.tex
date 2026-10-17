@@ -1,0 +1,92 @@
+\chapter{Sistemas antihielo y antincendios}\label{ch:24}
+\objetivos{Explicar cómo el hielo altera aerodinámica y sensores; distinguir prevención y eliminación; plantear balances térmicos de protección; relacionar detección, aislamiento y extinción con los mecanismos físicos de un incendio.}
+
+\section{Dos amenazas que exigen integración}
+El hielo y el fuego parecen fenómenos opuestos, pero ambos muestran la importancia de controlar transferencias de masa y energía. El hielo aparece cuando agua capturada se congela o cuando se producen otros mecanismos de formación compatibles con el entorno. El fuego necesita una reacción exotérmica sostenida por reactivos y condiciones térmicas. En ambos casos, una protección eficaz requiere conocer la zona amenazada, la fuente de energía y la evolución temporal, no solo instalar un equipo.
+
+Las arquitecturas descritas por FAA Airframe y PHAK proporcionan ejemplos de protección de superficies, sondas y zonas de incendio \cite{FAA-AIRFRAME,PHAK}. Este capítulo explica funciones y balances. No establece procedimientos de actuación en vuelo, cantidades de agente ni secuencias de descarga para aeronaves concretas. La evaluación de una protección siempre queda restringida a la envolvente para la que se demuestra su eficacia.
+
+\figura{ice}{Balance conceptual de energía en un borde de ataque protegido: gotas, calentamiento, convección y salida de agua o vapor.}
+
+\section{Por qué el hielo importa antes de pesar mucho}
+En condiciones de engelamiento, gotas líquidas sobreenfriadas pueden permanecer líquidas por debajo de su temperatura de congelación y solidificar al impactar. El resultado depende de contenido de agua, tamaño de gota, temperatura, velocidad, geometría y balance térmico de la superficie. Una temperatura ambiente aislada no describe toda la amenaza. La trayectoria de las gotas respecto al flujo y su inercia determinan qué fracción alcanza la superficie.
+
+La acumulación modifica el perfil y su rugosidad. Puede adelantar separación, reducir sustentación máxima, incrementar resistencia y alterar momentos de control. Por tanto, el efecto no se limita al peso añadido ni se corrige necesariamente con más empuje. Una acumulación pequeña en una zona aerodinámicamente sensible puede afectar antes que una masa mayor en una zona menos crítica. Las entradas de motor, hélices y superficies de control plantean mecanismos particulares, incluidos desprendimiento e ingestión.
+
+Las sondas de presión pueden sufrir obstrucción; la cadena de medida pierde entonces representatividad aunque el instrumento siga alimentado. La protección de parabrisas aporta visibilidad y puede atender además requisitos térmicos estructurales. Las zonas no protegidas y el agua que vuelve a congelarse más atrás necesitan análisis: calentar el borde de ataque no garantiza que desaparezca toda la masa de agua del problema.
+
+\section{Antihielo y deshielo}
+Un sistema antihielo intenta impedir que se forme una acumulación no admisible; uno de deshielo elimina o desprende hielo después de que se forme bajo condiciones previstas. La diferencia es funcional, no necesariamente de fuente energética. Calefacción eléctrica o aire caliente pueden diseñarse para distintas estrategias. Los dispositivos neumáticos de deformación cíclica favorecen rotura y desprendimiento del hielo por movimiento de la superficie.
+
+La calefacción eléctrica convierte energía en calor mediante resistencias o capas conductoras. Facilita control por zonas, pero exige potencia, distribución, sensado y límites de temperatura. El aire caliente transporta energía desde una fuente neumática, a menudo vinculada al motor; su uso reduce energía disponible para otras funciones y exige controlar fugas y temperaturas. Una fuga de aire caliente puede convertirse en amenaza para sistemas próximos.
+
+La protección térmica puede mantener la superficie por encima de congelación, evaporar parte del agua o tolerar escurrimiento bajo un diseño específico. Evaporar toda el agua exige además calor latente de vaporización, generalmente mucho mayor que solo elevar su temperatura. Por ello no debe asumirse que una superficie caliente evapora automáticamente toda la masa capturada. El destino del agua y el intercambio con el flujo exterior forman parte del balance.
+
+Una estimación inicial de masa de agua interceptada es
+\begin{equation}
+ \dot m_w=\beta\,\mathrm{LWC}\,V A_f.
+\end{equation}
+$\mathrm{LWC}$ es contenido de agua líquida en $\mathrm{kg/m^3}$ de aire, $V$ velocidad, $A_f$ área frontal de referencia y $\beta$ eficacia de captación adimensional. $A_f$ no es necesariamente el área calentada. La eficacia depende de tamaño de gotas y geometría; no es una constante universal.
+
+En un modelo térmico estacionario simplificado,
+\begin{equation}
+ P_{\rm abs}=\dot m_wc_w(T_s-T_w)+hA_s(T_s-T_a)+P_{\rm otros}.
+\end{equation}
+Se distinguen temperatura de agua $T_w$, superficie $T_s$ y aire $T_a$. Si se funde hielo debe añadirse el calor latente de fusión de la masa correspondiente; si se evapora agua, el de vaporización. El intercambio aerodinámico real incluye efectos de recuperación, conducción y escurrimiento. Escribir la ecuación antes de sustituir números evita introducir calor latente en un proceso donde no hay cambio de fase.
+
+\section{Control, detección y modos degradados}
+El control puede regular temperatura, potencia o secuencias por zonas. Un sensor situado en un punto no mide toda la superficie; gradientes y pérdidas de contacto alteran su representatividad. La protección debe evitar tanto falta de calor como sobretemperatura. La distribución temporal permite limitar potencia simultánea, pero cambia la evolución de acumulación y desprendimiento.
+
+La detección de hielo informa de condiciones o de una acumulación en un sensor cuya exposición debe relacionarse con el resto del vehículo. No prueba automáticamente que todas las superficies estén limpias. La indicación de sistema conectado tampoco demuestra capacidad térmica suficiente. Alimentación, caudal, presión, temperatura y continuidad eléctrica aportan evidencias distintas sobre su estado funcional.
+
+Los costes de protección afectan a prestaciones. Extraer sangrado del motor o potencia eléctrica aumenta demanda energética; superficies y conductos añaden masa. La misión y la envolvente determinan cuándo esas demandas coinciden con otras cargas. Una arquitectura debe conservar funciones necesarias tras pérdidas previstas sin suponer recursos ilimitados.
+
+\section{Incendio: limitar combustible, oxidante y energía}
+La combustión sostenida requiere suministro de reactivos y un estado térmico compatible con la reacción. En aeronaves pueden existir fluidos combustibles cerca de superficies calientes y fuentes eléctricas. Prevenir fugas y limitar fuentes de ignición reduce probabilidad; contener, detectar y extinguir limita consecuencias si se inicia el suceso. Ninguna capa sustituye completamente a las otras.
+
+Una zona protegida se define por posibles fuentes, geometría, ventilación y elementos vecinos. Mamparos y barreras térmicas dificultan propagación; drenaje evita acumulaciones donde corresponda al diseño; aislamiento de combustible o de energía puede retirar alimentación a la reacción. El flujo de ventilación afecta concentración de agente y renovación de oxígeno. Una misma masa de agente no produce la misma concentración en volúmenes o fugas distintos.
+
+Detectores térmicos, de llama o humo responden a fenómenos diferentes. Un aumento de temperatura puede señalar sobrecalentamiento antes de llama; un detector de humo responde a productos suspendidos; una llama tiene firmas radiativas. La selección y ubicación deben reducir tiempo de detección y falsas indicaciones sin perder sensibilidad a los incendios relevantes. Lazos redundantes pueden compartir exposición o cableado, por lo que su independencia requiere evaluación.
+
+La extinción puede actuar por enfriamiento, reducción de oxidante disponible, interrupción de la reacción o aislamiento del combustible, según el agente y el escenario. Un agente apropiado para una zona no es automáticamente apropiado para otra con equipos eléctricos, materiales o ocupantes diferentes. La eficacia depende de concentración, distribución, tiempo de permanencia y posibilidad de reignición. Una descarga que apaga la llama sin eliminar una fuga caliente puede dejar la causa activa.
+
+El sistema integra detección, avisos, medios de aislamiento y extinción. Desde el punto de vista docente, un análisis causal pregunta qué mide el detector, qué energía o fluido puede aislarse y qué evita la propagación. La ejecución concreta depende de documentación y entrenamiento específicos. Este tratamiento evita convertir un principio general en una instrucción de emergencia incompleta.
+
+\section{Problema resuelto: potencia térmica antihielo}
+\textbf{1. Enunciado.} Se desea estimar la potencia eléctrica mínima de un modelo que calienta agua capturada y compensa convección en una superficie. No hay evaporación ni cambio de fase en el modelo principal.
+
+\textbf{2. Datos.} $\mathrm{LWC}=0.40\,\mathrm{g/m^3}$, $V=80\,\mathrm{m/s}$, $A_f=0.12\,\mathrm{m^2}$, $\beta=0.70$, $A_s=0.50\,\mathrm{m^2}$, $h=80\,\mathrm{W/(m^2K)}$, $T_w=T_a=-10\,{}^\circ\mathrm{C}$, $T_s=5\,{}^\circ\mathrm{C}$, $c_w=4180\,\mathrm{J/(kgK)}$ y eficacia térmica $\eta=0.85$.
+
+\textbf{3. Incógnitas.} Caudal capturado, potencia absorbida por agua y convección, potencia eléctrica y sensibilidad a una hipótesis de hielo previo.
+
+\textbf{4. Esquema verbal.} Una superficie recibe gotas que permanecen líquidas en el balance ideal. El calentador eleva su temperatura y compensa el calor transferido al aire; las restantes pérdidas se representan con $\eta$.
+
+\textbf{5. Hipótesis.} Estacionario, captación uniforme, agua con calor específico constante, sin escurrimiento que vuelva a congelarse y $h$ ya fijado. No se atribuye validez a una condición meteorológica certificada.
+
+\textbf{6. Modelo.} Balance de masa capturada y calor sensible más convección.
+
+\textbf{7. Ecuaciones.} $\dot m_w=\beta\mathrm{LWC}VA_f$, $P_w=\dot m_wc_w\Delta T$, $P_c=hA_s\Delta T$ y $P_e=(P_w+P_c)/\eta$.
+
+\textbf{8. Despeje.} $\Delta T=15\,\mathrm{K}$. La eficacia divide la demanda térmica porque parte de la potencia eléctrica no alcanza el balance útil definido.
+
+\textbf{9. Sustitución.} $\dot m_w=0.70(0.00040)(80)(0.12)=0.002688\,\mathrm{kg/s}$; $P_w=0.002688(4180)(15)$ y $P_c=80(0.50)(15)$.
+
+\textbf{10. Resultado.} $P_w=168.54\,\mathrm{W}$, $P_c=600\,\mathrm{W}$ y $P_e=904.16\,\mathrm{W}$.
+
+\textbf{11. Interpretación.} En este ejemplo domina la convección. La cifra no contempla evaporación. Si se exigiera además fundir esa misma masa como hielo ya a $0\,{}^\circ\mathrm{C}$, la contribución latente aislada con $L_f=334\,\mathrm{kJ/kg}$ sería $897.79\,\mathrm{W}$ térmicos; habría que replantear también los calores sensibles del proceso completo.
+
+\textbf{12. Comprobación independiente.} En un minuto se capturan $0.16128\,\mathrm{kg}$. Calentarlos $15\,\mathrm{K}$ necesita $10112.3\,\mathrm{J}$, equivalentes a $168.54\,\mathrm{W}$. Los $600\,\mathrm{W}$ convectivos representan $36000\,\mathrm{J}$ adicionales, y la energía eléctrica del minuto es la suma dividida por $0.85$.
+
+\textbf{13. Limitaciones.} Faltan distribución de gotas, recuperación aerodinámica, transitorios, conducción interna y agua de escurrimiento. El cálculo sirve para entender términos, no para dimensionar una protección certificada.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Una resistencia de $4\,\Omega$ recibe $28\,\mathrm{V}$ continuos. Determine potencia eléctrica.
+\item Intermedio. Duplique LWC en el problema resuelto manteniendo las demás condiciones. Determine la nueva potencia y explique por qué no se duplica.
+\item Intermedio. Fundir $0.50\,\mathrm{kg}$ de hielo inicialmente a $0\,{}^\circ\mathrm{C}$ requiere solo calor latente en un modelo ideal. Calcule energía con $L_f=334\,\mathrm{kJ/kg}$.
+\item Análisis. Un detector térmico y otro de humo presentan señales distintas. Explique por qué esto no demuestra que uno haya fallado y qué características del escenario debe representar un análisis.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $196\,\mathrm{W}$. 2: $1102.44\,\mathrm{W}$; solo se duplica el término de agua. 3: $167\,\mathrm{kJ}$. 4: responden a variables diferentes; ubicación, ventilación, tipo de combustión y tiempos de respuesta pueden producir discrepancia válida.
+
+\resumen{El hielo altera geometría, flujo y medida antes de que su masa sea dominante. La protección debe seguir el destino del agua y todas las transferencias térmicas. Contra incendios, prevención, detección, aislamiento, contención y extinción forman capas complementarias. Ambas familias consumen recursos y requieren demostrar su eficacia en condiciones definidas.}
+\textbf{Autoevaluación.} ¿Qué diferencia funcional existe entre antihielo y deshielo? ¿Por qué hay que distinguir área frontal y área calentada? ¿Qué puede causar reignición después de extinguir una llama?

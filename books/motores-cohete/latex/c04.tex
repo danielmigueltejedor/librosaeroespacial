@@ -1,0 +1,62 @@
+\chapter{Parámetros característicos, pérdidas e incertidumbre}\label{ch:04}
+\objetivos{Obtener las identidades entre prestaciones; definir rendimientos con fronteras coherentes; propagar incertidumbres; reconocer cuándo una comparación cambia de modelo.}
+\section{Una jerarquía de definiciones}
+Las definiciones proporcionan relaciones que no dependen de una tobera ideal:
+\begin{align}
+ c&=F/\dot m,& I_{sp}&=F/(\dot m g_0),\\
+ c^*&=p_cA_t/\dot m,& C_F&=F/(p_cA_t),\\
+ c&=C_Fc^*,& I_{sp}&=C_Fc^*/g_0.
+\end{align}
+De ellas no se deduce que $c^*$ sea constante, que $C_F$ sólo dependa de geometría ni que las prestaciones sean iguales en cualquier ambiente. Las predicciones requieren cerrar los estados y las condiciones de contorno. Por ejemplo, un cambio de garganta puede alterar el equilibrio de cámara de un sólido; su efecto no equivale al de cambiar un área en una cámara regulada a presión fija.
+
+Cuando el sistema tiene más de una descarga, $F$ debe incluir sus contribuciones axiales y $\dot m$ todas las masas consumidas. De otro modo el impulso específico presentado sería el de una parte favorable del sistema y no el del conjunto. También conviene indicar si la presión usada en $c^*$ es estática medida o total estimada.
+\section{Similitud y grupos adimensionales}
+Para una tobera de gas caloríficamente perfecto, los grupos $A_e/A_t$, $p_a/p_c$ y $\gamma$ permiten describir el coeficiente de empuje ideal cuando se especifica el régimen. La temperatura y la constante específica establecen una escala de velocidad $\sqrt{RT_c}$. La escala de fuerza es $p_cA_t$ y la de caudal es $p_cA_t/\sqrt{RT_c}$.
+
+Esas escalas explican por qué dos modelos geométricamente semejantes pueden tener el mismo $C_F$ y distinto empuje. No prueban semejanza de un motor real. La viscosidad introduce Reynolds; la transferencia térmica introduce Prandtl y razones de temperatura; la relajación química introduce tiempos característicos; la presencia de partículas añade tamaño, fracción de masa e inercia de fase. Dos sistemas con iguales $\gamma$ y relación de áreas pueden diferir en todos esos efectos.
+
+El análisis dimensional es especialmente útil para descartar una expresión. No puede escoger entre dos expresiones dimensionalmente correctas con coeficientes distintos. Una fórmula que omite una pérdida puede conservar perfectamente sus unidades. Por ello la consistencia dimensional se registra separada de la fundamentación física y de la comprobación algebraica.
+\section{Qué significa un rendimiento}
+Sea $c^*_{id}$ un valor ideal calculado para reactantes, estados y modelo químico declarados. Una razón operacional $\eta_{c^*}=c^*_{med}/c^*_{id}$ resume discrepancias de cámara, pero no es una medida aislada de eficiencia de reacción si también hay errores de caudal, presión, área efectiva o composición. Es necesario distinguir la razón definida del mecanismo al que se atribuye.
+
+Análogamente, $\eta_{C_F}=C_{F,r}/C_{F,id}$ puede representar una degradación respecto de un modelo de tobera. Si ambos cocientes emplean exactamente las mismas referencias,
+\[\frac{I_{sp,r}}{I_{sp,id}}=\eta_{c^*}\eta_{C_F}.\]
+No se puede multiplicar ese producto por otro rendimiento de velocidad ya incluido en $\eta_{C_F}$ sin contar dos veces una pérdida. Tampoco se garantiza que cualquier razón experimental se encuentre entre cero y uno cuando su referencia ideal fue elegida con hipótesis equivocadas. Un valor mayor que uno exige revisar referencias, incertidumbres y modelos; no se interpreta de inmediato como violación de la energía.
+
+La eficiencia energética de un sistema eléctrico se define respecto de potencia eléctrica, mientras que $I_{sp}$ mide impulso por peso convencional de propulsante. Llamar al impulso específico ``rendimiento'' en una conversación abreviada no permite tratarlo como una fracción adimensional. Una cifra de 250 s y otra de 0.65 describen magnitudes diferentes.
+\section{Propagación de incertidumbres}
+Para $y=f(x_1,\ldots,x_n)$ y pequeñas desviaciones,
+\begin{equation}
+ \delta y\simeq\sum_i\frac{\partial f}{\partial x_i}\delta x_i,
+ \qquad u_y^2\simeq\sum_i\sum_j\frac{\partial f}{\partial x_i}
+ \frac{\partial f}{\partial x_j}\operatorname{cov}(x_i,x_j).
+\end{equation}
+Las covarianzas importan. Una misma calibración de presión puede afectar dos cocientes y cancelarse parcialmente o reforzarse. Si las entradas son independientes, los términos cruzados desaparecen; esa independencia debe justificarse con la cadena de medición, no con comodidad algebraica.
+
+Aplicado a $I_{sp}=F/(g_0\dot m)$, con $g_0$ convencional exacto en este contexto,
+\begin{equation}
+ \left(\frac{u_{I_{sp}}}{I_{sp}}\right)^2\simeq
+ \left(\frac{u_F}{F}\right)^2+
+ \left(\frac{u_{\dot m}}{\dot m}\right)^2
+ -2\frac{\operatorname{cov}(F,\dot m)}{F\dot m}.
+\end{equation}
+Para $c^*=p_cA_t/\dot m$ aparecen las incertidumbres de las tres magnitudes y sus correlaciones. Si $A_t=\pi d_t^2/4$, una pequeña incertidumbre relativa de diámetro produce aproximadamente el doble de incertidumbre relativa de área. Es un efecto de sensibilidad geométrica; no exige que el dato sea erróneo.
+
+La linealización falla cerca de un cambio de régimen o de una raíz mal condicionada. Por ejemplo, la inversión de la relación área-Mach cerca de $M=1$ es sensible porque la derivada de área respecto a Mach se anula. En tal situación conviene propagar distribuciones o intervalos mediante el modelo completo y distinguir las ramas físicamente posibles.
+\section{Verificar una afirmación, no sólo un número}
+La reproducción aritmética comprueba que una expresión con unos datos produce el resultado declarado. La verificación algebraica comprueba una identidad o una transformación. La dimensional comprueba unidades. La compatibilidad física examina hipótesis, dominios y conservación. La validación experimental compara un modelo con observaciones que no se han generado mediante ese mismo modelo. Estos niveles responden preguntas distintas.
+
+Si se obtiene un buen acuerdo entre dos implementaciones de la misma expresión, se ha reforzado la confianza en su implementación. No se ha demostrado que esa expresión describa un flujo separado, una combustión inestable o un plasma real. En el proyecto Studium cada comprobación conserva su método y alcance; las fuentes pendientes no se promueven por el hecho de que el PDF compile.
+
+Una rutina de revisión eficaz empieza por fijar fronteras y signos, continúa con dimensiones, analiza límites, reproduce el cálculo y contrasta una ruta alternativa. Sólo entonces se decide qué evidencia bibliográfica o experimental falta. Esa secuencia evita gastar esfuerzo en un resultado aparentemente preciso de un modelo incompatible.
+\figura{c04}{La incertidumbre de un cociente depende también de la correlación. Curva linealizada con incertidumbres relativas fijas.}
+\section{Caso desarrollado}
+\input{M04.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Con errores relativos independientes del 1.2\,\% en empuje y 0.8\,\% en caudal, obtenga la incertidumbre relativa linealizada del impulso específico.
+\item Una corrección de pérdidas ya modifica $v_e$. Explique qué información adicional necesita antes de aplicar otro factor a $C_F$.
+\item Dos toberas tienen igual relación de áreas y distinto tamaño. Enumere tres grupos necesarios para evaluar semejanza viscosa y térmica.
+\item Diseñe una comprobación que detecte confusión entre área y diámetro sin necesitar el valor correcto de un motor real.
+\end{enumerate}
+\resumen{Las identidades de prestaciones son exactas por definición cuando se mantienen las mismas fronteras. Los rendimientos dependen de sus referencias. La incertidumbre requiere sensibilidades y covarianzas. Ningún control aislado convierte una predicción ideal en una prestación experimental.}

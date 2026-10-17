@@ -1,0 +1,28 @@
+\begin{studiumworked}{M21. Potencia, empuje y duración de maniobra · INTERMEDIATE}
+\textbf{Enunciado original.} Un propulsor eléctrico académico recibe $2040\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $20100\,\mathrm{m/s}$. Funciona $38100\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+
+\textbf{Datos utilizados.} Potencia eléctrica: $2040\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $20100\,\mathrm{m/s}$; Duración: $38100\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+
+\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+
+\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+
+\textbf{Modelo físico.} Energía cinética, momento y masa variable.
+\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
+\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
+\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item La potencia dirigida es $1224\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.059256\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.121791\,\mathrm{N}$.
+\item La conversión convencional da $I_{sp}=2049.63$ s. En el intervalo se consumen $0.2308577\,\mathrm{kg}$ y el impulso es $4640.239\,\mathrm{N s}$. La masa final es $449.7691\,\mathrm{kg}$, positiva.
+\item La integración de masa variable da $10.31429\,\mathrm{m/s}$. La aproximación $I/m_0=10.31164$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
+\item Al duplicar rapidez, el empuje baja a $0.06089552\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\end{enumerate}
+\textbf{Resultados.} $F=0.121791$ N; $\dot m=6.059256\times10^{-6}$ kg/s; $m_p=0.2308577$ kg; $\Delta v=10.31429$ m/s.
+
+\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+
+\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1224$ W y $I=m_pv_e=4640.239$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+
+\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\end{studiumworked}

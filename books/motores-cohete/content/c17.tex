@@ -1,0 +1,65 @@
+\chapter{Transferencia de calor y refrigeración}\label{ch:17}
+\objetivos{Cerrar un balance térmico de pared y refrigerante; distinguir temperatura de gas, recuperación y material; interpretar resistencias, transitorios y recuperación regenerativa sin confundir energía conservada con reversibilidad.}
+\section{La carga térmica y sus temperaturas de referencia}
+Un flujo caliente puede transferir energía por convección y radiación. La temperatura que impulsa la convección compresible junto a una pared no es necesariamente la temperatura estática de la corriente exterior. Se utiliza una temperatura de recuperación o pared adiabática $T_{aw}$, definida por el estado que alcanzaría una pared sin intercambio neto bajo esas condiciones.
+
+Una representación de gas caloríficamente perfecto es
+\[
+ T_{aw}=T+ r_h\frac{u^2}{2c_p},
+\]
+donde $r_h$ es un factor de recuperación ligado al transporte en la capa límite. No se identifica automáticamente con uno ni con un rendimiento propulsivo. El flujo convectivo se modela como $q''_g=h_g(T_{aw}-T_{wg})$. El coeficiente $h_g$ depende del campo y propiedades; no es una constante universal de la cámara.\cite{MIT07,MIT09}
+\section{Pared plana y resistencias térmicas}
+En una pared plana de espesor $\delta$, conductividad $k$ constante, régimen estacionario y conducción unidimensional sin generación,
+\[
+ q''=k\frac{T_{wg}-T_{wl}}{\delta}.
+\]
+Si el lado refrigerante tiene $q''=h_l(T_{wl}-T_l)$, sumar caídas de temperatura da
+\begin{equation}\label{eq:thermalresistance}
+ q''=\frac{T_{aw}-T_l}{1/h_g+\delta/k+1/h_l}.
+\end{equation}
+Las resistencias por unidad de área tienen unidades $\mathrm{m^2K/W}$. Las temperaturas de pared se recuperan restando cada salto, no asignando al metal la temperatura del gas.
+
+La igualdad de los tres flujos exige estacionariedad y ausencia de otras ramas de transferencia. En una pared transitoria parte de la energía se almacena; con radiación aparece otra contribución. Para geometría cilíndrica o áreas distintas, las resistencias deben referirse a áreas coherentes y la conducción contiene logaritmos radiales. Usar directamente la fórmula plana requiere justificar espesor pequeño respecto al radio.
+\section{Capacidad térmica del refrigerante}
+Un circuito que absorbe potencia $\dot Q_c$ satisface
+\[
+ \dot Q_c=\dot m_c(h_{out}-h_{in})
+\]
+si se desprecia trabajo, cambio cinético y altura. Para $c_{p,c}$ aproximadamente constante y una sola fase,
+\[
+ \Delta T_c=\frac{\dot Q_c}{\dot m_cc_{p,c}}.
+\]
+Esta ecuación determina un aumento medio de entalpía; no garantiza que la pared local permanezca admisible. Una potencia total moderada puede concentrarse en una región pequeña con flujo superficial elevado.
+
+Si hay cambio de fase, se debe usar entalpía y fracción de vapor en lugar de extender $c_p\Delta T$ a través de la transición. Las propiedades y la caída de presión pueden cambiar intensamente. El estado del refrigerante se comprueba localmente antes de asumir que conserva densidad y capacidad calorífica constantes.
+\section{Refrigeración regenerativa y segunda ley}
+En un sistema regenerativo, el propulsante absorbe calor de pared y después entra en la cámara. Para una frontera que encierra gas, pared y circuito hasta esa entrada, gran parte del calor intercambiado es interno. La energía recuperada puede volver al proceso propulsivo. Eso no vuelve reversible la transferencia: mover calor desde gas muy caliente a fluido más frío genera entropía.
+
+Para un intercambio diferencial entre temperaturas $T_h>T_c$,
+\[
+ dS_{gen}=\delta Q\left(\frac1{T_c}-\frac1{T_h}\right)>0.
+\]
+Además existen pérdidas de presión y potencia de bombeo. Decir que se recupera energía no implica que se recupere íntegramente su capacidad de producir trabajo. El análisis de ciclo debe incluir ambas cosas.\cite{MIT09}
+\section{Película, ablación, acumulación y radiación}
+Una película modifica la composición y temperatura de la región próxima a pared. Puede disminuir carga térmica, pero también cambiar mezcla y prestación. El refrigerante consumido forma parte del balance de masa total; excluirlo de $I_{sp}$ genera una comparación inconsistente.
+
+Una protección ablativa utiliza transformaciones y pérdida de material. Un balance superficial idealizado puede escribirse
+\[
+ q''_{in}=q''_{cond}+\dot m''_a h_{ef}+q''_{rad},
+\]
+con $h_{ef}$ definido para agrupar procesos del modelo. No debe interpretarse como una constante universal sin datos de material y condiciones. La frontera se mueve y puede modificar geometría.
+
+Una estructura absorbente almacena energía sensible: $mc\,dT/dt=\dot Q_{in}-\dot Q_{out}$ en un modelo concentrado. La radiación neta hacia un entorno representativo puede aproximarse por $\epsilon\sigma(T_w^4-T_{ent}^4)$ bajo hipótesis de superficies y factores de vista adecuados. Estos mecanismos pueden coexistir; se suman mediante un balance, no escogiendo arbitrariamente la temperatura más favorable.\cite{MIT10}
+\section{Escalas y acoplamiento estructural}
+El número de Biot $Bi=h\delta/k$ compara resistencia interna de conducción con resistencia superficial. Si es pequeño y la geometría permite una longitud característica adecuada, un modelo térmico concentrado puede ser razonable. El número de Fourier $Fo=\alpha t/\delta^2$ compara duración con difusión interna. Son indicadores del modelo, no valores admisibles de material.
+
+Un gradiente térmico produce dilataciones incompatibles si la estructura está restringida. Una escala de tensión térmica elástica es $E\alpha_T\Delta T$, modificada por restricción y coeficiente de Poisson. Combinarla con presión requiere geometría, compatibilidad y una ley constitutiva. La temperatura también puede cambiar resistencia, fluencia y fatiga. Un balance de calor correcto no basta para demostrar integridad estructural.\cite{MIT06}
+\figura{c17}{Red térmica ideal. Las temperaturas de pared se obtienen de las caídas parciales; no se igualan a la temperatura del gas.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Deduzca \eqref{eq:thermalresistance} y recupere las temperaturas de ambas caras de pared.
+\item Para una potencia absorbida de 24 kW, caudal académico $0.80\,\mathrm{kg/s}$ y $c_p=2500\,\mathrm{J/(kg\,K)}$, calcule el aumento de temperatura y cierre energía.
+\item Explique por qué recuperar el calor en el propulsante no elimina generación de entropía.
+\item Distinga qué balance cambia si el refrigerante hierve, si la pared acumula energía o si una superficie se abla.
+\end{enumerate}
+\resumen{La temperatura del material se obtiene de un problema de transferencia, no de igualarla a la del gas. La capacidad global del refrigerante y el flujo local son restricciones distintas. La regeneración recupera energía dentro del sistema y aun así genera entropía y pérdidas de presión.}

@@ -1,0 +1,79 @@
+\chapter{Actuaciones reales, gravedad y resistencia}\label{ch:27}
+\objetivos{Formular una trayectoria puntual con marco y ángulos definidos; interpretar pérdidas gravitatorias, aerodinámicas y de dirección; comprobar una integración mediante balances y casos límite.}
+\section{Ecuación vectorial del vehículo}
+En un marco inercial y con un modelo de masa puntual,
+\begin{equation}\label{eq:trajectoryvector}
+ m\dot{\mathbf v}=\mathbf F_T+\mathbf F_D+\mathbf F_L
+ -m\frac{\mu}{r^3}\mathbf r,\qquad
+ \dot{\mathbf r}=\mathbf v,\qquad \dot m=-\dot m_p.
+\end{equation}
+La fuerza aerodinámica depende de velocidad relativa al aire, que puede diferir de la inercial por rotación atmosférica y viento. En un marco solidario con un planeta aparecerían términos de Coriolis y centrífugo. No se mezclan ecuaciones de un marco con velocidades iniciales de otro.
+
+La gravedad local es $g(r)=\mu/r^2$, distinta del valor convencional $g_0$ utilizado para definir impulso específico. Un cambio de altura modifica gravedad física, pero no la conversión $c=g_0I_{sp}$.
+\section{Modelo plano sobre un cuerpo esférico}
+Para movimiento en un plano sin rotación, sean $v$ rapidez inercial, $r$ radio, $\gamma_f$ ángulo de trayectoria sobre la horizontal local y $\alpha_T$ inclinación del empuje respecto a velocidad. Con resistencia opuesta al movimiento y sustentación positiva hacia aumento de $\gamma_f$,
+\begin{align}
+ \dot r&=v\sin\gamma_f,\\
+ \dot\theta&=\frac{v\cos\gamma_f}{r},\\
+ \dot v&=\frac{F\cos\alpha_T-D}{m}-\frac{\mu}{r^2}\sin\gamma_f,\label{eq:vdot}\\
+ \dot\gamma_f&=\frac{F\sin\alpha_T+L}{mv}
+ +\left(\frac{v}{r}-\frac{\mu}{vr^2}\right)\cos\gamma_f.
+\end{align}
+El término $v/r$ representa el giro de la horizontal local. El sistema es singular en $v=0$ por la parametrización angular, no porque la dinámica vectorial deje de existir. Cerca del inicio conviene usar componentes cartesianas o condiciones que eviten dividir por cero.\cite{MIT32,MIT33}
+
+Estas ecuaciones no describen por sí solas actitud del cuerpo ni flexibilidad. El ángulo de empuje puede ser una entrada de un modelo puntual, pero realizarlo exige dinámica y autoridad de control adicionales.
+\section{Pérdidas como descomposición de un balance}
+Integrando \eqref{eq:vdot},
+\begin{align}
+ v_f-v_0={}&\int\frac{F}{m}dt
+ -\int\frac{F(1-\cos\alpha_T)}{m}dt\\
+ &-\int\frac{D}{m}dt-\int g(r)\sin\gamma_f\,dt.
+\end{align}
+La primera integral es delta-v propulsivo escalar. La segunda cuantifica la parte que no aumenta rapidez por inclinación del empuje respecto al movimiento en esta descomposición. Las dos últimas son contribuciones de resistencia y gravedad proyectada. Se debe indicar el intervalo y convenio antes de darles el nombre de pérdidas.
+
+Durante un descenso o maniobra orbital, la contribución gravitatoria proyectada puede cambiar de signo. La gravedad no destruye energía mecánica en un campo conservativo; intercambia cinética y potencial. El término pérdida gravitatoria expresa una comparación propulsiva de trayectoria, no disipación termodinámica.
+\section{Ascenso vertical elemental}
+Para empuje vertical, gravedad constante, sin resistencia y velocidad efectiva constante,
+\[
+ \dot v=-c\frac{\dot m}{m}-g.
+\]
+La integración hasta tiempo $t_b$ da
+\begin{equation}\label{eq:vertical}
+ v_b-v_0=c\ln\frac{m_0}{m_b}-gt_b.
+\end{equation}
+El término $gt_b$ puede ser importante aunque la relación de masas sea favorable. A igual capacidad ideal, una duración más larga aumenta esta contribución en el modelo vertical. Esa observación no implica que reducir duración sin límites sea un diseño realizable: aceleración, estructura y potencia imponen restricciones.
+
+Si $F<mg$ al inicio y no hay soporte ni velocidad ascendente suficiente, no se deduce un despegue vertical. El cociente empuje-peso inicial es una comprobación previa. Una integración que permita al vehículo atravesar el suelo sin un modelo de contacto puede producir números sin representar el escenario planteado.
+\section{Resistencia, presión dinámica y atmósfera}
+La resistencia se representa por
+\[
+ D=\frac12\rho_{atm}V_{rel}^2C_D S.
+\]
+El coeficiente depende, entre otras variables, de Mach, Reynolds y configuración. La presión dinámica es $q=\rho_{atm}V_{rel}^2/2$, distinta de presión estática. Su máximo puede aparecer a una altura intermedia porque la velocidad crece mientras la densidad disminuye.
+
+Un modelo exponencial $\rho=\rho_0e^{-h/H}$ es una aproximación de escala con altura característica constante. No es una atmósfera estándar completa ni reproduce variación térmica y composición a cualquier altura. En problemas originales se declarará cuándo se utiliza para estudiar tendencias, evitando atribuirle precisión meteorológica.
+\section{Energía y momento angular como controles}
+En un tramo balístico sin resistencia ni empuje, la energía específica
+\[
+ \mathcal E=\frac{v^2}{2}-\frac{\mu}{r}
+\]
+y el momento angular específico $\mathbf h=\mathbf r\times\mathbf v$ permanecen constantes. Una integración numérica puede comprobar ambos para un caso de referencia. Disminuir tolerancia o paso debe reducir errores de discretización hasta el límite de redondeo y modelo.
+
+Con empuje y resistencia,
+\[
+ \frac{d\mathcal E}{dt}=\frac{\mathbf F_T\cdot\mathbf v+\mathbf F_D\cdot\mathbf v+\mathbf F_L\cdot\mathbf v}{m}
+\]
+en el campo central fijo. Para sustentación perpendicular a velocidad inercial su trabajo es cero; con atmósfera móvil, la perpendicularidad se refiere a velocidad relativa y el balance debe tratarse con cuidado. Los controles se adaptan al marco y al modelo, no se copian indiscriminadamente.
+\section{Qué demuestra una simulación docente}
+Una trayectoria calculada con masas, atmósfera y coeficientes idealizados demuestra el comportamiento de esas ecuaciones. Para predecir un lanzamiento real se necesitan datos de vehículo, aerodinámica, dispersión, control y restricciones. Una integración convergida puede resolver con precisión un modelo insuficiente.
+
+La comprobación del manual comparará el caso vertical con solución analítica, cerrará masa y revisará energía en tramos sin fuerzas no conservativas. La validación con telemetría real queda fuera del alcance y se mantiene pendiente.
+\figura{c27}{Solución de ecuación vertical con gravedad constante, sin suelo ni resistencia. El empuje inicial supera el peso; el modelo no incluye atmósfera ni variación de gravedad.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive \eqref{eq:vertical} y determine el efecto de duplicar duración a igual relación de masas.
+\item Explique por qué $gt$ no es la pérdida gravitatoria general de cualquier trayectoria.
+\item Distinga presión estática y dinámica, y razone la posibilidad de un máximo de $q$ durante ascenso.
+\item Proponga dos invariantes para verificar un integrador de un tramo orbital sin empuje ni resistencia.
+\end{enumerate}
+\resumen{Las actuaciones reales dependen de historia temporal, dirección y fuerzas externas. Las pérdidas son términos de un balance definido, y gravedad no equivale a disipación. La convergencia numérica y los invariantes comprueban una integración, pero no validan automáticamente el modelo de lanzamiento.}

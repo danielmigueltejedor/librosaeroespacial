@@ -1,0 +1,27 @@
+\begin{studiumworked}{M14. Dos corrientes, duración y volumen almacenado · INTERMEDIATE}
+\textbf{Enunciado original.} Un sistema académico de dos líquidos consume $5.4\,\mathrm{kg/s}$ durante $94\,\mathrm{s}$, con relación másica oxidante/combustible $2.68$. A sus estados de referencia, las densidades son 1100 y 850 kg/m$^3$. Determine caudales separados, masas consumidas, volúmenes y densidad equivalente.
+
+\textbf{Datos utilizados.} Caudal total: $5.4\,\mathrm{kg/s}$; Relación de mezcla: $2.68$; Duración: $94\,\mathrm{s}$; Densidad oxidante: $1100\,\mathrm{kg/m^3}$; Densidad combustible: $850\,\mathrm{kg/m^3}$.
+
+\textbf{Incógnitas.} Caudales, masas y volúmenes.
+
+\textbf{Hipótesis.} Régimen constante y sólo dos corrientes. Densidades de referencia constantes; no se incluyen espacio de gas, estructura ni reservas.
+
+\textbf{Modelo físico.} Conservación de masa y volumen de líquidos separados.
+\[\dot m_f=\dot m/(1+\mathcal R),\quad \dot m_o=\mathcal R\dot m_f\]
+\[m_i=\dot m_it,\quad V_i=m_i/\rho_i\]
+\[\rho_{eq}=(1+\mathcal R)/(1/\rho_f+\mathcal R/\rho_o)\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Se despeja combustible de $\dot m=(1+\mathcal R)\dot m_f$. Resulta $1.467391\,\mathrm{kg/s}$; multiplicar por la relación da $3.932609\,\mathrm{kg/s}$ de oxidante.
+\item Integrar caudales constantes durante $94\,\mathrm{s}$ da $137.9348\,\mathrm{kg}$ y $369.6652\,\mathrm{kg}$. Dividir por densidades produce $0.1622762\,\mathrm{m^3}$ y $0.3360593\,\mathrm{m^3}$.
+\item La suma de volúmenes es $0.4983355\,\mathrm{m^3}$; dividir la masa total por ese volumen da $1018.591\,\mathrm{kg/m^3}$. No se ha promediado aritméticamente densidades.
+\end{enumerate}
+\textbf{Resultados.} $\dot m_f=1.467391$ kg/s; $\dot m_o=3.932609$ kg/s; $V_p=0.4983355$ m$^3$; $\rho_{eq}=1018.591$ kg/m$^3$.
+
+\textbf{Interpretación.} La densidad equivalente es masa dividida por suma de volúmenes separados; no implica mezcla física en un depósito. La relación dada es másica y no coincide con relación volumétrica.
+
+\textbf{Comprobación.} Los caudales suman $5.4\,\mathrm{kg/s}$ y su cociente es $2.68$. La densidad equivalente queda entre ambas densidades positivas.
+
+\textbf{Límites.} No se predice combustión ni prestación. Si la mezcla o caudal varían, cada corriente se integra de forma independiente.
+\end{studiumworked}

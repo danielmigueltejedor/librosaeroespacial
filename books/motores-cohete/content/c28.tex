@@ -1,0 +1,65 @@
+\chapter{Guiado, control y misiones espaciales}\label{ch:28}
+\objetivos{Distinguir navegación, guiado y control; relacionar momentos y actitud; comparar maniobras impulsivas y de empuje bajo, y vincular la arquitectura propulsiva con ejemplos civiles documentados.}
+\section{Tres funciones diferentes}
+La navegación estima posición, velocidad, actitud y otros estados a partir de sensores y modelos. El guiado decide una referencia de trayectoria o maniobra para alcanzar objetivos y restricciones. El control actúa sobre el sistema para seguir esa referencia pese a perturbaciones y limitaciones. Una estimación perfecta no garantiza una ley de guiado adecuada, y una referencia ideal no garantiza que los actuadores puedan realizarla.
+
+La incertidumbre de navegación influye en márgenes y decisiones. El retardo y ruido de sensores pueden afectar estabilidad del lazo. La arquitectura se estudia como un sistema de estimación, decisión y dinámica, sin atribuir a un controlador puntual capacidades que el vehículo no tiene.
+\section{Actitud y momentos}
+Para un cuerpo rígido respecto a su centro de masas, expresado en ejes solidarios,
+\begin{equation}\label{eq:attitude}
+ \mathbf J\dot{\boldsymbol\omega}
+ +\boldsymbol\omega\times(\mathbf J\boldsymbol\omega)
+ =\mathbf M_{ext}
+\end{equation}
+si $\mathbf J$ es constante en ese modelo. Un vehículo que consume y desplaza masa puede requerir términos adicionales y actualización de inercia. La ecuación translacional no determina actitud.
+
+Una fuerza aplicada a una distancia $\mathbf r_T$ del centro de masas produce momento $\mathbf M_T=\mathbf r_T\times\mathbf F_T$. Una desviación pequeña de línea de empuje puede generar un momento significativo. El centro de masas cambia al consumirse propulsante; mantener fija su posición sin justificarlo altera el brazo y la respuesta.
+
+Un par de fuerzas opuestas puede producir momento sin fuerza neta. Una fuerza axial a través del centro de masas puede producir traslación sin momento. Estas configuraciones permiten separar conceptualmente necesidades de orientación y maniobra, aunque un sistema real tenga acoplamientos.
+\section{Estabilidad estática y dinámica}
+La estabilidad estática describe el signo de una tendencia inicial tras una perturbación bajo condiciones definidas. La dinámica incorpora inercia, amortiguamiento, retardos y acoplamientos. Un momento restaurador no garantiza que una oscilación decaiga si el amortiguamiento es negativo o el lazo introduce fase desfavorable.
+
+En un modelo angular de un grado de libertad,
+\[
+ J\ddot\theta+d\dot\theta+k\theta=M_c.
+\]
+Con control proporcional y derivativo $M_c=-K_p\theta-K_d\dot\theta$, el sistema lineal queda
+\[
+ J\ddot\theta+(d+K_d)\dot\theta+(k+K_p)\theta=0.
+\]
+Para $J>0$, coeficientes efectivos positivos son condiciones del modelo de segundo orden para decaimiento. Saturación, retardo, flexibilidad y sensores no están incluidos. Los parámetros no se eligen aquí como una ley de vuelo de un vehículo real; se utiliza el modelo para interpretar funciones y limitaciones.
+\section{Maniobras impulsivas y empuje continuo}
+Una maniobra impulsiva aproxima una duración corta respecto a la escala orbital. La posición permanece prácticamente fija durante el impulso y cambia velocidad. El delta-v se trata como vector. Para un cambio de dirección $\Delta i$ a rapidez constante $v$, la geometría vectorial da
+\[
+ \Delta v=2v\sin\frac{\Delta i}{2}.
+\]
+Cambiar plano cuesta delta-v aun si la rapidez inicial y final coinciden. La fórmula presupone el evento idealizado en un punto y no describe una maniobra continua prolongada.
+
+Con empuje bajo, el vehículo recorre una parte apreciable de su órbita durante la aceleración. Se integran gravedad, empuje, masa y potencia a lo largo de trayectoria. Una suma de impulsos instantáneos puede ser una aproximación, pero requiere controlar error y disponibilidad de orientación. Un alto $I_{sp}$ puede reducir masa propulsante mientras aumenta duración y exposición a otras restricciones.\cite{MIT35,JPL-EP}
+\section{Órbitas y energía de misión}
+Para una órbita kepleriana, la relación de vis-viva es
+\[
+ v^2=\mu\left(\frac2r-\frac1a\right),
+\]
+con semieje mayor $a$ positivo para elipse y negativo para hipérbola bajo esa convención. Se obtiene combinando energía específica $\mathcal E=-\mu/(2a)$ y $\mathcal E=v^2/2-\mu/r$. La dirección y el momento angular siguen siendo necesarios para identificar la órbita.
+
+Una misión se divide en fases con objetivos y recursos: lanzamiento, transferencia, inserción, mantenimiento y disposición final, según corresponda. La masa consumida en una fase modifica la siguiente. Un presupuesto de delta-v debe declarar reservas y contingencias si las incluye; no se inventan márgenes como si fueran requisitos oficiales.
+\section{Dos ejemplos civiles documentados}
+La ficha pública de NASA para Dawn registra tres propulsores iónicos, 425 kg de xenón al lanzamiento y un intervalo de empuje de 19 a 91 mN. Es un ejemplo de maniobra prolongada con potencia eléctrica disponible. Esas cifras no significan que los tres sistemas funcionasen simultáneamente ni que el máximo fuese constante durante toda la misión.\cite{DAWN}
+
+En Ariane 6, la posibilidad de varios encendidos de la etapa superior ilustra que etapa y encendido no son sinónimos. Una misma etapa puede ejecutar fases separadas por vuelo sin empuje y cambiar las condiciones de entrega de cargas. Su modelado exige eventos y masas de cada fase, además del esquema general de etapas.\cite{ARIANE}
+
+Los ejemplos se utilizan como anclajes de arquitectura. Las soluciones de los problemas docentes tienen datos originales y no se presentan como reconstrucciones de esas misiones.
+\section{Preparación de una solución de misión}
+El procedimiento comienza definiendo objetivo, marco, estado inicial y restricciones. Se elige después un modelo de fuerzas y masas, se integra o aproxima la maniobra y se comprueba consumo, energía y condiciones finales. El resultado se contrasta con la capacidad del sistema de potencia y control.
+
+Una solución que alcance un número de velocidad pero no la posición, dirección o masa final requeridas no ha cerrado la misión. Una referencia de guiado que demande un momento superior al disponible tampoco es realizable. El análisis universitario consiste en hacer visibles esas compatibilidades y límites, no en ocultarlos tras una única cifra de delta-v.
+\figura{c28}{El objetivo de misión, la estimación del estado y la autoridad de actuación deben ser compatibles. Es un esquema conceptual de funciones.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Distinga qué información aporta navegación, qué decide guiado y qué ejecuta control en una maniobra orbital.
+\item Derive el delta-v de cambio de plano a rapidez constante mediante la diferencia de dos vectores.
+\item Obtenga el momento de una fuerza que no atraviesa el centro de masas y explique el efecto de que éste se desplace.
+\item Explique por qué una maniobra de empuje bajo requiere integrar posición y velocidad mientras consume propulsante.
+\end{enumerate}
+\resumen{Navegación, guiado y control cumplen funciones distintas. La actitud requiere momentos e inercia además de la traslación. Las maniobras impulsivas y continuas tienen hipótesis temporales diferentes, y una misión se cierra con estado vectorial, masa, potencia y autoridad de control compatibles.}

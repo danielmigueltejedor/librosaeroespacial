@@ -1,0 +1,30 @@
+\begin{studiumworked}{M07. Tobera de Laval: geometría, régimen y prestaciones · INTERMEDIATE}
+\textbf{Enunciado original.} Un modelo de gas tiene $\gamma=1.32$, $R=350$ J/(kg K), $T_c=2535$ K y $p_c=1.94$ MPa, magnitudes totales. La garganta tiene $2.640000\times10^{-4}\,\mathrm{m^2}$ y $A_e/A_t=3.28$. Para ambiente de 25 kPa, obtenga Mach, estado de salida, caudal, $c^*$, $C_F$, empuje e $I_{sp}$. Compruebe los umbrales ideales y calcule la prestación en vacío.
+
+\textbf{Datos utilizados.} Exponente: $1.32$; Constante específica: $350\,\mathrm{J\,kg^{-1}\,K^{-1}}$; Temperatura total: $2535\,\mathrm{K}$; Presión total: $1.940000\times10^{6}\,\mathrm{Pa}$; Garganta: $2.640000\times10^{-4}\,\mathrm{m^2}$; Expansión: $3.28$; Ambiente: $25000\,\mathrm{Pa}$.
+
+\textbf{Incógnitas.} Estado, descarga, régimen ideal y prestaciones.
+
+\textbf{Hipótesis.} Gas caloríficamente perfecto. Garganta ahogada, salida candidata supersónica; separación viscosa fuera del modelo.
+
+\textbf{Modelo físico.} Área-Mach, conservación de energía y momento.
+\[\varepsilon=\frac1{M_e}\left[\frac2{\gamma+1}(1+\frac{\gamma-1}2M_e^2)\right]^{(\gamma+1)/[2(\gamma-1)]}\]
+\[T_e=T_c/[1+(\gamma-1)M_e^2/2],\quad p_e=p_c(T_e/T_c)^{\gamma/(\gamma-1)}\]
+\[\dot m=p_cA_t/c^*,\quad F=\dot m v_e+(p_e-p_a)A_e\]
+\[C_F=F/(p_cA_t),\quad I_{sp}=F/(g_0\dot m)\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item La raíz supersónica es $M_e=2.622293$. La raíz subsónica de igual área es $0.1814415$. De ella resulta primer bloqueo a $p_b/p_c=0.9785623$; un choque normal en salida daría $0.360086$.
+\item El ambiente tiene $p_a/p_c=0.0128866$, por debajo del umbral de choque en salida. Es compatible con divergente supersónico en el modelo unidimensional. Eso no comprueba separación viscosa.
+\item La relación térmica da $1207.012\,\mathrm{K}$ y la isentrópica $90876.87\,\mathrm{Pa}$. Con la temperatura estática, $v_e=1958.204$ m/s. El área de salida es $\varepsilon A_t=8.659200\times10^{-4}$ m$^2$.
+\item El caudal crítico se obtiene de $c^*=1404.094$ m/s, luego $\dot m=0.3647618$ kg/s. El término cinético es $714.2783\,\mathrm{N}$ y el de presión $57.0441\,\mathrm{N}$.
+\item La suma produce $771.3224\,\mathrm{N}$; las divisiones definitorias dan $C_F=1.506018$ e $I_{sp}=215.6283$ s. Para vacío se suma $p_aA_e$ y resulta $792.9704\,\mathrm{N}$, con $I_{sp,v}=221.6802$ s.
+\end{enumerate}
+\textbf{Resultados.} $M_e=2.622293$; $\dot m=0.3647618$ kg/s; $F=771.3224$ N; $C_F=1.506018$; $I_{sp}=215.6283$ s.
+
+\textbf{Interpretación.} La geometría fija una presión de salida que no se ha igualado al ambiente. La denominación subexpandida o sobreexpandida se decide comparando esas presiones; el vacío cambia empuje de presión.
+
+\textbf{Comprobación.} Sustituir Mach debe recuperar la relación de áreas. El caudal calculado con densidad, rapidez y área de salida coincide con el de garganta; $C_Fc^*=g_0I_{sp}$. Las dos rutas de velocidad cierran energía.
+
+\textbf{Límites.} No se predicen capa límite, cargas laterales ni química. La compatibilidad de umbrales es del modelo inviscido y no una garantía de adherencia real.
+\end{studiumworked}

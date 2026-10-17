@@ -1,0 +1,26 @@
+\chapter{Soluciones y criterios de los simulacros}
+Cada apartado se evalúa por modelo, hipótesis, desarrollo y resultado. Un resultado correcto sin justificación no demuestra la competencia completa. Las tolerancias deben reflejar las constantes y redondeos adoptados; las cifras siguientes conservan más precisión de la necesaria para presentar el examen.
+\section{Simulacro 1}
+Altitud de presión invierte $p_{ISA}(H)$; altitud de densidad invierte $\rho_{ISA}(H)$. A presión fija, aumentar $T$ disminuye $\rho$ y eleva la altitud de densidad. $q=\rho V^2/2$ es una escala cinética y $q_c=p_t-p$ una medida de presión; coinciden aproximadamente en Mach pequeño bajo las hipótesis de Bernoulli. Línea de corriente es tangente al campo instantáneo; trayectoria sigue una partícula. En flujo estacionario sus curvas coinciden si el campo es regular.
+
+Para el globo se usa ISA troposférica, gas ideal para el helio y Arquímedes. Los resultados son:
+\[T=265.4\,\mathrm K,\quad p=65764.1\,\mathrm{Pa},\quad \rho_a=0.863229\,\mathrm{kg/m^3}.\]
+La densidad del helio es $\rho_h=p/(R_hT)=0.119297\,\mathrm{kg/m^3}$. El balance $(\rho_a-\rho_h)Vg_0=(m_s+m_u)g_0$ proporciona $m_u=234.769\,\mathrm{kg}$. Con cinco kilogramos menos queda una fuerza neta ascendente $5g_0=49.0333\,\mathrm N$. Sin un modelo de resistencia y geometría no se calcula una velocidad terminal. Una comprobación de masa consiste en sumar carga, estructura y helio: coincide con la masa de aire desplazada en equilibrio.
+
+En el Pitot, $p=50506.8\,\mathrm{Pa}$, $T=252.4\,\mathrm K$ y $\rho=0.697105\,\mathrm{kg/m^3}$. La inversión isentrópica da $M=0.301755$ y $V=M\sqrt{\gamma RT}=96.1047\,\mathrm{m/s}$. Bernoulli incompresible produce $97.2022\,\mathrm{m/s}$, con error relativo $1.14207\,\%$. Se comprueba el Mach subsónico y se reconstruye $p_t/p$ desde el resultado. La comparación cuantifica una aproximación de modelo; no calibra un instrumento real.
+
+En continuidad, $\dot m=\rho_1A_1V_1=46.0\,\mathrm{kg/s}$ y $V_2=\dot m/(\rho_2A_2)=125.17\,\mathrm{m/s}$. No se conserva $AV$ porque cambia $\rho$. La presión de salida requiere una relación termodinámica y balances adicionales con condiciones de contorno; continuidad sola no la determina. Se verifica el mismo caudal másico en ambas secciones.
+\section{Simulacro 2}
+La geometría da $S=18.9\,\mathrm{m^2}$ y $AR=7.61905$. El coeficiente cuadrático es $K=0.0529101$ y $e_O=0.789607$, distinto de $e_i=0.91$ debido a $k_p=0.007$. La densidad estándar es $0.956859\,\mathrm{kg/m^3}$. Al imponer $L=W$ se obtiene $C_L=0.725328$. La pendiente finita es $4.70418\,\mathrm{rad^{-1}}$ y $\alpha=\alpha_0+C_L/a=6.83431^\circ$.
+
+La polar proporciona $C_D=0.053836$, $T_n=D=2523.58\,\mathrm N$ y $P_n=DV=181698\,\mathrm W$. Se reconstruyen por separado $qS C_L$ y $qS C_D$. La potencia de eje sería $P_n/\eta_p$ si se declarase un rendimiento propulsivo. El coeficiente requerido queda por debajo de 1.45 y Mach se calcula con el sonido ISA local, sin confundir TAS con velocidad indicada.
+
+Con $D=AV^2+B/V^2$, la derivada nula exige $AV^2=B/V^2$. Por tanto $D_{\min}=2522.11\,\mathrm N$ y $V_{D\min}=73.2387\,\mathrm{m/s}$. El empuje reducido es $2018.87\,\mathrm N$, inferior a la mínima resistencia: no existe equilibrio nivelado dentro del modelo. La prueba equivalente es $T_d^2-4AB<0$. Esta conclusión no se arregla seleccionando otra raíz o reduciendo velocidad arbitrariamente.
+
+Con peso y densidad constantes, al aumentar $C_L$ debe reducirse $V$ según $V\propto C_L^{-1/2}$. Para $T_d=1.2D_{\min}$, las raíces son $53.6533$ y $99.9736\,\mathrm{m/s}$. Cada raíz se somete a $C_L\leq C_{L\max}$ y al dominio de la polar. Son soluciones de equilibrio matemático, sin conclusión automática de estabilidad dinámica.
+\section{Simulacro 3}
+La resistencia nivelada es $2787.16\,\mathrm N$. La estimación de primer orden da $\dot h=(T-D)V/W=2.73152\,\mathrm{m/s}$. Se ha aproximado $L\simeq W$ en el cálculo de resistencia; el ascenso exacto requiere $L=W\cos\gamma$. En giro a $45^\circ$, $n=1.41421$, $C_L=1.3389$ y $D=4661.71\,\mathrm N$. La sustentación máxima permite ese $C_L$, pero el empuje de 4300 N no alcanza la resistencia requerida: el giro no se sostiene a esa velocidad. Los dos criterios deben comprobarse por separado.
+
+La etapa proporciona $\Delta V=I_{sp}g_0\ln(m_0/m_f)=2976.65\,\mathrm{m/s}$. La órbita circular exige $V_c=7561.73\,\mathrm{m/s}$ y un periodo $P=2\pi r/V_c=5792.33\,\mathrm s$. La comparación no incluye velocidad inicial, rotación terrestre, otras etapas, pérdidas gravitatorias, resistencia ni trayectoria. En particular no se puede identificar el $\Delta V$ ideal con la velocidad final de una misión real.
+
+La bomba necesita $P_i=\Delta pQ/\eta=5250\,\mathrm W$. La corriente nominal ideal de la carga es $42.8571\,\mathrm A$ y la pérdida de cable estimada $73.4694\,\mathrm W$. Para un cálculo exacto hay que distinguir tensión de fuente y tensión de carga bajo caída resistiva. Las pérdidas de bomba y cable terminan en calor en distintas ubicaciones. Dos bombas dependientes de una barra única comparten la vulnerabilidad a pérdida de esa barra; duplicación de actuadores no prueba independencia energética.

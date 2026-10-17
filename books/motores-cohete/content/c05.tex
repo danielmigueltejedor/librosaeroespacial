@@ -1,0 +1,83 @@
+\chapter{Flujo compresible cuasiunidimensional}\label{ch:05}
+\objetivos{Reducir los balances integrales a un conducto de área variable; relacionar aceleración, presión y Mach; distinguir una singularidad matemática de una condición física de contorno.}
+\section{Qué representa el modelo de conducto}
+Una tobera transforma entalpía en energía cinética dirigida. El proceso no crea energía: modifica la distribución entre energía interna, trabajo de flujo y movimiento. El área variable hace compatible la aceleración con la continuidad y con la evolución de densidad. La conocida intuición del conducto incompresible deja de ser válida cuando esa variación de densidad compite con la de velocidad.
+
+El modelo cuasiunidimensional utiliza estados medios sobre secciones normales a una línea central. El área $A(x)$ puede cambiar, aunque $p(x)$, $T(x)$, $\rho(x)$ y $u(x)$ se consideran uniformes en cada sección. No significa que el campo tridimensional sea literalmente uniforme: significa que se sustituyen sus integrales por productos de valores representativos. Para una tobera corta con fuertes giros, una capa límite importante o una salida no uniforme, la reducción introduce errores que deben estimarse.
+
+Se adopta régimen estacionario, flujo inviscido, sin aporte de calor ni trabajo de eje, sin adición de masa y sin cambios apreciables de altura. El gas tiene composición fija, $R$ constante y, cuando se integren las relaciones de potencias, $\gamma$ constante. Los resultados diferenciales pueden formularse de forma más general mediante una velocidad del sonido adecuada, pero las expresiones cerradas posteriores pertenecen al modelo caloríficamente perfecto.\cite{MIT02,MIT03}
+\section{Continuidad y cantidad de movimiento}
+La continuidad entre dos secciones próximas establece $\rho u A=\dot m$. Tomando diferenciales logarítmicos,
+\begin{equation}\label{eq:contdiff}
+ \frac{d\rho}{\rho}+\frac{du}{u}+\frac{dA}{A}=0.
+\end{equation}
+La cantidad de movimiento requiere contabilizar la componente axial de presión sobre las paredes inclinadas. Para un elemento de longitud $dx$, la presión sobre esas paredes compensa el término $p\,dA$ que aparecería si sólo se comparasen las caras normales. El resultado inviscido es
+\begin{equation}\label{eq:momentdiff}
+ dp+\rho u\,du=0.
+\end{equation}
+No es correcto escribir $d(pA)+d(\dot m u)=0$ omitiendo la fuerza sobre la pared; esa omisión impediría deducir la relación área-velocidad correcta.
+
+En flujo isentrópico de composición fija, $dp=a^2d\rho$. Dividiendo \eqref{eq:momentdiff} por $\rho a^2$ y usando $M=u/a$,
+\[
+ \frac{d\rho}{\rho}=-M^2\frac{du}{u}.
+\]
+Sustituyendo en \eqref{eq:contdiff} se obtiene
+\begin{equation}\label{eq:areavel}
+ \boxed{\frac{dA}{A}=(M^2-1)\frac{du}{u}}.
+\end{equation}
+Es una consecuencia conjunta de conservación y respuesta termodinámica, no una regla geométrica independiente. Para $M<1$, una contracción acelera; para $M>1$, una expansión acelera. En ambos casos, $du>0$ exige $dp<0$. La diferencia entre ramas procede de la compresibilidad: en la rama supersónica la densidad disminuye proporcionalmente más que lo que aumenta la velocidad, de modo que hace falta área creciente para mantener el mismo caudal.
+\section{Energía y evolución del Mach}
+El balance adiabático conserva $h_0=h+u^2/2$. Con $h=c_pT$ salvo una constante de referencia,
+\[
+ c_p\,dT+u\,du=0,
+ \qquad \frac{dT}{T}=-(\gamma-1)M^2\frac{du}{u}.
+\]
+Como $M=u/(\gamma RT)^{1/2}$, la derivada logarítmica da
+\begin{align}
+ \frac{dM}{M}&=\frac{du}{u}-\frac12\frac{dT}{T}\\
+ &=\left(1+\frac{\gamma-1}{2}M^2\right)\frac{du}{u}.
+\end{align}
+El factor entre paréntesis es positivo. En este modelo, acelerar aumenta Mach incluso aunque la velocidad del sonido cambie. Combinando con \eqref{eq:areavel},
+\begin{equation}\label{eq:areaMdiff}
+ \frac{dA}{A}=\frac{M^2-1}{1+(\gamma-1)M^2/2}\frac{dM}{M}.
+\end{equation}
+La presión sigue
+\[
+ \frac{dp}{p}=-\gamma M^2\frac{du}{u}.
+\]
+Por tanto, la pendiente de presión no se puede fijar sólo con el signo de $dA$: hace falta conocer la rama. Un divergente puede ser difusor subsónico o acelerador supersónico.
+\section{La garganta y el paso transónico}
+Si una solución suave pasa de subsónica a supersónica, debe atravesar $M=1$. La ecuación \eqref{eq:areavel} exige entonces $dA=0$ cuando $du$ es finito. Un mínimo de área permite conectar ambas ramas acelerantes. Esta condición local es necesaria dentro del modelo, pero no suficiente: una contrapresión demasiado alta mantiene el flujo subsónico en todo el conducto.
+
+Cerca de una garganta suave $x_t$, supongamos
+\[
+ \frac{A}{A_t}=1+\frac{k}{2}(x-x_t)^2+\cdots,\qquad k>0.
+\]
+Integrar localmente la relación área-Mach, o expandir la relación del capítulo siguiente, da
+\[
+ \frac{A}{A^*}=1+\frac{2}{\gamma+1}(M-1)^2+\cdots.
+\]
+En la rama transónica acelerante resulta
+\[
+ M-1\simeq\sqrt{\frac{k(\gamma+1)}{4}}(x-x_t).
+\]
+La aparente indeterminación $0/0$ de una forma despejada para $du/dx$ no implica velocidad infinita: una geometría suave y la selección de rama producen una derivada finita. La expansión también muestra por qué invertir numéricamente $A/A^*$ cerca de uno es delicado: pequeños cambios de área se convierten en cambios de Mach de orden raíz cuadrada.
+\section{Qué cambia si se relajan hipótesis}
+El calentamiento puede acelerar una corriente subsónica hacia Mach uno aun en un conducto de área constante. La fricción también modifica el balance de momento y la presión total. La inyección distribuida altera continuidad y energía. Ninguno de esos fenómenos queda descrito cambiando únicamente el valor de $\gamma$ en \eqref{eq:areavel}. El modelo debe ampliarse antes de interpretar sus resultados.
+
+En una tobera real, la capa límite desplaza la corriente exterior y reduce el área efectiva. El área geométrica de garganta no coincide exactamente con la que reproduce el caudal mediante el modelo inviscido. Un coeficiente de descarga puede representar parte de esa diferencia, pero su introducción debe especificar si corrige caudal, área o ambos; aplicarlo dos veces duplicaría la misma pérdida.
+
+La aceleración de partículas condensadas puede ser distinta de la del gas. Un modelo de dos fases necesita balances de arrastre y transferencia térmica entre fases. Una única velocidad de escape omite el deslizamiento. En líquidos que vaporizan o gases con recombinación, el intercambio interno de energía altera la relación entre entalpía y temperatura. La conservación sigue siendo válida, pero se necesita una constitución más completa.
+\section{Secuencia de resolución y comprobaciones}
+Antes de sustituir números se identifica si las propiedades dadas son estáticas o totales, qué área es física y qué área crítica es de referencia. Después se selecciona el régimen compatible con la contrapresión. Sólo entonces se calculan Mach, presión, temperatura y velocidad. La continuidad debe producir el mismo caudal en todas las secciones. La energía debe recuperar el mismo $h_0$; la entropía debe permanecer constante si se ha declarado una rama isentrópica.
+
+Una comprobación especialmente útil consiste en calcular $u$ por dos rutas: $u=M\sqrt{\gamma RT}$ y $u=\sqrt{2c_p(T_0-T)}$. Ambas deben coincidir. Si no coinciden, suelen haberse mezclado estados de remanso y estáticos, unidades de masa molar o un valor incompatible de $c_p$.
+\figura{c05}{Geometría académica y rama transónica isentrópica. La curva presupone condiciones de contorno compatibles; no describe cualquier contrapresión.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Deduzca \eqref{eq:areavel} partiendo de los dos balances y explique dónde entra la isentropía.
+\item En una sección con $M=0.40$, el área disminuye un 1\,\%. Estime el cambio relativo de velocidad mediante el modelo diferencial y valore el error de una variación finita.
+\item Repita el razonamiento para $M=2.0$. ¿Qué cambio de área produce aceleración?
+\item Explique por qué un divergente no demuestra por sí solo la existencia de flujo supersónico y proponga la información de contorno que falta.
+\end{enumerate}
+\resumen{La relación área-velocidad combina masa, momento y termodinámica. Una garganta permite el paso sónico suave, pero la contrapresión selecciona si se realiza. Las relaciones cerradas de este bloque exigen gas caloríficamente perfecto, y una corrección empírica no sustituye un nuevo balance cuando cambian las hipótesis.}

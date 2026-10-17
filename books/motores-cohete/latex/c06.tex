@@ -1,0 +1,78 @@
+\chapter{Relación área-Mach y bloqueo sónico}\label{ch:06}
+\objetivos{Obtener el caudal crítico y la relación área-Mach; resolver las dos ramas; comprobar el bloqueo de una convergente y de una convergente-divergente con condiciones de contorno distintas.}
+\section{El caudal como función del Mach}
+Para un depósito grande conectado a un conducto adiabático ideal, los estados de remanso $p_0,T_0$ son constantes a lo largo de una rama isentrópica. Utilizando $\rho=p/(RT)$ y $u=M\sqrt{\gamma RT}$,
+\[
+ \frac{\dot m}{A}=p\sqrt{\frac{\gamma}{RT}}\,M.
+\]
+Las relaciones de remanso eliminan los estados estáticos:
+\begin{equation}\label{eq:massfunction}
+ \frac{\dot m}{A}=\frac{p_0}{\sqrt{T_0}}\sqrt{\frac{\gamma}{R}}\,
+ M\left(1+\frac{\gamma-1}{2}M^2\right)^{-\frac{\gamma+1}{2(\gamma-1)}}.
+\end{equation}
+El prefactor tiene dimensiones de flujo másico por área. Definamos la función adimensional $f(M)$ como los dos últimos factores dependientes de Mach. Su derivada logarítmica es
+\[
+ \frac{d\ln f}{dM}=\frac1M-
+ \frac{(\gamma+1)M/2}{1+(\gamma-1)M^2/2}
+ =\frac{1-M^2}{M[1+(\gamma-1)M^2/2]}.
+\]
+Es positiva antes de uno y negativa después. El máximo de flujo por área para esos valores de $p_0,T_0$ se alcanza en $M=1$. La palabra crítico se refiere a este máximo sujeto a las hipótesis indicadas; no implica una singularidad material del gas.
+\section{Estados críticos y caudal ahogado}
+Un asterisco identifica el estado sónico de referencia de la rama:
+\begin{align}
+ \frac{T^*}{T_0}&=\frac{2}{\gamma+1},&
+ \frac{p^*}{p_0}&=\left(\frac{2}{\gamma+1}\right)^{\gamma/(\gamma-1)},\\
+ \frac{\rho^*}{\rho_0}&=\left(\frac{2}{\gamma+1}\right)^{1/(\gamma-1)}.
+\end{align}
+Si una garganta física de área $A_t$ alcanza Mach uno, $A_t=A^*$ para esa rama y
+\begin{equation}\label{eq:choked}
+ \boxed{\dot m=A_t\frac{p_0}{\sqrt{T_0}}\sqrt{\frac{\gamma}{R}}
+ \left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}}.
+\end{equation}
+Su linealidad con $p_0A_t$ y dependencia $T_0^{-1/2}$ se refieren a propiedades y régimen fijados. No autorizan a extrapolar una cámara reactiva cambiando presión sin revisar composición y temperatura.
+
+Combinando la definición $c^*=p_cA_t/\dot m$ con $p_c\simeq p_0$,
+\begin{equation}\label{eq:cstarideal}
+ c^*=\sqrt{\frac{RT_c}{\gamma}}
+ \left(\frac{\gamma+1}{2}\right)^{\frac{\gamma+1}{2(\gamma-1)}}.
+\end{equation}
+El área de salida no aparece: en el modelo ahogado, la cámara y garganta fijan caudal, mientras el divergente transforma ese caudal en velocidad y empuje de presión. Fuera del régimen ahogado esa separación deja de funcionar.
+\section{Integración de la relación área-Mach}
+El caudal es el mismo en una sección arbitraria y en la sección crítica de referencia. Dividir \eqref{eq:choked} por \eqref{eq:massfunction} produce
+\begin{equation}\label{eq:areaMach}
+ \boxed{\frac{A}{A^*}=\frac1M\left[\frac{2}{\gamma+1}
+ \left(1+\frac{\gamma-1}{2}M^2\right)\right]^{\frac{\gamma+1}{2(\gamma-1)}}}.
+\end{equation}
+Para $A/A^*>1$ existen dos raíces positivas: una subsónica y otra supersónica. La geometría no decide cuál se utiliza. Un conducto enteramente subsónico puede tener su mínimo físico mayor que el área crítica de referencia: en tal caso $A^*$ es un parámetro calculado, no una sección que el flujo llegue a ocupar.
+
+La solución numérica debe encerrar una raíz dentro de cada intervalo: $0<M<1$ o $M>1$. Un método de Newton sin control puede saltar de rama o fallar cerca del mínimo. Bisección o Brent con intervalo tienen una interpretación física clara. La comprobación posterior sustituye la raíz en \eqref{eq:areaMach}, evalúa el residuo y recupera el caudal. Devolver muchos decimales sin comprobar rama y residuo no mejora el resultado.
+\section{Convergente: relación crítica de contrapresión}
+En una convergente simple, el mínimo geométrico coincide con la salida. Con contrapresión $p_b$ próxima a $p_0$, el flujo es subsónico y la presión de salida se ajusta aproximadamente a $p_b$. Al reducir $p_b$, aumenta el caudal hasta que la salida alcanza Mach uno. El umbral ideal es
+\[
+ \frac{p_b}{p_0}=\left(\frac{2}{\gamma+1}\right)^{\gamma/(\gamma-1)}.
+\]
+Por debajo, el caudal queda ahogado y la presión del plano de salida permanece en $p^*$ dentro del modelo. La expansión restante sucede fuera del conducto. Es incorrecto seguir imponiendo $p_e=p_b$ a la convergente ahogada y calcular una salida supersónica interna que su geometría no admite suavemente.
+\section{Convergente-divergente: el primer bloqueo}
+Una convergente-divergente tiene salida mayor que garganta. Para encontrar la contrapresión de primer bloqueo, se fija $M_t=1$ y se recorre la \emph{rama subsónica} del divergente hasta la salida. Si $\varepsilon=A_e/A_t$, se obtiene $M_{e,sub}$ mediante \eqref{eq:areaMach}, y el umbral es
+\begin{equation}\label{eq:firstchoking}
+ \left(\frac{p_b}{p_0}\right)_{\rm inicio}=
+ \left(1+\frac{\gamma-1}{2}M_{e,sub}^2\right)^{-\gamma/(\gamma-1)}.
+\end{equation}
+No es, en general, $p^*/p_0$. La presión se recupera en el divergente subsónico y el umbral de contrapresión puede ser mucho mayor que la presión estática sónica de garganta. Confundir ambas cantidades es uno de los errores más frecuentes al trasladar una condición de convergente a una tobera de Laval.
+
+Al reducir más la contrapresión aparecen soluciones con tramo supersónico seguido de choque normal interno. El choque y el tramo subsónico posterior permiten recuperar la presión de salida exigida. El caudal puede seguir ahogado mientras cambia radicalmente la distribución interna. Por eso, comprobar ahogo no equivale a demostrar que todo el divergente es supersónico.
+\section{Límites y sensibilidad}
+Para $M\to0$, el área de referencia relativa diverge como $1/M$. Para $M\to\infty$, la relación también crece, con potencia positiva $2/(\gamma-1)$. Su mínimo es uno. Estos límites ayudan a detectar una inversión algebraica de la relación.
+
+La sección crítica asociada a una corriente cambia si disminuye la presión total a través de un choque, aun cuando la temperatura total se conserve. A igual caudal y $T_0$, \eqref{eq:choked} exige $A^*\propto1/p_0$. No se debe utilizar la misma $A^*$ antes y después de una discontinuidad irreversible. La garganta física permanece, pero el área crítica de referencia del tramo posterior es diferente.\cite{MIT03}
+\figura{c06}{La inversión exige seleccionar rama. El mínimo de área crítica corresponde a Mach uno.}
+\section{Caso desarrollado}
+\input{M06.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Calcule las dos raíces de $A/A^*=3$ para $\gamma=1.4$ y verifique sus residuos.
+\item Obtenga el umbral de primer ahogo de esa tobera y compárelo con el de una convergente simple.
+\item Para $p_0,T_0$ fijos, ¿qué ocurre con el caudal crítico al duplicar $A_t$? Distinga este cambio de duplicar sólo $A_e$.
+\item Si un choque reduce $p_0$ un 20\,\% conservando $T_0$ y caudal, determine el cambio de área crítica de referencia.
+\end{enumerate}
+\resumen{El caudal por área tiene un máximo sónico. La relación área-Mach posee dos ramas y exige selección física. En una convergente-divergente, la contrapresión del primer bloqueo se calcula por la rama subsónica de salida; el cociente crítico de garganta no es su sustituto. Un choque cambia el área crítica de referencia.}

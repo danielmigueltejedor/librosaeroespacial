@@ -1,0 +1,89 @@
+\chapter{Introducción a la ingeniería aeroespacial}\label{ch:01}
+\objetivos{Identificar los subsistemas de un vehículo aeroespacial y sus acoplamientos; distinguir masa, fuerza, energía y potencia; construir un modelo elemental de misión y valorar su dominio de aplicación.}
+
+Una aeronave no vuela porque una sola de sus piezas funcione bien. Vuela cuando las fuerzas aerodinámicas, la estructura, la propulsión, el control y los sistemas de a bordo satisfacen simultáneamente las exigencias de una misión. Esta idea organiza la asignatura: aprenderemos el vocabulario y los modelos que permiten dialogar entre especialidades, antes de estudiar cada una con mayor profundidad. La guía de contenidos aportada sitúa precisamente la atmósfera y la mecánica de fluidos antes de la aerodinámica, las actuaciones y los sistemas \cite{TAE0}.
+
+\section{Del propósito al requisito}
+Un propósito, como transportar observaciones de un incendio, no es todavía un requisito técnico. Hay que precisar la zona que se quiere cubrir, el tiempo disponible, la carga instrumental, el viento previsto, la autonomía, las condiciones de lanzamiento y recuperación y las consecuencias de un fallo. Una cámara pesada mejora quizá la resolución, pero exige más sustentación y energía. Una aeronave rápida llega antes, aunque necesita más potencia y puede ofrecer menos tiempo de observación. La ingeniería convierte propósitos en magnitudes medibles y explicita los compromisos.
+
+La misión se divide en segmentos: preparación, despegue o lanzamiento, ascenso, tránsito, operación, retorno y recuperación. Cada segmento puede imponer un requisito distinto. El ascenso suele exigir potencia; el despegue, distancia y control a baja velocidad; el crucero, eficiencia; el aterrizaje, disipación de energía y precisión. Diseñar solo para el segmento más largo deja sin resolver condiciones breves que pueden gobernar el tamaño del vehículo.
+
+Un requisito debe indicar qué se mide y bajo qué condiciones. ``Autonomía suficiente'' es ambiguo; ``permanencia de dos horas con una carga de veinte kilogramos bajo unas condiciones atmosféricas definidas'' permite calcular, ensayar y comprobar. También debe haber coherencia entre requisitos: aumentar carga útil, alcance y velocidad manteniendo masa, tamaño y energía rara vez es posible sin introducir una tecnología distinta.
+
+\section{Vehículos y formas de sostenerse}
+Los aerostatos se mantienen gracias al empuje de Arquímedes. Un globo no necesita velocidad horizontal para obtener sustentación estática, pero un globo libre se desplaza con la masa de aire. El dirigible añade propulsión y superficies o dispositivos de control. En ambos casos importa la diferencia entre la masa del aire desalojado y la masa completa del vehículo.
+
+Los aerodinos obtienen la mayor parte de su sustentación mediante el movimiento relativo del aire. El avión utiliza alas; el helicóptero, un rotor accionado; el autogiro mantiene el giro de su rotor principalmente por autorrotación y suele disponer de una hélice separada para avanzar. Un rotor puede producir sustentación con el vehículo casi inmóvil respecto al suelo, porque sus palas se mueven respecto al aire. Confundir velocidad del centro de masas con velocidad de las superficies sustentadoras conduce a interpretaciones erróneas.
+
+Los vehículos espaciales añaden otro régimen. En órbita, la sustentación aerodinámica no es el mecanismo de soporte principal: el vehículo está en caída libre y su velocidad tangencial impide que alcance la superficie. Un cohete tampoco se impulsa apoyándose en el aire exterior; expulsa masa y recibe una fuerza de reacción. Durante lanzamiento y reentrada, sin embargo, la atmósfera vuelve a imponer cargas, calentamiento y restricciones de control. La frontera entre ingeniería aeronáutica y astronáutica es una zona de interacción, además de una división administrativa.
+
+\section{Subsistemas y caminos de carga}
+El ala transmite las fuerzas del aire a largueros y costillas; estas las llevan al fuselaje, que también aloja carga, personas y equipos. La estructura debe resistir sin deformarse excesivamente y con una masa compatible con la misión. Reducir material puede mejorar prestaciones y, a la vez, aumentar deformaciones que alteran la aerodinámica. El acoplamiento entre ambas disciplinas recibe el nombre de aeroelasticidad.
+
+La planta propulsiva transforma energía almacenada en una acción sobre el flujo. Una hélice acelera una masa de aire relativamente grande con un incremento moderado de velocidad; un reactor utiliza otro reparto entre caudal e incremento de velocidad. La instalación altera resistencias, temperaturas, ruido y distribución de masas. El combustible modifica el peso y el centro de gravedad a medida que se consume.
+
+Los mandos de vuelo producen momentos para orientar el vehículo. Estabilidad significa cómo responde a una perturbación; controlabilidad, si los actuadores y superficies disponibles permiten imponer la evolución deseada. Son propiedades distintas. Los sistemas eléctricos, hidráulicos, neumáticos, de combustible e instrumentación suministran energía e información para que la estructura y la propulsión puedan cumplir su función. Un sensor es parte del sistema físico: tiene errores, retardos y condiciones de funcionamiento.
+
+\figura{aircraft}{Esquema original de una aeronave y sus subsistemas principales. Las llamadas identifican los componentes para interpretar el vehículo como un sistema integrado.}
+
+\section{Magnitudes, unidades y órdenes de magnitud}
+La masa $m$ mide inercia y se expresa en kilogramos. El peso $W=mg$ es una fuerza, en newtons. Decir que un aparato ``pesa 920 kg'' es una abreviatura coloquial que debe traducirse a una masa de $920\,\mathrm{kg}$ antes de plantear balances. Cerca de la superficie puede emplearse $g=\gzero\,\mathrm{m\,s^{-2}}$ como referencia, indicando que se desprecia su variación.
+
+La presión es fuerza normal por unidad de área: $1\,\mathrm{Pa}=1\,\mathrm{N\,m^{-2}}$. El trabajo mide transferencia de energía mediante fuerzas a lo largo de un desplazamiento; la potencia mide su rapidez de transferencia. Un motor de mucha potencia no almacena necesariamente mucha energía. La autonomía de una batería requiere conocer su energía utilizable y la potencia demandada durante la misión.
+
+Una comprobación dimensional evita errores graves, pero no demuestra que un modelo sea correcto. Dos expresiones diferentes pueden tener las mismas dimensiones. También hay que comprobar signos, límites y órdenes de magnitud. Una fuerza de sustentación muy inferior al peso no es compatible con un vuelo horizontal estacionario, aunque ambas cantidades estén correctamente expresadas en newtons.
+
+\section{Un primer modelo del vuelo}
+En vuelo rectilíneo horizontal estacionario, con empuje aproximadamente paralelo a la trayectoria y sin aceleración, se obtiene
+\begin{equation}
+ L=W,\qquad T=D.
+\end{equation}
+Las cuatro fuerzas no son iguales entre sí: la igualdad relaciona cada pareja según su dirección. La sustentación $L$ es perpendicular a la velocidad relativa y la resistencia $D$ es paralela y opuesta a ella. El peso es vertical; el empuje sigue el eje de instalación y puede tener componente vertical.
+
+Definimos la presión dinámica $q=\rho V^2/2$, donde $\rho$ es densidad y $V$ velocidad respecto al aire. Las fuerzas se escriben
+\begin{equation}
+ L=qSC_L,\qquad D=qSC_D,
+\end{equation}
+con superficie de referencia $S$ y coeficientes adimensionales. Los coeficientes condensan efectos de forma, orientación y régimen; no son constantes universales. En particular, $C_L$ cambia con el ángulo de ataque hasta que la separación del flujo altera de forma importante su evolución.
+
+La potencia útil para vencer resistencia es $P_u=DV$. Para una hélice de rendimiento $\eta_p$, la potencia al eje resulta $P_e=DV/\eta_p$. Esta relación corresponde a un balance estacionario: durante el ascenso también aumenta la energía potencial y durante una aceleración aumenta la energía cinética. Tampoco sustituye un mapa real de motor o hélice.
+
+\section{Problema resuelto: una primera estimación de crucero}
+\begin{enumerate}
+\item \textbf{Enunciado.} Un avión de observación debe mantener un tramo horizontal a $55\,\mathrm{m\,s^{-1}}$. Estimar el coeficiente de sustentación, el empuje y la potencia al eje necesarios.
+\item \textbf{Datos.} $m=920\,\mathrm{kg}$, $S=16\,\mathrm{m^2}$, $\rho=1.06\,\mathrm{kg\,m^{-3}}$, $C_D=0.038$ y $\eta_p=0.78$.
+\item \textbf{Incógnitas.} $C_L$, $T$ y $P_e$ en esa condición de vuelo.
+\item \textbf{Esquema verbal.} Sobre el centro de masas actúan peso hacia abajo, sustentación hacia arriba, empuje hacia delante y resistencia hacia atrás.
+\item \textbf{Hipótesis.} Movimiento estacionario, ausencia de viento vertical, empuje horizontal, densidad uniforme y coeficiente de resistencia válido en la condición calculada.
+\item \textbf{Modelo.} Equilibrio de fuerzas y definición de coeficientes aerodinámicos.
+\item \textbf{Ecuaciones.} $q=\rho V^2/2$, $qSC_L=mg$, $T=qSC_D$, $P_e=TV/\eta_p$.
+\item \textbf{Despeje.} $C_L=2mg/(\rho V^2S)$ y $P_e=\rho V^3SC_D/(2\eta_p)$.
+\item \textbf{Sustitución.} $q=1603.25\,\mathrm{Pa}$, $W=9022.12\,\mathrm{N}$ y $qS=25652\,\mathrm{N}$.
+\item \textbf{Resultado.} $C_L=0.352$, $T=974.8\,\mathrm{N}$ y $P_e=68.7\,\mathrm{kW}$, con redondeo coherente con los datos.
+\item \textbf{Interpretación.} La potencia útil es $53.6\,\mathrm{kW}$; el resto de la potencia al eje se pierde respecto a la producción de trabajo propulsivo útil según el rendimiento adoptado.
+\item \textbf{Comprobación independiente.} La eficiencia aerodinámica es $L/D=9.26$; entonces $W/(L/D)=974.8\,\mathrm{N}$, igual al empuje calculado.
+\item \textbf{Limitaciones.} No se han comprobado pérdida, estabilidad, capacidad del motor a esa altitud ni cambios de $C_D$ con $C_L$. El resultado dimensiona una condición, no certifica una aeronave.
+\end{enumerate}
+
+\section{Cómo se construye una justificación técnica}
+La verificación pregunta si un cálculo o sistema satisface las especificaciones elegidas; la validación pregunta si esas especificaciones y modelos representan adecuadamente el propósito real. Un programa puede resolver con precisión una ecuación inapropiada. Por eso se documentan fuentes, unidades, hipótesis, incertidumbres y comprobaciones independientes. Cuando una medición contradice el cálculo, se revisan ambos; no se ajustan datos sin justificarlo.
+
+La incertidumbre puede proceder de la medición, de parámetros variables o de simplificaciones del modelo. Si se estima potencia con un $C_D$ poco conocido, obtener seis cifras decimales no añade información. Una sensibilidad elemental muestra que, manteniendo los demás parámetros, $P_e$ varía con $V^3$: un pequeño cambio de velocidad puede afectar mucho a la demanda. Esta observación orienta qué dato conviene medir mejor.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Convertir una masa de $1250\,\mathrm{kg}$ en peso con gravedad estándar y distinguir sus unidades.
+\item \textbf{Intermedio.} Si en el problema anterior la velocidad aumenta un $10\%$ y se mantienen $C_D$, densidad y rendimiento, calcular el factor de aumento de potencia.
+\item \textbf{Examen.} Una misión exige $40\,\mathrm{kW}$ útiles durante $90$ minutos. Con rendimiento global del $80\%$, estimar energía mínima de entrada en kilovatios hora y megajulios. Explicar por qué no incluye reserva.
+\item \textbf{Conceptual.} Proponer dos motivos por los que una mejora aislada de motor no garantiza una mejora de autonomía.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. $12258.3\,\mathrm{N}$; kilogramo y newton no son intercambiables. 2. $1.1^3=1.331$, un $33.1\%$. 3. $75\,\mathrm{kWh}=270\,\mathrm{MJ}$; faltan reservas y segmentos adicionales. 4. Por ejemplo, aumento de masa o funcionamiento fuera del punto eficiente; se debe explicar el acoplamiento.
+
+\resumen{La misión genera requisitos y cada subsistema condiciona a los demás. Los balances elementales de fuerzas y energía permiten estimaciones útiles si se explicitan sus hipótesis. Masa y peso, potencia y energía, velocidad aérea y velocidad respecto al suelo son magnitudes diferentes. Un resultado técnico debe conservar unidades, mostrar sus límites y admitir una comprobación independiente.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Qué requisito podría dimensionar el motor aunque el crucero dure más tiempo?
+\item ¿Por qué un coeficiente adimensional puede variar entre dos ensayos?
+\item ¿Qué diferencia hay entre comprobar una ecuación y comprobar su aplicabilidad?
+\end{enumerate}

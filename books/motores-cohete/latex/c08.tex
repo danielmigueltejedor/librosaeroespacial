@@ -1,0 +1,84 @@
+\chapter{Ondas de choque y regímenes de funcionamiento}\label{ch:08}
+\objetivos{Derivar las relaciones de choque normal; interpretar la pérdida de presión total; construir los umbrales de régimen de una tobera ideal y reconocer lo que queda fuera del modelo.}
+\section{Una discontinuidad resuelta con balances}
+Un choque es una región delgada en la que presión, densidad y temperatura aumentan mientras la corriente supersónica se desacelera. La aproximación de discontinuidad compara estados uniformes suficientemente alejados de esa región. No elimina la irreversibilidad; la concentra en un salto que cumple conservación y generación positiva de entropía.
+
+Para un choque normal estacionario, el volumen de control tiene caras paralelas al frente y área constante. Se desprecian calor, trabajo de eje y altura. Los balances son
+\begin{align}
+ \rho_1u_1&=\rho_2u_2=j,\label{eq:shockmass}\\
+ p_1+\rho_1u_1^2&=p_2+\rho_2u_2^2,\label{eq:shockmom}\\
+ c_pT_1+\frac{u_1^2}{2}&=c_pT_2+\frac{u_2^2}{2}.\label{eq:shockenergy}
+\end{align}
+La normal apunta a lo largo de la corriente; los subíndices uno y dos indican antes y después. Se mantiene el mismo gas caloríficamente perfecto. La presión total no figura entre las cantidades conservadas.
+\section{Eliminación de las incógnitas}
+Definamos $r=\rho_2/\rho_1$. De continuidad, $u_2/u_1=1/r$. Del balance de momento,
+\[
+ \frac{p_2}{p_1}=1+\gamma M_1^2\left(1-\frac1r\right).
+\]
+La ecuación de estado proporciona $T_2/T_1=(p_2/p_1)/r$. Introduciendo ambas expresiones en energía y eliminando la solución trivial $r=1$, se obtiene
+\begin{align}
+ \frac{\rho_2}{\rho_1}&=\frac{(\gamma+1)M_1^2}{2+(\gamma-1)M_1^2},\\
+ \frac{p_2}{p_1}&=\frac{2\gamma M_1^2-(\gamma-1)}{\gamma+1},\\
+ \frac{T_2}{T_1}&=\frac{p_2/p_1}{\rho_2/\rho_1}.
+\end{align}
+El Mach posterior resulta
+\begin{equation}\label{eq:Mshock}
+ M_2^2=\frac{1+(\gamma-1)M_1^2/2}
+ {\gamma M_1^2-(\gamma-1)/2}.
+\end{equation}
+Para $M_1>1$, $M_2<1$. El salto permitido comprime. La solución matemática inversa que llevaría de subsónico a supersónico mediante un choque de expansión viola la segunda ley para el proceso considerado.
+
+Cuando $M_1\to1^+$, todos los cocientes tienden a uno y el salto desaparece. Cuando $M_1\to\infty$, el cociente de densidades tiende a $(\gamma+1)/(\gamma-1)$. Es un límite del modelo de $\gamma$ constante; choques muy energéticos pueden activar disociación e ionización y requieren otra constitución.
+\section{Presión total y entropía}
+La conservación de energía implica $T_{02}=T_{01}$. Calculando cada presión de remanso con el Mach local,
+\begin{equation}\label{eq:p0shock}
+ \frac{p_{02}}{p_{01}}=\frac{p_2}{p_1}
+ \left[\frac{1+(\gamma-1)M_2^2/2}
+ {1+(\gamma-1)M_1^2/2}\right]^{\gamma/(\gamma-1)}.
+\end{equation}
+Para el choque compresivo es menor que uno. Otra comprobación independiente usa
+\[
+ \Delta s=c_p\ln\frac{T_2}{T_1}-R\ln\frac{p_2}{p_1}
+ =-R\ln\frac{p_{02}}{p_{01}}>0.
+\]
+La energía no se ha perdido del sistema adiabático. Lo que se degrada es su capacidad de producir una expansión isentrópica útil hasta una presión dada. Llamar a esa degradación pérdida de energía sin matizar puede confundir conservación de energía con destrucción de exergía.
+\section{Construcción del mapa de regímenes}
+Para una tobera convergente-divergente ideal se fijan geometría, $p_0,T_0$ y gas. Se reduce gradualmente la contrapresión $p_b$ desde $p_0$.
+\begin{enumerate}
+\item Al principio, el flujo es subsónico en todo el conducto. La garganta acelera y el divergente recupera presión. El caudal depende de $p_b$.
+\item En el primer bloqueo, $M_t=1$ y el divergente sigue la rama subsónica límite. El umbral se calcula con \eqref{eq:firstchoking}.
+\item Una reducción adicional permite una zona supersónica tras la garganta y un choque normal interno. Después del choque el flujo es subsónico y se ajusta a la salida.
+\item Al llegar el choque a la salida se alcanza otro umbral. Por debajo, el modelo interno puede ser supersónico completo y la adaptación restante ocurre fuera.
+\item La condición adaptada corresponde a $p_b=p_{e,s}$, donde $p_{e,s}$ es la presión de salida de la rama supersónica isentrópica.
+\end{enumerate}
+El umbral de choque en la salida se obtiene sin resolver su posición interior:
+\begin{equation}\label{eq:shockexit}
+ \left(\frac{p_b}{p_0}\right)_{\rm choque\ salida}=
+ \left(\frac{p_{e,s}}{p_0}\right)
+ \frac{2\gamma M_{e,s}^2-(\gamma-1)}{\gamma+1}.
+\end{equation}
+Suele ser mucho mayor que la presión adaptada. Por ello una tobera puede estar sobreexpandida y aun mantener salida supersónica en el modelo ideal. La separación viscosa introduce restricciones adicionales que este mapa no predice.\cite{MIT03}
+\section{Cómo localizar un choque interno}
+Se elige una posición candidata con área $A_s$. Antes del choque se calcula $M_1$ por la rama supersónica con $A^*_1=A_t$. Las relaciones de salto dan $M_2$ y $p_{02}$. Como el caudal y $T_0$ se conservan,
+\[
+ \frac{A^*_2}{A^*_1}=\frac{p_{01}}{p_{02}}.
+\]
+La relación $A_e/A^*_2$ permite calcular el Mach subsónico de salida. Con $p_{02}$ se obtiene $p_e$ y se compara con $p_b$. Un método de búsqueda ajusta $A_s$ hasta cerrar ese residuo. No se impone la presión ambiente inmediatamente detrás del choque interno: queda un tramo de conducto que también modifica la presión.
+
+El método necesita una geometría con una correspondencia entre área y posición; el área del choque no determina por sí sola la coordenada si la sección no es monótona. Además, la solución de un choque normal plano es una simplificación de un patrón real que puede ser oblicuo, separado y no estacionario.
+\section{Separación y cargas laterales}
+La capa límite transporta momento reducido cerca de la pared. Una subida de presión adversa puede impedir que continúe adherida. El contorno efectivo del chorro cambia y aparecen regiones recirculantes. Si el patrón es asimétrico o móvil, puede ejercer fuerzas laterales y momentos.
+
+No existe en este libro una regla universal que convierta $p_e/p_a$ en una predicción exacta de separación. Los criterios empíricos dependen de geometría, capa límite, transitorios y ensayo. El modelo unidimensional permite reconocer incompatibilidades de régimen y estimar tendencias, pero no certifica cargas laterales ni estabilidad estructural. En problemas académicos se declarará expresamente cuándo se supone flujo adherido.
+\figura{c08}{Mapa de umbrales del modelo ideal. La separación viscosa no está incluida y no puede deducirse de estas curvas.}
+\figura{pressure-profiles}{Perfiles de presión de una misma geometría ideal. El choque cambia presión total y área crítica de referencia; la separación viscosa no está modelada.}
+\section{Caso desarrollado}
+\input{M08.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Para $M_1=2$ y $\gamma=1.4$, calcule $M_2$, los saltos estáticos y $p_{02}/p_{01}$; compruebe energía y entropía.
+\item Construya los tres cocientes de presión característicos de una tobera con $\varepsilon=3$: primer bloqueo, choque en salida y adaptación.
+\item Explique por qué no puede conservarse simultáneamente $p_0$ a través de un choque y una generación positiva de entropía con $T_0$ constante.
+\item Diseñe un algoritmo de búsqueda de choque interno que mantenga separadas las áreas críticas antes y después del salto.
+\end{enumerate}
+\resumen{Un choque normal conserva masa, momento y entalpía total, pero reduce presión total y aumenta entropía. Los umbrales de primer ahogo, choque en salida y adaptación son distintos. La separación y sus cargas laterales requieren información viscosa y multidimensional adicional.}

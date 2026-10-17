@@ -1,0 +1,73 @@
+\chapter{Motores iónicos y propulsores Hall}\label{ch:23}
+\objetivos{Derivar velocidad, corriente y empuje de un haz de iones; distinguir utilización másica de rendimiento energético; explicar la aceleración electrostática y el papel diferente de electrones y campos magnéticos en Hall.}
+\section{Energía de un ion y diferencia de potencial}
+Para un ion de carga $q=ze$ y masa $m_i$ que atraviesa una diferencia de potencial acelerante $V_b$, el balance ideal de energía da
+\[
+ \frac12m_iv_i^2=qV_b,
+ \qquad v_i=\sqrt{\frac{2qV_b}{m_i}},
+\]
+si la energía inicial es despreciable. El voltaje efectivo de aceleración no coincide necesariamente con una lectura entre terminales externos: pueden existir caídas en otras regiones y diferencias de potencial de plasma.
+
+Una misma energía por carga produce mayor rapidez para masa iónica menor. Pero a igual potencia de haz, esa rapidez mayor reduce empuje. La selección no se decide únicamente por maximizar $v_i$. También importan ionización, almacenamiento, transporte, erosión y sistema eléctrico.\cite{JPL-EP}
+\section{De corriente a caudal y empuje}
+Si el haz contiene una especie con carga única $q$ y corriente iónica $I_b$, el número de partículas por tiempo es $I_b/q$. Por tanto,
+\begin{align}
+ \dot m_i&=\frac{I_bm_i}{q},\\
+ F_{ideal}&=\dot m_iv_i=I_b\sqrt{\frac{2m_iV_b}{q}},\\
+ P_b&=I_bV_b=\frac12\dot m_iv_i^2.
+\end{align}
+Las tres relaciones permiten un cierre independiente de energía. La corriente tiene que ser la del haz de iones definido, no una corriente total de descarga que incluye electrones y pérdidas.
+
+Para varias cargas o especies,
+\[
+ \dot m_i=\sum_s\frac{I_sm_s}{q_s},\qquad
+ F_x=\sum_s I_s\sqrt{\frac{2m_sV_s}{q_s}}\,\langle\cos\theta\rangle_s
+\]
+bajo haces monoenergéticos por especie. Un ion doblemente cargado transporta dos unidades de carga pero una sola masa iónica. Convertir toda la corriente suponiendo carga simple sesga el caudal y el rendimiento de utilización.
+\section{Utilización, divergencia e impulso específico}
+Si sólo una fracción $\eta_u=\dot m_i/\dot m_{total}$ sale como haz acelerado y el resto tiene contribución axial despreciable, con factor de divergencia $\lambda$,
+\[
+ F\simeq\lambda\dot m_iv_i,
+ \qquad c=\frac{F}{\dot m_{total}}\simeq\lambda\eta_uv_i.
+\]
+El impulso específico de sistema es $c/g_0$, menor que $v_i/g_0$ cuando utilización o dirección no son ideales. El caudal de un neutralizador y otras corrientes consumidas pertenece al denominador si está dentro de la frontera.
+
+Bajo estas hipótesis y definiendo $\eta_e=P_b/P_{el}$,
+\[
+ \eta_T=\frac{F^2}{2\dot m_{total}P_{el}}
+ =\lambda^2\eta_u\eta_e.
+\]
+La utilización aparece una vez y la divergencia al cuadrado en esta definición efectiva. No se multiplica después por esos factores si ya están incluidos en un rendimiento total medido.\cite{JPL-EP}
+\section{Motor iónico de rejillas}
+Una fuente produce plasma; un sistema de campos y rejillas extrae y acelera iones. La reacción propulsiva se transmite a la estructura a través de fuerzas electromagnéticas asociadas a los campos y cargas de los elementos. La neutralización del escape evita una acumulación de carga del vehículo que alteraría el funcionamiento.
+
+La extracción está limitada por el campo y la carga espacial. Como referencia ideal plana, sin colisiones, con emisión de iones de velocidad inicial despreciable y electrodos separados por distancia $d$, la ley de Child--Langmuir es
+\begin{equation}\label{eq:child}
+ j=\frac49\epsilon_0\sqrt{\frac{2q}{m_i}}\frac{V^{3/2}}{d^2}.
+\end{equation}
+Se obtiene combinando Poisson, continuidad $j=\rho_qu$ y energía $mu^2/2=q\phi$. El resultado pertenece a una geometría y condiciones de borde ideales: no prescribe una rejilla real ni incorpora óptica de aperturas, colisiones o erosión. Su valor académico es mostrar que aumentar área o campo no da un haz arbitrario sin restricciones.\cite{JPL-EP}
+\section{Hall: campo eléctrico axial y electrones magnetizados}
+En un propulsor Hall, un campo eléctrico acelera principalmente los iones. Un campo magnético transversal dificulta el transporte electrónico axial y permite sostener el campo eléctrico dentro del plasma. En la aproximación usual, electrones están fuertemente magnetizados e iones mucho menos. La corriente azimutal electrónica se asocia al efecto Hall.
+
+Para campos uniformes cruzados y la aproximación de deriva apropiada,
+\[
+ \mathbf v_{E\times B}=\frac{\mathbf E\times\mathbf B}{B^2}.
+\]
+Esta deriva es perpendicular a ambos campos. No es la velocidad axial de escape de los iones. La aceleración iónica depende del campo eléctrico y del potencial que atraviesan. Clasificar Hall simplemente como un acelerador magnético de iones oculta el mecanismo principal y confunde el papel de las especies.\cite{JPL-EP}
+
+Aunque el campo magnético no realiza trabajo directo sobre una partícula, sí interviene en la transferencia de fuerza entre corrientes, circuito magnético y estructura. Una explicación completa del empuje debe incluir el sistema, no atribuir toda reacción a una pared material tocada por el chorro.
+\section{Pluma, interacción y vida útil}
+La pluma puede tener divergencia, neutrales, cargas múltiples y colisiones de intercambio de carga. Las interacciones con superficies y campos de la nave pueden afectar erosión, contaminación y medidas. Un ensayo en una instalación de vacío tiene presión residual y condiciones de contorno diferentes del espacio; la comparación requiere estudiar esos efectos.
+
+La vida útil depende de desgaste de componentes, transporte y régimen, no sólo de la masa total procesada. Un cálculo de velocidad y corriente no la predice. Las cifras de una tecnología deben acompañarse de fuente, versión y condiciones; por ello el manual evita presentar intervalos de prestación históricos como especificaciones actuales universales.
+\figura{c23}{Dos formas de sostener aceleración electrostática. El esquema distingue el papel del campo magnético y no representa una geometría de construcción.}
+\section{Caso desarrollado}
+\input{M23.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive caudal y empuje a partir de corriente y voltaje para una especie de carga simple.
+\item Demuestre $\eta_T=\lambda^2\eta_u\eta_e$ bajo las hipótesis declaradas.
+\item Explique el error de usar corriente de descarga como corriente iónica de haz sin separar contribuciones.
+\item Compare el papel de $\mathbf E$ y $\mathbf B$ en Hall y justifique con trabajo sobre una partícula por qué el campo magnético no aporta directamente energía cinética.
+\end{enumerate}
+\resumen{La corriente permite contar masa sólo si se conocen especies y cargas. El impulso específico usa masa total consumida, no sólo masa ionizada. Rejillas y Hall aceleran iones principalmente por campo eléctrico; Hall utiliza magnetización electrónica para sostener y organizar esa aceleración.}

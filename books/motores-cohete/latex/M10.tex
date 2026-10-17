@@ -1,0 +1,26 @@
+\begin{studiumworked}{M10. Ley de regresión sin ambigüedad dimensional · INTERMEDIATE}
+\textbf{Enunciado original.} Una ley local académica tiene $r_b=r_{ref}(p/p_{ref})^{0.35}$. La presión sube un 20\,\%. Determine la razón de velocidades y la transformación del coeficiente si se escribe la presión numérica en Pa o en MPa.
+
+\textbf{Datos utilizados.} Razón de presión: $1.2$; Exponente: $0.35$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[r_2/r_1=(p_2/p_1)^n\]
+\[a_{MPa}=a_{Pa}(10^6)^n\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item La razón de regresión es $1.20^{0.35}=1.065893$, un aumento de 6.589257\,\%.
+\item Para una misma presión física, $p_{Pa}=10^6p_{MPa}$. Sustituir en $r=ap^n$ da $a_{MPa}=a_{Pa}10^{6n}$.
+\item Para el exponente dado, el factor numérico es $10^{2.1}=125.8925$. No significa un cambio físico de velocidad: compensa la unidad de presión.
+\end{enumerate}
+\textbf{Resultados.} $r_2/r_1=1.065893$; $a_{MPa}/a_{Pa}=125.8925$.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} El producto coeficiente por presión elevada al exponente es invariante al convertir unidades de forma coherente.
+
+\textbf{Límites.} El exponente es local; no se extrapola a otro intervalo ni a otro material.
+\end{studiumworked}

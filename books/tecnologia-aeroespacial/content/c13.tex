@@ -1,0 +1,95 @@
+\chapter{Aeropuertos}\label{ch:13}
+\objetivos{Describir un aeropuerto como sistema de transporte; distinguir lado aire y lado tierra; interpretar designación de pistas y distancias declaradas; relacionar viento, atmósfera y longitud necesaria; comprender la función de la capacidad y del plan director.}
+
+\section{Un sistema que conecta redes}
+Un aeropuerto conecta la trayectoria aérea con desplazamientos, servicios y procesos en tierra. Una pista larga sin accesos, estacionamientos, combustible, gestión de pasajeros o coordinación de tráfico no constituye por sí sola un sistema funcional. El diseño integra demandas de aeronaves, pasajeros, carga, mantenimiento, seguridad y entorno. Las decisiones deben juzgarse por su efecto sobre el conjunto: acortar rodaje puede aumentar cruces de pista; ampliar una terminal puede trasladar la congestión a los accesos.
+
+El lado aire reúne las infraestructuras y actividades ligadas al movimiento y servicio de aeronaves. Incluye pistas, calles de rodaje y plataformas, con funciones y controles diferenciados. El lado tierra organiza accesos terrestres, aparcamientos y sectores públicos de la terminal. La separación no implica independencia: los pasajeros y equipajes cruzan interfaces reguladas entre ambos. En carga aérea, los flujos de mercancías, documentación y vehículos deben sincronizarse con las posiciones de estacionamiento y los tiempos de operación.
+
+El área de maniobras comprende pistas y calles utilizadas para despegue, aterrizaje y rodaje, excluyendo las plataformas en la terminología habitual. El área de movimiento incorpora también las plataformas. Distinguirlas evita atribuir a todos los espacios idénticos procedimientos de control. El capítulo de operaciones aeroportuarias de FAA ofrece una introducción a señales, marcas y circulación \cite{PHAK}; sus ejemplos son estadounidenses y no sustituyen la información aeronáutica del lugar considerado.
+\figura{airport}{Elementos principales de un aeropuerto y relación entre lado aire, terminal y accesos terrestres.}
+
+\section{Designación del aeropuerto y de sus pistas}
+Los aeropuertos pueden identificarse mediante nombre geográfico, indicador de lugar OACI y código comercial IATA cuando existe. No son códigos intercambiables: sirven a redes y usuarios diferentes. El indicador OACI habitual tiene cuatro letras; el código IATA habitual tiene tres. Una instalación pequeña puede disponer de identificación aeronáutica sin código comercial. Al consultar información conviene verificar identidad, localización y vigencia, evitando deducirlas sólo de un nombre abreviado.
+
+La designación numérica de una pista aproxima su orientación magnética en decenas de grados. Una dirección próxima a $90^\circ$ se designa 09 y la opuesta, próxima a $270^\circ$, 27. Los dos extremos pertenecen a la misma superficie física, pero representan sentidos operativos diferentes. Para pistas paralelas se añaden letras como L, C o R según la perspectiva de aproximación. Una pista que parece a la izquierda desde un extremo se ve a la derecha desde el contrario.
+
+La orientación no debe confundirse con el rumbo que mantendrá siempre el avión: el viento puede exigir corrección de deriva durante la aproximación. La variación magnética cambia lentamente y puede motivar una redesignación, aunque la pista no se mueva. La numeración es una identificación redondeada; para navegación y análisis geométrico se utiliza la orientación precisa publicada. La posición del umbral también es distinta del comienzo físico del pavimento si existe desplazamiento de umbral.
+
+\section{Geometría y distancias declaradas}
+La longitud pavimentada no informa por sí sola de todas las distancias utilizables. Para un sentido de operación se publican magnitudes con funciones distintas:
+\begin{itemize}
+\item TORA: recorrido de despegue disponible, correspondiente a la carrera en tierra declarada para ese fin.
+\item TODA: distancia de despegue disponible; puede incorporar una zona libre de obstáculos, o \emph{clearway}, cuando ésta se declara utilizable en el cálculo correspondiente.
+\item ASDA: distancia disponible para acelerar y parar; puede incorporar una zona de parada, o \emph{stopway}, apropiada para ese propósito.
+\item LDA: distancia de aterrizaje disponible desde el umbral declarado y bajo las condiciones publicadas.
+\end{itemize}
+Una zona libre no es necesariamente una superficie apta para soportar el avión durante frenado. Una zona de parada tampoco se transforma automáticamente en longitud disponible para el aterrizaje normal. Por eso no se suman todas las zonas al pavimento para obtener una única ``longitud útil'' universal.
+
+En un ejemplo geométrico deliberadamente sencillo, una pista con TORA de $1800\ \mathrm m$, zona libre declarada de $200\ \mathrm m$ y zona de parada declarada de $100\ \mathrm m$ tendría TODA de $2000\ \mathrm m$ y ASDA de $1900\ \mathrm m$. Si el umbral de ese sentido estuviera desplazado $150\ \mathrm m$ sobre una longitud de aterrizaje originalmente disponible de $1800\ \mathrm m$, sin otras reducciones, la LDA sería $1650\ \mathrm m$. Esas relaciones sólo describen el supuesto: en una instalación real se leen las distancias publicadas y sus restricciones.
+
+Las franjas laterales, márgenes, zonas de seguridad y superficies de protección de obstáculos cumplen otras funciones. Sus dimensiones dependen de la clase de infraestructura y del marco aplicable, por lo que no se deducen de una única relación física. La anchura debe acomodar aeronave, separación y tolerancias de guiado; la resistencia del pavimento debe ser compatible con cargas y repeticiones. Un avión que cabe geométricamente puede exigir una evaluación distinta de capacidad portante.
+
+\section{Orientación y viento}
+Una pista se orienta considerando la distribución estadística de vientos, topografía, obstáculos y restricciones territoriales. Para un viento de rapidez $V_w$ cuya dirección de procedencia forma un ángulo $\Delta$ respecto a la dirección de despegue,
+\begin{equation}\label{eq:13-wind}
+V_{w,\parallel}=V_w\cos\Delta,\qquad
+|V_{w,\perp}|=|V_w\sin\Delta|.
+\end{equation}
+La primera componente se interpreta aquí positiva como viento de cara. El signo lateral requiere definir además qué lado se considera positivo. La dirección meteorológica indica de dónde viene el aire, mientras que un vector de velocidad señala hacia dónde se mueve. Escribir la convención evita invertir cara y cola.
+
+Por ejemplo, para dirección de pista $030^\circ$ y viento procedente de $060^\circ$ a $15\ \mathrm{m/s}$, el ángulo relativo es $30^\circ$, la componente de cara es $12{,}99\ \mathrm{m/s}$ y la transversal tiene magnitud $7{,}50\ \mathrm{m/s}$. El límite admisible de viento cruzado pertenece a aeronave, operación y condiciones; no puede fijarse sólo con esta descomposición. Una rosa de vientos describe frecuencias y permite estudiar cobertura, pero debe conservar información de velocidades y no únicamente de direcciones.
+
+\section{Velocidad aérea, carrera y energía}
+La sustentación depende de la velocidad respecto al aire; la distancia recorrida sobre el pavimento depende de la velocidad respecto al suelo. En viento longitudinal uniforme de cara $V_h$, una velocidad aérea de despegue $V_{\mathrm{air}}$ corresponde aproximadamente a $V_g=V_{\mathrm{air}}-V_h$. La expresión es una relación cinemática local; durante la carrera cambian empuje, resistencia, sustentación y, posiblemente, viento.
+
+Un modelo simplificado de aceleración en pista horizontal es
+\begin{equation}
+m\dot V_g=T-D-\mu_r(W-L),
+\end{equation}
+donde $\mu_r$ representa una resistencia de rodadura idealizada. La sustentación descarga las ruedas y reduce ese término. Durante frenado, la fuerza disponible depende de contacto, adherencia, frenos y dispositivos aerodinámicos. Con aceleración o deceleración constante, la relación $V_g\,\mathrm dV_g/\mathrm ds=a$ da
+\begin{equation}\label{eq:13-stop}
+s=\frac{V_{g,2}^2-V_{g,1}^2}{2a}.
+\end{equation}
+La dependencia cuadrática explica por qué un incremento moderado de velocidad sobre el suelo puede aumentar mucho una distancia de parada.
+
+Una densidad menor exige mayor velocidad verdadera para alcanzar el mismo $C_L$ a igual peso. También puede reducir empuje o potencia disponibles. Una temperatura elevada, una altitud mayor y determinadas condiciones de presión pueden, por tanto, penalizar las actuaciones de despegue. La pendiente de pista introduce una componente gravitatoria; el estado del pavimento cambia la capacidad de frenado. No es coherente calcular una distancia con densidad real y conservar prestaciones propulsivas de otra atmósfera sin justificarlo.
+
+\section{Terminal, plataforma y circulación}
+Las calles de salida influyen en la ocupación de pista después del aterrizaje. Una salida situada demasiado pronto puede no ser utilizable para muchas operaciones; una demasiado tarde prolonga ocupación. Las calles paralelas reducen ciertos conflictos, pero los cruces de pistas y plataformas requieren una organización clara. Las marcas, luces y autorizaciones ayudan a mantener separación y conciencia de posición; sus códigos concretos se consultan en documentación vigente.
+
+En la plataforma, una posición debe permitir acceso de vehículos, asistencia y movimientos de aeronave. La geometría de estacionamiento condiciona uso de remolque, tiempos de embarque y posibilidad de operar posiciones vecinas. La terminal transforma flujos de llegada en procesos: facturación, inspección, espera, embarque, recogida y conexión. Cada proceso tiene capacidad y variabilidad propias. La capacidad total puede estar fijada por un cuello de botella distinto de la pista.
+
+\section{Capacidad, demanda y plan director}
+Si una secuencia ideal requiere un intervalo medio $\Delta t$ entre movimientos, una cota elemental es $C=3600/\Delta t$ movimientos por hora, con $\Delta t$ en segundos. Un intervalo de $120\ \mathrm s$ da $30$ movimientos por hora. Esta cuenta no incluye mezclas de aeronaves, estelas, condiciones meteorológicas, cruces ni variación de tiempos. Dos pistas no duplican necesariamente capacidad si sus procedimientos interactúan.
+
+Cuando la demanda se aproxima a la capacidad, pequeñas variaciones pueden producir colas y demoras considerables. Diseñar con demanda media igual a capacidad nominal ignora los picos y la incertidumbre. También importa la recuperación tras una perturbación: una infraestructura saturada tiene poco margen para absorber una secuencia alterada. La planificación utiliza escenarios, distribuciones temporales y alternativas de desarrollo.
+
+El plan director organiza el horizonte de evolución del aeropuerto: función dentro de la red, previsiones de demanda, reservas de suelo, fases de ampliación, accesibilidad e integración ambiental. No equivale a un proyecto constructivo de detalle. Debe coordinar compatibilidad territorial, ruido, agua, energía, hábitats y posibilidades financieras. Una ampliación por etapas puede evitar inversiones anticipadas, siempre que conserve las conexiones futuras necesarias. La ingeniería aeroportuaria une, por ello, física de vuelo y decisiones de sistema.
+
+\section{Problema resuelto: viento y distancia de parada idealizada}
+\paragraph{1. Enunciado.} Compare la distancia desde una velocidad aérea de aproximación hasta la detención en dos vientos longitudinales opuestos, usando un modelo de reacción y frenado uniforme.
+\paragraph{2. Datos.} Velocidad aérea inicial $32\ \mathrm{m/s}$; viento de cara o de cola de $6\ \mathrm{m/s}$; tiempo previo al frenado $t_r=1{,}50\ \mathrm s$; deceleración de magnitud $a_b=2{,}20\ \mathrm{m/s^2}$.
+\paragraph{3. Incógnitas.} Velocidades sobre el suelo y distancias totales idealizadas para ambos casos.
+\paragraph{4. Esquema verbal.} El avión recorre primero una distancia a velocidad constante y después se frena en línea recta hasta detenerse.
+\paragraph{5. Hipótesis.} Pista horizontal, viento constante, velocidad inicial ya establecida, ninguna distancia aérea previa y deceleración constante independiente del viento.
+\paragraph{6. Modelo físico.} Composición de velocidades para la condición inicial; cinemática y trabajo de frenado sobre el suelo.
+\paragraph{7. Ecuaciones simbólicas.} $V_{g,h}=V_{\mathrm{air}}-V_h$, $V_{g,t}=V_{\mathrm{air}}+V_t$ y $s=V_gt_r+V_g^2/(2a_b)$.
+\paragraph{8. Despeje.} Se calculan por separado velocidad inicial, recorrido de reacción y recorrido de frenado. La deceleración se introduce como magnitud positiva en la fórmula de distancia.
+\paragraph{9. Sustitución.} Con cara, $V_g=26\ \mathrm{m/s}$ y $s=26(1{,}5)+26^2/(4{,}4)$. Con cola, $V_g=38\ \mathrm{m/s}$ y $s=38(1{,}5)+38^2/(4{,}4)$.
+\paragraph{10. Resultado con unidades.} $s_h=192{,}64\ \mathrm m$ y $s_t=385{,}18\ \mathrm m$. La distancia del modelo prácticamente se duplica.
+\paragraph{11. Interpretación.} La velocidad aérea inicial es idéntica, pero la energía cinética respecto a la pista cambia con el cuadrado de la velocidad sobre el suelo. El viento modifica así una actuación de tierra sin alterar esa velocidad aérea inicial.
+\paragraph{12. Comprobación independiente.} Durante el frenado, $ma_bs_b=\tfrac12mV_g^2$, de donde se recupera $s_b=V_g^2/(2a_b)$ sin conocer la masa. Los tiempos de frenado, $V_g/a_b$, son positivos y coherentes con las distancias.
+\paragraph{13. Limitaciones.} No son distancias de aterrizaje certificadas: faltan trayectoria aérea, redondeo, toma, retardos reales y variación de adherencia y fuerzas. El ejercicio aísla la dependencia cinemática del viento.
+
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Indique la designación opuesta a una pista 14. Respuesta: 32, sin considerar letras de paralelas.
+\item Para pista orientada $090^\circ$ y viento de $120^\circ$ a $10\ \mathrm{m/s}$, obtenga componentes. Respuesta: cara $8{,}66\ \mathrm{m/s}$ y transversal de magnitud $5{,}00\ \mathrm{m/s}$.
+\item Una TORA de $2200\ \mathrm m$ dispone de zona libre declarada de $300\ \mathrm m$. Calcule TODA en ese supuesto. Respuesta: $2500\ \mathrm m$; no implica igual ASDA.
+\item Estime capacidad ideal con un intervalo de $90\ \mathrm s$. Respuesta: $40$ movimientos por hora; explicar dos causas de reducción real.
+\item Proponga una ampliación por etapas para un aeropuerto cuyo cuello de botella está en recogida de equipajes. Guía: medir demanda y tiempos del proceso antes de atribuir la congestión a falta de pista.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{El aeropuerto combina infraestructura aérea, terminal y accesos terrestres. Cada distancia declarada corresponde a un uso específico. Viento y atmósfera afectan de distinta manera a velocidad aérea y desplazamiento sobre el suelo. La capacidad depende de interacciones y variabilidad; el plan director ordena el desarrollo del sistema completo.}
+¿Por qué una zona libre de obstáculos no equivale a una zona de parada? ¿Cómo influye un umbral desplazado? ¿Por qué dos pistas pueden compartir una limitación de capacidad? ¿Qué distingue un plan director de un proyecto de obra?

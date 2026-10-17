@@ -1,0 +1,64 @@
+\chapter{Termoquímica de equilibrio y NASA CEA}\label{ch:15}
+\objetivos{Formular conservación elemental y equilibrio químico; distinguir problemas TP y HP; interpretar un cálculo CEA realmente ejecutado, sus unidades, su reproducibilidad y su alcance limitado.}
+\section{La composición es una incógnita}
+Un gas caliente no conserva necesariamente las moléculas iniciales. La disociación distribuye átomos entre especies, y la recombinación los reúne de otro modo al cambiar estado. La conservación se aplica a elementos y masa total, mientras las cantidades de cada especie pueden variar.
+
+Si $n_i$ es la cantidad molar de especie $i$ y $a_{ki}$ el número de átomos del elemento $k$ en ella, las restricciones son
+\begin{equation}\label{eq:elements}
+ \sum_i a_{ki}n_i=b_k,\qquad n_i\geq0.
+\end{equation}
+El vector $\mathbf b$ procede de los reactantes. Un solver que cierre las fracciones molares pero viole estas restricciones no ha obtenido una composición físicamente compatible. Cerrar la suma de fracciones sólo comprueba una normalización, no todos los balances.
+\section{Equilibrio a temperatura y presión fijadas}
+Para una mezcla ideal gaseosa, el potencial químico de cada especie puede escribirse
+\[
+ \mu_i(T,p,\mathbf x)=g_i^\circ(T)+R_uT\ln\left(x_i\frac{p}{p^\circ}\right),
+\]
+con el logaritmo de una actividad adimensional. El equilibrio TP minimiza $G=\sum_i n_i\mu_i$ sujeto a \eqref{eq:elements}. Introduciendo multiplicadores $\lambda_k$,
+\[
+ \mathcal L=G-\sum_k\lambda_k\left(\sum_i a_{ki}n_i-b_k\right).
+\]
+Para especies presentes, la condición de estacionariedad da
+\[
+ \mu_i=\sum_k\lambda_ka_{ki}.
+\]
+Las especies ausentes requieren las condiciones de desigualdad correspondientes. El cálculo no consiste sólo en ajustar una reacción global: resuelve simultáneamente composición y restricciones termodinámicas.\cite{CEA-RP1}
+
+Para una reacción independiente con coeficientes $\nu_i$, la condición $\sum_i\nu_i\mu_i=0$ lleva a
+\[
+ K_p(T)=\prod_i\left(x_i\frac{p}{p^\circ}\right)^{\nu_i}
+ =\exp\left[-\frac{\Delta_rG^\circ(T)}{R_uT}\right].
+\]
+La presión influye cuando cambia el número total de moles gaseosos. La reacción de disociación de una molécula en más partículas tiende a verse desfavorecida por mayor presión a temperatura fijada. Esa tendencia no sustituye la solución del sistema completo cuando hay múltiples reacciones.
+\section{TP no es una temperatura adiabática de cámara}
+En un problema TP, temperatura y presión son entradas y la composición se ajusta a ellas. El entorno debe suministrar o retirar la energía necesaria para mantener esa temperatura. En un problema HP, la entalpía inicial y presión se fijan, y la temperatura final se determina junto con composición imponiendo conservación de entalpía.
+
+Para una cámara ideal adiabática con velocidades pequeñas, $H_{productos}=H_{reactantes}$. Las entalpías incluyen formación y estados de entrada. Cambiar un reactante de líquido a gas sin modificar su entalpía inicial cambia físicamente el problema. Sumar de nuevo un calor de combustión después de utilizar entalpías de formación cuenta la energía química dos veces.
+
+Un cálculo de tobera añade condiciones de expansión, caudal y geometría. El cálculo TP que sigue no contiene esos balances y, por tanto, no produce empuje, área de garganta, relación de expansión ni impulso específico de un motor.
+\section{Versión y caso ejecutado}
+Se instaló y ejecutó \textbf{NASA CEA 3.3.4}, paquete Python oficial con biblioteca compilada, en el entorno reproducible del proyecto. La documentación NASA consultada describe la modernización de CEA y sus interfaces. La instalación por paquete precompilado no requirió compilar localmente Fortran. Se conserva la versión y el hash SHA-256 de la base termodinámica en el informe de ejecución.\cite{CEA-DOC,CEA-UPDATES}
+
+El caso usa una entrada elemental equivalente a vapor de agua y restringe productos a seis especies gaseosas neutras: $\mathrm{H_2O,H_2,O_2,OH,O,H}$. Se resolvieron seis estados: 1500, 2500 y 3500 K, a 1 y 10 bar. No se incluyen iones, especies condensadas ni un mecanismo de velocidad química finita. La selección restringida es parte del modelo, no una descripción universal del agua a cualquier estado.
+
+La llamada de la API utilizada recibe presión en \textbf{bar}. Introducir pascales directamente representaría una presión un factor $10^5$ mayor. Las propiedades caloríficas devueltas se interpretan en $\mathrm{kJ/(kg\,K)}$, y la masa molar numérica en $\mathrm{kg/kmol}$. El cambio a SI para otros cálculos debe hacerse antes de sustituir en ecuaciones de energía.
+\section{Resultados y comprobaciones}
+A 1 bar, la fracción molar de agua obtenida fue aproximadamente 0.999669 a 1500 K, 0.909005 a 2500 K y 0.231186 a 3500 K. El aumento de temperatura promueve disociación en el conjunto de especies considerado. La masa molar de la mezcla baja de aproximadamente 18.0133 a $11.1708\,\mathrm{kg/kmol}$ entre esos extremos. Son resultados de equilibrio del caso definido, no datos experimentales ni prestaciones de propulsión.
+
+En cada estado se comprobó convergencia, suma de fracciones molares igual a uno dentro de $10^{-8}$ y cociente de átomos H/O igual a dos dentro de $10^{-7}$. Una segunda ejecución en el mismo entorno reprodujo los seis registros exactamente. Esa repetición comprueba reproducibilidad local de entradas y software; no constituye validación independiente del modelo ni de la base de propiedades.
+
+La capacidad calorífica de equilibrio puede superar mucho la congelada porque parte de la energía añadida modifica composición. A 2500 K y 1 bar se obtuvieron aproximadamente $c_{p,fr}=3.0414$ y $c_{p,eq}=6.7104\,\mathrm{kJ/(kg\,K)}$. No son dos mediciones contradictorias: corresponden a restricciones distintas sobre la respuesta composicional.
+\section{Cómo no utilizar la salida}
+El exponente isentrópico que muestra CEA no debe introducirse sin más en una expansión de gamma constante. Tampoco se deduce un rendimiento real comparando una temperatura CEA con una temperatura puntual medida en una cámara no uniforme. Hace falta especificar qué magnitudes se comparan y con qué incertidumbre.
+
+La documentación RP-1311 describe modelos y métodos, pero un manual de usuario no valida todos los cálculos posibles con cualquier lista de especies. La base de datos, fases permitidas, opciones de equilibrio y tolerancias forman parte de cada caso. En el proyecto se conservan entradas, salida original y controles para que puedan revisarse.
+
+El siguiente paso científico para ampliar este ejemplo sería contrastar propiedades con una segunda implementación y estudiar convergencia al ampliar especies y fases. Esa comprobación queda pendiente y se declara como tal. No se rellena la ausencia de contraste con una etiqueta automática de fuente verificada.
+\figura{c15}{Resultados TP reales de software, con segmentos como guía visual entre estados discretos. No es una expansión de tobera ni un ensayo de motor.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Escriba la matriz elemental de las seis especies y compruebe que todas conservan H y O en las reacciones independientes.
+\item Explique por qué un cálculo TP no determina por sí mismo una temperatura adiabática.
+\item Convierta $3.0414\,\mathrm{kJ/(kg\,K)}$ a SI y calcule el error de usar ese número sin conversión en un balance en julios.
+\item Proponga un control adicional de resultados y distinga si verifica aritmética, conservación, reproducibilidad o validación experimental.
+\end{enumerate}
+\resumen{El equilibrio químico minimiza un potencial sujeto a conservación elemental. TP, HP y expansión de tobera son problemas distintos. CEA se ejecutó realmente en seis estados y se repitió; sus resultados permanecen limitados al conjunto de especies, unidades y condiciones declaradas.}

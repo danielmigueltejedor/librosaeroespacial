@@ -1,0 +1,89 @@
+\chapter{Motores de explosión}\label{ch:18}
+\objetivos{Relacionar el ciclo de un motor alternativo con su potencia útil; distinguir combustión controlada, detonación y preencendido; explicar la coordinación entre distribución, encendido, lubricación, alimentación, reducción y hélice.}
+
+\section{Conversión de energía y denominación}
+La denominación tradicional motor de explosión alude aquí a un motor alternativo de combustión interna con encendido provocado. Durante el funcionamiento normal no se busca una detonación: una llama controlada transforma energía química en energía interna, aumenta la presión y permite que los gases ejerzan trabajo sobre un pistón. El mecanismo biela--manivela convierte el desplazamiento alternativo en giro del cigüeñal. Parte del trabajo producido se consume en rozamiento, bombeo y auxiliares; el resto aparece en el eje.
+
+La potencia propulsiva no coincide con la potencia del motor. Una hélice transforma potencia de eje en empuje, con pérdidas aerodinámicas. En vuelo, $P_u=TV$ y $\eta_p=TV/P_e$, donde $T$ es empuje, $V$ velocidad y $P_e$ potencia entregada a la hélice. En un ensayo estático $V=0$ y esta definición de eficiencia propulsiva da cero, aunque la hélice produzca empuje y acelere aire. El punto de funcionamiento debe acompañar a cualquier afirmación sobre rendimiento.
+
+Los motores alternativos siguen siendo una solución útil cuando potencia, masa, coste y misión favorecen su arquitectura. El estudio del motor no termina en el cilindro: hélice, refrigeración, combustible, encendido y control determinan si la energía puede aprovecharse de manera estable. El vocabulario de sistemas y los esquemas físicos se apoyan en FAA Powerplant \cite{FAA-POWERPLANT}; el desarrollo termodinámico que sigue es una idealización docente.
+
+\figura{otto}{Ciclo Otto ideal en el plano presión-volumen normalizado: compresión y expansión isentrópicas, y aportación y rechazo de calor a volumen constante.}
+
+\section{Cuatro tiempos y ciclo Otto ideal}
+En la admisión, el movimiento del pistón y la apertura de la válvula permiten entrar mezcla o aire, según la arquitectura de alimentación. La compresión reduce el volumen de la carga atrapada. Cerca del final de esa carrera, el encendido inicia la combustión; la expansión posterior entrega trabajo. En el escape se evacuan gases quemados. Las válvulas no abren ni cierran necesariamente en los puntos muertos: su distribución se adapta a la inercia del flujo, al régimen y a las restricciones mecánicas.
+
+Un ciclo completo de cuatro tiempos necesita dos vueltas del cigüeñal. Por ello un cilindro produce una carrera de expansión útil cada dos revoluciones. En un motor multicilíndrico, el orden de encendido y la disposición geométrica reducen irregularidades de par y equilibran parcialmente fuerzas y momentos de inercia. La distribución mediante levas coordina válvulas con el cigüeñal; los engranajes de sincronización mantienen la relación angular requerida. Holguras y elasticidades reales introducen efectos que el dibujo cinemático no muestra.
+
+El ciclo Otto de aire ideal reemplaza el intercambio y la combustión por cuatro procesos de una masa cerrada: compresión isentrópica, aporte de calor a volumen constante, expansión isentrópica y cesión de calor a volumen constante. Para gas perfecto con calores específicos constantes,
+\begin{equation}
+ \eta_{\rm Otto}=1-\frac{1}{r^{\gamma-1}},\qquad r=\frac{V_{\max}}{V_{\min}}>1.
+\end{equation}
+$\gamma=c_p/c_v$ es adimensional. La expresión se obtiene usando $T_2/T_1=r^{\gamma-1}$ y $T_3/T_4=r^{\gamma-1}$ en $1-q_{\rm out}/q_{\rm in}$. No contiene el calor aportado porque compara ciclos ideales bajo hipótesis particulares. Aumentar compresión mejora este rendimiento ideal, pero también modifica temperaturas, presión máxima y tendencia a combustión anormal.
+
+En el motor real la combustión requiere tiempo, las paredes reciben calor, las válvulas generan pérdidas y los gases no tienen propiedades constantes. El diagrama presión--volumen contiene un lazo de bombeo asociado a admisión y escape. La presión media efectiva indicada es el trabajo indicado por ciclo dividido por la cilindrada; la presión media efectiva al freno emplea el trabajo útil en eje. Son parámetros equivalentes de trabajo, no presiones constantes medidas en el cilindro.
+
+\section{Potencia, par y consumo}
+Si $V_d$ es la cilindrada total y $n$ el régimen en revoluciones por segundo, la potencia al freno de un motor de cuatro tiempos se relaciona con la presión media efectiva $p_{me}$ mediante
+\begin{equation}
+ P_b=p_{me}V_d\frac{n}{2},\qquad P_b=2\pi n C.
+\end{equation}
+$C$ es el par de eje en newton metro. El factor dos procede del número de vueltas por ciclo, no del número de cilindros. Si se emplean revoluciones por minuto, hay que dividir primero entre sesenta. Dimensionalmente, presión por volumen es energía y ciclos por segundo convierte esa energía en potencia.
+
+El consumo específico al freno es $c_b=\dot m_f/P_b$. Puede expresarse en $\mathrm{kg/(kW\,h)}$, cuidando que una hora no es una unidad del SI. El rendimiento térmico al freno resulta $\eta_b=P_b/(\dot m_f H_i)$, con $H_i$ poder calorífico inferior. Un consumo específico menor indica más trabajo útil por masa de combustible en el punto comparado, pero no determina por sí solo el consumo de una misión: también importan potencia requerida, duración y rendimiento de la hélice.
+
+La densidad de admisión influye en la masa de aire atrapada y en el combustible que puede quemarse de forma adecuada. La sobrealimentación aumenta presión de admisión, pero exige trabajo de compresión y eleva la temperatura. Un intercambiador puede reducir parte de esa temperatura a costa de masa, resistencia al flujo y necesidad de refrigeración. No se obtiene potencia adicional gratuitamente: cambian solicitaciones térmicas, mecánicas y límites de combustión.
+
+\section{Auxiliares y combustión anormal}
+El encendido provocado debe suministrar energía a la bujía en un instante compatible con la propagación de llama y el movimiento del pistón. Si toda la combustión ocurriera demasiado tarde, parte de la expansión disponible se desaprovecharía; si la presión creciera demasiado pronto, aumentaría el trabajo resistente y las cargas. Sistemas con magnetos o encendido electrónico logran esa función con distintas dependencias de energía y control. La redundancia del encendido debe analizarse junto con sus fuentes, cableado y elementos comunes.
+
+La detonación es una autoignición rápida de parte de la mezcla no quemada que genera ondas de presión; el preencendido es el inicio de combustión antes de la chispa prevista por una fuente caliente. Pueden relacionarse, pero no son el mismo mecanismo. La relación de mezcla influye en temperatura, velocidad de combustión y estabilidad; el valor que maximiza potencia no tiene por qué minimizar consumo. No se deducen ajustes operativos universales de estos principios.
+
+La lubricación interpone película entre superficies, evacua calor, transporta contaminación y contribuye al sellado. La viscosidad demasiado alta aumenta pérdidas y dificulta circulación en frío; demasiado baja reduce capacidad de película bajo ciertas condiciones. La refrigeración por aire o líquido debe extraer calor de forma suficientemente uniforme para limitar gradientes y deformaciones. La temperatura de aceite y la de culata describen fenómenos relacionados pero no equivalentes.
+
+El cigüeñal también mueve bombas y otros auxiliares mediante tomas de movimiento. Un reductor permite que el motor y la hélice giren a regímenes diferentes. Si $i=n_m/n_h>1$, idealmente el par de hélice aumenta en proporción a $i$ y la potencia se conserva. En realidad, $P_h=\eta_gP_m$ y $C_h=\eta_g i C_m$. La necesidad surge porque un régimen favorable para potencia específica del motor puede producir velocidades excesivas en punta de hélice. Engranajes añaden pérdidas, vibraciones torsionales y exigencias de lubricación.
+
+El control coordina potencia solicitada, alimentación, régimen y, cuando procede, paso de hélice. Una respuesta transitoria debe respetar límites de presión, temperatura y velocidad. Las indicaciones adquieren sentido como conjunto: una caída de potencia con cambio de presión de admisión no tiene la misma interpretación física que una caída acompañada de pérdida de régimen por sobrecarga de hélice. El diagnóstico conceptual busca balances coherentes, no recetas de intervención.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: del cilindro a la hélice}
+\begin{studiumworked}{Problema resuelto: del cilindro a la hélice}
+
+\textbf{1. Enunciado.} Un motor educativo de cuatro tiempos entrega potencia a una hélice mediante reductor. Calcule potencia al freno, consumo, pares y potencia útil en vuelo.
+
+\textbf{2. Datos.} $V_d=0.006\,\mathrm{m^3}$, $p_{me}=0.90\,\mathrm{MPa}$, régimen $2400\,\mathrm{rpm}$, $\eta_b=0.30$, $H_i=43\,\mathrm{MJ/kg}$, $i=1.5$, $\eta_g=0.97$ y $\eta_p=0.80$.
+
+\textbf{3. Incógnitas.} $P_b$, $\dot m_f$, $C_m$, régimen y par de hélice y potencia propulsiva $P_u$.
+
+\textbf{4. Esquema verbal.} El combustible aporta energía al motor, el eje transmite potencia al reductor y la hélice entrega trabajo al aire. Cada etapa tiene una pérdida distinta.
+
+\textbf{5. Hipótesis.} Régimen estacionario, presión media al freno ya descontadas pérdidas internas, rendimientos constantes en este punto y cuatro tiempos.
+
+\textbf{6. Modelo.} Balance de trabajo por ciclo y balances de potencia en transmisión y propulsor.
+
+\textbf{7. Ecuaciones.} $P_b=p_{me}V_dn/2$, $\dot m_f=P_b/(\eta_bH_i)$, $C_m=P_b/(2\pi n)$, $n_h=n/i$, $P_h=\eta_gP_b$ y $P_u=\eta_pP_h$.
+
+\textbf{8. Despeje.} El par de hélice se obtiene directamente de $C_h=\eta_g i C_m$, sin confundir aumento de par con creación de energía.
+
+\textbf{9. Sustitución.} $n=2400/60=40\,\mathrm{s^{-1}}$, $P_b=900000(0.006)(40)/2$ y $\dot m_f=108000/(0.30\,43\times10^6)$.
+
+\textbf{10. Resultado.} $P_b=108.0\,\mathrm{kW}$; $\dot m_f=0.008372\,\mathrm{kg/s}=30.14\,\mathrm{kg/h}$; $C_m=429.72\,\mathrm{N\,m}$. La hélice gira a $1600\,\mathrm{rpm}$, recibe $104.76\,\mathrm{kW}$ y $625.24\,\mathrm{N\,m}$. La potencia útil es $83.808\,\mathrm{kW}$.
+
+\textbf{11. Interpretación.} El reductor aumenta par mientras disminuye velocidad angular. La potencia útil equivale al $23.28\,\text{\%}$ del aporte químico en estas condiciones.
+
+\textbf{12. Comprobación independiente.} El trabajo de eje por ciclo total es $p_{me}V_d=5400\,\mathrm{J}$. Hay veinte ciclos por segundo, luego $108\,\mathrm{kW}$. Además $625.24\,2\pi(1600/60)=104760\,\mathrm{W}$, verificando la transmisión.
+
+\textbf{13. Limitaciones.} El modelo no predice cómo cambian presión media o rendimientos con altitud, mezcla, temperatura y paso. No establece un régimen utilizable de un motor real.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Calcule $\eta_{\rm Otto}$ para $r=8$ y $\gamma=1.4$.
+\item Intermedio. Un motor entrega $90\,\mathrm{kW}$ a $2700\,\mathrm{rpm}$. Determine el par.
+\item Intermedio. Para $P_b=90\,\mathrm{kW}$ y consumo $27\,\mathrm{kg/h}$, determine consumo específico y rendimiento con $H_i=43\,\mathrm{MJ/kg}$.
+\item Análisis. Un reductor de relación dos y rendimiento $0.95$ recibe $200\,\mathrm{N\,m}$ a $4000\,\mathrm{rpm}$. Calcule salida y explique qué variable limita una hélice de gran diámetro.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $56.47\,\text{\%}$, ideal. 2: $318.31\,\mathrm{N\,m}$. 3: $0.300\,\mathrm{kg/(kW\,h)}$ y $27.91\,\text{\%}$. 4: $380\,\mathrm{N\,m}$ a $2000\,\mathrm{rpm}$; la velocidad de punta combina giro y avance y requiere evaluar compresibilidad y cargas.
+
+\resumen{El ciclo ideal explica tendencias, mientras la presión media efectiva conecta cilindrada, régimen y potencia real. El conjunto de auxiliares permite repetir la combustión y conservar el motor. Reducir régimen de hélice aumenta par con pérdidas, y el rendimiento global multiplica las eficiencias del motor, transmisión y propulsor.}
+\textbf{Autoevaluación.} ¿Por qué aparece el factor dos en un motor de cuatro tiempos? ¿Qué distingue detonación de preencendido? ¿Cómo puede aumentar el par de salida sin aumentar la potencia?

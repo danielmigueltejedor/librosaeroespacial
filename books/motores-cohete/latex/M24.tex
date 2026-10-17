@@ -1,0 +1,26 @@
+\begin{studiumworked}{M24. Impulso elemental, potencia media y consumo · INTERMEDIATE}
+\textbf{Enunciado original.} Un propulsor pulsado académico entrega 15 micronewton segundo por pulso, consume 2 microgramos por pulso y requiere 0.050 J eléctricos por pulso. A 30 Hz, halle empuje medio, caudal, potencia, Isp y rendimiento cinético efectivo.
+
+\textbf{Datos utilizados.} Impulso: $1.500000\times10^{-5}\,\mathrm{N*s}$; Frecuencia: $30\,\mathrm{s^{-1}}$; Masa pulso: $2.000000\times10^{-9}\,\mathrm{kg}$; Energía pulso: $0.05\,\mathrm{J}$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[\overline F=fJ_b,\quad\overline{\dot m}=fm_b,\quad\overline P=fE_b\]
+\[I_{sp}=J_b/(g_0m_b),\quad\eta_b=J_b^2/(2m_bE_b)\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Las conversiones son $J_b=15\times10^{-6}$ N s y $m_b=2\times10^{-9}$ kg. Multiplicar por frecuencia da $4.500000\times10^{-4}\,\mathrm{N}$, $6.000000\times10^{-8}\,\mathrm{kg/s}$ y $1.5\,\mathrm{W}$.
+\item El cociente de impulso por peso convencional consumido da $764.7872\,\mathrm{s}$. La energía axial efectiva por pulso es $0.05625\,\mathrm{J}$.
+\item Dividir por energía eléctrica produce $\eta_b=1.125$, admisible entre cero y uno. No se confunde fuerza media con el máximo durante una descarga, que no está especificado.
+\end{enumerate}
+\textbf{Resultados.} $\overline F=4.500000\times10^{-4}$ N; $\overline P=1.5$ W; $I_{sp}=764.7872$ s; $\eta_b=1.125$.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} El cociente medio $F/(g0 mdot)$ coincide con el de cada pulso; la frecuencia se cancela si todos son iguales.
+
+\textbf{Límites.} Pulsos idénticos, sin consumo continuo auxiliar ni dispersión; rendimiento efectivo no resuelve distribución real de velocidades.
+\end{studiumworked}

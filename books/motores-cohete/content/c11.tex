@@ -1,0 +1,67 @@
+\chapter{Geometría evolutiva y cinemática de la superficie}\label{ch:11}
+\objetivos{Relacionar profundidad de regresión, superficie y volumen; distinguir progresividad geométrica de evolución de empuje; integrar un ejemplo normalizado con dimensiones relativas.}
+\section{La coordenada de regresión}
+Sea $w$ la distancia normal que ha retrocedido una superficie desde el estado inicial. Si la regresión es espacialmente uniforme,
+\[
+ \frac{dw}{dt}=r_b(p_c,T_{inicial},\ldots).
+\]
+El área activa se describe por una función $A_b(w)$ válida hasta el siguiente cambio topológico. La geometría determina $A_b$ frente a $w$; la física de combustión y la presión determinan $w$ frente a tiempo. Confundir ambas dependencias equivale a suponer implícitamente una tasa constante que quizá el propio modelo niega.
+
+El incremento de volumen consumido cumple
+\begin{equation}\label{eq:volumeweb}
+ dV_{cons}=A_b(w)\,dw.
+\end{equation}
+Se deduce sumando prismas diferenciales de base superficial y espesor $dw$. Los términos de curvatura de orden superior desaparecen en el límite diferencial. La masa restante es
+\[
+ m_p(w)=m_{p,0}-\rho_p\int_0^wA_b(\xi)\,d\xi.
+\]
+Derivar respecto al tiempo recupera $-dm_p/dt=\rho_pA_br_b$. Esta igualdad proporciona una comprobación independiente entre la descripción geométrica y el balance de masa.
+\section{Un cilindro hueco idealizado}
+Considérese un modelo geométrico abstracto con longitud $L$ constante, superficie exterior inactiva y extremos inactivos. Sólo retrocede la pared de una cavidad cilíndrica interior. Si el radio inicial es $r_0$,
+\begin{align}
+ r(w)&=r_0+w,\\
+ A_b(w)&=2\pi L(r_0+w),\\
+ V_{cons}(w)&=\pi L[(r_0+w)^2-r_0^2].
+\end{align}
+La derivada del volumen es exactamente el área. Mientras se mantengan esas condiciones, el área crece linealmente con profundidad: la geometría es progresiva. El resultado no requiere elegir composición ni dimensiones de fabricación; puede estudiarse íntegramente con $\widehat w=w/r_0$ y $\widehat A=A_b/A_{b,0}=1+\widehat w$.
+
+Si $R$ representa el límite exterior de la región disponible, la profundidad geométrica final es $w_f=R-r_0$. La mitad de esa profundidad ocurre en
+\[
+ r_{medio}=r_0+\frac{R-r_0}{2}=\frac{R+r_0}{2}.
+\]
+No es, en general, $R/2$. La mitad del radio exterior, la mitad del espesor disponible, la mitad del volumen consumido y la mitad del tiempo son cuatro condiciones diferentes. Un enunciado que diga sólo ``a mitad'' necesita aclarar qué variable se divide.
+\section{Otras evoluciones ideales}
+Una superficie plana que avanza manteniendo su área es geométricamente neutra. Una superficie cilíndrica exterior que retrocede hacia el eje, con extremos inactivos, tiene $A_b=2\pi L(R_0-w)$ y es regresiva. Una esfera exterior de radio $R_0-w$ tiene $A_b=4\pi(R_0-w)^2$ y también es regresiva. Estos ejemplos muestran que la progresividad es la derivada $dA_b/dw$, no la forma visual inicial por sí sola.
+
+Si los extremos también son activos, la longitud cambia y aparecen términos adicionales de área. Para un cuerpo cuya geometría se modifica en varias direcciones no basta con actualizar un solo radio manteniendo el resto constante. Las superficies pueden encontrarse, desaparecer o dividirse. En cada cambio de topología se debe revisar la expresión geométrica y la continuidad del volumen.
+
+No se introduce una familia de geometrías industriales como recetario. El objetivo matemático es aprender a derivar superficie, volumen y dominio antes de emplear una función en la balística interna. Una curva de área que produzca volumen consumido superior al disponible es incompatible aunque su forma parezca razonable.
+\section{Área neutra no significa empuje constante}
+Si $A_b$ permanece constante pero crece $A_t$ por erosión, cambia la relación entre generación y descarga. Si varía temperatura inicial efectiva, $r_{ref}$ o $c^*$, también puede cambiar presión. Si cambia la presión ambiente, el mismo estado interno produce otro término de presión a la salida. Por ello, la neutralidad geométrica es una condición parcial.
+
+En un modelo cuasiestacionario con propiedades, garganta y coeficiente de empuje constantes, sí puede relacionarse el empuje con $A_b$ mediante el equilibrio de masa. Esa conclusión necesita todas esas hipótesis. En las figuras se indicará si el eje horizontal es profundidad normalizada, tiempo normalizado o fracción de masa consumida.
+\section{Tiempo de regresión}
+Con presión determinada como función de $w$, la duración hasta $w_f$ es
+\begin{equation}\label{eq:burntime}
+ t_f=\int_0^{w_f}\frac{dw}{r_b[p_c(w)]}.
+\end{equation}
+No se sustituye por $w_f/r_{b,0}$ salvo tasa constante. Si el área es progresiva y el modelo de presión hace crecer $r_b$, la mitad de profundidad se alcanza después de la mitad del tiempo total: la segunda mitad se recorre más deprisa. La comprobación consiste en integrar las dos mitades, no en inferirlo sólo de una gráfica de área.
+
+Para el cilindro interior, el modelo posterior dará $p/p_0=(1+w/r_0)^{1/(1-n)}$. Con $r_b/r_{b,0}=(p/p_0)^n$,
+\[
+ \frac{r_{b,0}t}{r_0}=\int_0^{w/r_0}(1+\xi)^{-n/(1-n)}d\xi.
+\]
+Si $n\ne1/2$, la integral es
+\[
+ \frac{(1+w/r_0)^{(1-2n)/(1-n)}-1}{(1-2n)/(1-n)}.
+\]
+Para $n=1/2$ el límite es $\ln(1+w/r_0)$. La aparente división por cero de la primera expresión es una singularidad removible de la parametrización, no una duración infinita.
+\figura{c11}{Tres geometrías normalizadas. La progresividad se define respecto a profundidad, sin imponer una duración de regresión.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Obtenga $A_b(w)$ diferenciando el volumen consumido de una esfera exterior.
+\item En un cilindro interior con $R/r_0=5$, determine $A_b/A_{b,0}$ a mitad de profundidad y a mitad de volumen consumido.
+\item Compruebe por expansión de Taylor el límite logarítmico de la duración cuando $n\to1/2$.
+\item Indique tres mecanismos por los que una geometría neutra puede producir empuje variable.
+\end{enumerate}
+\resumen{La geometría se expresa frente a profundidad; el tiempo se obtiene integrando la ley de regresión acoplada a presión. La derivada de volumen consumido debe coincidir con el área activa. Las distintas definiciones de mitad no son intercambiables, y la neutralidad geométrica no garantiza neutralidad de empuje.}

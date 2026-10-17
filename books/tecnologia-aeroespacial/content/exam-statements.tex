@@ -1,0 +1,58 @@
+\chapter{Simulacro 1: atmósfera, medidas y fluidos}
+\caja{Condiciones editoriales}{Tiempo sugerido: 110 minutos. Puntuación: 10 puntos. Se permite una calculadora y el formulario adjunto. Esta propuesta no describe las condiciones oficiales de examen. Todas las altitudes ISA son geopotenciales. Use $g_0=9.80665\,\mathrm{m/s^2}$, $R_a=287.05287\,\mathrm{J/(kg\,K)}$, $\gamma=1.4$.}
+\section{Cuestiones razonadas: 2 puntos}
+Explique la diferencia entre altitud de presión y altitud de densidad, indicando qué efecto produce un día cálido a presión fija. Distinga presión dinámica y presión de impacto y justifique cuándo pueden igualarse aproximadamente. Defina línea de corriente y trayectoria, indicando una condición suficiente para que coincidan. Reparta la respuesta en tres explicaciones breves con sus hipótesis.
+\section{Globo en atmósfera estándar: 3 puntos}
+Un globo de helio se encuentra a $H=3500\,\mathrm m$. Su volumen es $450\,\mathrm{m^3}$ y la masa de envolvente y equipos es $100\,\mathrm{kg}$. El helio tiene la misma presión y temperatura que el ambiente; su constante de gas es $2077.1\,\mathrm{J/(kg\,K)}$. La envolvente admite ese volumen sin sobrepresión apreciable.
+\begin{enumerate}[label=\alph*)]
+\item Determine $T,p,\rho_a$ del aire y la densidad del helio. (1.2)
+\item Obtenga la masa máxima de carga útil para equilibrio vertical, contabilizando el gas. (1.0)
+\item Escriba el balance de fuerzas con una carga cinco kilogramos menor. Interprete el signo de la fuerza neta y explique qué dato faltaría para calcular una velocidad de ascenso estacionaria. (0.8)
+\end{enumerate}
+\section{Pitot subsónico: 3 puntos}
+Una aeronave vuela en ISA a $H=5500\,\mathrm m$. La toma frontal mide $p_t=53800\,\mathrm{Pa}$ y la toma estática es ideal. Se supone flujo subsónico, gas perfecto y desaceleración isentrópica hasta la toma.
+\begin{enumerate}[label=\alph*)]
+\item Calcule $p$, $T$ y $\rho$ del ambiente. (0.7)
+\item Determine Mach y TAS a partir de la relación compresible. Compruebe el régimen supuesto. (1.3)
+\item Calcule la TAS que resultaría de igualar $p_t-p$ a $\rho V^2/2$, y cuantifique su error relativo frente a la inversión anterior. (1.0)
+\end{enumerate}
+\section{Qué permite saber continuidad: 2 puntos}
+Un conducto estacionario recibe aire con $\rho_1=1.15\,\mathrm{kg/m^3}$, $A_1=0.50\,\mathrm{m^2}$ y $V_1=80\,\mathrm{m/s}$. A la salida se conocen $\rho_2=1.05\,\mathrm{kg/m^3}$ y $A_2=0.35\,\mathrm{m^2}$. No hay fugas.
+\begin{enumerate}[label=\alph*)]
+\item Halle el caudal másico y la velocidad de salida. (1.0)
+\item Indique si puede conservarse $AV$ y si estos datos permiten conocer de forma única la presión de salida. Identifique información o hipótesis adicionales necesarias. (1.0)
+\end{enumerate}
+\chapter{Simulacro 2: geometría, polar y crucero}
+\caja{Condiciones editoriales}{Tiempo sugerido: 120 minutos. Puntuación: 10 puntos. Todas las relaciones aerodinámicas de este simulacro son modelos educativos válidos en la región adherida y de Mach bajo que se debe comprobar. La altitud es geopotencial.}
+\section{Definición del vehículo}
+Una aeronave de peso instantáneo $W=34000\,\mathrm N$ posee un ala trapezoidal de $b=12.0\,\mathrm m$, cuerda de raíz $c_r=2.10\,\mathrm m$ y estrechamiento $\lambda=0.50$. El perfil tiene pendiente $a_0=6.0\,\mathrm{rad^{-1}}$ y ángulo de sustentación nula $\alpha_0=-2.0^\circ$. Adopte teoría lineal de ala finita con $e_i=0.91$. La polar del vehículo es
+\[
+C_D=0.026+\left[\frac{1}{\pi e_iAR}+0.007\right]C_L^2.
+\]
+Para este problema se iguala la sustentación del ala a la de la aeronave y se omiten las contribuciones de fuselaje y cola a la pendiente. El vehículo vuela a $H=2500\,\mathrm m$ en ISA, rectilíneo y horizontal, a TAS de $72\,\mathrm{m/s}$. Se da $C_{L\max}=1.45$ y empuje horizontal.
+\section{Geometría y significado de los parámetros: 2 puntos}
+Obtenga $S$, $AR$, $K$ total y $e_O$. Explique por qué $e_O$ y $e_i$ no coinciden en este modelo. Determine qué parte de $C_D-C_{D0}$ es inducida y qué parte es resistencia de perfil dependiente de sustentación, sin atribuir ambas al mismo fenómeno.
+\section{Condición de crucero: 3 puntos}
+Calcule la densidad ISA, el $C_L$ requerido, la pendiente tridimensional, el ángulo de ataque en grados, el coeficiente de resistencia, el empuje necesario y la potencia aerodinámica necesaria. Compruebe el margen respecto de $C_{L\max}$ y el número de Mach aproximado. Explique la diferencia entre la potencia calculada y la potencia que debería entregar un eje de hélice.
+\section{Óptimo y pérdida de empuje: 3 puntos}
+Derive la condición de mínima resistencia y calcule $D_{\min}$ y su TAS. El empuje máximo disponible se reduce ahora al 80\,\% del que exigía el crucero anterior y se considera constante con velocidad en el intervalo. Determine si existe cualquier velocidad que mantenga vuelo nivelado con el mismo peso, altitud y polar. Justifique por mínimo global y por discriminante, evitando suponer que la respuesta se obtiene reduciendo la velocidad un 20\,\%.
+\section{Teoría aplicada: 2 puntos}
+Si se aumenta el ángulo de ataque conservando peso y altitud, razone qué debe cambiar para seguir en equilibrio. Después considere un empuje constante de $1.2D_{\min}$: plantee las dos raíces matemáticas de velocidad e indique cómo se decide cuáles son físicamente admisibles. No hace falta atribuir estabilidad dinámica a ninguna raíz.
+\chapter{Simulacro 3: actuaciones, espacio e integración}
+\caja{Condiciones editoriales}{Tiempo sugerido: 120 minutos. Puntuación: 10 puntos. Datos educativos; no representan una aeronave ni misión certificadas. Justifique cada simplificación y utilice unidades SI.}
+\section{Ascenso y giro: 4 puntos}
+Una aeronave de $W=36000\,\mathrm N$ y $S=20\,\mathrm{m^2}$ opera en aire de $\rho=0.90\,\mathrm{kg/m^3}$ a TAS $65\,\mathrm{m/s}$. La polar es $C_D=0.024+0.055C_L^2$, el empuje máximo $4300\,\mathrm N$ y $C_{L\max}=1.45$.
+\begin{enumerate}[label=\alph*)]
+\item Calcule la resistencia nivelada y una estimación de la velocidad de ascenso usando la resistencia nivelada como aproximación de primer orden. Declare esa aproximación. (1.3)
+\item Para un giro horizontal coordinado de $45^\circ$, determine factor de carga, $C_L$ requerido y resistencia a la misma velocidad. (1.3)
+\item Compruebe por separado sustentación máxima y empuje disponible. Determine si el giro se sostiene a esa velocidad y explique por qué un margen frente a pérdida no basta para afirmarlo. (1.4)
+\end{enumerate}
+\section{Etapa cohete y órbita: 3 puntos}
+Una etapa tiene $m_0=1800\,\mathrm{kg}$, $m_f=650\,\mathrm{kg}$ e $I_{sp}=298\,\mathrm s$ constante. Calcule su $\Delta V$ ideal. Una órbita circular terrestre de radio $6971\,\mathrm{km}$ se modela con $\mu_g=3.986004418\times10^{14}\,\mathrm{m^3/s^2}$. Halle velocidad y periodo orbitales. Explique por qué comparar ambos valores de velocidad no constituye un dimensionamiento completo de lanzamiento desde la superficie, aunque sea un primer contraste de escala.
+\section{Energía de sistemas: 3 puntos}
+Un circuito hidráulico suministra $Q=3.0\times10^{-4}\,\mathrm{m^3/s}$ con incremento de presión de $14\,\mathrm{MPa}$ y rendimiento global $0.80$. Obtenga la potencia de entrada. De forma independiente, una carga eléctrica ideal demanda $1200\,\mathrm W$ a $28\,\mathrm V$, con resistencia total de ida y retorno de $0.040\,\Omega$.
+\begin{enumerate}[label=\alph*)]
+\item Halle corriente nominal y pérdida resistiva utilizando esa corriente. Indique la aproximación en el uso de 28 V como tensión de la carga. (1.0)
+\item Compare potencias y describa un camino de disipación térmica que el diseño debería prever. (1.0)
+\item Si se duplican dos bombas pero ambas dependen de una única barra eléctrica, identifique una causa común que pueda perder la función. Distinga redundancia de independencia. (1.0)
+\end{enumerate}

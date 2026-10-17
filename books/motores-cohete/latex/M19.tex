@@ -1,0 +1,27 @@
+\begin{studiumworked}{M19. Demanda de bomba y cierre de eje · INTERMEDIATE}
+\textbf{Enunciado original.} Una bomba académica eleva presión en $1.58\,\mathrm{MPa}$ para caudal $3.9\,\mathrm{kg/s}$ de un líquido de densidad 1000 kg/m$^3$, con rendimiento 0.72. Una turbina dispone de salto isentrópico 220 kJ/kg, rendimiento 0.80 y transmisión 0.95. Halle potencia demandada y caudal de turbina para equilibrio de eje.
+
+\textbf{Datos utilizados.} Caudal líquido: $3.9\,\mathrm{kg/s}$; Salto presión: $1.580000\times10^{6}\,\mathrm{Pa}$; Densidad: $1000\,\mathrm{kg/m^3}$; Rendimiento bomba: $0.72$.
+
+\textbf{Incógnitas.} Potencia y caudal de turbina.
+
+\textbf{Hipótesis.} Líquido incompresible; régimen estacionario. Rendimientos definidos respecto al mismo balance; sin otros auxiliares.
+
+\textbf{Modelo físico.} Trabajo de presión y potencia de eje.
+\[w_p=\Delta p/(\rho\eta_p),\quad P_p=\dot m w_p\]
+\[P_t=\eta_m\dot m_t\eta_t\Delta h_{is}\]
+\[\dot m_t=P_p/(\eta_m\eta_t\Delta h_{is})\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item El trabajo hidráulico ideal es $1580\,\mathrm{J/kg}$; dividir por 0.72 aumenta la demanda a $2194.444\,\mathrm{J/kg}$. Multiplicar por caudal produce $8558.333\,\mathrm{W}$.
+\item El salto útil entregado al eje por kg de gas de turbina es $0.95\cdot0.80\cdot220000=1.672000\times10^{5}$ J/kg. Dividir la demanda por ese valor da $0.0511862\,\mathrm{kg/s}$.
+\item El salto se convirtió de kJ/kg a J/kg antes de sustituir. El rendimiento de bomba divide la demanda y el de turbina multiplica la capacidad: invertirlos permitiría obtener trabajo útil mayor que el disponible.
+\end{enumerate}
+\textbf{Resultados.} $P_p=8558.333$ W; $\dot m_t=0.0511862$ kg/s.
+
+\textbf{Interpretación.} El balance energético cierra un eje idealizado, pero todavía faltan presiones que permitan la expansión y el destino de la corriente de turbina.
+
+\textbf{Comprobación.} $0.95\dot m_t0.80\Delta h_{is}=8558.333$ W. Todos los rendimientos están entre cero y uno, y potencia tiene dimensión de trabajo por tiempo.
+
+\textbf{Límites.} No se comprueba cavitación, velocidad de giro, resistencia ni cierre completo de un ciclo de motor.
+\end{studiumworked}

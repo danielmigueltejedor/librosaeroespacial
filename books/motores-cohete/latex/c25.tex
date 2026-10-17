@@ -1,0 +1,68 @@
+\chapter{Masa variable y ecuación de Tsiolkovski}\label{ch:25}
+\objetivos{Derivar la ecuación de movimiento desde un sistema material; integrar el caso ideal; incluir fuerza externa y velocidad efectiva variable; distinguir presupuesto de delta-v y velocidad de una órbita.}
+\section{Por qué no basta con derivar mv}
+La segunda ley se aplica directamente a un sistema material de masa fija. Un vehículo que expulsa propulsante es un sistema abierto si se considera sólo la parte que permanece. Escribir $F=d(mv)/dt$ sin contabilizar el momento que cruza su frontera atribuye incorrectamente al vehículo el momento de la masa saliente.
+
+Tomemos un intervalo $dt$ y un marco inercial. Al principio, vehículo y masa que va a expulsarse tienen masa conjunta $m$ y velocidad $v$. Al final, permanece una masa $m+dm$, con $dm<0$, a velocidad $v+dv$, y se ha expulsado masa $-dm$ con velocidad inercial $v-v_e$ a primer orden. La suma de momentos finales menos el inicial es
+\begin{align}
+ dP&=(m+dm)(v+dv)+(-dm)(v-v_e)-mv\\
+ &=m\,dv+v_e\,dm+dm\,dv.
+\end{align}
+El producto de diferenciales es de segundo orden. Si no hay fuerzas externas distintas de la contribución de presión ya incorporada al empuje, resulta $m\,dv=-v_e\,dm$ en el caso de descarga adaptada. El signo permite acelerar hacia delante mientras la masa disminuye.
+\section{Velocidad efectiva y fuerzas externas}
+La presión de salida añade fuerza $(p_e-p_a)A_e$. Con caudal positivo $\dot m_p=-dm/dt$ y velocidad efectiva $c=F/\dot m_p$,
+\begin{equation}\label{eq:rocketdiff}
+ m\frac{dv}{dt}=-c\frac{dm}{dt}+F_{ext}.
+\end{equation}
+El empuje ya contiene el término de presión. Añadirlo otra vez a \eqref{eq:rocketdiff} lo duplicaría. Las fuerzas externas incluyen gravedad y resistencia según la frontera y el marco elegidos. La masa $m$ incluye estructura, carga útil, propulsante restante y todos los elementos que siguen unidos.
+
+La aceleración inicial $F/m_0$ suele ser menor que la final si el empuje se mantiene y la masa baja. Una aceleración constante no se deduce de empuje constante. Tampoco la duración queda fijada sólo por $I_{sp}$: hace falta caudal o empuje y masa consumida.
+\section{Integración ideal}
+Si $F_{ext}=0$, el movimiento es rectilíneo, la velocidad efectiva es constante y no se desprende masa seca durante el intervalo,
+\[
+ dv=-c\frac{dm}{m}.
+\]
+Integrando entre $m_0,v_0$ y $m_f,v_f$,
+\begin{equation}\label{eq:tsiolkovski}
+ \boxed{\Delta v_{ideal}=v_f-v_0=c\ln\frac{m_0}{m_f}
+ =g_0I_{sp}\ln\frac{m_0}{m_f}}.
+\end{equation}
+El logaritmo necesita un cociente adimensional. El resultado tiene unidades de velocidad. La ecuación es independiente del tiempo de expulsión bajo esas hipótesis; esa independencia desaparece cuando fuerzas externas o disponibilidad de potencia influyen en trayectoria.\cite{MIT32,JPL-EP}
+
+La relación inversa es $m_0/m_f=\exp(\Delta v/c)$. La fracción de masa consumida es
+\[
+ \frac{m_p}{m_0}=1-e^{-\Delta v/c}.
+\]
+Para $\Delta v/c\ll1$, expandir la exponencial da $m_p/m_0\simeq\Delta v/c$. Esta aproximación pierde precisión cuando la fracción deja de ser pequeña. No sustituye al logaritmo en una etapa con gran consumo relativo.
+\section{Sensibilidad y rendimientos decrecientes}
+Con $m_f$ fijo,
+\[
+ \frac{\partial\Delta v}{\partial m_0}=\frac{c}{m_0},\qquad
+ \frac{\partial^2\Delta v}{\partial m_0^2}=-\frac{c}{m_0^2}.
+\]
+Añadir masa inicial de propulsante produce una ganancia logarítmica y exige acelerar esa masa mientras permanece a bordo. Reducir masa seca puede tener un efecto intenso porque disminuye $m_f$ y, si cambia el sistema completo, también puede alterar otras masas.
+
+A relación de masas fija, $\partial\Delta v/\partial c=\ln(m_0/m_f)$. Sin embargo, aumentar velocidad efectiva mediante una tecnología que añade mucha masa seca modifica la relación de masas. Comparar sólo el incremento de $I_{sp}$ sobreestima la ventaja si se mantiene ficticiamente el mismo presupuesto de masas.
+\section{Velocidad efectiva variable}
+Si $c$ cambia con estado, mezcla o ambiente,
+\[
+ \Delta v_{ideal}=\int_{m_f}^{m_0}\frac{c(m)}{m}\,dm.
+\]
+El promedio relevante para esta integral está ponderado por $dm/m$, no por masa consumida solamente ni por tiempo. El promedio que reproduce impulso total y el que reproduce delta-v no tienen por qué coincidir.
+
+Para una descarga de potencia fija, $c$ puede fijarse aproximadamente y el empuje depender de potencia; si la potencia cambia, cambia duración y posiblemente régimen. Si se regula $c$, el caudal también cambia. La ecuación ideal sigue siendo un componente de la misión, pero no calcula por sí sola tiempo de transferencia.
+\section{Delta-v y órbita}
+La velocidad circular en un campo central es $v_c=\sqrt{\mu/r}$, obtenida al igualar aceleración centrípeta y gravitatoria. Es una propiedad de una órbita a radio $r$, no el delta-v propulsivo total desde una superficie. Un lanzamiento debe cambiar energía y momento angular, vencer efectos de gravedad durante el empuje y atravesar una atmósfera, con condiciones iniciales que incluyen rotación del planeta.
+
+El presupuesto de delta-v suma maniobras y términos definidos para una misión. No es automáticamente el módulo de la velocidad final ni la diferencia escalar entre velocidades orbitales. En maniobras vectoriales, cambiar dirección puede consumir delta-v aun sin cambiar rapidez. Una órbita circular requiere dirección tangencial además de una rapidez apropiada.
+\figura{c25}{Ganancia logarítmica del modelo ideal. No representa velocidad orbital alcanzada desde una superficie.}
+\section{Caso desarrollado}
+\input{M25.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Repita la derivación con $dm<0$ y compruebe el signo del incremento de velocidad.
+\item Calcule fracción consumida para $\Delta v/c=0.2$ y compare con la aproximación lineal.
+\item Obtenga la masa de propulsante requerida a partir de una masa final dada.
+\item Explique por qué un delta-v ideal igual a velocidad circular no demuestra que un vehículo alcance esa órbita desde una superficie.
+\end{enumerate}
+\resumen{La masa saliente transporta momento y debe contabilizarse. Tsiolkovski integra un modelo sin fuerzas externas y con velocidad efectiva constante. Su delta-v es una capacidad ideal de maniobra, distinta de velocidad orbital, tiempo de vuelo y prestación real de lanzamiento.}

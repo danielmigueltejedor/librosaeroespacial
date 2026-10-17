@@ -1,0 +1,93 @@
+\chapter{Materiales aeronáuticos}\label{ch:17}
+\objetivos{Relacionar microestructura y comportamiento; seleccionar un material con un criterio mecánico explícito; distinguir propiedades específicas, anisotropía y degradación; interpretar datos educativos sin convertirlos en admisibles de diseño.}
+
+\section{La selección empieza por la función}
+El material adecuado depende de lo que debe hacer la pieza, de cómo se fabrica y de cómo cambia durante su vida. Un larguerillo comprimido necesita rigidez y estabilidad; un disco de turbina debe conservar capacidad mecánica a temperatura elevada; un borde de ataque soporta impactos y ambiente; una junta necesita deformarse y recuperar su forma. No existe una clasificación universal en la que un material sea mejor en todas las funciones.
+
+Una comparación útil distingue propiedades del material y propiedades del componente. El módulo de Young pertenece a la respuesta constitutiva idealizada; la rigidez de una barra depende además de $A/L$. La resistencia de una probeta no determina directamente la de una unión con taladros, cambios de sección y pretensiones. La densidad influye en masa, pero una reducción de densidad puede exigir mayor espesor por rigidez, pandeo o impacto. La decisión debe cerrar simultáneamente esos requisitos.
+
+Los manuales FAA describen familias y aplicaciones para comprender estructuras y procedimientos de fabricación \cite{FAA-AIRFRAME}. En este capítulo, los números de los ejemplos son parámetros inventados con finalidad educativa. No son valores estadísticos certificados ni corresponden a una aleación, tratamiento, fabricante o laminado específicos. Los datos utilizables en un proyecto real requieren trazabilidad del lote, orientación, temperatura, proceso y criterio de aceptación.
+
+\figura{materials}{Índices de rigidez y resistencia específicas con valores ilustrativos declarados en el manifiesto gráfico. El compuesto se considera en la dirección de fibra; los datos no son valores admisibles de diseño.}
+
+\section{Metales: enlace, microestructura y tratamiento}
+En un metal, la deformación elástica corresponde principalmente a cambios reversibles de separación atómica. La deformación plástica implica movimiento de dislocaciones. Obstaculizar ese movimiento aumenta la resistencia, aunque puede reducir ductilidad y modificar sensibilidad al daño. El endurecimiento por deformación, la solución sólida, los precipitados y el control del tamaño de grano actúan mediante mecanismos distintos y no producen idéntica respuesta frente a temperatura o corrosión.
+
+Las aleaciones de aluminio combinan baja densidad con fabricación extendida. Las familias y tratamientos presentan compromisos entre resistencia, tenacidad, soldabilidad y corrosión. El acero puede ser conveniente donde se precisan alta resistencia, desgaste controlado o dimensiones reducidas, aunque penalice la masa. El titanio ofrece una combinación útil de resistencia específica, comportamiento ambiental y temperatura, a cambio de dificultades de procesado y coste. Las superaleaciones de base níquel conservan propiedades en zonas calientes por mecanismos microestructurales que no se deducen de su resistencia a temperatura ambiente.
+
+Un tratamiento térmico cambia la microestructura y, por tanto, la curva tensión--deformación. No basta indicar composición química. Un calentamiento posterior durante fabricación o servicio puede alterar precipitados, tensiones residuales y propiedades. Del mismo modo, una unión soldada incluye material base, zona afectada térmicamente y cordón, cada uno con historia distinta. Analizar una estructura como un conjunto de bloques con una única resistencia puede ocultar el lugar donde comenzará el fallo.
+
+Para una respuesta uniaxial elástica lineal se emplea $\sigma=E\varepsilon$. La deformación $\varepsilon$ es adimensional. Esta ley no describe fluencia plástica, histéresis ni dependencia temporal. Bajo una tensión sostenida y temperatura elevada puede aparecer fluencia lenta: la deformación aumenta aunque la carga no cambie. El tiempo entra entonces como variable de diseño, junto con tensión y temperatura. La oxidación y las interacciones con el ambiente pueden acortar la vida sin que cambie mucho la carga aplicada.
+
+\section{Compuestos: orientar la rigidez}
+Un material compuesto de fibras y matriz permite colocar capacidad mecánica en direcciones elegidas. La fibra suele aportar gran parte de la rigidez longitudinal; la matriz mantiene su posición, transfiere cortadura, protege superficies y contribuye a las propiedades transversales. Si falla esa transferencia, la existencia de fibras resistentes no garantiza que la carga alcance todas ellas. La interfaz es parte funcional del material.
+
+Para una lámina unidireccional ideal cargada paralelamente a fibras continuas, con adherencia perfecta e igual deformación longitudinal en ambas fases, una regla de mezclas aproxima
+\begin{equation}
+ E_1\simeq V_fE_f+(1-V_f)E_m,\qquad
+ \rho_c=V_f\rho_f+(1-V_f)\rho_m.
+\end{equation}
+$V_f$ es la fracción volumétrica de fibra, entre cero y uno. La densidad promedia volúmenes; no debe introducirse una fracción másica en esa expresión. La regla longitudinal no se traslada directamente a resistencia o rigidez transversal. Bajo una idealización de igual tensión transversal, la flexibilidad se combina aproximadamente como $1/E_2\simeq V_f/E_f+(1-V_f)/E_m$, pero la geometría real requiere modelos más completos.
+
+Un laminado combina láminas con distintas orientaciones. Las de dirección principal resisten cargas longitudinales, las inclinadas contribuyen frente a cortadura y las transversales estabilizan y distribuyen esfuerzos. El orden de apilamiento importa: dos laminados con igual porcentaje de orientaciones pueden presentar diferente flexión y acoplamiento. Una disposición simétrica respecto al plano medio elimina determinados acoplamientos extensión--flexión en la teoría lineal clásica, mientras que equilibrar orientaciones opuestas elimina otros términos. Simétrico y equilibrado son condiciones diferentes.
+
+La anisotropía exige pensar en modos de fallo: rotura de fibra, fisuración de matriz, despegue, delaminación y pérdida de estabilidad. Un impacto puede producir daño interno con señal superficial reducida. Una perforación interrumpe fibras y modifica la transferencia de carga. Por ello no es correcto sustituir metal por compuesto conservando forma y aceptando una única tensión equivalente sin revisar uniones, entorno y procesos.
+
+\section{Temperatura, corrosión y compatibilidad}
+La dilatación térmica libre de una barra homogénea se aproxima por
+\begin{equation}
+ \Delta L=\alpha L\Delta T.
+\end{equation}
+Si se impide totalmente esa dilatación y el comportamiento sigue siendo elástico uniaxial, aparece $\sigma=-E\alpha\Delta T$: un calentamiento positivo genera compresión. Las dimensiones son coherentes porque $\alpha$ se mide en inversos de kelvin. En uniones de materiales diferentes, la incompatibilidad de dilatación puede inducir cortadura y flexión aunque no exista carga externa. En un compuesto, los coeficientes dependen de la dirección y del apilamiento.
+
+La corrosión galvánica necesita materiales con distinto potencial, contacto eléctrico y un electrolito. El área relativa de las zonas y la exposición influyen en el ataque. Un compuesto con fibra de carbono puede participar en esa pareja con un metal; la matriz polimérica no basta para asumir aislamiento perfecto en todos los detalles. Barreras, sellado y selección compatible forman parte del diseño, pero su aplicación concreta exige documentación del producto.
+
+La degradación puede cambiar varios parámetros a la vez. Absorción de humedad y temperatura alteran respuesta de algunas matrices; ciclos térmicos generan incompatibilidades; radiación y ambiente afectan polímeros. En metales, la corrosión puede reducir sección y crear concentradores que favorecen fatiga. Por eso la durabilidad no se obtiene únicamente aplicando un coeficiente a la resistencia inicial.
+
+\section{Índices de selección y fabricación}
+Para una barra a tracción dimensionada solo por rigidez axial $k=EA/L$, la masa es $m=\rho AL=\rho kL^2/E$. Con longitud y rigidez fijadas, conviene minimizar $\rho/E$, o maximizar $E/\rho$. Si gobierna la resistencia con tensión admisible $\sigma_a$, resulta $m=\rho NL/\sigma_a$ y el índice cambia a $\sigma_a/\rho$. El objetivo y las restricciones determinan el índice: aplicar uno de ellos a una viga de geometría variable puede producir una elección equivocada.
+
+La fabricación transforma la selección. Forja, laminación, mecanizado, conformado, adhesivado y curado introducen orientaciones, defectos y tolerancias particulares. Un material con propiedades atractivas puede ser inadecuado si no se reproduce de forma controlada la geometría o si su inspección resulta incompatible con el acceso disponible. Coste incluye desperdicio, herramientas, reparación, unión y fin de vida, además del precio por kilogramo.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: barra limitada por rigidez}
+\begin{studiumworked}{Problema resuelto: barra limitada por rigidez}
+
+\textbf{1. Enunciado.} Se comparan dos materiales educativos para una barra que debe soportar $12\,\mathrm{kN}$ con alargamiento máximo de $0.6\,\mathrm{mm}$. Determine sección y masa mínimas según un modelo exclusivamente elástico.
+
+\textbf{2. Datos.} $L=1.2\,\mathrm{m}$; material A: $E_A=70\,\mathrm{GPa}$, $\rho_A=2700\,\mathrm{kg/m^3}$; material B: $E_B=120\,\mathrm{GPa}$, $\rho_B=1600\,\mathrm{kg/m^3}$. Para B se supone carga alineada con su dirección resistente.
+
+\textbf{3. Incógnitas.} Áreas $A_A,A_B$, masas $m_A,m_B$ y tensiones resultantes.
+
+\textbf{4. Esquema verbal.} Barra recta entre dos uniones alineadas; fuerzas axiales iguales y opuestas, sin excentricidad.
+
+\textbf{5. Hipótesis.} Deformación pequeña, temperatura constante, carga estática, módulo uniforme y uniones perfectamente eficaces. Se ignoran resistencia y daño, que se comprobarían después.
+
+\textbf{6. Modelo.} La condición activa es $\delta=NL/(EA)=\delta_{\max}$.
+
+\textbf{7. Ecuaciones.} $A=NL/(E\delta_{\max})$, $m=\rho AL$ y $\sigma=N/A$.
+
+\textbf{8. Despeje.} Sustituyendo el área en la masa, $m=\rho NL^2/(E\delta_{\max})$. El cociente de masas será $(\rho_B/E_B)/(\rho_A/E_A)$.
+
+\textbf{9. Sustitución.} Para A, $A_A=12000(1.2)/(70\times10^9\,0.0006)$. Para B se reemplaza el módulo por $120\times10^9\,\mathrm{Pa}$.
+
+\textbf{10. Resultado.} $A_A=342.86\,\mathrm{mm^2}$, $m_A=1.111\,\mathrm{kg}$ y $\sigma_A=35\,\mathrm{MPa}$. Para B: $A_B=200.00\,\mathrm{mm^2}$, $m_B=0.384\,\mathrm{kg}$ y $\sigma_B=60\,\mathrm{MPa}$.
+
+\textbf{11. Interpretación.} B reduce la masa un $65.4\,\text{\%}$ en este modelo. Su menor sección produce mayor tensión; ganar por rigidez no demuestra ganar por resistencia, impacto o unión.
+
+\textbf{12. Comprobación independiente.} La deformación permitida es $0.0006/1.2=0.0005$. La ley constitutiva da $70\times10^9(0.0005)=35\,\mathrm{MPa}$ y $120\times10^9(0.0005)=60\,\mathrm{MPa}$, coincidiendo con $N/A$. El cociente de masas por propiedades específicas es $0.34568$, igual al obtenido geométricamente.
+
+\textbf{13. Limitaciones.} Faltan admisibles estadísticos, orientación real, tolerancias, concentración de tensiones, durabilidad, acceso e inspección. La comparación no autoriza una sustitución de material.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Calcule la dilatación libre de una barra de $2\,\mathrm{m}$ con $\alpha=23\times10^{-6}\,\mathrm{K^{-1}}$ al calentarse $40\,\mathrm{K}$.
+\item Intermedio. Para $V_f=0.6$, $E_f=230\,\mathrm{GPa}$ y $E_m=3\,\mathrm{GPa}$, estime $E_1$ por igualdad de deformaciones.
+\item Intermedio. Una barra de $E=70\,\mathrm{GPa}$ y $\alpha=23\times10^{-6}\,\mathrm{K^{-1}}$ queda totalmente impedida. Determine la tensión al calentarla $30\,\mathrm{K}$.
+\item Análisis. Replantee el problema resuelto si gobierna resistencia: material A admite educativamente $100\,\mathrm{MPa}$ y B $80\,\mathrm{MPa}$. Compare masas y compruebe alargamientos.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $1.84\,\mathrm{mm}$. 2: $139.2\,\mathrm{GPa}$. 3: $-48.3\,\mathrm{MPa}$, compresión. 4: por resistencia, $m_A=0.3888\,\mathrm{kg}$ y $m_B=0.2880\,\mathrm{kg}$; los alargamientos $1.714$ y $0.800\,\mathrm{mm}$ incumplen la condición inicial, por lo que sigue gobernando rigidez.
+
+\resumen{Seleccionar material exige identificar la función y el mecanismo limitante. Microestructura, orientación, proceso y ambiente modifican el comportamiento. Las propiedades específicas solo ayudan cuando derivan del problema correcto. Los compuestos permiten orientar rigidez, pero añaden anisotropía y modos de daño que una tensión única no representa.}
+\textbf{Autoevaluación.} ¿Por qué un tratamiento térmico debe formar parte de la identificación del material? ¿Qué hipótesis permite la regla longitudinal de mezclas? ¿Por qué una menor densidad no garantiza menor masa de componente?

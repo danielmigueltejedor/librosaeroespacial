@@ -1,0 +1,1018 @@
+\input{preamble.tex}
+\hypersetup{pdftitle={Tecnología Aeroespacial — Problemas resueltos originales}}
+\begin{document}
+\portada{PROBLEMAS\\RESUELTOS}{Tecnología Aeroespacial}
+\frontmatter
+\chapter*{Uso del cuaderno}
+Estos treinta problemas complementan los ejemplos completos del manual. Sus identificadores P01–P30 se mantienen al cambiar la paginación. Los tres simulacros tienen sus soluciones al final de este cuaderno; el documento de enunciados no contiene respuestas. Se consideran ejercicios originales de aprendizaje, sin atribuirlos al profesorado ni a convocatorias oficiales.
+
+Las comprobaciones de cálculo, dimensiones y rutas alternativas se han ejecutado y se conservan en los informes. Una ruta alternativa puede ser un balance, una inversión o un algoritmo numérico dentro del mismo modelo: eso no demuestra por sí solo que la idealización represente una aeronave real. Las hipótesis y límites forman parte de la respuesta. Los resultados se redondean aquí a seis cifras como máximo; el código conserva precisión interna. Y designa la incógnita de cada caso, cuya magnitud queda definida por su unidad y el enunciado.
+\tableofcontents
+\mainmatter
+\chapter*{P01 · Presión a seis kilómetros}
+\addcontentsline{toc}{chapter}{P01 · Presión a seis kilómetros}
+\begin{studiumworked}{P01 · Presión a seis kilómetros}
+\textbf{1. Enunciado.} Calcule la presión estándar a 6000 m y explique por qué no es proporcional a la altura.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$pb$ & $101325\,\mathrm{Pa}$ & Presión base\\
+$Tb$ & $288.15\,\mathrm K$ & Temperatura base\\
+$\beta$ & $0.0065\,\mathrm{K/m}$ & Descenso térmico positivo\\
+$H$ & $6000\,\mathrm m$ & Altitud geopotencial\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad convencional\\
+$R$ & $287.053\,\mathrm{J/(kg\,K)}$ & Constante aire\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{Pa}$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Aire seco ideal; altitud geopotencial. Equilibrio hidrostático con g0; gradiente constante en la capa.
+
+\textbf{6. Modelo físico.} Integrar dp/p=-g dH/[R(Tb-beta H)].
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=pb \left(- \frac{H \beta}{Tb} + 1\right)^{\frac{g}{R \beta}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(101325\cdot \left(\left(1-\frac{\left(0.0065\cdot 6000\right)}{288.15}\right)\right)^{\frac{9.80665}{\left(287.05287\cdot 0.0065\right)}}\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=47181\,\mathrm{Pa}$.
+
+\textbf{11. Interpretación física.} La presión disminuye; su curvatura evita extrapolar una recta hasta gran altitud.
+
+\textbf{12. Comprobación por otra ruta.} Integre la ecuación diferencial hidrostática con un método adaptativo y compare; script check\_science.py usa una integración independiente en alturas de control. La ejecución de la ruta alternativa da $Y_{alt}=47181\,\mathrm{Pa}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Sólo troposfera 0–11 km; no atmósfera real.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P02 · Densidad troposférica}
+\addcontentsline{toc}{chapter}{P02 · Densidad troposférica}
+\begin{studiumworked}{P02 · Densidad troposférica}
+\textbf{1. Enunciado.} Obtenga la densidad estándar a 6000 m sin redondear primero la temperatura.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$pb$ & $101325\,\mathrm{Pa}$ & Presión base\\
+$Tb$ & $288.15\,\mathrm K$ & Temperatura base\\
+$\beta$ & $0.0065\,\mathrm{K/m}$ & Descenso térmico\\
+$H$ & $6000\,\mathrm m$ & Altitud\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad\\
+$R$ & $287.053\,\mathrm{J/(kg\,K)}$ & Constante aire\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{kg\,m^{-3}}$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Aire seco ideal; altitud geopotencial. Equilibrio hidrostático con g0; gradiente constante en la capa.
+
+\textbf{6. Modelo físico.} Combinar p(H) y rho=p/(RT).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{pb \left(- \frac{H \beta}{Tb} + 1\right)^{-1 + \frac{g}{R \beta}}}{R Tb}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\frac{101325}{\left(287.05287\cdot 288.15\right)}\cdot \left(\left(1-\frac{\left(0.0065\cdot 6000\right)}{288.15}\right)\right)^{\left(\frac{9.80665}{\left(287.05287\cdot 0.0065\right)}-1\right)}\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.659697\,\mathrm{kg\,m^{-3}}$.
+
+\textbf{11. Interpretación física.} Densidad menor exige mayor TAS para igual sustentación y CL.
+
+\textbf{12. Comprobación por otra ruta.} Compruebe rho R T=p usando P01 y T=Tb-beta H; es un cierre de estado, no evidencia independiente de la atmósfera real. La ejecución de la ruta alternativa da $Y_{alt}=0.659697\,\mathrm{kg\,m^{-3}}$, con diferencia relativa $2.22\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No incorporar humedad sin modificar la ecuación de estado.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P03 · Capa isoterma}
+\addcontentsline{toc}{chapter}{P03 · Capa isoterma}
+\begin{studiumworked}{P03 · Capa isoterma}
+\textbf{1. Enunciado.} Determine la presión a 16 km utilizando la base de 11 km.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$pb$ & $22632\,\mathrm{Pa}$ & Presión base\\
+$Tb$ & $216.65\,\mathrm K$ & Temperatura capa\\
+$dH$ & $5000\,\mathrm m$ & Salto de altitud\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad\\
+$R$ & $287.053\,\mathrm{J/(kg\,K)}$ & Constante aire\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{Pa}$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Capa 11–20 km isoterma; gas ideal seco.
+
+\textbf{6. Modelo físico.} Integración de la hidrostática con temperatura constante.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=pb e^{- \frac{dH g}{R Tb}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(22632.0400950078\cdot \operatorname{exp}\left(\frac{\left(-\left(9.80665\right)\cdot 5000\right)}{\left(287.05287\cdot 216.65\right)}\right)\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=10287.4\,\mathrm{Pa}$.
+
+\textbf{11. Interpretación física.} Se continúa desde la base de capa; no se reinicia con presión de nivel del mar.
+
+\textbf{12. Comprobación por otra ruta.} El límite del modelo de gradiente cuando éste tiende a cero coincide simbólicamente con la exponencial. La ejecución de la ruta alternativa da $Y_{alt}=10287.4\,\mathrm{Pa}$, con diferencia relativa $1.77\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La altitud dada es geopotencial.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P04 · Altitud geométrica y geopotencial}
+\addcontentsline{toc}{chapter}{P04 · Altitud geométrica y geopotencial}
+\begin{studiumworked}{P04 · Altitud geométrica y geopotencial}
+\textbf{1. Enunciado.} Convierta 14 km geométricos al argumento de la atmósfera estándar.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$Rearth$ & $6.35677\times10^{6}\,\mathrm m$ & Radio geopotencial convencional\\
+$z$ & $14000\,\mathrm m$ & Altitud geométrica\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Gravedad inversa al cuadrado en el modelo esférico.
+
+\textbf{6. Modelo físico.} Igualar potencial específico con g0 H.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{Rearth z}{Rearth + z}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(6356766\cdot 14000\right)}{\left(6356766+14000\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=13969.2\,\mathrm m$.
+
+\textbf{11. Interpretación física.} H es ligeramente menor que z, no otra medida barométrica.
+
+\textbf{12. Comprobación por otra ruta.} Sustituya H en z=Rearth H/(Rearth-H) y recupere el dato. La ejecución de la ruta alternativa da $Y_{alt}=13969.2\,\mathrm m$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No es conversión de altura elipsoidal GNSS a altitud ortométrica.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P05 · Altitud de densidad}
+\addcontentsline{toc}{chapter}{P05 · Altitud de densidad}
+\begin{studiumworked}{P05 · Altitud de densidad}
+\textbf{1. Enunciado.} Una masa de aire tiene densidad 0.90 kg/m3. Halle su altitud de densidad troposférica.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$\rho$ & $0.9\,\mathrm{kg\,m^{-3}}$ & Densidad observada\\
+$\rho_{0}$ & $1.225\,\mathrm{kg\,m^{-3}}$ & Densidad estándar base\\
+$Tb$ & $288.15\,\mathrm K$ & Temperatura base\\
+$\beta$ & $0.0065\,\mathrm{K/m}$ & Descenso térmico\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad\\
+$R$ & $287.053\,\mathrm{J/(kg\,K)}$ & Constante aire\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Aire seco ideal; altitud geopotencial. Equilibrio hidrostático con g0; gradiente constante en la capa.
+
+\textbf{6. Modelo físico.} Invertir la relación estándar rho(H), no integrar la atmósfera real.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{Tb \left(1 - \left(\frac{\rho}{\rho_{0}}\right)^{\frac{1}{-1 + \frac{g}{R \beta}}}\right)}{\beta}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\frac{288.15}{0.0065}\cdot \left(1-\left(\frac{0.9}{1.22500001812429}\right)^{\frac{1}{\left(\frac{9.80665}{\left(287.05287\cdot 0.0065\right)}-1\right)}}\right)\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=3097.82\,\mathrm m$.
+
+\textbf{11. Interpretación física.} La altitud de densidad es una equivalencia de prestaciones.
+
+\textbf{12. Comprobación por otra ruta.} Sustituya el H hallado en rhoISA(H); la inversión debe devolver 0.90 kg/m3. La ejecución de la ruta alternativa da $Y_{alt}=3097.82\,\mathrm m$, con diferencia relativa $2.94\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La raíz debe permanecer en 0–11 km.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P06 · Mach de crucero}
+\addcontentsline{toc}{chapter}{P06 · Mach de crucero}
+\begin{studiumworked}{P06 · Mach de crucero}
+\textbf{1. Enunciado.} Calcule Mach con TAS=175 m/s y T=249 K.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$V$ & $175\,\mathrm{m\,s^{-1}}$ & TAS\\
+$\gamma$ & $1.4\,\text{(adimensional)}$ & Razón calores\\
+$R$ & $287.053\,\mathrm{J/(kg\,K)}$ & Constante aire\\
+$T$ & $249\,\mathrm K$ & Temperatura estática\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Gas caloríficamente perfecto.
+
+\textbf{6. Modelo físico.} Sonido adiabático a²=gamma RT; M=V/a.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{V}{\sqrt{R T \gamma}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{175}{\sqrt{\left(\left(1.4\cdot 287.05287\right)\cdot 249\right)}}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.553214\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} El régimen es subsónico, pero la compresibilidad no es despreciable por defecto.
+
+\textbf{12. Comprobación por otra ruta.} Verifique V=M a; compare la presión de impacto isentrópica con q para estimar el error incompresible. La ejecución de la ruta alternativa da $Y_{alt}=0.553214\,\text{(adimensional)}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La temperatura es estática y absoluta.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P07 · Semiángulo de Mach}
+\addcontentsline{toc}{chapter}{P07 · Semiángulo de Mach}
+\begin{studiumworked}{P07 · Semiángulo de Mach}
+\textbf{1. Enunciado.} Una fuente se mueve a Mach 1.65. Calcule el semiángulo de su cono acústico.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$Ma$ & $1.65\,\text{(adimensional)}$ & Número de Mach\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en ${}^\circ$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Velocidad supersónica uniforme; medio homogéneo.
+
+\textbf{6. Modelo físico.} Geometría de la envolvente: sin(mu)=1/M.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{180 \operatorname{asin}{\left(\frac{1}{Ma} \right)}}{\pi}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\operatorname{asin}\left(\frac{1}{1.65}\right)\cdot 180\right)}{\pi}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=37.3052\,{}^\circ$.
+
+\textbf{11. Interpretación física.} Mayor Mach estrecha el cono; el ángulo de un choque finito puede ser distinto.
+
+\textbf{12. Comprobación por otra ruta.} Calcule seno del ángulo en radianes y recupere 1/M. La ejecución de la ruta alternativa da $Y_{alt}=37.3052\,{}^\circ$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No confundir Mach con ángulo de choque oblicuo.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P08 · Cuerda a partir de Reynolds}
+\addcontentsline{toc}{chapter}{P08 · Cuerda a partir de Reynolds}
+\begin{studiumworked}{P08 · Cuerda a partir de Reynolds}
+\textbf{1. Enunciado.} Dimensione la cuerda del modelo de túnel a partir del Reynolds exigido.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$Re$ & $2.7\times10^{6}\,\text{(adimensional)}$ & Reynolds\\
+$\mu$ & $1.76\times10^{-5}\,\mathrm{Pa\,s}$ & Viscosidad\\
+$\rho$ & $1.12\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+$V$ & $28\,\mathrm{m\,s^{-1}}$ & Velocidad\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Flujo exterior caracterizado con cuerda y propiedades uniformes.
+
+\textbf{6. Modelo físico.} Re=rho V c/mu.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{Re \mu}{V \rho}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(2700000\cdot 1.76\times 10^{-05}\right)}{\left(1.12\cdot 28\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=1.51531\,\mathrm m$.
+
+\textbf{11. Interpretación física.} Una cuerda mayor permite mantener Re con menor velocidad.
+
+\textbf{12. Comprobación por otra ruta.} Reconstruya Re con la cuerda obtenida y pruebe que duplicar V divide c por dos. La ejecución de la ruta alternativa da $Y_{alt}=1.51531\,\mathrm m$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Igualar Re no iguala Mach, rugosidad o turbulencia de entrada.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P09 · Continuidad compresible}
+\addcontentsline{toc}{chapter}{P09 · Continuidad compresible}
+\begin{studiumworked}{P09 · Continuidad compresible}
+\textbf{1. Enunciado.} En un conducto entran aire de 1.15 kg/m3 a 130 m/s por 0.42 m2 y salen a 210 m/s por 0.31 m2. Halle rho de salida.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$\rho_{1}$ & $1.15\,\mathrm{kg\,m^{-3}}$ & Densidad entrada\\
+$A_{1}$ & $0.42\,\mathrm{m^2}$ & Área entrada\\
+$V_{1}$ & $130\,\mathrm{m\,s^{-1}}$ & Velocidad entrada\\
+$A_{2}$ & $0.31\,\mathrm{m^2}$ & Área salida\\
+$V_{2}$ & $210\,\mathrm{m\,s^{-1}}$ & Velocidad salida\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{kg\,m^{-3}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Estacionario, sin fugas; valores uniformes de sección.
+
+\textbf{6. Modelo físico.} Balance integral de masa.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{A_{1} V_{1} \rho_{1}}{A_{2} V_{2}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\left(1.15\cdot 0.42\right)\cdot 130\right)}{\left(0.31\cdot 210\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.964516\,\mathrm{kg\,m^{-3}}$.
+
+\textbf{11. Interpretación física.} La densidad cambia: A V no se conserva por sí solo.
+
+\textbf{12. Comprobación por otra ruta.} Compare los dos caudales másicos rho A V; este cierre no fija presión ni temperatura. La ejecución de la ruta alternativa da $Y_{alt}=0.964516\,\mathrm{kg\,m^{-3}}$, con diferencia relativa $2.22\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Continuidad no determina si el conducto es adiabático o isentrópico.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P10 · Aceleración por caída de presión}
+\addcontentsline{toc}{chapter}{P10 · Aceleración por caída de presión}
+\begin{studiumworked}{P10 · Aceleración por caída de presión}
+\textbf{1. Enunciado.} En una corriente de baja velocidad, p1-p2=420 Pa y V1=24 m/s. Halle V2 a rho=1.18 kg/m3.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$V_{1}$ & $24\,\mathrm{m\,s^{-1}}$ & Velocidad inicial\\
+$dp$ & $420\,\mathrm{Pa}$ & Caída presión\\
+$\rho$ & $1.18\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Estacionario, incompresible, sin viscosidad relevante en la línea seguida. Misma cota; sin máquinas ni pérdidas.
+
+\textbf{6. Modelo físico.} Integrar Euler a lo largo de la corriente.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\sqrt{V_{1}^{2} + \frac{2 dp}{\rho}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\sqrt{\left(\left(24\right)^{2}+\frac{\left(2\cdot 420\right)}{1.18}\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=35.8868\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} Menor presión estática acompaña mayor energía cinética específica.
+
+\textbf{12. Comprobación por otra ruta.} Compruebe la diferencia de energías cinéticas rho(V2²−V1²)/2=dp y evalúe Mach. La ejecución de la ruta alternativa da $Y_{alt}=35.8868\,\mathrm{m\,s^{-1}}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No trasladar la igualdad a un conducto real con pérdidas sin añadirlas.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P11 · Pitot de baja velocidad}
+\addcontentsline{toc}{chapter}{P11 · Pitot de baja velocidad}
+\begin{studiumworked}{P11 · Pitot de baja velocidad}
+\textbf{1. Enunciado.} Un Pitot mide presión de impacto de 760 Pa en aire de densidad 1.19 kg/m3. Estime TAS y juzgue la aproximación.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$qc$ & $760\,\mathrm{Pa}$ & Presión de impacto\\
+$\rho$ & $1.19\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Flujo subsónico de Mach pequeño; tomas alineadas y calibradas.
+
+\textbf{6. Modelo físico.} pt-p=q bajo aproximación incompresible.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\sqrt{2} \sqrt{\frac{qc}{\rho}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\sqrt{\frac{\left(2\cdot 760\right)}{1.19}}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=35.7395\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} La raíz cuadrada impide que doble presión implique doble velocidad.
+
+\textbf{12. Comprobación por otra ruta.} Calcule q del resultado y compare con una inversión compresible si se conoce p y T. La ejecución de la ruta alternativa da $Y_{alt}=35.7395\,\mathrm{m\,s^{-1}}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No se puede verificar Mach sólo con rho y qc sin datos térmicos adicionales.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P12 · Pitot subsónico compresible}
+\addcontentsline{toc}{chapter}{P12 · Pitot subsónico compresible}
+\begin{studiumworked}{P12 · Pitot subsónico compresible}
+\textbf{1. Enunciado.} Con p=47 kPa y pt=65 kPa, determine el Mach utilizando la relación isentrópica.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$pt$ & $65000\,\mathrm{Pa}$ & Presión total\\
+$p$ & $47000\,\mathrm{Pa}$ & Presión estática\\
+$\gamma$ & $1.4\,\text{(adimensional)}$ & Razón calores\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Subsónico, desaceleración isentrópica ideal hasta la toma.
+
+\textbf{6. Modelo físico.} Relación entre presión total y estática del gas perfecto.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\sqrt{2} \sqrt{\frac{\left(\frac{pt}{p}\right)^{\frac{\gamma - 1}{\gamma}} - 1}{\gamma - 1}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\sqrt{\left(\frac{2}{\left(1.4-1\right)}\cdot \left(\left(\frac{65000}{47000}\right)^{\frac{\left(1.4-1\right)}{1.4}}-1\right)\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.696659\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} Se obtiene Mach sin conocer T; TAS sí exige temperatura.
+
+\textbf{12. Comprobación por otra ruta.} Recalcule pt/p con el Mach encontrado y compruebe M<1. La ejecución de la ruta alternativa da $Y_{alt}=0.696659\,\text{(adimensional)}$, con diferencia relativa $4.44\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Supersónico exige pérdida de presión total a través del choque.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P13 · Carga útil de un globo}
+\addcontentsline{toc}{chapter}{P13 · Carga útil de un globo}
+\begin{studiumworked}{P13 · Carga útil de un globo}
+\textbf{1. Enunciado.} Calcule la masa útil que deja un margen ascensional nulo para un globo de 380 m3, aire de 1.05 kg/m3, helio de 0.15 kg/m3 y estructura de 115 kg.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$rhoair$ & $1.05\,\mathrm{kg\,m^{-3}}$ & Densidad aire\\
+$rhogas$ & $0.15\,\mathrm{kg\,m^{-3}}$ & Densidad helio\\
+$Vol$ & $380\,\mathrm{m^3}$ & Volumen\\
+$ms$ & $115\,\mathrm{kg}$ & Masa estructura\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{kg}$.
+
+\textbf{4. Esquema.} Una columna atmosférica une una base conocida con el nivel de cálculo.
+
+\textbf{5. Hipótesis.} Volumen y densidades dados en condiciones de equilibrio. Masa del gas contabilizada por separado.
+
+\textbf{6. Modelo físico.} Arquímedes y equilibrio de fuerzas.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=Vol \left(rhoair - rhogas\right) - ms\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\left(\left(1.05-0.15\right)\cdot 380\right)-115\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=227\,\mathrm{kg}$.
+
+\textbf{11. Interpretación física.} El margen es masa transportable, no una fuerza.
+
+\textbf{12. Comprobación por otra ruta.} Sume estructura, carga y helio y compare con la masa de aire desplazada. La ejecución de la ruta alternativa da $Y_{alt}=227\,\mathrm{kg}$, con diferencia relativa $1.25\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No incluye aceleración, venteo, expansión límite o masa de equipos omitidos.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P14 · Superficie de un ala trapezoidal}
+\addcontentsline{toc}{chapter}{P14 · Superficie de un ala trapezoidal}
+\begin{studiumworked}{P14 · Superficie de un ala trapezoidal}
+\textbf{1. Enunciado.} Calcule la superficie alar para b=13.5 m, cr=2.4 m y ct/cr=0.48.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$b$ & $13.5\,\mathrm m$ & Envergadura\\
+$cr$ & $2.4\,\mathrm m$ & Cuerda raíz\\
+$lam$ & $0.48\,\text{(adimensional)}$ & Estrechamiento\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m^2}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Planta trapezoidal simétrica; superficie de referencia completa.
+
+\textbf{6. Modelo físico.} Área de dos trapecios semialares.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{b cr \left(lam + 1\right)}{2}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\left(13.5\cdot 2.4\right)\cdot \left(1+0.48\right)\right)}{2}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=23.976\,\mathrm{m^2}$.
+
+\textbf{11. Interpretación física.} La superficie no es b multiplicado por cuerda de raíz.
+
+\textbf{12. Comprobación por otra ruta.} Integre una cuerda que varía linealmente con la coordenada transversal; el área debe coincidir. La ejecución de la ruta alternativa da $Y_{alt}=23.976\,\mathrm{m^2}$, con diferencia relativa $1.48\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No representa superficie mojada ni planta elíptica.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P15 · Cuerda aerodinámica media}
+\addcontentsline{toc}{chapter}{P15 · Cuerda aerodinámica media}
+\begin{studiumworked}{P15 · Cuerda aerodinámica media}
+\textbf{1. Enunciado.} Halle la CAM del ala anterior.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$cr$ & $2.4\,\mathrm m$ & Cuerda raíz\\
+$lam$ & $0.48\,\text{(adimensional)}$ & Estrechamiento\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Planta trapezoidal, definición CAM=(1/S) integral c² dy.
+
+\textbf{6. Modelo físico.} Integración geométrica de c² sobre envergadura.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{2 cr \left(lam^{2} + lam + 1\right)}{3 \left(lam + 1\right)}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\frac{\left(2\cdot 2.4\right)}{3}\cdot \left(\left(1+0.48\right)+\left(0.48\right)^{2}\right)\right)}{\left(1+0.48\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=1.84908\,\mathrm m$.
+
+\textbf{11. Interpretación física.} La CAM difiere de S/b cuando la cuerda cambia.
+
+\textbf{12. Comprobación por otra ruta.} En el límite lambda=1 se recupera cr; con lambda=0 se obtiene 2cr/3. La ejecución de la ruta alternativa da $Y_{alt}=1.84908\,\mathrm m$, con diferencia relativa $2.4\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La posición longitudinal de CAM exige geometría de flecha.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P16 · Pendiente del ala finita}
+\addcontentsline{toc}{chapter}{P16 · Pendiente del ala finita}
+\begin{studiumworked}{P16 · Pendiente del ala finita}
+\textbf{1. Enunciado.} Un perfil tiene a0=5.9 rad-1. Calcule la pendiente del ala de AR=8.2 y ei=0.91.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$a_{0}$ & $5.9\,\text{(adimensional)}$ & Pendiente perfil por radián\\
+$ei$ & $0.91\,\text{(adimensional)}$ & Eficiencia envergadura\\
+$AR$ & $8.2\,\text{(adimensional)}$ & Alargamiento\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Teoría lineal de ala finita; sin pérdida, ala poco barrida.
+
+\textbf{6. Modelo físico.} Incluir ángulo inducido CL/(pi ei AR).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{a_{0}}{1 + \frac{a_{0}}{\pi AR ei}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{5.9}{\left(1+\frac{5.9}{\left(\left(\pi\cdot 0.91\right)\cdot 8.2\right)}\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=4.71367\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} La pendiente tridimensional es menor que a0.
+
+\textbf{12. Comprobación por otra ruta.} Sustituya CL=a(alpha-alpha0) en alpha efectiva; al AR infinito se recupera a0. La ejecución de la ruta alternativa da $Y_{alt}=4.71367\,\text{(adimensional)}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La pendiente se interpreta por radián, no por grado; no corrección transónica.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P17 · Oswald con resistencia de perfil cuadrática}
+\addcontentsline{toc}{chapter}{P17 · Oswald con resistencia de perfil cuadrática}
+\begin{studiumworked}{P17 · Oswald con resistencia de perfil cuadrática}
+\textbf{1. Enunciado.} Calcule eO si ei=0.92, AR=9 y kperfil=0.008.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$ei$ & $0.92\,\text{(adimensional)}$ & Eficiencia envergadura\\
+$AR$ & $9\,\text{(adimensional)}$ & Alargamiento\\
+$kp$ & $0.008\,\text{(adimensional)}$ & Cuadrático de perfil\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} CD=CD0+[1/(pi ei AR)+kp] CL².
+
+\textbf{6. Modelo físico.} Igualar coeficiente K total con 1/(pi eO AR).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{1}{\pi AR kp + \frac{1}{ei}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{1}{\left(\frac{1}{0.92}+\left(\left(\pi\cdot 9\right)\cdot 0.008\right)\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.761527\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} eO es menor que ei en este modelo con kp positivo.
+
+\textbf{12. Comprobación por otra ruta.} Reconstruya K por ambos métodos y pruebe el límite kp→0. La ejecución de la ruta alternativa da $Y_{alt}=0.761527\,\text{(adimensional)}$, con diferencia relativa $1.11\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} eO es parámetro de ajuste, no distribución de carga pura.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P18 · Sustentación de equilibrio}
+\addcontentsline{toc}{chapter}{P18 · Sustentación de equilibrio}
+\begin{studiumworked}{P18 · Sustentación de equilibrio}
+\textbf{1. Enunciado.} Calcule CL para W=48 kN, S=24 m2, rho=0.85 kg/m3 y TAS=85 m/s.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$W$ & $48000\,\mathrm N$ & Peso\\
+$\rho$ & $0.85\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+$V$ & $85\,\mathrm{m\,s^{-1}}$ & TAS\\
+$S$ & $24\,\mathrm{m^2}$ & Superficie\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Vuelo horizontal rectilíneo, empuje horizontal y sin aceleración.
+
+\textbf{6. Modelo físico.} Equilibrio L=W y definición de CL de aeronave.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{2 W}{S V^{2} \rho}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(2\cdot 48000\right)}{\left(\left(0.85\cdot \left(85\right)^{2}\right)\cdot 24\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.651333\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} CL aumenta al disminuir velocidad; necesita margen frente a CLmax.
+
+\textbf{12. Comprobación por otra ruta.} Reconstruya L=qSCL y compruebe que las fuerzas verticales se equilibran. La ejecución de la ruta alternativa da $Y_{alt}=0.651333\,\text{(adimensional)}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No introducir pendiente de perfil como si fuera del avión completo.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P19 · Empuje necesario en crucero}
+\addcontentsline{toc}{chapter}{P19 · Empuje necesario en crucero}
+\begin{studiumworked}{P19 · Empuje necesario en crucero}
+\textbf{1. Enunciado.} Halle T necesario con los datos de P18, CD0=0.027 y K=0.049.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$W$ & $48000\,\mathrm N$ & Peso\\
+$\rho$ & $0.85\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+$V$ & $85\,\mathrm{m\,s^{-1}}$ & TAS\\
+$S$ & $24\,\mathrm{m^2}$ & Superficie\\
+$CD_{0}$ & $0.027\,\text{(adimensional)}$ & Coeficiente parásito\\
+$K$ & $0.049\,\text{(adimensional)}$ & Coeficiente cuadrático\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm N$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Vuelo horizontal uniforme; polar válida en el estado considerado.
+
+\textbf{6. Modelo físico.} T=D=qSCD y CL=W/(qS).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{CD_{0} S V^{2} \rho}{2} + \frac{2 K W^{2}}{S V^{2} \rho}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\frac{\left(\left(\left(0.85\cdot \left(85\right)^{2}\right)\cdot 24\right)\cdot 0.027\right)}{2}+\frac{\left(\left(2\cdot 0.049\right)\cdot \left(48000\right)^{2}\right)}{\left(\left(0.85\cdot \left(85\right)^{2}\right)\cdot 24\right)}\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=3521.7\,\mathrm N$.
+
+\textbf{11. Interpretación física.} El motor debe proporcionar ese empuje disponible si el crucero se mantiene.
+
+\textbf{12. Comprobación por otra ruta.} Calcule por otra ruta CL, CD y qSCD y compare con la forma A V²+B/V². La ejecución de la ruta alternativa da $Y_{alt}=3521.7\,\mathrm N$, con diferencia relativa $1.29\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No es potencia del eje ni empuje máximo del motor.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P20 · Velocidad de mínima resistencia}
+\addcontentsline{toc}{chapter}{P20 · Velocidad de mínima resistencia}
+\begin{studiumworked}{P20 · Velocidad de mínima resistencia}
+\textbf{1. Enunciado.} Halle la TAS de mínima resistencia para el modelo de P19.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$W$ & $48000\,\mathrm N$ & Peso\\
+$\rho$ & $0.85\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+$S$ & $24\,\mathrm{m^2}$ & Superficie\\
+$CD_{0}$ & $0.027\,\text{(adimensional)}$ & Coeficiente parásito\\
+$K$ & $0.049\,\text{(adimensional)}$ & Coeficiente cuadrático\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Modelo parabólico; parámetros constantes, vuelo nivelado.
+
+\textbf{6. Modelo físico.} Derivar D=A V²+B/V² y anular dD/dV.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\sqrt{2} \sqrt[4]{\frac{K}{CD_{0}}} \sqrt{\frac{W}{S \rho}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\sqrt{\frac{\left(2\cdot 48000\right)}{\left(0.85\cdot 24\right)}}\cdot \left(\frac{0.049}{0.027}\right)^{\frac{1}{4}}\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=79.6212\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} Equilibra resistencia parásita y término cuadrático total.
+
+\textbf{12. Comprobación por otra ruta.} Minimice D numéricamente y contraste con la expresión cerrada. La ejecución de la ruta alternativa da $Y_{alt}=79.6212\,\mathrm{m\,s^{-1}}$, con diferencia relativa $1.07\times10^{-8}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} La velocidad óptima sólo es accesible si no viola pérdida, Mach o límites estructurales.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P21 · Velocidad de mínima potencia necesaria}
+\addcontentsline{toc}{chapter}{P21 · Velocidad de mínima potencia necesaria}
+\begin{studiumworked}{P21 · Velocidad de mínima potencia necesaria}
+\textbf{1. Enunciado.} Calcule la TAS de mínima potencia aerodinámica para el mismo modelo.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$W$ & $48000\,\mathrm N$ & Peso\\
+$\rho$ & $0.85\,\mathrm{kg\,m^{-3}}$ & Densidad\\
+$S$ & $24\,\mathrm{m^2}$ & Superficie\\
+$CD_{0}$ & $0.027\,\text{(adimensional)}$ & Coeficiente parásito\\
+$K$ & $0.049\,\text{(adimensional)}$ & Coeficiente cuadrático\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Vuelo nivelado; CD0 y K constantes.
+
+\textbf{6. Modelo físico.} Derivar Pn=A V³+B/V.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{\sqrt{2} \cdot 3^{\frac{3}{4}} \sqrt[4]{\frac{K}{CD_{0}}} \sqrt{\frac{W}{S \rho}}}{3}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\sqrt{\frac{\left(2\cdot 48000\right)}{\left(0.85\cdot 24\right)}}\cdot \left(\frac{0.049}{\left(3\cdot 0.027\right)}\right)^{\frac{1}{4}}\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=60.499\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} Es menor que la velocidad de mínima resistencia por un factor 3\textasciicircum{}(-1/4).
+
+\textbf{12. Comprobación por otra ruta.} Evalúe el signo de dPn/dV a ambos lados; compare su relación con P20. La ejecución de la ruta alternativa da $Y_{alt}=60.499\,\mathrm{m\,s^{-1}}$, con diferencia relativa $1.87\times10^{-9}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Autonomía de hélice exige además modelo de consumo y rendimiento propulsivo.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P22 · Máxima eficiencia}
+\addcontentsline{toc}{chapter}{P22 · Máxima eficiencia}
+\begin{studiumworked}{P22 · Máxima eficiencia}
+\textbf{1. Enunciado.} Calcule la eficiencia aerodinámica máxima para CD0=0.027 y K=0.049.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$CD_{0}$ & $0.027\,\text{(adimensional)}$ & Coeficiente parásito\\
+$K$ & $0.049\,\text{(adimensional)}$ & Cuadrático total\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Polar parabólica; CL positivo.
+
+\textbf{6. Modelo físico.} Derivar CL/(CD0+K CL²).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{1}{2 \sqrt{CD_{0} K}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{1}{\left(2\cdot \sqrt{\left(0.027\cdot 0.049\right)}\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=13.7464\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} La eficiencia no depende directamente del peso si la polar no cambia.
+
+\textbf{12. Comprobación por otra ruta.} Verifique que CD0=KCL² en CL=sqrt(CD0/K), y que la pendiente de L/D cambia de signo. La ejecución de la ruta alternativa da $Y_{alt}=13.7464\,\text{(adimensional)}$, con diferencia relativa $1.5\times10^{-13}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No implica igualdad de resistencia inducida aislada y parásita con kp no nulo.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P23 · Ascenso estacionario}
+\addcontentsline{toc}{chapter}{P23 · Ascenso estacionario}
+\begin{studiumworked}{P23 · Ascenso estacionario}
+\textbf{1. Enunciado.} Una aeronave de 42 kN vuela a 72 m/s, con T=5.2 kN y D=3.0 kN. Halle régimen de ascenso.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$T$ & $5200\,\mathrm N$ & Empuje disponible\\
+$D$ & $3000\,\mathrm N$ & Resistencia en el estado\\
+$V$ & $72\,\mathrm{m\,s^{-1}}$ & TAS\\
+$W$ & $42000\,\mathrm N$ & Peso\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Ascenso rectilíneo uniforme, empuje alineado con trayectoria. D es la resistencia del estado de ascenso, no una imposición de L=W.
+
+\textbf{6. Modelo físico.} Balance tangencial T-D=W sin(gamma); ROC=V sin(gamma).
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{V \left(- D + T\right)}{W}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\left(5200-3000\right)\cdot 72\right)}{42000}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=3.77143\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} La potencia excedente se transforma en energía potencial por unidad de tiempo.
+
+\textbf{12. Comprobación por otra ruta.} Compruebe W ROC=(T-D)V y que |T-D|/W<=1. La ejecución de la ruta alternativa da $Y_{alt}=3.77143\,\mathrm{m\,s^{-1}}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Si cambia velocidad, parte de potencia modifica energía cinética.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P24 · Planeo sin viento}
+\addcontentsline{toc}{chapter}{P24 · Planeo sin viento}
+\begin{studiumworked}{P24 · Planeo sin viento}
+\textbf{1. Enunciado.} Desde 2100 m sobre el destino, estime alcance horizontal con L/D=15.5.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$height$ & $2100\,\mathrm m$ & Altura disponible\\
+$LD$ & $15.5\,\text{(adimensional)}$ & Eficiencia\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Planeo estabilizado en aire quieto; eficiencia constante; terreno plano.
+
+\textbf{6. Modelo físico.} tan(gamma\_desc)=D/L; distancia horizontal=h L/D.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=LD height\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(2100\cdot 15.5\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=32550\,\mathrm m$.
+
+\textbf{11. Interpretación física.} El resultado es geométrico ideal, sin reserva ni maniobra de aproximación.
+
+\textbf{12. Comprobación por otra ruta.} Dibuje triángulo trayectoria y recupere altura a partir de tan(gamma). La ejecución de la ruta alternativa da $Y_{alt}=32550\,\mathrm m$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Viento, virajes, hélice en molinete y configuración alteran el alcance.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P25 · Radio de giro coordinado}
+\addcontentsline{toc}{chapter}{P25 · Radio de giro coordinado}
+\begin{studiumworked}{P25 · Radio de giro coordinado}
+\textbf{1. Enunciado.} Halle el radio de giro horizontal coordinado a 80 m/s e inclinación 30 grados.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$V$ & $80\,\mathrm{m\,s^{-1}}$ & TAS\\
+$\phi$ & $0.523599\,\text{(adimensional)}$ & Inclinación en radianes\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm m$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Giro horizontal estacionario, sin resbalamiento; viento no altera radio relativo al aire.
+
+\textbf{6. Modelo físico.} Lcos(phi)=W; Lsin(phi)=mV²/r.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{V^{2}}{g \tan{\left(\phi \right)}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(80\right)^{2}}{\left(9.80665\cdot \operatorname{tan}\left(0.523598775598299\right)\right)}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=1130.37\,\mathrm m$.
+
+\textbf{11. Interpretación física.} La inclinación aumenta carga y velocidad de pérdida.
+
+\textbf{12. Comprobación por otra ruta.} Compruebe aceleración V²/r=g tan(phi) y n=1/cos(phi). La ejecución de la ruta alternativa da $Y_{alt}=1130.37\,\mathrm m$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Trayectoria sobre suelo con viento puede no ser circular.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P26 · Margen estático}
+\addcontentsline{toc}{chapter}{P26 · Margen estático}
+\begin{studiumworked}{P26 · Margen estático}
+\textbf{1. Enunciado.} Con punto neutro en 0.41 CAM y CG en 0.29 CAM, determine margen estático.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$hn$ & $0.41\,\text{(adimensional)}$ & Punto neutro relativo a CAM\\
+$hcg$ & $0.29\,\text{(adimensional)}$ & CG relativo a CAM\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\text{(adimensional)}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Configuración fija, mandos bloqueados; modelo longitudinal lineal.
+
+\textbf{6. Modelo físico.} SM=(xNP-xCG)/CAM.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=- hcg + hn\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(0.41-0.29\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=0.12\,\text{(adimensional)}$.
+
+\textbf{11. Interpretación física.} Margen positivo favorece estabilidad estática longitudinal.
+
+\textbf{12. Comprobación por otra ruta.} Con CLa positivo, Cmα=-CLa SM es negativo. La ejecución de la ruta alternativa da $Y_{alt}=0.12\,\text{(adimensional)}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No establece amortiguamiento dinámico ni autoridad suficiente del timón.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P27 · Corrección de viento cruzado}
+\addcontentsline{toc}{chapter}{P27 · Corrección de viento cruzado}
+\begin{studiumworked}{P27 · Corrección de viento cruzado}
+\textbf{1. Enunciado.} Con TAS 70 m/s y viento transversal de 12 m/s, halle la corrección angular para mantener derrota.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$cross$ & $12\,\mathrm{m\,s^{-1}}$ & Viento transversal\\
+$V$ & $70\,\mathrm{m\,s^{-1}}$ & TAS\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en ${}^\circ$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Viento estacionario, horizontal; deriva compensada exactamente.
+
+\textbf{6. Modelo físico.} Anular componente transversal de Va+Vw.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{180 \operatorname{asin}{\left(\frac{cross}{V} \right)}}{\pi}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(\operatorname{asin}\left(\frac{12}{70}\right)\cdot 180\right)}{\pi}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=9.87089\,{}^\circ$.
+
+\textbf{11. Interpretación física.} El morro debe orientarse hacia el viento, con signo según el lado de procedencia.
+
+\textbf{12. Comprobación por otra ruta.} Proyecte V sin(corrección) y recupere 12 m/s. La ejecución de la ruta alternativa da $Y_{alt}=9.87089\,{}^\circ$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} Requiere |cross|<=V; sin viento longitudinal todavía no se conoce velocidad sobre suelo completa.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P28 · Velocidad orbital circular}
+\addcontentsline{toc}{chapter}{P28 · Velocidad orbital circular}
+\begin{studiumworked}{P28 · Velocidad orbital circular}
+\textbf{1. Enunciado.} Calcule velocidad circular terrestre a radio 6971 km.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$\mu$ & $3.986\times10^{14}\,\mathrm{m^3/s^2}$ & Parámetro gravitatorio educativo\\
+$r$ & $6.971\times10^{6}\,\mathrm m$ & Radio desde centro\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Dos cuerpos; órbita circular; no atmósfera ni oblaticidad.
+
+\textbf{6. Modelo físico.} Aceleración gravitatoria igual a centrípeta.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\sqrt{\frac{\mu}{r}}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\sqrt{\frac{398600441800000}{6971000}}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=7561.73\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} La velocidad depende del radio al centro, no sólo de la altura.
+
+\textbf{12. Comprobación por otra ruta.} Verifique energía específica -mu/(2r) y periodo 2pi r/V. La ejecución de la ruta alternativa da $Y_{alt}=7561.73\,\mathrm{m\,s^{-1}}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No confundir velocidad orbital con velocidad de escape.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P29 · Delta v ideal de una etapa}
+\addcontentsline{toc}{chapter}{P29 · Delta v ideal de una etapa}
+\begin{studiumworked}{P29 · Delta v ideal de una etapa}
+\textbf{1. Enunciado.} Calcule el incremento ideal de velocidad con Isp=305 s y relación de masas 3.2.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$Isp$ & $305\,\mathrm s$ & Impulso específico\\
+$g$ & $9.80665\,\mathrm{m/s^2}$ & Gravedad convencional\\
+$ratio$ & $3.2\,\text{(adimensional)}$ & Masa inicial/final\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm{m\,s^{-1}}$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Isp constante; etapa aislada; sin gravedad, resistencia o maniobras.
+
+\textbf{6. Modelo físico.} Conservación del momento e integración de dm/m.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=Isp g \log{\left(ratio \right)}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\left(\left(305\cdot 9.80665\right)\cdot \operatorname{log}\left(3.2\right)\right)\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=3479.02\,\mathrm{m\,s^{-1}}$.
+
+\textbf{11. Interpretación física.} La relación de masas entra logarítmicamente; la masa final incluye estructura y carga.
+
+\textbf{12. Comprobación por otra ruta.} Integre -c dm/m numéricamente y compare con el logaritmo. La ejecución de la ruta alternativa da $Y_{alt}=3479.02\,\mathrm{m\,s^{-1}}$, con diferencia relativa $0$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No es velocidad orbital alcanzada desde la superficie con pérdidas.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\chapter*{P30 · Potencia hidráulica}
+\addcontentsline{toc}{chapter}{P30 · Potencia hidráulica}
+\begin{studiumworked}{P30 · Potencia hidráulica}
+\textbf{1. Enunciado.} Una bomba entrega 0.00075 m3/s con salto de 18 MPa y rendimiento 0.84. Halle potencia de entrada.
+
+\textbf{2. Datos.}
+\begin{longtable}{p{.16\linewidth}p{.35\linewidth}p{.38\linewidth}}\toprule Símbolo & Valor y unidad & Significado\\\midrule\endhead
+$dp$ & $1.8\times10^{7}\,\mathrm{Pa}$ & Incremento presión\\
+$Q$ & $0.00075\,\mathrm{m^3/s}$ & Caudal\\
+$\eta$ & $0.84\,\text{(adimensional)}$ & Rendimiento\\
+\bottomrule\end{longtable}
+\textbf{3. Incógnita.} Se busca $Y$, expresada en $\mathrm W$.
+
+\textbf{4. Esquema.} Se separan las magnitudes dadas del sistema y el resultado buscado; el modelo relaciona ambos sin introducir un dato de solución en el esquema.
+
+\textbf{5. Hipótesis.} Régimen estacionario; rendimiento global dado, 0<eta<=1.
+
+\textbf{6. Modelo físico.} Potencia útil dp Q y definición eta=Pu/Pentrada.
+
+\textbf{7. Ecuación simbólica y 8. Despeje.} La relación explícita para la incógnita es
+\begin{equation*}Y=\frac{Q dp}{\eta}\end{equation*}
+\textbf{9. Sustitución numérica.} Todos los datos de la tabla se han convertido a unidades SI coherentes. La operación reproducible, omitiendo sólo las unidades ya indicadas para facilitar la lectura, es:
+\begin{equation*}\begin{gathered}Y=\frac{\left(18000000\cdot 0.00075\right)}{0.84}\end{gathered}\end{equation*}
+\textbf{10. Resultado.} $Y=16071.4\,\mathrm W$.
+
+\textbf{11. Interpretación física.} Las pérdidas elevan la demanda sobre dpQ.
+
+\textbf{12. Comprobación por otra ruta.} Calcule pérdida Pentrada-dpQ y compruebe que es positiva. La ejecución de la ruta alternativa da $Y_{alt}=16071.4\,\mathrm W$, con diferencia relativa $1.13\times10^{-16}$. La consistencia dimensional se comprobó por separado. El alcance es el del modelo declarado.
+
+\textbf{13. Limitaciones.} No predice calentamiento sin balance térmico ni caudal de fugas.
+
+\textbf{Transferencia.} Antes de recalcular, prediga cómo cambiaría el resultado si variase un dato independiente un 5\,\%. Elija un dato que pueda cambiarse físicamente manteniendo los demás; si no puede hacerlo, explique la restricción de equilibrio o de dominio.\par
+\end{studiumworked}
+\input{../content/exam-solutions.tex}
+\end{document}

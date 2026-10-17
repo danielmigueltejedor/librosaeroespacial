@@ -1,0 +1,21 @@
+\chapter{Auditoría de fuentes y trazabilidad}\label{app:sources}
+\section{Clases de evidencia}
+La presentación y guía ULE fundamentan organización docente. NASA, JPL, MIT y ESA aportan documentación técnica pública consultada temáticamente. Las derivaciones originales se comprueban con conservación, álgebra o cálculo; la IA redactora no constituye una fuente de verdad. Una referencia descargada no equivale a un documento leído íntegramente.
+
+En el proyecto nativo, las fuentes que no han recibido una auditoría académica de autoridad permanecen PENDING. Los fragmentos exactos registrados permiten localizar texto en una versión con hash; no certifican correspondencia semántica de todas las frases del capítulo. La declaración de suplemento abierto tampoco significa revisión científica.
+\section{Mapa de cobertura}
+\begin{longtable}{p{.12\linewidth}p{.37\linewidth}p{.40\linewidth}}\toprule Bloque&Capítulos editoriales&Base consultada y desarrollo\\\midrule\endhead
+I&1--4: balances, termodinámica y parámetros&Guía ULE; NASA empuje e impulso; MIT 2--3. Derivación propia de balances e incertidumbre.\\
+II&5--9: toberas y expansión&MIT 3 y 14; RP-1311. Área-Mach, crítico, CF, choque y comparación de modelos.\\
+III&10--13: sólido&MIT 16--18 para mecanismos; balances normalizados y geometría derivados, sin trasladar formulaciones.\\
+IV&14--20: líquido&MIT 9--10, 19--27 y SP-125, consulta temática; RP-1311 y documentación CEA.\\
+V&21--24: eléctrico&Goebel y Katz, capítulos 1--3 y secciones de haces; conservación de energía y momento.\\
+VI&25--28: vehículo&MIT 32, 33 y 35--36, guía y fichas NASA/ESA. Masa variable, etapas y trayectoria derivados con hipótesis.\\\bottomrule\end{longtable}
+\section{Discrepancias y decisiones}
+La página NASA de impulso específico contiene una agrupación dimensionalmente incompatible en una de las expresiones de velocidad equivalente: suma rapidez y fuerza antes de dividir por caudal. Se utiliza la relación derivada $c=v_e+(p_e-p_a)A_e/\dot m$, contrastada con el balance y con otras fuentes. El prestigio institucional no sustituye un control dimensional.
+
+En las notas manuscritas se localizaron ambigüedades de ``mitad'' de una geometría, unidades no declaradas de una ley empírica y discrepancias entre algunos estados térmicos y velocidades calculadas. La auditoría separada distingue errores confirmados de lecturas o referencias insuficientes. Ninguna solución estudiantil se incorporó como patrón verificado.
+
+Las notas de expansión reactiva explican la comparación congelada-equilibrio bajo pérdidas despreciadas. El manual restringe ese razonamiento a sus hipótesis: no presenta ambos ideales como cotas universales de prestaciones reales con calor, fricción o separación.
+\section{Registro consultable}
+El paquete editable contiene inventarios con autor, título, URL, año, hash, localizador y estado. También conserva el análisis de competencias, la matriz de ecuaciones y los informes de Studium. No se incluyen escaneos ni el PDF de Wuolah, ni sus extracciones extensas. Los originales privados permanecen en la carpeta de trabajo del usuario y no forman parte de la distribución.

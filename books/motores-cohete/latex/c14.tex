@@ -1,0 +1,63 @@
+\chapter{Propulsantes líquidos y relaciones de mezcla}\label{ch:14}
+\objetivos{Cerrar balances de dos corrientes; diferenciar relaciones molares, másicas y volumétricas; comprender la selección de propulsantes como un compromiso de misión y no como una maximización aislada de temperatura.}
+\section{Arquitectura y formas de almacenamiento}
+En un sistema líquido, las corrientes almacenadas se transportan hasta una cámara de empuje. La energía puede proceder de una reacción entre dos reactantes, de la descomposición de una sola corriente o de otro mecanismo compatible con la arquitectura. El término monopropulsante cuenta corrientes de propulsante almacenadas, no necesariamente el número de especies presentes en sus productos.
+
+En un bipropulsante se distinguen combustible y oxidante. Los depósitos, la presurización, los conductos, el acondicionamiento térmico, las bombas cuando existen, la inyección, la cámara y la tobera forman un sistema acoplado. El estado a la entrada de cámara puede diferir del de almacenamiento por calentamiento, vaporización y caída de presión. La ficha de un líquido a una temperatura no debe utilizarse para toda la instalación sin revisar su estado.
+
+La clasificación entre criogénico y almacenable describe necesidades de conservación térmica, no una escala universal de rendimiento. La densidad influye en volumen y masa de depósitos; la volatilidad influye en almacenamiento y alimentación; la compatibilidad de materiales y la estabilidad afectan a la integración. Una temperatura de llama alta no basta para ordenar alternativas.\cite{MIT19,SP125}
+\section{Relación de mezcla y conservación de masa}
+Definamos la relación másica oxidante-combustible
+\[
+ \mathcal R=\frac{\dot m_o}{\dot m_f}.
+\]
+Si ambas corrientes son las únicas entradas y no hay acumulación ni descarga auxiliar, $\dot m=\dot m_o+\dot m_f$. Sustituyendo $\dot m_o=\mathcal R\dot m_f$,
+\begin{equation}\label{eq:mixflows}
+ \dot m_f=\frac{\dot m}{1+\mathcal R},\qquad
+ \dot m_o=\frac{\mathcal R\dot m}{1+\mathcal R}.
+\end{equation}
+Las fracciones másicas son $Y_f=1/(1+\mathcal R)$ y $Y_o=\mathcal R/(1+\mathcal R)$. Si $\mathcal R$ es constante, las mismas proporciones relacionan las masas consumidas. Si varía con tiempo, se integran cada una de las corrientes: la relación de masas totales no tiene por qué ser el promedio temporal aritmético de $\mathcal R(t)$.
+
+Las relaciones molares se obtienen dividiendo cada masa por su masa molar. Una ecuación química ajustada da coeficientes molares; convertirlos en relación másica requiere multiplicar por las masas molares correspondientes. La equivalencia estequiométrica puede expresarse como $\phi=\mathcal R_{esteq}/\mathcal R$ si se adopta la convención combustible-aire generalizada. Así $\phi>1$ indica riqueza en combustible. Debe declararse esa convención porque también se utiliza el inverso en algunas representaciones.
+\section{Volumen y densidad global almacenada}
+Para masas consumidas $m_o,m_f$ y densidades uniformes fijadas a sus estados de referencia,
+\[
+ V_p=\frac{m_o}{\rho_o}+\frac{m_f}{\rho_f}.
+\]
+Usando $m_o=\mathcal Rm_f$, la densidad equivalente de la masa propulsante almacenada en depósitos separados es
+\begin{equation}
+ \rho_{eq}=\frac{m_o+m_f}{V_p}
+ =\frac{1+\mathcal R}{\mathcal R/\rho_o+1/\rho_f}.
+\end{equation}
+No es una densidad de mezcla física en un mismo depósito: es masa total dividida por suma de volúmenes líquidos de referencia. No incluye espacio de gas, reservas, estructuras ni contracción térmica. Su media es armónica ponderada por masa, no aritmética.
+
+Un aumento de $I_{sp}$ que exige mucho más volumen puede penalizar masa de tanques, superficie térmica y resistencia aerodinámica del vehículo. El producto de densidad y prestación puede ser un indicador preliminar, pero no sustituye el presupuesto completo de masas y trayectoria. La selección requiere comparar una misión bajo restricciones comunes.
+\section{Mezcla local, global y rendimiento}
+La relación global medida en conductos no garantiza mezcla uniforme dentro de la cámara. Pueden coexistir regiones con exceso de combustible y oxidante. El tiempo disponible para atomizar, vaporizar, mezclar y reaccionar puede limitar la aproximación al equilibrio. Una temperatura global aparente no describe completamente las distribuciones locales ni la carga térmica de pared.
+
+La relación que maximiza temperatura adiabática no coincide necesariamente con la que maximiza velocidad efectiva: cambian masa molar, calores específicos, disociación y composición durante expansión. Tampoco tiene por qué coincidir con el mejor compromiso de refrigeración o masa de vehículo. Esta es una razón para separar un estudio termodinámico de una optimización de sistema.
+
+El rendimiento de combustión puede definirse mediante una comparación de $c^*$ observado con una referencia calculada, pero esa comparación también depende de descarga y geometría, como se explicó en el capítulo~\ref{ch:09}. Sin información adicional no separa de forma única mezcla, cinética, pérdidas térmicas y sesgo de medida.
+\section{Corrientes auxiliares y prestaciones del sistema}
+En un ciclo abierto, parte de las corrientes puede alimentar un generador y salir sin atravesar la cámara principal. Sea $\beta$ la fracción del caudal total destinada a una descarga auxiliar, con velocidades efectivas axiales $c_m$ y $c_a$. Si cada una incorpora su término de presión y se usa la misma dirección positiva,
+\[
+ F=(1-\beta)\dot m_{tot}c_m+\beta\dot m_{tot}c_a,
+\]
+por lo que
+\begin{equation}
+ c_{sist}=(1-\beta)c_m+\beta c_a.
+\end{equation}
+Omitir la corriente auxiliar del denominador puede aparentar un impulso específico mayor que el del sistema. La mezcla de cámara principal también puede diferir de la mezcla global de depósitos si las fracciones desviadas de cada corriente no son iguales.
+
+Este balance no exige conocer el detalle de una turbina. Es una consecuencia de sumar flujos de momento y contabilizar toda la masa consumida. Sirve como control de cualquier descripción posterior de un ciclo.
+\figura{c14}{Las fracciones suman uno, pero no determinan por sí solas composición local de cámara ni prestación.}
+\section{Caso desarrollado}
+\input{M14.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive \eqref{eq:mixflows} y compruebe masa total y cociente para $\mathcal R=2.8$.
+\item Para dos líquidos académicos de densidades 900 y $1200\,\mathrm{kg/m^3}$ y masas iguales, calcule $\rho_{eq}$ y explique por qué no es la media aritmética.
+\item Formule las masas consumidas cuando $\dot m$ es constante pero $\mathcal R(t)$ varía linealmente.
+\item Si una descarga auxiliar tiene menor $c$ que la principal, demuestre cómo cambia el impulso específico del sistema al aumentar $\beta$.
+\end{enumerate}
+\resumen{La relación de mezcla másica cierra caudales, pero no determina por sí sola temperatura, uniformidad ni rendimiento. Las relaciones molares y volumétricas necesitan conversiones explícitas. La prestación del sistema debe incluir todas las corrientes y la selección de propulsantes debe considerar almacenamiento y masa del vehículo.}

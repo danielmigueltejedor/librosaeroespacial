@@ -1,0 +1,198 @@
+\chapter{Soluciones de los ejercicios propuestos}\label{app:answers}
+Estas respuestas corresponden a los cuatro ejercicios de estudio de cada capítulo. Desarrollan el razonamiento necesario y remiten a las derivaciones del cuerpo cuando éstas forman parte de la respuesta. Los casos M del manual y los problemas de los cuadernos tienen su propia solución completa junto al enunciado o en la parte separada de soluciones.
+\section*{Capítulo 1}
+\begin{enumerate}
+\item El motor transporta reactantes y expulsa masa con momento opuesto al incremento del vehículo. No necesita apoyarse en aire. En el modelo descrito, eliminar la descarga eliminaría el flujo de momento; el vacío no suministra una fuerza que lo reemplace.
+\item $I=F\Delta t=0.12(250)=30\,\mathrm{N\,s}$. Es transferencia de momento. Para convertirlo en velocidad se requiere masa y su evolución; sólo con masa prácticamente constante y sin otras fuerzas se aproxima $\Delta v=I/m$.
+\item De $P_j=\dot mv_e^2/2$ resulta $\dot m_2/\dot m_1=1/4$ y $F_2/F_1=1/2$. Si no hay término de presión y toda la masa tiene esa velocidad, $I_{sp,2}/I_{sp,1}=2$.
+\item Incluir fuente y conversión aumenta masa seca y puede disminuir la relación de masas útil. La alternativa que ahorra propulsante no tiene por qué minimizar masa inicial ni duración. Deben compararse fronteras completas de misión.
+\end{enumerate}
+\section*{Capítulo 2}
+\begin{enumerate}
+\item $[c^*]=[pA]/[\dot m]=\mathrm{m/s}$; $[C_F]=1$; $[I]=\mathrm{N\,s}$; $[I_{sp}]=\mathrm s$. Las dimensiones proceden de definiciones y no de cómo se denomine cada magnitud.
+\item $\overline I_{sp}=(2\cdot240+5\cdot300)/7=282.857\,\mathrm s$. Se suman impulsos $g_0m_iI_{sp,i}$ y se divide por el peso convencional total consumido; la duración de fases no se ha dado ni hace falta para ese promedio.
+\item El sistema consume también la descarga auxiliar. Se debe sumar su momento axial y su masa en $F_{tot}/(g_0\dot m_{tot})$. Usar sólo masa de cámara principal aumenta artificialmente el cociente si se mantiene empuje total.
+\item Si $c=v_e+F_p/\dot m$, entonces $\dot mc=\dot mv_e+F_p$. Añadir después $F_p$ produciría $\dot mv_e+2F_p$, que no coincide con el balance original.
+\end{enumerate}
+\section*{Capítulo 3}
+\begin{enumerate}
+\item Con kg/kmol, $R=8314.462618/24=346.435942\,\mathrm{J/(kg\,K)}$. Con kg/mol, $R=8.314462618/0.024$, el mismo valor. Mezclar 8.314 con 24 introduce un factor mil.
+\item El factor $1+(\gamma-1)M^2/2$ tiende a uno. Por tanto $T_0/T$, $p_0/p$ y $\rho_0/\rho$ tienden a uno para el modelo perfecto con $\gamma>1$ fijo.
+\item $s_2-s_1=c_p\ln(T_2/T_1)-R\ln(p_2/p_1)$. Una temperatura menor sólo fija el signo del primer término; el cambio de presión decide el segundo. Isentropía exige suma nula, no simplemente enfriamiento.
+\item Sí: un choque normal adiabático conserva $h_0=c_pT_0$ y genera entropía. Con $T_0$ constante, $\Delta s=-R\ln(p_{02}/p_{01})>0$ implica $p_{02}<p_{01}$.
+\end{enumerate}
+\section*{Capítulo 4}
+\begin{enumerate}
+\item Independencia elimina covarianza: $u_I/I=\sqrt{0.012^2+0.008^2}=0.0144222$, es decir, $1.44222\,\%$. Es incertidumbre estándar linealizada, sin factor de cobertura.
+\item Se necesita saber qué pérdida representa cada factor y si afecta a caudal, rapidez, dirección o presión. Si la corrección de $C_F$ ya contiene la reducción cinética introducida en $v_e$, aplicarla de nuevo duplicaría el efecto.
+\item Entre otros: Reynolds, Mach, Prandtl y razones de temperatura de pared y remanso. Con igual expansión geométrica, cambiar tamaño altera Reynolds si no se compensan propiedades y velocidad; no se garantiza semejanza viscosa.
+\item Introducir un diámetro doble debe cuadruplicar $A_t=\pi d_t^2/4$ y el caudal crítico a estados totales fijos. Si el cálculo sólo duplica área o caudal, se ha usado una dependencia lineal incorrecta. Dimensionalmente, un diámetro sin cuadrado no tiene unidad de área.
+\end{enumerate}
+\section*{Capítulo 5}
+\begin{enumerate}
+\item Continuidad da $d\rho/\rho+du/u+dA/A=0$. Momento da $dp=-\rho udu$. La isentropía permite sustituir $dp=a^2d\rho$, obteniendo $d\rho/\rho=-M^2du/u$ y finalmente $dA/A=(M^2-1)du/u$.
+\item $du/u\simeq-0.01/(0.4^2-1)=0.0119048$: aumento de $1.19048\,\%$. Es una linealización; el error de una variación finita contiene términos de segundo orden y cambios de Mach.
+\item Para $M=2$, $du/u=(dA/A)/3$. Acelerar requiere $dA>0$; una expansión de 1\,\% daría aproximadamente $0.333333\,\%$ de incremento de rapidez.
+\item Un divergente subsónico desacelera y recupera presión. Se necesitan estados de remanso, geometría anterior y contrapresión para seleccionar régimen y rama. La forma local por sí sola no determina Mach.
+\end{enumerate}
+\section*{Capítulo 6}
+\begin{enumerate}
+\item Para $\gamma=1.4$ y expansión tres, las raíces son aproximadamente $M_{sub}=0.197449$ y $M_{sup}=2.637416$. Sustituir cada una en la relación área-Mach recupera tres; el intervalo de búsqueda debe conservarse para distinguirlas.
+\item El primer ahogo CD usa $M_{sub}$: $p_b/p_0\simeq0.973182$. La convergente simple alcanza su umbral en $(2/2.4)^{3.5}=0.528282$. La diferencia es recuperación subsónica en el divergente.
+\item La expresión crítica es lineal en $A_t$, por lo que duplicarlo duplica caudal si el resto y ahogo se mantienen. Duplicar sólo salida mantiene caudal en ese régimen y cambia expansión y prestaciones.
+\item $A^*_2/A^*_1=p_{01}/p_{02}=1/0.8=1.25$. A caudal y temperatura total constantes, una pérdida de presión total aumenta el área crítica de referencia un 25\,\%.
+\end{enumerate}
+\section*{Capítulo 7}
+\begin{enumerate}
+\item Se parte de $C_F=v_e/c^*+(r-p_a/p_c)\varepsilon$. Sustituir las expresiones energéticas de $v_e$ y de descarga para $c^*$ produce \eqref{eq:CF}. Multiplicar por $c^*$ devuelve $v_e+(p_e-p_a)A_e/\dot m=F/\dot m$.
+\item $\Delta F=(80000-20000)(0.020)=1200\,\mathrm N$. El signo es positivo porque baja la presión exterior; se mantiene estado interno y compatibilidad de régimen.
+\item Para Mach grande, $A\sim M^{2/(\gamma-1)}$ y $p\sim M^{-2\gamma/(\gamma-1)}$. Su producto escala como $M^{-2}$ y tiende a cero.
+\item La geometría y cámara fijan $p_e$ en la rama ideal, mientras $p_a$ baja durante ascenso. La igualdad sólo se mantiene en un punto o si se modifica el estado o geometría de forma compatible.
+\end{enumerate}
+\section*{Capítulo 8}
+\begin{enumerate}
+\item Para $M_1=2$, $M_2=0.577350$, $p_2/p_1=4.5$, $\rho_2/\rho_1=2.666667$, $T_2/T_1=1.6875$ y $p_{02}/p_{01}=0.720874$. La energía total cierra y $\Delta s/R=-\ln(0.720874)>0$.
+\item Para expansión tres y gamma 1.4: primer bloqueo $0.973182$, choque en salida aproximadamente $0.375959$ y adaptación $0.047299$. Son umbrales de un modelo ideal y no criterios de separación viscosa.
+\item Con $T_{02}=T_{01}$, $\Delta s=-R\ln(p_{02}/p_{01})$. Si también se conservara $p_0$, resultaría entropía nula, incompatible con un choque compresivo de intensidad finita del modelo.
+\item Se propone un área de choque, se calcula rama supersónica anterior, se aplica salto, se actualiza $A^*_2=A_t p_{01}/p_{02}$ y se sigue rama subsónica hasta salida. Se ajusta la posición hasta que la presión de salida iguale contrapresión.
+\end{enumerate}
+\section*{Capítulo 9}
+\begin{enumerate}
+\item $\lambda=(1+\cos12^\circ)/2=0.989074$. Corrige el flujo axial de momento del reparto supuesto; el término de presión requiere su propia geometría y distribución.
+\item $\eta_n=C_v^2=0.9216$. Tratar ambos como 0.96 sobreestima el rendimiento cinético en 0.0384 absolutos. Para recuperar velocidad desde rendimiento energético se usa raíz cuadrada.
+\item Deben coincidir reactantes, entalpías de entrada, cámara, presión o geometría final, especies y fases admitidas y punto de congelación. Después se comparan sólo los mecanismos químicos que cambian entre modelos.
+\item Registrar tiempo, $p_c$, caudal total y auxiliares, $A_t$ inicial e instantánea, $A_e$, ambiente, empuje y sus incertidumbres. El cálculo debe indicar qué columna de área usa y no inferir eficiencia química sólo de $c^*$.
+\end{enumerate}
+\section*{Capítulo 10}
+\begin{enumerate}
+\item Si $r_b$ está en m/s y presión en Pa, $[a]=\mathrm{m\,s^{-1}Pa^{-n}}$. Como $p_{Pa}=10^6p_{MPa}$, $a_{MPa}=10^{6n}a_{Pa}$. La velocidad física no cambia.
+\item $r_b/r_{ref}=1.20^{0.35}\simeq1.06589$. Se usa un cociente adimensional y un exponente local; no es una tasa absoluta.
+\item La masa y densidad fijan volumen, pero no superficie activa ni su evolución. También faltan ley de regresión, garganta, estado del gas y ambiente para determinar empuje.
+\item $\dot m_g=\int_{A_b}\rho_pr_b(\mathbf x)\,dA$. Se reduce a producto si densidad y regresión son uniformes sobre la superficie o si se utiliza una media superficial correctamente ponderada y definida.
+\end{enumerate}
+\section*{Capítulo 11}
+\begin{enumerate}
+\item $V_{cons}=4\pi[R_0^3-(R_0-w)^3]/3$. Derivar da $A_b=4\pi(R_0-w)^2$, decreciente para $0<w<R_0$.
+\item A mitad de profundidad, $r/r_0=(5+1)/2=3$ y esa es la razón de áreas. A mitad de volumen, $r/r_0=\sqrt{(25+1)/2}=\sqrt{13}=3.60555$.
+\item Sea $a=(1-2n)/(1-n)$. Como $(1+x)^a=1+a\ln(1+x)+O(a^2)$, el cociente $[(1+x)^a-1]/a$ tiende a $\ln(1+x)$.
+\item Erosión de garganta, cambio de propiedades o regresión y variación de presión ambiente pueden modificar empuje aunque área activa sea constante. El almacenamiento y transitorios aportan otros mecanismos.
+\end{enumerate}
+\section*{Capítulo 12}
+\begin{enumerate}
+\item $p_2/p_1=1.15^{1/(1-0.4)}\simeq1.26230$. El caudal tiene el mismo cociente con garganta y $c^*$ fijos. La regresión tiene razón $(p_2/p_1)^{0.4}$ y cierra generación.
+\item $A_{b,2}/A_{b,1}=(p_2/p_1)^{1-n}=1.08^{0.7}\simeq1.05535$ para garganta fija. No se invierte el exponente de esta relación inversa.
+\item Derivar $m_g=pV/(RT)$ da $\dot m_g=V\dot p/(RT)+p\dot V/(RT)-pV\dot T/(RT^2)$. Despejar $V\dot p$ produce \eqref{eq:solidDynamic}. A masa y volumen constantes queda $\dot p/p=\dot T/T$.
+\item La integración debe tender a $P_{eq}=a^{1/(1-n)}$ para el estado estable del modelo. Se comprueba presión positiva, tolerancia numérica y residuo $aP^n-P$. El registro de comprobaciones incluye el caso $a=1.02,n=0.4$.
+\end{enumerate}
+\section*{Capítulo 13}
+\begin{enumerate}
+\item $\tau_{rel}=\tau_0/(1-n)$. Para 0.30 es $1.42857\tau_0$ y para 0.80 es $5\tau_0$. Mayor exponente produce recuperación más lenta en el modelo concentrado.
+\item La perturbación lineal de equilibrio es $0.1/0.6=0.166667$; la exacta es $1.1^{1/0.6}-1\simeq0.17216$. El error debe compararse en presión total o perturbación indicando el denominador empleado.
+\item El modelo medio no contiene fase espacial ni energía de modos acústicos. Puede amortiguar una presión uniforme y omitir un modo que recibe calor en fase; son espacios de estados distintos.
+\item Aislamiento introduce resistencia $\delta/k$; acumulación sensible introduce $mc\dot T$; ablación incorpora flujo másico y entalpía efectiva, además de frontera móvil. Se deben cerrar junto a las otras rutas térmicas.
+\end{enumerate}
+\section*{Capítulo 14}
+\begin{enumerate}
+\item Con $\mathcal R=2.8$, $\dot m_f=\dot m/3.8$ y $\dot m_o=2.8\dot m/3.8$. Suman el total y su cociente recupera 2.8.
+\item Para masas iguales, $\rho_{eq}=2/(1/900+1/1200)=1028.571\,\mathrm{kg/m^3}$. El volumen se suma como masa/densidad y por ello no se obtiene la media aritmética 1050.
+\item Si $\mathcal R=a+bt$ y $\dot m=M$ constante, $m_f=\int M/(1+a+bt)dt=(M/b)\ln[(1+a+bt_f)/(1+a)]$ para $b\ne0$. $m_o=Mt_f-m_f$. Para $b=0$ se toma el límite constante.
+\item $c_{sist}=c_m+\beta(c_a-c_m)$. Su derivada respecto a beta es negativa si $c_a<c_m$; dividir por $g_0$ conserva esa tendencia para impulso específico.
+\end{enumerate}
+\section*{Capítulo 15}
+\begin{enumerate}
+\item En el orden H$_2$O,H$_2$,O$_2$,OH,O,H, las filas H y O son $(2,2,0,1,0,1)$ y $(1,0,2,1,1,0)$. Toda reacción admisible tiene vector estequiométrico en el núcleo de esa matriz, conservando ambos elementos.
+\item TP fija temperatura en lugar de resolver energía adiabática. Para temperatura de cámara ideal se requiere un problema HP con entalpías de reactantes y presión, resolviendo composición y temperatura simultáneamente.
+\item $3.0414\,\mathrm{kJ/(kg\,K)}=3041.4\,\mathrm{J/(kg\,K)}$. Usar 3.0414 en una ecuación en julios reduce ese término energético por mil.
+\item Una segunda ejecución comprueba reproducibilidad local. Una implementación independiente contrasta cálculo. Un balance elemental comprueba conservación. Datos experimentales bajo condiciones conocidas permiten evaluar capacidad predictiva. No son etiquetas intercambiables.
+\end{enumerate}
+\section*{Capítulo 16}
+\begin{enumerate}
+\item $\tau_r=\rho_cV_c/\dot m$, con $\rho_c=p_c/(RT_c)$ y $\dot m=p_cA_t/c^*$, da $\tau_r=c^*L^*/(RT_c)$. Las dimensiones son $(\mathrm{m/s})\mathrm m/(\mathrm{m^2/s^2})=\mathrm s$.
+\item $t_v=d_0^2/K$ se multiplica por cuatro, y la masa inicial proporcional a $d_0^3$ se multiplica por ocho. El mismo diámetro medio no representa automáticamente una distribución amplia de gotas.
+\item Con $\Delta p=p_s-p_c$, $\delta\dot m/\dot m=-\delta p_c/(2\Delta p)$ para suministro fijo y coeficientes constantes. La subida de cámara disminuye entrada en la respuesta estática.
+\item La recirculación, trayectorias y mezcla pueden producir tiempos muy distintos para partículas individuales. Igualar masa almacenada/caudal sólo fija una escala media; no fija la distribución ni su cola de residencia corta.
+\end{enumerate}
+\section*{Capítulo 17}
+\begin{enumerate}
+\item Igualar los tres flujos y sumar saltos da $T_{aw}-T_l=q''(1/h_g+\delta/k+1/h_l)$. Después $T_{wg}=T_{aw}-q''/h_g$ y $T_{wl}=T_l+q''/h_l$.
+\item $\Delta T=24000/(0.80\cdot2500)=12\,\mathrm K$. La potencia recuperada $\dot mc_p\Delta T$ es exactamente 24 kW. No determina máximo térmico de pared.
+\item Transferir calor con temperatura finita genera $dS_{gen}=\delta Q(1/T_c-1/T_h)>0$. Recuperarlo en una corriente no elimina esa irreversibilidad ni las pérdidas de presión.
+\item Con ebullición se usa entalpía de fase y calidad; con almacenamiento se añade capacidad térmica por derivada temporal; con ablación entran masa saliente, entalpías y frontera móvil. No se aplica inalterado el balance estacionario de tres resistencias.
+\end{enumerate}
+\section*{Capítulo 18}
+\begin{enumerate}
+\item Al duplicar volumen, $p/p_0=0.5$ en el isotérmico y $2^{-1.4}=0.378929$ en el adiabático reversible. En el segundo, $T/T_0=2^{-0.4}$.
+\item En el reservorio rígido, $d(mc_vT)=c_pT\,dm$, con $dm<0$. Expandir da $m c_vdT=RTdm$, y por integración $T/T_0=(m/m_0)^{\gamma-1}$. No hay aumento de volumen.
+\item La presión de estado es absoluta. Se suma la presión exterior de referencia a la lectura manométrica, respetando unidades; la presión de vapor también debe expresarse sobre una referencia compatible.
+\item Escriba $a=K(A_t/c^*)^2>0$. La raíz positiva de $ap_c^2+p_c-p_{dep}=0$ es $p_c=[-1+\sqrt{1+4ap_{dep}}]/(2a)$. La otra es negativa. La ecuación implica $p_{dep}=p_c+ap_c^2>p_c$.
+\end{enumerate}
+\section*{Capítulo 19}
+\begin{enumerate}
+\item $P_p=3(1.2\times10^6)/(1000\cdot0.75)=4800\,\mathrm W$. El trabajo hidráulico es 1200 J/kg y el de eje 1600 J/kg.
+\item Multiplicar $\mathcal T=\dot m(r_2c_{\theta2}-r_1c_{\theta1})$ por Omega da potencia al fluido. Dividir por caudal produce Euler. Si se define trabajo positivo extraído en turbina se usa el negativo del trabajo al fluido.
+\item La salida de turbina debe superar la presión requerida para entrar en cámara con pérdidas posteriores. Esa restricción limita expansión disponible y se acopla a presión de bomba y potencia de eje.
+\item En generador, el gas de turbina sigue ruta auxiliar y su masa cuenta en consumo total. En expansor, el calor de refrigeración alimenta entalpía para la turbina. Se deben dibujar bombas y cierre de eje además de esas rutas distintivas.
+\end{enumerate}
+\section*{Capítulo 20}
+\begin{enumerate}
+\item De $\dot m_i=C\sqrt{p_s-p_c}$ se obtiene sensibilidad negativa $-\dot m_i/[2(p_s-p_c)]$. El retardo multiplica una respuesta armónica por una fase; el signo estático no decide el efecto dinámico.
+\item El promedio es $\widehat p\widehat q\cos\phi/2$: positivo para cero, nulo para $\pi/2$ y negativo para pi. La contribución neta al modo necesita además integración espacial y pérdidas.
+\item Reducir paso o tolerancia y recuperar el mismo resultado comprueba discretización. Comparar con observaciones independientes evalúa si el modelo representa el fenómeno; un cálculo convergido puede ser físicamente insuficiente.
+\item $I_{sp,tot}=(m_1I_{sp,1}+m_2I_{sp,2})/(m_1+m_2)$. Promediar por tiempo sólo sería válido con caudales iguales y constantes, o integrando correctamente su ponderación.
+\end{enumerate}
+\section*{Capítulo 21}
+\begin{enumerate}
+\item De $P_j=\eta P_{el}=\dot mv_e^2/2$ sale el caudal; multiplicarlo por $v_e$ da $F=2\eta P_{el}/v_e$. El impulso específico de ese haz es $v_e/g_0$. Las unidades son kg/s, N y s.
+\item $F=2(0.60)(1500)/20000=0.0900\,\mathrm N$ y $\dot m=4.50\times10^{-6}\,\mathrm{kg/s}$. El flujo cinético recupera 900 W.
+\item Aplicar Cauchy--Schwarz a $\int v_xd\dot m$ produce $F_x^2\leq\dot m\int v_x^2d\dot m\leq2\dot mP_j$. Igualdad requiere velocidad uniforme y puramente axial.
+\item $k_BT_e=3(1.602176634\times10^{-19})$ J y $T_e=E/k_B\simeq34813.6$ K. No se interpreta 3 eV como 3 K ni se multiplica esa energía otra vez por $k_B$.
+\end{enumerate}
+\section*{Capítulo 22}
+\begin{enumerate}
+\item $\dot mc_p(T_{out}-T_{in})=\eta_hP_{el}$ da el despeje indicado. Si eta ya incluye calor a pared, no se resta ese calor otra vez del término absorbido.
+\item El aumento $\Delta T$ se duplica al reducir caudal a la mitad con los otros parámetros fijos. La temperatura absoluta no se duplica necesariamente porque conserva $T_{in}$.
+\item Una descarga puede calentar gas cuya expansión gasdinámica domina aceleración. La clasificación depende del mecanismo de transferencia a movimiento, no de la mera presencia de corriente o ionización.
+\item Entrada: $\dot mh_{in}+P_{el}$. Salida: $\dot m(h_{out}+v_e^2/2)$ más energía rechazada y consumos definidos. La entalpía inicial puede contribuir a escape y debe conservar la misma referencia.
+\end{enumerate}
+\section*{Capítulo 23}
+\begin{enumerate}
+\item $qV=m_iv_i^2/2$ da rapidez. La corriente cuenta $I_b/q$ iones/s, por lo que $\dot m_i=I_bm_i/q$ y $F=I_b\sqrt{2m_iV/q}$ en el haz axial ideal.
+\item Con $F=\lambda\dot m_iv_i$, $\dot m_{tot}=\dot m_i/\eta_u$ y $P_b=\dot m_iv_i^2/2=\eta_eP_{el}$, sustituir en $F^2/(2\dot m_{tot}P_{el})$ da $\lambda^2\eta_u\eta_e$.
+\item La corriente de descarga contiene contribuciones que no son iones acelerados del haz. Convertirla íntegra mediante $m_i/q$ sobreestima caudal iónico y altera utilización y empuje inferidos. Se deben separar portadores y cargas.
+\item E realiza trabajo $q\mathbf E\cdot\mathbf v$. B magnetiza principalmente electrones y organiza deriva transversal; $q(\mathbf v\times\mathbf B)\cdot\mathbf v=0$. En Hall los iones aceleran sobre todo por el potencial eléctrico.
+\end{enumerate}
+\section*{Capítulo 24}
+\begin{enumerate}
+\item $\overline F=fJ_b=40(12\times10^{-6})=4.80\times10^{-4}\,\mathrm N$. Hz es s$^{-1}$ y cancela el segundo del impulso.
+\item $I_{sp}=\sum J_i/(g_0\sum m_i)=\sum m_iI_{sp,i}/\sum m_i$. Las masas ponderan cada pulso; la frecuencia sólo cambia el reparto temporal si sus propiedades permanecen.
+\item $\Delta E=C(V_i^2-V_f^2)/2$. La potencia media de pulsos idénticos es $f\Delta E$ antes de añadir pérdidas y auxiliares; la instantánea requiere evolución temporal de tensión y corriente.
+\item La cuasineutralidad reduce carga neta, no corriente. Cargas opuestas pueden moverse de forma distinta y dar j. La energía eléctrica entra mediante $\mathbf j\cdot\mathbf E$ y se reparte entre movimiento y otras formas.
+\end{enumerate}
+\section*{Capítulo 25}
+\begin{enumerate}
+\item El balance material da $m\,dv+v_e\,dm=0$ a primer orden. Con $dm<0$ y escape hacia atrás, $dv>0$. Incluir presión mediante c conserva el mismo signo.
+\item $m_p/m_0=1-e^{-0.2}=0.181269$. La aproximación 0.2 excede el valor exacto en 0.018731 absolutos, aproximadamente 10.33\,\% respecto a la fracción exacta.
+\item $m_0=m_fe^{\Delta v/c}$ y $m_p=m_0-m_f=m_f(e^{\Delta v/c}-1)$. La masa final incluye carga y estructura unidas; no es sólo carga útil salvo que así se haya definido físicamente.
+\item La capacidad ideal no incorpora gravedad, resistencia, dirección, posición final ni duración. Una órbita circular necesita rapidez tangencial a un radio dado; no basta con igualar un presupuesto escalar a $\sqrt{\mu/r}$.
+\end{enumerate}
+\section*{Capítulo 26}
+\begin{enumerate}
+\item Las masas son las cuatro sumas del capítulo. En particular $m_{f1}=s_1+m_{02}$. La separación ocurre después de consumir $p_1$ y antes de iniciar el consumo de segunda; no entra como propulsante en ningún logaritmo.
+\item $\lambda>0$ requiere $R_m>1$ y $1-\epsilon R_m>0$, de modo que $1<R_m<1/\epsilon$. Numerador nulo significa carga superior tendente a cero para la fracción estructural fijada.
+\item Para c y epsilon iguales, la condición de derivadas marginales iguales exige iguales $e^{x_i/c}$ y por tanto iguales $x_i$, en un óptimo interior. La simetría y convexidad del coste apoyan esa solución del modelo.
+\item Durante consumo simultáneo, la masa total responde a suma de caudales y el empuje a suma vectorial. Las masas se comparten entre sistemas: no hay dos historias en serie independientes a las que aplicar los logaritmos por separado.
+\end{enumerate}
+\section*{Capítulo 27}
+\begin{enumerate}
+\item Integrar $\dot v=-c\dot m/m-g$ con c y g fijos da $c\ln(m_0/m_f)-gt_b$. Si se conserva relación de masas y se duplica duración, la contribución gravitatoria de este modelo se duplica.
+\item La forma general contiene $\int g(r)\sin\gamma_fdt$. Gravedad y ángulo varían; una trayectoria horizontal o descendente tiene otra proyección. El término no es disipación de energía mecánica.
+\item Presión estática es un estado termodinámico; $q=\rho V_{rel}^2/2$ es una escala cinética. Durante ascenso velocidad puede crecer y densidad caer, por lo que su producto puede tener un máximo interior.
+\item Comprobar energía específica y momento angular constante en un campo central sin otras fuerzas. Además se estudia convergencia con tolerancia y cierre de masa; esos controles no equivalen a validación con telemetría.
+\end{enumerate}
+\section*{Capítulo 28}
+\begin{enumerate}
+\item Navegación estima el estado; guiado fija la maniobra o referencia compatible con objetivos; control aplica fuerzas y momentos para seguirla. Sus errores y límites se acoplan, pero sus funciones no se intercambian.
+\item $|\mathbf v_2-\mathbf v_1|^2=2v^2(1-\cos\Delta i)=4v^2\sin^2(\Delta i/2)$. Para el ángulo usual entre cero y pi se toma raíz positiva: $2v\sin(\Delta i/2)$.
+\item $\mathbf M=\mathbf r_T\times\mathbf F_T$ respecto al centro de masas. Si éste se desplaza, cambia el brazo aunque la posición física del actuador permanezca; también puede cambiar inercia.
+\item La gravedad actúa durante la maniobra y el vehículo cambia de posición y dirección mientras acelera. Se integra $\dot{\mathbf r}=\mathbf v$, el balance vectorial de fuerzas y $\dot m=-\dot m_p$, con potencia y orientación disponibles.
+\end{enumerate}

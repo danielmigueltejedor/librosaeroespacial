@@ -1,0 +1,182 @@
+\appendix
+\chapter{Herramientas matemáticas y convenciones}\label{ap:matematicas}
+\section{Lectura física de una ecuación}
+Una ecuación útil contiene más información que una relación entre letras. Deben conocerse las magnitudes representadas, la referencia, las unidades, los signos y las condiciones bajo las que fue deducida. En $L=qSC_L$, por ejemplo, $S$ es una superficie de referencia convencional y $C_L$ depende de esa elección. Cambiar la referencia de superficie sin transformar el coeficiente altera la fuerza calculada. El mismo símbolo $C_L$ puede describir un ala o el avión completo; el subíndice por sí solo no resuelve la ambigüedad.
+
+Conviene escribir cada modelo en cuatro líneas: sistema físico, hipótesis, ecuaciones y dominio. Para un crucero elemental: aeronave como punto material; trayectoria recta y horizontal, masa instantánea conocida y empuje horizontal; $L=W$, $T=D$, $D=qS(C_{D0}+KC_L^2)$; polar válida sólo en el intervalo de Mach, Reynolds, configuración y sustentación declarado. La solución algebraica pertenece a ese dominio. Una raíz real fuera de él no es una prestación disponible.
+
+\section{Derivadas, diferenciales y aproximaciones}
+La derivada mide una variación local. Si $D(V)=AV^2+B/V^2$, con $A,B>0$, entonces
+\begin{equation}
+\frac{dD}{dV}=2AV-\frac{2B}{V^3},\qquad
+\frac{d^2D}{dV^2}=2A+\frac{6B}{V^4}>0.
+\end{equation}
+La segunda derivada positiva prueba que el punto estacionario es un mínimo en $V>0$. Además, $D$ diverge cuando $V\to0^+$ y cuando $V\to\infty$ dentro del modelo matemático. Esto establece unicidad del mínimo matemático; no legitima las dos extrapolaciones como descripción de una aeronave real. Cerca de velocidad cero la hipótesis de vuelo nivelado adherido ya habrá fallado por pérdida.
+
+El diferencial proporciona una aproximación de primer orden. Para una velocidad obtenida de $V=\sqrt{2W/(\rho SC_L)}$,
+\begin{equation}
+\frac{dV}{V}=\frac12\left(\frac{dW}{W}-\frac{d\rho}{\rho}-\frac{dS}{S}-\frac{dC_L}{C_L}\right).
+\end{equation}
+Si sólo cambia la densidad un pequeño porcentaje, la velocidad cambia aproximadamente la mitad de ese porcentaje con signo opuesto. Para cambios grandes debe usarse la relación exacta. Una reducción de densidad del 20\,\% produce un aumento exacto de velocidad $1/\sqrt{0.8}-1\approx11.8\,\%$, que no coincide exactamente con el 10\,\% lineal.
+
+\section{Integración y constantes de referencia}
+Al integrar una ecuación diferencial se necesita una condición de contorno. La hidrostática $dp/dH=-gp/(RT)$ no determina una presión absoluta sin especificar $p_b$ en una base $H_b$. Una integración que omite esa constante puede conservar dimensiones y tener una forma matemática elegante, pero no resolver el problema.
+
+Las integrales definidas conservan orientación. En el cohete ideal, $dm<0$ durante la expulsión de propulsante. Escribir $dV=-c\,dm/m$ con $c>0$ da $dV>0$. Al integrar desde $m_0$ hasta $m_f<m_0$,
+\begin{equation}
+\Delta V=-c\int_{m_0}^{m_f}\frac{dm}{m}
+=c\ln\left(\frac{m_0}{m_f}\right)>0.
+\end{equation}
+No debe corregirse el signo del resultado mediante un valor absoluto al final: hay que resolver la convención desde el balance de momento.
+
+\section{Raíces, discriminantes y selección física}
+Con empuje disponible constante $T_d$, el equilibrio con la polar parabólica conduce a $AV^4-T_dV^2+B=0$. Introduciendo $x=V^2$ se obtiene una cuadrática:
+\begin{equation}
+x_{\pm}=\frac{T_d\pm\sqrt{T_d^2-4AB}}{2A}.
+\end{equation}
+Si el discriminante es negativo no hay equilibrio nivelado en este modelo. Si vale cero aparece una sola velocidad, en mínima resistencia. Si es positivo existen dos velocidades matemáticas. Ambas deben contrastarse con $C_{L\max}$ y con los límites de Mach. La rama lenta puede exigir sustentación imposible; la rápida puede estar fuera de la polar. Además, una raíz de equilibrio no garantiza estabilidad frente a perturbaciones ni controlabilidad.
+
+Para resolver numéricamente una función continua es útil acotar primero una raíz con signos opuestos. La bisección es robusta y mantiene la raíz dentro del intervalo; Newton puede ser más rápido, aunque necesita derivada y una inicialización adecuada. Ningún método corrige una función física equivocada. Deben registrarse tolerancia, intervalo, criterio de parada y residuo final.
+
+\section{Vectores y ángulos}
+Un vector de velocidad se suma por componentes en una misma referencia. Si $\mathbf V_g=\mathbf V_a+\mathbf V_w$, todos los vectores deben representarse con ejes comunes. El rumbo indica la orientación del morro; la derrota, la dirección de movimiento sobre el suelo. El viento meteorológico se nombra por su procedencia, mientras que su vector apunta hacia donde transporta el aire. Mezclar ambas convenciones invierte el signo.
+
+Las funciones trigonométricas de las derivaciones utilizan radianes. Si $a=5\,\mathrm{rad^{-1}}$, un incremento de dos grados produce $\Delta C_L=5(2\pi/180)$, no diez unidades de coeficiente. El radián es dimensionalmente unidad uno, pero conserva significado angular: un comprobador dimensional no detecta por sí solo una confusión entre grados y radianes.
+
+\section{Incertidumbre y cifras significativas}
+La precisión del resultado depende de los datos y del modelo. Para variables independientes con incertidumbres pequeñas, una estimación de la incertidumbre típica de $f$ es
+\begin{equation}
+u_f^2\approx\sum_i\left(\frac{\partial f}{\partial x_i}\right)^2u_{x_i}^2.
+\end{equation}
+Con correlaciones aparecen términos cruzados; no se deben descartar sin motivo. Esta relación propaga incertidumbres de entrada, pero no cuantifica automáticamente el error de modelo. Una polar simplificada puede dominar la incertidumbre aunque se conozcan la masa y velocidad con muchos decimales.
+
+En un Pitot incompresible, $V=\sqrt{2q_c/\rho}$ da $u_V/V\approx\frac12\sqrt{(u_{q_c}/q_c)^2+(u_\rho/\rho)^2}$ bajo independencia. Si $u_{q_c}/q_c=0.02$ y $u_\rho/\rho=0.01$, la incertidumbre relativa estimada es aproximadamente 1.12\,\%. Es una estimación metrológica condicionada a un modelo válido, no una garantía de exactitud de la instalación.
+
+\chapter{Notación, unidades y constantes}\label{ap:notacion}
+\begin{longtable}{p{.20\textwidth}p{.43\textwidth}p{.25\textwidth}}
+\toprule Símbolo & Significado & Unidad SI \\ \midrule\endhead
+$H,z$ & Altitud geopotencial y geométrica & m\\
+$p,p_t$ & Presión estática y de remanso & Pa\\
+$q,q_c$ & Presión dinámica y de impacto & Pa\\
+$T$ & Temperatura absoluta; en vuelo también empuje, según contexto & K; N\\
+$\rho,\mu,\nu$ & Densidad, viscosidad dinámica y cinemática & kg/m$^3$; Pa s; m$^2$/s\\
+$a,M,Re$ & Velocidad del sonido, Mach y Reynolds & m/s; 1; 1\\
+$S,b,c,\bar c$ & Superficie, envergadura, cuerda y CAM & m$^2$; m; m; m\\
+$AR,\lambda$ & Alargamiento y estrechamiento & 1\\
+$L,D,W$ & Sustentación, resistencia y peso & N\\
+$C_L,C_D,C_m$ & Coeficientes de fuerza y momento del vehículo & 1\\
+$c_l,c_d,c_m$ & Coeficientes de perfil bidimensional & 1\\
+$e_i,e_O$ & Eficiencia de envergadura y de Oswald & 1\\
+$K,k_p$ & Coeficiente cuadrático total y de perfil & 1\\
+$P,\dot m,Q$ & Potencia, caudal másico y volumétrico & W; kg/s; m$^3$/s\\
+$\alpha,\gamma,\phi$ & Ataque, ángulo de trayectoria e inclinación & rad\\
+$I_{sp},c$ & Impulso específico y velocidad efectiva de escape & s; m/s\\
+$\mu_g,r,a_o$ & Parámetro gravitatorio, radio y semieje orbital & m$^3$/s$^2$; m; m\\
+$E,\sigma,\tau$ & Módulo de Young, tensión normal y cortante & Pa\\
+\bottomrule
+\end{longtable}
+La repetición de símbolos entre especialidades es inevitable. El contexto y las unidades deben resolverla. En particular, $a_o$ evita confundir semieje orbital con velocidad del sonido; $\mu_g$ evita confundir el parámetro gravitatorio con la viscosidad. Cada problema define sus propias letras antes de calcular.
+
+Para el aire seco estándar en las capas bajas se adoptan $g_0=\gzero\,\mathrm{m/s^2}$, $R_a=\Raire\,\mathrm{J/(kg\,K)}$, $\gamma=1.4$, $T_0=288.15\,\mathrm K$ y $p_0=101325\,\mathrm{Pa}$ \cite{ISA1976}. El valor de densidad base se calcula como $p_0/(R_aT_0)$; no se introduce una segunda constante redondeada en una cadena sensible. La constante $g_0$ es una aceleración convencional; la constante gravitatoria universal tiene otras dimensiones y otro significado.
+
+Conversiones útiles: $1\,\mathrm{ft}=0.3048\,\mathrm m$, $1\,\mathrm{NM}=1852\,\mathrm m$, $1\,\mathrm{kt}=1852/3600\,\mathrm{m/s}$, $1\,\mathrm{hPa}=100\,\mathrm{Pa}$. Un incremento de temperatura tiene el mismo valor numérico en kelvin y en grados Celsius; una temperatura absoluta de $15\,{}^\circ\mathrm C$ equivale a $288.15\,\mathrm K$. Los cocientes y potencias termodinámicos siempre emplean temperatura absoluta.
+
+\chapter{Tabla de atmósfera estándar y procedimiento de uso}\label{ap:tablaISA}
+La tabla siguiente se calcula con las ecuaciones del capítulo~\ref{ch:04}. Su argumento es $H$ geopotencial. Las cifras mostradas son de consulta; los programas incluidos conservan más precisión interna. La viscosidad usa la correlación de Sutherland indicada en ese capítulo. No debe interpretarse como observación meteorológica ni como predicción para un día concreto.
+\input{../content/isa-table.tex}
+
+Para utilizarla, primero identifique si la altitud del enunciado es geométrica, geopotencial, indicada o de presión. Después seleccione la capa térmica. Calcule temperatura, presión y densidad en ese orden. Finalmente obtenga sonido y viscosidad con la temperatura. Interpolar una tabla puede ser suficiente para una estimación, pero no debe mezclarse un valor interpolado con una fórmula de otra altitud si se pretende una comprobación precisa.
+
+Un test de continuidad consiste en evaluar justo por debajo y por encima de cada base de capa. Temperatura y presión deben coincidir en el límite. La derivada de temperatura puede saltar: ésa es una propiedad del modelo por tramos. En cambio, reiniciar la presión con $p_0$ en 11 km crearía una discontinuidad que invalidaría todos los resultados superiores.
+
+\chapter{Formulario razonado}\label{ap:formulario}
+\section{Atmósfera y fluidos}
+Para un tramo con $T=T_b+L(H-H_b)$ y $L\ne0$,
+\begin{equation}
+p=p_b\left(\frac{T}{T_b}\right)^{-g_0/(R_aL)},\quad
+\rho=\frac{p}{R_aT},\quad a=\sqrt{\gamma R_aT}.
+\end{equation}
+En un tramo isotermo, $p=p_b\exp[-g_0(H-H_b)/(R_aT_b)]$. Se usan presiones absolutas, temperatura positiva y condiciones base de la capa correcta. Para un flujo estacionario unidimensional, $\dot m=\rho AV$ si los valores representan adecuadamente cada sección. Con densidad variable no se conserva $AV$.
+
+Bernoulli simple expresa $p/\rho+V^2/2+gz=\mathrm{constante}$ en una corriente estacionaria, incompresible e inviscida a lo largo de una línea de corriente, con fuerza gravitatoria conservativa y sin trabajo de eje ni pérdidas. La constante puede variar entre líneas de corriente. El que Reynolds sea grande no demuestra ausencia de pérdidas en toda una instalación.
+
+El Pitot incompresible usa $V=\sqrt{2(p_t-p)/\rho}$. En subsónico isentrópico perfecto,
+\begin{equation}
+M=\sqrt{\frac{2}{\gamma-1}\left[\left(\frac{p_t}{p}\right)^{(\gamma-1)/\gamma}-1\right]}.
+\end{equation}
+La raíz debe quedar en el régimen supuesto. En supersónico la presión medida detrás del choque no es la presión total de la corriente libre. Para acústica infinitesimal supersónica, $\sin\mu_M=1/M$; no se trata de una fórmula general de choque oblicuo.
+
+\section{Aerodinámica y vuelo}
+La geometría trapezoidal satisface $S=b(c_r+c_t)/2$, $AR=b^2/S$ y $\lambda=c_t/c_r$. La polar docente es
+\begin{equation}
+C_D=C_{D0}+KC_L^2,\qquad
+K=\frac{1}{\pi e_iAR}+k_p=\frac{1}{\pi e_OAR}.
+\end{equation}
+Con vuelo nivelado uniforme, $C_L=2W/(\rho V^2S)$ y
+\begin{equation}
+D=AV^2+\frac{B}{V^2},\quad A=\frac12\rho SC_{D0},\quad
+B=\frac{2KW^2}{\rho S}.
+\end{equation}
+Los óptimos son $V_{D\min}=(B/A)^{1/4}$, $V_{P\min}=(B/3A)^{1/4}$ y $(L/D)_{\max}=1/(2\sqrt{C_{D0}K})$. Al primero corresponde $C_{D0}=KC_L^2$, que involucra todo el término cuadrático. Los coeficientes deben tratarse como constantes sólo en su intervalo de ajuste.
+
+En ascenso uniforme con empuje tangencial, $\sin\gamma=(T-D)/W$ y $\dot h=(T-D)V/W$. En planeo estabilizado sin viento, $\tan|\gamma|=D/L$. En giro horizontal coordinado, $n=1/\cos\phi$ y $r=V^2/(g\tan\phi)$ para $0<|\phi|<\pi/2$. El giro eleva la carga; una velocidad de pérdida de referencia pasa a multiplicarse por $\sqrt n$ si $C_{L\max}$ y densidad se mantienen.
+
+\section{Propulsión, espacio y sistemas}
+El empuje de un chorro idealmente unidimensional es el balance de flujos de momento más fuerzas de presión. Para un cohete sin admisión de aire,
+\begin{equation}
+F=\dot m v_e+(p_e-p_a)A_e,\quad
+c=\frac{F}{\dot m},\quad I_{sp}=\frac{F}{\dot m g_0},\quad
+\Delta V=c\ln\frac{m_0}{m_f}.
+\end{equation}
+La última relación requiere velocidad efectiva constante y omite pérdidas de gravedad y resistencia. En dos cuerpos, $V_c=\sqrt{\mu_g/r}$, $\varepsilon=-\mu_g/(2a_o)$, $V^2=\mu_g(2/r-1/a_o)$ y $P_o=2\pi\sqrt{a_o^3/\mu_g}$. La energía es específica, en J/kg; no una energía total sin masa.
+
+En hidráulica, $P_u=\Delta p Q$ y $F\approx\Delta p A$ para actuador ideal equilibrado adecuadamente; con dos cámaras hay que incluir las áreas y presiones de ambas. En electricidad continua, $P=VI$ y la pérdida resistiva es $I^2R_e$. En combustible, $\dot m=\rho Q$; un volumen no determina autonomía sin densidad y consumo. En transferencia térmica, un balance de energía debe separar calor aportado, almacenamiento, trabajo y flujos de entalpía: no basta con comparar temperaturas.
+
+\chapter{Prácticas originales y preparación del informe técnico}\label{ap:practicas}
+Estas prácticas son propuestas editoriales de aprendizaje. La guía oficial prevé prácticas de laboratorio y trabajo práctico obligatorio, pero no publica aquí un guion concreto que permita identificarlas como las prácticas oficiales de la asignatura \cite{GUIA2026}. Debe seguirse siempre el enunciado que facilite el profesorado. Los protocolos siguientes permiten entrenar análisis, tratamiento de datos, trazabilidad y discusión de hipótesis.
+
+\section{Práctica 1: reconstrucción y contraste de ISA}
+Construya una tabla entre 0 y 20 km con un paso elegido por usted. Implemente los dos tramos térmicos, conserve sus condiciones base y grafique $T,p,\rho,a$. Repita la presión integrando numéricamente la ecuación hidrostática sin usar la potencia cerrada. Compare error relativo a 5, 11 y 15 km; reduzca a la mitad el paso o la tolerancia y explique qué parte del cambio corresponde al método numérico.
+
+El informe debe indicar si el argumento es $H$ o $z$, las constantes utilizadas, la expresión de cada capa y el tratamiento de 11 km. Incluya una prueba deliberadamente incorrecta que prolongue el gradiente troposférico hasta 16 km. Cuantifique el error frente al modelo por capas y razone por qué un resultado numérico aparentemente razonable puede proceder de una hipótesis inválida. No se considera válida una comparación entre dos programas que utilizan exactamente la misma fórmula y constantes como prueba independiente del modelo.
+
+\section{Práctica 2: reducción de medidas de Pitot}
+Genere un conjunto de presiones de impacto a partir de varios Mach subsónicos y una presión estática conocida. Invierta los datos con Bernoulli incompresible y con la relación isentrópica. Grafique el error relativo de velocidad frente a Mach. Declare qué magnitud permanece fija al construir la comparación: no es lo mismo fijar densidad que fijar presión y temperatura. Añada un sesgo de presión estática y observe que el error se vuelve importante cuando la diferencia de presiones es pequeña.
+
+Una tabla de medidas debe contener número de ensayo, presión estática, presión total, temperatura, unidades, incertidumbres y método de obtención. La velocidad calculada no debe aparecer en la tabla de datos de entrada. Si se emplean valores sintéticos, indíquelo expresamente; no los presente como mediciones de laboratorio.
+
+\section{Práctica 3: polar, ajuste e identificabilidad}
+Trabaje con la polar sintética $C_D=0.024+0.047C_L^2$ y añada perturbaciones pequeñas cuya amplitud y semilla aleatoria se registren. Ajuste $C_D$ frente a $C_L^2$, examine residuos y calcule la eficiencia máxima. Repita limitando el intervalo de $C_L$ y compare la sensibilidad de los parámetros. Una recta bien ajustada no prueba que el modelo sea válido cerca de la pérdida o en transónico.
+
+Después suponga $AR=8.5$. El ajuste permite estimar $e_O=1/(\pi ARK)$ si se acepta la representación parabólica. No identifica por separado $e_i$ y $k_p$: hay infinitas parejas compatibles con el mismo $K$. Muestre dos parejas y compruebe que generan la misma polar total. Para separarlas haría falta información adicional de distribución de sustentación, resistencia de perfil o un modelo más detallado. Este es un problema de identificabilidad, distinto de la precisión de la regresión.
+
+\section{Práctica 4: integración y fallo de una función}
+Dibuje una arquitectura funcional de suministro de combustible, alimentación eléctrica y actuación de un mando. Para cada interfaz especifique magnitud transmitida, unidad, condición normal y efecto de pérdida. Seleccione una función que pueda perderse por dos fallos de componentes y otra que se pierda por una causa común. Explique por qué duplicar componentes conectados a la misma fuente no garantiza independencia.
+
+El informe debe distinguir el requisito, el diseño propuesto y la evidencia de verificación. ``Dispone de dos bombas'' es una descripción; ``mantiene el caudal requerido tras un fallo simple especificado'' es un requisito de comportamiento que exige análisis o ensayo. No convierta este ejercicio docente en una declaración de cumplimiento de un estándar de certificación.
+
+\section{Estructura mínima del informe}
+Incluya objetivo, alcance, datos originales, instrumentos o generador sintético, modelo físico, hipótesis, procedimiento reproducible, resultados con unidades, incertidumbre, discusión de discrepancias y conclusiones que respondan al objetivo. Adjunte tablas completas y archivos de cálculo. Una figura debe indicar qué datos muestra y por qué son físicamente representativos. La conclusión puede ser que un modelo no es suficiente; no debe forzarse un resultado satisfactorio ocultando datos incompatibles.
+
+\chapter{Trazabilidad y estado científico de esta edición}\label{ap:auditoria}
+Este manual es una edición independiente de estudio. La mención de la Universidad de León identifica su contexto docente y no una aprobación institucional. Los 25 capítulos son una organización editorial de los 13 temas de la guía oficial. El proyecto conserva las huellas de los materiales recibidos, las direcciones consultadas, el commit exacto del motor y los informes de ejecución.
+
+\section{Fuentes y uso de los exámenes}
+Se han abierto los cinco documentos de Ágora y los dos PDF de exámenes indicados por el usuario. Los exámenes se han utilizado para identificar competencias y dificultades, sin reproducir páginas, figuras o enunciados extensos. Los ejercicios del manual y de los cuadernos son originales. Los libros comerciales incluidos en bibliografía recomendada no se presentan como consultados íntegramente. La documentación pública NASA y FAA complementa los materiales de curso, con las limitaciones de cada nivel y edición.
+
+La guía se descargó como PDF firmado y como respuesta del servicio público del visor. Confirma 6 ECTS, segundo curso, primer semestre y una carga total de 150 horas. Las 25 divisiones del libro no son títulos oficiales. El 85\,\% corresponde a pruebas escritas de teoría, teoría aplicada y práctica; el 15\,\% a la parte de prácticas. El trabajo práctico es imprescindible para poder optar al proceso de evaluación en ambas convocatorias. La guía también permite establecer mínimos por fases; no se inventa aquí una nota mínima concreta.
+
+\section{Discrepancias documentales}
+La tabla inferior de TAE3, página 17, presenta signos de variación de presión incompatibles con $dp=-\rho u\,du$; los dibujos superiores de la propia página muestran correctamente aceleración con caída de presión. Para flujo cuasiunidimensional isentrópico, $(M^2-1)du/u=dA/A$. En convergencia subsónica, $du>0$ y $dp<0$; en divergencia subsónica ocurre lo contrario. En convergencia supersónica el flujo se frena y aumenta la presión; en divergencia supersónica acelera y disminuye. Esta corrección se deduce del balance y no se adopta por mera preferencia editorial.
+
+En los problemas de globos, algunas expresiones llaman peso a un dato en kilogramos. Se interpreta como masa y se transforma a newtons cuando se plantea la fuerza. En TAE2, página 3, la terminología de altitud absoluta e indicada se simplifica; el manual distingue altura sobre terreno, altitud sobre nivel medio del mar, altitud de presión, altura elipsoidal y geopotencial. El contenido atmosférico de CO$_2$ de una diapositiva es una cifra histórica aproximada, no una medición vigente de 2026; no se usa para construir la ISA seca ni se convierte en afirmación de composición actual.
+
+\section{Qué significa cada estado}
+\textbf{VERIFICADO} identifica una comprobación concreta superada y especifica si fue simbólica, dimensional, de dominio, comparación con referencia o contraste numérico. No se aplica al libro entero. \textbf{REPRODUCIDO} indica que el cálculo escrito se volvió a ejecutar con resultado compatible. \textbf{PENDIENTE DE REVISIÓN} señala aplicación física, interpretación, trazabilidad semántica o juicio experto que las herramientas no establecen. \textbf{ERROR DETECTADO} registra un fallo observado; su corrección y repetición del control deben constar por separado.
+
+Los informes externos al PDF conservan los resultados completos. La compilación sólo verifica que LaTeX pudo componer un documento. Las dimensiones no comprueban convenciones angulares ni distinguen masa de una fuerza expresada informalmente. La equivalencia algebraica no demuestra que una polar represente un avión a otro Mach. Ninguna comprobación automática realizada aquí constituye revisión académica humana.
+
+\section{Motor y capa editorial}
+Se ha utilizado Studium en la revisión:\begin{quote}\small\texttt{47c12a72eb0ad1f46a56}\\\texttt{afbc4bf303985fa162a5}\end{quote} Versión alfa, posterior a la revisión desaconsejada. Se inspeccionaron las PR integradas y la PR 74 abierta. El código del motor permanece intacto. El proyecto real contiene fuentes, fragmentos, estructura, contenido importado y problemas con comprobaciones. La capa editorial del proyecto compone los archivos editables, numeración y cuadernos con la identidad tipográfica de los libros anteriores. Su código es independiente del framework.
+
+El render nativo se conserva como evidencia de integración y no se confunde con la edición compuesta. Las incidencias de unidades y numeración de ejercicios descritas en la PR abierta se documentan y se evitan en la capa editorial con unidades LaTeX explícitas e identificadores estables. Los estados de evidencia del motor no se elevan para ocultar bloqueos. La correspondencia entre una fuente y cada afirmación requiere todavía una revisión semántica experta, aun cuando el fragmento esté localizado y las ecuaciones tengan comprobaciones propias.

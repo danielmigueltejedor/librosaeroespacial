@@ -211,9 +211,29 @@ Principios centrales:
 
 ## Libros
 
-| Libro | Estado | Edición |
+| Libro | Proyecto | Edición |
 | --- | --- | --- |
-| Estructuras Aeroespaciales — Volumen I | Activo | Tercera edición |
+| [Estructuras Aeroespaciales](books/estructuras-aeroespaciales/) | AeroBooks | Tercera edición |
+| [Mecánica de Fluidos](books/mecanica-fluidos/) | AeroBooks | Primera edición |
+| [Turbomáquinas](books/turbomaquinas/) | Studium importado | Primera edición |
+| [Tecnología Aeroespacial](books/tecnologia-aeroespacial/) | Studium importado | Primera edición |
+| [Motores Cohete](books/motores-cohete/) | Studium importado | Primera edición |
+
+
+## Editar los libros importados de Studium
+
+Turbomáquinas, Tecnología Aeroespacial y Motores Cohete conservan sus fuentes y su diseño original. Cada carpeta incluye **manual, problemas y simulacros**, además de figuras editables, bibliografía e informes de comprobación. No se incluyen los apuntes, escaneos ni exámenes privados utilizados como referencia.
+
+```bash
+python3 scripts/build-studium-books.py all --check
+python3 scripts/build-studium-books.py motores-cohete
+python3 scripts/build-studium-books.py tecnologia-aeroespacial
+python3 scripts/build-studium-books.py turbomaquinas
+```
+
+Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los nueve PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
+
+Consulta el README de cada libro para saber qué `.tex` editar. Estos proyectos existentes están archivados como importaciones; sus registros académicos no se convierten automáticamente al contrato AeroBooks y no se asignan aprobaciones. Para ellos se usa el compilador anterior, y para los libros nativos se mantiene `aerobooks build`.
 
 ## Ediciones
 

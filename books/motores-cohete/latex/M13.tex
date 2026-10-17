@@ -1,0 +1,27 @@
+\begin{studiumworked}{M13. Respuesta lineal a un pequeño cambio de área · INTERMEDIATE}
+\textbf{Enunciado original.} El modelo normalizado $dP/d\theta=aP^n-P$ tiene $n=0.4$, $P(0)=1$. El área salta a $a=1.02$. Obtenga la respuesta lineal en $\theta=3$, el equilibrio lineal y el equilibrio no lineal.
+
+\textbf{Datos utilizados.} Exponente: $0.4$; Escalón: $0.02$; Tiempo relativo: $3$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[P=1+\delta,\quad d\delta/d\theta=\epsilon-(1-n)\delta\]
+\[\delta(\theta)=\epsilon[1-e^{-(1-n)\theta}]/(1-n)\]
+\[P_{eq}=a^{1/(1-n)}\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Linealizar alrededor de uno elimina productos de perturbaciones. El equilibrio lineal es $\delta_{eq}=0.02/0.6=0.03333333$.
+\item A tiempo relativo tres, $\delta=0.02782337$ y $P\simeq1.027823$. El tiempo de relajación es $1/(1-n)=1.666667$ unidades de $\theta$.
+\item El equilibrio no lineal tiene $P_{eq}-1=1.02^{1/0.6}-1=0.03355506$. La diferencia con $0.03333333$ es de orden cuadrático en el escalón.
+\end{enumerate}
+\textbf{Resultados.} $P(3)\simeq1.027823$; $P_{eq,lineal}=1.033333$; $P_{eq,no\ lineal}=1.033555$.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} La respuesta arranca con delta cero y tiende al equilibrio lineal; el autovalor -0.6 es negativo.
+
+\textbf{Límites.} Estabilidad local del modelo concentrado, no estabilidad acústica de un motor.
+\end{studiumworked}

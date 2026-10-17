@@ -1,0 +1,95 @@
+\chapter{Estructuras aeronáuticas}\label{ch:16}
+\objetivos{Seguir una carga desde su origen hasta sus apoyos; relacionar geometría, esfuerzo y deformación; distinguir resistencia, rigidez, estabilidad y tolerancia al daño; reconocer los límites de un modelo elemental de ala.}
+
+\section{La estructura como camino de cargas}
+Una aeronave conserva su forma mientras recibe presiones aerodinámicas, fuerzas de inercia, empuje, cargas del tren y presurización. La estructura no se limita a impedir que una pieza se rompa: proporciona caminos continuos para equilibrar esas acciones y mantiene las deformaciones dentro de valores compatibles con el vuelo. Un ala suficientemente resistente puede resultar demasiado flexible para conservar la distribución de sustentación prevista. Un panel que soporta una tensión media moderada puede perder estabilidad por compresión antes de alcanzar su límite elástico.
+
+El primer paso del análisis es aislar un cuerpo y dibujar sus acciones externas. Durante una maniobra, la sustentación distribuida sobre el ala se transmite a revestimientos, largueros y costillas, después a la unión con el fuselaje y finalmente al conjunto de masas cuya aceleración se pretende producir. La masa del propio ala introduce fuerzas de inercia que pueden aliviar o agravar el momento, según la condición estudiada. Por tanto, multiplicar simplemente el peso total por un factor de carga no determina todas las cargas locales.
+
+En una estructura reticulada, barras idealizadas trabajan principalmente a tracción o compresión; las uniones reales introducen flexiones secundarias. En una construcción semimonocasco, el revestimiento participa junto con rigidizadores y elementos transversales. Las costillas conservan la forma del perfil y distribuyen cargas; los largueros proporcionan capacidad frente a flexión; una sección cerrada del cajón transmite torsión mediante flujo cortante. Estas funciones se solapan: una descripción por piezas solo es útil cuando explica la transferencia entre ellas. La nomenclatura y los ejemplos constructivos se apoyan en el manual FAA de célula \cite{FAA-AIRFRAME}.
+
+\figura{structure}{Esquema conceptual de un cajón alar con largueros, costillas y revestimiento. La geometría no tiene escala de diseño.}
+
+\section{Esfuerzos internos y tensiones}
+Al cortar imaginariamente una viga aparecen una fuerza axial $N$, fuerzas cortantes, momentos flectores y un momento torsor. Son resultantes de distribuciones de tensión. En una barra recta, prismática, homogénea, cargada axialmente lejos de las uniones, la tensión media y el alargamiento elástico son
+\begin{equation}
+ \sigma=\frac{N}{A},\qquad \delta=\frac{NL}{EA}.
+\end{equation}
+Aquí $A$ es el área en metros cuadrados, $L$ la longitud, $E$ el módulo de Young en pascales y $N$ positivo en tracción. La igualdad entre tensión media y tensión local deja de ser adecuada cerca de un taladro o de una introducción de carga. La concentración de tensiones depende de la geometría y no desaparece porque la carga total sea pequeña.
+
+La flexión de una viga esbelta admite una descripción especialmente útil. Si las secciones permanecen planas, el material es elástico lineal y la flexión ocurre respecto a un eje principal, la tensión longitudinal y la curvatura cumplen
+\begin{equation}
+ \sigma_x=-\frac{My}{I},\qquad \kappa=\frac{M}{EI}.
+\end{equation}
+El signo depende del convenio elegido: con $y$ positivo hacia arriba y momento positivo de flexión sagante, la fibra superior queda comprimida. $I=\int y^2\,dA$ tiene dimensiones de longitud a la cuarta. Alejar material del eje neutro aumenta $I$ con más eficacia que acumularlo cerca del centro; este hecho explica la profundidad de los cajones y el uso de alas de perfil estructural en vigas.
+
+La resistencia y la rigidez no son intercambiables. Aumentar el límite admisible de tensión puede reducir el área necesaria frente a rotura, pero no modifica por sí mismo $E$. Una sustitución de material que conserve la resistencia puede empeorar la flecha, las frecuencias propias o la estabilidad. En estructuras de pared delgada, la distribución del material y la separación de apoyos suelen ser tan decisivas como sus propiedades mecánicas.
+
+\section{Cortadura, torsión y estabilidad}
+Para un tubo delgado cerrado de una sola celda sometido a torsión pura, el equilibrio permite obtener el flujo cortante aproximadamente constante
+\begin{equation}
+ q=\frac{T}{2A_m},\qquad \tau=\frac{q}{t}.
+\end{equation}
+$T$ es el momento torsor, $A_m$ el área encerrada por la línea media y $t$ el espesor local. $q$ se mide en newtons por metro. Esta relación requiere una pared delgada y una celda cerrada; no describe correctamente una sección abierta ni resuelve el reparto entre varias celdas. Una abertura interrumpe el camino de flujo y obliga a redistribuir esfuerzos por marcos y refuerzos. Por eso ventanas, registros y puertas necesitan atención estructural aunque reduzcan poco el área total de material.
+
+La compresión añade el problema de estabilidad. Una columna ideal articulada en ambos extremos presenta la carga crítica de Euler
+\begin{equation}
+ P_{\rm cr}=\frac{\pi^2EI}{L^2}.
+\end{equation}
+Es una bifurcación del equilibrio de una columna inicialmente recta, esbelta y elástica. Las imperfecciones, excentricidades y tensiones residuales provocan flexión antes de ese valor ideal. En paneles, el pandeo local depende también del ancho libre, espesor y condiciones de borde. No debe interpretarse cualquier pandeo local como rotura inmediata: algunas estructuras admiten un régimen posterior al pandeo, pero justificarlo requiere modelos y ensayos más complejos que Euler.
+
+La presurización introduce otra familia de cargas. Un cilindro de pared delgada, cerrado y lejos de discontinuidades, con sobrepresión $\Delta p$ y radio $r$, presenta tensiones de membrana $\sigma_\theta=\Delta p r/t$ y $\sigma_z=\Delta p r/(2t)$. La tensión circunferencial duplica la axial porque los cortes de equilibrio tienen áreas resistentes diferentes. Es una aproximación de membrana: no incluye marcos, cambios de curvatura, ventanas ni flexión local.
+
+\section{Durabilidad, daño y aeroelasticidad}
+Una carga que no provoca fallo estático puede repetirse miles de veces y hacer crecer una grieta. La fatiga depende de la amplitud y secuencia de tensiones, del estado superficial, del ambiente y de los detalles de unión. El criterio de vida segura busca evitar el inicio o crecimiento peligroso dentro de una vida establecida; la tolerancia al daño considera defectos y exige que el crecimiento y la resistencia residual sean compatibles con su detección. Estas ideas no equivalen a declarar que toda grieta es aceptable.
+
+El análisis debe distinguir carga de servicio, hipótesis de carga y capacidad resistente. Los márgenes y factores empleados en un programa concreto proceden de requisitos aplicables, materiales y ensayos; no se convierten aquí en números universales. Una tensión calculada inferior a un valor educativo permite comparar configuraciones, pero no certifica una aeronave. Las uniones suelen gobernar por aplastamiento, sección neta, cortadura del elemento de fijación, deslizamiento o combinación de mecanismos.
+
+La deformación estructural también modifica las cargas aerodinámicas. Una torsión del ala cambia el ángulo de ataque, altera la sustentación y produce nueva torsión. Si la realimentación amplifica la deformación puede aparecer divergencia estática; si interactúan modos vibratorios y aerodinámica no estacionaria puede aparecer flameo. No basta comprobar tensiones de una forma geométrica fija. Rigidez torsional, distribución de masas y amortiguamiento son variables de seguridad y prestaciones.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: modelo de una semiala}
+\begin{studiumworked}{Problema resuelto: modelo de una semiala}
+
+\textbf{1. Enunciado.} Una semiala se idealiza como viga en voladizo de longitud $4\,\mathrm{m}$ con carga transversal uniforme hacia arriba de $3\,\mathrm{kN/m}$. Se pide estimar la tensión máxima y la flecha del extremo para una sección de rigidez constante.
+
+\textbf{2. Datos.} $L=4\,\mathrm{m}$, $w=3000\,\mathrm{N/m}$, $E=70\,\mathrm{GPa}$, $I=2.0\times10^{-4}\,\mathrm{m^4}$ y distancia extrema $c=0.15\,\mathrm{m}$. Son magnitudes educativas, sin correspondencia con un diseño aprobado.
+
+\textbf{3. Incógnitas.} Módulo del momento de raíz $M_0$, tensión extrema $|\sigma|_{\max}$ y desplazamiento vertical $v_L$.
+
+\textbf{4. Esquema verbal.} El fuselaje se sustituye por un empotramiento a la izquierda; el extremo derecho es libre y la carga apunta hacia arriba en toda la longitud. La reacción vertical apunta hacia abajo y el par de reacción equilibra el momento de la carga.
+
+\textbf{5. Hipótesis.} Pequeñas deformaciones, material isótropo elástico, sección constante, unión perfectamente rígida, carga estática, ausencia de torsión y deformación por cortante despreciable.
+
+\textbf{6. Modelo.} Viga de Euler--Bernoulli con coordenada $x$ desde la raíz. Se usan módulos para evitar confundir el sentido de la reacción con el del momento interno.
+
+\textbf{7. Ecuaciones.} El tramo exterior a una sección tiene resultante $w(L-x)$ aplicada a distancia $(L-x)/2$, luego $|M(x)|=w(L-x)^2/2$. La relación momento--curvatura integrada con giro y desplazamiento nulos en raíz produce $|v_L|=wL^4/(8EI)$.
+
+\textbf{8. Despeje.} $M_0=wL^2/2$, $|\sigma|_{\max}=M_0c/I$ y $|v_L|=wL^4/(8EI)$.
+
+\textbf{9. Sustitución.}
+\begin{align}
+ M_0&=3000(4)^2/2=24000\,\mathrm{N\,m},\\
+ |\sigma|_{\max}&=24000(0.15)/(2.0\times10^{-4}),\\
+ |v_L|&=3000(4)^4/[8(70\times10^9)(2.0\times10^{-4})].
+\end{align}
+\textbf{10. Resultado.} $|\sigma|_{\max}=18.0\,\mathrm{MPa}$ y $|v_L|=6.86\,\mathrm{mm}$ hacia arriba.
+
+\textbf{11. Interpretación.} La raíz combina el mayor brazo y toda la carga exterior. La flecha relativa, $0.00171L$, hace razonable la aproximación geométrica pequeña, aunque no comprueba por sí sola el resto de hipótesis.
+
+\textbf{12. Comprobación independiente.} Por trabajo virtual, una fuerza unitaria ascendente en el extremo produce $m(x)=L-x$. Entonces $v_L=\int_0^L M(x)m(x)/(EI)\,dx=wL^4/(8EI)$, coincidente. Además, $wL=12\,\mathrm{kN}$ aplicado a $L/2$ produce exactamente los $24\,\mathrm{kN\,m}$ de raíz.
+
+\textbf{13. Limitaciones.} Faltan distribución real de sustentación, masa del ala, anisotropía, uniones, cortadura, pandeo y aeroelasticidad. El resultado no permite determinar una carga admisible de vuelo.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Nivel básico. Una barra de $1\,\mathrm{m}$, área $200\,\mathrm{mm^2}$ y $E=70\,\mathrm{GPa}$ recibe $10\,\mathrm{kN}$ de tracción. Determine tensión y alargamiento.
+\item Nivel intermedio. Repita el problema resuelto duplicando la longitud y manteniendo las demás magnitudes. Explique qué escala con $L^2$ y qué escala con $L^4$.
+\item Nivel intermedio. Un tubo de una celda encierra $0.08\,\mathrm{m^2}$, tiene $t=2\,\mathrm{mm}$ y transmite $1600\,\mathrm{N\,m}$. Determine $q$ y $\tau$.
+\item Nivel de análisis. Se duplica el límite resistente de un material sin cambiar $E$, geometría ni densidad. Discuta qué conclusiones pueden obtenerse sobre flecha, pandeo y fatiga.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $50\,\mathrm{MPa}$ y $0.714\,\mathrm{mm}$. 2: $96\,\mathrm{kN\,m}$, $72\,\mathrm{MPa}$ y $109.7\,\mathrm{mm}$; revisar pequeñas deformaciones. 3: $10\,\mathrm{kN/m}$ y $5\,\mathrm{MPa}$. 4: la flecha y Euler ideal permanecen iguales; la fatiga no se deduce del límite estático.
+
+\resumen{Las cargas necesitan caminos continuos y equilibrio local. La resistencia evita estados límite de material; la rigidez controla deformaciones; la estabilidad impide pérdida de equilibrio. La durabilidad y la interacción aeroelástica exigen información adicional. Las fórmulas elementales son herramientas para razonar, condicionadas por geometría, material y contorno.}
+\textbf{Autoevaluación.} ¿Por qué un registro puede afectar mucho a la torsión? ¿Qué cambia al pasar de una sección abierta a una cerrada? ¿Cómo distinguiría un fallo de resistencia de uno de estabilidad?

@@ -1,0 +1,92 @@
+\chapter{Sistemas eléctricos e instrumentación}\label{ch:22}
+\objetivos{Seguir la generación, distribución y consumo de energía eléctrica; calcular demandas y autonomía con hipótesis explícitas; explicar la cadena de medida y las limitaciones de instrumentos de presión, inerciales y electrónicos.}
+
+\section{Energía e información comparten infraestructura}
+La electricidad permite mover actuadores, alimentar equipos y transportar información. Estas funciones se relacionan, pero una señal válida y una fuente de energía disponible son requisitos diferentes. Un instrumento puede encenderse y mostrar un dato incorrecto; un sensor correcto puede quedar inaccesible si falla su distribución. El diseño debe asegurar tanto potencia suficiente como integridad de la información necesaria para decidir.
+
+Una arquitectura eléctrica conecta fuentes, barras de distribución, protección y cargas. Un generador transforma potencia mecánica en eléctrica; una batería almacena energía química; convertidores adaptan tensión, frecuencia o tipo de corriente. El motor o la unidad auxiliar que mueve un generador forma parte de la cadena energética. Describir dos generadores como independientes requiere comprobar también accionamiento, regulación, refrigeración y distribución.
+
+FAA Airframe y el manual de conocimientos aeronáuticos ofrecen la base descriptiva de estos sistemas y de la instrumentación \cite{FAA-AIRFRAME,PHAK}. Este capítulo trata modelos generales. Tensiones, autonomías y prioridades de los ejemplos son educativas y no representan configuraciones ni procedimientos de una aeronave específica.
+
+\figura{electric}{Cadena funcional de generación, regulación, barra, protección y consumidor. La instrumentación se desarrolla en el texto y no aparece en este esquema.}
+
+\section{Potencia y distribución}
+En corriente continua estacionaria, $P=VI$ para una carga ideal de potencia absorbida positiva. Una línea de resistencia $R$ pierde potencia $I^2R$ y presenta caída $IR$. Para una potencia dada, aumentar tensión reduce intensidad y pérdidas resistivas si la geometría permanece igual. Sin embargo, aislamiento, protección, arcos y compatibilidad de equipos cambian con la tensión. La elección no depende de una sola fórmula.
+
+En corriente alterna sinusoidal monofásica, la potencia activa es $P=V_{\rm rms}I_{\rm rms}\cos\phi$. El producto $VI$ es potencia aparente, medida en voltamperios. En un sistema trifásico equilibrado, $P=\sqrt{3}V_{LL}I_L\cos\phi$. La hipótesis de equilibrio y la definición de tensión entre líneas son necesarias. Equipos con electrónica de potencia pueden introducir armónicos; entonces un ángulo único no siempre describe todo el factor de potencia.
+
+Una barra reúne cargas y fuentes a una tensión común. Contactores y dispositivos de aislamiento permiten separar zonas o conectar una fuente alternativa. El reparto entre barras puede priorizar funciones necesarias tras una pérdida de generación. No basta que la potencia nominal de todas las fuentes supere la demanda normal: la condición crítica puede ser funcionamiento con una fuente perdida, máxima demanda transitoria o refrigeración reducida.
+
+Los dispositivos de protección deben limitar consecuencias de sobrecorrientes y cortocircuitos, coordinándose con conductores y cargas. Una interrupción demasiado lenta permite sobrecalentamiento; una demasiado sensible puede retirar una función sana durante una demanda normal de arranque. La selectividad busca aislar la parte afectada manteniendo lo demás disponible. No implica que todos los fallos eléctricos produzcan una gran corriente: una conexión resistiva puede disipar calor localmente sin superar un umbral global.
+
+La masa de cable y la caída de tensión dependen de longitud de ida y retorno, sección y resistividad. Si se usa la estructura como retorno, el modelo debe representar uniones y compatibilidad, en vez de suponer resistencia nula. Separación de rutas, apantallamiento y puesta a tierra controlan interferencias, pero su eficacia depende de frecuencias y corrientes. Una conexión que parece equipotencial en continua puede comportarse de otra manera a alta frecuencia.
+
+\section{Baterías y autonomía}
+La capacidad en amperio hora relaciona carga eléctrica con tiempo bajo condiciones definidas; no es por sí sola energía. Aproximadamente $E=VC$ si la tensión se mantiene constante, con $V$ en voltios y $C$ en amperio hora para obtener vatios hora. La tensión real cambia con carga, temperatura y estado de la batería; también existen límites de profundidad de descarga y envejecimiento.
+
+Una estimación de autonomía alimentando una carga constante es
+\begin{equation}
+ t=\frac{\eta_d E_{\rm util}}{P_{\rm carga}},
+\end{equation}
+si $\eta_d$ representa pérdidas entre almacenamiento y carga. Debe evitarse descontar dos veces una reserva ya incluida en $E_{\rm util}$. La autonomía puede estar limitada por tensión mínima o potencia máxima antes de agotar toda la energía química. Cargas de arranque y cargas esenciales sostenidas plantean demandas distintas.
+
+Un balance eléctrico necesita modos: normal, transitorio, fuente externa, pérdida de una fuente y otras condiciones pertinentes. La suma de potencias nominales puede ser excesivamente conservadora si las cargas nunca coinciden, o insuficiente si ignora picos e ineficiencia de conversores. La simultaneidad debe justificarse por la misión, no ajustarse para que el cálculo encaje.
+
+\section{La cadena de medida}
+Medir consiste en convertir una magnitud física en información con incertidumbre. Un sensor produce una respuesta; el acondicionamiento amplifica, filtra o compensa; la conversión y el cálculo aplican un modelo; la presentación comunica el resultado. Calibración establece una relación con una referencia dentro de condiciones conocidas. Resolución es el menor cambio representable; exactitud describe cercanía al valor de referencia; repetibilidad describe dispersión bajo condiciones similares. Ninguna de ellas sustituye a las demás.
+
+Un modelo lineal de sensor $y=Kx+b$ separa sensibilidad $K$ y sesgo $b$. Una lectura repetible puede estar desplazada por un sesgo. Filtrar ruido reduce variación, pero añade retardo y puede ocultar transitorios. La respuesta dinámica puede aproximarse por $\tau\dot y+y=Kx$ para un sistema de primer orden. La constante $\tau$ tiene unidades de tiempo; ante un escalón, tras una constante de tiempo se alcanza aproximadamente el $63.2\,\text{\%}$ del cambio final.
+
+Una medida de presión dinámica ideal permite inferir velocidad incomprensible mediante
+\begin{equation}
+ q=p_t-p_s=\frac12\rho V^2,\qquad V=\sqrt{\frac{2q}{\rho}}.
+\end{equation}
+Requiere flujo con compresibilidad despreciable, presión total y estática representativas y densidad conocida. Un anemómetro calibrado con densidad de referencia no muestra directamente velocidad verdadera a cualquier altitud. En flujo compresible, la presión de impacto y la presión dinámica dejan de ser intercambiables sin corrección.
+
+El altímetro barométrico convierte presión en altitud mediante una atmósfera de referencia y un ajuste. Mide una relación con presión, no distancia geométrica directa al suelo. El variómetro infiere cambios de presión con una respuesta temporal propia. Una obstrucción o sesgo compartido de la fuente estática puede afectar simultáneamente varias indicaciones, mostrando por qué tres pantallas no equivalen necesariamente a tres medidas independientes.
+
+\section{Inerciales, referencia y coherencia}
+Un giróscopo mide o mantiene información de rotación según su principio físico. Un acelerómetro mide fuerza específica, no aceleración gravitatoria aislada. Los sistemas inerciales combinan esas señales con modelos de actitud y gravedad para estimar movimiento. Los sesgos integrados producen errores crecientes; una ayuda externa puede limitar deriva si sus datos son válidos y se integran de forma coherente.
+
+Los sensores de temperatura pueden responder a resistencia eléctrica, fuerza termoeléctrica u otras propiedades. Su lectura depende de ubicación, transferencia térmica y tiempo de respuesta. Temperatura total, estática y temperatura de una superficie no son la misma magnitud. De manera semejante, una indicación de presión de aceite no mide directamente espesor de película en cada cojinete. La utilidad del instrumento deriva de relacionar la señal con un modelo físico del sistema.
+
+La integración moderna combina información en pantallas y computadores. Esa concentración puede mejorar coherencia y reducir carga de interpretación, pero introduce dependencias de alimentación, datos y software. Una bandera de invalidez protege frente a una lectura que el equipo reconoce como incorrecta; un fallo plausible puede no generar aviso automático. Comparación entre fuentes realmente independientes y evaluación de tendencias son conceptos esenciales para diseñar vigilancia.
+
+\section{Problema resuelto: reserva eléctrica y pérdidas}
+\textbf{1. Enunciado.} Una batería idealizada alimenta una barra esencial mediante convertidor. Estime autonomía y caída en una línea de la carga principal.
+
+\textbf{2. Datos.} Energía nominal $E_n=28\,\mathrm{V}\times24\,\mathrm{Ah}$; fracción utilizable $0.75$; rendimiento de conversión $0.90$; cargas de $180$, $120$ y $60\,\mathrm{W}$. Una línea a $28\,\mathrm{V}$ alimenta los $180\,\mathrm{W}$ y tiene resistencia total $0.08\,\Omega$.
+
+\textbf{3. Incógnitas.} Energía entregable, autonomía ideal y estimación de caída y calentamiento en esa línea.
+
+\textbf{4. Esquema verbal.} La batería entrega energía al convertidor y este a tres cargas paralelas. El cálculo de línea se trata como comprobación local adicional, sin incorporarlo de nuevo al rendimiento global ya supuesto.
+
+\textbf{5. Hipótesis.} Tensión y potencia constantes, fracción útil conocida, sin degradación adicional y corriente de línea estimada con tensión nominal. El convertidor engloba pérdidas globales del balance de autonomía.
+
+\textbf{6. Modelo.} Conservación de energía y ley de Ohm en régimen continuo.
+
+\textbf{7. Ecuaciones.} $E_{\rm barra}=E_n(0.75)(0.90)$, $t=E_{\rm barra}/P$, $I\simeq P_1/28$, $\Delta V=IR$ y $P_R=I^2R$.
+
+\textbf{8. Despeje.} $P=180+120+60$. La energía en vatios hora dividida entre vatios da horas directamente.
+
+\textbf{9. Sustitución.} $E_n=672\,\mathrm{Wh}$, $E_{\rm barra}=453.6\,\mathrm{Wh}$ y $t=453.6/360$.
+
+\textbf{10. Resultado.} $t=1.26\,\mathrm{h}=75.6\,\mathrm{min}$. Para la línea, $I\simeq6.429\,\mathrm{A}$, $\Delta V\simeq0.514\,\mathrm{V}$ y $P_R\simeq3.306\,\mathrm{W}$.
+
+\textbf{11. Interpretación.} La energía nominal no equivale a energía utilizable por las cargas. La caída local es aproximadamente el $1.84\,\text{\%}$ de la tensión de barra; su aceptabilidad exige conocer el intervalo de alimentación del equipo.
+
+\textbf{12. Comprobación independiente.} Durante $1.26\,\mathrm{h}$, las cargas absorben $360(1.26)=453.6\,\mathrm{Wh}$. Aguas arriba del convertidor se requieren $504\,\mathrm{Wh}$, exactamente el $75\,\text{\%}$ de $672\,\mathrm{Wh}$. La potencia resistiva también satisface $P_R=I\Delta V$.
+
+\textbf{13. Limitaciones.} Una carga de potencia constante aumenta corriente al caer tensión, por lo que la estimación local no es exacta. Temperatura, envejecimiento, picos y tensión mínima pueden reducir autonomía. No constituye una reserva reglamentaria.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Calcule la intensidad de una carga continua de $560\,\mathrm{W}$ a $28\,\mathrm{V}$.
+\item Intermedio. Una resistencia de línea de $0.05\,\Omega$ transporta $30\,\mathrm{A}$. Determine caída y potencia perdida.
+\item Intermedio. Una sonda ideal mide $q=2500\,\mathrm{Pa}$ con $\rho=1.0\,\mathrm{kg/m^3}$. Estime velocidad y explique cómo cambia si la densidad real es $0.8\,\mathrm{kg/m^3}$ manteniendo $q$.
+\item Análisis. Dos indicadores digitales muestran el mismo error de altitud. Describa una causa común y una prueba conceptual de independencia que no dependa de su aspecto visual.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $20\,\mathrm{A}$. 2: $1.5\,\mathrm{V}$ y $45\,\mathrm{W}$. 3: $70.71$ y $79.06\,\mathrm{m/s}$, dentro del modelo incompresible. 4: fuente estática, referencia o computador compartidos; hay que trazar sensores, alimentación y cálculo de cada canal.
+
+\resumen{La energía eléctrica requiere fuentes, conversión, distribución y protección coordinadas. La autonomía es un balance de energía bajo condiciones definidas. La instrumentación convierte una magnitud en una estimación con sesgo, incertidumbre y respuesta temporal. Redundar pantallas solo aporta independencia cuando también se separan las causas de fallo relevantes.}
+\textbf{Autoevaluación.} ¿Por qué amperio hora no equivale a energía? ¿Qué diferencia entre resolución y exactitud puede afectar una decisión? ¿Por qué un acelerómetro requiere un modelo de gravedad para estimar movimiento?

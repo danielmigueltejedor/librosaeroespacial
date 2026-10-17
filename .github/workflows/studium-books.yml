@@ -1,0 +1,43 @@
+name: Studium imported PDFs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "books/turbomaquinas/**"
+      - "books/tecnologia-aeroespacial/**"
+      - "books/motores-cohete/**"
+      - "scripts/build-studium-books.py"
+      - ".github/workflows/studium-books.yml"
+  pull_request:
+    paths:
+      - "books/turbomaquinas/**"
+      - "books/tecnologia-aeroespacial/**"
+      - "books/motores-cohete/**"
+      - "scripts/build-studium-books.py"
+      - ".github/workflows/studium-books.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern
+      - name: Check and compile the nine volumes
+        run: python3 scripts/build-studium-books.py all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: studium-pdfs
+          path: dist/studium/*/*.pdf
+          if-no-files-found: error

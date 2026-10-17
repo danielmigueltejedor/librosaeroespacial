@@ -1,0 +1,26 @@
+\begin{studiumworked}{M06. Dos raíces y primer bloqueo · INTERMEDIATE}
+\textbf{Enunciado original.} Una tobera ideal tiene $A_e/A_t=2.86$ y $\gamma=1.4$. Calcule las dos raíces de salida para garganta sónica y la contrapresión relativa de primer bloqueo. Compare con una convergente simple.
+
+\textbf{Datos utilizados.} Expansión: $2.86$; Exponente: $1.4$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[A/A^*=f(M,\gamma)\]
+\[(p_b/p_0)_{inicio}=[1+(\gamma-1)M_{e,sub}^2/2]^{-\gamma/(\gamma-1)}\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item La inversión se encierra en dos intervalos distintos: $(0,1)$ y $(1,\infty)$. Las raíces son $0.2076227$ y $2.586722$, respectivamente.
+\item El primer bloqueo usa la raíz subsónica del divergente. Sustituirla da $p_b/p_0=0.9704012$. Para una convergente simple el umbral sería $0.5282818$.
+\item La diferencia aparece porque el divergente subsónico recupera presión después del mínimo sónico. Ninguno de esos valores es automáticamente la presión adaptada de la rama supersónica.
+\end{enumerate}
+\textbf{Resultados.} $M_{sub}=0.2076227$; $M_{sup}=2.586722$; $(p_b/p_0)_{inicio}=0.9704012$.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} Sustituir cada raíz en la relación área-Mach recupera la misma expansión dentro de la tolerancia numérica.
+
+\textbf{Límites.} No se calcula separación ni posición de choque; el umbral es inviscido y cuasiunidimensional.
+\end{studiumworked}

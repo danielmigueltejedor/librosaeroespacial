@@ -1,0 +1,96 @@
+\chapter{Sistemas de combustible}\label{ch:23}
+\objetivos{Explicar cómo se conserva alimentación continua en distintas condiciones; relacionar ventilación, presión, temperatura y cavitación; calcular masa y centro de gravedad; distinguir cantidad almacenada, utilizable e indicada.}
+
+\section{Almacenar no equivale a suministrar}
+El sistema de combustible debe entregar al motor un caudal adecuado y con condiciones compatibles de presión, temperatura y calidad. El depósito es solo el comienzo. La misión incluye cambios de actitud, aceleración, presión exterior, temperatura y consumo. Un avión puede contener suficiente masa total y, sin embargo, perder alimentación si esa masa no llega a la captación o si aparece vapor donde se requiere líquido.
+
+La arquitectura combina almacenamiento, captación, transferencia, alimentación, regulación, ventilación e indicación. Algunos depósitos son integrales con la estructura; otros emplean recipientes separados o elementos flexibles. Esta elección influye en masa, inspección, respuesta a deformación y aislamiento. El diseño debe considerar no solo régimen de crucero, sino también transitorios, terreno inclinado, demanda máxima y condiciones degradadas definidas.
+
+FAA Airframe describe los principios generales de almacenamiento y distribución, y Powerplant los de alimentación al motor \cite{FAA-AIRFRAME,FAA-POWERPLANT}. Las relaciones siguientes son docentes. No se deducen de ellas selecciones de depósito, transferencias ni procedimientos de repostaje de un modelo concreto.
+
+\figura{fuel}{Cadena funcional de depósito ventilado, bomba, filtro, medición y motor. La transferencia entre depósitos se desarrolla en el texto.}
+
+\section{Masa, volumen y cantidad utilizable}
+La energía química embarcada está relacionada con masa, mientras el espacio requerido depende del volumen. Para densidad uniforme, $m_f=\rho_fV_f$. La densidad cambia con temperatura y composición; por ello un volumen indicado necesita una densidad de referencia o compensación para convertirse en masa. La dilatación de un líquido al calentarse exige volumen libre y una gestión de ventilación apropiada. Llenar un volumen geométrico no significa poder almacenar de forma segura ese mismo volumen de líquido bajo cualquier temperatura.
+
+La cantidad total incluye combustible que puede no ser utilizable en determinadas condiciones. Geometría, captación, maniobra y límites establecidos determinan qué parte puede entregarse al motor. El combustible remanente no debe suponerse nulo cuando una indicación alcanza un valor bajo. Tampoco una cantidad indicada garantiza distribución adecuada entre depósitos: el sistema de medida tiene errores y puede depender de actitud, propiedades dieléctricas y cálculo.
+
+El balance general de un depósito es
+\begin{equation}
+ \frac{dm_i}{dt}=\sum\dot m_{\rm entrada}-\sum\dot m_{\rm salida}.
+\end{equation}
+Una transferencia interna reduce masa en un depósito y la aumenta en otro sin modificar masa total, salvo pérdidas o consumo simultáneos. El consumo de motor sí disminuye masa de aeronave. Esta diferencia es esencial para comprender centro de gravedad, cargas de ala y autonomía.
+
+Para una aeronave con masa seca $m_s$ y depósitos en posiciones longitudinales $x_i$ respecto a un datum,
+\begin{equation}
+ x_G=\frac{m_sx_s+\sum m_ix_i}{m_s+\sum m_i}.
+\end{equation}
+Todas las posiciones deben usar la misma referencia y signo. No puede obtenerse el nuevo centro de gravedad promediando simplemente posiciones inicial y final: el promedio es de momentos de masa dividido por masa total. En una transferencia con masa total constante, mover $\Delta m$ de $x_a$ a $x_b$ produce $\Delta x_G=\Delta m(x_b-x_a)/m_{\rm total}$.
+
+\section{Presión, ventilación y vaporización}
+Para extraer líquido de un recipiente debe entrar gas, deformarse el recipiente o disminuir la presión interior. La ventilación permite controlar el intercambio con el entorno y evita que el consumo genere una depresión excesiva. También debe acomodar expansión térmica y cambios de presión exterior. Una ventilación obstruida puede afectar alimentación aunque el depósito contenga combustible. Su función no es mantener universalmente presión atmosférica exacta en todo instante, sino conservar el intervalo previsto por la arquitectura.
+
+La presión en aspiración de una bomba depende de presión sobre el líquido, altura, aceleración y pérdidas. En un modelo estático simple,
+\begin{equation}
+ p_{\rm asp}=p_{\rm sup}+\rho_f g h-\Delta p_{\text{línea}}.
+\end{equation}
+Se emplean presiones absolutas cuando se compara con presión de vapor. $h$ es positivo si la superficie libre está por encima de la aspiración en el campo gravitatorio supuesto. En una aeronave acelerada, el campo efectivo y la posición de la superficie libre cambian, de modo que la expresión requiere adaptación vectorial.
+
+Si la presión local cae hacia la presión de vapor del líquido, pueden formarse cavidades de vapor. Su evolución y colapso alteran caudal y pueden dañar la bomba. Una restricción, temperatura elevada o presión exterior reducida disminuyen el margen disponible. La presencia de vapor no se resuelve necesariamente aumentando velocidad de bomba: eso puede aumentar la demanda de presión en aspiración. Es necesario razonar sobre el balance completo.
+
+La altura neta positiva de aspiración disponible se expresa, en un modelo simple, como $\mathrm{NPSH}_a=(p_{\rm asp}-p_v)/(\rho_f g)$ cuando la presión usada y la contribución de velocidad se definen coherentemente. Una comparación de ingeniería requiere la definición completa y el valor requerido por la bomba en su caudal. Aquí sirve para mostrar que importa la distancia de presión absoluta respecto al vapor, no solo la lectura manométrica.
+
+\section{Captación y alimentación continua}
+En aceleraciones, el combustible se redistribuye y oscila. Tabiques y volúmenes colectores pueden limitar movimiento y mantener líquido junto a la captación. Un volumen de reserva local permite salvar una interrupción breve de transferencia, pero su duración depende de caudal consumido. La solución debe funcionar dentro de una envolvente de actitudes y aceleraciones definida; ningún depósito simple garantiza alimentación en cualquier orientación.
+
+Las bombas pueden realizar funciones de transferencia, refuerzo o alimentación principal según la arquitectura. Una bomba movida por el motor y otra eléctrica no son automáticamente independientes si comparten captación o una línea bloqueable. Válvulas antirretorno y de aislamiento condicionan cómo se propaga una pérdida de presión. Una conexión cruzada permite nuevas rutas, pero también puede introducir una causa común si no se controla adecuadamente.
+
+En motores de turbina, la dosificación ajusta masa de combustible a demanda y límites térmicos y dinámicos. En motores alternativos, carburación o inyección y distribución a cilindros plantean otros fenómenos. El sistema de aeronave debe entregar combustible en un intervalo compatible con el sistema del motor. Una bomba capaz de mayor presión nominal no resuelve por sí sola una restricción de captación, una contaminación o una dosificación incorrecta.
+
+Filtros y separadores reducen contaminación según su función. La pérdida de presión a través de un filtro cambia con caudal y suciedad; un elemento que proteja frente a partículas puede convertirse en restricción si se satura. El agua y otros contaminantes plantean mecanismos distintos de las partículas sólidas. La evaluación docente debe separar presencia de combustible, calidad de este y capacidad de entrega.
+
+\section{Integración térmica y de seguridad}
+El combustible puede absorber calor de equipos antes de consumirse. Esta función térmica beneficia refrigeración, pero eleva su temperatura y puede reducir margen frente a vaporización o degradación. A bajo consumo, la capacidad de evacuar calor mediante combustible disminuye; por eso una condición poco exigente en empuje puede ser relevante térmicamente. Las tuberías próximas a zonas calientes requieren un análisis de instalación, no solo un balance de caudal.
+
+La presencia simultánea de combustible, oxígeno y una fuente de ignición explica la atención a fugas, electricidad y temperaturas. Sistemas de inertización reducen disponibilidad de oxidante en determinados espacios mediante una arquitectura específica. No eliminan todos los riesgos ni convierten cualquier mezcla en inerte bajo cualquier condición. La separación física, control de fuentes y detección son capas distintas.
+
+La indicación puede emplear flotadores, capacitancia, caudal integrado u otros principios. Un totalizador que integra consumo depende de la cantidad inicial y del error del caudalímetro; una medida de nivel depende de geometría y actitud. Comparar masa estimada por consumo con medida independiente puede detectar discrepancias, pero solo si se conocen las incertidumbres de ambas. La consistencia entre señales es más informativa que una cifra aislada.
+
+\section{Problema resuelto: consumo y centrado}
+\textbf{1. Enunciado.} Una aeronave educativa tiene dos depósitos longitudinalmente separados. Consume primero $100\,\mathrm{kg}$ del delantero y después transfiere $40\,\mathrm{kg}$ del trasero al delantero. Determine masa y centro de gravedad tras cada etapa.
+
+\textbf{2. Datos.} Masa sin combustible $m_s=2000\,\mathrm{kg}$ en $x_s=2.5\,\mathrm{m}$; depósito delantero $m_D=200\,\mathrm{kg}$ en $x_D=1.0\,\mathrm{m}$; trasero $m_T=300\,\mathrm{kg}$ en $x_T=4.0\,\mathrm{m}$. Datum común y positivo hacia atrás.
+
+\textbf{3. Incógnitas.} Centro inicial, centro tras consumo y centro tras transferencia; masa final.
+
+\textbf{4. Esquema verbal.} Tres masas puntuales equivalentes sobre un eje. Consumir elimina masa y momento; transferir conserva masa pero mueve su momento.
+
+\textbf{5. Hipótesis.} Posiciones de centros de cada depósito constantes, sin combustible en tuberías ni consumo durante transferencia, aeronave rígida.
+
+\textbf{6. Modelo.} Balance de masas y momentos de masa respecto al datum.
+
+\textbf{7. Ecuaciones.} $M=\sum m_i$, $S=\sum m_ix_i$ y $x_G=S/M$.
+
+\textbf{8. Despeje.} Tras consumo, $M_1=M_0-100$ y $S_1=S_0-100x_D$. Tras transferencia, $S_2=S_1+40(x_D-x_T)$ y $M_2=M_1$.
+
+\textbf{9. Sustitución.} $M_0=2500\,\mathrm{kg}$ y $S_0=2000(2.5)+200(1)+300(4)=6400\,\mathrm{kg\,m}$.
+
+\textbf{10. Resultado.} $x_{G0}=2.560\,\mathrm{m}$. Tras consumir: $M_1=2400\,\mathrm{kg}$, $S_1=6300\,\mathrm{kg\,m}$ y $x_{G1}=2.625\,\mathrm{m}$. Tras transferir: $m_D=140\,\mathrm{kg}$, $m_T=260\,\mathrm{kg}$, $x_{G2}=6180/2400=2.575\,\mathrm{m}$.
+
+\textbf{11. Interpretación.} El consumo delantero desplaza el centro hacia atrás; la transferencia hacia delante lo recupera parcialmente. La transferencia no aumenta autonomía porque no añade masa de combustible.
+
+\textbf{12. Comprobación independiente.} Para la transferencia, $\Delta x_G=40(1-4)/2400=-0.050\,\mathrm{m}$, exactamente $2.575-2.625$. Sumando directamente momentos finales, $5000+140+1040=6180\,\mathrm{kg\,m}$.
+
+\textbf{13. Limitaciones.} No se comparó con límites de centrado ni cargas de ala. Los centros de combustible reales pueden moverse con nivel y actitud; tampoco se calculó cantidad no utilizable.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Calcule la masa de $200\,\mathrm{L}$ de un combustible de densidad educativa $800\,\mathrm{kg/m^3}$.
+\item Intermedio. Un colector contiene $3\,\mathrm{kg}$ utilizables y el motor consume $0.15\,\mathrm{kg/s}$. Determine cuánto dura sin aporte.
+\item Intermedio. Con $p_{\rm sup}=70\,\mathrm{kPa}$ absolutos, $h=0.5\,\mathrm{m}$, $\rho=800\,\mathrm{kg/m^3}$ y pérdida $10\,\mathrm{kPa}$, calcule presión de aspiración. Compare con $p_v=20\,\mathrm{kPa}$.
+\item Análisis. Dos depósitos indican igual volumen, pero uno está a mayor temperatura. Explique qué datos faltan para comparar energía almacenada y por qué igual volumen no garantiza igual masa.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $160\,\mathrm{kg}$. 2: $20\,\mathrm{s}$. 3: $63.92\,\mathrm{kPa}$ absolutos y margen de presión de $43.92\,\mathrm{kPa}$, sin verificar requisitos de bomba. 4: densidad y poder calorífico; expansión, composición y temperatura afectan la comparación.
+
+\resumen{La disponibilidad de combustible exige masa suficiente, captación continua, presión adecuada y calidad compatible. Ventilación y temperatura condicionan la aspiración. Consumo y transferencia tienen efectos distintos sobre masa y centrado. La indicación necesita un modelo de medida y no sustituye a comprobar el camino físico hasta el motor.}
+\textbf{Autoevaluación.} ¿Por qué un depósito ventilado puede dejar de alimentar si se obstruye su ventilación? ¿Qué conserva una transferencia interna? ¿Por qué la cavitación exige usar presión absoluta?

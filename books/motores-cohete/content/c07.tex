@@ -1,0 +1,84 @@
+\chapter{Prestaciones ideales y presión ambiente}\label{ch:07}
+\objetivos{Relacionar geometría, estados de salida y prestaciones; obtener el coeficiente de empuje; deducir la condición ideal de expansión óptima y separar el límite matemático de un diseño realizable.}
+\section{De los datos de cámara al estado de salida}
+Para una tobera ahogada con divergente supersónico isentrópico, los datos $p_c,T_c,R,\gamma,A_t,\varepsilon$ determinan una solución interna ideal. Se aproxima cámara de velocidad pequeña, de modo que $p_c=p_0$ y $T_c=T_0$. Primero se invierte \eqref{eq:areaMach} por la rama supersónica para obtener $M_e$. Después,
+\begin{align}
+ T_e&=\frac{T_c}{1+(\gamma-1)M_e^2/2},\\
+ p_e&=p_c\left(1+\frac{\gamma-1}{2}M_e^2\right)^{-\gamma/(\gamma-1)},\\
+ v_e&=M_e\sqrt{\gamma RT_e}.
+\end{align}
+El caudal procede de la garganta. Finalmente se calcula el empuje con la presión ambiente real de la condición de estudio. Esta secuencia impide introducir por costumbre $p_e=p_a$ cuando la geometría ya fija otra presión de salida.
+
+La solución interna así obtenida es una candidata. Si la contrapresión fuerza un choque dentro del conducto, el estado calculado por la rama supersónica completa no corresponde al funcionamiento real. Si aparece separación, el modelo inviscido unidimensional tampoco la predice. Debe comprobarse el régimen antes de utilizar la candidata como descripción física.\cite{MIT03}
+\section{Coeficiente de empuje: derivación}
+La ecuación de empuje se divide por $p_cA_t$:
+\[
+ C_F=\frac{\dot m v_e}{p_cA_t}+\frac{p_e-p_a}{p_c}\varepsilon
+ =\frac{v_e}{c^*}+\left(\frac{p_e}{p_c}-\frac{p_a}{p_c}\right)\varepsilon.
+\]
+Definiendo $r=p_e/p_c$ y eliminando $v_e$ por energía,
+\[
+ v_e^2=\frac{2\gamma}{\gamma-1}RT_c\left(1-r^{(\gamma-1)/\gamma}\right).
+\]
+Al dividir por el cuadrado de \eqref{eq:cstarideal}, se obtiene
+\begin{equation}\label{eq:CF}
+ C_F=\sqrt{\frac{2\gamma^2}{\gamma-1}
+ \left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{\gamma-1}}
+ \left[1-r^{\frac{\gamma-1}{\gamma}}\right]}
+ +(r-p_a/p_c)\varepsilon.
+\end{equation}
+Todos los términos son adimensionales. La temperatura y la masa molar han desaparecido explícitamente de $C_F$ para este modelo y geometría; siguen presentes en $c^*$, en la velocidad efectiva $c=C_Fc^*$ y en $I_{sp}=c/g_0$. No es correcto concluir que no afectan a las prestaciones del motor.
+
+La ecuación muestra dos mecanismos distintos. El primero es momento dirigido a la salida; el segundo es fuerza de presión respecto al ambiente. Aumentar $\varepsilon$ aumenta velocidad, pero también expone una mayor área al término negativo $-p_aA_e$. La competencia explica un óptimo ideal a presión ambiente positiva.
+\section{Subexpansión, adaptación y sobreexpansión}
+Si $p_e>p_a$, el chorro sale subexpandido: aún puede expandirse fuera de la tobera. Si $p_e=p_a$, la salida está adaptada en el modelo uniforme. Si $p_e<p_a$, la salida candidata está sobreexpandida y requiere compresión exterior o un cambio interno de régimen. Las palabras comparan presiones, no dicen por sí solas si existe separación.
+
+Con geometría y cámara constantes, el estado supersónico ideal interno no cambia al variar moderadamente $p_a$ mientras el régimen permanezca compatible. Por ello,
+\begin{equation}\label{eq:Fambient}
+ F(p_a)=F_v-p_aA_e,\qquad
+ I_{sp}(p_a)=I_{sp,v}-\frac{p_aA_e}{\dot m g_0}.
+\end{equation}
+Son rectas respecto a presión ambiente, no necesariamente respecto a altitud. Convertirlas en curvas frente a altura exige un modelo atmosférico, temperatura y gravedad coherentes. La presión atmosférica real depende además del tiempo y del lugar.
+
+Un valor calculado de empuje muy bajo o negativo mediante la prolongación de \eqref{eq:Fambient} a contrapresiones elevadas debe activar una revisión del régimen. La extrapolación de una solución interna incompatible no representa una predicción de inversión de empuje del motor real.
+\section{Por qué la adaptación maximiza el empuje ideal}
+Considérese una familia de toberas de distinta área de salida, pero igual cámara, gas y garganta ahogada. El caudal permanece constante. En una extensión diferencial de la tobera, el balance inviscido satisface
+\[
+ dp+\rho v\,dv=0,\qquad \dot m=\rho vA.
+\]
+Multiplicando la primera ecuación por $A$ se obtiene $\dot m\,dv=-A\,dp$. El diferencial del empuje de salida es entonces
+\begin{align}
+ dF&=\dot m\,dv+d[(p-p_a)A]\\
+ &=-A\,dp+A\,dp+(p-p_a)dA\\
+ &=(p-p_a)dA.
+\end{align}
+Si la presión de salida disminuye al aumentar área sobre la rama supersónica, $dF/dA_e$ pasa de positivo a negativo cuando $p_e=p_a$. Así se obtiene el máximo ideal para $p_a>0$. La derivación muestra qué se mantiene fijo; no compara motores completos de distinta masa, longitud, refrigeración o ciclo.
+
+La relación de expansión adaptada se calcula encontrando primero
+\[
+ M_{e,opt}^2=\frac{2}{\gamma-1}
+ \left[\left(\frac{p_c}{p_a}\right)^{(\gamma-1)/\gamma}-1\right]
+\]
+y después $\varepsilon$ mediante \eqref{eq:areaMach}. Esa fórmula exige que la raíz resulte compatible con una salida supersónica. Si el cociente de presiones no permite tal rama, no se debe forzar una tobera de Laval adaptada usando la misma receta.
+\section{Vacío y límite de expansión}
+Con $p_a=0$, una extensión ideal que mantenga $p_e>0$ sigue aumentando empuje, pero con ganancia marginal decreciente. En el límite matemático $\varepsilon\to\infty$, $p_e\to0$, la velocidad tiende a
+\[
+ v_{max}=\sqrt{\frac{2\gamma RT_c}{\gamma-1}}.
+\]
+El producto $p_eA_e$ tiende a cero para $\gamma>1$, y el coeficiente de empuje alcanza un límite finito. No hay energía infinita disponible por aumentar área.
+
+Un diseño de vacío tiene masa y longitud limitadas. La ganancia marginal de impulso debe compararse con masa estructural, desplazamiento del centro de masas, refrigeración y restricciones de integración. El máximo de $F$ de una tobera ideal no es necesariamente el máximo de carga útil de una misión. La hipótesis de gas caloríficamente perfecto también pierde fidelidad al extrapolar la temperatura hacia cero.
+\section{Comparaciones coherentes}
+Para comparar dos toberas es preciso declarar si comparten cámara, garganta, caudal, masa o potencia. Mantener empuje en vez de garganta modifica el problema. Para comparar dos motores, el caudal debe incluir corrientes auxiliares. Un $I_{sp}$ de cámara principal y otro de sistema completo no son directamente comparables.
+
+El cociente $\eta_{c^*}=c^*_{medido}/c^*_{ideal}$ resume desviaciones sólo si el denominador se ha calculado con las mismas referencias de presión, mezcla y modelo químico. Un valor aparente superior a uno puede revelar error de medición, erosión de garganta, sesgo del modelo o referencias diferentes. No demuestra creación de energía; obliga a revisar la definición antes de juzgarlo como rendimiento físico.
+\figura{c07}{El ambiente penaliza áreas grandes. Las curvas son candidatas ideales de rama supersónica; su prolongación no demuestra compatibilidad ni ausencia de separación.}
+\figura{thrust-altitude}{Empuje calculado con cámara y geometría fijas y presión exterior exponencial académica. No es una atmósfera estándar ni una trayectoria validada; se supone flujo adherido.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive \eqref{eq:CF} y compruebe que $C_Fc^*$ recupera $F/\dot m$.
+\item Para $p_a$ que baja de 80 a 20 kPa y $A_e=0.020\,\mathrm{m^2}$, calcule el cambio de empuje si el estado interno no cambia.
+\item Demuestre que $p_eA_e\to0$ en el límite supersónico de área infinita y $\gamma>1$.
+\item Explique por qué una tobera adaptada al nivel del mar deja de estar adaptada durante el ascenso aun si la cámara se regula perfectamente.
+\end{enumerate}
+\resumen{$C_F$ reúne contribuciones cinética y de presión; $c^*$ conecta cámara y caudal. La adaptación maximiza empuje sólo bajo restricciones ideales concretas. El vacío admite un límite finito de velocidad y empuje, y cualquier comparación exige la misma frontera de sistema y las mismas referencias.}

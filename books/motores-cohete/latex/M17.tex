@@ -1,0 +1,27 @@
+\begin{studiumworked}{M17. Pared y refrigerante: cierre térmico · INTERMEDIATE}
+\textbf{Enunciado original.} Una pared plana académica tiene espesor 1.50 mm y $k=18$ W/(m K). El gas tiene $T_{aw}=1134$ K y $h_g=1970$ W/(m$^2$ K); el refrigerante, 290 K y $h_l=5000$ W/(m$^2$ K). Para área 0.012 m$^2$, caudal 0.15 kg/s y $c_p=2200$ J/(kg K), obtenga flujo, temperaturas de caras y aumento térmico del refrigerante.
+
+\textbf{Datos utilizados.} Convección gas: $1970\,\mathrm{W\,m^{-2}\,K^{-1}}$; Convección líquido: $5000\,\mathrm{W\,m^{-2}\,K^{-1}}$; Espesor: $0.0015\,\mathrm{m}$; Conductividad: $18\,\mathrm{W\,m^{-1}\,K^{-1}}$; Recuperación: $1134\,\mathrm{K}$; Refrigerante: $290\,\mathrm{K}$.
+
+\textbf{Incógnitas.} q, temperaturas de pared y potencia.
+
+\textbf{Hipótesis.} Estacionario unidimensional, propiedades constantes. Sin radiación ni almacenamiento; temperatura de refrigerante representativa.
+
+\textbf{Modelo físico.} Resistencias térmicas y balance de entalpía.
+\[q^{\prime\prime}=(T_{aw}-T_l)/(1/h_g+\delta/k+1/h_l)\]
+\[T_{wg}=T_{aw}-q^{\prime\prime}/h_g,\quad T_{wl}=T_l+q^{\prime\prime}/h_l\]
+\[\dot Q=q^{\prime\prime}A,\quad \Delta T_l=\dot Q/(\dot m_lc_{p,l})\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Las resistencias suman $7.909475\times10^{-4}\,\mathrm{m^2K/W}$. Dividir el salto $844\,\mathrm{K}$ da $1.067075\times10^{6}\,\mathrm{W/m^2}$.
+\item La caída del lado gas es $541.6622\,\mathrm{K}$, la de pared $88.92288\,\mathrm{K}$ y la del refrigerante $213.4149\,\mathrm{K}$. Así las caras quedan a $592.3378\,\mathrm{K}$ y $503.4149\,\mathrm{K}$.
+\item Multiplicar por área da $12804.89\,\mathrm{W}$. El balance del refrigerante produce $\Delta T=12804.89/(0.15\cdot2200)=38.80271$ K. Esa subida pequeña se compara con el salto gas-líquido para valorar la temperatura representativa inicial.
+\end{enumerate}
+\textbf{Resultados.} $q^{\prime\prime}=1.067075\times10^{6}$ W/m$^2$; $T_{wg}=592.3378$ K; $T_{wl}=503.4149$ K; $\Delta T_l=38.80271$ K.
+
+\textbf{Interpretación.} Las temperaturas metálicas se calculan entre las del gas y líquido. La potencia total y la temperatura local de pared son restricciones distintas.
+
+\textbf{Comprobación.} $h_g(T_{aw}-T_{wg})=k(T_{wg}-T_{wl})/\delta=h_l(T_{wl}-T_l)=1.067075\times10^{6}$ W/m$^2$. El calor absorbido coincide con $\dot m c_p\Delta T$.
+
+\textbf{Límites.} No se comprueban ebullición, resistencia del material ni geometría de un motor; si la subida del líquido fuese grande, habría que resolver la variación axial.
+\end{studiumworked}

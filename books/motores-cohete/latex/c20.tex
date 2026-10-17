@@ -1,0 +1,66 @@
+\chapter{Estabilidad de combustión e integración del motor}\label{ch:20}
+\objetivos{Identificar realimentaciones entre alimentación, combustión y acústica; interpretar retardos y fases; construir una jerarquía de modelos y un balance de prestaciones integrado.}
+\section{Por qué el equilibrio no resuelve la dinámica}
+Una solución estacionaria describe un punto de operación, pero no demuestra qué sucede tras una perturbación. El caudal responde a presión, la combustión responde a mezcla y transporte, y la cámara almacena masa y energía. Conductos, volúmenes gaseosos y estructuras añaden estados y retardos. La estabilidad corresponde al sistema acoplado.
+
+Una clasificación útil distingue oscilaciones lentas, en las que la presión de cámara puede aproximarse como uniforme, de modos acústicos que presentan fase espacial. El límite no se fija mediante una frecuencia universal: se compara la duración de oscilación con el tiempo de propagación acústica y otras escalas del sistema. Las notas del MIT consultadas desarrollan esta separación y muestran modelos con retardos.\cite{MIT22,MIT23}
+\section{Modelo concentrado de realimentación}
+Supongamos temperatura y volumen de cámara constantes y una corriente cuya masa gaseosa se incorpora tras un retardo $\tau_v$. El balance idealizado es
+\[
+ \frac{V_c}{RT_c}\frac{dp_c}{dt}
+ =\dot m_i(t-\tau_v)-\frac{p_cA_t}{c^*}.
+\]
+Si la inyección responde a $p_s-p_c$ mediante $\dot m_i=C\sqrt{p_s-p_c}$, una perturbación de cámara con suministro fijo cumple
+\[
+ \frac{\dot m_i'}{\dot m_{i0}}=-\frac{p_c'}{2(p_s-p_{c0})}.
+\]
+Sin retardo, esta contribución reduce entrada cuando sube presión y favorece amortiguamiento en el modelo elemental. Con retardo, la acción puede llegar en una fase que alimente oscilación. No basta con conocer el signo estático de realimentación.
+
+Tras normalizar se puede escribir un prototipo
+\[
+ \frac{dx}{d\theta}=-x(\theta)-Kx(\theta-\Theta).
+\]
+Buscando $x=e^{s\theta}$ se obtiene la ecuación característica
+\begin{equation}
+ s+1+Ke^{-s\Theta}=0.
+\end{equation}
+Las raíces son, en general, infinitas por el retardo. Sustituir $e^{-s\Theta}$ por uno elimina precisamente la fase que se quiere estudiar. Una aproximación racional debe declarar su rango de frecuencia y comprobarse contra la ecuación original.
+\section{Acústica y aporte de calor}
+Para un gas uniforme de reposo, la perturbación de presión satisface una ecuación de onda con fuente térmica. En forma idealizada,
+\[
+ \frac{\partial^2p'}{\partial t^2}-a^2\nabla^2p'
+ =(\gamma-1)\frac{\partial\dot q'}{\partial t},
+\]
+donde $\dot q'$ es potencia térmica fluctuante por volumen. Esta forma presupone gas perfecto y simplificaciones de flujo medio y fuentes. El análisis de un motor real requiere condiciones de frontera, pérdidas y campos no uniformes.
+
+La relación de fase importa: para $p'=\widehat p\cos\omega t$ y $\dot q'=\widehat q\cos(\omega t-\phi)$,
+\[
+ \left\langle p'\dot q'\right\rangle
+ =\frac{\widehat p\widehat q}{2}\cos\phi.
+\]
+El promedio positivo indica una contribución que puede alimentar energía acústica bajo el balance correspondiente. La oscilación crecerá sólo si el aporte neto supera pérdidas y flujos de energía por fronteras. Un criterio de fase aislado no cuantifica amplitud final ni daño.
+\section{Acoplamiento con alimentación y estructura}
+Las columnas líquidas tienen inercia y los volúmenes compresibles almacenan energía. Una caída de presión puede modificar caudal y liberar energía con retardo. La estructura del vehículo puede cambiar aceleración y presión de alimentación, cerrando otro lazo de interacción. El fenómeno conocido como pogo se asocia a ese acoplamiento longitudinal entre propulsión y estructura, y no se representa mediante una cámara acústica aislada.\cite{MIT22}
+
+Los modos estructurales dependen de masas, rigideces, amortiguamiento y estado de llenado. Una frecuencia calculada para depósitos llenos cambia al consumirse propulsante. La estabilidad debe considerarse a lo largo del intervalo de funcionamiento; comprobar un solo punto no cubre automáticamente toda la trayectoria.
+\section{Jerarquía de modelos y evidencia}
+Un modelo de un estado ayuda a interpretar signos y escalas. Una red dinámica añade almacenamiento, inercia y retardos. Un modelo acústico añade dependencia espacial. Un cálculo de flujo reactivo puede representar más mecanismos, pero necesita datos, discretización y validación. Aumentar complejidad no elimina incertidumbre de condiciones de contorno o de modelos de combustión.
+
+La verificación numérica comprueba que se resuelven las ecuaciones declaradas con tolerancias adecuadas. La validación contrasta su capacidad predictiva con datos. La calibración ajusta parámetros a una parte de esos datos. Utilizar los mismos datos para calibrar y presentar una predicción independiente exagera el alcance de la evidencia.
+\section{Prestación integrada del motor}
+Para un intervalo, se integran empuje y masa total consumida. El impulso específico global es $I/(g_0m_{p,cons})$, incluyendo transitorios y auxiliares de la frontera elegida. Una prestación de régimen nominal no incorpora automáticamente los intervalos inicial y final.
+
+Si una fracción $f$ de masa se consume a velocidad efectiva $c_1$ y el resto a $c_2$, la efectiva del intervalo es $fc_1+(1-f)c_2$. Ese promedio por masa puede utilizarse para impulso, pero una dinámica de vehículo con masas y condiciones cambiantes requiere integrar su ecuación; el promedio de impulso no reproduce necesariamente todos los efectos temporales.
+
+La integración final confronta presión, caudal, mezcla, térmica, potencia de alimentación, estabilidad y masa seca. El objetivo del análisis académico es reconocer qué ecuaciones deben cerrar y qué información falta. No se convierte un conjunto de balances ideales en una especificación de desarrollo de un motor.
+\figura{c20}{Indicador de aporte termoacústico para oscilaciones sinusoidales. El crecimiento exige además superar pérdidas y flujos por fronteras.}
+\section{Caso desarrollado}
+\input{M20.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Obtenga la sensibilidad de inyección respecto a presión de cámara y explique el papel del retardo.
+\item Calcule el promedio de $p'\dot q'$ para fases 0, $\pi/2$ y $\pi$ e interprete su signo.
+\item Distinga una comprobación de convergencia numérica de una validación experimental del mismo modelo.
+\item Formule el impulso específico del intervalo si se consumen masas distintas en dos regímenes y explique por qué no se promedian por duración sin más datos.
+\end{enumerate}
+\resumen{El equilibrio estacionario no demuestra estabilidad. Retardos, fases, fronteras y pérdidas determinan la realimentación dinámica. La prestación integrada requiere toda la masa y el historial de empuje; la complejidad del cálculo no sustituye evidencia de validación.}

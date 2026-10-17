@@ -1,0 +1,145 @@
+\chapter{Aerodinámica de perfiles}\label{ch:09}
+\objetivos{Interpretar las fuerzas y momentos de una sección; relacionar presión, circulación y sustentación; distinguir el modelo ideal de la capa límite real; utilizar una curva de sustentación con sus límites de Reynolds, Mach y pérdida.}
+
+\section{La sección como modelo físico}
+Un perfil es la sección de una superficie sustentadora por un plano aproximadamente paralelo a la corriente. Su cuerda $c$ une el borde de ataque y el borde de salida; la línea media está a mitad de distancia entre extradós e intradós. El espesor y la curvatura son propiedades diferentes: un perfil simétrico tiene curvatura nula, aunque su espesor sea considerable. La relación espesor/cuerda influye en estructura, espacio interno, distribución de presiones y compresibilidad. La curvatura modifica principalmente la sustentación a incidencia nula y el momento. Ninguna de estas relaciones es una regla de optimización universal: cambian con la misión y el régimen.
+
+El ángulo de ataque $\alpha$ es el formado entre la cuerda y la velocidad del aire no perturbado. No coincide necesariamente con la actitud respecto al horizonte. Una aeronave que desciende puede presentar el morro bajo y mantener un ángulo de ataque positivo. En un túnel idealmente bidimensional, las paredes o los dispositivos de extremo reducen el movimiento transversal. Se trabaja entonces con fuerzas por unidad de envergadura: sustentación $l$, resistencia $d$ y momento $m$. Sus unidades son $\mathrm{N/m}$, $\mathrm{N/m}$ y $\mathrm{N}$, respectivamente; este último equivale a $\mathrm{N\,m/m}$.
+
+Adoptaremos sustentación positiva perpendicular a la corriente, resistencia positiva hacia aguas abajo y momento positivo de encabritado. Para distinguir sección y aeronave usaremos minúsculas en $c_l,c_d,c_m$ y mayúsculas en $C_L,C_D,C_m$. Algunos documentos usan $C_L$ para ambos casos; por ello la definición física prevalece sobre la tipografía. Una pendiente de perfil no se transforma automáticamente en pendiente de ala finita. Esta distinción será esencial en el capítulo siguiente.
+\figura{airfoil}{Geometría de un perfil simétrico educativo: cuerda, borde de ataque y espesor relativo. Las coordenadas están normalizadas por la cuerda.}
+
+\section{De las tensiones superficiales a los coeficientes}
+La fuerza procede de integrar presión y esfuerzo tangencial sobre la superficie. Si $\boldsymbol n$ es la normal exterior del sólido y $\boldsymbol\tau$ la tracción viscosa del fluido, la resultante por unidad de envergadura es
+\begin{equation}
+\boldsymbol f=\oint(-p\boldsymbol n+\boldsymbol\tau)\,\mathrm ds.
+\end{equation}
+Una presión uniforme sobre un contorno cerrado no produce fuerza neta. Por eso puede reemplazarse $p$ por $p-p_\infty$ en la integral. Definimos
+\begin{equation}
+q_\infty=\tfrac12\rho_\infty V_\infty^2,\qquad
+c_l=\frac{l}{q_\infty c},\quad c_d=\frac{d}{q_\infty c},\quad
+c_m=\frac{m}{q_\infty c^2}.
+\end{equation}
+Los denominadores tienen exactamente las dimensiones de sus numeradores. Los coeficientes facilitan comparar tamaños y velocidades, pero no eliminan las dependencias físicas. Una base de datos debe indicar $Re$, $M$, rugosidad, transición y configuración. La importancia de conservar similitud viscosa y de compresibilidad se explica en NASA \cite{NASA-BGA}.
+
+El coeficiente de presión es $c_p=(p-p_\infty)/q_\infty$. Para perfil delgado y ángulo pequeño, la contribución de presión a la sustentación se aproxima mediante
+\begin{equation}
+c_l\simeq\int_0^1(c_{p,\mathrm{intra}}-c_{p,\mathrm{extra}})\,\mathrm d(x/c).
+\end{equation}
+Esta expresión revela que importa el área entre ambas curvas, no sólo la presión mínima. Un pico muy intenso y estrecho puede aportar menos fuerza que una diferencia moderada distribuida sobre gran parte de la cuerda. Para obtener resistencia no basta con esta diferencia vertical: hay que proyectar las tensiones en la dirección de la corriente y considerar el rozamiento. Una integración de presiones de precisión también utiliza las normales reales de la superficie.
+
+Fuera de la capa límite, un modelo incompresible, estacionario e inviscido permite aplicar Bernoulli sobre líneas de corriente con la misma constante de energía. Entonces
+\begin{equation}
+c_p=1-(V_{\mathrm{local}}/V_\infty)^2.
+\end{equation}
+Así, una aceleración local produce presión menor. No se presupone que dos partículas separadas en el borde de ataque vuelvan a reunirse en el de salida. La supuesta igualdad de tiempos de tránsito no es una condición de la mecánica de fluidos y conduce a explicaciones erróneas. Tampoco hay oposición entre presión y cambio de cantidad de movimiento: son dos balances compatibles aplicados al sólido y al fluido.
+
+\section{Circulación, cilindro sustentador y condición de salida}
+La circulación alrededor de un contorno es una integral de velocidad tangencial. Su dimensión es $\mathrm{m^2/s}$. Para evitar confusión de signos, llamaremos $\Gamma$ positiva a la magnitud de circulación que genera sustentación ascendente. El modelo de un cilindro combina corriente uniforme, doblete y vórtice. En la superficie de radio $R$, una convención polar antihoraria conduce a una velocidad tangencial formada por $-2V_\infty\sin\theta$ y una contribución de circulación. Al introducirla en Bernoulli e integrar la presión aparece una fuerza transversal proporcional a $\rho V_\infty\Gamma$.
+
+La relación de Kutta--Joukowski para una sección bidimensional es
+\begin{equation}\label{eq:09-kj}
+l=\rho_\infty V_\infty\Gamma,\qquad
+c_l=\frac{2\Gamma}{V_\infty c}.
+\end{equation}
+Se verifica dimensionalmente: densidad por velocidad por circulación tiene unidades de fuerza por longitud. En ausencia de circulación, el cilindro potencial no sustenta y su resistencia es nula. No describe un cilindro real separado. El cilindro giratorio real puede generar circulación, pero su resistencia y su relación entre giro y circulación requieren viscosidad y experimentación. El valor del ejemplo ideal está en aislar el mecanismo matemático de una fuerza transversal.
+
+En un perfil con borde de salida agudo, las soluciones potenciales admiten inicialmente múltiples circulaciones. La condición de Kutta selecciona la que permite una salida físicamente regular. La viscosidad, aunque pequeña en la corriente exterior, interviene en el arranque, la formación de vorticidad y la elección de esa circulación. Por ello un resultado de flujo potencial puede representar adecuadamente sustentación real sin convertir en irrelevante la viscosidad. En cambio, no puede predecir por sí solo el arrastre de perfil ni el desprendimiento masivo.
+
+\section{Teoría de perfil delgado y curva de sustentación}
+Para perfil delgado, incidencia pequeña, flujo adherido e incompresible, la linealización del problema potencial da
+\begin{equation}\label{eq:09-cl}
+c_l=a_0(\alpha-\alpha_{l=0}),\qquad a_0\simeq2\pi\ \mathrm{rad^{-1}}.
+\end{equation}
+El ángulo $\alpha_{l=0}$ depende de la línea media. Es cero en un perfil simétrico ideal; suele ser negativo para una curvatura convencional. La expresión equivale a $c_l=c_{l0}+a_0\alpha$, con $c_{l0}=-a_0\alpha_{l=0}$. El intercepto no es una sustentación dimensional fija: a $\alpha=0$, la fuerza continúa variando con $q_\infty c$.
+
+La pendiente por grado es la pendiente por radián multiplicada por $\pi/180$. Así, $2\pi\ \mathrm{rad^{-1}}$ equivale aproximadamente a $0{,}1097$ por grado. Introducir un ángulo numérico en grados dentro de una fórmula calibrada por radián produce un error de factor $57{,}3$. Es buena práctica escribir la conversión en el cálculo, incluso cuando una calculadora acepte ambos modos.
+
+Una interpretación del resultado procede de la circulación: imponer que el flujo se ajuste a una placa ligeramente inclinada genera una intensidad de vorticidad proporcional a $V_\infty\alpha$. Integrada sobre la cuerda, da $\Gamma\propto V_\infty c\alpha$. Al usar \eqref{eq:09-kj}, la sustentación adimensional resulta proporcional a $\alpha$. El coeficiente $2\pi$ pertenece a la solución del problema linealizado; no puede obtenerse sólo con análisis dimensional.
+\figura{liftcurve}{Comparación de las pendientes lineales de sustentación de un perfil y un ala finita. Este modelo no describe el máximo ni la pérdida.}
+
+La figura \ref{fig:liftcurve} debe leerse como una relación a condiciones especificadas. Antes de la pérdida, una recta es una aproximación local; después, prolongarla no conserva validez física. En ensayos, la pendiente depende también del espesor, interferencias, transición y compresibilidad. El ángulo de pérdida no es constante universal ni un valor que pueda deducirse sólo de $a_0$. La curva completa exige medición o un modelo viscoso adecuado.
+
+\section{Capa límite, transición y separación}
+La condición de no deslizamiento reduce la velocidad a cero en la pared. El espesor de la región afectada aumenta normalmente aguas abajo, mientras que la corriente exterior proporciona la presión impuesta a esa región. Una capa límite laminar presenta mezcla transversal molecular; una turbulenta incorpora fluctuaciones que transportan cantidad de movimiento y aumentan, en general, el rozamiento. Sin embargo, esa mezcla puede hacer más resistente la capa a un gradiente de presión adverso.
+
+En una recuperación de presión, $\mathrm dp/\mathrm dx>0$, el fluido cercano a la pared debe avanzar contra presión creciente. Su menor cantidad de movimiento lo hace vulnerable a la desaceleración. En la separación incipiente, el esfuerzo cortante de pared tiende a cero; más allá puede aparecer flujo inverso. Por ello menor rozamiento local no significa necesariamente menor resistencia total. Una separación extensa aumenta el arrastre de presión y modifica la sustentación.
+
+El número de Reynolds $Re=\rho Vc/\mu$ compara efectos inerciales y viscosos. No existe un umbral único que garantice transición en cualquier perfil: influyen turbulencia exterior, contaminación, vibración y gradiente de presión. Un ala contaminada por insectos, hielo o rugosidad puede perder parte de las prestaciones medidas en una superficie limpia. Los dispositivos hipersustentadores aumentan la curvatura efectiva y, según el tipo, energizan o reorganizan el flujo, ampliando el $c_l$ utilizable a costa de resistencia y momento \cite{PHAK}.
+
+\section{Momentos, centro de presión y centro aerodinámico}
+El centro de presión es el punto de la cuerda donde puede situarse una fuerza transversal equivalente sin momento adicional. El centro aerodinámico es un punto respecto al cual la variación del momento con incidencia es aproximadamente nula. Son conceptos distintos. Para un perfil delgado subsónico ideal, el centro aerodinámico está cerca del cuarto de cuerda. La explicación conceptual y las diferencias entre ambos puntos se encuentran en NASA \cite{NASA-BGA}.
+
+Con $x$ positivo desde el borde de ataque hacia el de salida, la relación de transporte de momentos, despreciando el pequeño brazo asociado a la resistencia, es
+\begin{equation}
+c_{m,\mathrm{LE}}=c_{m,\mathrm{ac}}-\frac{x_{\mathrm{ac}}}{c}c_l,
+\qquad
+\frac{x_{\mathrm{cp}}}{c}=\frac{x_{\mathrm{ac}}}{c}-\frac{c_{m,\mathrm{ac}}}{c_l}.
+\end{equation}
+Para $c_m<0$ y sustentación positiva, el centro de presión queda detrás del centro aerodinámico. Si $c_l$ se aproxima a cero mientras el momento permanece finito, $x_{\mathrm{cp}}$ diverge: no representa una pieza física que se desplace fuera del perfil, sino la imposibilidad de reproducir un par finito mediante una fuerza transversal casi nula. Usar el centro aerodinámico y un momento evita esa singularidad.
+
+\section{Compresibilidad y validez de los datos}
+El número de Mach compara velocidad y propagación acústica. En flujo subsónico lineal y suficientemente alejado de ondas de choque, ciertas correcciones potenciales predicen un incremento de la pendiente al aumentar $M$. La expresión de Prandtl--Glauert $c_l\simeq c_{l,\mathrm{inc}}/\sqrt{1-M_\infty^2}$ es una aproximación, no una ley válida hasta Mach uno. Su singularidad denuncia el fallo de la linealización.
+
+El flujo sobre el extradós puede alcanzar velocidad sónica aunque la corriente libre sea subsónica. El Mach crítico depende del perfil y de su sustentación. Cerca del régimen transónico, ondas de choque, capa límite y separación interactúan; cambian tanto sustentación como resistencia y momento. Una polar obtenida a baja velocidad no justifica calcular empuje a $M=0{,}8$ sin información adicional. Si se utiliza con fines de ejercicio, debe declararse expresamente como extrapolación académica limitada, sin atribuir precisión predictiva al avión real.
+
+\section{Resistencia de perfil y balance en la estela}
+En un flujo potencial bidimensional estacionario, sin separación y sin viscosidad, la integración de presiones predice resistencia nula. Este resultado, conocido como paradoja de d'Alembert, no afirma que un perfil real carezca de resistencia: muestra qué mecanismo ha eliminado el modelo. La sustentación puede conservar una aproximación útil porque la circulación y la presión exterior dominan su valor; la resistencia, mucho menor, es especialmente sensible a las capas viscosas y a la estela.
+
+Un modo alternativo de medir resistencia consiste en examinar el déficit de cantidad de movimiento aguas abajo. Para una estela bidimensional suficientemente lejana, con presión recuperada aproximadamente a la ambiental y sin otras fuentes de momento, una expresión idealizada es
+\begin{equation}
+d\simeq\rho\int_{-\infty}^{\infty}u(y)[V_\infty-u(y)]\,\mathrm dy.
+\end{equation}
+El producto integra un flujo de masa por unidad de envergadura multiplicado por un déficit de velocidad. La unidad final es $\mathrm{N/m}$. El perfil deja una región con menor velocidad longitudinal; el balance de un volumen de control relaciona esa pérdida de momento del aire con la resistencia ejercida sobre el sólido. La expresión requiere conocer el perfil de velocidades y la presión de la estación de medida. Una estela próxima, no uniforme en presión, necesita términos adicionales.
+
+Así se conectan tres observaciones: el rozamiento y la separación generan una estela, la estela transporta un déficit de momento y la reacción sobre el cuerpo es una resistencia. No es necesario atribuir toda resistencia de presión a un empuje frontal aislado. La recuperación de presión en la zona posterior y el estado de la capa límite son partes del mismo mecanismo global.
+
+\section{Cómo leer y producir una polar experimental}
+Un ensayo de perfil debe registrar qué mide cada instrumento. Una balanza mide fuerzas y momentos integrados; las tomas de presión permiten reconstruir parte de esa distribución; una sonda de estela ofrece información sobre el déficit de momento. Que dos métodos coincidan dentro de incertidumbre refuerza la interpretación física, pero no elimina errores comunes como una densidad de referencia incorrecta o una incidencia mal calibrada.
+
+Antes de convertir la fuerza en coeficiente se revisan el cero de la balanza, la presión dinámica, la cuerda y la longitud efectiva ensayada. La interferencia de paredes, la obstrucción del túnel y los efectos de extremo pueden impedir que un modelo de apariencia bidimensional sea realmente equivalente a un perfil infinito. Cuando un informe ofrece coeficientes ya corregidos, aplicar de nuevo la misma corrección introduce un error. La trazabilidad exige distinguir lectura instrumental, corrección y resultado final.
+
+Para una estimación de incertidumbre pequeña, si $l=\rho V^2cc_l/2$ y se consideran independientes las entradas, la incertidumbre relativa combinada incorpora la velocidad con factor dos. Con incertidumbres típicas $u_x$, una propagación lineal cuadrática toma la forma
+\begin{equation}
+\left(\frac{u_l}{l}\right)^2\simeq
+\left(\frac{u_\rho}{\rho}\right)^2+
+4\left(\frac{u_V}{V}\right)^2+
+\left(\frac{u_c}{c}\right)^2+
+\left(\frac{u_{c_l}}{c_l}\right)^2.
+\end{equation}
+Esta fórmula no es adecuada si el propio $c_l$ se ha obtenido de las mismas medidas de $l$, $V$ y densidad: entonces hay dependencia y se necesita otra formulación. Tampoco resuelve incertidumbre de modelo, como utilizar una recta más allá de la pérdida. Distinguir variación instrumental y fallo del modelo evita presentar muchas cifras decimales como si fueran evidencia de exactitud.
+
+Una ficha útil de perfil acompaña las curvas con condiciones, ejes, unidades y referencia de momento. Para interpolar, se permanece dentro de una familia coherente de datos. Para extrapolar, se identifica el mecanismo que puede cambiar: transición al variar Reynolds, choque al aumentar Mach o separación al aumentar incidencia. La capacidad de reconocer cuándo faltan datos es parte del cálculo aerodinámico.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: sección en túnel y posición de la resultante}
+\begin{studiumworked}{Problema resuelto: sección en túnel y posición de la resultante}
+
+\paragraph{1. Enunciado.} Una sección de ensayo se modela con teoría de perfil delgado. Determine sustentación por unidad de envergadura, momento respecto al centro aerodinámico y centro de presión. Compruebe la escala viscosa.
+\paragraph{2. Datos.} $c=1{,}40\ \mathrm m$, $V=45{,}0\ \mathrm{m/s}$, $\rho=1{,}05\ \mathrm{kg/m^3}$, $\mu=1{,}75\,10^{-5}\ \mathrm{Pa\,s}$, $\alpha=4^\circ$, $\alpha_{l=0}=-2^\circ$, $a_0=2\pi\ \mathrm{rad^{-1}}$, $c_{m,\mathrm{ac}}=-0{,}060$ y $x_{\mathrm{ac}}/c=0{,}25$.
+\paragraph{3. Incógnitas.} $q_\infty,c_l,l,m_{\mathrm{ac}},x_{\mathrm{cp}}$ y $Re$.
+\paragraph{4. Esquema verbal.} La corriente llega horizontalmente; la sustentación actúa hacia arriba y el momento aerodinámico produce picado. Trasladar la fuerza hacia atrás reproduce ese momento.
+\paragraph{5. Hipótesis.} Flujo bidimensional, estacionario, adherido y de baja compresibilidad; el intervalo angular pertenece al tramo lineal. No se calcula resistencia con un modelo inviscido.
+\paragraph{6. Modelo físico.} La fuerza se obtiene de la presión dinámica y del coeficiente; la equivalencia estática de fuerza y par determina el centro de presión.
+\paragraph{7. Ecuaciones simbólicas.} Se usan $q=\rho V^2/2$, $c_l=a_0(\alpha-\alpha_{l=0})$, $l=qcc_l$, $m_{\mathrm{ac}}=qc^2c_{m,\mathrm{ac}}$, $x_{\mathrm{cp}}/c=0{,}25-c_{m,\mathrm{ac}}/c_l$ y $Re=\rho Vc/\mu$.
+\paragraph{8. Despeje.} Las fórmulas ya están despejadas; para una comprobación alternativa se obtiene $\Gamma=c_lVc/2$.
+\paragraph{9. Sustitución.} El intervalo angular es $6\pi/180=0{,}104720\ \mathrm{rad}$. Así, $q=1{,}05(45)^2/2=1063{,}125\ \mathrm{Pa}$ y $c_l=2\pi(0{,}104720)=0{,}657974$. Entonces $l=1063{,}125(1{,}4)(0{,}657974)$.
+\paragraph{10. Resultado con unidades.} $l=979{,}31\ \mathrm{N/m}$; $m_{\mathrm{ac}}=-125{,}02\ \mathrm{N}$; $x_{\mathrm{cp}}/c=0{,}34119$, es decir, $x_{\mathrm{cp}}=0{,}47766\ \mathrm m$; $Re=3{,}78\,10^6$.
+\paragraph{11. Interpretación.} La circulación sustenta y la curvatura genera un par de picado. La resultante equivalente se sitúa detrás del cuarto de cuerda, de acuerdo con el signo del momento.
+\paragraph{12. Comprobación independiente.} $\Gamma=20{,}726\ \mathrm{m^2/s}$ y $\rho V\Gamma=979{,}31\ \mathrm{N/m}$. Además, el brazo $0{,}12766\ \mathrm m$ por $979{,}31\ \mathrm{N/m}$ reproduce $125{,}02\ \mathrm N$. Ambas rutas concuerdan dentro del redondeo.
+\paragraph{13. Limitaciones.} Reynolds no garantiza adherencia ni transición conocida. Harían falta la temperatura para verificar Mach y datos experimentales para justificar $a_0$, el momento y la distancia a la pérdida.
+
+
+
+\end{studiumworked}
+\figura{stall}{Curva cualitativa original de sustentación con un máximo y descenso posterior por pérdida. No procede de medidas ni determina el comportamiento de una aeronave concreta.}
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Un perfil tiene $a_0=5{,}8\ \mathrm{rad^{-1}}$ y $\alpha_{l=0}=-1{,}5^\circ$. Calcule $c_l$ a $3^\circ$. Respuesta: $0{,}4555$.
+\item Si se duplica la velocidad conservando $c_l$, densidad y cuerda, ¿cómo cambian $l$ y $Re$? Respuesta: $l$ se cuadruplica y $Re$ se duplica; debe comprobarse que $c_l$ sigue siendo aplicable.
+\item Con $c_l=0{,}8$, $c_{m,\mathrm{ac}}=-0{,}04$ y centro aerodinámico a $0{,}25c$, localice el centro de presión. Respuesta: $0{,}30c$.
+\item Dos distribuciones tienen igual pico de succión pero diferente anchura. Diseñe un procedimiento para decidir cuál sustenta más. Guía: integrar la diferencia completa entre intradós y extradós, utilizando las mismas referencias.
+\item Una ficha sólo proporciona la pendiente lineal y pide el ángulo de pérdida. Explique si el problema está determinado. Guía: falta la evolución no lineal o un valor de $c_{l,\max}$ y, aun con éste, la extrapolación lineal requiere justificación.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{Un perfil se describe con fuerzas por unidad de envergadura y coeficientes referidos a su cuerda. Presión, circulación y cantidad de movimiento son descripciones compatibles. La teoría lineal permite calcular tendencias de sustentación y momento, pero no predice por sí sola la resistencia viscosa ni la pérdida. Los datos sólo se trasladan entre condiciones con una similitud y un dominio de validez explícitos.}
+¿Por qué una presión uniforme no produce fuerza neta? ¿Qué diferencia un centro de presión de un centro aerodinámico? ¿Por qué una capa turbulenta puede retrasar separación aunque aumente el rozamiento? ¿Qué información exigiría antes de usar una curva de túnel para un avión transónico?

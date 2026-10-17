@@ -1,0 +1,56 @@
+\chapter{Sistemas electrotérmicos}\label{ch:22}
+\objetivos{Aplicar energía y expansión a un gas calentado eléctricamente; comparar resistojet y arcjet; identificar pérdidas térmicas, composición y límites de una extrapolación caloríficamente perfecta.}
+\section{Electricidad convertida en entalpía}
+En la propulsión electrotérmica se suministra energía eléctrica al propulsante y se utiliza una tobera para convertir parte de su entalpía en velocidad. La aceleración principal es gasdinámica. El origen eléctrico del calentamiento no convierte automáticamente al sistema en un acelerador electrostático de iones.
+
+En un resistojet, un elemento o región calentada por resistencia transfiere calor al fluido. En un arcjet, una descarga aporta energía al flujo. La existencia de plasma y corriente no implica que la fuerza electromagnética sea el mecanismo dominante de la velocidad final: la clasificación se hace por el proceso principal de aceleración.\cite{JPL-EP}
+\section{Balance del calentador}
+Para un volumen de control estacionario que incluye el calentamiento, se supone ausencia de trabajo mecánico de eje y cambios cinético y gravitatorio pequeños dentro de esa región. Si $P_{abs}$ es potencia eléctrica efectivamente absorbida por el fluido,
+\[
+ \dot m(h_{0,out}-h_{0,in})=P_{abs}-\dot Q_{perdida}.
+\]
+También puede definirse una eficiencia térmica global $\eta_h=(P_{abs}-\dot Q_{perdida})/P_{el}$, evitando restar después otra vez las pérdidas ya incluidas. Con composición fija y $c_p$ constante,
+\begin{equation}
+ T_{0,out}=T_{0,in}+\frac{\eta_hP_{el}}{\dot m c_p}.
+\end{equation}
+Reducir caudal eleva la temperatura ideal para potencia fija, pero esa tendencia no puede extrapolarse indefinidamente: cambian propiedades, pérdidas, intercambio térmico y composición.
+
+La corriente eléctrica también puede transportar energía hacia electrodos y paredes. El calor rechazado debe localizarse por componentes si se pretende estudiar refrigeración o vida útil. Un único rendimiento representa una comparación global, no una distribución térmica.
+\section{Expansión y velocidad}
+Para una tobera ideal de gas caloríficamente perfecto,
+\[
+ v_e^2=2c_pT_0\left[1-\left(\frac{p_e}{p_0}\right)^{(\gamma-1)/\gamma}\right]
+\]
+con velocidad inicial despreciable. Si la salida está adaptada, el impulso específico es $v_e/g_0$. Si no lo está, se añade el término de presión a la velocidad efectiva. La expansión necesita comprobar ahogo y régimen igual que en una tobera química.
+
+Sustituyendo el balance de calentamiento,
+\[
+ \frac{v_e^2}{2}=\left(c_pT_{0,in}+\frac{\eta_hP_{el}}{\dot m}\right)
+ \left[1-\left(\frac{p_e}{p_0}\right)^{(\gamma-1)/\gamma}\right].
+\]
+La energía térmica inicial también contribuye. Por ello, definir un rendimiento cinético respecto sólo a potencia eléctrica puede resultar ambiguo si se omite una entalpía de entrada significativa. Las referencias de energía deben declararse.
+\section{Masa molar, temperatura y disociación}
+En el modelo ideal, $v_e$ crece con $\sqrt{RT_0}$ y $R=R_u/\mathcal M$. Una masa molar baja puede favorecer velocidad para una temperatura dada. Sin embargo, el calentamiento de especies moleculares puede activar vibración, disociación e ionización, absorbiendo energía que no se traduce inmediatamente en temperatura o movimiento dirigido.
+
+Si durante la expansión se recombina parte de esas especies, puede recuperarse energía química interna. Si se congela la composición, parte permanece almacenada en productos de alta energía. Es el mismo problema de equilibrio y cinética discutido en toberas, aunque la energía inicial proceda de electricidad.
+
+Una comparación que mantenga simultáneamente temperatura, potencia y caudal al cambiar propiedades puede estar sobredeterminada: el balance de calentamiento liga esas variables. Primero se define qué condiciones se fijan y después se resuelve el resto.
+\section{Límites térmicos y pérdidas}
+El elemento calentador y los electrodos tienen temperatura, emisión y restricciones de material. La transferencia hacia gas necesita diferencia de temperatura, que a su vez genera entropía. Una pared muy caliente puede irradiar una potencia importante por la dependencia $T^4$. Un incremento de potencia eléctrica no se convierte necesariamente en incremento proporcional de energía del flujo.
+
+En un arco, las caídas de potencial y los procesos cerca de electrodos pueden afectar pérdidas y erosión. El análisis de vida útil requiere datos y modelos específicos; no se deduce de un balance global de potencia. El presente desarrollo explica las rutas de energía y aceleración, no parámetros de construcción u operación de una descarga.
+\section{Comparación con gas frío y propulsión electrostática}
+Un sistema de gas frío utiliza la entalpía disponible de almacenamiento sin calentamiento eléctrico principal. Añadir calentamiento puede mejorar velocidad efectiva, pero requiere masa y potencia del sistema eléctrico. Frente a un acelerador electrostático, el sistema electrotérmico mantiene una ruta de conversión a través de temperatura del fluido y expansión, con sus límites termodinámicos y materiales.
+
+A potencia fija, el compromiso entre velocidad y empuje sigue presente. Para comparar arquitecturas se incluye la energía inicial del propulsante, el consumo total y la frontera eléctrica. La clasificación no establece una jerarquía universal de misión: una maniobra breve de pequeño impulso y una transferencia prolongada pueden favorecer soluciones distintas.
+\figura{c22}{Aumento térmico de un gas académico. La curva no se extrapola a temperaturas donde cambien composición y propiedades.}
+\section{Caso desarrollado}
+\input{M22.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive $T_{0,out}$ y explique qué pérdida no debe contarse dos veces si ya forma parte de $\eta_h$.
+\item Para gas académico con $c_p$ constante, estudie cómo cambia temperatura al reducir a la mitad el caudal con potencia fija.
+\item Explique por qué la presencia de una descarga no basta para clasificar la aceleración como electromagnética.
+\item Construya un balance de energía que incluya entalpía inicial, potencia eléctrica, escape y calor rechazado.
+\end{enumerate}
+\resumen{Los sistemas electrotérmicos convierten electricidad en entalpía y después en velocidad mediante expansión. El calentamiento, la composición y las pérdidas deben resolverse conjuntamente. La presencia de plasma no cambia por sí sola el mecanismo principal de aceleración ni elimina límites térmicos.}

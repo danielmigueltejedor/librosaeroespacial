@@ -1,0 +1,97 @@
+\chapter{Sistemas hidráulicos y neumáticos}\label{ch:21}
+\objetivos{Distinguir presión, caudal y potencia; interpretar la transformación de energía en actuadores; explicar almacenamiento, pérdidas y control; comparar hidráulica y neumática por su respuesta física y sus dependencias.}
+
+\section{Transmitir energía mediante un fluido}
+Un sistema hidráulico transmite energía mediante un líquido a presión; uno neumático utiliza un gas comprimido. La presión permite ejercer fuerza sobre una superficie y el caudal permite moverla. Confundir ambas magnitudes conduce a errores: una línea cerrada puede mantener presión elevada y caudal casi nulo, mientras una descarga libre puede transportar mucho caudal con poca presión útil. La potencia disponible depende del producto de ambas.
+
+La ventaja funcional de la hidráulica procede de su elevada capacidad de fuerza con actuadores compactos y de la baja compresibilidad del líquido. La neumática aporta otras posibilidades de transporte y uso del gas, pero su compresibilidad almacena energía y modifica la respuesta. En una aeronave, sus fuentes pueden depender de motores, bombas eléctricas, compresores o equipos externos. La elección afecta a la masa, temperatura, contaminación, disponibilidad y efectos de una avería.
+
+El manual FAA de célula proporciona ejemplos de arquitecturas y terminología \cite{FAA-AIRFRAME}. Los circuitos de este capítulo son modelos docentes: no representan presiones, fluidos ni secuencias de un tipo concreto de aeronave. El interés está en seguir la energía desde la fuente hasta la carga y explicar qué ocurre cuando cambia una condición.
+
+\figura{hydraulic}{Secuencia funcional de depósito, bomba, válvula y actuador, con retorno al depósito. No se representa la totalidad de dispositivos de protección y almacenamiento.}
+
+\section{Presión, fuerza y continuidad}
+La presión absoluta se refiere al vacío; la manométrica se refiere a una presión de referencia, a menudo la ambiental. Para calcular densidad de gas, cavitación o estado termodinámico se necesitan presiones absolutas. Para obtener fuerza neta sobre un pistón suelen importar diferencias de presión. Introducir presión manométrica en una ley de gas perfecto produce resultados físicamente incorrectos.
+
+En un actuador lineal de doble efecto, la fuerza hidráulica ideal de extensión es
+\begin{equation}
+ F_h=p_AA_p-p_B(A_p-A_r),
+\end{equation}
+si $p_A$ y $p_B$ se miden respecto a una misma referencia y las demás superficies externas equilibran esa referencia. $A_p$ es el área completa de pistón y $A_r$ la del vástago. La fuerza externa disponible descuenta rozamiento e inercia. Con caudal entrante $Q_A$ e incompresibilidad ideal, la velocidad de extensión es $v=Q_A/A_p$; al retraer aparece un área efectiva menor y cambian velocidad y fuerza para iguales condiciones de suministro.
+
+La continuidad expresa que el líquido no desaparece en una unión. En régimen estacionario sin fugas, la suma de caudales entrantes iguala la de salientes. En un actuador con vástago, los caudales de las dos cámaras no son iguales durante el movimiento, aunque la velocidad del pistón sea única. Su diferencia corresponde al volumen que ocupa el vástago al entrar o salir. Un depósito absorbe esos cambios y contribuye a desacoplar las condiciones de retorno y aspiración.
+
+La baja compresibilidad no significa compresibilidad nula. El módulo volumétrico $K=-V\,dp/dV$ relaciona presión y cambio de volumen. Para un volumen atrapado, pequeños incrementos cumplen aproximadamente $\Delta p=K\Delta V_{\rm introducido}/V$. Aire atrapado puede reducir notablemente la rigidez efectiva del conjunto. Conductos elásticos añaden otra forma de almacenamiento, y por ello una respuesta calculada solo con $v=Q/A$ puede resultar demasiado rápida.
+
+\section{Potencia, pérdidas y protección}
+La potencia hidráulica transportada a través de una diferencia de presión es
+\begin{equation}
+ P_h=\Delta p\,Q.
+\end{equation}
+Pascales por metros cúbicos por segundo equivalen a vatios. Una bomba transforma potencia mecánica en potencia del fluido; no crea presión fija independientemente del circuito. La presión aparece por la interacción entre caudal suministrado, carga y resistencias. Según arquitectura, el desplazamiento o la regulación adaptan la entrega. El rendimiento global de bomba relaciona potencia hidráulica útil con potencia mecánica absorbida.
+
+Las pérdidas de presión en conductos y accesorios disipan energía en calor. Para una línea circular, una expresión de cálculo es
+\begin{equation}
+ \Delta p=f_D\frac{L}{D}\frac{\rho u^2}{2}
+ +\sum K_i\frac{\rho u^2}{2}.
+\end{equation}
+$f_D$ es el factor de fricción de Darcy, diferente del factor de Fanning; $K_i$ son coeficientes locales. Su valor depende del régimen y geometría. No debe aplicarse una expresión turbulenta a cualquier flujo sin revisar Reynolds y rugosidad. Aumentar diámetro reduce velocidad para igual caudal y puede disminuir pérdidas, a costa de masa y volumen.
+
+Una válvula distribuidora conecta cámaras con alimentación y retorno. Una válvula antirretorno limita sentido de flujo; una válvula limitadora protege frente a sobrepresión desviando caudal cuando corresponde a su arquitectura. Un regulador puede reducir presión o controlar caudal. Suponer que toda caída de presión es trabajo útil oculta la disipación en estrangulaciones. Una válvula abierta con gran caída y caudal puede calentar el fluido aunque el actuador no realice trabajo.
+
+El acumulador almacena energía por compresión de gas, elasticidad u otra forma física. En uno de gas separado del líquido, una aproximación $pV^n=\mathrm{constante}$ usa presiones absolutas: $n=1$ representa proceso isotermo y $n=\gamma$ uno adiabático reversible de gas ideal. El valor efectivo depende del tiempo y del intercambio térmico. El acumulador puede atender demandas breves, amortiguar pulsaciones o mantener una reserva; su presencia también significa que puede quedar energía almacenada con la fuente detenida.
+
+\section{Neumática y acoplamiento térmico}
+En un gas, la expansión y compresión cambian densidad y temperatura. El caudal volumétrico depende de dónde se mide; el másico se conserva a través de un circuito estacionario sin fugas. Comparar litros por minuto sin indicar presión y temperatura puede comparar cantidades de masa diferentes. La ecuación $p=\rho RT$ proporciona una primera relación para aire moderadamente ideal, con presión absoluta y temperatura en kelvin.
+
+Una expansión por una restricción puede alcanzar flujo estrangulado. A partir de una relación crítica, bajar aún más la presión aguas abajo ya no incrementa el caudal según una ley incompresible de raíz de diferencia de presión. La capacidad de una válvula neumática debe interpretarse con modelos compresibles. Los transitorios incluyen llenado de volúmenes y transferencia de calor; la presión no se establece instantáneamente en toda la instalación.
+
+El aire comprimido extraído de un compresor de motor tiene energía y temperatura que proceden del trabajo del motor. Emplearlo en servicios modifica las prestaciones disponibles. Una fuente eléctrica de aire también consume potencia y genera calor. Las dependencias deben seguirse hasta la energía primaria: afirmar que un sistema es neumático no explica si seguirá disponible tras perder un generador o un motor.
+
+\section{Integración y modos de fallo}
+La contaminación puede alterar válvulas y desgastar superficies. Filtración, compatibilidad del fluido, control térmico y separación de circuitos son aspectos funcionales del diseño. Una fuga interna puede reducir fuerza o provocar deriva sin pérdida visible hacia el exterior; una fuga externa puede vaciar una reserva y afectar zonas cercanas. Presión normal en un punto no demuestra caudal suficiente en todos los actuadores.
+
+La redundancia se evalúa según funciones y causas comunes. Dos bombas que comparten depósito pueden perderse por una única fuga; dos líneas próximas pueden dañarse en un mismo suceso; un actuador redundante puede requerir un elemento de control común. Una arquitectura tolerante a fallos combina fuentes, aislamiento, rutas y modos degradados coherentes. Se necesita además evitar que actuadores simultáneos exijan más caudal del disponible.
+
+\section{Problema resuelto: potencia de un actuador}
+\textbf{1. Enunciado.} Un actuador extiende una carga a velocidad constante. Calcule fuerza, velocidad y potencia de suministro considerando presión de retorno y rozamiento.
+
+\textbf{2. Datos.} Diámetro de pistón $D=0.050\,\mathrm{m}$, vástago $d=0.020\,\mathrm{m}$, presión de cámara de extensión $p_A=12\,\mathrm{MPa}$, retorno $p_B=1\,\mathrm{MPa}$, rozamiento $F_f=800\,\mathrm{N}$, caudal $Q_A=6\,\mathrm{L/min}$ y rendimiento de bomba $0.85$. Las presiones son manométricas respecto a la misma referencia.
+
+\textbf{3. Incógnitas.} Fuerza externa útil, velocidad, caudal de retorno y potencia mecánica que debe absorber la bomba si aspira a presión manométrica cero.
+
+\textbf{4. Esquema verbal.} El líquido entra en la cámara completa; la cámara anular descarga con contrapresión. El vástago mueve una carga resistente.
+
+\textbf{5. Hipótesis.} Estacionario, líquido incompresible, sin fugas, tuberías sin pérdida adicional y aceleración nula.
+
+\textbf{6. Modelo.} Equilibrio de fuerzas del pistón y balances de volumen y potencia.
+
+\textbf{7. Ecuaciones.} $A_p=\pi D^2/4$, $A_a=\pi(D^2-d^2)/4$, $F_u=p_AA_p-p_BA_a-F_f$, $v=Q_A/A_p$, $Q_B=A_av$ y $P_{\rm eje}=p_AQ_A/\eta$.
+
+\textbf{8. Despeje.} La potencia útil de carga es $P_u=F_uv$. La diferencia con potencia de alimentación se reparte entre retorno y rozamiento.
+
+\textbf{9. Sustitución.} $Q_A=6\times10^{-3}/60=10^{-4}\,\mathrm{m^3/s}$; $A_p=0.00196350\,\mathrm{m^2}$ y $A_a=0.00164934\,\mathrm{m^2}$.
+
+\textbf{10. Resultado.} $F_u=21.1126\,\mathrm{kN}$; $v=0.05093\,\mathrm{m/s}$; $Q_B=5.04\,\mathrm{L/min}$; $P_{\rm eje}=1.4118\,\mathrm{kW}$ y $P_u=1.0753\,\mathrm{kW}$.
+
+\textbf{11. Interpretación.} La contrapresión resta fuerza y transporta $84\,\mathrm{W}$ al retorno. La bomba entrega $1200\,\mathrm{W}$ de potencia hidráulica, mayor que la potencia de carga.
+
+\textbf{12. Comprobación independiente.} El balance de alimentación, retorno y rozamiento da
+\begin{equation}
+ p_AQ_A-p_BQ_B-F_fv=1200-84-40.744=1075.256\,\mathrm{W},
+\end{equation}
+igual a $F_uv$. El caudal de retorno es menor porque el área anular es el $84\,\text{\%}$ del área completa.
+
+\textbf{13. Limitaciones.} No se calculan aceleración, compresibilidad, temperatura, pérdidas de válvulas ni fuerzas laterales. El resultado no dimensiona una instalación aeronáutica.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Determine la potencia de un flujo de $10\,\mathrm{L/min}$ con diferencia de presión de $15\,\mathrm{MPa}$.
+\item Intermedio. Un pistón sin vástago de área $0.002\,\mathrm{m^2}$ recibe $4\,\mathrm{L/min}$. Calcule velocidad ideal.
+\item Intermedio. Un gas se comprime isotérmicamente de $2\,\mathrm{L}$ a $1.2\,\mathrm{L}$ partiendo de $3\,\mathrm{MPa}$ absolutos. Calcule presión final.
+\item Análisis. Una bomba conserva presión normal mientras el actuador se mueve más despacio. Proponga dos explicaciones físicas compatibles y qué magnitudes permitirían distinguirlas.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $2.50\,\mathrm{kW}$. 2: $0.03333\,\mathrm{m/s}$. 3: $5.0\,\mathrm{MPa}$ absolutos. 4: menor caudal entregado, fuga interna o estrangulación creciente; hacen falta caudales, presiones locales y demanda de carga, sin que una sola indicación baste.
+
+\resumen{La presión produce fuerza, el caudal produce movimiento y su producto representa potencia. Líquido y gas almacenan energía de manera diferente. Pérdidas, contrapresión, compresibilidad y control modifican el comportamiento ideal. La disponibilidad depende de fuentes, rutas y elementos compartidos, además del número de bombas.}
+\textbf{Autoevaluación.} ¿Por qué deben usarse presiones absolutas en un acumulador de gas? ¿Cómo puede existir presión sin movimiento? ¿Qué diferencia entre fuga interna y externa afecta al diagnóstico conceptual?

@@ -1,0 +1,26 @@
+\begin{studiumworked}{M20. Fase y aporte termoacústico · INTERMEDIATE}
+\textbf{Enunciado original.} Una perturbación ideal tiene $p^\prime=\widehat p\cos\omega t$ y $\dot q^\prime=\widehat q\cos(\omega t-\pi/3)$. Obtenga el promedio de su producto en un periodo, normalizado por las amplitudes, y explique qué falta para juzgar crecimiento.
+
+\textbf{Datos utilizados.} Desfase: $1.047198\,\mathrm{rad}$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[\cos A\cos B=\tfrac12[\cos(A-B)+\cos(A+B)]\]
+\[\langle p^\prime\dot q^\prime\rangle/(\widehat p\widehat q)=\tfrac12\cos\phi\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Se aplica la identidad trigonométrica. El término de frecuencia doble tiene integral nula sobre un periodo completo.
+\item El término constante da $\cos(\pi/3)/2=0.25$. El signo es positivo y representa aporte potencial de energía al modo bajo el balance termoacústico.
+\item Para decidir crecimiento hacen falta la integral espacial, amplitudes, pérdidas y flujos por frontera. Una contribución positiva aislada no proporciona una tasa de crecimiento ni amplitud final.
+\end{enumerate}
+\textbf{Resultados.} Promedio normalizado $0.25$.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} Para fase pi/2 el promedio se anula y para pi cambia de signo; integrar directamente los dos cosenos recupera la identidad.
+
+\textbf{Límites.} Ondas sinusoidales y modelo lineal; no predice estabilidad de un motor.
+\end{studiumworked}

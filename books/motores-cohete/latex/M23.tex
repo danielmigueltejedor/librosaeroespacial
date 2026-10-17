@@ -1,0 +1,27 @@
+\begin{studiumworked}{M23. Haz iónico y utilización de masa · INTERMEDIATE}
+\textbf{Enunciado original.} Un haz académico de iones simples tiene masa iónica 131.293 u, voltaje efectivo 800 V y corriente iónica 0.30 A. El factor axial es 0.96 y la utilización de masa 0.85. Determine rapidez iónica, caudal de iones, caudal total, empuje e impulso específico.
+
+\textbf{Datos utilizados.} Masa por ion: $2.180172\times10^{-25}\,\mathrm{kg}$; Carga simple: $1.602177\times10^{-19}\,\mathrm{C}$; Potencial efectivo: $800\,\mathrm{V}$; Corriente iónica: $0.3\,\mathrm{A}$; Factor axial: $0.96$; Utilización: $0.85$.
+
+\textbf{Incógnitas.} Magnitudes solicitadas y cierre físico.
+
+\textbf{Hipótesis.} Modelo académico con hipótesis del capítulo. Datos originales; no representan hardware ni ensayo.
+
+\textbf{Modelo físico.} Conservación y relaciones constitutivas declaradas.
+\[v_i=\sqrt{2qV_b/m_i},\quad \dot m_i=I_bm_i/q\]
+\[F=\lambda\dot m_iv_i,\quad\dot m_{tot}=\dot m_i/\eta_u\]
+\[I_{sp}=F/(g_0\dot m_{tot})\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Convertir masa atómica da $2.180172\times10^{-25}\,\mathrm{kg}$ por ion. El balance de potencial produce $34290.19\,\mathrm{m/s}$.
+\item Contar partículas mediante corriente da $\dot m_i=4.082268\times10^{-7}$ kg/s. El consumo total es $\dot m_i/0.85=4.802668\times10^{-7}$ kg/s.
+\item Proyectar momento mediante 0.96 da $0.01343825\,\mathrm{N}$. El impulso específico de toda la masa consumida es $2853.247\,\mathrm{s}$, inferior a $v_i/g_0=3496.626$ s.
+\end{enumerate}
+\textbf{Resultados.} $v_i=34290.19$ m/s; $F=0.01343825$ N; $I_{sp}=2853.247$ s.
+
+\textbf{Interpretación.} El resultado corresponde a las hipótesis indicadas; su interpretación requiere conservar fronteras y unidades.
+
+\textbf{Comprobación.} La energía cinética del haz ideal antes de proyección cumple $\dot m_i v_i^2/2=I_bV_b=240$ W. El factor lambda no se vuelve a aplicar al Isp calculado desde F.
+
+\textbf{Límites.} Una especie y una carga; sin neutrales con momento apreciable, presión o corrientes auxiliares no incluidas.
+\end{studiumworked}

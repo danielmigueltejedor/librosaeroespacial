@@ -1,0 +1,67 @@
+\chapter{Vehículos multietapa y presupuesto de masas}\label{ch:26}
+\objetivos{Construir masas anidadas de etapas; distinguir fin de combustión y separación; calcular capacidad ideal y relación de carga útil; interpretar la distribución de delta-v con restricciones estructurales.}
+\section{Qué se desprende y cuándo}
+Una etapa incluye propulsante, estructura y sistemas que dejan de ser necesarios tras su intervalo de uso. Desprender masa seca evita seguir acelerándola en etapas posteriores. La ganancia no procede de un impulso mágico de separación: en el modelo ideal, se descarta masa sin velocidad relativa y la velocidad del conjunto restante no cambia instantáneamente.
+
+La masa final de combustión de una etapa incluye todavía su estructura, porque permanece unida durante todo ese consumo. Sólo después se resta al construir la masa inicial de la etapa siguiente. Usar directamente la masa posterior a separación dentro del logaritmo de la etapa anterior atribuye empuje a la expulsión de estructura y sobreestima delta-v.
+\section{Masas anidadas}
+Para dos etapas en serie y carga útil $m_L$, sean $s_i$ masas secas y $p_i$ masas propulsantes consumidas. Las masas relevantes son
+\begin{align}
+ m_{0,1}&=s_1+p_1+s_2+p_2+m_L,\\
+ m_{f,1}&=s_1+s_2+p_2+m_L,\\
+ m_{0,2}&=s_2+p_2+m_L,\\
+ m_{f,2}&=s_2+m_L.
+\end{align}
+La capacidad ideal rectilínea, con velocidades efectivas constantes y sin pérdidas, es
+\begin{equation}\label{eq:stages}
+ \Delta v= c_1\ln\frac{m_{0,1}}{m_{f,1}}
+ +c_2\ln\frac{m_{0,2}}{m_{f,2}}.
+\end{equation}
+Cada fracción se comprueba por separado. Las masas en kilogramos pueden sustituirse por cualquier unidad común porque sólo aparecen cocientes, pero no se mezclan unidades entre términos.\cite{MIT32}
+
+La relación de masas global $m_{0,1}/m_{f,2}$ no puede introducirse en un único logaritmo con un $c$ promedio arbitrario: incluye desprendimiento de masas secas y distintas prestaciones. La suma por intervalos conserva la historia física de qué masa se acelera con cada escape.
+\section{Fracción estructural y carga sobre una etapa}
+Definamos para una etapa aislada $\epsilon=s/(s+p)$ y $\lambda=m_{superior}/(s+p)$, donde $m_{superior}$ contiene todas las etapas y carga que permanecen encima. Entonces
+\[
+ R_m=\frac{s+p+m_{superior}}{s+m_{superior}}
+ =\frac{1+\lambda}{\epsilon+\lambda}.
+\]
+Despejando,
+\begin{equation}\label{eq:payloadlambda}
+ \lambda=\frac{1-\epsilon R_m}{R_m-1}.
+\end{equation}
+Para carga superior positiva se necesita $1<R_m<1/\epsilon$. La cota de delta-v para $\lambda\to0$ es $c\ln(1/\epsilon)$ dentro del modelo. Una etapa con masa seca no nula no puede alcanzar relación de masas arbitrariamente alta añadiendo propulsante si se mantiene su fracción estructural.
+
+El parámetro $\lambda$ no es la fracción de carga útil del vehículo completo. Su denominador sólo contiene masa de la etapa considerada. Definir claramente cada razón evita utilizar una cifra de un esquema en otro.
+\section{Distribución ideal de delta-v}
+Para un delta-v de etapa $x_i$, $R_i=e^{x_i/c_i}$. La relación entre masa antes de etapa y masa superior es
+\[
+ \frac{m_{0,i}}{m_{superior,i}}
+ =\frac{(1-\epsilon_i)R_i}{1-\epsilon_iR_i}.
+\]
+El producto de esos factores da la relación masa inicial/carga final en una pila ideal. Para minimizar su logaritmo sujeto a $\sum x_i=\Delta v_{req}$, se utiliza un multiplicador. La derivada de cada contribución es
+\begin{equation}
+ \frac{d}{dx_i}\ln\left[
+ \frac{(1-\epsilon_i)e^{x_i/c_i}}{1-\epsilon_ie^{x_i/c_i}}\right]
+ =\frac{1}{c_i[1-\epsilon_ie^{x_i/c_i}]}.
+\end{equation}
+En un óptimo interior, esas derivadas son iguales para todas las etapas. Distribuir delta-v por partes iguales sólo resulta óptimo bajo simetrías o restricciones particulares. Si una etapa alcanza un límite, la solución puede estar en la frontera y no cumplir igualdad interior.
+
+Este problema mantiene fracciones estructurales, velocidades efectivas y delta-v requerido independientes de la asignación. En un vehículo real, cambiar masas altera trayectoria, aceleraciones y pérdidas; por eso el óptimo algebraico es una aproximación que se itera con dinámica de vuelo.
+\section{Etapas paralelas y otros eventos}
+Cuando varios sistemas consumen simultáneamente, la masa total disminuye por la suma de caudales y el empuje es suma vectorial. Antes de separar un propulsor lateral, su masa seca sigue a bordo. Un modelo por intervalos puede integrar cada fase con sus propios empujes y caudales; no se aplica sin más la fórmula de etapas en serie a un consumo paralelo.
+
+La separación de una cofia u otra masa inerte también modifica el presupuesto, pero su instante puede tener restricciones térmicas y aerodinámicas. Una separación sin impulso no cambia velocidad de forma instantánea; mejora la relación de masas de intervalos posteriores. La cronología de eventos forma parte del modelo.
+\section{Ejemplo público de arquitectura}
+La descripción pública de ESA para Ariane 6 distingue variantes con dos o cuatro propulsores laterales, una etapa central con Vulcain 2.1 y una superior con Vinci reencendible. Es un ejemplo de combinación de empuje inicial, etapas y varios intervalos de funcionamiento. Esa arquitectura no se sustituye por dos etapas ideales en serie sin declarar la simplificación.\cite{ARIANE}
+
+Los datos públicos de un lanzador pueden variar con versión, órbita y condiciones de misión. El presente ejemplo se usa para interpretar arquitectura, sin convertir cifras generales de capacidad en garantía de carga útil de cualquier lanzamiento.
+\figura{c26}{La masa seca permanece hasta el final de su combustión. Separarla no produce un salto de velocidad en el modelo ideal.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Construya las cuatro masas de \eqref{eq:stages} y señale el instante de separación.
+\item Obtenga el dominio de \eqref{eq:payloadlambda} y explique el significado de su numerador nulo.
+\item Demuestre que etapas idénticas tienen distribución simétrica en un óptimo interior del problema ideal.
+\item Explique por qué dos propulsores que funcionan simultáneamente no se representan sumando dos logaritmos de etapas en serie con masas independientes.
+\end{enumerate}
+\resumen{Las etapas se calculan con masas anidadas. La masa seca se mantiene durante su combustión y se resta después. La fracción estructural limita capacidad ideal; el reparto óptimo de delta-v depende de prestaciones y estructura, y debe revisarse al incorporar trayectoria y eventos reales.}

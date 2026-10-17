@@ -1,0 +1,26 @@
+\begin{studiumworked}{M15. Leer y comprobar una salida CEA · INTERMEDIATE}
+\textbf{Enunciado original.} Use el registro reproducible TP a 2500 K y 1 bar del proyecto. Calcule la constante específica a partir de la masa molar de salida, convierta la capacidad calorífica congelada a SI y compruebe conservación elemental. Explique qué prestación de motor no se puede deducir.
+
+\textbf{Datos utilizados.} Salida CEA: $17.42656\,\mathrm{kg/kmol}$; Capacidad congelada: $3.04142\,\mathrm{kJ\,kg^{-1}\,K^{-1}}$.
+
+\textbf{Incógnitas.} R, cp SI y alcance del resultado.
+
+\textbf{Hipótesis.} Equilibrio TP restringido de seis especies. Versiones, base de propiedades y unidades conservadas.
+
+\textbf{Modelo físico.} Conservación elemental y conversión de unidades.
+\[R=R_u/\mathcal M,\quad c_{p,SI}=1000c_{p,kJ}\]
+\[\sum_i x_i=1,\quad (\sum_i a_{Hi}x_i)/(\sum_i a_{Oi}x_i)=2\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item La salida registra $\mathcal M=17.42656$ kg/kmol. Usar $R_u=8314.462618$ J/(kmol K) da $477.1145\,\mathrm{J/(kg K)}$.
+\item La capacidad congelada se convierte multiplicando por mil: $3041.42\,\mathrm{J/(kg K)}$. No se usa la de equilibrio como si fuese la misma derivada.
+\item Las fracciones del registro suman uno dentro de $10^{-8}$ y el cociente H/O es 2. La verificación se hizo con las fracciones sin redondear y el script conserva la salida original.
+\end{enumerate}
+\textbf{Resultados.} $R=477.1145$ J/(kg K); $c_{p,fr}=3041.42$ J/(kg K).
+
+\textbf{Interpretación.} El equilibrio no determina prestaciones de motor sin resolver cámara y expansión.
+
+\textbf{Comprobación.} Fracciones normalizadas y H/O conservado con tolerancias declaradas.
+
+\textbf{Límites.} No es ensayo ni cálculo de Isp real.
+\end{studiumworked}

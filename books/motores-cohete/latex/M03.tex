@@ -1,0 +1,28 @@
+\begin{studiumworked}{M03. Dos rutas para la velocidad de una expansión · INTERMEDIATE}
+\textbf{Enunciado original.} Un gas académico de $\gamma=1.3$ y masa molar $23.3\,\mathrm{kg/kmol}$ tiene $T_0=2430$ K y $p_0=2.50$ MPa. Una sección isentrópica alcanza $M=2.075$. Halle $R,c_p,T,p,u$ y verifique energía.
+
+\textbf{Datos utilizados.} Exponente constante: $1.3$; Masa molar: $23.3\,\mathrm{kg/kmol}$; Temperatura total: $2430\,\mathrm{K}$; Presión total: $2.500000\times10^{6}\,\mathrm{Pa}$; Mach: $2.075$.
+
+\textbf{Incógnitas.} Propiedades específicas y estado estático.
+
+\textbf{Hipótesis.} Gas caloríficamente perfecto de composición fija. Expansión adiabática reversible, sin trabajo ni altura.
+
+\textbf{Modelo físico.} Energía y relaciones de remanso.
+\[R=R_u/\mathcal M,\quad c_p=\gamma R/(\gamma-1)\]
+\[T=T_0/[1+(\gamma-1)M^2/2]\]
+\[p=p_0(T/T_0)^{\gamma/(\gamma-1)}\]
+\[u=M\sqrt{\gamma RT}=\sqrt{2c_p(T_0-T)}\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Se usa $R_u=8314.462618$ J/(kmol K), coherente con kg/kmol. Así $R=356.8439$ J/(kg K) y $c_p=1546.324$ J/(kg K).
+\item El factor de remanso es $1.645844$. Dividir $T_0$ da $1476.446\,\mathrm{K}$; la potencia isentrópica da $288.5732\,\mathrm{kPa}$.
+\item Con la temperatura estática, la ruta acústica da $1717.267\,\mathrm{m/s}$. La ruta energética usa el descenso $c_p(T_0-T)$ y produce el mismo valor. Usar $T_0$ dentro del sonido de la sección daría otra rapidez incompatible.
+\end{enumerate}
+\textbf{Resultados.} $T=1476.446$ K; $p=2.885732\times10^{5}$ Pa; $u=1717.267$ m/s.
+
+\textbf{Interpretación.} El gas acelera y enfría, pero su temperatura total permanece fija. La presión total se mantiene sólo porque se ha supuesto isentropía.
+
+\textbf{Comprobación.} $c_pT+u^2/2=c_pT_0=3.757566\times10^{6}$ J/kg. La entropía calculada mediante $c_p\ln(T/T_0)-R\ln(p/p_0)$ es cero dentro de redondeo.
+
+\textbf{Límites.} No se modela química ni variación calorífica; gamma es un dato académico, no una propiedad universal de productos reales.
+\end{studiumworked}

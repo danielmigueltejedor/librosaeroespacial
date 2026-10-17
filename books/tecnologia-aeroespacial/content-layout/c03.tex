@@ -1,0 +1,124 @@
+\chapter{Estructura de la atmósfera}\label{ch:03}
+\objetivos{Interpretar las propiedades atmosféricas como campos variables; distinguir referencias de altura; relacionar estructura térmica, equilibrio hidrostático y densidad; aplicar el empuje de Arquímedes con un balance correcto de masas.}
+
+La atmósfera es simultáneamente medio sustentador, fuente de oxígeno para muchos motores, entorno térmico y origen de perturbaciones. Su densidad influye en la sustentación; su temperatura modifica la velocidad del sonido; su presión afecta a instrumentos y cabinas. Para estudiar estas relaciones necesitamos distinguir la atmósfera real, variable en espacio y tiempo, de un modelo estándar usado para comparar resultados. El material docente introduce ambas y organiza las capas por su comportamiento térmico \cite{TAE2}.
+
+\section{Composición y descripción macroscópica}
+El aire seco próximo a la superficie contiene aproximadamente un $78\%$ de nitrógeno y un $21\%$ de oxígeno en fracción molar, además de argón y otros constituyentes minoritarios. Es una mezcla, no una sustancia química única. El vapor de agua varía mucho y no debe incluirse como una fracción fija del aire seco. Los aerosoles, las gotas y los cristales de hielo tienen importancia óptica, meteorológica y operativa aunque representen una fracción pequeña de masa.
+
+Una composición aproximada sirve para deducir propiedades de mezcla en ingeniería básica; no constituye una tabla de concentraciones actuales. En particular, no se debe trasladar sin fecha la fracción de dióxido de carbono de una diapositiva a una afirmación sobre el presente. Para este manual, la constante del aire seco $\Raire\,\mathrm{J\,kg^{-1}\,K^{-1}}$ se utiliza como parámetro convencional de cálculo.
+
+La descripción de medio continuo asigna presión $p$, temperatura $T$ y densidad $\rho$ a pequeños volúmenes que contienen muchas moléculas. El volumen debe ser pequeño respecto a las variaciones del fenómeno y grande respecto a la escala molecular. En regiones suficientemente enrarecidas esa separación de escalas falla y se requiere un tratamiento cinético. No existe una altitud única que determine la validez del continuo para cualquier vehículo, porque también interviene su tamaño característico.
+
+Para aire ideal de composición fija,
+\begin{equation}\label{eq:03-ideal}
+ p=\rho RT.
+\end{equation}
+La temperatura es absoluta, en kelvin, y la presión es absoluta, medida desde el vacío. La ecuación de estado conecta propiedades de equilibrio, pero no dice cómo varían con la altitud: hacen falta un balance mecánico y una descripción térmica.
+
+\section{Referencias verticales y qué mide una altitud}
+La superficie terrestre no es una esfera lisa. Un elipsoide de referencia es una superficie matemática útil para geodesia; el geoide es una superficie equipotencial del campo de gravedad que aproxima un nivel medio global del mar. La altura elipsoidal no coincide en general con la elevación referida al geoide. Para una convención compatible puede escribirse $h_{\mathrm{elip}}=H_{\mathrm{ort}}+N$, donde $N$ es la ondulación del geoide. Las letras de geodesia no deben confundirse con las usadas después para altitud geopotencial.
+
+La altitud verdadera se refiere a la posición respecto al nivel medio del mar; la altura sobre el terreno depende además de la elevación local. Un instrumento barométrico no mide ninguna de ellas directamente: mide presión y la convierte mediante una calibración. La altitud de presión es la altitud que asigna a esa presión la atmósfera estándar; la altitud de densidad hace lo mismo con la densidad. Ambas son propiedades equivalentes de un modelo y no necesariamente la posición geométrica del avión.
+
+La altitud indicada depende de la referencia de presión ajustada en el instrumento. Por tanto, conviene evitar definiciones de ``altitud absoluta'' sin expresar el origen elegido: en distintos contextos ese término se emplea de formas incompatibles. En un problema se escribirá explícitamente ``sobre el terreno'', ``sobre el nivel medio del mar'' o ``geopotencial''.
+
+La variación de gravedad puede incorporarse en una coordenada energética. Si $z$ es altitud geométrica y $r_e$ un radio terrestre de referencia, con $g(z)=g_0[r_e/(r_e+z)]^2$, definimos
+\begin{equation}
+ g_0H=\int_0^z g(\zeta)\,d\zeta,\qquad H=\frac{r_ez}{r_e+z}.
+\end{equation}
+Así, $H$ es altitud geopotencial y es ligeramente menor que $z>0$. La utilidad no es cambiar la física, sino escribir el potencial gravitatorio como $g_0H$. Para unos pocos kilómetros la diferencia es pequeña; en cálculos exigentes debe indicarse la coordenada.
+
+\section{Equilibrio hidrostático y masa de una columna}
+Consideremos una lámina de aire de área $A$ y espesor $dz$, con $z$ positivo hacia arriba. La presión inferior ejerce $pA$ hacia arriba; la superior, $(p+dp)A$ hacia abajo; el peso es $\rho gA\,dz$. Si la aceleración vertical media es despreciable,
+\begin{equation}\label{eq:03-hidro}
+ pA-(p+dp)A-\rho gA\,dz=0,
+ \qquad \frac{dp}{dz}=-\rho g.
+\end{equation}
+El signo negativo expresa que hay menos aire por encima cuando ascendemos. La aproximación hidrostática es adecuada para el perfil medio a gran escala; no describe por sí sola una corriente ascendente intensa ni las fluctuaciones de presión alrededor de un ala.
+
+Integrando entre la superficie y un nivel alto cuya presión sea despreciable y tomando $g$ aproximadamente constante,
+\begin{equation}
+ p_s\simeq g\int_0^\infty\rho\,dz,\qquad \frac{m_{\mathrm{col}}}{A}\simeq\frac{p_s}{g}.
+\end{equation}
+A $101325\,\mathrm{Pa}$, la masa de la columna es aproximadamente $10332\,\mathrm{kg\,m^{-2}}$. No significa que toda esa masa esté concentrada en un punto; es la integral de una distribución de densidad decreciente.
+
+Combinando hidrostática y gas ideal obtenemos $d\ln p/dz=-g/(RT)$. La escala de altura local $H_s=RT/g$ indica la distancia característica de variación de presión si la temperatura y la gravedad se mantienen constantes. A $288\,\mathrm{K}$ resulta unos $8.4\,\mathrm{km}$. El símbolo $H_s$ no representa la altura total de la atmósfera: una exponencial no se anula a una altura finita.
+
+\section{Capas térmicas y límites variables}
+La troposfera es la capa baja en la que, en promedio, la temperatura disminuye con la altura. El calentamiento de la superficie y las transferencias de calor participan en su organización; contiene la mayor parte del vapor de agua y buena parte de la meteorología que afecta al vuelo. Su límite superior, la tropopausa, cambia con latitud, estación y situación meteorológica. Los $11\,\mathrm{km}$ de la atmósfera estándar no deben convertirse en una frontera física universal.
+
+En la estratosfera aparece una región donde la temperatura aumenta con altura, ligada a la absorción de radiación por el ozono. Ese gradiente favorece la estabilidad de movimientos verticales pequeños. Decir que no hay meteorología en ella sería demasiado absoluto: existen ondas, transportes y nubes particulares. Para la comparación introductoria basta señalar que la convección húmeda profunda es característica de la troposfera.
+
+La mesosfera vuelve a presentar una disminución de temperatura. En la termosfera, la absorción de radiación energética aumenta la energía cinética media de partículas muy separadas. Una temperatura cinética alta no equivale a una gran capacidad de calentar un objeto por contacto: el flujo de energía depende también del número de partículas y de su interacción con la superficie. Por eso no se puede estimar el calentamiento de un satélite leyendo solo la temperatura del gas.
+
+La exosfera corresponde a una región tan poco densa que las colisiones dejan de dominar las trayectorias de muchas partículas. Las clasificaciones térmica, composicional y eléctrica se superponen: la ionosfera no es una capa térmica adicional situada simplemente encima de todas las demás. Esta distinción importa para comunicaciones y para estudiar el entorno espacial.
+
+\section{Transferencia de calor y balance radiativo}
+La conducción transfiere energía por interacciones microscópicas y puede modelarse mediante $\boldsymbol{q}=-k\nabla T$. La convección combina transporte de masa y energía interna; la radiación transporta energía electromagnética y no necesita un medio material. En una pared de aeronave pueden actuar las tres simultáneamente. Identificar el mecanismo no obliga a suponer que los demás sean nulos.
+
+Como ejercicio de escala planetaria, la Tierra intercepta radiación sobre un disco de área $\pi r_e^2$, pero reparte emisión sobre un área aproximada $4\pi r_e^2$. Si $S_0$ es irradiancia solar y $\alpha$ albedo, un balance global idealizado da
+\begin{equation}
+ (1-\alpha)S_0\pi r_e^2=4\pi r_e^2\sigma T_e^4,
+ \qquad T_e=\left[\frac{(1-\alpha)S_0}{4\sigma}\right]^{1/4}.
+\end{equation}
+Con $S_0=1361\,\mathrm{W\,m^{-2}}$ y $\alpha=0.30$ como parámetros ilustrativos, $T_e$ es aproximadamente $255\,\mathrm{K}$. Es una temperatura efectiva de emisión de un modelo agregado, no una predicción directa de la temperatura del suelo. La absorción atmosférica y la distribución vertical requieren un balance más rico \cite{TAE2}.
+
+Las estaciones resultan principalmente de la inclinación del eje terrestre: cambian duración del día y ángulo de incidencia. La variación de distancia al Sol no explica por sí sola que ambos hemisferios tengan estaciones opuestas. Esta geometría condiciona el calentamiento diferencial que, a su vez, impulsa circulaciones atmosféricas.
+
+\section{Densidad del aire húmedo y flotabilidad}
+Para una mezcla ideal de aire seco y vapor, $p=p_d+e$ y
+\begin{equation}
+ \rho=\frac{p-e}{R_dT}+\frac{e}{R_vT}.
+\end{equation}
+Como $R_v>R_d$, sustituir parte del aire seco por vapor reduce la densidad a iguales presión total y temperatura. La frase ``aire húmedo más pesado'' suele confundir vapor gaseoso con agua líquida suspendida o con cambios simultáneos de temperatura. La fórmula anterior describe vapor sin carga significativa de gotas.
+
+El empuje de Arquímedes sobre un cuerpo de volumen $V$ en una atmósfera aproximadamente uniforme es $B=\rho_a gV$. Para un globo con gas de densidad $\rho_g$ y masa no gaseosa $m_s+m_c$,
+\begin{equation}\label{eq:03-globo}
+ F_z=(\rho_a-\rho_g)gV-(m_s+m_c)g.
+\end{equation}
+Esta fuerza neta no es una velocidad de ascenso. Para obtener velocidad harían falta resistencia, masa efectiva y evolución del volumen. En equilibrio estático $F_z=0$ y el gas también tiene masa: omitirla sobreestima la carga disponible.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: margen de sustentación de un globo}
+\begin{studiumworked}{Problema resuelto: margen de sustentación de un globo}
+
+\begin{enumerate}
+\item \textbf{Enunciado.} Un globo de helio se encuentra en aire con presión y temperatura conocidas. Determinar la fuerza vertical inicial y la carga máxima en equilibrio a ese mismo estado.
+\item \textbf{Datos.} $p=85000\,\mathrm{Pa}$, $T=285\,\mathrm{K}$, $V=180\,\mathrm{m^3}$, masa estructural $m_s=90\,\mathrm{kg}$ y carga actual $m_c=60\,\mathrm{kg}$. Para helio, $R_{He}=2077.1\,\mathrm{J\,kg^{-1}\,K^{-1}}$.
+\item \textbf{Incógnitas.} $F_z$ y $m_{c,\max}$, sin incluir márgenes operativos.
+\item \textbf{Esquema verbal.} Empuje exterior hacia arriba y pesos de helio, estructura y carga hacia abajo.
+\item \textbf{Hipótesis.} Aire seco y helio ideales; igual presión y temperatura dentro y fuera; densidades uniformes; envolvente de volumen conocido; ausencia de viento vertical y de fuerzas de amarre.
+\item \textbf{Modelo.} Hidrostática para el empuje y gas ideal para ambas densidades.
+\item \textbf{Ecuaciones.} $\rho_a=p/(R_dT)$, $\rho_{He}=p/(R_{He}T)$ y ecuación \eqref{eq:03-globo}.
+\item \textbf{Despeje.} $m_{c,\max}=(\rho_a-\rho_{He})V-m_s$.
+\item \textbf{Sustitución.} $\rho_a=85000/(287.05287\cdot285)=1.0390\,\mathrm{kg\,m^{-3}}$ y $\rho_{He}=0.14359\,\mathrm{kg\,m^{-3}}$.
+\item \textbf{Resultado.} $F_z=+109.6\,\mathrm{N}$ y $m_{c,\max}=71.2\,\mathrm{kg}$. El signo positivo se refiere a la vertical ascendente.
+\item \textbf{Interpretación.} La carga actual deja un margen estático de masa de $11.2\,\mathrm{kg}$ en el estado especificado. No es una reserva recomendada para operación real.
+\item \textbf{Comprobación independiente.} El aire desalojado tiene masa $187.02\,\mathrm{kg}$ y el helio $25.85\,\mathrm{kg}$. La diferencia con $150\,\mathrm{kg}$ de masas no gaseosas es $11.17\,\mathrm{kg}$, cuyo peso coincide con la fuerza neta.
+\item \textbf{Limitaciones.} Al ascender variarán presión, volumen y temperatura. No se ha calculado la altitud de equilibrio ni el límite de expansión de la envolvente.
+\end{enumerate}
+
+\end{studiumworked}
+
+\section{De un perfil medio a una atmósfera real}
+Un perfil vertical describe un lugar y un instante, mientras que una estructura media resume muchos estados. Las inversiones térmicas cerca del suelo, las corrientes en chorro y los sistemas frontales pueden producir diferencias importantes entre puntos próximos. Un avión no encuentra únicamente un valor de densidad: atraviesa gradientes y perturbaciones que generan cargas y errores de medida. Por eso los modelos de actuaciones y los modelos de ráfagas responden a preguntas distintas.
+
+También debe distinguirse el aire que rodea al vehículo del que se ha frenado o comprimido en una entrada o sobre un sensor. La temperatura estática ambiental y la temperatura de remanso no coinciden durante movimiento rápido. Utilizar la segunda como si fuera un sondeo atmosférico sobreestima la temperatura de la corriente libre. La instrumentación necesita un modelo del proceso de medida además de un modelo de la atmósfera.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Hallar densidad de aire seco a $90000\,\mathrm{Pa}$ y $300\,\mathrm{K}$. Compararla con el mismo aire a $280\,\mathrm{K}$ y presión fija.
+\item \textbf{Intermedio.} Calcular la masa de una columna por unidad de área a $90000\,\mathrm{Pa}$ con gravedad estándar.
+\item \textbf{Examen.} Un globo flexible cerrado mantiene gas ideal a la temperatura exterior y presión exterior durante un ascenso. Mostrar que $\rho_aV=m_gR_g/R_a$ es constante si no varía la composición. Explicar por qué el equilibrio no queda determinado solo por la disminución de densidad del aire.
+\item \textbf{Conceptual.} ¿Puede un satélite estar en una región de temperatura cinética muy alta y recibir poco calor por colisiones? Justificar.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. $1.0451$ y $1.1198\,\mathrm{kg\,m^{-3}}$: a presión fija, calentar disminuye densidad. 2. $9177.4\,\mathrm{kg\,m^{-2}}$. 3. Usar $pV=m_gR_gT$ y $\rho_a=p/(R_aT)$; la expansión compensa la disminución de densidad hasta que falla alguna hipótesis. 4. Sí: temperatura y flujo de energía no son la misma magnitud; importa la densidad y la interacción con la superficie.
+
+\resumen{La atmósfera presenta una estructura térmica variable y distintas referencias de altura. Hidrostática, composición y ecuación de estado permiten relacionar presión, temperatura y densidad, pero requieren un cierre térmico. La flotabilidad depende de la masa de aire desalojado menos todas las masas del vehículo, incluido el gas. La temperatura por sí sola no determina una transferencia de calor.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Qué representa físicamente la presión de una columna atmosférica?
+\item ¿Por qué la altitud de densidad no es necesariamente una posición geométrica?
+\item ¿Qué hipótesis impide usar directamente este modelo de globo para calcular su velocidad terminal?
+\end{enumerate}

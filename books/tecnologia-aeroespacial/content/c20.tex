@@ -1,0 +1,124 @@
+\chapter{Motores cohete}\label{ch:20}
+\objetivos{Derivar el empuje y la ecuación ideal de velocidad con masa variable; distinguir impulso total e impulso específico; relacionar cámara, alimentación y tobera; reconocer los compromisos entre propelente, estructura, control y misión.}
+
+\section{Un propulsor que transporta su masa de reacción}
+El motor cohete expulsa masa transportada a bordo. En un cohete químico, el propelente incluye sustancias que reaccionan para generar gas caliente; una arquitectura bipropelente lleva combustible y oxidante por separado. Otras arquitecturas emplean monopropelentes, propelente sólido o combinaciones híbridas. La característica común para este análisis es que no necesitan capturar aire exterior para sostener la expulsión de masa. Por ello pueden producir empuje en el vacío.
+
+El empuje no se origina al presionar contra el terreno ni contra el aire situado detrás del vehículo. La presión de la cámara y la interacción del gas con las paredes y la tobera producen una resultante sobre el conjunto. La conservación de cantidad de movimiento permite calcularla sin conocer cada colisión molecular. NASA presenta este marco en su guía de cohetes \cite{NASA-ROCKET}; aquí se desarrolla con convenciones dimensionales explícitas.
+
+Para flujo cuasiestacionario, salida uniforme y axial, sin entrada exterior de masa, el módulo de empuje es
+\begin{equation}
+ F=\dot m_p V_e+(p_e-p_a)A_e.
+\end{equation}
+$\dot m_p>0$ es el caudal total expulsado, $V_e>0$ la velocidad relativa del escape hacia atrás y $p_a$ la presión exterior. El vehículo recibe fuerza hacia delante. La masa de vehículo disminuye según $dm/dt=-\dot m_p$. Mantener diferentes símbolos para caudal positivo expulsado y derivada negativa de masa evita errores de signo.
+
+\figura{rocket}{Cámara, garganta y expansión de un motor cohete; balance de masa expulsada, empuje y masa del vehículo. La presión exterior modifica la contribución de salida.}
+
+\section{Cámara y tobera: de energía interna a velocidad}
+La cámara transforma energía química en energía interna del fluido. La presión elevada favorece que exista una expansión importante hasta el exterior. El rendimiento depende de mezcla, cinética química, distribución del flujo, transferencia térmica y pérdidas. El gas real cambia composición y calores específicos con temperatura y presión; para iniciar el razonamiento se usa gas perfecto con $\gamma$ y $R$ constantes.
+
+Una expansión adiabática reversible sin trabajo de eje conserva entalpía total y produce, para velocidad inicial pequeña,
+\begin{equation}
+ V_e=\sqrt{\frac{2\gamma}{\gamma-1}RT_c
+ \left[1-\left(\frac{p_e}{p_c}\right)^{(\gamma-1)/\gamma}\right]}.
+\end{equation}
+$T_c$ y $p_c$ representan aproximadamente condiciones totales de cámara. $R$ es la constante específica de la mezcla gaseosa en $\mathrm{J/(kg\,K)}$. La expresión dentro de la raíz tiene dimensiones de velocidad al cuadrado. Un gas de menor masa molecular presenta mayor $R$ a igualdad de constante universal; con temperatura comparable puede alcanzar mayor velocidad ideal. Sin embargo, elegir propelente requiere comparar también densidad, almacenamiento, compatibilidad y sistema completo.
+
+La garganta es el área mínima de una tobera convergente--divergente. Si la relación de presión es suficiente, se alcanza $M=1$ allí y el flujo queda estrangulado. Para un gas ideal y flujo isentrópico,
+\begin{equation}
+ \dot m_p=A_t\frac{p_c}{\sqrt{T_c}}\sqrt{\frac{\gamma}{R}}
+ \left(\frac{2}{\gamma+1}\right)^{(\gamma+1)/[2(\gamma-1)]}.
+\end{equation}
+La condición crítica exige $p_{\rm aguas\ abajo}/p_c$ suficientemente baja; la relación de presión sónica ideal es $(2/(\gamma+1))^{\gamma/(\gamma-1)}$. Una tobera real introduce coeficientes de descarga y pérdidas, además de química no ideal. El área de garganta y las condiciones de cámara fijan entonces el caudal aproximadamente, en vez de hacerlo la presión exterior por sí sola.
+
+En flujo supersónico, un conducto divergente puede acelerar el gas mientras disminuyen presión y temperatura. No debe aplicarse la intuición incompresible de que toda ampliación reduce velocidad. El área de salida respecto a la garganta determina la expansión ideal posible. Si $p_e>p_a$, el chorro sale subexpandido y todavía podría expandirse fuera. Si $p_e<p_a$, está sobreexpandido y pueden aparecer ondas y separación. La separación puede causar cargas laterales que el modelo axial no representa.
+
+Una gran relación de expansión favorece funcionamiento a baja presión exterior, pero añade longitud, masa y riesgo de comportamiento inadecuado a otra altitud. Una tobera fija no está perfectamente adaptada durante todo un ascenso. Para condiciones internas aproximadamente constantes, disminuir $p_a$ aumenta la contribución de presión al empuje. Esto explica que deba indicarse si un dato de prestaciones corresponde a vacío, nivel del mar u otra condición.
+
+\section{Impulso y eficiencia de utilización de propelente}
+El impulso total es $I_t=\int F\,dt$ y se mide en newton segundo. Relaciona fuerza y duración. Dos motores con igual impulso total pueden producir aceleraciones muy distintas si uno entrega mucho empuje durante poco tiempo y el otro poco empuje durante mucho tiempo. La aceleración depende además de la masa instantánea y de las fuerzas externas.
+
+La velocidad efectiva de escape y el impulso específico se definen por
+\begin{equation}
+ c=\frac{F}{\dot m_p}=V_e+\frac{(p_e-p_a)A_e}{\dot m_p},
+ \qquad I_{sp}=\frac{F}{\dot m_p g_0}=\frac{c}{g_0}.
+\end{equation}
+En la versión web consultada de NASA aparece una errata al definir la velocidad equivalente: se suma una velocidad a una fuerza antes de dividir por caudal. Esa suma no es dimensionalmente válida. La expresión anterior se obtiene directamente de $F/\dot m_p$ y corrige esa presentación; el registro de fuentes conserva el texto observado. La procedencia institucional de una ecuación no sustituye su comprobación dimensional.
+
+$g_0=9.80665\,\mathrm{m/s^2}$ es una aceleración de referencia convencional, no la gravedad local del vuelo ni la constante de gravitación universal. Con esta convención $I_{sp}$ se expresa en segundos. No es la duración de encendido: representa impulso por peso de referencia del propelente consumido.
+
+Si $c$ es constante, $I_t=cm_p$ para una masa consumida $m_p$. Si cambian empuje, caudal o ambiente, se necesita integrar. La media de los impulsos específicos instantáneos solo representa correctamente el total cuando se pondera por masa consumida. El cociente $I_t/(m_pg_0)$ proporciona una definición integral consistente.
+
+También se emplean la velocidad característica $c^*=p_cA_t/\dot m_p$ y el coeficiente de empuje $C_F=F/(p_cA_t)$. Su producto satisface $c=C_Fc^*$ por definición. La primera magnitud ayuda a separar el funcionamiento de cámara y generación de gas; la segunda resume la expansión y las fuerzas de tobera. Son indicadores útiles, pero no hacen independientes procesos que físicamente permanecen acoplados.
+
+\section{La ecuación de masa variable}
+Se considera un vehículo que expulsa una pequeña masa durante $dt$. En un sistema inercial, el gas conserva la velocidad traslacional que tenía el vehículo y adquiere además velocidad relativa de expulsión. Al equilibrar cantidad de movimiento del vehículo y esa masa, e incorporar el término de presión en $c$, se obtiene
+\begin{equation}
+ m\,dv=-c\,dm+F_{\rm ext}\,dt.
+\end{equation}
+Aquí $dm<0$ es el cambio de masa del vehículo. Si se anulan fuerzas externas y $c$ es constante, integrar entre $m_0$ y $m_f$ da
+\begin{equation}
+ \Delta v=c\ln\left(\frac{m_0}{m_f}\right).
+\end{equation}
+El argumento del logaritmo es una razón adimensional. Puesto que $m_0>m_f$, el incremento de velocidad hacia delante es positivo. No sería correcto usar $F= d(mv)/dt$ solo sobre el vehículo y olvidar el momento transportado por la masa que sale.
+
+La dependencia logarítmica impone un compromiso fuerte. Duplicar propelente no duplica automáticamente $\Delta v$, porque también cambia la masa inicial y puede exigir más depósito, estructura y empuje. La masa final incluye todo lo que permanece tras la combustión: estructura, motor, carga útil y propelente residual. No debe sustituirse por la carga útil sola. Una fracción estructural pequeña beneficia las prestaciones, pero requiere justificar resistencia, rigidez, estabilidad y condiciones térmicas.
+
+En un ascenso vertical idealizado con gravedad constante y sin resistencia,
+\begin{equation}
+ \Delta v=c\ln(m_0/m_f)-g t_b.
+\end{equation} Para una trayectoria inclinada, la componente de gravedad se integra según dirección; el término $gt_b$ deja de ser general. Las pérdidas aerodinámicas requieren integrar $D/m$ y las de dirección dependen de orientación del empuje. El $\Delta v$ ideal es capacidad propulsiva de una maniobra idealizada, no altitud ni velocidad orbital garantizada.
+
+La separación de etapas elimina masa que ya no sirve para proporcionar empuje o contener propelente. Cada etapa tiene su propia razón de masas y su incremento ideal se suma bajo hipótesis compatibles. La ventaja no es crear impulso sin propelente, sino evitar acelerar durante etapas posteriores estructuras agotadas. A cambio aparecen interfaces, mecanismos, secuencias y fallos posibles que deben integrarse en el diseño.
+
+\section{Arquitecturas de alimentación y operación física}
+Un motor líquido con alimentación por presión emplea un gas o sistema presurizador para mantener el flujo hacia cámara. La presión de depósitos debe superar la de cámara y las pérdidas del circuito, lo que aumenta exigencias de masa resistente. Un sistema con turbobombas eleva presión del líquido y permite otras relaciones entre depósitos y cámara, a costa de maquinaria rápida, sellos, rodamientos, potencia de turbina y transitorios complejos. El trabajo de bombeo depende de caudal y aumento de presión, no solo de la masa total almacenada.
+
+Los ciclos de motor se distinguen por la fuente y el destino del gas que mueve las turbinas. En un generador de gas, una parte de propelente produce energía para bombas y puede descargarse sin atravesar toda la expansión principal. En ciclos cerrados, el flujo de turbina se incorpora a la cámara principal bajo condiciones adecuadas. Un ciclo expansor aprovecha calor absorbido al refrigerar superficies para accionar maquinaria. Cada elección afecta presión, complejidad, pérdidas y arranque; no hay una jerarquía universal independiente de la misión.
+
+En un motor sólido, oxidante y combustible forman parte del grano. La geometría de superficie que se quema cambia con el tiempo; esa área y la ley de regresión contribuyen a fijar producción de gas. El equilibrio de presión requiere que la masa generada coincida con la evacuada por la garganta. Una aproximación empírica $r_b=a p_c^n$ solo es válida para un propelente y un intervalo determinados; $a$ tiene unidades dependientes de $n$. No permite deducir comportamiento estable sin estudiar la realimentación entre presión, combustión y descarga.
+
+Un híbrido suele separar un componente sólido y otro fluido. Esa separación cambia almacenamiento, mezcla y control del flujo, pero introduce la evolución del puerto y limitaciones de transferencia entre fases. En monopropulsión, la descomposición o reacción de un único fluido almacenado evita una mezcla de dos corrientes a bordo. En todos los casos, la posibilidad de regular o reiniciar depende de la arquitectura concreta, no de una etiqueta por sí sola.
+
+Las paredes reciben flujos térmicos elevados. La refrigeración regenerativa transfiere calor al propelente antes de inyectarlo; la ablativa consume o transforma un material de protección; otras estrategias usan radiación o películas. La solución debe considerar gradientes, tensiones térmicas, química y tiempo de exposición. La temperatura del gas no es la temperatura uniforme de toda la pared. Un cálculo que iguale ambas ignora resistencias térmicas y transitorios.
+
+Controlar un motor supone coordinar caudales, presión, mezcla, orientación y condiciones de encendido. Un cambio de caudal altera temperatura, respuesta de bombas y estabilidad. La inestabilidad de combustión acopla liberación de calor y oscilaciones acústicas; no se predice con un balance estacionario único. Este capítulo describe relaciones causales y modelos, sin establecer procedimientos de fabricación, carga ni puesta en marcha de propulsores.
+
+\section{Problema resuelto: prestaciones de una etapa ideal}
+\textbf{1. Enunciado.} Una etapa hipotética consume propelente a caudal constante en vacío. Se conoce una salida no adaptada. Calcule empuje, impulso específico, duración y aumento ideal de velocidad.
+
+\textbf{2. Datos.} $\dot m_p=5\,\mathrm{kg/s}$, $V_e=2500\,\mathrm{m/s}$, $p_e=20000\,\mathrm{Pa}$, $p_a=0$, $A_e=0.020\,\mathrm{m^2}$, $m_0=1000\,\mathrm{kg}$, $m_f=600\,\mathrm{kg}$ y $g_0=9.80665\,\mathrm{m/s^2}$.
+
+\textbf{3. Incógnitas.} $F$, $c$, $I_{sp}$, tiempo $t_b$, impulso $I_t$, $\Delta v$ y aceleraciones inicial y final sin fuerzas externas.
+
+\textbf{4. Esquema verbal.} Un vehículo inicialmente libre expulsa masa hacia atrás; la sección de salida aporta empuje adicional de presión. No hay gravedad ni resistencia en el cálculo principal.
+
+\textbf{5. Hipótesis.} Caudal, velocidad y presión de salida constantes, dirección fija, masa final incluyendo toda estructura y carga remanente, sin fugas ni etapas adicionales.
+
+\textbf{6. Modelo.} Flujo cuasiestacionario en motor y movimiento de masa variable del conjunto.
+
+\textbf{7. Ecuaciones.} $F=\dot m_pV_e+(p_e-p_a)A_e$, $c=F/\dot m_p$, $I_{sp}=c/g_0$, $t_b=(m_0-m_f)/\dot m_p$, $I_t=Ft_b$ y $\Delta v=c\ln(m_0/m_f)$.
+
+\textbf{8. Despeje.} Se obtiene primero $c$ del empuje completo; no se reemplaza automáticamente por $V_e$. Las aceleraciones son $a_0=F/m_0$ y $a_f=F/m_f$.
+
+\textbf{9. Sustitución.} $F=5(2500)+20000(0.020)=12900\,\mathrm{N}$; $c=12900/5=2580\,\mathrm{m/s}$ y $\Delta v=2580\ln(1000/600)$.
+
+\textbf{10. Resultado.} $I_{sp}=263.09\,\mathrm{s}$, $t_b=80\,\mathrm{s}$, $I_t=1.032\times10^6\,\mathrm{N\,s}$ y $\Delta v=1317.93\,\mathrm{m/s}$. Las aceleraciones son $12.90$ y $21.50\,\mathrm{m/s^2}$.
+
+\textbf{11. Interpretación.} El empuje permanece constante mientras la aceleración aumenta al disminuir masa. La presión contribuye $400\,\mathrm{N}$; omitirla reduciría tanto impulso específico como incremento de velocidad ideal.
+
+\textbf{12. Comprobación independiente.} Integrando directamente $a(t)=12900/(1000-5t)$ entre cero y ochenta segundos se obtiene la primitiva $-2580\ln(1-0.005t)$, que reproduce $1317.93\,\mathrm{m/s}$. Además $I_t/(400g_0)=263.09\,\mathrm{s}$ verifica la definición integral.
+
+\textbf{13. Limitaciones.} No se infiere una trayectoria orbital. Si, solo como contraste matemático, se impusiera ascenso vertical con gravedad constante, habría que descontar $784.53\,\mathrm{m/s}$ durante esos ochenta segundos. El empuje y la presión de salida tampoco permanecerían necesariamente constantes en una instalación real.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Un motor produce $20\,\mathrm{kN}$ con $\dot m_p=8\,\mathrm{kg/s}$. Determine $c$ e $I_{sp}$.
+\item Intermedio. Con $c=3000\,\mathrm{m/s}$ y razón de masas tres, calcule $\Delta v$ ideal y la fracción de masa consumida.
+\item Intermedio. Para $\dot m_p=4\,\mathrm{kg/s}$, $V_e=2400\,\mathrm{m/s}$, $p_e=80\,\mathrm{kPa}$ y $A_e=0.015\,\mathrm{m^2}$, compare empuje con $p_a=100\,\mathrm{kPa}$ y en vacío, manteniendo artificialmente iguales las condiciones internas.
+\item Análisis. Dos motores tienen igual $I_{sp}$ e impulso total, pero uno tiene doble empuje. Compare duración y explique por qué las pérdidas gravitatorias pueden ser distintas aunque el $\Delta v$ ideal coincida para iguales masas.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $2500\,\mathrm{m/s}$ y $254.93\,\mathrm{s}$. 2: $3295.84\,\mathrm{m/s}$ y fracción $2/3$. 3: $9300$ y $10800\,\mathrm{N}$; el contraste ignora posible separación. 4: el de doble empuje dura la mitad; el tiempo y la trayectoria alteran la integral de gravedad.
+
+\resumen{El cohete lleva su masa de reacción y obtiene empuje por momento y presión. La tobera transforma energía del gas dentro de límites compresibles. El impulso específico mide utilización de propelente mediante una aceleración de referencia. La ecuación ideal de masa variable relaciona velocidad efectiva y razón de masas; alimentación, refrigeración, control y trayectoria determinan cuánto de esa capacidad se aprovecha.}
+\textbf{Autoevaluación.} ¿Por qué $I_{sp}$ se expresa en segundos sin ser una duración de encendido? ¿Qué contiene la masa final? ¿Por qué el empuje de una misma tobera cambia con la presión exterior?

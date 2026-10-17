@@ -1,0 +1,167 @@
+\appendix
+\chapter{Notación y convenios}\label{app:notation}
+\begin{longtable}{p{.18\linewidth}p{.53\linewidth}p{.20\linewidth}}
+\toprule Símbolo & Significado y convenio & Unidad SI\\\midrule\endhead
+$F$ & Empuje axial positivo hacia delante & N\\
+$\dot m,\dot m_p$ & Caudal consumido positivo; $\dot m_{veh}=-\dot m_p$ & kg/s\\
+$I$ & Impulso total $\int Fdt$ & N s\\
+$I_{sp}$ & Impulso por peso convencional consumido & s\\
+$v_e,c$ & Rapidez física y velocidad efectiva de escape & m/s\\
+$c^*$ & Velocidad característica $p_cA_t/\dot m$ & m/s\\
+$C_F$ & Coeficiente de empuje $F/(p_cA_t)$ & 1\\
+$p_c,p_e,p_a$ & Presiones de cámara, salida y ambiente; absolutas & Pa\\
+$p_0,T_0$ & Estado de remanso isentrópico local & Pa, K\\
+$A_t,A_e,A^*$ & Garganta física, salida y área crítica de referencia & m$^2$\\
+$\varepsilon$ & Relación geométrica $A_e/A_t$ & 1\\
+$M,a$ & Mach y velocidad del sonido con respuesta declarada & 1, m/s\\
+$R,R_u,\mathcal M$ & Constantes específica, molar y masa molar & J/(kg K), J/(mol K), kg/mol\\
+$c_p,c_v,\gamma$ & Capacidades específicas y parámetro de gas perfecto & J/(kg K), 1\\
+$h,e,s$ & Entalpía, energía interna y entropía específicas & J/kg, J/(kg K)\\
+$x_i,Y_i$ & Fracciones molar y másica & 1\\
+$A_b,r_b,w$ & Área activa, rapidez de regresión y profundidad & m$^2$, m/s, m\\
+$\rho_p,\rho_g$ & Densidad del material y del gas & kg/m$^3$\\
+$n$ & Exponente local de regresión respecto a presión & 1\\
+$\mathcal R$ & Relación másica oxidante/combustible & 1\\
+$P_{el},P_j$ & Potencias eléctrica y cinética de escape & W\\
+$\eta,C_v$ & Rendimiento definido y coeficiente de velocidad & 1\\
+$\mu,r,\gamma_f$ & Parámetro gravitatorio, radio y ángulo de trayectoria & m$^3$/s$^2$, m, rad\\
+$s_i,p_i,m_L$ & Masa seca de etapa, propulsante y carga & kg\\
+$\mathbf J,\boldsymbol\omega$ & Inercia y velocidad angular & kg m$^2$, rad/s\\
+$J_b,f$ & Impulso por pulso y frecuencia de repetición & N s, s$^{-1}$\\
+\bottomrule
+\end{longtable}
+Una misma letra puede tener usos locales: $p_i$ es masa propulsante sólo en la notación de etapas, mientras $p$ sin ese contexto representa presión. Se declaran las variables antes de cada aplicación. El subíndice cero identifica remanso o estado inicial según la ecuación; el asterisco identifica estado sónico de referencia, salvo la magnitud convencional $c^*$.
+
+El vector normal de un volumen de control apunta hacia fuera. El eje de empuje del motor se toma positivo hacia delante, y la descarga relativa apunta hacia atrás. El caudal de propulsante consumido se escribe positivo. En dinámica, la derivada temporal de masa del vehículo es negativa. Mantener simultáneamente esos convenios evita errores de signo.
+\chapter{Sistema Internacional y conversiones}\label{app:si}
+\begin{center}\begin{tabular}{lll}\toprule
+Magnitud & Conversión & Control útil\\\midrule
+Presión & 1 bar $=10^5$ Pa & 1 MPa $=10^6$ Pa\\
+Atmósfera convencional & 1 atm $=101325$ Pa & atm no es bar\\
+Caudal & 1 g/s $=10^{-3}$ kg/s & 1 mg/s $=10^{-6}$ kg/s\\
+Masa & 1 microgramo $=10^{-9}$ kg & no es $10^{-6}$ kg\\
+Longitud & 1 mm $=10^{-3}$ m & mm$^2=10^{-6}$ m$^2$\\
+Área & 1 cm$^2=10^{-4}$ m$^2$ & diámetro se eleva al cuadrado\\
+Energía & 1 kJ $=10^3$ J & capacidad calorífica también\\
+Potencia & 1 kW $=10^3$ W & W $=$ J/s\\
+Temperatura & $T/\mathrm K=t/{}^\circ\mathrm C+273.15$ & cocientes sólo en K\\
+Ángulo & 1 grado $=\pi/180$ rad & derivadas requieren convenio\\
+Masa molar & 1 kg/kmol $=10^{-3}$ kg/mol & elegir $R_u$ coherente\\
+Impulso & 1 mN s $=10^{-3}$ N s & no es una fuerza\\\bottomrule
+\end{tabular}\end{center}
+La presión absoluta no puede ser negativa en los modelos ideales de este manual. Una presión manométrica puede ser negativa respecto al ambiente; se convierte antes de usar una ecuación de estado. Una diferencia de temperaturas tiene el mismo valor numérico en kelvin y grados Celsius, pero una temperatura absoluta y sus cocientes no.
+
+La energía por ion adquirida por una carga simple a través de un voltio es 1 eV. Se convierte a julios mediante $1.602176634\times10^{-19}$ J/eV. Si una temperatura electrónica se expresa como energía, $k_BT_e=E_e$, el paso a kelvin divide por $k_B$. Los argumentos de logaritmos, exponenciales y funciones trigonométricas deben ser adimensionales; un ángulo expresado en grados se convierte antes de introducirlo en funciones que esperan radianes.
+\chapter{Constantes y referencias físicas}\label{app:constants}
+\begin{center}\begin{tabular}{lll}\toprule
+Referencia & Valor usado & Naturaleza\\\midrule
+$g_0$ & $9.80665\,\mathrm{m/s^2}$ & convencional\\
+$R_u$ & $8.31446261815324\,\mathrm{J/(mol\,K)}$ & $N_Ak_B$, exacto\\
+$k_B$ & $1.380649\times10^{-23}\,\mathrm{J/K}$ & exacto SI\\
+$e$ & $1.602176634\times10^{-19}\,\mathrm C$ & exacto SI\\
+$N_A$ & $6.02214076\times10^{23}\,\mathrm{mol^{-1}}$ & exacto SI\\
+$\mathrm u$ & $1.66053906892\times10^{-27}\,\mathrm{kg}$ & CODATA 2022\\
+$\epsilon_0$ & $8.8541878188\times10^{-12}\,\mathrm{F/m}$ & CODATA 2022\\
+\bottomrule\end{tabular}\end{center}
+Las constantes definitorias del SI se contrastaron con BIPM. La unidad de masa atómica y permitividad se consultaron en el listado NIST/CODATA 2022; tienen incertidumbre y no son exactas. En los casos docentes se utilizan sus cifras centrales, cuya incertidumbre resulta despreciable frente a la de los modelos elegidos.\cite{BIPM-SI,NIST-U}
+
+No se usa $g_0$ como una ley de gravedad local universal. En trayectoria se declara $g$ constante como hipótesis o se emplea $\mu/r^2$. El valor de $R$ de una mezcla depende de su masa molar; no se sustituye por la constante de aire al estudiar productos diferentes.
+\chapter{Propiedades termodinámicas de referencia}\label{app:properties}
+\section{Gases académicos de composición fija}
+La tabla siguiente define \emph{modelos} para cálculo, no propiedades certificadas de combustiones. A partir de $R$ y gamma se deducen $c_p=\gamma R/(\gamma-1)$ y $c_v=R/(\gamma-1)$.
+\begin{center}\begin{tabular}{rrrr}\toprule
+$R$ (J/(kg K)) & $\gamma$ & $c_p$ (J/(kg K)) & $c_v$ (J/(kg K))\\\midrule
+287 & 1.40 & 1004.5 & 717.5\\
+350 & 1.32 & 1443.75 & 1093.75\\
+400 & 1.25 & 2000 & 1600\\\bottomrule\end{tabular}\end{center}
+La aproximación se utiliza sólo en los intervalos y ejemplos declarados. Las dos últimas filas no se atribuyen a una mezcla química concreta. Para un gas de composición fija pero capacidad variable se integra $\int c_p(T)dT$ y $\int c_p(T)dT/T$ en lugar de aplicar potencias constantes.
+\section{Equilibrio de agua ejecutado con CEA}
+\input{cea-table.tex}
+Las seis especies y las unidades se declaran en el capítulo~\ref{ch:15}. Las filas son estados TP discretos; no forman una trayectoria de expansión. La composición cambia y la capacidad de equilibrio incluye esa respuesta, mientras la congelada mantiene fracciones. El exponente isentrópico de salida no se identifica automáticamente con un gamma constante de todo un motor.
+\chapter{Hoja de fórmulas con hipótesis}\label{app:formula}
+\section{Balances y prestaciones}
+\begin{align*}
+ F&=\dot mv_e+(p_e-p_a)A_e &&\text{salida uniforme, axial, estacionaria},\\
+ c&=F/\dot m=g_0I_{sp},\quad I=\int Fdt &&\text{misma frontera de sistema},\\
+ c^*&=p_cA_t/\dot m,\quad C_F=F/(p_cA_t),\quad c=C_Fc^* &&\text{definiciones coherentes},\\
+ \overline I_{sp}&=\frac{\int Fdt}{g_0\int\dot mdt} &&\text{promedio por masa consumida}.
+\end{align*}
+\section{Gas caloríficamente perfecto}
+\begin{align*}
+ R&=R_u/\mathcal M,\quad c_p=\gamma R/(\gamma-1),\quad a^2=\gamma RT,\\
+ T_0/T&=1+(\gamma-1)M^2/2,\\
+ p_0/p&=(T_0/T)^{\gamma/(\gamma-1)},\\
+ u^2&=2c_p(T_0-T),\quad \frac{dA}{A}=(M^2-1)\frac{du}{u},\\
+ \frac{A}{A^*}&=\frac1M\left[\frac2{\gamma+1}\left(1+\frac{\gamma-1}2M^2\right)\right]^{(\gamma+1)/[2(\gamma-1)]}.
+\end{align*}
+Las relaciones de presión suponen isentropía y composición fija. El estado de cámara sólo se identifica con remanso si su velocidad es despreciable o se ha corregido.
+\section{Regresión académica y alimentación}
+\begin{align*}
+ r_b&=r_{ref}(p_c/p_{ref})^n,\quad \dot m_g=\rho_pA_br_b,\\
+ \frac{p_2}{p_1}&=\left[\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\right]^{1/(1-n)},\\
+ \dot m_f&=\dot m/(1+\mathcal R),\quad \dot m_o=\mathcal R\dot m_f,\\
+ P_p&=\dot m\Delta p/(\rho\eta_p),\quad
+ \dot Q_c=\dot m_c(h_{out}-h_{in}).
+\end{align*}
+La relación de presión sólida necesita equilibrio cuasiestacionario, descarga ahogada y propiedades constantes; no demuestra estabilidad acústica. La potencia de bomba supone líquido aproximadamente incompresible y rendimiento definido.
+\section{Electricidad y vehículo}
+\begin{align*}
+ F&=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2 &&\text{haz axial uniforme},\\
+ v_i&=\sqrt{2qV_b/m_i},\quad \dot m_i=I_bm_i/q &&\text{una especie y carga},\\
+ \overline F&=fJ_b,\quad I_{sp}=J_b/(g_0m_b) &&\text{pulsos idénticos},\\
+ \Delta v_{ideal}&=c\ln(m_0/m_f) &&\text{sin fuerzas externas, c fijo},\\
+ v_b-v_0&=c\ln(m_0/m_b)-gt_b &&\text{vertical, g constante, sin D}.
+\end{align*}
+\chapter{Relaciones de flujo compresible}\label{app:compressible}
+\section{Flujo crítico}
+Para $\gamma>1$ y garganta sónica,
+\[
+ \dot m=A_t\frac{p_0}{\sqrt{T_0}}\sqrt{\frac\gamma R}
+ \left(\frac2{\gamma+1}\right)^{(\gamma+1)/[2(\gamma-1)]},
+\qquad
+ c^*=\sqrt{\frac{RT_0}\gamma}
+ \left(\frac{\gamma+1}2\right)^{(\gamma+1)/[2(\gamma-1)]}.
+\]
+La convergente simple ahoga si su contrapresión es suficientemente baja respecto al umbral sónico. En una convergente-divergente, el primer bloqueo se obtiene por la raíz subsónica de salida y la condición \eqref{eq:firstchoking}. No se intercambian esas dos comprobaciones.
+\section{Choque normal}
+\begin{align*}
+ M_2^2&=\frac{1+(\gamma-1)M_1^2/2}{\gamma M_1^2-(\gamma-1)/2},\\
+ p_2/p_1&=[2\gamma M_1^2-(\gamma-1)]/(\gamma+1),\\
+ \rho_2/\rho_1&=(\gamma+1)M_1^2/[2+(\gamma-1)M_1^2],\\
+ T_2/T_1&=(p_2/p_1)/(\rho_2/\rho_1),\\
+ p_{02}/p_{01}&=(p_2/p_1)\left[\frac{1+(\gamma-1)M_2^2/2}{1+(\gamma-1)M_1^2/2}\right]^{\gamma/(\gamma-1)}.
+\end{align*}
+Se conserva temperatura total y aumenta entropía. El área crítica de referencia posterior cambia: $A^*_2/A^*_1=p_{01}/p_{02}$. El modelo exige $M_1>1$ para un choque compresivo de intensidad finita.
+\section{Tablas reproducibles}
+\input{compressible-table.tex}
+Las tablas sirven para orientar y comprobar, no para sustituir selección de rama ni condiciones de contorno. Los valores del proyecto se calculan directamente con búsqueda de raíces y tolerancia; el redondeo impreso puede dejar pequeños residuos.
+\chapter{Relaciones de empuje e impulso específico}\label{app:thrust}
+\section{No uniformidad y frontera}
+Con eje positivo hacia delante y normal exterior, el empuje de una descarga posterior no uniforme se obtiene como reacción del flujo de momento y presión:
+\[
+ F_x=-\int_{A_e}\rho u_x(\mathbf u\cdot\mathbf n)dA
+ -\int_{A_e}(p-p_a)n_xdA.
+\]
+Para una salida plana posterior, $u_x=-v_e$ y $n_x=-1$, por lo que se recuperan contribuciones positivas cinética y $+(p_e-p_a)A_e$. El signo del término de presión puede ser negativo si hay sobreexpansión.
+\section{Identidades y comparaciones}
+\[
+ I_{sp,v}-I_{sp,a}=\frac{p_aA_e}{g_0\dot m},\qquad
+ F_v-F_a=p_aA_e
+\]
+con estado interno y régimen invariables. Para múltiples descargas se suman sus fuerzas axiales y todo el caudal consumido antes de formar un impulso específico de sistema. Los valores de cámara principal y de sistema completo no se comparan como si sus denominadores fueran iguales.
+
+Una eficiencia de velocidad $C_v=v_r/v_s$ y una eficiencia cinética $\eta_n=v_r^2/v_s^2$ satisfacen $\eta_n=C_v^2$ con referencias iguales. Si el término de presión cambia, esa relación no basta para obtener el empuje real multiplicando todo el empuje ideal por un factor.
+\section{Derivación complementaria de carga espacial plana}
+Para la ley ideal de Child--Langmuir, sea $\phi$ la caída acelerante desde emisión, $u=\sqrt{2q\phi/m_i}$ y $j$ densidad de corriente constante. Poisson en magnitudes del problema plano da
+\[
+ \phi''=\frac j{\epsilon_0}\sqrt{\frac{m_i}{2q}}\phi^{-1/2}=C\phi^{-1/2}.
+\]
+Multiplicar por $\phi'$ e integrar desde $\phi=0$, con campo de emisión nulo, produce $(\phi')^2=4C\sqrt\phi$. Una segunda integración da
+\[
+ \frac43\phi^{3/4}=2\sqrt C\,x.
+\]
+En $x=d$, $\phi=V$, de donde $C=4V^{3/2}/(9d^2)$ y
+\[
+ j=\frac49\epsilon_0\sqrt{\frac{2q}{m_i}}\frac{V^{3/2}}{d^2}.
+\]
+La derivación muestra las condiciones de borde y por qué el resultado no describe sin cambios una apertura tridimensional, una vaina colisional o una población de velocidad inicial finita. No se utiliza como especificación de un acelerador real.\cite{JPL-EP}

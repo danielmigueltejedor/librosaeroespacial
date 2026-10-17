@@ -1,0 +1,26 @@
+\begin{studiumworked}{M04. Incertidumbre de un cociente correlacionado · INTERMEDIATE}
+\textbf{Enunciado original.} Se miden $F=4200$ N y $\dot m=1.78$ kg/s. Sus incertidumbres estándar relativas son $1.08$\,\% y 0.7\,\%, con correlación $r=0.25$. Estime $I_{sp}$ y su incertidumbre linealizada; compare con asumir independencia.
+
+\textbf{Datos utilizados.} Empuje: $4200\,\mathrm{N}$; Caudal: $1.78\,\mathrm{kg/s}$; Incertidumbre relativa: $0.0108$; Incertidumbre relativa: $0.007$; Correlación: $0.25$.
+
+\textbf{Incógnitas.} Impulso específico e incertidumbre estándar.
+
+\textbf{Hipótesis.} Perturbaciones pequeñas y modelo diferenciable. g0 convencional; correlación proporcionada.
+
+\textbf{Modelo físico.} Propagación mediante gradiente y covarianza.
+\[I_{sp}=F/(g_0\dot m)\]
+\[(u_I/I_{sp})^2=u_F^2/F^2+u_m^2/\dot m^2-2r(u_F/F)(u_m/\dot m)\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Las sensibilidades son $\partial I/\partial F=1/(g_0\dot m)$ y $\partial I/\partial\dot m=-F/(g_0\dot m^2)$. Sus signos opuestos explican el signo negativo de la covarianza.
+\item La sustitución da $I_{sp}=240.6072$ s y $u_I/I_{sp}=\sqrt{0.0108^2+0.007^2-2(0.25)(0.0108)(0.007)}=0.01130664$.
+\item Multiplicar por el valor central da $2.720458\,\mathrm{s}$. Si se impone $r=0$, la incertidumbre relativa sería $1.287012$\,\%; esa diferencia no es una mejora del sensor sino un cambio del modelo de correlación.
+\end{enumerate}
+\textbf{Resultados.} $I_{sp}=240.6072$ s; $u(I_{sp})=2.720458$ s.
+
+\textbf{Interpretación.} Las variaciones comunes de empuje y caudal pueden compensarse parcialmente en su cociente. La incertidumbre instrumental no cuantifica por sí sola error de modelo físico.
+
+\textbf{Comprobación.} La matriz de correlación es admisible porque $|r|\leq1$. El radicando es no negativo y el resultado conserva unidad de segundos.
+
+\textbf{Límites.} No es un intervalo de confianza expandido; no se asigna cobertura sin una distribución y factor definidos.
+\end{studiumworked}

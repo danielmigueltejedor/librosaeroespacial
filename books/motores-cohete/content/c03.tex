@@ -1,0 +1,83 @@
+\chapter{Termodinámica de los gases propulsivos}\label{ch:03}
+\objetivos{Distinguir gas ideal, composición congelada y gas caloríficamente perfecto; obtener las relaciones de remanso; incorporar la entropía y las referencias de energía química.}
+\section{Variables de estado y escalas de masa}
+Para un gas ideal simple, $p=\rho R T$. La constante específica pertenece a la composición: $R=R_u/\mathcal M$, donde $R_u=8314.462618\,\mathrm{J/(kmol\,K)}$ si $\mathcal M$ se expresa en $\mathrm{kg/kmol}$. También puede emplearse $R_u=8.314462618\,\mathrm{J/(mol\,K)}$ y masa molar en $\mathrm{kg/mol}$. Mezclar ambas convenciones introduce un factor mil. La unidad no se decide por el aspecto numérico de la masa molar.
+
+Una mezcla ideal tiene fracciones molares $x_i=n_i/\sum n_j$ y másicas $Y_i=m_i/\sum m_j$. Con masas molares $\mathcal M_i$,
+\begin{align}
+\mathcal M&=\sum_i x_i\mathcal M_i,
+&Y_i&=\frac{x_i\mathcal M_i}{\mathcal M},\\
+\frac{1}{\mathcal M}&=\sum_i\frac{Y_i}{\mathcal M_i},
+&R&=R_u\sum_i\frac{Y_i}{\mathcal M_i}.
+\end{align}
+Promediar directamente las masas molares con fracciones másicas no da la masa molar de mezcla. La ecuación de estado ideal tampoco obliga a que las fracciones sean constantes: esa es una hipótesis independiente sobre química o transporte de especies.
+\section{Energía interna, entalpía y calores específicos}
+La entalpía $h=e+p/\rho$ incorpora el trabajo de desplazar fluido a través de la frontera. Para composición fija y gas ideal, $e=e(T)$ y $h=h(T)$. Las derivadas $c_v=de/dT$ y $c_p=dh/dT$ satisfacen $c_p-c_v=R$. Sólo si son constantes se obtiene
+\begin{equation}
+ h(T)-h(T_r)=c_p(T-T_r),\qquad
+ c_p=\frac{\gamma R}{\gamma-1},\qquad \gamma=\frac{c_p}{c_v}.
+\end{equation}
+Un gas térmicamente perfecto obedece la ecuación ideal con composición fija, pero puede tener $c_p(T)$. En tal caso se integra $h(T)-h(T_r)=\int_{T_r}^{T}c_p(\vartheta)\,d\vartheta$. Tratar ese gas mediante una única potencia de temperatura necesita una aproximación adicional, cuyo intervalo debe declararse.
+
+En una mezcla reactiva, el cambio de $h$ incluye cambios de especies. Se escribe
+\begin{equation}
+ h(T,\mathbf Y)=\sum_iY_i\left[h_{f,i}^{\circ}+\int_{T_r}^{T}c_{p,i}(\vartheta)\,d\vartheta\right].
+\end{equation}
+Las entalpías de formación y las integrales deben compartir referencias. Los ceros individuales de entalpía son convencionales, pero no se pueden modificar de forma independiente entre reactantes y productos en un balance de reacción. Para un reactor adiabático, con energía cinética despreciable y sin trabajo de eje, la entalpía total de salida iguala la de entrada. La liberación química ya está representada mediante los términos de formación.
+\section{Entropía y relaciones isentrópicas}
+La identidad de Gibbs para una sustancia simple de composición fija es $T\,ds=dh-dp/\rho$. Con la ecuación ideal,
+\begin{equation}\label{eq:gibbs}
+ ds=c_p(T)\frac{dT}{T}-R\frac{dp}{p}.
+\end{equation}
+Si $c_p$ es constante y $ds=0$, integrar entre dos estados da
+\begin{align}
+ c_p\ln\frac{T_2}{T_1}&=R\ln\frac{p_2}{p_1},\\
+ \frac{T_2}{T_1}&=\left(\frac{p_2}{p_1}\right)^{(\gamma-1)/\gamma}, &
+ \frac{p_2}{p_1}&=\left(\frac{\rho_2}{\rho_1}\right)^\gamma.
+\end{align}
+Estas expresiones comparan estados conectados isentrópicamente del mismo gas caloríficamente perfecto. No son leyes generales de toda expansión. Con un choque o fricción adiabática puede conservarse energía total y aumentar la entropía. Con composición cambiante, la relación de Gibbs incorpora potenciales químicos y no se reduce sin más a \eqref{eq:gibbs} con un $R$ escogido a posteriori.
+
+El balance de entropía de un volumen de control incluye transporte con las corrientes, transferencia de calor a temperatura de frontera y generación interna $\dot S_{gen}\geq0$. La desigualdad es una condición física, no una corrección algebraica opcional. Un rendimiento no puede utilizarse para ocultar una reducción de entropía incompatible con un proceso adiabático irreversible.
+\section{Velocidad del sonido y magnitudes de remanso}
+La velocidad de una perturbación isentrópica infinitesimal es
+\begin{equation}
+ a^2=\left(\frac{\partial p}{\partial\rho}\right)_s.
+\end{equation}
+Usando $p/\rho^\gamma=$ constante se obtiene $a^2=\gamma p/\rho=\gamma RT$. Esta deducción presupone una respuesta calorífica y composicional coherente con la perturbación. En un gas reactivo, la velocidad acústica puede corresponder a una respuesta congelada o de equilibrio según las escalas temporales; no basta con introducir el cociente de dos calores específicos impresos en una tabla.
+
+Se define $h_0=h+u^2/2$ para detener idealmente la corriente sin cambio de altura. Una detención adiabática sin trabajo conserva esa magnitud. Para el modelo de $c_p$ constante,
+\begin{align}
+ c_pT_0&=c_pT+\frac{u^2}{2},\\
+ \frac{T_0}{T}&=1+\frac{u^2}{2c_pT}
+ =1+\frac{\gamma-1}{2}M^2,\qquad M=\frac{u}{\sqrt{\gamma RT}}.
+\end{align}
+Si la detención de referencia es además isentrópica,
+\begin{equation}\label{eq:stagnation}
+ \frac{p_0}{p}=\left(1+\frac{\gamma-1}{2}M^2\right)^{\gamma/(\gamma-1)},\qquad
+ \frac{\rho_0}{\rho}=\left(1+\frac{\gamma-1}{2}M^2\right)^{1/(\gamma-1)}.
+\end{equation}
+La presión de remanso es una propiedad de referencia asociada al estado local y al proceso isentrópico de detención. A través de un choque adiabático $T_0$ permanece constante en el modelo simple, mientras que $p_0$ disminuye. Esta diferencia es una medida útil de irreversibilidad.
+
+La presión de cámara $p_c$ suele aproximarse a $p_0$ porque la velocidad en la cámara es pequeña. Si no lo es, la aproximación debe corregirse con el Mach de cámara. Una medida de presión estática en una cámara de contracción finita no debe interpretarse automáticamente como presión total.
+\section{Pérdidas, trabajo útil y comparación de procesos}
+El rendimiento de tobera puede definirse como la energía cinética real obtenida dividida por el descenso entálpico isentrópico disponible entre referencias especificadas. Para velocidad de entrada despreciable,
+\[\eta_n=\frac{v_{e,r}^2}{v_{e,s}^2},\qquad v_{e,r}=\sqrt{\eta_n}\,v_{e,s}.\]
+Esto no implica $F_r=\eta_n F_s$ ni $c_r=\eta_n c_s$: el empuje incluye presión y la velocidad recibe la raíz del rendimiento. Además, si la pérdida cambia caudal o estado de salida, es necesario recalcular el balance completo.
+
+En la aproximación caloríficamente perfecta, la caída isentrópica de entalpía entre cámara y salida es
+\begin{equation}
+ \frac{v_e^2}{2}=\frac{\gamma}{\gamma-1}RT_c
+ \left[1-\left(\frac{p_e}{p_c}\right)^{(\gamma-1)/\gamma}\right].
+\end{equation}
+El límite $p_e/p_c\to0$ produce una velocidad finita porque la entalpía inicial es finita. Si el modelo exige temperatura final tendente a cero, su realismo termodinámico se deteriora antes de alcanzar ese límite matemático. La existencia del límite no valida la extrapolación de $c_p$ constante hasta cero kelvin.\cite{MIT03,MIT12,CEA-RP1}
+\section{Aplicación y estudio activo}
+El caso M03 de este capítulo calcula estados estáticos y de remanso y contrasta las dos rutas energéticas. Antes de sustituir números debe anotarse si $T_c$ y $p_c$ representan magnitudes totales. La hoja de fórmulas conserva estas hipótesis para evitar que una igualdad local se convierta en una receta universal.
+\figura{c03}{Relaciones de remanso para un gas caloríficamente perfecto. Las curvas suponen composición fija e isentropía.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Con $\mathcal M=24\,\mathrm{kg/kmol}$, determine $R$ y repita usando kg/mol. Los resultados deben coincidir.
+\item Demuestre que al hacer $M\to0$, las magnitudes de remanso tienden a las estáticas.
+\item Obtenga $ds$ entre dos estados y explique por qué no basta con comprobar que la temperatura disminuye para afirmar que una expansión es isentrópica.
+\item ¿Puede mantenerse $T_0$ y disminuir $p_0$? Dé un mecanismo físico y la ecuación que detecta la irreversibilidad.
+\end{enumerate}
+\resumen{Gas ideal y gas caloríficamente perfecto son hipótesis diferentes. Las relaciones isentrópicas de potencias exigen composición y calores específicos constantes. La energía total puede conservarse con generación de entropía. Las referencias de formación son parte del balance reactivo, y las magnitudes de cámara no son siempre de remanso.}

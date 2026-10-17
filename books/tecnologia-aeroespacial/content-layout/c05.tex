@@ -1,0 +1,109 @@
+\chapter{Meteorología aeronáutica}\label{ch:05}
+\objetivos{Explicar estabilidad y formación de nubes mediante una parcela de aire; relacionar presión, rotación y viento; distinguir escalas atmosféricas; interpretar por qué observación y predicción deben utilizarse conjuntamente.}
+
+La meteorología estudia una atmósfera que evoluciona: los perfiles reales no siguen permanentemente la ISA y el viento no es uniforme. Para la ingeniería aeronáutica interesa comprender cómo esas variaciones modifican prestaciones, cargas, visibilidad y funcionamiento de sistemas. En este capítulo construimos modelos físicos elementales, siguiendo los temas de calor, nubes, presión, circulación y predicción del material docente \cite{TAE2}. Los ejemplos son de aprendizaje y no sustituyen información meteorológica operacional.
+
+\section{Humedad, saturación y condensación}
+La presión parcial del vapor $e$ puede compararse con una presión de saturación $e_s(T)$. La humedad relativa se define como $HR=100e/e_s(T)$ para una referencia de fase especificada. Como $e_s$ depende fuertemente de la temperatura, una masa de aire puede aumentar su humedad relativa al enfriarse sin añadir agua. El punto de rocío $T_d$ es la temperatura a la que esa masa, enfriada a presión aproximadamente constante y manteniendo su contenido de vapor, alcanza saturación.
+
+``El aire caliente contiene más agua'' es una abreviatura que conviene manejar con cuidado. La temperatura no obliga a que exista vapor; determina una condición de equilibrio de fase. Dos masas a igual temperatura pueden tener humedades muy diferentes. Asimismo, una nube no está formada únicamente por vapor invisible, sino por gotas o cristales cuya interacción con la luz la hace visible.
+
+La condensación requiere núcleos o condiciones de nucleación y libera calor latente. Esa liberación altera la evolución térmica de una parcela ascendente. La evaporación produce el efecto opuesto y puede enfriar corrientes descendentes. Enfriamiento nocturno del suelo, ascenso orográfico y convergencia son mecanismos distintos capaces de favorecer saturación; sus nubes no tienen por qué tener la misma estructura ni duración.
+
+\section{Parcela adiabática y gradientes térmicos}
+Imaginemos una pequeña parcela que asciende y ajusta rápidamente su presión a la del entorno, pero intercambia poco calor con él. Para aire ideal seco de calores específicos constantes, la primera ley en una transformación adiabática reversible da
+\begin{equation}
+ c_p\,dT-\frac{dp}{\rho}=0.
+\end{equation}
+Si el entorno es hidrostático y las diferencias de densidad son pequeñas, $dp\simeq-\rho g\,dz$. Por tanto,
+\begin{equation}
+ \frac{dT_{\mathrm{par}}}{dz}\simeq-\frac{g}{c_p}=-\Gamma_d,
+ \qquad \Gamma_d\simeq9.8\,\mathrm{K\,km^{-1}}.
+\end{equation}
+La parcela se enfría porque realiza trabajo de expansión. El valor es una tasa de evolución de la parcela, distinta del gradiente observado en el ambiente. Los $6.5\,\mathrm{K\,km^{-1}}$ de la primera capa ISA no son la tasa adiabática seca.
+
+Una vez saturada, la condensación libera energía y la tasa de enfriamiento suele ser menor en magnitud. La tasa adiabática húmeda $\Gamma_m$ no es una constante universal: depende de temperatura, presión, contenido de agua y del tratamiento del condensado. Un modelo que retiene todas las gotas y uno que las elimina inmediatamente por precipitación no describen exactamente el mismo proceso.
+
+Una variable útil es la temperatura potencial,
+\begin{equation}
+ \theta=T\left(\frac{p_{\mathrm{ref}}}{p}\right)^{R/c_p},
+\end{equation}
+con referencia de presión fija, habitualmente $100000\,\mathrm{Pa}$. Es la temperatura que tendría la parcela si se llevase adiabáticamente a esa presión. Se conserva en el modelo seco reversible y permite comparar masas situadas a presiones distintas. No debe confundirse con la temperatura física del aire en su posición actual.
+
+\section{Estabilidad: comparar parcela y entorno}
+Para una perturbación vertical pequeña, se compara la densidad de la parcela con la del ambiente a la misma presión. Si queda menos densa, la flotabilidad favorece el ascenso; si queda más densa, tiende a restaurar su posición. Para aire seco, aumentar $\theta$ con la altura indica estabilidad estática. El criterio requiere considerar también humedad cuando sus diferencias son importantes.
+
+Con $\Gamma_e=-dT_{\mathrm{amb}}/dz$, si $\Gamma_e<\Gamma_m$ el ambiente es estable frente a los desplazamientos ideales tanto secos como saturados. Si $\Gamma_e>\Gamma_d$ es inestable incluso para aire no saturado. Entre ambas tasas aparece inestabilidad condicional: la respuesta depende de si la parcela alcanza saturación y de cuánta energía requiere llegar a ella. Una inversión, en la que la temperatura aumenta con altura, suele ser muy estable para pequeñas perturbaciones.
+
+La estabilidad no significa ausencia de movimiento. Un flujo estable puede sostener ondas de montaña; la cizalladura puede generar turbulencia y una fuerza externa puede elevar una parcela contra la flotabilidad. Tampoco una atmósfera inestable garantiza automáticamente una tormenta: humedad, mecanismo de ascenso, profundidad de las capas y evolución temporal participan en su desarrollo.
+
+\section{Nubes y fenómenos relevantes para el vuelo}
+Las nubes estratiformes reflejan con frecuencia ascensos amplios y relativamente suaves; las cumuliformes, movimientos verticales más localizados. Los cirros suelen contener cristales de hielo a niveles altos. Un cumulonimbo señala convección profunda y puede asociarse a precipitaciones intensas, hielo, descargas y corrientes fuertes. La identificación morfológica orienta una interpretación, pero no permite deducir por sí sola todas las condiciones internas.
+
+La niebla es una nube en contacto con la superficie y reduce visibilidad. Puede originarse por enfriamiento radiativo nocturno o por desplazamiento de aire sobre una superficie más fría, entre otros mecanismos. El engelamiento de una superficie depende de agua superenfriada, temperatura, tamaño de gotas y condiciones de impacto; altera perfiles, cargas y tomas. Estos vínculos explican por qué meteorología y sistemas de protección deben estudiarse juntos.
+
+Una ráfaga cambia rápidamente la velocidad relativa y con ella el ángulo de ataque o la presión dinámica. La cizalladura es una variación espacial del viento y puede tener componente vertical u horizontal. Cerca de la superficie, una transición rápida de viento de cara a viento de cola modifica las condiciones aerodinámicas durante una fase con poco margen de altura. Describir ese mecanismo no proporciona un umbral universal: las limitaciones pertenecen al vehículo y al procedimiento aplicable \cite{PHAK}.
+
+\section{Del gradiente de presión al viento}
+La aceleración horizontal por unidad de masa debida a presión es $-\nabla_h p/\rho$. En un sistema unido a la Tierra aparece además la aceleración de Coriolis, $-2\boldsymbol{\Omega}\times\boldsymbol{v}$. Para una descripción horizontal local se usa $f=2\Omega\sin\varphi$, donde $\varphi$ es latitud. En el hemisferio norte el efecto desvía hacia la derecha del movimiento y en el sur hacia la izquierda. No inicia el movimiento en aire en reposo ni realiza trabajo directo, porque es perpendicular a la velocidad.
+
+Lejos de la superficie y para flujos de gran escala casi estacionarios, el equilibrio geostrófico se escribe
+\begin{equation}
+ f\boldsymbol{k}\times\boldsymbol{v}_g=-\frac{1}{\rho}\nabla_h p.
+\end{equation}
+El viento resultante sigue aproximadamente las isobaras. La aproximación exige que la aceleración material y la fricción sean pequeñas frente a los términos retenidos. Cerca del ecuador, donde $f$ es pequeño, o en fenómenos pequeños e intensos, puede fallar. El número de Rossby $Ro=U/(|f|L)$ ayuda a estimar la importancia de la aceleración relativa a Coriolis.
+
+Una trayectoria curva requiere aceleración centrípeta. El llamado viento de gradiente incorpora ese efecto al balance; no se obtiene simplemente aumentando el geostrófico en cualquier curvatura. Cerca del suelo, el intercambio turbulento de cantidad de movimiento reduce velocidad y altera dirección. El viento puede cruzar isobaras hacia bajas presiones en el cuadro medio de una depresión, pero montañas, costas y distribución térmica añaden circulaciones locales \cite{TAE2}.
+
+\section{Circulación general, vientos zonales y frentes}
+El calentamiento desigual entre latitudes origina transporte atmosférico y oceánico de energía. El esquema de celdas de Hadley, Ferrel y polares resume patrones medios, no tres cintas transportadoras rígidas en cada hemisferio. La rotación modifica los desplazamientos meridionales y contribuye a organizar componentes zonales del viento. Los alisios y los vientos del oeste son patrones estadísticos que admiten variaciones importantes.
+
+Las corrientes en chorro concentran velocidad en bandas altas y se relacionan con gradientes térmicos y estructura dinámica. Su posición y fuerza cambian; no son una línea fija en un mapa. Para una misión, el viento en altura puede modificar duración y consumo sin cambiar directamente la velocidad respecto al aire necesaria para producir sustentación.
+
+Un frente es una zona de transición entre masas con propiedades diferentes. En un frente frío, el avance de aire más denso favorece el ascenso del aire cálido; en un frente cálido, este puede deslizarse sobre una cuña fría. La pendiente, humedad y estabilidad influyen en extensión de nubes y precipitación. Un frente ocluido combina la evolución de un sistema frontal, y un frente estacionario presenta desplazamiento pequeño de la transición. Estas descripciones no predicen por sí solas la severidad de un caso concreto.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: ascenso forzado y base de nube}
+\begin{studiumworked}{Problema resuelto: ascenso forzado y base de nube}
+
+\begin{enumerate}
+\item \textbf{Enunciado.} Una parcela superficial es elevada por una ladera. Estimar si alcanza saturación antes de subir $1000\,\mathrm{m}$ y valorar su flotabilidad respecto a un ambiente idealizado.
+\item \textbf{Datos.} $T_s=23\,{}^\circ\mathrm{C}$, $T_{d,s}=11\,{}^\circ\mathrm{C}$, $\Gamma_e=6.5\,\mathrm{K\,km^{-1}}$, $\Gamma_d=9.8\,\mathrm{K\,km^{-1}}$. Se adopta la aproximación $z_{LCL}=125(T_s-T_{d,s})$, con metros y grados de diferencia.
+\item \textbf{Incógnitas.} Altura aproximada del nivel de condensación por ascenso, temperatura de parcela y ambiente a $1000\,\mathrm{m}$ y signo de flotabilidad.
+\item \textbf{Esquema verbal.} La parcela parte del mismo estado térmico que el aire superficial y asciende sin mezclar, mientras la presión se ajusta a la exterior.
+\item \textbf{Hipótesis.} Ascenso adiabático no saturado hasta condensación, gradiente ambiental constante y humedad sin efecto importante sobre la comparación de densidades antes de saturar.
+\item \textbf{Modelo.} Tasa seca constante y estimación empírica de altura de condensación; no se resuelve una nube completa.
+\item \textbf{Ecuaciones.} $T_{\mathrm{par}}=T_s-\Gamma_d z$, $T_{\mathrm{amb}}=T_s-\Gamma_e z$ y expresión dada de $z_{LCL}$.
+\item \textbf{Despeje.} $\Delta T=T_{\mathrm{par}}-T_{\mathrm{amb}}=-(\Gamma_d-\Gamma_e)z$.
+\item \textbf{Sustitución.} $z_{LCL}=125(23-11)=1500\,\mathrm{m}$; a $z=1\,\mathrm{km}$ se restan respectivamente $9.8$ y $6.5\,\mathrm{K}$.
+\item \textbf{Resultado.} $T_{\mathrm{par}}=13.2\,{}^\circ\mathrm{C}$, $T_{\mathrm{amb}}=16.5\,{}^\circ\mathrm{C}$ y $\Delta T=-3.3\,\mathrm{K}$. No alcanza saturación en los primeros mil metros.
+\item \textbf{Interpretación.} A igual presión, la parcela más fría es más densa en la aproximación seca y presenta flotabilidad restauradora. La ladera debe forzar su ascenso.
+\item \textbf{Comprobación independiente.} En kelvin, $\rho_{\mathrm{par}}/\rho_{\mathrm{amb}}=289.65/286.35=1.0115>1$, coherente con el signo deducido.
+\item \textbf{Limitaciones.} No se debe extrapolar la tasa seca por encima de $1500\,\mathrm{m}$ si comienza condensación. La mezcla, las variaciones de humedad y el perfil real pueden cambiar el resultado.
+\end{enumerate}
+
+\end{studiumworked}
+
+\section{Observación, modelos y escalas de predicción}
+Un modelo meteorológico resuelve balances de masa, momento y energía sobre una malla y necesita un estado inicial estimado mediante asimilación de observaciones. Estaciones, radiosondeos, radar y satélites aportan información complementaria. Un satélite no mide directamente todas las variables de cada celda: las inferencias dependen de radiación, geometría y modelos de recuperación.
+
+Los modelos globales describen la circulación grande; los de área limitada pueden representar detalles regionales. Reducir la malla no elimina incertidumbre en condiciones iniciales ni en procesos menores que ella. Una parametrización representa efectos agregados, como determinados intercambios turbulentos o microfísica. La resolución espacial, la frecuencia de salida y la antelación de una predicción son conceptos diferentes.
+
+La predicción por conjuntos explora escenarios compatibles con incertidumbres y ayuda a expresar probabilidades. Una diferencia entre dos escenarios no es necesariamente un error de cálculo; puede señalar sensibilidad física. Para estudiar un fenómeno se pregunta primero qué escala lo domina: una brisa costera, una onda de montaña y una borrasca no se resuelven con idéntica información. Esta lectura enlaza las ecuaciones con sus límites de observación.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Si $T=18\,{}^\circ\mathrm{C}$ y $T_d=14\,{}^\circ\mathrm{C}$, estimar el nivel de condensación por ascenso con la aproximación dada.
+\item \textbf{Intermedio.} Comparar una parcela seca y ambiente tras subir $500\,\mathrm{m}$ si $\Gamma_e=11\,\mathrm{K\,km^{-1}}$ y parten a igual temperatura.
+\item \textbf{Examen.} Con $U=15\,\mathrm{m\,s^{-1}}$, $L=500\,\mathrm{km}$ y $f=10^{-4}\,\mathrm{s^{-1}}$, hallar $Ro$ y discutir el equilibrio geostrófico. Repetir con $L=2\,\mathrm{km}$.
+\item \textbf{Conceptual.} Explicar por qué una inversión térmica puede coexistir con ondas y por qué no prueba ausencia de turbulencia.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. Aproximadamente $500\,\mathrm{m}$ sobre el origen. 2. La parcela queda $0.6\,\mathrm{K}$ más caliente: inestabilidad seca en el modelo. 3. $Ro=0.30$ y $75$; la primera aproximación merece examen y la segunda no permite despreciar aceleración frente a Coriolis. 4. La estabilidad se refiere a flotabilidad ante pequeñas perturbaciones; ondas, forzamiento y cizalladura incorporan otros mecanismos.
+
+\resumen{Humedad y temperatura determinan la proximidad a saturación. La comparación entre evolución de una parcela y perfil ambiental permite evaluar estabilidad, con límites claros al comenzar condensación. Presión, Coriolis, curvatura y fricción organizan el viento según la escala. Los modelos meteorológicos combinan ecuaciones y observaciones y deben expresar incertidumbre.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Por qué el gradiente ISA no es la tasa adiabática seca?
+\item ¿Puede Coriolis aumentar directamente la energía cinética del viento?
+\item ¿Qué información adicional exigiría antes de transformar este problema de parcela en un pronóstico de nube real?
+\end{enumerate}

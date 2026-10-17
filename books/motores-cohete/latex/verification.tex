@@ -1,0 +1,23 @@
+\chapter{Informe de verificaciones y pendientes}\label{app:checks}
+\section{Qué se ha ejecutado}
+Se ejecutaron 269 controles declarados de sustitución, identidades, conservación, límites y dominios. El registro distingue el método y alcance de cada uno. La batería del framework utilizado obtuvo 1053 pruebas superadas y dos omitidas por archivos de idioma no instalados. Son resultados de software y modelos, no revisión académica integral del contenido.
+
+
+Los cálculos de tobera se contrastan por continuidad en salida y garganta, y por energía y Mach. Los choques se comprueban con masa, momento, energía y signo de entropía. La trayectoria vertical se contrasta por cuadratura con solución analítica. El equilibrio sólido normalizado se contrasta con integración temporal. Los casos iniciales escritos manualmente se incluyen en los controles de redondeo.
+
+CEA 3.3.4 resolvió seis estados TP de agua con seis especies neutras y reprodujo los registros en una segunda ejecución. Se comprobaron normalización y conservación de elementos. El hash de la base de propiedades y las unidades se conservan. No se ejecutó una simulación de motor ni una validación contra ensayo.
+\section{Controles de regresión}
+Se comprueba distinción entre segundos y m/s, presencia del término de presión, diferencia entre ahogo de convergente y convergente-divergente, dominio de gamma, rendimientos entre cero y uno y geometrías y masas admisibles. También se comprueba que una superficie activa variable cambia presión en el modelo y que mayor Isp a potencia fija reduce empuje. La diferencia entre delta-v ideal y velocidad orbital se trata mediante ecuaciones y revisión editorial explícita, sin pretender demostrar semántica por una prueba que siempre devuelva verdadero.
+
+Los registros nativos conservan reproducciones de pasos, comprobaciones dimensionales e identidades pequeñas. Una identidad verificada no certifica por sí sola una derivación física completa. Los avisos de auditoría no se eliminan promoviendo fuentes ni asignando revisión humana automática.
+\section{Comprobaciones pendientes}
+\begin{enumerate}
+\item Revisión humana integral por especialista de todos los capítulos, supuestos, figuras y soluciones, incluida adecuación al nivel y a las expectativas docentes de la ULE.
+\item Auditoría de autoridad y correspondencia semántica frase por frase de la evidencia. Los registros PENDING permanecen pendientes.
+\item Contraste de propiedades CEA mediante otra implementación o datos independientes, y estudio de especies y fases omitidas.
+\item Validación experimental de combustión, separación, pérdidas, transferencia térmica, plasmas y trayectoria: no forma parte de los controles ideales ejecutados.
+\item Confirmación con el equipo docente de convenciones particulares, mínimos por actividad y formatos futuros de evaluación que no fija numéricamente la guía consultada.
+\end{enumerate}
+El detector nativo señaló una contradicción en la integral de entalpía con capacidad calorífica variable. Se reprodujo el falso positivo en un proyecto mínimo y se comprobó por separado el teorema fundamental del cálculo con SymPy. Se conserva la ecuación correcta y el aviso original en los registros, con la incidencia del framework \url{https://github.com/danielmigueltejedor/studium/issues/76}. No se interpreta ese aviso como un error físico demostrado ni se modifica la fuente para ocultarlo.
+
+No se declara liberación científica. El informe editorial separado registra compilación, referencias, márgenes y páginas inspeccionadas, sin convertir ausencia de errores tipográficos en validación física.

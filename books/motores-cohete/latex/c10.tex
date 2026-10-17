@@ -1,0 +1,57 @@
+\chapter{Arquitectura y propiedades de propulsantes sólidos}\label{ch:10}
+\objetivos{Relacionar almacenamiento, superficie de combustión y generación de gas; separar propiedades térmicas, químicas y mecánicas; formular un modelo académico sin confundirlo con especificaciones de un motor real.}
+\section{La arquitectura y su frontera de sistema}
+En un motor sólido, la masa propulsante está almacenada en un cuerpo cuyo frente superficial retrocede durante el funcionamiento. La superficie expuesta genera gases que ocupan la cavidad y salen por una tobera. En el esquema conceptual se distinguen envolvente resistente, protección térmica, masa propulsante, volumen gaseoso y descarga. Cada uno cumple una función distinta: contener presión, limitar transferencia de calor, almacenar energía y masa, distribuir el flujo o convertir entalpía en momento dirigido.
+
+La ausencia de turbobombas no implica ausencia de dinámica interna. La presión depende de una realimentación entre regresión superficial y descarga. La geometría evoluciona al consumirse la masa. La temperatura del sólido antes de funcionamiento influye en la respuesta de combustión. La integridad de la masa propulsante y de sus interfaces también forma parte del comportamiento del sistema.
+
+Se distingue esta arquitectura de un sistema híbrido, en el que una parte de los reactantes se almacena en fase sólida y otra se suministra desde un depósito. La ley de regresión de un híbrido puede depender intensamente del flujo de oxidante por el conducto. No debe sustituirse sin justificación por una ley que sólo dependa de presión.
+\section{Propiedades que no se pueden intercambiar}
+La densidad $\rho_p$ convierte volumen consumido en masa. La velocidad normal de regresión $r_b$ convierte superficie en volumen por tiempo. La temperatura de productos, la masa molar y las propiedades caloríficas intervienen en la descarga. El módulo elástico, la resistencia y la deformación admisible caracterizan respuestas mecánicas. Un material con mayor densidad no tiene necesariamente mayor velocidad efectiva ni mejor integridad.
+
+Una primera propiedad de mezcla de constituyentes de volúmenes aditivos es
+\[
+ \frac1{\rho_p}=\sum_i\frac{Y_i}{\rho_i}.
+\]
+Se deduce tomando una masa total $m$, asignando $m_i=Y_im$ y sumando $V_i=m_i/\rho_i$. El resultado no incluye porosidad, contracción ni interacción de fases. Con una fracción de vacíos $\phi$, la densidad aparente puede aproximarse a $(1-\phi)\rho_{sin\ vacios}$ sólo si la definición de $\phi$ y el modelo geométrico son coherentes.
+
+La composición condiciona la energía química, los productos y posibles fases condensadas. El análisis académico puede comparar esas consecuencias sin convertir una clasificación en una receta. Las fuentes abiertas consultadas describen mezclas homogéneas y compuestas y muestran que una mayor temperatura no garantiza más prestación cuando aumentan las pérdidas bifásicas. Aquí se conserva ese principio físico, sin trasladar formulaciones ni procedimientos de preparación.\cite{MIT16,MIT17}
+\section{La combustión como proceso acoplado}
+La llama y la superficie intercambian energía. El calor que llega al sólido eleva su temperatura y alimenta transformaciones de fase y descomposición; los gases liberados reaccionan y devuelven parte de la energía hacia la superficie. En una descripción unidimensional simplificada, la conducción en el sólido tiene escala
+\[
+ \tau_{th}\sim\frac{\ell^2}{\alpha_p},\qquad
+ \alpha_p=\frac{k_p}{\rho_pc_p}.
+\]
+El espesor térmicamente afectado no debe confundirse con la profundidad geométrica total disponible para regresión. Una misma velocidad media puede corresponder a mecanismos microscópicos diferentes, por lo que una correlación macroscópica no identifica por sí sola el mecanismo químico.
+
+La presión modifica los procesos de transporte y reacción cerca de la superficie. La temperatura inicial y el flujo gaseoso paralelo pueden influir en la tasa de regresión. Una ley ajustada en un intervalo debe conservar ese intervalo como parte de sus datos. Extrapolar su exponente hasta presiones muy distintas no constituye una predicción validada.
+\section{Ley empírica y unidades}
+La representación local más cómoda para estudio es
+\begin{equation}\label{eq:burnlaw}
+ r_b=r_{ref}\left(\frac{p_c}{p_{ref}}\right)^n,
+ \qquad r_{ref}>0,\quad p_{ref}>0.
+\end{equation}
+El cociente de presiones es adimensional y $r_{ref}$ tiene unidades de velocidad. El exponente puede interpretarse como pendiente local $n=\partial\ln r_b/\partial\ln p_c$ bajo las demás condiciones fijadas. No se afirma que permanezca constante para cualquier estado.
+
+La escritura alternativa $r_b=a p_c^n$ exige $[a]=\mathrm{m\,s^{-1}\,Pa^{-n}}$ si la presión numérica está en pascales. Si se cambia a MPa, el valor numérico de $a$ cambia por un factor $10^{6n}$. Copiar el número de una tabla sin su convenio de unidades puede producir errores enormes manteniendo una apariencia algebraica correcta.
+
+La generación de masa en una superficie de área $A_b$ es
+\begin{equation}\label{eq:massgeneration}
+ \dot m_g=\int_{A_b}\rho_p r_b\,dA.
+\end{equation}
+Sólo para densidad y regresión uniformes se reduce a $\rho_pA_br_b$. Una superficie mayor genera más masa con la misma presión, pero esa masa adicional modifica a su vez presión y regresión. El acoplamiento se resolverá mediante el balance del capítulo~\ref{ch:12}.
+\section{Ventajas y limitaciones desde la misión}
+El almacenamiento integrado de reactantes y la arquitectura de pocas corrientes de alimentación pueden simplificar determinadas funciones. A cambio, la modulación y el cese del empuje no se deducen de la mera existencia de una válvula de alimentación, como en un sistema líquido. Las posibilidades concretas dependen del sistema y no deben generalizarse a partir de una taxonomía.
+
+La masa de envolvente y protección térmica afecta a la fracción estructural. Una prestación de tobera elevada puede quedar compensada por una masa seca mayor. También importan el historial térmico, las solicitaciones mecánicas y la dispersión de propiedades. Por tanto, comparar únicamente $I_{sp}$ omite parte del problema de selección del vehículo.
+\figura{c10}{Funciones de envolvente, protección, masa almacenada y cavidad. La superficie activa evoluciona durante el consumo.}
+\section{Caso desarrollado}
+\input{M10.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Deduzca las unidades de $a$ en $r_b=ap_c^n$ y la transformación de su valor numérico de Pa a MPa.
+\item Para un modelo normalizado con $n=0.35$, calcule $r_b/r_{ref}$ cuando $p_c/p_{ref}=1.20$.
+\item Explique por qué conocer $\rho_p$ y la masa total no determina la historia de empuje.
+\item Formule la generación de masa si la regresión varía espacialmente y diga qué medición adicional permite reducir la integral a un producto.
+\end{enumerate}
+\resumen{Densidad, energía química, regresión e integridad describen aspectos distintos. La generación de gas es una integral sobre una superficie evolutiva. La ley de presión es empírica y local; expresarla con cocientes adimensionales evita ambigüedades de unidades, pero no elimina sus límites de ajuste.}

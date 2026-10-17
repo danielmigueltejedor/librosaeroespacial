@@ -1,0 +1,62 @@
+\chapter{Sistemas electromagnéticos y propulsión pulsada}\label{ch:24}
+\objetivos{Relacionar fuerza volumétrica, energía eléctrica e impulso por pulso; distinguir una descripción de plasma colectivo de una fuerza sobre una partícula; evaluar potencia media y carga de misión con fronteras explícitas.}
+\section{Fuerza sobre un medio conductor}
+La suma de fuerzas de Lorentz sobre portadores puede expresarse como densidad de fuerza
+\[
+ \mathbf f=\rho_q\mathbf E+\mathbf j\times\mathbf B.
+\]
+En regiones aproximadamente cuasineutras, el término de carga neta puede ser pequeño a escala macroscópica, mientras $\mathbf j\times\mathbf B$ sigue siendo relevante. Eso no contradice que el campo magnético no haga trabajo directo sobre una partícula: la energía entra mediante campos eléctricos y corrientes, y la fuerza colectiva redistribuye momento entre plasma y sistema electromagnético.
+
+Una ecuación de momento de fluido idealizada es
+\[
+ \rho\frac{D\mathbf u}{Dt}=-\nabla p+\rho_q\mathbf E+\mathbf j\times\mathbf B+\ldots
+\]
+Los puntos indican esfuerzos viscosos, colisiones y otros términos que no se han especificado. Resolver sólo el término magnético sin continuidad, energía y campos no constituye un modelo cerrado de aceleración.
+\section{Propulsión magnetoplasmadinámica}
+En un propulsor MPD, una corriente y un campo magnético, propio o aplicado, interactúan con el plasma. El sistema convierte energía eléctrica en movimiento mediante una dinámica colectiva con efectos térmicos y electromagnéticos. El reparto depende de estado, geometría y régimen. La fuente JPL consultada lo distingue de los aceleradores electrostáticos por ese mecanismo principal.\cite{JPL-EP}
+
+El balance de potencia debe incluir energía dirigida, calentamiento, ionización, pérdidas en electrodos y radiación. Una corriente grande no permite inferir por sí sola un empuje: hacen falta campo, distribución espacial, propiedades y fronteras. Tampoco se puede comparar una potencia instantánea de descarga con una potencia continua sin considerar duración y repetición.
+\section{Impulso por pulso y valores medios}
+Para un pulso que comienza y termina con el sistema en estados comparables, definamos el impulso elemental
+\[
+ J_b=\int_{pulso}F(t)\,dt.
+\]
+Si se consumen masas iguales $m_b$ y los pulsos se repiten con frecuencia $f$, los promedios de intervalo son
+\begin{equation}\label{eq:pulse}
+ \overline F=fJ_b,\qquad
+ \overline{\dot m}=fm_b,\qquad
+ I_{sp}=\frac{J_b}{m_bg_0}.
+\end{equation}
+La fuerza máxima dentro de un pulso puede ser mucho mayor que la media. Usarla en la ecuación de movimiento durante todo el periodo sobreestima el impulso. La suma discreta de impulsos es exacta para el cambio total de momento si se contabilizan fuerzas externas y variación de masa apropiadamente.
+
+Si pulsos tienen distinta masa o impulso, el cociente global se obtiene sumando $\sum J_b/(g_0\sum m_b)$. El promedio aritmético de impulsos específicos individuales sólo coincide cuando las masas por pulso son iguales.
+\section{Almacenamiento eléctrico y energía por pulso}
+Un condensador ideal almacena $E_C=CV^2/2$. La energía extraída entre dos tensiones es $\Delta E_C=C(V_i^2-V_f^2)/2$, no necesariamente toda la energía inicial. El circuito de carga necesita suministrar esa diferencia más pérdidas.
+
+Con energía eléctrica de entrada por pulso $E_b$ y frecuencia $f$, la potencia media es $P_{el}=fE_b$, más consumos continuos no incluidos. Una eficiencia efectiva de pulso puede definirse como
+\[
+ \eta_b=\frac{J_b^2}{2m_bE_b},
+\]
+bajo la misma idea de energía cinética axial efectiva del capítulo~\ref{ch:21}. La igualdad con una eficiencia de energía cinética real exige masa a velocidad axial uniforme. Las pérdidas de circuito y de ionización deben asignarse a la frontera adecuada.
+\section{Duración de misión y número de pulsos}
+Para un impulso total requerido $I_{req}$ y pulsos ideales repetibles,
+\[
+ N=\frac{I_{req}}{J_b},\qquad
+ m_{cons}=Nm_b,\qquad E_{cons}=NE_b.
+\]
+El número físico de pulsos es entero y, en un control de precisión, la cuantización puede importar. La duración mínima a frecuencia constante es $N/f$. Variar la frecuencia cambia fuerza media y demanda media de potencia, mientras el impulso específico por pulso permanece igual sólo si cada pulso conserva sus propiedades.
+
+La vida útil no se demuestra porque el balance de masa permita $N$ pulsos. Electrodos, dieléctricos, superficies y electrónica tienen mecanismos de desgaste y dispersión. Los datos de repetibilidad y duración deben proceder de ensayo o modelos validados.
+\section{Comparación de familias eléctricas}
+En electrotérmicos, el aumento de entalpía y expansión dominan la velocidad. En electrostáticos, el potencial acelera cargas y las fuerzas sobre campos y elementos transmiten reacción. En electromagnéticos, la interacción de corrientes y campos tiene papel central en la dinámica colectiva. Las fronteras entre categorías pueden incluir mecanismos secundarios de otra familia.
+
+Una comparación académica debe fijar potencia media, masa de sistema, tiempo y delta-v. Comparar un empuje instantáneo pulsado con uno continuo sin promediar periodo es tan engañoso como comparar velocidad de ion con velocidad efectiva de masa total. El criterio de misión se construye con balances comunes y restricciones, no con el nombre de la tecnología.
+\figura{c24}{La fuerza media reproduce el impulso por periodo. La forma rectangular es ilustrativa y no una señal de ensayo.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Con $J_b=12\,\mathrm{\mu N\,s}$ y $f=40\,\mathrm{Hz}$, determine fuerza media y unidades.
+\item Derive el impulso específico global de pulsos desiguales y explique el peso de cada masa.
+\item Calcule energía extraída de un condensador entre $V_i$ y $V_f$ y distinga potencia instantánea y media.
+\item Explique por qué $\mathbf j\times\mathbf B$ puede ser relevante con cuasineutralidad y cómo entra la energía eléctrica al plasma.
+\end{enumerate}
+\resumen{La propulsión electromagnética requiere cerrar dinámica colectiva, campos y energía. En sistemas pulsados, impulso elemental, frecuencia y masa por pulso determinan promedios; fuerza máxima y potencia instantánea no sustituyen esos valores. La vida útil es una cuestión adicional al balance ideal de misión.}

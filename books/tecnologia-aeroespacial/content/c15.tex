@@ -1,0 +1,161 @@
+\chapter{Introducción al entorno espacial}\label{ch:15}
+\objetivos{Describir el Sistema Solar como contexto de las misiones; derivar relaciones orbitales a partir de Newton; interpretar las leyes de Kepler, energía y velocidad de escape; calcular una órbita circular y una transferencia elemental; relacionar vacío, radiación y temperatura con el diseño espacial.}
+
+\section{El Sistema Solar y las escalas de una misión}
+El Sistema Solar contiene una estrella dominante en masa, el Sol, ocho planetas y numerosos satélites, planetas enanos, asteroides, cometas, polvo y gas. Los planetas interiores son rocosos; Júpiter y Saturno son gigantes dominados por grandes envolturas gaseosas, mientras Urano y Neptuno presentan una composición y estructura diferenciadas de éstos. Clasificar cuerpos ayuda a formular preguntas físicas, pero no sustituye estudiar sus propiedades: una misión de superficie, un orbitador y un sobrevuelo requieren estrategias distintas \cite{NASA-ORBIT}.
+
+Una órbita terrestre, una transferencia interplanetaria y una maniobra cerca de un asteroide operan en escalas muy diferentes. La influencia gravitatoria dominante, los tiempos de comunicación, la iluminación y las posibilidades de obtener energía cambian con el entorno. El flujo solar disminuye aproximadamente con el cuadrado de la distancia al Sol; una misma superficie de panel no genera la misma potencia cerca de la Tierra y cerca de Júpiter. Tampoco una distancia recorrida equivale automáticamente a un coste propulsivo: la geometría y la energía orbital importan más que la longitud de una línea trazada entre cuerpos.
+
+Las posiciones se describen en marcos de referencia. Un marco geocéntrico es útil para satélites terrestres; uno heliocéntrico facilita estudiar el movimiento entre planetas. Las coordenadas ligadas a la Tierra rotan con ella, mientras que un marco aproximadamente inercial evita atribuir a una fuerza física los efectos puramente debidos a esa rotación. Una velocidad debe indicar respecto a qué marco se mide. La misma nave puede tener una velocidad pequeña respecto a un planeta y grande respecto al Sol.
+
+\section{Delimitación del espacio y ausencia de ingravidez gravitatoria}
+No existe una frontera física donde la atmósfera termine de golpe y la gravedad desaparezca. La densidad disminuye en muchas escalas de altura y sus capas superiores todavía afectan a satélites bajos. Las delimitaciones convencionales del espacio cumplen funciones prácticas, pero no sustituyen un modelo atmosférico. A mayores alturas, la composición, actividad solar y temperatura de la atmósfera superior influyen en la resistencia residual.
+
+Los astronautas en órbita experimentan una pequeña fuerza de apoyo porque vehículo y ocupantes caen casi juntos alrededor de la Tierra. No están fuera del campo gravitatorio. La aceleración gravitatoria a unos cientos de kilómetros conserva una fracción importante de la superficial. Se habla de microgravedad porque quedan perturbaciones, gradientes, vibraciones y aceleraciones de maniobra; no porque la atracción de la Tierra sea exactamente nula.
+
+La presión baja cambia procesos de materiales y fluidos: aparecen desgasificación, evaporación, dificultades de lubricación y transferencia térmica distinta de la atmosférica. En flujo muy enrarecido, la longitud libre media molecular puede ser comparable o superior al tamaño del vehículo. El número de Knudsen, $Kn=\ell/L$, compara esas escalas. Cuando aumenta, el modelo continuo de fluido y la condición habitual de no deslizamiento pueden dejar de ser adecuados. No basta con extender indefinidamente una correlación aerodinámica atmosférica.
+
+\section{Modelo gravitatorio de dos cuerpos}
+Para una masa secundaria pequeña frente al cuerpo central, se toma $\mu=GM$ y se desprecia el movimiento del central en una primera aproximación. La ecuación relativa es
+\begin{equation}\label{eq:15-newton}
+\ddot{\boldsymbol r}=-\frac{\mu}{r^3}\boldsymbol r.
+\end{equation}
+$\mu$ tiene unidades de $\mathrm{m^3/s^2}$ y $r$ es distancia al centro, no altura sobre la superficie. Si las dos masas son comparables, el movimiento relativo utiliza $G(M+m)$ y se interpreta respecto al baricentro. El modelo de dos cuerpos es una idealización: otros astros, irregularidad del campo y fuerzas no gravitatorias producen perturbaciones.
+
+Tomando el producto vectorial de \eqref{eq:15-newton} con $\boldsymbol r$,
+\begin{equation}
+\frac{\mathrm d}{\mathrm dt}(\boldsymbol r\times\dot{\boldsymbol r})=0.
+\end{equation}
+El momento angular específico $\boldsymbol h=\boldsymbol r\times\boldsymbol v$ es constante. La trayectoria permanece en un plano y la velocidad areolar es $\dot A=h/2$. En intervalos de tiempo iguales se barren áreas iguales: ésta es la segunda ley de Kepler, ahora obtenida de una fuerza central y no simplemente enunciada.
+
+Al multiplicar escalarmente la ecuación por la velocidad, resulta conservación de energía mecánica específica:
+\begin{equation}\label{eq:15-energy}
+\varepsilon=\frac{v^2}{2}-\frac\mu r=\mathrm{constante}.
+\end{equation}
+Su unidad es $\mathrm{J/kg}=\mathrm{m^2/s^2}$. La energía potencial se toma cero a distancia infinita. Cambiar el cero no altera fuerzas, pero sí la interpretación del signo, por lo que debe mantenerse esa convención al hablar de escape.
+
+\section{Órbitas cónicas y leyes de Kepler}
+La solución del problema de dos cuerpos tiene forma de cónica:
+\begin{equation}
+r=\frac{p}{1+e\cos\nu},\qquad p=\frac{h^2}{\mu},
+\end{equation}
+donde $e$ es excentricidad y $\nu$ la anomalía verdadera medida desde el periapsis. Para $0\leq e<1$ aparece una elipse, incluida la circunferencia $e=0$; $e=1$ corresponde al caso parabólico de energía nula y $e>1$ al hiperbólico no ligado. En una elipse el cuerpo central ocupa un foco, no el centro geométrico. Es la primera ley de Kepler para órbitas ligadas del modelo.
+
+Si $a$ es semieje mayor, $r_p=a(1-e)$, $r_a=a(1+e)$ y $p=a(1-e^2)$. La energía puede escribirse $\varepsilon=-\mu/(2a)$. Sustituyéndola en \eqref{eq:15-energy} se obtiene la ecuación de vis-viva:
+\begin{equation}\label{eq:15-visviva}
+v^2=\mu\left(\frac2r-\frac1a\right).
+\end{equation}
+La velocidad aumenta al acercarse al periapsis y disminuye hacia el apoapsis. Una órbita más alta no exige mayor velocidad circular, aunque sí una energía específica menos negativa. Ésta es una distinción esencial para comprender maniobras orbitales.
+
+Para derivar el período se divide el área elíptica $\pi a b_e$ por $h/2$, donde $b_e=a\sqrt{1-e^2}$ es el semieje menor. Como $h=\sqrt{\mu a(1-e^2)}$,
+\begin{equation}\label{eq:15-kepler3}
+P=2\pi\sqrt{\frac{a^3}{\mu}},\qquad
+P^2=\frac{4\pi^2}{\mu}a^3.
+\end{equation}
+La tercera ley relaciona tamaño y tiempo para órbitas alrededor del mismo cuerpo central. No compara directamente órbitas terrestres y solares con un mismo coeficiente. NASA desarrolla el contexto de Newton, Kepler y las cónicas en su introducción al vuelo espacial \cite{NASA-ORBIT}.
+\figura{orbit}{Órbita elíptica, foco gravitatorio, periapsis y apoapsis; esquema sin escala planetaria.}
+
+\section{Órbita circular, escape y lanzamiento}
+En una órbita circular, la gravedad suministra exactamente la aceleración centrípeta:
+\begin{equation}\label{eq:15-circ}
+\frac{v_c^2}{r}=\frac\mu{r^2},\qquad
+v_c=\sqrt{\frac\mu r},\quad P=\frac{2\pi r}{v_c}.
+\end{equation}
+No es necesario un empuje continuo para sostener una órbita ideal sin perturbaciones. Sí hacen falta maniobras para alcanzarla y, en órbitas reales, correcciones cuando las perturbaciones y los requisitos de misión lo exijan. Elevar verticalmente un objeto hasta una altura orbital y dejarlo con velocidad horizontal nula no lo coloca en órbita circular: caerá de nuevo.
+
+La velocidad de escape ideal se obtiene imponiendo $\varepsilon=0$:
+\begin{equation}
+v_{\mathrm{esc}}=\sqrt{\frac{2\mu}{r}}=\sqrt2\,v_c.
+\end{equation}
+Es una condición energética local del modelo de dos cuerpos. No incluye atmósfera ni describe por sí sola una trayectoria de lanzamiento real. Una nave con velocidad inferior puede recibir propulsión posterior y escapar; otra con energía de escape respecto a la Tierra sigue bajo influencia del Sol y otros cuerpos. Escapar de un cuerpo no significa abandonar toda gravitación.
+
+Para un cohete ideal con velocidad efectiva de expulsión $v_e$ constante, un balance diferencial de cantidad de movimiento da $\mathrm dV=-v_e\,\mathrm dm/m$ cuando la masa del vehículo disminuye. Al integrar,
+\begin{equation}
+\Delta V=v_e\ln\frac{m_0}{m_f}.
+\end{equation}
+El argumento del logaritmo debe ser adimensional y $m_f$ incluye estructura y carga que permanecen. La relación exponencial entre capacidad de maniobra y relación de masas explica el uso de etapas. Un lanzamiento real incorpora pérdidas gravitatorias, resistencia y guiado; su presupuesto de $\Delta V$ no se obtiene identificando simplemente velocidad circular con velocidad que debe entregar el motor.
+
+\section{Familias de órbitas y perturbaciones}
+Las órbitas bajas facilitan ciertas observaciones de alta resolución y reducen distancia de enlace, pero experimentan mayor resistencia residual que las muy altas y ofrecen ventanas de visibilidad limitadas para una estación. Órbitas de distinta inclinación permiten acceder a diferentes latitudes. Una órbita polar pasa cerca de ambos polos; una heliosíncrona utiliza una precesión del plano para conservar aproximadamente una relación con la iluminación solar. Esta última propiedad requiere una perturbación del campo no esférico que no existe en el modelo kepleriano puro.
+
+Una órbita geoestacionaria ideal es circular, ecuatorial, prograda y tiene el período sidéreo de rotación terrestre. Igual período sin inclinación nula ni excentricidad nula sólo produce sincronismo temporal, no posición aparente fija. La condición puede escribirse $r=(\mu/\omega_E^2)^{1/3}$. Su radio es geocéntrico; para obtener altura hay que restar un radio terrestre definido de manera coherente.
+
+La Tierra no es una esfera de densidad perfectamente simétrica. Su achatamiento modifica orientaciones orbitales; terceros cuerpos, presión de radiación y atmósfera residual también importan. La energía orbital disminuye bajo resistencia y una órbita baja puede decaer. Usar una velocidad circular creciente durante ese descenso no significa que el arrastre añada energía: el potencial se vuelve más negativo y la energía total disminuye. Las maniobras de mantenimiento compensan efectos según las necesidades de la misión.
+
+\section{Transferencia elemental entre órbitas circulares}
+Una transferencia de Hohmann ideal conecta dos órbitas circulares coplanares con dos impulsos tangenciales y una semielipse intermedia. Para $r_2>r_1$, su semieje mayor es $a_t=(r_1+r_2)/2$. El primer impulso eleva el apoapsis; el segundo, al llegar a él, circulariza la órbita superior. Las magnitudes son
+\begin{align}
+\Delta V_1&=\sqrt{\mu/r_1}\left(\sqrt{\frac{2r_2}{r_1+r_2}}-1\right),\\
+\Delta V_2&=\sqrt{\mu/r_2}\left(1-\sqrt{\frac{2r_1}{r_1+r_2}}\right),\\
+t_t&=\pi\sqrt{\frac{a_t^3}{\mu}}.
+\end{align}
+Durante la transferencia ascendente, el primer impulso aumenta velocidad en el radio inferior; la nave se aleja y se frena hasta el apoapsis. Allí necesita otro impulso positivo para alcanzar la velocidad circular de la órbita superior. No hay contradicción entre aplicar dos incrementos de velocidad y terminar con menor velocidad circular: los incrementos se aplican en puntos distintos de un campo gravitatorio.
+
+El modelo supone impulsos instantáneos, órbitas concéntricas y ausencia de cambios de plano. Su eficiencia no convierte toda transferencia real en una Hohmann ni garantiza que sea la mejor bajo restricciones de tiempo, empuje finito o encuentros con un blanco. La fase relativa entre dos vehículos importa para una cita: compartir radio orbital no garantiza encontrarse.
+
+\section{Vacío, radiación y balance térmico}
+En vacío exterior no hay convección atmosférica alrededor de una superficie, pero el vehículo puede intercambiar energía por radiación y conducir calor entre sus componentes. Una superficie iluminada absorbe parte de la radiación solar y recibe también flujos planetarios según su orientación. La electrónica genera calor interno. El equilibrio no se determina simplemente diciendo que ``el espacio está frío''.
+
+En una idealización de un cuerpo isotermo con área solar proyectada $A_p$, área emisora $A_e$, absorptividad solar $\alpha_s$ y emisividad térmica $\epsilon$, un balance sin otras fuentes es
+\begin{equation}
+\alpha_s F_\odot A_p=\epsilon\sigma A_eT^4.
+\end{equation}
+La temperatura se obtiene como una raíz cuarta. Absorptividad solar y emisividad infrarroja no tienen por qué ser iguales porque corresponden a bandas espectrales distintas. La geometría, eclipses, inercia térmica y conducción modifican el problema real; una cara al Sol y otra en sombra pueden tener temperaturas muy diferentes si el cuerpo no es isotermo.
+
+Las partículas energéticas pueden degradar materiales y electrónica o introducir eventos transitorios. El campo magnético y la actividad solar producen un entorno variable. Micrometeoroides y objetos artificiales añaden riesgo de impacto; el diseño considera blindajes, orientación, seguimiento y evolución al final de vida según la misión. La exposición no depende sólo de la altura: también de inclinación, tiempo y entorno local.
+
+\section{Pensamiento científico en el análisis espacial}
+Una explicación científica debe generar predicciones comprobables. El modelo de dos cuerpos predice período, velocidad y geometría mediante pocos parámetros. Si los datos discrepan, se examinan primero unidades, marcos, incertidumbres y supuestos; después se incorporan perturbaciones justificadas. Ajustar una constante diferente para cada observación puede ocultar que el modelo carece de un mecanismo importante.
+
+Una comprobación límite es especialmente útil: si $r$ aumenta, $v_c$ debe disminuir y $P$ aumentar; si $m$ del satélite cambia sin dejar de ser pequeña frente a la Tierra, su velocidad orbital ideal no cambia. La medición de fuerzas requiere también describir el instrumento: una balanza en caída libre puede indicar casi cero aunque la fuerza gravitatoria sea grande. El modelo, la magnitud calculada y la observación deben referirse al mismo experimento.
+
+\section{Comunicaciones, observación y retorno}
+Una señal electromagnética tarda $t=d/c$ en recorrer una distancia $d$ en vacío. El retraso de ida y vuelta duplica ese tiempo cuando la respuesta es inmediata. Para misiones lejanas, la operación no puede depender de que un operador corrija cada perturbación al instante: el vehículo necesita secuencias y funciones autónomas. Un reloj, una marca temporal y una estimación de distancia coherentes son partes de la navegación además de la comunicación.
+
+La potencia recibida depende de emisión, distancia, directividad, orientación y pérdidas. Para radiación distribuida sobre una esfera, la potencia por área disminuye como $1/d^2$. Una antena direccional concentra energía y mejora el enlace, pero exige apuntado. Transmitir más rápido, conservar energía y mantener una probabilidad de error aceptable introduce compromisos. La distancia no afecta sólo al retraso: también al balance de potencia de la señal.
+
+Regresar a la atmósfera exige disipar energía. Una maniobra retrógrada puede reducir el periapsis hasta regiones de densidad suficiente; no es necesario anular de golpe toda la velocidad orbital. Durante la entrada, la compresión del gas, las ondas de choque, la viscosidad y los intercambios térmicos producen un entorno que no se describe adecuadamente como simple rozamiento de una superficie contra aire frío. La energía se reparte entre flujo, vehículo y radiación según el régimen.
+
+Un objeto compacto y otro ligero de gran área responden de manera distinta al arrastre. La razón $m/(C_DA)$, denominada coeficiente balístico en este contexto, compara masa con capacidad aerodinámica de frenado. Su unidad es $\mathrm{kg/m^2}$, por lo que no es un coeficiente adimensional. Un modelo de retorno necesita además orientación, atmósfera y propiedades térmicas. La introducción orbital permite estimar energía inicial; resolver la trayectoria y las temperaturas requiere modelos adicionales.
+
+\section{Problema resuelto 1: satélite circular a quinientos kilómetros}
+\paragraph{1. Enunciado.} Calcule rapidez, período y aceleración gravitatoria de un satélite en órbita circular e interprete la aparente ingravidez.
+\paragraph{2. Datos.} Radio terrestre esférico $R_E=6371\ \mathrm{km}$, altura $H=500\ \mathrm{km}$, $\mu_E=3{,}986004418\,10^{14}\ \mathrm{m^3/s^2}$ y masa del satélite $m=100\ \mathrm{kg}$.
+\paragraph{3. Incógnitas.} $r,v_c,P,g(r)$ y fuerza gravitatoria.
+\paragraph{4. Esquema verbal.} El satélite se mueve tangencialmente y acelera hacia el centro terrestre; no hay fuerza de apoyo que equilibre la gravedad.
+\paragraph{5. Hipótesis.} Tierra esférica, satélite de masa despreciable frente a ella, órbita circular, ausencia de atmósfera y perturbaciones.
+\paragraph{6. Modelo físico.} La gravitación proporciona la aceleración centrípeta y el período es longitud de la circunferencia dividida por rapidez.
+\paragraph{7. Ecuaciones simbólicas.} $r=R_E+H$, $v_c=\sqrt{\mu_E/r}$, $P=2\pi\sqrt{r^3/\mu_E}$, $g=\mu_E/r^2$ y $F=mg$.
+\paragraph{8. Despeje.} Todas las expresiones están despejadas; se convierten kilómetros a metros antes de utilizar $\mu_E$ en SI.
+\paragraph{9. Sustitución.} \[r=(6371+500)10^3=6{,}871\,10^6\ \mathrm m\] y \[v_c=\sqrt{3{,}986004418\,10^{14}/6{,}871\,10^6}\].
+\paragraph{10. Resultado con unidades.} $v_c=7616{,}56\ \mathrm{m/s}$, $P=5668{,}14\ \mathrm s=94{,}469\ \mathrm{min}$, $g=8{,}44302\ \mathrm{m/s^2}$ y $F=844{,}302\ \mathrm N$.
+\paragraph{11. Interpretación.} La gravedad es considerable. La sensación de microgravedad se debe a la caída libre compartida, no a una fuerza gravitatoria nula.
+\paragraph{12. Comprobación independiente.} $v_c^2/r=8{,}44302\ \mathrm{m/s^2}$ reproduce $g$ y $2\pi r/v_c$ reproduce el período. La masa se cancela del balance orbital, de acuerdo con el principio de caída libre.
+\paragraph{13. Limitaciones.} El período corresponde al modelo kepleriano circular; una órbita real requiere especificar elementos, campo gravitatorio y perturbaciones. No se ha calculado el coste de lanzamiento.
+
+\section{Problema resuelto 2: elevación ideal de órbita}
+\paragraph{1. Enunciado.} Calcule los dos impulsos y el tiempo de una transferencia coplanar desde la órbita anterior hasta otra circular a $1000\ \mathrm{km}$.
+\paragraph{2. Datos.} Se mantienen $R_E$ y $\mu_E$; $r_1=6{,}871\,10^6\ \mathrm m$ y $r_2=7{,}371\,10^6\ \mathrm m$.
+\paragraph{3. Incógnitas.} $a_t,\Delta V_1,\Delta V_2,\Delta V_{\mathrm{total}}$ y $t_t$.
+\paragraph{4. Esquema verbal.} Un primer impulso progrado inicia una elipse cuyo periapsis está en la órbita inicial; tras media vuelta, otro impulso progrado circulariza en el apoapsis.
+\paragraph{5. Hipótesis.} Dos cuerpos, impulsos instantáneos, ninguna inclinación relativa y ausencia de restricciones de cita o atmósfera.
+\paragraph{6. Modelo físico.} Se compara, en cada extremo, la velocidad elíptica obtenida por vis-viva con la velocidad circular local.
+\paragraph{7. Ecuaciones simbólicas.} $a_t=(r_1+r_2)/2$, $v_p=\sqrt{\mu(2/r_1-1/a_t)}$, $v_a=\sqrt{\mu(2/r_2-1/a_t)}$, $\Delta V_1=v_p-v_{c1}$ y $\Delta V_2=v_{c2}-v_a$.
+\paragraph{8. Despeje.} El tiempo es media órbita elíptica: $t_t=\pi\sqrt{a_t^3/\mu}$. El coste escalar suma magnitudes de impulsos, no velocidades finales de la nave.
+\paragraph{9. Sustitución.} \[a_t=7{,}121\,10^6\ \mathrm m\]; las velocidades se evalúan con ambos radios geocéntricos y el mismo parámetro gravitatorio.
+\paragraph{10. Resultado con unidades.} $\Delta V_1=132{,}546\ \mathrm{m/s}$, $\Delta V_2=130{,}238\ \mathrm{m/s}$, $\Delta V_{\mathrm{total}}=262{,}784\ \mathrm{m/s}$ y $t_t=2990{,}15\ \mathrm s=49{,}836\ \mathrm{min}$.
+\paragraph{11. Interpretación.} Ambos impulsos son positivos aunque la velocidad circular final sea menor. Entre impulsos la gravedad transforma energía cinética y potencial.
+\paragraph{12. Comprobación independiente.} El momento angular de la elipse debe cumplir $r_1v_p=r_2v_a$. Su energía calculada en ambos extremos debe ser $-\mu/(2a_t)$; las dos comprobaciones coinciden dentro del redondeo.
+\paragraph{13. Limitaciones.} No se incluyen pérdidas por empuje finito, navegación ni cambios de plano. El tiempo no garantiza encuentro con otro satélite sin ajustar fase orbital.
+
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Si el radio circular se multiplica por cuatro, ¿cómo cambian rapidez y período? Respuesta: la rapidez se divide por dos y el período se multiplica por ocho.
+\item Para una elipse con $r_p=7000\ \mathrm{km}$ y $r_a=14000\ \mathrm{km}$, calcule $a$ y $e$. Respuesta: $a=10500\ \mathrm{km}$ y $e=1/3$.
+\item Calcule la velocidad de escape a la altura del primer problema. Respuesta: $10771{,}44\ \mathrm{m/s}$, en el modelo de dos cuerpos.
+\item Un motor ideal tiene $v_e=3000\ \mathrm{m/s}$ y relación $m_0/m_f=2$. Obtenga $\Delta V$. Respuesta: $2079{,}44\ \mathrm{m/s}$, sin pérdidas externas.
+\item Un satélite tiene período sidéreo, pero inclinación de $20^\circ$. ¿Es geoestacionario? Guía: no; el sincronismo del período no elimina el movimiento aparente norte--sur.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{El espacio exige modelos de referencia, gravedad y entorno adecuados a cada escala. Newton permite derivar conservación de energía y momento angular, las cónicas y las leyes de Kepler. Órbita significa caída libre con velocidad suficiente, no ausencia de gravedad. Las maniobras cambian energía y geometría; vacío, radiación y transferencia térmica condicionan el diseño. Toda predicción debe contrastarse con dimensiones, límites e incertidumbre.}
+¿Por qué se utiliza distancia al centro y no altura en la ley gravitatoria? ¿Cómo puede disminuir la velocidad circular al aumentar energía orbital? ¿Qué aporta una comprobación por momento angular a una transferencia? ¿Por qué el vacío no determina una temperatura única de equilibrio?

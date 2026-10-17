@@ -1,0 +1,100 @@
+\chapter{Equipos de tierra e integración de sistemas}\label{ch:25}
+\objetivos{Interpretar las interfaces entre aeronave y medios externos; construir balances por modos de funcionamiento; identificar dependencias y fallos comunes; distinguir verificación de requisitos y validación de la función prevista.}
+
+\section{La aeronave forma parte de un sistema mayor}
+Una aeronave necesita recibir energía, combustible, información y apoyo mecánico antes y después del vuelo. Los equipos de tierra permiten cumplir esas funciones sin utilizar siempre recursos embarcados. La interacción introduce interfaces temporales que deben ser compatibles en magnitud, geometría, calidad y secuencia. Una conexión físicamente posible no garantiza que las condiciones eléctricas, neumáticas o mecánicas sean adecuadas.
+
+El equipo externo no es un accesorio ajeno al análisis. Una fuente eléctrica puede alterar el reparto de energía; una unidad de aire aporta masa y entalpía; un remolcador transmite cargas por puntos definidos; un equipo de elevación cambia los apoyos estructurales. La aeronave que permanece inmóvil también tiene estados de carga y de energía almacenada. Comprenderlos permite evaluar el conjunto sin convertir este capítulo en un procedimiento de operación o mantenimiento.
+
+Las descripciones de sistemas se apoyan en FAA Airframe y Powerplant \cite{FAA-AIRFRAME,FAA-POWERPLANT}. Las relaciones de integración enlazan aquí los capítulos anteriores. No se especifican presiones de servicio, puntos de elevación, fuerzas admisibles ni conexiones aplicables a un modelo concreto: esos datos pertenecen a documentación controlada del fabricante y del operador.
+
+\figura{integration}{Relación entre requisito, arquitectura, interfaces, ensayo y verificación. El diagrama representa el proceso de integración; las interfaces físicas se analizan en el texto.}
+
+\section{Interfaces de energía y apoyo}
+Una unidad eléctrica externa debe suministrar tensión, frecuencia cuando corresponda y calidad de energía compatibles con la aeronave. Importan potencia continua, picos, secuencia de fases y respuesta a transitorios. Un equipo con potencia nominal suficiente puede no soportar un arranque de carga o introducir una caída de tensión que afecte computadores. Protección y conexión deben evitar que dos fuentes incompatibles se enfrenten entre sí.
+
+Una unidad neumática proporciona aire comprimido con condiciones de presión, temperatura, caudal y calidad especificadas. Su potencia transportada no se describe solo por presión: hacen falta caudal másico y entalpía. Una unidad de climatización entrega aire acondicionado por otra función, que no debe confundirse con aire de arranque. Las dos pueden usar mangueras y aire, pero sus requisitos e interfaces son diferentes.
+
+Los equipos hidráulicos externos permiten alimentar circuitos bajo condiciones controladas. Fluido, limpieza, presión y sentido de retorno deben ser compatibles con la instalación. Una línea de retorno restringida puede elevar contrapresión y alterar fuerzas, aunque la alimentación parezca correcta. El equipo también puede interactuar con acumuladores o actuadores capaces de almacenar energía. La descripción física no autoriza ninguna maniobra sobre un sistema real.
+
+Los equipos de remolque y elevación introducen fuerzas en puntos de diseño determinados. La resistencia de rodadura, pendiente e inercia contribuyen a la tracción necesaria. Una fuerza horizontal aplicada a cierta altura produce un momento; una aceleración o frenada añade cargas. En elevación, la posición del centro de gravedad respecto al polígono de apoyos determina estabilidad estática. No basta que la suma de capacidades nominales de varios gatos supere el peso.
+
+Repostaje y retirada de residuos incorporan transferencia de masa, ventilación, compatibilidad y prevención de derrames. Equipos de acceso necesitan considerar altura, interferencias y movimiento relativo. La integración debe incluir a personas y organización: una interfaz clara y una indicación inequívoca reducen errores, pero no sustituyen formación ni documentación específica.
+
+\section{De componentes correctos a funciones correctas}
+Que cada componente cumpla su ficha no demuestra que el sistema integrado cumpla su función. Una bomba puede entregar el caudal nominal y un actuador requerirlo correctamente, pero las pérdidas de línea pueden impedir que coincidan presión y velocidad útiles. Un generador y un calefactor pueden funcionar por separado y superar juntos la capacidad disponible en una condición degradada. Las interfaces son donde se encuentran supuestos que deben coincidir.
+
+Un requisito útil identifica función, condición y criterio verificable. Decir que un sistema debe ser fiable carece de precisión; especificar que debe conservar cierta función bajo una pérdida definida y dentro de un tiempo establecido permite diseñar una comprobación. También deben declararse límites de temperatura, disponibilidad de fuentes y simultaneidad. Un requisito sin condición de contorno puede parecer satisfecho porque cada equipo se ensaya en el entorno que más le favorece.
+
+La verificación pregunta si el resultado cumple los requisitos especificados. La validación pregunta si esos requisitos y el sistema resultante sirven para la necesidad prevista. Un cálculo de potencia puede verificar un balance y, sin embargo, omitir una condición de misión importante. Un ensayo que reproduce una demanda incompleta puede estar ejecutado correctamente y validar poco. Ambos procesos requieren trazabilidad entre necesidad, requisito, análisis y evidencia.
+
+Una matriz de interfaces registra qué se intercambia, entre qué elementos, con qué unidades, límites y responsables. La dirección es importante: una señal de mando y una señal de confirmación no son equivalentes; la presencia de tensión no demuestra disponibilidad de potencia; la presión de una fuente no determina el caudal bajo carga. La integración pide definir también estados de fallo y datos no válidos.
+
+\section{Balances por modos y transitorios}
+Los recursos deben evaluarse por modos de funcionamiento. En tierra con energía externa pueden estar activas cargas que no coinciden en vuelo. Durante arranque aparecen picos y una fuente puede estar temporalmente indisponible. En una condición de pérdida de generación se priorizan funciones. Sumar todos los valores máximos de manera ciega no representa necesariamente una misión; descartarlos por no ocurrir en crucero tampoco es válido.
+
+Para un recurso energético, una ecuación general es
+\begin{equation}
+ \frac{dE_{\rm almacenada}}{dt}=P_{\rm fuentes}-P_{\rm cargas}-P_{\text{pérdidas}}.
+\end{equation}
+En estacionario, la derivada es cero. En un transitorio, la diferencia puede acelerar un rotor, cargar una batería o cambiar temperatura. No toda potencia excedente está disponible inmediatamente para otra función: puede estar limitada por distribución, control o capacidad de disipación.
+
+Un modelo térmico concentrado ilustra otra integración:
+\begin{equation}
+ C_{\rm th}\frac{dT}{dt}=P_{\rm disipada}-hA(T-T_a).
+\end{equation}
+$C_{\rm th}$ se mide en julios por kelvin. Un equipo puede funcionar durante un tiempo y alcanzar después una temperatura límite. La capacidad eléctrica disponible no demuestra refrigeración suficiente. En tierra, la menor ventilación por avance puede convertir una condición de baja potencia propulsiva en una condición térmica exigente.
+
+Los modelos deben transferir variables con significado coherente. Un subsistema puede entregar caudal en condiciones locales y otro esperar caudal referido a condiciones estándar; ambos números pueden parecer razonables y producir un error. Lo mismo ocurre con grados frente a radianes, presiones absolutas frente a manométricas y masa frente a peso. La comprobación dimensional de interfaces es una herramienta de integración de primer orden.
+
+\section{Dependencias, redundancia y evidencia}
+Un diagrama de dependencias permite preguntar qué funciones se pierden si desaparece una fuente. Una bomba eléctrica depende de la barra; la barra depende de generación y control; un generador depende de accionamiento y refrigeración. Seguir solo el primer vínculo crea una imagen incompleta de independencia. También deben considerarse proximidad física y sucesos que dañen varias rutas a la vez.
+
+Para dos elementos con probabilidades de fallo $p_1$ y $p_2$, la probabilidad de que ambos fallen sería $p_1p_2$ únicamente si los sucesos son independientes. Una causa común invalida esa multiplicación simple. El valor de la redundancia depende de aislamiento, detección y capacidad de reconfiguración, no solo de cantidad de equipos. Estas probabilidades hipotéticas no sustituyen datos de fiabilidad ni análisis de seguridad de una aeronave.
+
+La evidencia se construye gradualmente: cálculos identifican tamaños y límites; simulaciones exploran interacciones; ensayos de componentes comprueban características; ensayos de integración revelan acoplamientos. Una discrepancia debe conducir a revisar el modelo, la configuración o el requisito, conservando el vínculo con la evidencia. Aprobar un ensayo no significa demostrar todos los modos posibles ni permite atribuir una revisión humana inexistente.
+
+La configuración importa tanto como el resultado. Un balance válido para una versión de equipos puede dejar de serlo tras sustituir un convertidor, cambiar software o modificar una ruta de refrigeración. Registrar versiones, unidades, hipótesis y márgenes convierte un cálculo en un argumento revisable. La integración es una actividad continuada de coherencia técnica, no un último paso de conectar piezas ya terminadas.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: balance de una fuente de tierra}
+\begin{studiumworked}{Problema resuelto: balance de una fuente de tierra}
+
+\textbf{1. Enunciado.} Una fuente eléctrica de tierra alimenta cargas mediante un convertidor. Se desea saber si soporta una carga transitoria adicional y qué reserva necesita una batería si no puede hacerlo.
+
+\textbf{2. Datos.} Potencia máxima continua de fuente $P_s=30\,\mathrm{kW}$; rendimiento de conversión $\eta=0.92$; cargas de barra $P_1=12$, $P_2=8$ y $P_3=4\,\mathrm{kW}$. Una carga adicional demanda $6\,\mathrm{kW}$ durante $20\,\mathrm{s}$. La batería que cubra déficit tendría rendimiento de entrega $0.90$.
+
+\textbf{3. Incógnitas.} Demanda normal a la fuente, margen, déficit durante transitorio y energía mínima extraída del almacenamiento.
+
+\textbf{4. Esquema verbal.} La fuente entrega potencia al convertidor, cuya salida alimenta una barra común. La batería se supone conectada idealmente a esa barra mediante su propia conversión.
+
+\textbf{5. Hipótesis.} Cargas constantes durante cada modo, fuente limitada a $30\,\mathrm{kW}$ sin capacidad de sobrecarga, rendimiento constante y conexiones compatibles. Se ignoran límites de potencia de batería para calcular solo la energía necesaria.
+
+\textbf{6. Modelo.} Balance estacionario por modos y balance energético durante veinte segundos.
+
+\textbf{7. Ecuaciones.} $P_{\rm barra}=\sum P_i$, $P_{\rm entrada}=P_{\rm barra}/\eta$, $P_{\rm disp}=\eta P_s$, $\Delta P=P_{\rm barra,trans}-P_{\rm disp}$ y $E_b=\Delta P\Delta t/\eta_b$.
+
+\textbf{8. Despeje.} La comparación del déficit se hace en la barra: no se resta una potencia de entrada de una carga definida a la salida.
+
+\textbf{9. Sustitución.} $P_{\rm barra}=24\,\mathrm{kW}$, $P_{\rm entrada}=24/0.92$ y $P_{\rm disp}=0.92(30)=27.6\,\mathrm{kW}$. La demanda transitoria de barra es $30\,\mathrm{kW}$.
+
+\textbf{10. Resultado.} Demanda normal de fuente $26.087\,\mathrm{kW}$ y margen de entrada $3.913\,\mathrm{kW}$. En el transitorio faltan $2.4\,\mathrm{kW}$ en barra; la batería debe extraer al menos $53.333\,\mathrm{kJ}=14.815\,\mathrm{Wh}$.
+
+\textbf{11. Interpretación.} La energía requerida es pequeña comparada con muchas reservas, pero esto no demuestra capacidad de entregar la potencia transitoria. La compatibilidad de fuente y conversores sigue siendo necesaria.
+
+\textbf{12. Comprobación independiente.} Durante el transitorio, la carga consume $600\,\mathrm{kJ}$; la fuente aporta a la barra $552\,\mathrm{kJ}$ y la batería $48\,\mathrm{kJ}$ útiles. La suma cierra. Dividir $48\,\mathrm{kJ}$ entre $0.90$ recupera la energía extraída calculada.
+
+\textbf{13. Limitaciones.} No se comprueban caída de tensión, corriente máxima, reparto dinámico, refrigeración ni lógica de conexión. Si no existe batería compatible, el balance señala la necesidad de reducir demanda o cambiar la fuente, sin definir una actuación operativa.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Una unidad entrega $18\,\mathrm{kW}$ útiles con rendimiento $0.90$. Determine potencia absorbida y pérdida térmica.
+\item Intermedio. Un cuerpo de masa $2000\,\mathrm{kg}$ se remolca lentamente en horizontal con coeficiente de resistencia de rodadura ideal $0.02$. Estime la fuerza, sin atribuirla a una aeronave real.
+\item Intermedio. Dos canales hipotéticos fallan independientemente con probabilidad $0.01$ cada uno en un intervalo. Calcule la pérdida simultánea y explique qué cambia con una causa común.
+\item Análisis. Un calefactor funciona correctamente aislado, pero al integrarlo reinicia una pantalla. Proponga relaciones causales entre fuente, línea, transitorio y pantalla que deban comprobarse.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $20\,\mathrm{kW}$ de entrada y $2\,\mathrm{kW}$ de pérdida. 2: $392.27\,\mathrm{N}$ con $g_0$. 3: $10^{-4}$ bajo independencia; una causa común requiere otro modelo. 4: caída de tensión, impedancia de línea, corriente de conexión, regulación o interferencia; el cumplimiento individual no cierra la interfaz.
+
+\resumen{Los equipos de tierra aportan recursos mediante interfaces con límites propios. Integrar consiste en hacer coincidir energía, masa, información y condiciones entre componentes y modos. Los balances necesitan transitorios, refrigeración y configuración. La redundancia solo puede evaluarse siguiendo dependencias y causas comunes, y la evidencia debe vincular requisitos con comprobaciones concretas.}
+\textbf{Autoevaluación.} ¿Qué diferencia entre verificación y validación afecta al diseño de un ensayo? ¿Por qué potencia disponible no garantiza refrigeración? ¿Cómo puede una causa común anular la ventaja de dos fuentes?

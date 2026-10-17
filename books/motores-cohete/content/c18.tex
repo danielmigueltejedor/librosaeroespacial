@@ -1,0 +1,75 @@
+\chapter{Alimentación por presurización}\label{ch:18}
+\objetivos{Construir un presupuesto de presiones; comparar regulación y expansión libre; derivar la evolución de un gas presurizante ideal y reconocer sus limitaciones térmicas y de masa.}
+\section{La cadena de presión}
+La corriente necesita presión suficiente para recorrer conductos, elementos de acondicionamiento e inyección antes de entrar en la cámara. En un esquema de alimentación por presión, esa energía procede del gas que actúa sobre el líquido almacenado. La presión del depósito debe superar la de cámara más las pérdidas y otros cambios de energía mecánica relevantes.
+
+Para una corriente líquida idealizada entre dos estados,
+\[
+ \frac{p_1}{\rho}+\frac{u_1^2}{2}+gz_1+w_{bomba}
+ =\frac{p_2}{\rho}+\frac{u_2^2}{2}+gz_2+w_{perdidas}.
+\]
+Si no hay bomba, velocidades de depósito pequeñas y diferencias de altura despreciables, el presupuesto simplificado es
+\[
+ p_{dep}=p_c+\Delta p_{conductos}+\Delta p_{inyeccion}.
+\]
+Todas son presiones referidas al mismo convenio. La ecuación de estado del gas requiere presión absoluta, aunque algunos instrumentos y pérdidas se expresen mediante diferencias. Sumar una presión manométrica a otra absoluta sin conversión introduce un error de referencia.
+\section{Sistema regulado y sistema de expansión}
+Una arquitectura regulada mantiene aproximadamente la presión objetivo de depósito mientras desciende la presión del reservorio de gas, dentro de su intervalo de regulación. El término regulado no significa que cámara, mezcla y caudal sean perfectamente constantes: intervienen caídas de presión, dinámica del regulador y temperatura.
+
+En una arquitectura de expansión o \emph{blowdown}, el gas aumenta de volumen a medida que se consume líquido y su presión cae. Esa evolución reduce el margen de alimentación y puede modificar caudal, relación de mezcla y condiciones de cámara. El comportamiento concreto requiere resolver la red, no sólo una ecuación de gas aislada.\cite{MIT24}
+
+La presurización evita la potencia de una bomba principal, pero obliga a que los depósitos soporten una presión mayor. Una bomba permite separar parte de la presión de almacenamiento de la de cámara a costa de masa, potencia y complejidad de otros componentes. La mejor opción depende de duración, masa propulsante, presión y misión.
+\section{Expansión politrópica de una masa fija}
+Para una masa fija de gas ideal que se expande cuasiestáticamente, sin transferencia de calor y con $c_v$ constante,
+\[
+ dU=-p\,dV,\qquad U=mc_vT,\qquad pV=mRT.
+\]
+Sustituyendo,
+\[
+ mc_v\,dT=-mRT\frac{dV}{V},
+ \qquad \frac{dT}{T}=-(\gamma-1)\frac{dV}{V}.
+\]
+La integración da $TV^{\gamma-1}=\text{constante}$ y
+\begin{equation}\label{eq:blowdown}
+ pV^\gamma=\text{constante}.
+\end{equation}
+Si el gas intercambia calor de forma que su temperatura permanezca constante, la relación es $pV=\text{constante}$. Una representación politrópica utiliza $pV^k=\text{constante}$ con exponente de proceso $k$, que no se identifica automáticamente con $\gamma$.
+
+Estas relaciones corresponden a masa gaseosa fija dentro del depósito. Un reservorio que descarga gas hacia otro volumen tiene masa variable y requiere balance de entalpía de salida; no se puede aplicar a todo el sistema la misma ecuación cerrada sin revisar su frontera. El llenado de un volumen y el vaciado de un reservorio son procesos abiertos diferentes.
+\section{Reservorio rígido adiabático en descarga}
+Considérese un reservorio bien mezclado de volumen fijo, gas ideal y salida a la misma temperatura del interior. Sin calor ni trabajo,
+\[
+ \frac{d(mc_vT)}{dt}=-\dot m_{out}c_pT,
+ \qquad \frac{dm}{dt}=-\dot m_{out}.
+\]
+Usando $dm/dt$ y expandiendo,
+\[
+ c_vm\,dT=(c_p-c_v)T\,dm=RT\,dm.
+\]
+Por tanto,
+\[
+ \frac{T}{T_0}=\left(\frac{m}{m_0}\right)^{\gamma-1},\qquad
+ \frac{p}{p_0}=\left(\frac{m}{m_0}\right)^\gamma.
+\]
+La temperatura baja porque el gas saliente transporta entalpía. El volumen no cambia y, aun así, la presión evoluciona. Esta derivación evita confundir descarga de masa con expansión geométrica de una masa cerrada.
+\section{Masa de gas, temperatura y aproximaciones}
+La estimación $m_g=pV/(RT)$ requiere temperatura representativa y comportamiento ideal. Un gas que se calienta después de entrar puede necesitar menos masa para sostener una presión final que si permaneciese frío, pero la energía debe proceder de algún lugar. El contacto térmico con líquido, paredes y entorno modifica ese balance.
+
+La disolución del gas en líquido, condensación, fugas y estratificación térmica quedan fuera del gas uniforme elemental. Un regulador también puede introducir diferencias de entalpía y pérdidas de presión. Por ello, calcular una masa mínima ideal no proporciona automáticamente una masa de sistema, que incluye reservorio, regulación, conductos y márgenes definidos.
+\section{Modelo de red y cierre de caudal}
+Una aproximación de conducto con $\Delta p=K\dot m^2$ puede combinarse con una descarga de cámara $\dot m=p_cA_t/c^*$. En un sistema de una sola corriente idealizada,
+\[
+ p_{dep}=p_c+K\left(\frac{p_cA_t}{c^*}\right)^2.
+\]
+La presión de cámara se obtiene de una ecuación algebraica, no asignándola independientemente del depósito y caudal. Para dos corrientes, las dos ramas deben cerrar simultáneamente masa y mezcla. Si la alimentación cambia con tiempo, esas ecuaciones se acoplan a temperatura y volumen de gas.
+
+El parámetro $K$ incorpora un modelo de pérdida y sus unidades dependen de la variable elegida. Una cifra de $K$ sin unidades y sin definición del caudal no es un dato utilizable. En las aplicaciones de este manual se usará una red académica o un gas inerte para estudiar balances y sensibilidad.
+\figura{c18}{Dos procesos límite para gas ideal. No representan directamente un reservorio rígido que pierde masa.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Compare $p/p_0$ al duplicar volumen para expansión isotérmica y adiabática con $\gamma=1.4$.
+\item Derive la evolución de temperatura de un reservorio rígido que descarga adiabáticamente.
+\item Explique qué presión entra en $pV=mRT$ y cómo convertir una lectura manométrica.
+\item Resuelva la ecuación de red simplificada y compruebe que la raíz física satisface $0<p_c<p_{dep}$ para $K>0$.
+\end{enumerate}
+\resumen{La presión de cámara debe cerrar con depósito y pérdidas. Una masa fija en expansión y un reservorio que pierde masa exigen balances diferentes. Regulación, temperatura y masa de sistema condicionan la alimentación; las relaciones politrópicas son modelos de proceso con frontera definida.}

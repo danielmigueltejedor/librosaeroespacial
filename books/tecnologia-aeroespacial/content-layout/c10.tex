@@ -1,0 +1,173 @@
+\chapter{Aerodinámica de alas}\label{ch:10}
+\objetivos{Obtener geometría y superficie de un ala; explicar la corriente inducida y su efecto sobre la sustentación; construir una polar distinguiendo resistencia inducida y contribuciones viscosas; determinar una condición de máxima eficiencia sin confundir coeficientes de perfil y de avión.}
+
+\section{De una sección bidimensional a una superficie finita}
+El perfil explica qué ocurre en una sección, pero el ala introduce una dirección adicional: la envergadura. En una superficie finita, la carga debe desaparecer hacia una punta libre. La circulación varía transversalmente y deja una estela vorticosa. El campo inducido por esa estela modifica la dirección del aire que encuentra cada sección. Por ello no puede multiplicarse sin más el resultado de un perfil por la superficie geométrica y conservar toda la física.
+
+Definimos envergadura $b$, superficie en planta $S$, alargamiento $AR=b^2/S$, cuerda local $c(y)$ y estrechamiento $\lambda=c_t/c_r$. Las áreas se refieren a la proyección en planta y deben mantenerse iguales al combinar coeficientes. En una planta trapezoidal simétrica, con cuerda que varía linealmente desde raíz a punta,
+\begin{equation}\label{eq:10-geom}
+S=\frac b2(c_r+c_t)=\frac{bc_r(1+\lambda)}2,\qquad
+AR=\frac{b^2}{S}.
+\end{equation}
+La superficie sale de integrar la cuerda a lo largo de toda la envergadura. El factor $1/2$ procede del promedio de las cuerdas, no de usar sólo una semiala. Si se calcula primero una semiala, hay que multiplicar después por dos.
+
+La cuerda media geométrica $S/b$ y la cuerda aerodinámica media no son la misma magnitud. Esta última conserva el promedio de ciertos momentos cuando la carga se relaciona con la cuerda; para el trapecio,
+\begin{equation}
+\bar c=\frac{2}{3}c_r\frac{1+\lambda+\lambda^2}{1+\lambda}.
+\end{equation}
+Su posición longitudinal depende además de la flecha. El alargamiento es adimensional, $S$ tiene unidades de área y ambas cuerdas tienen unidades de longitud. Estos controles sencillos detectan errores antes de introducir aerodinámica.
+\figura{wing}{Planta trapezoidal original con envergadura y cuerdas declaradas; esquema geométrico sin distribución de carga ni estela.}
+
+\section{Circulación variable y corriente descendente}
+La sustentación por unidad de envergadura es $l(y)=\rho V\Gamma(y)$. Cuando cambia $\Gamma$ entre dos secciones, la vorticidad no puede terminar arbitrariamente en el fluido: la estela conecta esa variación con un sistema de vórtices que se prolonga aguas abajo. El conocido par de vórtices de punta es una representación concentrada del arrollamiento de una estela inicialmente distribuida. La estela de un avión real también evoluciona, se desplaza con el viento y disipa energía \cite{PHAK}.
+
+La corriente descendente local tiene velocidad $w$ y forma un ángulo inducido $\alpha_i\simeq w/V$ cuando éste es pequeño. La sección responde al ángulo efectivo
+\begin{equation}
+\alpha_{\mathrm{ef}}=\alpha-\alpha_i.
+\end{equation}
+Para sostener el mismo coeficiente que una sección bidimensional, el ala necesita mayor incidencia geométrica. La fuerza local, aproximadamente perpendicular al flujo efectivo, queda inclinada hacia atrás respecto al eje de sustentación global. Su proyección longitudinal produce resistencia inducida. Se trata de un mecanismo de energía y cantidad de movimiento asociado a la estela; no es rozamiento superficial adicional.
+
+En la teoría clásica de línea sustentadora para un ala plana, flujo adherido e incompresible, una distribución elíptica de circulación genera corriente descendente uniforme. Con las referencias convencionales,
+\begin{equation}\label{eq:10-ind}
+\alpha_i=\frac{C_L}{\pi AR},\qquad C_{D_i}=\frac{C_L^2}{\pi AR}.
+\end{equation}
+Para otras distribuciones se introduce una eficiencia de envergadura $e_i$,
+\begin{equation}
+C_{D_i}=\frac{C_L^2}{\pi e_i AR},\qquad
+\alpha_{i,\mathrm{eq}}=\frac{C_L}{\pi e_i AR}.
+\end{equation}
+El segundo ángulo es una representación equivalente, no necesariamente el ángulo de cada sección. En el modelo de ala plana clásica, $e_i\leq1$ y vale uno para carga elíptica. No debe trasladarse ese límite sin matices a configuraciones no planas ni identificar una carga elíptica con una planta elíptica en cualquier condición. La torsión, el perfil local y la flexión también controlan la carga. NASA presenta la relación básica entre alargamiento, eficiencia y resistencia inducida \cite{NASA-BGA}.
+
+\section{Pendiente de sustentación del ala}
+Para ilustrar la diferencia entre perfil y ala, supongamos una pendiente de sección $a_0$ y representemos la inducción mediante el modelo equivalente. En el tramo lineal,
+\begin{equation}
+C_L=a_0\left(\alpha-\alpha_{L=0}-\frac{C_L}{\pi e_i AR}\right).
+\end{equation}
+Agrupando los términos que multiplican $C_L$ se obtiene
+\begin{equation}\label{eq:10-slope}
+a=\frac{\mathrm dC_L}{\mathrm d\alpha}
+\simeq\frac{a_0}{1+a_0/(\pi e_i AR)},\qquad
+C_L=a(\alpha-\alpha_{L=0}).
+\end{equation}
+Esta fórmula es un cierre aproximado para alas de alargamiento moderado o alto y geometría sencilla. Un cálculo general de línea sustentadora resuelve la circulación a lo largo de la envergadura; puede necesitar una corrección de pendiente distinta de la eficiencia deducida del arrastre. Utilizar aquí el mismo $e_i$ es una hipótesis explícita del modelo equivalente.
+
+El denominador es mayor que uno: la pendiente del ala es menor que la del perfil. Cuando $AR\rightarrow\infty$, la corrección tiende a cero y $a\rightarrow a_0$. Si el alargamiento disminuye mucho, la aproximación de línea sustentadora pierde precisión; el límite algebraico no convierte la fórmula en una teoría de alas delta de bajo alargamiento. Para alas con flecha, compresibilidad significativa o separación, hay que incorporar modelos adecuados y datos específicos.
+
+En una aeronave completa también sustentan cola, fuselaje y otras superficies. Su $C_L$ total puede representarse linealmente cerca de un estado, pero esa pendiente pertenece al avión y a una configuración de mando. Cambiar deflexión de flaps o equilibrar con el estabilizador modifica la curva. Si un enunciado dice únicamente ``pendiente de sustentación'' y proporciona además una geometría alar, debe aclararse si entrega $a_0$, $a$ o la pendiente del avión. Resolver la ambigüedad por una suposición silenciosa puede duplicar una corrección tridimensional.
+
+\section{La polar y la separación de contribuciones}
+La polar relaciona resistencia y sustentación a condiciones especificadas. Una aproximación frecuente en vuelo subsónico adherido es
+\begin{equation}\label{eq:10-polar}
+C_D=C_{D0}+K C_L^2.
+\end{equation}
+$C_{D0}$ reúne aquí la resistencia a sustentación nula de toda la configuración: rozamiento, presión, interferencias y otras contribuciones incluidas en los datos. No es, en general, sólo la resistencia del ala. El término cuadrático ajusta las contribuciones que crecen con la sustentación en el intervalo elegido. Una polar medida puede presentar desplazamiento del mínimo, asimetrías, una zona de baja resistencia o términos de orden superior. La parábola centrada en cero es un modelo deliberado.
+
+Para distinguir mecanismos escribiremos
+\begin{equation}\label{eq:10-k}
+K=\frac{1}{\pi e_i AR}+k_{\mathrm{perfil}}.
+\end{equation}
+El primer sumando representa la resistencia inducida; $k_{\mathrm{perfil}}$ aproxima el crecimiento viscoso y otras contribuciones dependientes de sustentación asignadas a ese término. Si un ajuste se expresa como $K=1/(\pi e_O AR)$, $e_O$ es el factor de Oswald de la polar completa. Resulta
+\begin{equation}
+\frac1{e_O}=\frac1{e_i}+\pi AR k_{\mathrm{perfil}}.
+\end{equation}
+Por tanto, $e_O$ y $e_i$ no son intercambiables salvo hipótesis adicionales. Con $k_{\mathrm{perfil}}>0$, este modelo produce $e_O<e_i$. Inferir una envergadura a partir de $K$ y un factor denominado ambiguamente ``eficiencia'' requiere saber cuál se ha proporcionado y si el término viscoso ya está incluido.
+\figura{polar}{Contribuciones a una polar educativa: resistencia inducida, perfil y término total. El coeficiente cuadrático total incluye ambos efectos.}
+
+\section{Máxima eficiencia aerodinámica}
+La eficiencia $E=L/D=C_L/C_D$ utiliza fuerzas y coeficientes referidos a la misma superficie. Dentro de \eqref{eq:10-polar},
+\begin{equation}
+\frac{\mathrm dE}{\mathrm dC_L}=
+\frac{C_{D0}-KC_L^2}{(C_{D0}+KC_L^2)^2}.
+\end{equation}
+Para sustentación positiva y coeficientes constantes, el máximo interior satisface
+\begin{equation}\label{eq:10-opt}
+C_{L,E}=\sqrt{\frac{C_{D0}}K},\qquad
+E_{\max}=\frac1{2\sqrt{C_{D0}K}}.
+\end{equation}
+La condición es $C_{D0}=K C_L^2$: se iguala el término constante con el término cuadrático total. Sólo si $k_{\mathrm{perfil}}=0$ puede afirmarse que la resistencia inducida aislada iguala la resistencia a sustentación nula. Esta precisión cambia la interpretación del reparto de resistencia, aunque el cálculo con $K$ siga siendo correcto.
+
+Geométricamente, una recta desde el origen al punto de la polar tiene pendiente $C_D/C_L=1/E$. La menor pendiente admisible corresponde a la tangencia representada en la figura \ref{fig:polar}. El resultado debe comprobarse frente al $C_{L,\max}$: si el óptimo formal exige un coeficiente fuera del dominio de vuelo, el máximo realizable estará en una frontera o requerirá otra configuración. También deben revisarse Mach, Reynolds y límites estructurales. Un óptimo de una parábola no equivale automáticamente a una velocidad recomendada por el fabricante.
+
+\section{Diseño, operación y límites del modelo}
+A igualdad de $L$, densidad y velocidad, aumentar la envergadura reduce la resistencia inducida. Pero al aumentar $b$ crecen los brazos de flexión y pueden aumentar masa, deformación y dificultades de rodaje. El diseño no consiste en maximizar $AR$ sin restricciones. Una torsión geométrica adecuada puede descargar la punta y ordenar la pérdida, mientras que una distribución optimizada sólo para arrastre puede exigir compromisos en control o estructura.
+
+Los flaps aumentan generalmente $C_{L,\max}$ y reducen la velocidad mínima de sustentación para un peso dado. También desplazan la polar y producen momentos que requieren compensación. Cerca del suelo, el campo inducido cambia; el modelo de ala aislada en espacio libre deja de ser suficiente. La flecha modifica componentes normales de velocidad y contribuye al comportamiento de compresibilidad, pero también altera la distribución de carga y la pérdida. Estas interacciones explican por qué una sola cifra de eficiencia no caracteriza toda la envolvente.
+
+Al cambiar de punto de vuelo, la polar puede depender de $M$, $Re$, configuración y estado superficial. Una comparación a altura fija no mantiene automáticamente Mach constante: si cambia $V$, cambia $M$. Para los ejemplos siguientes se supone un intervalo de baja compresibilidad con temperatura suficiente para que $M<0{,}3$; los coeficientes se consideran constantes sólo dentro de esa idealización. No se extrapolan a transporte transónico.
+
+\section{Carga local, pérdida y momento de raíz}
+El coeficiente global de sustentación es una integral de las secciones:
+\begin{equation}
+L=\int_{-b/2}^{b/2}l(y)\,\mathrm dy,
+\qquad C_L=\frac1S\int_{-b/2}^{b/2}c(y)c_l(y)\,\mathrm dy.
+\end{equation}
+La segunda expresión usa la misma presión dinámica para todas las secciones, hipótesis adecuada para una corriente uniforme sin correcciones de barrido o interferencia. Un valor global moderado no garantiza que todas las secciones estén lejos de pérdida. Una punta de cuerda pequeña puede requerir un $c_l$ local alto para sostener una carga por longitud que no ha disminuido en la misma proporción.
+
+La torsión geométrica cambia la orientación de las cuerdas a lo largo del ala. Una disminución de incidencia hacia la punta suele llamarse torsión negativa o lavado. La torsión aerodinámica cambia las propiedades de los perfiles, como el ángulo de sustentación nula. Ambas pueden modificar la distribución de circulación, pero no son intercambiables en todos los estados: una variación de geometría y una variación de sección pueden responder de forma diferente a Reynolds, Mach y pérdida.
+
+El orden de separación tiene consecuencias de control. Si se pierde sustentación cerca de alerones, su eficacia puede degradarse justo cuando más se necesita. Si la separación comienza en una zona interior, pueden conservarse márgenes de control lateral en las puntas durante parte del proceso. Estas tendencias no sustituyen ensayos, porque flecha, transición, fuselaje y dispositivos locales pueden alterar el patrón. Una descripción de seguridad o manejabilidad necesita la distribución y su evolución, no sólo un número $C_{L,\max}$.
+
+La distribución también determina cargas estructurales. Para una semiala sin considerar todavía peso propio ni motor, el momento flector de raíz por sustentación es
+\begin{equation}
+M_{\mathrm{raiz}}=\int_0^{b/2}y\,l(y)\,\mathrm dy.
+\end{equation}
+Trasladar carga hacia fuera puede aumentar ese momento aunque la sustentación total permanezca igual. La reducción de resistencia inducida y la reducción de momento de raíz no son objetivos idénticos. La masa estructural necesaria para soportar la carga puede cambiar el peso, que a su vez modifica sustentación y resistencia. Esta realimentación entre disciplinas es una razón fundamental para no diseñar el ala a partir de una polar aislada.
+
+\section{Del dato geométrico a un problema bien determinado}
+Antes de calcular debe elaborarse un mapa de incógnitas. Si se conocen $c_r$ y $\lambda$, todavía falta $b$ para hallar $S$. Si además se proporciona $AR$, entonces $AR=2b/[c_r(1+\lambda)]$ permite despejar $b=ARc_r(1+\lambda)/2$. Si en lugar de $AR$ se conoce una polar, sólo puede deducirse el alargamiento cuando se justifique la relación entre su coeficiente cuadrático y la eficiencia pertinente.
+
+Por ejemplo, conocer $K$ y $e_i$ no determina $AR$ si $k_{\mathrm{perfil}}$ sigue siendo desconocido: la ecuación \eqref{eq:10-k} contiene dos incógnitas. Si se suministra $e_O$ de esa misma polar, la relación $AR=1/(\pi e_OK)$ sí cierra algebraicamente, pero su interpretación sigue dependiendo del ajuste y de la referencia de superficie. La palabra ``Oswald'' no convierte un dato de perfil en un dato geométrico independiente.
+
+La cuerda usada en Reynolds tampoco tiene por qué ser la cuerda media aerodinámica ni la de raíz. Un ensayo puede haber utilizado una sección de cuerda conocida, y el avión incorporar una familia de cuerdas diferente. Para recuperar una longitud a partir de $Re=\rho Vc/\mu$ deben corresponder densidad, velocidad y viscosidad al mismo ensayo. Usar la densidad de crucero con el Reynolds de un túnel a otra altitud mezcla dos estados y produce una longitud ficticia.
+
+Finalmente, debe contarse la información de equilibrio. Con $W$, $\rho$, $S$ y $V$ ya se conoce $C_L$ necesario. Una ley de sustentación permite deducir incidencia. Si se pretende introducir a la vez otra incidencia arbitraria, debe cambiar alguna condición o admitirse una aceleración. Esta comprobación de determinación física es anterior al cálculo numérico y evita que una solución aparentemente precisa contradiga sus propios datos.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto 1: geometría, sustentación y velocidad compatible}
+\begin{studiumworked}{Problema resuelto 1: geometría, sustentación y velocidad compatible}
+
+\paragraph{1. Enunciado.} Determine la velocidad de equilibrio horizontal y la resistencia de una aeronave idealizada cuya ala trapezoidal utiliza perfiles de pendiente conocida. Compare las pendientes de perfil y ala.
+\paragraph{2. Datos.} $b=14{,}0\ \mathrm m$, $c_r=2{,}40\ \mathrm m$, $\lambda=0{,}45$, $a_0=6{,}00\ \mathrm{rad^{-1}}$, $e_i=0{,}90$, $k_{\mathrm{perfil}}=0{,}0080$, $C_{D0}=0{,}0280$, $W=40000\ \mathrm N$, $\rho=0{,}950\ \mathrm{kg/m^3}$, $\alpha=4^\circ$ y $\alpha_{L=0}=-2^\circ$.
+\paragraph{3. Incógnitas.} $S,AR,a,C_L,V,K,D$.
+\paragraph{4. Esquema verbal.} En vuelo rectilíneo horizontal, la sustentación vertical equilibra el peso y el empuje horizontal equilibra la resistencia. La inducción reduce la incidencia efectiva de las secciones.
+\paragraph{5. Hipótesis.} Aeronave representada por el ala para la ley de sustentación; configuración fija, flujo adherido, pequeño ángulo inducido y baja compresibilidad. $C_D$ representa la configuración completa con la misma superficie de referencia.
+\paragraph{6. Modelo físico.} Geometría trapezoidal, pendiente finita aproximada, equilibrio $qSC_L=W$ y polar total.
+\paragraph{7. Ecuaciones simbólicas.} Se emplean \eqref{eq:10-geom}, \eqref{eq:10-slope} y \eqref{eq:10-k}, junto a $V=\sqrt{2W/(\rho SC_L)}$ y $D=qS(C_{D0}+KC_L^2)$.
+\paragraph{8. Despeje.} Primero se obtiene $S$; después $AR$, $a$ y $C_L$. Con $C_L$ fijado por el ángulo, el equilibrio determina $V$, no una sustentación arbitraria adicional.
+\paragraph{9. Sustitución.} $S=14(2{,}4)(1{,}45)/2=24{,}36\ \mathrm{m^2}$; $AR=196/24{,}36=8{,}04598$. Entonces $a=6/[1+6/(\pi\,0{,}9\,8{,}04598)]=4{,}74780\ \mathrm{rad^{-1}}$ y $C_L=4{,}74780(6\pi/180)=0{,}497189$.
+\paragraph{10. Resultado con unidades.} $K=0{,}0519571$, $V=83{,}384\ \mathrm{m/s}$ y $D=3285{,}96\ \mathrm N$. La pendiente del ala es un $20{,}9\%$ menor que la de perfil.
+\paragraph{11. Interpretación.} A este ángulo y peso hay una velocidad compatible con el equilibrio. Imponer además otra velocidad, conservando todos los datos, sobredeterminaría el vuelo nivelado estacionario.
+\paragraph{12. Comprobación independiente.} Usando directamente $D/W=C_D/C_L$ se obtiene $D/W=0{,}0821491$, que reproduce la resistencia. La unidad de $2W/(\rho SC_L)$ es $\mathrm{m^2/s^2}$.
+\paragraph{13. Limitaciones.} El valor de $e_i$ cierra de forma aproximada la pendiente y el arrastre. La sustentación de cola y fuselaje, así como la variación con Mach y Reynolds, exigen un modelo más completo.
+
+\end{studiumworked}
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto 2: óptimo con resistencia viscosa dependiente de carga}
+\begin{studiumworked}{Problema resuelto 2: óptimo con resistencia viscosa dependiente de carga}
+
+\paragraph{1. Enunciado.} Para la aeronave anterior, calcule la máxima eficiencia y compruebe qué contribuciones de resistencia se igualan.
+\paragraph{2. Datos.} Se conservan $C_{D0}=0{,}0280$, $K=0{,}0519571$, $k_i=1/(\pi e_i AR)=0{,}0439571$, $W=40000\ \mathrm N$, $S=24{,}36\ \mathrm{m^2}$ y $\rho=0{,}950\ \mathrm{kg/m^3}$.
+\paragraph{3. Incógnitas.} $C_{L,E},E_{\max},V_E,D_{\min}$ y reparto adimensional de resistencia.
+\paragraph{4. Esquema verbal.} Se busca la tangente desde el origen a la polar y el vuelo horizontal que corresponde a ese punto.
+\paragraph{5. Hipótesis.} El óptimo pertenece al tramo adherido y a un intervalo donde los coeficientes permanecen constantes; el empuje se puede ajustar.
+\paragraph{6. Modelo físico.} Se maximiza una razón aerodinámica a peso dado, sin optimizar consumo de combustible.
+\paragraph{7. Ecuaciones simbólicas.} $C_{L,E}=\sqrt{C_{D0}/K}$, $E_{\max}=1/(2\sqrt{C_{D0}K})$, $V_E=\sqrt{2W/(\rho SC_{L,E})}$ y $D_{\min}=W/E_{\max}$.
+\paragraph{8. Despeje.} No se sustituye $K$ por $k_i$; se descompone después $KC_L^2=k_iC_L^2+k_{\mathrm{perfil}}C_L^2$.
+\paragraph{9. Sustitución.} $C_{L,E}=\sqrt{0{,}028/0{,}0519571}=0{,}734102$. La resistencia total adimensional es $C_D=2(0{,}028)=0{,}056$.
+\paragraph{10. Resultado con unidades.} $E_{\max}=13{,}1090$, $V_E=68{,}622\ \mathrm{m/s}$ y $D_{\min}=3051{,}35\ \mathrm N$. En el óptimo, $C_{D_i}=0{,}023689$ y la parte viscosa cuadrática es $0{,}004311$.
+\paragraph{11. Interpretación.} Ambas contribuciones suman $0{,}028$, pero la inducida aislada es menor. El óptimo usa una velocidad inferior y un coeficiente de sustentación superior a los del primer problema.
+\paragraph{12. Comprobación independiente.} Para $C_L>0$, $C_D/C_L=C_{D0}/C_L+KC_L\geq2\sqrt{C_{D0}K}$ por la desigualdad aritmético--geométrica. La igualdad reproduce el mismo óptimo sin derivar.
+\paragraph{13. Limitaciones.} Máxima eficiencia no significa mínima potencia ni máximo alcance para cualquier propulsión. La pérdida y los límites de operación pueden impedir utilizar ese punto.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Un ala rectangular tiene $b=10\ \mathrm m$ y $c=1{,}25\ \mathrm m$. Calcule $S$ y $AR$. Respuesta: $12{,}5\ \mathrm{m^2}$ y $8$.
+\item Con $C_L=0{,}7$, $AR=9$ y $e_i=0{,}85$, calcule $C_{D_i}$. Respuesta: $0{,}02039$.
+\item Una polar tiene $C_{D0}=0{,}025$ y $K=0{,}050$. Calcule el óptimo. Respuesta: $C_L=0{,}7071$, $E_{\max}=14{,}142$.
+\item Si $e_i=0{,}90$, $AR=8$ y $k_{\mathrm{perfil}}=0{,}010$, obtenga $e_O$. Respuesta: aproximadamente $0{,}734$; justificar por qué es menor que $e_i$.
+\item Se conoce la cuerda de raíz y el estrechamiento, pero no la envergadura ni una relación adicional. ¿Puede obtenerse el área? Guía: no; escriba $S=bc_r(1+\lambda)/2$ e identifique el dato independiente que falta.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{Un ala finita genera una estela que inclina el flujo local y produce resistencia inducida. La pendiente de sustentación de ala suele ser menor que la de perfil. La eficiencia de envergadura describe la carga inducida; el factor de Oswald caracteriza una polar total. La máxima eficiencia de una polar parabólica iguala el término constante con la contribución cuadrática total, siempre dentro del dominio válido del modelo.}
+¿Por qué puede una planta no elíptica aproximar una carga elíptica? ¿Qué magnitudes mantienen unidades distintas aunque todas se llamen cuerda? ¿Cuándo es lícito inferir $AR$ a partir de $K$? ¿Qué comprobaciones faltan antes de convertir un óptimo algebraico en condición de vuelo?

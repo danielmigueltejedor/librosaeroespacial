@@ -1,0 +1,66 @@
+\chapter{Turbobombas y ciclos de alimentación}\label{ch:19}
+\objetivos{Derivar potencia hidráulica y trabajo de Euler; cerrar el balance de eje; comparar ciclos por destino de masa y energía, y reconocer restricciones de cavitación e integración.}
+\section{La potencia necesaria para elevar presión}
+Una bomba transmite trabajo al líquido. Para un incremento ideal de presión de un líquido aproximadamente incompresible,
+\[
+ w_{hid}=\int_{p_1}^{p_2}\frac{dp}{\rho}\simeq\frac{\Delta p}{\rho}.
+\]
+Con rendimiento de bomba $\eta_p=w_{hid}/w_{eje}$,
+\begin{equation}\label{eq:pumppower}
+ P_{bomba}=\frac{\dot m\Delta p}{\rho\eta_p}.
+\end{equation}
+Las unidades son $\mathrm{kg/s}\,\mathrm{Pa}/(\mathrm{kg/m^3})=\mathrm W$. A igual caudal másico y salto de presión, un líquido menos denso exige mayor potencia volumétrica. Para dos corrientes se suman potencias de sus bombas y pérdidas de transmisión.
+
+La aproximación de densidad constante no representa adecuadamente cualquier estado criogénico ni cambio térmico. La integral permite conservar el concepto cuando la densidad varía. El rendimiento debe tener definición y dominio: un valor positivo mayor que uno es incompatible con la definición de bomba adoptada.\cite{MIT25,MIT26}
+\section{Momento angular y ecuación de Euler}
+En un rotor estacionario en promedio, el balance de momento angular da el par comunicado al fluido,
+\[
+ \mathcal T=\dot m(r_2c_{\theta2}-r_1c_{\theta1}).
+\]
+Multiplicando por velocidad angular $\Omega$ y dividiendo por caudal,
+\begin{equation}\label{eq:euler}
+ \Delta h_0=U_2c_{\theta2}-U_1c_{\theta1},\qquad U_i=\Omega r_i,
+\end{equation}
+con signo positivo de trabajo al fluido. Las velocidades $c_\theta$ son componentes tangenciales absolutas; las relativas a la pala satisfacen $\mathbf w=\mathbf c-\mathbf U$. Mezclar una componente relativa con otra absoluta destruye el significado del balance.
+
+En una turbina se adopta frecuentemente trabajo positivo extraído y se invierte el orden. Es la misma conservación con otro convenio, que debe indicarse. El trabajo de Euler es transferencia de energía total, no aumento útil de presión por sí solo. La irreversibilidad y el cambio cinético separan trabajo y altura hidráulica.
+\section{Turbina y balance de eje}
+Para una expansión de gas caloríficamente perfecto entre presiones totales especificadas,
+\[
+ \Delta h_{t,is}=c_{p,t}T_{0,in}
+ \left[1-\left(\frac{p_{0,out}}{p_{0,in}}\right)^{(\gamma_t-1)/\gamma_t}\right].
+\]
+Con rendimiento isentrópico de turbina $\eta_t$ y mecánico $\eta_m$,
+\[
+ P_{disponible}=\eta_m\dot m_t\eta_t\Delta h_{t,is}.
+\]
+Debe coincidir con demanda de bombas y auxiliares en un eje estacionario. Si se incluye aceleración de rotor, la diferencia entra en $J\Omega\dot\Omega$. Los datos totales y estáticos no se intercambian sin corregir energía cinética.\cite{MIT27}
+
+Un balance de potencia cerrado es necesario para un ciclo, pero no garantiza que sus caudales y presiones sean simultáneamente compatibles. La turbina necesita una presión de salida que permita el destino posterior de su gas. Un ciclo cerrado hacia cámara exige condiciones distintas de una descarga exterior.
+\section{Generador de gas y combustión escalonada}
+En el ciclo de generador de gas, una fracción de las corrientes produce gas para la turbina y se descarga por una ruta que no completa la expansión de la cámara principal. Ese gas puede aportar empuje auxiliar, pero su velocidad efectiva suele diferir de la principal. La prestación de sistema se obtiene del balance de todas las descargas del capítulo~\ref{ch:14}.
+
+En combustión escalonada, la corriente que impulsa la turbina entra posteriormente en la cámara principal. Se aprovecha su masa en la ruta principal, pero su presión después de turbina debe superar la necesaria para llegar a cámara con sus pérdidas. Esta condición acopla con fuerza bombas, precombustión, turbina e inyección. No se deduce la superioridad global del ciclo sólo por decir que es cerrado: importan masa, fiabilidad, materiales y restricciones de misión.\cite{MIT25}
+
+Las variantes ricas en combustible u oxidante describen el estado de una corriente previa, no una receta de operación. El objetivo del esquema es seguir masa, energía y presión a través de componentes, sin proporcionar instrucciones de construcción ni de puesta en marcha.
+\section{Ciclo expansor y alimentación eléctrica}
+En un ciclo expansor, el calentamiento de una corriente en la refrigeración proporciona entalpía que puede mover la turbina. El balance conecta la potencia necesaria con calor absorbido y con el salto utilizable. La energía disponible está ligada a la transferencia térmica y geometría, por lo que el ciclo no dispone de una potencia arbitraria independiente de cámara y refrigeración.
+
+En una alimentación de bombas mediante motor eléctrico, la energía procede de una fuente eléctrica y su almacenamiento o generación forma parte de masa del sistema. Eliminar la turbina no elimina demanda de potencia. Una comparación coherente incluye motor, electrónica y fuente de energía, además de la masa de bombas.
+\section{Cavitación y entrada de bomba}
+La presión local puede descender por debajo de la presión de vapor correspondiente a temperatura, dando lugar a cavitación. Una presión de depósito aparentemente alta no garantiza margen en todas las regiones aceleradas de entrada. La altura neta positiva de aspiración disponible se expresa mediante presión total de entrada respecto a vapor y una referencia de altura coherente.
+
+Un valor requerido por una bomba depende de su curva y criterio de ensayo. No se obtiene sólo a partir de la potencia hidráulica. La cavitación puede alterar prestaciones, generar oscilaciones y erosión. El modelo de densidad constante deja de representar una zona bifásica importante. Por ello, una solución de balance de eje puede ser energéticamente correcta e hidráulicamente inviable.\cite{MIT26}
+\section{Comparación de ciclos mediante fronteras comunes}
+La tabla conceptual de un ciclo debe identificar origen de energía de eje, destino del gas de turbina, caudal total consumido, presiones necesarias y calor transferido. Un ciclo que aumenta $I_{sp}$ pero añade masa seca puede reducir la ganancia de delta-v de la etapa. El efecto se calcula mediante el presupuesto de masas y la ecuación del cohete, no con un calificativo aislado.
+
+Se comprobarán tres cierres: conservación de masa en cada división, energía en componentes y potencia de eje. Después se verifican restricciones de presión y estado. Cerrar sólo dos de ellos puede producir un diagrama atractivo con un flujo físicamente imposible.
+\figura{c19}{Comparación de la ruta que distingue cada ciclo. Son esquemas funcionales parciales, no balances completos ni planos de instalación.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Calcule potencia de una bomba académica con $\dot m=3\,\mathrm{kg/s}$, $\Delta p=1.2\,\mathrm{MPa}$, $\rho=1000\,\mathrm{kg/m^3}$ y $\eta_p=0.75$.
+\item Derive Euler desde momento angular e indique el convenio alternativo para turbina.
+\item Explique qué restricción adicional de presión aparece al descargar la turbina hacia cámara.
+\item Dibuje las fronteras de masa y energía de un generador de gas y de un expansor; no omita corrientes auxiliares.
+\end{enumerate}
+\resumen{La bomba exige potencia proporcional a caudal volumétrico y salto de presión. Euler procede del momento angular. Un ciclo debe cerrar masa, energía, eje y presión; la recuperación de corrientes no basta para juzgar la prestación del vehículo completo.}

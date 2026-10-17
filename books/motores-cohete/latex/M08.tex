@@ -1,0 +1,28 @@
+\begin{studiumworked}{M08. Salto normal y degradación de presión total · INTERMEDIATE}
+\textbf{Enunciado original.} Un gas académico con $\gamma=1.4$, $R=287$ J/(kg K), $M_1=2.04$, $T_1=408$ K y $p_1=30$ kPa cruza un choque normal estacionario. Determine $M_2,p_2,T_2$, relación de presiones totales y generación específica de entropía.
+
+\textbf{Datos utilizados.} Mach anterior: $2.04$; Temperatura anterior: $408\,\mathrm{K}$; Presión anterior: $30000\,\mathrm{Pa}$; Exponente: $1.4$; Constante: $287\,\mathrm{J\,kg^{-1}\,K^{-1}}$.
+
+\textbf{Incógnitas.} Estado posterior y entropía.
+
+\textbf{Hipótesis.} Gas caloríficamente perfecto; choque plano. Adiabático y sin trabajo; no se conserva presión total.
+
+\textbf{Modelo físico.} Rankine--Hugoniot y segunda ley.
+\[\rho_1u_1=\rho_2u_2,\quad p_1+\rho_1u_1^2=p_2+\rho_2u_2^2\]
+\[h_1+u_1^2/2=h_2+u_2^2/2\]
+\[M_2^2=\frac{1+(\gamma-1)M_1^2/2}{\gamma M_1^2-(\gamma-1)/2}\]
+\[\Delta s=-R\ln(p_{02}/p_{01})\]
+\textbf{Despejes y sustituciones.}
+\begin{enumerate}
+\item Eliminar velocidad posterior mediante continuidad permite obtener $\rho_2/\rho_1=2.725463$. El balance de momento da $p_2/p_1=4.688533$ y la ecuación de estado $T_2/T_1=1.720271$.
+\item Se obtiene $M_2=0.5706785$, $p_2=1.406560\times10^{5}$ Pa y $T_2=701.8704$ K. Las velocidades son $825.9718\,\mathrm{m/s}$ y $303.0574\,\mathrm{m/s}$, respectivamente.
+\item Calcular remanso a cada lado produce $p_{02}/p_{01}=0.7021799$. Por tanto $\Delta s=-287\ln(0.7021799)=101.4733$ J/(kg K).
+\end{enumerate}
+\textbf{Resultados.} $M_2=0.5706785$; $p_2=1.406560\times10^{5}$ Pa; $T_2=701.8704$ K; $\Delta s=101.4733$ J/(kg K).
+
+\textbf{Interpretación.} La temperatura estática aumenta al convertir movimiento en entalpía. La energía total se conserva, pero la presión total baja: no es una expansión isentrópica.
+
+\textbf{Comprobación.} Las entalpías totales coinciden en $7.509507\times10^{5}\,\mathrm{J/kg}$. La ruta $c_p\ln(T_2/T_1)-R\ln(p_2/p_1)$ recupera la misma entropía positiva.
+
+\textbf{Límites.} La disociación, calor a pared y frentes oblicuos no están modelados. El resultado no localiza el choque dentro de una tobera.
+\end{studiumworked}

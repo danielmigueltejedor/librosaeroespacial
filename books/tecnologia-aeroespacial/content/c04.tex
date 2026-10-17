@@ -1,0 +1,147 @@
+\chapter{Atmósfera estándar ISA}\label{ch:04}
+\objetivos{Derivar los perfiles de presión y densidad en capas de gradiente térmico constante; enlazar capas sin discontinuidades artificiales; calcular velocidades y altitudes equivalentes; distinguir un modelo de referencia de un sondeo meteorológico.}
+
+Un avión ensayado en un día frío y otro cálido no opera en el mismo medio, aunque esté a la misma altitud. Para comparar actuaciones e instrumentos necesitamos una referencia común. La atmósfera estándar prescribe temperatura, presión y densidad en función de una coordenada vertical. No pronostica el tiempo ni supone que el aire real siga siempre sus valores. Los apuntes de la asignatura presentan las tablas ISA; aquí deducimos sus relaciones para poder utilizarlas sin memorizar números aislados \cite{TAE2,ISA1976}.
+
+\section{Hipótesis y condiciones de referencia}
+En la región baja modelamos aire seco, ideal, de composición fija y en equilibrio hidrostático. La temperatura se prescribe por tramos lineales de altitud geopotencial $H$; la ecuación de estado y la hidrostática proporcionan el resto. Las condiciones de referencia al nivel cero son
+\begin{align}
+ T_0&=288.15\,\mathrm{K},& p_0&=101325\,\mathrm{Pa},\\
+ R&=\Raire\,\mathrm{J\,kg^{-1}\,K^{-1}},& g_0&=\gzero\,\mathrm{m\,s^{-2}}.
+\end{align}
+De ellas resulta $\rho_0=p_0/(RT_0)\simeq1.2250\,\mathrm{kg\,m^{-3}}$. El valor de densidad es una consecuencia de los parámetros, no un dato independiente que pueda cambiarse manteniendo los demás.
+
+La atmósfera estándar de 1976 ofrece un desarrollo más extenso; utilizamos aquí las relaciones de la región donde el modelo de gas de composición constante es apropiado. No se deben extrapolar esas hipótesis hasta cualquier altitud. La denominación ISA es habitual en problemas aeronáuticos; para constantes y estructura de capas se indica la referencia estándar utilizada \cite{ISA1976}.
+
+Si se trabaja con altitud geométrica $z$, se convierte primero mediante $H=r_ez/(r_e+z)$. Si el problema declara ``altitud ISA'' sin otra aclaración y pretende un cálculo introductorio, puede adoptarse $H$ como variable, pero se debe escribir. A $11\,\mathrm{km}$ la diferencia con $z$ es pequeña en términos relativos y ya apreciable frente a una precisión de un metro.
+
+\section{Derivación de una capa con gradiente térmico}
+Sea $H_b$ la base de una capa y $\beta=dT/dH$ su gradiente, con signo. La temperatura es
+\begin{equation}\label{eq:04-T}
+ T=T_b+\beta(H-H_b).
+\end{equation}
+La troposfera estándar tiene $\beta=-0.0065\,\mathrm{K\,m^{-1}}$. Escribir el signo dentro de la definición evita alternar sin aviso entre un gradiente negativo y una tasa de descenso positiva.
+
+Por la definición de altitud geopotencial, la ecuación hidrostática se convierte en $dp/dH=-\rho g_0$. Al sustituir $\rho=p/(RT)$,
+\begin{equation}
+ \frac{dp}{p}=-\frac{g_0\,dH}{R[T_b+\beta(H-H_b)]}.
+\end{equation}
+Integrando entre la base y el punto, para $\beta\ne0$,
+\begin{equation}\label{eq:04-p}
+ \ln\frac{p}{p_b}=-\frac{g_0}{R\beta}\ln\frac{T}{T_b},\qquad
+ p=p_b\left(\frac{T}{T_b}\right)^{-g_0/(R\beta)}.
+\end{equation}
+El exponente es adimensional: $R\beta$ tiene unidades de aceleración. Con $\beta<0$, la temperatura decrece y el exponente es positivo, por lo que también disminuye la presión. La densidad se obtiene sin una nueva integración:
+\begin{equation}\label{eq:04-rho}
+ \frac{\rho}{\rho_b}=\left(\frac{T}{T_b}\right)^{-g_0/(R\beta)-1}.
+\end{equation}
+En la primera capa el exponente de presión es aproximadamente $5.2559$ y el de densidad $4.2559$. Estas potencias proceden de un modelo térmico lineal, no de una ley universal para cualquier atmósfera.
+
+\section{Capa isoterma y unión de capas}
+Cuando $\beta=0$ no se debe sustituir directamente en una expresión que divide por $\beta$. Se integra de nuevo con $T=T_b$:
+\begin{equation}\label{eq:04-iso}
+ p=p_b\exp\left[-\frac{g_0(H-H_b)}{RT_b}\right],\qquad
+ \rho=\rho_b\exp\left[-\frac{g_0(H-H_b)}{RT_b}\right].
+\end{equation}
+La presión nunca llega a cero a una distancia finita en esta capa idealizada. Puede comprobarse además que la expresión exponencial es el límite de la capa lineal cuando $\beta\to0$, usando $\ln(1+x)\simeq x$.
+
+En $H=11000\,\mathrm{m}$, la primera capa da $T_b=216.65\,\mathrm{K}$ y $p_b\simeq22632.1\,\mathrm{Pa}$. Esos valores son la base del tramo isotermo de $11$ a $20\,\mathrm{km}$. La base de una capa no se vuelve a inicializar con la presión al nivel del mar. Hacerlo introduciría un salto de presión y violaría el equilibrio del modelo.
+
+Los siguientes gradientes de referencia son $+1.0\,\mathrm{K\,km^{-1}}$ entre $20$ y $32\,\mathrm{km}$, $+2.8$ entre $32$ y $47$, cero entre $47$ y $51$, $-2.8$ entre $51$ y $71$ y $-2.0$ entre $71$ y $84.852\,\mathrm{km}$ geopotenciales. En cada frontera se conserva continuidad de $T$, $p$ y $\rho$. El gradiente sí cambia por la idealización a tramos. Esta lista es un mapa para elegir la ecuación; no se exige reproducir todos sus valores de memoria para comprender el método. En U.S. Standard Atmosphere 1976, el perfil lineal de los últimos tramos se define para temperatura molecular de referencia. Hasta unos $80\,\mathrm{km}$ coincide con la temperatura cinética; entre $80$ y $86\,\mathrm{km}$ geométricos aparece una pequeña corrección de masa molecular. Nuestros cálculos resueltos se mantienen por debajo de $20\,\mathrm{km}$, donde esa distinción no interviene.
+
+\figura{isa}{Perfiles originales de temperatura, presión y densidad de la atmósfera de referencia. Se identifican las bases de capa y se distingue temperatura lineal de presión no lineal.}
+
+\section{Velocidad del sonido y otras propiedades}
+Para una perturbación acústica pequeña en aire caloríficamente perfecto,
+\begin{equation}
+ a=\sqrt{\gamma RT},\qquad \gamma\simeq1.4.
+\end{equation}
+A nivel del mar estándar $a_0\simeq340.3\,\mathrm{m\,s^{-1}}$. A $11\,\mathrm{km}$ resulta aproximadamente $295.1\,\mathrm{m\,s^{-1}}$. No hay una única velocidad del sonido que sirva para todas las altitudes. El número de Mach $M=V/a$ debe calcularse con la temperatura local y con velocidad relativa al aire.
+
+La viscosidad dinámica depende de temperatura. Una correlación útil en el rango ordinario del aire es la ley de Sutherland,
+\begin{equation}
+ \mu=\mu_{\mathrm{ref}}\left(\frac{T}{T_{\mathrm{ref}}}\right)^{3/2}
+ \frac{T_{\mathrm{ref}}+S_\mu}{T+S_\mu},
+\end{equation}
+con $T_{\mathrm{ref}}=273.15\,\mathrm{K}$, $\mu_{\mathrm{ref}}=1.716\times10^{-5}\,\mathrm{Pa\,s}$ y $S_\mu=110.4\,\mathrm{K}$ como conjunto convencional de parámetros. Debe utilizarse dentro del rango de validez de la correlación, sin extenderla a gases reaccionantes. La viscosidad cinemática $\nu=\mu/\rho$ puede aumentar con altitud aunque la viscosidad dinámica disminuya en una capa fría, porque la densidad disminuye más.
+
+\section{Problema inverso: qué altitud corresponde a un estado}
+La altitud de presión $H_p$ se obtiene invirtiendo el perfil estándar. Si la presión pertenece a la primera capa,
+\begin{equation}\label{eq:04-inv}
+ H_p=\frac{T_0}{\beta}\left[\left(\frac{p}{p_0}\right)^{-R\beta/g_0}-1\right].
+\end{equation}
+Para densidad se invierte la ecuación \eqref{eq:04-rho} en la capa adecuada. Elegir capa es parte del cálculo: una expresión correcta utilizada fuera de su intervalo puede producir un número sin sentido físico.
+
+Supongamos ahora que se conoce $p$ pero el aire está más caliente que el valor estándar a esa presión. Como $\rho=p/(RT)$, su densidad será menor y su altitud de densidad, mayor. Esto ayuda a entender la degradación de sustentación y empuje en condiciones cálidas. No significa necesariamente que la aeronave se haya desplazado hacia arriba.
+
+Escribir ``ISA+$15$'' requiere definir qué se mantiene. Habitualmente se refiere a una temperatura $15\,\mathrm{K}$ superior a la estándar a una altitud de presión especificada. Si se prescribe temperatura desviada a altitud geométrica y se desea un perfil completo de presión, hay que reintegrar la hidrostática con condiciones de contorno consistentes. No es correcto modificar a la vez temperatura y densidad de forma arbitraria.
+
+La ecuación hipsométrica ofrece otro modo de leer la columna atmosférica:
+\begin{equation}
+ z_2-z_1\simeq\frac{R\overline{T}}{g}\ln\frac{p_1}{p_2},
+\end{equation}
+cuando $\overline{T}$ representa una media apropiada entre superficies de presión y $g$ se aproxima constante. Una columna fría es más delgada entre las mismas presiones. Este resultado explica por qué una calibración estándar puede sobrestimar la altura real en aire frío, manteniendo la referencia de presión adecuada. Para humedad se usa temperatura virtual en el modelo de aire equivalente.
+
+\section{Problema resuelto: cálculo de una condición a 4.5 km}
+\begin{enumerate}
+\item \textbf{Enunciado.} Para interpretar un ensayo de vuelo, determinar temperatura, presión, densidad y velocidad del sonido a $4500\,\mathrm{m}$ de altitud geopotencial estándar. Hallar también el Mach a $140\,\mathrm{m\,s^{-1}}$.
+\item \textbf{Datos.} Constantes de referencia de este capítulo, $\beta=-0.0065\,\mathrm{K\,m^{-1}}$ y $\gamma=1.4$.
+\item \textbf{Incógnitas.} $T$, $p$, $\rho$, $a$ y $M$.
+\item \textbf{Esquema verbal.} Se asciende dentro de una única capa desde la base $H=0$ hasta el nivel de ensayo, sin cruzar la tropopausa estándar.
+\item \textbf{Hipótesis.} Aire seco ideal y estándar, equilibrio hidrostático, altitud geopotencial dada y calores específicos constantes para el cálculo acústico.
+\item \textbf{Modelo.} Capa lineal ISA y ecuación de estado.
+\item \textbf{Ecuaciones.} \eqref{eq:04-T}, \eqref{eq:04-p}, $\rho=p/(RT)$, $a=\sqrt{\gamma RT}$ y $M=V/a$.
+\item \textbf{Despeje.} Las variables se calculan en ese orden; no es necesario resolver simultáneamente un sistema no lineal.
+\item \textbf{Sustitución.} Las expresiones numéricas son
+\[
+ T=288.15-0.0065\cdot4500=258.90\,\mathrm{K},
+\]
+\[
+ p=101325(258.90/288.15)^{5.25588}\,\mathrm{Pa}.
+\]
+\item \textbf{Resultado.} $p=57.728\,\mathrm{kPa}$, $\rho=0.77677\,\mathrm{kg\,m^{-3}}$, $a=322.56\,\mathrm{m\,s^{-1}}$ y $M=0.434$.
+\item \textbf{Interpretación.} La densidad es aproximadamente el $63.4\%$ de la estándar al nivel del mar. El ensayo a esta velocidad no debe tratarse automáticamente como incompresible sin valorar la precisión buscada.
+\item \textbf{Comprobación independiente.} La ley de densidad proporciona $\rho/\rho_0=(258.90/288.15)^{4.25588}$, igual al resultado de $p/(RT)$. La inversión de \eqref{eq:04-inv} recupera $4500\,\mathrm{m}$.
+\item \textbf{Limitaciones.} El cálculo no describe la meteorología real del día y no incluye humedad, perfiles anómalos ni errores instrumentales.
+\end{enumerate}
+
+Como ejemplo de unión de capas, a $16000\,\mathrm{m}$ se usa primero la base de $11\,\mathrm{km}$ y después
+\begin{equation}
+ p_{16}=22632.1\exp\left[-\frac{9.80665\cdot5000}{287.05287\cdot216.65}\right]
+ \simeq10287.5\,\mathrm{Pa}.
+\end{equation}
+No debe utilizarse el gradiente troposférico hasta $16\,\mathrm{km}$: el modelo lo ha cambiado antes. El cálculo de la presión a una frontera por los dos tramos ofrece una prueba sencilla de continuidad.
+
+\section{Procedimiento y errores frecuentes}
+Un procedimiento robusto empieza por registrar unidades y referencia vertical; continúa identificando la capa; calcula la temperatura; integra o utiliza el perfil de presión con su base correcta; y cierra con densidad y propiedades derivadas. Solo al final redondea. Si el resultado se necesita para comparar instrumentos, conviene guardar las constantes utilizadas, pues diferentes tablas pueden redondearlas de manera distinta.
+
+Los errores más frecuentes son introducir grados Celsius en la ecuación de estado, usar kilopascales como si fueran pascales, confundir el signo del gradiente y utilizar una presión manométrica como absoluta. Otro error menos evidente consiste en aplicar una densidad estándar junto a una temperatura real y una presión real incompatibles. Un estado termodinámico solo tiene dos propiedades independientes una vez fijados composición y modelo.
+
+Una tabla puede validar el orden de magnitud, pero la concordancia exacta depende de coordenada y redondeo. Si dos cálculos difieren unas décimas de punto porcentual, se comprueban primero esas convenciones antes de atribuir la diferencia a un error de física. Si difieren por factores de mil, se revisan primero unidades de presión y altura.
+
+\section{Del estado atmosférico a la lectura de instrumentos}
+Un altímetro barométrico utiliza un mapa entre presión y altitud de referencia. Dos aeronaves en una misma superficie de presión pueden mantener una separación barométrica coherente aunque la altura geométrica de esa superficie cambie horizontalmente. Esa utilidad operacional no transforma al instrumento en un sensor directo de distancia al terreno. Si el objetivo es evitar obstáculos, hacen falta referencias y correcciones adecuadas al problema; una fórmula ISA aislada no constituye un procedimiento de navegación.
+
+De modo análogo, una indicación de velocidad basada en presión debe distinguirse de la velocidad verdadera del aire. En la aproximación incompresible, mantener una presión dinámica fija requiere $V\propto1/\sqrt{\rho}$. Por ello, la misma carga aerodinámica puede corresponder a una velocidad verdadera mayor en aire menos denso. En regímenes rápidos se añaden correcciones de compresibilidad y de instalación. La ISA proporciona una referencia para esas conversiones, pero la física de la medida sigue dependiendo del estado real.
+
+El nivel cero tampoco es sinónimo de cualquier pista. Una pista elevada tiene una presión de referencia estándar menor que $p_0$; si además el día es cálido, su densidad puede ser la equivalente a una altitud mucho mayor. Separar elevación, presión y temperatura evita atribuir todo el efecto a una sola causa. Este razonamiento prepara los capítulos de despegue y actuaciones, en los que la densidad cambia tanto las fuerzas aerodinámicas como la capacidad propulsiva.
+
+Finalmente, el modelo debe asociarse a la precisión requerida. Para una estimación inicial puede bastar interpolar una tabla; para comparar resultados de programas conviene calcular con las mismas constantes y bases de capa. Más cifras no mejoran una atmósfera real desconocida: reducen únicamente el error numérico dentro del modelo adoptado.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Calcular la temperatura ISA a $3000\,\mathrm{m}$ geopotenciales y expresarla también en grados Celsius.
+\item \textbf{Intermedio.} Hallar presión y densidad estándar a $11000\,\mathrm{m}$ y comprobar continuidad con la capa isoterma.
+\item \textbf{Examen.} A una presión de $70000\,\mathrm{Pa}$ y temperatura real de $285\,\mathrm{K}$, calcular densidad y estimar la altitud de densidad invirtiendo el primer tramo. Comparar con la altitud de presión.
+\item \textbf{Conceptual.} Explicar por qué una desviación de temperatura respecto a ISA no fija por sí sola una presión a altitud geométrica conocida.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. $268.65\,\mathrm{K}=-4.50\,{}^\circ\mathrm{C}$. 2. Aproximadamente $22632\,\mathrm{Pa}$ y $0.36392\,\mathrm{kg\,m^{-3}}$; ambos tramos comparten sus valores de base. 3. $\rho\simeq0.85564\,\mathrm{kg\,m^{-3}}$; $H_\rho\simeq3585\,\mathrm{m}$ y $H_p\simeq3012\,\mathrm{m}$, con redondeo. 4. Hace falta integrar hidrostática y fijar una condición de presión; la temperatura es solo una parte del cierre.
+
+\resumen{La ISA se construye con una ley térmica por capas, hidrostática y gas ideal. Las capas de gradiente no nulo dan leyes potenciales; las isotermas, exponenciales. La continuidad se garantiza propagando las condiciones de base. La atmósfera de referencia permite definir altitudes de presión y densidad sin afirmar que la atmósfera real sea estándar.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Qué propiedad prescrita permite cerrar el problema hidrostático estándar?
+\item ¿Cómo se detectaría un salto artificial en la unión de dos capas?
+\item ¿Por qué un día caliente puede presentar una altitud de densidad mayor que la de presión?
+\end{enumerate}

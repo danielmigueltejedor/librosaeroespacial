@@ -1,0 +1,74 @@
+\chapter{Toberas reales y expansión termoquímica}\label{ch:09}
+\objetivos{Identificar pérdidas de descarga, divergencia y viscosidad; distinguir expansión congelada, de equilibrio y de velocidad química finita; interpretar coeficientes de prestación con referencias consistentes.}
+\section{Del ideal a una descripción medible}
+El modelo ideal es útil porque separa mecanismos y permite comprobar órdenes de magnitud. La discrepancia con un ensayo no se reduce a un único rendimiento universal. Puede proceder de combustión incompleta, transferencia térmica, distribución de velocidades, capa límite, partículas, erosión, no uniformidad de cámara o error de medición. Algunos mecanismos alteran simultáneamente caudal, geometría y composición.
+
+Para analizar un ensayo se define una frontera de sistema y un conjunto de referencias: presión total o estática de cámara, área de garganta en el instante considerado, caudal de todas las corrientes consumidas y presión ambiente. Sin esas referencias, un cociente entre prestación medida e ideal mezcla fenómenos físicos con diferencias de definición.
+\section{Caudal y coeficiente de descarga}
+El coeficiente $C_d$ puede definirse mediante
+\[
+ \dot m_{real}=C_d\dot m_{ideal}(p_0,T_0,A_{t,g},R,\gamma),
+\]
+donde $A_{t,g}$ es el área geométrica. Representa una comparación concreta, no una propiedad universal del material. Si el área efectiva ya ha sido corregida por desplazamiento de capa límite, aplicar además un $C_d$ que contiene esa misma corrección duplica su efecto.
+
+A cámara y área fijas, una reducción del caudal aumenta el valor definido $c^*_{med}=p_cA_t/\dot m$. Por tanto, no toda variación de $c^*_{med}$ se interpreta directamente como cambio de eficiencia química. El valor ideal de referencia debe incorporar el mismo modelo de descarga si se pretende aislar combustión.
+
+La erosión hace variar $A_t(t)$. Usar un área inicial constante en la reducción de datos puede producir tendencias artificiales de $c^*$ y $C_F$. Sus productos aún pueden compensarse algebraicamente, pero la interpretación separada será incorrecta. Es necesario registrar la geometría utilizada, el instante y la incertidumbre.
+\section{Divergencia y distribución de velocidad}
+Una descarga inclinada transporta menos momento axial que otra con la misma rapidez y caudal paralela al eje. Para una corriente elemental,
+\[
+ dF_{cin,x}=v\cos\theta\,d\dot m.
+\]
+La integral se evalúa con la distribución real de $v$, $\theta$ y masa. En una idealización cónica con rapidez uniforme y reparto uniforme por ángulo sólido hasta semiángulo $\alpha$, el promedio es
+\begin{align}
+ \lambda&=\frac{\int_0^\alpha\cos\theta\sin\theta\,d\theta}
+ {\int_0^\alpha\sin\theta\,d\theta}
+ =\frac{1+\cos\alpha}{2},\\
+ F_{cin,x}&=\lambda\dot m v.
+\end{align}
+La fórmula pertenece a ese reparto idealizado. No debe presentarse como corrección exacta de cualquier tobera de campana, y no corrige automáticamente el empuje de presión. Reducir todo $F$ por $\lambda$ sin revisar el segundo término introduce otro modelo distinto.
+
+Una campana permite orientar la corriente de salida con menor longitud que una prolongación cónica de referencia. Su evaluación detallada necesita el campo bidimensional o tridimensional, la capa límite y restricciones estructurales. El modelo de área-Mach no determina el ángulo local del chorro.
+\section{Pérdida térmica y energética}
+Si sale calor del gas, el balance estacionario da
+\[
+ h_{0,e}=h_{0,c}+\frac{\dot Q}{\dot m},\qquad \dot Q<0
+\]
+con el signo positivo hacia el fluido. El gas dispone de menos entalpía total para acelerar. Sin embargo, una refrigeración regenerativa puede devolver parte de esa energía al propulsante antes de la cámara: para el sistema completo no equivale al calor rechazado definitivamente al exterior. La frontera de control decide qué transferencia es interna y cuál externa.
+
+Un rendimiento cinético $\eta_n=v_{real}^2/v_{is}^2$ da una relación de velocidades mediante raíz cuadrada. Un coeficiente de velocidad $C_v=v_{real}/v_{is}$ no es la misma magnitud: $\eta_n=C_v^2$ bajo referencias iguales. El uso indistinto de ambos símbolos puede generar diferencias sistemáticas en todos los resultados de un problema.
+\section{Composición congelada y equilibrio}
+La composición congelada supone que las fracciones de especies no cambian durante la expansión, aunque sus calores específicos puedan variar con temperatura. El equilibrio local supone que las reacciones se ajustan a cada nuevo estado termodinámico. En una expansión caliente, parte de la energía almacenada en disociación puede convertirse en energía térmica mediante recombinación y después en velocidad.\cite{MIT12,CEA-RP1}
+
+La comparación exige idénticos reactantes, energía inicial, cámara, presiones o geometría y convenciones de congelación. Un cálculo congelado desde cámara difiere de otro congelado después de garganta. Un programa que ofrece ambas opciones no está proporcionando dos medidas de un motor real: está resolviendo modelos constitutivos distintos.
+
+Una medida conceptual es el número de Damköhler,
+\[
+ Da=\frac{\tau_{flujo}}{\tau_{quimica}}.
+\]
+Si las reacciones relevantes son rápidas respecto al transporte, la aproximación de equilibrio puede ser razonable. Si son lentas, la composición puede permanecer próxima a congelada. Un mecanismo tiene muchas reacciones y escalas; un único $Da$ no describe por completo toda la expansión. Una zona puede aproximarse al equilibrio y otra congelarse parcialmente.
+
+No se afirmará que la prestación real de cualquier tobera queda necesariamente entre los resultados ideales congelado y de equilibrio. Las pérdidas térmicas, viscosas, de divergencia o por separación pueden situarla por debajo de ambos. El acotamiento sólo tendría sentido para una comparación química restringida que mantuviera los demás mecanismos ideales y demostrara sus condiciones.
+\section{Qué significa un gamma tabulado}
+En una mezcla reactiva pueden distinguirse derivadas congeladas y de equilibrio. El cociente $c_p/c_v$, el exponente isentrópico $-(\partial\ln p/\partial\ln v)_s$ y el parámetro utilizado en una aproximación de gas perfecto no tienen por qué ser intercambiables. La liberación de energía al cambiar especies modifica derivadas efectivas.
+
+Introducir un $\gamma$ de un estado CEA en las fórmulas de potencia constante para toda la tobera no convierte esas fórmulas en una solución de equilibrio. La expansión completa requiere integrar conservación y propiedades a lo largo del proceso, o utilizar un cálculo especializado con esa función. El capítulo de termoquímica mostrará un caso CEA de equilibrio a presión y temperatura fijadas, expresamente distinto de una simulación de motor.
+\section{Incertidumbre y trazabilidad de prestaciones}
+Para $I_{sp}=F/(\dot m g_0)$, la aproximación lineal de incertidumbre relativa es
+\[
+ \frac{u^2(I_{sp})}{I_{sp}^2}\simeq
+ \frac{u^2(F)}{F^2}+\frac{u^2(\dot m)}{\dot m^2}
+ -2\frac{\operatorname{cov}(F,\dot m)}{F\dot m}.
+\]
+La covarianza no se elimina por comodidad si ambas magnitudes dependen de una calibración común. Una incertidumbre pequeña de sensores tampoco cuantifica el error del modelo químico ni la representatividad del ensayo.
+
+Un informe reproducible debe conservar datos de entrada, versión del código, opciones de modelo, unidades, tolerancias, salida original y controles independientes. Una gráfica limpia no demuestra que se hayan conservado elementos o energía. Tampoco basta que el programa termine sin error para declarar validación experimental.
+\figura{c09}{Factor de momento axial para un reparto cónico idealizado. No corrige automáticamente empuje de presión ni representa cualquier campana.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Obtenga la corrección cónica para $\alpha=12^\circ$ y explique qué término del empuje corrige en la idealización descrita.
+\item Si $C_v=0.96$, determine $\eta_n$ y compare con el resultado erróneo de tratarlos como iguales.
+\item Enumere las referencias que deben coincidir al comparar resultados congelados y de equilibrio.
+\item Proponga una tabla de reducción de ensayo que permita distinguir área inicial, área instantánea y caudal total del sistema.
+\end{enumerate}
+\resumen{Las pérdidas no se resumen sin referencias en un rendimiento único. Descarga, velocidad y energía cinética tienen coeficientes diferentes. Equilibrio y composición congelada son modelos, no mediciones; un gamma local no convierte un cálculo de potencias constantes en termoquímica real.}

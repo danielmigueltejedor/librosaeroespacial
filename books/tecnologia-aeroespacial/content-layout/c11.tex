@@ -1,0 +1,270 @@
+\chapter{Actuaciones de aeronaves}\label{ch:11}
+\objetivos{Cerrar balances de fuerzas y energía en vuelo; relacionar velocidad, ángulo de ataque y peso; calcular resistencia y potencia necesarias; distinguir imposibilidad en un punto de vuelo e imposibilidad global; analizar ascenso, planeo y giros coordinados.}
+
+\section{Qué significa una actuación}
+Una actuación cuantifica lo que una aeronave puede conseguir bajo condiciones definidas: sostener una velocidad, ganar altura, alcanzar una distancia o cambiar de dirección. El resultado depende de masa, atmósfera, configuración, propulsión y restricciones. Una ecuación aerodinámica aislada no determina una actuación hasta que se combina con el movimiento y la capacidad de los motores. Los diagramas de prestaciones de una aeronave real incorporan además márgenes y procedimientos que el modelo introductorio no reproduce \cite{PHAK}.
+
+Usaremos $W=mg$ para el peso, $T$ para el empuje, $D$ para la resistencia, $L$ para la sustentación, $V$ para la velocidad verdadera respecto al aire y $\gamma$ para el ángulo de trayectoria, positivo en ascenso. En vuelo rectilíneo contenido en un plano vertical y con empuje paralelo a la trayectoria,
+\begin{equation}\label{eq:11-forces}
+m\dot V=T-D-W\sin\gamma,\qquad
+mV\dot\gamma=L-W\cos\gamma.
+\end{equation}
+La segunda ecuación presupone que no hay giro lateral y representa aceleración normal. Una trayectoria recta con $\gamma$ constante no exige que sea horizontal. En ascenso estacionario, $L=W\cos\gamma$, no exactamente $W$. La aproximación $L\simeq W$ es adecuada para ángulos pequeños y se declarará al utilizarla.
+
+\figura{forces}{Diagrama de fuerzas para el equilibrio horizontal: sustentación, peso, empuje y resistencia. El empuje se supone alineado con la trayectoria.}
+
+\section{Equilibrio horizontal y variables dependientes}
+En vuelo horizontal rectilíneo, uniforme y sin aceleración vertical,
+\begin{equation}\label{eq:11-level}
+L=W,\qquad T=D,\qquad C_L=\frac{2W}{\rho V^2S}.
+\end{equation}
+A peso, superficie y densidad dados, el coeficiente de sustentación no es libre una vez fijada la velocidad. Si además se conoce $C_L=a(\alpha-\alpha_{L=0})$, el equilibrio determina el ángulo de ataque. El piloto puede modificar mandos y potencia, pero el nuevo estado estacionario debe cumplir simultáneamente estas relaciones.
+
+Supongamos dos estados nivelados con igual peso y altura y una ley lineal idéntica. Entonces
+\begin{equation}\label{eq:11-alphav}
+\frac{V_2}{V_1}=\sqrt{\frac{C_{L1}}{C_{L2}}}
+=\sqrt{\frac{\alpha_1-\alpha_{L=0}}{\alpha_2-\alpha_{L=0}}}.
+\end{equation}
+Aumentar $\alpha$ exige reducir $V$ si se pretende conservar el equilibrio y todas las demás variables. Aumentarlo instantáneamente a velocidad inicialmente constante produce una fuerza normal no equilibrada y, por tanto, una maniobra transitoria. Confundir esa respuesta inicial con un nuevo crucero es un error de planteamiento. En el ejemplo del capítulo anterior, pasar de $4^\circ$ a $5^\circ$ reduce la velocidad de equilibrio de $83{,}384$ a $77{,}199\ \mathrm{m/s}$.
+
+La igualdad de altura geométrica no garantiza igual densidad en días diferentes. Si se utiliza ISA, se está introduciendo una atmósfera de referencia, no una medición meteorológica \cite{ISA1976}. Durante un cambio de velocidad a altura fija también cambia Mach y Reynolds. La relación anterior conserva valor cinemático, pero la misma pendiente aerodinámica sólo puede mantenerse dentro de un intervalo justificado.
+
+\section{Resistencia necesaria como función de la velocidad}
+Con polar $C_D=C_{D0}+KC_L^2$ y los coeficientes tratados como constantes locales, sustituimos \eqref{eq:11-level} en $D=qSC_D$:
+\begin{align}
+D(V)&=\frac12\rho SC_{D0}V^2+
+\frac{2KW^2}{\rho S V^2}\label{eq:11-dv}\\
+&=AV^2+\frac{B}{V^2},\qquad
+A=\tfrac12\rho SC_{D0},\quad B=\frac{2KW^2}{\rho S}.
+\end{align}
+El primer término aumenta con velocidad: mantener un coeficiente constante requiere una fuerza proporcional a la presión dinámica. El segundo aumenta al disminuir velocidad, porque hace falta más $C_L$ para sostener el peso. Aquí $B$ contiene el término cuadrático total de la polar; no debe denominarse automáticamente resistencia inducida pura. Las unidades de $A$ son $\mathrm{kg/m}$ y las de $B$ son $\mathrm{N\,m^2/s^2}$, de forma que ambos términos son fuerzas.
+\figura{drag}{Resistencia necesaria, sus contribuciones y mínimo para vuelo horizontal.}
+
+Derivando respecto a $V$, el mínimo cumple $AV^4=B$:
+\begin{equation}\label{eq:11-dmin}
+V_{D\min}=\left(\frac BA\right)^{1/4},\qquad
+D_{\min}=2\sqrt{AB}=2W\sqrt{C_{D0}K}.
+\end{equation}
+La resistencia mínima aumenta proporcionalmente al peso en este modelo, mientras que la velocidad correspondiente aumenta con $\sqrt W$. A igual peso y coeficientes, una menor densidad aumenta la velocidad verdadera del óptimo, pero no su resistencia. En cambio, la capacidad propulsiva sí puede cambiar con densidad, temperatura y velocidad.
+
+La velocidad de pérdida idealizada procede de $C_{L,\max}$:
+\begin{equation}
+V_s=\sqrt{\frac{2W}{\rho S C_{L,\max}}}.
+\end{equation}
+Es una condición de sustentación, no una garantía de control ni una velocidad operativa recomendada. Los límites de Mach, presión dinámica, estructura y control pueden cerrar otras partes de la envolvente. Si el mínimo matemático queda por debajo de $V_s$, sólo es físicamente accesible la rama restante.
+
+\section{Empuje y potencia disponibles}
+La potencia transmitida al movimiento del avión por el empuje es $P_T=TV$. La potencia necesaria para equilibrar la resistencia es
+\begin{equation}
+P_R=DV=AV^3+\frac BV.
+\end{equation}
+Su mínimo satisface $3AV^4=B$, por lo que
+\begin{equation}
+V_{P\min}=3^{-1/4}V_{D\min}.
+\end{equation}
+Mínima resistencia y mínima potencia corresponden a puntos distintos. En una hélice, la potencia al eje y la potencia propulsiva se relacionan mediante una eficiencia $\eta_p$; el empuje es aproximadamente $\eta_pP_{\mathrm{eje}}/V$ cuando esa representación es adecuada. No es correcto igualar directamente potencia de motor y $DV$ sin considerar esa eficiencia. En un reactor, la curva disponible suele analizarse primero como empuje, aunque tampoco es universalmente constante con velocidad.
+
+Si adoptamos para un intervalo un empuje disponible constante $T_A$, los puntos de equilibrio son las intersecciones $T_A=D(V)$. Definiendo $x=V^2$,
+\begin{equation}\label{eq:11-roots}
+Ax^2-T_Ax+B=0,\qquad
+V^2=\frac{T_A\pm\sqrt{T_A^2-4AB}}{2A}.
+\end{equation}
+Existe solución real si $T_A\geq D_{\min}$. Esta condición es necesaria dentro del modelo, pero cada raíz debe pasar las restricciones de pérdida y Mach. El signo positivo suele dar la mayor velocidad de equilibrio para esa curva idealizada. En motores reales se resuelve la intersección con $T_A(V,h)$ y no una ecuación cuadrática de coeficientes constantes.
+\figura{thrust}{Intersección de empuje disponible y resistencia necesaria: existencia y límites de los puntos de equilibrio.}
+
+Si falta empuje en un punto, pueden existir otros puntos nivelados a velocidades distintas. Declarar ``no puede mantener altura'' exige comprobar toda la región admisible, no sólo comparar $T$ y $D$ a la velocidad inicial. Cerca de la rama lenta, reducir velocidad puede aumentar la resistencia necesaria; una intuición basada únicamente en resistencia parásita resulta insuficiente.
+
+\section{Ascenso y balance de energía}
+En ascenso estacionario con empuje alineado, $T-D=W\sin\gamma$. La velocidad vertical es $\dot h=V\sin\gamma$, de donde
+\begin{equation}\label{eq:11-climb}
+\dot h=\frac{(T-D)V}{W}=\frac{P_{\mathrm{exceso}}}{W}.
+\end{equation}
+Para ascensos poco pronunciados se evalúa $D$ con $L\simeq W$. El máximo ángulo de ascenso se asocia a maximizar $(T-D)/W$, mientras que el máximo régimen de ascenso se asocia a maximizar $(T-D)V/W$. No tienen por qué ocurrir a igual velocidad. Un obstáculo cercano exige considerar gradiente; ganar altura en el menor tiempo exige considerar régimen vertical.
+
+La forma energética más general, despreciando variaciones pequeñas de $g$ y con masa aproximadamente constante, es
+\begin{equation}
+\frac{\mathrm d}{\mathrm dt}\left(h+\frac{V^2}{2g}\right)
+=\frac{(T-D)V}{W}.
+\end{equation}
+El exceso de potencia puede convertirse en altura o en energía cinética. Por ello una aeronave puede ascender transitoriamente aun cuando el motor no sostenga ese ascenso de manera indefinida: consume velocidad. A la inversa, puede acelerar en descenso aprovechando energía potencial. Si el consumo cambia apreciablemente la masa, el análisis necesita actualizar peso y condiciones; la ecuación anterior se interpreta entonces de forma local.
+
+\section{Planeo y alcance sin empuje}
+En planeo rectilíneo estacionario, sea $\theta>0$ el ángulo de descenso. Los balances dan $L=W\cos\theta$ y $D=W\sin\theta$. Por tanto,
+\begin{equation}
+\tan\theta=\frac DL=\frac1E.
+\end{equation}
+En aire inmóvil, la distancia horizontal recorrida desde una altura utilizable $h$ es $R=hE$ si el ángulo permanece constante. La mejor eficiencia proporciona el mayor alcance geométrico con esas hipótesis. Para un descenso pequeño puede evaluarse la velocidad con $L\simeq W$; para mayor precisión se usa $W\cos\theta$.
+
+El tiempo de permanencia depende de la velocidad vertical, no sólo del alcance. La mínima tasa de descenso se relaciona con mínima potencia requerida y exige un análisis coherente del planeo. Un viento horizontal modifica alcance sobre el terreno aunque no altere directamente la polar aerodinámica. Viento de cara reduce distancia recorrida por unidad de altura para una velocidad determinada; viento de cola la aumenta. Corrientes verticales y maniobras invalidan un cálculo basado exclusivamente en $hE$.
+
+\section{Giros coordinados y factor de carga}
+Un giro coordinado ideal carece de resbalamiento y se mantiene en un plano horizontal. La sustentación se inclina un ángulo de alabeo $\phi$. Su componente vertical equilibra el peso y su componente horizontal produce la aceleración centrípeta:
+\begin{equation}
+L\cos\phi=W,\qquad L\sin\phi=\frac{mV^2}{r}.
+\end{equation}
+Se deducen el factor de carga $n=L/W$, el radio y la velocidad angular del giro:
+\begin{equation}\label{eq:11-turn}
+n=\frac1{\cos\phi},\qquad r=\frac{V^2}{g\tan\phi},\qquad
+\dot\psi=\frac{g\tan\phi}{V}.
+\end{equation}
+$V$ es velocidad respecto a la masa de aire. Con viento uniforme, la trayectoria sobre el terreno puede dejar de ser circular aunque el giro respecto al aire conserve radio constante. No se debe sustituir la velocidad sobre el suelo dentro del balance centrípeto sin transformar el problema.
+
+Para sostener un giro a igual velocidad se requiere $n$ veces el coeficiente de sustentación del vuelo horizontal. Si se conserva $C_{L,\max}$, $V_{s,n}=V_s\sqrt n$. En el modelo parabólico,
+\begin{equation}
+D_{\mathrm{giro}}=AV^2+\frac{Bn^2}{V^2},\quad
+D_{\min,n}=nD_{\min},\quad
+V_{D\min,n}=\sqrt n\,V_{D\min}.
+\end{equation}
+Aumentar alabeo no sólo exige más sustentación: incrementa la resistencia dependiente de carga y el empuje requerido. El límite estructural de $n$ y la pérdida delimitan regiones distintas de la envolvente. Un giro instantáneo puede usar energía disponible; un giro sostenido exige además equilibrio energético.
+
+\section{Peso, altitud y formas adimensionales}
+La resistencia horizontal puede expresarse sin velocidad explícita como $D/W=C_{D0}/C_L+KC_L$. Esta forma muestra que, con la misma polar, el valor óptimo de $C_L$ no depende del peso. El peso fija después la presión dinámica necesaria para alcanzarlo. Es una separación útil entre una propiedad del modelo aerodinámico y una condición de operación: el avión más pesado necesita volar más rápido para ocupar el mismo punto adimensional de la polar.
+
+Si se define una velocidad equivalente por $V_E=V\sqrt{\rho/\rho_0}$, la presión dinámica se escribe $q=\rho_0V_E^2/2$. A igual peso y coeficiente, la velocidad equivalente permanece constante en el modelo aunque la verdadera aumente al disminuir densidad. No debe identificarse sin más velocidad equivalente con lectura indicada de un instrumento: las correcciones de instrumento, posición y compresibilidad pertenecen a otro paso. La distinción es especialmente importante cuando el número de Mach deja de ser pequeño.
+
+Una subida de altitud puede desplazar hacia velocidades verdaderas mayores la condición aerodinámica óptima mientras reduce empuje disponible. El techo resulta de la interacción de ambas tendencias y del criterio de ascenso elegido. No se obtiene sólo de la densidad a la que el ala deja de sustentar: aumentando velocidad puede producirse sustentación, pero quizá no quede potencia, control o margen de Mach suficiente. La envolvente es el conjunto de todas las restricciones simultáneas.
+
+Para cambios de masa por consumo o descarga, el peso debe actualizarse en el término $B$, que es proporcional a $W^2$. A velocidad fija, reducir peso disminuye la resistencia dependiente de sustentación, pero no elimina el término $AV^2$. Si el empuje disponible queda por debajo de ese término, ni siquiera un peso idealmente muy pequeño cerraría el equilibrio en ese punto. Esta cota permite diagnosticar un problema antes de despejar masas o pedir una descarga imposible.
+
+\section{Diagnóstico de una pérdida de empuje}
+Una secuencia ordenada empieza por definir si se desea mantener simultáneamente velocidad y altura. Para ese estado se calcula el $C_L$ requerido y se comprueba $T_A\geq D$. Si la desigualdad falla, se busca otra velocidad admisible mediante la curva completa. Para empuje constante, comparar con $D_{\min}$ identifica la existencia algebraica de equilibrios; después se aplican pérdida, Mach y demás límites. Para empuje variable, la comparación se realiza punto a punto o con un método de raíces.
+
+Si no existe vuelo horizontal admisible, puede estudiarse descenso o planeo. Una potencia residual reduce la tasa de descenso respecto al planeo sin empuje, pero un motor averiado también puede añadir resistencia que no estaba en la polar limpia. La configuración de hélice, carenados o superficies dañadas exige datos adicionales. Aplicar la eficiencia original como si nada hubiera cambiado puede sobreestimar el alcance.
+
+El alcance a una pista exige además altura utilizable, distancia y viento, así como la posibilidad geométrica de maniobrar. Una pista situada a una distancia menor que $hE$ en aire inmóvil pasa sólo una primera prueba ideal de alcance. Si se llega a su vertical sin altura para organizar la aproximación, la comparación escalar no ha resuelto el problema operacional. La función del modelo básico es establecer órdenes de magnitud y reconocer qué información adicional cambia la conclusión.
+
+Un cálculo coherente debe diferenciar margen físico y margen de operación. En el segundo problema, estar sólo $1{,}60\ \mathrm{m/s}$ por encima de la velocidad de pérdida del giro no autoriza a recomendar esa condición. Aquí se compara un límite matemático con un estado para entender el mecanismo; una recomendación operativa requeriría datos y procedimientos de la aeronave concreta. Del mismo modo, una raíz rápida dentro del intervalo de la polar sigue siendo una predicción condicionada a la curva propulsiva supuesta.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto 1: dos raíces y una envolvente física}
+\begin{studiumworked}{Problema resuelto 1: dos raíces y una envolvente física}
+
+\paragraph{1. Enunciado.} Determine las velocidades de equilibrio y la máxima velocidad posible en un modelo de empuje constante. Decida si una raíz lenta queda excluida por la pérdida.
+\paragraph{2. Datos.} $W=40000\ \mathrm N$, $\rho=0{,}950\ \mathrm{kg/m^3}$, $S=24{,}36\ \mathrm{m^2}$, $C_{D0}=0{,}0280$, $K=0{,}0519571$, $T_A=3800\ \mathrm N$ y $C_{L,\max}=1{,}40$. Se supone validez de la polar hasta $M=0{,}30$ con $T_{\mathrm{aire}}=275\ \mathrm K$.
+\paragraph{3. Incógnitas.} $A,B,D_{\min},V_-,V_+,V_s$ y raíz físicamente admisible.
+\paragraph{4. Esquema verbal.} Una curva de empuje horizontal corta dos veces la curva de resistencia en forma de U; una frontera adicional elimina velocidades con sustentación insuficiente.
+\paragraph{5. Hipótesis.} Vuelo horizontal, configuración fija, empuje independiente de velocidad sólo en este intervalo, y coeficientes constantes hasta el límite de Mach declarado.
+\paragraph{6. Modelo físico.} Equilibrio longitudinal y vertical, más una restricción de coeficiente máximo.
+\paragraph{7. Ecuaciones simbólicas.} Se usan \eqref{eq:11-dv}, \eqref{eq:11-roots} y \[V_s=\sqrt{2W/(\rho SC_{L,\max})}.\]
+\paragraph{8. Despeje.} Se resuelve la cuadrática en $V^2$ y se toma después la raíz positiva de cada solución. No se acepta una raíz sólo porque sea real.
+\paragraph{9. Sustitución.} $A=0{,}323988\ \mathrm{kg/m}$, $B=7{,}184455\,10^6\ \mathrm{N\,m^2/s^2}$ y $D_{\min}=3051{,}35\ \mathrm N<3800\ \mathrm N$.
+\paragraph{10. Resultado con unidades.} $V_-=48{,}675\ \mathrm{m/s}$, $V_+=96{,}745\ \mathrm{m/s}$ y $V_s=49{,}691\ \mathrm{m/s}$. Sólo la raíz rápida es admisible. Usando $a_s=\sqrt{1{,}4\Raire T}$, su Mach es aproximadamente $0{,}291$, dentro del límite supuesto.
+\paragraph{11. Interpretación.} El modelo permite vuelo nivelado hasta la intersección rápida. La intersección lenta requeriría un $C_L$ superior al máximo. Entre las intersecciones matemáticas hay exceso de empuje si se aplica toda la potencia supuesta.
+\paragraph{12. Comprobación independiente.} Sustituir cualquiera de las dos velocidades en $AV^2+B/V^2$ devuelve $3800\ \mathrm N$. En la rápida, $C_L=2W/(\rho SV_+^2)\simeq0{,}3693<1{,}40$; en la lenta resulta aproximadamente $1{,}459>1{,}40$.
+\paragraph{13. Limitaciones.} La velocidad máxima real podría estar limitada antes por control, estructura, compresibilidad o una curva de motor diferente. La polar constante aquí es un dato idealizado, no una predicción transónica.
+
+\end{studiumworked}
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto 2: giro sostenible frente a giro instantáneo}
+\begin{studiumworked}{Problema resuelto 2: giro sostenible frente a giro instantáneo}
+
+\paragraph{1. Enunciado.} A $55\ \mathrm{m/s}$ se ordena un giro coordinado de $30^\circ$ con la aeronave anterior y $4000\ \mathrm N$ disponibles. Determine si puede mantenerse nivelado a esa velocidad y si existe otra velocidad que permita sostener el giro.
+\paragraph{2. Datos.} Los aerodinámicos anteriores, $V=55\ \mathrm{m/s}$, $\phi=30^\circ$, $T_A=4000\ \mathrm N$ y $g=9{,}80665\ \mathrm{m/s^2}$.
+\paragraph{3. Incógnitas.} $n,r,C_L,D_{\mathrm{giro}}$, margen respecto a pérdida y condición alternativa sostenible.
+\paragraph{4. Esquema verbal.} La sustentación inclinada equilibra verticalmente el peso y acelera horizontalmente hacia el centro del giro.
+\paragraph{5. Hipótesis.} Giro coordinado, atmósfera quieta, altura fija, respuesta cuasiestacionaria y mismo límite de sustentación.
+\paragraph{6. Modelo físico.} Balance centrípeto y polar con $L=nW$; el equilibrio longitudinal requiere empuje igual a la resistencia.
+\paragraph{7. Ecuaciones simbólicas.} \[\begin{aligned}n&=1/\cos\phi,& r&=V^2/(g\tan\phi),\\ C_L&=nW/(qS),& D&=AV^2+Bn^2/V^2.\end{aligned}\]
+\paragraph{8. Despeje.} Para comprobar existencia global se calculan además $D_{\min,n}=nD_{\min}$ y $V_{D\min,n}=\sqrt nV_{D\min}$.
+\paragraph{9. Sustitución.} $n=1{,}15470$, $r=55^2/[9{,}80665\tan(30^\circ)]$ y $C_L=1{,}31957$.
+\paragraph{10. Resultado con unidades.} $r=534{,}28\ \mathrm m$, $D=4146{,}77\ \mathrm N$ y $V_{s,n}=53{,}397\ \mathrm{m/s}$. A $55\ \mathrm{m/s}$ el giro está por encima de pérdida pero faltan $146{,}77\ \mathrm N$. En cambio, a $73{,}740\ \mathrm{m/s}$ la resistencia mínima del giro es $3523{,}39\ \mathrm N$, menor que la disponible.
+\paragraph{11. Interpretación.} No puede mantenerse ese giro a la velocidad inicial con el empuje dado, pero sí existe un giro nivelado del mismo alabeo a otra velocidad. Un giro transitorio puede consumir energía cinética.
+\paragraph{12. Comprobación independiente.} $L\sin\phi=(W/g)V^2/r$ reproduce el radio. La diferencia de fuerzas a $55\ \mathrm{m/s}$ equivale a $-8072\ \mathrm W$ de potencia, coherente con una pérdida de energía si se insiste en esa condición.
+\paragraph{13. Limitaciones.} No se ha modelado la transición entre velocidades, ni márgenes operativos respecto a pérdida, ni restricciones de motor durante el giro.
+
+\end{studiumworked}
+
+\section{Alcance y autonomía: comenzar por el consumo}\label{sec:11-breguet}
+El alcance es distancia recorrida y la autonomía es tiempo de vuelo. Un mismo estado aerodinámico puede optimizar una y empeorar la otra. Antes de invocar una fórmula de Breguet hay que precisar si el combustible se consume aproximadamente en proporción al empuje o a la potencia de eje, qué rendimiento se supone constante y cómo cambia el peso. Tampoco es equivalente alcance respecto al aire y sobre el suelo: las relaciones siguientes suponen viento nulo.
+
+Para un reactor se define aquí consumo específico másico por empuje $c_m=\dot m_f/T$, en $\mathrm{kg/(N\,s)}$. Con $W=mg$ y gravedad aproximadamente constante,
+\begin{equation}
+\frac{dW}{dt}=-g c_m T.
+\end{equation}
+El producto $gc_m$ tiene unidad $\mathrm{s^{-1}}$. Algunos libros denominan consumo específico a ese producto, porque utilizan caudal de peso en lugar de caudal de masa. Copiar una fórmula sin identificar cuál de las dos definiciones se usa introduce un factor $g$ incorrecto. La definición escrita debe acompañar siempre al valor numérico.
+
+En crucero cuasiestacionario, con empuje horizontal y $E=L/D$, se aproxima $L=W$ y $T=D=W/E$. El cambio de peso es suficientemente lento para tratar cada instante como un equilibrio. De ahí,
+\begin{equation}
+ dt=-\frac{E}{gc_m}\frac{dW}{W},\qquad
+ dx=-\frac{VE}{gc_m}\frac{dW}{W}.
+\end{equation}
+Estas son las relaciones diferenciales de partida. Sólo se pueden sacar $V$, $E$ o $c_m$ fuera de una integral si se han mantenido constantes o si la aproximación se justifica. Si $E,c_m$ son constantes, la autonomía es
+\begin{equation}\label{eq:11-endjet}
+ t=\frac{E}{gc_m}\ln\frac{W_i}{W_f}.
+\end{equation}
+Si además la TAS permanece constante,
+\begin{equation}\label{eq:11-rangejet}
+ R=\frac{VE}{gc_m}\ln\frac{W_i}{W_f}.
+\end{equation}
+Ambas expresiones son positivas para $W_i>W_f>0$. Cuando el combustible disponible tiende a cero, el logaritmo tiende a cero. Las unidades de la primera son segundos y las de la segunda, metros. El peso final incluye estructura, carga y combustible que quede; no es simplemente la masa seca del motor.
+
+La hipótesis de $V$ y $E$ constantes necesita un programa de vuelo compatible. Con polar fija y $C_L$ constante, mantener TAS exige que $\rho$ disminuya con el peso: puede idealizar una subida progresiva durante crucero. Mantener simultáneamente altitud, TAS, $C_L$ y peso decreciente no satisface $W=\rho V^2SC_L/2$. Una fórmula correcta puede utilizarse de forma físicamente contradictoria si se ignora esta dependencia.
+
+\subsection{Reactor a altitud y coeficiente constantes}
+Si en cambio se mantienen densidad y $C_L$ constantes, la velocidad cambia con la raíz del peso:
+\begin{equation}
+ V=\sqrt{\frac{2W}{\rho S C_L}}.
+\end{equation}
+Integrando la relación de distancia con $E$ y $c_m$ constantes,
+\begin{equation}\label{eq:11-rangejetH}
+ R=\frac{2E}{gc_m}\sqrt{\frac{2}{\rho SC_L}}
+ (\sqrt{W_i}-\sqrt{W_f}).
+\end{equation}
+No debe confundirse con la forma logarítmica de TAS constante. Para variaciones pequeñas de peso pueden aproximarse entre sí usando una velocidad representativa, pero en ese caso debe cuantificarse el error o declararse la estimación.
+
+A un peso y altitud dados, el alcance específico instantáneo de un reactor es proporcional a $VE$, si $c_m$ se toma constante. Al sustituir $V\propto C_L^{-1/2}$, se maximiza $\sqrt{C_L}/C_D$. Para polar parabólica,
+\begin{equation}
+ \frac{d}{dC_L}\frac{\sqrt{C_L}}{C_{D0}+KC_L^2}=0
+ \quad\Longrightarrow\quad C_{L,R,\mathrm{reactor}}=
+ \sqrt{\frac{C_{D0}}{3K}}.
+\end{equation}
+La autonomía instantánea, en cambio, mejora minimizando empuje y consumo, lo que conduce al máximo $E$ y a $C_L=\sqrt{C_{D0}/K}$. Estos óptimos son locales y condicionados: variaciones de consumo con Mach y altitud, límites de motor, reservas y envolvente pueden desplazarlos. No se deduce una recomendación de vuelo de una polar aislada.
+
+\subsection{Hélice y consumo por potencia}
+Para un motor que entrega potencia de eje se usa $c_P=\dot m_f/P_{\mathrm{eje}}$, en $\mathrm{kg/J}$ o, de manera equivalente, $\mathrm{kg/(W\,s)}$. Un dato en $\mathrm{kg/kWh}$ debe dividirse por $3.6\times10^6$ para expresarlo en kg/J. Si la hélice tiene rendimiento propulsivo $\eta_p$, entonces $P_{\mathrm{eje}}=DV/\eta_p$ en crucero y
+\begin{equation}
+ \frac{dW}{dt}=-\frac{gc_PWV}{\eta_p E},\qquad
+ \frac{dW}{dx}=-\frac{gc_PW}{\eta_p E}.
+\end{equation}
+Con $c_P,\eta_p,E$ constantes se obtiene
+\begin{equation}\label{eq:11-rangeprop}
+ R=\frac{\eta_p E}{gc_P}\ln\frac{W_i}{W_f}.
+\end{equation}
+El factor $1/(gc_P)$ tiene dimensión de longitud. La cancelación de $V$ procede de consumir combustible en proporción a potencia de eje y de convertir tiempo en distancia; no significa que una hélice real mantenga iguales consumos y rendimientos a cualquier velocidad.
+
+A peso y densidad dados, el máximo alcance específico de hélice se relaciona con máximo $E$. Para máxima autonomía interesa minimizar potencia necesaria, de modo que se maximiza $C_L^{3/2}/C_D$. La condición parabólica es $C_L=\sqrt{3C_{D0}/K}$, que corresponde a $V_{P\min}$. El óptimo puede quedar fuera de la región adherida o demasiado próximo a la pérdida. El rendimiento de hélice y el consumo del motor dependen del punto de operación; si no son constantes, es su combinación completa la que debe optimizarse.
+
+\caja{Cuatro óptimos bajo hipótesis explícitas}{Con peso y densidad instantáneos fijados, polar parabólica y consumos/rendimiento constantes: autonomía de reactor, máximo $C_L/C_D$; alcance de reactor, máximo $\sqrt{C_L}/C_D$; alcance de hélice, máximo $C_L/C_D$; autonomía de hélice, máximo $C_L^{3/2}/C_D$. Son cuatro problemas de optimización del consumo, no cuatro nombres para una misma velocidad.}
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto 3: alcance y significado de consumo}
+\begin{studiumworked}{Problema resuelto 3: alcance y significado de consumo}
+
+\paragraph{1. Enunciado.} Estime el alcance ideal de crucero de un reactor con un programa compatible con TAS y eficiencia constantes. Determine también su autonomía y el combustible utilizado.
+\paragraph{2. Datos.} $W_i=36000\,\mathrm N$, $W_f=33000\,\mathrm N$, $V=100\,\mathrm{m/s}$, $E=15$ y $c_m=1.6\times10^{-5}\,\mathrm{kg/(N\,s)}$; $g=g_0$.
+\paragraph{3. Incógnitas.} Alcance respecto al aire en calma, tiempo y masa de combustible consumida.
+\paragraph{4. Esquema verbal.} Un conjunto de estados de crucero pierde peso lentamente; la densidad se ajusta de forma compatible con velocidad y coeficiente constantes.
+\paragraph{5. Hipótesis.} Viento nulo, consumo y polar constantes, ascenso de crucero suficientemente pequeño para despreciar su componente de peso en el balance de empuje; sin segmentos de despegue, ascenso inicial o reserva.
+\paragraph{6. Modelo.} Equilibrio cuasiestacionario y balance de masa de combustible; el modelo ideal aproxima la trayectoria real y exige una revisión de prestaciones para aplicarse a una aeronave.
+\paragraph{7. Ecuaciones simbólicas.} $dW/dt=-gc_m W/E$, $R=Vt$ y $m_f^{\mathrm{cons}}=(W_i-W_f)/g$.
+\paragraph{8. Despeje.} Integrar entre ambos pesos produce $t=E\ln(W_i/W_f)/(gc_m)$ y después $R=Vt$.
+\paragraph{9. Sustitución.}
+\[
+ t=\frac{15}{9.80665(1.6\times10^{-5})}\ln\frac{36000}{33000}.
+\]
+\paragraph{10. Resultado.} $t\approx8318.15\,\mathrm s=2.311\,\mathrm h$, $R\approx831.815\,\mathrm{km}$ y $m_f^{\mathrm{cons}}\approx305.915\,\mathrm{kg}$.
+\paragraph{11. Interpretación.} Es alcance ideal del segmento modelado, no alcance operacional total. El consumo por empuje no debe introducirse como si estuviera expresado en inversos de segundo: primero aparece el factor $g$.
+\paragraph{12. Comprobación independiente.} Resolver la ecuación diferencial de peso da $W(t)=W_i\exp[-gc_mt/E]$; al sustituir el tiempo hallado se recupera $33000\,\mathrm N$. Una integración numérica del balance diferencial reproduce tiempo y alcance; sus resultados y residuo están en el informe científico.
+\paragraph{13. Limitaciones.} La eficiencia y consumo reales cambian, la subida de crucero no es estrictamente horizontal y otras fases consumen combustible. El balance energético completo de esa trayectoria queda fuera de esta estimación. Un cálculo de misión exige incluirlo junto a reservas y restricciones.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Si el peso aumenta un $21\%$, ¿cómo cambia $V_s$ con igual atmósfera y configuración? Respuesta: aumenta un $10\%$.
+\item Para $T-D=900\ \mathrm N$, $V=60\ \mathrm{m/s}$ y $W=30000\ \mathrm N$, calcule régimen de ascenso estacionario. Respuesta: $1{,}80\ \mathrm{m/s}$.
+\item Un planeador tiene $E=28$ y altura utilizable $1200\ \mathrm m$. Estime el alcance sin viento. Respuesta: $33{,}6\ \mathrm{km}$, sin reservas ni maniobras.
+\item Calcule $n$ a $60^\circ$ y el aumento de velocidad de pérdida. Respuesta: $n=2$, factor $\sqrt2$.
+\item Una polar constante predice $M=0{,}82$, pero fue validada hasta $M=0{,}30$. ¿Qué puede concluirse? Guía: sólo una raíz formal fuera del dominio; hacen falta coeficientes dependientes de Mach y una curva de empuje adecuada.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{Las actuaciones resultan de combinar aerodinámica, propulsión y dinámica. En vuelo nivelado, velocidad y coeficiente de sustentación están ligados por el peso. El mínimo de resistencia difiere del mínimo de potencia. La existencia de una raíz debe contrastarse con pérdida y otros límites. Los giros aumentan carga y resistencia; ascenso y aceleración comparten el exceso de potencia disponible.}
+¿Qué se modifica al aumentar ángulo de ataque y conservar peso y altura en un nuevo equilibrio? ¿Por qué hay dos intersecciones matemáticas con empuje constante? ¿Puede un avión mantener altura a otra velocidad si pierde empuje en su estado inicial? ¿Qué diferencia un giro posible instantáneamente de otro sostenible?

@@ -1,0 +1,65 @@
+\chapter{Dinámica, estabilidad y límites termoestructurales}\label{ch:13}
+\objetivos{Linealizar un equilibrio concentrado; separar estabilidad de presión media y combustión acústica; relacionar escalas térmicas y mecánicas sin utilizar modelos elementales como certificación estructural.}
+\section{Estabilidad local de un equilibrio concentrado}
+En el modelo normalizado \eqref{eq:solidNorm}, tomemos área fija $a=1$ y equilibrio $P=1$. Escribamos $P=1+\delta$, con $|\delta|\ll1$. La expansión binomial da
+\[
+ P^n=1+n\delta+O(\delta^2),
+\]
+y la ecuación linealizada es
+\[
+ \frac{d\delta}{d\theta}=(n-1)\delta.
+\]
+Por integración,
+\begin{equation}\label{eq:solidStability}
+ \delta(\theta)=\delta(0)e^{-(1-n)\theta}.
+\end{equation}
+Para $n<1$ las perturbaciones pequeñas decaen dentro de este modelo de un único estado, volumen fijo, temperatura constante y descarga ahogada. El tiempo de relajación dimensional es $\tau_0/(1-n)$. Acercarse a uno aumenta a la vez sensibilidad estática y lentitud de recuperación.
+
+Para $n=1$, la linealización es neutra y la existencia del equilibrio depende del coeficiente de generación respecto a descarga. Para $n>1$, la perturbación crece en el modelo. Estas conclusiones no autorizan a clasificar un motor real como estable o inestable sólo por su exponente medio. La dinámica térmica de superficie, el acoplamiento acústico y los retardos no están representados.
+\section{Respuesta a una perturbación geométrica}
+Si $a=1+\epsilon$ y $P=1+\delta$, a primer orden,
+\[
+ \frac{d\delta}{d\theta}=\epsilon-(1-n)\delta.
+\]
+Para escalón constante y condición $\delta(0)=0$,
+\[
+ \delta(\theta)=\frac{\epsilon}{1-n}
+ \left[1-e^{-(1-n)\theta}\right].
+\]
+El límite $\epsilon/(1-n)$ coincide con la expansión lineal de la solución cuasiestacionaria $(1+\epsilon)^{1/(1-n)}-1$. Esa coincidencia es una verificación cruzada entre cálculo diferencial y equilibrio algebraico. Para perturbaciones grandes se compara con la ecuación no lineal, porque los términos de orden superior pueden ser relevantes.
+\section{Presión media y modos acústicos}
+Una cámara real admite distribuciones espaciales. Las fluctuaciones de presión pueden acoplarse a liberación de calor y a la respuesta de la superficie. Un modelo acústico elemental sin flujo medio satisface
+\[
+ \frac{\partial^2p'}{\partial t^2}=a^2\nabla^2p'
+\]
+con condiciones de contorno apropiadas. Las frecuencias no dependen sólo del volumen: también de la geometría, impedancias, velocidad del sonido y acoplamientos. Un gas caliente no uniforme requiere una descripción más rica.
+
+La idea energética es que la liberación de calor en fase con una presión elevada puede alimentar una oscilación. Para una descripción termoacústica, el signo de un promedio espacial y temporal de $p'\dot q'$ es un indicador de aporte o extracción de energía acústica, bajo las hipótesis que permiten construir ese balance. No es un criterio completo si se omiten pérdidas, fronteras y transporte. Este razonamiento se retoma para motores líquidos.\cite{MIT22,MIT23}
+\section{Flujo erosivo y partículas}
+Una corriente gaseosa sobre una superficie puede modificar su intercambio térmico y la tasa de regresión. Esa dependencia no está contenida en una ley que sólo utiliza presión. Sustituirla por un cambio arbitrario de $n$ puede ajustar una curva, pero no identifica ni predice el mecanismo fuera de los datos.
+
+Los productos condensados pueden intercambiar momento y calor con el gas y acumularse en ciertas regiones. Las partículas con velocidad inferior a la del gas reducen el momento axial respecto a un modelo de equilibrio mecánico perfecto. La masa total sigue conservándose: la diferencia está en cómo se reparte su energía y velocidad. Un modelo bifásico requiere tamaños, propiedades y escalas de relajación; no se deduce con una simple corrección de masa molar.\cite{MIT06}
+\section{Integridad y escalas térmicas}
+La envolvente soporta carga de presión y restricciones térmicas. Como referencia mecánica elemental, una membrana cilíndrica delgada, lejos de extremos y discontinuidades, cumple
+\[
+ \sigma_\theta\simeq\frac{pr}{t},\qquad
+ \sigma_z\simeq\frac{pr}{2t}
+\]
+para extremos cerrados y carga interna diferencial $p$. Estas igualdades se obtienen equilibrando la fuerza de presión con las tracciones de membrana. Exigen $t/r\ll1$, geometría regular y ausencia de concentraciones. No representan juntas, cierres, gradientes térmicos ni materiales compuestos anisótropos.
+
+La conducción transitoria tiene profundidad característica $\ell_{th}\sim\sqrt{\alpha t_{exp}}$. Un espesor grande respecto a esa escala puede mantener una zona posterior relativamente fría durante un intervalo, pero no establece por sí solo una temperatura admisible. Hace falta resolver condiciones iniciales y de contorno, propiedades dependientes de temperatura y posibles cambios de fase.
+
+La ablación consume o transforma material y modifica la frontera térmica. Una protección aislante reduce flujo hacia la estructura; una masa absorbente acumula energía sensible; una superficie radiante rechaza energía al entorno. Sus balances son diferentes. Hablar genéricamente de refrigeración sin distinguir el destino de la energía impide comprobar conservación.\cite{MIT10}
+\section{Integración de prestaciones y dispersión}
+El impulso total se calcula como $I=\int C_F(t)p_c(t)A_t(t)\,dt$. Una curva de área progresiva no permite integrar el empuje sin la evolución temporal de presión, garganta y ambiente. Si se emplea un promedio, debe declararse qué señal se promedia y durante qué intervalo.
+
+La dispersión de propiedades puede amplificarse por la sensibilidad $1/(1-n)$. En un estudio docente se pueden propagar incertidumbres mediante derivadas o muestreo de parámetros normalizados, conservando sus correlaciones y dominios. Un conjunto de curvas numéricas no representa una distribución real de fabricación si los parámetros no provienen de datos.
+\figura{c13}{Estabilidad local de un único estado con temperatura y volumen fijos. No evalúa modos acústicos ni certifica estabilidad de combustión.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive el tiempo de relajación y compare $n=0.30$ con $n=0.80$ en unidades de $\tau_0$.
+\item Calcule el error de la aproximación lineal del equilibrio para $a=1.1$, $n=0.4$.
+\item Explique por qué una presión media que vuelve al equilibrio no descarta una oscilación acústica creciente.
+\item Distinga aislamiento, acumulación sensible y ablación escribiendo un término energético característico de cada mecanismo.
+\end{enumerate}
+\resumen{La estabilidad de un estado concentrado es una conclusión limitada a sus variables e hipótesis. La cámara puede tener modos espaciales ausentes del modelo medio. Integridad, transferencia térmica y dispersión requieren información adicional; las relaciones elementales permiten interpretar tendencias y comprobar balances, no certificar un motor.}

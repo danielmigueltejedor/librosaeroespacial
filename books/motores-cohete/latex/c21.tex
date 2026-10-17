@@ -1,0 +1,74 @@
+\chapter{Plasmas, potencia e impulso específico}\label{ch:21}
+\objetivos{Derivar el compromiso entre potencia y empuje; distinguir velocidad de haz y velocidad efectiva; introducir escalas de plasma y tratar correctamente temperaturas en kelvin y energías en electronvoltios.}
+\section{Fuente de energía y masa de reacción}
+La propulsión eléctrica utiliza energía eléctrica para aumentar la velocidad de la masa expulsada. Esa energía puede proceder de generación solar u otra fuente de a bordo, mientras el propulsante aporta masa de reacción. Separar ambas funciones permite velocidades que no están limitadas sólo por energía química de esa masa, pero introduce restricciones de potencia, conversión y disipación térmica.
+
+El vacío no elimina la necesidad de intercambio de momento. El vehículo acelera al transferir cantidad de movimiento al escape y, cuando corresponde, a campos electromagnéticos que enlazan plasma y estructura. Para un sistema completo estacionario, el balance sigue siendo conservación de momento. Los campos no proporcionan una excepción a esa ley.\cite{JPL-EP}
+\section{Haz ideal y potencia cinética}
+Supongamos una descarga axial, monoenergética, de caudal $\dot m$, rapidez relativa $v_e$ y término de presión despreciable. Entonces
+\[
+ F=\dot m v_e,\qquad P_j=\frac12\dot m v_e^2.
+\]
+Definamos $\eta=P_j/P_{el}$ para la frontera eléctrica declarada. Eliminando caudal,
+\begin{equation}\label{eq:EP}
+ \boxed{F=\frac{2\eta P_{el}}{v_e}},\qquad
+ \boxed{\dot m=\frac{2\eta P_{el}}{v_e^2}},\qquad I_{sp}=\frac{v_e}{g_0}.
+\end{equation}
+La potencia tiene unidades de fuerza por velocidad. A potencia y rendimiento fijos, duplicar $v_e$ reduce a la mitad el empuje y a la cuarta parte el caudal. La mejora de consumo másico no es una mejora simultánea de aceleración.
+
+Para una masa de vehículo $m$, $a=F/m$. La misma prestación puede ser útil para una maniobra prolongada y resultar insuficiente para sostener peso cerca de una superficie. Una comparación requiere tiempo disponible, masa y campo gravitatorio, además de impulso específico.
+\section{Distribución de velocidades y rendimiento efectivo}
+Si la descarga no es uniforme,
+\[
+ F_x=\int v_x\,d\dot m,\qquad
+ P_j=\frac12\int |\mathbf v|^2\,d\dot m.
+\]
+Cauchy--Schwarz proporciona
+\begin{equation}
+ F_x^2\leq\dot m\int v_x^2d\dot m
+ \leq2\dot mP_j.
+\end{equation}
+La igualdad exige velocidad axial uniforme. Por ello, $F^2/(2\dot m)$ es potencia cinética efectiva asociada al momento axial, y puede ser inferior a la potencia cinética real del escape por dispersión y divergencia.
+
+Si se define $\eta_T=F^2/(2\dot mP_{el})$ y $c=F/\dot m$, la identidad $F=2\eta_TP_{el}/c$ sigue siendo algebraicamente cierta. En ese caso $c$ es velocidad efectiva, no necesariamente rapidez del ion, y $\eta_T$ incorpora utilización y divergencia. Es imprescindible distinguir esa definición de $P_j/P_{el}$ cuando se usan datos de haces reales.\cite{JPL-EP}
+\section{Conceptos mínimos de plasma}
+Un plasma contiene portadores cargados con respuesta colectiva. La cuasineutralidad macroscópica significa que las densidades de carga positiva y negativa casi se compensan a escalas suficientemente grandes; no exige campo eléctrico nulo. Pequeñas separaciones locales de carga pueden sostener campos que aceleran partículas.
+
+La fuerza sobre una partícula es
+\[
+ m\frac{d\mathbf v}{dt}=q(\mathbf E+\mathbf v\times\mathbf B).
+\]
+Al multiplicar escalarmente por velocidad,
+\[
+ \frac{d}{dt}\left(\frac12mv^2\right)=q\mathbf E\cdot\mathbf v,
+\]
+porque $\mathbf v\cdot(\mathbf v\times\mathbf B)=0$. El campo magnético cambia dirección y puede organizar corrientes, pero no realiza trabajo directo sobre una carga puntual mediante la fuerza magnética. La energía cinética se suministra a través del campo eléctrico y su fuente.
+\section{Escalas de apantallamiento y magnetización}
+Para electrones de temperatura $T_e$ en kelvin y densidad $n_e$, una longitud de Debye electrónica es
+\[
+ \lambda_D=\sqrt{\frac{\epsilon_0 k_BT_e}{n_ee^2}}.
+\]
+La expresión surge al linealizar la respuesta de densidad de Boltzmann y combinarla con Poisson para potenciales pequeños. El modelo exige sus condiciones de distribución y escala. Una región de tamaño comparable a la vaina puede dejar de ser cuasineutra.\cite{JPL-EP}
+
+En un campo magnético uniforme, la frecuencia ciclotrón angular y el radio de giro son
+\[
+ \omega_c=\frac{|q|B}{m},\qquad r_L=\frac{mv_\perp}{|q|B}.
+\]
+La magnetización depende de comparar esas escalas con tamaño y frecuencia de colisiones. La presencia de un imán no implica que electrones e iones estén igualmente magnetizados: sus masas y velocidades son muy distintas.
+
+El electronvoltio es una unidad de energía: $1\,\mathrm{eV}=1.602176634\times10^{-19}\,\mathrm J$. Corresponde a la energía adquirida por una carga elemental al atravesar un voltio de diferencia de potencial. Expresar una temperatura electrónica como ``5 eV'' significa $k_BT_e=5\,\mathrm{eV}$, no $T_e=5\,\mathrm K$. No se multiplica de nuevo por $k_B$ una energía ya convertida a julios.
+\section{Potencia de sistema y misión}
+La frontera puede situarse en el propulsor, en la unidad de procesamiento o en los paneles. Cada elección produce un rendimiento diferente. La energía que no acaba en escape útil debe aparecer como otras corrientes, radiación, calentamiento o pérdidas de conversión; no toda esa energía se deposita necesariamente en un único componente.
+
+La potencia solar disminuye con distancia heliocéntrica aproximadamente como inverso del cuadrado para una superficie con orientación y eficiencia fijadas. Temperatura, degradación y geometría modifican la potencia real. Una misión de empuje bajo debe integrar la disponibilidad de potencia y el historial de orientación, no usar automáticamente la potencia nominal de un punto.
+\figura{c21}{Mayor velocidad requiere menor empuje a potencia fija. La comparación mantiene idéntica definición de rendimiento.}
+\section{Caso desarrollado}
+\input{M21.tex}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Derive las tres relaciones de \eqref{eq:EP} y compruebe unidades.
+\item Para $P=1500\,\mathrm W$, $\eta=0.60$ y $v_e=20000\,\mathrm{m/s}$, calcule empuje y caudal.
+\item Demuestre la desigualdad energética de un haz no uniforme y describa cuándo se alcanza igualdad.
+\item Convierta una energía térmica electrónica de 3 eV a temperatura en kelvin y señale dónde entra $k_B$.
+\end{enumerate}
+\resumen{A potencia fija, elevar velocidad reduce empuje. La velocidad efectiva puede diferir de la rapidez del haz y el rendimiento depende de su definición. Cuasineutralidad no significa campo nulo; el campo eléctrico suministra trabajo, mientras el magnético organiza movimiento y transferencia de fuerza.}

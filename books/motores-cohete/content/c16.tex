@@ -1,0 +1,66 @@
+\chapter{Cámara de empuje, inyección y combustión}\label{ch:16}
+\objetivos{Relacionar procesos de entrada, mezcla y reacción con residencia y prestaciones; deducir escalas de vaporización; distinguir una correlación de sistema de una predicción de detalle.}
+\section{Procesos en la cámara}
+La cámara de empuje recibe corrientes, redistribuye masa y energía, y entrega gas a la tobera. Cuando entran líquidos, pueden intervenir fragmentación de chorros, dispersión de gotas, calentamiento, vaporización, mezcla y reacción. La secuencia no es idéntica en todas las arquitecturas: una corriente ya puede llegar gaseosa o en estado supercrítico.
+
+El equilibrio termodinámico describe un estado compatible con restricciones, pero no indica cuánto tarda en alcanzarse ni si el campo de flujo permite hacerlo. La cámara requiere una descripción de transporte y escalas. El material abierto del MIT consultado insiste en que un modelo de gota aislada sólo representa parte del problema de una nube de gotas y un campo de mezcla real.\cite{MIT20,MIT21}
+\section{Residencia, volumen y longitud característica}
+Una escala media de residencia se define como masa gaseosa contenida dividida por caudal,
+\[
+ \tau_r=\frac{m_g}{\dot m}\simeq\frac{\rho_cV_c}{\dot m}.
+\]
+Con $\rho_c=p_c/(RT_c)$ y descarga $\dot m=p_cA_t/c^*$,
+\begin{equation}
+ \tau_r\simeq\frac{c^*}{RT_c}\frac{V_c}{A_t}
+ =\frac{c^*L^*}{RT_c},\qquad L^*\equiv\frac{V_c}{A_t}.
+\end{equation}
+La magnitud $L^*$ tiene unidades de longitud aunque no coincide con la longitud geométrica de cámara. Dos cámaras de igual $L^*$ pueden tener áreas, recirculación y distribuciones de residencia muy diferentes. Esta relación es una escala de un modelo uniforme, no una garantía de combustión completa.
+
+Un número de Damköhler $Da=\tau_r/\tau_{reaccion}$ compara residencia con una escala química definida. Si la vaporización o mezcla es más lenta, esa otra escala puede controlar el proceso. El menor tiempo químico no resuelve automáticamente una mezcla deficiente.
+\section{Balance de una gota y ley del diámetro al cuadrado}
+Considérese una gota esférica idealizada de densidad constante $\rho_l$ y radio $r$. Su masa es $m=4\pi\rho_lr^3/3$. Supongamos un modelo cuasiestacionario en el que la transferencia total disponible para evaporación es proporcional a $r$, de modo que $-dm/dt=C r$, con $C>0$ constante bajo condiciones externas fijadas. Derivar la masa da
+\[
+ 4\pi\rho_l r^2\frac{dr}{dt}=-Cr,
+ \qquad \frac{d(r^2)}{dt}=-\frac{C}{2\pi\rho_l}.
+\]
+Para $d=2r$,
+\begin{equation}\label{eq:d2}
+ d^2(t)=d_0^2-Kt,\qquad K=\frac{2C}{\pi\rho_l}.
+\end{equation}
+La duración característica es $d_0^2/K$. Duplicar diámetro multiplica por cuatro esa escala, no por dos. La relación permite interpretar por qué distribución de tamaños importa incluso si el diámetro medio permanece parecido.
+
+El modelo presupone gota aislada, propiedades y entorno representados por constantes y ausencia de una fase inicial de calentamiento significativa. En una nube, el vapor modifica composición, temperatura y transferencia entre gotas. Cerca de estados supercríticos la frontera clásica líquido-gas puede dejar de representar adecuadamente el proceso. La ley no debe extrapolarse automáticamente a esas condiciones.
+\section{Inyección como reparto de momento y mezcla}
+La inyección establece velocidades relativas y distribución de masa. Una estimación incompresible de una corriente a través de una restricción usa
+\[
+ \dot m=C_d A\sqrt{2\rho\Delta p}.
+\]
+Se obtiene de Bernoulli y continuidad bajo condiciones idealizadas y se corrige mediante $C_d$. La expresión no prescribe una geometría de inyector ni describe cavitación, vaporización, compresibilidad o distribución de gotas. Su utilidad aquí es interpretar la sensibilidad de caudal a presión.
+
+Al diferenciar con $C_d,A,\rho$ fijos,
+\[
+ \frac{\delta\dot m}{\dot m}\simeq\frac12\frac{\delta(\Delta p)}{\Delta p}.
+\]
+Si sube la presión de cámara manteniendo fija la de suministro, disminuye $\Delta p$ y baja el caudal. La perturbación puede modificar liberación de calor y realimentarse con la presión. Por eso alimentación, mezcla y estabilidad no son problemas independientes.
+\section{Balances energéticos y temperatura no uniforme}
+Para una cámara estacionaria,
+\[
+ \sum_{ent}\dot m_i h_{0,i}+\dot Q
+ =\sum_{sal}\dot m_j h_{0,j}
+\]
+si no hay trabajo de eje. La energía química se incluye en las entalpías. El calor hacia refrigeración es negativo para el volumen del gas, pero puede ser transferencia interna al ampliar la frontera hasta incluir el circuito regenerativo.
+
+Una temperatura media que cierre el balance no describe necesariamente máximos locales. Las paredes intercambian calor con una capa límite y pueden estar expuestas a composición distinta de la media global. La predicción de temperatura de material requiere un problema de transferencia acoplado. Un gas de cámara de temperatura elevada no implica que la estructura esté a esa misma temperatura.
+\section{Prestación y diagnóstico}
+Una reducción de $c^*$ respecto a una referencia puede ser compatible con combustión incompleta, calor a pared, mezcla no uniforme o diferencias de descarga. El diagnóstico necesita más observables que un único cociente. Presión, caudal, composición, distribución térmica y geometría aportan restricciones distintas.
+
+La comprobación mínima de un problema académico cierra masa de cada corriente, energía total y condiciones de descarga. Las escalas de residencia y vaporización permiten valorar si las hipótesis son plausibles dentro del modelo. No sustituyen un modelo validado de atomización ni datos de ensayo.
+\figura{c16}{Modelo de gota aislada con propiedades constantes. Duplicar diámetro cuadruplica la escala de duración.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Deduzca la relación entre $\tau_r$ y $L^*$ y compruebe sus dimensiones.
+\item Si una gota modelo duplica diámetro inicial a igual $K$, determine el cambio de duración y de masa inicial.
+\item Obtenga la sensibilidad de caudal a una perturbación pequeña de presión de cámara con suministro fijo.
+\item Explique por qué dos cámaras de igual volumen y caudal pueden tener distinta distribución de residencia y distinta aproximación al equilibrio.
+\end{enumerate}
+\resumen{La cámara acopla transporte, cambio de fase, mezcla y reacción. La residencia media y la ley del diámetro al cuadrado proporcionan escalas, no una solución completa. Las perturbaciones de presión afectan a alimentación, y un único rendimiento no identifica de forma única la causa de una pérdida.}

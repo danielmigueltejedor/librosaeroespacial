@@ -1,0 +1,146 @@
+\chapter{Estabilidad y control}\label{ch:12}
+\objetivos{Distinguir equilibrio, estabilidad estática, estabilidad dinámica y capacidad de control; interpretar el centro de gravedad y el punto neutro; calcular un equilibrado longitudinal sencillo; reconocer los modos principales y el papel del amortiguamiento.}
+
+\section{Equilibrar, regresar y gobernar}
+Una aeronave está equilibrada cuando las fuerzas y momentos producen el movimiento de referencia deseado. En vuelo rectilíneo uniforme las aceleraciones son nulas; en un giro estacionario existe una aceleración centrípeta prevista. Estabilidad significa cómo responde a pequeñas perturbaciones respecto a ese movimiento. Control significa disponer de acciones capaces de modificarlo. Son preguntas diferentes: una aeronave puede estar equilibrada y ser inestable, o ser estable pero tener autoridad de mando insuficiente para equilibrar una condición extrema.
+
+La estabilidad estática examina la tendencia inicial después de una perturbación. Si aparece un momento que se opone al cambio de actitud aerodinámica, la tendencia es restauradora. La estabilidad dinámica examina toda la evolución temporal: una respuesta puede oscilar y decaer, oscilar y crecer o regresar sin oscilaciones. El signo de una única derivada estática no basta para deducir esa historia. La discusión introductoria de estabilidad y mandos se apoya en la terminología de FAA \cite{PHAK}.
+
+Fijamos ejes ligados al avión: $x$ hacia delante, $y$ hacia la derecha y $z$ hacia abajo. Las rotaciones positivas siguen la regla de la mano derecha. El cabeceo positivo eleva el morro, el alabeo positivo baja el ala derecha y la guiñada positiva dirige el morro a la derecha. Las velocidades angulares se llaman $p,q,r$. Para evitar confundir la sustentación $L$ con el momento de alabeo, llamaremos a éste $\mathcal L$. El momento de cabeceo será $M_y$ y su coeficiente $C_m=M_y/(q_\infty S\bar c)$.
+
+\section{Equilibrado longitudinal y transporte de momentos}
+Consideremos primero un modelo de ala y cola horizontal. El ala produce sustentación y un momento respecto a su centro aerodinámico. La cola produce una fuerza con un brazo longitudinal; puede apuntar hacia abajo o hacia arriba según la configuración y el estado. El equilibrio de momentos no exige que la cola siempre empuje hacia abajo. La condición concreta depende de centro de gravedad, momento alar, incidencia, mandos y empuje.
+
+Si $h=x_{\mathrm{cg}}/\bar c$ y $h_{\mathrm{ac}}=x_{\mathrm{ac}}/\bar c$ se miden hacia atrás desde una referencia común, una sustentación alar situada por delante del centro de gravedad aporta momento de encabritado. Una representación sencilla es
+\begin{equation}\label{eq:12-tail}
+C_m\simeq C_{m,\mathrm{ac}}+(h-h_{\mathrm{ac}})C_{L,w}
+-\eta_t V_H C_{L,t}+C_{m,T},
+\end{equation}
+donde $\eta_t=q_t/q_\infty$, $V_H=S_tl_t/(S\bar c)$ y $l_t$ es el brazo positivo hacia la cola. El momento propulsivo $C_{m,T}$ recoge un eventual brazo de empuje. Todos los términos son adimensionales; $V_H$ es un volumen de cola adimensional, no un volumen en metros cúbicos.
+
+La corriente descendente del ala cambia la incidencia de la cola. Para perturbaciones pequeñas puede escribirse
+\begin{equation}
+\alpha_t=\alpha+i_t-\epsilon+\tau\delta_e,\qquad
+C_{L,t}\simeq a_t(\alpha_t-\alpha_{t,0}).
+\end{equation}
+$i_t$ es incidencia de cola, $\epsilon$ es corriente descendente angular y $\tau$ representa eficacia del elevador. Aquí se define $\delta_e>0$ como borde de salida hacia abajo. En una cola convencional, esa deflexión tiende a aumentar sustentación de cola y a producir picado, por lo que suele dar $C_{m\delta_e}<0$. Otras convenciones invierten signos: siempre hay que escribir la definición antes de usar un dato.
+
+\section{Derivada estática y punto neutro}
+Con mandos fijos y alrededor de un estado de referencia, se linealiza
+\begin{equation}\label{eq:12-linear}
+C_m=C_{m0}+C_{m\alpha}\alpha+C_{m\delta_e}\delta_e.
+\end{equation}
+El intercepto pertenece a la elección de origen angular y configuración. Si una ráfaga aumenta $\alpha$, la estabilidad estática longitudinal exige $C_{m\alpha}<0$: el incremento de momento debe ser de picado. Si la derivada es positiva, la perturbación inicial refuerza el aumento de incidencia; si es cero, hay neutralidad estática lineal, pero pueden importar términos no lineales.
+
+El punto neutro es la posición del centro de gravedad para la que esa derivada se anula con las condiciones de mando especificadas. Definiendo $h_N=x_N/\bar c$ y una pendiente total $a=\partial C_L/\partial\alpha>0$, puede expresarse
+\begin{equation}\label{eq:12-sm}
+C_{m\alpha}=a(h-h_N)=-a\,SM,\qquad SM=h_N-h.
+\end{equation}
+$SM$ es el margen estático. Con esta convención, un centro de gravedad por delante del punto neutro proporciona margen positivo y tendencia restauradora. El punto neutro no es el centro de presión del ala ni el centro de gravedad del avión. Puede cambiar con Mach, configuración y condición de mandos.
+\figura{stability}{Pendiente del momento alrededor del centro de gravedad: una pendiente negativa corresponde al criterio local de estabilidad estática, sin afirmar estabilidad dinámica.}
+
+Derivando \eqref{eq:12-tail} y manteniendo brazo y $\eta_t$ aproximadamente constantes se obtiene una contribución estabilizadora de cola de magnitud $\eta_tV_Ha_t(1-\mathrm d\epsilon/\mathrm d\alpha)$. En un modelo que desprecie la contribución de cola a la sustentación total y use $a_w$ para el ala,
+\begin{equation}
+h_N\simeq h_{\mathrm{ac}}+
+\eta_tV_H\frac{a_t}{a_w}\left(1-\frac{\mathrm d\epsilon}{\mathrm d\alpha}\right).
+\end{equation}
+Esta aproximación explica tendencias: aumentar el brazo o área de cola puede desplazar el punto neutro hacia atrás; una mayor variación de corriente descendente reduce la eficacia estabilizadora. No debe mezclarse su $a_w$ con una pendiente total medida sin comprobar la derivación. Un cálculo preciso incorpora fuselaje, propulsión, elasticidad y fuerza de cola en todas las ecuaciones.
+
+\section{Autoridad de control y límites de centrado}
+El equilibrado se obtiene imponiendo $C_m=0$:
+\begin{equation}\label{eq:12-trim}
+\delta_{e,\mathrm{trim}}=-\frac{C_{m0}+C_{m\alpha}\alpha}{C_{m\delta_e}}.
+\end{equation}
+Una derivada de mando no nula permite resolver algebraicamente, pero el valor debe estar dentro del recorrido disponible y de la región lineal. También hay que satisfacer equilibrio de fuerzas y limitaciones de cola. Un resultado de $30^\circ$ calculado con una derivada calibrada cerca de cero no garantiza control real.
+
+Desplazar el centro de gravedad hacia delante suele aumentar margen estático, pero también la demanda de momento compensador. Puede alcanzarse un límite de capacidad de elevador durante despegue, aproximación o redondeo. Desplazarlo hacia atrás reduce la tendencia restauradora y puede aumentar sensibilidad. Por tanto, ``más estable'' no equivale a ``mejor'' para cualquier misión: diseño y certificación equilibran estabilidad, control, fuerzas de mando y prestaciones. Las limitaciones publicadas de centrado se aplican a la aeronave concreta.
+
+El compensador permite sostener una deflexión o una fuerza de mando con menor esfuerzo del piloto; no debe confundirse con crear sustentación suficiente de manera independiente. Un sistema con mandos libres puede tener un punto neutro diferente del de mandos fijos, porque las superficies se desplazan ante cargas aerodinámicas. Los mandos asistidos y las leyes de control modifican la respuesta observada, pero no eliminan la necesidad de definir la planta física y los límites de actuadores.
+
+\section{Introducción a la dinámica de pequeñas perturbaciones}
+La dinámica completa combina traslación y rotación de un cuerpo rígido. Cerca de un vuelo simétrico se linealizan fuerzas y momentos y se separan, aproximadamente, variables longitudinales de laterales. La separación es una simplificación basada en simetría y pequeñas perturbaciones; maniobras grandes, ángulos elevados o daños pueden acoplar fuertemente ambos grupos.
+
+Un modelo reducido de cabeceo, con trayectoria momentáneamente congelada, toma $\delta\alpha\simeq\delta\theta$ y $q=\dot{\delta\theta}$. La ecuación de momento alrededor del centro de gravedad es
+\begin{equation}
+I_y\ddot{\delta\theta}=M_\alpha\delta\theta+M_q\dot{\delta\theta},
+\end{equation}
+con derivadas dimensionales $M_\alpha$ y $M_q$. Si ambas son negativas,
+\begin{equation}\label{eq:12-osc}
+\ddot{\delta\theta}+2\zeta\omega_n\dot{\delta\theta}
++\omega_n^2\delta\theta=0,
+\quad \omega_n^2=-\frac{M_\alpha}{I_y},\quad
+2\zeta\omega_n=-\frac{M_q}{I_y}.
+\end{equation}
+$\omega_n$ tiene unidades de $\mathrm{s^{-1}}$ y $\zeta$ es adimensional. La primera derivada aporta rigidez restauradora; la segunda, amortiguamiento. Un momento restaurador con amortiguamiento negativo puede originar oscilaciones crecientes. Éste es un contraejemplo directo a identificar estabilidad estática y dinámica.
+
+Para $0<\zeta<1$, la perturbación oscila con frecuencia $\omega_d=\omega_n\sqrt{1-\zeta^2}$ y amplitud proporcional a $\exp(-\zeta\omega_nt)$. Si $\zeta=1$ se alcanza amortiguamiento crítico en este modelo escalar; para $\zeta>1$ aparecen dos exponentes reales decrecientes. Una respuesta rápida o lenta no se deduce únicamente de $SM$: también intervienen inercia, velocidad, presión dinámica y acoplamiento.
+
+\section{Modos longitudinales y laterales}
+El modo de período corto está dominado normalmente por variaciones rápidas de incidencia y cabeceo, con cambio de velocidad relativamente pequeño al inicio. La cola, la amortiguación de cabeceo y la inercia longitudinal tienen gran influencia. El modelo \eqref{eq:12-osc} ayuda a comprenderlo, pero no sustituye el cálculo de los autovalores del sistema longitudinal.
+
+La fugoide suele ser una oscilación más lenta donde se intercambian energía cinética y potencial: cambian velocidad y altura, mientras la incidencia varía comparativamente menos. La resistencia y la respuesta propulsiva intervienen en su amortiguación. No debe interpretarse como oscilación de ángulo de ataque idéntica al período corto. Una condición de vuelo puede presentar un modo rápido bien amortiguado y otro lento débilmente amortiguado.
+
+En el movimiento lateral aparecen, de forma típica, amortiguamiento de alabeo, modo espiral y balanceo holandés. El primero describe la tendencia a reducir velocidad de alabeo por momentos aerodinámicos opuestos. El modo espiral puede evolucionar lentamente y depende del equilibrio entre efectos direccionales y de alabeo. El balanceo holandés combina guiñada y alabeo de forma oscilatoria. Las derivadas de resbalamiento, guiñada y alabeo, junto con las inercias, determinan estabilidad y tiempos característicos.
+
+La estabilidad direccional suele describirse con un momento que orienta el avión ante un resbalamiento, mientras el efecto diedro relaciona resbalamiento y momento de alabeo. Sus signos sólo tienen sentido después de definir la convención de $\beta$. El timón vertical puede ayudar a coordinar el giro; los alerones producen alabeo pero también pueden generar guiñada adversa. La coordinación de mandos responde a ese acoplamiento, no a una equivalencia entre los tres ejes.
+
+\section{Ráfagas, realimentación y juicio ingenieril}
+Una ráfaga vertical pequeña de velocidad $w_g$ cambia aproximadamente la incidencia en $\Delta\alpha\simeq w_g/V$. Con una pendiente $a$, el incremento inicial de sustentación es $\Delta L\simeq qSa\Delta\alpha$. El mismo viento vertical puede producir distinto incremento de carga según velocidad, densidad y respuesta aeroelástica. Un modelo estático de carga de ráfaga no determina por sí solo la respuesta temporal ni las aceleraciones percibidas por todos los puntos del fuselaje.
+
+Un piloto automático mide estados o señales asociadas y actúa sobre los mandos. La realimentación puede mejorar amortiguamiento y seguimiento de trayectoria. También introduce retardos, saturaciones y dependencias de sensores. Un análisis introductorio debe separar estabilidad natural, estabilidad del conjunto controlado y capacidad de continuar funcionando ante fallos. No se presupone que añadir realimentación haga estable cualquier sistema sin restricciones.
+
+\section{Derivadas dimensionales y presión dinámica}
+Una tabla de derivadas suele mezclar símbolos parecidos con unidades distintas. La derivada $C_{m\alpha}$ se expresa por radián y es adimensional respecto a fuerza y longitud; su equivalente dimensional es $M_\alpha=q_\infty S\bar c C_{m\alpha}$ si la presión dinámica se mantiene constante. El momento crece con la presión dinámica para una misma perturbación angular, pero su efecto sobre la aceleración depende de la inercia $I_y$. Dos aviones con igual margen estático pueden responder en tiempos muy diferentes.
+
+La derivada de amortiguamiento se tabula frecuentemente respecto a una velocidad angular adimensional, $\hat q=q\bar c/(2V)$. Si el coeficiente correspondiente es $C_{m\hat q}$, el momento de amortiguamiento se aproxima por
+\begin{equation}
+M_{q}=q_\infty S\bar c\,C_{m\hat q}\frac{\bar c}{2V},
+\end{equation}
+donde el lado izquierdo representa ahora la derivada dimensional del momento respecto a la velocidad de cabeceo. El factor $\bar c/(2V)$ es un tiempo. Omitirlo equivale a tratar una derivada adimensional como si estuviera definida por $\mathrm{s^{-1}}$, alterando tanto las unidades como el amortiguamiento calculado. Por eso el subíndice de una tabla no basta: hace falta la definición de la variable de derivación.
+
+Las derivadas se evalúan alrededor de un punto de vuelo. Cambiar presión dinámica no sólo reescala momentos: también pueden cambiar coeficientes por Mach, Reynolds, configuración o elasticidad. En modelos lineales se mantiene la condición de referencia para evaluar pequeños incrementos. Una maniobra extensa requiere actualizar derivadas o utilizar una descripción no lineal. La linealización es una aproximación local cuya utilidad depende del tamaño y de la naturaleza de la perturbación.
+
+\section{Centrado, combustible y configuración}
+El centro de gravedad se calcula con masas y posiciones: $x_{\mathrm{cg}}=\sum m_ix_i/\sum m_i$. La referencia longitudinal debe ser la misma para todos los componentes. El porcentaje de cuerda sólo se obtiene después de convertir esa posición al sistema de la cuerda media aerodinámica. Mezclar una distancia desde el morro con una fracción desde el borde de ataque produce un margen estático sin significado.
+
+El consumo de combustible puede desplazar el centro de gravedad si los depósitos no están centrados en la posición global. No basta con afirmar que al disminuir masa mejora siempre la estabilidad. Puede reducirse la velocidad requerida y, simultáneamente, disminuir el margen estático si el centrado se mueve hacia atrás. Un traslado de carga puede modificar el centrado sin cambiar masa total. Una evaluación completa considera las distintas etapas de la misión y las configuraciones relevantes.
+
+Extender flaps modifica sustentación y momento del ala, además de la corriente descendente sobre la cola. Un cálculo de compensación que cambie únicamente $C_{L,\max}$ deja fuera estos mecanismos. La cola puede entrar en regiones de flujo alteradas a incidencias elevadas; por ello su eficacia no se prolonga linealmente a cualquier condición. El punto neutro y el recorrido necesario de elevador deben evaluarse con el modelo de esa configuración.
+
+\section{Cómo interpretar un resultado de estabilidad}
+Para juzgar un informe conviene preguntar primero qué movimiento se perturbó, qué variables se fijaron y qué significa ``estable''. Una derivada de momento respecto a incidencia con velocidad constante responde a una pregunta diferente de una simulación con piloto, velocidad variable y control de altura. Ambas pueden ser correctas y describir resultados distintos. La estabilidad natural con mandos fijos tampoco equivale a la respuesta con elevador libre o con un piloto automático activo.
+
+En un sistema lineal $\dot{\boldsymbol x}=\boldsymbol A\boldsymbol x$, los autovalores relacionan frecuencia y crecimiento. Una parte real negativa implica decaimiento de ese modo; una positiva implica crecimiento. Un par complejo introduce oscilación. Este criterio supone que se ha elegido un estado de referencia válido y que el modelo no tiene restricciones o saturaciones relevantes. Una trayectoria acotada en una simulación corta no demuestra que todos los modos sean estables: un modo espiral de crecimiento lento puede ser difícil de observar en pocos segundos.
+
+La validación puede combinar cálculos de derivadas, ensayos en túnel, simulación y datos de vuelo. Cada evidencia tiene un alcance. Una comprobación algebraica confirma que el equilibrio se ha resuelto; una prueba de signos confirma la tendencia estática; un análisis modal examina la dinámica local. Ninguno de ellos demuestra por sí solo toda la manejabilidad de una aeronave. Presentar explícitamente esos niveles hace que una conclusión sea verificable y evita atribuir al modelo más capacidad de la que tiene.
+
+\refstepcounter{section}\addcontentsline{toc}{section}{\protect\numberline{\thesection}Problema resuelto: margen estático y elevador de equilibrio}
+\begin{studiumworked}{Problema resuelto: margen estático y elevador de equilibrio}
+
+\paragraph{1. Enunciado.} Una aeronave tiene una ley lineal de momento conocida. Determine si presenta tendencia estática restauradora y la deflexión necesaria para equilibrar un ángulo de ataque dado.
+\paragraph{2. Datos.} $a=4{,}80\ \mathrm{rad^{-1}}$, $h=0{,}28$, $h_N=0{,}40$, $C_{m0}=0{,}060$, $C_{m\delta_e}=-0{,}800\ \mathrm{rad^{-1}}$ y $\alpha=5^\circ$. Deflexión positiva: borde de salida hacia abajo.
+\paragraph{3. Incógnitas.} $SM,C_{m\alpha},\delta_{e,\mathrm{trim}}$ y signo del momento ante $\Delta\alpha>0$.
+\paragraph{4. Esquema verbal.} El centro de gravedad se encuentra por delante del punto neutro. Una perturbación que aumenta incidencia debe generar picado para que exista tendencia restauradora.
+\paragraph{5. Hipótesis.} Mandos fijos al evaluar la estabilidad, pequeñas perturbaciones, configuración fija y recorrido de elevador suficiente. La ley suministrada pertenece al avión completo.
+\paragraph{6. Modelo físico.} Se usa el margen estático para la derivada de momento y después se impone suma de momentos nula.
+\paragraph{7. Ecuaciones simbólicas.} $SM=h_N-h$, $C_{m\alpha}=-aSM$ y $\delta_e=-(C_{m0}+C_{m\alpha}\alpha)/C_{m\delta_e}$.
+\paragraph{8. Despeje.} La deflexión se calcula con el ángulo en radianes; no se cambia el signo de la derivada por intuición sobre el movimiento del mando.
+\paragraph{9. Sustitución.} $SM=0{,}12$, $C_{m\alpha}=-4{,}8(0{,}12)=-0{,}576\ \mathrm{rad^{-1}}$ y $\delta_e=-[0{,}060-0{,}576(5\pi/180)]/(-0{,}800)$.
+\paragraph{10. Resultado con unidades.} $\delta_e=0{,}012168\ \mathrm{rad}=0{,}6972^\circ$. El margen estático equivale al $12\%$ de la cuerda de referencia.
+\paragraph{11. Interpretación.} A ese ángulo queda un pequeño momento de encabritado que el elevador hacia abajo compensa con picado. Un incremento positivo de incidencia genera incremento negativo de momento, de modo que existe estabilidad estática de mandos fijos.
+\paragraph{12. Comprobación independiente.} $0{,}060-0{,}576(0{,}0872665)-0{,}800(0{,}0121681)$ es cero dentro del redondeo. Para $\Delta\alpha=1^\circ$, $\Delta C_m=-0{,}01005$, comprobación directa del carácter restaurador.
+\paragraph{13. Limitaciones.} No se demuestra estabilidad dinámica; faltan inercias y derivadas de velocidad angular. Tampoco se comprueba equilibrio vertical porque no se han dado peso, velocidad ni intercepto de sustentación.
+
+\end{studiumworked}
+
+\section{Ejercicios propuestos y guía de respuestas}
+\begin{enumerate}
+\item Con $h_N=0{,}38$ y $h=0{,}31$, calcule margen estático. Respuesta: $0{,}07$ o $7\%$ de cuerda.
+\item Para $a=5\ \mathrm{rad^{-1}}$ y $SM=-0{,}02$, determine $C_{m\alpha}$. Respuesta: $+0{,}10\ \mathrm{rad^{-1}}$, tendencia estática desestabilizadora.
+\item Un modelo tiene $\omega_n=2\ \mathrm{s^{-1}}$ y $\zeta=0{,}35$. Calcule frecuencia amortiguada y período. Respuesta: $\omega_d=1{,}8735\ \mathrm{s^{-1}}$ y período $3{,}354\ \mathrm s$.
+\item Una ráfaga de $3\ \mathrm{m/s}$ actúa sobre un avión a $60\ \mathrm{m/s}$. Estime el incremento angular inicial. Respuesta: $0{,}05\ \mathrm{rad}\simeq2{,}86^\circ$, dentro del modelo de pequeña ráfaga.
+\item Una aeronave tiene $C_{m\alpha}<0$ y oscilaciones crecientes. ¿Existe contradicción? Guía: no; distinga rigidez estática de amortiguamiento y acoplamiento dinámico.
+\end{enumerate}
+\section{Resumen y autoevaluación}
+\resumen{El equilibrado impone fuerzas y momentos compatibles con el movimiento. El margen estático positivo indica tendencia longitudinal restauradora con una convención y condición de mandos definidas. La estabilidad dinámica exige analizar la evolución temporal y los modos. La capacidad de mando y los límites de centrado condicionan qué estados estables pueden equilibrarse y controlarse.}
+¿Por qué el centro de presión no sustituye al punto neutro? ¿Cómo puede influir una cola en estabilidad y en equilibrio de maneras distintas? ¿Qué datos faltan para deducir amortiguamiento a partir de un margen estático? ¿Qué señales diferencian una fugoide de un período corto?

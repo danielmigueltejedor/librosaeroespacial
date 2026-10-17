@@ -1,0 +1,112 @@
+\chapter{Motores de reacción}\label{ch:19}
+\objetivos{Construir el balance de empuje y energía; interpretar el ciclo Brayton y sus pérdidas; explicar la adaptación entre compresor, combustor, turbina y tobera; relacionar arquitectura, auxiliares y control con la misión.}
+
+\section{El empuje es un balance de cantidad de movimiento}
+Un motor de reacción que respira aire toma una corriente del entorno, incorpora combustible y expulsa gases con una cantidad de movimiento diferente. El empuje aparece por las fuerzas que el motor ejerce sobre el fluido y la reacción que recibe. No necesita apoyarse en el aire exterior situado detrás de la tobera: el intercambio ocurre mediante superficies sólidas y presiones dentro y alrededor del volumen de control.
+
+Para flujo estacionario, unidimensional en entrada y salida, sin componentes laterales resultantes, el empuje neto axial positivo hacia delante puede escribirse por magnitudes de velocidad relativa al motor:
+\begin{equation}
+ F=\dot m_a[(1+f)V_e-V_0]+(p_e-p_0)A_e,
+ \qquad f=\frac{\dot m_f}{\dot m_a}.
+\end{equation}
+$\dot m_a$ es el caudal de aire, $\dot m_f$ el combustible, $V_0$ la velocidad de entrada no perturbada, $V_e$ la de escape hacia atrás y $A_e$ el área de salida. Las velocidades son módulos axiales con el convenio ya incorporado. Se supone que el combustible entra sin cantidad de movimiento axial significativa. La formulación general de NASA permite identificar la contribución de momento y de presión \cite{NASA-BGA}.
+
+El término $\dot m_aV_0$, a veces llamado resistencia de captura, no es una pérdida que pueda borrarse: representa la cantidad de movimiento que ya tenía el aire antes de acelerarlo. El empuje bruto de salida y el neto del motor difieren. Si se calcula además el efecto de la instalación, deben incorporarse pérdidas y fuerzas de la toma, góndola y escape sin contarlas dos veces. La condición $p_e=p_0$ elimina el término de presión, pero no ocurre necesariamente en todos los puntos de vuelo.
+
+\figura{jet}{Flujos de energía y masa en un turborreactor: la turbina alimenta el compresor y los auxiliares; la energía restante permite acelerar el escape en la tobera.}
+
+\section{Magnitudes totales y ciclo Brayton}
+Una corriente compresible tiene energía interna y energía cinética. La temperatura total $T_t$ representa la temperatura que alcanzaría al frenarse adiabáticamente sin trabajo; para gas perfecto con $c_p$ constante, $c_pT_t=c_pT+V^2/2$. La presión total $p_t$ corresponde a una deceleración además reversible. Una toma ideal conserva ambas magnitudes totales, aunque aumenta la presión estática al disminuir velocidad. Una toma real conserva aproximadamente entalpía total sin calentamiento, pero pierde presión total por fricción, separación u ondas de choque.
+
+El ciclo Brayton ideal comprende compresión isentrópica, calentamiento a presión constante, expansión isentrópica y rechazo de calor a presión constante. El motor abierto intercambia masa con el ambiente; el ciclo cerrado de aire es una herramienta para comparar procesos. En la notación de ciclo, 1 es entrada del compresor, 2 su salida, 3 salida del calentador y 4 salida de turbina. Para $r_p=p_{t2}/p_{t1}$, $a=(\gamma-1)/\gamma$ y propiedades constantes,
+\begin{equation}
+ T_{t2s}=T_{t1}r_p^a,\qquad
+ T_{t4s}=T_{t3}r_p^{-a}.
+\end{equation}
+El subíndice $s$ indica la salida isentrópica para la misma relación de presiones. El rendimiento térmico del ciclo ideal cerrado es $1-r_p^{-a}$. Esta expresión exige igualdad de relaciones de presión de compresor y turbina y ausencia de pérdidas. No es directamente el rendimiento global de un turborreactor con tobera y velocidad de vuelo.
+
+El trabajo específico del compresor es $w_c=c_p(T_{t2}-T_{t1})$, positivo como consumo. El de la turbina es $w_t=c_p(T_{t3}-T_{t4})$, positivo como producción. Los rendimientos isentrópicos se definen por
+\begin{equation}
+ \eta_c=\frac{T_{t2s}-T_{t1}}{T_{t2}-T_{t1}},\qquad
+ \eta_t=\frac{T_{t3}-T_{t4}}{T_{t3}-T_{t4s}}.
+\end{equation}
+Ambos son menores o iguales que uno bajo las hipótesis dadas, pero se colocan en posiciones distintas porque uno compara trabajo mínimo con real y el otro trabajo real con máximo. Intercambiarlos puede predecir una compresión que enfría o una turbina que extrae más trabajo del permitido por el proceso reversible.
+
+El calentamiento real pierde presión total y mezcla productos de composición y propiedades variables. Un balance simplificado, ignorando la entalpía sensible del combustible, da
+\begin{equation}
+ f=\frac{c_{pg}T_{t3}-c_{pa}T_{t2}}
+ {\eta_b H_i-c_{pg}T_{t3}}.
+\end{equation}
+Aquí $\eta_b$ es eficacia de liberación térmica, no rendimiento global del motor. El denominador descuenta que el combustible añadido también sale como masa caliente. Para estimaciones iniciales puede despreciarse ese efecto si $f\ll1$, declarando la aproximación.
+
+\section{Cómo cooperan los componentes}
+El compresor aumenta presión total aportando trabajo de eje. En uno axial, filas rotóricas y estátoras controlan velocidad y difusión; en uno centrífugo, el rotor y el difusor convierten trabajo y energía cinética en presión. La difusión intensa encuentra límites por separación de la capa límite. Una perturbación puede producir pérdida local de perfiles; una oscilación global con grandes variaciones de caudal y presión es un fenómeno diferente, conocido como bombeo. El margen frente a esas inestabilidades depende del punto de funcionamiento y de los transitorios.
+
+El combustor debe sostener una llama mientras atraviesa un flujo global rápido. La recirculación crea una zona donde los tiempos de residencia permiten reacción estable. El aire también participa en dilución y refrigeración, de modo que no toda la masa se mezcla inicialmente en la misma proporción. La distribución de temperatura a la entrada de turbina importa porque una temperatura media aceptable puede ocultar zonas locales demasiado calientes. La estabilidad de llama, las emisiones y las pérdidas de presión plantean compromisos.
+
+La turbina extrae energía del gas y la transmite al compresor por el eje. En régimen estacionario, su potencia mecánica debe igualar el consumo del compresor y auxiliares, incluidas pérdidas de transmisión. Su alta temperatura exige materiales y refrigeración adecuados. Extraer aire del compresor para refrigerar protege piezas, pero altera el balance de masa y el trabajo que puede obtenerse. Una temperatura mayor de entrada suele favorecer trabajo específico, aunque no puede incrementarse sin revisar límites materiales y vida.
+
+La tobera transforma entalpía disponible en velocidad. Para expansión adiabática, sin trabajo y con una entrada lenta, $V_e^2/2\simeq c_p(T_{t,e}-T_e)$. La caída de presión disponible y la geometría fijan si se alcanza condición sónica. Una tobera convergente puede estrangularse; reducir la presión exterior por debajo del valor crítico no aumenta indefinidamente el caudal. Para expansión supersónica controlada se necesita una sección divergente después de la garganta y condiciones compatibles con ella.
+
+Compresor, turbina y tobera comparten caudal, presiones y velocidad de giro. No es posible elegir independientemente el máximo rendimiento de cada uno y sumarlos. Una tobera que impone un caudal reducido desplaza el punto del compresor; una aceleración exige que la turbina aporte temporalmente más potencia que la consumida. El motor es un sistema acoplado con almacenamiento de energía en rotores y paredes, no una serie de cajas que responden instantáneamente.
+
+\section{Arquitecturas y rendimientos}
+En un turborreactor, gran parte del empuje procede del chorro del núcleo. En un turbofán, el ventilador acelera además un caudal de derivación. La relación de derivación $B=\dot m_b/\dot m_c$ compara caudal exterior y de núcleo. Con salidas separadas y presiones adaptadas, el empuje suma las contribuciones de ambas corrientes, incorporando combustible solamente en el núcleo. Una relación de derivación elevada permite generar empuje mediante gran caudal con incremento moderado de velocidad, pero aumenta diámetro, masa y condicionantes de instalación.
+
+Para una sola corriente, sin combustible apreciable ni término de presión, la potencia útil es $FV_0$ y la potencia cinética neta entregada al chorro es $\dot m(V_e^2-V_0^2)/2$. De su cociente se obtiene
+\begin{equation}
+ \eta_p=\frac{2V_0}{V_e+V_0}.
+\end{equation}
+Con empuje positivo, acercar $V_e$ a $V_0$ mejora esta eficiencia ideal, pero exige aumentar caudal para conservar $F=\dot m(V_e-V_0)$. El límite de eficiencia unidad con salto de velocidad nulo no proporciona empuje finito con caudal finito. La ventaja de acelerar mucha masa debe evaluarse junto con el tamaño del propulsor.
+
+La eficiencia térmica relaciona potencia mecánica transferida al flujo con energía química; la propulsiva compara potencia útil con esa potencia del flujo; su producto da la eficiencia global dentro de un mismo balance consistente. El consumo específico de empuje $\mathrm{TSFC}=\dot m_f/F$ tiene unidades SI de $\mathrm{kg/(N\,s)}$. No debe confundirse con consumo específico por potencia del motor alternativo. Comparar valores exige indicar velocidad, altitud y régimen.
+
+Un turbohélice extrae en turbina una fracción mayor de la energía para mover una hélice mediante reductor. Un turboeje prioriza potencia de eje para rotor u otra carga. Algunos emplean turbina libre, mecánicamente separada del generador de gas, lo que permite adaptar velocidades. El chorro residual puede contribuir, pero no constituye necesariamente la salida útil dominante. La selección entre arquitecturas surge de velocidad, misión, ruido, instalación y potencia requerida.
+
+\section{Transmisión, auxiliares y control}
+Los cojinetes sostienen los rotores y los sellos reducen fugas entre cavidades de distinta presión o contienen aceite. Un sello no es un cierre ideal: su eficacia depende de holguras, deformación y diferencias de presión. Variaciones térmicas cambian holguras y pueden alterar consumo o riesgo de contacto. La lubricación limita rozamiento, evacua calor y mantiene condiciones de película en cojinetes y engranajes; requiere circulación, recuperación y separación de aire según la arquitectura.
+
+Las tomas de movimiento extraen potencia de un eje y la llevan a la caja de accesorios mediante transmisiones. Allí pueden conectarse bombas de aceite y combustible, generadores y otros equipos. Los engranajes adaptan velocidades y transmiten par, con pérdidas y cargas propias. Las arquitecturas con ventilador engranado permiten que ventilador y turbina trabajen a velocidades diferentes. La reducción puede mejorar su adaptación aerodinámica, pero incorpora un sistema mecánico que también necesita refrigeración y lubricación.
+
+Durante el arranque, una fuente externa o embarcada acelera el rotor hasta establecer caudal suficiente. Encendido y combustible deben coordinarse para lograr una liberación de calor estable y una aceleración térmicamente admisible. La descripción física no proporciona una secuencia utilizable en una aeronave concreta. Una vez autosostenido, el balance de turbina mantiene la rotación; el encendido puede emplearse de manera distinta según condiciones y diseño.
+
+El control electrónico o hidromecánico ajusta combustible y, cuando existen, geometrías variables y sangrados. El objetivo solicitado por el piloto se convierte en una demanda limitada por temperatura, velocidad de ejes, presión y estabilidad. Al acelerar, aumentar combustible eleva energía antes de que los rotores aumenten caudal; este desfase exige límites transitorios. En desaceleración también puede perderse estabilidad de combustión. Redundancia de canales no elimina fallos comunes de sensores, alimentación o software; su independencia debe justificarse.
+
+\section{Problema resuelto: empuje y balance energético}
+\textbf{1. Enunciado.} Un turborreactor educativo funciona con salida adaptada. Estime empuje neto y eficiencia global incluyendo la masa de combustible, y compare con una aproximación que la desprecia.
+
+\textbf{2. Datos.} $\dot m_a=25\,\mathrm{kg/s}$, $f=0.020$, $V_0=200\,\mathrm{m/s}$, $V_e=600\,\mathrm{m/s}$, $p_e=p_0$ y $H_i=43\,\mathrm{MJ/kg}$.
+
+\textbf{3. Incógnitas.} Caudal de combustible, empuje, potencia útil, incremento de energía cinética del flujo, eficiencia global y consumo específico.
+
+\textbf{4. Esquema verbal.} En el marco del motor entran aire a $V_0$ y combustible de momento axial despreciable; salen $25.5\,\mathrm{kg/s}$ a $V_e$. La presión ambiente equilibra el plano de salida.
+
+\textbf{5. Hipótesis.} Estacionario, velocidades uniformes y axiales, una corriente, sin otros flujos y combustible sin energía cinética apreciable. Se ignoran fuerzas de góndola.
+
+\textbf{6. Modelo.} Balance axial de cantidad de movimiento y balance de energía cinética entre las corrientes que cruzan el volumen.
+
+\textbf{7. Ecuaciones.} $F=(\dot m_a+\dot m_f)V_e-\dot m_aV_0$, $P_u=FV_0$, $\Delta\dot E_k=[(\dot m_a+\dot m_f)V_e^2-\dot m_aV_0^2]/2$, $\eta_o=P_u/(\dot m_fH_i)$ y $\mathrm{TSFC}=\dot m_f/F$.
+
+\textbf{8. Despeje.} $\dot m_f=f\dot m_a$; el empuje aproximado es $F_{f=0}=\dot m_a(V_e-V_0)$. La diferencia es exactamente $\dot m_fV_e$ bajo estas hipótesis.
+
+\textbf{9. Sustitución.} $\dot m_f=0.020(25)=0.50\,\mathrm{kg/s}$ y $F=25.5(600)-25(200)$. La energía química aportada es $0.50(43\times10^6)\,\mathrm{W}$.
+
+\textbf{10. Resultado.} $F=10300\,\mathrm{N}$, $P_u=2.060\,\mathrm{MW}$, $\Delta\dot E_k=4.090\,\mathrm{MW}$, $\eta_o=9.581\,\text{\%}$ y $\mathrm{TSFC}=4.854\times10^{-5}\,\mathrm{kg/(N\,s)}$. Despreciar combustible daría $10000\,\mathrm{N}$, un $2.91\,\text{\%}$ menos respecto al resultado completo.
+
+\textbf{11. Interpretación.} El gran salto de velocidad deja una parte considerable de energía cinética en el chorro. El cociente $P_u/\Delta\dot E_k=0.5037$ y $\Delta\dot E_k/(\dot m_fH_i)=0.1902$ multiplican la eficiencia global calculada. Esta partición supone coherencia con la energía cinética asignada al combustible entrante.
+
+\textbf{12. Comprobación independiente.} Separando empuje del aire y del combustible aparecen $25(600-200)=10000\,\mathrm{N}$ y $0.5(600)=300\,\mathrm{N}$. La suma coincide. Si $f$ tendiese a cero, el cociente propulsivo ideal sería $2(200)/(600+200)=0.5$, próximo al cálculo con masa añadida.
+
+\textbf{13. Limitaciones.} No se han calculado compresor, temperatura ni empuje de instalación. El balance cinético no sustituye al balance total de entalpía; la energía restante incluye entalpía del escape y pérdidas. Ningún número representa un motor comercial.
+
+\section{Ejercicios propuestos y autoevaluación}
+\begin{enumerate}
+\item Básico. Calcule la temperatura isentrópica de salida de un compresor para $T_{t1}=288\,\mathrm{K}$, $r_p=8$ y $\gamma=1.4$.
+\item Intermedio. Con los datos anteriores y $\eta_c=0.85$, determine temperatura real y trabajo específico para $c_p=1005\,\mathrm{J/(kg\,K)}$.
+\item Intermedio. Dos corrientes ideales vuelan a $200\,\mathrm{m/s}$. Una acelera $20\,\mathrm{kg/s}$ hasta $600\,\mathrm{m/s}$; otra acelera $80\,\mathrm{kg/s}$ hasta $300\,\mathrm{m/s}$. Compare empuje y potencia cinética añadida, despreciando combustible.
+\item Análisis. Un generador extrae $100\,\mathrm{kW}$ mecánicos adicionales de un eje. Explique por qué no puede conservarse simultáneamente todo el balance original de turbina, compresor y tobera sin reajuste.
+\end{enumerate}
+\textbf{Guía de respuestas.} 1: $521.70\,\mathrm{K}$. 2: $562.94\,\mathrm{K}$ y $276.31\,\mathrm{kJ/kg}$. 3: ambos producen $8\,\mathrm{kN}$; requieren $3.2$ y $2.0\,\mathrm{MW}$, respectivamente. 4: la extracción necesita mayor trabajo de turbina, menor energía residual u otro punto de funcionamiento; la respuesta concreta depende del control y de los límites.
+
+\resumen{El empuje neto procede de masa, velocidad y presión; la energía química explica cómo se obtiene ese cambio. Brayton proporciona tendencias, pero los componentes reales se adaptan entre sí con pérdidas y límites. La arquitectura reparte energía entre chorro y eje. Transmisiones, sellos y auxiliares permiten sostener el ciclo, mientras el control evita que las demandas transitorias salgan de su dominio estable.}
+\textbf{Autoevaluación.} ¿Por qué disminuye la presión total en una toma real aunque aumente la estática? ¿Qué diferencia hay entre eficiencia térmica y propulsiva? ¿Por qué una caja de accesorios forma parte del balance del motor?

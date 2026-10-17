@@ -1,0 +1,88 @@
+\chapter{Balances integrales y ecuación de empuje}\label{ch:02}
+\objetivos{Formular balances con un volumen de control; obtener el término de presión sin duplicarlo; pasar de una distribución de salida a una velocidad efectiva; integrar el impulso cuando varía el caudal.}
+\section{Sistema material y volumen de control}
+Un sistema material contiene siempre las mismas partículas. Para él, la suma de fuerzas externas es la derivada de su cantidad de movimiento. Un motor, considerado como región geométrica, recibe y expulsa materia: no es ese sistema cerrado. El teorema de transporte de Reynolds relaciona ambos puntos de vista. Para una propiedad extensiva con valor por unidad de masa $b$, un volumen que se mueve con velocidad superficial $\mathbf v_s$ satisface
+\begin{equation}
+\frac{d B_{\rm sist}}{dt}=\frac{\partial}{\partial t}\int_{VC}\rho b\,dV+
+\int_{SC}\rho b(\mathbf v-\mathbf v_s)\cdot\mathbf n\,dA.
+\end{equation}
+La normal es exterior. El producto escalar distingue automáticamente entradas y salidas. Omitir la velocidad relativa de cruce en un volumen móvil equivale a contar incorrectamente la masa que lo atraviesa.
+
+Para masa, $b=1$ y $dB_{\rm sist}/dt=0$. En un volumen fijo respecto al motor y con velocidades relativas $\mathbf u$,
+\begin{equation}
+\frac{d}{dt}\int_{VC}\rho\,dV+\int_{SC}\rho\mathbf u\cdot\mathbf n\,dA=0.
+\end{equation}
+La hipótesis estacionaria elimina el almacenamiento, no las entradas ni las salidas. Para un motor que recibe dos corrientes y expulsa una, $\dot m_e=\dot m_f+\dot m_o$ sólo si no hay acumulación ni otras descargas. En un ciclo con gases auxiliares vertidos al exterior, esos gases también consumen propulsante y aportan o sustraen momento según su dirección.
+\section{Balance de momento y fuerza propulsiva}
+Tomemos un eje positivo hacia delante del vehículo. La velocidad de salida relativa tiene componente axial $-v_e$. El motor ejerce sobre el fluido una fuerza hacia atrás; el fluido ejerce sobre el motor la opuesta. Para derivar el empuje del sistema completo resulta cómodo incluir a bordo los depósitos, de modo que no aparezca una corriente externa de admisión. El caudal de escape atraviesa la sección posterior y su flujo de momento tiene que contabilizarse con el convenio de signos elegido.
+
+La presión actúa sobre toda la superficie del vehículo, no únicamente sobre la salida imaginaria del volumen de control. Una presión ambiente espacialmente uniforme produce fuerza neta nula sobre una superficie cerrada. Al cerrar geométricamente la abertura de salida y restar esa contribución uniforme, aparece la diferencia $p_e-p_a$. Con régimen estacionario, salida uniforme, axial y plana, y despreciando otras fuerzas sobre el motor,
+\begin{equation}\label{eq:thrust}
+ F=\dot m v_e+(p_e-p_a)A_e.
+\end{equation}
+No se ha supuesto $p_e=p_a$. El término puede ser positivo, cero o negativo. Si se omite sin verificar adaptación, no se obtiene una aproximación controlada sino otro modelo. El hecho de que el término de presión sea negativo no demuestra que el empuje total lo sea; tampoco garantiza que una solución supersónica adherida exista a esa contrapresión.
+
+La forma integral adecuada para una salida no uniforme es
+\begin{equation}
+ F_x=-\int_{A_e}\rho u_x(\mathbf u\cdot\mathbf n)\,dA-
+ \int_{A_e}(p-p_a)\,n_x\,dA,
+\end{equation}
+con normal exterior y componentes de velocidad referidas al eje positivo hacia delante. Los signos menos convierten la fuerza sobre el fluido en su reacción sobre el motor. Si se usan magnitudes positivas de descarga hacia atrás, el primer término se escribe como flujo axial positivo de momento. Es imprescindible indicar qué magnitud representa $u_x$ antes de copiar la forma vectorial. Una velocidad media aritmética no reproduce necesariamente la integral de $\rho u^2$: la media relevante para el momento está ponderada por flujo másico.\cite{MIT02,NASA-THRUST}
+\section{Velocidad física, efectiva y característica}
+Dividir \eqref{eq:thrust} por el caudal total da
+\begin{equation}\label{eq:ceff}
+ c\equiv\frac{F}{\dot m}=v_e+\frac{(p_e-p_a)A_e}{\dot m}.
+\end{equation}
+Cada sumando tiene unidades de $\mathrm{m/s}$. La velocidad efectiva es una forma de expresar momento por masa consumida; no es la velocidad que mediría una sonda en el plano de salida cuando existe empuje de presión. Esa distinción permite describir con un solo parámetro la dinámica ideal del vehículo, siempre que el balance cuente una sola vez todas las contribuciones.
+
+La velocidad característica se define de otra manera:
+\begin{equation}
+ c^*\equiv\frac{p_cA_t}{\dot m},\qquad C_F\equiv\frac{F}{p_cA_t},\qquad c=C_Fc^*.
+\end{equation}
+La identidad final procede de las definiciones; no necesita hipótesis isentrópicas. Sin embargo, predecir $c^*$ a partir de temperatura, composición y $\gamma$ sí exige un modelo de descarga. Medir $p_c$, $A_t$ y $\dot m$ produce un valor experimental de $c^*$; introducir una fórmula de gas perfecto produce un valor de modelo. No se deben intercambiar sus significados.
+
+La página NASA sobre impulso específico consultada presenta en una de sus expresiones una agrupación que suma velocidad y fuerza antes de dividir por caudal. Se conserva la discrepancia en la auditoría. La ecuación dimensionalmente consistente es \eqref{eq:ceff}; la institución que publica una página no elimina la necesidad de revisar su álgebra.\cite{NASA-ISP}
+\section{Impulso total e impulso específico variable}
+El impulso total sobre un intervalo es
+\begin{equation}
+ I=\int_{t_0}^{t_f}F(t)\,dt.
+\end{equation}
+Si $F$ cambia, sustituir la integral por el valor máximo multiplicado por duración sobreestima el impulso. La aproximación por un promedio temporal es exacta sólo cuando ese promedio es el de la señal en el intervalo considerado. El impulso específico instantáneo y el del intervalo son, respectivamente,
+\begin{align}
+ I_{sp}(t)&=\frac{F(t)}{g_0\dot m(t)},\\
+ \overline I_{sp}&=\frac{I}{g_0\Delta m_p}
+ =\frac{\int I_{sp}(t)\dot m(t)\,dt}{\int\dot m(t)\,dt}.
+\end{align}
+El segundo es un promedio ponderado por masa consumida. Promediar aritméticamente dos impulsos específicos sólo funciona si las masas consumidas en las dos partes son iguales. En una comparación con distinta presión ambiente, el término de presión modifica $F$ y, por tanto, el impulso específico, aun con el mismo caudal y estado de cámara.
+
+El valor de $g_0$ no cambia en una misión lunar. Lo que cambia con el lugar es la fuerza gravitatoria externa, que entra en las ecuaciones del vehículo. Si se sustituye la gravedad local en la definición de $I_{sp}$, se fabricaría una mejora de prestaciones sin cambiar el motor.
+\section{Energía y momento angular}
+Para una corriente estacionaria, el balance de energía por unidad de tiempo incluye entalpía, energía cinética y potencial. El trabajo de flujo ya está contenido en $h=e+p/\rho$:
+\begin{equation}
+ \dot Q-\dot W_s=\sum_{\rm sal}\dot m\left(h+\frac{u^2}{2}+gz\right)
+ -\sum_{\rm ent}\dot m\left(h+\frac{u^2}{2}+gz\right).
+\end{equation}
+En una tobera adiabática sin trabajo de eje y con cambio de altura despreciable, $h+u^2/2$ se conserva. No se sigue que la entropía se conserve: un choque puede mantener la entalpía de remanso y aumentar la entropía. Una cámara reactiva requiere entalpías que incluyan referencias de formación; sumarle después otra vez el calor químico liberado contaría dos veces la misma energía.
+
+En una turbomáquina también interesa el momento angular respecto al eje. La diferencia de flujo de $r u_\theta$ proporciona el par. Al multiplicarlo por velocidad angular se obtiene potencia de eje. Este balance conducirá a la ecuación de Euler, pero la energía transferida no determina por sí sola la altura útil: las pérdidas internas requieren un rendimiento y condiciones de entrada.
+\section{Caso desarrollado: separación del empuje de presión}
+\begin{studiumworked}{M02. Un mismo escape en dos ambientes}
+\textbf{Datos y pregunta.} Un modelo estacionario tiene $\dot m=2.40\,\mathrm{kg/s}$, $v_e=2500\,\mathrm{m/s}$, $p_e=45.0\,\mathrm{kPa}$ y $A_e=0.0120\,\mathrm{m^2}$. Calcule $F$, $c$ e $I_{sp}$ para $p_a=90.0\,\mathrm{kPa}$ y para vacío.
+
+\textbf{Hipótesis y modelo.} Salida uniforme axial y estado interno invariable entre los dos cálculos; la hipótesis de adherencia se declara, no se demuestra aquí. Se utiliza \eqref{eq:thrust}, no una ecuación de motor adaptado.
+
+\textbf{Despeje y sustitución.} $F=2.40(2500)+(45000-p_a)(0.0120)$. El término cinético vale $6000\,\mathrm N$. En el primer ambiente el término de presión es $-540\,\mathrm N$; en vacío es $+540\,\mathrm N$.
+
+\textbf{Resultados.} $F_{90}=5460\,\mathrm N$, $c_{90}=2275\,\mathrm{m/s}$ e $I_{sp,90}=231.985\,\mathrm s$; $F_v=6540\,\mathrm N$, $c_v=2725\,\mathrm{m/s}$ e $I_{sp,v}=277.873\,\mathrm s$.
+
+\textbf{Interpretación y comprobación.} La diferencia $F_v-F_{90}=1080\,\mathrm N$ coincide con $p_aA_e$. El valor de $v_e$ no cambió, pero sí el de $c$. Multiplicar cada $I_{sp}$ por $g_0$ recupera su velocidad efectiva. \textbf{Límites.} No se ha calculado separación ni respuesta del caudal a contrapresión; por ello no se afirma que el primer estado corresponda a una tobera real estable.
+\end{studiumworked}
+\figura{c02}{El escape cruza hacia atrás y la reacción propulsiva apunta hacia delante. El cierre de presión utiliza la diferencia entre salida y ambiente.}
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item Deduzca las dimensiones de $c^*$, $C_F$, $I$ e $I_{sp}$ sin utilizar sus nombres.
+\item Dos fases consumen 2 y 5 kg con impulsos específicos 240 y 300 s. Determine el valor del intervalo y explique el promedio empleado.
+\item Una descarga auxiliar consume el 4\,\% del propulsante total. ¿Por qué no basta con usar el caudal de la cámara principal en el denominador de prestaciones del sistema?
+\item Demuestre que omitir el término de presión y sumarlo después en $c$ duplicaría su contribución si se emplea ya $F=\dot m c$.
+\end{enumerate}
+\resumen{El balance de momento se cierra con presiones relativas al ambiente y flujos de masa definidos respecto al volumen de control. $c$, $v_e$ y $c^*$ son magnitudes diferentes. El impulso específico global es un promedio por masa consumida, y $g_0$ es convencional. El balance energético no permite inferir isentropía.}

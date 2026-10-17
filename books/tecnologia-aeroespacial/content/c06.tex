@@ -1,0 +1,115 @@
+\chapter{Propiedades y movimiento de los fluidos}\label{ch:06}
+\objetivos{Formular el modelo de continuo y sus límites; distinguir descripciones euleriana y lagrangiana; calcular aceleración material; interpretar presión, viscosidad, Reynolds y capa límite sin confundir propiedades del material con características del movimiento.}
+
+El aire alrededor de un perfil parece invisible, pero tiene masa, intercambia cantidad de movimiento y transmite esfuerzos. Para construir un modelo debemos decidir qué propiedades describimos, qué escala observamos y cómo seguimos su movimiento. Este capítulo desarrolla los conceptos de la introducción a mecánica de fluidos del curso \cite{TAE3}; el siguiente establecerá sus balances de conservación.
+
+\section{Qué define a un fluido}
+Un fluido se deforma continuamente cuando se le aplica un esfuerzo cortante sostenido, por pequeño que sea, en el modelo clásico ordinario. Un sólido elástico puede sostener ese esfuerzo con una deformación estática. La distinción no depende de que el líquido ``fluya despacio'' y el gas ``fluya deprisa'': ambos pueden estar en reposo o moverse a grandes velocidades según fuerzas y geometría.
+
+Un líquido ordinario tiene baja compresibilidad y conserva aproximadamente su volumen en muchas aplicaciones; un gas cambia mucho de volumen cuando varían presión y temperatura. Sin embargo, ``incompresible'' es una aproximación de un proceso o modelo, no una garantía absoluta de cualquier estado líquido. Las ondas acústicas en agua requieren compresibilidad. Un gas puede tratarse con densidad constante en determinadas corrientes lentas sin dejar de ser un gas.
+
+El plasma incorpora partículas cargadas y puede requerir fuerzas electromagnéticas y modelos multicomponente. En vuelo atmosférico ordinario comenzamos con aire neutro. En reentrada o descargas esa elección debe revisarse. Elegir un modelo de fluido es una decisión física, no simplemente asignar una palabra al estado de la materia.
+
+\section{Hipótesis de continuo y propiedades locales}
+La densidad se define como masa por volumen en una escala de promediado apropiada. Si hacemos el volumen demasiado pequeño, aparecen fluctuaciones moleculares; si es demasiado grande, se pierden variaciones macroscópicas. La hipótesis de continuo afirma que existe un intervalo intermedio donde pueden definirse campos suaves.
+
+El número de Knudsen $Kn=\lambda/L$, cociente entre recorrido libre medio y longitud característica, compara la escala molecular con la del problema. Cuando es muy pequeño, el continuo suele ser adecuado; al aumentar pueden aparecer deslizamiento y desequilibrio. Los valores de corte dependen de la precisión y del fenómeno. Un vehículo pequeño puede experimentar enrarecimiento antes que uno grande en el mismo gas, porque tiene menor $L$.
+
+La presión termodinámica es una propiedad escalar de equilibrio. En un fluido en reposo actúa normal a cualquier superficie y su intensidad en un punto no depende de la orientación. En movimiento, el esfuerzo total incluye efectos viscosos y puede no ser isotrópico. La presión no es una fuerza hasta multiplicar e integrar sobre una superficie, con la dirección normal correspondiente.
+
+La presión absoluta se mide respecto al vacío; la manométrica respecto a una presión de referencia, normalmente la atmosférica local. Una presión manométrica negativa no implica presión absoluta negativa. La ecuación de gas ideal requiere presión absoluta, mientras que una fuerza sobre una pared puede calcularse con presiones manométricas si las fuerzas exteriores de referencia se incorporan coherentemente.
+
+\section{Dos maneras de describir el movimiento}
+La descripción lagrangiana sigue una partícula material identificable: su posición $\boldsymbol{x}(t)$, velocidad y propiedades. La descripción euleriana asigna variables a puntos del espacio: $\boldsymbol{v}(\boldsymbol{x},t)$, $p(\boldsymbol{x},t)$ y otras. Una estación meteorológica se parece a una observación euleriana; un trazador que viaja con el aire aproxima una observación lagrangiana.
+
+Ambas describen la misma física y se conectan mediante
+\begin{equation}
+ \frac{d\boldsymbol{x}}{dt}=\boldsymbol{v}(\boldsymbol{x}(t),t).
+\end{equation}
+La velocidad de una partícula cambia no solo porque cambie el campo con el tiempo, sino porque se desplaza a zonas con otra velocidad. Para una propiedad escalar $\phi$,
+\begin{equation}\label{eq:06-material}
+ \frac{D\phi}{Dt}=\frac{\partial\phi}{\partial t}+\boldsymbol{v}\cdot\nabla\phi.
+\end{equation}
+El primer término es variación local y el segundo, convectiva. Para la velocidad, $\boldsymbol{a}=\partial\boldsymbol{v}/\partial t+(\boldsymbol{v}\cdot\nabla)\boldsymbol{v}$.
+
+Una corriente estacionaria tiene $\partial/\partial t=0$ en el sistema elegido, pero puede acelerar espacialmente. En un conducto convergente con $u(x)$ creciente, una partícula experimenta $a_x=u\,du/dx$ aunque un sensor fijo mida siempre el mismo valor. Por ejemplo, si $u=10+2x$ con unidades SI y $x=3\,\mathrm{m}$, $u=16\,\mathrm{m\,s^{-1}}$ y $a_x=32\,\mathrm{m\,s^{-2}}$. Estacionario no significa uniforme ni aceleración nula.
+
+\section{Líneas para visualizar un flujo}
+La trayectoria es el camino seguido por una partícula durante un intervalo. La línea de corriente es una curva tangente al vector velocidad en un instante, definida por $dx/u=dy/v=dz/w$ donde los denominadores sean apropiados. La línea de traza une partículas que han pasado por un mismo punto de inyección; una emisión continua de humo permite visualizarla aproximadamente.
+
+En un flujo estacionario las tres coinciden geométricamente bajo condiciones regulares. En uno no estacionario pueden diferir mucho. Una fotografía de humo no muestra automáticamente trayectorias: hay que conocer cómo se produjo el trazador y cuánto tiempo estuvo expuesto. Además, partículas pesadas o gotas grandes pueden no seguir fielmente el aire por inercia.
+
+Un tubo de corriente es una superficie formada por líneas de corriente. En un instante no hay velocidad normal a su pared, por construcción. Para convertirlo en un volumen material durante un intervalo debe considerarse su evolución temporal. En régimen estacionario ofrece una elección útil para un balance de caudal entre secciones.
+
+\section{Viscosidad y ley constitutiva}
+La viscosidad dinámica $\mu$ relaciona esfuerzo cortante y tasa de deformación. En el caso sencillo de flujo paralelo $u(y)$ de un fluido newtoniano,
+\begin{equation}\label{eq:06-newton}
+ \tau_{xy}=\mu\frac{du}{dy}.
+\end{equation}
+El esfuerzo se mide en pascales y $\mu$ en $\mathrm{Pa\,s}=\mathrm{kg\,m^{-1}\,s^{-1}}$. El signo indica dirección según la cara considerada. La viscosidad cinemática es $\nu=\mu/\rho$ y se mide en $\mathrm{m^2\,s^{-1}}$.
+
+El esfuerzo viscoso depende del gradiente de velocidad, no de la velocidad absoluta: trasladar ambas placas y todo el fluido a velocidad constante no cambia la deformación relativa. La expresión anterior es una especialización; en tres dimensiones el esfuerzo depende de tasas simétricas de deformación y de la dilatación, no de cualquier rotación rígida del fluido.
+
+En flujo de Couette ideal entre placas paralelas separadas $h$, con placa inferior fija y superior a velocidad $U$, sin gradiente de presión y con no deslizamiento, $u=Uy/h$. Por tanto, $\tau=\mu U/h$ y la fuerza sobre un área $A$ es $F=\mu AU/h$. Reducir la separación duplica el esfuerzo si se reduce a la mitad, manteniendo lo demás. Esta solución exige placas suficientemente extensas para despreciar bordes y un estado laminar compatible con las perturbaciones.
+
+La condición de no deslizamiento establece igualdad entre velocidad del fluido y de la pared en el modelo continuo habitual. No quiere decir que todo el aire alrededor del ala vaya a su velocidad. La velocidad cambia desde la pared hasta el flujo exterior dentro de una región cuyo espesor depende del movimiento y la viscosidad.
+
+\section{Reynolds como comparación de mecanismos}
+En una escala $L$ y velocidad $U$, la aceleración convectiva tiene orden $U^2/L$. El término viscoso por unidad de masa tiene orden $\nu U/L^2$. Su cociente es
+\begin{equation}\label{eq:06-Re}
+ Re=\frac{UL}{\nu}=\frac{\rho UL}{\mu}.
+\end{equation}
+Reynolds compara transporte inercial y difusión viscosa de cantidad de movimiento. La longitud debe representar la geometría estudiada: diámetro en un conducto, cuerda en un perfil o distancia al borde de ataque para un Reynolds local. Dar un valor sin especificar $L$ deja incompleta su interpretación.
+
+Un Reynolds grande no demuestra que la viscosidad sea irrelevante en todas partes. Cerca de la pared el gradiente puede ser muy grande, y su contribución sigue siendo importante. Tampoco existe un único Reynolds crítico para todos los flujos: las transiciones dependen de geometría, rugosidad, perturbaciones, gradiente de presión y otras condiciones.
+
+Laminar describe un movimiento con estructura ordenada y escasa mezcla transversal macroscópica. Turbulento describe fluctuaciones de muchas escalas y fuerte transporte agregado. No se distingue por que las partículas sean lentas o rápidas en términos absolutos. Las ecuaciones instantáneas pueden ser las mismas; predecir promedios turbulentos requiere información o modelos adicionales.
+
+\section{Capa límite y separación}
+En una corriente exterior a Reynolds alto, la influencia viscosa sobre velocidad se concentra a menudo en una capa delgada junto a la pared, mientras el exterior puede aproximarse como inviscido. El espesor de capa límite se define convencionalmente, por ejemplo donde $u$ alcanza el $99\%$ de la velocidad exterior local. No es una frontera material de espesor exacto.
+
+Una estimación de escala para una placa laminar es $\delta/L\sim Re_L^{-1/2}$, obtenida equilibrando convección longitudinal y difusión viscosa transversal. No se puede usar como fórmula precisa para un perfil separado o una capa turbulenta. Su valor conceptual es mostrar que una viscosidad pequeña puede concentrar efectos grandes en una región pequeña.
+
+Si la presión aumenta en la dirección del flujo, el gradiente es adverso. La corriente próxima a pared posee poca cantidad de movimiento y puede frenarse hasta invertir su sentido. La separación modifica la distribución de presiones y puede aumentar mucho la resistencia o deteriorar la sustentación. La presión exterior y el esfuerzo de pared están acoplados; presentar la capa límite como una corrección aislada que nunca afecta al exterior es insuficiente.
+
+\figura{boundary}{Perfil de velocidad ilustrativo en una capa límite, con velocidad nula en pared y transición hacia la corriente exterior. No representa una separación ni una ley universal.}
+
+\section{Problema resuelto: régimen de un ensayo de perfil}
+\begin{enumerate}
+\item \textbf{Enunciado.} Un túnel ensaya un perfil de cuerda $0.65\,\mathrm{m}$ a $28\,\mathrm{m\,s^{-1}}$. Calcular Reynolds, viscosidad cinemática y presión dinámica, y explicar qué puede concluirse sobre el flujo.
+\item \textbf{Datos.} $\rho=1.18\,\mathrm{kg\,m^{-3}}$, $\mu=1.84\times10^{-5}\,\mathrm{Pa\,s}$ y cuerda como longitud característica.
+\item \textbf{Incógnitas.} $Re_c$, $\nu$ y $q$, junto con el alcance de su interpretación.
+\item \textbf{Esquema verbal.} Corriente uniforme exterior que encuentra un perfil con una pared donde se forman gradientes de velocidad.
+\item \textbf{Hipótesis.} Propiedades uniformes a la entrada, aire newtoniano y modelo continuo; no se presupone estado laminar de toda la capa límite.
+\item \textbf{Modelo.} Comparación dimensional de mecanismos y definición de presión dinámica.
+\item \textbf{Ecuaciones.} $\nu=\mu/\rho$, $Re_c=Uc/\nu$ y $q=\rho U^2/2$.
+\item \textbf{Despeje.} Las expresiones son directas; calcular primero $\nu$ permite una comprobación por dos formas de Reynolds.
+\item \textbf{Sustitución.} $\nu=(1.84\times10^{-5})/1.18$ y $Re_c=1.18\cdot28\cdot0.65/(1.84\times10^{-5})$.
+\item \textbf{Resultado.} $\nu=1.5593\times10^{-5}\,\mathrm{m^2\,s^{-1}}$, $Re_c=1.167\times10^6$ y $q=462.56\,\mathrm{Pa}$.
+\item \textbf{Interpretación.} La inercia domina a escala de cuerda, pero la viscosidad sigue gobernando el ajuste a la pared y puede determinar transición y separación. Reynolds no permite afirmar por sí solo que toda la corriente sea turbulenta.
+\item \textbf{Comprobación independiente.} $Uc/\nu=18.2/(1.5593\times10^{-5})$ recupera el mismo Reynolds. Las unidades de $\rho Uc/\mu$ se cancelan completamente.
+\item \textbf{Limitaciones.} No se ha usado la geometría del perfil, su incidencia, rugosidad ni turbulencia del túnel; no se puede deducir de aquí un coeficiente de resistencia.
+\end{enumerate}
+
+\section{Similitud y uso de modelos}
+Un ensayo a escala debe preservar los parámetros que dominan el fenómeno. Si el modelo mide la mitad y se conserva fluido y temperatura, igualar Reynolds requiere aproximadamente duplicar velocidad. Eso modifica Mach y presión dinámica, de modo que no siempre pueden igualarse todas las condiciones a la vez. La similitud es una decisión razonada sobre qué mecanismos se conservan y cuáles se corrigen.
+
+Las incertidumbres también se propagan. Para pequeñas variaciones independientes en magnitud, la sensibilidad relativa de Reynolds puede leerse de $d\ln Re=d\ln\rho+d\ln U+d\ln L-d\ln\mu$. Esta identidad no es una suma estadística de errores, pero muestra el sentido de cada influencia. Si temperatura cambia a la vez densidad y viscosidad, ambas variaciones están relacionadas y deben modelarse de forma coherente.
+
+\section{Ejercicios propuestos}
+\begin{enumerate}
+\item \textbf{Básico.} Determinar las unidades de $\mu$ a partir de la ley de Newton y de $\nu$ a partir de $\mu/\rho$.
+\item \textbf{Intermedio.} Para $u(x)=5+3x$ en SI, calcular aceleración convectiva en $x=2\,\mathrm{m}$ en un flujo unidimensional estacionario.
+\item \textbf{Examen.} Un modelo a escala $1{:}4$ se ensaya con el mismo fluido y propiedades. Determinar la velocidad necesaria para igualar Reynolds si el prototipo viaja a $30\,\mathrm{m\,s^{-1}}$. Discutir qué sucede con Mach.
+\item \textbf{Conceptual.} Explicar por qué ``Reynolds alto'' y ``fluido inviscido en todas partes'' no son expresiones equivalentes.
+\end{enumerate}
+\section{Respuestas y orientación}
+1. $\mathrm{Pa\,s}$ y $\mathrm{m^2\,s^{-1}}$. 2. $a_x=11\cdot3=33\,\mathrm{m\,s^{-2}}$. 3. $120\,\mathrm{m\,s^{-1}}$; con igual temperatura Mach se multiplica por cuatro y puede comprometer la similitud. 4. Cerca de paredes los gradientes amplifican términos viscosos; la escala global no caracteriza todas las regiones.
+
+\resumen{Los fluidos requieren distinguir propiedades del material y características del movimiento. La derivada material conecta campos eulerianos con partículas. Viscosidad y gradientes generan esfuerzos; Reynolds compara mecanismos a una escala definida. La capa límite explica cómo pueden coexistir un exterior casi inviscido y una influencia decisiva de viscosidad sobre fuerzas y separación.}
+\section{Autoevaluación}
+\begin{enumerate}
+\item ¿Cómo puede acelerar una partícula en un campo estacionario?
+\item ¿Qué diferencia una línea de corriente de una línea de traza?
+\item ¿Qué datos adicionales pediría antes de predecir transición en un ala?
+\end{enumerate}
