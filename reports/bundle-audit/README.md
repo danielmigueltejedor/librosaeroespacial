@@ -1,6 +1,8 @@
 # Revisión del bundle Studium — 18 de octubre de 2026
 
-Se revisaron las cinco asignaturas y sus trece volúmenes. Se añadieron los dos cuadernos de Fluidos y se corrigieron los fallos reproducibles descritos a continuación. La compilación, el cálculo y la revisión visual se distinguen de una aprobación académica independiente, que no se atribuye a esta entrega.
+La colección actual reúne **quince volúmenes**: manual, problemas y simulacros de las cinco asignaturas. La [incorporación de Estructuras](estructuras-companions.md) completa los dos cuadernos que faltaban en la entrega inicial de trece PDF. Su alcance y controles se registran por separado; `pdf-checks.json` contiene el inventario actual de los quince.
+
+En la revisión inicial se revisaron trece volúmenes. Se añadieron los dos cuadernos de Fluidos y se corrigieron los fallos reproducibles descritos a continuación. La compilación, el cálculo y la revisión visual se distinguen de una aprobación académica independiente, que no se atribuye a esta entrega.
 
 ## Nuevos cuadernos de Fluidos
 
@@ -36,7 +38,7 @@ Se revisaron las cinco asignaturas y sus trece volúmenes. Se añadieron los dos
 | Tecnología Aeroespacial | 53 controles y 30 rutas alternativas con dimensiones | Modelos de atmósfera, medidas, aerodinámica, actuaciones, órbita y potencia. Se comprobó que las soluciones de sus simulacros están en el cuaderno de problemas, tal como indican los enunciados. |
 | Turbomáquinas | 674 controles sobre 150 casos | Unidades, resultados del banco, dominios e identidades seleccionadas; presencia y balances de las magnitudes completadas. C17-04-P sigue siendo un ejercicio deliberado de diagnóstico con rendimiento imposible, no una máquina aceptada. |
 
-Los trece documentos se compilaron a tres pasadas con las advertencias de desbordamiento, referencias, citas, caracteres y labels duplicados tratadas como fallos. El inventario final de páginas y SHA-256 está en `pdf-checks.json`. Se examinaron automáticamente todas las páginas y se revisaron visualmente las páginas nuevas, aperturas de capítulos, portadas, páginas densas y correcciones seleccionadas. La revisión visual es del mismo agente autor, sin atribuirle independencia.
+Los trece documentos iniciales se compilaron a tres pasadas con las advertencias de desbordamiento, referencias, citas, caracteres y labels duplicados tratadas como fallos. Los dos nuevos cuadernos de Estructuras pasan el mismo control. El inventario actual de páginas y SHA-256 está en `pdf-checks.json`. Se examinaron automáticamente todas las páginas y se revisaron visualmente las páginas nuevas, aperturas de capítulos, portadas, páginas densas y correcciones seleccionadas. La revisión visual es del mismo agente autor, sin atribuirle independencia.
 
 `math-preservation.json` compara los cuatro manuscritos corregidos con el commit de partida: no desaparece ningún bloque matemático previo. Las adiciones de Turbomáquinas completan las respuestas indicadas.
 

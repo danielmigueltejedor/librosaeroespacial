@@ -1,6 +1,6 @@
 {
   "date": "2026-10-18",
-  "scope": "Technical and editorial audit of the current five-subject, thirteen-volume Studium bundle; no independent academic approval.",
+  "scope": "Technical and editorial audit of the current five-subject, fifteen-volume Studium bundle; existing subject checks retained with a separate Structures companion addition; no independent academic approval.",
   "status": "TECHNICAL_CHECKS_PASSED",
   "reviewer": "same agent, including fresh numerical and model residual passes",
   "base_revision": "6fa9a8a9ec32cc4017ce0487ef2f3f5769c905b5",
@@ -23,12 +23,13 @@
     "fluid_manual_phase5": 14,
     "fluid_manual_phase6": 25,
     "wolfram_workshops": 7,
-    "framework_tests": 38
+    "framework_tests": 38,
+    "structures_companion_coverage": 12
   },
   "pdf_inventory": {
     "status": "PASSED",
-    "volumes": 13,
-    "pages": 1599,
+    "volumes": 15,
+    "pages": 1812,
     "scope": "Every page: text bounds, empty pages, replacement glyphs, internal destinations, cover status; final LaTeX warnings. Does not establish scientific correctness or replace visual inspection.",
     "documents": [
       {
@@ -36,7 +37,7 @@
         "volume": "Manual",
         "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-manual.pdf",
         "pages": 271,
-        "sha256": "1870eb8636095e8d8fd149861a2f07cd02493fe36ff854931d705bd9b96e6911",
+        "sha256": "da0b0e3e60ebfb285d8c20cd08266268206fa572c5c55cfa6b79017d7d7c237f",
         "bookmarks": 50,
         "text_spans_by_size": [
           [
@@ -46,6 +47,44 @@
           [
             10.0,
             4540
+          ]
+        ],
+        "issues": []
+      },
+      {
+        "slug": "estructuras-aeroespaciales",
+        "volume": "105 problemas resueltos",
+        "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-problemas.pdf",
+        "pages": 162,
+        "sha256": "3e740b721ca44632686b7a9a30202834e95fb348149d35185869d96ab7b9b79a",
+        "bookmarks": 117,
+        "text_spans_by_size": [
+          [
+            9.9,
+            3510
+          ],
+          [
+            10.0,
+            208
+          ]
+        ],
+        "issues": []
+      },
+      {
+        "slug": "estructuras-aeroespaciales",
+        "volume": "Cuatro simulacros de entrenamiento y soluciones",
+        "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-simulacros.pdf",
+        "pages": 51,
+        "sha256": "9b012175eba9b5d29e7f56ba9803d1c0b29f167d68eeccca034c8f4e8f8cf0ea",
+        "bookmarks": 54,
+        "text_spans_by_size": [
+          [
+            9.9,
+            1251
+          ],
+          [
+            10.0,
+            67
           ]
         ],
         "issues": []
@@ -298,5 +337,113 @@
   },
   "native_academic_gates": "NOT_CONFIGURED; see native-gates.json",
   "remaining": "Independent expert scientific review, full claim-level corroboration and applicability to real systems remain open in the book reports.",
-  "report": "README.md"
+  "report": "README.md",
+  "new_structures_companions": {
+    "status": "PASSED",
+    "scope": "Case identity, chapter coverage and rendered solution/statement inventory. Model and arithmetic checks remain in estructuras.json. Same authoring agent; no independent academic approval.",
+    "source_bank_sha256": "9924e0e6db25721e602898967a0f7994048ac2b7808fda072e7616acc489db71",
+    "chapters": {
+      "c01": 3,
+      "c02": 5,
+      "c03": 17,
+      "c04": 17,
+      "c05": 16,
+      "c06": 15,
+      "c07": 16,
+      "c08": 16
+    },
+    "problems": 105,
+    "papers": 4,
+    "selected_existing_cases": 20,
+    "new_numerical_variants": 0,
+    "diagrams_from_manual": 39,
+    "records": [
+      {
+        "name": "105 unique worked cases, exactly the public bank",
+        "passed": true
+      },
+      {
+        "name": "eight chapters in problem book",
+        "passed": true
+      },
+      {
+        "name": "four papers of five different cases",
+        "passed": true
+      },
+      {
+        "name": "full eight-theme coverage across papers",
+        "passed": true
+      },
+      {
+        "name": "one solution per selected case",
+        "passed": true
+      },
+      {
+        "name": "obsolete dependent example references removed",
+        "passed": true
+      },
+      {
+        "name": "rotation label has not regressed",
+        "passed": true
+      },
+      {
+        "name": "problemas: every expected case has one solution bookmark",
+        "passed": true
+      },
+      {
+        "name": "simulacros: every expected case has one solution bookmark",
+        "passed": true
+      },
+      {
+        "name": "all twenty problem IDs present in statement part",
+        "passed": true
+      },
+      {
+        "name": "no solved manual-figure captions in statement part",
+        "passed": true
+      },
+      {
+        "name": "405 existing bank controls passed",
+        "passed": true
+      }
+    ],
+    "documents": [
+      {
+        "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-problemas.pdf",
+        "pages": 162,
+        "sha256": "3e740b721ca44632686b7a9a30202834e95fb348149d35185869d96ab7b9b79a"
+      },
+      {
+        "file": "dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-simulacros.pdf",
+        "pages": 51,
+        "sha256": "9b012175eba9b5d29e7f56ba9803d1c0b29f167d68eeccca034c8f4e8f8cf0ea"
+      }
+    ]
+  },
+  "structures_extension": {
+    "base_revision": "2f82faa9ff105dc5e1525bbe76ad3bc18c5ac8c2",
+    "fresh_checks": [
+      "405 existing Structures model/arithmetic controls",
+      "12 companion coverage checks",
+      "PDF technical inventory across all 15 registered volumes",
+      "38 framework tests"
+    ],
+    "other_subject_scientific_results": "retained from the prior thirteen-volume audit; not independently re-reviewed in this extension",
+    "visual_review": {
+      "new_pages": 213,
+      "contact_pages": "all 162 problems pages and 51 mock-exam pages",
+      "full_pages": {
+        "problemas": [
+          41,
+          99,
+          122,
+          143
+        ],
+        "simulacros": [
+          8
+        ]
+      },
+      "reviewer": "same authoring agent"
+    }
+  }
 }

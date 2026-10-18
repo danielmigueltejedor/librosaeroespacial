@@ -1,0 +1,26 @@
+{
+  "status": "NOT_CONFIGURED",
+  "reason": "Studium import lacks book.toml; portable compilation and public-bank recalculation are reported separately.",
+  "runs": [
+    {
+      "command": "check estructuras-aeroespaciales --strict",
+      "exit_code": 1,
+      "output": "No existe <repository>/books/estructuras-aeroespaciales/book.toml. Migra el libro al framework o usa 'aerobooks new'.\n"
+    },
+    {
+      "command": "build estructuras-aeroespaciales",
+      "exit_code": 1,
+      "output": "No existe <repository>/books/estructuras-aeroespaciales/book.toml. Migra el libro al framework o usa 'aerobooks new'.\n"
+    },
+    {
+      "command": "coverage estructuras-aeroespaciales --strict",
+      "exit_code": 1,
+      "output": "No existe <repository>/books/estructuras-aeroespaciales/book.toml. Migra el libro al framework o usa 'aerobooks new'.\n"
+    },
+    {
+      "command": "gate estructuras-aeroespaciales",
+      "exit_code": 1,
+      "output": "No existe <repository>/books/estructuras-aeroespaciales/book.toml. Migra el libro al framework o usa 'aerobooks new'.\n"
+    }
+  ]
+}

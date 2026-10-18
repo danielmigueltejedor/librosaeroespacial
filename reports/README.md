@@ -1,6 +1,6 @@
 # Comprobación editorial de la colección
 
-La revisión actual, con trece volúmenes, los nuevos cuadernos de Fluidos y las correcciones científicas y editoriales, está en [`bundle-audit/README.md`](bundle-audit/README.md). Sus inventarios y resultados conservan el alcance de cada control y los pendientes.
+La revisión actual, con quince volúmenes, los cuadernos de Fluidos y Estructuras y las correcciones científicas y editoriales, está en [`bundle-audit/README.md`](bundle-audit/README.md). Sus inventarios y resultados conservan el alcance de cada control y los pendientes.
 
 `editorial-standardization-2026-10-18.json` registra los once PDF de la maquetación común: páginas, SHA-256, recuento de aperturas y cierres de los 103 capítulos principales, conservación de expresiones matemáticas y referencias en los 95 archivos científicos modificados, compilación y revisión visual.
 

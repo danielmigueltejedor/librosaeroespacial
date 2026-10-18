@@ -2,7 +2,7 @@
 
 Repositorio monorepo para libros universitarios en LaTeX de **Daniel Miguel Tejedor**, orientados al Grado en Ingeniería Aeroespacial.
 
-[Los cinco libros y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosaeroespacial/releases/tag/studium-fluidos-auditoria-2026-10-18) · [Auditoría de los trece volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
+[Los cinco libros y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosaeroespacial/releases/tag/studium-coleccion-completa-2026-10-18) · [Auditoría de los quince volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
 
 La colección está construida sobre **AeroBooks**, un framework editorial y de control de calidad diseñado para que crear, revisar y mantener libros académicos a partir de fuentes sea sencillo, reproducible y compatible con flujos de trabajo asistidos por IA.
 
@@ -224,7 +224,7 @@ Principios centrales:
 
 ## Editar los libros importados de Studium
 
-Los cinco libros conservan sus fuentes y su diseño Studium. Estructuras contiene su manual; Fluidos, Turbomáquinas, Tecnología Aeroespacial y Motores Cohete incluyen **manual, problemas y simulacros**. Se guardan también los recursos necesarios para recompilar. No se incluyen los apuntes, escaneos ni exámenes privados utilizados como referencia.
+Los cinco libros conservan sus fuentes y su diseño Studium. Las cinco asignaturas incluyen **manual, problemas y simulacros**. Estructuras reúne los 105 ejercicios de su manual en un cuaderno autónomo y añade cuatro pruebas de entrenamiento con soluciones. Se guardan también los recursos necesarios para recompilar. No se incluyen los apuntes, escaneos ni exámenes privados utilizados como referencia.
 
 Las antiguas ediciones AeroBooks de Estructuras y Fluidos se han sustituido por sus manuscritos actuales y permanecen recuperables en el historial de Git. Estructuras recupera el manuscrito completo: la copia de clase tenía un salto de la página impresa 98 a la 230. Fluidos incorpora las correcciones hasta la fase 6. La paginación cambia con la maquetación común; los informes registran el tamaño de los PDF actuales.
 
@@ -237,9 +237,9 @@ python3 scripts/build-studium-books.py tecnologia-aeroespacial
 python3 scripts/build-studium-books.py turbomaquinas
 ```
 
-Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los trece PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
+Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los quince PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
 
-Consulta el README de cada libro para saber qué `.tex` editar. La maquetación de los trece volúmenes se controla en [`shared/EDITORIAL_STANDARD.md`](shared/EDITORIAL_STANDARD.md) y `shared/latex/`: una sola plantilla para portadas, capítulos, recuadros y páginas iniciales. Fluidos y Motores Cohete usan fotografías NASA de mayor resolución, con procedencia en sus archivos `cover-photo.json`.
+Consulta el README de cada libro para saber qué `.tex` editar. La maquetación de los quince volúmenes se controla en [`shared/EDITORIAL_STANDARD.md`](shared/EDITORIAL_STANDARD.md) y `shared/latex/`: una sola plantilla para portadas, capítulos, recuadros y páginas iniciales. Fluidos y Motores Cohete usan fotografías NASA de mayor resolución, con procedencia en sus archivos `cover-photo.json`.
 
 Estos proyectos existentes están archivados como importaciones; sus registros académicos no se convierten automáticamente al contrato AeroBooks y no se asignan aprobaciones. Para ellos se usa el compilador anterior, y para los libros nativos se mantiene `aerobooks build`.
 

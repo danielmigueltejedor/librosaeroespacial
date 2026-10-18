@@ -10,6 +10,6 @@ Cada libro conserva una carpeta estable bajo `books/<slug>/`. Las cinco carpetas
 | Tecnología Aeroespacial | [tecnologia-aeroespacial](tecnologia-aeroespacial/) | `python3 scripts/build-studium-books.py tecnologia-aeroespacial` |
 | Motores Cohete | [motores-cohete](motores-cohete/) | `python3 scripts/build-studium-books.py motores-cohete` |
 
-Estructuras contiene su manual. Las otras cuatro colecciones contienen manual, problemas resueltos y simulacros: trece PDF en total. Fluidos añade 48 problemas resueltos, siete talleres y cuatro simulacros originales. Los comandos se ejecutan desde la raíz del repositorio. Los PDF generados no se versionan como fuentes; sus entregas se guardan en Releases y las recompilaciones en los artefactos de GitHub Actions.
+Las cinco colecciones contienen manual, problemas resueltos y simulacros: quince PDF en total. Estructuras reúne los 105 ejercicios de su manual y cuatro simulacros de entrenamiento por selección de veinte casos del mismo banco. Fluidos añade 48 problemas resueltos, siete talleres y cuatro simulacros originales. Los comandos se ejecutan desde la raíz del repositorio. Los PDF generados no se versionan como fuentes; sus entregas se guardan en Releases y las recompilaciones en los artefactos de GitHub Actions.
 
 No se crean carpetas `v2`, `final-final` ni copias de trabajo privadas. Las fuentes y recursos editables se versionan directamente. La integración académica de las importaciones en AeroBooks queda explícitamente pendiente; no se fabrica un `book.toml`, un ledger ni aprobaciones para simularla.

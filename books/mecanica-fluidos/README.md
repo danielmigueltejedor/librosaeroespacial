@@ -19,7 +19,7 @@ Se archivan fuentes preexistentes para poder editarlas y recompilarlas. No se in
 
 ## Maquetación común de la colección
 
-Los trece volúmenes comparten `shared/latex/studium-editorial.tex` y `studium-cover.tex`, desde la raíz del repositorio. Las opciones específicas están en `latex/editorial-config.tex`. Consulta `shared/EDITORIAL_STANDARD.md` para el orden común de páginas, apartados y recuadros.
+Los quince volúmenes comparten `shared/latex/studium-editorial.tex` y `studium-cover.tex`, desde la raíz del repositorio. Las opciones específicas están en `latex/editorial-config.tex`. Consulta `shared/EDITORIAL_STANDARD.md` para el orden común de páginas, apartados y recuadros.
 
 ## Cuadernos originales de Fluidos
 

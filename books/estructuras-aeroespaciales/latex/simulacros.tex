@@ -1,0 +1,27 @@
+\documentclass[10pt,a4paper,openany]{book}
+\input{../../../shared/latex/studium-editorial.tex}
+\usepackage{needspace}
+\input{editorial-config.tex}
+\renewcommand{\studiumvolumetype}{simulacros}
+\hypersetup{pdftitle={Teoría de Estructuras - Cuatro simulacros de entrenamiento y soluciones}}
+\begin{document}
+\studiumcover{TEORÍA\\DE ESTRUCTURAS}{Cuatro simulacros de entrenamiento y soluciones}{SIMULACROS}
+\frontmatter
+\studiumreadingguide
+\chapter*{Presentación y convenios}\addcontentsline{toc}{chapter}{Presentación y convenios}
+Estos cuadernos acompañan al manual de Teoría de Estructuras de Studium y siguen sus ocho temas. Se reúne el banco de \textbf{105 ejercicios del manual} en un volumen separado, con sus identificadores públicos y soluciones. No se presentan como 105 ejercicios adicionales ni como preguntas oficiales.
+
+Los valores de módulos, densidades, límites y cargas son \textbf{datos académicos de los enunciados}. Incluso cuando se usa el nombre de una aleación, no constituyen valores admisibles certificados de diseño. Cada conclusión se condiciona a las hipótesis indicadas.
+
+La tensión normal es positiva a tracción. En las secciones de pared delgada se usan $z$ a la derecha e $y$ hacia abajo, con flujos firmados según las flechas del esquema. Los resultados de resistencia no incluyen automáticamente pandeo, fatiga, uniones o concentraciones de tensiones.
+
+En cada cálculo conserva una combinación coherente de unidades: $\mathrm{N,mm,MPa}$, con $1\,\mathrm{MPa}=1\,\mathrm{N/mm^2}$, o bien unidades SI. Convierte $\mathrm{kN}$, $\mathrm{GPa}$ y metros antes de sustituir. La energía $\mathrm{N\,mm}$ equivale a $10^{-3}\,\mathrm{J}$; un giro se expresa en radianes. Las expresiones numéricas usan las unidades convertidas del modelo, que pueden diferir de las de la tabla. Los dígitos impresos conservan el redondeo del banco y no representan precisión experimental.
+\input{../content/exam-papers-and-solutions.tex}
+\backmatter
+\chapter*{Procedencia y comprobaciones}\addcontentsline{toc}{chapter}{Procedencia y comprobaciones}
+La fuente de estos cuadernos es el banco público de ejercicios originales del manual de Teoría de Estructuras de esta colección, segunda edición completa. Se conserva en \path{reports/bundle-audit/structures-problem-bank.json}, dentro del repositorio \url{https://github.com/danielmigueltejedor/librosaeroespacial}. Los enunciados se han hecho autónomos retirando remisiones como «el ejemplo anterior» cuando los datos ya estaban presentes. Los esquemas de pared delgada se trazan desde las coordenadas del banco y sus flechas fijan el recorrido de las leyes de flujo.
+
+Las ecuaciones y resultados son derivados de los modelos escritos; sus interpretaciones son condicionales. El informe reproducible registra 405 controles sobre los 105 casos, incluyendo aritmética con redondeo, ocho geometrías de cortante y contrastes seleccionados de energía y elasticidad. Los simulacros seleccionan veinte de esos mismos casos, sin atribuirles variantes numéricas ni comprobaciones independientes adicionales.
+
+Revisión y maquetación: 18 de octubre de 2026. Las comprobaciones las realizó el mismo agente autor en una pasada de cálculo distinta. No se atribuye revisión académica independiente ni validación experimental. La bibliografía de teoría y sus condiciones de uso se conservan en el manual; este cuaderno no incorpora nuevas fuentes teóricas ni sustituye la lectura del modelo.
+\end{document}

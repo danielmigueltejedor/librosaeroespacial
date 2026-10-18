@@ -40,7 +40,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern
-      - name: Check and compile the thirteen volumes
+      - name: Check and compile the fifteen volumes
         run: python3 scripts/build-studium-books.py all
       - uses: actions/upload-artifact@v4
         with:
