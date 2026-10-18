@@ -45,7 +45,7 @@ def check(folder: Path, spec: dict) -> None:
         if p.suffix != ".tex":
             continue
         text = p.read_text(encoding="utf-8")
-        for ref in re.findall(r"\\(?:input|include|includegraphics)(?:\[[^]]*\])?\{([^}]+)\}", text):
+        for ref in re.findall(r"\\(?:input|include|includegraphics|lstinputlisting)(?:\[[^]]*\])?\{([^}]+)\}", text):
             if "#" in ref or "\\" in ref:
                 continue
             if Path(ref).is_absolute():
@@ -85,7 +85,7 @@ def build(folder: Path, spec: dict, engine: str) -> list[dict]:
             if result.returncode:
                 raise RuntimeError(f"Falló {folder.name}/{source}; consulta {intermediate}")
         log = (intermediate / source.with_suffix(".log")).read_text(errors="replace")
-        if re.search(r"Overfull \\[hv]box|undefined references|undefined citations|Missing character:|Undefined control sequence", log):
+        if re.search(r"Overfull \\[hv]box|undefined references|undefined citations|multiply[- ]defined|Missing character:|Undefined control sequence", log):
             raise RuntimeError(f"Incidencia de composición en {folder.name}/{source}; consulta {intermediate}")
         pdf = output / doc["output"]
         shutil.copy2(intermediate / source.with_suffix(".pdf"), pdf)

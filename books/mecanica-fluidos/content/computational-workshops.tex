@@ -1,0 +1,159 @@
+\chapter*{Uso de los talleres}\addcontentsline{toc}{chapter}{Uso de los talleres}
+Cada taller incluye objetivo, código, resultado de contraste y trabajo propuesto. Los archivos editables están en \texttt{workshops/}; se ejecutan con Wolfram Language. El material de \texttt{companion/} pertenece a las prácticas anteriores del manual. Los scripts terminan con error si falla su comprobación. El informe del repositorio registra su ejecución real, versión y salida.
+
+Todos los cálculos usan los datos hipotéticos del banco. Un cálculo simbólico o numérico que reproduce una ecuación no demuestra por sí solo que esa ecuación describa un experimento.
+
+
+\chapter{Unidades antes de calcular}
+
+\objetivos{Convierte caudal y radio a SI antes de evaluar la caída de presión. Repite el cálculo conservando cantidades con unidades para detectar una confusión entre milímetros y metros.}
+
+\textbf{Modelo de referencia.} MF-P17.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w01.wl}
+
+\section{Resultado de contraste}
+
+$Q=10^{-6}\,\mathrm{m^3/s}$ y $\Delta p\simeq24446.2\,\mathrm{Pa}$. Introducir el radio en milímetros como si fueran metros modifica el resultado por un factor $10^{12}$.
+
+\section{Trabajo propuesto}
+
+Cambia el radio conservando el caudal. Explica la potencia cuarta. Introduce deliberadamente una unidad incompatible y observa el diagnóstico; no lo conviertas en un valor físico.
+
+\studiumchaptercheck
+
+\chapter{Integración temporal de una resistencia cuadrática}
+
+\objetivos{Compara un integrador de ecuaciones diferenciales con la solución separada. La coincidencia controla implementación y tolerancias, sin validar la ley de fuerza frente a medidas.}
+
+\textbf{Modelo de referencia.} MF-P02.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w02.wl}
+
+\section{Resultado de contraste}
+
+$v(6)=3.076923\,\mathrm{m/s}$. El error absoluto en 101 puntos debe quedar por debajo de $10^{-7}\,\mathrm{m/s}$ con la tolerancia propuesta.
+
+\section{Trabajo propuesto}
+
+Repite con tolerancias más laxas. Compara error de integración con error del modelo. Comprueba el límite de resistencia nula de la solución analítica.
+
+\studiumchaptercheck
+
+\chapter{Operadores vectoriales y aceleración}
+
+\objetivos{Calcula divergencia, rotacional y aceleración convectiva del campo de remanso sin confundir un campo estacionario con partículas sin aceleración.}
+
+\textbf{Modelo de referencia.} MF-P10.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w03.wl}
+
+\section{Resultado de contraste}
+
+$\nabla\cdot\boldsymbol u=0$, $\boldsymbol\omega=0$ y $\boldsymbol a=(0.108,0.072,0)\,\mathrm{m/s^2}$ en el punto dado.
+
+\section{Trabajo propuesto}
+
+Sustituye el campo por una cizalla simple. Explica por qué puede aparecer rotacional sin aceleración. Reconstruye la matriz simétrica y antisimétrica del gradiente.
+
+\studiumchaptercheck
+
+\chapter{Depósito: continuidad y evolución de nivel}
+
+\objetivos{Integra el nivel hasta el tiempo analítico necesario para alcanzar el nivel final. Evita prolongar el modelo a niveles negativos.}
+
+\textbf{Modelo de referencia.} MF-P34.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w04.wl}
+
+\section{Resultado de contraste}
+
+El nivel final numérico debe coincidir con $0.5\,\mathrm m$ dentro de $10^{-7}\,\mathrm m$. El caudal inicial no permanece constante durante el vaciado.
+
+\section{Trabajo propuesto}
+
+Duplica la sección del depósito. Repite con otro coeficiente dado y explica el cambio temporal. No interpretes ajustar el coeficiente como una validación sin datos.
+
+\studiumchaptercheck
+
+\chapter{Discretización espacial de Poiseuille plano}
+
+\objetivos{Resuelve la ecuación de contorno mediante una matriz tridiagonal. En este caso el perfil exacto es cuadrático: la segunda diferencia centrada lo reproduce exactamente salvo redondeo.}
+
+\textbf{Modelo de referencia.} MF-P16 con pared superior fija.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w05.wl}
+
+\section{Resultado de contraste}
+
+El error debe ser próximo al redondeo. Este resultado no mide orden de convergencia: la derivada cuarta de una parábola es cero. El taller 7, de difusión, sí permite observar error espacial no nulo.
+
+\section{Trabajo propuesto}
+
+Comprueba ambos valores de pared y el máximo central. Añade la contribución lineal de una pared móvil. Distingue residuo discreto de error respecto de la solución continua.
+
+\studiumchaptercheck
+
+\chapter{Ajuste de una ley de resistencia sintética}
+
+\objetivos{Usa mínimos cuadrados con cuatro puntos construidos de una misma ley. La recuperación exacta de sus parámetros es un control algebraico, no evidencia experimental.}
+
+\textbf{Modelo de referencia.} MF-P20.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w06.wl}
+
+\section{Resultado de contraste}
+
+$a=0.09\,\mathrm{kg/s}$ y $b=0.03\,\mathrm{kg/m}$. El residuo casi nulo se debe a que los datos sintéticos obedecen exactamente a la ley propuesta.
+
+\section{Trabajo propuesto}
+
+Añade una perturbación conocida a una fuerza y compara parámetros y residuos. Reserva un punto para prueba. Sin un modelo de incertidumbre no atribuyas significado estadístico a los decimales.
+
+\studiumchaptercheck
+
+\chapter{Difusión: convergencia de la tasa modal}
+
+\objetivos{Compara la tasa de decaimiento continua del seno con la tasa de una segunda diferencia centrada. Duplica sucesivamente el número de intervalos y estima el orden de error espacial.}
+
+\textbf{Modelo de referencia.} MF-P24.\par
+
+\section{Procedimiento y código}
+
+Antes de ejecutar, escribe las unidades esperadas y el control que decidirá si el cálculo coincide con el modelo.
+
+\lstinputlisting{../workshops/w07.wl}
+
+\section{Resultado de contraste}
+
+Las razones de errores se aproximan a cuatro, correspondientes a segundo orden espacial. Esta comparación de tasas no introduce un integrador temporal ni mide su error.
+
+\section{Trabajo propuesto}
+
+Representa el error frente a la holgura de malla en escala logarítmica. Deduce el orden con una expansión de seno. Diferencia convergencia espacial de estabilidad y convergencia temporal.
+
+\studiumchaptercheck

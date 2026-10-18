@@ -1,0 +1,30 @@
+\documentclass[10pt,a4paper,openany]{book}
+\input{../../../shared/latex/studium-editorial.tex}
+\usepackage{needspace}
+\input{editorial-config.tex}
+\renewcommand{\studiumvolumetype}{simulacros}
+\hypersetup{pdftitle={Mecánica de Fluidos — Cuatro simulacros originales y soluciones}}
+\begin{document}
+\studiumcover{MECÁNICA DE FLUIDOS}{Cuatro simulacros originales y soluciones}{SIMULACROS}
+\frontmatter
+\studiumreadingguide
+\chapter*{Presentación y convenios}\addcontentsline{toc}{chapter}{Presentación y convenios}
+Estos cuadernos acompañan al manual de Mecánica de Fluidos de Studium y mantienen su orden de 16 capítulos. Se adopta $g=9.81\,\mathrm{m/s^2}$ en todos los casos que requieren gravedad. Se emplean unidades SI; los ángulos numéricos son radianes y las presiones son manométricas o absolutas según se indica. Los dígitos de las soluciones facilitan reproducir los cálculos, sin representar precisión experimental.
+
+Antes de sustituir números, dibuja el sistema, fija ejes y frontera y escribe las hipótesis. En balances vectoriales, distingue la fuerza sobre el líquido de la fuerza sobre el sólido. En problemas de semejanza, diferencia las escalas de convección y variación temporal. Un valor adimensional sólo apoya las hipótesis concretas que compara.
+
+La comprobación de cada ejercicio propone una ruta de contraste. Los informes del repositorio distinguen las comprobaciones efectivamente ejecutadas de los controles sugeridos al estudiante. Los niveles de dificultad son editoriales.
+\input{../content/exam-papers-and-solutions.tex}
+\backmatter
+\chapter*{Referencias y procedencia}\addcontentsline{toc}{chapter}{Referencias y procedencia}
+Los enunciados, datos y esquemas de este volumen son originales. Los números son \textbf{datos hipotéticos de aprendizaje}, no resultados de ensayo ni preguntas oficiales. Las soluciones se clasifican como resultados derivados de los modelos escritos, y sus conclusiones físicas como interpretaciones condicionadas a esas hipótesis.
+
+El manual de Mecánica de Fluidos de esta colección fija el recorrido de 16 capítulos. Para contrastar las ecuaciones y sus condiciones de aplicación se consultaron las siguientes fuentes abiertas de sus autores o instituciones, sin reproducir sus ejercicios:
+\begin{itemize}
+\item David Tong, \emph{Lectures on Fluid Mechanics}, University of Cambridge, notas del autor. Continuidad, esfuerzos viscosos, soluciones paralelas, flujo potencial y fluidos estratificados. \url{https://www.damtp.cam.ac.uk/user/tong/fluids/fluids.pdf}.
+\item Dick K. P. Yue, \emph{Marine Hydrodynamics}, MIT OpenCourseWare, primavera de 2005. Lecciones 4 (esfuerzos, Navier--Stokes y contorno) y 16 (escalas y soluciones viscosas). \url{https://ocw.mit.edu/courses/2-20-marine-hydrodynamics-13-021-spring-2005/pages/lecture-notes/}.
+\item Richard Lindzen, \emph{Dynamics of the Atmosphere}, MIT OpenCourseWare, primavera de 2008, capítulo 6, ecuaciones de movimiento, coordenadas giratorias, hidrostática y geostrofía. \url{https://ocw.mit.edu/courses/12-810-dynamics-of-the-atmosphere-spring-2008/resources/chapter_6/}.
+\end{itemize}
+Consulta de fuentes: 18 de octubre de 2026. No se atribuye aval a estas instituciones. El repositorio conserva un registro de procedencia, las expresiones de cálculo y las comprobaciones ejecutadas. La coincidencia aritmética, las dimensiones y los residuos de modelos seleccionados no constituyen validación experimental ni aprobación científica independiente.
+
+\end{document}

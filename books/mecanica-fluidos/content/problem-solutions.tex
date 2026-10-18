@@ -1,0 +1,2823 @@
+\chapter{Mecánica clásica y balances de energía}
+
+\objetivos{Aplicar los modelos del capítulo 1 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P01. Tracción de un vehículo en rampa}
+
+\begin{studiumworked}{MF-P01 · Intermedio}
+
+\textbf{Enunciado.} Un vehículo asciende a velocidad constante. Determine la tracción, la potencia útil y la potencia de entrada; compare después la demanda al aumentar la velocidad un 20\,\%, manteniendo la misma ley de resistencia.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$m$ & $850\,\mathrm{kg}$ & masa\\
+$\sin\theta$ & $0.04$ & seno del ángulo de rampa\\
+$k$ & $0.32\,\mathrm{kg/m}$ & coeficiente de resistencia cuadrática\\
+$V$ & $12\,\mathrm{m/s}$ & velocidad\\
+$\eta$ & $0.82$ & rendimiento global\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $T,\ P_u,\ P_e,\ P_{e,2},\ P_{e,2}/P_e$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Movimiento rectilíneo estacionario; rozamiento de rodadura omitido. El rendimiento se mantiene constante en la comparación.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{T=mg\sin\theta+kV^2,\qquad P_u=TV,\qquad P_e=P_u/\eta.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Proyectar el equilibrio sobre la rampa: la tracción compensa gravedad y resistencia.
+
+\item Multiplicar la fuerza por la velocidad para obtener potencia mecánica. El rendimiento relaciona potencia útil y de entrada.
+
+\item Repetir el equilibrio con $V_2=1.2V$; no multiplicar toda la potencia por $1.2^3$, porque la contribución gravitatoria es lineal en velocidad.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $T=379.62\,\mathrm{N}$.
+
+\item $P_u=4555.44\,\mathrm{W}$.
+
+\item $P_e=5555.41\,\mathrm{W}$.
+
+\item $P_{e,2}=7022.55\,\mathrm{W}$.
+
+\item $P_{e,2}/P_e=1.26409$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La masa pesa en el balance de fuerzas; la potencia depende también de la velocidad. La resistencia cuadrática no hace cúbica la parte gravitatoria.
+
+\textbf{Comprobación.} Comprobar $\eta P_e=TV$ y que cada sumando de $T$ tiene unidades de newton. Si $k\to0$, la razón de potencias tiende a 1.2.
+
+\textbf{Límites.} No se han dimensionado motor, transmisión ni arranque. Los datos definen un caso académico, no un vehículo real.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P02. Frenado por resistencia cuadrática}
+
+\begin{studiumworked}{MF-P02 · Básico}
+
+\textbf{Enunciado.} Una masa se mueve horizontalmente sin tracción y su resistencia es $k v^2$. Deduzca velocidad y recorrido, y calcúlelos al tiempo indicado. Explique si el modelo predice una detención exacta en tiempo finito.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$m$ & $24\,\mathrm{kg}$ & masa\\
+$k$ & $0.8\,\mathrm{kg/m}$ & resistencia cuadrática\\
+$v_0$ & $8\,\mathrm{m/s}$ & velocidad inicial\\
+$t$ & $6\,\mathrm{s}$ & tiempo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $v,\ x,\ \Delta E$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Velocidad positiva, masa constante, fuerza opuesta al movimiento; no hay otras fuerzas horizontales.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{m\dot v=-kv^2,\quad v(t)=\frac{v_0}{1+kv_0t/m},\quad x(t)=\frac{m}{k}\ln(1+kv_0t/m).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Separar $dv/v^2=-(k/m)dt$ e integrar con $v(0)=v_0$.
+
+\item Integrar la velocidad entre cero y el tiempo de observación para hallar el desplazamiento.
+
+\item El denominador permanece positivo para $t\ge0$: la velocidad se aproxima a cero sin alcanzarlo en tiempo finito.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $v=3.07692\,\mathrm{m/s}$.
+
+\item $x=28.6653\,\mathrm{m}$.
+
+\item $\Delta E=654.391\,\mathrm{J}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Una ley ideal de resistencia deja una cola de movimiento. La detención de un cuerpo real puede estar gobernada después por fuerzas no incluidas.
+
+\textbf{Comprobación.} Derivar $x(t)$ para recuperar $v(t)$ y comprobar $m\dot v+kv^2=0$. La pérdida cinética debe ser positiva.
+
+\textbf{Límites.} No prolongar la ley cuadrática a velocidades en las que cambie el régimen de resistencia.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P03. Caída con resistencia lineal}
+
+\begin{studiumworked}{MF-P03 · Intermedio}
+
+\textbf{Enunciado.} Una partícula se libera desde el reposo. Tomando positivo hacia abajo, obtenga velocidad límite, tiempo de relajación, velocidad y distancia recorrida. Distinga la energía potencial perdida de la energía cinética adquirida.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$m$ & $0.04\,\mathrm{kg}$ & masa\\
+$b$ & $0.12\,\mathrm{kg/s}$ & coeficiente lineal\\
+$t$ & $0.7\,\mathrm{s}$ & tiempo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\tau,\ v_T,\ v,\ z,\ E_d$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Fuerza resistiva $-bv$, gravedad uniforme y flotación despreciada; el coeficiente se toma constante.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\tau=m/b,\quad v_T=mg/b,\quad v=v_T(1-e^{-t/\tau}),\quad z=v_T[t-\tau(1-e^{-t/\tau})].}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Resolver $m\dot v=mg-bv$ con factor integrante y condición inicial nula.
+
+\item Integrar la velocidad para obtener el descenso.
+
+\item Aplicar energía mecánica: $mgz-mv^2/2$ es la energía disipada por la resistencia.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\tau=0.333333\,\mathrm{s}$.
+
+\item $v_T=3.27\,\mathrm{m/s}$.
+
+\item $v=2.86957\,\mathrm{m/s}$.
+
+\item $z=1.33248\,\mathrm{m}$.
+
+\item $E_d=0.358176\,\mathrm{J}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La fuerza resultante tiende a cero, mientras la potencia gravitatoria termina disipándose por completo.
+
+\textbf{Comprobación.} La solución satisface $v(0)=z(0)=0$ y $\dot v(0)=g$. Para $t\gg\tau$, $v\to v_T$; comprobar $E_d\ge0$.
+
+\textbf{Límites.} La ley lineal es una hipótesis del enunciado; no se atribuye a cualquier esfera o número de Reynolds.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: tracción de un vehículo en rampa; frenado por resistencia cuadrática; caída con resistencia lineal.\par\textbf{Antes de continuar.} Distingue fuerza, potencia y energía; comprueba cómo cambia cada una al variar la velocidad.\end{tcolorbox}
+
+\chapter{Referencias giratorias, Lagrange y sistemas dinámicos}
+
+\objetivos{Aplicar los modelos del capítulo 2 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P04. Coriolis durante una deriva radial}
+
+\begin{studiumworked}{MF-P04 · Intermedio}
+
+\textbf{Enunciado.} Una partícula se desplaza radialmente sobre una plataforma giratoria. Halle la aceleración de Coriolis y estime la desviación transversal para un intervalo corto. Compare el orden de magnitud de Coriolis y la aceleración centrífuga.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\Omega$ & $0.8\,\mathrm{s^{-1}}$ & velocidad angular positiva sobre $z$\\
+$v_r$ & $0.15\,\mathrm{m/s}$ & velocidad radial hacia fuera\\
+$r_0$ & $0.4\,\mathrm{m}$ & radio inicial\\
+$t$ & $0.08\,\mathrm{s}$ & intervalo corto\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $a_{C,\theta},\ a_{cf},\ s_\theta,\ \Omega t,\ v_rt/r_0$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Plataforma con rotación uniforme, aproximación local con bases prácticamente fijas durante el intervalo; no se prescribe aquí la dinámica completa de una partícula libre.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\boldsymbol a_C=-2\boldsymbol\Omega\times\boldsymbol v_{rel},\quad a_{C,\theta}=-2\Omega v_r,\quad a_{cf}=\Omega^2r_0,\quad s_\theta\simeq\tfrac12a_{C,\theta}t^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Con $\boldsymbol\Omega=\Omega\boldsymbol e_z$ y velocidad radial exterior, el producto vectorial apunta hacia $+\boldsymbol e_\theta$; el término ficticio lleva signo negativo.
+
+\item Integrar una aceleración transversal local constante con velocidad transversal inicial nula.
+
+\item Comprobar $\Omega t\ll1$ y $v_rt/r_0\ll1$ antes de interpretar la aproximación.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $a_{C,\theta}=-0.24\,\mathrm{m/s^2}$.
+
+\item $a_{cf}=0.256\,\mathrm{m/s^2}$.
+
+\item $s_\theta=-0.000768\,\mathrm{m}$.
+
+\item $\Omega t=0.064$.
+
+\item $v_rt/r_0=0.03$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La desviación local es hacia el sentido opuesto a la rotación. Comparar módulos no permite sumar las dos aceleraciones como escalares: tienen direcciones distintas.
+
+\textbf{Comprobación.} Cambiar el signo de la rotación o de la velocidad radial invierte Coriolis; cambiar ambos conserva su signo.
+
+\textbf{Límites.} La desviación es una estimación local. Una trayectoria larga exige resolver las ecuaciones completas en la base giratoria.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P05. Oscilador amortiguado desde Lagrange}
+
+\begin{studiumworked}{MF-P05 · Intermedio}
+
+\textbf{Enunciado.} Una masa unida a un muelle y un amortiguador parte de una elongación sin velocidad. Obtenga su ecuación, determine el régimen y calcule frecuencia amortiguada y amplitud de la envolvente al tiempo dado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$m$ & $2\,\mathrm{kg}$ & masa\\
+$k$ & $80\,\mathrm{N/m}$ & rigidez\\
+$b$ & $4\,\mathrm{kg/s}$ & amortiguamiento\\
+$x_0$ & $0.03\,\mathrm{m}$ & elongación inicial\\
+$t$ & $1.2\,\mathrm{s}$ & tiempo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\omega_n,\ \zeta,\ \omega_d,\ A_{env},\ x$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Un grado de libertad, muelle lineal y fuerza disipativa $-b\dot x$; no hay excitación exterior.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{L=\tfrac12m\dot x^2-\tfrac12kx^2,\quad m\ddot x+b\dot x+kx=0,\quad \zeta=\frac{b}{2\sqrt{km}},\quad \omega_d=\sqrt{k/m-b^2/(4m^2)}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Aplicar Euler--Lagrange con fuerza generalizada $-b\dot x$.
+
+\item Comparar $\zeta$ con uno y resolver las raíces de la ecuación característica.
+
+\item La solución con velocidad inicial nula es $x=x_0e^{-bt/(2m)}[\cos(\omega_dt)+b\sin(\omega_dt)/(2m\omega_d)]$. La envolvente exacta de esta expresión incluye el factor de fase.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\omega_n=6.32456\,\mathrm{s^{-1}}$.
+
+\item $\zeta=0.158114$.
+
+\item $\omega_d=6.245\,\mathrm{s^{-1}}$.
+
+\item $A_{env}=0.00915094\,\mathrm{m}$.
+
+\item $x=0.0045371\,\mathrm{m}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La envolvente decrece exponencialmente, pero no es idéntica a la posición instantánea ni, con estas condiciones iniciales, a $x_0e^{-bt/(2m)}$.
+
+\textbf{Comprobación.} $\dot E=-b\dot x^2\le0$; al hacer $b\to0$ se recupera la oscilación conservativa.
+
+\textbf{Límites.} La linealidad del muelle y del amortiguador limita la extrapolación a amplitudes grandes.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P06. Equilibrios y estabilidad local de Lorenz}
+
+\begin{studiumworked}{MF-P06 · Avanzado}
+
+\textbf{Enunciado.} Para el sistema de Lorenz, calcule los tres equilibrios y aplique el criterio de Routh al equilibrio no nulo. Decida estabilidad local sin confundirla con una demostración de caos.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\sigma$ & $10$ & parámetro sigma\\
+$\beta$ & $2.66667$ & parámetro beta\\
+$r$ & $16$ & parámetro r\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $|x_e|,\ z_e,\ a_1,\ a_2,\ a_3,\ a_1a_2-a_3$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Sistema adimensional $\dot x=\sigma(y-x)$, $\dot y=rx-y-xz$, $\dot z=xy-\beta z$. Los parámetros describen únicamente este modelo reducido.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{(0,0,0),\quad (\pm\sqrt{\beta(r-1)},\pm\sqrt{\beta(r-1)},r-1).\quad \lambda^3+a_1\lambda^2+a_2\lambda+a_3=0,\quad a_1=\sigma+\beta+1,\ a_2=\beta(\sigma+r),\ a_3=2\sigma\beta(r-1).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Imponer las tres derivadas nulas: en los equilibrios no triviales $y=x$, $z=r-1$ y $x^2=\beta(r-1)$.
+
+\item Evaluar el polinomio característico del jacobiano en cualquiera de esos dos equilibrios.
+
+\item Con coeficientes positivos, la condición adicional de Routh es $a_1a_2>a_3$. El origen tiene una dirección inestable para $r>1$.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $|x_e|=6.32456$.
+
+\item $z_e=15$.
+
+\item $a_1=13.6667$.
+
+\item $a_2=69.3333$.
+
+\item $a_3=800$.
+
+\item $a_1a_2-a_3=147.556$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El margen positivo implica estabilidad lineal local de los dos equilibrios no triviales para estos parámetros. No afirma estabilidad global ni existencia de un atractor caótico.
+
+\textbf{Comprobación.} Sustituir los equilibrios en las tres ecuaciones y comprobar el polinomio mediante el determinante del jacobiano.
+
+\textbf{Límites.} Una discretización numérica o una gráfica irregular no demuestra caos; no se atribuye este conjunto de parámetros a un experimento.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: coriolis durante una deriva radial; oscilador amortiguado desde lagrange; equilibrios y estabilidad local de lorenz.\par\textbf{Antes de continuar.} Separa un efecto local de rotación, una ecuación de movimiento y una conclusión de estabilidad local.\end{tcolorbox}
+
+\chapter{Continuo y propiedades del fluido}
+
+\objetivos{Aplicar los modelos del capítulo 3 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P07. Viscosidad a partir de un ensayo de placas}
+
+\begin{studiumworked}{MF-P07 · Básico}
+
+\textbf{Enunciado.} Una placa arrastra una capa de líquido. A partir de la fuerza tangencial, obtenga viscosidad dinámica y cinemática, esfuerzo y potencia disipada. Calcule un Reynolds basado en el espesor.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$F$ & $3.6\,\mathrm{N}$ & fuerza tangencial\\
+$A$ & $0.12\,\mathrm{m^2}$ & área mojada\\
+$h$ & $0.002\,\mathrm{m}$ & separación\\
+$U$ & $0.4\,\mathrm{m/s}$ & velocidad de la placa\\
+$\rho$ & $950\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\tau,\ \mu,\ \nu,\ P,\ \mathrm{Re}_h$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Fluido newtoniano, perfil lineal, no deslizamiento, placa opuesta fija y gradiente de presión nulo. Fuerza neta de una sola cara mojada.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\tau=F/A=\mu U/h,\quad \mu=Fh/(AU),\quad \nu=\mu/\rho,\quad P=FU.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Convertir fuerza en esfuerzo usando el área mojada correcta.
+
+\item Aplicar la ley constitutiva al gradiente uniforme $U/h$.
+
+\item La potencia de la placa se disipa por viscosidad: por unidad de volumen es $\mu(U/h)^2$.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\tau=30\,\mathrm{Pa}$.
+
+\item $\mu=0.15\,\mathrm{Pa\,s}$.
+
+\item $\nu=0.000157895\,\mathrm{m^2/s}$.
+
+\item $P=1.44\,\mathrm{W}$.
+
+\item $\mathrm{Re}_h=5.06667$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Viscosidad dinámica y cinemática tienen dimensiones distintas. Un Reynolds pequeño es coherente con este caso, pero no sustituye la comprobación de las condiciones de contorno.
+
+\textbf{Comprobación.} Integrar $\mu(U/h)^2$ sobre el volumen $Ah$ y recuperar $FU$.
+
+\textbf{Límites.} Se omiten efectos de borde, calentamiento y dependencia de la viscosidad con temperatura o cizalla.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P08. Compresibilidad y error de densidad constante}
+
+\begin{studiumworked}{MF-P08 · Intermedio}
+
+\textbf{Enunciado.} Un líquido tiene módulo volumétrico constante. Calcule su cambio exacto de densidad para un incremento de presión y compárelo con la aproximación lineal. ¿Es compatible con una tolerancia de variación de densidad del 0.5\,\%?
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho_0$ & $980\,\mathrm{kg/m^3}$ & densidad de referencia\\
+$K$ & $1.8\times10^{9}\,\mathrm{Pa}$ & módulo volumétrico\\
+$\Delta p$ & $5\times10^{6}\,\mathrm{Pa}$ & incremento de presión\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\Delta p/K,\ \rho,\ \rho_{lin},\ \Delta\rho/\rho_0,\ \varepsilon_{lin}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Relación barotrópica a temperatura controlada; módulo $K=\rho\,dp/d\rho$ constante en el intervalo.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\frac{d\rho}{\rho}=\frac{dp}{K},\quad \rho=\rho_0e^{\Delta p/K},\quad \rho_{lin}=\rho_0(1+\Delta p/K).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Integrar la definición del módulo; el modelo exponencial procede de mantener constante $K$, no de suponer constante $d\rho/dp$.
+
+\item Expandir la exponencial para obtener la fórmula lineal y comparar ambas.
+
+\item Comprobar la variación relativa frente a la tolerancia, separando esa variación del error de linealización.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\Delta p/K=0.00277778$.
+
+\item $\rho=982.726\,\mathrm{kg/m^3}$.
+
+\item $\rho_{lin}=982.722\,\mathrm{kg/m^3}$.
+
+\item $\Delta\rho/\rho_0=0.00278164$.
+
+\item $\varepsilon_{lin}=3.85089\times10^{-6}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El fluido es compresible aunque una aproximación de densidad constante pueda ser aceptable con la tolerancia impuesta.
+
+\textbf{Comprobación.} Al derivar la solución se obtiene $d\rho/dp=\rho/K$; para $\Delta p\to0$ desaparecen variación y error.
+
+\textbf{Límites.} No se supone que el módulo sea constante a cualquier presión ni en un proceso térmico arbitrario.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P09. Escalas del continuo y número de Knudsen}
+
+\begin{studiumworked}{MF-P09 · Básico}
+
+\textbf{Enunciado.} Un gas circula por una microholgura. Evalúe Knudsen y Reynolds y estime el esfuerzo de Couette. Repita Knudsen al reducir cien veces la holgura y explique qué hipótesis pasa a ser cuestionable.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\lambda$ & $6.5\times10^{-8}\,\mathrm{m}$ & camino libre medio dado\\
+$h$ & $5\times10^{-5}\,\mathrm{m}$ & holgura\\
+$U$ & $0.02\,\mathrm{m/s}$ & velocidad de la pared\\
+$\rho$ & $1.2\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $1.8\times10^{-5}\,\mathrm{Pa\,s}$ & viscosidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\mathrm{Kn},\ \mathrm{Re}_h,\ \tau,\ \mathrm{Kn}_2$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} En la holgura inicial se ensaya el modelo continuo newtoniano con no deslizamiento y sin gradiente de presión. Las propiedades son datos académicos del caso.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\mathrm{Kn}=\lambda/h,\quad \mathrm{Re}_h=\rho Uh/\mu,\quad \tau=\mu U/h.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Distinguir la escala molecular $\lambda$ de la escala geométrica $h$.
+
+\item Calcular ambos cocientes adimensionales: Reynolds compara inercia y viscosidad; Knudsen compara escalas molecular y macroscópica.
+
+\item La nueva holgura eleva Knudsen cien veces. Una fórmula de Couette con no deslizamiento ya no constituye por sí sola una predicción justificada.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\mathrm{Kn}=0.0013$.
+
+\item $\mathrm{Re}_h=0.0666667$.
+
+\item $\tau=0.0072\,\mathrm{Pa}$.
+
+\item $\mathrm{Kn}_2=0.13$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Un Reynolds diminuto no garantiza el continuo ni la condición de no deslizamiento. Son verificaciones diferentes.
+
+\textbf{Comprobación.} Comprobar que los dos cocientes carecen de unidades y que el esfuerzo cambia linealmente con la viscosidad.
+
+\textbf{Límites.} No se calcula un modelo cinético ni una corrección de deslizamiento. Los umbrales entre regímenes no se tratan como fronteras exactas universales.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: viscosidad a partir de un ensayo de placas; compresibilidad y error de densidad constante; escalas del continuo y número de knudsen.\par\textbf{Antes de continuar.} Comprueba por separado la hipótesis newtoniana, la variación de densidad y la validez del continuo.\end{tcolorbox}
+
+\chapter{Cinemática y descripción del movimiento}
+
+\objetivos{Aplicar los modelos del capítulo 4 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P10. Punto de remanso plano}
+
+\begin{studiumworked}{MF-P10 · Intermedio}
+
+\textbf{Enunciado.} Para $\boldsymbol u=(ax,-ay,0)$, determine divergencia, vorticidad, aceleración material y tasa de deformación. Evalúe la aceleración en el punto dado y explique por qué estacionario no significa aceleración nula.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$a$ & $0.6\,\mathrm{s^{-1}}$ & tasa de extensión\\
+$x$ & $0.3\,\mathrm{m}$ & coordenada x\\
+$y$ & $0.2\,\mathrm{m}$ & coordenada y\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $u,\ v,\ a_x,\ a_y$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Campo cartesiano estacionario, diferenciable en el dominio considerado. No se prescribe aquí una pared ni una geometría de entrada.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\nabla\cdot\boldsymbol u=0,\quad\nabla\times\boldsymbol u=0,\quad \frac{D\boldsymbol u}{Dt}=(a^2x,a^2y,0),\quad \boldsymbol D=\operatorname{diag}(a,-a,0).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Calcular las derivadas espaciales de cada componente, conservando los signos del campo.
+
+\item Formar $(\boldsymbol u\cdot\nabla)\boldsymbol u$: el signo negativo de $v$ se multiplica por el de $\partial v/\partial y$.
+
+\item La parte simétrica del gradiente mide extensión y compresión; la antisimétrica se anula.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $u=0.18\,\mathrm{m/s}$.
+
+\item $v=-0.12\,\mathrm{m/s}$.
+
+\item $a_x=0.108\,\mathrm{m/s^2}$.
+
+\item $a_y=0.072\,\mathrm{m/s^2}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La partícula acelera por moverse hacia regiones con otra velocidad, aunque el observador euleriano no vea cambios temporales.
+
+\textbf{Comprobación.} Integrar las trayectorias $x=x_0e^{at}$, $y=y_0e^{-at}$ y comprobar su segunda derivada. El producto $xy$ permanece constante.
+
+\textbf{Límites.} El campo ideal no describe por sí solo el flujo completo alrededor de un cuerpo con no deslizamiento.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P11. Cizalla simple y función de corriente}
+
+\begin{studiumworked}{MF-P11 · Básico}
+
+\textbf{Enunciado.} Para $u=\Gamma y$, $v=0$, construya una función de corriente, calcule vorticidad y aceleración y siga una partícula. Distinga el giro local del elemento fluido de la velocidad angular de su trayectoria.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\Gamma$ & $3\,\mathrm{s^{-1}}$ & tasa de cizalla\\
+$x_0$ & $0.1\,\mathrm{m}$ & posición inicial x\\
+$y_0$ & $0.02\,\mathrm{m}$ & posición inicial y\\
+$t$ & $2\,\mathrm{s}$ & tiempo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $u(y_0),\ x(t),\ \psi(y_0)-C,\ \omega_z,\ \Omega_{local}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Campo bidimensional estacionario, incompresible; convenio $u=\partial_y\psi$, $v=-\partial_x\psi$.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\psi=\tfrac12\Gamma y^2+C,\quad \omega_z=-\Gamma,\quad D\boldsymbol u/Dt=0,\quad x=x_0+\Gamma y_0t,\ y=y_0.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Integrar $\partial_y\psi=\Gamma y$; la condición $v=0$ hace constante la función de integración respecto de $x$.
+
+\item Calcular $\partial_xv-\partial_yu$ para obtener el signo de la vorticidad.
+
+\item El punto material se traslada en línea recta. El giro local de un elemento infinitesimal es $\omega_z/2$, que no es el giro orbital de esa partícula.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $u(y_0)=0.06\,\mathrm{m/s}$.
+
+\item $x(t)=0.22\,\mathrm{m}$.
+
+\item $\psi(y_0)-C=0.0006\,\mathrm{m^2/s}$.
+
+\item $\omega_z=-3\,\mathrm{s^{-1}}$.
+
+\item $\Omega_{local}=-1.5\,\mathrm{s^{-1}}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Un flujo puede tener vorticidad sin que las trayectorias sean curvas y sin aceleración material.
+
+\textbf{Comprobación.} $\nabla\cdot\boldsymbol u=0$ y $u\partial_xu+v\partial_yu=0$; el signo cambia si cambia el de $\Gamma$.
+
+\textbf{Límites.} La constante de la función de corriente es arbitraria. No se identifica el movimiento de una partícula con la rotación de un elemento.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P12. Extensión no estacionaria}
+
+\begin{studiumworked}{MF-P12 · Avanzado}
+
+\textbf{Enunciado.} Sea $u=a(t)x$, $v=-a(t)y$, con $a(t)=a_0+bt$. Determine aceleración local y convectiva y evalúe la aceleración total en el punto y tiempo dados. Obtenga también la trayectoria desde la posición indicada.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$a_0$ & $0.2\,\mathrm{s^{-1}}$ & tasa inicial\\
+$b$ & $0.03\,\mathrm{s^{-2}}$ & variación temporal\\
+$t$ & $2\,\mathrm{s}$ & instante\\
+$x$ & $0.4\,\mathrm{m}$ & coordenada euleriana x\\
+$y$ & $0.3\,\mathrm{m}$ & coordenada euleriana y\\
+$x_0$ & $0.1\,\mathrm{m}$ & coordenada material inicial x\\
+$y_0$ & $0.2\,\mathrm{m}$ & coordenada material inicial y\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $a(t),\ a_x,\ a_y,\ x_p(t),\ y_p(t)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Campo suave incompresible; el punto euleriano de evaluación y la posición inicial de la trayectoria son datos distintos.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\boldsymbol a_{loc}=(bx,-by),\quad\boldsymbol a_{conv}=(a^2x,a^2y),\quad \boldsymbol a=((b+a^2)x,(a^2-b)y).\quad x_p=x_0e^{a_0t+bt^2/2},\ y_p=y_0e^{-a_0t-bt^2/2}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Derivar respecto del tiempo manteniendo fija la posición para obtener la parte local.
+
+\item Formar las derivadas espaciales y sumar los dos mecanismos de aceleración.
+
+\item Separar $dx_p/x_p=a(t)dt$ y $dy_p/y_p=-a(t)dt$; integrar desde cero.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $a(t)=0.26\,\mathrm{s^{-1}}$.
+
+\item $a_x=0.03904\,\mathrm{m/s^2}$.
+
+\item $a_y=0.01128\,\mathrm{m/s^2}$.
+
+\item $x_p(t)=0.158407\,\mathrm{m}$.
+
+\item $y_p(t)=0.126257\,\mathrm{m}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La componente vertical local puede oponerse a la convectiva. Es necesario sumar sus signos, no sus módulos.
+
+\textbf{Comprobación.} El producto $x_py_p=x_0y_0$ se conserva. Al hacer $b=0$ se recupera el caso estacionario.
+
+\textbf{Límites.} La trayectoria calculada no tiene por qué pasar por el punto euleriano elegido al mismo instante.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: punto de remanso plano; cizalla simple y función de corriente; extensión no estacionaria.\par\textbf{Antes de continuar.} Reconstruye la aceleración material sin omitir su parte convectiva ni confundir trayectoria y giro local.\end{tcolorbox}
+
+\chapter{Estática, fuerzas y flotación}
+
+\objetivos{Aplicar los modelos del capítulo 5 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P13. Compuerta inclinada articulada}
+
+\begin{studiumworked}{MF-P13 · Intermedio}
+
+\textbf{Enunciado.} Una compuerta rectangular está articulada en su borde superior, situado bajo una superficie libre. Determine fuerza hidrostática, punto de aplicación y fuerza normal que debe ejercerse en el extremo inferior para equilibrarla.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$b$ & $1.2\,\mathrm{m}$ & anchura\\
+$L$ & $2\,\mathrm{m}$ & longitud sobre el panel\\
+$h_0$ & $0.4\,\mathrm{m}$ & profundidad de la articulación\\
+$\theta$ & $1.0472$ & ángulo con la horizontal\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $h_c,\ F,\ M,\ s_R,\ F_{ap}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Líquido en reposo, presión atmosférica en la cara seca y superficie libre. Se omiten peso del panel y rozamiento de la articulación.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{p(s)=\rho g(h_0+s\sin\theta),\quad F=b\int_0^L p(s)ds,\quad M=b\int_0^L sp(s)ds,\quad s_R=M/F.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Usar presión manométrica: la atmosférica se cancela entre ambas caras.
+
+\item Integrar por separado fuerza y momento respecto de la bisagra; $s$ mide distancia sobre el panel, no profundidad vertical.
+
+\item Equilibrar momentos: $F_{ap}L=M$. La reacción de la bisagra completa el equilibrio de fuerzas.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $h_c=1.26603\,\mathrm{m}$.
+
+\item $F=29807.3\,\mathrm{N}$.
+
+\item $M=36603.9\,\mathrm{N\,m}$.
+
+\item $s_R=1.22802\,\mathrm{m}$.
+
+\item $F_{ap}=18301.9\,\mathrm{N}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El centro de presiones queda por debajo del centro geométrico porque la presión crece con la profundidad.
+
+\textbf{Comprobación.} Comprobar $L/2<s_R<L$ y recuperar $s_R=2L/3$ cuando $h_0=0$. Una cuadratura de $p(s)$ reproduce fuerza y momento.
+
+\textbf{Límites.} La carga de equilibrio es normal al panel y se aplica en su extremo; otra dirección cambia el brazo de palanca.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[scale=.85,>=Stealth]
+\fill[studiumLight] (-1,0)--(0,0)--(0,-.6)--(2,-2.5)--(2,-3)--(-1,-3)--cycle;
+\draw[blue,thick] (-1,0)--(0,0) node[above right]{superficie libre};
+\draw[thick] (0,0)--(0,-.6);
+\draw[very thick] (0,-.6)--(2,-2.5);
+\fill (0,-.6) circle(2pt) node[left]{bisagra};
+\draw[->,thick] (.2,-1.7)--(1.15,-.7) node[right]{$F$};
+\draw[<->] (2.6,-.6)--(2.6,-2.5) node[midway,right]{$L\sin\theta$};
+\draw[dashed] (0,-.6)--(2.7,-.6);
+\node at (1.4,-3.5){Esquema: distancias sobre el panel y profundidad son distintas.};
+\end{tikzpicture}\caption{Compuerta inclinada articulada. Esquema original de apoyo, sin escala.}\label{fig:mf-p13}\end{figure}
+
+
+\Needspace{.30\textheight}\section{MF-P14. Manómetro diferencial de dos líquidos}
+
+\begin{studiumworked}{MF-P14 · Básico}
+
+\textbf{Enunciado.} Dos tomas a la misma cota contienen agua y se conectan por un manómetro con un líquido más denso. La interfaz del lado A está más baja que la del lado B. Calcule $p_A-p_B$ y su altura equivalente de agua.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho_w$ & $1000\,\mathrm{kg/m^3}$ & densidad del líquido de las tomas\\
+$\rho_m$ & $13200\,\mathrm{kg/m^3}$ & densidad del líquido manométrico dada\\
+$\Delta h$ & $0.18\,\mathrm{m}$ & desnivel de interfaces\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $p_A-p_B,\ H_w$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Columnas estáticas, líquidos inmiscibles de densidad constante, sin capilaridad. La densidad alta es un dato académico, sin atribuirla a una sustancia concreta.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{p_A-p_B=(\rho_m-\rho_w)g\Delta h,\qquad H_w=\frac{p_A-p_B}{\rho_wg}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Recorrer el circuito desde A hasta B sumando $\rho g\Delta z$ al bajar y restándolo al subir.
+
+\item Agrupar los tramos de agua; las tomas a la misma cota hacen que sólo importe el desnivel de interfaces.
+
+\item La interfaz más baja del lado A exige mayor presión en A; contrastar el signo con el dibujo mental del tubo.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $p_A-p_B=21542.8\,\mathrm{Pa}$.
+
+\item $H_w=2.196\,\mathrm{m}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Usar sólo la densidad manométrica sobreestima la diferencia: también hay que descontar el peso de la columna desplazada de agua.
+
+\textbf{Comprobación.} Para $\rho_m=\rho_w$, el desnivel deja de medir una diferencia entre tomas a igual cota. Invertir interfaces invierte el signo.
+
+\textbf{Límites.} Con tomas a diferente altura se añade el término hidrostático del líquido de conexión.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P15. Estabilidad de un prisma flotante}
+
+\begin{studiumworked}{MF-P15 · Avanzado}
+
+\textbf{Enunciado.} Un prisma homogéneo flota con su cara ancha horizontal. Obtenga calado y altura metacéntrica para balanceo alrededor de su eje longitudinal. Estime el momento restaurador para un ángulo pequeño y decida estabilidad inicial.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$b$ & $0.4\,\mathrm{m}$ & manga\\
+$h$ & $0.2\,\mathrm{m}$ & altura\\
+$L$ & $0.8\,\mathrm{m}$ & longitud\\
+$\rho_s$ & $600\,\mathrm{kg/m^3}$ & densidad del sólido\\
+$\rho_f$ & $1000\,\mathrm{kg/m^3}$ & densidad del líquido\\
+$\theta$ & $0.05$ & ángulo en radianes\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $d,\ BM,\ BG,\ GM,\ W,\ M_R$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Prisma rígido homogéneo, líquido en reposo y escora infinitesimal; el eje de balanceo es paralelo a la longitud.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{d=\rho_sh/\rho_f,\quad BM=I_{wp}/\mathcal V=b^2/(12d),\quad BG=(h-d)/2,\quad GM=BM-BG,\quad M_R\simeq-WGM\theta.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Igualar peso y empuje para obtener volumen desplazado y calado.
+
+\item Usar $I_{wp}=Lb^3/12$ para el eje longitudinal; no intercambiar manga y longitud.
+
+\item Calcular $GM$ y conservar el signo del momento: un $GM$ positivo produce un par opuesto a la escora.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $d=0.12\,\mathrm{m}$.
+
+\item $BM=0.111111\,\mathrm{m}$.
+
+\item $BG=0.04\,\mathrm{m}$.
+
+\item $GM=0.0711111\,\mathrm{m}$.
+
+\item $W=376.704\,\mathrm{N}$.
+
+\item $M_R=-1.33939\,\mathrm{N\,m}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La condición de flotación no garantiza estabilidad. En este caso la altura metacéntrica positiva da estabilidad inicial de balanceo.
+
+\textbf{Comprobación.} El empuje calculado con el calado debe igualar $W$. Para $GM=0$ desaparece el término restaurador lineal, sin decidir la estabilidad de orden superior.
+
+\textbf{Límites.} No predice estabilidad a grandes ángulos, inundación, balanceo con oleaje ni estabilidad alrededor de otro eje.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: compuerta inclinada articulada; manómetro diferencial de dos líquidos; estabilidad de un prisma flotante.\par\textbf{Antes de continuar.} Verifica brazos de momento, signo de las presiones y criterio de estabilidad de flotación.\end{tcolorbox}
+
+\chapter{Flujos internos laminares}
+
+\objetivos{Aplicar los modelos del capítulo 6 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P16. Superposición Couette--Poiseuille}
+
+\begin{studiumworked}{MF-P16 · Intermedio}
+
+\textbf{Enunciado.} Un líquido circula entre placas separadas $h$. La inferior está fija y la superior se mueve con $U$. Un gradiente favorable $G=-dp/dx>0$ impulsa además el flujo. Halle perfil, caudal y esfuerzos cortantes en ambos extremos.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$h$ & $0.004\,\mathrm{m}$ & separación\\
+$U$ & $0.3\,\mathrm{m/s}$ & velocidad superior\\
+$\mu$ & $0.08\,\mathrm{Pa\,s}$ & viscosidad\\
+$G$ & $100\,\mathrm{Pa/m}$ & gradiente favorable\\
+$b$ & $0.2\,\mathrm{m}$ & anchura\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $q,\ Q,\ \tau_{xy}(0),\ \tau_{xy}(h)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Flujo estacionario, laminar, newtoniano y plenamente desarrollado; ancho mucho mayor que la separación.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\mu u^{\prime\prime}=-G,\quad u=Uy/h+Gy(h-y)/(2\mu),\quad q=Uh/2+Gh^3/(12\mu),\quad \tau_{xy}=\mu U/h+G(h/2-y).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Integrar dos veces e imponer $u(0)=0$ y $u(h)=U$.
+
+\item Integrar el perfil para obtener caudal por anchura y multiplicar por $b$.
+
+\item Derivar el perfil para obtener el componente de esfuerzo. La tracción sobre cada pared exige además su normal exterior.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $q=0.000606667\,\mathrm{m^2/s}$.
+
+\item $Q=0.000121333\,\mathrm{m^3/s}$.
+
+\item $\tau_{xy}(0)=6.2\,\mathrm{Pa}$.
+
+\item $\tau_{xy}(h)=5.8\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La velocidad lineal y la parábola pueden sumarse porque esta ecuación reducida es lineal. El signo del componente de esfuerzo no es por sí solo el de la fuerza sobre ambas paredes.
+
+\textbf{Comprobación.} Para $G=0$ se recupera Couette; para $U=0$, Poiseuille plano y esfuerzos opuestos en los extremos.
+
+\textbf{Límites.} Se omiten entrada, efectos laterales e inestabilidades; no se suman arbitrariamente soluciones no lineales de Navier--Stokes.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[>=Stealth]
+\draw[very thick] (0,0)--(5,0);\draw[very thick] (0,2)--(5,2);
+\draw[->] (4.2,2.2)--(5.3,2.2) node[right]{$U$};
+\draw[->] (.2,.2)--(.2,1.8) node[left]{$y$};
+\draw[studiumBlue,thick,domain=0:2,samples=50] plot ({1.3+1.2*\x+.15*\x*(2-\x)},\x);
+\draw[<->] (5.5,0)--(5.5,2) node[midway,right]{$h$};
+\node at (2.5,-.45){Pared fija};\node at (2.5,2.7){Perfil combinado, esquema sin escala};
+\end{tikzpicture}\caption{Superposición Couette--Poiseuille. Esquema original de apoyo, sin escala.}\label{fig:mf-p16}\end{figure}
+
+
+\Needspace{.30\textheight}\section{MF-P17. Viscosímetro capilar e inversión del caudal}
+
+\begin{studiumworked}{MF-P17 · Básico}
+
+\textbf{Enunciado.} Un capilar transporta el caudal dado. Calcule caída de presión, velocidad media, Reynolds, esfuerzo en pared y potencia disipada. Compruebe la coherencia del supuesto laminar.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$R$ & $0.001\,\mathrm{m}$ & radio\\
+$L$ & $0.8\,\mathrm{m}$ & longitud\\
+$\rho$ & $980\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $0.012\,\mathrm{Pa\,s}$ & viscosidad\\
+$Q$ & $1\times10^{-6}\,\mathrm{m^3/s}$ & caudal\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\Delta p,\ \bar u,\ \mathrm{Re}_D,\ \tau_w,\ P$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Tubo circular horizontal rígido; fluido incompresible newtoniano y flujo estacionario plenamente desarrollado.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\Delta p=8\mu LQ/(\pi R^4),\quad \bar u=Q/(\pi R^2),\quad \mathrm{Re}_D=2\rho\bar uR/\mu,\quad \tau_w=\Delta pR/(2L).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Invertir la ley de caudal de Poiseuille; conservar el radio elevado a cuatro.
+
+\item Usar diámetro $2R$ en Reynolds y señalarlo explícitamente.
+
+\item La potencia $\Delta pQ$ se convierte en disipación en el tramo desarrollado; no incluye una bomba real ni sus pérdidas.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\Delta p=24446.2\,\mathrm{Pa}$.
+
+\item $\bar u=0.31831\,\mathrm{m/s}$.
+
+\item $\mathrm{Re}_D=51.9906$.
+
+\item $\tau_w=15.2789\,\mathrm{Pa}$.
+
+\item $P=0.0244462\,\mathrm{W}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El radio controla fuertemente la resistencia. La comprobación de Reynolds apoya el régimen supuesto, pero no sustituye la comprobación de longitud de entrada.
+
+\textbf{Comprobación.} Integrar $u(r)=\Delta p(R^2-r^2)/(4\mu L)$ sobre el área reproduce $Q$. El balance axial da la misma tensión en pared.
+
+\textbf{Límites.} No se incorporan correcciones de entrada, deslizamiento, dependencia térmica ni errores de medida del radio.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P18. Couette circular y par resistente}
+
+\begin{studiumworked}{MF-P18 · Avanzado}
+
+\textbf{Enunciado.} Un cilindro interior gira dentro de otro fijo. Halle los coeficientes del perfil azimutal, el par requerido, la potencia y la diferencia de presión radial entre cilindros.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$R_i$ & $0.02\,\mathrm{m}$ & radio interior\\
+$R_o$ & $0.05\,\mathrm{m}$ & radio exterior\\
+$\Omega_i$ & $15\,\mathrm{s^{-1}}$ & giro interior\\
+$\mu$ & $0.4\,\mathrm{Pa\,s}$ & viscosidad\\
+$L$ & $0.3\,\mathrm{m}$ & longitud\\
+$\rho$ & $900\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $A,\ B,\ T,\ P,\ p(R_o)-p(R_i)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Solución base laminar estacionaria puramente azimutal, sin efectos de extremos. El cilindro exterior está fijo; no se certifica estabilidad frente a vórtices de Taylor.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{u_\theta=Ar+B/r,\quad A=-\Omega_iR_i^2/(R_o^2-R_i^2),\quad B=\Omega_iR_i^2R_o^2/(R_o^2-R_i^2),\quad T=4\pi\mu LB,\quad dp/dr=\rho u_\theta^2/r.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Imponer no deslizamiento en ambos radios para determinar $A,B$.
+
+\item Usar $\tau_{r\theta}=\mu(du_\theta/dr-u_\theta/r)=-2\mu B/r^2$ y multiplicar por área y brazo.
+
+\item Integrar el equilibrio radial. El par de entrada se da en módulo; el esfuerzo del líquido se opone al giro.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $A=-2.85714\,\mathrm{s^{-1}}$.
+
+\item $B=0.00714286\,\mathrm{m^2/s}$.
+
+\item $T=0.0107712\,\mathrm{N\,m}$.
+
+\item $P=0.161568\,\mathrm{W}$.
+
+\item $p(R_o)-p(R_i)=22.2689\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La presión aumenta hacia fuera, aunque la pared exterior esté fija. Una diferencia pequeña resulta de cancelaciones entre términos de la integral.
+
+\textbf{Comprobación.} Comprobar ambas velocidades de pared y evaluar la integral positiva $\int_{R_i}^{R_o}\rho u_\theta^2/r\,dr$ por otra ruta.
+
+\textbf{Límites.} El perfil es una solución base, no una garantía de que un montaje real permanezca en ese régimen.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: superposición couette--poiseuille; viscosímetro capilar e inversión del caudal; couette circular y par resistente.\par\textbf{Antes de continuar.} Recupera condiciones de pared y contrasta caudal, esfuerzo y potencia sin intercambiar radio y diámetro.\end{tcolorbox}
+
+\chapter{Resistencia, sustentación y polar}
+
+\objetivos{Aplicar los modelos del capítulo 7 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P19. Máxima eficiencia con una polar parabólica}
+
+\begin{studiumworked}{MF-P19 · Intermedio}
+
+\textbf{Enunciado.} Un avión en vuelo horizontal tiene $C_D=C_{D0}+KC_L^2$. Halle el $C_L$, velocidad y resistencia de máximo $L/D$. Separe la contribución inducida $K_i=1/(\pi eAR)$ de otras contribuciones cuadráticas.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$C_{D0}$ & $0.025$ & coeficiente constante\\
+$K$ & $0.05$ & coeficiente cuadrático total\\
+$e$ & $0.9$ & factor inducido dado\\
+$AR$ & $9$ & alargamiento\\
+$W$ & $4000\,\mathrm{N}$ & peso\\
+$\rho$ & $1.1\,\mathrm{kg/m^3}$ & densidad\\
+$S$ & $12\,\mathrm{m^2}$ & superficie\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $C_{L,*},\ V_*,\ D_{min},\ K_i,\ K-K_i,\ (L/D)_{max}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Vuelo estacionario horizontal, $L=W$, polar válida en el intervalo de sustentación empleado; datos sintéticos sin atribución a un avión.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{D/W=C_{D0}/C_L+KC_L,\quad C_{L,*}=\sqrt{C_{D0}/K},\quad V_*=\sqrt{2W/(\rho SC_{L,*})},\quad D_{min}=2W\sqrt{C_{D0}K}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Derivar la resistencia respecto de $C_L>0$ con peso fijo y comprobar mínimo.
+
+\item Obtener la velocidad a partir del equilibrio de sustentación.
+
+\item Calcular $K_i$ y el resto $K-K_i$. La igualdad óptima es entre término constante y término cuadrático total, no necesariamente resistencia inducida sola.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $C_{L,*}=0.707107$.
+
+\item $V_*=29.2763\,\mathrm{m/s}$.
+
+\item $D_{min}=282.843\,\mathrm{N}$.
+
+\item $K_i=0.0392975$.
+
+\item $K-K_i=0.0107025$.
+
+\item $(L/D)_{max}=14.1421$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Atribuir todo el coeficiente cuadrático a inducción sólo es válido cuando el modelo de la polar lo establece.
+
+\textbf{Comprobación.} La segunda derivada $2C_{D0}/C_L^3$ es positiva; verificar $KC_{L,*}^2=C_{D0}$.
+
+\textbf{Límites.} No se han comprobado pérdida, límites estructurales, variación de polar con Reynolds o compresibilidad.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P20. Identificación de resistencia con dos mediciones sintéticas}
+
+\begin{studiumworked}{MF-P20 · Básico}
+
+\textbf{Enunciado.} Para la ley $F=aU+bU^2$, determine los dos coeficientes usando los pares de datos y prediga la fuerza a una tercera velocidad. Discuta qué puede y qué no puede concluirse con dos puntos exactos.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$U_1$ & $2\,\mathrm{m/s}$ & primera velocidad\\
+$F_1$ & $0.3\,\mathrm{N}$ & primera fuerza sintética\\
+$U_2$ & $5\,\mathrm{m/s}$ & segunda velocidad\\
+$F_2$ & $1.2\,\mathrm{N}$ & segunda fuerza sintética\\
+$U_3$ & $8\,\mathrm{m/s}$ & velocidad de predicción\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $b,\ a,\ F_3$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Magnitudes positivas en un mismo sentido; modelo pasivo lineal más cuadrático. Los datos son construidos para el ejercicio y carecen de incertidumbre asignada.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{F/U=a+bU,\quad b=\frac{F_2/U_2-F_1/U_1}{U_2-U_1},\quad a=F_1/U_1-bU_1.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Dividir cada ecuación por su velocidad, que es distinta de cero.
+
+\item Resolver la recta resultante y recuperar unidades distintas para $a$ y $b$.
+
+\item Sustituir la velocidad de predicción. Un ajuste exacto de dos parámetros a dos puntos no mide capacidad predictiva.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $b=0.03\,\mathrm{kg/m}$.
+
+\item $a=0.09\,\mathrm{kg/s}$.
+
+\item $F_3=2.64\,\mathrm{N}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Ambos coeficientes son positivos y la fuerza se opone al movimiento si se incorpora su signo vectorial. La extrapolación sigue siendo una hipótesis.
+
+\textbf{Comprobación.} Reinsertar los coeficientes en los dos datos. Medidas adicionales y un análisis de residuos permitirían poner a prueba la ley.
+
+\textbf{Límites.} No son resultados experimentales. Sin errores de medida ni más datos no se calcula un intervalo de confianza válido.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P21. Mínima potencia y restricción de sustentación}
+
+\begin{studiumworked}{MF-P21 · Avanzado}
+
+\textbf{Enunciado.} Con una polar parabólica, determine el estado de mínima potencia mecánica requerida en vuelo horizontal. Compárelo con máxima eficiencia y compruebe el límite de sustentación dado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$C_{D0}$ & $0.03$ & término constante\\
+$K$ & $0.05$ & coeficiente cuadrático\\
+$W$ & $4000\,\mathrm{N}$ & peso\\
+$\rho$ & $1.1\,\mathrm{kg/m^3}$ & densidad\\
+$S$ & $12\,\mathrm{m^2}$ & superficie\\
+$C_{L,lim}$ & $1.4$ & límite de sustentación\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $C_{L,P},\ V_P,\ P_{min},\ C_{L,L/D},\ V_{L/D},\ C_{L,lim}-C_{L,P}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Potencia aerodinámica $P=DV$, vuelo horizontal y polar fija. No se optimiza autonomía de un sistema propulsor con rendimiento variable.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{P=W\sqrt{2W/(\rho S)}(C_{D0}C_L^{-3/2}+KC_L^{1/2}),\quad C_{L,P}=\sqrt{3C_{D0}/K}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Eliminar la velocidad mediante $L=W$ y expresar potencia en función de $C_L$.
+
+\item Derivar: el mínimo interior satisface $KC_L^2=3C_{D0}$.
+
+\item Comprobar $C_{L,P}\le C_{L,lim}$; si no se cumple, el óptimo factible se busca en la frontera. Comparar con $C_{L,L/D}=\sqrt{C_{D0}/K}$.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $C_{L,P}=1.34164$.
+
+\item $V_P=21.254\,\mathrm{m/s}$.
+
+\item $P_{min}=7604.05\,\mathrm{W}$.
+
+\item $C_{L,L/D}=0.774597$.
+
+\item $V_{L/D}=27.9718\,\mathrm{m/s}$.
+
+\item $C_{L,lim}-C_{L,P}=0.0583592$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La mínima potencia ocurre a menor velocidad y mayor sustentación que la mínima resistencia. Son objetivos de optimización distintos.
+
+\textbf{Comprobación.} La razón ideal de velocidades es $V_P/V_{L/D}=3^{-1/4}$. El margen positivo comprueba factibilidad dentro del límite suministrado.
+
+\textbf{Límites.} No incluye potencia inducida de una hélice, pérdidas de transmisión ni consumo específico del motor.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: máxima eficiencia con una polar parabólica; identificación de resistencia con dos mediciones sintéticas; mínima potencia y restricción de sustentación.\par\textbf{Antes de continuar.} Diferencia mínima resistencia, mínima potencia y un ajuste empírico; comprueba qué incluye el coeficiente cuadrático.\end{tcolorbox}
+
+\chapter{Oscilaciones y difusión no estacionaria}
+
+\objetivos{Aplicar los modelos del capítulo 8 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P22. Oscilación de un tubo en U}
+
+\begin{studiumworked}{MF-P22 · Básico}
+
+\textbf{Enunciado.} Un tubo en U de sección constante contiene una columna líquida de longitud total $L$. Una superficie se desplaza inicialmente $\eta_0$ respecto del equilibrio. Halle período, caudal máximo y energía mecánica.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$L$ & $1.6\,\mathrm{m}$ & longitud total de líquido\\
+$A$ & $0.0006\,\mathrm{m^2}$ & sección\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$\eta_0$ & $0.03\,\mathrm{m}$ & desplazamiento de un brazo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\omega,\ T,\ Q_{max},\ E$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Líquido incompresible sin pérdidas, área uniforme, brazos verticales y desplazamiento suficientemente pequeño para conservar la geometría.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\rho AL\ddot\eta=-2\rho gA\eta,\quad \omega=\sqrt{2g/L},\quad Q_{max}=A\omega\eta_0,\quad E=\rho gA\eta_0^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item El desnivel entre superficies es $2\eta$, no $\eta$. La masa que se acelera ocupa toda la longitud $L$.
+
+\item Identificar la ecuación de un oscilador y aplicar condición inicial de velocidad nula.
+
+\item Obtener el máximo caudal al pasar por el equilibrio y contrastar energías potencial y cinética.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\omega=3.50179\,\mathrm{s^{-1}}$.
+
+\item $T=1.79428\,\mathrm{s}$.
+
+\item $Q_{max}=6.30321\times10^{-5}\,\mathrm{m^3/s}$.
+
+\item $E=0.0052974\,\mathrm{J}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La densidad se cancela del período porque multiplica tanto inercia como restauración, pero no se cancela de la energía.
+
+\textbf{Comprobación.} Comprobar $E=\rho AL(\omega\eta_0)^2/2$. Duplicar $L$ aumenta el período en $\sqrt2$.
+
+\textbf{Límites.} En un tubo real la viscosidad amortigua la oscilación y los codos pueden introducir pérdidas adicionales.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P23. Pared oscilante: segundo problema de Stokes}
+
+\begin{studiumworked}{MF-P23 · Intermedio}
+
+\textbf{Enunciado.} Una pared plana oscila sinusoidalmente junto a un líquido profundo. Halle espesor de penetración, amplitud y retraso de fase a la distancia dada, esfuerzo máximo en pared y potencia media suministrada por unidad de área.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\nu$ & $1\times10^{-5}\,\mathrm{m^2/s}$ & viscosidad cinemática\\
+$U$ & $0.1\,\mathrm{m/s}$ & amplitud de pared\\
+$f$ & $2\,\mathrm{s^{-1}}$ & frecuencia en ciclos por segundo\\
+$\rho$ & $900\,\mathrm{kg/m^3}$ & densidad\\
+$y$ & $0.001\,\mathrm{m}$ & distancia a pared\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\omega,\ \delta,\ |u|,\ \varphi,\ |\tau_w|,\ \overline P/A$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Fluido newtoniano semiinfinito, flujo paralelo y régimen periódico establecido, sin gradiente de presión. $y$ apunta hacia el líquido.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\delta=\sqrt{2\nu/\omega},\quad u=Ue^{-y/\delta}\cos(\omega t-y/\delta),\quad |\tau_w|=\mu U\sqrt{\omega/\nu},\quad \overline P/A=\mu U^2/(2\delta).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Convertir ciclos por segundo a frecuencia angular $\omega=2\pi f$.
+
+\item La solución compleja tiene un factor de amortiguación y otro de fase con la misma escala espacial.
+
+\item Derivar en pared. La amplitud de esfuerzo contiene $\sqrt2/\delta$; al promediar la potencia se conserva sólo la parte en fase con la velocidad.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\omega=12.5664\,\mathrm{s^{-1}}$.
+
+\item $\delta=0.00126157\,\mathrm{m}$.
+
+\item $|u|=0.0452637\,\mathrm{m/s}$.
+
+\item $\varphi=0.792665$.
+
+\item $|\tau_w|=1.0089\,\mathrm{Pa}$.
+
+\item $\overline P/A=0.0356699\,\mathrm{W/m^2}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La perturbación penetra menos al aumentar la frecuencia. La fase indicada es un retraso en radianes, no un tiempo.
+
+\textbf{Comprobación.} Sustituir el perfil en $\partial_tu=\nu\partial_{yy}u$ y comprobar $u(0,t)=U\cos\omega t$. La potencia media es positiva.
+
+\textbf{Límites.} No incluye el transitorio de arranque ni una segunda pared a distancia comparable con la penetración.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P24. Difusión de un perfil sinusoidal}
+
+\begin{studiumworked}{MF-P24 · Avanzado}
+
+\textbf{Enunciado.} Entre placas fijas separadas $h$ se prescribe $u(y,0)=U_0\sin(\pi y/h)$. Sin gradiente de presión, obtenga la evolución, su tiempo de decaimiento, el caudal por anchura y el esfuerzo inferior al tiempo dado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$h$ & $0.01\,\mathrm{m}$ & separación\\
+$\nu$ & $1\times10^{-5}\,\mathrm{m^2/s}$ & viscosidad cinemática\\
+$U_0$ & $0.2\,\mathrm{m/s}$ & amplitud inicial\\
+$t$ & $0.5\,\mathrm{s}$ & tiempo\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $t_d,\ U(t),\ q,\ \tau_{xy}(0)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Flujo paralelo newtoniano incompresible, sin variación longitudinal; ambas paredes fijas y viscosidad constante.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{u=U_0\sin(\pi y/h)e^{-\nu\pi^2t/h^2},\quad t_d=h^2/(\nu\pi^2),\quad q=2hU_0e^{-t/t_d}/\pi.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Separar variables usando la autofunción que ya satisface las dos condiciones de no deslizamiento.
+
+\item La difusión multiplica el modo inicial por una exponencial; no cambia su forma espacial.
+
+\item Integrar para hallar caudal y derivar en pared para el esfuerzo. La energía decae con el doble de exponente que la velocidad.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $t_d=1.01321\,\mathrm{s}$.
+
+\item $U(t)=0.1221\,\mathrm{m/s}$.
+
+\item $q=0.00077731\,\mathrm{m^2/s}$.
+
+\item $\tau_{xy}(0)=0.383587\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Este perfil es un modo exacto de difusión: una sola escala temporal gobierna todos sus puntos.
+
+\textbf{Comprobación.} Comprobar el residuo de la ecuación, las condiciones de pared y $u(y,0)$. Para una malla centrada, el error espacial esperado es de segundo orden.
+
+\textbf{Límites.} Un perfil inicial general necesita una serie de modos; no tiene necesariamente un solo tiempo de decaimiento.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: oscilación de un tubo en u; pared oscilante: segundo problema de stokes; difusión de un perfil sinusoidal.\par\textbf{Antes de continuar.} Separa frecuencia angular y frecuencia cíclica, amplitud y valor instantáneo, tiempo difusivo y período.\end{tcolorbox}
+
+\chapter{Balances integrales y máquinas de flujo}
+
+\objetivos{Aplicar los modelos del capítulo 9 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P25. Codo con salida a la atmósfera}
+
+\begin{studiumworked}{MF-P25 · Intermedio}
+
+\textbf{Enunciado.} Un codo desvía un chorro un ángulo $\theta$ desde $+x$ hacia $+y$, manteniendo la sección. Calcule la fuerza que el líquido ejerce sobre el codo, indicando componentes y signo.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$Q$ & $0.02\,\mathrm{m^3/s}$ & caudal\\
+$D$ & $0.04\,\mathrm{m}$ & diámetro\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$p$ & $120000\,\mathrm{Pa}$ & presión manométrica de entrada\\
+$\theta$ & $1.0472$ & ángulo de salida en radianes\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $A,\ V,\ \dot m,\ F_x,\ F_y,\ |\boldsymbol F|$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Balance estacionario con perfiles uniformes, salida atmosférica y peso del volumen de líquido omitido. Las presiones se expresan respecto de la atmósfera.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\boldsymbol R+(pA,0)=\dot m V(\cos\theta-1,\sin\theta),\quad \boldsymbol F_{liquido\to codo}=-\boldsymbol R.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Escoger el volumen de control interior al codo y calcular velocidad y caudal másico.
+
+\item La presión de entrada empuja hacia $+x$; no se suma una fuerza de presión manométrica en la salida.
+
+\item Obtener primero pared sobre líquido y después invertir el signo para contestar la pregunta.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $A=0.00125664\,\mathrm{m^2}$.
+
+\item $V=15.9155\,\mathrm{m/s}$.
+
+\item $\dot m=20\,\mathrm{kg/s}$.
+
+\item $F_x=309.951\,\mathrm{N}$.
+
+\item $F_y=-275.664\,\mathrm{N}$.
+
+\item $|\boldsymbol F|=414.802\,\mathrm{N}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La reacción sobre el soporte no se obtiene sólo multiplicando caudal por cambio de velocidad: la presión de entrada también interviene.
+
+\textbf{Comprobación.} Con $\theta=0$ el cambio de momento desaparece y la fuerza axial queda $pA$. Comprobar cada componente por separado.
+
+\textbf{Límites.} Para perfiles no uniformes se necesitan coeficientes de cantidad de movimiento; el peso o las presiones exteriores se incorporan según la frontera elegida.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[>=Stealth]
+\draw[thick] (-2,-.3)--(0,-.3)--(1.5,1.2);
+\draw[thick] (-2,.3)--(-.2,.3)--(1.1,1.6);
+\draw[->,very thick,studiumBlue] (-2,0)--(-.8,0) node[above]{$V_1$};
+\draw[->,very thick,studiumBlue] (.6,.9)--(1.6,1.9) node[right]{$V_2$};
+\draw[->] (2.3,-.2)--(3.3,-.2) node[right]{$x$};
+\draw[->] (2.3,-.2)--(2.3,.8) node[above]{$y$};
+\node at (-1,-.7){entrada con $p_g>0$};\node at (.7,2.2){salida atmosférica};
+\end{tikzpicture}\caption{Codo con salida a la atmósfera. Esquema original de apoyo, sin escala.}\label{fig:mf-p25}\end{figure}
+
+
+\Needspace{.30\textheight}\section{MF-P26. Disco actuador ideal}
+
+\begin{studiumworked}{MF-P26 · Avanzado}
+
+\textbf{Enunciado.} Un disco ideal extrae energía de una corriente uniforme con factor de inducción $a$. Obtenga velocidades en disco y estela, empuje, potencia y coeficiente de potencia. Compare con el máximo del modelo.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$a$ & $0.25$ & factor de inducción\\
+$\rho$ & $1.2\,\mathrm{kg/m^3}$ & densidad\\
+$U$ & $10\,\mathrm{m/s}$ & velocidad lejana\\
+$R$ & $2\,\mathrm{m}$ & radio de disco\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $A,\ U_d,\ U_w,\ T,\ P,\ C_P,\ C_{P,max}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Disco ideal sin rotación de estela, corriente estacionaria incompresible no confinada y presión ambiente lejos del disco. Se usa la rama de extracción $0<a<1/2$.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{U_d=U(1-a),\quad U_w=U(1-2a),\quad T=2\rho AU^2a(1-a),\quad P=TU_d,\quad C_P=4a(1-a)^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item El caudal que atraviesa el disco es $\rho AU_d$, no $\rho AU$.
+
+\item Aplicar cantidad de movimiento entre estados lejanos y multiplicar el empuje por la velocidad en el disco.
+
+\item Derivar $C_P$ respecto de $a$: el máximo interior está en $a=1/3$, con $C_P=16/27$.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $A=12.5664\,\mathrm{m^2}$.
+
+\item $U_d=7.5\,\mathrm{m/s}$.
+
+\item $U_w=5\,\mathrm{m/s}$.
+
+\item $T=565.487\,\mathrm{N}$.
+
+\item $P=4241.15\,\mathrm{W}$.
+
+\item $C_P=0.5625$.
+
+\item $C_{P,max}=0.592593$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El límite pertenece al disco ideal y a su definición de potencia incidente. No es un rendimiento universal de cualquier turbomáquina.
+
+\textbf{Comprobación.} Contrastar $P=\dot m(U^2-U_w^2)/2$ usando $\dot m=\rho AU_d$. Para $a\to0$, potencia y empuje desaparecen.
+
+\textbf{Límites.} Se omiten pérdidas de palas, bloqueo, rotación de estela y correcciones de inducción elevada.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P27. Carro móvil que intercepta un chorro}
+
+\begin{studiumworked}{MF-P27 · Intermedio}
+
+\textbf{Enunciado.} Un carro se aleja en la dirección de un chorro y desvía el agua noventa grados en su sistema relativo. Halle caudal capturado, fuerza propulsora y potencia mecánica. Compruebe la energía en el sistema del laboratorio.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$V$ & $20\,\mathrm{m/s}$ & velocidad del chorro en laboratorio\\
+$U$ & $5\,\mathrm{m/s}$ & velocidad constante del carro\\
+$A$ & $0.001\,\mathrm{m^2}$ & sección del chorro\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\dot m_c,\ F,\ P,\ \Delta\dot E_c$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Chorro libre con $V>U$, sin pérdidas en la desviación relativa; la componente longitudinal relativa de salida es nula. No se cuenta todo el caudal emitido como capturado.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\dot m_c=\rho A(V-U),\quad F=\dot m_c(V-U),\quad P=FU,\quad |\boldsymbol v_{sal}|^2=U^2+(V-U)^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item El flujo de masa a través de una frontera móvil usa la velocidad relativa $V-U$.
+
+\item En laboratorio la componente longitudinal de salida es $U$; el cambio de momento da la fuerza sobre el carro.
+
+\item Comparar potencia con la pérdida de energía cinética del caudal realmente interceptado.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\dot m_c=15\,\mathrm{kg/s}$.
+
+\item $F=225\,\mathrm{N}$.
+
+\item $P=1125\,\mathrm{W}$.
+
+\item $\Delta\dot E_c=1125\,\mathrm{W}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La velocidad relativa interviene dos veces en la fuerza: en masa capturada y en cambio de velocidad longitudinal.
+
+\textbf{Comprobación.} Comprobar $\Delta\dot E_c=FU$. Si $U=0$, hay fuerza pero no potencia entregada al carro; si $U\to V$, desaparece la captura.
+
+\textbf{Límites.} Un deflector que devuelve el chorro ciento ochenta grados tiene otro cambio de momento y otra fuerza.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: codo con salida a la atmósfera; disco actuador ideal; carro móvil que intercepta un chorro.\par\textbf{Antes de continuar.} Fija la frontera, usa la velocidad relativa donde corresponde y comprueba fuerza y potencia por balances distintos.\end{tcolorbox}
+
+\chapter{Semejanza y análisis dimensional}
+
+\objetivos{Aplicar los modelos del capítulo 10 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P28. Modelo a escala con otro fluido}
+
+\begin{studiumworked}{MF-P28 · Intermedio}
+
+\textbf{Enunciado.} Se desea igualar Reynolds de un prototipo en aire con un modelo en otro fluido. Determine velocidad del modelo y razón de fuerzas para el mismo coeficiente adimensional. Valore si la igualdad de Reynolds basta para cualquier ensayo.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$L_p$ & $3\,\mathrm{m}$ & longitud del prototipo\\
+$L_m$ & $0.15\,\mathrm{m}$ & longitud del modelo\\
+$U_p$ & $40\,\mathrm{m/s}$ & velocidad del prototipo\\
+$\nu_p$ & $1.5\times10^{-5}\,\mathrm{m^2/s}$ & viscosidad cinemática del prototipo\\
+$\nu_m$ & $1\times10^{-6}\,\mathrm{m^2/s}$ & viscosidad cinemática del modelo\\
+$\rho_p$ & $1.2\,\mathrm{kg/m^3}$ & densidad del prototipo\\
+$\rho_m$ & $1000\,\mathrm{kg/m^3}$ & densidad del modelo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $U_m,\ \mathrm{Re},\ F_m/F_p$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Geometrías semejantes y mismo convenio de fuerza $F=C\rho U^2L^2$. Se ensaya sólo semejanza de flujo viscoso incompresible sin superficie libre.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\frac{U_mL_m}{\nu_m}=\frac{U_pL_p}{\nu_p},\quad \frac{F_m}{F_p}=\frac{\rho_mU_m^2L_m^2}{\rho_pU_p^2L_p^2}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Igualar Reynolds resolviendo para la velocidad desconocida, sin invertir la razón de viscosidades.
+
+\item Construir la escala de fuerza; el coeficiente y cualquier factor común un medio se cancelan.
+
+\item Identificar números adicionales si aparecen compresibilidad, cavitación, oleaje o rugosidad relativa diferente.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $U_m=53.3333\,\mathrm{m/s}$.
+
+\item $\mathrm{Re}=8\times10^{6}$.
+
+\item $F_m/F_p=3.7037$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Un modelo más pequeño no garantiza menor velocidad ni menor fuerza cuando se cambia de fluido.
+
+\textbf{Comprobación.} Calcular Reynolds de ambos montajes por separado. Comprobar que la razón de fuerzas es adimensional.
+
+\textbf{Límites.} No se certifica seguridad ni factibilidad del ensayo; la presión y los números adicionales no están suministrados.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P29. Grupos de Buckingham para una resistencia}
+
+\begin{studiumworked}{MF-P29 · Básico}
+
+\textbf{Enunciado.} La fuerza depende de densidad, viscosidad, velocidad y diámetro. Construya dos grupos independientes y evalúelos con los datos dados. Explique qué información experimental falta para predecir otra fuerza.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$F$ & $0.03\,\mathrm{N}$ & fuerza sintética\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $0.01\,\mathrm{Pa\,s}$ & viscosidad\\
+$U$ & $0.2\,\mathrm{m/s}$ & velocidad\\
+$D$ & $0.01\,\mathrm{m}$ & diámetro\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\mathrm{Re},\ \Pi_1$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Se mantiene fija la forma del cuerpo y no se introducen superficies libres, compresibilidad ni otras longitudes independientes.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\Pi_1=F/(\rho U^2D^2),\quad \Pi_2=\rho UD/\mu=\mathrm{Re},\quad \Pi_1=\Phi(\Pi_2).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Escribir dimensiones de las cinco variables en masa, longitud y tiempo; el rango de la matriz dimensional es tres.
+
+\item Elegir $\rho,U,D$ como variables repetidas y eliminar dimensiones de fuerza y viscosidad.
+
+\item El teorema reduce variables pero no determina la función $\Phi$. Se necesita una ley, solución o conjunto de datos adicional.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\mathrm{Re}=200$.
+
+\item $\Pi_1=7.5$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El coeficiente definido usa $D^2$, sin factor un medio. No debe compararse directamente con otro coeficiente que use otra área o normalización.
+
+\textbf{Comprobación.} La matriz dimensional tiene nulidad dos. Verificar que cada grupo tiene exponentes totales nulos en las tres dimensiones.
+
+\textbf{Límites.} Semejanza dimensional no demuestra independencia respecto de rugosidad, forma u otras variables omitidas.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P30. Darcy, Fanning y Poiseuille}
+
+\begin{studiumworked}{MF-P30 · Intermedio}
+
+\textbf{Enunciado.} Calcule pérdidas en un tubo con la ley laminar, indicando los factores de Darcy y Fanning. Verifique el resultado mediante Poiseuille y explique el error de mezclar las dos convenciones.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho$ & $900\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $0.009\,\mathrm{Pa\,s}$ & viscosidad\\
+$D$ & $0.01\,\mathrm{m}$ & diámetro\\
+$V$ & $1\,\mathrm{m/s}$ & velocidad media\\
+$L$ & $2\,\mathrm{m}$ & longitud\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\mathrm{Re}_D,\ f_D,\ f_F,\ \Delta p,\ \Delta p_{Pois}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Tubo circular horizontal, flujo laminar newtoniano plenamente desarrollado. Se omiten pérdidas locales y de entrada.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{f_D=64/\mathrm{Re},\quad f_F=f_D/4,\quad \Delta p=f_D(L/D)\rho V^2/2=32\mu LV/D^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Calcular Reynolds con velocidad media y diámetro.
+
+\item Aplicar el factor de Darcy en su ecuación de caída de presión.
+
+\item Obtener la misma caída a partir del balance laminar; introducir $f_F$ sin su factor cuatro daría una pérdida cuatro veces menor.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\mathrm{Re}_D=1000$.
+
+\item $f_D=0.064$.
+
+\item $f_F=0.016$.
+
+\item $\Delta p=5760\,\mathrm{Pa}$.
+
+\item $\Delta p_{Pois}=5760\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La notación del factor de fricción forma parte de la definición del modelo; una tabla sin convenio puede inducir errores grandes.
+
+\textbf{Comprobación.} Comprobar $f_D=4f_F$ y la igualdad de las dos rutas de presión.
+
+\textbf{Límites.} La transición no se toma como una frontera universal exacta; la ley $64/\mathrm{Re}$ no se extiende a régimen turbulento.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: modelo a escala con otro fluido; grupos de buckingham para una resistencia; darcy, fanning y poiseuille.\par\textbf{Antes de continuar.} Escribe los convenios de los coeficientes y distingue semejanza dimensional de una ley física medida.\end{tcolorbox}
+
+\chapter{Operadores y teoremas integrales}
+
+\objetivos{Aplicar los modelos del capítulo 11 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P31. Gauss y continuidad en una expansión tridimensional}
+
+\begin{studiumworked}{MF-P31 · Intermedio}
+
+\textbf{Enunciado.} Para $\boldsymbol u=a(x,y,z)$, evalúe divergencia y flujo volumétrico a través de una esfera fija. Determine la densidad uniforme compatible con continuidad a partir de su valor inicial.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$a$ & $0.1\,\mathrm{s^{-1}}$ & tasa de expansión\\
+$R$ & $0.3\,\mathrm{m}$ & radio de esfera\\
+$\rho_0$ & $1000\,\mathrm{kg/m^3}$ & densidad inicial\\
+$t$ & $2\,\mathrm{s}$ & tiempo\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\nabla\cdot\boldsymbol u,\ Q_{sal},\ \mathcal V,\ \rho(t)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Campo definido en el espacio, densidad inicialmente uniforme y sin fuentes de masa. El radio corresponde a un volumen de control fijo.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\nabla\cdot\boldsymbol u=3a,\quad \oint\boldsymbol u\cdot\boldsymbol n\,dS=4\pi aR^3,\quad \dot\rho+3a\rho=0,\quad\rho=\rho_0e^{-3at}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Sumar las tres derivadas diagonales para obtener divergencia.
+
+\item En la esfera $u_n=aR$ es constante; multiplicar por su área y comparar con la integral de volumen.
+
+\item La densidad espacialmente uniforme permite reducir continuidad a una ecuación temporal. Flujo volumétrico saliente no implica creación de masa.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\nabla\cdot\boldsymbol u=0.3\,\mathrm{s^{-1}}$.
+
+\item $Q_{sal}=0.0339292\,\mathrm{m^3/s}$.
+
+\item $\mathcal V=0.113097\,\mathrm{m^3}$.
+
+\item $\rho(t)=548.812\,\mathrm{kg/m^3}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Este campo es compresible. Imponer densidad constante sin una fuente de masa sería incompatible con continuidad.
+
+\textbf{Comprobación.} Comprobar $Q_{sal}=3a\mathcal V$ y $d(\rho\mathcal V)/dt=-\rho Q_{sal}$ en el volumen fijo.
+
+\textbf{Límites.} No se propone una ecuación de estado ni una solución global del balance de energía.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P32. Stokes y giro de sólido rígido}
+
+\begin{studiumworked}{MF-P32 · Básico}
+
+\textbf{Enunciado.} Un líquido gira como sólido rígido. Obtenga circulación y vorticidad en un círculo horizontal, velocidad periférica y aumento de presión radial. Distinga vorticidad de deformación.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\Omega$ & $2\,\mathrm{s^{-1}}$ & velocidad angular\\
+$R$ & $0.15\,\mathrm{m}$ & radio\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\Gamma,\ \omega_z,\ V,\ \Delta p$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Giro estacionario $\boldsymbol u=(-\Omega y,\Omega x,0)$; la diferencia de presión se compara a igual altura.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\omega_z=2\Omega,\quad \Gamma=2\pi\Omega R^2,\quad D_{ij}=0,\quad p(R)-p(0)=\rho\Omega^2R^2/2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Evaluar circulación directamente sobre el círculo y por el teorema de Stokes.
+
+\item La parte simétrica del gradiente se anula aunque su parte antisimétrica no lo haga.
+
+\item El balance centrípeto exige $dp/dr=\rho\Omega^2r$; integrar con presión central como referencia.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\Gamma=0.282743\,\mathrm{m^2/s}$.
+
+\item $\omega_z=4\,\mathrm{s^{-1}}$.
+
+\item $V=0.3\,\mathrm{m/s}$.
+
+\item $\Delta p=45\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Vorticidad no significa necesariamente deformación ni disipación viscosa: el giro rígido tiene tasa de deformación nula.
+
+\textbf{Comprobación.} Comprobar $\Gamma=\omega_z\pi R^2$. El gradiente de presión radial apunta hacia fuera y la fuerza de presión resultante hacia dentro.
+
+\textbf{Límites.} La diferencia hidrostática vertical se debe añadir cuando los dos puntos tienen distinta altura.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P33. Fuente y vórtice en un anillo}
+
+\begin{studiumworked}{MF-P33 · Avanzado}
+
+\textbf{Enunciado.} En un dominio anular se prescribe $u_r=C/r$, $u_\theta=K/r$. Halle caudal radial por longitud, circulación y aumento de presión entre dos radios. Explique por qué puede existir circulación con rotacional local nulo.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$C$ & $0.003\,\mathrm{m^2/s}$ & intensidad radial\\
+$K$ & $0.006\,\mathrm{m^2/s}$ & intensidad azimutal\\
+$r_1$ & $0.1\,\mathrm{m}$ & radio interior\\
+$r_2$ & $0.2\,\mathrm{m}$ & radio exterior\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $Q^{\prime},\ \Gamma,\ p_2-p_1$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Flujo ideal estacionario bidimensional en $r_1\le r\le r_2$, sin incluir la singularidad del origen; densidad constante.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{Q^{\prime}=2\pi C,\quad \Gamma=2\pi K,\quad \nabla\cdot\boldsymbol u=0,\quad \nabla\times\boldsymbol u=0\ (r>0),\quad p_2-p_1=\tfrac12\rho(C^2+K^2)(r_1^{-2}-r_2^{-2}).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Integrar las componentes normal y tangencial sobre un círculo.
+
+\item Calcular operadores en coordenadas cilíndricas y conservar los factores $r$.
+
+\item Aplicar Bernoulli en el campo irrotacional. Un contorno que rodea el agujero no limita una superficie enteramente contenida en el dominio del campo.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $Q^{\prime}=0.0188496\,\mathrm{m^2/s}$.
+
+\item $\Gamma=0.0376991\,\mathrm{m^2/s}$.
+
+\item $p_2-p_1=1.6875\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La topología del dominio es parte de las hipótesis del teorema: no se puede aplicar Stokes atravesando la singularidad excluida.
+
+\textbf{Comprobación.} Derivar la presión: $dp/dr=\rho(C^2+K^2)/r^3$. Para $K=0$ se conserva el caudal radial y desaparece circulación.
+
+\textbf{Límites.} No satisface no deslizamiento en una pared sólida anular y no modela el núcleo de un vórtice real.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[>=Stealth]
+\fill[studiumLight,even odd rule] (0,0) circle(1.7) (0,0) circle(.7);
+\draw (0,0) circle(1.7);\draw (0,0) circle(.7);
+\draw[->] (.7,0)--(1.6,0) node[midway,above]{$u_r$};
+\draw[->] (0,1.2)--(-.7,1.2) node[above]{$u_\theta$};
+\node at (0,-2.2){El origen queda fuera del dominio anular.};
+\end{tikzpicture}\caption{Fuente y vórtice en un anillo. Esquema original de apoyo, sin escala.}\label{fig:mf-p33}\end{figure}
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: gauss y continuidad en una expansión tridimensional; stokes y giro de sólido rígido; fuente y vórtice en un anillo.\par\textbf{Antes de continuar.} Comprueba el dominio de aplicación de Gauss y Stokes, especialmente cuando se excluye una singularidad.\end{tcolorbox}
+
+\chapter{Continuidad, Bernoulli y flujo potencial}
+
+\objetivos{Aplicar los modelos del capítulo 12 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P34. Vaciado cuasiestacionario de un depósito}
+
+\begin{studiumworked}{MF-P34 · Intermedio}
+
+\textbf{Enunciado.} Un depósito de sección constante descarga por un orificio. Deduzca el tiempo para bajar entre los niveles dados y el caudal inicial, usando el coeficiente de descarga proporcionado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$A_t$ & $0.8\,\mathrm{m^2}$ & sección del depósito\\
+$A_o$ & $0.0004\,\mathrm{m^2}$ & área del orificio\\
+$C_d$ & $0.62$ & coeficiente de descarga dado\\
+$h_0$ & $2\,\mathrm{m}$ & nivel inicial sobre orificio\\
+$h_1$ & $0.5\,\mathrm{m}$ & nivel final sobre orificio\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $t,\ Q_0,\ A_o/A_t$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Superficie y salida atmosféricas, líquido incompresible, orificio pequeño respecto del depósito y coeficiente constante entre los niveles dados.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{A_t\dot h=-C_dA_o\sqrt{2gh},\quad t=\frac{2A_t}{C_dA_o\sqrt{2g}}(\sqrt{h_0}-\sqrt{h_1}).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Conectar Bernoulli ideal con la corrección empírica $C_d$ suministrada; no deducirla por análisis dimensional.
+
+\item Usar continuidad para relacionar caudal con descenso de nivel.
+
+\item Separar variables e integrar con los límites en el orden que haga positivo el tiempo.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $t=1029.92\,\mathrm{s}$.
+
+\item $Q_0=0.00155352\,\mathrm{m^3/s}$.
+
+\item $A_o/A_t=0.0005$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El caudal decrece al bajar el nivel. Sustituirlo por el inicial durante todo el proceso subestima el tiempo.
+
+\textbf{Comprobación.} Integrar la ecuación diferencial numéricamente y localizar $h=h_1$. Para $h_1=h_0$ el tiempo es cero.
+
+\textbf{Límites.} No extrapolar al vaciado final si cambian la geometría efectiva, la ventilación o el coeficiente de descarga.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P35. Venturi elevado y margen de presión absoluta}
+
+\begin{studiumworked}{MF-P35 · Básico}
+
+\textbf{Enunciado.} Una contracción eleva el conducto. Calcule velocidades y presión en la sección estrecha. Convierta a presión absoluta y compare con la presión de vapor suministrada.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$A_1$ & $0.01\,\mathrm{m^2}$ & área inicial\\
+$A_2$ & $0.004\,\mathrm{m^2}$ & área estrecha\\
+$Q$ & $0.02\,\mathrm{m^3/s}$ & caudal\\
+$p_{1,g}$ & $60000\,\mathrm{Pa}$ & presión manométrica inicial\\
+$\Delta z$ & $0.3\,\mathrm{m}$ & elevación de la segunda sección\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$p_{atm}$ & $101325\,\mathrm{Pa}$ & presión ambiente dada\\
+$p_v$ & $2500\,\mathrm{Pa}$ & presión de vapor dada\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $V_1,\ V_2,\ p_{2,g},\ p_{2,abs},\ p_{2,abs}-p_v$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Flujo estacionario ideal incompresible entre las secciones, sin bomba ni pérdidas; velocidades uniformes.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{V_i=Q/A_i,\quad p_{2,g}=p_{1,g}+\tfrac12\rho(V_1^2-V_2^2)-\rho g\Delta z,\quad p_{2,abs}=p_{2,g}+p_{atm}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Usar continuidad antes de aplicar energía.
+
+\item La elevación y la aceleración reducen ambas la presión del segundo punto.
+
+\item Comparar vapor con presión absoluta, nunca con presión manométrica. La comparación sólo evalúa la sección estudiada bajo el modelo.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $V_1=2\,\mathrm{m/s}$.
+
+\item $V_2=5\,\mathrm{m/s}$.
+
+\item $p_{2,g}=46557\,\mathrm{Pa}$.
+
+\item $p_{2,abs}=147882\,\mathrm{Pa}$.
+
+\item $p_{2,abs}-p_v=145382\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Un margen positivo en la sección calculada es compatible con líquido monofásico allí, pero no garantiza ausencia de cavitación en todo el dispositivo.
+
+\textbf{Comprobación.} Reinsertar los dos estados en Bernoulli. Si $A_2=A_1$ sólo queda la diferencia hidrostática.
+
+\textbf{Límites.} No se incluyen pérdidas, mínimos locales de presión ni un modelo de nucleación de cavitación.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P36. Flujo potencial alrededor de un cilindro}
+
+\begin{studiumworked}{MF-P36 · Avanzado}
+
+\textbf{Enunciado.} Para la superposición de corriente uniforme y doblete, obtenga velocidad superficial, coeficiente de presión y presión mínima. Explique el resultado de resistencia del modelo y su límite físico.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$R$ & $0.15\,\mathrm{m}$ & radio del cilindro\\
+$U$ & $12\,\mathrm{m/s}$ & velocidad lejana\\
+$\rho$ & $1.2\,\mathrm{kg/m^3}$ & densidad\\
+$p_\infty$ & $101325\,\mathrm{Pa}$ & presión lejana absoluta\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $|u_\theta|_{max},\ C_{p,min},\ p_{min},\ q_\infty$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Flujo ideal incompresible estacionario, irrotacional, sin circulación y con condición de impermeabilidad en el cilindro.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\phi=U(r+R^2/r)\cos\theta,\quad u_r(R)=0,\quad u_\theta(R)=-2U\sin\theta,\quad C_p=1-4\sin^2\theta.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Derivar el potencial con las métricas polares: $u_r=\partial_r\phi$ y $u_\theta=r^{-1}\partial_\theta\phi$.
+
+\item Aplicar Bernoulli desde la corriente lejana para obtener $C_p$ y localizar su mínimo.
+
+\item La integral simétrica de presión da resistencia y sustentación nulas. Es una propiedad de este modelo, no de un cilindro real.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $|u_\theta|_{max}=24\,\mathrm{m/s}$.
+
+\item $C_{p,min}=-3$.
+
+\item $p_{min}=101066\,\mathrm{Pa}$.
+
+\item $q_\infty=86.4\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La paradoja de resistencia nula señala la importancia de viscosidad, capa límite y separación para la resistencia real.
+
+\textbf{Comprobación.} Integrar $C_p\cos\theta$ y $C_p\sin\theta$ de cero a $2\pi$: ambas integrales se anulan. Comprobar impermeabilidad.
+
+\textbf{Límites.} La condición tangencial es de deslizamiento ideal. No representa una pared viscosa con no deslizamiento.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: vaciado cuasiestacionario de un depósito; venturi elevado y margen de presión absoluta; flujo potencial alrededor de un cilindro.\par\textbf{Antes de continuar.} Verifica continuidad, referencias de presión y condiciones necesarias para aplicar Bernoulli.\end{tcolorbox}
+
+\chapter{Esfuerzos, disipación y transporte}
+
+\objetivos{Aplicar los modelos del capítulo 13 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P37. Tracción y disipación en un campo lineal}
+
+\begin{studiumworked}{MF-P37 · Intermedio}
+
+\textbf{Enunciado.} Para $u=ax+by$, $v=-ay$, $w=0$, calcule tensor de esfuerzos, tracción normal y tangencial sobre el plano de normal $(1,1,0)/\sqrt2$ y disipación viscosa. Use tangente $(-1,1,0)/\sqrt2$.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$a$ & $2\,\mathrm{s^{-1}}$ & extensión\\
+$b$ & $5\,\mathrm{s^{-1}}$ & cizalla\\
+$\mu$ & $0.3\,\mathrm{Pa\,s}$ & viscosidad\\
+$p$ & $1200\,\mathrm{Pa}$ & presión\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\sigma_{nn},\ \tau_{tn},\ \Phi$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Fluido newtoniano incompresible isotrópico, esfuerzo $\boldsymbol\sigma=-p\boldsymbol I+2\mu\boldsymbol D$. La tracción se define como $\boldsymbol\sigma\boldsymbol n$.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{D=\begin{pmatrix}a&b/2&0\\b/2&-a&0\\0&0&0\end{pmatrix},\quad \sigma_{nn}=-p+\mu b,\quad\tau_{tn}=-2\mu a,\quad\Phi=2\mu D:D=\mu(4a^2+b^2).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Simetrizar el gradiente y comprobar traza nula.
+
+\item Multiplicar tensor por normal y proyectar el resultado en la normal y la tangente orientada dadas.
+
+\item Contraer el tensor de deformación consigo mismo, contando los dos términos fuera de la diagonal.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\sigma_{nn}=-1198.5\,\mathrm{Pa}$.
+
+\item $\tau_{tn}=-1.2\,\mathrm{Pa}$.
+
+\item $\Phi=12.3\,\mathrm{W/m^3}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La presión contribuye a la tracción normal, mientras la parte viscosa puede tener componentes normales y tangenciales.
+
+\textbf{Comprobación.} La disipación debe ser no negativa para $\mu>0$ y desaparecer si $D=0$. Invertir la tangente cambia el signo de $\tau_{tn}$.
+
+\textbf{Límites.} No se usa esta ley constitutiva para fluidos no newtonianos ni para compresión volumétrica arbitraria.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P38. Calentamiento viscoso entre placas}
+
+\begin{studiumworked}{MF-P38 · Avanzado}
+
+\textbf{Enunciado.} En un flujo de Couette con paredes a igual temperatura, determine el incremento máximo de temperatura y el flujo térmico hacia cada pared. Compare la extracción de calor con la potencia mecánica por área.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$h$ & $0.002\,\mathrm{m}$ & separación\\
+$U$ & $3\,\mathrm{m/s}$ & velocidad superior\\
+$\mu$ & $0.15\,\mathrm{Pa\,s}$ & viscosidad\\
+$k_T$ & $0.13\,\mathrm{W/(m\,K)}$ & conductividad\\
+$T_w$ & $300\,\mathrm{K}$ & temperatura de pared\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\Delta T_{max},\ T_{max},\ |q_w|,\ P/A$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Estado estacionario, propiedades constantes, perfil térmico plenamente desarrollado sin variación longitudinal, conducción transversal y disipación viscosa.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{k_T T^{\prime\prime}+\mu(U/h)^2=0,\quad T-T_w=\frac{\mu U^2}{2k_Th^2}y(h-y),\quad\Delta T_{max}=\frac{\mu U^2}{8k_T}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Insertar el gradiente de Couette en la fuente de disipación.
+
+\item Integrar dos veces con temperaturas iguales en $y=0,h$. El máximo está en el plano medio.
+
+\item Aplicar Fourier en ambas paredes, cuidando sus normales; cada una evacúa la mitad del trabajo mecánico.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\Delta T_{max}=1.29808\,\mathrm{K}$.
+
+\item $T_{max}=301.298\,\mathrm{K}$.
+
+\item $|q_w|=337.5\,\mathrm{W/m^2}$.
+
+\item $P/A=675\,\mathrm{W/m^2}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El incremento máximo no depende de la holgura en este modelo con velocidad impuesta, aunque el flujo térmico por área sí depende de ella.
+
+\textbf{Comprobación.} Comprobar $2|q_w|=P/A$ y simetría térmica. Si $U=0$ o $\mu=0$, desaparece la fuente.
+
+\textbf{Límites.} Cambios apreciables de propiedades con temperatura o convección longitudinal requieren resolver un problema térmico acoplado.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P39. Difusión de especie a través de una película}
+
+\begin{studiumworked}{MF-P39 · Básico}
+
+\textbf{Enunciado.} Una especie diluida difunde entre dos superficies de concentración fija. Obtenga perfil, flujo másico, transferencia total y escala temporal de difusión.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$D$ & $2\times10^{-9}\,\mathrm{m^2/s}$ & difusividad\\
+$h$ & $0.0001\,\mathrm{m}$ & espesor\\
+$c_0$ & $10\,\mathrm{kg/m^3}$ & concentración en primera cara\\
+$c_1$ & $1\,\mathrm{kg/m^3}$ & concentración en segunda cara\\
+$A$ & $0.02\,\mathrm{m^2}$ & área\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $J,\ \dot m,\ t_D$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Difusión unidimensional estacionaria de especie diluida, difusividad constante, sin reacción ni advección; $y$ apunta desde la cara 0 a la cara 1.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{c=c_0+(c_1-c_0)y/h,\quad J=-D\,dc/dy=D(c_0-c_1)/h,\quad\dot m=JA,\quad t_D=h^2/D.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item La conservación estacionaria sin reacción hace constante el flujo.
+
+\item Integrar la ley de Fick con las dos condiciones de concentración.
+
+\item Calcular $t_D$ como escala de orden de magnitud, sin identificarla con un tiempo exacto de establecimiento.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $J=0.00018\,\mathrm{kg/(m^2\,s)}$.
+
+\item $\dot m=3.6\times10^{-6}\,\mathrm{kg/s}$.
+
+\item $t_D=5\,\mathrm{s}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El flujo positivo va hacia la concentración menor. Duplicar el espesor divide el flujo estacionario por dos y multiplica la escala temporal por cuatro.
+
+\textbf{Comprobación.} Comprobar el balance de entrada y salida de especie y las unidades de flujo frente a caudal másico.
+
+\textbf{Límites.} No es la ley de transporte de masa total de una mezcla concentrada con contraflujo significativo.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: tracción y disipación en un campo lineal; calentamiento viscoso entre placas; difusión de especie a través de una película.\par\textbf{Antes de continuar.} Distingue tracción y esfuerzo, flujo y caudal, y comprueba que la disipación no sea negativa.\end{tcolorbox}
+
+\chapter{Soluciones de Navier--Stokes}
+
+\objetivos{Aplicar los modelos del capítulo 14 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P40. Película que cae por un plano inclinado}
+
+\begin{studiumworked}{MF-P40 · Intermedio}
+
+\textbf{Enunciado.} Un líquido forma una película uniforme sobre un plano inclinado. Determine perfil, velocidad máxima, caudal por anchura, tensión en pared y Reynolds definido mediante $q/\nu$.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$h$ & $0.001\,\mathrm{m}$ & espesor\\
+$\nu$ & $0.0001\,\mathrm{m^2/s}$ & viscosidad cinemática\\
+$\rho$ & $900\,\mathrm{kg/m^3}$ & densidad\\
+$\theta$ & $0.523599$ & inclinación en radianes\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $q,\ u_{max},\ \tau_w,\ \mathrm{Re}_q,\ p_{pared}-p_{atm}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Película estacionaria uniforme laminar, gas con esfuerzo tangencial despreciable y superficie plana. Coordenada $y$ normal al plano y origen en la pared.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{u=\frac{g\sin\theta}{\nu}(hy-y^2/2),\quad q=\frac{g\sin\theta\,h^3}{3\nu},\quad\tau_w=\rho gh\sin\theta.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item El balance longitudinal es $\mu u^{\prime\prime}+\rho g\sin\theta=0$.
+
+\item Imponer no deslizamiento en pared y derivada nula en superficie libre.
+
+\item Integrar el perfil y distinguir el Reynolds $q/\nu$ de convenciones que lo multiplican por cuatro. La presión normal es hidrostática.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $q=1.635\times10^{-5}\,\mathrm{m^2/s}$.
+
+\item $u_{max}=0.024525\,\mathrm{m/s}$.
+
+\item $\tau_w=4.4145\,\mathrm{Pa}$.
+
+\item $\mathrm{Re}_q=0.1635$.
+
+\item $p_{pared}-p_{atm}=7.64614\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La condición libre se aplica al esfuerzo tangencial, no a velocidad nula. La superficie es donde el perfil alcanza su máximo.
+
+\textbf{Comprobación.} Comprobar $u_{max}=3q/(2h)$ y el balance entre peso longitudinal y esfuerzo en pared por unidad de área.
+
+\textbf{Límites.} El Reynolds calculado no prueba ausencia de ondas o inestabilidad de superficie; se está estudiando una solución base.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P41. Presión compatible con un remanso viscoso}
+
+\begin{studiumworked}{MF-P41 · Avanzado}
+
+\textbf{Enunciado.} Encuentre la presión que hace al campo $u=ax$, $v=-ay$ solución estacionaria de Navier--Stokes sin fuerzas volumétricas. Evalúe presión, gradientes y disipación en el punto dado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$a$ & $0.4\,\mathrm{s^{-1}}$ & extensión\\
+$x$ & $0.3\,\mathrm{m}$ & coordenada x\\
+$y$ & $0.2\,\mathrm{m}$ & coordenada y\\
+$p_0$ & $100000\,\mathrm{Pa}$ & presión en origen\\
+$\mu$ & $0.01\,\mathrm{Pa\,s}$ & viscosidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $p,\ \partial_xp,\ \partial_yp,\ \Phi$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Campo lineal incompresible newtoniano con viscosidad constante; se busca compatibilidad local sin imponer paredes.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\nabla^2\boldsymbol u=0,\quad\nabla p=-\rho a^2(x,y,0),\quad p=p_0-\tfrac12\rho a^2(x^2+y^2),\quad\Phi=4\mu a^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Calcular aceleración convectiva y laplaciano de velocidad.
+
+\item La ecuación de momento fija ambas componentes del gradiente de presión; integrarlas usando el valor en el origen.
+
+\item La fuerza viscosa neta local puede anularse aunque exista deformación y disipación. Distinguir divergencia de esfuerzo de producción de calor.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $p=99989.6\,\mathrm{Pa}$.
+
+\item $\partial_xp=-48\,\mathrm{Pa/m}$.
+
+\item $\partial_yp=-32\,\mathrm{Pa/m}$.
+
+\item $\Phi=0.0064\,\mathrm{W/m^3}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La coincidencia de una constante de Bernoulli en este campo particular no autoriza a aplicar Bernoulli ideal a cualquier flujo viscoso.
+
+\textbf{Comprobación.} Sustituir presión y velocidad en las dos ecuaciones de momento: sus residuos deben ser cero.
+
+\textbf{Límites.} Un campo lineal no es una solución global alrededor de una pared arbitraria; falta el balance térmico si se desea temperatura.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P42. Arranque impulsivo de una placa}
+
+\begin{studiumworked}{MF-P42 · Intermedio}
+
+\textbf{Enunciado.} Una placa infinita arranca instantáneamente con velocidad $U$. Determine velocidad en el líquido, esfuerzo en pared, transporte volumétrico por anchura y escala de penetración al tiempo dado.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$U$ & $0.2\,\mathrm{m/s}$ & velocidad de placa\\
+$\nu$ & $1\times10^{-6}\,\mathrm{m^2/s}$ & viscosidad cinemática\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$y$ & $0.001\,\mathrm{m}$ & distancia a placa\\
+$t$ & $0.5\,\mathrm{s}$ & tiempo desde arranque\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $u,\ \tau_{xy}(0),\ q,\ \delta_s$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Líquido newtoniano semiinfinito inicialmente en reposo, flujo paralelo sin gradiente de presión y $t>0$.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{u=U\,\operatorname{erfc}\!\left(\frac{y}{2\sqrt{\nu t}}\right),\quad \tau_{xy}(0)=-\frac{\mu U}{\sqrt{\pi\nu t}},\quad q=2U\sqrt{\nu t/\pi}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item La variable de semejanza es $y/(2\sqrt{\nu t})$. Aplicar las condiciones en placa, infinito e instante inicial para $y>0$.
+
+\item Derivar la función error complementaria; el signo negativo corresponde a $\partial u/\partial y<0$.
+
+\item Integrar el perfil en el semiespacio. La escala $2\sqrt{\nu t}$ no es un borde exacto del fluido en movimiento.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $u=0.0634621\,\mathrm{m/s}$.
+
+\item $\tau_{xy}(0)=-0.159577\,\mathrm{Pa}$.
+
+\item $q=0.000159577\,\mathrm{m^2/s}$.
+
+\item $\delta_s=0.00141421\,\mathrm{m}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El esfuerzo diverge al acercarse al instante del salto ideal de velocidad. Un arranque físico de duración finita elimina esa idealización.
+
+\textbf{Comprobación.} Comprobar el residuo difusivo y el balance $\rho\,dq/dt=-\tau_{xy}(0)$.
+
+\textbf{Límites.} No describe una placa finita, un arranque suave ni el efecto de otra pared cercana.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[x=1cm,y=.45cm,>=Stealth]
+\draw[very thick] (0,0)--(5,0);\draw[->] (4,-.35)--(5,-.35) node[right]{$U$};
+\draw[->] (.5,0)--(.5,2.5) node[above]{$y$};
+\draw[thick,studiumBlue] (3,0) .. controls (1.2,.6) and (1,1.5) .. (1,2.3);
+\draw[->] (1,.35)--(2.2,.35);\draw[->] (1,.8)--(1.6,.8);\draw[->] (1,1.3)--(1.2,1.3);
+\node at (3.3,2){$u\to0$ cuando $y\to\infty$};
+\end{tikzpicture}\caption{Arranque impulsivo de una placa. Esquema original de apoyo, sin escala.}\label{fig:mf-p42}\end{figure}
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: película que cae por un plano inclinado; presión compatible con un remanso viscoso; arranque impulsivo de una placa.\par\textbf{Antes de continuar.} Sustituye el campo en la ecuación diferencial y en sus condiciones de contorno antes de evaluar números.\end{tcolorbox}
+
+\chapter{Escalas y aproximaciones}
+
+\objetivos{Aplicar los modelos del capítulo 15 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P43. Esfera en régimen reptante: viscosidad inversa}
+
+\begin{studiumworked}{MF-P43 · Básico}
+
+\textbf{Enunciado.} Una esfera se arrastra horizontalmente a velocidad constante mediante la fuerza dada. Estime viscosidad con Stokes, compruebe Reynolds y calcule potencia. ¿Qué control adicional aportaría repetir a la mitad de velocidad?
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$F$ & $9.42478\times10^{-6}\,\mathrm{N}$ & fuerza horizontal sintética\\
+$R$ & $0.0005\,\mathrm{m}$ & radio\\
+$U$ & $0.001\,\mathrm{m/s}$ & velocidad\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\mu,\ \mathrm{Re}_D,\ P,\ F(U/2)$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Esfera rígida aislada con no deslizamiento en un fluido newtoniano; la fuerza horizontal compensa sólo resistencia. Paredes lejanas e inercia despreciable por comprobar.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{F=6\pi\mu RU,\quad\mu=F/(6\pi RU),\quad\mathrm{Re}_D=2\rho RU/\mu,\quad P=FU.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Invertir la ley de Stokes y conservar radio frente a diámetro.
+
+\item Calcular Reynolds con la viscosidad inferida, cerrando la comprobación de coherencia.
+
+\item En el modelo la fuerza se reduce a la mitad al reducir la velocidad a la mitad; verificarlo con otra medida pondría a prueba linealidad, sin demostrar todas las hipótesis.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\mu=1\,\mathrm{Pa\,s}$.
+
+\item $\mathrm{Re}_D=0.001$.
+
+\item $P=9.42478\times10^{-9}\,\mathrm{W}$.
+
+\item $F(U/2)=4.71239\times10^{-6}\,\mathrm{N}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El Reynolds pequeño obtenido es consistente con la aproximación reptante. No elimina por sí mismo errores por paredes o por no newtonianidad.
+
+\textbf{Comprobación.} Comprobar $F/(\mu RU)=6\pi$ y positividad de la potencia disipada.
+
+\textbf{Límites.} Los datos son académicos. No se confunde este arrastre horizontal con una caída terminal que exige incluir peso y flotación.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P44. Estimación del error hidrostático}
+
+\begin{studiumworked}{MF-P44 · Intermedio}
+
+\textbf{Enunciado.} En un flujo somero, estime la razón entre aceleración vertical y gravedad usando las escalas dadas. Compare presión hidrostática y corrección vertical de inercia.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$L$ & $1000\,\mathrm{m}$ & escala horizontal\\
+$H$ & $10\,\mathrm{m}$ & escala vertical\\
+$U$ & $2\,\mathrm{m/s}$ & velocidad horizontal\\
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\varepsilon,\ \mathrm{Fr},\ a_z/g\ \mathrm{(escala)},\ p_h,\ \delta p\ \mathrm{(escala)}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Incompresibilidad y variación horizontal en escala advectiva $L/U$; velocidad vertical estimada $W\sim UH/L$. Sin oscilaciones verticales rápidas.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\varepsilon=H/L,\quad \mathrm{Fr}=U/\sqrt{gH},\quad a_z/g\sim\mathrm{Fr}^2\varepsilon^2,\quad p_h\sim\rho gH,\quad\delta p\sim\rho U^2\varepsilon^2.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Estimar $W$ mediante continuidad, sin suponer que es igual a la velocidad horizontal.
+
+\item Escalar $DW/Dt$ con el tiempo advectivo para obtener $U^2H/L^2$.
+
+\item Integrar el orden de la corrección de gradiente vertical a lo largo de $H$ y compararlo con la presión hidrostática.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\varepsilon=0.01$.
+
+\item $\mathrm{Fr}=0.201928$.
+
+\item $a_z/g\ \mathrm{(escala)}=4.07747\times10^{-6}$.
+
+\item $p_h=98100\,\mathrm{Pa}$.
+
+\item $\delta p\ \mathrm{(escala)}=0.4\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} El resultado es una estimación de escala, no un error calculado de una solución exacta. La hipótesis temporal es esencial.
+
+\textbf{Comprobación.} La razón $\delta p/p_h$ coincide con $\mathrm{Fr}^2\varepsilon^2$. Una frecuencia impuesta mucho mayor que $U/L$ cambiaría el escalado.
+
+\textbf{Límites.} No basta que $H/L$ sea pequeño si hay aceleración vertical rápida, impacto, oleaje corto o saltos.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P45. Reynolds pequeño con inercia no estacionaria}
+
+\begin{studiumworked}{MF-P45 · Avanzado}
+
+\textbf{Enunciado.} Un flujo de baja velocidad está forzado en un tiempo muy corto. Calcule Reynolds, Strouhal y su producto para decidir qué términos inerciales pueden despreciarse. Estime la escala viscosa de presión.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $1\,\mathrm{Pa\,s}$ & viscosidad\\
+$L$ & $0.001\,\mathrm{m}$ & longitud\\
+$U$ & $0.0001\,\mathrm{m/s}$ & velocidad\\
+$T$ & $0.0001\,\mathrm{s}$ & tiempo impuesto\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\mathrm{Re},\ \mathrm{St},\ \mathrm{Re}\,\mathrm{St},\ p_\nu$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Fluido newtoniano, longitud espacial $L$ y escala temporal externa $T$ independientes; comparación de términos de Navier--Stokes.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\mathrm{Re}=\rho UL/\mu,\quad \mathrm{St}=L/(UT),\quad\mathrm{Re}\,\mathrm{St}=\rho L^2/(\mu T),\quad p_\nu=\mu U/L.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Comparar inercia convectiva con viscosidad mediante Reynolds.
+
+\item Comparar inercia local con viscosidad: el cociente es Reynolds por Strouhal, no Reynolds solo.
+
+\item La presión viscosa sirve de referencia para escribir la ecuación adimensional; cuando la inercia local domina, puede no ser la presión efectiva dominante.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\mathrm{Re}=0.0001$.
+
+\item $\mathrm{St}=100000$.
+
+\item $\mathrm{Re}\,\mathrm{St}=10$.
+
+\item $p_\nu=0.1\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La convección puede ser despreciable mientras la derivada temporal sigue siendo relevante o dominante. No es lícito imponer Stokes estacionario sólo por velocidad pequeña.
+
+\textbf{Comprobación.} Comprobar el producto directamente como $L^2/(\nu T)$. Para tiempos largos ese producto disminuye.
+
+\textbf{Límites.} El análisis ordena términos; no resuelve un campo sin geometría, condiciones de contorno y forma del forzamiento.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: esfera en régimen reptante: viscosidad inversa; estimación del error hidrostático; reynolds pequeño con inercia no estacionaria.\par\textbf{Antes de continuar.} Compara por separado inercia local y convectiva; declara la escala temporal empleada.\end{tcolorbox}
+
+\chapter{Estratificación, flotabilidad y rotación}
+
+\objetivos{Aplicar los modelos del capítulo 16 del manual; separar hipótesis, cálculo e interpretación. Los tres ejercicios abordan situaciones distintas.}
+
+\Needspace{.30\textheight}\section{MF-P46. Viento geostrófico y signo del gradiente}
+
+\begin{studiumworked}{MF-P46 · Intermedio}
+
+\textbf{Enunciado.} Con el gradiente horizontal de presión y el parámetro de Coriolis dados, determine ambas componentes geostróficas y el número de Rossby usando la escala horizontal indicada.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$f$ & $0.0001\,\mathrm{s^{-1}}$ & parámetro de Coriolis\\
+$\rho$ & $1.2\,\mathrm{kg/m^3}$ & densidad\\
+$\partial_xp$ & $0.0015\,\mathrm{Pa/m}$ & gradiente hacia x\\
+$\partial_yp$ & $-0.0006\,\mathrm{Pa/m}$ & gradiente hacia y\\
+$L$ & $2\times10^{6}\,\mathrm{m}$ & escala horizontal\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $u_g,\ v_g,\ |\boldsymbol u_g|,\ \mathrm{Ro}$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Plano local con $f>0$ constante, flujo horizontal de gran escala sin fricción ni aceleración en el balance principal. $x,y,z$ forman una base dextrógira.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{f\boldsymbol e_z\times\boldsymbol u_g=-\nabla_hp/\rho,\quad u_g=-\partial_yp/(\rho f),\quad v_g=\partial_xp/(\rho f).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Expandir el producto vectorial: sus componentes son $(-fv_g,fu_g)$.
+
+\item Resolver cada ecuación conservando el signo del gradiente suministrado.
+
+\item Calcular Rossby con el módulo de la velocidad resultante y valorar la coherencia del balance dominante.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $u_g=5\,\mathrm{m/s}$.
+
+\item $v_g=12.5\,\mathrm{m/s}$.
+
+\item $|\boldsymbol u_g|=13.4629\,\mathrm{m/s}$.
+
+\item $\mathrm{Ro}=0.0673146$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La velocidad queda perpendicular al gradiente de presión. Rossby pequeño apoya el balance, sin hacerlo exacto ni garantizarlo cerca de fronteras.
+
+\textbf{Comprobación.} Comprobar $\boldsymbol u_g\cdot\nabla_hp=0$ y ambas componentes de la ecuación vectorial.
+
+\textbf{Límites.} La aproximación falla cerca de $f=0$ y necesita términos adicionales para aceleración, curvatura o fricción relevantes.
+
+\end{studiumworked}
+
+
+\begin{figure}[htbp]\centering\begin{tikzpicture}[>=Stealth]
+\draw[->] (0,0)--(3,0) node[right]{$x$};\draw[->] (0,0)--(0,2.5) node[above]{$y$};
+\draw[->,very thick,studiumBlue] (0,0)--(.8,2) node[right]{$\boldsymbol u_g$};
+\draw[->,very thick] (0,0)--(2,-.8) node[right]{$\nabla_h p$};
+\node at (3,2){$f>0$};
+\end{tikzpicture}\caption{Viento geostrófico y signo del gradiente. Esquema original de apoyo, sin escala.}\label{fig:mf-p46}\end{figure}
+
+
+\Needspace{.30\textheight}\section{MF-P47. Estratificación y oscilación de una parcela}
+
+\begin{studiumworked}{MF-P47 · Básico}
+
+\textbf{Enunciado.} Un líquido tiene densidad $\rho(z)=\rho_0(1-\alpha z)$ entre fondo y superficie. Estime frecuencia de flotabilidad, período, velocidad máxima de una parcela desplazada y presión hidrostática en el fondo respecto de la superficie.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho_0$ & $1000\,\mathrm{kg/m^3}$ & densidad de referencia en fondo\\
+$\alpha$ & $2\times10^{-5}\,\mathrm{m^{-1}}$ & gradiente relativo\\
+$H$ & $50\,\mathrm{m}$ & profundidad\\
+$\xi_0$ & $3\,\mathrm{m}$ & amplitud pequeña de parcela\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $N,\ T_N,\ |w|_{max},\ \alpha H,\ p_f-p_s$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Coordenada $z$ positiva hacia arriba desde el fondo; aproximación de Boussinesq, parcela sin mezcla ni difusión y oscilación lineal local.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{N^2=-\frac{g}{\rho_0}\frac{d\rho}{dz}=g\alpha,\quad T_N=2\pi/N,\quad |w|_{max}=N\xi_0,\quad\Delta p=\rho_0g(H-\alpha H^2/2).}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item El gradiente de densidad negativo da $N^2>0$ y restauración estable.
+
+\item Resolver $\ddot\xi+N^2\xi=0$ con desplazamiento inicial y velocidad nula.
+
+\item Integrar la densidad variable en hidrostática en lugar de usar una densidad constante sin indicar la aproximación.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $N=0.0140071\,\mathrm{s^{-1}}$.
+
+\item $T_N=448.57\,\mathrm{s}$.
+
+\item $|w|_{max}=0.0420214\,\mathrm{m/s}$.
+
+\item $\alpha H=0.001$.
+
+\item $p_f-p_s=490255\,\mathrm{Pa}$.
+
+\end{itemize}
+
+\textbf{Interpretación.} La pequeña variación relativa de densidad permite Boussinesq en la dinámica. La frecuencia de una onda interna general también depende de su geometría de propagación.
+
+\textbf{Comprobación.} La presión coincide con la densidad media por $gH$ para este perfil lineal. Al hacer $\alpha\to0$ desaparece la restauración estratificada.
+
+\textbf{Límites.} No se confunde el oscilador de parcela con una solución completa de ondas internas ni con una estratificación compresible arbitraria.
+
+\end{studiumworked}
+
+
+
+\Needspace{.30\textheight}\section{MF-P48. Convección térmica: escalas de Boussinesq}
+
+\begin{studiumworked}{MF-P48 · Avanzado}
+
+\textbf{Enunciado.} Con las propiedades académicas dadas, calcule difusividades, Prandtl, Grashof y Rayleigh. Compruebe la pequeña variación relativa de densidad y explique por qué Rayleigh por sí solo no fija un umbral universal de inestabilidad.
+
+\begin{longtable}{@{}p{.15\linewidth}p{.23\linewidth}p{.54\linewidth}@{}}
+\toprule Símbolo & Valor SI & Significado\\\midrule\endhead
+$\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
+$\mu$ & $0.001\,\mathrm{Pa\,s}$ & viscosidad\\
+$k_T$ & $0.6\,\mathrm{W/(m\,K)}$ & conductividad\\
+$c_p$ & $4200\,\mathrm{J/(kg\,K)}$ & calor específico\\
+$\beta$ & $0.0002\,\mathrm{K^{-1}}$ & expansión térmica\\
+$\Delta T$ & $5\,\mathrm{K}$ & diferencia térmica\\
+$L$ & $0.01\,\mathrm{m}$ & longitud de referencia\\
+\bottomrule\end{longtable}
+
+\textbf{Incógnitas.} Se calculan $\nu,\ \kappa_T,\ \mathrm{Pr},\ \mathrm{Gr},\ \mathrm{Ra},\ \beta\Delta T$ y se interpreta el resultado bajo las hipótesis indicadas.
+
+\textbf{Hipótesis.} Propiedades constantes de referencia, expansión lineal de densidad y gravedad uniforme. El enunciado define escalas, sin especificar una cavidad ni condiciones térmicas de contorno.
+
+\textbf{Modelo y ecuaciones.}
+
+\[\fitmath{\nu=\mu/\rho,\quad \kappa_T=k_T/(\rho c_p),\quad \mathrm{Pr}=\nu/\kappa_T,\quad\mathrm{Gr}=g\beta\Delta TL^3/\nu^2,\quad\mathrm{Ra}=\mathrm{Gr}\,\mathrm{Pr}.}\]
+
+\textbf{Desarrollo.}\begin{enumerate}
+
+\item Construir las dos difusividades con unidades de área por tiempo.
+
+\item Formar los cocientes y verificar que son adimensionales.
+
+\item La condición $\beta\Delta T\ll1$ apoya una parte de la aproximación Boussinesq. Un umbral crítico requiere geometría y condiciones de contorno concretas.
+
+\end{enumerate}
+
+\textbf{Resultados.}\begin{itemize}
+
+\item $\nu=1\times10^{-6}\,\mathrm{m^2/s}$.
+
+\item $\kappa_T=1.42857\times10^{-7}\,\mathrm{m^2/s}$.
+
+\item $\mathrm{Pr}=7$.
+
+\item $\mathrm{Gr}=9810$.
+
+\item $\mathrm{Ra}=68670$.
+
+\item $\beta\Delta T=0.001$.
+
+\end{itemize}
+
+\textbf{Interpretación.} Rayleigh combina flotabilidad y dos procesos difusivos. No se aplica un valor crítico de una capa ideal a cualquier recinto o calentamiento.
+
+\textbf{Comprobación.} Comprobar también $\mathrm{Ra}=g\beta\Delta TL^3/(\nu\kappa_T)$ y el límite sin diferencia térmica.
+
+\textbf{Límites.} Densidad casi constante no asegura por sí sola todas las hipótesis de Boussinesq ni decide estabilidad sin el problema de contorno.
+
+\end{studiumworked}
+
+
+
+\begin{tcolorbox}[studiumcheck,breakable=false,title={Síntesis y comprobación}]Modelos trabajados: viento geostrófico y signo del gradiente; estratificación y oscilación de una parcela; convección térmica: escalas de boussinesq.\par\textbf{Antes de continuar.} Comprueba signos de Coriolis y estratificación; no deduzcas un umbral universal sin geometría y contorno.\end{tcolorbox}

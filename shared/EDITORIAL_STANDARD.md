@@ -1,6 +1,6 @@
 # Norma común de la colección Studium
 
-Los once volúmenes de las cinco asignaturas cargan `shared/latex/studium-editorial.tex` y `studium-cover.tex`. Las reglas visuales se editan una sola vez. Cada proyecto conserva únicamente su fotografía, crédito, título y edición en `editorial-config.tex`.
+Los trece volúmenes de las cinco asignaturas cargan `shared/latex/studium-editorial.tex` y `studium-cover.tex`. Las reglas visuales se editan una sola vez. Cada proyecto conserva únicamente su fotografía, crédito, título y edición en `editorial-config.tex`.
 
 ## Composición
 

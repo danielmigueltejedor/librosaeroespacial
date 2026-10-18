@@ -58,3 +58,19 @@ class StudiumDependencyTests(unittest.TestCase):
         self.shared.symlink_to(target.name)
         with self.assertRaisesRegex(ValueError, "enlazado"):
             builder.check(self.book, self.config)
+
+    def test_missing_workshop_listing_is_rejected(self):
+        (self.book / "latex/manual.tex").write_text("\\lstinputlisting{../workshops/w01.wl}\n")
+        with self.assertRaisesRegex(ValueError, "Dependencia ausente"):
+            builder.check(self.book, self.config)
+
+    def test_listing_cannot_escape_the_book(self):
+        (self.book / "latex/manual.tex").write_text("\\lstinputlisting{../../../secret.wl}\n")
+        with self.assertRaisesRegex(ValueError, "fuera del libro"):
+            builder.check(self.book, self.config)
+
+    def test_existing_workshop_listing_is_portable(self):
+        (self.book / "workshops").mkdir()
+        (self.book / "workshops/w01.wl").write_text("Print[1 + 1];\n")
+        (self.book / "latex/manual.tex").write_text("\\lstinputlisting{../workshops/w01.wl}\n")
+        builder.check(self.book, self.config)

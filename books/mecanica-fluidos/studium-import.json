@@ -16,6 +16,16 @@
       "source": "manual.tex",
       "title": "Manual",
       "output": "mecanica-fluidos-manual.pdf"
+    },
+    {
+      "source": "problemas.tex",
+      "title": "Problemas resueltos y talleres de cálculo",
+      "output": "mecanica-fluidos-problemas.pdf"
+    },
+    {
+      "source": "simulacros.tex",
+      "title": "Simulacros originales y soluciones",
+      "output": "mecanica-fluidos-simulacros.pdf"
     }
   ],
   "excluded": [
@@ -29,7 +39,7 @@
   ],
   "import_notes": [
     "Sustituye la edición AeroBooks antigua por las fuentes Studium actuales; la anterior permanece en el historial de Git.",
-    "Sin nueva redacción científica ni nuevas aprobaciones."
+    "El manual importado conserva su procedencia histórica. Los dos cuadernos se redactaron después, el 18 de octubre de 2026, con datos hipotéticos originales y comprobaciones reproducibles; sin nueva aprobación científica independiente."
   ],
   "source_files_at_import": [
     {
@@ -232,7 +242,18 @@
   "editorial_revision": {
     "date": "2026-10-18",
     "standard": "shared/EDITORIAL_STANDARD.md",
-    "scientific_scope": "No nueva redacción científica; se conservan ecuaciones, enunciados y soluciones.",
+    "scientific_scope": "El manual conserva sus modelos; se corrigen notas de tipografía y alcance de verificación. Los cuadernos originales y sus controles se documentan en original_companions.",
     "cover_photo": "../figures/cover-flow-nasa.jpg"
+  },
+  "original_companions": {
+    "authored_on": "2026-10-18",
+    "problems": 48,
+    "workshops": 7,
+    "mock_exams": 4,
+    "exam_variants": 20,
+    "chapters_covered": 16,
+    "data_provenance": "Original hypothetical educational data; no official exam material",
+    "checks": "reports/fluid-bank-checks.json",
+    "independent_academic_approval": false
   }
 }
