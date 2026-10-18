@@ -21,6 +21,15 @@ def imports() -> dict[str, tuple[Path, dict]]:
 
 
 def check(folder: Path, spec: dict) -> None:
+    shared = set()
+    for resource in spec.get("shared_resources", []):
+        raw_path = ROOT / resource
+        path = raw_path.resolve()
+        if not path.is_relative_to((ROOT / "shared" / "latex").resolve()) or path.suffix != ".tex":
+            raise ValueError(f"Recurso compartido fuera de shared/latex: {resource}")
+        if not path.is_file() or raw_path.is_symlink():
+            raise ValueError(f"Recurso compartido ausente o enlazado: {resource}")
+        shared.add(path)
     work = (folder / spec["workdir"]).resolve()
     if not work.is_relative_to(folder.resolve()):
         raise ValueError("El directorio de compilación debe permanecer dentro del libro")
@@ -30,7 +39,7 @@ def check(folder: Path, spec: dict) -> None:
             raise ValueError(f"Entrada ausente o fuera del libro: {doc['source']}")
         if Path(doc["output"]).name != doc["output"]:
             raise ValueError("El nombre de salida debe ser un archivo simple")
-    for p in folder.rglob("*"):
+    for p in [*folder.rglob("*"), *shared]:
         if p.is_symlink():
             raise ValueError(f"No se admiten enlaces simbólicos: {p.relative_to(folder)}")
         if p.suffix != ".tex":
@@ -44,13 +53,15 @@ def check(folder: Path, spec: dict) -> None:
             # t1lmr.fd is a TeX distribution resource, not a manuscript input.
             if ref.endswith(".fd"):
                 continue
-            target = (p.parent / ref).resolve()
-            if not target.is_relative_to(folder.resolve()):
+            # TeX resolves inputs from the compilation directory, including
+            # inputs written inside the shared preamble.
+            target = (work / ref).resolve()
+            if not target.is_relative_to(folder.resolve()) and target not in shared:
                 raise ValueError(f"Dependencia fuera del libro: {ref}")
             candidates = [target, target.with_suffix(".tex"), target.with_suffix(".pdf")]
-            from_work = (work / ref).resolve()
-            if from_work.is_relative_to(folder.resolve()):
-                candidates += [from_work, from_work.with_suffix(".tex"), from_work.with_suffix(".pdf")]
+            from_parent = (p.parent / ref).resolve()
+            if from_parent.is_relative_to(folder.resolve()) or from_parent in shared:
+                candidates += [from_parent, from_parent.with_suffix(".tex"), from_parent.with_suffix(".pdf")]
             # includegraphics also uses the document's graphicspath.
             candidates += [folder / "figures" / ref, folder / "figures" / (ref + ".pdf")]
             if not any(x.is_file() for x in candidates):

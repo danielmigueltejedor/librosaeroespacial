@@ -1,123 +1,15 @@
-\documentclass{book}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[spanish]{babel}
-\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
-\AtBeginDocument{\spanishdeactivate{"~<>}}
-\usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\filright}{\large\normalfont\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
-\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
-\titleformat{name=\chapter,numberless}[display]
-  {\normalfont\filright}{}{0pt}{\huge\bfseries}
-\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{xcolor}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{array}
-\usepackage{longtable}
-\newcounter{studiumfigure}
-\definecolor{studiumInk}{RGB}{28,40,58}
-\definecolor{studiumRule}{RGB}{28,40,58}
-\definecolor{studiumTipBack}{RGB}{232,244,236}
-\definecolor{studiumTipFrame}{RGB}{27,107,58}
-\definecolor{studiumDefBack}{RGB}{232,240,250}
-\definecolor{studiumDefFrame}{RGB}{24,74,130}
-\definecolor{studiumWorkedBack}{RGB}{255,244,230}
-\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
-\definecolor{studiumCheckBack}{RGB}{243,236,248}
-\definecolor{studiumCheckFrame}{RGB}{96,48,130}
-\definecolor{studiumCodeBack}{RGB}{245,245,242}
-\definecolor{studiumCodeRule}{RGB}{48,48,52}
-\usepackage{listings}
-\lstdefinelanguage{Rust}{
-  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{Go}{
-  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{JavaScript}{
-  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"},
-  morestring=[b]{'},
-}
-\lstdefinestyle{studium}{
-  basicstyle=\ttfamily\small,
-  columns=fullflexible,
-  keepspaces=true,
-  showstringspaces=false,
-  breaklines=true,
-  breakatwhitespace=false,
-  frame=leftline,
-  framerule=1.15pt,
-  rulecolor=\color{studiumCodeRule},
-  backgroundcolor=\color{studiumCodeBack},
-  xleftmargin=1.15em,
-  framexleftmargin=0.75em,
-  aboveskip=0.9em,
-  belowskip=0.7em,
-  tabsize=4,
-  keywordstyle=\ttfamily\bfseries,
-  commentstyle=\ttfamily\itshape,
-  stringstyle=\ttfamily
-}
-\lstset{style=studium}
-\usepackage[breakable,skins]{tcolorbox}
-\tcbset{
-  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
-}
-\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
-\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
-\fancyfoot[C]{}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \fancyfoot[C]{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
-\usepackage[hyphens]{url}
-\usepackage[hidelinks]{hyperref}
-\setlength{\emergencystretch}{1.5em}
-\makeatletter
-\@openrightfalse
-\let\cleardoublepage\clearpage
-\makeatother\newsavebox{\studiumMathBox}\newcommand{\fitmath}[1]{\sbox{\studiumMathBox}{$\displaystyle #1$}\ifdim\wd\studiumMathBox>\linewidth\resizebox{\linewidth}{!}{\usebox{\studiumMathBox}}\else\usebox{\studiumMathBox}\fi}
-\input{t1lmr.fd}\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*lmr/m/sc}{}\allowdisplaybreaks[2]\raggedbottom\setlength{\parskip}{3pt plus .5pt}
-\hypersetup{pdftitle={Turbomáquinas · Edición de estudio},pdfauthor={Studium · Edición de estudio asistida}}
-\input{cover.tex}
-\begin{document}\frontmatter\studiumcover{SIMULACROS\\DE TURBOMÁQUINAS}{Dos pruebas originales\\Cuaderno de enunciados}{SIMULACROS DE EXAMEN}
-
-\mainmatter\chapter*{Instrucciones de entrenamiento}
+\documentclass[10pt,openany]{book}
+\input{../../../shared/latex/studium-editorial.tex}
+\input{editorial-config.tex}
+\hypersetup{pdftitle={Turbomáquinas}}
+\renewcommand{\studiumvolumetype}{simulacros}
+\begin{document}
+\studiumcover{TURBOMÁQUINAS}{Entrenamiento y criterios de resolución}{SIMULACROS}
+\frontmatter
+\studiumreadingguide
+\tableofcontents
+\mainmatter
+\chapter*{Presentación y alcance}
 Propuesta original de estudio, sin carácter oficial. Cada simulacro dispone de 120 minutos orientativos. Declare convenios, hipótesis y unidades; conserve los signos tangenciales. Las soluciones están separadas en la colección de problemas, con los mismos identificadores.\par\medskip\noindent Puntuación orientativa: A1 y A2, 4 puntos cada uno; A3, 2 puntos. B1, 4 puntos; B2 y B3, 3 puntos cada uno. En cada ejercicio: planteamiento y convenio, 25 por ciento; desarrollo, 35; sustitución y unidades, 25; interpretación y comprobaciones, 15.\par\chapter{Simulacro A}
 \section{C19-01-P}
 \(C19-01-P \cdot A1 \cdot\) Cierre de compresor axial. Un rotor compresor al radio medio recibe Cx y remolinos dados. Obtenga trabajo, temperatura total final, presión total final y área geométrica de entrada. Resultado final: área de entrada.

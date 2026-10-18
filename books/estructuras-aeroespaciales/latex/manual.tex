@@ -1,128 +1,14 @@
-\documentclass{book}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[spanish]{babel}
-\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
-\AtBeginDocument{\spanishdeactivate{"~<>}}
-\usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
-\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
-\titleformat{name=\chapter,numberless}[display]
-  {\normalfont\filright}{}{0pt}{\huge\bfseries}
-\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{xcolor}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{array}
-\usepackage{longtable}
-\newcounter{studiumfigure}
-\definecolor{studiumInk}{RGB}{28,40,58}
-\definecolor{studiumRule}{RGB}{28,40,58}
-\definecolor{studiumTipBack}{RGB}{232,244,236}
-\definecolor{studiumTipFrame}{RGB}{27,107,58}
-\definecolor{studiumDefBack}{RGB}{232,240,250}
-\definecolor{studiumDefFrame}{RGB}{24,74,130}
-\definecolor{studiumWorkedBack}{RGB}{255,244,230}
-\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
-\definecolor{studiumCheckBack}{RGB}{243,236,248}
-\definecolor{studiumCheckFrame}{RGB}{96,48,130}
-\definecolor{studiumCodeBack}{RGB}{245,245,242}
-\definecolor{studiumCodeRule}{RGB}{48,48,52}
-\usepackage{listings}
-\lstdefinelanguage{Rust}{
-  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{Go}{
-  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{JavaScript}{
-  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"},
-  morestring=[b]{'},
-}
-\lstdefinestyle{studium}{
-  basicstyle=\ttfamily\small,
-  columns=fullflexible,
-  keepspaces=true,
-  showstringspaces=false,
-  breaklines=true,
-  breakatwhitespace=false,
-  frame=leftline,
-  framerule=1.15pt,
-  rulecolor=\color{studiumCodeRule},
-  backgroundcolor=\color{studiumCodeBack},
-  xleftmargin=1.15em,
-  framexleftmargin=0.75em,
-  aboveskip=0.9em,
-  belowskip=0.7em,
-  tabsize=4,
-  keywordstyle=\ttfamily\bfseries,
-  commentstyle=\ttfamily\itshape,
-  stringstyle=\ttfamily
-}
-\lstset{style=studium}
-\usepackage[breakable,skins]{tcolorbox}
-\tcbset{
-  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
-}
-\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
-\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
-\fancyfoot[C]{}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \fancyfoot[C]{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
-\usepackage[hyphens]{url}
-\usepackage[hidelinks]{hyperref}
-\setlength{\emergencystretch}{1.5em}
-\makeatletter
-\@openrightfalse
-\let\cleardoublepage\clearpage
-\makeatother
+\documentclass[10pt,openany]{book}
+\input{../../../shared/latex/studium-editorial.tex}
+\input{editorial-config.tex}
+\hypersetup{pdftitle={Teoría de Estructuras}}
+\renewcommand{\studiumvolumetype}{manual}
 \begin{document}
+\studiumcover{TEORÍA\\DE ESTRUCTURAS}{Fundamentos, análisis y problemas de ingeniería}{MANUAL UNIVERSITARIO}
 \frontmatter
-\setlength{\parindent}{0pt}
-\input{cover.tex}
-\chapter{Prefacio}
-\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
-\chapter{Cómo usar este libro}
-\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
-
-\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\studiumreadingguide
 \tableofcontents
+\listoffigures
 \mainmatter
 
 \part{Bloque I. Conceptos básicos}
@@ -130,12 +16,9 @@
 \chapter{Introducción}
 \label{chap:c01}
 
-\noindent\textit{Este capítulo sitúa la asignatura. Describe qué es una estructura aeronáutica y de qué elementos se compone, qué materiales se emplean y por qué, y qué hipótesis permiten tratar el problema con las herramientas de la elasticidad lineal. Con ello se fija el lenguaje y el alcance de todo lo que sigue: una teoría de barras y de paredes delgadas que explique cómo se reparten las cargas, qué tensiones aparecen y cuánto se deforma la estructura.}
+\studiumchapterguide{Este capítulo sitúa la asignatura. Describe qué es una estructura aeronáutica y de qué elementos se compone, qué materiales se emplean y por qué, y qué hipótesis permiten tratar el problema con las herramientas de la elasticidad lineal. Con ello se fija el lenguaje y el alcance de todo lo que sigue: una teoría de barras y de paredes delgadas que explique cómo se reparten las cargas, qué tensiones aparecen y cuánto se deforma la estructura.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué diferencia hay entre un monocasco y un semimonocasco, y por qué predomina el segundo en aviación comercial? ¿Qué elemento del ala soporta la mayor parte de la flexión y cuál mantiene el perfil aerodinámico? ¿Por qué un tirante de aluminio y otro de acero con la misma rigidez axial pesan prácticamente lo mismo? ¿Qué hipótesis adicionales, aparte de pequeños desplazamientos y linealidad, se admiten en el curso, y en qué se apoya el principio de superposición?
-\end{tcolorbox}
 
 \section{Estructuras aeronáuticas}
 
@@ -248,7 +131,7 @@ Las costillas son elementos transversales que determinan y mantienen el perfil a
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c01-cajon}\textbf{Figura~\thestudiumfigure.} Sección de un cajón de torsión de dos largueros: los revestimientos superior e inferior, con sus larguerillos, y las almas de los dos largueros forman una caja cerrada.\par}
+\studiumcaption{fig:c01-cajon}{Sección de un cajón de torsión de dos largueros: los revestimientos superior e inferior, con sus larguerillos, y las almas de los dos largueros forman una caja cerrada.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -347,7 +230,7 @@ En un semimonocasco, las cuadernas son anillos transversales con la forma de la 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c01-fuselaje}\textbf{Figura~\thestudiumfigure.} Sección de un fuselaje semimonocasco: el revestimiento, los larguerillos que lo rigidizan en dirección longitudinal y la cuaderna que mantiene la forma circular.\par}
+\studiumcaption{fig:c01-fuselaje}{Sección de un fuselaje semimonocasco: el revestimiento, los larguerillos que lo rigidizan en dirección longitudinal y la cuaderna que mantiene la forma circular.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -398,7 +281,7 @@ Las hipótesis básicas, con deformaciones pequeñas y relación lineal entre te
 La linealidad se pierde con rapidez cuando el material plastifica o cuando los giros dejan de ser pequeños. Antes de usar los métodos de los temas siguientes en un problema nuevo, conviene comprobar, aunque sea de forma aproximada, que la tensión máxima queda por debajo del límite elástico y que los desplazamientos son pequeños frente a las dimensiones del elemento.
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Masa de un tirante de rigidez axial dada}
 
@@ -567,24 +450,27 @@ Con igual rigidez axial, el tirante de aluminio pesa prácticamente lo mismo que
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 Repita el cálculo del ejemplo para un tirante de plástico reforzado con fibra de carbono (\(E = 181\) GPa, \(\rho = 1600\) kg/m\(^3\), fibras en la dirección del tirante) con la misma rigidez axial \(k = 5\times 10^{7}\) N/m y longitud 2 m. Calcule su masa.
 
-\noindent\textbf{2 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{2 (Básico, Cálculo)}
 Una aleación de titanio (\(E = 112{,}5\) GPa, \(\rho = 4500\) kg/m\(^3\)) se usa para un tirante de longitud 1 m con rigidez axial \(k = 2\times 10^{7}\) N/m. Calcule su masa.
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué diferencia hay entre un monocasco y un semimonocasco, y por qué predomina el segundo en aviación comercial? ¿Qué elemento del ala soporta la mayor parte de la flexión y cuál mantiene el perfil aerodinámico? ¿Por qué un tirante de aluminio y otro de acero con la misma rigidez axial pesan prácticamente lo mismo? ¿Qué hipótesis adicionales, aparte de pequeños desplazamientos y linealidad, se admiten en el curso, y en qué se apoya el principio de superposición?
+\end{tcolorbox}
+\studiumchaptercheck
 
 \chapter{Tensión y deformación}
 \label{chap:c02}
 
-\noindent\textit{Una estructura se carga y se deforma. Este capítulo introduce las dos magnitudes con las que se describe esa respuesta en cada punto del material, la tensión y la deformación, y la ley que las relaciona en el régimen elástico. Son las herramientas con las que, en los temas siguientes, se pasará de los esfuerzos que soporta una barra a las tensiones que sufre su material y a los desplazamientos que sufre la estructura.}
+\studiumchapterguide{Una estructura se carga y se deforma. Este capítulo introduce las dos magnitudes con las que se describe esa respuesta en cada punto del material, la tensión y la deformación, y la ley que las relaciona en el régimen elástico. Son las herramientas con las que, en los temas siguientes, se pasará de los esfuerzos que soporta una barra a las tensiones que sufre su material y a los desplazamientos que sufre la estructura.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué diferencia hay entre un esfuerzo y una tensión? ¿Cómo se descompone el vector tensión y qué signo tiene la tensión normal de tracción? ¿Qué plano de una barra traccionada soporta la tensión tangencial máxima y cuánto vale? ¿Qué relaciona el coeficiente de Poisson y por qué una barra traccionada adelgaza? ¿Qué zonas se distinguen en la curva tensión-deformación de un acero y en cuál es válida la ley de Hooke?
-\end{tcolorbox}
 
 \section{Concepto de tensión}
 
@@ -722,7 +608,7 @@ de modo que se anula en la sección recta y alcanza su máximo a \(45^{\circ}\),
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c02-inclinado}\textbf{Figura~\thestudiumfigure.} Equilibrio de un trozo de barra cortado por un plano que forma el ángulo \(\theta\) con la sección recta: la fuerza axial \(F\) se descompone en una componente normal \(F\cos\theta\) y otra tangencial \(F\sin\theta\) sobre el plano de área \(A/\cos\theta\).\par}
+\studiumcaption{fig:c02-inclinado}{Equilibrio de un trozo de barra cortado por un plano que forma el ángulo \(\theta\) con la sección recta: la fuerza axial \(F\) se descompone en una componente normal \(F\cos\theta\) y otra tangencial \(F\sin\theta\) sobre el plano de área \(A/\cos\theta\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -882,13 +768,13 @@ Tras la fluencia viene la zona de endurecimiento, en la que la tensión vuelve a
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c02-curva}\textbf{Figura~\thestudiumfigure.} Curva tensión-deformación de un acero dulce con sus zonas: elástica (hasta el límite elástico), de fluencia, de endurecimiento y de estricción, que acaba en la rotura.\par}
+\studiumcaption{fig:c02-curva}{Curva tensión-deformación de un acero dulce con sus zonas: elástica (hasta el límite elástico), de fluencia, de endurecimiento y de estricción, que acaba en la rotura.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
 Los materiales se clasifican según lo que ocurre después del límite elástico. Un material dúctil soporta una deformación plástica importante antes de romper y avisa, porque se deforma mucho antes de fallar; la tensión última puede ser bastante mayor que el límite elástico. Un material frágil rompe con poca o ninguna deformación plástica y absorbe poca energía antes de la rotura, incluso aunque sea resistente; en ellos la tensión última está cerca del límite elástico. Las aleaciones de aluminio de uso aeronáutico son dúctiles. El 7075 en temple T6 tiene una tensión última de 510 a 540 MPa y un alargamiento de rotura de 5 a \(11\ \%\). En proyecto se exige que la tensión máxima de servicio quede muy por debajo del límite elástico, con un coeficiente de seguridad, y esa es la comprobación de resistencia que se hace al final de cada problema de barras.
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Tensión media en una barra traccionada}
 
@@ -1289,30 +1175,33 @@ La tensión es menos de la mitad del límite elástico mínimo (coeficiente de s
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 La barra del ejemplo anterior (diámetro 20 mm, \(\nu = 0{,}33\)) se alarga una deformación axial de \(2{,}0\times 10^{-3}\). Calcule la disminución de su diámetro, en milímetros.
 
-\noindent\textbf{2 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{2 (Intermedio, Desarrollo)}
 Una chapa de 7075 (\(E = 71{,}7\) GPa, \(\nu = 0{,}33\)) trabaja a cortadura pura con una tensión tangencial de 50 MPa. Calcule el módulo transversal \(G\) y la distorsión \(\gamma\).
 
-\noindent\textbf{3 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{3 (Básico, Cálculo)}
 Una barra soporta una tensión normal \(\sigma = 100\) MPa en su sección recta. Calcule la tensión normal sobre un plano cuya normal forma \(30^{\circ}\) con el eje de la barra.
 
-\noindent\textbf{4 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{4 (Intermedio, Cálculo)}
 En una barra con \(\sigma = 100\) MPa en la sección recta, calcule la tensión tangencial máxima y el ángulo \(\theta\) del plano en que se produce.
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué diferencia hay entre un esfuerzo y una tensión? ¿Cómo se descompone el vector tensión y qué signo tiene la tensión normal de tracción? ¿Qué plano de una barra traccionada soporta la tensión tangencial máxima y cuánto vale? ¿Qué relaciona el coeficiente de Poisson y por qué una barra traccionada adelgaza? ¿Qué zonas se distinguen en la curva tensión-deformación de un acero y en cuál es válida la ley de Hooke?
+\end{tcolorbox}
+\studiumchaptercheck
 
 \chapter{Modelo monodimensional}
 \label{chap:c03}
 
-\noindent\textit{Calcular una estructura real exige primero idealizarla. Este capítulo construye el modelo monodimensional con el que se resolverá casi todo el curso: la barra como una línea con una sección asociada, las cargas y los apoyos que actúan sobre ella, el equilibrio que determina las reacciones y, por último, los esfuerzos internos y las leyes que los describen a lo largo de la barra.}
+\studiumchapterguide{Calcular una estructura real exige primero idealizarla. Este capítulo construye el modelo monodimensional con el que se resolverá casi todo el curso: la barra como una línea con una sección asociada, las cargas y los apoyos que actúan sobre ella, el equilibrio que determina las reacciones y, por último, los esfuerzos internos y las leyes que los describen a lo largo de la barra.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué es la directriz y qué es una rebanada? ¿Qué tres ecuaciones de equilibrio hay en el plano y cuántas reacciones se pueden calcular con ellas? ¿Qué distingue una estructura isostática de una hiperestática? ¿Cómo es el signo de un cortante positivo, de un flector positivo y de un torsor positivo? ¿Qué relación hay entre la pendiente del diagrama de flectores y el cortante, y entre la del cortante y la carga? ¿Dónde está el máximo del flector de una viga con carga repartida?
-\end{tcolorbox}
 
 \section{Modelización y secciones}
 
@@ -1493,7 +1382,7 @@ En la figura~\ref{fig:c03-cargas} se muestran estas resultantes.
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c03-cargas}\textbf{Figura~\thestudiumfigure.} Resultante de una carga repartida: uniforme (\(qL\) en el centro) y triangular (\(qL/2\) a \(L/3\) del extremo de mayor carga).\par}
+\studiumcaption{fig:c03-cargas}{Resultante de una carga repartida: uniforme (\(qL\) en el centro) y triangular (\(qL/2\) a \(L/3\) del extremo de mayor carga).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -1646,7 +1535,7 @@ Los enlaces o vínculos exteriores impiden movimientos de la barra y por ello ej
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c03-apoyos}\textbf{Figura~\thestudiumfigure.} Vínculos exteriores de una barra y reacciones que ejercen: apoyo simple (una reacción vertical), articulación (dos componentes) y empotramiento (dos componentes y un momento).\par}
+\studiumcaption{fig:c03-apoyos}{Vínculos exteriores de una barra y reacciones que ejercen: apoyo simple (una reacción vertical), articulación (dos componentes) y empotramiento (dos componentes y un momento).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -1772,7 +1661,7 @@ Los esfuerzos se miden con un criterio de signos que debe aplicarse sin excepci�
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c03-signos}\textbf{Figura~\thestudiumfigure.} Esfuerzos positivos sobre una rebanada de viga según el criterio de signos del curso: axil de tracción, cortante que levanta la cara izquierda y flector que comprime la fibra superior.\par}
+\studiumcaption{fig:c03-signos}{Esfuerzos positivos sobre una rebanada de viga según el criterio de signos del curso: axil de tracción, cortante que levanta la cara izquierda y flector que comprime la fibra superior.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -1931,7 +1820,7 @@ En la figura~\ref{fig:c03-diagramas} se muestran las tres leyes. En una viga en 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c03-diagramas}\textbf{Figura~\thestudiumfigure.} Viga biapoyada con carga uniforme: cortante lineal que cambia de signo en el centro y flector parabólico, dibujado hacia abajo, con máximo \(qL^2/8\).\par}
+\studiumcaption{fig:c03-diagramas}{Viga biapoyada con carga uniforme: cortante lineal que cambia de signo en el centro y flector parabólico, dibujado hacia abajo, con máximo \(qL^2/8\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -2051,7 +1940,7 @@ y, combinando ambas, la derivada segunda del flector es \(-q_y\). La pendiente d
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c03-rebanada}\textbf{Figura~\thestudiumfigure.} Rebanada diferencial de longitud \(\mathrm{d}x\) con sus esfuerzos en ambas caras y la carga repartida: de su equilibrio salen las ecuaciones de equilibrio interno.\par}
+\studiumcaption{fig:c03-rebanada}{Rebanada diferencial de longitud \(\mathrm{d}x\) con sus esfuerzos en ambas caras y la carga repartida: de su equilibrio salen las ecuaciones de equilibrio interno.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -2061,7 +1950,7 @@ Las relaciones diferenciales dependen del criterio de signos, y por eso este lib
 
 Las mismas relaciones permiten construir los diagramas por integración gráfica. Entre dos secciones, la variación del cortante es la resultante de la carga repartida que actúa entre ellas, con el signo que fija el criterio, y la variación del flector es el área encerrada por el diagrama de cortantes en ese tramo. Las cargas puntuales y los momentos aplicados no tienen área: producen saltos, en el cortante y en el flector respectivamente. Así, recorriendo la barra de izquierda a derecha y sumando áreas y saltos, se obtienen los valores en los extremos de cada tramo sin escribir una sola ley, y las leyes sirven después para comprobar esos valores y localizar los extremos.
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Teorema de Steiner para el momento de inercia de una sección}
 
@@ -2617,7 +2506,7 @@ Momento de inercia del conjunto
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-seccion-t}\textbf{Figura~\thestudiumfigure.} Sección en T del problema: centro de gravedad \(G\) en el alma, a \(37{,}27\) mm de la cara superior, y ejes centrales \(y\), \(z\).\par}
+\studiumcaption{fig:e2-c03-seccion-t}{Sección en T del problema: centro de gravedad \(G\) en el alma, a \(37{,}27\) mm de la cara superior, y ejes centrales \(y\), \(z\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -2966,7 +2855,7 @@ Una viga biapoyada de 6 m de luz soporta una carga uniforme de 12 kN/m en toda s
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-biap-enunciado}\textbf{Figura~\thestudiumfigure.} Viga biapoyada con carga uniforme y carga puntual.\par}
+\studiumcaption{fig:e2-c03-biap-enunciado}{Viga biapoyada con carga uniforme y carga puntual.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -3260,7 +3149,7 @@ M_z(x) = R_A\,x - \frac{q\,x^{2}}{2} - P\,(x - a)
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-biap-dsl}\textbf{Figura~\thestudiumfigure.} Diagrama de sólido libre con las reacciones incógnita en sentido positivo.\par}
+\studiumcaption{fig:e2-c03-biap-dsl}{Diagrama de sólido libre con las reacciones incógnita en sentido positivo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -3749,7 +3638,7 @@ R_A = 48\ \mathrm{kN},\quad R_B = 42\ \mathrm{kN},\quad M_{z,max} = 73{,}5\ \mat
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-biap-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores. El cortante salta bajo la carga puntual y se anula en \(x = 2{,}5\) m, donde el flector es máximo.\par}
+\studiumcaption{fig:e2-c03-biap-esfuerzos}{Diagramas de cortantes y flectores. El cortante salta bajo la carga puntual y se anula en \(x = 2{,}5\) m, donde el flector es máximo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -4117,7 +4006,7 @@ La viga \(A B C\) de 9 m está empotrada en \(A\), tiene una rótula en \(H\), a
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-gerber-enunciado}\textbf{Figura~\thestudiumfigure.} Viga con empotramiento, rótula \(H\), apoyo móvil \(B\) y voladizo, con carga trapezoidal y cargas puntuales.\par}
+\studiumcaption{fig:e2-c03-gerber-enunciado}{Viga con empotramiento, rótula \(H\), apoyo móvil \(B\) y voladizo, con carga trapezoidal y cargas puntuales.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -4448,7 +4337,7 @@ R_B\,(x_B - x_H) + F\,(x_C - x_H) = \int_{x_H}^{x_B} q(t)\,(t - x_H)\,\mathrm{d}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-gerber-dsl}\textbf{Figura~\thestudiumfigure.} Sólido libre: tres reacciones incógnita y la rótula, que aporta la cuarta ecuación.\par}
+\studiumcaption{fig:e2-c03-gerber-dsl}{Sólido libre: tres reacciones incógnita y la rótula, que aporta la cuarta ecuación.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -4793,7 +4682,7 @@ Flector en el empotramiento, con la parte derecha
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-gerber-reacciones}\textbf{Figura~\thestudiumfigure.} Reacciones obtenidas. El signo de cada valor se refiere al sentido dibujado: \(M_A\) negativo es un momento horario.\par}
+\studiumcaption{fig:e2-c03-gerber-reacciones}{Reacciones obtenidas. El signo de cada valor se refiere al sentido dibujado: \(M_A\) negativo es un momento horario.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -5380,7 +5269,7 @@ M_z(x) = \begin{cases} -0{,}1429\,x^{3} - 2\,x^{2} + 41{,}7857\,x - 103{,}5 & 0 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-gerber-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de la viga Gerber: flector nulo en la rótula, saltos del cortante en \(D\), \(B\) y \(C\), y extremos del flector en el empotramiento y en \(D\).\par}
+\studiumcaption{fig:e2-c03-gerber-esfuerzos}{Diagramas de la viga Gerber: flector nulo en la rótula, saltos del cortante en \(D\), \(B\) y \(C\), y extremos del flector en el empotramiento y en \(D\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -5725,7 +5614,7 @@ Una viga \(AB\) de 4 m con apoyo fijo en \(A\) y apoyo móvil en \(B\) soporta s
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-incl-enunciado}\textbf{Figura~\thestudiumfigure.} Viga biapoyada con peso propio y fuerza inclinada en \(C\).\par}
+\studiumcaption{fig:e2-c03-incl-enunciado}{Viga biapoyada con peso propio y fuerza inclinada en \(C\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -6281,7 +6170,7 @@ N_{AC} = 10\ \mathrm{kN},\quad N_{CB} = 0,\quad M_{z,\max} = 21{,}86\ \mathrm{kN
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-incl-esfuerzos}\textbf{Figura~\thestudiumfigure.} Axiles, cortantes y flectores: el axil solo existe entre el apoyo fijo y el punto de aplicación de la fuerza.\par}
+\studiumcaption{fig:e2-c03-incl-esfuerzos}{Axiles, cortantes y flectores: el axil solo existe entre el apoyo fijo y el punto de aplicación de la fuerza.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -6569,7 +6458,7 @@ Una ménsula \(AB\) de 3 m, empotrada en \(A\), soporta una carga triangular hac
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-mens-enunciado}\textbf{Figura~\thestudiumfigure.} Ménsula con carga triangular y momento en el extremo libre.\par}
+\studiumcaption{fig:e2-c03-mens-enunciado}{Ménsula con carga triangular y momento en el extremo libre.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -6996,7 +6885,7 @@ R_A = 12\ \mathrm{kN},\qquad M_z(0) = -18\ \mathrm{kN\,m},\qquad M_z(3) = 6\ \ma
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-mens-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de la ménsula: cortante parabólico que se anula en el extremo libre y flector cúbico que cambia de signo.\par}
+\studiumcaption{fig:e2-c03-mens-esfuerzos}{Diagramas de la ménsula: cortante parabólico que se anula en el extremo libre y flector cúbico que cambia de signo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -7337,7 +7226,7 @@ Una viga \(A B C\) de 7 m tiene un apoyo fijo en \(A\) y un apoyo móvil en \(B\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-volad-enunciado}\textbf{Figura~\thestudiumfigure.} Viga con voladizo, carga uniforme, momento aplicado en \(D\) y carga en el extremo.\par}
+\studiumcaption{fig:e2-c03-volad-enunciado}{Viga con voladizo, carga uniforme, momento aplicado en \(D\) y carga en el extremo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -7626,7 +7515,7 @@ R_B\,L_{AB} = q\,L_{AB}\,\frac{L_{AB}}{2} + M_D + P\,L_{AC}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-volad-dsl}\textbf{Figura~\thestudiumfigure.} Sólido libre de la viga con voladizo.\par}
+\studiumcaption{fig:e2-c03-volad-dsl}{Sólido libre de la viga con voladizo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -8181,7 +8070,7 @@ R_A = 8{,}6\ \mathrm{kN},\quad R_B = 31{,}4\ \mathrm{kN},\quad M_{z,\max} = 14{,
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-volad-esfuerzos}\textbf{Figura~\thestudiumfigure.} Cortantes y flectores: salto del cortante en los apoyos y en \(C\), salto del flector en \(D\) y flector negativo sobre el apoyo \(B\).\par}
+\studiumcaption{fig:e2-c03-volad-esfuerzos}{Cortantes y flectores: salto del cortante en los apoyos y en \(C\), salto del flector en \(D\) y flector negativo sobre el apoyo \(B\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -8214,24 +8103,24 @@ Comprobaciones automáticas sobre los datos del problema: 10 exactas, 5 numéric
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 Una ménsula de 2 m de longitud, empotrada en su extremo izquierdo, soporta una carga puntual de 10 kN hacia abajo en su extremo libre. Calcule el flector en el empotramiento con el criterio de signos del curso (positivo si comprime la fibra superior).
 
-\noindent\textbf{2 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{2 (Básico, Cálculo)}
 Una viga biapoyada de 5 m de luz soporta una carga puntual de 20 kN en el centro. Calcule el momento flector máximo.
 
-\noindent\textbf{3 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{3 (Básico, Cálculo)}
 Calcule el momento de inercia respecto al eje horizontal por el centro de gravedad de una sección rectangular de 50 mm de ancho y 120 mm de alto.
 
-\noindent\textbf{4 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{4 (Intermedio, Desarrollo)}
 Una viga biapoyada de 4 m de luz soporta una carga triangular que vale cero en el apoyo izquierdo \(A\) y 9 kN/m en el derecho \(B\). Calcule la reacción en \(B\).
 
-\noindent\textbf{5 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{5 (Intermedio, Cálculo)}
 Calcule el momento de inercia de un rectángulo de 40 mm de ancho y 100 mm de alto respecto al eje horizontal que pasa por su base.
 
-\noindent\textbf{6 (FOUNDATIONAL, MULTI\_STEP)}
+\noindent\textbf{6 (Básico, Desarrollo)}
 Una viga biapoyada de 5 m soporta dos cargas puntuales hacia abajo: 10 kN a 1 m del apoyo izquierdo \(A\) y 20 kN a 3 m. Dibuje los diagramas de cortantes y flectores y calcule el flector máximo.
 
 \par\vspace{\baselineskip}
@@ -8441,11 +8330,11 @@ Una viga biapoyada de 5 m soporta dos cargas puntuales hacia abajo: 10 kN a 1 m 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_dos_cargas-enunciado}\textbf{Figura~\thestudiumfigure.} Viga biapoyada con dos cargas puntuales.\par}
+\studiumcaption{fig:e2-c03-p_dos_cargas-enunciado}{Viga biapoyada con dos cargas puntuales.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{7 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{7 (Intermedio, Desarrollo)}
 Una ménsula de 4 m empotrada en \(A\) soporta una carga uniforme de 5 kN/m hacia abajo en su mitad exterior y una carga puntual de 4 kN hacia abajo en el centro. Escriba las leyes de esfuerzos por tramos, dibuje los diagramas y calcule el flector en el empotramiento.
 
 \par\vspace{\baselineskip}
@@ -8663,11 +8552,11 @@ Una ménsula de 4 m empotrada en \(A\) soporta una carga uniforme de 5 kN/m haci
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_mensula_parcial-enunciado}\textbf{Figura~\thestudiumfigure.} Ménsula con carga repartida en su mitad exterior y carga puntual en el centro.\par}
+\studiumcaption{fig:e2-c03-p_mensula_parcial-enunciado}{Ménsula con carga repartida en su mitad exterior y carga puntual en el centro.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{8 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{8 (Intermedio, Desarrollo)}
 Una viga de 6 m con apoyo fijo en \(A\) y apoyo móvil en \(B\), a 4 m de \(A\), solo está cargada en el voladizo \(BC\), con 8 kN/m hacia abajo. Calcule las reacciones, dibuje los diagramas y explique por qué la reacción en \(A\) resulta negativa.
 
 \par\vspace{\baselineskip}
@@ -8893,11 +8782,11 @@ Una viga de 6 m con apoyo fijo en \(A\) y apoyo móvil en \(B\), a 4 m de \(A\),
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_vuelo-enunciado}\textbf{Figura~\thestudiumfigure.} Viga con carga solo en el voladizo.\par}
+\studiumcaption{fig:e2-c03-p_vuelo-enunciado}{Viga con carga solo en el voladizo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{9 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{9 (De examen, Desarrollo)}
 La viga \(A B C\) de 9 m tiene un apoyo fijo en \(A\), apoyos móviles en \(B\) (\(x = 5\) m) y \(C\) (\(x = 9\) m) y una rótula en \(H\) (\(x = 6{,}5\) m). Soporta una carga uniforme de 4 kN/m en toda su longitud y una carga puntual de 12 kN en \(D\) (\(x = 8\) m). Compruebe que es isostática, calcule las reacciones, dibuje los diagramas y determine el flector sobre el apoyo \(B\).
 
 \par\vspace{\baselineskip}
@@ -9279,11 +9168,11 @@ La viga \(A B C\) de 9 m tiene un apoyo fijo en \(A\), apoyos móviles en \(B\) 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_gerber-enunciado}\textbf{Figura~\thestudiumfigure.} Viga Gerber de dos vanos con rótula en el segundo.\par}
+\studiumcaption{fig:e2-c03-p_gerber-enunciado}{Viga Gerber de dos vanos con rótula en el segundo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{10 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{10 (Intermedio, Desarrollo)}
 Una ménsula de 3 m empotrada en \(A\) recibe una carga triangular hacia arriba, de 6 kN/m en \(A\) a cero en el extremo libre, y un momento horario de 4 kN\(\cdot\)m en el extremo libre. Determine el signo y el valor del flector en el empotramiento y dibuje los diagramas.
 
 \par\vspace{\baselineskip}
@@ -9537,11 +9426,11 @@ Una ménsula de 3 m empotrada en \(A\) recibe una carga triangular hacia arriba,
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_par_triangular-enunciado}\textbf{Figura~\thestudiumfigure.} Ménsula con carga triangular hacia arriba y momento en el extremo.\par}
+\studiumcaption{fig:e2-c03-p_par_triangular-enunciado}{Ménsula con carga triangular hacia arriba y momento en el extremo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{11 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{11 (Intermedio, Desarrollo)}
 La viga \(AB\) de 5 m, con apoyo fijo en \(A\) y móvil en \(B\), recibe en \(C\), a 2 m de \(A\), una fuerza de 16 kN inclinada \(30^{\circ}\) por debajo de la horizontal y dirigida hacia \(A\), y en \(B\) una fuerza horizontal de 6 kN hacia la derecha. Dibuje el diagrama de axiles e indique qué tramo trabaja a compresión.
 
 \par\vspace{\baselineskip}
@@ -9739,22 +9628,25 @@ La viga \(AB\) de 5 m, con apoyo fijo en \(A\) y móvil en \(B\), recibe en \(C\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_axil-enunciado}\textbf{Figura~\thestudiumfigure.} Viga con fuerza inclinada y fuerza axial en el apoyo móvil.\par}
+\studiumcaption{fig:e2-c03-p_axil-enunciado}{Viga con fuerza inclinada y fuerza axial en el apoyo móvil.}
 \end{minipage}
 \par\vspace{\baselineskip}
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué es la directriz y qué es una rebanada? ¿Qué tres ecuaciones de equilibrio hay en el plano y cuántas reacciones se pueden calcular con ellas? ¿Qué distingue una estructura isostática de una hiperestática? ¿Cómo es el signo de un cortante positivo, de un flector positivo y de un torsor positivo? ¿Qué relación hay entre la pendiente del diagrama de flectores y el cortante, y entre la del cortante y la carga? ¿Dónde está el máximo del flector de una viga con carga repartida?
+\end{tcolorbox}
+\studiumchaptercheck
 
 \part{Bloque II. Tensiones y deformaciones en barras rectas}
 
 \chapter{Esfuerzo axil y momento flector}
 \label{chap:c04}
 
-\noindent\textit{Con los esfuerzos de una sección ya conocidos, este capítulo calcula las tensiones normales que producen el axil y el flector y los desplazamientos que originan. Se obtiene la ley de Navier, se discute la flexión compuesta, el eje neutro y el núcleo central, se adapta el cálculo a las secciones de pared delgada y a las secciones de varios materiales, y se integra la ecuación de la elástica para calcular flechas.}
+\studiumchapterguide{Con los esfuerzos de una sección ya conocidos, este capítulo calcula las tensiones normales que producen el axil y el flector y los desplazamientos que originan. Se obtiene la ley de Navier, se discute la flexión compuesta, el eje neutro y el núcleo central, se adapta el cálculo a las secciones de pared delgada y a las secciones de varios materiales, y se integra la ecuación de la elástica para calcular flechas.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué hipótesis permite que la deformación longitudinal sea lineal en la sección? ¿Qué términos tiene la ley de Navier generalizada y cuándo se anulan? ¿Cómo se calcula el eje neutro en flexión compuesta y qué es el núcleo central de un rectángulo? ¿Qué se idealiza en una sección de pared delgada de un ala y qué soporta cada elemento? ¿Por qué la tensión es discontinua en la unión de dos materiales? ¿Qué relación hay entre la curvatura de la elástica y el flector, y qué condiciones de contorno hay en un apoyo y en un empotramiento?
-\end{tcolorbox}
 
 \section{Ley de Navier generalizada}
 
@@ -9887,7 +9779,7 @@ y de modo análogo \(b/6\) en la otra dirección, de modo que el núcleo central
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c04-nucleo}\textbf{Figura~\thestudiumfigure.} Núcleo central de una sección rectangular de base \(b\) y altura \(h\): un rombo de semidiagonales \(b/6\) y \(h/6\); una carga axial aplicada dentro de él no produce tensiones de signo contrario.\par}
+\studiumcaption{fig:c04-nucleo}{Núcleo central de una sección rectangular de base \(b\) y altura \(h\): un rombo de semidiagonales \(b/6\) y \(h/6\); una carga axial aplicada dentro de él no produce tensiones de signo contrario.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -10012,7 +9904,7 @@ La figura~\ref{fig:c04-idealizada} muestra el cajón idealizado con cuatro largu
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c04-idealizada}\textbf{Figura~\thestudiumfigure.} Sección de cajón idealizada: el área que soporta tensión normal se concentra en cuatro largueros de área \(B_i\) y los paneles entre ellos solo soportan tensión tangencial.\par}
+\studiumcaption{fig:c04-idealizada}{Sección de cajón idealizada: el área que soporta tensión normal se concentra en cuatro largueros de área \(B_i\) y los paneles entre ellos solo soportan tensión tangencial.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -10091,7 +9983,7 @@ En una viga biapoyada con una carga puntual \(F\) en el centro, la flecha en el 
 La teoría de la elástica solo es válida para pequeños giros y flechas pequeñas frente a la luz. Si el diseño se rige por flecha, como los largueros de un ala en vuelo o un tren de aterrizaje, comprueba al final que el giro máximo es pequeño: un giro de varios grados ya invalida la relación entre la curvatura y la derivada segunda de la flecha.
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Ley de Navier generalizada}
 
@@ -10856,7 +10748,7 @@ Se construye una sección en T con un ala de \(120 \times 20\) mm situada entre 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_t_flexion-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-w_t_flexion-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -11127,7 +11019,7 @@ Tensión extrema: axil y flexión con el convenio declarado
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_t_flexion-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-w_t_flexion-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -11299,7 +11191,7 @@ Estudie la sección abierta no simétrica formada por un ala superior de \(80 \t
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_asimetrica-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-w_asimetrica-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -11554,7 +11446,7 @@ Tensión extrema: axil y flexión con el convenio declarado
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_asimetrica-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-w_asimetrica-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -11694,7 +11586,7 @@ Una sección rectangular de \(60 \times 120\) mm soporta simultáneamente \(M_z 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_desviada-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-w_desviada-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -11893,7 +11785,7 @@ y_G \approx 60\ \mathrm{mm},\qquad I_z \approx 8640000\ \mathrm{mm^4},\qquad \si
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_desviada-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-w_desviada-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -12041,7 +11933,7 @@ Una sección rectangular hueca tiene 100 mm de anchura exterior, 200 mm de altur
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_cajon-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-w_cajon-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -12297,7 +12189,7 @@ y_G \approx 100\ \mathrm{mm},\qquad I_z \approx 39797419\ \mathrm{mm^4},\qquad \
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-w_cajon-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-w_cajon-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -12329,24 +12221,24 @@ Comprobaciones automáticas sobre los datos del problema: 12 exactas, 1 numéric
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{1 (Intermedio, Desarrollo)}
 Una barra escalonada de aleación 7075 (\(E = 71{,}7\) GPa) cuelga de su extremo superior. El tramo superior \(AB\) tiene una sección de 400 mm\(^2\) y una longitud de 1000 mm, y el inferior \(BC\) una sección de 200 mm\(^2\) y una longitud de 800 mm. Se aplican una carga de 20 kN en \(B\) y otra de 30 kN en el extremo \(C\), ambas hacia abajo. Calcule el alargamiento total.
 
-\noindent\textbf{2 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{2 (Intermedio, Cálculo)}
 Una viga biapoyada de aleación 7075 (\(E = 71{,}7\) GPa), de 2 m de luz y con una inercia \(I = 2{,}0\times 10^{6}\) mm\(^4\), soporta una carga uniforme de 2 kN/m. Calcule la flecha en el centro.
 
-\noindent\textbf{3 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{3 (Intermedio, Cálculo)}
 Una ménsula de acero (\(E = 200\) GPa) de 1 m de longitud y rigidez a flexión \(E I = 2{,}0\times 10^{9}\) N\(\cdot\)mm\(^2\) soporta una carga uniforme de \(0{,}002\) N/mm (es decir, 2 N/m). Calcule la flecha en el extremo libre, en mm, con \(\delta_B = q L^4/(8EI)\).
 
-\noindent\textbf{4 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{4 (Básico, Cálculo)}
 Un eje macizo de 50 mm de diámetro soporta un flector de \(1{,}56\) kN\(\cdot\)m. Calcule la tensión normal máxima por flexión.
 
-\noindent\textbf{5 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{5 (Intermedio, Cálculo)}
 Una pieza de sección rectangular de 60 mm de ancho y 120 mm de alto recibe una carga axial de compresión aplicada en el eje vertical de simetría. Calcule la excentricidad máxima \(k_y\) para que la sección no sufra tracción (semialtura del núcleo central), en mm.
 
-\noindent\textbf{6 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{6 (Intermedio, Desarrollo)}
 Una sección en T invertida tiene alma de \(20 \times 80\) mm y ala inferior de \(100 \times 20\) mm. El flector aplicado es \(M_z = -8\) kN\(\cdot m\). Represente la sección y determine \(y_G\), \(I_z\) y las tensiones extremas, indicando en qué fibras aparece tracción o compresión.
 
 \par\vspace{\baselineskip}
@@ -12460,11 +12352,11 @@ Una sección en T invertida tiene alma de \(20 \times 80\) mm y ala inferior de 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_t_invertida-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-p_t_invertida-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{7 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{7 (Intermedio, Desarrollo)}
 Una sección doble T no simétrica tiene ala superior \(100 \times 12\) mm, alma \(12 \times 160\) mm y ala inferior \(60 \times 8\) mm. Dibuje la sección con cotas; obtenga el área, la posición del centroide y las inercias centrales \(I_z e I_y\). Indique si su eje horizontal medio es central.
 
 \par\vspace{\baselineskip}
@@ -12586,11 +12478,11 @@ Una sección doble T no simétrica tiene ala superior \(100 \times 12\) mm, alma
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_doble_t-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-p_doble_t-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{8 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{8 (Avanzado, Desarrollo)}
 Una sección angular está formada por una placa vertical \(10 \times 100\) mm y una horizontal \(50 \times 10\) mm que sale de su base hacia z positivo, sin superposición de áreas. Dibuje la sección y calcule su centroide, \(I_y\), \(I_z\), \(I_yz\) y los momentos principales de inercia.
 
 \par\vspace{\baselineskip}
@@ -12720,11 +12612,11 @@ Una sección angular está formada por una placa vertical \(10 \times 100\) mm y
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_angular-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-p_angular-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{9 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{9 (De examen, Desarrollo)}
 Una sección rectangular de \(80 \times 160\) mm trabaja bajo \(N = -120\) kN (compresión) y \(M_z = -2\),4 kN\(\cdot m\). Dibuje la sección y determine las tensiones extremas y si existe alguna fibra traccionada. Calcule el eje neutro y discuta si cruza la sección.
 
 \par\vspace{\baselineskip}
@@ -12830,20 +12722,23 @@ Una sección rectangular de \(80 \times 160\) mm trabaja bajo \(N = -120\) kN (c
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_excentrica-seccion}\textbf{Figura~\thestudiumfigure.} Geometría original de la sección, ejes, centroide y propiedades geométricas.\par}
+\studiumcaption{fig:e2-c04-p_excentrica-seccion}{Geometría original de la sección, ejes, centroide y propiedades geométricas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 \end{tcolorbox}
 
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué hipótesis permite que la deformación longitudinal sea lineal en la sección? ¿Qué términos tiene la ley de Navier generalizada y cuándo se anulan? ¿Cómo se calcula el eje neutro en flexión compuesta y qué es el núcleo central de un rectángulo? ¿Qué se idealiza en una sección de pared delgada de un ala y qué soporta cada elemento? ¿Por qué la tensión es discontinua en la unión de dos materiales? ¿Qué relación hay entre la curvatura de la elástica y el flector, y qué condiciones de contorno hay en un apoyo y en un empotramiento?
+\end{tcolorbox}
+\studiumchaptercheck
+
 \chapter{Momento torsor}
 \label{chap:c05}
 
-\noindent\textit{La torsión es el efecto de un momento que gira la sección de una barra alrededor de su directriz. Este capítulo la estudia en dos tipos de secciones: las circulares, macizas o huecas, que se deforman sin alabeo y tienen una solución sencilla, y las secciones cerradas de pared delgada, unicelulares y multicelulares, que son las de las alas, los fuselajes y los cajones de torsión y que se calculan con la fórmula de Bredt.}
+\studiumchapterguide{La torsión es el efecto de un momento que gira la sección de una barra alrededor de su directriz. Este capítulo la estudia en dos tipos de secciones: las circulares, macizas o huecas, que se deforman sin alabeo y tienen una solución sencilla, y las secciones cerradas de pared delgada, unicelulares y multicelulares, que son las de las alas, los fuselajes y los cajones de torsión y que se calculan con la fórmula de Bredt.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué hipótesis hace válida la fórmula \(M_x r/J\) y en qué secciones falla? ¿Cuál es la constante \(J\) de un tubo hueco de radios \(R_e\) y \(R_i\)? ¿Por qué es constante el flujo cortante en una sección cerrada unicelular y cuánto vale? ¿Cómo se obtiene la constante de torsión de Bredt? ¿Por qué un tubo cerrado es mucho más rígido a torsión que el mismo tubo con una abertura? ¿Qué dos condiciones se plantean en una sección multicelular?
-\end{tcolorbox}
 
 \section{Introducción a la torsión}
 
@@ -12981,7 +12876,7 @@ El producto \(G J\) es la rigidez a torsión. La figura~\ref{fig:c05-torsion} mu
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c05-torsion}\textbf{Figura~\thestudiumfigure.} Torsión de un eje circular: las secciones giran sin alabear, la tensión tangencial crece linealmente con la distancia al eje y es máxima en el contorno.\par}
+\studiumcaption{fig:c05-torsion}{Torsión de un eje circular: las secciones giran sin alabear, la tensión tangencial crece linealmente con la distancia al eje y es máxima en el contorno.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -13095,7 +12990,7 @@ y la tensión es máxima donde el espesor es mínimo. La figura~\ref{fig:c05-bre
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c05-bredt}\textbf{Figura~\thestudiumfigure.} Sección cerrada de pared delgada: el flujo cortante \(f = \tau t\) es constante a lo largo de la línea media y el torsor es \(M_x = 2A_m f\), con \(A_m\) el área encerrada por la línea media.\par}
+\studiumcaption{fig:c05-bredt}{Sección cerrada de pared delgada: el flujo cortante \(f = \tau t\) es constante a lo largo de la línea media y el torsor es \(M_x = 2A_m f\), con \(A_m\) el área encerrada por la línea media.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -13205,7 +13100,7 @@ Una sección multicelular tiene varias células cerradas que comparten paredes, 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c05-bicelular}\textbf{Figura~\thestudiumfigure.} Sección bicelular: los flujos circulantes \(f_1\) y \(f_2\) de las dos células coinciden en la pared común, donde la tensión depende de la diferencia \(f_1 - f_2\).\par}
+\studiumcaption{fig:c05-bicelular}{Sección bicelular: los flujos circulantes \(f_1\) y \(f_2\) de las dos células coinciden en la pared común, donde la tensión depende de la diferencia \(f_1 - f_2\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -13215,7 +13110,7 @@ M_{x} = 2A_{1}f_{1} + 2A_{2}f_{2}.
 \end{equation}
 La compatibilidad dice que todas las células giran lo mismo: el giro unitario de la célula \(i\), \(\Theta_i := \oint_i (f/t)\,\mathrm{d}s/(2 G A_i)\), es el mismo en las dos, por ser parte de la misma sección rígida. Con dos células, las dos ecuaciones de compatibilidad, una por célula y ambas con el mismo giro unitario \(\Theta\), junto con la ecuación de equilibrio, forman un sistema de tres ecuaciones para las incógnitas \(f_1\), \(f_2\) y \(\Theta\). Al eliminar \(\Theta\), queda un sistema de dos ecuaciones para los flujos. Con los flujos se calculan las tensiones en cada pared, y con el giro unitario la constante de torsión equivalente, \(J = M_x/(G\,\Theta)\). En una pared compartida, el flujo algebraico es la diferencia entre los flujos de las células adyacentes, según los sentidos elegidos. Su magnitud no tiene por qué ser menor que la de las paredes exteriores.
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Torsión de una barra de sección circular}
 
@@ -13959,7 +13854,7 @@ Un cajón cerrado de línea media \(120 \times 70\) mm y pared de 2 mm está som
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_cajon_uniforme-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-w_cajon_uniforme-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -14310,7 +14205,7 @@ J \approx 1485473{,}7\,\mathrm{mm}^{4},\qquad q \approx 125\,\mathrm{N/mm},\qqua
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_cajon_uniforme-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-w_cajon_uniforme-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -14469,7 +14364,7 @@ Un cajón cerrado de línea media \(120 \times 80\) mm lleva espesores inferior 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_espesor_variable-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-w_espesor_variable-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -14820,7 +14715,7 @@ J \approx 1675636{,}4\,\mathrm{mm}^{4},\qquad q \approx 125\,\mathrm{N/mm},\qqua
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_espesor_variable-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-w_espesor_variable-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -15015,7 +14910,7 @@ Un cajón bicelular cerrado tiene dos celdas adyacentes de línea media \(100 \t
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_bicelular_asimetrico-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-w_bicelular_asimetrico-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -15551,7 +15446,7 @@ Tensión tangencial máxima en las paredes
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_bicelular_asimetrico-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-w_bicelular_asimetrico-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -15703,7 +15598,7 @@ Una sección abierta en U formada por dos almas de línea media 120 mm y una bas
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-w_perfil_u_abierto-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-w_perfil_u_abierto-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -15815,24 +15710,24 @@ Comprobaciones automáticas sobre los datos del problema: 6 exactas, 0 numérica
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 Un eje macizo de 40 mm de diámetro transmite un torsor de 500 N\(\cdot\)m. Calcule la tensión tangencial máxima.
 
-\noindent\textbf{2 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{2 (Intermedio, Cálculo)}
 Un tubo circular de radio medio 50 mm y espesor 2 mm se corta longitudinalmente a lo largo de toda su longitud. Calcule cuántas veces es menor su constante de torsión que la del tubo cerrado.
 
-\noindent\textbf{3 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{3 (Intermedio, Cálculo)}
 Un tubo circular de pared delgada, de radio medio 40 mm y espesor \(1{,}5\) mm, transmite un torsor de 2 kN\(\cdot\)m. Calcule la tensión tangencial con la fórmula de Bredt.
 
-\noindent\textbf{4 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{4 (Intermedio, Desarrollo)}
 El árbol tubular del ejemplo (radios 25 y 20 mm, \(L = 1\) m, \(G = 26{,}95\) GPa) no debe girar más de un grado entre extremos. Calcule el torsor máximo, en N\(\cdot\)m.
 
-\noindent\textbf{5 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{5 (Básico, Cálculo)}
 Una pletina delgada de 100 mm de ancho y 2 mm de espesor soporta un torsor de 10 N\(\cdot\)m. Calcule la tensión tangencial máxima con la aproximación de tira delgada.
 
-\noindent\textbf{6 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{6 (Intermedio, Desarrollo)}
 Un cajón cerrado cuadrado tiene línea media de \(90 \times 90\) mm, espesor 1,5 mm, torsor de \(+900 N\cdot m\), G = 26 955 MPa y longitud 800 mm. Obtenga q, la tensión tangencial, J y el giro. Dibuje el contorno y el sentido del flujo.
 
 \par\vspace{\baselineskip}
@@ -15954,11 +15849,11 @@ Un cajón cerrado cuadrado tiene línea media de \(90 \times 90\) mm, espesor 1,
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_cajon_cuadrado-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-p_cajon_cuadrado-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{7 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{7 (Avanzado, Desarrollo)}
 Un cajón bicelular tiene dos celdas idénticas de \(70 \times 60\) mm, espesor uniforme de 2 mm incluida la pared compartida y torsor +1,68 kN\(\cdot m\). Calcule los flujos de celda y de pared compartida y la tensión tangencial máxima. Razone qué obliga la simetría.
 
 \par\vspace{\baselineskip}
@@ -16116,11 +16011,11 @@ Un cajón bicelular tiene dos celdas idénticas de \(70 \times 60\) mm, espesor 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_bicelular_simetrico-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-p_bicelular_simetrico-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{8 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{8 (Intermedio, Desarrollo)}
 Un perfil angular abierto formado por tiras de 100 y 70 mm de línea media, ambas de espesor 2 mm, está sometido a un torsor de \(+4 N\cdot m\). Calcule la constante de torsión aproximada, la tensión máxima y el giro en 300 mm. No suponga que J es un momento polar. Dato del material: G = 26 955 MPa.
 
 \par\vspace{\baselineskip}
@@ -16218,11 +16113,11 @@ Un perfil angular abierto formado por tiras de 100 y 70 mm de línea media, amba
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_angular_abierto-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-p_angular_abierto-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{9 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{9 (De examen, Desarrollo)}
 Una sección cerrada bicelular tiene celdas de \(90 \times 60\) y \(60 \times 60\) mm. Las paredes exteriores miden 2 mm de espesor y la compartida 3 mm. Para un torsor de +2 kN\(\cdot m\), encuentre los dos flujos, la tensión tangencial máxima, la tensión en la pared compartida y el giro unitario. Dato del material: G = 26 955 MPa. Para calcular también el giro total, L = 600 mm.
 
 \par\vspace{\baselineskip}
@@ -16380,20 +16275,23 @@ Una sección cerrada bicelular tiene celdas de \(90 \times 60\) y \(60 \times 60
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_bicelular_pared_gruesa-geometria}\textbf{Figura~\thestudiumfigure.} Geometría original de línea media de las paredes, espesores y celdas.\par}
+\studiumcaption{fig:e2-c05-p_bicelular_pared_gruesa-geometria}{Geometría original de línea media de las paredes, espesores y celdas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 \end{tcolorbox}
 
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué hipótesis hace válida la fórmula \(M_x r/J\) y en qué secciones falla? ¿Cuál es la constante \(J\) de un tubo hueco de radios \(R_e\) y \(R_i\)? ¿Por qué es constante el flujo cortante en una sección cerrada unicelular y cuánto vale? ¿Cómo se obtiene la constante de torsión de Bredt? ¿Por qué un tubo cerrado es mucho más rígido a torsión que el mismo tubo con una abertura? ¿Qué dos condiciones se plantean en una sección multicelular?
+\end{tcolorbox}
+\studiumchaptercheck
+
 \chapter{Esfuerzo cortante}
 \label{chap:c06}
 
-\noindent\textit{El cortante produce tensiones tangenciales que, en las secciones de pared delgada de un ala o de un fuselaje, se reparten por el contorno como un flujo. Este capítulo calcula ese flujo en secciones abiertas, cerradas e idealizadas con el teorema del flujo cortante y localiza el centro de cortadura, el punto por el que debe pasar la carga transversal para que la barra flecte sin girar.}
+\studiumchapterguide{El cortante produce tensiones tangenciales que, en las secciones de pared delgada de un ala o de un fuselaje, se reparten por el contorno como un flujo. Este capítulo calcula ese flujo en secciones abiertas, cerradas e idealizadas con el teorema del flujo cortante y localiza el centro de cortadura, el punto por el que debe pasar la carga transversal para que la barra flecte sin girar.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué relación hay entre la variación del flector y el flujo cortante? ¿Qué es el momento estático \(Q\) y dónde es máximo? ¿Qué es el centro de cortadura y por qué no depende del valor de la carga? ¿Cómo se obtiene la posición del centro de cortadura de un perfil en C? ¿Cómo se cierra el flujo de una sección unicelular? ¿Cómo cambia el flujo al pasar por un larguero de una sección idealizada?
-\end{tcolorbox}
 
 \section{Flujo cortante y centro de cortadura}
 
@@ -16531,7 +16429,7 @@ En un ala, a una distancia \(s\) del borde libre, el momento estático respecto 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c06-canal}\textbf{Figura~\thestudiumfigure.} Perfil en C cargado con un cortante vertical: flujo lineal en las alas, parabólico en el alma y máximo en el eje neutro; el centro de cortadura queda fuera de la sección, a la distancia \(e\) del alma.\par}
+\studiumcaption{fig:c06-canal}{Perfil en C cargado con un cortante vertical: flujo lineal en las alas, parabólico en el alma y máximo en el eje neutro; el centro de cortadura queda fuera de la sección, a la distancia \(e\) del alma.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -16675,11 +16573,11 @@ Como ejemplo, en un cajón con cuatro largueros iguales de área \(B\), dos arri
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c06-idealizada}\textbf{Figura~\thestudiumfigure.} Cajón idealizado cargado con un cortante vertical en su plano de simetría: los paneles horizontales no tienen flujo y las dos almas verticales soportan un flujo de valor \(C_y B y/I_z\).\par}
+\studiumcaption{fig:c06-idealizada}{Cajón idealizado cargado con un cortante vertical en su plano de simetría: los paneles horizontales no tienen flujo y las dos almas verticales soportan un flujo de valor \(C_y B y/I_z\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Flujo cortante en una sección de pared delgada}
 
@@ -17289,7 +17187,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_canal_centro-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-w_canal_centro-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -17577,7 +17475,7 @@ y_C &\approx 60\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_canal_centro-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-w_canal_centro-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -17757,7 +17655,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_z_oblicuo-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-w_z_oblicuo-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -18034,7 +17932,7 @@ y_C &\approx 31.1077579\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_z_oblicuo-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-w_z_oblicuo-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -18227,7 +18125,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_cajon_cortante-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-w_cajon_cortante-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -18570,7 +18468,7 @@ y_C &\approx 49.364584\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_cajon_cortante-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-w_cajon_cortante-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -18783,7 +18681,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_cajon_booms-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-w_cajon_booms-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -19126,7 +19024,7 @@ y_C &\approx 35\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-w_cajon_booms-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-w_cajon_booms-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -19158,47 +19056,50 @@ Comprobaciones automáticas sobre los datos del problema: 7 exactas, 0 numérica
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 Un tubo circular de pared delgada, de radio medio 40 mm y espesor \(1{,}5\) mm, soporta un cortante de 5 kN. Calcule la tensión tangencial máxima.
 
-\noindent\textbf{2 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{2 (Intermedio, Cálculo)}
 En el perfil en C del ejemplo (alma de 100 mm, alas de 50 mm, espesor de 2 mm, cortante de 2 kN), calcule la fuerza que soporta cada ala.
 
-\noindent\textbf{3 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{3 (Intermedio, Cálculo)}
 Una sección idealizada tiene cuatro largueros de 300 mm\(^2\) situados a \(\pm 80\) mm del eje neutro y soporta un cortante de 6 kN. Calcule el salto de flujo al pasar por uno de los largueros.
 
-\noindent\textbf{4 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{4 (Básico, Cálculo)}
 Calcule la distancia del centro de cortadura al alma de un perfil en C de pared delgada con alma de 120 mm y alas de 60 mm.
 
-\noindent\textbf{5 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{5 (Básico, Cálculo)}
 Un tubo circular delgado de radio medio 50 mm y espesor 2 mm soporta un cortante de 8 kN. Calcule la tensión tangencial máxima.
 
-\noindent\textbf{6 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{6 (Avanzado, Desarrollo)}
 Una T abierta está formada por alas de 65 y 75 mm a izquierda y derecha de la unión, un alma vertical de 110 mm y espesor 2 mm. Para un cortante vertical de 4,6 kN aplicado en el centro de cortadura, calcule las leyes de flujo, la tensión máxima y las coordenadas del centro de cortadura.
 
-\noindent\textbf{7 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{7 (Avanzado, Desarrollo)}
 Un angular abierto presenta alma de 100 mm y ala de 80 mm, espesor 2 mm. Recibe \(V_y=4\),1 kN y \(V_z=0\),9 kN aplicados en el centro de cortadura. Calcule los flujos por pared, su tensión cortante máxima y el centro de cortadura.
 
-\noindent\textbf{8 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{8 (De examen, Desarrollo)}
 Un cajón bicelular tiene celdas \(80 \times 60\) y \(70 \times 60\) mm, espesores exteriores de 2 mm y pared compartida de 2,5 mm. Bajo cortante \(V_y=7\),8 kN en el centro de cortadura, calcule el reparto de flujos por las siete paredes, la tensión máxima y el centro de cortadura.
 
-\noindent\textbf{9 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{9 (De examen, Desarrollo)}
 Una sección C abierta idealizada tiene alma de 100 mm, alas de 70 mm, piel de 1,5 mm sin esfuerzo axial, y cuatro larguerillos de áreas 300, 400, 400, \(300 mm^{2}\) desde el extremo inferior libre hasta el extremo superior libre. Para \(V_y=5\),2 kN aplicado en el centro de cortadura, obtenga los flujos constantes de cada panel y la tensión tangencial máxima.
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué relación hay entre la variación del flector y el flujo cortante? ¿Qué es el momento estático \(Q\) y dónde es máximo? ¿Qué es el centro de cortadura y por qué no depende del valor de la carga? ¿Cómo se obtiene la posición del centro de cortadura de un perfil en C? ¿Cómo se cierra el flujo de una sección unicelular? ¿Cómo cambia el flujo al pasar por un larguero de una sección idealizada?
+\end{tcolorbox}
+\studiumchaptercheck
 
 \part{Bloque III. Teoremas energéticos}
 
 \chapter{Energía elástica de deformación}
 \label{chap:c07}
 
-\noindent\textit{Hasta ahora los desplazamientos se han obtenido integrando la ecuación de la elástica. Este capítulo los obtiene con la energía: la energía elástica que almacena una estructura deformada permite calcular desplazamientos con los teoremas de Castigliano y de Maxwell-Betti, con el principio de los trabajos virtuales y su método de la carga unitaria, y permite resolver las estructuras hiperestáticas, para las que el equilibrio no basta, con el método de las fuerzas.}
+\studiumchapterguide{Hasta ahora los desplazamientos se han obtenido integrando la ecuación de la elástica. Este capítulo los obtiene con la energía: la energía elástica que almacena una estructura deformada permite calcular desplazamientos con los teoremas de Castigliano y de Maxwell-Betti, con el principio de los trabajos virtuales y su método de la carga unitaria, y permite resolver las estructuras hiperestáticas, para las que el equilibrio no basta, con el método de las fuerzas.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Cuánto vale la energía de deformación de una barra con axil constante y por qué aparece el factor un medio? ¿Qué dice el segundo teorema de Castigliano y cómo se calcula con él el desplazamiento de un punto sin carga? ¿Qué afirma el teorema de Maxwell-Betti? ¿Qué diagramas hay que multiplicar en el método de la carga unitaria? ¿Cómo se calcula el grado de hiperestatismo de una barra plana? ¿Qué condición se impone en el método de las fuerzas?
-\end{tcolorbox}
 
 \section{Energía de deformación y teoremas energéticos}
 
@@ -19417,11 +19318,11 @@ El momento de empotramiento es la cuarta parte del que tendría la ménsula sin 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c07-hiperestatica}\textbf{Figura~\thestudiumfigure.} Viga empotrada en \(A\) y apoyada en \(B\) con carga uniforme (izquierda) y su sistema isostático base: una ménsula cargada y la incógnita hiperestática \(X\) en \(B\) (derecha); la compatibilidad exige flecha nula en \(B\).\par}
+\studiumcaption{fig:c07-hiperestatica}{Viga empotrada en \(A\) y apoyada en \(B\) con carga uniforme (izquierda) y su sistema isostático base: una ménsula cargada y la incógnita hiperestática \(X\) en \(B\) (derecha); la compatibilidad exige flecha nula en \(B\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Energía de deformación de una barra a axil constante}
 
@@ -20209,7 +20110,7 @@ Una viga biapoyada de 5 m tiene una carga vertical de 6 kN aplicada a 2 m del ap
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_carga_descentrada-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-w_carga_descentrada-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -20630,7 +20531,7 @@ M(x) = \begin{cases} 3600\,x & 0 < x < 2000 \\ -2400\,x + 12000000 & 2000 < x < 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_carga_descentrada-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-w_carga_descentrada-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -20799,7 +20700,7 @@ Una ménsula de 2,5 m soporta una carga vertical de 3 kN en su extremo. Para E =
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_giro_castigliano-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-w_giro_castigliano-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -21134,7 +21035,7 @@ M(x) = \begin{cases} 3000\,x - 7500000 & 0 < x < 2500 \end{cases}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_giro_castigliano-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-w_giro_castigliano-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -21471,7 +21372,7 @@ Una viga biapoyada de 4 m recibe una carga trapezoidal vertical que crece lineal
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_carga_trapezoidal-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-w_carga_trapezoidal-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -22028,7 +21929,7 @@ M(x) = \begin{cases} -0{,}0001\,x^{3} - 0{,}5\,x^{2} + 3333{,}3333\,x & 0 < x < 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_carga_trapezoidal-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-w_carga_trapezoidal-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -22249,7 +22150,7 @@ Una viga empotrada en A y apoyada mediante rodillo en B tiene 4 m de luz. Recibe
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_mensula_apoyada_puntual-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-w_mensula_apoyada_puntual-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -22710,7 +22611,7 @@ M(x) = \begin{cases} 4892{,}5781\,x - 4570312{,}5 & 0 < x < 1500 \\ -1107{,}4219
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-w_mensula_apoyada_puntual-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-w_mensula_apoyada_puntual-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -22743,24 +22644,24 @@ Comprobaciones automáticas sobre los datos del problema: 13 exactas, 2 numéric
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{1 (Intermedio, Cálculo)}
 La ménsula de aleación 7075 de \(1{,}2\) m con \(I = 7{,}2\times 10^{5}\) mm\(^4\) soporta una carga de 800 N en su extremo libre. Con el método de la carga unitaria (un momento unidad en el extremo), calcule el giro del extremo, \(\phi = P L^2/(2EI)\).
 
-\noindent\textbf{2 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{2 (Básico, Cálculo)}
 Una viga continua plana de tres vanos, con un apoyo articulado y tres móviles, tiene cinco reacciones desconocidas. ¿Cuál es su grado de hiperestatismo?
 
-\noindent\textbf{3 (ADVANCED, NUMERICAL)}
+\noindent\textbf{3 (Avanzado, Cálculo)}
 Una viga biapoyada de aleación 7075 (\(E = 71{,}7\) GPa) de 2 m de luz e \(I = 2{,}0\times 10^{6}\) mm\(^4\) soporta una carga uniforme de 2 N/mm. Calcule la energía de flexión, \(U = q^2 L^5/(240 E I)\), en N\(\cdot\)mm.
 
-\noindent\textbf{4 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{4 (Intermedio, Cálculo)}
 Una viga de 3 m empotrada en un extremo y apoyada en el otro soporta una carga uniforme de 8 N/mm. Calcule la reacción en el apoyo.
 
-\noindent\textbf{5 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{5 (Intermedio, Cálculo)}
 En un tramo de 4 m, el flector real varía linealmente de 0 a 20 kN\(\cdot\)m y el virtual de 0 a \(0{,}5\) m. Calcule \(\int_0^L M\bar{M}\,\mathrm{d}x\) con la fórmula de las leyes lineales.
 
-\noindent\textbf{6 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{6 (Avanzado, Desarrollo)}
 Una ménsula de 3 m tiene una carga transversal triangular que aumenta desde cero en el empotramiento hasta 2 N/mm en el extremo libre. Si E = 71,7 GPa e I = 7,\(5\cdot10^7\) mm4, halle la flecha en el extremo con el método de la carga unitaria. Indique por qué importa hacia qué extremo crece la carga.
 
 \par\vspace{\baselineskip}
@@ -23002,11 +22903,11 @@ Una ménsula de 3 m tiene una carga transversal triangular que aumenta desde cer
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_triangular-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-p_triangular-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{7 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{7 (Avanzado, Desarrollo)}
 Una viga biapoyada de 6 m tiene cargas de 4 kN en x = 2 m y 6 kN en x = 4 m. Con E = 71,7 GPa e I = 8,\(0\cdot10^7\) mm4, calcule por trabajos virtuales la flecha en x = 3 m. Separe las tres regiones de la ley flectora.
 
 \par\vspace{\baselineskip}
@@ -23228,11 +23129,11 @@ Una viga biapoyada de 6 m tiene cargas de 4 kN en x = 2 m y 6 kN en x = 4 m. Con
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_dos_puntuales-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-p_dos_puntuales-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{8 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{8 (De examen, Desarrollo)}
 Una viga empotrada en A tiene un rodillo a 3 m y un voladizo adicional de 1,5 m. Una carga vertical de 2,5 kN actúa en el extremo libre x = 4,5 m. Con E = 71,7 GPa e I = 6,\(5\cdot10^7\) mm4, calcule la reacción del rodillo y la flecha del extremo mediante el método de las fuerzas y una carga virtual unidad.
 
 \par\vspace{\baselineskip}
@@ -23418,11 +23319,11 @@ Una viga empotrada en A tiene un rodillo a 3 m y un voladizo adicional de 1,5 m.
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_voladizo_apoyado-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-p_voladizo_apoyado-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
-\noindent\textbf{9 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{9 (De examen, Desarrollo)}
 Una viga biapoyada de 4 m tiene una carga de 4 kN en x = 1 m. Su inercia vale 4,\(0\cdot10^7\) mm4 de x = 0 a 2 m y 8,\(0\cdot10^7\) mm4 desde x = 2 a 4 m (E = 71,7 GPa). Calcule mediante trabajos virtuales la flecha en x = 3 m, integrando cada tramo con su EI.
 
 \par\vspace{\baselineskip}
@@ -23632,22 +23533,25 @@ Una viga biapoyada de 4 m tiene una carga de 4 kN en x = 1 m. Su inercia vale 4,
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_ei_escalonada-enunciado}\textbf{Figura~\thestudiumfigure.} Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.\par}
+\studiumcaption{fig:e2-c07-p_ei_escalonada-enunciado}{Viga real: apoyos, cargas y distancias conocidas, sin reacciones calculadas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Cuánto vale la energía de deformación de una barra con axil constante y por qué aparece el factor un medio? ¿Qué dice el segundo teorema de Castigliano y cómo se calcula con él el desplazamiento de un punto sin carga? ¿Qué afirma el teorema de Maxwell-Betti? ¿Qué diagramas hay que multiplicar en el método de la carga unitaria? ¿Cómo se calcula el grado de hiperestatismo de una barra plana? ¿Qué condición se impone en el método de las fuerzas?
+\end{tcolorbox}
+\studiumchaptercheck
 
 \part{Bloque IV. Elasticidad}
 
 \chapter{Elasticidad tridimensional}
 \label{chap:c08}
 
-\noindent\textit{Todo lo anterior se ha apoyado en modelos de barra. Este capítulo pasa al sólido elástico tridimensional: el tensor de tensiones con su equilibrio, las tensiones principales y el círculo de Mohr; el tensor de deformaciones con su compatibilidad; la ley de Hooke generalizada con las constantes elásticas de un material isótropo; los criterios de plastificación de Tresca y de von Mises que dicen cuándo el material deja de ser elástico; y el estado de tensión plana de láminas y paneles delgados.}
+\studiumchapterguide{Todo lo anterior se ha apoyado en modelos de barra. Este capítulo pasa al sólido elástico tridimensional: el tensor de tensiones con su equilibrio, las tensiones principales y el círculo de Mohr; el tensor de deformaciones con su compatibilidad; la ley de Hooke generalizada con las constantes elásticas de un material isótropo; los criterios de plastificación de Tresca y de von Mises que dicen cuándo el material deja de ser elástico; y el estado de tensión plana de láminas y paneles delgados.}
 
-\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
 
-¿Qué dice el teorema de Cauchy y por qué es simétrico el tensor de tensiones? ¿Qué son las tensiones principales y cómo se obtienen en un estado plano? ¿Por qué el ángulo del círculo de Mohr es el doble del físico? ¿Qué condición de compatibilidad liga las deformaciones planas? ¿Cuántas constantes elásticas tiene un material isótropo y cómo se relacionan \(G\), \(E\) y \(\nu\)? ¿Qué diferencia hay entre los criterios de Tresca y de von Mises en cortadura pura? ¿Cuánto valen las tensiones circunferencial y longitudinal de un fuselaje presurizado?
-\end{tcolorbox}
 
 \section{Tensor de tensiones y equilibrio}
 
@@ -23781,7 +23685,7 @@ como debe ser, por ser el tensor, con sus invariantes, independiente de los ejes
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:c08-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr de un estado plano: las tensiones principales \(\sigma_1\) y \(\sigma_2\) son los cortes con el eje \(\sigma_{\mathrm n}\) y la tensión tangencial máxima es el radio \(R\).\par}
+\studiumcaption{fig:c08-mohr}{Círculo de Mohr de un estado plano: las tensiones principales \(\sigma_1\) y \(\sigma_2\) son los cortes con el eje \(\sigma_{\mathrm n}\) y la tensión tangencial máxima es el radio \(R\).}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -23881,7 +23785,7 @@ Un ejemplo es un depósito cilíndrico de pared delgada con una presión manomé
 \end{equation}
 La tensión circunferencial es el doble de la longitudinal, y por eso los depósitos cilíndricos rompen por una generatriz. En esas paredes la tensión normal a ellas es despreciable frente a las del plano, y la tensión equivalente de von Mises de este estado, con \(\sigma_1 = \sigma_\theta\) y \(\sigma_2 = \sigma_x\), vale \(\sqrt{3}/2\) veces la tensión circunferencial, un \(87\ \%\).
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Equilibrio de un elemento plano}
 
@@ -24855,7 +24759,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_rotacion_panel-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_rotacion_panel-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -24998,7 +24902,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_rotacion_panel-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_rotacion_panel-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -25256,7 +25160,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_normal_z_y_cortante-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_normal_z_y_cortante-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -25399,7 +25303,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_normal_z_y_cortante-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_normal_z_y_cortante-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -25666,7 +25570,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_hooke_cortante-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_hooke_cortante-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -25809,7 +25713,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_hooke_cortante-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_hooke_cortante-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -26069,7 +25973,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_seguridad_tresca_mises-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_seguridad_tresca_mises-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -26212,7 +26116,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-w_seguridad_tresca_mises-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-w_seguridad_tresca_mises-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -26252,37 +26156,44 @@ Comprobaciones automáticas sobre los datos del problema: 5 exactas, 1 numérica
 \end{itemize}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
-\noindent\textbf{1 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{1 (Básico, Cálculo)}
 En un estado plano \(\sigma_x = 60\) MPa, \(\sigma_y = 0\) y \(\tau_{xy} = 40\) MPa. Calcule la tensión principal mayor.
 
-\noindent\textbf{2 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{2 (Básico, Cálculo)}
 Un acero tiene \(E = 200\) GPa y \(\nu = 0{,}3\). Calcule su módulo transversal \(G\), en MPa.
 
-\noindent\textbf{3 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{3 (Intermedio, Cálculo)}
 Con las tensiones principales \(\sigma_1 = 120\) MPa, \(\sigma_2 = 0\) y \(\sigma_3 = -40\) MPa, calcule el coeficiente de seguridad de Tresca respecto al límite elástico \(\sigma_{\mathrm{Y}} = 430\) MPa.
 
-\noindent\textbf{4 (INTERMEDIATE, NUMERICAL)}
+\noindent\textbf{4 (Intermedio, Cálculo)}
 Un elemento de aleación 7075 (\(E = 71{,}7\) GPa, \(\nu = 0{,}33\)) soporta una compresión hidrostática de 50 MPa en las tres direcciones. Calcule la deformación volumétrica.
 
-\noindent\textbf{5 (FOUNDATIONAL, NUMERICAL)}
+\noindent\textbf{5 (Básico, Cálculo)}
 Un elemento está en cortadura pura con \(\tau_{xy} = 100\) MPa. Calcule la tensión equivalente de von Mises.
 
-\noindent\textbf{6 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{6 (Avanzado, Desarrollo)}
 En un estado plano \(\sigma_x\) = -135 MPa, \(\sigma_y\) = -35 MPa y \(\tau_{xy}\) = +50 MPa. Halle las tensiones sobre caras giradas -30 grados respecto al eje x, las tensiones principales y el ángulo principal. Use el convenio de Mohr de la ULE y dibuje el círculo.
 
-\noindent\textbf{7 (ADVANCED, MULTI\_STEP)}
+\noindent\textbf{7 (Avanzado, Desarrollo)}
 Un panel delgado tiene \(\sigma_x\) = 75 MPa, \(\sigma_y\) = -50 MPa y \(\tau_{xy}\) = -65 MPa. Calcule \(\sigma_{x\prime}\), \(\sigma_{y\prime}\) y \(\tau_{x\prime y\prime}\) tras girar los ejes 45 grados antihorarios, compruebe las invariantes y determine la tensión de von Mises y el coeficiente de seguridad para límite elástico = 240 MPa.
 
-\noindent\textbf{8 (EXAM\_LEVEL, MULTI\_STEP)}
+\noindent\textbf{8 (De examen, Desarrollo)}
 En un sólido actúan \(\sigma_x\) = 80 MPa, \(\sigma_y\) = -110 MPa, \(\tau_{xy}\) = 40 MPa y \(\sigma_z\) = 55 MPa, siendo \(\tau_{xz}\) = \(\tau_{yz}\) = 0. Halle las tres tensiones principales, la máxima cortadura absoluta y los coeficientes de seguridad de Tresca y von Mises para un límite elástico de 280 MPa.
 
-\noindent\textbf{9 (INTERMEDIATE, MULTI\_STEP)}
+\noindent\textbf{9 (Intermedio, Desarrollo)}
 Un punto de una pieza presenta \(\sigma_x\) = 90 MPa, \(\sigma_y\) = 110 MPa, \(\sigma_z\) = 100 MPa, \(\tau_{xy}\) = 15 MPa y \(\tau_{xz}\) = \(\tau_{yz}\) = 0. Calcule el promedio hidrostático, las tensiones principales, la tensión de von Mises y el índice de Tresca. Compare con un límite elástico de 170 MPa y explique por qué una componente hidrostática elevada no induce fluencia dúctil por sí misma.
 \end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoevaluación}, studiumcheck, breakable]
+
+¿Qué dice el teorema de Cauchy y por qué es simétrico el tensor de tensiones? ¿Qué son las tensiones principales y cómo se obtienen en un estado plano? ¿Por qué el ángulo del círculo de Mohr es el doble del físico? ¿Qué condición de compatibilidad liga las deformaciones planas? ¿Cuántas constantes elásticas tiene un material isótropo y cómo se relacionan \(G\), \(E\) y \(\nu\)? ¿Qué diferencia hay entre los criterios de Tresca y de von Mises en cortadura pura? ¿Cuánto valen las tensiones circunferencial y longitudinal de un fuselaje presurizado?
+\end{tcolorbox}
+\studiumchaptercheck
+
 \appendix
-\chapter{Notación}
+\chapter{Notación y unidades}
 
 \begingroup
 \setlength{\LTpre}{0pt}
@@ -26369,7 +26280,7 @@ $y_{n}$ & ordenada del eje neutro medida desde el centro de gravedad, positiva h
 $z$ & coordenada de la sección, perpendicular a \$x\$ e \$y\$ (triedro directo) & $\mathrm{m}$ \\
 \end{longtable}
 \endgroup
-\chapter{Hoja de fórmulas}
+\chapter{Formulario y condiciones de uso}
 
 \noindent\textbf{Masa de un tirante de rigidez axial dada}
 
@@ -26718,7 +26629,7 @@ e = \frac{1 - 2\nu}{E}\left(\sigma_{x} + \sigma_{y} + \sigma_{z}\right)
 \[
 \int_{0}^{L} M\,\bar{M}\,\mathrm{d}x = \frac{L}{6}\left(M_{0}\bar{M}_{0} + 4\,M_{m}\bar{M}_{m} + M_{L}\bar{M}_{L}\right)
 \]
-\chapter{Soluciones}
+\chapter{Soluciones de los ejercicios}
 
 Un perfil en C de pared delgada tiene un alma de 100 mm de altura y dos alas de 50 mm de ancho, con un espesor de 2 mm en todas sus paredes (dimensiones de la línea media). Soporta un cortante vertical de 2 kN en el plano del alma. Calcule su inercia, el flujo máximo en el alma, y la distancia del centro de cortadura al alma.
 
@@ -29734,7 +29645,7 @@ M_{z,\max} = 28\ \mathrm{kN\,m}\ (x = 3\ \mathrm{m})
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_dos_cargas-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_dos_cargas-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -30178,7 +30089,7 @@ M_z(0) = -38\ \mathrm{kN\,m}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_mensula_parcial-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_mensula_parcial-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -30577,7 +30488,7 @@ R_A = -4\ \mathrm{kN},\qquad M_z(4) = -16\ \mathrm{kN\,m}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_vuelo-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_vuelo-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -31248,7 +31159,7 @@ R_C = 12{,}2\ \mathrm{kN},\qquad M_z(5) = -19{,}2\ \mathrm{kN\,m}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_gerber-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_gerber-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -31688,7 +31599,7 @@ M_z(0) = 5\ \mathrm{kN\,m}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_par_triangular-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_par_triangular-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -32171,7 +32082,7 @@ N_{AC} = -7{,}856\ \mathrm{kN},\qquad N_{CB} = 6\ \mathrm{kN}
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c03-p_axil-esfuerzos}\textbf{Figura~\thestudiumfigure.} Diagramas de cortantes y flectores de la solución.\par}
+\studiumcaption{fig:e2-c03-p_axil-esfuerzos}{Diagramas de cortantes y flectores de la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -32524,7 +32435,7 @@ y_G \approx 67{,}777778\ \mathrm{mm},\qquad I_z \approx 3142222{,}2\ \mathrm{mm^
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_t_invertida-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-p_t_invertida-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -32952,7 +32863,7 @@ y_G \approx 80\ \mathrm{mm},\qquad I_z \approx 27306667\ \mathrm{mm^4},\qquad \s
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c04-p_excentrica-tension}\textbf{Figura~\thestudiumfigure.} Distribución calculada de tensión normal, eje neutro y valores extremos.\par}
+\studiumcaption{fig:e2-c04-p_excentrica-tension}{Distribución calculada de tensión normal, eje neutro y valores extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -33382,7 +33293,7 @@ J \approx 1093500\,\mathrm{mm}^{4},\qquad q \approx 55{,}555556\,\mathrm{N/mm},\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_cajon_cuadrado-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-p_cajon_cuadrado-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -33928,7 +33839,7 @@ Tensión tangencial máxima en las paredes
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_bicelular_simetrico-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-p_bicelular_simetrico-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -34601,7 +34512,7 @@ Tensión tangencial máxima en las paredes
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c05-p_bicelular_pared_gruesa-flujo}\textbf{Figura~\thestudiumfigure.} Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.\par}
+\studiumcaption{fig:e2-c05-p_bicelular_pared_gruesa-flujo}{Distribución calculada del flujo cortante por torsión; flechas de sentido y magnitudes por pared.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -34857,7 +34768,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_perfil_t-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-p_perfil_t-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -35126,7 +35037,7 @@ y_C &\approx 0\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_perfil_t-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-p_perfil_t-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -35292,7 +35203,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_angular_mixto-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-p_angular_mixto-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -35531,7 +35442,7 @@ y_C &\approx 100\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_angular_mixto-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-p_angular_mixto-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -35762,7 +35673,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_dos_celulas_cortante-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-p_dos_celulas_cortante-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -36247,7 +36158,7 @@ y_C &\approx 30\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_dos_celulas_cortante-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-p_dos_celulas_cortante-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -36446,7 +36357,7 @@ Distribución de flujo por pared, tensión máxima y posición del centro de cor
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_canal_booms-geometria}\textbf{Figura~\thestudiumfigure.} Geometría de línea media, espesores, centroide y centro de cortadura calculados.\par}
+\studiumcaption{fig:e2-c06-p_canal_booms-geometria}{Geometría de línea media, espesores, centroide y centro de cortadura calculados.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -36747,7 +36658,7 @@ y_C &\approx 50\,\mathrm{mm}\\
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c06-p_canal_booms-flujo}\textbf{Figura~\thestudiumfigure.} Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.\par}
+\studiumcaption{fig:e2-c06-p_canal_booms-flujo}{Flujo cortante por pared a partir del equilibrio y la compatibilidad; flechas con el sentido firmado.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -37238,7 +37149,7 @@ M(x) = \begin{cases} -0{,}0001\,x^{3} + 3000\,x - 6000000 & 0 < x < 3000 \end{ca
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_triangular-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-p_triangular-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -37811,7 +37722,7 @@ M(x) = \begin{cases} 4666{,}6667\,x & 0 < x < 2000 \\ 666{,}6667\,x + 8000000 & 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_dos_puntuales-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-p_dos_puntuales-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -38307,7 +38218,7 @@ M(x) = \begin{cases} -1875\,x + 1875000 & 0 < x < 3000 \\ 2500\,x - 11250000 & 3
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_voladizo_apoyado-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-p_voladizo_apoyado-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -38868,7 +38779,7 @@ M(x) = \begin{cases} 3000\,x & 0 < x < 1000 \\ -1000\,x + 4000000 & 1000 < x < 4
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c07-p_ei_escalonada-trabajo-virtual}\textbf{Figura~\thestudiumfigure.} Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.\par}
+\studiumcaption{fig:e2-c07-p_ei_escalonada-trabajo-virtual}{Leyes flectoras real y virtual y carga unidad usadas en el cálculo energético.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -39164,7 +39075,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_compresion_giro-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_compresion_giro-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -39307,7 +39218,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_compresion_giro-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_compresion_giro-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -39571,7 +39482,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_chapa_cortante_negativo-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_chapa_cortante_negativo-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -39714,7 +39625,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_chapa_cortante_negativo-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_chapa_cortante_negativo-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -39971,7 +39882,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_tresca_tercera_tension-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_tresca_tercera_tension-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -40114,7 +40025,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_tresca_tercera_tension-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_tresca_tercera_tension-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -40370,7 +40281,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_proximo_hidrostatico-elemento}\textbf{Figura~\thestudiumfigure.} Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_proximo_hidrostatico-elemento}{Estado tensional inicial y elemento principal con los resultados del cálculo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 
@@ -40513,7 +40424,7 @@ Respuesta principal: comprobación final
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:e2-c08-p_proximo_hidrostatico-mohr}\textbf{Figura~\thestudiumfigure.} Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.\par}
+\studiumcaption{fig:e2-c08-p_proximo_hidrostatico-mohr}{Círculo de Mohr con los puntos de las caras, tensiones principales y referencia del ángulo. Figura reservada a la solución.}
 \end{minipage}
 \par\vspace{\baselineskip}
 

@@ -1,7 +1,7 @@
-\begin{studiumworked}{M04. Incertidumbre de un cociente correlacionado · INTERMEDIATE}
-\textbf{Enunciado original.} Se miden $F=4200$ N y $\dot m=1.78$ kg/s. Sus incertidumbres estándar relativas son $1.08$\,\% y 0.7\,\%, con correlación $r=0.25$. Estime $I_{sp}$ y su incertidumbre linealizada; compare con asumir independencia.
+\begin{studiumworked}{M04. Incertidumbre de un cociente correlacionado · Intermedio}
+\textbf{Enunciado.} Se miden $F=4200$ N y $\dot m=1.78$ kg/s. Sus incertidumbres estándar relativas son $1.08$\,\% y 0.7\,\%, con correlación $r=0.25$. Estime $I_{sp}$ y su incertidumbre linealizada; compare con asumir independencia.
 
-\textbf{Datos utilizados.} Empuje: $4200\,\mathrm{N}$; Caudal: $1.78\,\mathrm{kg/s}$; Incertidumbre relativa: $0.0108$; Incertidumbre relativa: $0.007$; Correlación: $0.25$.
+\textbf{Datos.} Empuje: $4200\,\mathrm{N}$; Caudal: $1.78\,\mathrm{kg/s}$; Incertidumbre relativa: $0.0108$; Incertidumbre relativa: $0.007$; Correlación: $0.25$.
 
 \textbf{Incógnitas.} Impulso específico e incertidumbre estándar.
 
@@ -10,7 +10,7 @@
 \textbf{Modelo físico.} Propagación mediante gradiente y covarianza.
 \[I_{sp}=F/(g_0\dot m)\]
 \[(u_I/I_{sp})^2=u_F^2/F^2+u_m^2/\dot m^2-2r(u_F/F)(u_m/\dot m)\]
-\textbf{Despejes y sustituciones.}
+\textbf{Desarrollo.}
 \begin{enumerate}
 \item Las sensibilidades son $\partial I/\partial F=1/(g_0\dot m)$ y $\partial I/\partial\dot m=-F/(g_0\dot m^2)$. Sus signos opuestos explican el signo negativo de la covarianza.
 \item La sustitución da $I_{sp}=240.6072$ s y $u_I/I_{sp}=\sqrt{0.0108^2+0.007^2-2(0.25)(0.0108)(0.007)}=0.01130664$.

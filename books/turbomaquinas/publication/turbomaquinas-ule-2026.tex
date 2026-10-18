@@ -1,127 +1,14 @@
-\documentclass{book}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage[spanish]{babel}
-\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
-\AtBeginDocument{\spanishdeactivate{"~<>}}
-\usepackage[a4paper,margin=2.5cm]{geometry}
-\usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\filright}{\large\normalfont\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
-\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
-\titleformat{name=\chapter,numberless}[display]
-  {\normalfont\filright}{}{0pt}{\huge\bfseries}
-\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{xcolor}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{array}
-\usepackage{longtable}
-\newcounter{studiumfigure}
-\definecolor{studiumInk}{RGB}{28,40,58}
-\definecolor{studiumRule}{RGB}{28,40,58}
-\definecolor{studiumTipBack}{RGB}{232,244,236}
-\definecolor{studiumTipFrame}{RGB}{27,107,58}
-\definecolor{studiumDefBack}{RGB}{232,240,250}
-\definecolor{studiumDefFrame}{RGB}{24,74,130}
-\definecolor{studiumWorkedBack}{RGB}{255,244,230}
-\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
-\definecolor{studiumCheckBack}{RGB}{243,236,248}
-\definecolor{studiumCheckFrame}{RGB}{96,48,130}
-\definecolor{studiumCodeBack}{RGB}{245,245,242}
-\definecolor{studiumCodeRule}{RGB}{48,48,52}
-\usepackage{listings}
-\lstdefinelanguage{Rust}{
-  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{Go}{
-  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"}
-}
-\lstdefinelanguage{JavaScript}{
-  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
-  sensitive=true,
-  morecomment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]{"},
-  morestring=[b]{'},
-}
-\lstdefinestyle{studium}{
-  basicstyle=\ttfamily\small,
-  columns=fullflexible,
-  keepspaces=true,
-  showstringspaces=false,
-  breaklines=true,
-  breakatwhitespace=false,
-  frame=leftline,
-  framerule=1.15pt,
-  rulecolor=\color{studiumCodeRule},
-  backgroundcolor=\color{studiumCodeBack},
-  xleftmargin=1.15em,
-  framexleftmargin=0.75em,
-  aboveskip=0.9em,
-  belowskip=0.7em,
-  tabsize=4,
-  keywordstyle=\ttfamily\bfseries,
-  commentstyle=\ttfamily\itshape,
-  stringstyle=\ttfamily
-}
-\lstset{style=studium}
-\usepackage[breakable,skins]{tcolorbox}
-\tcbset{
-  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
-  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
-}
-\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
-\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
-\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
-\fancyfoot[C]{}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \fancyfoot[C]{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
-\usepackage[hyphens]{url}
-\usepackage[hidelinks]{hyperref}
-\setlength{\emergencystretch}{1.5em}
-\makeatletter
-\@openrightfalse
-\let\cleardoublepage\clearpage
-\makeatother
-\newsavebox{\studiumMathBox}\newcommand{\fitmath}[1]{\sbox{\studiumMathBox}{$\displaystyle #1$}\ifdim\wd\studiumMathBox>\linewidth\resizebox{\linewidth}{!}{\usebox{\studiumMathBox}}\else\usebox{\studiumMathBox}\fi}
-\input{t1lmr.fd}\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*lmr/m/sc}{}\allowdisplaybreaks[2]\raggedbottom\setlength{\parskip}{3pt plus .5pt}
-\hypersetup{pdftitle={Turbomáquinas · Edición de estudio},pdfauthor={Studium · Edición de estudio asistida}}
-\input{cover.tex}
+\documentclass[10pt,openany]{book}
+\input{../../../shared/latex/studium-editorial.tex}
+\input{editorial-config.tex}
+\hypersetup{pdftitle={Turbomáquinas}}
+\renewcommand{\studiumvolumetype}{manual}
 \begin{document}
+\studiumcover{TURBOMÁQUINAS}{Fundamentos, análisis y diseño de turbomáquinas aeronáuticas}{MANUAL UNIVERSITARIO}
 \frontmatter
-\studiumcover{TURBOMÁQUINAS}{Fundamentos, análisis y diseño de\\turbomáquinas aeronáuticas}{MANUAL UNIVERSITARIO}
-
-\chapter*{Alcance de esta edición}
-\addcontentsline{toc}{chapter}{Alcance de esta edición}
+\studiumreadingguide
+\chapter*{Presentación y alcance}
+\addcontentsline{toc}{chapter}{Presentación y alcance}
 Este manual de estudio desarrolla el programa de Turbomáquinas de cuarto curso del Grado en Ingeniería Aeroespacial de la Universidad de León. Se ha contrastado con la guía docente 2026/2027 de la asignatura 0710340, aportada por el usuario y leída en sus cinco páginas, y con los siete documentos docentes del archivo de Ágora. No constituye una publicación oficial de la Universidad ni implica respaldo de su profesorado.
 
 La guía, p. 2, confirma los cinco bloques que estructuran las partes I a V. La parte VI reúne la práctica y los simulacros originales. La revisión termodinámica inicial es instrumental. El modelo dinámico del capítulo 10 y la aproximación modal del capítulo 13 son ampliaciones expresamente identificadas.
@@ -152,6 +39,7 @@ Los apuntes y los dos documentos de Wuolah se han consultado de forma privada. N
 El eje axial apunta aguas abajo y la dirección tangencial positiva coincide con el giro declarado. El trabajo comunicado al fluido es positivo en compresión. El trabajo extraído se expresa positivo en turbina. Alfa se mide con velocidad absoluta; beta con velocidad relativa. Ambos son ángulos algebraicos desde el eje. La letra de reacción se distingue de la constante del gas y de la solidez. Una ecuación reducida solo se aplica después de comprobar sus hipótesis.
 \clearpage
 \tableofcontents
+\listoffigures
 \mainmatter
 
 \part{Principios básicos y análisis de turbomáquinas}
@@ -159,7 +47,7 @@ El eje axial apunta aguas abajo y la dirección tangencial positiva coincide con
 \chapter{Fundamentos, clasificación y estados del gas}
 \label{chap:c01}
 
-\noindent\textit{Objetivo: desarrollar fundamentos, clasificación y estados del gas, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar fundamentos, clasificación y estados del gas, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImMwMSJ9
 
 \section{Introducción y objetivos}
@@ -224,7 +112,7 @@ El contenido pertenece al bloque I del programa aportado. La revisión termodin�
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:clasificacion}\textbf{Figura~\thestudiumfigure.} Criterios independientes de clasificación. Esquema original.\par}
+\studiumcaption{fig:clasificacion}{Criterios independientes de clasificación. Esquema original.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAyMiIsICJzZWN0aW9uIjogImMwMSJ9
@@ -288,7 +176,7 @@ Formulario: \(h_0=h+C^2/2\), \(a=\sqrt{\gamma R_gT}\), \(\dot m=\rho C_xA\), \(q
 Referencias y trazabilidad: ULE, Generalidades, pp. \(2-16\), para clasificación y planteamiento del balance; MIT 16.50, lección 24, pp. \(1-4\), como contraste del intercambio dinámico. La revisión termodinámica y los ejemplos son elaboración original. Véase el registro de fuentes para distinguir material consultado y bibliografía recomendada.
 % studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImMwMSJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Estado estático desde remanso}
 
@@ -740,7 +628,7 @@ Usar el módulo de velocidad reduciría indebidamente el área. Reconstruya el c
 % studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImMwMSJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C01-01-P \cdot\) Estado estático desde remanso. Ejercicio de transferencia. Una estación de ensayo tiene los datos totales y Mach indicados. Obtenga temperatura, presión y densidad estáticas; la incógnita final es la densidad. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_0=338.67\, \mathrm{K}\); \(p_0=154000\, \mathrm{Pa}\); \(\mathit{Ma}=0.62\, 1\); \(\gamma=1.4\, 1\); \(R_g=287\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
@@ -755,10 +643,13 @@ Usar el módulo de velocidad reduciría indebidamente el área. Reconstruya el c
 \(C01-04-P \cdot\) Anillo con remolino. Ejercicio de transferencia. Dimensione el área frontal anular a partir de un módulo absoluto y un ángulo con el eje. Halle también la altura a radio medio fijado; esa altura es la incógnita final. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\dot m=20.874\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\rho=1.38\, \mathrm{kg}\,\mathrm{m}^{-3}\); \(\mathit{Vel}=186\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{ang}=0.5585054\, \mathrm{rad}\); \(r_m=0.29\, \mathrm{m}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Momento angular, Euler y triángulos de velocidades}
 \label{chap:c02}
 
-\noindent\textit{Objetivo: desarrollar momento angular, euler y triángulos de velocidades, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar momento angular, euler y triángulos de velocidades, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImMwMiJ9
 
 \section{Introducción y objetivos}
@@ -872,7 +763,7 @@ Algunas referencias expresan \(\beta\) como un módulo positivo hacia el lado co
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:triangulo}\textbf{Figura~\thestudiumfigure.} Suma vectorial local, eje x axial y theta positivo con el giro. Las flechas conservan sus orígenes y extremos.\par}
+\studiumcaption{fig:triangulo}{Suma vectorial local, eje x axial y theta positivo con el giro. Las flechas conservan sus orígenes y extremos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImMwMiJ9
@@ -899,7 +790,7 @@ Formulario: \(\tau=\dot m\Delta(rC_\theta)\), \(w_f=\Delta(UC_\theta)\), \(\math
 Referencias: ULE, Generalidades, pp. \(15-18\); MIT 16.50, lección 24, pp. \(2-4\). Las deducciones se desarrollan de nuevo con el convenio algebraico de este manual. No se reutilizan las ilustraciones de las fuentes.
 % studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImMwMiJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Par de un compresor}
 
@@ -1361,7 +1252,7 @@ El término centrífugo no puede omitirse cuando U cambia. Reintroduzca dh en la
 % studium:end-record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImMwMiJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C02-01-P \cdot\) Par de un compresor. Ejercicio de transferencia. Calcule el par comunicado al fluido y la potencia ideal de un rotor a radio constante. La incógnita final es la potencia. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\dot m=23.43\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\mathit{rad}=0.31\, \mathrm{m}\); \(\Omega=970\, \mathrm{s}^{-1}\); \(C_{\theta e}=24\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta s}=109\, \mathrm{m}\,\mathrm{s}^{-1}\).
@@ -1376,10 +1267,13 @@ El término centrífugo no puede omitirse cuando U cambia. Reintroduzca dh en la
 \(C02-04-P \cdot\) Comprobación de rotalpía. Ejercicio de transferencia. Para un rotor se conocen estados cinemáticos de entrada y salida. Calcule el cambio de entalpía estática exigido por rotalpía. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{ue}=204.48\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{us}=331\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{we}=246\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{ws}=214\, \mathrm{m}\,\mathrm{s}^{-1}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Rendimientos, pérdidas y semejanza}
 \label{chap:c03}
 
-\noindent\textit{Objetivo: desarrollar rendimientos, pérdidas y semejanza, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar rendimientos, pérdidas y semejanza, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImMwMyJ9
 
 \section{Introducción y objetivos}
@@ -1496,7 +1390,7 @@ Las relaciones de presión de los escalones se multiplican, mientras los increme
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:eficiencia}\textbf{Figura~\thestudiumfigure.} Conversión calculada para eficiencia politrópica de compresor 0,90 y gamma 1,4. Sin datos de máquinas.\par}
+\studiumcaption{fig:eficiencia}{Conversión calculada para eficiencia politrópica de compresor 0,90 y gamma 1,4. Sin datos de máquinas.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwMyIsICJzZWN0aW9uIjogImMwMyJ9
@@ -1520,7 +1414,7 @@ Errores habituales: aplicar la definición de compresor a una turbina, confundir
 Formulario: \(w_c=c_p\Delta T_0\), \(w_t=-c_p\Delta T_0\), \(\eta_{c,\mathit{tt}}=w_{C_{\theta s}}/w_c\), \(\eta_{t,\mathit{tt}}=w_t/w_{ts}\), \(\phi=C_x/U\), \(\psi=|w_f|/U^2\). Referencias: ULE Generalidades, pp. \(9-12\) y 19; Diseño de compresores, pp. \(3-8\); contraste de la definición politrópica en MIT 16.50, lección 26, p. 4.
 % studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImMwMyJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Compresión total-total}
 
@@ -1938,7 +1832,7 @@ El caudal corregido es una variable de comparación. No es una nueva medición d
 % studium:end-record eyJpZCI6ICJQUkItMDAyMyIsICJzZWN0aW9uIjogImMwMyJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C03-01-P \cdot\) Compresión total-total. Ejercicio de transferencia. Calcule temperatura total de salida y trabajo de una compresión con relación de presión y rendimiento dados. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_{0e}=313.11\, \mathrm{K}\); \(\mathit{pr}=4.6\, 1\); \(\eta=0.84\, 1\); \(\gamma=1.4\, 1\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
@@ -1953,12 +1847,15 @@ El caudal corregido es una variable de comparación. No es una nueva medición d
 \(C03-04-P \cdot\) Corrección de caudal. Ejercicio de transferencia. Convierta el caudal medido a las referencias de presión y temperatura especificadas. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\dot m=33.7605\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(T_{0e}=271\, \mathrm{K}\); \(p_{0e}=82500\, \mathrm{Pa}\); \(\mathit{Tr}=288.15\, \mathrm{K}\); \(\mathit{pr}=101325\, \mathrm{Pa}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \part{Estudio bidimensional de turbinas axiales}
 
 \chapter{Turbinas axiales de acción}
 \label{chap:c04}
 
-\noindent\textit{Objetivo: desarrollar turbinas axiales de acción, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar turbinas axiales de acción, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImMwNCJ9
 
 \section{Introducción y objetivos}
@@ -2038,7 +1935,7 @@ La figura figura~\ref{fig:accion} muestra esta construcción para un caso calcul
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:accion}\textbf{Figura~\thestudiumfigure.} Acción ideal calculada: U=220 m/s, Cx=180 m/s, Ctheta2=460 m/s. Escala común en ambos triángulos.\par}
+\studiumcaption{fig:accion}{Acción ideal calculada: U=220 m/s, Cx=180 m/s, Ctheta2=460 m/s. Escala común en ambos triángulos.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwNCIsICJzZWN0aW9uIjogImMwNCJ9
@@ -2100,7 +1997,7 @@ Formulario: \(w_t=U(C_{\theta2}-C_{\theta3})\); para acción ideal con \(C_x\) c
 Referencias: ULE Turbinas axiales, pp. \(2-6\) y \(17-22\). MIT 16.50, lección 27, como contraste de la definición de reacción; la lección 28 aporta el contexto del parámetro de carga. Las ecuaciones y las figuras se desarrollan aquí con notación propia.
 % studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImMwNCJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Acción ideal}
 
@@ -2559,7 +2456,7 @@ El resultado es un indicador de carga del modelo. No permite asignar una pérdid
 % studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImMwNCJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C04-01-P \cdot\) Acción ideal. Ejercicio de transferencia. Una turbina de acción ideal recibe las componentes y velocidad periférica dadas. Halle remolino de salida, trabajo y descenso de temperatura total. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(C_\theta=492.03\, \mathrm{m}\,\mathrm{s}^{-1}\); \(U=211\, \mathrm{m}\,\mathrm{s}^{-1}\); \(c_p=1156.697\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
@@ -2574,10 +2471,13 @@ El resultado es un indicador de carga del modelo. No permite asignar una pérdid
 \(C04-04-P \cdot\) Carga de cascada de turbina. Ejercicio de transferencia. Estime el parámetro de carga Z de una fila con ángulos algebraicos dados, en el modelo de baja compresibilidad definido en el capítulo. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{pe}=0.8736246\, \mathrm{rad}\); \(\mathit{ps}=-1.012291\, \mathrm{rad}\); \(\mathit{ss}=0.024\, \mathrm{m}\); \(\mathit{cc}=0.049\, \mathrm{m}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Turbinas de reacción y rendimiento del escalón}
 \label{chap:c05}
 
-\noindent\textit{Objetivo: desarrollar turbinas de reacción y rendimiento del escalón, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar turbinas de reacción y rendimiento del escalón, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImMwNSJ9
 
 \section{Introducción y objetivos}
@@ -2678,7 +2578,7 @@ Una reacción negativa indica subida estática en el rotor respecto de una caíd
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:reaccion}\textbf{Figura~\thestudiumfigure.} Caída estática ideal de igual magnitud total, repartida entre filas. No representa caída de presión.\par}
+\studiumcaption{fig:reaccion}{Caída estática ideal de igual magnitud total, repartida entre filas. No representa caída de presión.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwNSIsICJzZWN0aW9uIjogImMwNSJ9
@@ -2724,7 +2624,7 @@ Errores habituales: atribuir a una reacción de medio la mitad exacta de la caí
 Formulario: \(\mathcal R_t=(h_2-h_3)/(h_1-h_3)\); las expresiones lineales de componentes solo corresponden al escalón de extremos con igual energía cinética. \(T_{03}=T_{01}-w_t/c_p\). Referencias: ULE Turbinas axiales, pp. \(4-8\) y \(13-16\); MIT 16.50, lección 27, pp. \(2-4\), para contraste de reacción. Las soluciones numéricas se recalculan independientemente.
 % studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImMwNSJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Triángulos desde carga y reacción}
 
@@ -3201,7 +3101,7 @@ La condición de descarga impide variar carga y reacción independientemente.
 % studium:end-record eyJpZCI6ICJQUkItMDAzOSIsICJzZWN0aW9uIjogImMwNSJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C05-01-P \cdot\) Triángulos desde carga y reacción. Ejercicio de transferencia. Diseñe las componentes del escalón repetitivo con carga, reacción y velocidad periférica dadas. Obtenga la componente relativa tangencial a la salida del rotor. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(U=324.825\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\psi=1.42\, 1\); \(\mathcal R=0.46\, 1\).
@@ -3216,10 +3116,13 @@ La condición de descarga impide variar carga y reacción independientemente.
 \(C05-04-P \cdot\) Descarga axial y potencia. Ejercicio de transferencia. Una turbina repetitiva de reacción dada descarga sin remolino. Calcule su carga y potencia útil. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathcal R=0.565\, 1\); \(U=322\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\dot m=26\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\eta_m=0.975\, 1\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Caudal, bloqueo sónico y diseño de turbinas}
 \label{chap:c06}
 
-\noindent\textit{Objetivo: desarrollar caudal, bloqueo sónico y diseño de turbinas, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar caudal, bloqueo sónico y diseño de turbinas, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImMwNiJ9
 
 \section{Introducción y objetivos}
@@ -3320,7 +3223,7 @@ La condición de un escalón afecta a los siguientes. Si una fila está bloquead
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:bloqueo}\textbf{Figura~\thestudiumfigure.} Función de gasto ideal normalizada, gamma 1,33. Máximo en Mach uno; la rama supersónica exige geometría compatible.\par}
+\studiumcaption{fig:bloqueo}{Función de gasto ideal normalizada, gamma 1,33. Máximo en Mach uno; la rama supersónica exige geometría compatible.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwNiIsICJzZWN0aW9uIjogImMwNiJ9
@@ -3337,7 +3240,7 @@ Errores habituales: declarar bloqueo porque el Mach absoluto es uno aunque la ga
 Formulario: función de gasto anterior, \(M_*=1\), \(A_{an}=\pi(r_t^2-r_h^2)\) y \(w_{t,tot}=\sum_jw_{tj}\). Referencias: ULE Turbinas axiales, pp. 2 y \(9-18\); MIT 16.50, lección 28, contexto del vínculo entre caudal, geometría y esfuerzos. La deducción de la función de gasto y las curvas son originales para este manual.
 % studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImMwNiJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Área crítica}
 
@@ -3770,7 +3673,7 @@ Mach axial y Mach del módulo son distintos. La garganta real puede tener otra o
 % studium:end-record eyJpZCI6ICJQUkItMDA0NyIsICJzZWN0aW9uIjogImMwNiJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C06-01-P \cdot\) Área crítica. Ejercicio de transferencia. Determine el gasto máximo por área y el área crítica necesaria para el caudal dado. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(p_{0e}=724200\, \mathrm{Pa}\); \(T_{0e}=1320\, \mathrm{K}\); \(\gamma=1.33\, 1\); \(R_g=287\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\dot m=24\, \mathrm{kg}\,\mathrm{s}^{-1}\).
@@ -3785,12 +3688,15 @@ Mach axial y Mach del módulo son distintos. La garganta real puede tener otra o
 \(C06-04-P \cdot\) Caudal de garganta oblicua. Ejercicio de transferencia. Una sección axial opera con módulo de velocidad sónico y ángulo dado. Halle el caudal usando su proyección axial. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\rho=2.0448\, \mathrm{kg}\,\mathrm{m}^{-3}\); \(\mathit{vel}=626\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{ang}=1.064651\, \mathrm{rad}\); \(A=0.045\, \mathrm{m}^{2}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \part{Estudio bidimensional de compresores axiales}
 
 \chapter{Escalón de compresor axial al radio medio}
 \label{chap:c07}
 
-\noindent\textit{Objetivo: desarrollar escalón de compresor axial al radio medio, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar escalón de compresor axial al radio medio, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImMwNyJ9
 
 \section{Introducción y objetivos}
@@ -3866,7 +3772,7 @@ Con \(C_x\) constante, el giro absoluto es \(\alpha_2-\alpha_1\), mientras el gi
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:compresor}\textbf{Figura~\thestudiumfigure.} Esquema de rotor y estator de compresor. Estaciones absolutas 1, 2 y 3. Sin escala geométrica.\par}
+\studiumcaption{fig:compresor}{Esquema de rotor y estator de compresor. Estaciones absolutas 1, 2 y 3. Sin escala geométrica.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwNyIsICJzZWN0aW9uIjogImMwNyJ9
@@ -3945,7 +3851,7 @@ Errores habituales: asignar trabajo al estator, utilizar \(W\) en Euler, suponer
 Referencias: ULE Diseño de compresores, pp. \(2-5\) y \(18-24\); MIT 16.50, lección 24, pp. \(2-4\). Desarrollo y casos numéricos originales. La hipótesis de repetición se verifica expresamente en cada caso.
 % studium:end-record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImMwNyJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Trabajo y presión del escalón}
 
@@ -4423,7 +4329,7 @@ El resultado debe coincidir con 1-(ce+cs)/(2U). Esa identidad es una comprobaci�
 % studium:end-record eyJpZCI6ICJQUkItMDA1NSIsICJzZWN0aW9uIjogImMwNyJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C07-01-P \cdot\) Trabajo y presión del escalón. Ejercicio de transferencia. Dados los parámetros del escalón compresor, calcule trabajo, incremento total de temperatura y relación de presión. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(U=290.745\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\psi=0.39\, 1\); \(T_{0e}=301\, \mathrm{K}\); \(\eta=0.88\, 1\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\gamma=1.4\, 1\).
@@ -4438,10 +4344,13 @@ El resultado debe coincidir con 1-(ce+cs)/(2U). Esa identidad es una comprobaci�
 \(C07-04-P \cdot\) Cierre de reacción por entalpías. Ejercicio de transferencia. Un rotor tiene los remolinos indicados y velocidad axial constante; el escalón es repetitivo. Calcule su reacción desde incrementos estáticos. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(U=302.46\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta e}=61\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta s}=172\, \mathrm{m}\,\mathrm{s}^{-1}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Cascadas: difusión, incidencia, desviación y pérdidas}
 \label{chap:c08}
 
-\noindent\textit{Objetivo: desarrollar cascadas: difusión, incidencia, desviación y pérdidas, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar cascadas: difusión, incidencia, desviación y pérdidas, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImMwOCJ9
 
 \section{Introducción y objetivos}
@@ -4516,7 +4425,7 @@ Aumentar solidez reparte la carga entre más superficie, pero incrementa área m
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:cascada}\textbf{Figura~\thestudiumfigure.} Cascada original: paso, cuerda y cuerda axial distintos. Línea media educativa.\par}
+\studiumcaption{fig:cascada}{Cascada original: paso, cuerda y cuerda axial distintos. Línea media educativa.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwOCIsICJzZWN0aW9uIjogImMwOCJ9
@@ -4571,7 +4480,7 @@ Errores habituales: usar \(C\) para la difusión de un rotor, igualar ángulo de
 Formulario: \(s=2\pi r/Z_b\), \(\sigma=c/s\), \(i=a_e-\kappa_e\), \(\delta=a_s-\kappa_s\), factor \(D\) anterior. Referencias: ULE Diseño de compresores, pp. \(6-18\) y 28; Esfuerzos y refrigeración, pp. \(3-6\), para nomenclatura; MIT 16.50, lección 26, pp. \(2-3\), para contraste del uso del factor de difusión.
 % studium:end-record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImMwOCJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Indicador de difusión}
 
@@ -4986,7 +4895,7 @@ Los signos dependen de una definición explícita. Para expresar en grados multi
 % studium:end-record eyJpZCI6ICJQUkItMDA2MyIsICJzZWN0aW9uIjogImMwOCJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C08-01-P \cdot\) Indicador de difusión. Ejercicio de transferencia. Estime D para una fila móvil con módulos relativos y cambio tangencial dados. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{ve}=300.33\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{vs}=216\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{dv}=97\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\sigma=1.24\, 1\).
@@ -5001,10 +4910,13 @@ Los signos dependen de una definición explícita. Para expresar en grados multi
 \(C08-04-P \cdot\) Incidencia y desviación algebraicas. Ejercicio de transferencia. En una fila fija se miden ángulos de gas y se conocen los metálicos. Determine incidencia y desviación; la incógnita final es delta. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{ae}=0.9108001\, \mathrm{rad}\); \(\mathit{asv}=0.3839724\, \mathrm{rad}\); \(\mathit{ke}=0.8028515\, \mathrm{rad}\); \(\mathit{ks}=0.3141593\, \mathrm{rad}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Compresión multiescalón, anillo y acoplamiento}
 \label{chap:c09}
 
-\noindent\textit{Objetivo: desarrollar compresión multiescalón, anillo y acoplamiento, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar compresión multiescalón, anillo y acoplamiento, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImMwOSJ9
 
 \section{Introducción y objetivos}
@@ -5107,7 +5019,7 @@ La figura figura~\ref{fig:anillo} muestra alternativas a radio medio, punta o ra
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:anillo}\textbf{Figura~\thestudiumfigure.} Vista meridiana de un anillo que reduce área. Radio medio aritmético y altura de pala.\par}
+\studiumcaption{fig:anillo}{Vista meridiana de un anillo que reduce área. Radio medio aritmético y altura de pala.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAwOSIsICJzZWN0aW9uIjogImMwOSJ9
@@ -5145,7 +5057,7 @@ Errores habituales: multiplicar trabajos o sumar relaciones de presión, usar de
 Formulario: \(\pi_{tot}=\prod\pi_j\), \(w_{tot}=\sum w_j\), \(A=\dot m/(\rho C_xB)\), \(A=2\pi r_mb\). Referencias: ULE Diseño de compresores, pp. \(20-30\) y 36; MIT 16.50, lección 26, pp. \(4-5\). Las geometrías y balances numéricos del manual son originales y están limitados al modelo medio.
 % studium:end-record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImMwOSJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Compresión de varios escalones}
 
@@ -5567,7 +5479,7 @@ Usar el caudal del compresor en la turbina omite la diferencia de masas. El repa
 % studium:end-record eyJpZCI6ICJQUkItMDA3MSIsICJzZWN0aW9uIjogImMwOSJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C09-01-P \cdot\) Compresión de varios escalones. Ejercicio de transferencia. Una compresión politrópica global alimenta un eje. Halle temperatura final y potencia requerida en el eje. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_{0e}=307.785\, \mathrm{K}\); \(\mathit{pr}=9.3\, 1\); \(\eta_p=0.9\, 1\); \(\gamma=1.4\, 1\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\dot m=23\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\eta_m=0.98\, 1\).
@@ -5582,10 +5494,13 @@ Usar el caudal del compresor en la turbina omite la diferencia de masas. El repa
 \(C09-04-P \cdot\) Acoplamiento de eje con caudales distintos. Ejercicio de transferencia. El compresor y la turbina comparten eje con rendimiento mecánico dado. Calcule el trabajo que debe extraer cada kilogramo de gas en la turbina. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{mc}=26.625\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\mathit{mt}=25.6\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\mathit{wc}=214000\, \mathrm{J}\,\mathrm{kg}^{-1}\); \(\mathit{acc}=85000\, \mathrm{W}\); \(\eta_m=0.975\, 1\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Arranque, pérdida rotativa, bombeo y mapas}
 \label{chap:c10}
 
-\noindent\textit{Objetivo: desarrollar arranque, pérdida rotativa, bombeo y mapas, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar arranque, pérdida rotativa, bombeo y mapas, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImMxMCJ9
 
 \section{Introducción y objetivos}
@@ -5687,7 +5602,7 @@ El punto operativo es la intersección compatible entre componente y sistema. Al
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:mapa}\textbf{Figura~\thestudiumfigure.} Mapa cualitativo sin escala numérica ni datos experimentales. La línea límite es ilustrativa y no predice bombeo.\par}
+\studiumcaption{fig:mapa}{Mapa cualitativo sin escala numérica ni datos experimentales. La línea límite es ilustrativa y no predice bombeo.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxMCIsICJzZWN0aW9uIjogImMxMCJ9
@@ -5714,7 +5629,7 @@ Errores habituales: utilizar el mapa esquemático como base de diseño, mezclar 
 Formulario: \(N_c=N/\sqrt{T_{01}/T_{\mathit{ref}}}\), \(\dot m_c=\dot m\sqrt{T_{01}/T_{\mathit{ref}}}/(p_{01}/p_{\mathit{ref}})\) y el margen de caudal definido arriba. Referencias: ULE Generalidades, pp. \(20-22\); MIT 16.50, lección 26, p. 5, para contexto del arranque. El modelo dinámico es una ampliación original explícita, sometida a comprobación algebraica y dimensional, pendiente de validación para aplicaciones reales.
 % studium:end-record eyJpZCI6ICJQQVItMDA3MiIsICJzZWN0aW9uIjogImMxMCJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Incidencia durante variación de caudal}
 
@@ -6127,7 +6042,7 @@ Traza negativa y determinante positivo dan estabilidad lineal del modelo de dos 
 % studium:end-record eyJpZCI6ICJQUkItMDA3OSIsICJzZWN0aW9uIjogImMxMCJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C10-01-P \cdot\) Incidencia durante variación de caudal. Ejercicio de transferencia. Un rotor sin prerrotación conserva velocidad periférica y ángulo metálico. Calcule su beta de entrada y la incidencia a la nueva velocidad axial. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(U=263.055\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_x=119\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{kap}=-1.064651\, \mathrm{rad}\).
@@ -6142,12 +6057,15 @@ Traza negativa y determinante positivo dan estabilidad lineal del modelo de dos 
 \(C10-03-P \cdot\) Corrección de velocidad. Ejercicio de transferencia. Halle la velocidad corregida y la velocidad periférica física al radio dado. La incógnita final es U real. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{nn}=209.45\, \mathrm{s}^{-1}\); \(T_{0e}=259\, \mathrm{K}\); \(\mathit{Tr}=288.15\, \mathrm{K}\); \(\mathit{rad}=0.276\, \mathrm{m}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \part{Estudio tridimensional de turbomáquinas axiales}
 
 \chapter{Equilibrio radial y leyes de remolino}
 \label{chap:c11}
 
-\noindent\textit{Objetivo: desarrollar equilibrio radial y leyes de remolino, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar equilibrio radial y leyes de remolino, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA3MyIsICJzZWN0aW9uIjogImMxMSJ9
 
 \section{Introducción y objetivos}
@@ -6239,7 +6157,7 @@ Si la entrada y salida del rotor obedecen vórtice libre, Euler da \(w_f=\Omega(
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:radial}\textbf{Figura~\thestudiumfigure.} Velocidad periférica y remolino libre calculados con escala común y normalización por Omega rm.\par}
+\studiumcaption{fig:radial}{Velocidad periférica y remolino libre calculados con escala común y normalización por Omega rm.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxOSIsICJzZWN0aW9uIjogImMxMSJ9
@@ -6274,7 +6192,7 @@ Errores habituales: usar \(U^2/r\) en lugar de \(C_\theta^2/r\) en el equilibrio
 Formulario: \(\mathit{dp}/dr=\rho C_\theta^2/r\), ecuación radial energética anterior y \(rC_\theta=K_v\) para vórtice libre. Referencias: ULE Diseño de compresores, pp. \(33-35\); MIT 16.50, lección 26, pp. \(1-3\), como contraste del efecto radial. Las integraciones y las curvas del manual son originales.
 % studium:end-record eyJpZCI6ICJQQVItMDA3OSIsICJzZWN0aW9uIjogImMxMSJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Presión de vórtice libre}
 
@@ -6690,7 +6608,7 @@ El radicando debe ser positivo. Si no lo es, la ley propuesta no admite esta sol
 % studium:end-record eyJpZCI6ICJQUkItMDA4NyIsICJzZWN0aW9uIjogImMxMSJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C11-01-P \cdot\) Presión de vórtice libre. Ejercicio de transferencia. Integre el equilibrio radial de un fluido de densidad constante y remolino K/r entre radio medio y punta. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\rho=2.4495\, \mathrm{kg}\,\mathrm{m}^{-3}\); \(\mathit{kv}=36\, \mathrm{m}^{2}\,\mathrm{s}^{-1}\); \(r_m=0.29\, \mathrm{m}\); \(r_t=0.36\, \mathrm{m}\).
@@ -6705,10 +6623,13 @@ El radicando debe ser positivo. Si no lo es, la ley propuesta no admite esta sol
 \(C11-04-P \cdot\) Vórtice forzado admisible. Ejercicio de transferencia. Con entalpía total y entropía uniformes, calcule la velocidad axial exterior exigida por un remolino forzado. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{cxm}=200.22\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{kv}=320\, \mathrm{s}^{-1}\); \(r_m=0.25\, \mathrm{m}\); \(r_t=0.33\, \mathrm{m}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Torsión, secciones y construcción geométrica de álabes}
 \label{chap:c12}
 
-\noindent\textit{Objetivo: desarrollar torsión, secciones y construcción geométrica de álabes, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar torsión, secciones y construcción geométrica de álabes, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA4MCIsICJzZWN0aW9uIjogImMxMiJ9
 
 \section{Introducción y objetivos}
@@ -6794,7 +6715,7 @@ El calado de la cuerda es \(\chi=\arctan d\) y la cuerda real es \(c=c_x\sqrt{1+
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:geometria}\textbf{Figura~\thestudiumfigure.} Perfil educativo original; tangentes y espesor normal. No es un perfil comercial ni una predicción de rendimiento.\par}
+\studiumcaption{fig:geometria}{Perfil educativo original; tangentes y espesor normal. No es un perfil comercial ni una predicción de rendimiento.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxMiIsICJzZWN0aW9uIjogImMxMiJ9
@@ -6831,7 +6752,7 @@ Errores habituales: confundir calado con ángulo de salida, usar grados en funci
 Formulario: \(\kappa=a-i\) en entrada, \(\kappa=a-\delta\) en salida, cúbica de Hermite y desplazamiento normal. Referencias: ULE Diseño de compresores, pp. \(28-35\); Esfuerzos y refrigeración, pp. \(2-7\); MIT 16.50, lección 26, contexto de torsión. La familia analítica de este capítulo es original y no tiene validación de perfil comercial.
 % studium:end-record eyJpZCI6ICJQQVItMDA4NiIsICJzZWN0aW9uIjogImMxMiJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Torsión de entrada de rotor}
 
@@ -7264,7 +7185,7 @@ La longitud del vector desplazamiento es tt. Añadir solo dy produce un espesor 
 % studium:end-record eyJpZCI6ICJQUkItMDA5NSIsICJzZWN0aW9uIjogImMxMiJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C12-01-P \cdot\) Torsión de entrada de rotor. Ejercicio de transferencia. Un rotor sin prerrotación recibe velocidad axial uniforme. Calcule beta a raíz y punta y la diferencia de torsión de entrada. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\Omega=1128.9\, \mathrm{s}^{-1}\); \(C_x=157\, \mathrm{m}\,\mathrm{s}^{-1}\); \(r_h=0.198\, \mathrm{m}\); \(r_t=0.314\, \mathrm{m}\).
@@ -7279,10 +7200,13 @@ La longitud del vector desplazamiento es tt. Añadir solo dy produce un espesor 
 \(C12-04-P \cdot\) Desplazamiento normal por espesor. Ejercicio de transferencia. En un punto de una línea media se conocen pendiente y semiespesor normal. Halle las dos componentes del desplazamiento normal y su componente axial como resultado final. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{tt}=0.002556\, \mathrm{m}\); \(\mathit{slope}=0.73\, 1\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Esfuerzos centrífugos, flexión y vibración}
 \label{chap:c13}
 
-\noindent\textit{Objetivo: desarrollar esfuerzos centrífugos, flexión y vibración, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar esfuerzos centrífugos, flexión y vibración, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA4NyIsICJzZWN0aW9uIjogImMxMyJ9
 
 \section{Introducción y objetivos}
@@ -7374,7 +7298,7 @@ Sustituir \(\Omega=2\pi N/60\) permite relacionar tensión con \(A_{an}N^2\) si 
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:esfuerzos}\textbf{Figura~\thestudiumfigure.} Tensión centrífuga calculada: pala uniforme y pala con sección linealmente estrechada (42 por ciento de reducción a punta). Normalización por rho \(Omega^{2} r_t^{2}\); sin flexión ni concentraciones.\par}
+\studiumcaption{fig:esfuerzos}{Tensión centrífuga calculada: pala uniforme y pala con sección linealmente estrechada (42 por ciento de reducción a punta). Normalización por rho \(Omega^{2} r_t^{2}\); sin flexión ni concentraciones.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAyMCIsICJzZWN0aW9uIjogImMxMyJ9
@@ -7414,7 +7338,7 @@ Errores habituales: usar densidad del gas en una tensión centrífuga, introduci
 Formulario: integral de tracción, \(\sigma_b=M_by/I_b\), \(P=\Omega\tau\) y \(f_{exc}=kN/60\). Referencias: ULE Esfuerzos y refrigeración, pp. \(8-15\); MIT 16.50, lección 32, pp. \(1-2\). Deducciones y datos de práctica originales; la evaluación de vida y de piezas reales queda pendiente de revisión especializada.
 % studium:end-record eyJpZCI6ICJQQVItMDA5MyIsICJzZWN0aW9uIjogImMxMyJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Tracción centrífuga uniforme}
 
@@ -7833,7 +7757,7 @@ Es una estimación no giratoria; no incluye rigidización centrífuga ni anclaje
 % studium:end-record eyJpZCI6ICJQUkItMDEwMyIsICJzZWN0aW9uIjogImMxMyJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C13-01-P \cdot\) Tracción centrífuga uniforme. Ejercicio de transferencia. Calcule la tensión centrífuga nominal de raíz de una pala uniforme. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\rho=8647.8\, \mathrm{kg}\,\mathrm{m}^{-3}\); \(\Omega=1170\, \mathrm{s}^{-1}\); \(r_h=0.245\, \mathrm{m}\); \(r_t=0.302\, \mathrm{m}\).
@@ -7848,10 +7772,13 @@ Es una estimación no giratoria; no incluye rigidización centrífuga ni anclaje
 \(C13-04-P \cdot\) Frecuencia del voladizo educativo. Ejercicio de transferencia. Estime la primera frecuencia de una pala como viga uniforme no giratoria. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{Ee}=1.97025e+11\, \mathrm{Pa}\); \(\mathit{Ib}=7.8e-10\, \mathrm{m}^{4}\); \(\rho=8030\, \mathrm{kg}\,\mathrm{m}^{-3}\); \(\mathit{Ab}=0.000165\, \mathrm{m}^{2}\); \(\mathit{length}=0.082\, \mathrm{m}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Transferencia térmica y refrigeración de álabes}
 \label{chap:c14}
 
-\noindent\textit{Objetivo: desarrollar transferencia térmica y refrigeración de álabes, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar transferencia térmica y refrigeración de álabes, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDA5NCIsICJzZWN0aW9uIjogImMxNCJ9
 
 \section{Introducción y objetivos}
@@ -7944,7 +7871,7 @@ Un recubrimiento añade una resistencia \(t_{TBC}/k_{TBC}\), pero también intro
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:refrigeracion}\textbf{Figura~\thestudiumfigure.} Convección interna, impacto y película: sección esquemática original, sin escala de fabricación.\par}
+\studiumcaption{fig:refrigeracion}{Convección interna, impacto y película: sección esquemática original, sin escala de fabricación.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxNCIsICJzZWN0aW9uIjogImMxNCJ9
@@ -7982,7 +7909,7 @@ Errores habituales: utilizar velocidad absoluta para recuperación de una pared 
 Formulario: red térmica anterior, \(\dot Q=\dot m_cc_{p,c}\Delta T_c\), definición de \(\eta_f\). Referencias: ULE Esfuerzos y refrigeración, pp. \(16-26\); MIT 16.50, lecciones 29 y 30, para contexto de balances y mecanismos. No se importan correlaciones numéricas de transferencia sin su rango de validez. Las geometrías y los problemas son originales.
 % studium:end-record eyJpZCI6ICJQQVItMDEwMCIsICJzZWN0aW9uIjogImMxNCJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Red térmica de pared}
 
@@ -8419,7 +8346,7 @@ El signo negativo indica compresión. Una barra libre tendría tensión térmica
 % studium:end-record eyJpZCI6ICJQUkItMDExMSIsICJzZWN0aW9uIjogImMxNCJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C14-01-P \cdot\) Red térmica de pared. Ejercicio de transferencia. Calcule flujo térmico y temperatura exterior del metal en una pared plana con convección a ambos lados. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_{aw}=1725.3\, \mathrm{K}\); \(T_c=745\, \mathrm{K}\); \(h_g=1680\, \mathrm{W}\,\mathrm{m}^{-2}\,\mathrm{K}^{-1}\); \(h_c=2450\, \mathrm{W}\,\mathrm{m}^{-2}\,\mathrm{K}^{-1}\); \(t=0.0011\, \mathrm{m}\); \(k_m=21\, \mathrm{W}\,\mathrm{m}^{-1}\,\mathrm{K}^{-1}\).
@@ -8434,12 +8361,15 @@ El signo negativo indica compresión. Una barra libre tendría tensión térmica
 \(C14-04-P \cdot\) Restricción térmica uniaxial. Ejercicio de transferencia. Una barra homogénea tiene impedida completamente su dilatación longitudinal. Determine la deformación térmica libre y la tensión elástica de compresión. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{Ee}=1.8531e+11\, \mathrm{Pa}\); \(\mathit{alp}=1.41e-05\, \mathrm{K}^{-1}\); \(\mathit{dt}=128\, \mathrm{K}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \part{Compresores radiales}
 
 \chapter{Compresores radiales: rodete, inductor y deslizamiento}
 \label{chap:c15}
 
-\noindent\textit{Objetivo: desarrollar compresores radiales: rodete, inductor y deslizamiento, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar compresores radiales: rodete, inductor y deslizamiento, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDEwMSIsICJzZWN0aW9uIjogImMxNSJ9
 
 \section{Introducción y objetivos}
@@ -8525,7 +8455,7 @@ La figura figura~\ref{fig:rodete} muestra un rodete radial esquemático original
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:rodete}\textbf{Figura~\thestudiumfigure.} Rodete radial esquemático original: giro, dirección radial y componente tangencial. Sin geometría de fabricante.\par}
+\studiumcaption{fig:rodete}{Rodete radial esquemático original: giro, dirección radial y componente tangencial. Sin geometría de fabricante.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxNSIsICJzZWN0aW9uIjogImMxNSJ9
@@ -8565,7 +8495,7 @@ Errores habituales: omitir prerrotación no nula, confundir deslizamiento y efic
 Formulario: Euler general, \(C_{\theta2,\infty}=U_2+C_{m2}\tan\lambda_2\), \(w_c=\Delta(UC_\theta)\), rotalpía. Referencias: ULE Compresores radiales, pp. \(2-10\) y \(13-16\); MIT 16.50, lección 24, p. 4, para contraste de Euler radial. Los factores de los ejercicios son datos educativos prescritos, no correlaciones atribuidas a una fuente no consultada.
 % studium:end-record eyJpZCI6ICJQQVItMDEwNyIsICJzZWN0aW9uIjogImMxNSJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Rodete radial con deslizamiento}
 
@@ -9028,7 +8958,7 @@ La prerrotación positiva reduce trabajo para descarga fijada. Su efecto en inci
 % studium:end-record eyJpZCI6ICJQUkItMDExOSIsICJzZWN0aW9uIjogImMxNSJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C15-01-P \cdot\) Rodete radial con deslizamiento. Ejercicio de transferencia. Sin prerrotación y con álabes radiales ideales, calcule remolino real, trabajo y aumento total de temperatura. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(U=453.69\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\sigma_s=0.87\, 1\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
@@ -9043,10 +8973,13 @@ La prerrotación positiva reduce trabajo para descarga fijada. Su efecto en inci
 \(C15-04-P \cdot\) Prerrotación y trabajo. Ejercicio de transferencia. Manteniendo la descarga real, determine cuánto trabajo aporta el rodete con prerrotación positiva. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\Omega=2215.2\, \mathrm{s}^{-1}\); \(\mathit{re}=0.079\, \mathrm{m}\); \(\mathit{rs}=0.204\, \mathrm{m}\); \(C_{\theta e}=47\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta s}=351\, \mathrm{m}\,\mathrm{s}^{-1}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Difusores radiales, recuperación y geometría de paso}
 \label{chap:c16}
 
-\noindent\textit{Objetivo: desarrollar difusores radiales, recuperación y geometría de paso, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar difusores radiales, recuperación y geometría de paso, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDEwOCIsICJzZWN0aW9uIjogImMxNiJ9
 
 \section{Introducción y objetivos}
@@ -9146,7 +9079,7 @@ La figura figura~\ref{fig:difusor} muestra una curva calculada para un difusor s
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:difusor}\textbf{Figura~\thestudiumfigure.} Recuperación calculada \(\mathit{Cp}=1-(r2/r3)^{2}\) a ancho y densidad constantes. Sin fricción ni separación.\par}
+\studiumcaption{fig:difusor}{Recuperación calculada \(\mathit{Cp}=1-(r2/r3)^{2}\) a ancho y densidad constantes. Sin fricción ni separación.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxNiIsICJzZWN0aW9uIjogImMxNiJ9
@@ -9178,7 +9111,7 @@ Errores habituales: conservar \(C_\theta\) en lugar de \(rC_\theta\), utilizar \
 Formulario: \(rC_\theta=\mathrm{constante}\), \(\dot m=2\pi rbB\rho C_r\), \(h_0=\mathrm{constante}\) y relación entre \(C_p\) y \(\zeta\). Referencias: ULE Compresores radiales, pp. 4, 7 y \(11-12\); el principio de ausencia de trabajo en fila fija se contrasta con MIT 16.50, lección 24. La integración de los modelos y todos los gráficos son originales; el modelo de pérdida se prescribe en cada ejercicio.
 % studium:end-record eyJpZCI6ICJQQVItMDExNCIsICJzZWN0aW9uIjogImMxNiJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Difusor sin álabes ideal}
 
@@ -9612,7 +9545,7 @@ Usar solo Cr para temperatura sobreestima la densidad disponible. La continuidad
 % studium:end-record eyJpZCI6ICJQUkItMDEyNyIsICJzZWN0aW9uIjogImMxNiJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C16-01-P \cdot\) Difusor sin álabes ideal. Ejercicio de transferencia. En un difusor de ancho y densidad constantes, calcule las componentes de salida y el incremento ideal de presión. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{re}=0.22365\, \mathrm{m}\); \(\mathit{rs}=0.32\, \mathrm{m}\); \(\mathit{cr}=128\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_\theta=337\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\rho=2.9\, \mathrm{kg}\,\mathrm{m}^{-3}\).
@@ -9627,10 +9560,13 @@ Usar solo Cr para temperatura sobreestima la densidad disponible. La continuidad
 \(C16-04-P \cdot\) Estado estático de descarga. Ejercicio de transferencia. La descarga del rodete tiene estado total y componentes radial y tangencial dadas. Halle temperatura estática y densidad para dimensionar el difusor. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_0=502.68\, \mathrm{K}\); \(p_0=342000\, \mathrm{Pa}\); \(\mathit{cr}=141\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_\theta=328\, \mathrm{m}\,\mathrm{s}^{-1}\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\gamma=1.4\, 1\); \(R_g=287\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Prestaciones y límites de un compresor radial}
 \label{chap:c17}
 
-\noindent\textit{Objetivo: desarrollar prestaciones y límites de un compresor radial, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar prestaciones y límites de un compresor radial, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDExNSIsICJzZWN0aW9uIjogImMxNyJ9
 
 \section{Introducción y objetivos}
@@ -9708,7 +9644,7 @@ Estas tendencias no son un mapa completo: la densidad, el deslizamiento y las p�
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:limites}\textbf{Figura~\thestudiumfigure.} Modelo cinemático de Euler: slip=0,88 y ángulo desde meridiana -30 grados, sin prerrotación. No predice estabilidad.\par}
+\studiumcaption{fig:limites}{Modelo cinemático de Euler: slip=0,88 y ángulo desde meridiana -30 grados, sin prerrotación. No predice estabilidad.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAxNyIsICJzZWN0aW9uIjogImMxNyJ9
@@ -9745,7 +9681,7 @@ Errores habituales: declarar un mapa a partir de una sola ecuación, confundir b
 Formulario: Euler radial con deslizamiento, \(U=\pi DN/60\), \(\Delta T_0=w_c/c_p\), variables corregidas del capítulo 10. Referencias: ULE Compresores radiales, pp. 2 y \(5-16\); Generalidades, p. 22; contraste de Euler radial en MIT 16.50, lección 24, p. 4. Las curvas de sensibilidad son calculadas, con validez limitada al modelo indicado.
 % studium:end-record eyJpZCI6ICJQQVItMDEyMSIsICJzZWN0aW9uIjogImMxNyJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Velocidad exigida por trabajo}
 
@@ -10163,7 +10099,7 @@ El valor debe estar entre cero y uno bajo las hipótesis adiabáticas. Un valor 
 % studium:end-record eyJpZCI6ICJQUkItMDEzNSIsICJzZWN0aW9uIjogImMxNyJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C17-01-P \cdot\) Velocidad exigida por trabajo. Ejercicio de transferencia. Un rodete de salida radial debe suministrar trabajo dado con factor de deslizamiento prescrito. Calcule la velocidad periférica y el radio para el giro indicado. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{wc}=179985\, \mathrm{J}\,\mathrm{kg}^{-1}\); \(\sigma_s=0.86\, 1\); \(\Omega=2140\, \mathrm{s}^{-1}\).
@@ -10178,12 +10114,15 @@ El valor debe estar entre cero y uno bajo las hipótesis adiabáticas. Un valor 
 \(C17-04-P \cdot\) Balance inverso de rendimiento. Ejercicio de transferencia. De un ensayo educativo se conocen aumento total de temperatura y relación de presión. Calcule la eficiencia total-total y juzgue admisibilidad. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(T_{0e}=322.695\, \mathrm{K}\); \(T_{0s}=469\, \mathrm{K}\); \(\mathit{pr}=3.85\, 1\); \(\gamma=1.4\, 1\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \part{Prácticas y ampliaciones identificadas}
 
 \chapter{Práctica reproducible: secciones a distintos radios}
 \label{chap:c18}
 
-\noindent\textit{Objetivo: desarrollar práctica reproducible: secciones a distintos radios, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar práctica reproducible: secciones a distintos radios, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDEyMiIsICJzZWN0aW9uIjogImMxOCJ9
 
 \section{Introducción y objetivos}
@@ -10259,7 +10198,7 @@ Después se deducen ángulos metálicos con los valores de incidencia y desviaci
 \fi
 \endgroup
 \par\nopagebreak
-{\small \refstepcounter{studiumfigure}\label{fig:practica}\textbf{Figura~\thestudiumfigure.} Secciones calculadas con la familia de Hermite del ejemplo reproducible, rotor compresor, radios 0,215; 0,265 y 0,315 m. Escala igual en ambos ejes.\par}
+\studiumcaption{fig:practica}{Secciones calculadas con la familia de Hermite del ejemplo reproducible, rotor compresor, radios 0,215; 0,265 y 0,315 m. Escala igual en ambos ejes.}
 \end{minipage}
 \par\vspace{\baselineskip}
 % studium:end-record eyJpZCI6ICJGSUctMDAyMSIsICJzZWN0aW9uIjogImMxOCJ9
@@ -10286,7 +10225,7 @@ Errores habituales: usar un gráfico con ejes de distinta escala para medir áng
 Formulario: leyes radiales y familia de Hermite de los capítulos \(11-12\). Referencias: enunciado oficial de trabajo, p. 1; ULE Esfuerzos y refrigeración, pp. \(2-7\); Diseño de compresores, pp. \(28-35\). La familia de perfiles, los datos, los programas y todas las figuras de práctica son originales.
 % studium:end-record eyJpZCI6ICJQQVItMDEyOCIsICJzZWN0aW9uIjogImMxOCJ9
 
-\begin{tcolorbox}[title={Derivaciones}, studiumdef, breakable]
+\begin{tcolorbox}[title={Desarrollos del modelo}, studiumdef, breakable]
 
 \noindent\textbf{Modelo desarrollado: Rotor compresor a radio elegido}
 
@@ -10737,7 +10676,7 @@ El dibujo completo debe desplazar también x. Esta salida tiene remolino negativ
 % studium:end-record eyJpZCI6ICJQUkItMDE0MyIsICJzZWN0aW9uIjogImMxOCJ9
 \end{tcolorbox}
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Básico, Desarrollo)}
 \(C18-01-P \cdot\) Rotor compresor a radio elegido. Ejercicio de transferencia. Aplique la plantilla radial educativa a la entrada de un rotor compresor. Calcule U, beta y ángulo metálico con incidencia prescrita. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{rad}=0.288615\, \mathrm{m}\); \(\Omega=1010\, \mathrm{s}^{-1}\); \(\mathit{kv}=14\, \mathrm{m}^{2}\,\mathrm{s}^{-1}\); \(C_x=159\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{inc}=-0.01745329\, \mathrm{rad}\).
@@ -10752,10 +10691,13 @@ El dibujo completo debe desplazar también x. Esta salida tiene remolino negativ
 \(C18-04-P \cdot\) Rotor turbina y espesor por radio. Ejercicio de transferencia. En la salida del rotor de turbina, calcule beta y la coordenada transversal de la superficie superior en un punto de pendiente conocida. Antes de consultar la solución, prediga el efecto de cambiar el primer dato respecto del caso resuelto de esta familia. Justifique la tendencia y explique qué restricción podría convertirse en limitante. Datos: \(\mathit{rad}=0.31311\, \mathrm{m}\); \(\Omega=1120\, \mathrm{s}^{-1}\); \(\mathit{kv}=-7\, \mathrm{m}^{2}\,\mathrm{s}^{-1}\); \(C_x=201\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\mathit{yy}=0.014\, \mathrm{m}\); \(\mathit{tt}=0.002\, \mathrm{m}\); \(\mathit{slope}=-0.62\, 1\).
 \end{tcolorbox}
 
+
+\studiumchaptercheck
+
 \chapter{Simulacros originales y estrategia de resolución}
 \label{chap:c19}
 
-\noindent\textit{Objetivo: desarrollar simulacros originales y estrategia de resolución, declarar hipótesis y comprobar condiciones físicas.}
+\studiumchapterguide{Objetivo: desarrollar simulacros originales y estrategia de resolución, declarar hipótesis y comprobar condiciones físicas.}
 % studium:end-record eyJpZCI6ICJQQVItMDEyOSIsICJzZWN0aW9uIjogImMxOSJ9
 
 \section{Alcance y uso}
@@ -10785,7 +10727,7 @@ La autoevaluación debe distinguir un error de aritmética de un error de modelo
 Referencias: guía docente ULE 2026/2027, pp. \(1-4\); presentación y documentos técnicos aportados para la correspondencia temática. Los materiales de Wuolah se utilizaron únicamente para clasificar competencias de estudio. Ningún enunciado, dibujo ni solución de esos documentos se reproduce o transforma aquí.
 % studium:end-record eyJpZCI6ICJQQVItMDEzMyIsICJzZWN0aW9uIjogImMxOSJ9
 
-\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+\begin{tcolorbox}[title={Ejercicios propuestos}, studiumworked, breakable]
 
 \noindent\textbf{1 (Nivel de examen, Desarrollo)}
 \(C19-01-P \cdot A1 \cdot\) Cierre de compresor axial. Un rotor compresor al radio medio recibe Cx y remolinos dados. Obtenga trabajo, temperatura total final, presión total final y área geométrica de entrada. Resultado final: área de entrada. Datos: \(T_{0e}=302\, \mathrm{K}\); \(p_{0e}=118000\, \mathrm{Pa}\); \(C_x=156\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta e}=38\, \mathrm{m}\,\mathrm{s}^{-1}\); \(C_{\theta s}=147\, \mathrm{m}\,\mathrm{s}^{-1}\); \(U=291\, \mathrm{m}\,\mathrm{s}^{-1}\); \(\dot m=21\, \mathrm{kg}\,\mathrm{s}^{-1}\); \(\eta=0.87\, 1\); \(\mathit{bb}=0.96\, 1\); \(c_p=1004.5\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\gamma=1.4\, 1\); \(R_g=287\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\).
@@ -10805,8 +10747,12 @@ Referencias: guía docente ULE 2026/2027, pp. \(1-4\); presentación y documento
 \noindent\textbf{6 (Nivel de examen, Desarrollo)}
 \(C19-06-P \cdot B3 \cdot\) Balance térmico integrado. Una pared se refrigera por convección interior. Calcule flujo por área, temperatura caliente y caudal mínimo energético para el incremento permitido. Resultado final: caudal. Datos: \(T_{aw}=1580\, \mathrm{K}\); \(T_c=720\, \mathrm{K}\); \(h_g=1540\, \mathrm{W}\,\mathrm{m}^{-2}\,\mathrm{K}^{-1}\); \(h_c=2320\, \mathrm{W}\,\mathrm{m}^{-2}\,\mathrm{K}^{-1}\); \(t=0.0012\, \mathrm{m}\); \(k_m=23\, \mathrm{W}\,\mathrm{m}^{-1}\,\mathrm{K}^{-1}\); \(A=0.028\, \mathrm{m}^{2}\); \(c_p=1080\, \mathrm{J}\,\mathrm{kg}^{-1}\,\mathrm{K}^{-1}\); \(\mathit{dt}=165\, \mathrm{K}\).
 \end{tcolorbox}
+
+
+\studiumchaptercheck
+
 \appendix
-\chapter{Notación}
+\chapter{Notación y unidades}
 
 \begingroup
 \setlength{\LTpre}{0pt}
@@ -10847,7 +10793,7 @@ $w_{f}$ & Trabajo específico comunicado al fluido; positivo en compresor & $\ma
 $w_{t}$ & Trabajo específico extraído positivo en turbina & $\mathrm{J\,kg^{-1}}$ \\
 \end{longtable}
 \endgroup
-\chapter{Hoja de fórmulas}
+\chapter{Formulario y condiciones de uso}
 
 \noindent\textbf{Modelo desarrollado: Estado estático desde remanso}
 
@@ -10956,7 +10902,7 @@ $w_{t}$ & Trabajo específico extraído positivo en turbina & $\mathrm{J\,kg^{-1
 \[
 \fitmath{\mathit{kap}=- \mathit{inc} + \operatorname{atan}{\left(\frac{- \Omega \mathit{rad} + \frac{\mathit{kv}}{\mathit{rad}}}{C_x} \right)}}
 \]
-\chapter{Soluciones de ejercicios propuestos}
+\chapter{Soluciones de los ejercicios}
 \section{Capítulo 1: Fundamentos, clasificación y estados del gas}
 \subsection*{C01-01-P}
 
@@ -18534,7 +18480,7 @@ Siguen pendientes la revisión experta de las hipótesis físicas y correlacione
 La fundamentación formal automática de todas las ecuaciones del cuerpo aún es incompleta. El informe de ecuaciones conserva cada hallazgo por párrafo. La diversidad de fuentes citadas no se interpreta como validación semántica de cada cifra. Una comprobación de unidades no demuestra la validez de una ley física ni que sus hipótesis se cumplan.
 
 El código del framework no se ha modificado. Se ha fijado la revisión 08ef1f42892d (hash completo en el expediente), identificada como versión alfa 1.0.0a1. Antes de redactar se ejecutaron 85 pruebas básicas, todas satisfactorias. Los cambios editoriales de esta publicación se aplican mediante un programa externo sobre el LaTeX generado y se documentan en el informe editorial.
-\chapter{Ruta de estudio y autoevaluación}
+\chapter{Plan de estudio}
 \begin{longtable}{p{.15\linewidth}p{.32\linewidth}p{.40\linewidth}}
 \textbf{Tramo} & \textbf{Lectura} & \textbf{Criterio para avanzar}\\\hline
 1 & Capítulos 1--3 & Distinguir estados, referencias y rendimientos; cerrar Euler y unidades.\\

@@ -1,6 +1,6 @@
 # Teoría de Estructuras
 
-Segunda edición completa, a partir del manuscrito v3 de 270 páginas. La copia de clase de 140 páginas tenía un salto en el contenido; se recupera el manuscrito completo con la portada fotográfica actual. Las ediciones antiguas permanecen en el historial de Git.
+Segunda edición completa, a partir del manuscrito v3 completo, de 270 páginas antes de la revisión de maquetación. La copia de clase de 140 páginas tenía un salto en el contenido; se recupera el manuscrito completo con la portada fotográfica actual. Las ediciones antiguas permanecen en el historial de Git.
 
 ## Editar y compilar
 
@@ -16,3 +16,7 @@ python3 scripts/build-studium-books.py estructuras-aeroespaciales
 Requiere Python 3.11+ y pdfLaTeX/TeX Live. El PDF se genera en `dist/studium/estructuras-aeroespaciales/estructuras-aeroespaciales-manual.pdf`.
 
 Se archivan fuentes preexistentes para poder editarlas y recompilarlas. No se incluyen apuntes, escaneos ni exámenes privados. No se atribuye una nueva revisión científica ni se convierten automáticamente los registros al contrato académico AeroBooks. `studium-import.json` registra el origen exacto y las adaptaciones de importación.
+
+## Maquetación común de la colección
+
+Los once volúmenes comparten `shared/latex/studium-editorial.tex` y `studium-cover.tex`, desde la raíz del repositorio. Las opciones específicas están en `latex/editorial-config.tex`. Consulta `shared/EDITORIAL_STANDARD.md` para el orden común de páginas, apartados y recuadros.

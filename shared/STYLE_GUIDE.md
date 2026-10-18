@@ -1,5 +1,7 @@
 # Guía editorial de Libros Aeroespacial
 
+Las cinco colecciones Studium importadas siguen la norma común de [`EDITORIAL_STANDARD.md`](EDITORIAL_STANDARD.md), implementada en `shared/latex/`. Esa norma fija su portada y composición actuales. Las recomendaciones siguientes se conservan para los proyectos nativos AeroBooks.
+
 ## 1. Ediciones
 
 Usar siempre nomenclatura editorial:
