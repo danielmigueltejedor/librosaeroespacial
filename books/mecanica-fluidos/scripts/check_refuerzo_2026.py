@@ -82,7 +82,14 @@ def test_references() -> None:
         )
     )
     assert len(data["sources"]) == 5
-    assert data["academic_guide"]["guide_contents_verified"] is False
+    assert data["academic_guide"]["guide_contents_verified"] is True
+    guide = json.loads(
+        (BOOK / "bibliography/guia-docente-ule-2026-2027.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert guide["syllabus_verified"] is True
+    assert len(guide["topics"]) == 6
     manual = (BOOK / "latex/manual.tex").read_text(encoding="utf-8")
     refs = [source["id"] for source in data["sources"]]
     for key in refs:
