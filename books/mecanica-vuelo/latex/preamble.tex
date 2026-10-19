@@ -1,0 +1,117 @@
+\documentclass[10pt,openany]{book}
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{2192}{\ensuremath{\to}}
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\DeclareUnicodeCharacter{2248}{\ensuremath{\approx}}
+\DeclareUnicodeCharacter{00D7}{\ensuremath{\times}}
+\DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
+\DeclareUnicodeCharacter{2074}{\ensuremath{^4}}
+\fi
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\AtBeginDocument{\normalfont\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*lmr/m/sc}{}}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\spanishplainpercent
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm,headheight=14pt]{geometry}
+\usepackage{needspace}
+\usepackage{amsmath,amssymb,mathtools,booktabs,array,longtable,graphicx,xcolor,tikz,enumitem,microtype,titlesec,fancyhdr}
+\usepackage[breakable,skins]{tcolorbox}
+\usepackage[labelfont=bf]{caption}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
+\definecolor{studiumInk}{RGB}{20,44,64}
+\definecolor{studiumBlue}{RGB}{24,74,130}
+\definecolor{studiumCyan}{RGB}{0,184,205}
+\definecolor{studiumLight}{RGB}{232,240,250}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\titleformat{\chapter}[display]{\normalfont\filright}{\large\mdseries\scshape\chaptertitlename\ \thechapter}{1ex}{\normalfont\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]{\normalfont\filright}{}{0pt}{\normalfont\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{\thesection}{.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{.7em}{}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.5em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{3.8em}{5em}}
+\makeatother
+\setcounter{secnumdepth}{2}\setcounter{tocdepth}{2}
+\setlength{\parindent}{1.5em}\setlength{\parskip}{3pt plus .5pt}
+\setlength{\emergencystretch}{1.5em}\raggedbottom
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*}
+\setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}
+\allowdisplaybreaks[2]
+\graphicspath{{figures/}}
+\newcommand{\Raire}{287.05287}
+\newcommand{\gzero}{9.80665}
+\tcbset{studiumcommon/.style={breakable,boxrule=.65pt,arc=.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt,fonttitle=\bfseries}}
+\newtcolorbox{studiumworked}[1]{studiumcommon,colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,title={#1}}
+\newcommand{\objetivos}[1]{\par\noindent\textbf{Objetivos de aprendizaje.} \textit{#1}\par\medskip}
+\newcommand{\caja}[2]{\begin{tcolorbox}[studiumcommon,colback=studiumLight,colframe=studiumBlue,colbacktitle=studiumBlue,coltitle=white,title={#1}]#2\end{tcolorbox}}
+\newcommand{\resumen}[1]{\begin{tcolorbox}[studiumcommon,colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,title=Resumen]#1\end{tcolorbox}}
+\newcommand{\figura}[2]{\begin{figure}[tbp]\centering\includegraphics[width=.83\linewidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}\noindent La figura~\ref{fig:#1} ofrece una representación del modelo discutido.}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\mdseries\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\mdseries\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\renewcommand{\headrulewidth}{.4pt}\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Retícula Studium unificada: cabecera blanca, fotografía a sangre y bloque azul.
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}\renewcommand{\tablename}{Cuadro}\renewcommand{\listtablename}{Índice de cuadros}}
+\numberwithin{equation}{chapter}
+\let\cleardoublepage\clearpage
+\fancyfoot[R]{\scriptsize\sffamily\color{studiumInk}En revisión}
+\renewcommand{\chaptermark}[1]{\markboth{Capítulo \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\newcommand{\consejo}[2]{\begin{tcolorbox}[studiumcommon,colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,title={#1}]#2\end{tcolorbox}}
+\newcommand{\estado}{Edición íntegra de estudio. Pendiente de revisión experta independiente.}
+\newcommand{\portada}[3]{%
+\hypersetup{pageanchor=false}
+\begin{titlepage}\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay,x=1bp,y=-1bp]
+\begin{scope}[shift={(current page.north west)}]
+\clip (0,0) rectangle (595.276,841.89);
+\fill[white] (0,0) rectangle (595.276,841.89);
+% Hero fotografico preencuadrado en la reticula de la coleccion (mismo
+% borde superior y mismo bloque inferior que Teoria de Estructuras/Fluidos).
+\node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,89.5)
+  {\includegraphics[width=595.276bp,height=496bp]{assets/cover-hero.jpg}};
+\fill[studiumInk] (0,585.5) rectangle (595.276,841.89);
+% Cabecera editorial.
+% Logotipo auténtico de Studium: símbolo y letras extraídos sin redibujarlos
+% de framework/docs/assets/studium-logo-dark.png, adaptados a una firma horizontal.
+\node[anchor=north west,inner sep=0pt,outer sep=0pt] at (43,5)
+  {\includegraphics[width=185bp]{assets/studium-horizontal.png}};
+\fill[studiumCyan] (106,76) rectangle (132,78);
+\node[anchor=west,text=studiumInk,font=\sffamily\fontsize{8.2}{10}\selectfont,inner sep=0pt] at (140,79){BIBLIOTECA DE INGENIERÍA};
+% Bloque inferior: tipografia, blancos y posiciones de la coleccion.
+\node[anchor=west,text=studiumCyan,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,608){#1};
+\node[anchor=north west,text=white,text width=493pt,font=\rmfamily\bfseries\fontsize{26.5}{29.5}\selectfont,inner sep=0pt] at (51.223,627){#2};
+\node[anchor=north west,text=white!82!studiumInk,text width=493pt,font=\sffamily\fontsize{10}{13}\selectfont,inner sep=0pt] at (51.223,730){#3};
+\node[anchor=west,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,774){GRADO EN INGENIERÍA AEROESPACIAL};
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,789){Universidad de León};
+\draw[white!75!studiumInk,line width=.4pt] (51.223,801) -- (544.05,801);
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,822){2026};
+\node[anchor=east,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (544.05,822){Primera edición};
+\end{scope}\end{tikzpicture}\null
+\end{titlepage}\hypersetup{pageanchor=true}}
+
+\newcommand{\caso}[2]{\begin{studiumworked}{#1}#2\end{studiumworked}}
+\newcommand{\ilustra}[2]{\begin{figure}[htbp]\centering\includegraphics[width=.94\linewidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}}
+\newcommand{\fuentes}[1]{\par\medskip\noindent{\footnotesize\textbf{Fuentes y localizadores.} #1}\par}
+\newcommand{\apartado}[2]{\par\medskip\noindent\textbf{#1.} #2\par}
+\newcommand{\repaso}[2]{\par\medskip\noindent\textbf{Para comprobar la comprensión.} #1\par\noindent\textit{Respuesta razonada.} #2\par}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\SIu}[1]{\,\mathrm{#1}}
+\newcommand{\hipotesis}[1]{\caja{Hipótesis y dominio}{#1}}
+\newcommand{\verifica}[1]{\consejo{Comprobación y límites}{#1}}
+\newcommand{\errorcomun}[1]{\caja{Error que cambia el resultado}{#1}}

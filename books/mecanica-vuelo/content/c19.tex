@@ -1,0 +1,86 @@
+\chapter{Estabilidad estática longitudinal}\label{ch:long-static}
+\objetivos{Relacionar equilibrio y tendencia restauradora; derivar el punto neutro con contribución de cola; calcular margen estático y límites de mando.}
+
+\section{Perturbar una condición equilibrada}
+Un trim satisface $C_m=0$, pero esa igualdad no determina cómo cambia el momento si aumenta la incidencia. Con momento positivo de morro arriba, una perturbación $\Delta\alpha>0$ necesita un incremento de momento negativo para tender a reducirla. La condición estática local con mandos fijos es
+\begin{equation}
+C_{m\alpha}=\left.\frac{\partial C_m}{\partial\alpha}\right|_{\rm trim}<0.
+\end{equation}
+La derivada se evalúa fijando las variables declaradas: configuración, mando, Mach y otras condiciones del modelo. Si se mueve el elevador al perturbar, se estudia otro sistema. Una tendencia restauradora inicial no garantiza que la oscilación posterior se amortigüe; eso requiere dinámica y se trata como ampliación.
+
+\ilustra{cm-alpha}{Tres pendientes de momento alrededor de una zona de incidencia: estable, neutra e inestable estáticamente. El cruce con cero determina equilibrio; la pendiente determina la tendencia local con mandos fijos.}
+
+\section{Centro aerodinámico y centro de presiones}
+El centro aerodinámico es un punto respecto al cual el momento cambia poco con incidencia en un régimen aproximado. El centro de presiones es el punto de aplicación equivalente de la fuerza para anular un momento en la representación elegida; puede moverse fuertemente y volverse singular cuando la sustentación se anula. No deben confundirse ni trasladar al avión completo un centro aerodinámico de perfil sin revisar ala, fuselaje y cola.
+
+Para estabilidad se usan posiciones longitudinales adimensionales $h=x/\bar c$ medidas hacia atrás desde un origen fijo de referencia. Esta coordenada escalar aumenta hacia la cola y tiene sentido contrario al eje cuerpo $x_b$. Se declara por separado para evitar errores de signos al trasladar momentos.
+
+\section{Modelo de ala--cuerpo y cola}
+Se supone aerodinámica lineal, ángulos pequeños, mandos fijos y presión dinámica de cola $q_t=\eta_tq_\infty$. Sean $h_{ac}$ la posición del centro aerodinámico de ala--cuerpo y $h_t$ la del punto aerodinámico de cola. La sustentación de cola se aproxima por
+\begin{equation}
+C_{L,t}=a_t[(1-\varepsilon_\alpha)\alpha+i_t-\varepsilon_0+\tau_e\delta_e].
+\end{equation}
+Las incidencias se miden con el mismo datum; $\varepsilon_\alpha=\dd\varepsilon/\dd\alpha$ representa el gradiente de deflexión de estela. La eficiencia $\eta_t$ de presión dinámica no es la eficiencia de hélice ni el factor de Oswald.
+
+La sustentación total y el momento de cola son
+\begin{align}
+C_L&=C_{L,wb}+\eta_t\frac{S_t}{S}C_{L,t},\\
+C_{m,t}&=-\eta_t\frac{S_t}{S}(h_t-h)C_{L,t}.
+\end{align}
+Una fuerza ascendente aplicada detrás del centro de gravedad produce morro abajo: de ahí el signo negativo. El volumen de cola respecto al centro de gravedad es $V_H=S_t(h_t-h)/S$. Si cambia el centro de gravedad, cambia también ese brazo; no se lo mantiene fijo mientras se deriva una expresión exacta de punto neutro.
+
+\section{Derivación del punto neutro}
+Sea $a_w$ la pendiente de sustentación de ala--cuerpo y $C_{m\alpha,f}$ una contribución adicional de momento que se considera independiente de $h$ dentro del modelo. Definiendo
+\begin{equation}
+K_t=\eta_t\frac{S_t}{S}a_t(1-\varepsilon_\alpha),\qquad a=a_w+K_t,
+\end{equation}
+la derivada total es
+\begin{align}
+C_{m\alpha}&=a_w(h-h_{ac})-K_t(h_t-h)+C_{m\alpha,f}\\
+&=(a_w+K_t)h-a_wh_{ac}-K_th_t+C_{m\alpha,f}.
+\end{align}
+La condición neutra $C_{m\alpha}=0$ da
+\begin{equation}
+h_n=\frac{a_wh_{ac}+K_th_t-C_{m\alpha,f}}{a_w+K_t}.
+\label{eq:neutralpoint}
+\end{equation}
+Por tanto,
+\begin{equation}
+C_{m\alpha}=a(h-h_n)=-a\,SM,\qquad SM=h_n-h.
+\label{eq:staticmargin}
+\end{equation}
+Con $a>0$, margen estático positivo significa centro de gravedad por delante del punto neutro y estabilidad estática longitudinal con mando fijo en este modelo.
+
+\subsection{Aproximación de cola con sustentación pequeña}
+Si $K_t\ll a_w$, se puede aproximar $a\simeq a_w$. Una fórmula de volumen de cola suele surgir de esa simplificación. Debe revisarse si el brazo utilizado está medido desde el centro de gravedad o desde otro punto, y si el denominador es pendiente del ala o del avión completo. Mezclar ambos convenios puede producir diferencias grandes y doble contabilización de sustentación de cola.
+
+\caso{Ejemplo original: punto neutro}{Sean $a_w=5.0\SIu{rad^{-1}}$, $a_t=4.1\SIu{rad^{-1}}$, $S_t/S=0.19$, $\eta_t=0.92$, $\varepsilon_\alpha=0.34$, $h_{ac}=0.25$, $h_t=3.2$ y $C_{m\alpha,f}=0.10\SIu{rad^{-1}}$. Se calcula $K_t=0.4730\SIu{rad^{-1}}$, $a=5.4730\SIu{rad^{-1}}$ y $h_n\simeq0.4867$. Con $h=0.36$, $SM\simeq0.1267$ y $C_{m\alpha}\simeq-0.693\SIu{rad^{-1}}$. La comprobación independiente evalúa directamente las contribuciones ala, cola y fuselaje en la expresión de $C_{m\alpha}$. Los parámetros son ficticios.}
+
+\section{Equilibrio y elevador}
+En un modelo lineal,
+\begin{equation}
+C_m=C_{m0}+C_{m\alpha}\alpha+C_{m\delta_e}\delta_e.
+\end{equation}
+El mando de trim es
+\begin{equation}
+\delta_e=-\frac{C_{m0}+C_{m\alpha}\alpha}{C_{m\delta_e}},
+\end{equation}
+si $C_{m\delta_e}\neq0$. El valor $C_{m0}$ depende del datum de incidencia y de las contribuciones constantes; su signo por sí solo no determina estabilidad. Para un elevador convencional con deflexión positiva de borde de salida abajo suele obtenerse $C_{m\delta_e}<0$ dentro de este modelo, pero se comprobará el convenio de cada archivo o dato.
+
+El centro de gravedad demasiado adelantado puede exigir una fuerza de cola o mando que exceda límites. El demasiado retrasado reduce margen y puede requerir estabilización activa. La envolvente de centro de gravedad combina estabilidad y autoridad de control, además de otras restricciones; no se define sólo por $SM>0$.
+
+\section{Mando libre y efectos propulsivos}
+Con mando libre, el elevador responde a momentos de charnela, elasticidad y transmisión; el punto neutro puede cambiar. No se obtiene sustituyendo arbitrariamente una derivada de mando en la fórmula de mando fijo. Se necesita una relación adicional que determine $\delta_e(\alpha)$ y se calcula la derivada total.
+
+La propulsión puede modificar presión dinámica de cola, estela, fuerzas y momento directo. Un avión estable con motor al ralentí puede tener otra pendiente a potencia elevada. Los modelos de trim y estabilidad deben corresponder a la misma condición propulsiva. En una hélice, los efectos de estela pueden ser importantes aunque el empuje se represente como una fuerza longitudinal.
+
+\section{Cómo comprobar una derivada}
+Se perturba $\alpha$ alrededor del trim con incrementos positivos y negativos y se mantiene fijo lo que la derivada presupone. Se calcula $[C_m(\alpha+\epsilon)-C_m(\alpha-\epsilon)]/(2\epsilon)$ y se repite con varios $\epsilon$. Retramar el elevador en cada perturbación mantendría $C_m\simeq0$ y mediría una curva de mandos, no la derivada de estabilidad con mando fijo.
+
+\input{content/d19}
+
+\input{content/t19}
+
+\repaso{¿Por qué desplazar el centro de gravedad hacia atrás suele reducir estabilidad?}{Aumenta el brazo desestabilizador de sustentación de ala y reduce el brazo restaurador de cola. En el modelo lineal, $C_{m\alpha}=a(h-h_n)$ aumenta al aumentar $h$.}
+\resumen{La estabilidad estática depende de la pendiente del momento respecto a una perturbación definida. El punto neutro y el margen se derivan con contribuciones coherentes y brazos que cambian con el centro de gravedad. El equilibrio de mando y su autoridad deben comprobarse además de la pendiente.}
+\fuentes{How, MIT 16.333, lección 2, pp. internas 2--5 a 2--11, consultadas para cola, punto neutro y mando fijo. La derivación se reescribe con todas las definiciones y un caso original; no se atribuye el ejemplo a una aeronave real.}

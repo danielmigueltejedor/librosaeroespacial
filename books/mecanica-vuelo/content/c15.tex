@@ -1,0 +1,76 @@
+\chapter{Motores de hélice y modelos de potencia}\label{ch:props}
+\objetivos{Distinguir potencia al eje y potencia de empuje; construir mapas simplificados; reconocer singularidades del modelo a baja velocidad.}
+
+\section{La cadena de conversión}
+En una aeronave de hélice, el motor entrega par y potencia al eje; la hélice intercambia cantidad de movimiento con el aire y produce empuje. Se escriben
+\begin{equation}
+P_{\rm eje}=Q\Omega,\qquad P_T=TV=\eta_pP_{\rm eje}.
+\end{equation}
+El rendimiento $\eta_p$ depende de velocidad de avance, régimen de giro, geometría y paso, entre otros factores. Una hélice de paso variable puede mantener rendimiento elevado en un intervalo amplio, pero no convierte $\eta_p$ en constante universal.
+
+La potencia disponible para actuaciones debe identificarse: si una tabla da potencia al eje, la comparación con $DV$ requiere multiplicar por $\eta_p$. Si ya da potencia útil de empuje, no se vuelve a multiplicar por el rendimiento. La doble aplicación de eficiencia subestima la actuación; omitirla la sobreestima.
+
+\section{Motores alternativos y turbohélices}
+Para un motor alternativo aspirado se aproxima a veces $P_{\rm eje,\max}\propto\sigma^x$. La potencia disminuye con densidad, pero la ley real depende de mezcla, admisión, temperatura y límites. Un motor sobrealimentado puede mantener potencia hasta una altura crítica y perderla después. Un turbohélice puede estar limitado por temperatura, par o régimen en diferentes zonas del mapa.
+
+Un modelo docente por tramos puede ser
+\begin{equation}
+P_{\rm eje,\max}(h)=
+\begin{cases}P_0,&h\leq h_c,\\P_0[\sigma(h)/\sigma(h_c)]^x,&h>h_c.\end{cases}
+\end{equation}
+La continuidad no garantiza que sus derivadas sean suaves. Un optimizador debe permitir que el mejor punto esté en $h_c$ y no exigir una derivada cero a ambos lados.
+
+\section{Parámetros de hélice}
+Para diámetro $d$, régimen $n_r$ en revoluciones por segundo y densidad $\rho$,
+\begin{equation}
+J=\frac{V}{n_rd},\qquad C_T=\frac{T}{\rho n_r^2d^4},\qquad
+C_P=\frac{P_{\rm eje}}{\rho n_r^3d^5}.
+\end{equation}
+Aquí $C_P$ es un coeficiente adimensional de hélice; se escribe en mayúscula para distinguirlo del consumo específico $c_P$. Su cociente proporciona
+\begin{equation}
+\eta_p=\frac{JC_T}{C_P}.
+\end{equation}
+Las tablas de $C_T,C_P$ deben corresponder al mismo diámetro, régimen y paso. A medida que se acerca un límite de Mach en punta, las hipótesis de una tabla de baja velocidad pueden fallar.
+
+\section{Por qué no se usa $T=\eta_pP/V$ en reposo}
+Si se supone $\eta_p$ constante y se hace $V\to0$, el empuje calculado diverge. La divergencia es una señal de que el modelo no sirve en ese límite. En reposo $TV=0$ aunque el motor entregue potencia y la hélice acelere aire. La potencia se invierte en la estela y pérdidas; el rendimiento definido como $TV/P$ se anula.
+
+Para una carrera de despegue se puede usar un mapa de empuje frente a velocidad o un modelo de disco actuador con sus hipótesis. En esta edición, los problemas de rodadura que no modelan hélice utilizan una ley de empuje finita explícita. No se extrapola una potencia de crucero constante hasta velocidad cero.
+
+\ilustra{helice-eta}{Ejemplo sintético de rendimiento creciente con velocidad. Ilustra por qué una eficiencia constante sólo puede ser una aproximación de intervalo; no es un mapa de una hélice comercial.}
+
+\section{Consumo específico por potencia}
+Se define
+\begin{equation}
+c_P=\frac{\dot m_f}{P_{\rm eje}},\qquad
+\dot m=-c_PP_{\rm eje}=-\frac{c_P}{\eta_p}TV.
+\end{equation}
+En SI, $c_P$ se mide en $\mathrm{kg/J}$. Una cifra frecuente en ejercicios se da en $\mathrm{kg/kWh}$ o $\mathrm{g/kWh}$. La conversión contiene $3.6\times10^6\SIu J$ por kWh:
+\begin{equation}
+0.29\frac{\mathrm{kg}}{\mathrm{kWh}}
+=\frac{0.29}{3.6\times10^6}\frac{\mathrm{kg}}{\mathrm J}
+=8.0556\times10^{-8}\frac{\mathrm{kg}}{\mathrm J}.
+\end{equation}
+Con $P_{\rm eje}=180\SIu{kW}$, el gasto es $52.2\SIu{kg\,h^{-1}}$. El consumo referido a potencia de empuje sería $c_P/\eta_p$, no el mismo número.
+
+\section{Empuje residual de un turbohélice}
+Algunos modelos incorporan empuje del chorro además de la hélice. Entonces $T_{\rm total}=T_{\text{hélice}}+T_{\text{chorro}}$ y la potencia útil total es $(T_{\text{hélice}}+T_{\text{chorro}})V$. Si el combustible alimenta una planta integrada, no se suma dos veces el gasto. Un modelo equivalente de potencia total puede ser útil, pero debe declararse cómo se ha identificado y qué términos incluye.
+
+\section{Potencia necesaria y curvas de intersección}
+Para vuelo nivelado con polar parabólica,
+\begin{equation}
+P_n=DV=AV^3+B/V.
+\end{equation}
+El mínimo satisface $V^4=B/(3A)$. Si la potencia de empuje disponible es constante, las velocidades de equilibrio son raíces positivas de
+\begin{equation}
+AV^4-P_dV+B=0.
+\end{equation}
+La ecuación de cuarto grado no obliga a usar una fórmula explícita complicada. Es más robusto localizar intervalos separados por el mínimo de $P_n$ y aplicar un método de búsqueda de raíces con cotas. Las raíces se contrastan con pérdida y límites propulsivos.
+
+\ilustra{potencia}{Potencia de empuje necesaria y ejemplo de potencia disponible constante. La potencia al eje exigida sería la necesaria dividida por la eficiencia de hélice correspondiente a cada velocidad.}
+
+\input{content/t15}
+
+\repaso{¿Puede un avión de hélice tener empuje finito y potencia de empuje nula en reposo?}{Sí. $TV=0$ con $V=0$ aunque $T$ sea positivo. La potencia al eje no es nula: acelera aire en la estela y cubre pérdidas.}
+\resumen{Las actuaciones de hélice parten de potencia al eje, rendimiento y gasto por potencia. Los mapas y las conversiones se declaran antes de comparar con resistencia. El empuje estático requiere un modelo que permanezca finito en el reposo.}
+\fuentes{Guía ULE, actuaciones de aeronaves propulsadas por hélice. Deducciones dimensionales propias. JSBSim 1.3.3 se utiliza para distinguir tipos de propulsor y salidas; el modelo T-6 disponible no se presenta como mapa de potencia al eje de un PT6.}

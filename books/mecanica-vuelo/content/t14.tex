@@ -1,0 +1,71 @@
+\section{Taller resuelto: Radio mínimo sostenido con tres fronteras}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Busque por barrido el radio mínimo sostenido entre pérdida y TAS 180 m/s para masa 4500 kg, rho=1.0, S=30 m², polar 0.024+0.046CL², CLmax=1.6, carga estructural 3 y empuje 7200 N.}
+
+\apartado{2. Datos}{Barrido de 20001 velocidades; si n<=1 no existe viraje nivelado de radio finito.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Viraje coordinado nivelado en calma; TAS.}
+
+\apartado{5. Hipótesis físicas}{Empuje constante, polar fija, sin resistencia adicional de mandos ni límite de Mach.}
+
+\apartado{6. Modelo matemático}{Radio mínimo sostenido con tres fronteras}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}n_T=\sqrt{(T-AV^2)V^2/B}\end{equation}
+
+\begin{equation}n_L=\rho V^2SC_{Lmax}/(2W)\end{equation}
+
+\begin{equation}n_{max}(V)=\min(n_T,n_L,3)\end{equation}
+
+\begin{equation}R(V)=V^2/[g_0\sqrt{n_{max}^2-1}]\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se recorre sólo el intervalo de velocidad declarado.
+
+\item Para cada punto se toma el menor de los tres límites de carga.
+
+\item Se descartan puntos sin carga superior a uno y se minimiza el radio.
+
+\item Se revisa la frontera activa cerca del mínimo y se afina la rejilla si se requiere más precisión.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent TAS de rejilla óptima:\quad $58.18696160080154\simeq 58.18696\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Carga en el punto:\quad $1.841320600658072\simeq 1.841321\,$.\par
+
+\noindent Radio de rejilla mínimo:\quad $223.3005549791824\simeq 223.3006\,\mathrm m$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+TAS de rejilla óptima & $58.18696\,\mathrm{m\,s^{-1}}$\\
+
+Carga en el punto & $1.841321\,$\\
+
+Radio de rejilla mínimo & $223.3006\,\mathrm m$\\
+
+Límite motor en el punto & $1.841413\,$\\
+
+Límite sustentación en el punto & $1.841321\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El óptimo de rejilla puede estar junto a una intersección de límites; no debe presentarse como raíz suave universal.}
+
+\apartado{12. Comprobación independiente y alcance}{Refinar la rejilla y resolver las intersecciones de las fronteras próximas; comprobar D<=T, CL<=CLmax y n<=3.}
+
+\apartado{13. Limitaciones}{La resolución de velocidad limita la precisión del óptimo y no se oculta con muchas cifras impresas.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

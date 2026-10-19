@@ -1,0 +1,65 @@
+\section{Construcción explícita del modelo longitudinal}
+Se adoptan ejes de estabilidad alineados con la velocidad del trim, vuelo simétrico a velocidad $U_0$ y cabeceo $\theta_0$. Las perturbaciones son $(u,w,q,\theta)$. Las fuerzas no gravitatorias se linealizan como $\Delta X=X_uu+X_ww+X_qq+\cdots$ y análogamente Z y M. Las derivadas dimensionales incluyen su condición de evaluación.
+
+Si se desprecia $X_q$ para esta forma reducida y se conservan derivadas de aceleración $Z_{\dot w}$ y $M_{\dot w}$,
+\begin{align}
+m\dot u&=X_uu+X_ww-mg_0\cos\theta_0\,\theta+\Delta X_c,\\
+(m-Z_{\dot w})\dot w&=Z_uu+Z_ww+(Z_q+mU_0)q-mg_0\sin\theta_0\,\theta+\Delta Z_c,\\
+I_{yy}\dot q-M_{\dot w}\dot w&=M_uu+M_ww+M_qq+\Delta M_c,\\
+\dot\theta&=q.
+\end{align}
+La forma descriptor utiliza
+\begin{equation}
+E_d=\begin{bmatrix}m&0&0&0\\0&m-Z_{\dot w}&0&0\\0&-M_{\dot w}&I_{yy}&0\\0&0&0&1\end{bmatrix}.
+\end{equation}
+El coeficiente $m-Z_{\dot w}$ no es una masa añadida arbitraria: reúne una dependencia de fuerza con aceleración del estado. Su signo y magnitud proceden del modelo aerodinámico. Si la matriz descriptor es singular o mal condicionada, el paso a forma estándar debe revisarse en lugar de dividir sin diagnóstico.
+
+\subsection{Unidades de derivadas}
+$X_u$ tiene unidad N/(m/s), $M_q$ tiene N m/(rad/s) y $Z_{\dot w}$ tiene kg al tratar radianes como adimensionales. Una derivada de coeficiente respecto a $q\bar c/(2V)$ se convierte en $M_q=q_\infty S\bar c\,C_{mq}\bar c/(2V)$. Si se olvida el segundo factor de cuerda, la dimensión del momento derivado es incorrecta.
+
+La relación $\alpha\simeq w/U_0$ permite convertir $Z_\alpha$ en $Z_w\simeq Z_\alpha/U_0$ bajo el trim elegido. Derivar $q_\infty$ respecto a u también aporta términos: una derivada de fuerza no es siempre sólo $qS$ por la derivada del coeficiente. La regla de la cadena debe aplicarse a toda la fuerza.
+
+\section{Una reducción de periodo corto}
+Si u cambia poco en la escala rápida, se conservan principalmente $\alpha\simeq w/U_0$ y q. En una forma genérica,
+\begin{equation}
+\begin{bmatrix}\dot\alpha\\\dot q\end{bmatrix}
+=\begin{bmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{bmatrix}
+\begin{bmatrix}\alpha\\q\end{bmatrix}.
+\end{equation}
+Su polinomio es $\lambda^2-\operatorname{tr}(A_{sp})\lambda+\det(A_{sp})=0$. Para estabilidad asintótica de un sistema real de segundo orden, traza negativa y determinante positivo son condiciones necesarias y suficientes. La presencia de oscilación requiere además $\operatorname{tr}(A_{sp})^2<4\det(A_{sp})$.
+
+Un $C_{m\alpha}$ negativo suele contribuir a rigidez restauradora, pero $a_{21}$ incluye normalizaciones y posibles derivadas de aceleración. La traza contiene amortiguamientos; por ello la estabilidad estática por sí sola no fija el signo de las partes reales. La reducción debe compararse con el sistema de cuatro estados para verificar la separación de escalas.
+
+\section{Derivación energética de la escala de fugoide}
+Supóngase una perturbación lenta en la que se conserva aproximadamente energía específica $V^2/2+g_0h$ y CL. Al linealizar alrededor de $U_0,h_0$,
+\begin{equation}
+U_0u+g_0\Delta h\simeq0,\qquad u\simeq-g_0\Delta h/U_0.
+\end{equation}
+La variación de sustentación por velocidad es $\Delta L\simeq\rho SC_LU_0u$. La aceleración vertical aproximada es $m\Delta\ddot h=\Delta L$. Con $\rho SC_LU_0^2/2=mg_0$ se obtiene
+\begin{equation}
+\Delta\ddot h+\frac{2g_0^2}{U_0^2}\Delta h\simeq0.
+\end{equation}
+La frecuencia $\sqrt2g_0/U_0$ es una escala, no una predicción completa: se omitieron resistencia, consumo, variación de CL y control. El modelo no predice amortiguamiento porque se supuso conservación de energía. Incorporarlo exige recuperar fuerzas disipativas y acoplamientos.
+
+\section{Modelo lateral con producto de inercia}
+Para perturbaciones $(v,p,r,\phi)$ en vuelo simétrico de cabeceo $\theta_0$,
+\begin{align}
+m\dot v&=Y_vv+Y_pp+(Y_r-mU_0)r+mg_0\cos\theta_0\phi+\Delta Y_c,\\
+I_{xx}\dot p-I_{xz}\dot r&=L_vv+L_pp+L_rr+\Delta L_c,\\
+-I_{xz}\dot p+I_{zz}\dot r&=N_vv+N_pp+N_rr+\Delta N_c,\\
+\dot\phi&=p+r\tan\theta_0.
+\end{align}
+Se ha linealizado alrededor de tasas de trim nulas; en un trim de viraje aparecen términos adicionales. La ecuación lateral conserva $-U_0r$ por la aceleración de transporte. El bloque de inercias se resuelve antes de ensamblar A. Copiar derivadas $L_p/I_{xx}$ y $N_r/I_{zz}$ como si no hubiera producto de inercia elimina un acoplamiento real del modelo.
+
+\subsection{Amortiguamiento de alabeo como límite}
+Si v y r varían poco y se desprecia Ixz, $\dot p\simeq(L_p/I_{xx})p$. Con $L_p<0$, la tasa decae con constante temporal $-I_{xx}/L_p$. Esta aproximación explica una raíz real rápida. No describe el ángulo final de alabeo sin integrar $\dot\phi=p$ ni incluye el modo espiral lento.
+
+\section{Autovectores y observación de modos}
+Los autovalores indican tasas y frecuencias; los autovectores indican combinaciones de estados que participan. Un modo puede ser poco visible en una variable y evidente en otra. Además, la amplitud observada depende de la proyección de la perturbación inicial sobre los modos y de las salidas medidas. No encontrar una oscilación en velocidad no demuestra ausencia del periodo corto si éste aparece principalmente en incidencia y q.
+
+Los autovectores cambian con el escalado de estados. Para comparar participación se normalizan con escalas físicas o se interpretan relaciones concretas y fase. Una tabla de magnitudes sin unidades puede dar una impresión engañosa de qué variable domina.
+
+\section{Límite de validez de una linealización}
+La aproximación descarta términos de segundo orden. Para comprobarla se compara con el sistema no lineal a amplitudes decrecientes. Si se reduce la perturbación a la mitad, una discrepancia dominada por términos cuadráticos debería disminuir aproximadamente más deprisa que la propia perturbación, antes de que dominen redondeo y tolerancias. Cerca de una discontinuidad de tabla, pérdida, saturación o singularidad, puede no existir una región lineal útil con el paso elegido.
+
+La respuesta del sistema con piloto automático se interpreta con estados de actuadores e integradores del control. Una matriz de avión libre no predice exactamente esa trayectoria cerrada. En el experimento del 747 se utiliza control docente de seguimiento; por ello no se infiere estabilidad libre de la aeronave a partir de que conserve aproximadamente la altura.

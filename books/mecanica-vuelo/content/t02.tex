@@ -1,0 +1,67 @@
+\section{Taller resuelto: Una transformación completa de ida y vuelta}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Construya Cbn para alabeo 18 grados, cabeceo 9 y guiñada 32. Transforme el vector NED (96,8,-5) m/s a cuerpo, vuelva a NED y compruebe norma y determinante.}
+
+\apartado{2. Datos}{Vector aéreo y ángulos Euler 3--2--1; no hay traslación del origen porque se transforma una velocidad.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Matriz pasiva NED a cuerpo, vectores columna.}
+
+\apartado{5. Hipótesis físicas}{Horizonte fijo local y ángulos fuera de singularidad de Euler.}
+
+\apartado{6. Modelo matemático}{Una transformación completa de ida y vuelta}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}C_{bn}=T_1(\phi)T_2(\theta)T_3(\psi)\end{equation}
+
+\begin{equation}\vect v^b=C_{bn}\vect v^n,\quad\vect v^n=C_{bn}^T\vect v^b\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se forman las tres matrices elementales con los signos pasivos.
+
+\item Se multiplica en orden, empezando por guiñada a la derecha.
+
+\item Se verifica la inversa por transposición y se compara con las componentes iniciales.
+
+\item La norma se obtiene antes y después de la rotación y el determinante se calcula independientemente.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent u cuerpo:\quad $85.37962577153047\simeq 85.37963\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent v cuerpo:\quad $-39.31561924237238\simeq -39.31562\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent w cuerpo:\quad $21.67029272303927\simeq 21.67029\,\mathrm{m\,s^{-1}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+u cuerpo & $85.37963\,\mathrm{m\,s^{-1}}$\\
+
+v cuerpo & $-39.31562\,\mathrm{m\,s^{-1}}$\\
+
+w cuerpo & $21.67029\,\mathrm{m\,s^{-1}}$\\
+
+Norma & $96.46243\,\mathrm{m\,s^{-1}}$\\
+
+Determinante & $1\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{La misma velocidad tiene componentes diferentes; su módulo y el vector físico se conservan.}
+
+\apartado{12. Comprobación independiente y alcance}{La multiplicación numérica se reproduce en el programa y se comprueba C transpuesta por C e ida y vuelta.}
+
+\apartado{13. Limitaciones}{Una matriz ortogonal con otro orden de ángulos podría conservar norma y aun representar una actitud equivocada; la prueba geométrica de secuencia sigue siendo necesaria.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

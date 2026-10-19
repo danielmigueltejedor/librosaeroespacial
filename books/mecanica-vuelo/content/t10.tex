@@ -1,0 +1,63 @@
+\section{Taller resuelto: Consumo efectivo de motores distintos}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Dos motores entregan 24 y 19 kN con consumos específicos 16 y 19 g/(kN s). Calcule gasto total, cT efectivo y combustible en 32 minutos. Compare con promediar sin ponderar.}
+
+\apartado{2. Datos}{T1=24000 N, T2=19000 N; consumos másicos referidos a empuje.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Empujes paralelos; suma escalar longitudinal.}
+
+\apartado{5. Hipótesis físicas}{Ambos puntos de funcionamiento permanecen constantes durante el intervalo.}
+
+\apartado{6. Modelo matemático}{Consumo efectivo de motores distintos}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}\dot m_f=c_{T1}T_1+c_{T2}T_2\end{equation}
+
+\begin{equation}c_{T,ef}=\dot m_f/(T_1+T_2)\end{equation}
+
+\begin{equation}\Delta m=\dot m_ft\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se calcula el gasto de cada motor con su propio consumo.
+
+\item Se suman gastos y empujes y se obtiene la razón efectiva.
+
+\item La media aritmética sólo sería equivalente si los empujes fuesen iguales.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Gasto total:\quad $1.9 \cdot 10^{-5} \cdot 19000 + 1.6 \cdot 10^{-5} \cdot 24000\simeq 0.745\,\mathrm{kg\,s^{-1}}$.\par
+
+\noindent Consumo efectivo:\quad $\frac{1.9 \cdot 10^{-5} \cdot 19000 + 1.6 \cdot 10^{-5} \cdot 24000}{19000 + 24000}\simeq 1.732558\times10^{-5}\,\mathrm{kg\,N^{-1}\,s^{-1}}$.\par
+
+\noindent Combustible:\quad $\left(1.9 \cdot 10^{-5} \cdot 19000 + 1.6 \cdot 10^{-5} \cdot 24000\right) 32 \cdot 60\simeq 1430.4\,\mathrm{kg}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Gasto total & $0.745\,\mathrm{kg\,s^{-1}}$\\
+
+Consumo efectivo & $1.732558\times10^{-5}\,\mathrm{kg\,N^{-1}\,s^{-1}}$\\
+
+Combustible & $1430.4\,\mathrm{kg}$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El consumo efectivo es una media ponderada por empuje.}
+
+\apartado{12. Comprobación independiente y alcance}{Calcular en gramos por segundo y comprobar que multiplicar cT efectivo por empuje total recupera el mismo gasto.}
+
+\apartado{13. Limitaciones}{No incluye asimetría de momentos ni resistencia de compensación de mandos.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,117 @@
+\chapter{Alcance, autonomía y masa variable}\label{ch:breguet}
+\objetivos{Derivar las integrales de consumo; asociar cada expresión de Breguet a una ley de vuelo; optimizar correctamente alcance y tiempo; actualizar una misión por fases.}
+
+\section{La ecuación que debe preceder a cualquier Breguet}
+En crucero horizontal cuasiestacionario, $T=D$ y
+\begin{equation}
+\dot m=-c_TD,\qquad \dot W=-g_0c_TD.
+\end{equation}
+Entre pesos inicial y final $W_i>W_f>0$, las integrales generales son
+\begin{equation}
+E=\int_{W_f}^{W_i}\frac{\dd W}{g_0c_TD},\qquad
+R_a=\int_{W_f}^{W_i}\frac{V\,\dd W}{g_0c_TD}.
+\label{eq:jet-general}
+\end{equation}
+En ellas $V$, $c_T$, $D$ y la densidad deben evaluarse según la ley de vuelo. El logaritmo característico no aparece por el nombre Breguet; aparece cuando el denominador es proporcional al peso y las demás magnitudes necesarias pueden sacarse de la integral.
+
+\section{Caso I: velocidad y eficiencia constantes}
+Si $E_a=L/D$ es constante, $D=W/E_a$. Si además $c_T$ y $V$ son constantes,
+\begin{equation}
+E=\frac{E_a}{g_0c_T}\ln\frac{W_i}{W_f},\qquad
+R_a=\frac{VE_a}{g_0c_T}\ln\frac{W_i}{W_f}.
+\label{eq:breguet-log}
+\end{equation}
+La eficiencia constante se obtiene con $C_L$ constante si la polar permanece igual. Con $V$ y $C_L$ constantes, la condición $L=W$ exige $\rho\propto W$. Al consumirse combustible, la densidad debe bajar: aparece un crucero con ascenso progresivo, siempre que la atmósfera y la envolvente permitan seguirlo. En ese ascenso, $T=D$ deja de ser exacto: la expresión logarítmica usual desprecia el empuje adicional de trayectoria. La corrección se deriva más adelante en este capítulo. No es una fórmula exacta para conservar simultáneamente altitud, TAS y $C_L$ en una atmósfera fija.
+
+Puede usarse como aproximación de un intervalo corto a altitud fija si la variación de $L/D$ es pequeña; entonces se debe declarar el error o el criterio de aproximación. Es preferible utilizar la integral correcta si ya se dispone de una polar.
+
+\section{Caso II: altitud y $C_L$ constantes}
+Con densidad constante y $C_L$ fijo,
+\begin{equation}
+V(W)=\sqrt{\frac{2W}{\rho SC_L}},\qquad D(W)=W\frac{C_D}{C_L}.
+\end{equation}
+El tiempo conserva la forma logarítmica, pero el alcance no:
+\begin{align}
+E&=\frac{C_L}{g_0c_TC_D}\ln\frac{W_i}{W_f},\\
+R_a&=\frac{2}{g_0c_T}\sqrt{\frac{2}{\rho S}}
+\frac{\sqrt{C_L}}{C_D}(\sqrt{W_i}-\sqrt{W_f}).
+\label{eq:jet-CL}
+\end{align}
+En términos de masa, se sustituyen $W_i=g_0m_i$ y $W_f=g_0m_f$. La velocidad final es $V_f=V_i\sqrt{m_f/m_i}$. La misión tarda más que una división por la velocidad inicial, porque el avión se ralentiza durante el consumo.
+
+\subsection{Óptimos diferentes}
+Si $c_T$ es constante y no existen restricciones adicionales, maximizar autonomía exige maximizar $C_L/C_D$:
+\begin{equation}
+C_{L,E}=\sqrt{C_{D0}/k}.
+\end{equation}
+Para maximizar alcance a densidad y $C_L$ constantes se maximiza $\sqrt{C_L}/C_D$. Al derivar,
+\begin{equation}
+\frac{\dd}{\dd C_L}\left(\frac{\sqrt{C_L}}{C_{D0}+kC_L^2}\right)=0
+\quad\Longrightarrow\quad C_{L,R}=\sqrt{\frac{C_{D0}}{3k}}.
+\end{equation}
+La velocidad de máximo alcance específico es $3^{1/4}$ veces la de mínima resistencia para el mismo peso y densidad. La condición puede cambiar al incluir consumo específico dependiente de Mach o gases, límite de Mach, variación de polar o restricciones operativas.
+
+\section{Caso III: altitud y TAS constantes}
+Ahora $C_L=W/(q_\infty S)$ cambia con el peso. Conviene escribir
+\begin{equation}
+D(W)=A_V+B_VW^2,\quad
+A_V=\tfrac12\rho V^2SC_{D0},\quad B_V=\frac{2k}{\rho V^2S}.
+\end{equation}
+$A_V$ es una fuerza y $B_V$ tiene unidad $\mathrm{N^{-1}}$. Para $c_T$ constante,
+\begin{equation}
+E=\frac{1}{g_0c_T\sqrt{A_VB_V}}
+\left[\arctan\!\left(W_i\sqrt{\frac{B_V}{A_V}}\right)
+-\arctan\!\left(W_f\sqrt{\frac{B_V}{A_V}}\right)\right],
+\label{eq:jet-arctan}
+\end{equation}
+y $R_a=VE$. La raíz $W\sqrt{B_V/A_V}$ es adimensional. La derivada de la primitiva recupera $1/[g_0c_T(A_V+B_VW^2)]$; esta comprobación se ejecuta simbólicamente en el proyecto.
+
+\subsection{Inversión para encontrar combustible}
+Si se prescribe tiempo $E$, sea $\Omega=g_0c_T\sqrt{A_VB_V}E$. Entonces
+\begin{equation}
+W_f=\sqrt{\frac{A_V}{B_V}}
+\tan\!\left[\arctan\!\left(W_i\sqrt{\frac{B_V}{A_V}}\right)-\Omega\right].
+\end{equation}
+La solución debe conservar $W_f$ por encima del peso seco y las reservas prescritas. Una tangente negativa o una rama que atraviese una singularidad no se interpreta como masa física. Para un alcance prescrito se usa $E=R_a/V$ sólo si TAS y ausencia de viento cumplen lo declarado.
+
+\section{La ley de empuje constante}
+Si $T=T_c$ y $c_T$ es constante, el gasto $c_TT_c$ es constante. La masa decrece linealmente:
+\begin{equation}
+m(t)=m_i-c_TT_ct.
+\end{equation}
+La velocidad debe satisfacer en cada instante $D(V,W)=T_c$. Al disminuir peso, las dos ramas de equilibrio cambian. El alcance se obtiene integrando la velocidad de la rama elegida. Mantener palanca fija no es necesariamente mantener empuje fijo; esta ley describe un modelo o un control que realmente conserve $T_c$.
+
+El dominio termina cuando se alcanza la reserva, un límite de velocidad o una condición de trim. Un cálculo que consume todo el tanque antes del final de una primera fase no permite continuar una segunda fase propulsada con masa inferior a la seca.
+
+\ilustra{leyes-pilotaje}{Evolución de TAS normalizada con masa para dos leyes de vuelo a densidad fija. Conservar $C_L$ exige reducir velocidad; conservar TAS exige reducir $C_L$.}
+
+\section{Altitud óptima: no hay una respuesta universal}
+En el caso de densidad y $C_L$ constantes, el alcance contiene $\rho^{-1/2}/c_T$. Si se postula $c_T=c_{T0}\sigma^y$, el factor ambiental es proporcional a $\sigma^{-(1/2+y)}$. Esta tendencia sugiere subir cuando $y>-1/2$, pero sólo hasta que empuje, Mach, techo, polar, buffet o restricciones impidan mantener la condición. La autonomía a $C_L$ constante depende de $1/c_T$, sin el mismo factor de velocidad.
+
+Un óptimo sin restricciones puede quedar en una frontera no física. No se deduce ``siempre conviene la máxima altura'' a partir de una sola dependencia. En una misión completa el ascenso consume tiempo y combustible; el beneficio de crucero debe compensarlo.
+
+\section{Viento y alcance terrestre}
+Con viento uniforme de cola $U$ alineado con la ruta,
+\begin{equation}
+R_g=R_a+UE.
+\end{equation}
+La autonomía del modelo de consumo no cambia por una traslación uniforme de la masa de aire si se mantiene la misma ley aérea. El combustible para una distancia terrestre sí cambia. Con $C_L$ constante, $V$ varía, así que no debe sustituirse la velocidad por $V_i+U$ en toda una fórmula derivada para otra ley.
+
+Con viento cruzado se integra el avance proyectado manteniendo la ruta deseada. Si $U_E$ es constante, la componente aérea útil vale $\sqrt{V(t)^2-U_E^2}$ mientras sea real. Una TAS decreciente puede hacer inviable la corrección de deriva al final aunque fuera posible al principio.
+
+\section{Una misión por fases}
+Cada fase recibe la masa final y posición final de la anterior. Una tabla mínima registra $m_i,m_f,t_i,t_f,h_i,h_f,R$ y modelo de consumo. Si se descarga carga de pago, se registra como evento de masa distinto del combustible. Si se vuelve sin repostar, el combustible de retorno debe estar a bordo en la salida; no se calcula el viaje de ida con una masa que omite el combustible necesario para volver.
+
+Para dimensionar combustible con peso seco y ruta prescritos, la masa inicial es una incógnita que también aumenta la resistencia. Se resuelve una ecuación de cierre $m_i=m_{\rm seco}+m_{\rm combustible}(m_i)+m_{\rm reserva}$. Una iteración que no converge o viola capacidad de tanque indica un diseño o misión inviables bajo esas hipótesis, no un motivo para fijar masa constante.
+
+\caso{Ejemplo original y comprobación por ODE}{Se emplea $m_i=4.800\SIu{kg}$, $m_f=3.900\SIu{kg}$, $S=28\SIu{m^2}$, polar $0.024+0.046C_L^2$, $h=4.500\SIu m$ ISA, $V=105\SIu{m\,s^{-1}}$ y $c_T=1.65\times10^{-5}\SIu{kg/(N\,s)}$. La ecuación~\eqref{eq:jet-arctan} se compara con integrar $\dot m=-c_TD(V,m)$ y $\dot x=V$ hasta el evento $m=3.900\SIu{kg}$. Se repite con pasos máximos de 300, 120 y 30 s. Las tres comparaciones pasan un error relativo de tiempo de $2\times10^{-7}$. No se compara con una ecuación logarítmica de hipótesis diferentes.}
+
+\ilustra{jet-consumo}{Alcance calculado al variar combustible consumido: una ley conserva $C_L$ de máximo alcance y otra conserva TAS de $105\SIu{m\,s^{-1}}$. Ambas usan masa variable y la misma polar docente.}
+
+\input{content/d12}
+
+\input{content/t12}
+
+\repaso{¿Es correcto usar el logaritmo de Breguet con la velocidad inicial para un crucero a altitud y $C_L$ constantes?}{La fórmula temporal logarítmica sí corresponde a esas hipótesis si $c_T$ y polar son constantes. El alcance exige integrar $V\propto\sqrt W$ y contiene una diferencia de raíces. Usar $V_i$ constante sobreestima el alcance de esa ley.}
+\resumen{La ley de vuelo determina qué integral se resuelve. A altitud fija, $C_L$ constante conduce a raíces en alcance; TAS constante conduce a arcotangentes. Alcance y autonomía tienen óptimos distintos para reactores, y una misión exige actualizar masa y restricciones en cada fase.}
+\fuentes{Guía ULE, actuaciones integrales de aerorreactores. Las integrales se derivan explícitamente desde gasto másico y polar, y se contrastan mediante SymPy y SciPy. Los textos especializados citados en la bibliografía recomendada no se presentan como secciones consultadas para estas deducciones.}

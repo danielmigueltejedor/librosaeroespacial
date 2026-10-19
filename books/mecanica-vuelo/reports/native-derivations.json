@@ -1,0 +1,1416 @@
+[
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0001",
+        "section": "c04",
+        "name": "Resistencia nivelada",
+        "equation": "D=\\frac12\\rho SC_{D0}V^2+\\frac{2kW^2}{\\rho SV^2}",
+        "status": "recorded",
+        "assumptions": [
+          "L=W; polar parabólica; rho y parámetros definidos."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "D=\\frac12\\rho SC_{D0}V^2+\\frac{2kW^2}{\\rho SV^2}"
+        ],
+        "symbolic": "rho*S*CD0*V**2/2+2*k*W**2/(rho*S*V**2)",
+        "applicability": [
+          "L=W; polar parabólica; rho y parámetros definidos."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0004",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "rho": {
+            "meaning": "Magnitud rho definida en el capítulo correspondiente.",
+            "units": "kg/m^3"
+          },
+          "S": {
+            "meaning": "Magnitud S definida en el capítulo correspondiente.",
+            "units": "m^2"
+          },
+          "CD0": {
+            "meaning": "Magnitud CD0 definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "k": {
+            "meaning": "Magnitud k definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "W": {
+            "meaning": "Magnitud W definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0001",
+        "section": "c04",
+        "name": "Resistencia nivelada",
+        "equation": "D=\\frac12\\rho SC_{D0}V^2+\\frac{2kW^2}{\\rho SV^2}",
+        "status": "recorded",
+        "assumptions": [
+          "L=W; polar parabólica; rho y parámetros definidos."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "D=\\frac12\\rho SC_{D0}V^2+\\frac{2kW^2}{\\rho SV^2}"
+        ],
+        "symbolic": "rho*S*CD0*V**2/2+2*k*W**2/(rho*S*V**2)",
+        "applicability": [
+          "L=W; polar parabólica; rho y parámetros definidos."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0004",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "rho": {
+            "meaning": "Magnitud rho definida en el capítulo correspondiente.",
+            "units": "kg/m^3"
+          },
+          "S": {
+            "meaning": "Magnitud S definida en el capítulo correspondiente.",
+            "units": "m^2"
+          },
+          "CD0": {
+            "meaning": "Magnitud CD0 definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "k": {
+            "meaning": "Magnitud k definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "W": {
+            "meaning": "Magnitud W definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^1*[mass]^1*[time]^-2, matching N",
+              "inputs": {
+                "expression": "rho*S*CD0*V**2/2+2*k*W**2/(rho*S*V**2)",
+                "symbol_units": {
+                  "rho": "kg/m^3",
+                  "S": "m^2",
+                  "CD0": "1",
+                  "V": "m/s",
+                  "k": "1",
+                  "W": "N"
+                },
+                "expected_unit": "N"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0002",
+        "section": "c04",
+        "name": "Potencia de empuje",
+        "equation": "P=DV",
+        "status": "recorded",
+        "assumptions": [
+          "Empuje o resistencia paralelos a velocidad aérea."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "P=DV"
+        ],
+        "symbolic": "D*V",
+        "applicability": [
+          "Empuje o resistencia paralelos a velocidad aérea."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0004",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "D": {
+            "meaning": "Magnitud D definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0002",
+        "section": "c04",
+        "name": "Potencia de empuje",
+        "equation": "P=DV",
+        "status": "recorded",
+        "assumptions": [
+          "Empuje o resistencia paralelos a velocidad aérea."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "P=DV"
+        ],
+        "symbolic": "D*V",
+        "applicability": [
+          "Empuje o resistencia paralelos a velocidad aérea."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0004",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "D": {
+            "meaning": "Magnitud D definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^2*[mass]^1*[time]^-3, matching W",
+              "inputs": {
+                "expression": "D*V",
+                "symbol_units": {
+                  "D": "N",
+                  "V": "m/s"
+                },
+                "expected_unit": "W"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0003",
+        "section": "c10",
+        "name": "Gasto másico de reactor",
+        "equation": "\\dot m_f=c_TT",
+        "status": "recorded",
+        "assumptions": [
+          "cT referido a masa por empuje y tiempo."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "\\dot m_f=c_TT"
+        ],
+        "symbolic": "cT*T",
+        "applicability": [
+          "cT referido a masa por empuje y tiempo."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "cT": {
+            "meaning": "Magnitud cT definida en el capítulo correspondiente.",
+            "units": "kg/(N*s)"
+          },
+          "T": {
+            "meaning": "Magnitud T definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0003",
+        "section": "c10",
+        "name": "Gasto másico de reactor",
+        "equation": "\\dot m_f=c_TT",
+        "status": "recorded",
+        "assumptions": [
+          "cT referido a masa por empuje y tiempo."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "\\dot m_f=c_TT"
+        ],
+        "symbolic": "cT*T",
+        "applicability": [
+          "cT referido a masa por empuje y tiempo."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "cT": {
+            "meaning": "Magnitud cT definida en el capítulo correspondiente.",
+            "units": "kg/(N*s)"
+          },
+          "T": {
+            "meaning": "Magnitud T definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [mass]^1*[time]^-1, matching kg/s",
+              "inputs": {
+                "expression": "cT*T",
+                "symbol_units": {
+                  "cT": "kg/(N*s)",
+                  "T": "N"
+                },
+                "expected_unit": "kg/s"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0004",
+        "section": "c15",
+        "name": "Gasto másico por potencia",
+        "equation": "\\dot m_f=c_PP_{eje}",
+        "status": "recorded",
+        "assumptions": [
+          "cP referido a potencia al eje."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "\\dot m_f=c_PP_{eje}"
+        ],
+        "symbolic": "cP*P",
+        "applicability": [
+          "cP referido a potencia al eje."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "cP": {
+            "meaning": "Magnitud cP definida en el capítulo correspondiente.",
+            "units": "kg/J"
+          },
+          "P": {
+            "meaning": "Magnitud P definida en el capítulo correspondiente.",
+            "units": "W"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0004",
+        "section": "c15",
+        "name": "Gasto másico por potencia",
+        "equation": "\\dot m_f=c_PP_{eje}",
+        "status": "recorded",
+        "assumptions": [
+          "cP referido a potencia al eje."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "\\dot m_f=c_PP_{eje}"
+        ],
+        "symbolic": "cP*P",
+        "applicability": [
+          "cP referido a potencia al eje."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "cP": {
+            "meaning": "Magnitud cP definida en el capítulo correspondiente.",
+            "units": "kg/J"
+          },
+          "P": {
+            "meaning": "Magnitud P definida en el capítulo correspondiente.",
+            "units": "W"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [mass]^1*[time]^-1, matching kg/s",
+              "inputs": {
+                "expression": "cP*P",
+                "symbol_units": {
+                  "cP": "kg/J",
+                  "P": "W"
+                },
+                "expected_unit": "kg/s"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0005",
+        "section": "c12",
+        "name": "Escala temporal de Breguet",
+        "equation": "E=\\frac{C_L}{g_0c_TC_D}\\ln(W_i/W_f)",
+        "status": "recorded",
+        "assumptions": [
+          "CL, polar y consumo constantes; Wi>Wf>0; T=D."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "E=\\frac{C_L}{g_0c_TC_D}\\ln(W_i/W_f)"
+        ],
+        "symbolic": "CL/(g*cT*CD)*log(Wi/Wf)",
+        "applicability": [
+          "CL, polar y consumo constantes; Wi>Wf>0; T=D."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "CL": {
+            "meaning": "Magnitud CL definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CD": {
+            "meaning": "Magnitud CD definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "cT": {
+            "meaning": "Magnitud cT definida en el capítulo correspondiente.",
+            "units": "kg/(N*s)"
+          },
+          "Wi": {
+            "meaning": "Magnitud Wi definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "Wf": {
+            "meaning": "Magnitud Wf definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0005",
+        "section": "c12",
+        "name": "Escala temporal de Breguet",
+        "equation": "E=\\frac{C_L}{g_0c_TC_D}\\ln(W_i/W_f)",
+        "status": "recorded",
+        "assumptions": [
+          "CL, polar y consumo constantes; Wi>Wf>0; T=D."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "E=\\frac{C_L}{g_0c_TC_D}\\ln(W_i/W_f)"
+        ],
+        "symbolic": "CL/(g*cT*CD)*log(Wi/Wf)",
+        "applicability": [
+          "CL, polar y consumo constantes; Wi>Wf>0; T=D."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "CL": {
+            "meaning": "Magnitud CL definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CD": {
+            "meaning": "Magnitud CD definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "cT": {
+            "meaning": "Magnitud cT definida en el capítulo correspondiente.",
+            "units": "kg/(N*s)"
+          },
+          "Wi": {
+            "meaning": "Magnitud Wi definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "Wf": {
+            "meaning": "Magnitud Wf definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [time]^1, matching s",
+              "inputs": {
+                "expression": "CL/(g*cT*CD)*log(Wi/Wf)",
+                "symbol_units": {
+                  "CL": "1",
+                  "CD": "1",
+                  "g": "m/s^2",
+                  "cT": "kg/(N*s)",
+                  "Wi": "N",
+                  "Wf": "N"
+                },
+                "expected_unit": "s"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0006",
+        "section": "c16",
+        "name": "Alcance ideal de hélice",
+        "equation": "R=\\frac{\\eta_pC_L}{g_0c_PC_D}\\ln(W_i/W_f)",
+        "status": "recorded",
+        "assumptions": [
+          "CL, eta y cP constantes; vuelo horizontal y Wi>Wf>0."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "R=\\frac{\\eta_pC_L}{g_0c_PC_D}\\ln(W_i/W_f)"
+        ],
+        "symbolic": "eta*CL/(g*cP*CD)*log(Wi/Wf)",
+        "applicability": [
+          "CL, eta y cP constantes; vuelo horizontal y Wi>Wf>0."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "eta": {
+            "meaning": "Magnitud eta definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CL": {
+            "meaning": "Magnitud CL definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CD": {
+            "meaning": "Magnitud CD definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "cP": {
+            "meaning": "Magnitud cP definida en el capítulo correspondiente.",
+            "units": "kg/J"
+          },
+          "Wi": {
+            "meaning": "Magnitud Wi definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "Wf": {
+            "meaning": "Magnitud Wf definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0006",
+        "section": "c16",
+        "name": "Alcance ideal de hélice",
+        "equation": "R=\\frac{\\eta_pC_L}{g_0c_PC_D}\\ln(W_i/W_f)",
+        "status": "recorded",
+        "assumptions": [
+          "CL, eta y cP constantes; vuelo horizontal y Wi>Wf>0."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "R=\\frac{\\eta_pC_L}{g_0c_PC_D}\\ln(W_i/W_f)"
+        ],
+        "symbolic": "eta*CL/(g*cP*CD)*log(Wi/Wf)",
+        "applicability": [
+          "CL, eta y cP constantes; vuelo horizontal y Wi>Wf>0."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "eta": {
+            "meaning": "Magnitud eta definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CL": {
+            "meaning": "Magnitud CL definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "CD": {
+            "meaning": "Magnitud CD definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "cP": {
+            "meaning": "Magnitud cP definida en el capítulo correspondiente.",
+            "units": "kg/J"
+          },
+          "Wi": {
+            "meaning": "Magnitud Wi definida en el capítulo correspondiente.",
+            "units": "N"
+          },
+          "Wf": {
+            "meaning": "Magnitud Wf definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^1, matching m",
+              "inputs": {
+                "expression": "eta*CL/(g*cP*CD)*log(Wi/Wf)",
+                "symbol_units": {
+                  "eta": "1",
+                  "CL": "1",
+                  "CD": "1",
+                  "g": "m/s^2",
+                  "cP": "kg/J",
+                  "Wi": "N",
+                  "Wf": "N"
+                },
+                "expected_unit": "m"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0007",
+        "section": "c13",
+        "name": "Tasa por exceso de potencia",
+        "equation": "c=(P_d-P_n)/W",
+        "status": "recorded",
+        "assumptions": [
+          "Velocidad constante y ángulo pequeño para evaluar L≈W."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "c=(P_d-P_n)/W"
+        ],
+        "symbolic": "(Pd-Pn)/W",
+        "applicability": [
+          "Velocidad constante y ángulo pequeño para evaluar L≈W."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "Pd": {
+            "meaning": "Magnitud Pd definida en el capítulo correspondiente.",
+            "units": "W"
+          },
+          "Pn": {
+            "meaning": "Magnitud Pn definida en el capítulo correspondiente.",
+            "units": "W"
+          },
+          "W": {
+            "meaning": "Magnitud W definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0007",
+        "section": "c13",
+        "name": "Tasa por exceso de potencia",
+        "equation": "c=(P_d-P_n)/W",
+        "status": "recorded",
+        "assumptions": [
+          "Velocidad constante y ángulo pequeño para evaluar L≈W."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "c=(P_d-P_n)/W"
+        ],
+        "symbolic": "(Pd-Pn)/W",
+        "applicability": [
+          "Velocidad constante y ángulo pequeño para evaluar L≈W."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "Pd": {
+            "meaning": "Magnitud Pd definida en el capítulo correspondiente.",
+            "units": "W"
+          },
+          "Pn": {
+            "meaning": "Magnitud Pn definida en el capítulo correspondiente.",
+            "units": "W"
+          },
+          "W": {
+            "meaning": "Magnitud W definida en el capítulo correspondiente.",
+            "units": "N"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^1*[time]^-1, matching m/s",
+              "inputs": {
+                "expression": "(Pd-Pn)/W",
+                "symbol_units": {
+                  "Pd": "W",
+                  "Pn": "W",
+                  "W": "N"
+                },
+                "expected_unit": "m/s"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0008",
+        "section": "c14",
+        "name": "Radio de viraje nivelado",
+        "equation": "R=V^2/(g_0\\tan\\phi)",
+        "status": "recorded",
+        "assumptions": [
+          "Viraje nivelado coordinado, sin viento, phi distinto de cero y menor de 90 grados."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "R=V^2/(g_0\\tan\\phi)"
+        ],
+        "symbolic": "V**2/(g*tan(phi))",
+        "applicability": [
+          "Viraje nivelado coordinado, sin viento, phi distinto de cero y menor de 90 grados."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "phi": {
+            "meaning": "Magnitud phi definida en el capítulo correspondiente.",
+            "units": "radian"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0008",
+        "section": "c14",
+        "name": "Radio de viraje nivelado",
+        "equation": "R=V^2/(g_0\\tan\\phi)",
+        "status": "recorded",
+        "assumptions": [
+          "Viraje nivelado coordinado, sin viento, phi distinto de cero y menor de 90 grados."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "R=V^2/(g_0\\tan\\phi)"
+        ],
+        "symbolic": "V**2/(g*tan(phi))",
+        "applicability": [
+          "Viraje nivelado coordinado, sin viento, phi distinto de cero y menor de 90 grados."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "g": {
+            "meaning": "Magnitud g definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          },
+          "phi": {
+            "meaning": "Magnitud phi definida en el capítulo correspondiente.",
+            "units": "radian"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^1, matching m",
+              "inputs": {
+                "expression": "V**2/(g*tan(phi))",
+                "symbol_units": {
+                  "V": "m/s",
+                  "g": "m/s^2",
+                  "phi": "radian"
+                },
+                "expected_unit": "m"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0009",
+        "section": "c17",
+        "name": "Distancia de rodadura",
+        "equation": "s=V^2/(2a)",
+        "status": "recorded",
+        "assumptions": [
+          "Sólo aceleración constante desde reposo; no reemplaza la cuadratura variable."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "s=V^2/(2a)"
+        ],
+        "symbolic": "V**2/(2*a)",
+        "applicability": [
+          "Sólo aceleración constante desde reposo; no reemplaza la cuadratura variable."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "a": {
+            "meaning": "Magnitud a definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0009",
+        "section": "c17",
+        "name": "Distancia de rodadura",
+        "equation": "s=V^2/(2a)",
+        "status": "recorded",
+        "assumptions": [
+          "Sólo aceleración constante desde reposo; no reemplaza la cuadratura variable."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "s=V^2/(2a)"
+        ],
+        "symbolic": "V**2/(2*a)",
+        "applicability": [
+          "Sólo aceleración constante desde reposo; no reemplaza la cuadratura variable."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0001",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "V": {
+            "meaning": "Magnitud V definida en el capítulo correspondiente.",
+            "units": "m/s"
+          },
+          "a": {
+            "meaning": "Magnitud a definida en el capítulo correspondiente.",
+            "units": "m/s^2"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to [length]^1, matching m",
+              "inputs": {
+                "expression": "V**2/(2*a)",
+                "symbol_units": {
+                  "V": "m/s",
+                  "a": "m/s^2"
+                },
+                "expected_unit": "m"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:33Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  },
+  {
+    "record": {
+      "status": "recorded",
+      "derivation": {
+        "id": "DER-0010",
+        "section": "c19",
+        "name": "Margen y derivada estática",
+        "equation": "C_{m\\alpha}=-a(h_n-h)",
+        "status": "recorded",
+        "assumptions": [
+          "Mando fijo, pendiente de sustentación positiva y modelo lineal declarado."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "C_{m\\alpha}=-a(h_n-h)"
+        ],
+        "symbolic": "-a*(hn-h)",
+        "applicability": [
+          "Mando fijo, pendiente de sustentación positiva y modelo lineal declarado."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0002",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "a": {
+            "meaning": "Magnitud a definida en el capítulo correspondiente.",
+            "units": "1/radian"
+          },
+          "hn": {
+            "meaning": "Magnitud hn definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "h": {
+            "meaning": "Magnitud h definida en el capítulo correspondiente.",
+            "units": "1"
+          }
+        },
+        "verification": {
+          "status": "UNVERIFIED",
+          "checks": []
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "checked",
+      "derivation": {
+        "id": "DER-0010",
+        "section": "c19",
+        "name": "Margen y derivada estática",
+        "equation": "C_{m\\alpha}=-a(h_n-h)",
+        "status": "recorded",
+        "assumptions": [
+          "Mando fijo, pendiente de sustentación positiva y modelo lineal declarado."
+        ],
+        "governing_principles": [
+          "Balances y definiciones explícitos del capítulo."
+        ],
+        "steps": [
+          "Partir del balance y sustituir las relaciones declaradas antes de evaluar."
+        ],
+        "steps_latex": [
+          "C_{m\\alpha}=-a(h_n-h)"
+        ],
+        "symbolic": "-a*(hn-h)",
+        "applicability": [
+          "Mando fijo, pendiente de sustentación positiva y modelo lineal declarado."
+        ],
+        "limitations": [
+          "La comprobación dimensional no demuestra hipótesis ni modelo; revisión experta pendiente."
+        ],
+        "references": {
+          "excerpts": [
+            "EVD-0002",
+            "EVD-0009"
+          ]
+        },
+        "variables": {
+          "a": {
+            "meaning": "Magnitud a definida en el capítulo correspondiente.",
+            "units": "1/radian"
+          },
+          "hn": {
+            "meaning": "Magnitud hn definida en el capítulo correspondiente.",
+            "units": "1"
+          },
+          "h": {
+            "meaning": "Magnitud h definida en el capítulo correspondiente.",
+            "units": "1"
+          }
+        },
+        "verification": {
+          "status": "DIMENSIONALLY_VERIFIED",
+          "checks": [
+            {
+              "method": "dimensional",
+              "status": "DIMENSIONALLY_VERIFIED",
+              "detail": "formula reduces to dimensionless, matching 1/radian",
+              "inputs": {
+                "expression": "-a*(hn-h)",
+                "symbol_units": {
+                  "a": "1/radian",
+                  "hn": "1",
+                  "h": "1"
+                },
+                "expected_unit": "1/radian"
+              }
+            }
+          ],
+          "checked_at": "2026-10-18T22:29:34Z"
+        }
+      },
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "failed": false,
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    }
+  }
+]

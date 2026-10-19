@@ -1,0 +1,104 @@
+\chapter{Ascenso, descenso y techo}\label{ch:climb}
+\objetivos{Separar exceso de empuje y potencia; calcular Vx y Vy; integrar ascensos con consumo; interpretar techo y corrección por aceleración.}
+
+\section{Equilibrio de ascenso}
+Para movimiento simétrico rectilíneo con empuje paralelo a la trayectoria,
+\begin{equation}
+m\dot V=T-D-W\sin\gamma,\qquad mV\dot\gamma=L-W\cos\gamma.
+\end{equation}
+Si $\dot V=\dot\gamma=0$,
+\begin{equation}
+\sin\gamma=\frac{T-D}{W},\qquad L=W\cos\gamma.\label{eq:climb-exacto}
+\end{equation}
+La resistencia debe evaluarse con la sustentación normal real. Para una polar parabólica,
+\begin{equation}
+D=\tfrac12\rho V^2SC_{D0}+\frac{2kW^2\cos^2\gamma}{\rho V^2S}.
+\end{equation}
+La ecuación para $\gamma$ es implícita. Puede resolverse numéricamente dentro de un intervalo físico. La sustitución $L\simeq W$ es razonable para ángulos pequeños y facilita las actuaciones en el punto.
+
+\section{Ángulo y tasa de ascenso}
+Con la aproximación tendida y el motor definido,
+\begin{equation}
+\gamma\simeq\frac{T_d-D}{W},\qquad
+\dot h\simeq\frac{(T_d-D)V}{W}=\frac{P_d-P_n}{W}.
+\label{eq:excess}
+\end{equation}
+El primer objetivo maximiza exceso de empuje; el segundo exceso de potencia. Multiplicar empuje por un porcentaje de gases sigue dando fuerza. Para hablar de potencia de empuje hay que multiplicar además por TAS. EAS se usa para comparar presión dinámica, pero $TV_{\rm EAS}$ no es la potencia de empuje física a una altitud de densidad distinta de la de referencia.
+
+\ilustra{vx-vy}{Exceso de empuje y exceso de potencia del mismo avión docente con empuje constante. Se muestran escalas distintas explícitas; sus máximos no coinciden.}
+
+\section{Mejor ángulo Vx para empuje constante}
+Si $T_d$ no depende de $V$, maximizar $T_d-D$ equivale a minimizar resistencia. Por tanto,
+\begin{equation}
+V_x\simeq(B/A)^{1/4}=V_E.
+\end{equation}
+Es una conclusión del modelo de empuje constante y ángulo pequeño. Si el empuje cambia con Mach o la hélice proporciona empuje decreciente con velocidad, se resuelve $T_d'(V)-D'(V)=0$. Se comprueban también pérdida, mando y limitaciones propulsivas.
+
+El ángulo sobre el terreno con viento no coincide con $\gamma$ respecto al aire. Un viento de cara reduce avance horizontal y puede aumentar la pendiente terrestre para una misma tasa vertical, aunque no cambie el equilibrio aéreo. La Vx aérea y la velocidad que maximiza franqueamiento de un obstáculo sobre el terreno deben distinguirse si intervienen viento, transitorios y rotación.
+
+\section{Mejor tasa Vy para empuje constante}
+La potencia excedente es $P_{\rm ex}=TV-AV^3-B/V$. Su derivada se anula cuando
+\begin{equation}
+T-3AV^2+B/V^2=0.
+\end{equation}
+Con $z=V^2$,
+\begin{equation}
+3Az^2-Tz-B=0,\qquad
+V_y^2=\frac{T+\sqrt{T^2+12AB}}{6A}.\label{eq:Vy-jet}
+\end{equation}
+Sólo la raíz positiva corresponde a velocidad real. Cuando $T=D_{\min}$, $V_y=V_E$ y la máxima tasa es cero: Vx y Vy se aproximan en el techo de este modelo. Si el empuje es mayor, Vy suele superar Vx. La raíz se recorta al dominio físico antes de declararla óptima.
+
+\ilustra{ascenso}{Tasa de ascenso por exceso de potencia con empuje de $6.500\SIu N$. Las zonas de tasa negativa representan incapacidad de ascenso estacionario a esa velocidad, dentro del modelo declarado.}
+
+\section{Techo absoluto y techo de servicio}
+El techo absoluto se define aquí por $\max_V\dot h=0$. Con empuje constante con velocidad y polar fija equivale a $T_{d,\max}=D_{\min}$, siempre que la velocidad de mínimo arrastre sea admisible. Con $T_{d,\max}=T_0\sigma^x$,
+\begin{equation}
+\sigma_{\rm techo}=\left(\frac{D_{\min}}{T_0}\right)^{1/x}.
+\end{equation}
+Después se invierte el modelo atmosférico en la capa correspondiente. La expresión no debe producir una altura troposférica si la densidad encontrada pertenece a otra capa.
+
+Un techo de servicio exige una tasa residual positiva prescrita, $\dot h_{\max}=c_{\rm serv}$. En los problemas se especificará ese valor. No se adopta un umbral universal para toda categoría de aeronave. El techo puede quedar limitado antes por Mach, presurización, buffet, certificación o control; el resultado analítico no sustituye esos límites.
+
+\ilustra{techo}{Evolución de la tasa máxima con altura en un modelo docente con pérdida de empuje según densidad. El techo se localiza donde la envolvente alcanza el umbral definido.}
+
+\section{Altura de energía y aceleración}
+Multiplicando la ecuación tangencial por $V/W$ se obtiene
+\begin{equation}
+\frac{(T-D)V}{W}=\dot h+\frac{V}{g_0}\dot V
+=\frac{\dd}{\dd t}\left(h+\frac{V^2}{2g_0}\right).
+\label{eq:energyheight}
+\end{equation}
+El exceso de potencia cambia energía potencial y cinética. Si se mantiene una ley $V=V(h)$,
+\begin{equation}
+\dot h=\frac{(T-D)V/W}{1+(V/g_0)(\dd V/\dd h)}.
+\label{eq:climb-acceleration}
+\end{equation}
+En ascenso a EAS constante, la TAS aumenta al caer la densidad y parte de la potencia excedente se invierte en acelerar. Ignorar el denominador sobreestima la tasa geométrica. En una ley de Mach constante troposférica, la TAS puede disminuir con altura y la corrección tiene otro signo. El denominador debe evaluarse y no cruzar una singularidad sin reconsiderar el modelo y la parametrización.
+
+La derivación presupone las ecuaciones locales y masa instantánea. Si se estudia la energía total de un sistema abierto de masa variable, hay flujos de energía adicionales. No se deriva una ley de reactor real multiplicando sin más una ecuación de masa variable cerrada.
+
+\section{Integración de un ascenso}
+Si $c(h,m,V)=\dot h>0$, la altitud puede servir de variable independiente:
+\begin{align}
+\frac{\dd t}{\dd h}&=\frac1c,&
+\frac{\dd x}{\dd h}&=\frac{V\cos\gamma+U}{c},&
+\frac{\dd m}{\dd h}&=-\frac{c_TT}{c}.
+\label{eq:climb-integral}
+\end{align}
+En cada evaluación se actualizan masa, atmósfera, motor y resistencia. Si se prescribe EAS, se convierte a TAS; si se prescribe Mach, se calcula con la temperatura local. Cerca de un techo, $c\to0$ y el tiempo puede crecer sin límite en el modelo ideal. Un algoritmo debe detenerse antes de dividir por cero y comunicar la condición no alcanzable.
+
+\subsection{Cambios de fase}
+Al terminar el ascenso, el crucero recibe la masa restante y la posición recorrida. Si se aproxima el ascenso con masa constante, se declara y se calcula el combustible de la fase para actualizar al menos la masa de salida. Esa aproximación sólo es defendible si la variación relativa es suficientemente pequeña para el objetivo del ejercicio; no se reutiliza automáticamente durante varias horas.
+
+\caso{Ejemplo original: dos óptimos}{Para la polar docente de $4.800\SIu{kg}$ y $T=6.500\SIu N$ a $4.500\SIu m$ ISA, se calculan $A$ y $B$. Vx se obtiene con $(B/A)^{1/4}$ y Vy con la ecuación~\eqref{eq:Vy-jet}. Se comparan ambas con pérdida y se evalúan $\gamma$ y $\dot h$ en cada una. La comprobación independiente consiste en maximizar numéricamente $T-D$ y $V(T-D)$ sobre el intervalo admisible, sin sustituir una función por la otra.}
+
+\section{Descenso con y sin motor}
+Si $T<D$, una condición estacionaria tiene $\gamma<0$. Con empuje residual, $\sin\gamma=(T-D)/W$; con motor apagado se recupera el planeo. El motor apagado puede añadir resistencia de hélice o rotor, y la polar puede cambiar: un planeo de avión con motor no es necesariamente la polar limpia del crucero.
+
+Descender más deprisa puede requerir aumentar resistencia, modificar velocidad o configuración. Un descenso con ángulo prescrito debe satisfacer sustentación, empuje y energía. Si una condición exige $T<0$ y el sistema no dispone de empuje inverso en vuelo, la maniobra no es realizable con ese modelo sin añadir resistencia.
+
+\input{content/t13}
+
+\repaso{¿Por qué Vy no coincide con la velocidad de mínima resistencia de un reactor de empuje constante?}{Porque la tasa depende de $(T-D)V$. Aumentar velocidad puede aumentar potencia excedente aunque reduzca exceso de empuje. La condición de derivada contiene también el factor $V$.}
+\resumen{Vx maximiza aproximadamente exceso de empuje; Vy, exceso de potencia. El techo es una frontera del modelo completo y el ascenso integrado debe actualizar masa y atmósfera. La ley de velocidad puede destinar parte de la potencia a energía cinética.}
+\fuentes{How, MIT 16.333, lección 1, balance de energía y ascenso. Guía ULE, ascensos y descensos de aerorreactores y hélices. Fórmulas y ejemplos se deducen a partir del balance declarado; el enunciado práctico facilitado se contrasta dimensionalmente.}

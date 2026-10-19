@@ -1,0 +1,65 @@
+\section{Taller resuelto: Qué parte de resistencia disminuye al consumir}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{A TAS 98 m/s y densidad 0.92, un avión de 5100 kg con S=29 m² y polar 0.024+0.047CL² consume el 10 por ciento de su masa total. Calcule resistencia inicial y final manteniendo altitud y TAS.}
+
+\apartado{2. Datos}{La masa final es 4590 kg; vuelo horizontal en ambos extremos.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Fuerzas en ejes viento; TAS mantenida.}
+
+\apartado{5. Hipótesis físicas}{Polar fija; se omite variación de resistencia de trim y de centro de gravedad.}
+
+\apartado{6. Modelo matemático}{Qué parte de resistencia disminuye al consumir}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}D=A_V+B_VW^2\end{equation}
+
+\begin{equation}D_{parasita}=q_\infty SC_{D0}\end{equation}
+
+\begin{equation}D_{cuadratica,f}=0.9^2D_{cuadratica,i}\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item La presión dinámica y el término parásito permanecen constantes.
+
+\item La sustentación adimensional disminuye en la proporción de masa.
+
+\item El término cuadrático disminuye con el cuadrado de esa proporción, no linealmente.
+
+\item Se suman ambas partes para comparar la resistencia total.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Resistencia inicial:\quad $3992.455042793185\simeq 3992.455\,\mathrm N$.\par
+
+\noindent Resistencia final:\quad $3818.10374626248\simeq 3818.104\,\mathrm N$.\par
+
+\noindent Reducción relativa:\quad $0.04367019657376692\simeq 0.0436702\,$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Resistencia inicial & $3992.455\,\mathrm N$\\
+
+Resistencia final & $3818.104\,\mathrm N$\\
+
+Reducción relativa & $0.0436702\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{Una reducción del 10 por ciento de masa no implica una reducción del 10 por ciento de resistencia total a TAS fija.}
+
+\apartado{12. Comprobación independiente y alcance}{Calcular directamente CL inicial y final y evaluar la polar, contrastando con la separación $A_{V}$+$B_{V}$ W².}
+
+\apartado{13. Limitaciones}{El factor cuadrático total puede contener resistencia de perfil dependiente de sustentación; no se lo denomina inducida pura sin justificación.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

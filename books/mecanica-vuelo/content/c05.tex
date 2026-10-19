@@ -1,0 +1,120 @@
+\chapter{Derivación de las ecuaciones de Newton--Euler}\label{ch:eom}
+\objetivos{Construir el modelo rígido desde los balances; conservar los signos de los productos de inercia; reducirlo a vuelo simétrico e identificar las hipótesis terrestres.}
+
+\section{Cantidad de movimiento del centro de gravedad}
+Se considera un avión rígido de masa constante durante el intervalo dinámico y un campo gravitatorio uniforme. En una referencia inercial,
+\begin{equation}
+\frac{\dd}{\dd t}(m\vect v_G)=\sum\vect F=m\vect a_G.
+\end{equation}
+La fuerza resultante contiene aerodinámica, propulsión y peso. Se define $(X,Y,Z)$ como fuerza no gravitatoria total en cuerpo. Al aplicar transporte a la velocidad y añadir la gravedad expresada en cuerpo,
+\begin{align}
+\dot u&=rv-qw+X/m-g\sin\theta,\\
+\dot v&=pw-ru+Y/m+g\sin\phi\cos\theta,\\
+\dot w&=qu-pv+Z/m+g\cos\phi\cos\theta.
+\label{eq:traslacionales}
+\end{align}
+Estas velocidades son respecto al suelo inercializado. Si se quieren usar velocidades relativas al aire en un campo de viento variable, se resta la aceleración del viento descrita en el capítulo~\ref{ch:cinematica}. Las fuerzas aerodinámicas se calculan en cualquier caso con la velocidad aérea.
+
+\subsection{Por qué no aparece un término arbitrario de masa variable}
+En misiones se actualiza la masa por consumo, pero el modelo instantáneo de fuerzas del motor ya representa el intercambio de cantidad de movimiento con el flujo propulsivo. Añadir sin más $-\dot m\vect v$ a las ecuaciones del avión introduce dependencia del origen de velocidades y puede duplicar el empuje. Una derivación completa de sistema abierto requiere flujos de cantidad de movimiento y su velocidad relativa. La aproximación cuasiestacionaria utilizada aquí aplica las ecuaciones rígidas con la masa instantánea y contabiliza el consumo por separado. No pretende representar expulsión impulsiva de carga ni cambios rápidos de distribución de masa.
+
+\section{Balance de momento angular}
+Respecto al centro de gravedad, el momento angular es
+\begin{equation}
+\vect H_G^b=I\vect\omega^b.
+\end{equation}
+La ecuación vectorial inercial $\vect M_G=(\dd\vect H_G/\dd t)_i$ se expresa en cuerpo mediante transporte. Con tensor constante en cuerpo,
+\begin{equation}
+I\dot{\vect\omega}+\vect\omega\times(I\vect\omega)=\vect M_G.
+\label{eq:euler-vector}
+\end{equation}
+Si el tensor varía, aparece además $\dot I\vect\omega$ y, según el mecanismo de variación, los flujos de momento angular correspondientes. Esa situación exige un modelo adicional y no debe ocultarse dentro de una inercia media.
+
+\section{Expansión para un avión simétrico}
+Se usa el convenio del capítulo~\ref{ch:fuerzas}: el producto integral $I_{xz}$ aparece con signo negativo en el tensor. El momento angular es
+\begin{equation}
+\vect H^b=(I_{xx}p-I_{xz}r,\ I_{yy}q,\ I_{zz}r-I_{xz}p)^T.
+\end{equation}
+Multiplicar por la matriz del producto vectorial, y no memorizar el resultado, proporciona
+\begin{align}
+\mathcal L&=I_{xx}\dot p-I_{xz}\dot r+(I_{zz}-I_{yy})qr-I_{xz}pq,\\
+\mathcal M&=I_{yy}\dot q+(I_{xx}-I_{zz})pr+I_{xz}(p^2-r^2),\\
+\mathcal N&=I_{zz}\dot r-I_{xz}\dot p+(I_{yy}-I_{xx})pq+I_{xz}qr.
+\label{eq:euler-componentes}
+\end{align}
+Los términos cuadráticos son los acoplamientos giroscópicos del sólido. Aunque la aeronave sea geométricamente simétrica, $I_{xz}$ puede ser no nulo si los ejes elegidos no son principales.
+
+Para integrar, se puede resolver directamente el sistema lineal con $I$ en cada paso. En el plano $p,r$ el determinante es $\Delta=I_{xx}I_{zz}-I_{xz}^2$. Definiendo
+\begin{align}
+A_p&=\mathcal L-(I_{zz}-I_{yy})qr+I_{xz}pq,\\
+A_r&=\mathcal N-(I_{yy}-I_{xx})pq-I_{xz}qr,
+\end{align}
+se obtiene
+\begin{equation}
+\dot p=\frac{I_{zz}A_p+I_{xz}A_r}{\Delta},\qquad
+\dot r=\frac{I_{xz}A_p+I_{xx}A_r}{\Delta}.
+\end{equation}
+Si $\Delta$ es muy pequeño, el problema está mal condicionado o la distribución de masa es casi degenerada. No procede dividir por él sin examinar el tensor.
+
+\section{Comprobaciones internas de la dinámica}
+\subsection{Límite de ejes principales}
+Al imponer $I_{xz}=0$, desaparece el acoplamiento entre aceleraciones $\dot p$ y $\dot r$. Si además $I_{xx}=I_{yy}=I_{zz}=I_s$, se anula $\vect\omega\times I_s\vect\omega$ y resulta $I_s\dot{\vect\omega}=\vect M$. El caso de un sólido con inercia isotrópica es una prueba útil del álgebra.
+
+\subsection{Energía de rotación}
+La energía cinética angular es $E_r=\tfrac12\vect\omega^TI\vect\omega$. Para tensor constante,
+\begin{equation}
+\dot E_r=\vect\omega^TI\dot{\vect\omega}
+=\vect\omega^T\vect M,
+\end{equation}
+porque $\vect\omega\cdot(\vect\omega\times I\vect\omega)=0$. Sin momento externo, la energía se conserva aunque las componentes de velocidad angular cambien. Esta prueba detecta varios errores de signo, pero no todos; se acompaña de la comprobación componente a componente.
+
+\caso{Ejemplo: producto de inercia no nulo}{Considérese
+\[
+I=\begin{bmatrix}8500&0&-620\\0&13000&0\\-620&0&17000\end{bmatrix}\SIu{kg\,m^2},\quad
+\vect\omega=(0.12,-0.08,0.15)\SIu{rad\,s^{-1}},
+\]
+y $\vect M=(950,-500,340)\SIu{N\,m}$. Se calcula primero $\vect H=I\vect\omega$ y después $\dot{\vect\omega}=I^{-1}[\vect M-\vect\omega\times\vect H]$. Sustituir el resultado en la ecuación vectorial recupera los tres momentos con residuo menor que $10^{-10}\SIu{N\,m}$ en doble precisión. El residuo comprueba esta operación, no la correspondencia de esos parámetros con un avión real. El archivo reproducible conserva el vector numérico sin redondeo.}
+
+\section{Cierre del modelo de seis grados de libertad}
+Las tres ecuaciones traslacionales, tres rotacionales, tres de actitud y tres de posición forman un sistema de doce ecuaciones de primer orden. En forma compacta,
+\begin{equation}
+\dot{\vect x}=\vect f(\vect x,\vect\delta,\vect a,t),
+\end{equation}
+donde $\vect\delta$ contiene mandos y $\vect a$ el ambiente. Para cerrar el sistema hacen falta modelos de aerodinámica y propulsión, masa e inercia, atmósfera y gravedad. Cada estado inicial debe ser compatible con esos modelos. Un XML válido no garantiza esa compatibilidad.
+
+Las ecuaciones descritas usan Tierra plana y NED aproximadamente inercial. JSBSim propaga sobre una Tierra rotatoria y contiene más términos. La comparación correcta consiste en identificar qué efectos se han despreciado y su escala; no en exigir igualdad exacta de cada salida con el modelo plano.
+
+\section{Reducción a movimiento simétrico}
+En vuelo simétrico con $v=p=r=\phi=0$, sin fuerza lateral ni momentos de alabeo y guiñada, se obtiene
+\begin{align}
+\dot u&=-qw+X/m-g\sin\theta,\\
+\dot w&=qu+Z/m+g\cos\theta,\\
+I_{yy}\dot q&=\mathcal M,\qquad \dot\theta=q.
+\end{align}
+No se ha impuesto todavía $q=0$ ni $\dot u=\dot w=0$. La reducción simétrica permite cabeceo y cambios de trayectoria. Con $u=V\cos\alpha$, $w=V\sin\alpha$, se rota la dinámica al eje de velocidad. Si el empuje forma $\varepsilon$ con la trayectoria y $\gamma=\theta-\alpha$,
+\begin{align}
+m\dot V&=T\cos\varepsilon-D-W\sin\gamma,\\
+mV\dot\gamma&=L+T\sin\varepsilon-W\cos\gamma.
+\label{eq:simetrico-trayectoria}
+\end{align}
+Al prescindir de la ecuación de momento se supone que el mando puede mantener la incidencia exigida. Para un problema de trim o de estabilidad longitudinal hay que recuperarla.
+
+\section{Equilibrio rectilíneo y viraje estacionario}
+En vuelo rectilíneo horizontal simétrico con empuje alineado con trayectoria, $T=D$, $L=W$ y $\mathcal M=0$. Las tres condiciones son necesarias. En un viraje, $\dot\psi\neq0$ y las componentes $(p,q,r)$ se calculan con la cinemática de Euler. No se anulan todas las velocidades angulares por conservar alabeo y cabeceo.
+
+Para $\dot\phi=\dot\theta=0$,
+\begin{equation}
+p=-\dot\psi\sin\theta,\quad
+q=\dot\psi\sin\phi\cos\theta,\quad
+r=\dot\psi\cos\phi\cos\theta.
+\end{equation}
+Esta relación explica por qué un trim completo de viraje es distinto de equilibrar sólo sustentación y peso.
+
+\verifica{Se comprobó simbólicamente la expansión del tensor con $-I_{xz}$ y la anulación del trabajo giroscópico. El residuo vectorial se evalúa además en un caso con producto cruzado no nulo. Las hipótesis de rigidez, distribución de masa y fuerzas permanecen sujetas a revisión física.}
+\input{content/d05}
+
+\input{content/t05}
+
+\repaso{¿Permite la simetría geométrica imponer siempre $I_{xz}=0$?}{No. La simetría en $xz$ anula $I_{xy}$ e $I_{yz}$. Para anular $I_{xz}$ hay que elegir ejes principales en ese plano o disponer de una distribución de masa que lo haga cero.}
+\resumen{Los balances se derivan en un sistema inercial y se expresan en cuerpo mediante transporte. Los signos de los productos de inercia dependen de su definición integral. La reducción de punto material necesita hipótesis de trim y no sustituye el equilibrio de momentos.}
+\fuentes{How, MIT 16.333, lección 4, pp. 4--2 a 4--3. Esa fuente usa un elemento cruzado con otra notación; aquí se define explícitamente la integral y se rehace la expansión. JSBSim 1.3.3: FGAccelerations, FGPropagate y FGMassBalance como referencia de implementación, no como identidad del modelo terrestre simplificado.}

@@ -1,0 +1,92 @@
+\chapter{Planeo integral y atmósfera}\label{ch:planeo-integral}
+\objetivos{Integrar alcance y tiempo con densidad variable; interpretar ISA; separar alcance aéreo y terrestre; comprobar una integración mediante una solución cerrada.}
+
+\section{De actuaciones en el punto a una trayectoria}
+Una tasa de descenso calculada a $3.000\SIu m$ no permite multiplicar sin más ese valor por todo el tiempo del vuelo. Durante el descenso cambian densidad, TAS y, si no se adapta la velocidad, $C_L$. Una ley de pilotaje especifica cómo se recorre la familia de equilibrios. Se estudiará $C_L$ constante, masa constante y polar independiente de altura; es una hipótesis adecuada para entender la diferencia entre el alcance geométrico y la duración.
+
+En planeo estacionario de ángulo constante,
+\begin{equation}
+\frac{\dd x}{\dd h}=\frac{V\cos\gamma}{V\sin\gamma}
+=-\frac{C_L}{C_D}.
+\end{equation}
+Entre altitudes $h_i>h_f$, el alcance en calma es
+\begin{equation}
+R_a=(h_i-h_f)\frac{C_L}{C_D}.\label{eq:glider-range}
+\end{equation}
+La densidad desaparece porque modifica de la misma manera la velocidad horizontal y la vertical. El tiempo no disfruta de esa cancelación:
+\begin{equation}
+E=\int_{h_f}^{h_i}\frac{\dd h}{s(h)}.
+\label{eq:glider-time}
+\end{equation}
+Se utiliza $E$ para autonomía temporal; no debe confundirse con la eficiencia $E_a$.
+
+\section{Qué significa ISA}
+La atmósfera estándar es un perfil de referencia, no una predicción meteorológica. En la troposfera idealizada de esta edición,
+\begin{equation}
+T=T_0-\Lambda h,\quad
+p=p_0(T/T_0)^{g_0/(R_a\Lambda)},\quad
+\rho=\rho_0(T/T_0)^{g_0/(R_a\Lambda)-1},
+\label{eq:isa-tropo}
+\end{equation}
+con $T_0=288.15\SIu K$, $p_0=101325\SIu{Pa}$, $\Lambda=0.0065\SIu{K\,m^{-1}}$ y $R_a=287.05287\SIu{J\,kg^{-1}\,K^{-1}}$. Aquí $h$ es altitud geopotencial. La velocidad del sonido es $a=\sqrt{\kappa R_aT}$ para $\kappa=1.4$.
+
+Para derivar la presión se combinan $\dd p/\dd h=-\rho g_0$ y $p=\rho R_aT$. Al separar variables, $\dd p/p=-g_0\dd h/[R_a(T_0-\Lambda h)]$; la integración da la potencia indicada. La densidad se obtiene después con la ecuación de estado, no imponiendo que tenga el mismo exponente que la presión.
+
+Entre 11 y 20 km se usa una capa isoterma con $T_{11}=216.65\SIu K$:
+\begin{equation}
+p=p_{11}\exp\!\left[-\frac{g_0(h-11000)}{R_aT_{11}}\right],\qquad
+\rho=p/(R_aT_{11}).
+\end{equation}
+Los valores de base de cada capa se calculan con la anterior para mantener continuidad. El módulo de cálculo rechaza altitudes fuera de 0--20 km; no extrapola silenciosamente la ley troposférica a la estratosfera.
+
+\ilustra{isa-densidad}{Densidad estándar en el intervalo de actuaciones representado. La curva es un modelo de referencia; no incluye desviaciones de temperatura ni humedad.}
+
+\subsection{Altitud geométrica y geopotencial}
+La altitud geopotencial permite usar $g_0$ constante en el potencial. En una Tierra esférica ideal se relaciona con la altitud geométrica $z$ mediante $h=R_Tz/(R_T+z)$. Cerca de superficie son próximas, pero no idénticas. Los ejemplos analíticos declaran $h$ geopotencial; JSBSim registra su altitud de posición. Al comparar ambos se identifica esa diferencia junto con las restantes aproximaciones terrestres.
+
+\section{Integral analítica del tiempo en troposfera}
+Sea $\delta=-\gamma$ constante. Usando el equilibrio exacto,
+\begin{equation}
+\frac1{s(h)}=
+\frac1{\sin\delta}\sqrt{\frac{\rho(h)SC_L}{2W\cos\delta}}.
+\end{equation}
+Defínanse $b=\Lambda/T_0$ y $n=\tfrac12[g_0/(R_a\Lambda)-1]$. Entonces
+\begin{equation}
+E=K\int_{h_f}^{h_i}(1-bh)^n\,\dd h,
+\quad K=\frac1{\sin\delta}\sqrt{\frac{\rho_0SC_L}{2W\cos\delta}}.
+\end{equation}
+La primitiva conduce a
+\begin{equation}
+E=\frac{K}{b(n+1)}
+\left[(1-bh_f)^{n+1}-(1-bh_i)^{n+1}\right].
+\label{eq:glider-ISA-integral}
+\end{equation}
+El signo es positivo porque $h_i>h_f$. Al reducir el intervalo de altitud alrededor de un punto se recupera $E\simeq\Delta h/s$. La derivada respecto al extremo superior debe ser $1/s(h_i)$, una comprobación útil de signo y exponente.
+
+\section{Viento y ruta terrestre}
+Con viento de cola horizontal constante $U$, sin componente vertical,
+\begin{equation}
+R_g=R_a+UE.
+\label{eq:glidewind}
+\end{equation}
+El tiempo se determina por el descenso a través de la masa de aire, y el viento desplaza esa masa durante todo el vuelo. Con viento variable, $\int U(h)\,\dd h/s(h)$ sustituye a $UE$. Con viento cruzado, una estrategia de rumbo fijo puede abandonar la ruta; una estrategia de ruta fija exige corregir rumbo y usar la velocidad de avance proyectada sobre ella.
+
+\ilustra{planeo-integral}{Alcance en calma y con viento de cara de $8\SIu{m\,s^{-1}}$, manteniendo el $C_L$ de mejor planeo en calma. La segunda curva no supone reoptimización para el viento.}
+
+\section{Algoritmo de integración y pruebas}
+Un cálculo reproducible evalúa $\rho(h)$, obtiene el equilibrio local, calcula $s(h)$ e integra $1/s(h)$. La cuadratura se compara con la primitiva troposférica si ambos extremos están en esa capa. Si se cruza una frontera de capa, se divide el intervalo. Para una polar o viento dependientes de altura, la cuadratura sigue siendo aplicable aunque desaparezca la fórmula cerrada.
+
+El algoritmo debe detenerse si se viola $C_{L\max}$, Mach máximo o alguna restricción. También se evita integrar hasta una altitud por debajo del terreno final. Un resultado algebraico de altura final negativa en una misión de retorno indica que la ruta no se completa antes de tocar el terreno; no describe un vuelo subterráneo.
+
+\caso{Ejemplo original: plan de cálculo completo}{Un planeador docente de $420\SIu{kg}$ parte de $3.200\SIu m$ y termina a $400\SIu m$ geopotenciales, con $S=15.8\SIu{m^2}$ y polar $0.013+0.031C_L^2$. Se calcula $C_{L,E}=0.6476$, $E_{a,\max}=24.91$, y un alcance aéreo de unos $69.74\SIu{km}$. Para la duración se evalúa la ecuación~\eqref{eq:glider-ISA-integral} con su $\delta$ exacto y se contrasta con cuadratura. El alcance con viento de cara de $8\SIu{m\,s^{-1}}$ se obtiene restando $8E$, sin reutilizar la TAS de salida como si fuera constante. La solución numérica íntegra aparece en el cuaderno con otros problemas nuevos.}
+
+\section{Cuasiestacionariedad y aceleración omitida}
+Mantener $C_L$ mientras cambia la densidad requiere cambiar TAS. Por tanto, una sucesión de equilibrios con $\dot V=0$ localmente no es una solución exacta de la ecuación dinámica completa. Se aproxima cuando la aceleración de adaptación es pequeña respecto a las fuerzas dominantes. El procedimiento integral conserva la variación de velocidad en la cinemática, pero desprecia su término inercial en el balance de fuerzas. Esta limitación debe declararse al comparar con una trayectoria de seis grados de libertad.
+
+Una mejora consiste en integrar $V,h,x,\gamma$ con las ecuaciones dinámicas y una ley de mando que mantenga aproximadamente la incidencia deseada. El resultado incluye transitorios y depende de esa ley; ya no es sólo una propiedad de la polar estacionaria.
+
+\input{content/t09}
+
+\repaso{¿Puede el alcance aéreo ser independiente de la masa y la duración depender de ella?}{Sí. Con polar fija y $C_L$ constante, $R_a=\Delta h L/D$, mientras que $s\propto\sqrt W$ y el tiempo disminuye como $W^{-1/2}$. El viento reintroduce el tiempo y, con él, la masa en el alcance terrestre.}
+\resumen{Las actuaciones integrales necesitan una ley de pilotaje y un modelo atmosférico. En planeo de polar constante, la distancia en calma es geométrica; la autonomía exige integrar la densidad. El viento aporta un desplazamiento temporal y la aproximación cuasiestacionaria conserva límites explícitos.}
+\fuentes{U.S. Standard Atmosphere 1976, definición del modelo por capas (fuente primaria NASA/NOAA/USAF; consulta de tablas y constantes, sin reproducir el documento). How, MIT 16.333, lección 1. Integrales y comprobaciones propias.}

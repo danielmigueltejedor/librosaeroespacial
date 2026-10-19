@@ -1,0 +1,84 @@
+\chapter{Viraje coordinado y factores de carga}\label{ch:turn}
+\objetivos{Derivar radio, razón de giro y carga; incluir pérdida y resistencia; separar viraje sostenido e instantáneo y trayectoria aérea y terrestre.}
+
+\section{Balance geométrico del viraje nivelado}
+Se considera vuelo coordinado, sin resbalamiento significativo, altura y rapidez constantes, viento nulo y empuje paralelo a la velocidad. Si $\phi$ es alabeo,
+\begin{equation}
+L\cos\phi=W,\qquad L\sin\phi=mV^2/R.
+\end{equation}
+La primera ecuación sostiene el peso y la segunda proporciona aceleración centrípeta. Al dividir,
+\begin{equation}
+n=\frac LW=\frac1{\cos\phi},\qquad
+R=\frac{V^2}{g_0\tan|\phi|},\qquad
+\dot\chi=\frac{g_0\tan\phi}{V}.
+\label{eq:turn}
+\end{equation}
+El signo de la razón de giro depende del signo de alabeo; el radio se expresa positivo. En $\phi=0$ el radio tiende a infinito. En el límite $|\phi|\to90^\circ$, la carga requerida diverge: la fórmula no permite mantener un viraje nivelado con sustentación finita.
+
+\ilustra{fuerzas-viraje}{Vista frontal esquemática de un viraje: la componente vertical de la sustentación sostiene el peso y la horizontal produce la aceleración centrípeta.}
+
+\section{Carga y pérdida en maniobra}
+Con $L=nW$,
+\begin{equation}
+C_L=\frac{2nW}{\rho V^2S},\qquad
+V_{\rm stall}(n)=\sqrt n\,V_{\rm stall}(1).
+\end{equation}
+Un viraje de $60^\circ$ exige $n=2$ y eleva la velocidad de pérdida por $\sqrt2$, si $C_{L\max}$ permanece igual. La masa y densidad modifican TAS de pérdida; su EAS depende de masa y factor de carga. Una maniobra transitoria puede introducir otros efectos de pérdida y cargas que no recoge el equilibrio estacionario.
+
+\ilustra{carga-viraje}{Factor de carga y multiplicador de velocidad de pérdida en función del alabeo. La figura no incorpora un límite estructural específico de una aeronave real.}
+
+\section{Resistencia y empuje en viraje}
+La polar da
+\begin{equation}
+D(V,n)=AV^2+\frac{Bn^2}{V^2},
+\label{eq:dragturn}
+\end{equation}
+con los $A,B$ de vuelo nivelado para $n=1$. La parte cuadrática asociada a sustentación se multiplica por $n^2$. A igual velocidad, doblar carga cuadruplica esa parte de la resistencia, aunque la parte parásita no cambie. Por eso mantener velocidad y altura requiere más empuje o potencia.
+
+Con empuje disponible $T_d$ independiente de $n$, el límite de carga sostenida por propulsión es
+\begin{equation}
+n_T^2(V)=\frac{[T_d(V)-AV^2]V^2}{B},
+\end{equation}
+si el miembro derecho es positivo. Se combina con
+\begin{equation}
+n_L(V)=\frac{\rho V^2SC_{L\max}}{2W},\qquad n\leq n_{\rm estructural}.
+\end{equation}
+La carga admisible es la menor de las fronteras aplicables. Un equilibrio de fuerza normal que necesita más empuje del disponible puede alcanzarse transitoriamente perdiendo velocidad o altura, pero no sostenerse bajo las mismas condiciones.
+
+\section{Radio mínimo y razón máxima}
+En función de carga,
+\begin{equation}
+R=\frac{V^2}{g_0\sqrt{n^2-1}},\qquad
+|\dot\chi|=\frac{g_0\sqrt{n^2-1}}{V},\quad n>1.
+\end{equation}
+Reducir radio favorece baja velocidad y alta carga; aumentar razón de giro favorece alta carga respecto a velocidad. No se pueden variar independientemente porque sustentación, estructura y motor acoplan $n$ y $V$.
+
+Para encontrar un óptimo sostenido se recorre la velocidad admisible, se calcula $n_{\max}(V)$ con todas las restricciones y se evalúan radio y razón. Se incluyen los puntos de intersección de fronteras: un óptimo suele aparecer en una esquina de la envolvente y no donde una función suave tiene derivada cero.
+
+\ilustra{radio-viraje}{Radio de giro en calma para dos alabeos fijos. Cada punto sigue necesitando sustentación y empuje suficientes; la figura geométrica no constituye por sí sola una envolvente.}
+
+\section{Viraje instantáneo y sostenido}
+El viraje instantáneo usa la capacidad aerodinámica y estructural durante un intervalo corto, admitiendo pérdida de energía. El sostenido exige que el motor compense la resistencia y que altura y velocidad permanezcan constantes. No es correcto presentar un radio calculado con $C_{L\max}$ como radio sostenido sin comprobar potencia.
+
+La altura de energía vuelve a dar una prueba útil: si $TV<DV$ y la altura no cambia, la velocidad debe caer. Un cálculo que mantiene simultáneamente velocidad, altura y empuje insuficiente viola el balance energético aunque el radio geométrico esté bien calculado.
+
+\caso{Ejemplo original: $35^\circ$ a $90\SIu{m\,s^{-1}}$}{Para $\phi=35^\circ$, $n=1.2208$. A $V=90\SIu{m\,s^{-1}}$, $R\simeq1.180\SIu{km}$ y $\dot\chi\simeq0.07630\SIu{rad\,s^{-1}}=4.37^\circ/\mathrm s$. La fuerza horizontal por unidad de masa es $ng_0\sin\phi$, que coincide con $V^2/R$. Para un avión concreto se calcula después $C_L$ y $D(V,n)$ y se comparan con sus límites; el dato geométrico no sustituye esas comprobaciones.}
+
+\section{Efecto del viento}
+En viento uniforme, el círculo respecto al aire se traslada con la masa de aire. La trayectoria respecto al terreno deja de ser, en general, un círculo. Con velocidad angular aérea $\omega$ constante y viento horizontal $(U_N,U_E)$,
+\begin{align}
+x_N(t)&=x_{N0}+\frac V\omega[\sin(\chi_0+\omega t)-\sin\chi_0]+U_Nt,\\
+x_E(t)&=x_{E0}-\frac V\omega[\cos(\chi_0+\omega t)-\cos\chi_0]+U_Et.
+\end{align}
+Tras una vuelta aérea completa, el desplazamiento terrestre es el viento multiplicado por el periodo. Mantener un círculo sobre el terreno requiere variar rumbo, alabeo o velocidad y resolver otro problema.
+
+\section{Conexión con seis grados de libertad}
+Un viraje coordinado ideal de punto material no asegura equilibrio de todos los momentos. Las tasas cuerpo se obtienen de la cinemática y pueden generar términos giroscópicos. El timón, el diedro y los mandos deben mantener el resbalamiento requerido. En un simulador se comprobarán $\beta$, tasas, altura y velocidad, además de la forma de la trayectoria.
+
+Para comparar actuaciones entre alturas se debe precisar si se conserva TAS o EAS. A igual EAS, la presión dinámica es igual, pero TAS y radio para un mismo alabeo aumentan cuando disminuye densidad. A igual TAS, la sustentación adimensional necesaria aumenta con altura y puede aparecer pérdida.
+
+\input{content/t14}
+
+\repaso{¿Mantiene el mismo radio un avión que conserva EAS y alabeo al subir?}{No. Si la densidad baja, la TAS aumenta y $R\propto V_{\rm TAS}^2$. El equilibrio aerodinámico puede conservar un $C_L$ parecido a masa fija, pero la geometría de la trayectoria cambia.}
+\resumen{El viraje nivelado necesita sustentación superior al peso. Radio y razón de giro son relaciones geométricas sujetas a límites de sustentación, estructura y propulsión. La trayectoria terrestre cambia con viento, y el trim completo requiere también equilibrio de momentos.}
+\fuentes{Guía ULE, viraje coordinado y actuaciones de aviones de reacción y hélice. Deducción propia desde balances vertical y centrípeto; ecuaciones verificadas dimensionalmente y en el caso numérico original.}

@@ -1,0 +1,333 @@
+[
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0001",
+      "kind": "verification",
+      "check": "equivalence",
+      "verification_status": "SYMBOLICALLY_VERIFIED",
+      "method": "symbolic_equivalence",
+      "detail": "the difference simplifies to zero",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "left": "A*V**2+B/V**2",
+        "right": "(A*V**4+B)/V**2",
+        "assumptions": {}
+      },
+      "outputs": {},
+      "assumptions": [],
+      "limitations": [
+        "a symbolic identity holds only under the stated assumptions",
+        "symbolic validity is not physical validity"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "SYMBOLICALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0002",
+      "kind": "verification",
+      "check": "derivative",
+      "verification_status": "SYMBOLICALLY_VERIFIED",
+      "method": "symbolic_derivative",
+      "detail": "d/dV matches the claimed derivative",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "function": "A*V**2+B/V**2",
+        "variable": "V",
+        "claimed": "2*A*V-2*B/V**3"
+      },
+      "outputs": {
+        "derivative": "2*A*V - 2*B/V**3"
+      },
+      "assumptions": [],
+      "limitations": [
+        "the claimed form may still be undefined where the original is not"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "SYMBOLICALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0003",
+      "kind": "verification",
+      "check": "derivative",
+      "verification_status": "SYMBOLICALLY_VERIFIED",
+      "method": "symbolic_derivative",
+      "detail": "d/dV matches the claimed derivative",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "function": "A*V**3+B/V",
+        "variable": "V",
+        "claimed": "3*A*V**2-B/V**2"
+      },
+      "outputs": {
+        "derivative": "3*A*V**2 - B/V**2"
+      },
+      "assumptions": [],
+      "limitations": [
+        "the claimed form may still be undefined where the original is not"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "SYMBOLICALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded_but_not_accepted",
+    "accepted": false,
+    "verification": {
+      "id": "VRF-0004",
+      "kind": "verification",
+      "check": "derivative",
+      "verification_status": "FAILED",
+      "method": "symbolic_derivative",
+      "detail": "the claimed derivative differs; computed sqrt(B/A)/(cT*g*sqrt(A*B)*(1 + B*W**2/A))",
+      "accepted": false,
+      "ok": false,
+      "inputs": {},
+      "outputs": {},
+      "assumptions": [],
+      "limitations": [],
+      "methods_used": []
+    },
+    "verification_status": "FAILED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0005",
+      "kind": "verification",
+      "check": "equivalence",
+      "verification_status": "SYMBOLICALLY_VERIFIED",
+      "method": "symbolic_equivalence",
+      "detail": "the difference simplifies to zero",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "left": "(1/ei+pi*AR*kp)/(pi*AR)",
+        "right": "1/(pi*AR*ei)+kp",
+        "assumptions": {}
+      },
+      "outputs": {},
+      "assumptions": [],
+      "limitations": [
+        "a symbolic identity holds only under the stated assumptions",
+        "symbolic validity is not physical validity"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "SYMBOLICALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0006",
+      "kind": "verification",
+      "check": "limit",
+      "verification_status": "SYMBOLICALLY_VERIFIED",
+      "method": "symbolic_limit",
+      "detail": "the limit is V**2/(2*a0)",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "expression": "log(1+a2*V**2/a0)/(2*a2)",
+        "variable": "a2",
+        "point": "0",
+        "claimed": "V**2/(2*a0)"
+      },
+      "outputs": {
+        "limit": "V**2/(2*a0)"
+      },
+      "assumptions": [],
+      "limitations": [],
+      "methods_used": []
+    },
+    "verification_status": "SYMBOLICALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0007",
+      "kind": "verification",
+      "check": "dimensions",
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "method": "dimensional",
+      "detail": "formula reduces to [length]^1*[mass]^1*[time]^-2, matching N",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "expression": "rho*V**2*S",
+        "symbol_units": {
+          "rho": "kg/m^3",
+          "V": "m/s",
+          "S": "m^2"
+        },
+        "expected_unit": "N"
+      },
+      "outputs": {
+        "dimensionality": {
+          "[mass]": "1",
+          "[length]": "1",
+          "[time]": "-2"
+        }
+      },
+      "assumptions": [],
+      "limitations": [
+        "dimensionally consistent does not mean physically correct"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "DIMENSIONALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0008",
+      "kind": "verification",
+      "check": "dimensions",
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "method": "dimensional",
+      "detail": "formula reduces to [time]^1, matching s",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "expression": "1/(g*cT)",
+        "symbol_units": {
+          "g": "m/s^2",
+          "cT": "kg/(N*s)"
+        },
+        "expected_unit": "s"
+      },
+      "outputs": {
+        "dimensionality": {
+          "[time]": "1"
+        }
+      },
+      "assumptions": [],
+      "limitations": [
+        "dimensionally consistent does not mean physically correct"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "DIMENSIONALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  },
+  {
+    "status": "recorded",
+    "accepted": true,
+    "verification": {
+      "id": "VRF-0009",
+      "kind": "verification",
+      "check": "dimensions",
+      "verification_status": "DIMENSIONALLY_VERIFIED",
+      "method": "dimensional",
+      "detail": "formula reduces to [length]^1, matching m",
+      "accepted": true,
+      "ok": true,
+      "inputs": {
+        "expression": "1/(g*cP)",
+        "symbol_units": {
+          "g": "m/s^2",
+          "cP": "kg/J"
+        },
+        "expected_unit": "m"
+      },
+      "outputs": {
+        "dimensionality": {
+          "[length]": "1"
+        }
+      },
+      "assumptions": [],
+      "limitations": [
+        "dimensionally consistent does not mean physically correct"
+      ],
+      "methods_used": []
+    },
+    "verification_status": "DIMENSIONALLY_VERIFIED",
+    "local_sources": {
+      "status": "UNKNOWN",
+      "prompted": false,
+      "source_count": 0,
+      "last_updated": "2026-10-18T22:04:42Z"
+    },
+    "project_state": "COURSE_DISCOVERY",
+    "released": false
+  }
+]

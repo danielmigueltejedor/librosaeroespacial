@@ -1,0 +1,57 @@
+\section{Taller resuelto: La cola vertical también produce alabeo}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Una fuerza de cola Y=-1250 N actúa en cuerpo en r=(-5.2,0,-1.1) m respecto al CG. Calcule momentos de alabeo y guiñada y explique por qué la altura de cola acopla movimientos.}
+
+\apartado{2. Datos}{Fuerza F=(0,-1250,0) N; punto por encima del CG tiene z negativo.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Cuerpo dextrógiro con z abajo; momentos respecto al CG.}
+
+\apartado{5. Hipótesis físicas}{Fuerza puntual equivalente; se omiten otros momentos aerodinámicos de cola.}
+
+\apartado{6. Modelo matemático}{La cola vertical también produce alabeo}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}\vect M=\vect r\times\vect F\end{equation}
+
+\begin{equation}\mathcal L=-zY,\quad\mathcal N=xY\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se identifica el signo de z para una cola situada por encima del CG.
+
+\item El producto vectorial determina ambos momentos sin memorizar una regla visual.
+
+\item Se interpreta el momento de guiñada junto al alabeo generado por el mismo esfuerzo lateral.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Momento de alabeo:\quad $1.1 \left(-1250\right)\simeq -1375\,\mathrm{N\,m}$.\par
+
+\noindent Momento de guiñada:\quad $\left(-5.2\right) \left(-1250\right)\simeq 6500\,\mathrm{N\,m}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Momento de alabeo & $-1375\,\mathrm{N\,m}$\\
+
+Momento de guiñada & $6500\,\mathrm{N\,m}$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{Una superficie destinada a estabilidad direccional también puede modificar la dinámica de alabeo.}
+
+\apartado{12. Comprobación independiente y alcance}{Expansión del determinante del producto vectorial y comprobación de unidades N m.}
+
+\apartado{13. Limitaciones}{No se deriva la fuerza de un beta concreto ni se incluye la respuesta del resto del avión.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

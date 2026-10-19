@@ -1,0 +1,403 @@
+{
+  "status": "ok",
+  "project_state": "COURSE_DISCOVERY",
+  "released": false,
+  "domain_profile": "STEM",
+  "thresholds": {
+    "min_sections": 8,
+    "min_sources": 12,
+    "min_explanation_words": 400,
+    "min_explanation_sections": 2
+  },
+  "counts": {
+    "sections": 23,
+    "sections_with_prose": 23,
+    "paragraphs": 1193,
+    "paragraphs_audited": 0,
+    "words": 35087,
+    "sources": 10,
+    "excerpts_used": 7,
+    "excerpts_stored": 10,
+    "problems": 84,
+    "problems_checked": 84,
+    "computations_replayed": 284,
+    "derivations": 10,
+    "figures": 2,
+    "figures_checked": 2,
+    "figures_planned": 23,
+    "figure_references": 0,
+    "figures_uncited": 2,
+    "notation_entries": 7,
+    "notation_symbols": 7,
+    "terminology_entries": 0,
+    "audits": 0,
+    "reviews": 1,
+    "open_contradictions": 0
+  },
+  "derivation_statuses": {
+    "DIMENSIONALLY_VERIFIED": 10
+  },
+  "exercise_difficulties": {
+    "FOUNDATIONAL": 9,
+    "INTERMEDIATE": 34,
+    "ADVANCED": 12,
+    "EXAM_LEVEL": 29
+  },
+  "math_grounding": {
+    "formulas": 1005,
+    "claims": 666,
+    "claims_verified": 6,
+    "formulas_ungrounded": 414,
+    "by_status": {
+      "symbolically_verified": 2,
+      "dimensionally_verified": 3,
+      "numerically_reproduced": 1,
+      "source_supported": 0,
+      "follows_from_stated_premises": 2,
+      "derived_steps_unchecked": 0,
+      "numerically_ambiguous": 0,
+      "not_machine_checkable": 244,
+      "unsupported": 413,
+      "contradicted": 1,
+      "verification_failed": 0,
+      "definition": 0,
+      "approximation": 115,
+      "value_or_condition": 224
+    },
+    "by_kind": {
+      "source": 0,
+      "derivation": 5,
+      "example": 1
+    },
+    "scientific_verification_complete": false,
+    "unresolved_important": [
+      {
+        "paragraph": "PAR-0005",
+        "statement": "m\\dot V = T-D-W\\sin\\gamma",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0005",
+        "statement": "mV\\dot\\gamma = L-W\\cos\\gamma",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0005",
+        "statement": "\\dot x = V\\cos\\gamma",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0005",
+        "statement": "\\dot h = V\\sin\\gamma",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0026",
+        "statement": "C_L = 2mg_0/(\\rho V^2S)",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0027",
+        "statement": "C_{L,f}/C_{L,i} = m_f/m_i",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0053",
+        "statement": "C_{ne} = \\begin{bmatrix}\n-\\sin\\lambda\\cos\\ell&-\\sin\\lambda\\sin\\ell&\\cos\\lambda\\\\\n-\\sin\\ell&\\cos\\ell&0\\\\\n-\\cos\\lambda\\cos\\ell&-\\cos\\lambda\\sin\\ell&-\\sin\\lambda\n\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0054",
+        "statement": "T_3(\\psi) = \\begin{bmatrix}c_\\psi&s_\\psi&0\\\\-s_\\psi&c_\\psi&0\\\\0&0&1\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0054",
+        "statement": "T_2(\\theta) = \\begin{bmatrix}c_\\theta&0&-s_\\theta\\\\0&1&0\\\\s_\\theta&0&c_\\theta\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0054",
+        "statement": "T_1(\\phi) = \\begin{bmatrix}1&0&0\\\\0&c_\\phi&s_\\phi\\\\0&-s_\\phi&c_\\phi\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0054",
+        "statement": "C_{bn} = T_1T_2T_3",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0054",
+        "statement": "T_1T_2T_3 = \\begin{bmatrix}\nc_\\theta c_\\psi&c_\\theta s_\\psi&-s_\\theta\\\\\ns_\\phi s_\\theta c_\\psi-c_\\phi s_\\psi&s_\\phi s_\\theta s_\\psi+c_\\phi c_\\psi&s_\\phi c_\\theta\\\\\nc_\\phi s_\\theta c_\\psi+s_\\phi s_\\psi&c_\\phi s_\\theta s_\\psi-s_\\phi c_\\psi&c_\\phi c_\\theta\n\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0055",
+        "statement": "C_{bn}C_{bn}^{T} = T_1T_2T_3T_3^TT_2^TT_1^T",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0055",
+        "statement": "T_1T_2T_3T_3^TT_2^TT_1^T = I",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0055",
+        "statement": "\\det C_{bn} = 1",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0057",
+        "statement": "\\begin{bmatrix}p\\\\q\\\\r\\end{bmatrix} = \\begin{bmatrix}1&0&-\\sin\\theta\\\\0&\\cos\\phi&\\sin\\phi\\cos\\theta\\\\0&-\\sin\\phi&\\cos\\phi\\cos\\theta\\end{bmatrix}\n\\begin{bmatrix}\\dot\\phi\\\\\\dot\\theta\\\\\\dot\\psi\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0057",
+        "statement": "\\dot\\phi = p+(q\\sin\\phi+r\\cos\\phi)\\tan\\theta",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0057",
+        "statement": "\\dot\\theta = q\\cos\\phi-r\\sin\\phi",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0057",
+        "statement": "\\dot\\psi = (q\\sin\\phi+r\\cos\\phi)/\\cos\\theta",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\alpha = \\operatorname{atan2}(w_a,u_a)",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\beta = \\arcsin(v_a/V)",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "C_{bw} = \\begin{bmatrix}\n\\cos\\alpha\\cos\\beta&-\\cos\\alpha\\sin\\beta&-\\sin\\alpha\\\\\n\\sin\\beta&\\cos\\beta&0\\\\\n\\sin\\alpha\\cos\\beta&-\\sin\\alpha\\sin\\beta&\\cos\\alpha\n\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\boldsymbol{F}_a^w = (-D,Y_w,-L)^T",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\boldsymbol{F}_a^b = C_{bw}\\boldsymbol{F}_a^w",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0060",
+        "statement": "\\dot Q = \\tfrac12 Q\\otimes(0,\\boldsymbol{\\omega}^b)",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0060",
+        "statement": "q_0^2+\\boldsymbol{q}^T\\boldsymbol{q} = 1",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0060",
+        "statement": "C_{nb} = (q_0^2-\\boldsymbol{q}^T\\boldsymbol{q})I+2\\boldsymbol{q}\\boldsymbol{q}^T+2q_0[\\boldsymbol{q}]_\\times",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0071",
+        "statement": "\\boldsymbol{v}^b = C_{bn}\\boldsymbol{v}^n",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0071",
+        "statement": "\\boldsymbol{v}^n = C_{bn}^T\\boldsymbol{v}^b",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0097",
+        "statement": "\\left(\\frac{\\mathrm{d}\\boldsymbol{A}}{\\mathrm{d} t}\\right)_i = \\left(\\frac{\\mathrm{d}\\boldsymbol{A}}{\\mathrm{d} t}\\right)_b+\\boldsymbol{\\omega}_{b/i}\\times\\boldsymbol{A}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0098",
+        "statement": "\\boldsymbol{a}^b = \\begin{bmatrix}\\dot u+qw-rv\\\\\\dot v+ru-pw\\\\\\dot w+pv-qu\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0100",
+        "statement": "\\boldsymbol{v}_P = \\boldsymbol{v}_G+\\boldsymbol{\\omega}\\times\\boldsymbol{r}_{P/G}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0100",
+        "statement": "\\boldsymbol{a}_P = \\boldsymbol{a}_G+\\dot{\\boldsymbol{\\omega}}\\times\\boldsymbol{r}_{P/G}\n+\\boldsymbol{\\omega}\\times(\\boldsymbol{\\omega}\\times\\boldsymbol{r}_{P/G})",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0101",
+        "statement": "\\begin{bmatrix}\\dot x_N\\\\\\dot x_E\\\\\\dot h\\end{bmatrix} = \\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&-1\\end{bmatrix}\nC_{nb}\\boldsymbol{v}_g^b",
+        "status": "contradicted"
+      },
+      {
+        "paragraph": "PAR-0101",
+        "statement": "\\dot x_N = V_g\\cos\\gamma_g\\cos\\chi_g",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0101",
+        "statement": "\\dot x_E = V_g\\cos\\gamma_g\\sin\\chi_g",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0101",
+        "statement": "\\dot h = V_g\\sin\\gamma_g",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0102",
+        "statement": "\\boldsymbol{v}_g^n = \\boldsymbol{v}_a^n+\\boldsymbol{v}_w^n",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0103",
+        "statement": "\\boldsymbol{a}_g = \\left(\\frac{\\mathrm{d}\\boldsymbol{v}_a}{\\mathrm{d} t}\\right)_i\n+\\frac{\\partial\\boldsymbol{v}_w}{\\partial t}\n+(\\boldsymbol{v}_g\\cdot\\nabla)\\boldsymbol{v}_w",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0104",
+        "statement": "V\\sin\\psi = -U_E",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0104",
+        "statement": "V_{g,N} = \\sqrt{V^2-U_E^2}+U_N",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0106",
+        "statement": "q_\\infty = \\tfrac12\\rho V_{\\rm TAS}^2",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0106",
+        "statement": "\\tfrac12\\rho V_{\\rm TAS}^2 = \\tfrac12\\rho_0 V_{\\rm EAS}^2",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0106",
+        "statement": "V_{\\rm EAS} = V_{\\rm TAS}\\sqrt{\\rho/\\rho_0}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0107",
+        "statement": "\\frac{q_c}{p} = \\left(1+\\frac{\\kappa-1}{2}M^2\\right)^{\\kappa/(\\kappa-1)}-1",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0118",
+        "statement": "v_{g,N} = v_{a,N}+U(h)",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0119",
+        "statement": "\\dot v_{g,N} = \\dot v_{a,N}+(\\mathrm{d} U/\\mathrm{d} h)\\dot h",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0120",
+        "statement": "\\Delta F_N = m(\\mathrm{d} U/\\mathrm{d} h)\\dot h",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0141",
+        "statement": "\\boldsymbol{F}^b = \\boldsymbol{F}_a^b+\\boldsymbol{F}_T^b+m\\boldsymbol{g}^b+\\boldsymbol{F}_{\\rm contacto}^b",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0142",
+        "statement": "\\boldsymbol{g}^b = g(-\\sin\\theta,\\sin\\phi\\cos\\theta,\\cos\\phi\\cos\\theta)^T",
+        "status": "not_machine_checkable"
+      }
+    ],
+    "unresolved_important_count": 382,
+    "dimension_probe": {
+      "consistent": 0,
+      "inconsistent": 0,
+      "unavailable": 541
+    },
+    "dimension_conflicts": [],
+    "declared": {
+      "source": 0,
+      "derivation": 0,
+      "example": 0
+    },
+    "checked_derivations": 10,
+    "note": "Statuses describe stored evidence for each exact statement. Source support is not a proof, not_machine_checkable is not an error, and nothing here is human approval."
+  },
+  "stages": {
+    "draft": {
+      "status": "renderable",
+      "note": "a draft renders even with unverified mathematics"
+    },
+    "evidence_audit": {
+      "status": "stale"
+    },
+    "scientific_verification": {
+      "status": "incomplete",
+      "claims": 666,
+      "verified": 6,
+      "not_machine_checkable": 244,
+      "unsupported": 413,
+      "contradicted_or_failed": 1,
+      "unresolved_important_equations": 382
+    },
+    "human_approval": {
+      "status": "not_recorded"
+    },
+    "publication_ready": {
+      "ready": false,
+      "reasons": [
+        "evidence audit is stale",
+        "scientific verification is incomplete: 6 of 666 equation claims verified",
+        "no human academic approval is recorded"
+      ]
+    }
+  },
+  "completeness": {
+    "sections": 23,
+    "complete": 0,
+    "incomplete": 23
+  },
+  "coverage": {
+    "sections": 23,
+    "sources_recorded": 10,
+    "sources_used": 7,
+    "sources_unused": 3,
+    "concepts_planned": 23,
+    "concepts_covered": 23,
+    "concept_coverage": 1.0
+  },
+  "consistent": true,
+  "depth_plan": "ok",
+  "verification_statuses_present": [
+    "COMPUTATION_REPRODUCED",
+    "DIMENSIONALLY_VERIFIED",
+    "TWO_WITNESSES"
+  ],
+  "section_coverage": {
+    "chapters_with_academic_sections": 23,
+    "academic_sections_total": 23,
+    "academic_sections_covered": 23
+  },
+  "limitations": [
+    "no human instructor has reviewed this edition; ACADEMICALLY_REVIEWED is not claimed by this pipeline",
+    "page targets are estimates (52.3–94.1); only the compiled PDF's page count is a measured fact",
+    "2 of 23 planned figures are recorded and checked",
+    "2 checked figures are not referenced from the prose",
+    "414 prose equations are unsupported, contradicted, or failed a stored check",
+    "6 of 666 equation claims are verified; the rest are source-supported, unchecked, or not machine-checkable and need human review"
+  ]
+}

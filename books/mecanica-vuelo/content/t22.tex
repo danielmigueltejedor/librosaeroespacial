@@ -1,0 +1,63 @@
+\section{Taller resuelto: Comprobar una inicialización XML ejecutada}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{El par XML original del proyecto inicializa el T-6 a CAS 155 kt y 5000 ft y se integra libremente 60 s. Con el CSV ejecutado, determine variación de altura, TAS y combustible. Explique por qué una deriva no es automáticamente un fallo de integración.}
+
+\apartado{2. Datos}{Los valores iniciales y finales se extraen del archivo t6-xml-executed.csv; modelo educativo t6texan2, JSBSim 1.3.3.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Propiedades del simulador convertidas a SI; CAS de entrada distinta de EAS y TAS.}
+
+\apartado{5. Hipótesis físicas}{Mandos de trim congelados; hay consumo y dinámica terrestre del modelo.}
+
+\apartado{6. Modelo matemático}{Comprobar una inicialización XML ejecutada}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}\Delta h=h_f-h_i,\quad\Delta V=V_f-V_i\end{equation}
+
+\begin{equation}\Delta m_f=m_{comb,i}-m_{comb,f}\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se comprueba la velocidad realmente inicializada, además de la solicitada.
+
+\item Se restan estados de la misma columna y unidad.
+
+\item El consumo cambia masa y el trim inicial tiene una tolerancia; ambos pueden generar deriva física del modelo.
+
+\item Para atribuir error al paso se repite con otras discretizaciones manteniendo entradas.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Cambio de altura:\quad $0.126458938291762\simeq 0.1264589\,\mathrm m$.\par
+
+\noindent Cambio de TAS:\quad $-0.04754405583179278\simeq -0.04754406\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Combustible gastado:\quad $3.856793695546344\simeq 3.856794\,\mathrm{kg}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Cambio de altura & $0.1264589\,\mathrm m$\\
+
+Cambio de TAS & $-0.04754406\,\mathrm{m\,s^{-1}}$\\
+
+Combustible gastado & $3.856794\,\mathrm{kg}$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El experimento demuestra una ejecución de archivos concretos, no fidelidad de una aeronave real.}
+
+\apartado{12. Comprobación independiente y alcance}{Releer el CSV y comprobar integridad temporal y masa; comparar con el experimento de refinamiento del capítulo siguiente.}
+
+\apartado{13. Limitaciones}{Un replay de las diferencias no verifica por sí solo el motor de dinámica; los registros y modelo identifican qué se ejecutó.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

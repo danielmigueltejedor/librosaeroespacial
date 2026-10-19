@@ -1,0 +1,65 @@
+\section{Taller resuelto: Óptimo exacto de mínimo descenso}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Con el planeador anterior, encuentre por cálculo numérico el CL de mínimo descenso exacto en 0.3<=CL<=1.55 y compare con sqrt(3CD0/k). Compruebe la condición de derivada exacta.}
+
+\apartado{2. Datos}{Masa 455 kg y densidad 1.05 kg/m³; mismo dominio válido de polar.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Planeo rectilíneo en calma; ángulo de descenso positivo delta.}
+
+\apartado{5. Hipótesis físicas}{Equilibrio exacto y polar fija; se optimiza sólo dentro de su intervalo.}
+
+\apartado{6. Modelo matemático}{Óptimo exacto de mínimo descenso}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}s=\sqrt{2W/(\rho S)}\,C_D/(C_L^2+C_D^2)^{3/4}\end{equation}
+
+\begin{equation}4kC_L^2-2kC_D^2-3C_D=0\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se forma la función exacta de descenso sin aproximar coseno.
+
+\item Se busca el mínimo acotado y se comparan extremos.
+
+\item Se evalúa el residuo de la condición algebraica exacta cerca del óptimo.
+
+\item Se compara con el CL de la fórmula tendida y se cuantifica la diferencia.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent CL exacto:\quad $1.148396272098129\simeq 1.148396\,$.\par
+
+\noindent CL aproximado:\quad $1.14564392373896\simeq 1.145644\,$.\par
+
+\noindent Descenso mínimo exacto:\quad $1.044153049097051\simeq 1.044153\,\mathrm{m\,s^{-1}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+CL exacto & $1.148396\,$\\
+
+CL aproximado & $1.145644\,$\\
+
+Descenso mínimo exacto & $1.044153\,\mathrm{m\,s^{-1}}$\\
+
+Diferencia relativa CL & $0.002402447\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El óptimo de la aproximación y el exacto se aproximan para ángulos pequeños; no se los identifica sin evaluar el error.}
+
+\apartado{12. Comprobación independiente y alcance}{Búsqueda de raíz de 4kCL²-2kCD²-3CD y comparación con minimización directa de la tasa.}
+
+\apartado{13. Limitaciones}{Una segunda raíz fuera del dominio no representa una condición de vuelo admisible.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

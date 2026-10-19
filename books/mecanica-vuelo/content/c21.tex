@@ -1,0 +1,73 @@
+\chapter{Ampliación: estabilidad dinámica y linealización}\label{ch:dynamic}
+\objetivos{Construir un modelo perturbado; interpretar autovalores; distinguir estabilidad estática y dinámica; reconocer límites del modelo lineal.}
+
+\caja{Contenido de ampliación}{La guía ULE consultada incluye estabilidad estática longitudinal y lateral-direccional e introducción a derivadas. Este capítulo añade fundamentos de estabilidad dinámica para conectar esas derivadas con la simulación. No se presenta como transcripción de un bloque oficial adicional.}
+
+\section{Linealizar alrededor de un movimiento}
+Sea $\dot{\vect x}=\vect f(\vect x,\vect u)$ y un equilibrio $\vect f(\vect x_0,\vect u_0)=0$. Con $\Delta\vect x=\vect x-\vect x_0$ y $\Delta\vect u=\vect u-\vect u_0$, el desarrollo de Taylor da
+\begin{equation}
+\Delta\dot{\vect x}=A\Delta\vect x+B\Delta\vect u+O(\|\Delta\vect x,\Delta\vect u\|^2),
+\end{equation}
+con $A=\partial\vect f/\partial\vect x$ y $B=\partial\vect f/\partial\vect u$ evaluadas en el trim. Para un movimiento estacionario con coordenadas que evolucionan, como posición o guiñada en viraje, se usan variables apropiadas respecto a la trayectoria de referencia o un modelo lineal variable en el tiempo.
+
+Cada fila de $A$ tiene unidades compatibles con la derivada temporal del estado correspondiente. Un cambio de unidades de estado modifica numéricamente $A$ por una transformación de semejanza y conserva autovalores si se realiza coherentemente. Copiar una matriz de otra referencia sin sus estados y unidades no define un modelo.
+
+\section{Autovalores y respuesta libre}
+Para $\Delta\dot{\vect x}=A\Delta\vect x$, la solución es $\Delta\vect x(t)=e^{At}\Delta\vect x(0)$. Un autovalor $\lambda=\sigma+i\omega_d$ genera una contribución con envolvente $e^{\sigma t}$ y oscilación de frecuencia angular $|\omega_d|$.
+
+Si todas las partes reales son negativas, el equilibrio lineal es asintóticamente estable. Una parte real positiva implica inestabilidad lineal. Partes reales nulas requieren examinar estructura de Jordan y términos no lineales; no basta con clasificarlas como estabilidad garantizada. En aviones pueden aparecer integradores de posición y rumbo que no significan inestabilidad de actitud.
+
+Para un par complejo amortiguado,
+\begin{equation}
+\omega_n=\sqrt{\sigma^2+\omega_d^2},\qquad
+\zeta=-\sigma/\omega_n,\qquad T_d=2\pi/|\omega_d|.
+\end{equation}
+El tiempo de reducción a la mitad de la envolvente es $\ln2/(-\sigma)$ si $\sigma<0$. El periodo de oscilación y el tiempo de amortiguamiento describen propiedades diferentes.
+
+\ilustra{modos-dinamicos}{Dos respuestas sintéticas con la misma frecuencia de oscilación y signos opuestos en la tasa exponencial. Una tendencia restauradora puede coexistir con una oscilación creciente si falta amortiguamiento.}
+
+\section{Estabilidad estática no implica amortiguamiento}
+Un modelo de cabeceo elemental $I_y\ddot\alpha+c\dot\alpha+k\alpha=0$ tiene rigidez restauradora si $k>0$. Si $c<0$, aporta energía a la perturbación y la oscilación puede crecer. La condición estática está relacionada con rigidez; la dinámica requiere además amortiguamiento y acoplamientos.
+
+Este ejemplo no convierte $\alpha$ en una coordenada rígida exacta de cabeceo: la incidencia depende de actitud y trayectoria. Sirve para mostrar la diferencia lógica. Un modelo de avión se construye con las ecuaciones linealizadas de fuerzas y momentos.
+
+\section{Modelo longitudinal con derivadas de aceleración}
+En ejes de estabilidad cerca de vuelo simétrico se puede elegir $\vect x=(u,w,q,\theta)^T$. Una forma descriptor conserva términos como $Z_{\dot w}$ y $M_{\dot w}$:
+\begin{equation}
+E_d\dot{\vect x}=A_d\vect x+B_d\vect u.
+\end{equation}
+Si $E_d$ es invertible, se calcula $A=E_d^{-1}A_d$. No se divide sólo una fila por la masa si el término de aceleración aparece acoplado también en la ecuación de momento. Es preferible resolver el sistema lineal que formar una inversa explícita en un algoritmo numérico.
+
+Las derivadas dimensionales $X_u,Z_w,M_q$ incluyen las normalizaciones de fuerza y momento. Si se parte de coeficientes, se aplican regla de la cadena y factores $q_\infty S$, $\bar c/(2V)$ y relaciones entre $w$ y $\alpha$. La densidad, velocidad y masa del trim forman parte del resultado.
+
+\section{Modos longitudinales}
+El periodo corto suele involucrar principalmente incidencia y velocidad angular de cabeceo, con variación de velocidad relativamente pequeña en su escala temporal. La fugoide intercambia principalmente energía cinética y potencial y suele ser más lenta. La participación exacta de cada estado se observa en autovectores y respuesta, no sólo en el nombre del par de autovalores.
+
+Una aproximación energética sin pérdidas de la fugoide da una escala $\omega\simeq\sqrt2g_0/V_0$. No predice amortiguamiento y depende de hipótesis fuertes sobre sustentación y energía. Debe usarse como orden de magnitud, no como reemplazo de la matriz completa.
+
+\caso{Ejemplo original de periodo corto sintético}{Para estados $(\alpha,q)$ en radianes y radianes por segundo se toma
+\[
+A=\begin{bmatrix}-0.8&1.0\\-4.0&-1.2\end{bmatrix}.
+\]
+El polinomio característico es $\lambda^2+2\lambda+4.96=0$, con $\lambda=-1\pm1.990i\SIu{s^{-1}}$. Resultan $\omega_n=2.227\SIu{rad\,s^{-1}}$, $\zeta=0.449$ y periodo $3.16\SIu s$. Se comprueban traza y determinante frente a suma y producto de autovalores. Es una matriz docente y no un modelo identificado del T-6 ni de otra aeronave.}
+
+\section{Modos laterales}
+En una reducción lateral se usan habitualmente $(\beta,p,r,\phi)$. El modo de alabeo suele ser una raíz real rápida asociada a amortiguamiento de $p$. El balanceo holandés es un par oscilatorio acoplado de guiñada y resbalamiento, con alabeo participante. El modo espiral es habitualmente una raíz real lenta cuyo signo depende de la competencia entre tendencias direccionales, efecto diedro y acoplamientos.
+
+Un avión puede tener $C_{n\beta}>0$ y $C_{\ell\beta}<0$ y aun así presentar una divergencia espiral lenta. El diagnóstico exige la matriz completa en el trim. Los productos de inercia introducen acoplamientos entre aceleraciones de alabeo y guiñada y deben conservarse o descartarse justificadamente.
+
+\section{Extracción numérica de una matriz}
+La diferencia centrada de la función de estado permite estimar cada columna de $A$. Se deben restaurar estado y mandos exactamente en cada evaluación, evitar que el motor arrastre estados internos de una perturbación a otra y repetir con varios tamaños de paso. Un simulador con memoria de actuadores o motor requiere incluir esos estados o congelarlos de manera documentada.
+
+Una validación interna compara $e^{At}\Delta\vect x_0$ con una simulación no lineal para perturbaciones pequeñas. La discrepancia debe reducirse al disminuir amplitud dentro del intervalo donde el ruido numérico no domina. Coincidencia local no demuestra fidelidad experimental del modelo.
+
+\section{Control y límites de la estabilidad lineal}
+Un piloto automático modifica la dinámica cerrada. Con realimentación $\Delta\vect u=-K\Delta\vect x$, la matriz pasa a $A-BK$ dentro del modelo lineal. Saturación, retrasos, límites de actuador y cambios de condición pueden invalidar esa representación. Un control que mantiene altura en una simulación no convierte el avión libre en estable ni certifica el sistema.
+
+\input{content/d21}
+
+\input{content/t21}
+
+\repaso{¿Basta con ver que una perturbación vuelve a cero una vez?}{No. Una oscilación creciente cruza cero repetidamente. Hay que examinar la envolvente, varias variables, tiempo suficiente y condiciones de mando; los autovalores aportan una descripción local complementaria.}
+\resumen{La linealización vincula derivadas con modos de movimiento. Los signos estáticos no fijan por sí solos las partes reales de los autovalores. Cada matriz necesita estados, unidades y trim explícitos, y la comparación con el modelo no lineal conserva un alcance local.}
+\fuentes{How, MIT 16.333, lección 4 (linealización), lección 6, pp. 5--1 a 5--3 (forma descriptor), lección 7, pp. 6--1 a 6--4 (aproximaciones), y lección 8, pp. 7--1 a 7--3 (dinámica lateral). Ejemplo matricial y figuras originales.}

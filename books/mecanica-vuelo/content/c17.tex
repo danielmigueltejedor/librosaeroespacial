@@ -1,0 +1,78 @@
+\chapter{Despegue: carrera y fase aérea}\label{ch:takeoff}
+\objetivos{Integrar la aceleración sobre pista; distinguir velocidad aérea y terrestre; añadir rotación y obstáculo con hipótesis explícitas; separar cálculo académico y actuación certificada.}
+
+\section{Fases y magnitudes}
+La distancia de despegue de un modelo puede separarse en carrera, rotación, transición y ascenso hasta una altura de referencia. La definición de cada fase debe mantenerse al comparar resultados. Una distancia hasta separación de ruedas no equivale a distancia hasta obstáculo; una distancia calculada con empuje constante no equivale a una distancia certificada con procedimientos, fallos y márgenes reglamentarios.
+
+Se estudia una pista horizontal, viento alineado, avión rígido y una ley de empuje finita. Sea $V_g\geq0$ la velocidad terrestre y $U>0$ viento de cara, de modo que $V_a=V_g+U$ mientras el flujo conserve su sentido. La distancia satisface $\dot x=V_g$; la sustentación y resistencia se calculan con $V_a$.
+
+\section{Balance en carrera}
+Sin aceleración vertical y antes de perder contacto,
+\begin{equation}
+N=W-L,\qquad
+m\dot V_g=T-D-\mu_r(W-L),\qquad N\geq0.
+\label{eq:takeoffroll}
+\end{equation}
+La resistencia de rodadura se aproxima como $\mu_rN$. Una pendiente de pista añade una componente de peso y modifica la reacción normal. La expresión debe cambiar si se incluyen fuerzas verticales de propulsión o amortiguación del tren.
+
+Para una actitud de carrera fija se pueden adoptar $C_{L,g}$ y $C_{D,g}=C_{D0}+kC_{L,g}^2$. No se utiliza $L=W$ durante toda la carrera: al principio las ruedas soportan casi todo el peso y la sustentación crece con velocidad aérea.
+
+\section{Integración en velocidad}
+Definiendo $a(V_g)=[T(V_a)-D(V_a)-\mu_r(W-L(V_a))]/m$,
+\begin{equation}
+s_g=\int_0^{V_{g,\rm fin}}\frac{V_g}{a(V_g)}\,\dd V_g,
+\qquad t_g=\int_0^{V_{g,\rm fin}}\frac{1}{a(V_g)}\,\dd V_g.
+\label{eq:rollintegral}
+\end{equation}
+Se exige $a>0$ en el intervalo para una carrera monótona. Si aparece un punto donde $a=0$ antes de la velocidad objetivo, ésta no se alcanza en el modelo. Una cuadratura que atraviese esa singularidad y devuelva un valor no describe una carrera posible.
+
+\subsection{Solución cerrada sin viento y empuje constante}
+Si $T$, $C_{L,g}$ y $\mu_r$ son constantes,
+\begin{equation}
+a(V)=a_0+a_2V^2,
+\quad a_0=T/m-\mu_rg_0,
+\quad a_2=\frac{\rho S}{2m}(\mu_rC_{L,g}-C_{D,g}).
+\end{equation}
+Para $a_2\neq0$,
+\begin{equation}
+s_g=\frac{1}{2a_2}\ln\!\left(\frac{a_0+a_2V_{\rm fin}^2}{a_0}\right).
+\label{eq:rolllog}
+\end{equation}
+El argumento debe ser positivo y la aceleración mantenerse positiva. En el límite $a_2\to0$ se recupera $V_{\rm fin}^2/(2a_0)$. Esta comprobación es útil para evitar inestabilidad numérica por dividir un logaritmo pequeño entre un número pequeño; una implementación puede usar una función de logaritmo estable o el límite.
+
+El tiempo se obtiene con arcotangente si $a_2>0$ y con arcotangente hiperbólica si $a_2<0$, dentro del dominio de aceleración positiva. La cuadratura directa de $1/a$ evita confundir ambos casos y permite mapas de motor más realistas.
+
+\section{Velocidad de separación y rotación}
+Una condición académica posible es $V_{a,\rm LOF}=k_VV_{\rm stall,TO}$ con $k_V>1$ dado por el problema. No se presenta como regla operativa universal. Con viento de cara, la velocidad terrestre objetivo es $V_{g,\rm LOF}=V_{a,\rm LOF}-U$, si es positiva.
+
+La rotación cambia incidencia y sustentación y requiere momento de elevador. Un modelo simplificado puede añadir una duración de rotación $t_R$ y distancia aproximada $V_{g,R}t_R$; debe aclarar que no se han integrado las ecuaciones de cabeceo. Un modelo de seis grados de libertad puede incluir esa dinámica, el tren y sus reacciones, pero necesita datos y validación apropiados.
+
+\section{Transición y obstáculo}
+Si se idealiza una transición circular a velocidad constante y radio $R_c$, desde trayectoria horizontal hasta $\gamma_c>0$,
+\begin{equation}
+x_{\rm tr}=R_c\sin\gamma_c,\qquad
+h_{\rm tr}=R_c(1-\cos\gamma_c).
+\end{equation}
+En el inicio, $R_c\simeq V^2/[g_0(n-1)]$ para un factor de carga $n>1$. Conservar ese radio y carga durante toda la transición es una aproximación, porque la componente normal del peso cambia con el ángulo. Para un obstáculo $H>h_{\rm tr}$ y ascenso recto posterior,
+\begin{equation}
+x_{\rm asc}=\frac{H-h_{\rm tr}}{\tan\gamma_c}.
+\end{equation}
+La distancia total combina carrera, rotación, transición y tramo recto según la definición elegida. Si el obstáculo se alcanza dentro de la transición, no se añade un tramo recto de longitud negativa: se resuelve el ángulo de la circunferencia a esa altura.
+
+\section{Masa, temperatura y viento}
+Mayor masa eleva la velocidad aérea requerida y reduce aceleración para la misma fuerza. Menor densidad eleva TAS de separación y puede reducir empuje o potencia disponibles. Temperatura alta modifica densidad y velocidad del sonido; no se reduce a sumar metros de altitud sin declarar el modelo.
+
+El viento de cara reduce velocidad terrestre necesaria para obtener la misma velocidad aérea y suele acortar carrera. También altera fuerzas durante la carrera, porque ya existe presión dinámica al inicio. El viento de cola puede producir un intervalo de flujo inverso a velocidad terrestre pequeña: un modelo que sólo admite $V_a\geq0$ debe rechazarlo o incorporar la aerodinámica correspondiente.
+
+\ilustra{despegue-masa}{Distancia de rodadura en función de masa con una ley de empuje constante y velocidad final ligada a pérdida. No incluye rotación, obstáculo ni márgenes de certificación.}
+
+\caso{Ejemplo original y dos métodos}{Con $m=1.500\SIu{kg}$, $S=18\SIu{m^2}$, $\rho=1.225\SIu{kg\,m^{-3}}$, polar $0.035+0.055C_L^2$, $C_{L,g}=0.65$, $\mu_r=0.03$, $T=5.000\SIu N$ y objetivo terrestre $32\SIu{m\,s^{-1}}$ sin viento, se integra la ecuación~\eqref{eq:rollintegral}. Se comprueba que $N>0$ hasta el final y que $a>0$. La cuadratura se contrasta con una marcha temporal con pasos 0.02, 0.01 y 0.005 s. Los resultados pasan un error relativo de distancia de $2\times10^{-4}$ respecto a la cuadratura. La velocidad final se ha prescrito: no se afirma que sea la velocidad certificada de separación.}
+
+\section{Límites de una actuación académica}
+La distancia calculada depende de rozamiento, ley de empuje, técnica de rotación, configuración, superficie y ambiente. Las actuaciones certificadas añaden definiciones, condiciones y márgenes específicos, y se usan mediante los documentos aprobados de la aeronave. Este capítulo enseña a construir y auditar un modelo, sin transformar su resultado en una autorización de operación.
+
+\input{content/t17}
+
+\repaso{¿Por qué se integra $V_g/a$ y no $V_a/a$ para obtener pista?}{Porque la pista se mide respecto al suelo y $\dot x=V_g$. Las fuerzas se calculan con velocidad aérea. Sustituir una por otra en presencia de viento mezcla cinemática y aerodinámica.}
+\resumen{La rodadura exige balances con reacción normal variable y una ley de empuje finita. Las fases aéreas se añaden con geometría y dinámica declaradas. Viento, masa y densidad afectan tanto a la velocidad objetivo como a la aceleración.}
+\fuentes{Guía ULE, despegue. Familias de ecuaciones identificadas en el formulario facilitado y derivadas aquí desde Newton. El ejemplo es académico y original; no se atribuye a un procedimiento FAA/EASA ni a una aeronave certificada.}

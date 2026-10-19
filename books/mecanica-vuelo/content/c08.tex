@@ -1,0 +1,84 @@
+\chapter{Óptimos de planeo, viento y altitud}\label{ch:planeo-punto}
+\objetivos{Derivar las incidencias de máximo alcance y mínimo descenso; imponer restricciones; interpretar la modificación del óptimo por viento.}
+
+\section{Mejor planeo en calma}
+Con polar $C_D=C_{D0}+kC_L^2$, la eficiencia es
+\begin{equation}
+E_a(C_L)=\frac{C_L}{C_{D0}+kC_L^2}.
+\end{equation}
+Su derivada vale
+\begin{equation}
+\frac{\dd E_a}{\dd C_L}=
+\frac{C_{D0}-kC_L^2}{(C_{D0}+kC_L^2)^2}.
+\end{equation}
+Para $C_L>0$, crece antes de $\sqrt{C_{D0}/k}$ y decrece después. El máximo interior es
+\begin{equation}
+C_{L,E}=\sqrt{C_{D0}/k},\quad C_{D,E}=2C_{D0},\quad
+E_{a,\max}=\frac1{2\sqrt{C_{D0}k}}.\label{eq:ldmax}
+\end{equation}
+La igualdad de las dos contribuciones $C_{D0}=kC_L^2$ se refiere a los dos términos de la polar total adoptada. Sólo es igualdad de resistencia parásita e inducida pura si el término cuadrático contiene únicamente esta última.
+
+El ángulo de descenso mínimo exacto es $\delta_{\min}=\arctan(1/E_{a,\max})$. El $C_L$ que maximiza el alcance en calma es el mismo en la formulación exacta y en la de ángulo pequeño, porque ambas utilizan la misma razón $L/D$.
+
+\section{Mínima tasa de descenso}
+En la aproximación tendida se minimiza
+\begin{equation}
+f(C_L)=\frac{C_{D0}+kC_L^2}{C_L^{3/2}}
+=C_{D0}C_L^{-3/2}+kC_L^{1/2}.
+\end{equation}
+La condición $f'=0$ conduce a $kC_L^2=3C_{D0}$. Por tanto,
+\begin{equation}
+C_{L,s}=\sqrt{3C_{D0}/k}=\sqrt3C_{L,E},\qquad
+V_s\simeq3^{-1/4}V_E.
+\label{eq:min-sink}
+\end{equation}
+Aquí $V_s$ significa velocidad de mínimo descenso sólo en esta ecuación; para evitar confusión, en tablas se escribirá $V_{\rm min\,desc}$ y se reservará $V_{\rm stall}$ para pérdida. La eficiencia aerodinámica en mínimo descenso es $\sqrt3/2$ del máximo, por lo que el planeo resulta algo más inclinado aunque la velocidad vertical sea menor.
+
+\subsection{Corrección exacta}
+Si se minimiza la expresión exacta del capítulo anterior,
+\begin{equation}
+\frac{2kC_L}{C_D}-\frac{3}{2}
+\frac{C_L+2kC_LC_D}{C_L^2+C_D^2}=0.
+\end{equation}
+Para $C_L>0$ se reduce a
+\begin{equation}
+4kC_L^2-2kC_D^2-3C_D=0.
+\label{eq:min-sink-exacto}
+\end{equation}
+Al despreciar el término de orden $C_D^2$ y sustituir la polar, se recupera $kC_L^2\simeq3C_{D0}$. Se debe buscar el mínimo dentro del intervalo válido de la polar: una raíz lejana asociada a sustentación enorme no representa un planeador operativo. Esta distinción evita presentar una aproximación excelente para planeo tendido como identidad universal.
+
+\section{Velocidades equivalentes y restricciones}
+Las velocidades TAS de los óptimos son proporcionales a $\sqrt{W/\rho}$. Sus EAS son aproximadamente proporcionales a $\sqrt W$. Si el óptimo requiere $C_L>C_{L\max}$, el máximo factible aparece en la frontera de sustentación, con el margen operativo exigido. No basta con imprimir la raíz de la derivada.
+
+\caso{Ejemplo original: comparación de dos objetivos}{Con la polar del capítulo anterior, $C_{L,E}=\sqrt{0.013/0.031}=0.6476$ y $C_{L,s}\simeq1.1216$. Ambos caben en un modelo con $C_{L\max}=1.6$. El primer valor maximiza distancia desde una altura en calma; el segundo minimiza descenso en la aproximación tendida. La relación de velocidades es aproximadamente $0.7598$. Si una configuración tuviese $C_{L\max}=0.95$, el mínimo descenso interior dejaría de ser alcanzable.}
+
+\ilustra{eficiencias}{Tres funciones objetivo para una misma polar. Sus máximos difieren: eficiencia, mínimo consumo de potencia y alcance específico de un reactor bajo las hipótesis que se desarrollan después.}
+
+\section{Mejor alcance sobre el suelo con viento}
+Supóngase viento horizontal alineado con la ruta, uniforme y constante. Se escribe $U>0$ para viento de cola. Con una tasa de descenso positiva $s(V)$ y planeo tendido, el avance por altura es
+\begin{equation}
+G(V)=\frac{V+U}{s(V)}.
+\end{equation}
+La condición interior es
+\begin{equation}
+s(V)-(V+U)s'(V)=0.\label{eq:optimo-viento}
+\end{equation}
+En calma se recupera la tangencia desde el origen a la polar de descenso. Con viento de cara $U<0$, el origen de la tangencia se desplaza hacia velocidad positiva y el óptimo suele aumentar: se vuela más rápido para reducir el tiempo durante el que el viento resta avance. Con viento de cola el óptimo suele disminuir, dentro de los límites de pérdida y control.
+
+La versión exacta sustituye $V$ por $V_H(V)$ y deriva $[V_H(V)+U]/s(V)$. Si el parámetro de la curva es $C_L$, se deriva respecto a él. El cambio de variable no altera el óptimo si la correspondencia es regular en el intervalo considerado.
+
+\section{Viento vertical y autonomía}
+En una masa de aire con velocidad vertical ascendente $U_h$, la variación de altitud sobre el suelo es $\dot h=U_h-s$. Un planeador puede mantener o ganar altura si $U_h\geq s$. Ya no procede calcular una autonomía finita como $\Delta h/s$ usando sólo la tasa de descenso en aire en calma. Además, un campo de ascendencias no suele ser uniforme ni indefinido; el objetivo incluye buscar y permanecer en regiones de energía atmosférica.
+
+El mínimo descenso en el aire no cambia por añadir una velocidad vertical uniforme independiente de la velocidad del avión. Sí cambia la autonomía geométrica sobre el terreno y puede cambiar la estrategia si las ascendencias ocupan regiones limitadas. En esta edición los cálculos integrales de planeo básico suponen viento vertical nulo.
+
+\section{Viraje de un planeador}
+En un descenso helicoidal tendido con alabeo aproximadamente constante, la sustentación requerida aumenta aproximadamente a $nW$, con $n\simeq1/\cos\phi$. A igual $C_L$, la velocidad aumenta como $\sqrt n$ y la potencia resistente como $n^{3/2}$ respecto al caso rectilíneo del mismo peso, bajo la polar y aproximaciones adoptadas. Por tanto, permanecer girando suele aumentar el descenso propio del avión. El beneficio dentro de una térmica depende de la distribución de velocidad ascendente y del radio de giro, no sólo de minimizar la resistencia.
+
+Para descensos grandes deben conservarse $\cos\gamma$ en el equilibrio vertical y las relaciones de curvatura de la trayectoria. La fórmula nivelada $n=1/\cos\phi$ no se presenta como exacta para cualquier hélice descendente.
+
+\input{content/t08}
+
+\repaso{¿Por qué no basta con maximizar $L/D$ para regresar contra viento?}{Porque el alcance sobre el suelo incluye el tiempo de exposición al viento. La razón relevante es avance terrestre dividido por descenso; la condición de tangencia cambia.}
+\resumen{Mejor planeo y mínimo descenso son problemas de optimización diferentes. El viento modifica el objetivo de alcance terrestre. Las raíces interiores se comparan con pérdida, límites de polar y restricciones de misión antes de interpretarlas como velocidades utilizables.}
+\fuentes{How, MIT 16.333, lección 1, actuaciones de planeo. La condición con viento, la corrección exacta y los ejemplos se derivan en esta edición. La clasificación de ejercicios se basa en los cuadernos facilitados, sin adoptar sus soluciones como autoridad.}

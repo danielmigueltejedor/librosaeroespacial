@@ -1,0 +1,104 @@
+\chapter{Sistemas de referencia y orientación}\label{ch:ejes}
+\objetivos{Construir transformaciones pasivas; relacionar NED, cuerpo y viento; demostrar ortogonalidad; distinguir ángulos de actitud, aerodinámicos y de trayectoria.}
+
+\section{Una convención completa}
+Un vector físico no depende de los ejes elegidos, pero sus componentes sí. Se escribirá $\vect v^b=C_{bn}\vect v^n$: la matriz $C_{bn}$ transforma componentes desde el sistema $n$ al sistema $b$. El segundo subíndice identifica el origen de las componentes y el primero su destino. Es una transformación pasiva; no gira físicamente el vector.
+
+El horizonte local $n$ tiene ejes norte, este y abajo, NED. El sistema cuerpo $b$ tiene $x_b$ hacia el morro, $y_b$ hacia el ala derecha y $z_b$ hacia abajo. Ambas ternas son dextrógiras. El momento positivo de alabeo baja el ala derecha, el momento positivo de cabeceo eleva el morro y el de guiñada gira el morro a la derecha.
+
+El sistema inercial ideal tiene ejes sin rotación y origen sin aceleración. La Tierra gira respecto a él. El sistema terrestre ECEF gira con la Tierra; su eje $z$ se dirige al polo norte. NED depende de la posición: al desplazarse el avión sobre la esfera, el horizonte local gira. Para actuaciones locales se desprecia esa rotación y se aproxima NED como inercial. Para navegación extensa y para comparar con JSBSim habrá que recordar que el simulador incluye una Tierra rotatoria.
+
+\section{De la Tierra al horizonte local}
+Si $\lambda$ es latitud geocéntrica y $\ell$ longitud este, una transformación sobre Tierra esférica es
+\begin{equation}
+C_{ne}=\begin{bmatrix}
+-\sin\lambda\cos\ell&-\sin\lambda\sin\ell&\cos\lambda\\
+-\sin\ell&\cos\ell&0\\
+-\cos\lambda\cos\ell&-\cos\lambda\sin\ell&-\sin\lambda
+\end{bmatrix}.
+\end{equation}
+La primera fila apunta al norte y la tercera al centro terrestre. En una Tierra elipsoidal el abajo geodésico es normal al elipsoide, no radial; no se sustituye una latitud por otra sin revisar las definiciones. Para obtener coordenadas locales de una posición se resta primero la posición del origen y después se rota el vector diferencia. Rotar directamente dos posiciones con orígenes distintos no realiza una traslación.
+
+\section{Tres rotaciones elementales}
+Se adopta la secuencia intrínseca 3--2--1: guiñada $\psi$ sobre abajo local, cabeceo $\theta$ sobre el eje intermedio y alabeo $\phi$ sobre el eje longitudinal final. Las matrices pasivas son
+\begin{align}
+T_3(\psi)&=\begin{bmatrix}c_\psi&s_\psi&0\\-s_\psi&c_\psi&0\\0&0&1\end{bmatrix},\\
+T_2(\theta)&=\begin{bmatrix}c_\theta&0&-s_\theta\\0&1&0\\s_\theta&0&c_\theta\end{bmatrix},\\
+T_1(\phi)&=\begin{bmatrix}1&0&0\\0&c_\phi&s_\phi\\0&-s_\phi&c_\phi\end{bmatrix},
+\end{align}
+donde $c_\phi=\cos\phi$ y $s_\phi=\sin\phi$, y análogamente para los otros ángulos. La primera transformación que actúa sobre el vector aparece a la derecha. El producto es
+\begin{equation}
+C_{bn}=T_1T_2T_3=
+\begin{bmatrix}
+c_\theta c_\psi&c_\theta s_\psi&-s_\theta\\
+s_\phi s_\theta c_\psi-c_\phi s_\psi&s_\phi s_\theta s_\psi+c_\phi c_\psi&s_\phi c_\theta\\
+c_\phi s_\theta c_\psi+s_\phi s_\psi&c_\phi s_\theta s_\psi-s_\phi c_\psi&c_\phi c_\theta
+\end{bmatrix}.\label{eq:Cbn}
+\end{equation}
+Una secuencia diferente produce otra matriz. Para comprobarlo basta girar $90^\circ$ alrededor de dos ejes y observar a dónde llega el tercero: los productos no conmutan.
+
+\subsection{Pruebas geométricas}
+Cada fila contiene los cosenos directores de un eje cuerpo respecto a NED. Las filas tienen norma unidad y son ortogonales. Para cada rotación elemental, $T_iT_i^T=I$ y $\det T_i=1$. Por tanto,
+\begin{equation}
+C_{bn}C_{bn}^{T}=T_1T_2T_3T_3^TT_2^TT_1^T=I,
+\qquad \det C_{bn}=1.
+\end{equation}
+La inversa es $C_{nb}=C_{bn}^T$. En consecuencia, se conserva $\vect v\cdot\vect v$. Una matriz con determinante $-1$ puede conservar normas, pero incluye una reflexión y no describe sólo una rotación de una terna dextrógira.
+
+\caso{Ejemplo: gravedad en actitud de cabeceo}{Para $\phi=0$, $\theta=10^\circ$, la gravedad local $\vect g^n=(0,0,g)^T$ tiene componentes $\vect g^b=(-g\sin10^\circ,0,g\cos10^\circ)^T=(-1.703,0,9.658)\SIu{m\,s^{-2}}$. El morro alto hace que la gravedad frene en $x_b$. La norma sigue siendo $9.80665\SIu{m\,s^{-2}}$. Si el primer componente resultase positivo, habría un error de signo o se estaría usando la transformación inversa.}
+
+\section{Velocidad angular y ángulos de Euler}
+Las derivadas de los ángulos no son las componentes de velocidad angular, porque las tres rotaciones se producen alrededor de ejes diferentes. Sumando sus vectores expresados en cuerpo se obtiene
+\begin{equation}
+\begin{bmatrix}p\\q\\r\end{bmatrix}=
+\begin{bmatrix}1&0&-\sin\theta\\0&\cos\phi&\sin\phi\cos\theta\\0&-\sin\phi&\cos\phi\cos\theta\end{bmatrix}
+\begin{bmatrix}\dot\phi\\\dot\theta\\\dot\psi\end{bmatrix}.
+\label{eq:Euler-directa}
+\end{equation}
+El determinante es $\cos\theta$. Cuando no es nulo,
+\begin{align}
+\dot\phi&=p+(q\sin\phi+r\cos\phi)\tan\theta,\\
+\dot\theta&=q\cos\phi-r\sin\phi,\\
+\dot\psi&=(q\sin\phi+r\cos\phi)/\cos\theta.
+\end{align}
+En $\theta=\pm90^\circ$ se pierde unicidad en la parametrización. El avión no tiene una singularidad física; la tienen estas coordenadas. Cerca de ella, pequeñas incertidumbres en actitud producen grandes variaciones de guiñada y alabeo. Una integración robusta debe cambiar de representación o usar cuaterniones.
+
+\section{Ejes viento y ángulos aerodinámicos}
+Los ángulos aerodinámicos se construyen con la velocidad respecto al aire, no con la velocidad respecto al suelo. Sean $(u_a,v_a,w_a)$ sus componentes cuerpo y $V=\sqrt{u_a^2+v_a^2+w_a^2}>0$:
+\begin{equation}
+\alpha=\operatorname{atan2}(w_a,u_a),\qquad \beta=\arcsin(v_a/V).
+\end{equation}
+Se escoge $x_w$ paralelo a esa velocidad y $z_w$ abajo en ausencia de resbalamiento. La transformación correspondiente es
+\begin{equation}
+C_{bw}=\begin{bmatrix}
+\cos\alpha\cos\beta&-\cos\alpha\sin\beta&-\sin\alpha\\
+\sin\beta&\cos\beta&0\\
+\sin\alpha\cos\beta&-\sin\alpha\sin\beta&\cos\alpha
+\end{bmatrix}.\label{eq:Cbw}
+\end{equation}
+Su primera columna reproduce $\vect v_a^b/V$. La fuerza aerodinámica se escribe
+\begin{equation}
+\vect F_a^w=(-D,Y_w,-L)^T,\qquad \vect F_a^b=C_{bw}\vect F_a^w.
+\end{equation}
+Con $\beta=0$, $X_a=-D\cos\alpha+L\sin\alpha$ y $Z_a=-D\sin\alpha-L\cos\alpha$. Una fuerza de sustentación positiva no coincide, por tanto, con un $Z_b$ positivo. Los ejes de estabilidad se obtienen girando sólo por la incidencia de referencia; no coinciden con ejes viento instantáneos cuando hay perturbaciones.
+
+\section{Actitud, rumbo y trayectoria}
+El cabeceo describe la orientación del fuselaje respecto al horizonte. La trayectoria describe la dirección de la velocidad. En vuelo simétrico sin viento y con alas niveladas, $\theta=\alpha+\gamma$. En presencia de alabeo, resbalamiento o viento la suma escalar deja de ser general y deben emplearse matrices. El rumbo del morro $\psi$ tampoco tiene por qué coincidir con la dirección de desplazamiento sobre el terreno.
+
+\section{Ampliación: cuaterniones}
+Un cuaternión unidad puede escribirse $Q=(q_0,\vect q)$, con parte escalar primero y producto de Hamilton. Si representa la rotación activa de cuerpo a NED, y $\vect\omega^b$ es la velocidad angular de cuerpo respecto a un NED considerado inercial,
+\begin{equation}
+\dot Q=\tfrac12 Q\otimes(0,\vect\omega^b),\qquad q_0^2+\vect q^T\vect q=1.
+\end{equation}
+La matriz activa asociada es
+\begin{equation}
+C_{nb}=(q_0^2-\vect q^T\vect q)I+2\vect q\vect q^T+2q_0[\vect q]_\times.
+\end{equation}
+Su transpuesta transforma componentes NED a cuerpo. Las fórmulas cambian de signo o de orden al elegir otra convención de cuaterniones; declarar sólo ``uso cuaterniones'' no basta. $Q$ y $-Q$ representan la misma actitud. Normalizar periódicamente limita el error de norma, pero no corrige un signo equivocado en la ecuación cinemática.
+
+\verifica{Las matrices Euler y viento han sido contrastadas simbólicamente en ortogonalidad y dirección de la velocidad; también se ensayaron 200 transformaciones numéricas de ida y vuelta. La representación de cuaterniones se presenta como ampliación con su convención explícita; no se identifica automáticamente con el orden interno de cualquier programa.}
+\input{content/t02}
+
+\repaso{Con $\alpha=8^\circ$, $\beta=0$ y $V=70\SIu{m\,s^{-1}}$, ¿es $w_a$ negativo porque el avión asciende?}{No. $w_a=V\sin\alpha=9.74\SIu{m\,s^{-1}}$ es positivo en cuerpo. La velocidad vertical sobre el terreno depende además de la actitud y del viento.}
+\resumen{Una transformación necesita ejes, sentido, orden y referencia de los ángulos. Las rotaciones propias conservan normas y tienen determinante unidad. Los ángulos de Euler parametrizan la actitud con singularidades; los aerodinámicos describen la velocidad relativa al aire.}
+\fuentes{How, MIT 16.333, lección 3, pp. internas 3--1 a 3--9 (Euler y cuaterniones); lección 4, pp. 4--2 a 4--4 (ejes). Las matrices se derivan y comprueban en el proyecto. La notación se declara de nuevo para evitar trasladar signos de otros convenios.}

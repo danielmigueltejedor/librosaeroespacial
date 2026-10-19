@@ -1,0 +1,61 @@
+\section{Demostración desde un continuo de partículas}
+\subsection{Separar traslación y rotación}
+Considérese un conjunto material de partículas y un origen G situado en su centro de masa. Para cada partícula, $\vect r_i=\vect r_G+\vect\rho_i$ y $\sum m_i\vect\rho_i=0$. La cantidad de movimiento total es
+\begin{equation}
+\vect P=\sum_i m_i\dot{\vect r}_i
+=m\dot{\vect r}_G+\frac{\dd}{\dd t}\sum_i m_i\vect\rho_i
+=m\vect v_G,
+\end{equation}
+si las masas de las partículas permanecen constantes. Al sumar sus ecuaciones de Newton, las fuerzas internas se cancelan por pares bajo las hipótesis de interacción que permiten modelar el sólido clásico. Así se obtiene $m\vect a_G=\sum\vect F_{ext}$ sin atribuir al centro de masa una estructura interna ficticia.
+
+El momento angular respecto a G se define con velocidades relativas a G:
+\begin{equation}
+\vect H_G=\sum_i\vect\rho_i\times m_i\dot{\vect\rho}_i.
+\end{equation}
+Para un sólido rígido, $\dot{\vect\rho}_i=\vect\omega\times\vect\rho_i$. La identidad de triple producto da
+\begin{equation}
+\vect\rho_i\times(\vect\omega\times\vect\rho_i)
+=[(\vect\rho_i^T\vect\rho_i)I_3-\vect\rho_i\vect\rho_i^T]\vect\omega.
+\end{equation}
+Sumando se obtiene el tensor del capítulo anterior y $\vect H_G=I\vect\omega$. Esta demostración explica el signo negativo de los elementos no diagonales: procede del término $-\vect\rho\vect\rho^T$, no de una elección posterior para ajustar ecuaciones.
+
+\subsection{Por qué G simplifica el balance de momentos}
+Al derivar el momento angular alrededor de un punto móvil aparecen términos asociados al movimiento del origen. En G, las contribuciones que contienen $\sum m_i\vect\rho_i$ se anulan. Por ello el momento externo respecto a G se iguala a la derivada inercial de $\vect H_G$. Elegir otro punto fijo al avión exige conservar los términos de traslación del origen; no basta con reutilizar la misma ecuación con un tensor trasladado.
+
+La energía cinética total se separa de forma análoga:
+\begin{equation}
+E_k=\frac12m\vect v_G^T\vect v_G+\frac12\vect\omega^TI\vect\omega.
+\end{equation}
+El término cruzado desaparece porque G es centro de masa. En un campo uniforme se puede añadir $mgh_G$. La tasa de energía se compara con trabajo de fuerzas resultantes y momentos en un sistema cerrado. Para un avión con flujo propulsivo y consumo, esa identidad exige el tratamiento de sistema abierto si se interpreta como balance de toda la energía del combustible y la estela.
+
+\section{Tierra rotatoria: derivación de los términos adicionales}
+Sea una referencia e que gira uniformemente respecto a una inercial i con velocidad angular $\vect\Omega$. Para una posición $\vect r$ respecto al centro terrestre,
+\begin{equation}
+\vect v_i=\vect v_e+\vect\Omega\times\vect r.
+\end{equation}
+Derivando con transporte y $\dot{\vect\Omega}=0$,
+\begin{equation}
+\vect a_i=\vect a_e+2\vect\Omega\times\vect v_e
++\vect\Omega\times(\vect\Omega\times\vect r).
+\end{equation}
+La ecuación en e resulta
+\begin{equation}
+\vect a_e=\frac{\vect F_{no\,g}}m+\vect g_{grav}
+-2\vect\Omega\times\vect v_e
+-\vect\Omega\times(\vect\Omega\times\vect r).
+\end{equation}
+Si se define gravedad efectiva como $\vect g_{ef}=\vect g_{grav}-\vect\Omega\times(\vect\Omega\times\vect r)$, la centrífuga ya está incluida en ella. Si la rotación no fuese uniforme, se añadiría el término de Euler $-\dot{\vect\Omega}\times\vect r$.
+
+Una base NED que se desplaza introduce además velocidad de transporte del horizonte. No es la misma velocidad angular que el giro terrestre. Para un modelo de navegación global se distinguen tasa cuerpo respecto a inercial, tasa cuerpo respecto a Tierra y tasa horizonte respecto a Tierra. Las ecuaciones simplificadas del manual se recuperan al despreciar esas rotaciones y curvatura en una región local.
+
+\verifica{El orden de magnitud de Coriolis es $2\Omega V$. Para una velocidad de unos $100\SIu{m/s}$ y una rotación terrestre de orden $7.3\times10^{-5}\SIu{s^{-1}}$, la escala es aproximadamente $0.015\SIu{m/s^2}$. Puede ser pequeña frente a g y a la vez importante para comparar residuos de trim de $10^{-4}\SIu{m/s^2}$. ``Pequeño para actuaciones'' no equivale a ``nulo en una auditoría de simulación''.}
+
+\section{Pasar del modelo completo al balance de trayectoria}
+Para $\beta=0$, $u=V\cos\alpha$ y $w=V\sin\alpha$. Derivando,
+\begin{align}
+\dot u&=\dot V\cos\alpha-V\dot\alpha\sin\alpha,\\
+\dot w&=\dot V\sin\alpha+V\dot\alpha\cos\alpha.
+\end{align}
+Multiplicar la ecuación de u por $\cos\alpha$, la de w por $\sin\alpha$ y sumar cancela los términos de $\dot\alpha$ y los productos de q, obteniendo la ecuación tangencial. Para la ecuación normal se toma $-\sin\alpha$ por la primera y $\cos\alpha$ por la segunda. Aparece $V(\dot\alpha-q)$; con $\gamma=\theta-\alpha$ y $q=\dot\theta$, se convierte en $-V\dot\gamma$. Los signos de peso y sustentación completan la ecuación~\eqref{eq:simetrico-trayectoria}.
+
+Esta reducción muestra de dónde procede el término de curvatura $mV\dot\gamma$. No es una corrección opcional para maniobras: es la aceleración normal del vector velocidad. Al imponer trayectoria rectilínea se anula porque $\dot\gamma=0$, no porque se haya supuesto velocidad de módulo constante.

@@ -1,0 +1,110 @@
+[
+  {
+    "family": "Ejes y transporte",
+    "chapters": "1–3",
+    "documentary_context": "MIT-3, MIT-4, MIT-14",
+    "assumptions": "NED: z abajo; cuerpo x delante, y derecha, z abajo; Cb_n pasiva 3-2-1. Velocidad aire distinta de suelo.",
+    "checks": "V001–V006; T02 ida/vuelta",
+    "limitations": "Euler singular en cos(theta)=0; viento no uniforme requiere derivada de transporte.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Fuerzas, polar y eficiencia",
+    "chapters": "4",
+    "documentary_context": "MIT-1; deducción original",
+    "assumptions": "q=ρV²/2; V=TAS relativa al aire. CD0,k>0; referencias comunes. Oswald no se identifica siempre con eficiencia de envergadura.",
+    "checks": "V009–V014; controles Oswald y dimensiones",
+    "limitations": "Polar subsónica docente; límite CLmax; mapa propulsivo no constante por defecto.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Newton–Euler y simetría",
+    "chapters": "5–6",
+    "documentary_context": "MIT-4, MIT-6",
+    "assumptions": "Tensor con entradas -Ixz; masa instantánea y tensor constantes en ecuación angular; marco cuerpo; trim no implica estabilidad.",
+    "checks": "V007–V008; T06 residuos por componente; controles trim",
+    "limitations": "Sin flujo de momento por combustible; fuerzas N y momentos Nm no se mezclan en una norma sin escala.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Planeadores",
+    "chapters": "7–9",
+    "documentary_context": "MIT-1; derivación e integración originales",
+    "assumptions": "γ negativo en descenso, tasa de caída positiva. L=Wcosγ, D=-Wsinγ. ISA geopotencial y CL declarado para integrales.",
+    "checks": "Raíz exacta vs optimización T08; límites de planeo; cuadratura",
+    "limitations": "No trasladar óptimo de ángulo pequeño a modelo exacto; viento afecta alcance suelo.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Reactores",
+    "chapters": "10–12",
+    "documentary_context": "MIT-1 y balances originales",
+    "assumptions": "cT en kg/(N s); Wdot=-g cT T. Separar V fija, CL fijo, empuje fijo y vuelo de CL,V fijos.",
+    "checks": "Primitivas simbólicas; ODE/cuadratura; 8 controles adicionales",
+    "limitations": "ρ y CL fijos implican V variable; CL,V fijos requieren ρ variable y, si asciende, T≠D.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Ascenso y descenso",
+    "chapters": "13",
+    "documentary_context": "Balance Newton/energía",
+    "assumptions": "Exceso de potencia para ascenso pequeño cuasiestacionario. Integrar masa con altura y comprobar exceso positivo.",
+    "checks": "T13 refinamiento de 25 a 12.5 m; barridos",
+    "limitations": "Vx,Vy requieren optimización y restricciones; techo docente no certificado.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Viraje",
+    "chapters": "14",
+    "documentary_context": "Balances originales",
+    "assumptions": "Viraje coordinado nivelado: n=1/cosφ, radio con TAS; comprobar pérdida, estructura y energía.",
+    "checks": "Identidades geométricas y envolvente T14",
+    "limitations": "Viraje instantáneo no equivale a sostenido; viento altera trayectoria terrestre.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Hélices y misión",
+    "chapters": "15–16",
+    "documentary_context": "Balances originales",
+    "assumptions": "cP referido a potencia al eje en kg/J; η=TV/Peje; separar cuatro óptimos clásicos.",
+    "checks": "Primitiva de autonomía, ODE y T15 0<η≤1",
+    "limitations": "η y cP variables invalidan fórmula cerrada; potencia útil no se confunde con potencia al eje.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Rodadura y fases",
+    "chapters": "17–18",
+    "documentary_context": "Newton y cuadratura originales",
+    "assumptions": "Va=Vsuelo+viento de cara; N=W-L; masa explícita; empuje finito a velocidad cero.",
+    "checks": "Cuadratura vs integración temporal, límite coeficiente cuadrático nulo",
+    "limitations": "Rodadura sola no incluye transición ni obstáculo; no usar P/V singular al arrancar.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Estabilidad estática",
+    "chapters": "19–20",
+    "documentary_context": "MIT-2, MIT-8",
+    "assumptions": "Derivadas con variables retenidas y referencias de momento explícitas; margen estático bajo hipótesis lineales.",
+    "checks": "Punto neutro; residuos trim; r×F",
+    "limitations": "Cm=0 es equilibrio, Cmα<0 tendencia estática. Efecto cola aislado no prueba estabilidad completa.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Dinámica, ampliación",
+    "chapters": "21",
+    "documentary_context": "MIT-6, MIT-7, MIT-8",
+    "assumptions": "Descriptor E xdot=F x; modos locales; aproximaciones reducidas bajo separación de escalas.",
+    "checks": "Autovalores, exponencial matricial, refinamiento por estado",
+    "limitations": "Ampliación editorial, no bloque oficial adicional. Modelos numéricos sintéticos sin aeronave identificada.",
+    "expert_review": "PENDING"
+  },
+  {
+    "family": "Simulación",
+    "chapters": "22–23",
+    "documentary_context": "Código y XML JSBSim fijados",
+    "assumptions": "T6 con motor de empuje y direct thruster; sumar cuatro motores B747 y sólo depósitos alimentadores.",
+    "checks": "44 trims, tres pasos T6, XML, crucero, dos autonomías y balances CSV",
+    "limitations": "Modelos BETA/ALPHA, sin validación experimental; SAULE sólo procedimiento.",
+    "expert_review": "PENDING"
+  }
+]

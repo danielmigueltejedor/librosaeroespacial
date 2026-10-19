@@ -1,0 +1,295 @@
+\appendix
+\renewcommand{\thechapter}{\ifcase\value{chapter}\or A\or B\or C\or D\or E\or F\or G\or H\or I\or J\or K\or L\or M\or N\or O\or P\or Q\or R\fi}
+\chapter{Notación y magnitudes}
+\section{Reglas de lectura}
+Los superíndices de un vector indican el sistema en que se expresan sus componentes, no una potencia. En $C_{bn}$ el primer subíndice es el destino y el segundo el origen de componentes. Los puntos denotan derivadas temporales; una derivada de componentes cuerpo debe distinguirse de la derivada inercial del vector físico. Las letras $p,q,r$ designan tasas cuerpo y $q_\infty$ presión dinámica.
+
+\begin{longtable}{p{.16\linewidth}p{.56\linewidth}p{.20\linewidth}}
+\toprule Símbolo&Definición&Unidad\\\midrule\endhead
+$m,W$&Masa total y peso $mg_0$&kg; N\\
+$V,V_g$&TAS y módulo de velocidad sobre el suelo&m/s\\
+$V_E,V_C$&EAS y CAS; IAS requiere modelo instrumental&m/s\\
+$\alpha,\beta$&Incidencia y resbalamiento del vector velocidad aérea&rad\\
+$\phi,\theta,\psi$&Alabeo, cabeceo y guiñada Euler 3--2--1&rad\\
+$\gamma,\chi$&Ángulo de trayectoria positivo en ascenso y curso&rad\\
+$u,v,w$&Componentes de velocidad en cuerpo&m/s\\
+$p,q,r$&Velocidad angular cuerpo&rad/s\\
+$L,D,Y_w$&Sustentación, resistencia y fuerza lateral en viento&N\\
+$\mathcal L,\mathcal M,\mathcal N$&Momentos de alabeo, cabeceo y guiñada&N m\\
+$S,b,\bar c$&Superficie, envergadura y cuerda de referencia&m²; m; m\\
+$C_L,C_D,C_Y$&Coeficientes de fuerzas en viento&1\\
+$C_\ell,C_m,C_n$&Coeficientes de momentos en cuerpo&1\\
+$E_a,E$&Eficiencia aerodinámica $L/D$ y autonomía temporal&1; s\\
+$R_a,R_g$&Alcance respecto al aire y sobre el terreno&m\\
+$c_T$&Gasto másico dividido por empuje&kg/(N s)\\
+$c_P$&Gasto másico dividido por potencia al eje&kg/J\\
+$\eta_p,\eta_t$&Rendimiento de hélice; razón de presión dinámica en cola&1\\
+$e_i,e_O$&Eficiencia de envergadura; Oswald de polar total&1\\
+$h,h_n,SM$&En estabilidad: posición de CG, punto neutro y margen&1\\
+$h,z$&En atmósfera: altitud geopotencial y geométrica&m\\
+$n$&Factor de carga $L/W$ en el modelo de viraje&1\\
+\bottomrule
+\end{longtable}
+El mismo símbolo puede tener significado local distinto en una sección: por eso se acompaña siempre de definición. En particular, la posición adimensional $h$ de estabilidad no se introduce en las fórmulas de atmósfera como una altura en metros.
+
+\section{Precisión y signos}
+Las cifras con punto decimal representan números reales; para miles se recomienda espacio fino en ecuaciones y palabras en prosa. Los archivos CSV utilizan punto decimal y cabeceras con unidades. Los ángulos que se evalúan con funciones numéricas se expresan en radianes, aunque se presenten en grados. La tasa de descenso $s$ se presenta positiva; $\dot h$ es negativa al descender en aire en calma.
+
+\chapter{Sistemas de referencia: mapa operativo}
+\section{Qué variable pertenece a cada sistema}
+El sistema inercial ideal se usa para formular Newton. ECEF gira con la Tierra. NED define norte, este y abajo local. Cuerpo está ligado al avión con x adelante, y derecha y z abajo. Viento se construye con la velocidad relativa al aire. El sistema estructural de muchos XML utiliza x hacia atrás y z arriba para localizar componentes y no se confunde con cuerpo.
+
+\begin{center}\begin{tabular}{lll}\toprule
+Pregunta&Referencia o magnitud apropiada&Error típico\\\midrule
+Recorrer una pista&Velocidad terrestre&Integrar TAS con viento\\
+Calcular sustentación&TAS y ejes viento&Usar velocidad sobre suelo\\
+Sumar fuerzas&Un único sistema&Mezclar L con Z cuerpo\\
+Proyectar gravedad&NED a cuerpo&Usar matriz inversa\\
+Calcular brazo de motor&Coordenadas relativas al CG&Usar estación absoluta\\
+Corregir navegación&Triángulo vectorial de viento&Sumar módulos arbitrarios\\\bottomrule
+\end{tabular}\end{center}
+
+\section{Prueba de tres vectores}
+Para auditar una transformación, se aplican tres vectores base y se dibuja su resultado. Con actitud nula debe recuperarse identidad. Con guiñada positiva de $90^\circ$, el eje longitudinal apunta al este; un vector norte tiene componentes cuerpo negativas en y. Con cabeceo positivo, la gravedad tiene componente x negativa. Estas pruebas no sustituyen ortogonalidad y determinante, pero detectan una inversión de sentido que ambas propiedades pueden no revelar.
+
+\section{Viento y velocidad angular terrestre}
+En el modelo plano local se considera NED fijo. Si se utiliza un simulador con Tierra rotatoria, las tasas respecto a inercial y respecto a Tierra pueden diferir. La comparación requiere revisar las propiedades concretas. No se elimina un término de Coriolis porque su unidad sea pequeña: se estima su magnitud frente a la tolerancia del experimento y se declara su omisión.
+
+\chapter{Matrices y pruebas de rotación}
+\section{Composición e inversión}
+La cadena de transformaciones cumple $C_{ac}=C_{ab}C_{bc}$. La inversa de una rotación propia es su transpuesta. Una prueba de ida y vuelta exige $\vect v^a=C_{ab}C_{ba}\vect v^a$ para vectores arbitrarios. Si se usan vectores columna, no se transpone el orden de producto como si se trabajase con filas.
+
+\begin{equation}
+[\vect\omega]_\times=\begin{bmatrix}0&-r&q\\r&0&-p\\-q&p&0\end{bmatrix},\qquad
+[\vect\omega]_\times\vect v=\vect\omega\times\vect v.
+\end{equation}
+Para un horizonte fijo, $\dot C_{bn}=-[\vect\omega^b]_\times C_{bn}$. La ecuación se comprueba con un giro de guiñada puro: derivar su matriz da los signos correspondientes al cambio pasivo de componentes. Si NED gira, debe utilizarse la velocidad angular relativa apropiada.
+
+\section{Cuaterniones y norma}
+Para la convención escalar primero y rotación activa cuerpo a NED del capítulo~\ref{ch:ejes}, $\dot Q=\tfrac12Q\otimes(0,\vect\omega^b)$. Se verifica $\dd(Q^TQ)/\dd t=0$ analíticamente. Una integración numérica puede acumular error de norma; la renormalización limita ese error geométrico. Debe comprobarse también que las matrices reconstruidas con Q y -Q coinciden y que un giro pequeño produce el signo esperado.
+
+\section{Plan de prueba reproducible}
+Las pruebas incluyen identidad, ortogonalidad, determinante, preservación de norma, composición e ida y vuelta. Para Euler se añade el determinante del mapa de tasas, $\cos\theta$, y se excluyen puntos singulares al invertirlo. Una prueba aleatoria utiliza semilla fija para que un fallo pueda repetirse. La cobertura de unos puntos aleatorios no se presenta como demostración universal cuando existe una prueba simbólica disponible.
+
+\chapter{Ecuaciones generales: ficha de implementación}
+\section{Estado y orden de evaluación}
+Con Euler y Tierra plana, un orden posible es $\vect x=(x_N,x_E,h,u,v,w,\phi,\theta,\psi,p,q,r)$. En cada evaluación se construye la transformación, se calcula velocidad aérea al restar viento, se obtiene atmósfera, se evalúan fuerzas y momentos, se aplican Newton--Euler y se completan las ecuaciones cinemáticas. Las entradas y salidas se convierten antes de entrar al integrador, evitando unidades mezcladas dentro del estado.
+
+\begin{align}
+\dot{\vect v}^{\,b}&=\vect F_{no\,g}^b/m+\vect g^b-\vect\omega^b\times\vect v_g^b,\\
+\dot{\vect\omega}^{\,b}&=I^{-1}[\vect M_G^b-\vect\omega^b\times(I\vect\omega^b)].
+\end{align}
+Para viento no uniforme, estas ecuaciones conservan velocidad terrestre en la inercia y velocidad aérea en las fuerzas. La forma simétrica reducida se utiliza sólo después de imponer sus condiciones y comprobar que los términos eliminados permanecen nulos por simetría del modelo.
+
+\section{Residuos y balances}
+Se evalúan $\vect r_F=m\vect a-\sum\vect F$ y $\vect r_M=I\dot{\vect\omega}+\vect\omega\times I\vect\omega-\vect M$. Un residuo pequeño confirma la coherencia de esa evaluación. Para integración libre sin fuerzas ni momentos externos apropiados se examinan invariantes; para vuelo propulsado se compara trabajo y energía bajo las hipótesis que hagan válido ese balance.
+
+Un modelo que utiliza masa variable necesita definir cómo cambian centro de gravedad e inercia y cómo se representa el intercambio de cantidad de movimiento. La reducción cuasiestacionaria del libro no se convierte en una derivación general de vehículo abierto. Esta distinción se conserva en las condiciones de aplicabilidad.
+
+\chapter{Atmósfera de referencia y conversiones}
+\section{Constantes y capas implementadas}
+El proyecto usa $g_0=9.80665\SIu{m/s^2}$, $R_a=287.05287\SIu{J/(kg\,K)}$, $T_0=288.15\SIu K$ y $p_0=101325\SIu{Pa}$. La troposfera tiene gradiente de $-0.0065\SIu{K/m}$ hasta 11 km geopotenciales; de 11 a 20 km se utiliza temperatura constante de 216.65 K. No se pretende implementar todas las capas de la atmósfera de 1976 hasta gran altitud.
+
+\input{content/isa-table}
+
+\section{Hidrostática y continuidad}
+Las bases de presión de cada capa proceden de la solución de la anterior. Temperatura, presión y densidad deben ser continuas en 11 km; el gradiente de temperatura cambia. Para una verificación numérica se evalúan valores a ambos lados con una separación pequeña y se compara con la escala del gradiente esperado, evitando exigir igualdad exacta de números que pertenecen a alturas distintas.
+
+\section{Temperatura no estándar}
+Una desviación de temperatura modifica densidad a una presión dada y velocidad del sonido. Si se usa altitud de presión, no se sustituye automáticamente por altitud geométrica. Para problemas no estándar se especifica el perfil térmico o una condición local suficiente. La atmósfera estándar no contiene viento; éste se añade como campo independiente.
+
+\chapter{Polares y optimización aerodinámica}
+\section{Derivación compacta de los óptimos}
+Para $F_a(C_L)=C_L^a/(C_{D0}+kC_L^2)$, con $0<a<2$,
+\begin{equation}
+\frac{F_a'}{F_a}=\frac a{C_L}-\frac{2kC_L}{C_{D0}+kC_L^2}.
+\end{equation}
+La condición interior implica
+\begin{equation}
+C_{L,opt}^2=\frac{aC_{D0}}{(2-a)k}.
+\end{equation}
+Los casos $a=1/2,1,3/2$ producen los tres óptimos utilizados. Positividad y comportamiento en extremos permiten identificar el máximo matemático; pérdida y otros límites determinan si es admisible.
+
+\section{Ajuste y significado de k}
+Un ajuste lineal de $C_D$ frente a $C_L^2$ estima intercepto y pendiente dentro de un intervalo. Si los residuos dependen sistemáticamente de $C_L$, Mach o configuración, la polar parabólica puede ser insuficiente. No se obliga al intercepto a un valor por conveniencia si los datos no lo apoyan. El factor de Oswald derivado de k agrupa toda la contribución cuadrática del ajuste y no demuestra una distribución de sustentación determinada.
+
+\section{Restricciones y sensibilidad}
+Una pequeña perturbación de $C_{D0}$ o k produce $\Delta C_{L,E}/C_{L,E}\simeq\tfrac12(\Delta C_{D0}/C_{D0}-\Delta k/k)$. La eficiencia máxima tiene sensibilidad relativa aproximada $-\tfrac12(\Delta C_{D0}/C_{D0}+\Delta k/k)$. Estas relaciones locales ayudan a juzgar cuántas cifras del óptimo tienen sentido. No son intervalos estadísticos si no se han definido distribuciones y correlaciones.
+
+\chapter{Planeadores: procedimiento integral}
+\section{Entrada, decisión y salida}
+Se proporcionan masa, polar, CLmax, altitudes, atmósfera y viento. Se decide el objetivo: distancia aérea, distancia terrestre o permanencia. Se elige o se optimiza CL dentro de su dominio y se calculan ángulo, TAS y descenso locales. El alcance en calma se integra geométricamente; el tiempo exige integrar $1/s$.
+
+\begin{equation}
+R_a=\Delta h\frac{C_L}{C_D},\qquad
+E=\int_{h_f}^{h_i}\frac1{\sin\delta}\sqrt{\frac{\rho(h)SC_L}{2W\cos\delta}}\,\dd h.
+\end{equation}
+Con viento uniforme alineado se añade $UE$. Con viento variable se integra su desplazamiento junto con el descenso. Una elección de mejor planeo en calma no se etiqueta como óptimo terrestre con viento si no se ha reoptimizado.
+
+\section{Pruebas límite}
+Cuando $h_i=h_f$, tiempo y alcance deben anularse. Al aumentar masa con polar fija, el alcance en calma permanece y el tiempo disminuye como raíz inversa de masa. Al anular viento, el alcance terrestre vuelve al aéreo. Si el cálculo devuelve avance negativo frente a viento, el objetivo de regreso no es alcanzable bajo esa ley: la ecuación no debe forzarse para producir una distancia positiva.
+
+\chapter{Aerorreactores: selección de ley de crucero}
+\section{Árbol de decisión razonado}
+Si se fijan densidad y CL, velocidad cambia como raíz de peso y el alcance contiene diferencia de raíces. Si se fijan densidad y TAS, CL varía y la resistencia es afín en peso al cuadrado; aparece arcotangente. Si se fijan TAS y eficiencia, se requiere una densidad que acompañe al peso o se declara una aproximación de intervalo corto. Si se fija empuje, el gasto es constante sólo con cT constante y se integra la rama de velocidad apropiada.
+
+\begin{center}\begin{tabular}{p{.25\linewidth}p{.28\linewidth}p{.35\linewidth}}\toprule
+Ley&Qué cambia&Comprobación imprescindible\\\midrule
+$\rho,C_L$ fijos&TAS y empuje&$V_f/V_i=\sqrt{W_f/W_i}$\\
+$\rho,V$ fijos&CL y eficiencia&Evaluar $D(W)$ en ambos extremos\\
+$V,C_L$ fijos&Densidad y altitud&$\rho_f/\rho_i=W_f/W_i$\\
+$T$ fijo&Velocidad y CL&Comprobar ramas y envolvente\\\bottomrule
+\end{tabular}\end{center}
+\section{Cierre de combustible}
+Para una ruta dada, el combustible transportado modifica masa inicial y resistencia. Se resuelve la ecuación de cierre con masa seca, carga, reserva y capacidad. La solución debe ser positiva y compatible con masa máxima. Para retorno sin repostar, la vuelta se calcula desde la masa tras entrega y con el combustible que ya se transportó en la ida.
+
+\chapter{Hélices: selección de potencia y misión}
+\section{Datos mínimos}
+Se necesita potencia al eje disponible en la condición, rendimiento de hélice, consumo específico referido al eje y polar. El empuje equivalente $\eta_pP/V$ se utiliza sólo donde la eficiencia sea representativa y V no sea cero. En operaciones de baja velocidad se proporciona una ley finita de empuje.
+
+\section{Integrales y dominio}
+\begin{equation}
+R_a=\int\frac{\eta_p}{g_0c_PD}\,\dd W,\qquad
+E=\int\frac{\eta_p}{g_0c_PDV}\,\dd W.
+\end{equation}
+Los límites son de peso final a inicial. Máximo alcance ideal favorece CL/CD y máxima autonomía favorece CL elevado según $C_L^{3/2}/C_D$. Si el rendimiento o consumo cambian, se conservan dentro de las integrales y se revisa el óptimo. La potencia requerida en cada punto debe caber en el mapa disponible.
+
+\section{Contabilidad de reserva}
+Si la masa seca es $m_s$ y se exige reserva $m_r$, el peso final de la fase nominal es $g_0(m_s+m_r)$, además de carga que permanezca a bordo. La reserva no se consume en la fase nominal y no se suma otra vez como gasto. Una reserva especificada como tiempo de espera debe convertirse con el modelo y condición de esa fase, no con un gasto de crucero arbitrario.
+
+\chapter{Ascenso, descenso y viraje: comprobaciones}
+\section{Energía y trayectoria}
+Se comprueba $(T-D)V/W=\dot h+(V/g_0)\dot V$. En una ley V(h), la corrección de aceleración puede ser importante. Si se utiliza altura como variable independiente, se exige $\dot h\neq0$ en el dominio y se detiene el cálculo al llegar a una frontera de techo.
+
+\section{Viraje nivelado}
+Las relaciones $n=1/\cos\phi$, $R=V^2/(g_0\tan|\phi|)$ y $|\dot\chi|=V/R$ se contrastan entre sí. Se verifica CL, empuje o potencia, estructura y trim. En un giro a EAS constante, TAS y radio cambian con altura; en viento uniforme el círculo aéreo se traslada y la trayectoria terrestre no suele cerrar.
+
+\section{Prueba de factibilidad de una fase}
+Un ascenso exige exceso de potencia positivo bajo la ley elegida. Un descenso con ángulo prescrito puede exigir más resistencia de la disponible. Un viraje sostenido necesita compensar toda la resistencia de la carga requerida. Si una fase falla, no se actualizan sus estados finales como si se hubiese ejecutado: se informa de la frontera y se replantea la misión.
+
+\chapter{Despegue y aterrizaje: ficha de balances}
+\section{Variables y signos}
+La velocidad terrestre integra distancia y la aérea calcula fuerzas. En pista horizontal, $N=W-L$ mientras exista contacto. En despegue se exige aceleración positiva hasta el objetivo. En frenado se define desaceleración positiva y se integra desde cero a la velocidad inicial con esa magnitud positiva. Las fases de transición se suman sólo si el obstáculo no se ha alcanzado antes.
+
+\begin{align}
+s_{TO}&=\int_0^{V_{g,f}}\frac{mV_g}{T-D-\mu_r(W-L)}\,\dd V_g,\\
+s_{LD}&=\int_0^{V_{g,0}}\frac{mV_g}{D+\mu_b(W-L)-T}\,\dd V_g.
+\end{align}
+Los denominadores deben conservar el signo esperado. Una raíz en su interior indica una velocidad de equilibrio que puede impedir alcanzar el objetivo. No se integra atravesándola como si sólo fuese una dificultad del programa.
+
+\section{Qué debe acompañar al resultado}
+Se declaran masa, densidad, viento, pendiente, superficie, configuración, leyes de empuje y rozamiento, velocidades de enlace y fases incluidas. La comparación entre escenarios conserva esas definiciones. Para operación real se utiliza documentación aprobada y datos de pista; este formulario no contiene factores certificados.
+
+\chapter{Estabilidad: derivadas y límites}
+\section{Longitudinal}
+Con mandos fijos y momento positivo morro arriba, estabilidad estática local exige $C_{m\alpha}<0$. El punto neutro satisface $C_{m\alpha}=0$ y, con pendiente de sustentación positiva, $C_{m\alpha}=-aSM$. El brazo de cola se actualiza al mover CG; el mando de trim se comprueba con su límite.
+
+\section{Lateral y direccional}
+Para el convenio de beta del libro, las tendencias típicas favorables son $C_{n\beta}>0$ y $C_{\ell\beta}<0$. El amortiguamiento típico de tasas se expresa por $C_{\ell p}<0$ y $C_{nr}<0$. Sus valores dependen de las normalizaciones pb/(2V), rb/(2V) y de la condición de trim. No se extraen signos universales de una tabla sin identificar sus ejes.
+
+\section{Dinámica como ampliación}
+La estabilidad local del sistema lineal depende de autovalores. Una raíz de parte real positiva produce crecimiento y un par complejo añade oscilación. La presencia de integradores de navegación debe interpretarse según las variables de interés. El control cerrado modifica la matriz y sus saturaciones pueden quedar fuera de la aproximación lineal.
+
+\chapter{Formulario general con condiciones}
+\section{Fuerzas y movimiento}
+\begin{align}
+q_\infty&=\rho V^2/2,&L&=q_\infty SC_L,&D&=q_\infty S(C_{D0}+kC_L^2),\\
+I\dot{\vect\omega}&=\vect M-\vect\omega\times I\vect\omega,&
+\dot{\vect v}^{\,b}&=\vect F^b/m-\vect\omega\times\vect v^b.
+\end{align}
+En la última ecuación F incluye peso y la velocidad es la terrestre respecto a la referencia inercializada. Si se separa gravedad, se suma su proyección. El viento entra en las fuerzas mediante velocidad aérea y en su aceleración si se decide propagar ésta.
+
+\section{Óptimos y crucero}
+\begin{align}
+C_{L,E}&=\sqrt{C_{D0}/k},&C_{L,P}&=\sqrt{3C_{D0}/k},&C_{L,Rj}&=\sqrt{C_{D0}/(3k)},\\
+R_{planeo}&=\Delta h\,C_L/C_D,&E_{planeo}&=\int\dd h/s(h),\\
+E_{jet,CL}&=\frac{C_L}{g_0c_TC_D}\ln(W_i/W_f),\\
+R_{jet,CL}&=\frac2{g_0c_T}\sqrt{\frac2{\rho S}}\frac{\sqrt{C_L}}{C_D}(\sqrt{W_i}-\sqrt{W_f}),\\
+R_{prop,CL}&=\frac{\eta_p}{g_0c_P}\frac{C_L}{C_D}\ln(W_i/W_f).
+\end{align}
+Las expresiones de crucero anteriores presuponen polar y consumos constantes, y para las fórmulas con densidad ésta es fija. La autonomía de hélice se consulta en la ecuación~\eqref{eq:prop-endurance}; el caso a TAS fija se consulta en la ecuación~\eqref{eq:jet-arctan}. Esta separación evita usar una fórmula sin su ley de vuelo.
+
+\section{Maniobras y operaciones}
+\begin{equation}
+\dot h\simeq(P_d-P_n)/W,\quad n=1/\cos\phi,\quad
+R=V^2/(g_0\tan|\phi|),\quad V_{stall,n}=\sqrt nV_{stall,1}.
+\end{equation}
+La tasa usa ángulo pequeño y velocidad constante; las relaciones de giro corresponden a viraje nivelado coordinado en calma. Las distancias de pista se integran con los balances del apéndice anterior y no se sustituyen por un único coeficiente universal.
+
+\chapter{Soluciones razonadas de autoevaluación}
+\section{Diez preguntas nuevas}
+\apartado{1. Inversión de una rotación}{Si un vector se transforma con $C_{bn}$, vuelve con $C_{bn}^T$ porque la matriz es ortogonal. Cambiar signos de algunos ángulos sin invertir orden de producto no garantiza la inversa.}
+\apartado{2. Masa y consumo}{Un gasto $c_TT$ produce masa consumida, no peso. El factor g aparece sólo al escribir la derivada de W. Comprobar dimensiones detecta la confusión.}
+\apartado{3. Mejor planeo con lastre}{A polar y CL fijos, la eficiencia y el ángulo no cambian, pero TAS y descenso aumentan como raíz del peso. Con viento, el alcance terrestre también puede cambiar porque cambia la duración.}
+\apartado{4. Reactor en altitud fija}{Si CL se conserva, TAS disminuye con masa. Si TAS se conserva, CL disminuye. Mantener ambas exige variar densidad.}
+\apartado{5. Hélice y consumo}{El consumo por potencia al eje se multiplica por esa potencia, no por potencia útil sin corregir rendimiento. El rendimiento no se aplica dos veces.}
+\apartado{6. Ascenso y rapidez}{T=D no permite ascenso estacionario a rapidez constante en el modelo de empuje paralelo. Sí permite convertir energía cinética en potencial si la rapidez cae.}
+\apartado{7. Viraje y energía}{Una carga admisible por estructura y sustentación puede exceder la potencia sostenible. El viraje instantáneo puede perder energía aunque el radio geométrico sea correcto.}
+\apartado{8. Rodadura}{El ala sustentando reduce N. Eso reduce resistencia de rodadura al acelerar, pero también capacidad de freno al aterrizar. El signo útil depende de la fase.}
+\apartado{9. Estabilidad}{$C_m=0$ define equilibrio de momento. $C_{m\alpha}<0$ define tendencia estática restauradora con las condiciones de derivada fijadas. Amortiguamiento exige tasas y dinámica.}
+\apartado{10. Simulación}{Un CSV reproducible prueba que se ejecutó un experimento computacional. Para validación real hacen falta datos independientes con condiciones e incertidumbre comparables.}
+
+\section{Criterio de autocorrección}
+Una respuesta que sólo da el signo o la fórmula merece revisión si no explica la condición que lo hace válido. Conviene escribir una frase física y una ecuación de balance. Las soluciones completas de los problemas numéricos y de los simulacros se incluyen en sus respectivos cuadernos; no se sustituyen aquí por una lista de resultados sin desarrollo.
+
+\chapter{Guía práctica de reproducción con JSBSim}
+\section{Archivos propios y dependencias}
+La carpeta de simulaciones contiene dos XML originales, resultados CSV y los programas de experimentos. Los modelos externos se obtienen del commit fijado de JSBSim mediante el procedimiento de reconstrucción. No se redistribuyen los materiales privados facilitados ni se modifica el modelo externo para hacer coincidir resultados.
+
+\section{Secuencia de trabajo}
+Primero se instala el entorno con las versiones registradas y se descarga el modelo fijado. Después se ejecutan las verificaciones analíticas, la rejilla de trim, la trayectoria XML, el crucero y las autonomías. Finalmente se regeneran figuras y documentos. Los registros distinguen una ejecución nueva de la mera conservación de los CSV entregados.
+
+\section{Leer un CSV}
+La columna de tiempo está en segundos; altura y velocidades se convierten a SI; resistencia y sustentación reportadas son magnitudes con el convenio de salida inspeccionado. Para gasto se suman motores, para masa se suman depósitos accesibles y se revisa su alimentación. Se compara el cambio de combustible con la integral de gasto y se comprueba la condición de terminación.
+
+\section{Repetir y cambiar condiciones}
+Un experimento modificado se guarda con nuevas entradas y un nombre distinto. No se sobrescriben los resultados de referencia sin regenerar los informes. Cambiar paso, masa, altitud o control puede alterar la trayectoria. El estudio de convergencia se realiza manteniendo las demás condiciones idénticas y comparando magnitudes de interés, no sólo la apariencia del gráfico.
+
+\chapter{Bibliografía y alcance de consulta}\label{app:biblio}
+\begingroup\small
+\renewcommand{\apartado}[2]{\par\smallskip\noindent\textbf{#1.} #2\par}
+\input{content/bibliography}
+\endgroup
+
+\chapter{Auditoría matemática y límites pendientes}\label{app:audit}
+\section{Qué se ha comprobado}
+Los registros externos separan reproducción aritmética, comprobación simbólica, coherencia de unidades y convergencia de experimentos definidos. Studium conserva sus propios estados nativos, entre ellos SYMBOLICALLY\_VERIFIED y DIMENSIONALLY\_VERIFIED. La etiqueta externa BASIC de ejercicios se corresponde con FOUNDATIONAL en el vocabulario nativo; no se añade un estado inexistente al framework.
+
+\input{content/audit-summary}
+
+\section{Qué no establece una comprobación}
+Una identidad algebraica puede partir de una hipótesis inadecuada. Un resultado dimensionalmente correcto puede tener signo equivocado. Una aritmética reproducida puede utilizar velocidad o consumo incorrectos. Un modelo numéricamente convergente puede no representar una aeronave real. Por eso la revisión experta, la aplicabilidad de las polares y la validación experimental permanecen separadas y no se asignan automáticamente.
+
+\section{Límites materiales}
+No se dispone de ensayo SAULE ni de datos de fabricante para validar los modelos educativos T-6 y B747. Las autonomías completas no tienen aún un estudio de refinamiento temporal equivalente al ensayo corto del T-6. La presión y altitud del modelo terrestre simplificado difieren en definición de algunas propiedades del simulador. Las notas manuscritas facilitadas contienen partes de lectura incierta y no se usan como autoridad de las soluciones.
+
+Los informes de calidad de Studium pueden señalar contenido pendiente de revisión o evidencia insuficiente. La producción del PDF no levanta esos bloqueos ni constituye aprobación académica. La edición permanece en revisión hasta una evaluación experta independiente del conjunto de hipótesis, texto, ecuaciones y ejemplos.
+
+\chapter{Plan de estudio y cobertura ULE}\label{app:study}
+\section{Ajuste al programa oficial}
+La guía consultada es la de 2026/2027, asignatura 0710325, tercer curso, primer cuatrimestre, 6 ECTS. Sus bloques cubren introducción, fuerzas y ecuaciones de avión simétrico, planeadores, aerorreactores, hélices, operaciones de vuelo y estabilidad estática. El índice de 23 capítulos es una organización editorial propia, no una transcripción de 23 temas oficiales.
+
+\input{content/coverage-table}
+
+\clearpage
+\section{Distribución de esfuerzo}
+Los 6 ECTS de la guía corresponden a 150 horas: 60 presenciales y 90 de trabajo personal. La distribución publicada asigna 77.5 horas totales a clases teóricas, 50 a resolución de problemas, 20 a prácticas informáticas y 2.5 a tutoría. Estos valores describen actividades docentes; el siguiente plan de lectura es una propuesta de organización personal.
+
+\begin{longtable}{p{.12\linewidth}p{.48\linewidth}p{.28\linewidth}}\toprule
+Semanas&Trabajo principal&Producto de aprendizaje\\\midrule\endhead
+1--2&Ejes, matrices, transporte y viento&Reconstruir vectores y comprobar signos\\
+3--4&Fuerzas, Newton--Euler y trim&Derivar balances y resolver un equilibrio\\
+5--6&Planeadores e integración ISA&Comparar alcance y tiempo con viento\\
+7--8&Reactores, consumo y leyes de crucero&Resolver misión con masa variable\\
+9&Hélices y potencia&Comparar los cuatro óptimos clásicos\\
+10&Ascenso, techo y viraje&Construir una envolvente con límites\\
+11&Despegue y aterrizaje&Integrar rodadura y enlazar fases\\
+12&Estabilidad estática&Calcular punto neutro y derivadas\\
+13&Simulación y auditoría&Reproducir CSV y explicar discrepancias\\
+14&Simulacros y revisión&Corregir hipótesis, unidades y desarrollo\\\bottomrule
+\end{longtable}
+
+\section{Preparación de evaluación}
+La guía atribuye un 90\% a pruebas mixtas escritas teórico-prácticas y un 10\% a casos con datos de simulador. Indica obligatoriedad de prácticas y trabajos para superar la asignatura y contempla mínimos por partes según el desarrollo de la evaluación. Las condiciones concretas deben consultarse en la guía y comunicaciones docentes vigentes; los tiempos y puntuaciones de nuestros simulacros son orientativos y no oficiales.
+
+Conviene alternar deducción y ejercicio: después de aprender una fórmula, escribir qué conserva su ley de vuelo y resolver un caso que la viole para identificar el límite. En los simulacros se reserva tiempo final para unidades, masa de enlace, signos, pérdida y combustible remanente. La ampliación dinámica puede estudiarse después de dominar estabilidad estática y no se confunde con una exigencia adicional atribuida al programa oficial.

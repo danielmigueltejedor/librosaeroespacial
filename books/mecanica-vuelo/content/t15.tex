@@ -1,0 +1,67 @@
+\section{Taller resuelto: Leer un mapa adimensional de hélice}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Una hélice de diámetro 2.1 m gira a 32 rev/s con avance 58 m/s. En ese punto se han dado CT=0.083 y CP=0.090, con densidad 1.08 kg/m³. Calcule J, empuje, potencia al eje y rendimiento.}
+
+\apartado{2. Datos}{Los coeficientes pertenecen al mismo punto de mapa y se usan las definiciones de este capítulo.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Empuje paralelo al avance aéreo; coeficientes de hélice adimensionales.}
+
+\apartado{5. Hipótesis físicas}{Régimen y paso fijos en el punto; los valores de mapa son datos docentes, no mediciones.}
+
+\apartado{6. Modelo matemático}{Leer un mapa adimensional de hélice}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}J=V/(n_rd)\end{equation}
+
+\begin{equation}T=C_T\rho n_r^2d^4\end{equation}
+
+\begin{equation}P=C_P\rho n_r^3d^5\end{equation}
+
+\begin{equation}\eta_p=JC_T/C_P\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se usa régimen en revoluciones por segundo, sin multiplicar por 2pi en estas definiciones.
+
+\item Se calculan empuje y potencia con las potencias correctas de diámetro.
+
+\item Se obtiene eficiencia por coeficientes y se comprueba con TV/P.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Avance J:\quad $\frac{58}{2.1 \cdot 32}\simeq 0.8630952\,$.\par
+
+\noindent Empuje:\quad $0.083 \cdot 1.08 \cdot 32^{2} {2.1}^{4}\simeq 1785.168\,\mathrm N$.\par
+
+\noindent Potencia al eje:\quad $0.09 \cdot 1.08 \cdot 32^{3} {2.1}^{5}\simeq 130080.6\,\mathrm W$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Avance J & $0.8630952\,$\\
+
+Empuje & $1785.168\,\mathrm N$\\
+
+Potencia al eje & $130080.6\,\mathrm W$\\
+
+Rendimiento & $0.7959656\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{Un mapa convierte la hipótesis de rendimiento constante en una función de condición; no se extrapola este punto al reposo.}
+
+\apartado{12. Comprobación independiente y alcance}{Calcular TV/P con fuerzas y potencia dimensionales y compararlo con J CT/CP.}
+
+\apartado{13. Limitaciones}{No se han comprobado Mach de punta ni límites de par del motor; un rendimiento mayor que uno indicaría datos o convenciones incompatibles.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,65 @@
+\section{Taller resuelto: Dinámica y trabajo giroscópico}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Para el tensor Ixx=9800, Iyy=14800, Izz=19200 e Ixz=760 kg m², omega=(0.13,0.05,-0.09) rad/s y momentos (600,-380,420) N m, calcule aceleraciones y tasa de energía de rotación.}
+
+\apartado{2. Datos}{El tensor usa -Ixz en entradas xz y zx y es constante en cuerpo.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Cuerpo y momentos respecto al CG; producto integral Ixz positivo según dato.}
+
+\apartado{5. Hipótesis físicas}{Sólido rígido y masa constante en el intervalo dinámico.}
+
+\apartado{6. Modelo matemático}{Dinámica y trabajo giroscópico}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}I\dot{\vect\omega}=\vect M-\vect\omega\times I\vect\omega\end{equation}
+
+\begin{equation}\dot E_r=\vect\omega^TI\dot{\vect\omega}=\vect\omega^T\vect M\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se calcula el momento angular antes del término giroscópico.
+
+\item Se resuelve el sistema con el tensor completo.
+
+\item Se evalúa la tasa de energía por dos vías: omega por M y omega por I odot.
+
+\item El producto giroscópico no aporta trabajo porque es perpendicular a omega.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent pdot:\quad $0.06552910720835217\simeq 0.06552911\,\mathrm{s^{-2}}$.\par
+
+\noindent qdot:\quad $-0.03355864864864865\simeq -0.03355865\,\mathrm{s^{-2}}$.\par
+
+\noindent rdot:\quad $0.02295427716033061\simeq 0.02295428\,\mathrm{s^{-2}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+pdot & $0.06552911\,\mathrm{s^{-2}}$\\
+
+qdot & $-0.03355865\,\mathrm{s^{-2}}$\\
+
+rdot & $0.02295428\,\mathrm{s^{-2}}$\\
+
+Tasa de energía & $21.2\,\mathrm W$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{La energía puede aumentar o disminuir según omega por M, aun cuando algunas tasas angulares tengan signo distinto.}
+
+\apartado{12. Comprobación independiente y alcance}{Residuo vectorial y igualdad de las dos tasas energéticas, ejecutados con álgebra matricial.}
+
+\apartado{13. Limitaciones}{No se interpreta un literal de aceleración como prueba del balance; las operaciones y residuos están conservados en el programa.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}
