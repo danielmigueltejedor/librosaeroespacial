@@ -1,0 +1,44 @@
+\chapter{Documentación técnica, configuración y registros}\label{ch:20}
+\objetivos{Elegir el documento por la pregunta y el objeto; controlar revisión y aplicabilidad; distinguir instrucciones, catálogos, programas y registros.}
+\section{Un documento debe ser aplicable}
+La utilidad de un manual depende de producto, configuración, número de parte, modificación y revisión. Disponer del PDF no demuestra que sea el dato que debe utilizarse para una tarea. Se comprueban título, emisor, efectividad, revisión y modificaciones temporales o suplementos aplicables.
+
+El sistema documental debe permitir localizar datos vigentes y evitar el uso no controlado de copias antiguas. Una impresión puede ser útil en el puesto de trabajo dentro de un procedimiento, pero su fecha y control importan. Las instrucciones deben leerse con las advertencias, límites y referencias que forman parte de la tarea.
+\section{Manuales de aeronave, motor y componente}
+El AMM organiza instrucciones de mantenimiento de la aeronave. El manual de motor o EMM desarrolla procedimientos específicos del motor según emisor y estructura documental. El CMM trata un componente y su mantenimiento en el ámbito definido, con frecuencia fuera de la aeronave. Un CMM no es una autorización general para reparar cualquier daño imaginable.
+
+El IPC identifica piezas, ilustraciones, números de parte y relaciones de montaje; no sustituye una instrucción de desmontaje, reparación ni prueba. El SRM contiene datos de reparación estructural dentro de límites y aplicabilidad; un daño fuera de su ámbito necesita la ruta de datos correspondiente. No se utiliza una reparación de estructura de aeronave como si fuese un manual universal de reparación de álabes.
+\section{Planificación frente a ejecución}
+El MPD proporciona información de planificación de mantenimiento del fabricante en el contexto correspondiente. El MRBR recoge resultados de un proceso de desarrollo de requisitos de mantenimiento aprobado según el sistema aplicable. El AMP adapta y organiza las tareas para la aeronave y operación bajo su régimen.
+
+La tarjeta de trabajo transforma una tarea en una ejecución controlada con referencias y registro. No debe omitir pasos esenciales al abreviar. Si los datos permiten una opción, se identifica qué opción se ha aplicado; no se combina arbitrariamente la mitad de dos procedimientos.
+\begin{longtable}{p{.14\linewidth}p{.32\linewidth}p{.42\linewidth}}
+\caption{Mapa académico de documentos. La denominación exacta depende del fabricante y sistema.}\label{tab:documentos}\\\toprule
+Documento & Función & Comprobación antes de utilizarlo\\\midrule\endfirsthead
+\toprule Documento & Función & Comprobación antes de utilizarlo\\\midrule\endhead
+AMM/EMM & Instrucciones de mantenimiento de aeronave/motor & Modelo, configuración, efectividad y revisión\\[4pt]
+CMM & Trabajo sobre componente definido & P/N, serie cuando proceda, estado y alcance\\[4pt]
+IPC & Identificación y relaciones de piezas & Intercambiabilidad y referencias; no usar como procedimiento\\[4pt]
+SRM & Reparaciones estructurales dentro de límites & Ubicación, extensión y condiciones de aplicabilidad\\[4pt]
+MPD/MRBR & Base de planificación y requisitos de tareas & Revisión, población y relación con AMP\\[4pt]
+ALS & Limitaciones de aeronavegabilidad & Requisito, magnitud de vida e instrucciones vinculadas\\[4pt]
+AD & Acción de autoridad por condición insegura & Estado, aplicabilidad, plazo, revisión y cumplimiento\\[4pt]
+SB & Información/instrucción del titular & Revisión y vía concreta de obligatoriedad, si existe\\[4pt]
+Registros & Evidencia de estado e intervenciones & Identidad, fecha, acumulados, acción y certificación\\\bottomrule
+\end{longtable}
+\section{Limitaciones, AD y SB}
+Las Airworthiness Limitations pueden contener límites de vida, inspecciones u otras condiciones que exigen identificar su origen y obligatoriedad. Un requisito de limitaciones no se modifica porque una inspección visual resulte satisfactoria. Las AD se analizan por su propio texto y referencias incorporadas.
+
+Un SB no es siempre obligatorio ni siempre opcional. Puede existir una AD que lo incorpore, una limitación, un programa u otra vía relevante. También importa la revisión: un fabricante puede publicar una versión posterior, pero la directiva puede requerir una revisión concreta o permitir determinadas versiones. La adopción de otra versión necesita la condición prevista o la aprobación que proceda.
+\section{Trazabilidad de componentes}
+El historial identifica parte y serie, acumulados totales y desde eventos pertinentes, cambios de instalación y estado de modificaciones. Los documentos de liberación y registros de instalación se relacionan, pero no son equivalentes. Tener un EASA Form 1 no demuestra por sí solo compatibilidad de instalación ni continuidad de vida de todas las piezas internas.
+
+La trazabilidad exige conservar el significado de cada contador. Un ciclo de motor puede no coincidir con una lectura genérica del sistema de facturación; una hoja debe declarar de dónde procede el dato y qué definición utiliza. Si el contador es desconocido, se marca desconocido y se evalúa la consecuencia; no se asigna cero.
+\caso{M20. El catálogo no prescribe el par}{Un estudiante encuentra el número de parte de un elemento de unión en un IPC y copia de internet un par genérico para ese diámetro. El procedimiento es insuficiente: la tarea y sus datos aplicables pueden definir condición de lubricación, secuencia, sustituciones y método. El caso se resuelve localizando la instrucción pertinente, no calculando un par «seguro» a partir de una tabla sin contexto.}
+\section{Registros legibles y control de cambios}
+Una corrección documental debe preservar trazabilidad y significado del dato anterior según el procedimiento. Una hoja que sobrescribe el último cumplimiento pierde historia. Se separan evento ejecutado, estado calculado y previsión; las fechas de ejecución no se sustituyen por fechas previstas.
+
+La seguridad de la información también afecta a integridad y disponibilidad de datos. Copias, permisos y control de versiones tienen una función operativa cuando protegen instrucciones y registros. El objetivo es que otra persona pueda reconstruir la decisión con los mismos documentos y no depender de una explicación verbal posterior.
+\input{content/e20.tex}
+\resumen{AMM, EMM, CMM, IPC, SRM, MPD y MRBR responden a preguntas distintas. La aplicabilidad se comprueba antes de ejecutar. SB y AD no son sinónimos. Una previsión no es un registro de cumplimiento; un dato desconocido no es cero.}
+\fuentes{Reglamento 748/2012, 21.A.7 \cite{EU748}; Reglamento 1321/2014, M.A.302--305, 145.A.45 y .55 \cite{EU1321}; FAA--General, cap. 2 \cite{FAA-G}; documentos docentes de mantenimiento.}

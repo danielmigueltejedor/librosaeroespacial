@@ -1,0 +1,45 @@
+\chapter{Mecánica de fractura y tolerancia al daño}\label{ch:03}
+\objetivos{Relacionar energía y campo de punta; diferenciar $K_I$ de $K_{IC}$; calcular un tamaño crítico con una definición explícita de grieta y comprobar las restricciones del modelo.}
+\section{Por qué no basta la resistencia nominal}
+Una grieta modifica el campo de tensiones y concentra deformación en su punta. La tensión nominal media puede ser inferior al límite elástico y, sin embargo, existir propagación inestable. La mecánica de fractura introduce el tamaño y la geometría del defecto en el análisis. Su objeto no es afirmar que toda indicación sea crítica, sino cuantificar qué combinaciones de carga, defecto y resistencia a propagación son compatibles con el modelo elegido.
+
+En fractura dúctil puede haber nucleación, crecimiento y coalescencia de microcavidades. En fractura frágil la deformación plástica macroscópica puede ser pequeña. Los términos dúctil y frágil describen comportamiento bajo unas condiciones: temperatura, espesor, velocidad de carga y restricciones pueden cambiarlo. La fractografía aporta indicios del mecanismo, pero exige relacionarlos con la historia y no confundir una superficie final de sobrecarga con el origen del daño.
+\section{Modos de carga y convención de longitud}
+El modo I abre las caras de la grieta; el modo II produce deslizamiento en el plano; el modo III, desgarro fuera de él. Un componente puede presentar modo mixto. Las fórmulas siguientes se limitan al modo I y a mecánica de fractura elástica lineal (MFEL).
+
+Se define $a$ como \textbf{semilongitud} de una grieta central pasante de longitud total $2a$ en una placa idealizada muy ancha. Para una grieta de borde, $a$ suele representar su longitud desde el borde. La fórmula no resuelve esta ambigüedad por el estudiante: cada enunciado debe fijarla.
+\ilustra{modos-grieta}{Esquemas de los modos I, II y III y definición de $a$ para una grieta central de longitud total $2a$.}
+\section{Criterio energético}
+La propagación crea superficie y modifica la energía potencial del sistema. La tasa de liberación de energía es $G=-\partial\Pi/\partial A_c$, con una convención consistente para el área de grieta creada. En un sólido idealmente frágil, el criterio de Griffith iguala energía liberada y energía requerida para crear superficies. En un material real, la resistencia incluye disipación y puede depender de la extensión de grieta; la curva R representa esa evolución.
+
+Para modo I elástico lineal e isotropía,
+\begin{equation}G=\frac{K_I^2}{E'},\qquad E'=\begin{cases}E&\text{tensión plana},\\ E/(1-\nu^2)&\text{deformación plana}.\end{cases}\label{eq:gk}\end{equation}
+$G$ se mide en $\mathrm{J/m^2}$; $K_I$, en $\mathrm{Pa\sqrt m}$. La equivalencia energética no permite ignorar plasticidad extensa ni anisotropía. La expresión de $E'$ debe corresponder al estado mecánico adoptado.
+\section{Intensidad aplicada y resistencia del material}
+En un campo singular idealizado de punta, las tensiones elásticas escalan como $K_I/\sqrt{2\pi r}$ multiplicado por funciones angulares. La singularidad no afirma que un material soporte tensión infinita: cerca de la punta existe una zona de proceso que la idealización no resuelve.
+\begin{equation}K_I=Y\sigma\sqrt{\pi a}.\label{eq:ki}\end{equation}
+El factor $Y$ representa geometría, posición y carga. Puede depender de $a/W$ y no ser constante durante el crecimiento. La tensión $\sigma$ debe estar definida de forma coherente con la solución geométrica, por ejemplo sobre área bruta o neta. Para una placa ideal infinita con grieta central y tracción remota uniforme se adopta $Y=1$.
+
+\textbf{$K_I$ es una solicitación calculada. $K_{IC}$ es una tenacidad crítica de modo I bajo condiciones de deformación plana y validez del ensayo.} El subíndice no es una distinción tipográfica prescindible. Una pieza delgada puede tener otra resistencia aparente $K_c$ dependiente del espesor; no se le atribuye automáticamente el valor $K_{IC}$ de una ficha.
+\caja{Criterio de evaluación dentro de MFEL}{La comparación $K_I<K_{IC}$ solo informa sobre inestabilidad de modo I cuando son aplicables el campo elástico, la tenacidad y las condiciones de medida. No demuestra ausencia de crecimiento por fatiga, corrosión bajo tensión o fluencia.}
+\section{Tamaño crítico, carga crítica y sensibilidad}
+Si $Y$ y la tensión remota se mantienen constantes, imponer $K_I=K_{IC}$ conduce a
+\begin{equation}a_c=\frac{1}{\pi}\left(\frac{K_{IC}}{Y\sigma}\right)^2,\qquad\sigma_c=\frac{K_{IC}}{Y\sqrt{\pi a}}.\label{eq:ac}\end{equation}
+La derivación muestra que duplicar $\sigma$ divide $a_c$ entre cuatro, mientras que duplicar $K_{IC}$ multiplica $a_c$ por cuatro bajo las mismas hipótesis. Si $Y=Y(a/W)$, se resuelve $Y(a/W)\sigma\sqrt{\pi a}=K_{IC}$ de forma implícita y se comprueba que la raíz está dentro del dominio de la solución geométrica.
+\caso{M03. No confundir $a$ con $2a$}{Una placa ideal muy ancha tiene una grieta central pasante de longitud total $4{,}0\,\mathrm{mm}$, $\sigma=180\,\mathrm{MPa}$, $Y=1$ y una tenacidad supuesta aplicable de $32\,\mathrm{MPa\sqrt m}$. Se usa $a=0{,}0020\,\mathrm m$. Así, $K_I=180\sqrt{\pi(0{,}0020)}=14{,}27\,\mathrm{MPa\sqrt m}$. El tamaño crítico es $a_c=(32/180)^2/\pi=0{,}01006\,\mathrm m$, es decir, longitud total crítica $2a_c=20{,}12\,\mathrm{mm}$. La sustitución $180\sqrt{\pi a_c}=32$ cierra el criterio. El resultado no autoriza mantener en servicio el defecto: faltan cargas variables, espesor, entorno y reglas de aceptación.}
+\section{Zona plástica y validez}
+Una estimación de Irwin de la zona plástica de punta es $r_p\simeq(K_I/\sigma_y)^2/(2\pi)$ en tensión plana y, con mayor restricción, $r_p\simeq(K_I/\sigma_y)^2/(6\pi)$ en deformación plana. Son estimaciones, no límites exactos de una zona de geometría universal. La condición de pequeña plastificación exige que esa región sea pequeña respecto al tamaño de grieta, ligamento y dimensiones relevantes.
+
+En ensayos normalizados se emplean condiciones dimensionales de validez. Una expresión de cribado habitual es
+\begin{equation}B,\ a,\ W-a\ \gtrsim\ 2{,}5\left(\frac{K_{IC}}{\sigma_y}\right)^2.\label{eq:espesor}\end{equation}
+No debe usarse como una certificación automática de un ensayo: la norma aplicable contiene otras condiciones, geometrías y criterios de carga. Aquí sirve para entender por qué tenacidad alta y límite elástico bajo pueden requerir una probeta grande.
+
+Con $K=32\,\mathrm{MPa\sqrt m}$ y $\sigma_y=400\,\mathrm{MPa}$, la escala derecha vale $16\,\mathrm{mm}$. Una chapa de $3\,\mathrm{mm}$ no satisface ese cribado de espesor. Es incorrecto resolver el problema imponiendo deformación plana y declarar después que se ha comprobado solo porque el enunciado lo pedía.
+\section{Cuando la elasticidad lineal resulta insuficiente}
+Si la plasticidad no es pequeña pueden necesitarse parámetros elasto-plásticos como $J$ o CTOD. Para una respuesta elástica lineal, $J$ coincide con $G$ bajo las hipótesis correspondientes, pero ello no convierte $J$ y $K$ en símbolos intercambiables en cualquier situación. Una curva de resistencia al desgarro permite estudiar crecimiento estable y la interacción con la rigidez del sistema de carga.
+
+La tolerancia al daño combina tamaño inicial supuesto, crecimiento, detectabilidad y tamaño final admisible. No utiliza el tamaño mínimo nominal de detección como garantía determinista: se consideran probabilidad de detección, accesibilidad, orientación y dispersión. El intervalo de inspección depende del tiempo de crecimiento entre estados justificadamente definidos y de márgenes adicionales.
+\ilustra{fractura-critica}{Intensidad aplicada frente a semilongitud de grieta para el ejemplo M03. La intersección ilustra el criterio idealizado, no un límite de mantenimiento real.}
+\input{content/e03.tex}
+\resumen{\textbf{Preguntas de control.} $K_t$ es adimensional; $K_I$ tiene unidades de tensión por raíz de longitud. La longitud total de una grieta central es $2a$. $K_{IC}$ no es un esfuerzo aplicado. La comparación estática no excluye propagación subcrítica. El espesor y el ligamento forman parte de la validez.}
+\fuentes{Roylance, \textit{Introduction to Fracture Mechanics}, apartados de Griffith, intensidad y tenacidad \cite{MIT-FRAC}; documentos docentes de fractura, pp. 1--46. El criterio dimensional se explica como cribado; no se afirma haber ejecutado un ensayo ASTM E399.}

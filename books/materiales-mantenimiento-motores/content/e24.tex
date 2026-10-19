@@ -1,0 +1,14 @@
+
+\section{Definir el indicador}
+Un indicador necesita población, evento, exposición, periodo y reglas. Cinco retiradas no equivalen necesariamente a cinco fallos confirmados. Una tasa dividida por horas de otra población carece de interpretación. Se identifican unidades repetidas, modificaciones y utilización.
+
+Bajo Poisson homogéneo, $\widehat\lambda=n/T$ estima tasa; con supervivencia exponencial, $R(t)=\exp(-\lambda t)$. Proceso de eventos reparables y distribución de vida de una pieza se distinguen. MTBF no es límite de vida ni periodo libre de fallos garantizado. P32 explica por qué cero eventos no prueba tasa cero.
+\section{Weibull y observación incompleta}
+Con $R(t)=\exp[-(t/\eta)^\beta]$, la tasa instantánea es $h(t)=(\beta/\eta)(t/\eta)^{\beta-1}$. En el modelo crece con edad si $\beta>1$, es constante con $\beta=1$ y decrece con $\beta<1$. La forma estadística no identifica automáticamente mecanismo físico ni una curva de bañera universal.
+
+Las unidades aún operativas aportan censura, no fallos en la fecha de cierre. Ignorarlas puede sesgar la estimación. Censura y pérdida de historial también difieren. Supervivencia condicional usa $R(t_0+\Delta t)/R(t_0)$, generalmente distinta de $R(\Delta t)$ salvo el caso exponencial.
+\section{Recursos, repuestos y riesgo}
+Planificar exige coincidencia de instalación, personal, útil, datos y repuesto dentro de vencimientos. Agrupar tareas puede reducir paradas y adelantar consumo de intervalos o elevar complejidad. La planificación no desplaza una obligación para mejorar disponibilidad.
+
+Un repuesto físicamente presente puede carecer de elegibilidad o preservación. Suministro, reparación e incertidumbre condicionan stock y parada. Coste de ciclo de vida incluye más que adquisición. Las matrices cualitativas ayudan a priorizar, sin convertir escalas ordinales en probabilidades precisas. Se conserva evidencia y se comprueba eficacia de medidas dentro del sistema pertinente.
+\repaso{¿Reducir MTTR excluyendo esperas demuestra mejora operacional?}{Puede haber cambiado solo la definición. Se comparan tiempos de igual alcance y se comprueba si las paradas reales disminuyeron.}

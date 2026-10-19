@@ -1,0 +1,115 @@
+\documentclass[10pt,openany]{book}
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{2192}{\ensuremath{\to}}
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\fi
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\AtBeginDocument{\normalfont\DeclareFontShape{T1}{lmr}{bx}{sc}{<->ssub*lmr/m/sc}{}}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\spanishplainpercent
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm,headheight=14pt]{geometry}
+\usepackage{needspace}
+\usepackage{amsmath,amssymb,mathtools,booktabs,array,longtable,graphicx,xcolor,tikz,enumitem,microtype,titlesec,fancyhdr}
+\usepackage[breakable,skins]{tcolorbox}
+\usepackage[labelfont=bf]{caption}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
+\definecolor{studiumInk}{RGB}{20,44,64}
+\definecolor{studiumBlue}{RGB}{24,74,130}
+\definecolor{studiumCyan}{RGB}{0,184,205}
+\definecolor{studiumLight}{RGB}{232,240,250}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\titleformat{\chapter}[display]{\normalfont\filright}{\large\mdseries\scshape\chaptertitlename\ \thechapter}{1ex}{\normalfont\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]{\normalfont\filright}{}{0pt}{\normalfont\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{\thesection}{.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{.7em}{}
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.5em}}
+\makeatother
+\setcounter{secnumdepth}{2}\setcounter{tocdepth}{2}
+\setlength{\parindent}{1.5em}\setlength{\parskip}{3pt plus .5pt}
+\setlength{\emergencystretch}{1.5em}\raggedbottom
+\setlist{itemsep=2pt,topsep=4pt,leftmargin=*}
+\setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}
+\allowdisplaybreaks[2]
+\graphicspath{{figures/}}
+\newcommand{\Raire}{287.05287}
+\newcommand{\gzero}{9.80665}
+\tcbset{studiumcommon/.style={breakable,boxrule=.65pt,arc=.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt,fonttitle=\bfseries}}
+\newtcolorbox{studiumworked}[1]{studiumcommon,colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,title={#1}}
+\newcommand{\objetivos}[1]{\par\noindent\textbf{Objetivos de aprendizaje.} \textit{#1}\par\medskip}
+\newcommand{\caja}[2]{\begin{tcolorbox}[studiumcommon,colback=studiumLight,colframe=studiumBlue,colbacktitle=studiumBlue,coltitle=white,title={#1}]#2\end{tcolorbox}}
+\newcommand{\resumen}[1]{\begin{tcolorbox}[studiumcommon,colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,title=Resumen]#1\end{tcolorbox}}
+\newcommand{\figura}[2]{\begin{figure}[tbp]\centering\includegraphics[width=.83\linewidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}\noindent La figura~\ref{fig:#1} ofrece una representación del modelo discutido.}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\mdseries\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\mdseries\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\renewcommand{\headrulewidth}{.4pt}\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Adaptación de la plantilla final de Motores Cohete. Fotografía GEnx: Olivier Cleynen, CC BY-SA 3.0.
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}\renewcommand{\tablename}{Cuadro}\renewcommand{\listtablename}{Índice de cuadros}}
+\numberwithin{equation}{chapter}
+\let\cleardoublepage\clearpage
+\fancyfoot[R]{\scriptsize\sffamily\color{studiumInk}En revisión}
+\renewcommand{\chaptermark}[1]{\markboth{Capítulo \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\newcommand{\consejo}[2]{\begin{tcolorbox}[studiumcommon,colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,title={#1}]#2\end{tcolorbox}}
+\newcommand{\estado}{Edición íntegra de estudio. Pendiente de revisión experta independiente.}
+\newcommand{\portada}[3]{%
+\hypersetup{pageanchor=false}
+\begin{titlepage}\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay,x=1bp,y=-1bp]
+\begin{scope}[shift={(current page.north west)}]
+\clip (0,0) rectangle (595.276,841.89);
+\fill[white] (0,0) rectangle (595.276,841.89);
+% Fotografía original conservada; encuadre proporcional en la ventana de portada.
+\IfFileExists{figures/portada.jpg}{%
+ \begin{scope}
+ \clip (0,89.5) rectangle (595.276,585.5);
+ \node[inner sep=0pt] at (297.638,337.5){\includegraphics[height=496bp]{portada.jpg}};
+ \end{scope}
+}{%
+ \fill[studiumLight!40!white] (0,89.5) rectangle (595.276,585.5);
+ \node[text=studiumInk!45,font=\sffamily\fontsize{10}{13}\selectfont,align=center]
+ at (297.638,535){Fotografía definitiva pendiente};
+}
+\fill[white,opacity=.91] (0,0) rectangle (595.276,89.5);
+\fill[studiumInk,opacity=.96] (0,585.5) rectangle (595.276,841.89);
+\node[anchor=west,text=studiumInk,font=\sffamily\bfseries\fontsize{18}{20}\selectfont,inner sep=0pt] at (51.223,38.5){STUDIUM};
+\node[anchor=east,text=studiumInk,font=\sffamily\fontsize{8}{10}\selectfont,inner sep=0pt] at (544.05,38.5){EN REVISIÓN};
+\fill[studiumCyan] (51.223,61.5) rectangle (80.8,63.7);
+\node[anchor=west,text=studiumInk,font=\sffamily\fontsize{9}{11}\selectfont,inner sep=0pt] at (89.49,65.5){BIBLIOTECA DE INGENIERÍA};
+\node[anchor=west,text=studiumCyan,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,608){#1};
+\node[anchor=north west,text=white,text width=493pt,font=\rmfamily\bfseries\fontsize{27}{30}\selectfont,inner sep=0pt] at (51.223,627){#2};
+\node[anchor=north west,text=white!82!studiumInk,text width=493pt,font=\sffamily\fontsize{11}{14}\selectfont,inner sep=0pt] at (51.223,730){#3};
+\node[anchor=west,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,774){GRADO EN INGENIERÍA AEROESPACIAL};
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,789){Universidad de León};
+\draw[white!75!studiumInk,line width=.4pt] (51.223,801) -- (544.05,801);
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,822){2026};
+\node[anchor=east,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (544.05,822){Primera edición};
+\end{scope}\end{tikzpicture}\null
+\end{titlepage}\hypersetup{pageanchor=true}}
+
+\newcommand{\creditosportada}{%
+\par\noindent\begin{minipage}{\linewidth}\footnotesize
+\textbf{Fotografía de portada.} Detalle del núcleo de un motor General Electric GEnx, Olivier Cleynen (21 de junio de 2011). Fuente: \href{https://commons.wikimedia.org/wiki/File:Detail_of_GEnx_turbofan_engine_core.jpg}{Wikimedia Commons}. Licencia: \href{https://creativecommons.org/licenses/by-sa/3.0/}{CC BY-SA 3.0}.
+\par\noindent Se presenta con un recorte de encuadre y superposición de la composición editorial. La fotografía y su adaptación de encuadre mantienen la licencia CC BY-SA 3.0; no se atribuye al fotógrafo respaldo de esta edición.
+\end{minipage}\par}
+
+\newcommand{\caso}[2]{\begin{studiumworked}{#1}#2\end{studiumworked}}
+\newcommand{\ilustra}[2]{\begin{figure}[htbp]\centering\includegraphics[width=.94\linewidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}}
+\newcommand{\fuentes}[1]{\par\medskip\noindent{\footnotesize\textbf{Fuentes y localizadores.} #1}\par}
+\newcommand{\apartado}[2]{\par\medskip\noindent\textbf{#1.} #2\par}
+\newcommand{\repaso}[2]{\par\medskip\noindent\textbf{Para comprobar la comprensión.} #1\par\noindent\textit{Respuesta razonada.} #2\par}

@@ -1,0 +1,38 @@
+\chapter*{Presentación y modo de estudio}\addcontentsline{toc}{chapter}{Presentación y modo de estudio}
+Este manual desarrolla materiales y mantenimiento de motores aeroespaciales para estudio universitario. La primera parte conecta microestructura, propiedades y daño; la segunda conecta diseño, datos, normativa, ejecución y evidencia. El taller final enseña a construir modelos académicos de programa y control de aeronavegabilidad. Los cuadernos complementarios contienen 35 problemas originales resueltos, 16 casos académicos y seis simulacros con soluciones.
+
+Los ejemplos numéricos emplean valores ficticios salvo identificación expresa de una fuente. No son propiedades certificadas ni límites de un motor. Las figuras son modelos originales y esquemas conceptuales. La fotografía de portada muestra un motor real, pero no transforma los esquemas ni ejercicios en documentación de ese producto.
+
+Cada capítulo presenta objetivos, fundamentos, aplicaciones, una situación trabajada y una pregunta de comprensión. Conviene estudiar primero el modelo y sus hipótesis, resolver después el problema correspondiente y comprobar signos, unidades y límites antes de comparar el resultado. En mantenimiento se añade otra cadena: ámbito, fuente, versión, disposición, configuración y evidencia. Calcular bien un margen no demuestra que la tarea se haya realizado.
+
+\section*{Edición y fecha de referencia}
+Primera edición de estudio, 2026. Fecha de corte de las consultas: 18 de octubre de 2026. Se han contrastado las consolidaciones de 1321/2014 de 7 de agosto de 2026, 748/2012 de 22 de febrero de 2026 y 2018/1139 de 2 de agosto de 2026, junto con disposiciones y fuentes señaladas en la bibliografía. Las fechas pertenecen a los textos consultados, no a una promesa de actualización permanente.
+
+\caja{Estado de revisión}{Se conserva el estado «En revisión» de la colección. Los cálculos tienen comprobaciones documentadas; la adecuación de modelos, la revisión experta independiente y algunas verificaciones de estado de AD siguen teniendo límites expresos. En particular, la publicación original de FAA AD 2024-14-03 no demuestra por sí sola su estado vigente en octubre de 2026. El registro de verificaciones distingue esos niveles.}
+El contenido es formativo. Una solución académica no constituye dato aprobado, autorización de mantenimiento, certificación de trabajo, programa aprobado ni evaluación del estado de una aeronave real. Las decisiones reales requieren los documentos, procedimientos y responsabilidades aplicables al producto y organización.
+
+\section*{Relación con el material de la asignatura}
+Se han utilizado los archivos docentes y hojas históricas aportados para analizar cobertura y dificultades. Las preguntas y ejercicios nuevos no reproducen los de Wuolah. Las copias antiguas de normativa se comparan con fuentes oficiales; se corrigen confusiones detectadas, como identificar 8090 con níquel o intercambiar los modos de fallo adhesivo y cohesivo. La guía docente oficial 2026--2027 se recuperó íntegramente en PDF y se contrastó con las presentaciones \cite{GUIA2026}. Su evaluación global indica 75\% de pruebas mixtas y 25\% de exposición o defensa de trabajos. Los porcentajes parciales de las presentaciones se atribuyen a ese material y no sustituyen la guía ni las indicaciones docentes vigentes.
+
+No es una publicación oficial de la Universidad de León ni de las autoridades citadas. Las denominaciones académicas identifican el contexto de estudio. Las fuentes consultadas y las obras recomendadas se separan para no atribuir lectura de libros a los que solo se accedió por su ficha bibliográfica.
+
+\chapter*{Símbolos y convenciones}\addcontentsline{toc}{chapter}{Símbolos y convenciones}
+\begin{longtable}{p{.18\linewidth}p{.51\linewidth}p{.23\linewidth}}\toprule Símbolo & Significado & Unidad habitual\\\midrule\endhead
+$\sigma,\tau$ & Tensión normal y cortante & Pa, MPa\\
+$E,G,\nu$ & Módulos elásticos y coeficiente de Poisson & Pa, Pa, adimensional\\
+$\varepsilon,\gamma$ & Deformaciones normal y cortante ingenieril & adimensional\\
+$a,2a$ & Semilongitud y longitud total de grieta central & m\\
+$K_I,K_{IC}$ & Intensidad aplicada y tenacidad válida de modo I en deformación plana & $\mathrm{Pa\sqrt m}$\\
+$Y$ & Factor geométrico según convención & adimensional\\
+$\sigma_a,\sigma_m,R$ & Amplitud, media y razón mínimo/máximo & Pa, Pa, adimensional\\
+$N,n_i,D$ & Ciclos, ciclos aplicados y daño lineal & ciclos, ciclos, adimensional\\
+$C,m$ & Parámetros de Paris & Según calibración; adimensional para $m$\\
+$Q,R_g,T$ & Energía de activación, constante molar y temperatura & J/mol, J/(mol K), K\\
+$\dot\varepsilon$ & Tasa de deformación & $\mathrm{s^{-1}}$\\
+$V_f,\rho$ & Fracción volumétrica de fibra y densidad & adimensional, $\mathrm{kg/m^3}$\\
+$H,C_{uso}$ & Acumulados de horas y ciclos de uso & h, ciclos\\
+$\lambda,R(t),A$ & Tasa de fallo/eventos, supervivencia y disponibilidad & tiempo$^{-1}$, adimensional, adimensional\\\bottomrule
+\end{longtable}
+Un símbolo puede tener usos distintos entre disciplinas. La razón de carga $R$ no es la constante molar $R_g$ ni la función de fiabilidad $R(t)$. Cada ecuación define su contexto. Las longitudes de grieta se expresan en metros al combinar MPa y $\mathrm{MPa\sqrt m}$. En los resultados decimales de los cuadernos pueden coexistir punto de salida de cálculo y coma tipográfica; no son separadores de miles.
+
+\bigskip\creditosportada

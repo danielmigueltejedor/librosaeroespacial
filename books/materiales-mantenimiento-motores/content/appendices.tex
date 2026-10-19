@@ -1,0 +1,84 @@
+\appendix
+\chapter{Hoja de fórmulas comentada}\label{app:formulas}
+Las relaciones siguientes son recordatorios de los modelos de los capítulos. Sus hipótesis y límites forman parte de cada fórmula; la hoja no permite seleccionar un modelo por semejanza de símbolos.
+\section{Mecánica y energía}
+\begin{align*}
+\sigma&=F/A,&\varepsilon&=\Delta L/L_0,&\Delta L&=FL_0/(AE),\\
+\sigma_{term}&=-E\alpha\Delta T,&u&=\sigma^2/(2E),&U&=uV,\\
+\sigma_{1,2}&=\frac{\sigma_x+\sigma_y}{2}\pm\sqrt{\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_{xy}^2},\\
+\sigma_{VM}&=\sqrt{\sigma_x^2-\sigma_x\sigma_y+\sigma_y^2+3\tau_{xy}^2}.&&
+\end{align*}
+La tensión térmica escrita supone restricción axial total, temperatura uniforme y respuesta elástica. Von Mises es un criterio de cedencia para el material y régimen compatibles, no un criterio universal de fractura.
+\section{Fractura y fatiga}
+\begin{align*}
+K_I&=Y\sigma\sqrt{\pi a},&G&=K_I^2/E',\\
+a_c&=\frac1\pi\left(\frac{K_c}{Y\sigma}\right)^2,&\ell_{min}&=2{,}5(K/\sigma_y)^2,\\
+\sigma_a&=(\sigma_{max}-\sigma_{min})/2,&\sigma_m&=(\sigma_{max}+\sigma_{min})/2,\\
+R&=\sigma_{min}/\sigma_{max},&\Delta\sigma&=2\sigma_a,\\
+\sigma_a&=AN^b,&\frac{\sigma_a}{S_e}+\frac{\sigma_m}{S_u}&\leq1,\\
+D&=\sum_i n_i/N_i,&K_f&=1+q(K_t-1),\\
+\frac{da}{dN}&=C(\Delta K)^m,&\Delta K&=Y\Delta\sigma\sqrt{\pi a}.
+\end{align*}
+El despeje de $a_c$ presupone $Y$ constante. El cribado dimensional no demuestra todas las condiciones de un ensayo de $K_{IC}$. Goodman y Miner son aproximaciones con condiciones de referencia. Para Paris con $Y$ constante,
+\[N=\frac{a_f^{1-m/2}-a_i^{1-m/2}}{(1-m/2)C(Y\Delta\sigma\sqrt\pi)^m}\ (m\ne2),\qquad N=\frac{\ln(a_f/a_i)}{C(Y\Delta\sigma\sqrt\pi)^2}\ (m=2).\]
+Se comprueban $K_{max}$, dominio de crecimiento y unidades de $C$ por separado.
+\section{Fluencia, compuestos y calor}
+\begin{align*}
+\dot\varepsilon&=A\sigma^n\exp[-Q/(R_gT)],&P_{LM}&=T(C_{LM}+\log_{10}t_r),\\
+E_L&=V_fE_f+(1-V_f)E_m,&1/E_T&=V_f/E_f+(1-V_f)/E_m,\\
+\rho&=V_f\rho_f+(1-V_f)\rho_m,&x^2-x_0^2&=k_pt.
+\end{align*}
+$E_T$ corresponde aquí a la idealización en serie, no a una predicción exacta general. Larson--Miller exige unidad de tiempo y tensión de calibración. Oxidación parabólica presupone el mecanismo que la sustenta. En pared plana estacionaria 1D,
+\[q''=\frac{T_g-T_c}{1/h_g+\delta_r/k_r+\delta_m/k_m+1/h_c}.\]
+\section{Ensayos, fiabilidad y control académico}
+\begin{align*}
+d&=vt/2,&\delta_{piel}&=(\pi f\mu\sigma_e)^{-1/2},\\
+\widehat\lambda&=n/T_{expo},&R(t)&=e^{-\lambda t},\\
+A_i&=\frac{MTBF}{MTBF+MTTR},&R_W(t)&=e^{-(t/\eta)^\beta},\\
+H_{venc}&=H_{ult}+I_H,&M_H&=H_{venc}-H_{actual}.
+\end{align*}
+Ultrasonidos usa tiempo de ida y vuelta; profundidad pelicular no garantiza detección. Fiabilidad exponencial supone tasa constante y disponibilidad exige definir qué tiempos incluye. La fórmula de vencimiento solo vale si ese es el disparador de la tarea. Meses de calendario no se convierten universalmente en días fijos.
+\chapter{Glosario de mantenimiento y normativa}\label{app:glosario}
+\begin{description}
+\item[AD] Directiva de aeronavegabilidad. Requisito de autoridad dentro de su aplicabilidad y condiciones; verificar versión y estado.
+\item[ALS] Sección de limitaciones de aeronavegabilidad; su alcance se identifica en los datos del producto.
+\item[AMC / GM] Medio aceptable de cumplimiento y material guía, con naturaleza distinta del requisito vinculante.
+\item[AMM / EMM] Manual de mantenimiento de aeronave / motor, en el alcance y configuración indicados.
+\item[AMOC] Método alternativo de cumplimiento dentro de la vía y aprobación aplicables; no es elección unilateral por semejanza técnica.
+\item[AMP] Programa de mantenimiento de aeronave; aprobación o declaración y contenido dependen del régimen.
+\item[ARC] Certificado de revisión de aeronavegabilidad; no equivale a CRS ni a certificado de tipo.
+\item[CAMO / CAO] Organizaciones de gestión de aeronavegabilidad continuada / de aeronavegabilidad combinada, según aprobaciones y ámbitos.
+\item[CMM] Manual de mantenimiento de componente; comprobar identidad, efectividad y tareas incluidas.
+\item[CRS] Certificado de puesta en servicio relativo al mantenimiento en su alcance y condiciones.
+\item[CS-E] Especificaciones de certificación para motores; la enmienda consultada no decide automáticamente la base de un tipo.
+\item[EASA / AESA / FAA] Agencia de la Unión Europea, autoridad española y autoridad estadounidense; competencias y jurisdicción se analizan.
+\item[EAR] Compendio Easy Access Rules; conservar fecha y distinguir legislación, AMC y GM.
+\item[EMAR / MAWA] Requisitos armonizados militares y foro de armonización; comprobar implementación y reconocimiento nacional.
+\item[Form 1] Documento de liberación con función y alcance definidos. No demuestra por sí solo elegibilidad para cualquier instalación.
+\item[ICA] Instrucciones para aeronavegabilidad continuada asociadas al diseño.
+\item[IPC] Catálogo ilustrado de piezas; identificación no equivale a instrucción de reparación.
+\item[LLP] Pieza de vida limitada. Identidad y contador propio persisten tras traslado; revisar definición de vida de sus datos.
+\item[MEL] Lista de equipo mínimo en su régimen operacional. No es manual de reparación ni permiso general de diferimiento.
+\item[MPD / MRBR] Documentos de planificación / informe de junta de revisión; función distinta del AMP específico.
+\item[OACI] Organización de Aviación Civil Internacional; marco internacional y documentos con funciones diferenciadas.
+\item[Parte 21] Certificación y otros requisitos de diseño y producción dentro del Reglamento 748/2012.
+\item[Partes M / ML] Regímenes de aeronavegabilidad continuada; escoger según ámbito y artículo 3 del 1321/2014.
+\item[Partes 145 / 66 / 147] Organizaciones de mantenimiento / licencias de personal / organizaciones de formación, con ámbitos distintos.
+\item[SB] Boletín de servicio del fabricante; analizar si una obligación lo incorpora y con qué revisión.
+\item[SRM] Manual de reparación estructural dentro de límites y configuración.
+\item[STC] Certificado de tipo suplementario con alcance y condiciones; puede añadir ICA y suplementos.
+\item[Trazabilidad] Posibilidad de reconstruir identidad, estado, datos, eventos y evidencia a lo largo de la historia.
+\end{description}
+\chapter{Ruta de estudio y errores que conviene detectar}
+\section{Materiales}
+Tras los capítulos 1 y 2, resolver P01--P06 y P34. Comprobar equilibrio, compatibilidad y unidades antes de consultar soluciones. Tras fractura y fatiga, usar P07--P18: dibujar siempre la grieta y escribir si $a$ es longitud o semilongitud; definir máximo, mínimo, amplitud y rango. Los resultados positivos no demuestran validez física. Para fluencia, P19--P22: temperatura absoluta, tensión y dominio de ajuste son datos esenciales. P23--P28 y P35 conectan anisotropía, inspección y modelos térmicos.
+\section{Mantenimiento}
+En C01--C04 y C09--C10 se practica ámbito, versiones y responsabilidades. C05, C14 y S03 obligan a separar lista histórica, configuración y estado actual de AD. C06--C07, C15--C16 y el capítulo 25 trabajan contadores y vencimientos. Los casos restantes conectan evidencia, datos y criterios. Antes de concluir, escribir qué información falta y qué demuestra realmente cada documento.
+\section{Autoevaluación}
+Realizar S01 y S02 para materiales; S03 y S04 para mantenimiento; S05 y S06 para integración. Resolver primero sin soluciones y corregir con un color diferente. Clasificar cada error como concepto, modelo, dato, unidad, operación, interpretación o fuente. Repetir el paso que falló con una variación razonada, sin memorizar solo el número final.
+\chapter{Alcance de las comprobaciones de esta edición}
+Los informes del proyecto separan revisión científica, matemática, normativa y editorial. Las comprobaciones algebraicas, sustituciones y dimensiones se registran con sus herramientas y resultados. La coincidencia numérica no demuestra que los valores materiales representen una pieza real. Las figuras están basadas en ecuaciones y esquemas explícitos, con datos sintéticos.
+
+El proyecto conserva el commit Studium utilizado y los resultados de sus pruebas, incluidas incidencias de entorno. La importación de contenido no convierte automáticamente sus fuentes en autoridad validada ni acredita una revisión humana independiente. Los materiales protegidos de entrada se excluyen del paquete de distribución.
+
+Quedan límites explícitos: revisión experta independiente de la obra; estado actual y exhaustividad de AD por producto; datos técnicos de motores concretos no proporcionados; libros recomendados no consultados íntegramente. El manual desarrolla todos sus bloques temáticos, pero esos límites impiden presentarlo como autorización o como auditoría normativa completa de un producto.

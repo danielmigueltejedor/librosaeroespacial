@@ -1,0 +1,14 @@
+
+\section{Modelo de datos antes de la hoja}
+Se separan aeronaves, motores, piezas, requisitos y eventos. La instalación relaciona identidades y fechas; el cumplimiento relaciona requisito, ejecución, contadores y evidencia. No se duplica el total de pieza en celdas independientes editables. Identificadores estables mantienen enlaces al ordenar.
+
+Cada campo define tipo y unidad. Vacío significa ausencia; cero es valor conocido. Se comprueba que los acumulados no disminuyan sin explicación y que no haya cumplimiento posterior a fecha de estado. La validación señala incoherencias, sin acreditar autenticidad.
+\section{Fórmulas y estados}
+Para repetición por horas desde ejecución, $H_{venc}=H_{ult}+I_H$ y $M_H=H_{venc}-H_{actual}$, solo si ese es el disparador y la base coincide. Meses se aplican al calendario con política explícita de fin de mes, sin sustituirlos universalmente por 30 días.
+
+El estado se calcula tras validar: PENDIENTE con datos esenciales ausentes; VENCIDO si se supera límite; EN LÍMITE al alcanzarlo; VIGENTE dentro del modelo si todos conservan margen. «Próximo» es alerta con umbral interno, no tolerancia. Se mantienen uso, calendario e incertidumbre de previsión.
+\section{Probar fronteras y conservar cambios}
+Se prueban intervalo inválido, fin de mes, margen cero, historial ausente y pieza trasladada. Ordenar y filtrar ayuda a detectar referencias frágiles. Dos errores pueden compensarse en un total; se comparan filas y eventos fuente con cálculos independientes.
+
+Una nueva revisión conserva la anterior, motivo e impacto. La fórmula no sobrescribe historial silenciosamente. Copias y control de cambios permiten reconstruir el trabajo. Estos principios enseñan un modelo académico y no lo convierten en programa o sistema aprobado.
+\repaso{¿Por qué es incorrecto devolver «VIGENTE» con acumulado vacío?}{Confunde desconocido con uso cero y fabrica margen. El modelo debe conservar incertidumbre y solicitar evidencia antes de producir una conclusión positiva.}

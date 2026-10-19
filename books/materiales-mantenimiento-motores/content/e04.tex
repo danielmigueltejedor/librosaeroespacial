@@ -1,0 +1,15 @@
+
+\section{Ajuste de una curva y coherencia de sus coeficientes}
+Si dos puntos compatibles se ajustan con $\sigma_a=A N^b$, el logaritmo da una recta: $\ln\sigma_a=\ln A+b\ln N$. Por tanto
+\begin{equation}b=\frac{\ln(\sigma_{a2}/\sigma_{a1})}{\ln(N_2/N_1)},\qquad A=\sigma_{a1}/N_1^b.\end{equation}
+Los cocientes de las expresiones para $b$ son adimensionales. El coeficiente $A$ conserva la convención y unidad de tensión del ajuste. Dos puntos permiten determinar dos parámetros, pero no estimar con fiabilidad la dispersión ni demostrar que una ley de potencia sea adecuada fuera del intervalo. Los ensayos que no fallan antes de detenerse no se convierten sin más en fallos a ese número de ciclos: son observaciones censuradas.
+\section{Secuencias variables y significado de una permanencia}
+Rainflow convierte una historia irregular en un conjunto de ciclos según un algoritmo definido. El resultado debe conservar rangos y tensiones medias pertinentes. No se sustituye una historia por su máximo y mínimo global si contiene numerosos ciclos pequeños y grandes: se perdería la multiplicidad. Después, asignar una vida a cada clase requiere una curva compatible y un tratamiento de tensión media.
+
+Una permanencia a alta temperatura puede introducir relajación, oxidación y daño por fluencia. Dos historias con el mismo número de máximos y mínimos pueden producir diferente daño si una mantiene la carga durante mucho más tiempo. La interacción fluencia--fatiga no queda automáticamente descrita sumando una fracción de Miner y una fracción de tiempo; cualquier regla de interacción necesita su base y límites. En un disco, las variaciones de temperatura y velocidad a lo largo de una misión también cambian el campo local de tensiones.
+\section{La integral de Paris como problema de sensibilidad}
+Con $m=3$ y $Y$ constante, la vida es proporcional a $1/(C\Delta\sigma^3)$. Un aumento del rango del 10\% reduce la vida del modelo al factor $1/1{,}1^3\approx0{,}7513$, manteniendo los tamaños y demás parámetros. Esta sensibilidad explica por qué confundir amplitud con rango puede introducir un error grande. La relación no debe extrapolarse si cambia el dominio de crecimiento o el tamaño final admisible.
+
+El tamaño detectado inicial también pesa mucho: para ese exponente interviene $a_i^{-1/2}$. Reducir arbitrariamente $a_i$ prolonga matemáticamente la vida, pero puede llevar el cálculo al dominio de grietas pequeñas donde el ajuste no representa la física. La inspección y el modelo deben compartir una descripción coherente del defecto.
+\ilustra{crecimiento-grieta}{Crecimiento sintético integrado con Paris. La curva acelera al crecer la grieta bajo rango de tensión constante; no incluye la fase de iniciación.}
+\repaso{Una solución usa $\sigma_a$ en lugar de $\Delta\sigma$ para Paris con $m=3$. ¿Qué ocurre si todo lo demás permanece fijo?}{Como $\Delta\sigma=2\sigma_a$, la solución usa un impulsor dos veces menor y calcula una vida ocho veces mayor. Corregir la aritmética no basta: también deben comprobarse razón de carga y dominio del ajuste.}

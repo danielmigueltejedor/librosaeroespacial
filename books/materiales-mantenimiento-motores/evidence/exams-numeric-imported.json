@@ -1,0 +1,2069 @@
+[
+  {
+    "key": "S01.1",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0125",
+        "section": "c02",
+        "prompt": "S01.1 Una barra ficticia tiene \\(L=240\\,\\mathrm{mm}\\), \\(A=60\\,\\mathrm{mm^2}\\) y \\(E=75\\,\\mathrm{GPa}\\). Se aplica \\(F=9\\,\\mathrm{kN}\\) de tracción centrada. Suponga sección uniforme, pequeñas deformaciones y respuesta elástica lineal. Calcule tensión, deformación y elongación y haga una comprobación inversa.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=150000000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=150000000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El modelo es \\(\\sigma=F/A\\), \\(\\varepsilon=\\sigma/E\\) y \\(\\Delta L=\\varepsilon L\\). Con \\(A=60\\times10^{-6}\\,\\mathrm{m^2}\\),\n\\[\\sigma=\\frac{9000}{60\\times10^{-6}}=150\\,\\mathrm{MPa},\\quad \\varepsilon=0{,}002,\\quad\\Delta L=0{,}480\\,\\mathrm{mm}.\\]\nLa fuerza reconstruida es \\(150\\times10^6(60\\times10^{-6})=9000\\) N y \\(0{,}480/240=0{,}002\\). La deformación es adimensional. Falta el límite elástico para contrastar la hipótesis material; no se infiere vida ni aceptabilidad de una pieza real."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "9000*.24/(60e-6*75e9)",
+              "expected": "0.00048",
+              "unit": "m"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "9000/(60e-6)",
+              "expected": "150000000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "expected": "150000000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0125",
+        "section": "c02",
+        "prompt": "S01.1 Una barra ficticia tiene \\(L=240\\,\\mathrm{mm}\\), \\(A=60\\,\\mathrm{mm^2}\\) y \\(E=75\\,\\mathrm{GPa}\\). Se aplica \\(F=9\\,\\mathrm{kN}\\) de tracción centrada. Suponga sección uniforme, pequeñas deformaciones y respuesta elástica lineal. Calcule tensión, deformación y elongación y haga una comprobación inversa.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=150000000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=150000000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El modelo es \\(\\sigma=F/A\\), \\(\\varepsilon=\\sigma/E\\) y \\(\\Delta L=\\varepsilon L\\). Con \\(A=60\\times10^{-6}\\,\\mathrm{m^2}\\),\n\\[\\sigma=\\frac{9000}{60\\times10^{-6}}=150\\,\\mathrm{MPa},\\quad \\varepsilon=0{,}002,\\quad\\Delta L=0{,}480\\,\\mathrm{mm}.\\]\nLa fuerza reconstruida es \\(150\\times10^6(60\\times10^{-6})=9000\\) N y \\(0{,}480/240=0{,}002\\). La deformación es adimensional. Falta el límite elástico para contrastar la hipótesis material; no se infiere vida ni aceptabilidad de una pieza real."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "9000*.24/(60e-6*75e9)",
+              "expected": "0.00048",
+              "unit": "m"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "9000/(60e-6)",
+              "expected": "150000000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "9000*.24/(60e-6*75e9)",
+            "value": "0.00048",
+            "expected": "0.00048",
+            "reproduced": true
+          },
+          {
+            "index": 2,
+            "expression": "9000/(60e-6)",
+            "value": "150000000",
+            "expected": "150000000",
+            "reproduced": true
+          }
+        ],
+        "expected": "150000000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 2,
+          "value": "150000000"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 2,
+        "value": "150000000"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "9000*.24/(60e-6*75e9)",
+          "value": "0.00048",
+          "expected": "0.00048",
+          "reproduced": true
+        },
+        {
+          "index": 2,
+          "expression": "9000/(60e-6)",
+          "value": "150000000",
+          "expected": "150000000",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S01.2",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0126",
+        "section": "c02",
+        "prompt": "S01.2 Una placa ideal muy ancha tiene una grieta central pasante de longitud total \\(2a=6\\,\\mathrm{mm}\\). Se adoptan \\(Y=1\\), \\(\\sigma=150\\,\\mathrm{MPa}\\) y \\(K_{IC}=30\\,\\mathrm{MPa\\sqrt m}\\) supuesto aplicable. Calcule \\(K_I\\), \\( a_c \\) y \\(2a_c \\). Explique dos límites físicos de la conclusión.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=14.5621943442",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=14.5621943442"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se usa semilongitud \\( a=0{,}003\\) m. El modelo da\n\\[K_I=150\\sqrt{\\pi(0{,}003)}=14.5622\\,\\mathrm{MPa\\sqrt m}.\\]\nDe \\(K_I=K_{IC}\\) se despeja \\( a_c=(30/150)^2/\\pi=12.7324\\) mm; la longitud total crítica es \\(2a_c=25.4648\\) mm. Sustituir \\( a_c \\) recupera la tenacidad. La comparación es estática y condicionada: no se han verificado espesor, pequeña plastificación, espectro de fatiga ni ambiente; no se autoriza el defecto por resultar \\(K_I<K_{IC}\\)."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "(30/150)**2/pi",
+              "expected": "0.01273239544735163",
+              "unit": "m"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "150*sqrt(pi*.003)",
+              "expected": "14.56219434416774",
+              "unit": "MPa*m^0.5"
+            }
+          ]
+        },
+        "expected": "14.56219434416774",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0126",
+        "section": "c02",
+        "prompt": "S01.2 Una placa ideal muy ancha tiene una grieta central pasante de longitud total \\(2a=6\\,\\mathrm{mm}\\). Se adoptan \\(Y=1\\), \\(\\sigma=150\\,\\mathrm{MPa}\\) y \\(K_{IC}=30\\,\\mathrm{MPa\\sqrt m}\\) supuesto aplicable. Calcule \\(K_I\\), \\( a_c \\) y \\(2a_c \\). Explique dos límites físicos de la conclusión.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=14.5621943442",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=14.5621943442"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se usa semilongitud \\( a=0{,}003\\) m. El modelo da\n\\[K_I=150\\sqrt{\\pi(0{,}003)}=14.5622\\,\\mathrm{MPa\\sqrt m}.\\]\nDe \\(K_I=K_{IC}\\) se despeja \\( a_c=(30/150)^2/\\pi=12.7324\\) mm; la longitud total crítica es \\(2a_c=25.4648\\) mm. Sustituir \\( a_c \\) recupera la tenacidad. La comparación es estática y condicionada: no se han verificado espesor, pequeña plastificación, espectro de fatiga ni ambiente; no se autoriza el defecto por resultar \\(K_I<K_{IC}\\)."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "(30/150)**2/pi",
+              "expected": "0.01273239544735163",
+              "unit": "m"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "150*sqrt(pi*.003)",
+              "expected": "14.56219434416774",
+              "unit": "MPa*m^0.5"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "(30/150)**2/pi",
+            "value": "0.0127324",
+            "expected": "0.01273239544735163",
+            "reproduced": true
+          },
+          {
+            "index": 2,
+            "expression": "150*sqrt(pi*.003)",
+            "value": "14.5622",
+            "expected": "14.56219434416774",
+            "reproduced": true
+          }
+        ],
+        "expected": "14.56219434416774",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 2,
+          "value": "14.5622"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 2,
+        "value": "14.5622"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "(30/150)**2/pi",
+          "value": "0.0127324",
+          "expected": "0.01273239544735163",
+          "reproduced": true
+        },
+        {
+          "index": 2,
+          "expression": "150*sqrt(pi*.003)",
+          "value": "14.5622",
+          "expected": "14.56219434416774",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S02.1",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0127",
+        "section": "c02",
+        "prompt": "S02.1 Una probeta ficticia se carga desde cero hasta un máximo. Se adopta Goodman con \\(S_e=220\\,\\mathrm{MPa}\\) y \\(S_u=660\\,\\mathrm{MPa}\\). Calcule el máximo nominal en el límite del modelo y distinga máximo de amplitud. Suponga régimen elástico y ausencia de entallas.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=330",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=330"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Con \\(R=0\\), \\(\\sigma_a=\\sigma_m=\\sigma_{max}/2\\). Al sustituir en \\(\\sigma_a/S_e+\\sigma_m/S_u=1\\),\n\\[\\sigma_{max}=\\frac{2}{1/220+1/660}=330\\,\\mathrm{MPa},\\quad \\sigma_a=\\sigma_m=165\\,\\mathrm{MPa}.\\]\nLa comprobación da \\(165/220+165/660=1\\). El criterio es aproximado y no establece vida infinita universal; los datos deben corresponder a la misma condición de referencia. No se han comprobado dispersión ni ambiente."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2/(1/220+1/660)",
+              "expected": "330",
+              "unit": "MPa"
+            }
+          ]
+        },
+        "expected": "330",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0127",
+        "section": "c02",
+        "prompt": "S02.1 Una probeta ficticia se carga desde cero hasta un máximo. Se adopta Goodman con \\(S_e=220\\,\\mathrm{MPa}\\) y \\(S_u=660\\,\\mathrm{MPa}\\). Calcule el máximo nominal en el límite del modelo y distinga máximo de amplitud. Suponga régimen elástico y ausencia de entallas.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=330",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=330"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Con \\(R=0\\), \\(\\sigma_a=\\sigma_m=\\sigma_{max}/2\\). Al sustituir en \\(\\sigma_a/S_e+\\sigma_m/S_u=1\\),\n\\[\\sigma_{max}=\\frac{2}{1/220+1/660}=330\\,\\mathrm{MPa},\\quad \\sigma_a=\\sigma_m=165\\,\\mathrm{MPa}.\\]\nLa comprobación da \\(165/220+165/660=1\\). El criterio es aproximado y no establece vida infinita universal; los datos deben corresponder a la misma condición de referencia. No se han comprobado dispersión ni ambiente."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2/(1/220+1/660)",
+              "expected": "330",
+              "unit": "MPa"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "2/(1/220+1/660)",
+            "value": "330",
+            "expected": "330",
+            "reproduced": true
+          }
+        ],
+        "expected": "330",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "330"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "330"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "2/(1/220+1/660)",
+          "value": "330",
+          "expected": "330",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S02.2",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0128",
+        "section": "c04",
+        "prompt": "S02.2 Integre Paris con \\( m=3\\), \\(C=10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3\\), \\(Y=1\\) y \\(\\Delta\\sigma=120\\,\\mathrm{MPa}\\) entre semilongitudes \\( a_i=1{,}2\\,\\mathrm{mm}\\) y \\( a_f=5\\,\\mathrm{mm}\\). Suponga región de Paris válida y condiciones constantes; el criterio final es un dato independiente del ejercicio.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=3060750.26357",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=3060750.26357"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se separan variables:\n\\[N=\\frac{1}{C(\\Delta\\sigma\\sqrt\\pi)^3}\\int_{a_i}^{a_f}a^{-3/2}da=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\\Delta\\sigma\\sqrt\\pi)^3}.\\]\nCon longitudes en metros,\\(N=3060750.3\\) ciclos. La primitiva es \\(-2a^{-1/2}\\) y su derivada recupera el integrando. Se usa rango de tensión, no amplitud. No se calcula iniciación, ni se verifica tenacidad o detectabilidad por esta integral."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2*(.0012**(-.5)-.005**(-.5))/(1e-12*(120*sqrt(pi))**3)",
+              "expected": "3060750.263574211",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "expected": "3060750.263574211",
+        "excerpts": [
+          "EVD-0021",
+          "EVD-0023"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0128",
+        "section": "c04",
+        "prompt": "S02.2 Integre Paris con \\( m=3\\), \\(C=10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3\\), \\(Y=1\\) y \\(\\Delta\\sigma=120\\,\\mathrm{MPa}\\) entre semilongitudes \\( a_i=1{,}2\\,\\mathrm{mm}\\) y \\( a_f=5\\,\\mathrm{mm}\\). Suponga región de Paris válida y condiciones constantes; el criterio final es un dato independiente del ejercicio.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=3060750.26357",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=3060750.26357"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se separan variables:\n\\[N=\\frac{1}{C(\\Delta\\sigma\\sqrt\\pi)^3}\\int_{a_i}^{a_f}a^{-3/2}da=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\\Delta\\sigma\\sqrt\\pi)^3}.\\]\nCon longitudes en metros,\\(N=3060750.3\\) ciclos. La primitiva es \\(-2a^{-1/2}\\) y su derivada recupera el integrando. Se usa rango de tensión, no amplitud. No se calcula iniciación, ni se verifica tenacidad o detectabilidad por esta integral."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2*(.0012**(-.5)-.005**(-.5))/(1e-12*(120*sqrt(pi))**3)",
+              "expected": "3060750.263574211",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "2*(.0012**(-.5)-.005**(-.5))/(1e-12*(120*sqrt(pi))**3)",
+            "value": "3.06075e+06",
+            "expected": "3060750.263574211",
+            "reproduced": true
+          }
+        ],
+        "expected": "3060750.263574211",
+        "excerpts": [
+          "EVD-0021",
+          "EVD-0023"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "3.06075e+06"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "3.06075e+06"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "2*(.0012**(-.5)-.005**(-.5))/(1e-12*(120*sqrt(pi))**3)",
+          "value": "3.06075e+06",
+          "expected": "3060750.263574211",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S02.3",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0129",
+        "section": "c02",
+        "prompt": "S02.3 A igual tensión se supone una ley Arrhenius con \\(Q=240\\,\\mathrm{kJ/mol}\\). La temperatura cambia de 950 a 1000 K sin cambiar mecanismo. Calcule la razón de tasas, usando \\(R=8{,}314462618\\,\\mathrm{J/(mol\\,K)}\\). Explique por qué no es una predicción de tiempo a rotura.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=4.56870478522",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=4.56870478522"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El cociente elimina el prefactor a igual tensión:\n\\[\\dot\\varepsilon_2/\\dot\\varepsilon_1=\\exp\\left[-\\frac{240000}{8{,}314462618}\\left(\\frac1{1000}-\\frac1{950}\\right)\\right]=4.568705.\\]\nEl exponente es adimensional y el signo da incremento de tasa con temperatura. Una tasa secundaria no contiene por sí sola la evolución primaria, terciaria, daño y criterio de rotura. Además, se ha supuesto un mecanismo constante; no se extrapola fuera del dominio de calibración."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "exp(-240000/8.314462618*(1/1000-1/950))",
+              "expected": "4.568704785224619",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "expected": "4.568704785224619",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0129",
+        "section": "c02",
+        "prompt": "S02.3 A igual tensión se supone una ley Arrhenius con \\(Q=240\\,\\mathrm{kJ/mol}\\). La temperatura cambia de 950 a 1000 K sin cambiar mecanismo. Calcule la razón de tasas, usando \\(R=8{,}314462618\\,\\mathrm{J/(mol\\,K)}\\). Explique por qué no es una predicción de tiempo a rotura.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=4.56870478522",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=4.56870478522"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El cociente elimina el prefactor a igual tensión:\n\\[\\dot\\varepsilon_2/\\dot\\varepsilon_1=\\exp\\left[-\\frac{240000}{8{,}314462618}\\left(\\frac1{1000}-\\frac1{950}\\right)\\right]=4.568705.\\]\nEl exponente es adimensional y el signo da incremento de tasa con temperatura. Una tasa secundaria no contiene por sí sola la evolución primaria, terciaria, daño y criterio de rotura. Además, se ha supuesto un mecanismo constante; no se extrapola fuera del dominio de calibración."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "exp(-240000/8.314462618*(1/1000-1/950))",
+              "expected": "4.568704785224619",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "exp(-240000/8.314462618*(1/1000-1/950))",
+            "value": "4.5687",
+            "expected": "4.568704785224619",
+            "reproduced": true
+          }
+        ],
+        "expected": "4.568704785224619",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "4.5687"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "4.5687"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "exp(-240000/8.314462618*(1/1000-1/950))",
+          "value": "4.5687",
+          "expected": "4.568704785224619",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S02.4",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0130",
+        "section": "c02",
+        "prompt": "S02.4 Una lámina ideal tiene \\(V_f=0{,}55\\), \\(E_f=200\\,\\mathrm{GPa}\\) y \\(E_m=4\\,\\mathrm{GPa}\\). Calcule \\(E_L\\) y explique por qué el resultado no es el módulo en cualquier dirección ni una resistencia.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=111.8",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=111.8"
+            }
+          ],
+          "steps": [
+            {
+              "text": "En isodeformación longitudinal,\\(E_L=V_fE_f+(1-V_f)E_m=0{,}55(200)+0{,}45(4)=111{,}8\\) GPa. El valor queda entre los módulos de las fases. Se supone unión perfecta, fibras continuas alineadas y respuesta lineal. Otra dirección requiere otro modelo y parámetros; la rotura exige resistencias y mecanismos, que no se obtienen de este módulo."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": ".55*200+.45*4",
+              "expected": "111.8",
+              "unit": "GPa"
+            }
+          ]
+        },
+        "expected": "111.8",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0130",
+        "section": "c02",
+        "prompt": "S02.4 Una lámina ideal tiene \\(V_f=0{,}55\\), \\(E_f=200\\,\\mathrm{GPa}\\) y \\(E_m=4\\,\\mathrm{GPa}\\). Calcule \\(E_L\\) y explique por qué el resultado no es el módulo en cualquier dirección ni una resistencia.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=111.8",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=111.8"
+            }
+          ],
+          "steps": [
+            {
+              "text": "En isodeformación longitudinal,\\(E_L=V_fE_f+(1-V_f)E_m=0{,}55(200)+0{,}45(4)=111{,}8\\) GPa. El valor queda entre los módulos de las fases. Se supone unión perfecta, fibras continuas alineadas y respuesta lineal. Otra dirección requiere otro modelo y parámetros; la rotura exige resistencias y mecanismos, que no se obtienen de este módulo."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": ".55*200+.45*4",
+              "expected": "111.8",
+              "unit": "GPa"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": ".55*200+.45*4",
+            "value": "111.8",
+            "expected": "111.8",
+            "reproduced": true
+          }
+        ],
+        "expected": "111.8",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "111.8"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "111.8"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": ".55*200+.45*4",
+          "value": "111.8",
+          "expected": "111.8",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S03.3",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0131",
+        "section": "c17",
+        "prompt": "S03.3 Una directiva expresamente ficticia DID-01 exige primera inspección dentro de 50 hdesde su fecha de efectividad y repetición cada 100 hdesde cada inspección. La efectividad corresponde a 2000 hde la aeronave; se inspeccionó a 2030 h; ahora tiene 2110 h. Calcule márgenes y explique la evidencia requerida.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=20",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=20"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El umbral inicial era 2050 h; la inspección a 2030 hse hizo antes de ese umbral, bajo la regla ficticia. El siguiente vence a 2130 hporque la repetición se cuenta desde ejecución real. El margen actual es 20 h. Deben constar acción, datos y revisión, resultados, fecha, acumulados y certificación pertinente. El cálculo no demuestra por sí solo cumplimiento si la inspección no corresponde a la acción requerida. No se transfiere esta regla a una AD real con otra referencia temporal."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2030+100-2110",
+              "expected": "20",
+              "unit": "h"
+            }
+          ]
+        },
+        "expected": "20",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0131",
+        "section": "c17",
+        "prompt": "S03.3 Una directiva expresamente ficticia DID-01 exige primera inspección dentro de 50 hdesde su fecha de efectividad y repetición cada 100 hdesde cada inspección. La efectividad corresponde a 2000 hde la aeronave; se inspeccionó a 2030 h; ahora tiene 2110 h. Calcule márgenes y explique la evidencia requerida.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=20",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=20"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El umbral inicial era 2050 h; la inspección a 2030 hse hizo antes de ese umbral, bajo la regla ficticia. El siguiente vence a 2130 hporque la repetición se cuenta desde ejecución real. El margen actual es 20 h. Deben constar acción, datos y revisión, resultados, fecha, acumulados y certificación pertinente. El cálculo no demuestra por sí solo cumplimiento si la inspección no corresponde a la acción requerida. No se transfiere esta regla a una AD real con otra referencia temporal."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2030+100-2110",
+              "expected": "20",
+              "unit": "h"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "2030+100-2110",
+            "value": "20",
+            "expected": "20",
+            "reproduced": true
+          }
+        ],
+        "expected": "20",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "20"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "20"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "2030+100-2110",
+          "value": "20",
+          "expected": "20",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S04.1",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0132",
+        "section": "c25",
+        "prompt": "S04.1 Fecha ficticia de estado 8 octubre 2026:1180 h, 1030 ciclos. Tarea A:150 ho 6 meses desde 15 mayo 2026 y 1100 h. Tarea B:100 ciclos desde 950. LLPficticio: vida 1600, acumulado 1500. Calcule los márgenes y explique cuál priorizaría con 10 hy 5 ciclospor jornada.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=70",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=70"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Avence a 1250 hy 15 noviembre 2026, con 70 hde margen. Bvence a 1050 ciclos, con 20 de margen. El LLPtiene 100 ciclos restantes. La previsión de uso da 7 jornadas, 4 jornadas y 20 jornadas, respectivamente; Bse aproxima antes por uso. El calendario también se conserva y debe compararse con la programación concreta. Estos intervalos y límites son ficticios y no hay tolerancias. Jornada de operación no equivale necesariamente a día natural."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "950+100-1030",
+              "expected": "20",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "1100+150-1180",
+              "expected": "70",
+              "unit": "h"
+            }
+          ]
+        },
+        "expected": "70",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0132",
+        "section": "c25",
+        "prompt": "S04.1 Fecha ficticia de estado 8 octubre 2026:1180 h, 1030 ciclos. Tarea A:150 ho 6 meses desde 15 mayo 2026 y 1100 h. Tarea B:100 ciclos desde 950. LLPficticio: vida 1600, acumulado 1500. Calcule los márgenes y explique cuál priorizaría con 10 hy 5 ciclospor jornada.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=70",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=70"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Avence a 1250 hy 15 noviembre 2026, con 70 hde margen. Bvence a 1050 ciclos, con 20 de margen. El LLPtiene 100 ciclos restantes. La previsión de uso da 7 jornadas, 4 jornadas y 20 jornadas, respectivamente; Bse aproxima antes por uso. El calendario también se conserva y debe compararse con la programación concreta. Estos intervalos y límites son ficticios y no hay tolerancias. Jornada de operación no equivale necesariamente a día natural."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "950+100-1030",
+              "expected": "20",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "1100+150-1180",
+              "expected": "70",
+              "unit": "h"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "950+100-1030",
+            "value": "20",
+            "expected": "20",
+            "reproduced": true
+          },
+          {
+            "index": 2,
+            "expression": "1100+150-1180",
+            "value": "70",
+            "expected": "70",
+            "reproduced": true
+          }
+        ],
+        "expected": "70",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 2,
+          "value": "70"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 2,
+        "value": "70"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "950+100-1030",
+          "value": "20",
+          "expected": "20",
+          "reproduced": true
+        },
+        {
+          "index": 2,
+          "expression": "1100+150-1180",
+          "value": "70",
+          "expected": "70",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S05.1",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0133",
+        "section": "c02",
+        "prompt": "S05.1 Una barra ficticia totalmente restringida se calienta uniformemente 60 K. Se adoptan \\(E=115\\,\\mathrm{GPa}\\) y \\(\\alpha=9\\times10^{-6}\\,\\mathrm{K^{-1}}\\). Calcule tensión elástica y explique qué cambiaría con apoyos flexibles o fluencia.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=-62100000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=-62100000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La compatibilidad impone \\(0=\\sigma/E+\\alpha\\Delta T\\). Por ello \\(\\sigma=-115\\times10^9(9\\times10^{-6})(60)=-62{,}1\\) MPa. El signo de compresión compensa la expansión térmica. Al sustituir, se anula la deformación total. Apoyos flexibles permiten desplazamiento y modifican la tensión; la fluencia puede provocar relajación. El modelo no comprueba pandeo ni cedencia."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "-115e9*9e-6*60",
+              "expected": "-62100000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "expected": "-62100000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0133",
+        "section": "c02",
+        "prompt": "S05.1 Una barra ficticia totalmente restringida se calienta uniformemente 60 K. Se adoptan \\(E=115\\,\\mathrm{GPa}\\) y \\(\\alpha=9\\times10^{-6}\\,\\mathrm{K^{-1}}\\). Calcule tensión elástica y explique qué cambiaría con apoyos flexibles o fluencia.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=-62100000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=-62100000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La compatibilidad impone \\(0=\\sigma/E+\\alpha\\Delta T\\). Por ello \\(\\sigma=-115\\times10^9(9\\times10^{-6})(60)=-62{,}1\\) MPa. El signo de compresión compensa la expansión térmica. Al sustituir, se anula la deformación total. Apoyos flexibles permiten desplazamiento y modifican la tensión; la fluencia puede provocar relajación. El modelo no comprueba pandeo ni cedencia."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "-115e9*9e-6*60",
+              "expected": "-62100000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "-115e9*9e-6*60",
+            "value": "-62100000",
+            "expected": "-62100000",
+            "reproduced": true
+          }
+        ],
+        "expected": "-62100000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "-62100000"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "-62100000"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "-115e9*9e-6*60",
+          "value": "-62100000",
+          "expected": "-62100000",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S05.2",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0134",
+        "section": "c24",
+        "prompt": "S05.2 Una flota ficticia registra 3 eventos en 30000 h. Bajo tasa constante, calcule \\(R(200\\,\\mathrm h)\\). Para \\(MTBF=10000\\,\\mathrm h \\), compare reparación activa 6 hcon restauración de 24 hincluida espera.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=0.980198673307",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=0.980198673307"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La tasa observada es 0,0001 h\\(^{-1}\\)y R(200)=exp(-0,02)=0,9801987. Los cocientes de disponibilidad son 10000/10006=0,9994004 y 10000/10024=0,9976057. Se mantienen separados sus alcances temporales. La estimación estadística no establece límite de vida ni demuestra el modelo; faltan incertidumbre y análisis de población."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "10000/(10000+24)",
+              "expected": "0.9976057462090981",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "exp(-(3/30000)*200)",
+              "expected": "0.9801986733067553",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "expected": "0.9801986733067553",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0134",
+        "section": "c24",
+        "prompt": "S05.2 Una flota ficticia registra 3 eventos en 30000 h. Bajo tasa constante, calcule \\(R(200\\,\\mathrm h)\\). Para \\(MTBF=10000\\,\\mathrm h \\), compare reparación activa 6 hcon restauración de 24 hincluida espera.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=0.980198673307",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=0.980198673307"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La tasa observada es 0,0001 h\\(^{-1}\\)y R(200)=exp(-0,02)=0,9801987. Los cocientes de disponibilidad son 10000/10006=0,9994004 y 10000/10024=0,9976057. Se mantienen separados sus alcances temporales. La estimación estadística no establece límite de vida ni demuestra el modelo; faltan incertidumbre y análisis de población."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "10000/(10000+24)",
+              "expected": "0.9976057462090981",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "exp(-(3/30000)*200)",
+              "expected": "0.9801986733067553",
+              "unit": "dimensionless"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "10000/(10000+24)",
+            "value": "0.997606",
+            "expected": "0.9976057462090981",
+            "reproduced": true
+          },
+          {
+            "index": 2,
+            "expression": "exp(-(3/30000)*200)",
+            "value": "0.980199",
+            "expected": "0.9801986733067553",
+            "reproduced": true
+          }
+        ],
+        "expected": "0.9801986733067553",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0011"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 2,
+          "value": "0.980199"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 2,
+        "value": "0.980199"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "10000/(10000+24)",
+          "value": "0.997606",
+          "expected": "0.9976057462090981",
+          "reproduced": true
+        },
+        {
+          "index": 2,
+          "expression": "exp(-(3/30000)*200)",
+          "value": "0.980199",
+          "expected": "0.9801986733067553",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S05.3",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0135",
+        "section": "c02",
+        "prompt": "S05.3 Una unión ficticia transmite 3 k Nen un solape de 20 mmde ancho y 40 mmde longitud. Calcule tensión cortante media y explique por qué no determina resistencia de la unión. Identifique tres localizaciones posibles de fallo.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=3750000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=3750000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La media es \\(\\tau_{med}=F/(bL)=3000/(0{,}020\\cdot0{,}040)=3{,}75\\) MPa. Las unidades son N/m\\(^{2}\\). La carga reconstruida coincide con 3000 N. El máximo local puede diferir por concentraciones y pelado; importan espesor, rigidez, preparación y curado. Fallo adhesivo: interfaz; cohesivo: interior del adhesivo; del sustrato: material unido. No se deduce un margen real con una resistencia de catálogo aislada."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "3000/(.02*.04)",
+              "expected": "3750000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "expected": "3750000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0135",
+        "section": "c02",
+        "prompt": "S05.3 Una unión ficticia transmite 3 k Nen un solape de 20 mmde ancho y 40 mmde longitud. Calcule tensión cortante media y explique por qué no determina resistencia de la unión. Identifique tres localizaciones posibles de fallo.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=3750000",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=3750000"
+            }
+          ],
+          "steps": [
+            {
+              "text": "La media es \\(\\tau_{med}=F/(bL)=3000/(0{,}020\\cdot0{,}040)=3{,}75\\) MPa. Las unidades son N/m\\(^{2}\\). La carga reconstruida coincide con 3000 N. El máximo local puede diferir por concentraciones y pelado; importan espesor, rigidez, preparación y curado. Fallo adhesivo: interfaz; cohesivo: interior del adhesivo; del sustrato: material unido. No se deduce un margen real con una resistencia de catálogo aislada."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "3000/(.02*.04)",
+              "expected": "3750000",
+              "unit": "Pa"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "3000/(.02*.04)",
+            "value": "3750000",
+            "expected": "3750000",
+            "reproduced": true
+          }
+        ],
+        "expected": "3750000",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "3750000"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "3750000"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "3000/(.02*.04)",
+          "value": "3750000",
+          "expected": "3750000",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S06.1",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0136",
+        "section": "c02",
+        "prompt": "S06.1 A igual tensión, se supone válida la correlación Larson--Miller con \\(C_{LM}=20\\), tiempo en horas. Un ensayo a 900 K rompe en 10000 h. Estime tiempo equivalente a 940 K y explique qué hipótesis impedirían extrapolarlo a servicio variable.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=952.189535408",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=952.189535408"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se calcula \\(P=900(20+\\log_{10}10000)=21600\\) K. Entonces\n\\[\\log_{10}t_2=21600/940-20,\\quad t_2=952.18954\\,\\mathrm h.\\]\nLa sustitución recupera P. La temperatura es absoluta y la unidad de tiempo es la de calibración. Un servicio variable con cambios de tensión, mecanismo, microestructura o ambiente no queda descrito por esta equivalencia; el resultado no es una vida aprobada."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "10**(21600/940-20)",
+              "expected": "952.1895354084085",
+              "unit": "h"
+            }
+          ]
+        },
+        "expected": "952.1895354084085",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0136",
+        "section": "c02",
+        "prompt": "S06.1 A igual tensión, se supone válida la correlación Larson--Miller con \\(C_{LM}=20\\), tiempo en horas. Un ensayo a 900 K rompe en 10000 h. Estime tiempo equivalente a 940 K y explique qué hipótesis impedirían extrapolarlo a servicio variable.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=952.189535408",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=952.189535408"
+            }
+          ],
+          "steps": [
+            {
+              "text": "Se calcula \\(P=900(20+\\log_{10}10000)=21600\\) K. Entonces\n\\[\\log_{10}t_2=21600/940-20,\\quad t_2=952.18954\\,\\mathrm h.\\]\nLa sustitución recupera P. La temperatura es absoluta y la unidad de tiempo es la de calibración. Un servicio variable con cambios de tensión, mecanismo, microestructura o ambiente no queda descrito por esta equivalencia; el resultado no es una vida aprobada."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "10**(21600/940-20)",
+              "expected": "952.1895354084085",
+              "unit": "h"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "10**(21600/940-20)",
+            "value": "952.19",
+            "expected": "952.1895354084085",
+            "reproduced": true
+          }
+        ],
+        "expected": "952.1895354084085",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 1,
+          "value": "952.19"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 1,
+        "value": "952.19"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "10**(21600/940-20)",
+          "value": "952.19",
+          "expected": "952.1895354084085",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  },
+  {
+    "key": "S06.2",
+    "record": {
+      "status": "recorded",
+      "problem": {
+        "id": "PRB-0137",
+        "section": "c02",
+        "prompt": "S06.2 Una placa ancha se idealiza con \\(Y=1\\),\\(\\sigma_{max}=180\\,\\mathrm{MPa}\\),\\(R=0{,}1\\) y \\(K_{IC}=28\\,\\mathrm{MPa\\sqrt m}\\) supuesto aplicable. Una grieta central inicia el análisis con \\( a_i=2\\,\\mathrm{mm}\\). Use \\( a_f=0{,}8a_c \\) y Paris \\( m=3\\),\\(C=3\\times10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3\\). Calcule el tamaño crítico, vida de propagación y un intervalo académico N/3. Todas las hipótesis de MFEL y Paris se adoptan para el ejercicio.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=0.00770231329531",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=0.00770231329531"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El tamaño crítico es \\( a_c=(28/180)^2/\\pi=7.70231\\) mm y \\( a_f=6.16185\\) mm. La amplitud no es el rango: \\(\\Delta\\sigma=(1-R)\\sigma_{max}=162\\) MPa. La integración da\n\\[N=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{3\\times10^{-12}(162\\sqrt\\pi)^3}=270942.9\\ \\text{ciclos}.\\]\nEl intervalo ficticio es \\(N/3=90314.3\\) ciclos. Se comprueba \\( a_f>a_i \\) y \\(K_{max}(a_f)=\\sqrt{0{,}8}K_{IC}<K_{IC}\\). No se han validado detección, dispersión o espectro real; un tercio no es una regla reglamentaria."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2*(.002**(-.5)-(0.0061618506362491835)**(-.5))/(3e-12*(162*sqrt(pi))**3)",
+              "expected": "270942.8946149545",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "(28/180)**2/pi",
+              "expected": "0.007702313295311478",
+              "unit": "m"
+            }
+          ]
+        },
+        "expected": "0.007702313295311478",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false
+    },
+    "check": {
+      "status": "two_witnesses",
+      "problem": {
+        "id": "PRB-0137",
+        "section": "c02",
+        "prompt": "S06.2 Una placa ancha se idealiza con \\(Y=1\\),\\(\\sigma_{max}=180\\,\\mathrm{MPa}\\),\\(R=0{,}1\\) y \\(K_{IC}=28\\,\\mathrm{MPa\\sqrt m}\\) supuesto aplicable. Una grieta central inicia el análisis con \\( a_i=2\\,\\mathrm{mm}\\). Use \\( a_f=0{,}8a_c \\) y Paris \\( m=3\\),\\(C=3\\times10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3\\). Calcule el tamaño crítico, vida de propagación y un intervalo académico N/3. Todas las hipótesis de MFEL y Paris se adoptan para el ejercicio.",
+        "kind": "numeric",
+        "status": "two_witnesses",
+        "classification": "PENDING",
+        "correct": false,
+        "role": "practice",
+        "difficulty": "EXAM_LEVEL",
+        "method": "Desarrollo razonado del simulacro original.",
+        "problem_type": "MULTI_STEP",
+        "solution": {
+          "assumptions": [
+            "Las hipótesis físicas y los datos ficticios aparecen en el enunciado."
+          ],
+          "limitations": [
+            "No es evaluación oficial ni autorización."
+          ],
+          "unknown": "Magnitudes del enunciado.",
+          "interpretation": "La solución conserva unidades y límites de alcance.",
+          "result": "Y=0.00770231329531",
+          "model": [
+            {
+              "name": "Modelo explícito del simulacro",
+              "latex": "Y=0.00770231329531"
+            }
+          ],
+          "steps": [
+            {
+              "text": "El tamaño crítico es \\( a_c=(28/180)^2/\\pi=7.70231\\) mm y \\( a_f=6.16185\\) mm. La amplitud no es el rango: \\(\\Delta\\sigma=(1-R)\\sigma_{max}=162\\) MPa. La integración da\n\\[N=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{3\\times10^{-12}(162\\sqrt\\pi)^3}=270942.9\\ \\text{ciclos}.\\]\nEl intervalo ficticio es \\(N/3=90314.3\\) ciclos. Se comprueba \\( a_f>a_i \\) y \\(K_{max}(a_f)=\\sqrt{0{,}8}K_{IC}<K_{IC}\\). No se han validado detección, dispersión o espectro real; un tercio no es una regla reglamentaria."
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "2*(.002**(-.5)-(0.0061618506362491835)**(-.5))/(3e-12*(162*sqrt(pi))**3)",
+              "expected": "270942.8946149545",
+              "unit": "dimensionless"
+            },
+            {
+              "text": "Control del cálculo ficticio del simulacro.",
+              "expression": "(28/180)**2/pi",
+              "expected": "0.007702313295311478",
+              "unit": "m"
+            }
+          ]
+        },
+        "step_checks": [
+          {
+            "index": 1,
+            "expression": "2*(.002**(-.5)-(0.0061618506362491835)**(-.5))/(3e-12*(162*sqrt(pi))**3)",
+            "value": "270943",
+            "expected": "270942.8946149545",
+            "reproduced": true
+          },
+          {
+            "index": 2,
+            "expression": "(28/180)**2/pi",
+            "value": "0.00770231",
+            "expected": "0.007702313295311478",
+            "reproduced": true
+          }
+        ],
+        "expected": "0.007702313295311478",
+        "excerpts": [
+          "EVD-0013",
+          "EVD-0017"
+        ],
+        "corroboration": "two_witnesses",
+        "answer_check": {
+          "result": "replayed",
+          "final_step": 2,
+          "value": "0.00770231"
+        }
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T12:29:01Z"
+      },
+      "project_state": "SOURCE_DISCOVERY",
+      "released": false,
+      "checked": false,
+      "answer_check": {
+        "result": "replayed",
+        "final_step": 2,
+        "value": "0.00770231"
+      },
+      "step_checks": [
+        {
+          "index": 1,
+          "expression": "2*(.002**(-.5)-(0.0061618506362491835)**(-.5))/(3e-12*(162*sqrt(pi))**3)",
+          "value": "270943",
+          "expected": "270942.8946149545",
+          "reproduced": true
+        },
+        {
+          "index": 2,
+          "expression": "(28/180)**2/pi",
+          "value": "0.00770231",
+          "expected": "0.007702313295311478",
+          "reproduced": true
+        }
+      ],
+      "steps_reproduced": true
+    }
+  }
+]

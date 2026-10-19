@@ -1,0 +1,45 @@
+\chapter{Ensayos e inspección de materiales}\label{ch:11}
+\objetivos{Elegir una técnica a partir del defecto y el material; distinguir indicación, defecto y criterio de aceptación; interpretar el alcance real de una inspección negativa.}
+\section{Medir propiedades e inspeccionar una pieza}
+Los ensayos mecánicos caracterizan respuestas bajo condiciones de carga. La inspección busca indicios de discontinuidades o degradación en un objeto concreto. Un ensayo de tracción no sustituye una inspección de grietas y una inspección sin indicaciones no mide por sí sola el límite elástico.
+
+La tracción aporta curva y magnitudes definidas; la dureza mide resistencia a penetración bajo método específico; el impacto caracteriza energía absorbida en una geometría y velocidad dadas. Fatiga y fluencia necesitan controlar carga, temperatura, tiempo, entorno y dispersión. Cambiar probeta o condición puede impedir comparar números directamente.
+\section{Indicación, evaluación y aceptación}
+Una indicación es una respuesta del método que requiere interpretación. Puede ser relevante, no relevante o falsa. Un defecto rechazable es una condición que incumple un criterio aplicable; no todo contraste observado tiene ese significado. La aceptación depende de documentación y ubicación, además del tamaño.
+
+Se documentan método, procedimiento, equipo, calibración, sensibilidad, superficie, accesibilidad, orientación, operador y fecha. La resolución nominal no es probabilidad de detección. Una probabilidad de detección se determina para un sistema de inspección y una población representativa de defectos; no se deduce de un único patrón que el equipo «ve».
+\section{Técnicas de superficie}
+La inspección visual depende de iluminación, línea de visión, aumento, preparación y experiencia. La boroscopia permite acceso a zonas internas, pero tiene restricciones de perspectiva, cobertura y medida. El aspecto de una grieta no siempre determina su profundidad.
+
+Los líquidos penetrantes resaltan discontinuidades abiertas a una superficie no porosa. Preparación, limpieza, tiempo y compatibilidad son importantes. No detectan una grieta cerrada completamente subsuperficial. Las partículas magnéticas requieren material ferromagnético y una magnetización adecuada para que discontinuidades superficiales o próximas generen indicaciones. La orientación del campo respecto al defecto importa; no se aplica de la misma forma a aluminio o a todos los inoxidables.
+\section{Técnicas volumétricas y electromagnéticas}
+Los ultrasonidos utilizan propagación y reflexión de ondas; permiten estudiar discontinuidades internas, espesores y ciertas uniones. El acoplamiento, la orientación, la atenuación, la estructura de grano, la geometría y las zonas muertas limitan capacidad. Un defecto desfavorablemente orientado puede ser difícil de detectar con una configuración concreta.
+
+La radiografía responde a cambios en atenuación a lo largo del haz. Puede ser útil para porosidad, inclusiones o geometrías internas, pero una grieta plana de abertura pequeña y orientación desfavorable puede presentar poco contraste. El acceso y la seguridad radiológica condicionan la técnica.
+
+Las corrientes inducidas requieren conductividad eléctrica. Se relacionan con cambios en impedancia por discontinuidades, conductividad, permeabilidad, separación de sonda y geometría. La profundidad de penetración varía con frecuencia y propiedades; no se trata de una técnica universal para grandes profundidades.
+\begin{equation}\delta=\frac1{\sqrt{\pi f\mu\sigma_e}}\quad\text{(conductor ideal homogéneo).}\label{eq:skin}\end{equation}
+Aquí $\sigma_e$ es conductividad eléctrica, no tensión mecánica. La expresión de profundidad pelicular describe atenuación ideal y no equivale al tamaño mínimo detectable por una sonda real.
+\section{Termografía y emisión acústica}
+La termografía observa respuesta térmica superficial, en ocasiones tras una excitación controlada. Profundidad, emisividad, tiempo y contraste condicionan detección de despegues o delaminaciones. Una imagen de temperatura no identifica automáticamente la causa del contraste.
+
+La emisión acústica detecta señales transitorias asociadas a actividad de fuentes bajo condiciones de carga. Puede ayudar a localizar actividad, pero requiere discriminar ruido, propagación y mecanismos. Una discontinuidad inactiva puede no emitir; el silencio del sistema no significa ausencia de todos los defectos.
+\begin{table}[htbp]\centering\small\caption{Selección inicial de END: capacidades y limitaciones esenciales.}\label{tab:end}
+\begin{tabular}{p{.18\linewidth}p{.32\linewidth}p{.38\linewidth}}\toprule
+Técnica & Evidencia habitual & Restricción que no debe omitirse\\\midrule
+Visual/boroscopia & Alteración visible y accesible & Cobertura, iluminación y medida de profundidad\\[3pt]
+Penetrantes & Apertura a superficie & Superficie no porosa y preparación\\[3pt]
+Magnéticas & Discontinuidades en ferromagnéticos & Material y orientación de magnetización\\[3pt]
+Ultrasonidos & Reflexiones y tiempos de vuelo & Acoplamiento, orientación y atenuación\\[3pt]
+Radiografía & Diferencias de atenuación & Superposición y orientación de grietas\\[3pt]
+Inducidas & Alteración electromagnética & Conductividad, profundidad y separación\\[3pt]
+Termografía & Contraste térmico & Emisividad, profundidad y excitación\\\bottomrule
+\end{tabular}\end{table}
+\caso{M11. Dos defectos, dos preguntas}{Se busca una grieta abierta en una pieza de aluminio y una delaminación interna en un laminado. Las partículas magnéticas no son una respuesta universal para la primera; se estudian penetrantes o corrientes inducidas según acceso y datos. Para la segunda pueden valorarse ultrasonidos o termografía con un procedimiento adecuado. La selección final exige material, geometría, tamaño y orientación objetivo, más criterios de aceptación. El caso no establece un procedimiento aprobado.}
+\section{Cómo cerrar una inspección}
+La cadena de registro debe permitir reconstruir qué zona se examinó y con qué sensibilidad. Un informe «sin defectos» sin cobertura ni procedimiento ofrece poca información. La evaluación de repetibilidad necesita comparar configuraciones y condiciones, no solo resultados escritos.
+
+Para estimar intervalos se combina la probabilidad de detección con un modelo de crecimiento y márgenes. La resolución y el tamaño crítico no son por sí solos una política de inspección. La discusión de fractura y fatiga de los capítulos~\ref{ch:03} y~\ref{ch:04} proporciona el contexto físico de esa decisión.
+\input{content/e11.tex}
+\resumen{La técnica se elige desde el defecto, material y acceso. Una indicación no es automáticamente un defecto rechazable. La ausencia de indicaciones solo tiene significado dentro de la cobertura y capacidad del sistema. La calibración no demuestra por sí sola validez para cualquier geometría.}
+\fuentes{FAA--General, cap. 10, \textit{Inspection Concepts and Techniques}, y cap. 7 \cite{FAA-G}; materiales docentes de control y detección de fallos.}
