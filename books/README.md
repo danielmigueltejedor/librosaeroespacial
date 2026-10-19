@@ -17,3 +17,7 @@ No se crean carpetas `v2`, `final-final` ni copias de trabajo privadas. Las fuen
 ## Importación en curso: Mecánica de Vuelo
 
 La nueva asignatura se está preparando en la rama `import/mecanica-vuelo`; sus tres volúmenes y recursos editoriales se incorporarán antes de completar la importación. No se fusionará esta rama sin las fuentes y las figuras.
+
+## Importación en curso: Materiales y Mantenimiento de Motores Aeroespaciales
+
+La rama `import/materiales-mantenimiento-motores` prepara una sexta asignatura con manual, cuaderno de problemas y simulacros. La importación completa está pendiente de añadir los fuentes y recursos desde el ZIP saneado; no fusionar hasta superar la compilación y revisar los derechos. El libro conserva la calificación editorial **EN REVISIÓN**, sin aprobación académica independiente.
