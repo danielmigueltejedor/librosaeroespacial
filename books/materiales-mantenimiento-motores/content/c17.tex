@@ -1,0 +1,31 @@
+\chapter{Programas de mantenimiento y control de vida}\label{ch:17}
+\objetivos{Construir la relación entre fuentes, tareas e intervalos; calcular vencimientos sin mezclar horas, ciclos y calendario; distinguir aprobación de un ejemplo académico.}
+\section{Qué contiene un programa}
+Un programa de mantenimiento organiza las tareas de una aeronave y su configuración, con intervalos, condiciones y datos aplicables. No es solo una lista de revisiones denominadas A, B o C. Incluye acciones de sistemas, estructura y motores, componentes, inspecciones y requisitos específicos de operación según su base.
+
+M.A.302 establece un AMP, su aprobación y modificaciones, con posibilidades de aprobación indirecta bajo condiciones. ML.A.302 contiene un régimen diferente, en el que determinadas situaciones permiten declaración del propietario y otras requieren aprobación. Por eso se determina primero la población de aplicación y no se atribuye a todos los programas la misma ruta.
+\section{Fuentes y jerarquía práctica}
+Se consideran requisitos de autoridad, AD, instrucciones de aeronavegabilidad continuada, limitaciones y datos del titular aplicable, además de experiencia y operación dentro del proceso permitido. MPD y MRBR pueden aportar una base para el programa del operador; no son automáticamente el AMP individual aprobado o declarado.
+
+Cada tarea debe mantener una referencia, revisión y aplicabilidad. Si una modificación cambia el acceso o la configuración, no basta conservar la misma fila sin análisis. Si una AD impone una acción, su plazo y definición no se alteran por comodidad de agrupación del programa.
+\section{Intervalos con varias magnitudes}
+Una tarea puede vencer por horas de vuelo, ciclos, calendario o una combinación. «Lo que ocurra primero» significa que no basta con tener margen en una de las magnitudes. Se definen también umbral inicial, repetición y evento de referencia. Un plazo desde la instalación no es el mismo que uno desde fabricación o desde una fecha de efectividad.
+\begin{equation}H_{\rm prox}=H_{\rm ultimo}+\Delta H,\qquad C_{\rm prox}=C_{\rm ultimo}+\Delta C.\label{eq:vencimiento}\end{equation}
+Para calendario se usa aritmética de fechas con la definición de la fuente. No se iguala un mes a 30 días si la instrucción establece meses de calendario. Las tolerancias y extensiones solo existen cuando tienen una base aplicable; no se inventa una columna de «margen permitido».
+\caso{M17. El límite que domina}{Una tarea ficticia vence a 500 horas desde la última ejecución o 12 meses, lo primero. Se realizó con 2400 horas el 20 de enero de 2026; el 18 de octubre la aeronave acumula 2810 horas. El margen por uso es $2900-2810=90$ horas, y el vencimiento de calendario es 20 de enero de 2027. Con una previsión de 30 horas por semana, las 90 horas representan tres semanas de operación prevista. No se fija una fecha real sin calendario de vuelos; se conservan ambas restricciones.}
+\section{Componentes y límites de vida}
+La ficha de un componente controla identificación por número de parte y serie, acumulados, estado y documentos de instalación y retirada. Los LLP requieren respetar la magnitud y definición de ciclo correspondiente. Un motor modular puede reunir piezas con historiales diferentes.
+
+No se confunde tiempo desde revisión con tiempo total. Una revisión no restablece por sí sola el límite de vida de una pieza. Los cambios de uso, reparación y almacenamiento pueden requerir condiciones adicionales de la documentación; no se generaliza una regla de contador a todos los componentes.
+\section{Fiabilidad y revisión del programa}
+M.A.302(g) trata el programa de fiabilidad para ciertos programas de aeronaves motopropulsadas complejas basados en lógica MSG o seguimiento de condición. La fiabilidad busca identificar tendencias y comprobar efectividad de tareas. No permite aplazar automáticamente un requisito obligatorio porque el promedio de la flota parezca bueno.
+
+Los datos incluyen fallos, retiradas, demoras técnicas, hallazgos y utilización, con definiciones consistentes. El denominador importa: 10 incidencias sin exposición no permiten comparar dos flotas. Los cambios de intervalo se justifican y siguen la ruta de aprobación aplicable. M.A.302(h) exige revisión periódica y modificación cuando proceda; el programa no es un documento inmóvil.
+\ilustra{programa}{Flujo entre fuentes, aplicabilidad, tareas, ejecución, registros y revisión del programa. La figura no convierte el modelo académico en AMP aprobado.}
+\section{Trazabilidad de la ejecución}
+La orden de trabajo debe identificar la tarea, los datos utilizados y los resultados. El sistema conserva fecha y acumulados de ejecución, discrepancias, acciones y certificación. El estado «cerrado» de una aplicación informática no sustituye esa evidencia.
+
+Para practicar se construye un modelo con datos ficticios, separado de un documento aprobado. El capítulo~\ref{ch:25} desarrolla columnas, validaciones y ejemplos completos, incluyendo qué hacer cuando falta un registro o se aproxima un vencimiento concurrente.
+\input{content/e17.tex}
+\resumen{El AMP se apoya en fuentes y configuración. Umbral, repetición y evento de referencia son datos distintos. Horas, ciclos y calendario se controlan simultáneamente. La revisión y las extensiones no reinician automáticamente la vida ni eliminan requisitos obligatorios.}
+\fuentes{Reglamento 1321/2014, M.A.302, M.A.305, ML.A.302 y disposiciones aplicables de Parte CAMO/CAO \cite{EU1321}; documentación docente de programas y ARC.}

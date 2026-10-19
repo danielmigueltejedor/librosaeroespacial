@@ -1,0 +1,33 @@
+\chapter{Fundamentos del mantenimiento aeronáutico}\label{ch:12}
+\objetivos{Relacionar seguridad, fiabilidad, mantenibilidad y disponibilidad; distinguir estrategias y justificar por qué una tarea debe responder a un modo de fallo.}
+\section{Qué se conserva con el mantenimiento}
+El mantenimiento busca conservar o restaurar condiciones requeridas de funcionamiento y aeronavegabilidad mediante tareas, controles y registros. No elimina toda incertidumbre ni convierte una aeronave en un sistema incapaz de fallar. Se organiza para prevenir condiciones inaceptables, detectar degradación, controlar componentes y demostrar qué se ha realizado.
+
+En un motor, la intervención afecta tanto a la integridad como al rendimiento, la fiabilidad de sistemas y la configuración. Una tarea técnicamente bien ejecutada puede quedar mal cerrada si no se identifica la pieza, la documentación o el registro. A la inversa, una firma no convierte una ejecución incompleta en una intervención correcta.
+\section{Fiabilidad, mantenibilidad y disponibilidad}
+La fiabilidad $R(t)$ es la probabilidad de desempeñar una función durante un intervalo y bajo condiciones especificadas. La mantenibilidad se relaciona con la capacidad de restaurar función dentro de un tiempo y condiciones de soporte. La disponibilidad combina fallos y restauración, pero depende de qué tiempos se incluyen: reparación activa, espera de repuestos, administración, transporte o mantenimiento programado.
+
+Con fallos y reparación de un modelo estacionario sencillo, una aproximación a disponibilidad inherente es
+\begin{equation}A_i=\frac{MTBF}{MTBF+MTTR}.\label{eq:disponibilidad}\end{equation}
+No se emplea como disponibilidad operacional si el denominador excluye esperas importantes. MTBF tampoco es una vida obligatoria de sustitución ni una garantía individual de duración. Un componente puede tener límite de vida independiente de su promedio de fallos.
+\caso{M12. Dos tiempos de restauración}{Un sistema ficticio tiene $MTBF=800\,\mathrm h$ y reparación activa media de $4\,\mathrm h$. El modelo da $A_i=800/804=0{,}9950$. Si cada fallo añade además 20 horas medias de espera logística, usar $800/(800+24)=0{,}9709$ ilustra el efecto de ampliar el tiempo de indisponibilidad considerado. La segunda cifra no es una estimación operacional completa sin especificar programación, utilización y otros tiempos.}
+\section{Estrategias: cuándo intervenir}
+El mantenimiento correctivo actúa después de detectar un fallo; puede ser apropiado para funciones cuyo fallo y consecuencias están aceptablemente controlados, pero no se adopta solo porque resulte cómodo esperar. El preventivo introduce tareas antes del fallo, por tiempo, uso o condición. El programado fija tareas e intervalos en un programa, sin implicar que todas las tareas sean sustituciones por edad.
+
+El basado en condición toma decisiones con evidencia de estado. El predictivo intenta anticipar evolución o tiempo hasta un umbral mediante modelos y datos. Una alarma de tendencia no es por sí sola una predicción validada de vida restante. Tampoco basta instalar un sensor para sustituir una tarea obligatoria o un límite de vida.
+\section{Modo de fallo, tarea y eficacia}
+Una tarea útil necesita un mecanismo que pueda prevenir, detectar o gestionar. Una sustitución por edad tiene sentido técnico cuando el comportamiento y consecuencias justifican ese enfoque; una inspección necesita una condición detectable antes de alcanzar un estado inaceptable. La detección de un fallo oculto puede requerir una prueba funcional aunque no exista degradación visible.
+
+La selección considera consecuencias, detectabilidad, intervalo disponible, falsos negativos y riesgos introducidos por la intervención. Abrir un sistema con mucha frecuencia puede introducir errores de montaje o contaminación. La solución no es reducir tareas indiscriminadamente, sino justificar su aplicabilidad y efectividad dentro del marco aprobado.
+\ilustra{estrategias}{Relación entre modo de fallo, evidencia disponible y elección de estrategia. Esquema académico, no árbol de aprobación de un programa real.}
+\section{Vida útil y límites}
+Vida de diseño, límite de vida aprobado, tiempo entre revisiones y vida económica son conceptos diferentes. Un TBO no se interpreta sin conocer su origen y obligatoriedad en el contexto aplicable. Un componente de vida limitada puede requerir retirada por horas, ciclos u otra magnitud, aun con inspección satisfactoria.
+
+Los cambios de configuración y las sustituciones deben conservar trazabilidad. Un motor no es un único contador intercambiable con el de todos sus módulos. Una pieza trasladada conserva su historial acumulado según la definición aplicable; ponerla en otra aeronave no reinicia su vida.
+\section{Seguridad y factores humanos}
+La calidad del mantenimiento depende de herramientas, datos, acceso, formación y organización del trabajo. La fatiga humana, las interrupciones, el relevo y las comunicaciones influyen en errores. Un sistema de gestión necesita detectar peligros, evaluar riesgos y comprobar la eficacia de las medidas, además de verificar cumplimiento.
+
+El estudiante debe aprender a separar el cálculo académico, la recomendación técnica y la decisión autorizada. Los próximos capítulos explican quién establece requisitos, quién gestiona y quién certifica; mantener esas funciones distinguibles ayuda a interpretar los documentos sin reducirlos a una lista de siglas.
+\input{content/e12.tex}
+\resumen{Fiabilidad y disponibilidad no son sinónimos. MTBF no es un límite de vida. El mantenimiento por condición exige evidencia útil y no anula requisitos obligatorios. Cada tarea se relaciona con un modo de fallo y con consecuencias, detectabilidad y riesgos de ejecución.}
+\fuentes{Documentación docente de introducción, pp. 1--24; Reglamento 1321/2014, M.A.301, M.A.302 y 145.A.200 \cite{EU1321}; FAA--General, capítulos 2 y 14 \cite{FAA-G}.}

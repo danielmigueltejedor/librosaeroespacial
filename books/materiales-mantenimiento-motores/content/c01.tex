@@ -1,0 +1,35 @@
+\chapter{Materiales, microestructura y servicio}
+\label{ch:01}
+\objetivos{Explicar la cadena proceso--estructura--propiedad--prestación; reconocer las familias de materiales y formular una selección ligada a un componente y a su misión.}
+\section{La pregunta de ingeniería}
+Elegir un material para un aeromotor significa decidir qué combinación de masa, rigidez, resistencia, tolerancia al daño, estabilidad térmica y capacidad de fabricación permite cumplir una función durante un tiempo determinado. La comparación no se resuelve con una clasificación universal de materiales «mejores». Un álabe de fan, un disco de turbina y una junta de estanqueidad comparten motor, pero tienen geometrías, solicitaciones y modos de fallo distintos.
+
+La \textbf{propiedad} es una respuesta medida bajo condiciones definidas. La \textbf{prestación} corresponde al componente: una misma aleación puede dar prestaciones diferentes según su forma, tratamiento, acabado, unión y temperatura. La \textbf{microestructura} incluye fases, tamaños y orientación de granos, precipitados, dislocaciones y defectos. El \textbf{proceso} de fabricación determina gran parte de esa estructura. El mantenimiento observa cómo evoluciona el conjunto durante el servicio.
+
+El razonamiento debe recorrer ambas direcciones. Desde el proceso se predicen tendencias de estructura y propiedades; desde una anomalía en servicio se investiga qué mecanismo y qué historia podrían explicarla. Encontrar una grieta no demuestra por sí solo que el material sea inadecuado: puede haber sobrecarga, vibración, corrosión, daño de fabricación o interacción de varias causas.
+\section{Familias de materiales y enlaces}
+Los metales y aleaciones presentan enlace metálico y permiten, en muchos casos, deformación plástica mediante movimiento de dislocaciones. Las cerámicas suelen combinar enlaces iónicos y covalentes, elevada estabilidad térmica y limitada plasticidad a temperatura ambiente. Los polímeros contienen cadenas y su respuesta depende de la movilidad molecular, la temperatura y el tiempo de carga. En los compuestos se combinan fases con funciones complementarias y una interfaz que transmite esfuerzos.
+
+Estas son tendencias, no reglas suficientes para seleccionar. Hay metales de baja densidad, cerámicas compuestas tolerantes a ciertos daños y polímeros reforzados muy rígidos en una dirección. La porosidad, la humedad o una orientación desfavorable pueden modificar por completo una comparación basada solo en la composición química.
+\caja{Una condición siempre acompaña al dato}{No basta con escribir «resistencia: 900 MPa». Deben identificarse el ensayo, la dirección, el estado metalúrgico, la temperatura, la velocidad de deformación y la base estadística. Un valor típico de una ficha no es automáticamente un valor admisible de diseño.}
+\section{Cristales, defectos y endurecimiento}
+En un cristal, los átomos ocupan posiciones ordenadas. Las vacantes son defectos puntuales; las dislocaciones, defectos lineales; los límites de grano y las interfaces, defectos superficiales. La palabra defecto describe una desviación estructural, no necesariamente un defecto rechazable en una inspección. La plasticidad de muchos metales sería muy difícil de explicar sin dislocaciones.
+
+El endurecimiento por solución sólida dificulta su movimiento mediante átomos de soluto. La deformación en frío aumenta la densidad de dislocaciones. La precipitación introduce obstáculos cuyo tamaño, distribución y coherencia importan. Los límites de grano también obstaculizan el deslizamiento, de modo que reducir el tamaño de grano puede aumentar el límite elástico dentro del dominio habitual de la relación de Hall--Petch:
+\begin{equation}\sigma_y=\sigma_0+k_y d^{-1/2}.\label{eq:hallpetch}\end{equation}
+Aquí $d$ es un tamaño medio de grano y $k_y$ tiene unidades de tensión por raíz de longitud. No se extrapola esta relación a cualquier escala ni a cualquier temperatura. A alta temperatura, los límites pueden favorecer difusión y deslizamiento, por lo que una microestructura favorable frente a fluencia puede diferir de otra favorable frente a cedencia a temperatura ambiente.
+\section{Propiedades específicas y restricciones}
+Para comparar masa se emplean cocientes como $E/\rho$ y $\sigma/\rho$, llamados módulo y resistencia específicos. Su utilidad depende del problema. Una barra limitada por tracción y una viga limitada por flecha no conducen al mismo índice de material, porque la geometría entra con potencias diferentes.
+
+Para una barra de longitud $L$, carga $F$ y tensión admisible $\sigma_{\rm adm}$, $A\geq F/\sigma_{\rm adm}$. Su masa mínima idealizada es
+\begin{equation}m=\rho A L\geq FL\frac{\rho}{\sigma_{\rm adm}}.\label{eq:seleccionbarra}\end{equation}
+El resultado justifica maximizar $\sigma_{\rm adm}/\rho$ solo cuando las hipótesis de barra, carga, longitud y criterio resistente se mantienen. Si existe una restricción de rigidez, de temperatura o de tamaño mínimo fabricable, la conclusión puede cambiar.
+\caso{M01. Una comparación que depende del criterio}{Dos materiales ficticios tienen $(\rho_A,\sigma_{\rm adm,A})=(2800\,\mathrm{kg/m^3},280\,\mathrm{MPa})$ y $(\rho_B,\sigma_{\rm adm,B})=(4500\,\mathrm{kg/m^3},600\,\mathrm{MPa})$. Para la barra idealizada, los cocientes $\rho/\sigma_{\rm adm}$ son $1{,}0\times10^{-5}$ y $7{,}5\times10^{-6}\,\mathrm{s^2/m^2}$. La solución B pesa un 25\,\% menos bajo ese único criterio, aunque su densidad es mayor. No se ha comprobado rigidez, corrosión, coste ni temperatura. El ejemplo demuestra por qué la densidad aislada no decide la masa de la pieza.}
+\section{Cómo conectar el capítulo con el mantenimiento}
+La selección necesita prever qué daño es plausible y cómo se detectará. Una pieza resistente pero difícil de inspeccionar puede exigir otra estrategia de vida. Un recubrimiento protege el sustrato, pero introduce interfaces y mecanismos de desprendimiento. Una reparación puede alterar tensiones residuales y condiciones superficiales; por eso no se evalúa exclusivamente con la composición nominal de la pieza.
+
+La secuencia de trabajo consiste en definir función y condiciones, enumerar modos de fallo, elegir modelos y datos, comparar alternativas, considerar fabricación e inspección y documentar incertidumbres. Se revisa cuando cambia la misión o aparece evidencia nueva. El análisis de servicio se desarrolla en los capítulos~\ref{ch:03}--\ref{ch:06}; la traducción a tareas y registros, en los capítulos~\ref{ch:17} y~\ref{ch:25}.
+\ilustra{cadena-material}{Cadena de decisión desde fabricación hasta seguimiento en servicio. Esquema conceptual original.}
+\input{content/e01.tex}
+\resumen{\textbf{Autocomprobación.} ¿Una aleación más densa produce siempre una pieza más pesada? No: importa el criterio que determina la sección. ¿Un grano fino mejora siempre la vida a alta temperatura? No: hay que identificar el mecanismo dominante. ¿Una propiedad típica es un admisible? No: faltan condiciones, dispersión y criterios de diseño.}
+\fuentes{Material docente de introducción, pp. 1--34; FAA--General, cap. 7 \cite{FAA-G}; módulos de respuesta elástica de Roylance \cite{MIT-ELAS}.}

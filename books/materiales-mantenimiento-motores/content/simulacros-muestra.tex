@@ -1,0 +1,51 @@
+
+\chapter{Muestra de evaluación combinada}
+\section{Enunciados}
+\subsection*{Pregunta 1. Conceptos de materiales · 2 puntos}
+Dos barras tienen el mismo módulo elástico. ¿Permite este dato concluir que tienen la misma resistencia a rotura? Explique qué caracteriza el módulo dentro del modelo elástico lineal uniaxial y qué información adicional sería necesaria.
+
+\subsection*{Pregunta 2. Cálculo uniaxial · 4 puntos}
+Una barra idealizada tiene $L_0=0{,}300\,\mathrm{m}$, $A=60\,\mathrm{mm^2}$ y $E=100\,\mathrm{GPa}$. Se aplica una fuerza centrada de $F=6\,\mathrm{kN}$. Suponga comportamiento elástico lineal, pequeñas deformaciones y sección uniforme.
+\begin{enumerate}
+\item Calcule tensión nominal, deformación media y elongación.
+\item Compruebe las dimensiones y haga una sustitución inversa.
+\item Indique una limitación que impida usar el resultado como evaluación completa de una pieza real.
+\end{enumerate}
+
+\subsection*{Pregunta 3. Seguimiento documental · 2 puntos}
+En una hoja académica ficticia, un componente tiene un límite de $900$ ciclos y registra $864$ ciclos al inicio del análisis. La previsión es de $3$ ciclos por jornada de operación. Calcule el margen en ciclos y en jornadas previstas. Explique por qué no puede convertirlo directamente en una fecha de calendario sin más datos.
+
+\subsection*{Pregunta 4. Interpretación de evidencia · 2 puntos}
+Una hoja de cálculo reproduce exactamente el resultado de un ejercicio. ¿Queda por ello demostrado que el modelo físico es válido y que el documento sirve para liberar un componente al servicio? Distinga los niveles de comprobación.
+
+\consejo{Antes de consultar la solución}{Revise el cambio de $\mathrm{mm^2}$ a $\mathrm{m^2}$, la diferencia entre rigidez y resistencia, y la fecha o el momento de referencia de los registros.}
+
+\chapter{Soluciones razonadas}
+\section{Pregunta 1}
+No puede concluirse que las resistencias a rotura coincidan. En el modelo uniaxial lineal, $E=\sigma/\varepsilon$ es la pendiente de la relación tensión-deformación. La rotura corresponde a otro aspecto de la respuesta y requiere información adicional: material, estado metalúrgico, temperatura, geometría y condiciones del ensayo, entre otros datos. Se asigna un punto por distinguir módulo y resistencia, y otro por justificar el significado del módulo y la información que falta.
+
+\section{Pregunta 2}
+\begin{studiumworked}{Desarrollo de la solución}
+Con $A=60\times10^{-6}\,\mathrm{m^2}$ y $E=100\times10^9\,\mathrm{Pa}$,
+\begin{align*}
+\sigma&=\frac{F}{A}=\frac{6000}{60\times10^{-6}}=100\times10^6\,\mathrm{Pa},\\
+\varepsilon&=\frac{\sigma}{E}=\frac{100\times10^6}{100\times10^9}=10^{-3},\\
+\Delta L&=\varepsilon L_0=(10^{-3})(0{,}300)=3\times10^{-4}\,\mathrm{m}.
+\end{align*}
+Los resultados son $\sigma=100\,\mathrm{MPa}$, $\varepsilon=0{,}001$ y $\Delta L=0{,}300\,\mathrm{mm}$. La deformación relativa es $0{,}1\,\%$ dentro del modelo supuesto.
+\end{studiumworked}
+
+La comprobación inversa da $\sigma A=6000\,\mathrm{N}$ y $\Delta L/L_0=0{,}001$. Además, $[F/A]=\mathrm{Pa}$ y $[FL_0/(AE)]=\mathrm{m}$. El enunciado supone régimen elástico, pero no aporta un límite elástico para verificarlo. Tampoco contiene datos de fatiga, temperatura o defectos.
+
+Se asignan dos puntos a las tres magnitudes con unidades, un punto a las comprobaciones y otro al alcance y las limitaciones del modelo.
+
+\section{Pregunta 3}
+\begin{equation}
+N_{\mathrm{restante}}=900-864=36\ \text{ciclos},\qquad
+J=\frac{36}{3}=12\ \text{jornadas}.
+\end{equation}
+La operación inversa da $864+12(3)=900$ ciclos. Para obtener una fecha harían falta el calendario de utilización, el momento exacto del registro y la distribución prevista de ciclos. Otros límites concurrentes podrían resultar más restrictivos. Se asigna un punto al cálculo y otro a la interpretación temporal.
+
+\section{Pregunta 4}
+La coincidencia numérica comprueba la reproducción del cálculo con las entradas empleadas. No demuestra que las entradas sean correctas, que el modelo describa la pieza ni que se cumplan los requisitos documentales de una decisión real. La coherencia algebraica, dimensional, física y documental son comprobaciones distintas. Se asigna un punto a esta distinción y otro a explicar por qué el ejercicio no constituye una liberación al servicio.
+

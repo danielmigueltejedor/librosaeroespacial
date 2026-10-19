@@ -1,0 +1,1629 @@
+{
+  "status": "ok",
+  "total": 184,
+  "offset": 0,
+  "equations": [
+    {
+      "paragraph": "PAR-0005",
+      "section": "c01",
+      "statement": "\\sigma_y = \\sigma_0+k_y d^{-1/2}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: d, k_y, sigma_0, sigma_y"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0006",
+      "section": "c01",
+      "statement": "A \\geq F/\\sigma_{\\rm adm}",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0006",
+      "section": "c01",
+      "statement": "m = \\rho A L",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: A, L, m, rho"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0006",
+      "section": "c01",
+      "statement": "\\rho A L \\geq FL\\frac{\\rho}{\\sigma_{\\rm adm}}",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0006",
+      "section": "c01",
+      "statement": "(\\rho_A,\\sigma_{\\rm adm,A}) = (2800\\,\\mathrm{kg/m^3},280\\,\\mathrm{MPa})",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0006",
+      "section": "c01",
+      "statement": "(\\rho_B,\\sigma_{\\rm adm,B}) = (4500\\,\\mathrm{kg/m^3},600\\,\\mathrm{MPa})",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0009",
+      "section": "c01",
+      "statement": "\\Delta L = FL/(EA)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: Delta_L, EA, FL"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0013",
+      "section": "c02",
+      "statement": "s = F/A_0",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: A_0, F, s"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0013",
+      "section": "c02",
+      "statement": "e = (L-L_0)/L_0",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: L, L_0, e"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "AL = A_0L_0",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: AL, A_0, L_0"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "\\sigma = F/A",
+      "kind": "claim",
+      "status": "derived_steps_unchecked",
+      "evidence": [
+        "DER-0006"
+      ],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: A, F, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "F/A = s(1+e)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: A, F, e, s"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "\\varepsilon = \\ln(1+e)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: e, varepsilon"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "\\sigma = s(1+e)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [
+        "\\sigma = F/A"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: e, s, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "\\sigma = E\\varepsilon_e",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "\\sigma = F/A"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: E, sigma, varepsilon_e"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0014",
+      "section": "c02",
+      "statement": "\\varepsilon = \\varepsilon_e+\\varepsilon_p",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "\\varepsilon = \\ln(1+e)"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: varepsilon, varepsilon_e, varepsilon_p"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0015",
+      "section": "c02",
+      "statement": "u_e = \\int_0^{\\varepsilon_e}E\\eta\\,d\\eta",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0015",
+      "section": "c02",
+      "statement": "\\int_0^{\\varepsilon_e}E\\eta\\,d\\eta = \\frac12 E\\varepsilon_e^2",
+      "kind": "claim",
+      "status": "symbolically_verified",
+      "evidence": [
+        "sympy"
+      ],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0015",
+      "section": "c02",
+      "statement": "\\frac12 E\\varepsilon_e^2 = \\frac{\\sigma^2}{2E}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: E, sigma, varepsilon_e"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0015",
+      "section": "c02",
+      "statement": "\\mathbf t = \\boldsymbol\\sigma\\mathbf n",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: boldsymbol, mathbf, n, sigma, t"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0015",
+      "section": "c02",
+      "statement": "\\sigma_n = \\mathbf n^T\\boldsymbol\\sigma\\mathbf n",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\sigma_{1,2} = \\frac{\\sigma_x+\\sigma_y}{2}\\pm\\sqrt{\\left(\\frac{\\sigma_x-\\sigma_y}{2}\\right)^2+\\tau_{xy}^2}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\sigma_z = \\tau_{xz}",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: sigma_z, tau_xz"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\tau_{xz} = \\tau_{yz}",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: tau_xz, tau_yz"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\tau_{yz} = 0",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\varepsilon_z = \\gamma_{xz}",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: gamma_xz, varepsilon_z"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\gamma_{xz} = \\gamma_{yz}",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: gamma_xz, gamma_yz"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\gamma_{yz} = 0",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\sigma_z \\ne 0",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\sigma_{\\rm VM} = \\sqrt{\\sigma_x^2-\\sigma_x\\sigma_y+\\sigma_y^2+3\\tau_{xy}^2}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: VM, sigma_rm, sigma_x, sigma_y, tau_xy"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0016",
+      "section": "c02",
+      "statement": "\\sigma_{\\rm VM} \\leq \\sigma_y",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "K_t = \\sigma_{\\max}/\\sigma_{\\rm nominal}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_t, nominal, sigma_max, sigma_rm"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\sigma_x = 120",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\sigma_y = 40",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\tau_{xy} = 30\\,\\mathrm{MPa}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: MPa, tau_xy"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\sqrt{13900} = 117{,}90\\,\\mathrm{MPa}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\sigma_y = 240\\,\\mathrm{MPa}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: MPa, sigma_y"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "\\sigma_y/\\sigma_{\\rm VM} = 2{,}036",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "\\sigma_y = 240\\,\\mathrm{MPa}"
+      ],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0017",
+      "section": "c02",
+      "statement": "130+30 = 120+40",
+      "kind": "claim",
+      "status": "numerically_reproduced",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0019",
+      "section": "c02",
+      "statement": "\\mathbf t = \\boldsymbol\\sigma\\mathbf n",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: boldsymbol, mathbf, n, sigma, t"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0019",
+      "section": "c02",
+      "statement": "\\sigma_n = \\mathbf n\\cdot\\mathbf t",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: mathbf, n, sigma_n, t"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0020",
+      "section": "c02",
+      "statement": "\\sigma_{x'} = \\frac{\\sigma_x+\\sigma_y}{2}+\\frac{\\sigma_x-\\sigma_y}{2}\\cos2\\theta+\\tau_{xy}\\sin2\\theta",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0020",
+      "section": "c02",
+      "statement": "\\tau_{x'y'} = -\\frac{\\sigma_x-\\sigma_y}{2}\\sin2\\theta+\\tau_{xy}\\cos2\\theta",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0020",
+      "section": "c02",
+      "statement": "\\varepsilon_x = \\frac{\\sigma_x-\\nu(\\sigma_y+\\sigma_z)}{E}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: E, nu, sigma_x, sigma_y, sigma_z, varepsilon_x"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0020",
+      "section": "c02",
+      "statement": "G = \\frac{E}{2(1+\\nu)}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: E, G, nu"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0020",
+      "section": "c02",
+      "statement": "\\gamma_{xy} = \\tau_{xy}/G",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "G = \\frac{E}{2(1+\\nu)}"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: G, gamma_xy, tau_xy"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0025",
+      "section": "c03",
+      "statement": "G = -\\partial\\Pi/\\partial A_c",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0026",
+      "section": "c03",
+      "statement": "G = \\frac{K_I^2}{E'}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0026",
+      "section": "c03",
+      "statement": "E' = \\begin{cases}E&\\text{tensión plana},\\\\ E/(1-\\nu^2)&\\text{deformación plana}.\\end{cases}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0026",
+      "section": "c03",
+      "statement": "K_I = Y\\sigma\\sqrt{\\pi a}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_I, Y, a, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0026",
+      "section": "c03",
+      "statement": "Y = 1",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "K_I < K_{IC}",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "K_I = K_{IC}",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_I, K_IC"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_IC, Y, a_c, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "\\sigma_c = \\frac{K_{IC}}{Y\\sqrt{\\pi a}}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_IC, Ysqrt, a, sigma_c"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "Y = Y(a/W)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: W, Y, a"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "Y(a/W)\\sigma\\sqrt{\\pi a} = K_{IC}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_IC, W, Y, a, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "\\sigma = 180\\,\\mathrm{MPa}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: MPa, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "Y = 1",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "a = 0{,}0020\\,\\mathrm m",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "K_I = 180\\sqrt{\\pi(0{,}0020)}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "180\\sqrt{\\pi(0{,}0020)} = 14{,}27\\",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "a_c = (32/180)^2/\\pi",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "(32/180)^2/\\pi = 0{,}01006\\,\\mathrm m",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "2a_c = 20{,}12\\,\\mathrm{mm}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2"
+      ],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "180\\sqrt{\\pi a_c} = 32",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2"
+      ],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "r_p \\simeq (K_I/\\sigma_y)^2/(2\\pi)",
+      "kind": "approximation",
+      "status": "approximation",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0027",
+      "section": "c03",
+      "statement": "r_p \\simeq (K_I/\\sigma_y)^2/(6\\pi)",
+      "kind": "approximation",
+      "status": "approximation",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0029",
+      "section": "c03",
+      "statement": "K = 32\\",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0029",
+      "section": "c03",
+      "statement": "\\sigma_y = 400\\,\\mathrm{MPa}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: MPa, sigma_y"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0031",
+      "section": "c03",
+      "statement": "r_p \\approx \\frac{1}{2\\pi}\\left(\\frac{K_I}{\\sigma_y}\\right)^2",
+      "kind": "approximation",
+      "status": "approximation",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0033",
+      "section": "c03",
+      "statement": "Y = Y(a)",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: Y, Y_at_a"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0033",
+      "section": "c03",
+      "statement": "f(a) = Y(a)\\sigma\\sqrt{\\pi a}-K_c",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_c, Y_at_a, a, f_at_a, sigma"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "\\sigma_a = \\frac{\\sigma_{\\max}-\\sigma_{\\min}}2",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: frac, sigma_a, sigma_max, sigma_min"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "\\sigma_m = \\frac{\\sigma_{\\max}+\\sigma_{\\min}}2",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: frac, sigma_m, sigma_max, sigma_min"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "R = \\frac{\\sigma_{\\min}}{\\sigma_{\\max}}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: R, sigma_max, sigma_min"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "R = -1",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "R = 0",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "\\sigma_a = \\sigma_m",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: sigma_a, sigma_m"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "\\sigma_a = \\sigma'_f(2N_f)^b",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "\\sigma_a = A N_f^b",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [
+        "\\sigma_a = \\frac{\\sigma_{\\max}-\\sigma_{\\min}}2"
+      ],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "N_f = \\left(\\frac{\\sigma_a}{A}\\right)^{1/b}",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [
+        "\\sigma_a = \\frac{\\sigma_{\\max}-\\sigma_{\\min}}2"
+      ],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0037",
+      "section": "c04",
+      "statement": "b < 0",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0038",
+      "section": "c04",
+      "statement": "\\frac{\\sigma_a}{S_e}+\\frac{\\sigma_m}{S_u} \\leq 1",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0039",
+      "section": "c04",
+      "statement": "K_f = 1+q(K_t-1)",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: K_f, K_t, q"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0039",
+      "section": "c04",
+      "statement": "0 \\leq q",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0039",
+      "section": "c04",
+      "statement": "q \\leq 1",
+      "kind": "condition",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "\\varepsilon_a = \\frac{\\sigma'_f}{E}(2N_f)^b+\\varepsilon'_f(2N_f)^c",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "D = \\sum_i n_i/N_i",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "D = 1",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "N_1 = 100\\,000",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "N_2 = 20\\,000",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "D_b = 2000/100000+500/20000",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "a numeric side carries an implicit unit"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "2000/100000+500/20000 = 0{,}045",
+      "kind": "claim",
+      "status": "numerically_reproduced",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "1/D_b = 22{,}22",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "D = 0{,}99",
+      "kind": "claim",
+      "status": "value_or_condition",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": false,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "none",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "\\frac{da}{dN} = C(\\Delta K)^m",
+      "kind": "claim",
+      "status": "not_machine_checkable",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": null,
+      "human_review": "required",
+      "blocks_audit": false
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "\\Delta K = Y\\Delta\\sigma\\sqrt{\\pi a}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": true,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: Delta_K, Delta_sigma, Y, a"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "\\Delta\\sigma = \\sigma_{\\max}-\\sigma_{\\min}",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: Delta_sigma, sigma_max, sigma_min"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    },
+    {
+      "paragraph": "PAR-0040",
+      "section": "c04",
+      "statement": "\\sigma_{\\max}-\\sigma_{\\min} = 2\\sigma_a",
+      "kind": "claim",
+      "status": "unsupported",
+      "evidence": [],
+      "important": false,
+      "machine_parseable": true,
+      "premises": [],
+      "dimensions": {
+        "status": "unavailable",
+        "detail": "no registered unit for: sigma_a, sigma_max, sigma_min"
+      },
+      "human_review": "required",
+      "blocks_audit": true
+    }
+  ],
+  "next_offset": 100,
+  "statuses": [
+    "symbolically_verified",
+    "dimensionally_verified",
+    "numerically_reproduced",
+    "source_supported",
+    "follows_from_stated_premises",
+    "derived_steps_unchecked",
+    "numerically_ambiguous",
+    "not_machine_checkable",
+    "unsupported",
+    "contradicted",
+    "verification_failed",
+    "definition",
+    "approximation",
+    "value_or_condition"
+  ],
+  "note": "Each status names the stored evidence for that exact statement. Source support is not a proof; not_machine_checkable needs human review; nothing here is human approval."
+}

@@ -1,0 +1,15 @@
+
+\section{Mecanismos, tamaño de grano y temperatura homóloga}
+La temperatura homóloga $T/T_m$ compara temperaturas absolutas; sirve para orientar qué procesos activados pueden importar, sin fijar una frontera universal de fluencia. El deslizamiento de dislocaciones puede estar limitado por obstáculos; a mayor temperatura, el ascenso asistido por difusión permite superar ciertos obstáculos. Los mecanismos difusivos y el deslizamiento de bordes de grano pueden cobrar importancia con tensiones menores, granos finos y tiempos largos. Los mapas de mecanismos dependen de material y microestructura.
+
+El afinamiento de grano puede mejorar resistencia a cedencia en ciertas condiciones de baja temperatura y, a la vez, aumentar la contribución de mecanismos ligados a bordes a alta temperatura. No hay contradicción: se trata de mecanismos y condiciones diferentes. Esta competencia ayuda a entender el interés de granos orientados o monocristales en ciertos álabes, sin deducir que eliminen todos los procesos de deformación y daño.
+\section{Cómo identificar una ley de Norton--Arrhenius}
+En un dominio con $\dot\varepsilon=A\sigma^n\exp[-Q/(RT)]$, comparar ensayos a la misma temperatura permite estimar $n$ de la pendiente de $\ln\dot\varepsilon$ frente a $\ln\sigma$. A tensión fija, una gráfica de $\ln\dot\varepsilon$ frente a $1/T$ tiene pendiente $-Q/R$, si $A$ y el mecanismo se mantienen. Un cambio de pendiente puede señalar que una sola ley no describe todo el conjunto.
+
+En una formulación normalizada se escriben cocientes respecto a un estado de referencia; así se reduce el riesgo de confundir unidades del prefactor. Aun así, una buena coincidencia del ajuste no prueba la estabilidad futura de precipitados, oxidación o ausencia de cavitación. El intervalo de calibración debe acompañar a los parámetros.
+\Needspace{.48\textheight}
+\section{Relajación bajo deformación impuesta}
+Bajo deformación total constante y temperatura fija, $\varepsilon_{tot}=\sigma/E+\varepsilon_c$ conduce, si $E$ es constante, a $\dot\sigma=-E\dot\varepsilon_c$. Para Norton a esa temperatura,
+\begin{equation}\frac{d\sigma}{dt}=-EA_T\sigma^n,\qquad \sigma(t)^{1-n}=\sigma_0^{1-n}+(n-1)EA_Tt\quad(n\ne1).\end{equation}
+Para $n=1$ resulta una disminución exponencial. La tensión se relaja al transferirse deformación elástica a deformación de fluencia. Es distinto de un ensayo a carga constante, donde la tensión no se reduce por esa misma condición de contorno. Con cambios de sección o temperatura hacen falta términos y modelos adicionales.
+\repaso{¿Por qué una tasa secundaria baja no demuestra una vida infinita?}{Porque la tasa describe un régimen de deformación, no todo el daño. Pueden evolucionar microestructura, cavidades, oxidación y distribución de tensiones, y puede aparecer fluencia terciaria antes de rotura.}

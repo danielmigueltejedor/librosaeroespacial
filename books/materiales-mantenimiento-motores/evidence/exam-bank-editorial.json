@@ -1,0 +1,327 @@
+[
+  {
+    "key": "S01",
+    "title": "Materiales I: respuesta, fractura e inspección",
+    "duration": 100,
+    "questions": [
+      {
+        "title": "Respuesta uniaxial",
+        "prompt": "Una barra ficticia tiene $L=240\\,\\mathrm{mm}$, $A=60\\,\\mathrm{mm^2}$ y $E=75\\,\\mathrm{GPa}$. Se aplica $F=9\\,\\mathrm{kN}$ de tracción centrada. Suponga sección uniforme, pequeñas deformaciones y respuesta elástica lineal. Calcule tensión, deformación y elongación y haga una comprobación inversa.",
+        "solution": "El modelo es $\\sigma=F/A$, $\\varepsilon=\\sigma/E$ y $\\Delta L=\\varepsilon L$. Con $A=60\\times10^{-6}\\,\\mathrm{m^2}$,\n\\[\\sigma=\\frac{9000}{60\\times10^{-6}}=150\\,\\mathrm{MPa},\\quad \\varepsilon=0{,}002,\\quad\\Delta L=0{,}480\\,\\mathrm{mm}.\\]\nLa fuerza reconstruida es $150\\times10^6(60\\times10^{-6})=9000$ N y $0{,}480/240=0{,}002$. La deformación es adimensional. Falta el límite elástico para contrastar la hipótesis material; no se infiere vida ni aceptabilidad de una pieza real.",
+        "tests": [
+          {
+            "expression": "9000/(60e-6)",
+            "expected": 150000000.0,
+            "unit": "Pa",
+            "symbolic": null,
+            "symbol_units": null
+          },
+          {
+            "expression": "9000*.24/(60e-6*75e9)",
+            "expected": 0.00048,
+            "unit": "m",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Grieta central y tamaño crítico",
+        "prompt": "Una placa ideal muy ancha tiene una grieta central pasante de longitud total $2a=6\\,\\mathrm{mm}$. Se adoptan $Y=1$, $\\sigma=150\\,\\mathrm{MPa}$ y $K_{IC}=30\\,\\mathrm{MPa\\sqrt m}$ supuesto aplicable. Calcule $K_I$, $ a_c $ y $2a_c $. Explique dos límites físicos de la conclusión.",
+        "solution": "Se usa semilongitud $ a=0{,}003$ m. El modelo da\n\\[K_I=150\\sqrt{\\pi(0{,}003)}=14.5622\\,\\mathrm{MPa\\sqrt m}.\\]\nDe $K_I=K_{IC}$ se despeja $ a_c=(30/150)^2/\\pi=12.7324$ mm; la longitud total crítica es $2a_c=25.4648$ mm. Sustituir $ a_c $ recupera la tenacidad. La comparación es estática y condicionada: no se han verificado espesor, pequeña plastificación, espectro de fatiga ni ambiente; no se autoriza el defecto por resultar $K_I<K_{IC}$.",
+        "tests": [
+          {
+            "expression": "150*sqrt(pi*.003)",
+            "expected": 14.562194344167745,
+            "unit": "MPa*m^0.5",
+            "symbolic": null,
+            "symbol_units": null
+          },
+          {
+            "expression": "(30/150)**2/pi",
+            "expected": 0.01273239544735163,
+            "unit": "m",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Microestructura y selección",
+        "prompt": "Razone por qué una temperatura inferior a 200 $^\\circ\\mathrm C$ no elimina todas las opciones metálicas. Después distinga fallo adhesivo, cohesivo y del sustrato en una unión. No cite una aleación como universalmente óptima.",
+        "solution": "La selección requiere temperatura, tiempo, carga, ambiente, geometría y proceso. Algunas aleaciones metálicas son compatibles con ese intervalo y otras pueden degradar sus propiedades; la temperatura aislada no decide. Se comparan datos del producto y estado, con sus límites. El fallo adhesivo se localiza en la interfaz adhesivo--sustrato; el cohesivo, dentro del adhesivo; el del sustrato, en el material unido. La ubicación se interpreta con evidencia y no equivale automáticamente a una causa única.",
+        "tests": []
+      },
+      {
+        "title": "Capacidad de inspección",
+        "prompt": "Se busca una discontinuidad abierta a superficie en aluminio y una delaminación interna en un laminado. Proponga familias de técnica y explique por qué una inspección negativa no excluye cualquier defecto.",
+        "solution": "Para aluminio pueden estudiarse penetrantes si la superficie y apertura son compatibles, o corrientes inducidas con una configuración y datos adecuados. Para delaminación pueden considerarse ultrasonidos o termografía según geometría y acceso. Las partículas magnéticas no son un método universal para aluminio. La inspección negativa se limita a cobertura, sensibilidad, orientación y procedimiento; no demuestra ausencia de discontinuidades no detectables. La aceptación procede de datos aplicables, no de esta selección académica.",
+        "tests": []
+      }
+    ]
+  },
+  {
+    "key": "S02",
+    "title": "Materiales II: fatiga, fluencia y compuestos",
+    "duration": 110,
+    "questions": [
+      {
+        "title": "Goodman y carga repetida",
+        "prompt": "Una probeta ficticia se carga desde cero hasta un máximo. Se adopta Goodman con $S_e=220\\,\\mathrm{MPa}$ y $S_u=660\\,\\mathrm{MPa}$. Calcule el máximo nominal en el límite del modelo y distinga máximo de amplitud. Suponga régimen elástico y ausencia de entallas.",
+        "solution": "Con $R=0$, $\\sigma_a=\\sigma_m=\\sigma_{max}/2$. Al sustituir en $\\sigma_a/S_e+\\sigma_m/S_u=1$,\n\\[\\sigma_{max}=\\frac{2}{1/220+1/660}=330\\,\\mathrm{MPa},\\quad \\sigma_a=\\sigma_m=165\\,\\mathrm{MPa}.\\]\nLa comprobación da $165/220+165/660=1$. El criterio es aproximado y no establece vida infinita universal; los datos deben corresponder a la misma condición de referencia. No se han comprobado dispersión ni ambiente.",
+        "tests": [
+          {
+            "expression": "2/(1/220+1/660)",
+            "expected": 330,
+            "unit": "MPa",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Propagación de grieta",
+        "prompt": "Integre Paris con $ m=3$, $C=10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3$, $Y=1$ y $\\Delta\\sigma=120\\,\\mathrm{MPa}$ entre semilongitudes $ a_i=1{,}2\\,\\mathrm{mm}$ y $ a_f=5\\,\\mathrm{mm}$. Suponga región de Paris válida y condiciones constantes; el criterio final es un dato independiente del ejercicio.",
+        "solution": "Se separan variables:\n\\[N=\\frac{1}{C(\\Delta\\sigma\\sqrt\\pi)^3}\\int_{a_i}^{a_f}a^{-3/2}da=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\\Delta\\sigma\\sqrt\\pi)^3}.\\]\nCon longitudes en metros,$N=3060750.3$ ciclos. La primitiva es $-2a^{-1/2}$ y su derivada recupera el integrando. Se usa rango de tensión, no amplitud. No se calcula iniciación, ni se verifica tenacidad o detectabilidad por esta integral.",
+        "tests": [
+          {
+            "expression": "2*(.0012**(-.5)-.005**(-.5))/(1e-12*(120*sqrt(pi))**3)",
+            "expected": 3060750.263574211,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Activación térmica de fluencia",
+        "prompt": "A igual tensión se supone una ley Arrhenius con $Q=240\\,\\mathrm{kJ/mol}$. La temperatura cambia de 950 a 1000 K sin cambiar mecanismo. Calcule la razón de tasas, usando $R=8{,}314462618\\,\\mathrm{J/(mol\\,K)}$. Explique por qué no es una predicción de tiempo a rotura.",
+        "solution": "El cociente elimina el prefactor a igual tensión:\n\\[\\dot\\varepsilon_2/\\dot\\varepsilon_1=\\exp\\left[-\\frac{240000}{8{,}314462618}\\left(\\frac1{1000}-\\frac1{950}\\right)\\right]=4.568705.\\]\nEl exponente es adimensional y el signo da incremento de tasa con temperatura. Una tasa secundaria no contiene por sí sola la evolución primaria, terciaria, daño y criterio de rotura. Además, se ha supuesto un mecanismo constante; no se extrapola fuera del dominio de calibración.",
+        "tests": [
+          {
+            "expression": "exp(-240000/8.314462618*(1/1000-1/950))",
+            "expected": 4.568704785224619,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Compuesto longitudinal",
+        "prompt": "Una lámina ideal tiene $V_f=0{,}55$, $E_f=200\\,\\mathrm{GPa}$ y $E_m=4\\,\\mathrm{GPa}$. Calcule $E_L$ y explique por qué el resultado no es el módulo en cualquier dirección ni una resistencia.",
+        "solution": "En isodeformación longitudinal,$E_L=V_fE_f+(1-V_f)E_m=0{,}55(200)+0{,}45(4)=111{,}8$ GPa. El valor queda entre los módulos de las fases. Se supone unión perfecta, fibras continuas alineadas y respuesta lineal. Otra dirección requiere otro modelo y parámetros; la rotura exige resistencias y mecanismos, que no se obtienen de este módulo.",
+        "tests": [
+          {
+            "expression": ".55*200+.45*4",
+            "expected": 111.8,
+            "unit": "GPa",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "S03",
+    "title": "Mantenimiento I: ámbito, datos y personal",
+    "duration": 90,
+    "questions": [
+      {
+        "title": "Ámbito y operación",
+        "prompt": "Un avión ficticio no complejo de 2650 kgse explota para instrucción y no está incluido en el AOC de una compañía aérea con licencia 1008/2008. Se supone que entra en el ámbito del 1321/2014. Explique la ruta inicial M/ML y qué dato cambiaría la conclusión.",
+        "solution": "El artículo 3.1--3.2 del 1321/2014 se lee con sus condiciones. Bajo las hipótesis, el avión corresponde a la categoría de 3.2(a)y se estudia Parte ML. La inclusión en el AOC de una compañía aérea con licencia 1008/2008 conduce a la excepción de Parte M. No se confunde instrucción con esa condición de AOC ni se deducen por la masa todas las aprobaciones de mantenimiento. Se declara que el ámbito y complejidad son supuestos del caso.",
+        "tests": []
+      },
+      {
+        "title": "Identificar el documento",
+        "prompt": "Para una pieza ficticia se necesita identificar P/N, desmontar de aeronave y reparar fuera de ella. Asigne funciones a IPC, AMM y CMM. Después indique qué comprobaría antes de usar una revisión.",
+        "solution": "El IPC ayuda a identificar piezas y relaciones; el AMM aporta instrucciones de mantenimiento de aeronave, como el desmontaje dentro de su alcance; el CMM trata el componente definido y sus tareas permitidas. La denominación no garantiza que una reparación específica esté incluida. Se comprueban identidad, efectividad, configuración, revisión y suplementos. Fuera de límites se necesita la vía de datos adecuada; no se inventa una reparación por reunir tres documentos.",
+        "tests": []
+      },
+      {
+        "title": "Directiva académica repetitiva",
+        "prompt": "Una directiva expresamente ficticia DID-01 exige primera inspección dentro de 50 hdesde su fecha de efectividad y repetición cada 100 hdesde cada inspección. La efectividad corresponde a 2000 hde la aeronave; se inspeccionó a 2030 h; ahora tiene 2110 h. Calcule márgenes y explique la evidencia requerida.",
+        "solution": "El umbral inicial era 2050 h; la inspección a 2030 hse hizo antes de ese umbral, bajo la regla ficticia. El siguiente vence a 2130 hporque la repetición se cuenta desde ejecución real. El margen actual es 20 h. Deben constar acción, datos y revisión, resultados, fecha, acumulados y certificación pertinente. El cálculo no demuestra por sí solo cumplimiento si la inspección no corresponde a la acción requerida. No se transfiere esta regla a una AD real con otra referencia temporal.",
+        "tests": [
+          {
+            "expression": "2030+100-2110",
+            "expected": 20,
+            "unit": "h",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Privilegios personales",
+        "prompt": "Una persona tiene licencia B1.1 y trabaja en una organización, pero el expediente no acredita anotación de tipo ni autorización para la tarea solicitada. Razone por qué no basta con mostrar la licencia.",
+        "solution": "Se comprueban privilegios y condiciones de 66.A.20, anotaciones de 66.A.45 y autorización organizativa de 145.A.35. La licencia no elimina límites ni acredita automáticamente configuración, tipo, competencia reciente o autorización específica. Con los datos del caso no se demuestra el derecho a emitir el CRS de esa tarea. La conclusión debe enumerar pendientes concretos, sin inventar requisitos numéricos ni declarar que todas las tareas exigen exactamente la misma ruta.",
+        "tests": []
+      }
+    ]
+  },
+  {
+    "key": "S04",
+    "title": "Mantenimiento II: programa, revisión y organización",
+    "duration": 100,
+    "questions": [
+      {
+        "title": "Tres contadores",
+        "prompt": "Fecha ficticia de estado 8 octubre 2026:1180 h, 1030 ciclos. Tarea A:150 ho 6 meses desde 15 mayo 2026 y 1100 h. Tarea B:100 ciclos desde 950. LLPficticio: vida 1600, acumulado 1500. Calcule los márgenes y explique cuál priorizaría con 10 hy 5 ciclospor jornada.",
+        "solution": "Avence a 1250 hy 15 noviembre 2026, con 70 hde margen. Bvence a 1050 ciclos, con 20 de margen. El LLPtiene 100 ciclos restantes. La previsión de uso da 7 jornadas, 4 jornadas y 20 jornadas, respectivamente; Bse aproxima antes por uso. El calendario también se conserva y debe compararse con la programación concreta. Estos intervalos y límites son ficticios y no hay tolerancias. Jornada de operación no equivale necesariamente a día natural.",
+        "tests": [
+          {
+            "expression": "1100+150-1180",
+            "expected": 70,
+            "unit": "h",
+            "symbolic": null,
+            "symbol_units": null
+          },
+          {
+            "expression": "950+100-1030",
+            "expected": 20,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Revisión ARC y cambio de texto",
+        "prompt": "En octubre 2026 se estudia un resumen de M.A.901 de 2025. ¿Cómo comprobaría que describe el proceso actual? Distinga revisión, CRS y certificado de tipo.",
+        "solution": "Se identifica el punto de la consolidación 1321/2014 de 7 agosto 2026 y se compara con el Reglamento 2026/100 y sus fechas de aplicación. La revisión actual se explica con M.A.901 y M.A.903, sin copiar numeración antigua. ARC registra el proceso de revisión correspondiente; CRS certifica mantenimiento en su alcance; certificado de tipo corresponde al diseño. El hecho de que un documento sea oficial no garantiza que su explicación esté actualizada para otra fecha.",
+        "tests": []
+      },
+      {
+        "title": "Sistema de gestión Parte 145",
+        "prompt": "Una organización ficticia comprueba que los formularios estén completos, pero no analiza peligros ni verifica eficacia de mitigaciones. Explique qué falta conceptualmente en 145.A.200.",
+        "solution": "La comprobación documental puede formar parte del seguimiento del cumplimiento, pero 145.A.200 incluye responsabilidades, política de seguridad, identificación de peligros, evaluación y gestión de riesgos, competencia y procesos documentados, además del seguimiento de cumplimiento. Debe existir evidencia de acciones y eficacia proporcional al tamaño y complejidad. No se resuelve añadiendo una firma a todos los formularios. El caso no constituye auditoría oficial ni una lista exhaustiva de conformidad.",
+        "tests": []
+      },
+      {
+        "title": "Marco militar y documento incorrecto",
+        "prompt": "Se pretende justificar mantenimiento militar con el archivo BOE-A-2022-21487 y afirmar que EMAR145 es directamente obligatorio en todos los Estados. Detecte ambos problemas.",
+        "solution": "BOE-A-2022-21487 es una convocatoria de empleo público, no el Reglamento de Aeronavegabilidad de la Defensa. Para el contexto español se consulta RD 866/2015 y la normativa aplicable. EMAR son requisitos armonizados para implementación nacional; MAWA no impone por sí mismo un reglamento a los Estados. Se comprueban autoridad, adopción y reconocimiento. La referencia al marco civil no sustituye ese análisis.",
+        "tests": []
+      }
+    ]
+  },
+  {
+    "key": "S05",
+    "title": "Evaluación combinada I: interpretación y seguimiento",
+    "duration": 110,
+    "questions": [
+      {
+        "title": "Restricción térmica",
+        "prompt": "Una barra ficticia totalmente restringida se calienta uniformemente 60 K. Se adoptan $E=115\\,\\mathrm{GPa}$ y $\\alpha=9\\times10^{-6}\\,\\mathrm{K^{-1}}$. Calcule tensión elástica y explique qué cambiaría con apoyos flexibles o fluencia.",
+        "solution": "La compatibilidad impone $0=\\sigma/E+\\alpha\\Delta T$. Por ello $\\sigma=-115\\times10^9(9\\times10^{-6})(60)=-62{,}1$ MPa. El signo de compresión compensa la expansión térmica. Al sustituir, se anula la deformación total. Apoyos flexibles permiten desplazamiento y modifican la tensión; la fluencia puede provocar relajación. El modelo no comprueba pandeo ni cedencia.",
+        "tests": [
+          {
+            "expression": "-115e9*9e-6*60",
+            "expected": -62100000.0,
+            "unit": "Pa",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Fiabilidad y disponibilidad",
+        "prompt": "Una flota ficticia registra 3 eventos en 30000 h. Bajo tasa constante, calcule $R(200\\,\\mathrm h)$. Para $MTBF=10000\\,\\mathrm h $, compare reparación activa 6 hcon restauración de 24 hincluida espera.",
+        "solution": "La tasa observada es 0,0001 h\\(^{-1}\\)y R(200)=exp(-0,02)=0,9801987. Los cocientes de disponibilidad son 10000/10006=0,9994004 y 10000/10024=0,9976057. Se mantienen separados sus alcances temporales. La estimación estadística no establece límite de vida ni demuestra el modelo; faltan incertidumbre y análisis de población.",
+        "tests": [
+          {
+            "expression": "exp(-(3/30000)*200)",
+            "expected": 0.9801986733067553,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          },
+          {
+            "expression": "10000/(10000+24)",
+            "expected": 0.9976057462090981,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Tensión media en una unión adherida",
+        "prompt": "Una unión ficticia transmite 3 k Nen un solape de 20 mmde ancho y 40 mmde longitud. Calcule tensión cortante media y explique por qué no determina resistencia de la unión. Identifique tres localizaciones posibles de fallo.",
+        "solution": "La media es $\\tau_{med}=F/(bL)=3000/(0{,}020\\cdot0{,}040)=3{,}75$ MPa. Las unidades son N/m\\(^{2}\\). La carga reconstruida coincide con 3000 N. El máximo local puede diferir por concentraciones y pelado; importan espesor, rigidez, preparación y curado. Fallo adhesivo: interfaz; cohesivo: interior del adhesivo; del sustrato: material unido. No se deduce un margen real con una resistencia de catálogo aislada.",
+        "tests": [
+          {
+            "expression": "3000/(.02*.04)",
+            "expected": 3750000.0,
+            "unit": "Pa",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Una tendencia no es un diagnóstico",
+        "prompt": "En un motor ficticio sube la temperatura de escape a prestación aparentemente comparable y aparece una vibración cercana a orden 2. Proponga una secuencia de análisis sin prescribir mantenimiento real.",
+        "solution": "Primero se validan condiciones, sensores y correcciones: ambiente, régimen, configuración y evento. Se identifica respecto a qué rotor se calcula la orden. Se revisan tendencias e historial y se construyen hipótesis, como degradación aerodinámica, holguras o problemas de medida. Se buscan evidencias discriminantes mediante los datos y procedimientos aplicables. Ninguna de las dos señales demuestra por sí sola una causa. La intervención y aceptación requieren el proceso autorizado.",
+        "tests": []
+      }
+    ]
+  },
+  {
+    "key": "S06",
+    "title": "Evaluación combinada II: vida y documentación",
+    "duration": 120,
+    "questions": [
+      {
+        "title": "Tiempo equivalente por correlación",
+        "prompt": "A igual tensión, se supone válida la correlación Larson--Miller con $C_{LM}=20$, tiempo en horas. Un ensayo a 900 K rompe en 10000 h. Estime tiempo equivalente a 940 K y explique qué hipótesis impedirían extrapolarlo a servicio variable.",
+        "solution": "Se calcula $P=900(20+\\log_{10}10000)=21600$ K. Entonces\n\\[\\log_{10}t_2=21600/940-20,\\quad t_2=952.18954\\,\\mathrm h.\\]\nLa sustitución recupera P. La temperatura es absoluta y la unidad de tiempo es la de calibración. Un servicio variable con cambios de tensión, mecanismo, microestructura o ambiente no queda descrito por esta equivalencia; el resultado no es una vida aprobada.",
+        "tests": [
+          {
+            "expression": "10**(21600/940-20)",
+            "expected": 952.1895354084085,
+            "unit": "h",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Fractura, propagación e intervalo académico",
+        "prompt": "Una placa ancha se idealiza con $Y=1$,$\\sigma_{max}=180\\,\\mathrm{MPa}$,$R=0{,}1$ y $K_{IC}=28\\,\\mathrm{MPa\\sqrt m}$ supuesto aplicable. Una grieta central inicia el análisis con $ a_i=2\\,\\mathrm{mm}$. Use $ a_f=0{,}8a_c $ y Paris $ m=3$,$C=3\\times10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3$. Calcule el tamaño crítico, vida de propagación y un intervalo académico N/3. Todas las hipótesis de MFEL y Paris se adoptan para el ejercicio.",
+        "solution": "El tamaño crítico es $ a_c=(28/180)^2/\\pi=7.70231$ mm y $ a_f=6.16185$ mm. La amplitud no es el rango: $\\Delta\\sigma=(1-R)\\sigma_{max}=162$ MPa. La integración da\n\\[N=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{3\\times10^{-12}(162\\sqrt\\pi)^3}=270942.9\\ \\text{ciclos}.\\]\nEl intervalo ficticio es $N/3=90314.3$ ciclos. Se comprueba $ a_f>a_i $ y $K_{max}(a_f)=\\sqrt{0{,}8}K_{IC}<K_{IC}$. No se han validado detección, dispersión o espectro real; un tercio no es una regla reglamentaria.",
+        "tests": [
+          {
+            "expression": "(28/180)**2/pi",
+            "expected": 0.007702313295311478,
+            "unit": "m",
+            "symbolic": null,
+            "symbol_units": null
+          },
+          {
+            "expression": "2*(.002**(-.5)-(0.0061618506362491835)**(-.5))/(3e-12*(162*sqrt(pi))**3)",
+            "expected": 270942.8946149545,
+            "unit": "dimensionless",
+            "symbolic": null,
+            "symbol_units": null
+          }
+        ]
+      },
+      {
+        "title": "Revisión de SB y AD",
+        "prompt": "Una AD ficticia incorpora una revisión específica de un SB. El fabricante publica otra revisión y el operador pretende aplicarla automáticamente porque es más reciente. Razone el procedimiento académico.",
+        "solution": "Se lee la AD y sus condiciones para uso de revisiones posteriores, crédito por acciones previas y AMOC. Una revisión nueva del SB no modifica por sí sola el requisito de la directiva. Se comparan cambios y se sigue la vía permitida o de aprobación aplicable. El registro conserva la revisión realmente utilizada y la evidencia. El caso no concluye que toda revisión posterior esté prohibida: depende del texto y de la aprobación correspondiente.",
+        "tests": []
+      },
+      {
+        "title": "Integración de evidencias",
+        "prompt": "Un informe ficticio afirma:«La hoja calcula correctamente, el componente tiene Form 1 y la boroscopia no mostró indicaciones; por tanto se puede extender su vida». Identifique las inferencias no demostradas.",
+        "solution": "La corrección aritmética no valida el modelo ni la entrada. Form 1 no demuestra por sí solo elegibilidad en cualquier configuración ni continuidad de todos los contadores. La boroscopia solo informa sobre su cobertura y capacidad. Ninguno de esos elementos crea una extensión de límite de vida. Se necesitan datos y vía de aprobación aplicables, identidad, historial y evaluación técnica. La conclusión responsable separa las evidencias comprobadas de las condiciones pendientes.",
+        "tests": []
+      }
+    ]
+  }
+]

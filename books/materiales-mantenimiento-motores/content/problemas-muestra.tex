@@ -1,0 +1,54 @@
+
+\chapter{Problemas de materiales}
+\section{P01. Rigidez de una barra}
+\begin{studiumworked}{Enunciado, datos e incógnitas}
+Una barra recta de sección constante tiene longitud $L_0=0{,}250\,\mathrm{m}$, área $A=80\,\mathrm{mm^2}$ y módulo $E=200\,\mathrm{GPa}$. Recibe una fuerza axial de tracción $F=12\,\mathrm{kN}$. Determine $\sigma$, $\varepsilon$ y $\Delta L$.
+\end{studiumworked}
+
+\subsection{Modelo físico e hipótesis}
+Se adopta una idealización uniaxial, con fuerza centrada, sección uniforme y pequeñas deformaciones. Se supone respuesta elástica lineal y se ignoran efectos térmicos y concentraciones locales de tensión. La sección de análisis está lejos de los extremos. No se proporciona límite elástico, por lo que el régimen constitutivo se adopta como hipótesis del ejercicio.
+
+\subsection{Ecuaciones y desarrollo algebraico}
+Las relaciones de partida son
+\begin{equation}
+\sigma=\frac{F}{A},\qquad \varepsilon=\frac{\sigma}{E},\qquad \Delta L=\varepsilon L_0.
+\end{equation}
+Combinándolas antes de sustituir, resulta
+\begin{equation}\Delta L=\frac{FL_0}{AE}.\end{equation}
+
+\subsection{Sustitución numérica}
+Con $A=80\times10^{-6}\,\mathrm{m^2}$, $F=12\times10^3\,\mathrm{N}$ y $E=200\times10^9\,\mathrm{Pa}$,
+\begin{align}
+\sigma&=\frac{12\times10^3}{80\times10^{-6}}=150\times10^6\,\mathrm{Pa},\\
+\varepsilon&=\frac{150\times10^6}{200\times10^9}=7{,}5\times10^{-4},\\
+\Delta L&=(7{,}5\times10^{-4})(0{,}250)=1{,}875\times10^{-4}\,\mathrm{m}.
+\end{align}
+
+\subsection{Resultado, interpretación y límites}
+La tensión nominal es $150\,\mathrm{MPa}$; la deformación media, $0{,}00075$; y la elongación, $0{,}1875\,\mathrm{mm}$. La barra se alarga un $0{,}075\,\%$ de su longitud inicial según el modelo. El cálculo no determina resistencia a rotura, vida a fatiga ni aceptabilidad para servicio.
+
+\begin{tcolorbox}[studiumcommon,colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,title={Verificación}]
+La sustitución inversa da $\sigma A=12\,000\,\mathrm{N}=F$ y $\Delta L/L_0=0{,}00075=\sigma/E$. Las dimensiones son $[\sigma]=\mathrm{Pa}$ y $[\Delta L]=\mathrm{m}$. Estas comprobaciones contrastan aritmética y dimensiones; no validan la hipótesis elástica de un material real.
+\end{tcolorbox}
+
+\chapter{Casos de mantenimiento}
+\section{C01. Seguimiento de un límite ficticio}
+\caja{Situación y documentación}{Un ejercicio académico fechado el 18 de octubre de 2026 proporciona un límite ficticio de $1200$ ciclos para un componente, un registro acumulado de $1140$ ciclos y una previsión de $4$ ciclos por jornada de operación. La última anotación del registro corresponde al comienzo de la planificación.}
+
+\subsection{Pregunta y procedimiento de análisis}
+Calcule el margen aritmético hasta el límite. Determine cuántas jornadas de operación representa la previsión, si no cambia el ritmo de utilización. Identifique la información que faltaría para una decisión real.
+
+Se comparan el límite y el acumulado en la misma unidad, y se conserva el momento de referencia del registro:
+\begin{align}
+N_{\mathrm{restante}}&=1200-1140=60\ \text{ciclos},\\
+J_{\mathrm{previsto}}&=\frac{60\ \text{ciclos}}{4\ \text{ciclos/jornada}}=15\ \text{jornadas}.
+\end{align}
+El componente alcanzaría el límite ficticio al completar la jornada 15 bajo esa previsión. El cálculo no autoriza a superar el límite ni define cuándo debe programarse una intervención real.
+
+\subsection{Resultado académico y comprobación}
+El resultado es un margen de $60$ ciclos, equivalente a $15$ jornadas previstas. La comprobación inversa da $1140+15(4)=1200$ ciclos. Si aumenta la utilización diaria, disminuye el número de jornadas disponible. Una jornada de operación no equivale necesariamente a un día natural consecutivo.
+
+\subsection{Información pendiente y limitaciones}
+En un caso real deben identificarse el componente y su configuración, la documentación aplicable y su revisión, el historial, la trazabilidad del registro, la definición de ciclo y cualquier otro límite concurrente. Un límite en horas o calendario puede resultar más restrictivo.
+
+\resumen{El caso verifica una resta y una previsión con datos ficticios. No utiliza una disposición normativa como fuente del límite, no establece un programa aprobado ni constituye una autorización de mantenimiento.}

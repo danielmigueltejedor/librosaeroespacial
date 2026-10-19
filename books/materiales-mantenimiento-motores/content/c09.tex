@@ -1,0 +1,37 @@
+\chapter{Materiales compuestos, laminados y uniones}\label{ch:09}
+\objetivos{Relacionar orientación y transferencia de carga con las propiedades; utilizar reglas de mezcla como modelos limitados e identificar modos de fallo diferenciados.}
+\section{Matriz, refuerzo e interfaz}
+Un compuesto reúne fases distinguibles para obtener una respuesta que no se describe solo con la suma de sus masas. En un laminado de fibras largas, el refuerzo puede aportar gran rigidez en su dirección, mientras la matriz transmite cortadura, mantiene posición, protege y participa en cargas transversales. Decir que «la matriz nunca soporta carga» es incorrecto. Su contribución cambia con dirección, temperatura, geometría y estado de daño.
+
+Las matrices poliméricas pueden ser termoestables o termoplásticas; su respuesta depende de temperatura, humedad y tiempo. Las matrices metálicas y cerámicas permiten otros intervalos térmicos y mecanismos de transferencia y daño. Un compuesto cerámico con mecanismos de desviación de grieta y extracción de fibras puede tener una respuesta al daño distinta de una cerámica monolítica.
+\section{Anisotropía y modelos de mezcla}
+Para un compuesto unidireccional ideal con fibras continuas alineadas, unión perfecta y deformación longitudinal igual en ambas fases,
+\begin{equation}E_L=V_f E_f+V_m E_m,\qquad V_f+V_m=1.\label{eq:mezclaL}\end{equation}
+Se obtiene sumando las fuerzas de fibras y matriz a igual deformación. Para una idealización de igual tensión en serie,
+\begin{equation}\frac1{E_T}=\frac{V_f}{E_f}+\frac{V_m}{E_m}.\label{eq:mezclaT}\end{equation}
+La segunda expresión es una idealización sencilla y no una predicción exacta de cualquier módulo transversal real. La geometría, las interfaces, vacíos y distribución del refuerzo hacen necesarios modelos o ensayos más representativos. La densidad ideal sin vacíos sí se calcula por promedio volumétrico $\rho=V_f\rho_f+V_m\rho_m$.
+\caso{M09. Dirección de las fibras}{Para datos ficticios $V_f=0{,}60$, $E_f=230$ y $E_m=3\,\mathrm{GPa}$, el modelo longitudinal da $E_L=139{,}2\,\mathrm{GPa}$. La idealización en serie da $E_T=7{,}356\,\mathrm{GPa}$. La gran diferencia ilustra anisotropía, no dos resultados rivales para la misma dirección. El resultado transversal debe interpretarse dentro de la idealización, sin atribuirlo a una lámina comercial.}
+\section{De la lámina al laminado}
+Una lámina ortótropa necesita varios parámetros independientes: módulos, coeficientes de Poisson y módulos de cortadura, con relaciones de reciprocidad en elasticidad. Al girar la lámina, cambia la relación entre las componentes de tensión y deformación en los ejes globales. En un apilado, orientación y posición respecto al plano medio determinan respuesta extensional, de flexión y acoplamientos.
+
+La teoría clásica de laminados organiza resultantes como
+\begin{equation}\begin{bmatrix}\mathbf N\\\mathbf M\end{bmatrix}=\begin{bmatrix}\mathbf A&\mathbf B\\\mathbf B&\mathbf D\end{bmatrix}\begin{bmatrix}\boldsymbol\varepsilon^0\\\boldsymbol\kappa\end{bmatrix}.\label{eq:abd}\end{equation}
+Un laminado simétrico respecto al plano medio tiene $\mathbf B=0$ en esta teoría y sin otros efectos que rompan las hipótesis. «Simétrico» no significa necesariamente «isótropo». Un apilado equilibrado elimina determinados acoplamientos de cortadura, pero tampoco constituye una solución universal frente a todas las cargas.
+\ilustra{laminados}{Orientaciones de lámina, secuencia simétrica y estructura sándwich. La representación es conceptual, sin espesores de un producto real.}
+\section{Fallo, delaminación y daño por impacto}
+Los mecanismos incluyen rotura de fibras, fisuración de matriz, despegue de interfaz, inestabilidad local y delaminación. La resistencia puede depender de tracción o compresión y de dirección. Un criterio de fallo debe declarar qué mecanismos representa. Un único «límite elástico equivalente» de un metal no describe por sí solo una lámina anisótropa.
+
+La delaminación separa capas y puede reducir mucho la capacidad de compresión o flexión sin una abertura superficial evidente. Las tensiones interlaminares se concentran en bordes, uniones y cambios de espesor; un modelo de tensión plana de lámina no las resuelve completamente. El daño apenas visible por impacto exige una estrategia de detección y evaluación compatible.
+\section{Sándwich, GLARE y materiales de motor}
+Una estructura sándwich separa caras resistentes mediante un núcleo ligero. La separación aumenta la rigidez a flexión con poca masa, pero introduce cortadura del núcleo, aplastamiento, arrugamiento de caras y despegue como modos posibles. No se verifica solo con la tensión longitudinal de las caras.
+
+GLARE es un laminado híbrido de capas metálicas de aluminio y láminas reforzadas con fibra de vidrio. Puede combinar mecanismos de puenteo de grieta y respuesta a fatiga con exigencias de uniones y fabricación. Sus propiedades dependen del grado y apilado; no se le atribuye automáticamente la rigidez de un compuesto de carbono.
+
+En motores pueden emplearse polímeros reforzados en zonas compatibles con su temperatura y ambiente, y compuestos de matriz cerámica en determinadas piezas calientes. Los CMC necesitan considerar oxidación, vapor de agua, recubrimientos ambientales, interfaces y vida; no son «cerámicas que ya no fallan de forma frágil» en cualquier condición.
+\section{Uniones adhesivas}
+Se distingue \textbf{fallo adhesivo}, situado en la interfaz entre adhesivo y sustrato; \textbf{fallo cohesivo}, dentro del adhesivo; y \textbf{fallo del sustrato}, dentro del material unido. La preparación superficial, contaminación, curado y diseño del extremo influyen en la distribución de esfuerzos.
+
+Para una unión solapada, $F/(bL)$ es una tensión cortante media, no el máximo local. Los extremos pueden presentar concentraciones y esfuerzos de pelado. Aumentar indefinidamente el solape no garantiza un aumento proporcional de resistencia. Las reparaciones adheridas requieren datos, preparación y controles específicos.
+\input{content/e09.tex}
+\resumen{La dirección de carga forma parte de la propiedad. Las reglas de mezcla son modelos con hipótesis, no fichas de laminado. Simetría del apilado y equilibrio no equivalen a isotropía. Adhesivo, cohesivo y sustrato identifican localizaciones distintas del fallo.}
+\fuentes{Roylance, \textit{Introduction to Composites} y \textit{Laminated Composite Plates} \cite{MIT-COMP,MIT-LAM}; FAA--General, cap. 7 \cite{FAA-G}; NASA sobre CMC \cite{NASA-CMC}.}

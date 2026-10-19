@@ -1,0 +1,48 @@
+\chapter{Fatiga: iniciación, vida y propagación}\label{ch:04}
+\objetivos{Definir un ciclo sin ambigüedad; usar curvas S--N y modelos de tensión media con sus límites; integrar la ley de Paris y distinguir vida total de vida de propagación.}
+\section{Cómo describir la carga}
+La fatiga es daño asociado a cargas variables que puede llevar al fallo con tensiones máximas inferiores a la resistencia estática. Una secuencia puede contener iniciación en superficie o defecto, crecimiento de grietas pequeñas, propagación de una grieta dominante y rotura final. La proporción de vida en cada fase depende del material, superficie, tamaño y espectro. No existe una fracción universal de «vida de iniciación».
+
+Para un ciclo entre $\sigma_{\min}$ y $\sigma_{\max}$ se definen
+\begin{equation}\sigma_a=\frac{\sigma_{\max}-\sigma_{\min}}2,\quad\sigma_m=\frac{\sigma_{\max}+\sigma_{\min}}2,\quad R=\frac{\sigma_{\min}}{\sigma_{\max}}.\label{eq:ciclo}\end{equation}
+Una carga completamente alternante tiene $R=-1$ y tensión media nula; una carga de cero a un máximo positivo tiene $R=0$ y $\sigma_a=\sigma_m$. La frecuencia, forma de onda, permanencias y ambiente también pueden importar. En motores aparecen ciclos de misión de baja frecuencia y vibraciones de alta frecuencia; su coexistencia exige definir qué fenómeno se modeliza.
+\ilustra{ciclo-fatiga}{Definición de máximo, mínimo, amplitud y tensión media en una historia sinusoidal ilustrativa.}
+\section{Enfoque tensión--vida}
+Una curva S--N relaciona amplitud de tensión y número de ciclos a fallo para condiciones especificadas. Una ley de Basquin puede escribirse $\sigma_a=\sigma'_f(2N_f)^b$, donde el factor dos representa reversiones. También se emplea $\sigma_a=A N_f^b$ con otro coeficiente. No se mezclan coeficientes de ambas convenciones.
+\begin{equation}N_f=\left(\frac{\sigma_a}{A}\right)^{1/b},\qquad b<0\quad\text{en el tramo ajustado}.\label{eq:basquin}\end{equation}
+No se extrapola una recta de ajuste más allá de la región de datos. Algunas curvas de ciertos aceros muestran una meseta aproximada bajo condiciones concretas; no equivale a vida infinita universal. Corrosión, superficie, tamaño, entallas y temperatura pueden modificarla o eliminar su utilidad como límite. Las aleaciones de aluminio suelen caracterizarse con resistencia a una vida especificada y no con un límite universal.
+
+La dispersión exige declarar si la curva es media o corresponde a una supervivencia determinada. Una regla empírica basada en una fracción de la resistencia a tracción puede orientar un ejercicio expresamente idealizado; no sustituye datos de fatiga de la pieza.
+\section{Tensión media, entallas y deformación local}
+El diagrama de Goodman modificado aproxima la penalización por tensión media de tracción:
+\begin{equation}\frac{\sigma_a}{S_e}+\frac{\sigma_m}{S_u}\leq1.\label{eq:goodman}\end{equation}
+$S_e$ representa aquí una resistencia alternante de referencia y $S_u$ una resistencia a tracción compatibles con el modelo. No se generaliza a compresión sin revisar el criterio, ni a plasticidad cíclica intensa. Gerber y Soderberg introducen relaciones diferentes; elegir una no es una equivalencia algebraica, sino una decisión de modelización.
+
+La sensibilidad a entalla se resume a veces mediante $K_f=1+q(K_t-1)$, $0\leq q\leq1$ en el modelo habitual. $K_t$ es geométrico; $K_f$ se vincula al efecto de la entalla en fatiga y depende del material y del problema. No debe aplicarse dos veces un factor si la curva utilizada ya representa el detalle real.
+
+En baja vida con plasticidad local puede emplearse la relación deformación--vida de Coffin--Manson--Basquin:
+\begin{equation}\varepsilon_a=\frac{\sigma'_f}{E}(2N_f)^b+\varepsilon'_f(2N_f)^c.\label{eq:coffin}\end{equation}
+Los coeficientes requieren ensayos compatibles y el cálculo puede ser implícito. Una tensión nominal elástica no describe necesariamente la amplitud de deformación en una raíz de entalla plastificada.
+\section{Daño acumulado y secuencia}
+La regla lineal de Miner define $D=\sum_i n_i/N_i$, siendo $N_i$ la vida que asigna el modelo al nivel $i$. El valor $D=1$ se usa como criterio idealizado de fallo. La regla no representa por sí misma efectos de orden, interacción, sobrecargas ni variación del estado superficial. En cargas complejas, el recuento de ciclos exige un procedimiento, por ejemplo rainflow, y una definición de tensión media.
+\caso{M04. Un bloque no es una vida}{En un bloque ficticio hay $2000$ ciclos a un nivel con $N_1=100\,000$ y $500$ ciclos a otro con $N_2=20\,000$. Entonces $D_b=2000/100000+500/20000=0{,}045$. La estimación lineal es $1/D_b=22{,}22$ bloques. Tras 22 bloques, $D=0{,}99$; el criterio se alcanzaría durante el bloque siguiente, si se mantiene la misma idealización. El orden de los dos niveles no modifica Miner, aunque sí puede modificar el comportamiento físico.}
+\section{Propagación: ley de Paris}
+En una región intermedia de crecimiento de grietas largas se utiliza
+\begin{equation}\frac{da}{dN}=C(\Delta K)^m,\qquad\Delta K=Y\Delta\sigma\sqrt{\pi a}.\label{eq:paris}\end{equation}
+$\Delta\sigma=\sigma_{\max}-\sigma_{\min}=2\sigma_a$. El coeficiente $C$ tiene unidades ligadas a la unidad de $a$, de $K$ y al exponente $m$. Un valor calibrado con $\mathrm{MPa\sqrt m}$ no se introduce sin conversión en una ecuación escrita con $\mathrm{Pa\sqrt m}$.
+
+Se distinguen el umbral aparente, la región de Paris y la aceleración cerca de inestabilidad. La razón $R$, el cierre de grieta, las grietas pequeñas, las sobrecargas y el ambiente modifican el crecimiento. La ley de Paris simple no describe automáticamente esas regiones ni una fase de iniciación.
+
+Con $Y$ y $\Delta\sigma$ constantes,
+\begin{equation}N=\frac{1}{C(Y\Delta\sigma\sqrt\pi)^m}\int_{a_i}^{a_f}a^{-m/2}\,da.\label{eq:parisint}\end{equation}
+Para $m\ne2$ se obtiene
+\begin{equation}N=\frac{a_f^{1-m/2}-a_i^{1-m/2}}{(1-m/2)C(Y\Delta\sigma\sqrt\pi)^m};\quad m=2:\ N=\frac{\ln(a_f/a_i)}{C(Y\Delta\sigma\sqrt\pi)^2}.\label{eq:parisclosed}\end{equation}
+Con $m>2$, numerador y denominador de la primera expresión son negativos y el resultado es positivo cuando $a_f>a_i$. Esta comprobación de signo evita un error frecuente. Si $Y$ cambia con $a$, se integra numéricamente la expresión completa.
+\section{De la propagación al intervalo de inspección}
+El tamaño final debe respetar tanto la resistencia frente a inestabilidad al máximo de carga como otros límites aplicables. Un cálculo con $\Delta K$ no sustituye la comprobación de $K_{\max}$. El tamaño inicial de inspección debe tener una base de detectabilidad y no coincidir sin más con «la resolución del equipo».
+
+El intervalo académico puede tomarse como una fracción explícita del crecimiento calculado para explorar márgenes, pero la fracción no se presenta como un requisito reglamentario. Deben declararse fiabilidad de detección, espectro, dispersión del crecimiento y revisión de hipótesis. Los ejercicios de propagación del cuaderno separan claramente el resultado matemático de una decisión de mantenimiento.
+\ilustra{sn-paris}{Curvas esquemáticas de tensión--vida y de crecimiento de grieta. Se señalan dominios de ajuste; no son datos de una aleación certificada.}
+\input{content/e04.tex}
+\resumen{Un ciclo necesita máximos y mínimos. S--N estima vida bajo condiciones de ensayo; Paris estima propagación en un dominio distinto. Miner es acumulación lineal aproximada. $K_{\max}$ comprueba inestabilidad y $\Delta K$ impulsa el modelo de crecimiento; ni uno ni otro sustituye al otro.}
+\fuentes{Roylance, \textit{Fatigue} y \textit{Introduction to Fracture Mechanics} \cite{MIT-FAT,MIT-FRAC}; materiales docentes de fatiga, pp. 1--37.}

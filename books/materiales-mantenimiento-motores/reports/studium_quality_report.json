@@ -1,0 +1,401 @@
+{
+  "status": "ok",
+  "project_state": "SOURCE_DISCOVERY",
+  "released": false,
+  "domain_profile": "STEM",
+  "thresholds": {
+    "min_sections": 8,
+    "min_sources": 12,
+    "min_explanation_words": 400,
+    "min_explanation_sections": 2
+  },
+  "counts": {
+    "sections": 25,
+    "sections_with_prose": 25,
+    "paragraphs": 316,
+    "paragraphs_audited": 0,
+    "words": 31236,
+    "sources": 15,
+    "excerpts_used": 26,
+    "excerpts_stored": 30,
+    "problems": 48,
+    "problems_checked": 48,
+    "computations_replayed": 120,
+    "derivations": 5,
+    "figures": 23,
+    "figures_checked": 0,
+    "figures_planned": 25,
+    "figure_references": 0,
+    "figures_uncited": 0,
+    "notation_entries": 0,
+    "notation_symbols": 0,
+    "terminology_entries": 0,
+    "audits": 0,
+    "reviews": 1,
+    "open_contradictions": 0
+  },
+  "derivation_statuses": {
+    "DIMENSIONALLY_VERIFIED": 5
+  },
+  "exercise_difficulties": {
+    "INTERMEDIATE": 35,
+    "EXAM_LEVEL": 13
+  },
+  "math_grounding": {
+    "formulas": 184,
+    "claims": 132,
+    "claims_verified": 9,
+    "formulas_ungrounded": 68,
+    "by_status": {
+      "symbolically_verified": 1,
+      "dimensionally_verified": 3,
+      "numerically_reproduced": 5,
+      "source_supported": 0,
+      "follows_from_stated_premises": 0,
+      "derived_steps_unchecked": 2,
+      "numerically_ambiguous": 0,
+      "not_machine_checkable": 53,
+      "unsupported": 68,
+      "contradicted": 0,
+      "verification_failed": 0,
+      "definition": 0,
+      "approximation": 6,
+      "value_or_condition": 46
+    },
+    "by_kind": {
+      "source": 0,
+      "derivation": 4,
+      "example": 5
+    },
+    "scientific_verification_complete": false,
+    "unresolved_important": [
+      {
+        "paragraph": "PAR-0005",
+        "statement": "\\sigma_y = \\sigma_0+k_y d^{-1/2}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0006",
+        "statement": "m = \\rho A L",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0014",
+        "statement": "\\varepsilon = \\ln(1+e)",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0014",
+        "statement": "\\sigma = s(1+e)",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0015",
+        "statement": "u_e = \\int_0^{\\varepsilon_e}E\\eta\\,d\\eta",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0015",
+        "statement": "\\frac12 E\\varepsilon_e^2 = \\frac{\\sigma^2}{2E}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0016",
+        "statement": "\\sigma_{1,2} = \\frac{\\sigma_x+\\sigma_y}{2}\\pm\\sqrt{\\left(\\frac{\\sigma_x-\\sigma_y}{2}\\right)^2+\\tau_{xy}^2}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0016",
+        "statement": "\\sigma_{\\rm VM} = \\sqrt{\\sigma_x^2-\\sigma_x\\sigma_y+\\sigma_y^2+3\\tau_{xy}^2}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0020",
+        "statement": "\\sigma_{x'} = \\frac{\\sigma_x+\\sigma_y}{2}+\\frac{\\sigma_x-\\sigma_y}{2}\\cos2\\theta+\\tau_{xy}\\sin2\\theta",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0020",
+        "statement": "\\tau_{x'y'} = -\\frac{\\sigma_x-\\sigma_y}{2}\\sin2\\theta+\\tau_{xy}\\cos2\\theta",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0020",
+        "statement": "\\varepsilon_x = \\frac{\\sigma_x-\\nu(\\sigma_y+\\sigma_z)}{E}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0020",
+        "statement": "G = \\frac{E}{2(1+\\nu)}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0026",
+        "statement": "G = \\frac{K_I^2}{E'}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0026",
+        "statement": "E' = \\begin{cases}E&\\text{tensión plana},\\\\ E/(1-\\nu^2)&\\text{deformación plana}.\\end{cases}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0026",
+        "statement": "K_I = Y\\sigma\\sqrt{\\pi a}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0027",
+        "statement": "a_c = \\frac{1}{\\pi}\\left(\\frac{K_{IC}}{Y\\sigma}\\right)^2",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0027",
+        "statement": "\\sigma_c = \\frac{K_{IC}}{Y\\sqrt{\\pi a}}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0037",
+        "statement": "\\sigma_a = \\frac{\\sigma_{\\max}-\\sigma_{\\min}}2",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0037",
+        "statement": "\\sigma_m = \\frac{\\sigma_{\\max}+\\sigma_{\\min}}2",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0037",
+        "statement": "R = \\frac{\\sigma_{\\min}}{\\sigma_{\\max}}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0037",
+        "statement": "N_f = \\left(\\frac{\\sigma_a}{A}\\right)^{1/b}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0040",
+        "statement": "\\varepsilon_a = \\frac{\\sigma'_f}{E}(2N_f)^b+\\varepsilon'_f(2N_f)^c",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0040",
+        "statement": "\\frac{da}{dN} = C(\\Delta K)^m",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0040",
+        "statement": "\\Delta K = Y\\Delta\\sigma\\sqrt{\\pi a}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0042",
+        "statement": "N = \\frac{1}{C(Y\\Delta\\sigma\\sqrt\\pi)^m}\\int_{a_i}^{a_f}a^{-m/2}\\,da",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0042",
+        "statement": "N = \\frac{a_f^{1-m/2}-a_i^{1-m/2}}{(1-m/2)C(Y\\Delta\\sigma\\sqrt\\pi)^m}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0042",
+        "statement": "m = 2:\\ N",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0042",
+        "statement": "2:\\ N = \\frac{\\ln(a_f/a_i)}{C(Y\\Delta\\sigma\\sqrt\\pi)^2}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0044",
+        "statement": "b = \\frac{\\ln(\\sigma_{a2}/\\sigma_{a1})}{\\ln(N_2/N_1)}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0044",
+        "statement": "A = \\sigma_{a1}/N_1^b",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0051",
+        "statement": "\\dot\\varepsilon_s = A\\sigma^n\\exp\\!\\left(-\\frac{Q}{RT}\\right)",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0052",
+        "statement": "\\frac{\\dot\\varepsilon_2}{\\dot\\varepsilon_1} = \\left(\\frac{\\sigma_2}{\\sigma_1}\\right)^n\\exp\\!\\left[-\\frac{Q}{R}\\left(\\frac1{T_2}-\\frac1{T_1}\\right)\\right]",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0053",
+        "statement": "P = T\\left(C_{LM}+\\log_{10}t_r\\right)",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\frac{d\\sigma}{dt} = -EA_T\\sigma^n",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0058",
+        "statement": "\\sigma(t)^{1-n} = \\sigma_0^{1-n}+(n-1)EA_Tt",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0064",
+        "statement": "x^2-x_0^2 = k_p t",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0095",
+        "statement": "w_\\alpha = \\frac{C_\\beta-C_0}{C_\\beta-C_\\alpha}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0095",
+        "statement": "w_\\beta = \\frac{C_0-C_\\alpha}{C_\\beta-C_\\alpha}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0100",
+        "statement": "E_L = V_f E_f+V_m E_m",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0100",
+        "statement": "V_f+V_m = 1",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0100",
+        "statement": "\\frac1{E_T} = \\frac{V_f}{E_f}+\\frac{V_m}{E_m}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0101",
+        "statement": "\\begin{bmatrix}\\mathbf N\\\\\\mathbf M\\end{bmatrix} = \\begin{bmatrix}\\mathbf A&\\mathbf B\\\\\\mathbf B&\\mathbf D\\end{bmatrix}\\begin{bmatrix}\\boldsymbol\\varepsilon^0\\\\\\boldsymbol\\kappa\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0106",
+        "statement": "\\begin{bmatrix}\\mathbf N\\\\\\mathbf M\\end{bmatrix} = \\begin{bmatrix}\\mathbf A&\\mathbf B\\\\\\mathbf B&\\mathbf D\\end{bmatrix}\\begin{bmatrix}\\boldsymbol\\varepsilon^0\\\\\\boldsymbol\\kappa\\end{bmatrix}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0128",
+        "statement": "\\delta = \\frac1{\\sqrt{\\pi f\\mu\\sigma_e}}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0138",
+        "statement": "A_i = \\frac{MTBF}{MTBF+MTTR}",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0207",
+        "statement": "H_{\\rm prox} = H_{\\rm ultimo}+\\Delta H",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0207",
+        "statement": "C_{\\rm prox} = C_{\\rm ultimo}+\\Delta C",
+        "status": "unsupported"
+      },
+      {
+        "paragraph": "PAR-0290",
+        "statement": "R(t) = \\exp(-\\lambda t)",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0290",
+        "statement": "[\\lambda] = \\mathrm{tiempo}^{-1}",
+        "status": "not_machine_checkable"
+      },
+      {
+        "paragraph": "PAR-0304",
+        "statement": "R_H = (H_{\\rm ultimo}+I_H)-H_{\\rm actual}",
+        "status": "unsupported"
+      }
+    ],
+    "unresolved_important_count": 52,
+    "dimension_probe": {
+      "consistent": 0,
+      "inconsistent": 0,
+      "unavailable": 101
+    },
+    "dimension_conflicts": [],
+    "declared": {
+      "source": 0,
+      "derivation": 0,
+      "example": 0
+    },
+    "checked_derivations": 5,
+    "note": "Statuses describe stored evidence for each exact statement. Source support is not a proof, not_machine_checkable is not an error, and nothing here is human approval."
+  },
+  "stages": {
+    "draft": {
+      "status": "renderable",
+      "note": "a draft renders even with unverified mathematics"
+    },
+    "evidence_audit": {
+      "status": "stale"
+    },
+    "scientific_verification": {
+      "status": "incomplete",
+      "claims": 132,
+      "verified": 9,
+      "not_machine_checkable": 53,
+      "unsupported": 68,
+      "contradicted_or_failed": 0,
+      "unresolved_important_equations": 52
+    },
+    "human_approval": {
+      "status": "not_recorded"
+    },
+    "publication_ready": {
+      "ready": false,
+      "reasons": [
+        "evidence audit is stale",
+        "scientific verification is incomplete: 9 of 132 equation claims verified",
+        "no human academic approval is recorded"
+      ]
+    }
+  },
+  "completeness": {
+    "sections": 25,
+    "complete": 0,
+    "incomplete": 25
+  },
+  "coverage": {
+    "sections": 25,
+    "sources_recorded": 15,
+    "sources_used": 13,
+    "sources_unused": 2,
+    "concepts_planned": 25,
+    "concepts_covered": 0,
+    "concept_coverage": 0.0
+  },
+  "consistent": true,
+  "depth_plan": "ok",
+  "verification_statuses_present": [
+    "COMPUTATION_REPRODUCED",
+    "DIMENSIONALLY_VERIFIED",
+    "TWO_WITNESSES"
+  ],
+  "section_coverage": {
+    "chapters_with_academic_sections": 25,
+    "academic_sections_total": 25,
+    "academic_sections_covered": 0
+  },
+  "limitations": [
+    "no human instructor has reviewed this edition; ACADEMICALLY_REVIEWED is not claimed by this pipeline",
+    "page targets are estimates (56.4–101.6); only the compiled PDF's page count is a measured fact",
+    "sections with too few distinct sources: c01, c02, c03, c04, c05, c06, c07, c08, c09, c10",
+    "0 of 25 planned figures are recorded and checked",
+    "68 prose equations are unsupported, contradicted, or failed a stored check",
+    "9 of 132 equation claims are verified; the rest are source-supported, unchecked, or not machine-checkable and need human review"
+  ]
+}

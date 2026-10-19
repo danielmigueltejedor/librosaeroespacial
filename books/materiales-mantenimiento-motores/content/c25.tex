@@ -1,0 +1,60 @@
+\chapter{Taller académico: programa y control de aeronavegabilidad}\label{ch:25}
+\objetivos{Diseñar modelos de documentos con datos ficticios; mantener trazabilidad de requisitos y ejecuciones; comprobar vencimientos y estados sin automatizar una autorización.}
+\section{Alcance del trabajo}
+Este taller enseña un método y ofrece un caso resuelto de aprendizaje. No es un programa aprobado, una herramienta autorizada de control de flota ni un trabajo listo para presentar como realización personal de un estudiante. La aeronave, las tareas y los intervalos numéricos del caso son ficticios. El estudiante debe crear sus propios datos y justificar sus decisiones para cualquier trabajo evaluable.
+
+El producto se divide en un documento de programa académico y un registro de control. El primero explica ámbito, fuentes y tareas; el segundo calcula estados a partir de entradas y conserva evidencia. La hoja no decide por sí sola aeronavegabilidad ni sustituye registros originales.
+\section{Estructura del documento de programa}
+La portada identifica título, aeronave ficticia, configuración, edición, fecha y estado. Una sección de alcance define matrícula académica, motores, hélices y modificaciones supuestas. El control de revisiones explica qué cambia y por qué, con una lista de páginas o elementos afectados si se utiliza ese sistema.
+
+Se describe la base de elaboración: régimen supuesto, fuentes y revisiones, tareas obligatorias frente a recomendadas y criterios de aplicabilidad. Se incluyen responsabilidades académicas y procedimiento de revisión. La lista de tareas tiene identificador único, sistema, descripción, referencia, umbral, repetición, magnitud y condición de vencimiento.
+
+En un programa real, la ruta de aprobación o declaración debe corresponder a M.A.302 o ML.A.302 y al ámbito aplicable. El ejemplo no reproduce una firma, número de aprobación o sello de una autoridad ni usa la palabra «aprobado» como estado alcanzado.
+\section{Entradas: identidad, contadores y documentos}
+Para la aeronave ficticia \textit{AULA-01} se fija fecha de estado 18 de octubre de 2026, $H=2810\,\mathrm h$ y $C=1980$ ciclos. Un motor académico tiene identificación propia y un componente LLP ficticio acumula 1980 ciclos. La coincidencia entre contadores se asume solo para este ejemplo; no se generaliza a un motor sustituido.
+
+Las entradas deben distinguir valor, unidad, fecha de lectura y fuente. Se usan campos de estado para «dato confirmado», «hipótesis académica» y «pendiente». Los datos ausentes se conservan ausentes: una fórmula no debe transformar una celda vacía en cero y mostrar un margen de vida ficticio.
+\begin{table}[htbp]\centering\small\caption{Tareas ficticias para el taller. Los intervalos no proceden de un manual real.}\label{tab:taller}
+\begin{tabular}{p{.1\linewidth}p{.26\linewidth}p{.23\linewidth}p{.25\linewidth}}\toprule
+ID & Tarea & Último cumplimiento & Repetición/límite supuesto\\\midrule
+T01 & Inspección académica & 2400 h; 20-01-2026 & 500 h o 12 meses\\[4pt]
+T02 & Prueba funcional & 1750 ciclos & 300 ciclos\\[4pt]
+T03 & Componente LLP & Acumulado 1980 ciclos & Vida total 2400 ciclos\\[4pt]
+T04 & Revisión documental & Evidencia ausente & No calcular cumplimiento\\\bottomrule
+\end{tabular}\end{table}
+\section{Cálculo de vencimientos y márgenes}
+Para T01, el siguiente umbral por horas es 2900 h y el margen actual 90 h. El vencimiento calendario es 20 de enero de 2027. Para T02, el siguiente cumplimiento es 2050 ciclos y el margen 70 ciclos. Para T03, el margen de vida total es 420 ciclos. T04 permanece pendiente de evidencia y no recibe un estado verde por tener celdas vacías.
+\begin{align}
+R_H&=(H_{\rm ultimo}+I_H)-H_{\rm actual},\\
+R_C&=(C_{\rm ultimo}+I_C)-C_{\rm actual},\\
+R_{LLP}&=L_C-C_{\rm total}.\label{eq:controlvida}
+\end{align}
+El signo importa: margen negativo indica un umbral numérico sobrepasado en el modelo; cero indica umbral alcanzado; positivo no demuestra por sí solo cumplimiento si falta otra condición o documento.
+
+Una previsión de 30 h y 20 ciclos por semana permite traducir magnitudes a horizontes de planificación: T01, 3 semanas; T02, 3,5 semanas; T03, 21 semanas. Esas previsiones no modifican vencimientos y deben compararse con calendario. Si se cambia utilización, cambia la previsión; el límite permanece.
+\section{Cómo organizar una hoja transparente}
+Una tabla principal de tareas conserva datos de identidad, origen y revisión, parámetros de intervalo, último cumplimiento y estado. Otra tabla de eventos conserva cada ejecución y su referencia de evidencia sin sobrescribir la historia. Un pequeño bloque de entradas de estado recoge fecha y acumulados actuales.
+
+Las fórmulas se protegen frente a errores accidentales y los datos editables se identifican. El estado se calcula en orden: primero datos requeridos, después aplicabilidad, después vencimientos, después alertas de planificación. Una alerta anticipada es una decisión editorial de gestión, distinta de una tolerancia autorizada.
+
+En pseudocódigo, si faltan datos esenciales el resultado es \textit{PENDIENTE}; si una tarea está acreditadamente no aplicable se muestra ese motivo; si cualquier límite aplicable está alcanzado o superado se muestra la condición correspondiente; solo después se calcula el margen. Esta secuencia evita que una resta correcta oculte una falta de evidencia.
+\ilustra{control-academico}{Separación de entradas, historial de eventos, cálculo de estado y revisión humana en el modelo de control.}
+\section{Registro de una ejecución}
+Supóngase que T02 se ejecuta el 25 de octubre con 2000 ciclos y evidencia académica EVT-017. El historial conserva el evento anterior a 1750 y añade el nuevo. Si el intervalo se reinicia desde el cumplimiento real según la regla ficticia, el próximo umbral pasa a 2300 ciclos. No se inventa una tolerancia y no se cambia la fecha de ejecución para alinearla con un plan anterior.
+
+Si la regla real fijara un patrón diferente de repetición, ese cálculo sería distinto. Por eso el evento de referencia forma parte de los datos y no se introduce como un supuesto oculto en una fórmula. La fuente del intervalo y la definición del cómputo deben ser legibles.
+\section{Control de AD en el modelo}
+El registro incorpora identificador y revisión, autoridad, producto y configuración, análisis de aplicabilidad, párrafo requerido, fecha de efectividad, umbral, repetición, acción terminal y AMOC si existe. La fila no se cierra por encontrar una AD con el mismo número en otra aeronave.
+
+Un caso sin información de equipo queda pendiente de aplicabilidad. Una no aplicabilidad se justifica con un documento de configuración. Un cumplimiento se vincula con acción y evidencia. Un SB realizado se compara con lo que la AD admite, incluyendo su revisión. La edición actual del libro no proporciona una lista completa de AD vigentes de ningún modelo real.
+\section{Comprobaciones del modelo}
+Se prueban al menos estos escenarios: entrada vacía, contador menor que un registro previo, fecha inválida, límite simultáneo por calendario, margen negativo, sustitución de componente y ejecución nueva. Se cambia utilización prevista y se verifica que solo cambia la previsión, no el límite ni la historia.
+
+La validación del modelo académico contrasta fórmulas y escenarios; no valida una herramienta para uso operacional. Un archivo con macros o fórmulas puede funcionar de manera distinta en diferentes aplicaciones. La documentación debe explicar método, unidades y límites para que el estudiante pueda reproducir los resultados sin depender de un color de celda.
+\section{Errores habituales y entrega académica}
+Los errores más frecuentes son mezclar total y desde revisión, sumar meses como días fijos, reiniciar LLP tras overhaul, usar datos de otra configuración, sobrescribir eventos y marcar N/A sin evidencia. También se confunde una alerta de planificación con extensión autorizada o se interpreta «sin hallazgos» como eliminación de una tarea obligatoria.
+
+Una entrega académica responsable explica hipótesis, fuentes realmente consultadas, cálculos y limitaciones. Si un documento no se ha obtenido o una norma no se ha contrastado, se registra pendiente. El criterio de calidad no es imitar un sello oficial, sino que otra persona pueda comprender y revisar el razonamiento.
+\input{content/e25.tex}
+\resumen{El programa organiza tareas y fuentes; el registro conserva eventos y calcula estado. Datos faltantes no son cero. Previsión no cambia límite. Una ejecución nueva añade historia. El ejemplo permite aprender el método y no constituye un AMP aprobado ni una autorización para operar.}
+\fuentes{Reglamento 1321/2014, M.A.302, M.A.303, M.A.305, ML.A.302 y disposiciones de registros aplicables \cite{EU1321}; presentación docente de mantenimiento, trabajo práctico. Todos los datos de AULA-01 son ficticios.}

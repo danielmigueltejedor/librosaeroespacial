@@ -1,0 +1,19 @@
+
+\section{Del tensor a la orientación de un plano}
+La tensión sobre un plano de normal unitaria $\mathbf n$ se obtiene mediante $\mathbf t=\boldsymbol\sigma\mathbf n$. Su componente normal es $\sigma_n=\mathbf n\cdot\mathbf t$ y la tangencial es $\mathbf t-\sigma_n\mathbf n$. La tensión no es un vector único asociado al punto: cambia con el plano. Esta distinción explica por qué una sola lectura nominal no describe todos los planos potenciales de daño.
+
+Para una rotación plana de ángulo $\theta$, las componentes se transforman como
+\begin{align}
+\sigma_{x'}&=\frac{\sigma_x+\sigma_y}{2}+\frac{\sigma_x-\sigma_y}{2}\cos2\theta+\tau_{xy}\sin2\theta,\\
+\tau_{x'y'}&=-\frac{\sigma_x-\sigma_y}{2}\sin2\theta+\tau_{xy}\cos2\theta.
+\end{align}
+La condición de cortante nulo proporciona los planos principales. El círculo de Mohr representa estas relaciones con ángulo doble; confundir $\theta$ con $2\theta$ cambia la orientación física. La suma de principales y otros invariantes permiten verificar que una transformación no ha alterado el estado tensional.
+\section{Elasticidad tridimensional y restricción}
+En elasticidad isótropa lineal,
+\begin{equation}\varepsilon_x=\frac{\sigma_x-\nu(\sigma_y+\sigma_z)}{E},\qquad G=\frac{E}{2(1+\nu)}.\end{equation}
+Los tres parámetros $E$, $G$ y $\nu$ no son independientes dentro de ese modelo. Para deformación cortante ingenieril, $\gamma_{xy}=\tau_{xy}/G$; la componente tensorial de deformación es la mitad. Declarar la convención evita un factor dos en energía y transformaciones.
+
+Tensión plana supone que ciertas tensiones fuera del plano son pequeñas; deformación plana supone restringidas ciertas deformaciones. La segunda no equivale a imponer tensión fuera del plano nula. Esta diferencia será esencial al interpretar $K_{IC}$ en el capítulo~\ref{ch:03}. El espesor, las condiciones de contorno y la posición dentro de la pieza determinan qué aproximación es razonable.
+\section{Tensión nominal, concentración y plasticidad}
+Un factor $K_t$ relaciona un máximo elástico local con una tensión nominal definida. Cambiar la sección de referencia cambia la definición del factor. Si el máximo elástico calculado supera la zona lineal, no basta con truncarlo al límite elástico: aparece redistribución y debe emplearse un modelo compatible. Tampoco un máximo singular en una grieta es una tensión física finita que pueda compararse directamente con resistencia a tracción; la mecánica de fractura ofrece otro descriptor.
+\repaso{¿Por qué una deformación transversal distinta de cero no contradice una tensión transversal nula?}{Por el acoplamiento de Poisson. En tracción uniaxial el modelo predice deformaciones laterales aunque las caras estén libres de tensión normal. Las condiciones sobre tensiones y sobre desplazamientos son diferentes.}

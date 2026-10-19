@@ -1,0 +1,33 @@
+\chapter{Gestión, fiabilidad y soporte logístico}\label{ch:24}
+\objetivos{Construir indicadores con denominadores definidos; relacionar recursos y disponibilidad; distinguir una optimización logística de una decisión de aeronavegabilidad.}
+\section{Planificar con restricciones}
+La gestión organiza demanda de mantenimiento, capacidad, recursos y plazos sin perder las condiciones técnicas y regulatorias. Se identifican tareas obligatorias, vencimientos, tiempos de preparación, repuestos, herramientas, personas y ubicaciones. Agrupar intervenciones puede ahorrar paradas, pero no permite desplazar un requisito fuera de su condición aplicable.
+
+La ruta crítica considera dependencias: desmontar, inspeccionar, evaluar daño, obtener datos, recibir repuesto, montar, probar y certificar. Una demora pequeña en un recurso único puede dominar el tiempo total. La planificación debe conservar incertidumbre y contingencias, no solo una duración ideal.
+\section{Indicadores y exposición}
+Una tasa $\hat\lambda=n/T$ usa número de eventos $n$ y exposición $T$. Su interpretación depende de definiciones: fallo, retirada programada, retirada no programada, parada en vuelo o demora técnica no son sinónimos. Comparar dos tasas exige poblaciones y periodos equivalentes.
+
+En un modelo de tasa constante, $R(t)=e^{-\lambda t}$ y $MTBF=1/\lambda$. La distribución exponencial no tiene memoria y no describe envejecimiento creciente por el solo hecho de usar horas. Adoptarla es una hipótesis, no una consecuencia automática de haber calculado un promedio.
+\begin{equation}R(t)=\exp(-\lambda t),\quad [\lambda]=\mathrm{tiempo}^{-1}.\label{eq:fiabilidadexp}\end{equation}
+Con muestras pequeñas, la incertidumbre puede ser grande. Cero eventos en un periodo no demuestra tasa cero. En un modelo de Poisson y un límite unilateral del 95\,\%, cero eventos en exposición $T$ produce la escala $\lambda_U=-\ln(0{,}05)/T$. Se declara la hipótesis y el tipo de intervalo; no se interpreta como una garantía de seguridad.
+\caso{M24. La exposición cambia la comparación}{Una flota ficticia registra 4 eventos en 20\,000 horas y otra 6 en 60\,000. Las tasas son $2\times10^{-4}$ y $1\times10^{-4}\,\mathrm{h^{-1}}$. La segunda tiene más eventos, pero menor tasa observada. Sin intervalos de incertidumbre, equivalencia de población y definición de evento no se concluye que una política sea mejor.}
+\section{Weibull y tendencias}
+La distribución de Weibull se utiliza con fiabilidad $R(t)=\exp[-(t/\eta)^\beta]$. El parámetro de forma modifica la tasa de riesgo: $\beta<1$ permite una tasa decreciente, $\beta=1$ es exponencial y $\beta>1$ creciente dentro del modelo. Un ajuste a datos mezclados puede crear una aparente tendencia que no corresponda a un mecanismo único.
+
+La censura de datos importa: una unidad que no ha fallado al cerrar observación aporta información y no debe tratarse como fallo en esa hora ni excluirse sin más. Los indicadores se acompañan de criterios de recopilación y calidad del dato.
+\section{Repuestos y tiempos de espera}
+La logística necesita estimar demanda, plazos de reposición, reparabilidad, caducidad y riesgos de ruptura de stock. El stock de seguridad depende de variabilidad y nivel de servicio, no solo de consumo medio. Un modelo de Poisson puede ilustrar demanda discreta, pero su validez debe evaluarse frente a concentración de fallos, campañas y dependencias.
+
+La trazabilidad del repuesto y su elegibilidad no se intercambian por urgencia. Un componente físicamente disponible puede no ser utilizable si no se puede demostrar su estado o compatibilidad. La gestión diferencia material en reparación, servible, en cuarentena y no servible.
+\section{Coste y decisiones}
+El coste incluye adquisición, intervención, parada, soporte, formación, herramientas y consecuencias de fallos dentro de los criterios de gestión. Un coste esperado puede ayudar a comparar estrategias técnicamente admisibles; no convierte un requisito de seguridad o vida en una opción que se elimina porque resulte cara.
+
+La evaluación de riesgos identifica peligros, probabilidad, severidad y medidas, con incertidumbres y responsabilidades. Una matriz de colores es una herramienta de organización; no sustituye evidencia ni una demostración cuantitativa cuando esta se necesita.
+\ilustra{logistica}{Relación entre tarea, recursos, ejecución, repuestos y tiempos de indisponibilidad.}
+\section{Cierre del ciclo de gestión}
+Se compara plan con ejecución y se investigan desviaciones. Las retiradas repetidas pueden revelar diagnóstico incompleto, dificultades de acceso o datos insuficientes. El seguimiento del cumplimiento y el sistema de gestión de seguridad utilizan esa experiencia con funciones diferenciadas.
+
+Un informe útil identifica acción, responsable, plazo y evidencia de eficacia. Informar una mejoría de un promedio sin comprobar si cambió exposición, definición o población puede ocultar deterioro. La gestión del mantenimiento se apoya en datos técnicamente significativos y decisiones trazables.
+\input{content/e24.tex}
+\resumen{Los eventos necesitan exposición y definición. MTBF y tasa no son límites de vida. Exponencial y Weibull son modelos, no etiquetas que prueben un mecanismo. Logística y coste se optimizan entre soluciones admisibles; no eliminan obligaciones o trazabilidad.}
+\fuentes{Reglamento 1321/2014, M.A.302(g)--(h), 145.A.47 y .200 \cite{EU1321}; materiales docentes de gestión; FAA--General, factores humanos y registros \cite{FAA-G}. Las distribuciones se presentan como modelos matemáticos explícitos, con comprobaciones en el cuaderno.}

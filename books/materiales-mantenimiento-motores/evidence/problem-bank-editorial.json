@@ -1,0 +1,1136 @@
+[
+  {
+    "key": "P01",
+    "ch": 2,
+    "title": "Carga axial y elongación",
+    "prompt": "Una probeta ficticia de sección uniforme recibe tracción axial centrada. Determine su respuesta elástica y explique qué propiedad faltaría para comprobar que no cede.",
+    "datos": "$F=8{,}4\\,\\mathrm{kN}$; $A=70\\,\\mathrm{mm^2}$; $L_0=180\\,\\mathrm{mm}$; $E=72\\,\\mathrm{GPa}$.",
+    "unknown": "Tensión nominal, deformación y elongación.",
+    "model": "Barra uniaxial elástica lineal.",
+    "hyp": "Pequeñas deformaciones; sección constante; sin efectos térmicos; análisis lejos de los extremos.",
+    "eqs": [
+      "\\sigma=F/A,\\quad\\varepsilon=\\sigma/E,\\quad\\Delta L=FL_0/(AE)."
+    ],
+    "steps": [
+      "El área en SI es $70\\times10^{-6}\\,\\mathrm{m^2}$. Se mantiene la misma sección para tensión y rigidez.",
+      "$\\sigma=8400/(70\\times10^{-6})$; $\\varepsilon=120\\times10^6/(72\\times10^9)$; $\\Delta L=\\varepsilon(0{,}180)$."
+    ],
+    "results": "$\\sigma=120\\,\\mathrm{MPa}$, $\\varepsilon=1{,}6667\\times10^{-3}$, $\\Delta L=0{,}300\\,\\mathrm{mm}$.",
+    "check": "La sustitución inversa da fuerza 8400 N y la razón elongación/longitud coincide con la deformación. La elongación es positiva para tracción.",
+    "limits": "Falta límite elástico y no se evalúan entallas, temperatura, fatiga ni dispersión.",
+    "tests": [
+      {
+        "expression": "8400/(70e-6)",
+        "expected": 120000000.0,
+        "unit": "Pa",
+        "symbolic": "F/A",
+        "symbol_units": {
+          "F": "N",
+          "A": "m^2"
+        }
+      },
+      {
+        "expression": "8400*.18/(70e-6*72e9)",
+        "expected": 0.0003,
+        "unit": "m",
+        "symbolic": "F*L/(A*E)",
+        "symbol_units": {
+          "F": "N",
+          "L": "m",
+          "A": "m^2",
+          "E": "Pa"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P02",
+    "ch": 2,
+    "title": "Dilatación impedida",
+    "prompt": "Una barra ficticia se calienta uniformemente con sus extremos impedidos de desplazarse. Compare la dilatación libre y la tensión del modelo totalmente restringido.",
+    "datos": "$L=0{,}40\\,\\mathrm m $; $E=110\\,\\mathrm{GPa}$; $\\alpha=9{,}0\\times10^{-6}\\,\\mathrm{K^{-1}}$; $\\Delta T=80\\,\\mathrm K$.",
+    "unknown": "Elongación libre y tensión axial con restricción total.",
+    "model": "Compatibilidad térmica y elasticidad uniaxial.",
+    "hyp": "Temperatura uniforme; apoyos rígidos; propiedades constantes; se supone régimen elástico y no se estudia pandeo.",
+    "eqs": [
+      "\\varepsilon=\\sigma/E+\\alpha\\Delta T=0,\\quad\\sigma=-E\\alpha\\Delta T,\\quad\\Delta L_{libre}=\\alpha\\Delta T L."
+    ],
+    "steps": [
+      "En libre expansión, $\\Delta L=9\\times10^{-6}(80)(0{,}40)$.",
+      "Con extremos fijos, la deformación mecánica compensa la térmica: $\\sigma=-110\\times10^9(9\\times10^{-6})(80)$."
+    ],
+    "results": "$\\Delta L_{libre}=0{,}288\\,\\mathrm{mm}$; $\\sigma=-79{,}2\\,\\mathrm{MPa}$ (compresión).",
+    "check": "Al sustituir la tensión, la suma de deformación mecánica y térmica es cero. Si la temperatura no cambia, desaparecen ambas contribuciones.",
+    "limits": "La restricción real puede ser flexible; la plasticidad, fluencia y pandeo pueden cambiar la solución.",
+    "tests": [
+      {
+        "expression": "9e-6*80*.4",
+        "expected": 0.000288,
+        "unit": "m",
+        "symbolic": "alpha*dT*L",
+        "symbol_units": {
+          "alpha": "1/K",
+          "dT": "K",
+          "L": "m"
+        }
+      },
+      {
+        "expression": "-110e9*9e-6*80",
+        "expected": -79200000.0,
+        "unit": "Pa",
+        "symbolic": "-E*alpha*dT",
+        "symbol_units": {
+          "E": "Pa",
+          "alpha": "1/K",
+          "dT": "K"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P03",
+    "ch": 2,
+    "title": "Tensiones principales y von Mises",
+    "prompt": "Se proporciona un estado plano uniforme en un punto. Obtenga tensiones principales y equivalente de von Mises; determine el cociente frente a un límite elástico supuesto.",
+    "datos": "$\\sigma_x=150$, $\\sigma_y=-30$, $\\tau_{xy}=40\\,\\mathrm{MPa}$; $\\sigma_y^{mat}=300\\,\\mathrm{MPa}$.",
+    "unknown": "Dos tensiones principales en el plano y equivalente.",
+    "model": "Autovalores de tensor simétrico y cedencia de von Mises.",
+    "hyp": "Tensión plana; material isótropo dúctil compatible con el criterio; pequeñas deformaciones.",
+    "eqs": [
+      "\\sigma_{1,2}=60\\pm\\sqrt{90^2+40^2}\\ \\mathrm{MPa}.",
+      "\\sigma_{VM}=\\sqrt{150^2-150(-30)+(-30)^2+3(40)^2}\\ \\mathrm{MPa}."
+    ],
+    "steps": [
+      "La media es $(150-30)/2=60$ MPa y el radio del círculo de Mohr es $\\sqrt{9700}$ MPa.",
+      "El tercer valor principal es cero por tensión plana; se ordenan los tres si se estudia un criterio tridimensional."
+    ],
+    "results": "$\\sigma_1=158{,}489$, $\\sigma_2=-38{,}489\\,\\mathrm{MPa}$; $\\sigma_{VM}=180{,}831\\,\\mathrm{MPa}$; cociente $1{,}659$.",
+    "check": "La suma de principales del plano es 120 MPa, igual a la traza original; el determinante del bloque también se conserva.",
+    "limits": "El cociente no es un margen frente a grietas ni fatiga. La notación del límite material se distingue de la componente y.",
+    "tests": [
+      {
+        "expression": "60+sqrt(9700)",
+        "expected": 158.48857801796106,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "sqrt(150**2-150*(-30)+(-30)**2+3*40**2)",
+        "expected": 180.83141320025123,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P04",
+    "ch": 2,
+    "title": "Pared delgada: dos direcciones de carga",
+    "prompt": "Un cilindro cerrado idealizado recibe presión interna. Calcule tensiones de membrana y von Mises, explicando por qué no son iguales las tensiones circunferencial y longitudinal.",
+    "datos": "$ p=2{,}0\\,\\mathrm{MPa}$; $ r=50\\,\\mathrm{mm}$; $ t=1{,}0\\,\\mathrm{mm}$.",
+    "unknown": "Tensión circunferencial, axial y equivalente.",
+    "model": "Equilibrio de membrana en cilindro de pared delgada.",
+    "hyp": "Radio medio; presión uniforme; extremos cerrados; sin concentraciones ni flexión local; tensión radial despreciable.",
+    "eqs": [
+      "\\sigma_\\theta=pr/t,\\quad\\sigma_z=pr/(2 t),\\quad\\sigma_{VM}=\\sqrt{\\sigma_\\theta^2-\\sigma_\\theta\\sigma_z+\\sigma_z^2}."
+    ],
+    "steps": [
+      "$ r/t=50$ permite explorar la aproximación de pared delgada, aunque su aceptabilidad depende de la precisión exigida.",
+      "$\\sigma_\\theta=2\\times10^6(0{,}05)/0{,}001$ y $\\sigma_z=\\sigma_\\theta/2$."
+    ],
+    "results": "$\\sigma_\\theta=100\\,\\mathrm{MPa}$; $\\sigma_z=50\\,\\mathrm{MPa}$; $\\sigma_{VM}=86{,}603\\,\\mathrm{MPa}$.",
+    "check": "El equilibrio axial recupera la fuerza de presión sobre el extremo. Si p tiende a cero, las tensiones se anulan.",
+    "limits": "No se evalúan cierres, discontinuidades, ciclos, plasticidad ni un recipiente real.",
+    "tests": [
+      {
+        "expression": "2e6*.05/.001",
+        "expected": 100000000.0,
+        "unit": "Pa",
+        "symbolic": "p*r/t",
+        "symbol_units": {
+          "p": "Pa",
+          "r": "m",
+          "t": "m"
+        }
+      },
+      {
+        "expression": "sqrt(100**2-100*50+50**2)",
+        "expected": 86.60254037844386,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P05",
+    "ch": 2,
+    "title": "Energía elástica almacenada",
+    "prompt": "Una pieza de volumen uniforme se idealiza bajo tensión uniaxial. Determine la energía elástica por volumen y la energía total.",
+    "datos": "$\\sigma=160\\,\\mathrm{MPa}$; $E=80\\,\\mathrm{GPa}$; $V=12\\,\\mathrm{cm^3}$.",
+    "unknown": "Densidad de energía y energía.",
+    "model": "Integración del trabajo en elasticidad lineal.",
+    "hyp": "Carga uniaxial uniforme y reversible; sin energía plástica ni térmica.",
+    "eqs": [
+      "u=\\int_0^{\\varepsilon}E\\eta\\,d\\eta=\\sigma^2/(2 E),\\quad U=u V."
+    ],
+    "steps": [
+      "$V=12\\times10^{-6}\\,\\mathrm{m^3}$; $ u=(160\\times10^6)^2/(2\\cdot80\\times10^9)$."
+    ],
+    "results": "$ u=160\\,000\\,\\mathrm{J/m^3}$; $U=1{,}92\\,\\mathrm J$.",
+    "check": "El área triangular $\\sigma\\varepsilon/2$ coincide con u. Las unidades de presión equivalen a energía por volumen.",
+    "limits": "No representa tenacidad a fractura ni energía total absorbida hasta rotura.",
+    "tests": [
+      {
+        "expression": "(160e6)**2/(2*80e9)",
+        "expected": 160000,
+        "unit": "Pa",
+        "symbolic": "sigma**2/(2*E)",
+        "symbol_units": {
+          "sigma": "Pa",
+          "E": "Pa"
+        }
+      },
+      {
+        "expression": "160000*12e-6",
+        "expected": 1.92,
+        "unit": "J",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P06",
+    "ch": 2,
+    "title": "Sensibilidad a entalla",
+    "prompt": "Una probeta tiene un concentrador elástico y una sensibilidad a entalla especificada para el ejercicio. Compare amplificación elástica y factor efectivo de fatiga.",
+    "datos": "$K_t=2{,}4$; $ q=0{,}70$; amplitud nominal $\\sigma_a=60\\,\\mathrm{MPa}$.",
+    "unknown": "Factor Kf y amplitudes de comparación.",
+    "model": "Modelo empírico de sensibilidad a entalla.",
+    "hyp": "El valor de q es un dato ficticio válido solo para esta situación; la curva de referencia corresponde a material sin ese detalle.",
+    "eqs": [
+      "K_f=1+q(K_t-1),\\quad\\sigma_{a, f}=K_f\\sigma_a,\\quad\\sigma_{a, el}=K_t\\sigma_a."
+    ],
+    "steps": [
+      "$K_f=1+0{,}70(2{,}4-1)=1{,}98$. Se aplican los factores una sola vez."
+    ],
+    "results": "$K_f=1{,}98$; $\\sigma_{a,f}=118{,}8\\,\\mathrm{MPa}$; pico elástico de amplitud $144\\,\\mathrm{MPa}$.",
+    "check": "Con q=0 resulta Kf=1 y con q=1 resulta Kf=Kt; ambos límites se satisfacen.",
+    "limits": "Kf no predice el campo local de plasticidad ni debe aplicarse de nuevo si la curva ya corresponde a la pieza entallada.",
+    "tests": [
+      {
+        "expression": "1+.7*(2.4-1)",
+        "expected": 1.98,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "(1+.7*(2.4-1))*60",
+        "expected": 118.8,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P07",
+    "ch": 3,
+    "title": "Intensidad aplicada a una grieta de borde",
+    "prompt": "Se idealiza una grieta de borde bajo tracción. Compare la intensidad con una tenacidad supuesta aplicable y explique el alcance de la comparación.",
+    "datos": "$ a=1{,}8\\,\\mathrm{mm}$ (longitud desde el borde); $Y=1{,}12$ constante; $\\sigma=210\\,\\mathrm{MPa}$; $K_{IC}=42\\,\\mathrm{MPa\\sqrt m}$.",
+    "unknown": "KI y cociente KI/KIC.",
+    "model": "MFEL de modo I con factor geométrico dado.",
+    "hyp": "Pequeña plastificación y tenacidad de deformación plana asumidas; carga remota; no crecimiento subcrítico.",
+    "eqs": [
+      "K_I=Y\\sigma\\sqrt{\\pi a}."
+    ],
+    "steps": [
+      "$ a=0{,}0018$ m. Se calcula $1{,}12(210)\\sqrt{\\pi(0{,}0018)}$ usando MPa y m."
+    ],
+    "results": "$K_I=17.6868\\,\\mathrm{MPa\\sqrt m}$; $K_I/K_{IC}=0.4211$.",
+    "check": "Elevar al cuadrado permite comprobar $K_I^2/(Y^2\\sigma^2)=\\pi a $. La comparación resulta inferior a uno dentro del modelo.",
+    "limits": "No se han comprobado espesor ni fatiga o corrosión; no es criterio de aceptación en servicio.",
+    "tests": [
+      {
+        "expression": "1.12*210*sqrt(pi*.0018)",
+        "expected": 17.68676910579634,
+        "unit": "MPa*m^0.5",
+        "symbolic": "Y*sigma*sqrt(pi*a)",
+        "symbol_units": {
+          "Y": "dimensionless",
+          "sigma": "Pa",
+          "a": "m"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P08",
+    "ch": 3,
+    "title": "Tamaño crítico y longitud total",
+    "prompt": "Una placa muy ancha contiene una grieta central pasante. Calcule el tamaño crítico y la tensión crítica para un defecto inicial, conservando la definición de semilongitud.",
+    "datos": "$K_{IC}=36\\,\\mathrm{MPa\\sqrt m}$; $\\sigma=240\\,\\mathrm{MPa}$; $Y=1$; longitud total inicial $2a_i=3\\,\\mathrm{mm}$.",
+    "unknown": "$a_c$, $2a_c$ y tensión crítica para $a_i$.",
+    "model": "Criterio estático KI=KIC en MFEL.",
+    "hyp": "Y constante; tenacidad aplicable; carga uniforme y pequeña zona plástica.",
+    "eqs": [
+      "a_c=(K_{IC}/\\sigma)^2/\\pi,\\quad \\sigma_c=K_{IC}/\\sqrt{\\pi a_i}."
+    ],
+    "steps": [
+      "Se usa $ a_i=0{,}0015$ m; no se introduce 0,003 m en la raíz.",
+      "$ a_c=(36/240)^2/\\pi $ m y $\\sigma_c=36/\\sqrt{\\pi(0{,}0015)}$ MPa."
+    ],
+    "results": "$ a_c=7.1620\\,\\mathrm{mm}$; $2a_c=14.3239\\,\\mathrm{mm}$; $\\sigma_c=524.423\\,\\mathrm{MPa}$.",
+    "check": "Sustituir $a_c$ en $K_I$ recupera $36\\,\\mathrm{MPa\\sqrt m}$. Duplicar tensión reduce el tamaño crítico a un cuarto si $Y$ permanece constante.",
+    "limits": "Falta comprobar cedencia, ligamento y espesor; no hay crecimiento por fatiga en esta solución.",
+    "tests": [
+      {
+        "expression": "(36/240)**2/pi",
+        "expected": 0.00716197243913529,
+        "unit": "m",
+        "symbolic": "(K/sigma)**2/pi",
+        "symbol_units": {
+          "K": "Pa*m^0.5",
+          "sigma": "Pa"
+        }
+      },
+      {
+        "expression": "36/sqrt(pi*.0015)",
+        "expected": 524.423246684198,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P09",
+    "ch": 3,
+    "title": "Cribado de deformación plana",
+    "prompt": "Se dispone de un valor candidato de tenacidad y una chapa. Calcule la dimensión de cribado y compruebe si el espesor la satisface.",
+    "datos": "$K=48\\,\\mathrm{MPa\\sqrt m}$; $\\sigma_y=900\\,\\mathrm{MPa}$; $B=5\\,\\mathrm{mm}$.",
+    "unknown": "Dimensión $2{,}5(K/\\sigma_y)^2$ y comparación con espesor.",
+    "model": "Condición dimensional de cribado de validez de tenacidad plana.",
+    "hyp": "Se utiliza como condición necesaria de estudio; no como certificación de ensayo normalizado.",
+    "eqs": [
+      "\\ell_{min}=2{,}5(K/\\sigma_y)^2."
+    ],
+    "steps": [
+      "$\\ell_{min}=2{,}5(48/900)^2=0{,}0071111$ m."
+    ],
+    "results": "$\\ell_{min}=7{,}111\\,\\mathrm{mm}>B=5\\,\\mathrm{mm}$; el espesor no satisface el cribado.",
+    "check": "El cociente tiene unidades de raíz de longitud; su cuadrado es longitud.",
+    "limits": "Faltan condiciones de probeta, ligamento, carga y norma. No se debe denominar KIC válido al valor candidato solo por disponer de él.",
+    "tests": [
+      {
+        "expression": "2.5*(48/900)**2",
+        "expected": 0.007111111111111112,
+        "unit": "m",
+        "symbolic": "2.5*(K/sigma)**2",
+        "symbol_units": {
+          "K": "Pa*m^0.5",
+          "sigma": "Pa"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P10",
+    "ch": 3,
+    "title": "Factor geométrico variable",
+    "prompt": "Una solución idealizada de placa de anchura total W utiliza el factor especificado. Obtenga la semilongitud crítica por resolución implícita y compárela con Y=1.",
+    "datos": "$W=80\\,\\mathrm{mm}$; $\\sigma=180\\,\\mathrm{MPa}$; $K_{IC}=30\\,\\mathrm{MPa\\sqrt m}$; $Y=\\sqrt{\\sec(\\pi a/W)}$; $0<a<W/2$.",
+    "unknown": "Raíz ac y comparación de anchura infinita.",
+    "model": "MFEL con solución geométrica expresamente dada.",
+    "hyp": "Placa central pasante; convención W de anchura total; dominio de Y indicado; pequeña plastificación supuesta.",
+    "eqs": [
+      "180\\sqrt{\\pi a/\\cos(\\pi a/0{,}08)}=30."
+    ],
+    "steps": [
+      "Se busca la raíz en $(0,0{,}04)$ m. La función crece en ese intervalo y diverge en el extremo superior.",
+      "La aproximación Y=1 da $ a_{c,\\infty}=(30/180)^2/\\pi $."
+    ],
+    "results": "$ a_c=8.36874\\,\\mathrm{mm}$; con $Y=1$, $ a_{c,\\infty}=8.84194\\,\\mathrm{mm}$.",
+    "check": "La sustitución de la raíz en la expresión completa recupera 30 MPa raíz de m; el tamaño finito es menor porque Y>1. Se comprueba ac<W/2.",
+    "limits": "No se extrapola esta solución a una grieta de borde, superficie, otro sistema de carga o plasticidad extensa.",
+    "tests": [
+      {
+        "expression": "180*sqrt(pi*0.008368740666446106/cos(pi*0.008368740666446106/.08))",
+        "expected": 30,
+        "unit": "MPa*m^0.5",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P11",
+    "ch": 4,
+    "title": "Carga repetida y Goodman",
+    "prompt": "Una probeta se carga desde cero hasta un máximo positivo. Use el criterio de Goodman dado para hallar el máximo nominal compatible con el límite de la aproximación.",
+    "datos": "$S_e=240\\,\\mathrm{MPa}$; $S_u=800\\,\\mathrm{MPa}$; $R=0$; sin factor de entalla.",
+    "unknown": "Tensión máxima y amplitud.",
+    "model": "Goodman lineal con tensión media de tracción.",
+    "hyp": "Datos ficticios para condiciones compatibles; no plasticidad y no factor de seguridad adicional.",
+    "eqs": [
+      "\\sigma_a=\\sigma_m=\\sigma_{max}/2,\\quad\\sigma_{max}=2/(1/S_e+1/S_u)."
+    ],
+    "steps": [
+      "La condición se plantea en amplitud y media, no introduciendo el máximo en ambos términos.",
+      "$\\sigma_{max}=2/(1/240+1/800)$ MPa."
+    ],
+    "results": "$\\sigma_{max}=369{,}231\\,\\mathrm{MPa}$; $\\sigma_a=\\sigma_m=184{,}615\\,\\mathrm{MPa}$.",
+    "check": "La suma de los dos cocientes de Goodman es 1. Con media nula el criterio recuperaría amplitud Se.",
+    "limits": "No representa vida infinita en corrosión ni una curva específica de pieza; Goodman es aproximación.",
+    "tests": [
+      {
+        "expression": "2/(1/240+1/800)",
+        "expected": 369.2307692307692,
+        "unit": "MPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P12",
+    "ch": 4,
+    "title": "Ajuste de una ley S--N",
+    "prompt": "Dos puntos ficticios de una curva completamente alternante se ajustan por una recta en logaritmos. Obtenga coeficientes y vida interpolada a otra amplitud.",
+    "datos": "$(N_1,\\sigma_{a1})=(10^4,400\\,\\mathrm{MPa})$; $(N_2,\\sigma_{a2})=(10^6,220\\,\\mathrm{MPa})$; amplitud objetivo 280 MPa.",
+    "unknown": "A, b y ciclos.",
+    "model": "Basquin con $\\sigma_a=AN^b$, usando ciclos y no reversiones.",
+    "hyp": "R=-1; misma superficie y temperatura; se interpola dentro del dominio de los dos datos.",
+    "eqs": [
+      "b=\\ln(\\sigma_{a 2}/\\sigma_{a 1})/\\ln(N_2/N_1),\\quad A=\\sigma_{a 1}/N_1^b,\\quad N=(280/A)^{1/b}."
+    ],
+    "steps": [
+      "Se calculan cocientes adimensionales para obtener b y se conserva la convención de ciclos."
+    ],
+    "results": "$ b=-0.129819$; $A=1322.3140\\,\\mathrm{MPa}$; $N=156033.6$ ciclos.",
+    "check": "Sustituir $10^4$ y $10^6$ ciclos recupera 400 y 220 MPa. La vida objetivo queda entre ambas.",
+    "limits": "Dos puntos no describen dispersión ni justifican extrapolar; no se aplica con otra razón R sin corrección.",
+    "tests": [
+      {
+        "expression": "log(220/400)/log(1e6/1e4)",
+        "expected": -0.12981865525287806,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "(280/1322.3140495867767)**(1/-0.12981865525287806)",
+        "expected": 156033.56430776487,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P13",
+    "ch": 4,
+    "title": "Miner con un nivel restante",
+    "prompt": "Un bloque contiene una contribución conocida y otra desconocida. Determine cuántos ciclos del segundo nivel completan el daño lineal unitario.",
+    "datos": "$ n_1=18\\,000$, $N_1=120\\,000$; $N_2=30\\,000$; criterio $D=1$.",
+    "unknown": "Número de ciclos $n_2$.",
+    "model": "Acumulación lineal de Miner.",
+    "hyp": "Niveles de carga definidos por vidas de referencia compatibles; no interacción ni efecto de secuencia.",
+    "eqs": [
+      "n_1/N_1+n_2/N_2=1,\\quad n_2=N_2(1-n_1/N_1)."
+    ],
+    "steps": [
+      "El primer nivel consume $18000/120000=0{,}15$. Queda daño lineal 0,85."
+    ],
+    "results": "$ n_2=25\\,500$ ciclos.",
+    "check": "La suma $0{,}15+25500/30000$ es uno y $n_2<N_2$.",
+    "limits": "La igualdad D=1 no es una fecha determinista de fallo real y no representa el orden de los niveles.",
+    "tests": [
+      {
+        "expression": "30000*(1-18000/120000)",
+        "expected": 25500,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P14",
+    "ch": 4,
+    "title": "Bloques y acumulación",
+    "prompt": "Una misión ficticia repite dos niveles. Calcule daño por misión y número de misiones completas antes del criterio lineal.",
+    "datos": "$ n_1=120$, $N_1=60\\,000$; $ n_2=30$, $N_2=10\\,000$.",
+    "unknown": "Daño y misiones.",
+    "model": "Miner con bloques idénticos.",
+    "hyp": "Datos del mismo modelo de vida; secuencia no representada; sin dispersión.",
+    "eqs": [
+      "D_b=120/60000+30/10000,\\quad B=1/D_b."
+    ],
+    "steps": [
+      "Se suma la contribución de cada nivel; no se promedian directamente las dos vidas."
+    ],
+    "results": "$D_b=0{,}005$; $B=200$ misiones al criterio. Tras 199, $D=0{,}995$.",
+    "check": "Multiplicar 200 por 0,005 recupera 1. La suma de fracciones es adimensional.",
+    "limits": "El umbral académico no implica autorización para volar 199 misiones; faltan márgenes y validación física.",
+    "tests": [
+      {
+        "expression": "120/60000+30/10000",
+        "expected": 0.005,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "1/(120/60000+30/10000)",
+        "expected": 200,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P15",
+    "ch": 4,
+    "title": "K máximo y rango de intensidad",
+    "prompt": "Se idealiza una grieta sometida a carga cíclica de tracción. Calcule las intensidades y distinga las comprobaciones de crecimiento e inestabilidad.",
+    "datos": "$ a=2{,}5\\,\\mathrm{mm}$; $Y=1{,}1$; $\\sigma_{max}=200$ y $\\sigma_{min}=40\\,\\mathrm{MPa}$; $K_{IC}=35\\,\\mathrm{MPa\\sqrt m}$.",
+    "unknown": "$K_{max}$, $K_{min}$, $\\Delta K$ y $R$.",
+    "model": "MFEL lineal sin cierre de grieta.",
+    "hyp": "Ambos extremos de carga en tracción; Y y a constantes durante el ciclo; tenacidad supuesta aplicable.",
+    "eqs": [
+      "K_{max, min}=Y\\sigma_{max, min}\\sqrt{\\pi a},\\quad\\Delta K=Y(\\sigma_{max}-\\sigma_{min})\\sqrt{\\pi a}."
+    ],
+    "steps": [
+      "El rango de tensión es 160 MPa y la amplitud 80 MPa. Se usa el rango para Delta K."
+    ],
+    "results": "$K_{max}=19.4970$; $K_{min}=3.8994$; $\\Delta K=15.5976\\,\\mathrm{MPa\\sqrt m}$; $R=0{,}20$.",
+    "check": "$K_{min}/K_{max}=R$ y $K_{max}-K_{min}=\\Delta K$. La intensidad máxima queda por debajo de la tenacidad supuesta en el modelo.",
+    "limits": "Un $\\Delta K$ positivo no garantiza validez de Paris: se necesita dominio de crecimiento, umbral, razón de carga y condiciones. La comparación estática no excluye propagación.",
+    "tests": [
+      {
+        "expression": "1.1*200*sqrt(pi*.0025)",
+        "expected": 19.49699235996068,
+        "unit": "MPa*m^0.5",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "1.1*160*sqrt(pi*.0025)",
+        "expected": 15.597593887968541,
+        "unit": "MPa*m^0.5",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P16",
+    "ch": 4,
+    "title": "Vida de propagación: Paris m=3",
+    "prompt": "Una grieta central idealizada crece en la región de Paris. Calcule ciclos entre dos semilongitudes. El objetivo es vida de propagación, no vida total desde material sin defecto.",
+    "datos": "$ a_i=1{,}0\\,\\mathrm{mm}$; $ a_f=6{,}0\\,\\mathrm{mm}$; $Y=1$; $\\Delta\\sigma=110\\,\\mathrm{MPa}$; $ m=3$; $C=2\\times10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3$.",
+    "unknown": "Ciclos N.",
+    "model": "Paris con rango constante y Yconstante.",
+    "hyp": "Grieta larga; región intermedia válida durante todo el intervalo supuesto; sin cierre, retardos ni iniciación. El estado final se supone admisible por un criterio independiente.",
+    "eqs": [
+      "N=\\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\\Delta\\sigma\\sqrt\\pi)^3}."
+    ],
+    "steps": [
+      "Se usa metros para a y MPa para tensión porque esa es la calibración de C.",
+      "$N=2(0{,}001^{-1/2}-0{,}006^{-1/2})/[2\\times10^{-12}(110\\sqrt\\pi)^3]$."
+    ],
+    "results": "$N=2524856.2$ ciclos de propagación.",
+    "check": "La derivada de la primitiva reproduce $a^{-3/2}$; una cuadratura numérica independiente se registra en el informe. N crece al reducir el rango de tensión.",
+    "limits": "No se ha comprobado Kmax contra tenacidad ni POD de la inspección; no es intervalo autorizado.",
+    "tests": [
+      {
+        "expression": "2*(.001**(-.5)-.006**(-.5))/(2e-12*(110*sqrt(pi))**3)",
+        "expected": 2524856.248101544,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P17",
+    "ch": 4,
+    "title": "Paris m=2: el caso logarítmico",
+    "prompt": "Calcule vida entre dos tamaños para una ley de Paris con exponente 2 y explique por qué no se usa la expresión de potencia con denominador 1-m/2.",
+    "datos": "$ a_i=0{,}8\\,\\mathrm{mm}$; $ a_f=5\\,\\mathrm{mm}$; $Y=1$; $\\Delta\\sigma=90\\,\\mathrm{MPa}$; $ m=2$; $C=5\\times10^{-10}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^2$.",
+    "unknown": "N.",
+    "model": "Integración de da/[C(Delta K)^2].",
+    "hyp": "Región de Paris y condiciones constantes asumidas; mismos límites físicos que P16.",
+    "eqs": [
+      "N=\\frac{\\ln(a_f/a_i)}{C(\\Delta\\sigma\\sqrt\\pi)^2}."
+    ],
+    "steps": [
+      "El integrando contiene 1/a; su integral es logaritmo. El cociente entre tamaños es adimensional."
+    ],
+    "results": "$N=144031.8$ ciclos.",
+    "check": "La cuadratura del integrando coincide con el logaritmo. Si los tamaños final e inicial coinciden, el logaritmo y la vida de propagación son cero.",
+    "limits": "Los coeficientes no se reutilizan para otro exponente o sistema de unidades.",
+    "tests": [
+      {
+        "expression": "log(.005/.0008)/(5e-10*(90*sqrt(pi))**2)",
+        "expected": 144031.80176499978,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P18",
+    "ch": 4,
+    "title": "Un intervalo de inspección académico",
+    "prompt": "Una grieta detectable idealizada crece hasta un tamaño final previamente fijado. Estime vida de propagación y un intervalo académico del 40\\% de esa vida.",
+    "datos": "$ a_i=0{,}7\\,\\mathrm{mm}$; $ a_f=4\\,\\mathrm{mm}$; $Y=1$; $\\Delta\\sigma=100\\,\\mathrm{MPa}$; $C=1{,}5\\times10^{-12}\\,\\mathrm{m/ciclo}/(\\mathrm{MPa\\sqrt m})^3$; $ m=3$.",
+    "unknown": "Vida de propagación e intervalo académico.",
+    "model": "Paris y fracción de vida expresamente impuesta por el ejercicio.",
+    "hyp": "Región de Paris supuesta; tamaño inicial no representa una POD validada; el factor 0,4 no es reglamentario.",
+    "eqs": [
+      "N=2(a_i^{-1/2}-a_f^{-1/2})/[C(\\Delta\\sigma\\sqrt\\pi)^3],\\quad I=0{,}4 N."
+    ],
+    "steps": [
+      "Se convierten semilongitudes a metros y se integra antes de aplicar la fracción. Se redondea hacia abajo si se necesita un número entero de ciclos."
+    ],
+    "results": "$N=5264311.3$ ciclos; $I=2105724.5$ ciclos, o 2105724 ciclos enteros redondeados hacia abajo.",
+    "check": "La fracción del intervalo respecto a la vida calculada es 0,4. Una integración numérica independiente contrasta la vida.",
+    "limits": "No se define un intervalo real sin espectro, tenacidad, probabilidad de detección, dispersión y aprobación aplicable.",
+    "tests": [
+      {
+        "expression": "2*(.0007**(-.5)-.004**(-.5))/(1.5e-12*(100*sqrt(pi))**3)",
+        "expected": 5264311.300768677,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P19",
+    "ch": 5,
+    "title": "Sensibilidad a tensión de fluencia",
+    "prompt": "A temperatura constante, una ley normalizada de Norton predice la tasa secundaria. Obtenga la tasa y la deformación acumulada durante una permanencia.",
+    "datos": "$\\dot\\varepsilon_1=2\\times10^{-8}\\,\\mathrm{s^{-1}}$ a $\\sigma_1=200\\,\\mathrm{MPa}$; $ n=5$; $\\sigma_2=240\\,\\mathrm{MPa}$; permanencia 20 h.",
+    "unknown": "Tasa 2 e incremento de deformación.",
+    "model": "Norton a temperatura fija en un mecanismo dado.",
+    "hyp": "Misma microestructura y régimen; solo tramo secundario; tensión constante durante 20 h.",
+    "eqs": [
+      "\\dot\\varepsilon_2=\\dot\\varepsilon_1(\\sigma_2/\\sigma_1)^n,\\quad\\Delta\\varepsilon=\\dot\\varepsilon_2 t."
+    ],
+    "steps": [
+      "La razón es $(240/200)^5=2{,}48832$. Las 20 h equivalen a 72000 s."
+    ],
+    "results": "$\\dot\\varepsilon_2=4{,}97664\\times10^{-8}\\,\\mathrm{s^{-1}}$; $\\Delta\\varepsilon=0{,}00358318$ (0,3583\\%).",
+    "check": "La razón es adimensional; tasa por tiempo da deformación. Al igualar tensiones se recupera la tasa inicial.",
+    "limits": "No incluye fluencia primaria/terciaria, temperatura variable ni tiempo a rotura.",
+    "tests": [
+      {
+        "expression": "2e-8*(240/200)**5",
+        "expected": 4.97664e-08,
+        "unit": "1/s",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "2e-8*(240/200)**5*20*3600",
+        "expected": 0.0035831808,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P20",
+    "ch": 5,
+    "title": "Sensibilidad conjunta a tensión y temperatura",
+    "prompt": "Una ley de Norton--Arrhenius se expresa por cociente respecto a un estado de referencia. Calcule la tasa al cambiar tensión y temperatura.",
+    "datos": "$\\dot\\varepsilon_1=10^{-8}\\,\\mathrm{s^{-1}}$; $T_1=930\\,\\mathrm K$, $T_2=980\\,\\mathrm K$; $\\sigma_1=180$, $\\sigma_2=200\\,\\mathrm{MPa}$; $ n=4$; $Q=220\\,\\mathrm{kJ/mol}$.",
+    "unknown": "Razón de tasas y tasa 2.",
+    "model": "Activación térmica con un único mecanismo.",
+    "hyp": "Mismos Q y n y estado; constantes con unidades coherentes; temperatura absoluta.",
+    "eqs": [
+      "\\dot\\varepsilon_2/\\dot\\varepsilon_1=(200/180)^4\\exp[-220000/R(1/980-1/930)]."
+    ],
+    "steps": [
+      "El incremento térmico hace positivo el exponente completo. Se usa $R=8{,}314462618\\,\\mathrm{J/(mol\\,K)}$."
+    ],
+    "results": "Factor térmico 4.26998; razón total 6.50812; $\\dot\\varepsilon_2=6.508119\\times10^{-8}\\,\\mathrm{s^{-1}}$.",
+    "check": "La tasa aumenta por ambos cambios. El exponente es adimensional y la temperatura no se introduce en grados Celsius.",
+    "limits": "No se extrapola a una transición de mecanismo ni se deduce tiempo a rotura de una tasa aislada.",
+    "tests": [
+      {
+        "expression": "exp(-220000/8.314462618*(1/980-1/930))*(200/180)**4",
+        "expected": 6.508118993068202,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P21",
+    "ch": 5,
+    "title": "Larson--Miller a tensión fija",
+    "prompt": "Una correlación ficticia de rotura se considera válida en dos temperaturas a igual tensión. Estime el tiempo equivalente y compruebe el parámetro.",
+    "datos": "$T_1=900\\,\\mathrm K$; $ t_1=10000\\,\\mathrm h $; $T_2=950\\,\\mathrm K$; $C_{LM}=20$, calibrado con horas.",
+    "unknown": "Tiempo $t_2$ y parámetro $P$.",
+    "model": "Igualdad del parámetro Larson--Miller a tensión fija.",
+    "hyp": "Mismo material, estado, mecanismo y tensión; correlación supuesta válida.",
+    "eqs": [
+      "P=T_1(C_{LM}+\\log_{10}t_1),\\quad \\log_{10}t_2=P/T_2-C_{LM}."
+    ],
+    "steps": [
+      "$P=900(20+4)=21600$ K. Después,$\\log_{10}t_2=21600/950-20$."
+    ],
+    "results": "$ t_2=545.5595\\,\\mathrm h $; $P=21600\\,\\mathrm K$.",
+    "check": "Sustituir t 2 con horas recupera P. A mayor temperatura, menor tiempo equivalente en el ajuste.",
+    "limits": "No cambiar horas por segundos conservando C; no es una extensión de vida de un componente real.",
+    "tests": [
+      {
+        "expression": "10**(21600/950-20)",
+        "expected": 545.5594781168514,
+        "unit": "h",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P22",
+    "ch": 5,
+    "title": "Elasticidad inicial y deformación de fluencia",
+    "prompt": "Una barra puede alcanzar una deformación total máxima ficticia. Separe la contribución elástica inicial y el tiempo para agotar el margen por fluencia secundaria.",
+    "datos": "$\\sigma=100\\,\\mathrm{MPa}$; $E=200\\,\\mathrm{GPa}$; $\\varepsilon_{lim}=0{,}0012$; $\\dot\\varepsilon_s=2\\times10^{-8}\\,\\mathrm{s^{-1}}$ a la temperatura fija del ensayo a 900 K.",
+    "unknown": "Deformación elástica, margen y tiempo.",
+    "model": "Suma de elasticidad lineal y fluencia secundaria constante.",
+    "hyp": "Carga y temperatura constantes; no primaria/terciaria; la tasa se asume válida durante todo el intervalo.",
+    "eqs": [
+      "\\varepsilon_e=\\sigma/E,\\quad t=(\\varepsilon_{lim}-\\varepsilon_e)/\\dot\\varepsilon_s."
+    ],
+    "steps": [
+      "$\\varepsilon_e=100\\times10^6/(200\\times10^9)=0{,}0005$. Queda deformación 0,0007."
+    ],
+    "results": "$ t=35000\\,\\mathrm s=9.72222\\,\\mathrm h $.",
+    "check": "Al sumar las contribuciones elástica y de fluencia se recupera la deformación límite. La diferencia debe ser positiva antes de dividir.",
+    "limits": "Si el límite fuera menor que la deformación inicial, no existiría un tiempo positivo disponible. No se predice rotura.",
+    "tests": [
+      {
+        "expression": "(0.0012-100e6/200e9)/(2e-8)",
+        "expected": 35000,
+        "unit": "s",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P23",
+    "ch": 9,
+    "title": "Módulo longitudinal y masa de un compuesto",
+    "prompt": "Una lámina unidireccional ideal tiene unión perfecta y fibras continuas. Calcule módulo longitudinal, densidad y módulo específico.",
+    "datos": "$V_f=0{,}58$; $E_f=240$, $E_m=3{,}5\\,\\mathrm{GPa}$; $\\rho_f=1800$, $\\rho_m=1200\\,\\mathrm{kg/m^3}$.",
+    "unknown": "$E_L$, $\\rho$ y $E_L/\\rho$.",
+    "model": "Regla de mezcla longitudinal y densidad sin vacíos.",
+    "hyp": "Isodeformación longitudinal; fases lineales; sin porosidad; no se calcula resistencia a rotura.",
+    "eqs": [
+      "E_L=V_f E_f+(1-V_f)E_m,\\quad\\rho=V_f\\rho_f+(1-V_f)\\rho_m."
+    ],
+    "steps": [
+      "$E_L=0{,}58(240)+0{,}42(3{,}5)$ GPa y $\\rho=0{,}58(1800)+0{,}42(1200)$."
+    ],
+    "results": "$E_L=140.670\\,\\mathrm{GPa}$; $\\rho=1548.0\\,\\mathrm{kg/m^3}$; $E_L/\\rho=9.08721\\times10^{7}\\,\\mathrm{m^2/s^2}$.",
+    "check": "Ambas propiedades quedan entre las de las fases. Con fracción de fibra cero se recuperan propiedades de matriz.",
+    "limits": "El cociente no predice por sí solo rigidez de un panel ni otros modos de carga; no se atribuye a producto real.",
+    "tests": [
+      {
+        "expression": ".58*240+.42*3.5",
+        "expected": 140.67,
+        "unit": "GPa",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": ".58*1800+.42*1200",
+        "expected": 1548.0,
+        "unit": "kg/m^3",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P24",
+    "ch": 9,
+    "title": "Modelo transversal en serie",
+    "prompt": "Con las fases del problema P23, evalúe la idealización de igual tensión y explique por qué no debe presentarse como módulo transversal exacto de cualquier lámina.",
+    "datos": "$V_f=0{,}58$; $E_f=240$ y $E_m=3{,}5\\,\\mathrm{GPa}$.",
+    "unknown": "$E_T$ en la idealización.",
+    "model": "Acoplamiento en serie con igual tensión.",
+    "hyp": "Geometría idealizada; elasticidad de fases; se ignoran campos no uniformes e interfaces reales.",
+    "eqs": [
+      "1/E_T=V_f/E_f+(1-V_f)/E_m."
+    ],
+    "steps": [
+      "$E_T=1/[0{,}58/240+0{,}42/3{,}5]$ GPa."
+    ],
+    "results": "$E_T=8.16882\\,\\mathrm{GPa}$; cociente $E_L/E_T=17.220$.",
+    "check": "La rigidez transversal idealizada es muy inferior a la longitudinal y permanece entre los módulos de las fases.",
+    "limits": "La aproximación de serie puede ser poco representativa; se requieren modelos o ensayos para una lámina real.",
+    "tests": [
+      {
+        "expression": "1/(.58/240+.42/3.5)",
+        "expected": 8.168822328114365,
+        "unit": "GPa",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P25",
+    "ch": 9,
+    "title": "Rigidez ideal de un sándwich",
+    "prompt": "Compare dos caras separadas con una placa monolítica que tiene la misma cantidad de material de cara por longitud. Ignore masa y rigidez longitudinal del núcleo, pero declare las limitaciones.",
+    "datos": "$E=70\\,\\mathrm{GPa}$; ancho $ b=40\\,\\mathrm{mm}$; espesor de cada cara $ t=1\\,\\mathrm{mm}$; distancia entre centroides $ h=30\\,\\mathrm{mm}$.",
+    "unknown": "EI y comparación con placa de espesor 2 t.",
+    "model": "Flexión lineal de sección compuesta y teorema de ejes paralelos.",
+    "hyp": "Unión perfecta; núcleo mantiene separación; se ignora cortadura del núcleo, inestabilidad y masa del mismo.",
+    "eqs": [
+      "EI=2 E[bt^3/12+bt(h/2)^2],\\quad EI_0=Eb(2 t)^3/12."
+    ],
+    "steps": [
+      "Se calcula la inercia local de cada cara y la debida a su separación; no se usa h como espesor macizo."
+    ],
+    "results": "$EI=1260.4667\\,\\mathrm{N\\,m^2}$; $EI_0=1.86667\\,\\mathrm{N\\,m^2}$; razón 675.25.",
+    "check": "Ambas expresiones tienen unidades de rigidez a flexión. Si h=t, las caras contiguas recuperan la inercia de espesor 2 t.",
+    "limits": "No se comprueban cortadura, aplastamiento, arrugamiento ni despegue. La comparación de masa excluye explícitamente el núcleo.",
+    "tests": [
+      {
+        "expression": "2*70e9*.04*.001*(.03**2/4+.001**2/12)",
+        "expected": 1260.4666666666667,
+        "unit": "N*m^2",
+        "symbolic": "E*b*t*(h**2/2+t**2/6)",
+        "symbol_units": {
+          "E": "Pa",
+          "b": "m",
+          "t": "m",
+          "h": "m"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P26",
+    "ch": 6,
+    "title": "Oxidación parabólica",
+    "prompt": "Una correlación de espesor de óxido se considera válida a temperatura fija. Calcule espesor y tiempo para alcanzar el doble.",
+    "datos": "$ x_0=0$; $ k_p=3\\times10^{-16}\\,\\mathrm{m^2/s}$; $ t=250\\,\\mathrm h $.",
+    "unknown": "x y tiempo para 2 x.",
+    "model": "Crecimiento parabólico isotermo x\\(^{2}\\)=kp t.",
+    "hyp": "Mismo mecanismo y ambiente; no desprendimiento; x es espesor de óxido, no pérdida de metal.",
+    "eqs": [
+      "x=\\sqrt{k_pt},\\quad t(2 x)=4 t(x)."
+    ],
+    "steps": [
+      "$ t=900000$ s. Se calcula la raíz después de convertir tiempo."
+    ],
+    "results": "$ x=16.43168\\,\\mu\\mathrm m $; doble espesor a 1000 h.",
+    "check": "$x^2/t$ recupera $k_p$. El tiempo crece con el cuadrado del espesor en esta ley.",
+    "limits": "Faltan datos para convertir espesor en pérdida de sustrato o vida de protección.",
+    "tests": [
+      {
+        "expression": "sqrt(3e-16*250*3600)",
+        "expected": 1.6431676725154984e-05,
+        "unit": "m",
+        "symbolic": "sqrt(k*t)",
+        "symbol_units": {
+          "k": "m^2/s",
+          "t": "s"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P27",
+    "ch": 11,
+    "title": "Ultrasonidos y tiempo de ida y vuelta",
+    "prompt": "En un modelo pulso-eco, la señal de un reflector vuelve tras el tiempo medido. Calcule profundidad y explique el factor 2.",
+    "datos": "$ v=5900\\,\\mathrm{m/s}$; retraso relativo $ t=8{,}0\\,\\mu\\mathrm s $.",
+    "unknown": "Profundidad d.",
+    "model": "Propagación recta y velocidad constante.",
+    "hyp": "Se descontó tiempo de acoplamiento; haz normal; trayectoria de ida y vuelta; material homogéneo.",
+    "eqs": [
+      "d=vt/2."
+    ],
+    "steps": [
+      "$ d=5900(8\\times10^{-6})/2$. La señal recorre dos veces la profundidad."
+    ],
+    "results": "$ d=23{,}6\\,\\mathrm{mm}$.",
+    "check": "El recorrido total de 47,2 mm dividido por 5900 m/s recupera 8 microsegundos.",
+    "limits": "No proporciona tamaño del defecto ni la probabilidad de detección; refracción, geometría y estructura pueden alterar la trayectoria.",
+    "tests": [
+      {
+        "expression": "5900*8e-6/2",
+        "expected": 0.0236,
+        "unit": "m",
+        "symbolic": "v*t/2",
+        "symbol_units": {
+          "v": "m/s",
+          "t": "s"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P28",
+    "ch": 11,
+    "title": "Profundidad pelicular",
+    "prompt": "Estime profundidad de atenuación electromagnética en un conductor ideal y su cambio al cuadruplicar frecuencia.",
+    "datos": "$ f=100\\,\\mathrm{kHz}$; $\\mu=4\\pi\\times10^{-7}\\,\\mathrm{H/m}$; $\\sigma_e=35\\times10^6\\,\\mathrm{S/m}$.",
+    "unknown": "Delta y su valor a la frecuencia nueva.",
+    "model": "Profundidad pelicular de conductor homogéneo.",
+    "hyp": "Conductividad y permeabilidad constantes; geometría ideal; no se modeliza una sonda real.",
+    "eqs": [
+      "\\delta=1/\\sqrt{\\pi f\\mu\\sigma_e},\\quad\\delta(4 f)=\\delta(f)/2."
+    ],
+    "steps": [
+      "Se usan 100000 Hz. La conductividad eléctrica se distingue de tensión mecánica."
+    ],
+    "results": "$\\delta=0.26902\\,\\mathrm{mm}$; a 400 k Hz, $\\delta=0.13451\\,\\mathrm{mm}$.",
+    "check": "La ley de escala $f^{-1/2}$ ofrece una comprobación independiente.",
+    "limits": "La profundidad de atenuación no es profundidad máxima garantizada de detección ni tamaño mínimo de grieta.",
+    "tests": [
+      {
+        "expression": "1/sqrt(pi*100e3*(4*pi*1e-7)*35e6)",
+        "expected": 0.0002690209546303806,
+        "unit": "m",
+        "symbolic": "1/sqrt(pi*f*mu*sigmae)",
+        "symbol_units": {
+          "f": "Hz",
+          "mu": "H/m",
+          "sigmae": "S/m"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P29",
+    "ch": 24,
+    "title": "Tasa de eventos y modelo exponencial",
+    "prompt": "Una flota ficticia acumula exposición y eventos definidos. Estime tasa y fiabilidad de 100 horas bajo un modelo explícito.",
+    "datos": "$ n=5$ eventos; $T=25000\\,\\mathrm h $; horizonte $ t=100\\,\\mathrm h $.",
+    "unknown": "$\\lambda$, MTBF y $R(100)$.",
+    "model": "Poisson para eventos y supervivencia exponencial de tasa constante como hipótesis.",
+    "hyp": "Eventos comparables; exposición conocida; modelo homogéneo; no se da intervalo de confianza en este caso.",
+    "eqs": [
+      "\\widehat\\lambda=n/T,\\quad MTBF=1/\\widehat\\lambda,\\quad R(t)=e^{-\\widehat\\lambda t}."
+    ],
+    "steps": [
+      "$\\widehat\\lambda=5/25000$ h\\(^{-1}\\); se mantiene el horizonte en horas."
+    ],
+    "results": "$\\widehat\\lambda=2\\times10^{-4}\\,\\mathrm{h^{-1}}$; $MTBF=5000\\,\\mathrm h $; $R(100)=0.9801987$.",
+    "check": "El exponente es adimensional. R(0)=1 y decrece con t para tasa positiva.",
+    "limits": "Una tasa observada no prueba la ley exponencial ni fija un límite de vida.",
+    "tests": [
+      {
+        "expression": "exp(-(5/25000)*100)",
+        "expected": 0.9801986733067553,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P30",
+    "ch": 12,
+    "title": "Disponibilidad y espera logística",
+    "prompt": "Compare disponibilidad del modelo que solo cuenta reparación activa con la de otro que incluye una espera media por evento.",
+    "datos": "$MTBF=600\\,\\mathrm h $; reparación activa 3 h; espera adicional 12 h.",
+    "unknown": "Dos cocientes de disponibilidad.",
+    "model": "Modelo estacionario simple de ciclos funcionamiento--restauración.",
+    "hyp": "Tiempos medios representativos; no incluye mantenimiento programado ni otras paradas.",
+    "eqs": [
+      "A_i=600/(600+3),\\quad A_{ext}=600/(600+3+12)."
+    ],
+    "steps": [
+      "La segunda razón tiene otro alcance de tiempo; no se etiqueta como disponibilidad operacional completa."
+    ],
+    "results": "$A_i=0.9950249$; $A_{ext}=0.9756098$.",
+    "check": "Añadir espera disminuye disponibilidad. Ambos cocientes están entre cero y uno.",
+    "limits": "No se comparan directamente cifras si sus definiciones de parada difieren.",
+    "tests": [
+      {
+        "expression": "600/(600+3)",
+        "expected": 0.9950248756218906,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      },
+      {
+        "expression": "600/(600+3+12)",
+        "expected": 0.975609756097561,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P31",
+    "ch": 24,
+    "title": "Supervivencia condicional Weibull",
+    "prompt": "Una vida ficticia sigue Weibull. Determine la probabilidad de sobrevivir 200 horas más, si ya se han alcanzado 500 sin fallo.",
+    "datos": "$\\beta=2$; $\\eta=1000\\,\\mathrm h $; $ t_0=500\\,\\mathrm h $; $\\Delta t=200\\,\\mathrm h $.",
+    "unknown": "$R(t_0+\\Delta t)/R(t_0)$.",
+    "model": "Distribución Weibull de dos parámetros.",
+    "hyp": "Modelo y población supuestos conocidos; no actualiza parámetros por observar una sola unidad.",
+    "eqs": [
+      "P(T>t_0+\\Delta t\\mid T>t_0)=\\exp[-((t_0+\\Delta t)/\\eta)^\\beta+(t_0/\\eta)^\\beta]."
+    ],
+    "steps": [
+      "La probabilidad condicional usa 700 y 500 horas; no solo R(200)."
+    ],
+    "results": "Probabilidad condicional 0.7866279; $R(200)=0.9607894$, que no coincide.",
+    "check": "Con beta igual a uno, la diferencia de exponentes depende solo del incremento y reaparece la propiedad sin memoria.",
+    "limits": "La ley Weibull no describe automáticamente un mecanismo de daño y requiere ajuste con datos y censura correctos.",
+    "tests": [
+      {
+        "expression": "exp(-((700/1000)**2-(500/1000)**2))",
+        "expected": 0.7866278610665535,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P32",
+    "ch": 24,
+    "title": "Cero fallos no significa tasa cero",
+    "prompt": "En un modelo de Poisson se observan cero eventos. Obtenga el límite superior unilateral del 95\\% para la tasa.",
+    "datos": "Exposición $T=15000\\,\\mathrm h $; $ n=0$; nivel 0,95.",
+    "unknown": "Límite superior $\\lambda_U$.",
+    "model": "P(N=0)=exp(-lambda T).",
+    "hyp": "Modelo de Poisson homogéneo; observación completa y definición de evento constante.",
+    "eqs": [
+      "e^{-\\lambda_U T}=0{,}05,\\quad\\lambda_U=-\\ln(0{,}05)/T."
+    ],
+    "steps": [
+      "Se despeja el logaritmo natural y se conserva la exposición en horas."
+    ],
+    "results": "$\\lambda_U=0.0001997155\\,\\mathrm{h^{-1}}$.",
+    "check": "Sustituir el límite en la probabilidad de cero eventos devuelve 0,05.",
+    "limits": "Es un límite estadístico bajo el modelo, no garantía individual ni certificación de seguridad.",
+    "tests": [
+      {
+        "expression": "-log(.05)/15000",
+        "expected": 0.0001997154849035994,
+        "unit": "1/h",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P33",
+    "ch": 22,
+    "title": "Frecuencia y orden de vibración",
+    "prompt": "Un pico de frecuencia se observa junto a una velocidad de rotor. Calcule la orden cinemática y explique qué conclusión no permite.",
+    "datos": "$N=9600\\,\\mathrm{rpm}$; pico $ f=480\\,\\mathrm{Hz}$.",
+    "unknown": "Frecuencia de giro y orden.",
+    "model": "Relación frecuencia--rotación.",
+    "hyp": "Velocidad uniforme y referencia de rotor correcta; no se diagnostica el mecanismo.",
+    "eqs": [
+      "f_{rot}=N/60,\\quad o=f/f_{rot}."
+    ],
+    "steps": [
+      "$ f_{rot}=9600/60=160$ Hz; $ o=480/160$."
+    ],
+    "results": "Frecuencia de giro de 160 Hz; orden 3.",
+    "check": "Multiplicar orden por frecuencia de giro recupera 480 Hz.",
+    "limits": "No determina desequilibrio, desalineación ni límite de amplitud.",
+    "tests": [
+      {
+        "expression": "480/(9600/60)",
+        "expected": 3,
+        "unit": "dimensionless",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  },
+  {
+    "key": "P34",
+    "ch": 1,
+    "title": "Masa con restricción resistente",
+    "prompt": "Compare masas ideales de dos barras que deben transmitir la misma fuerza. La geometría se adapta al mismo criterio resistente ficticio.",
+    "datos": "$F=40\\,\\mathrm{kN}$; $L=0{,}50\\,\\mathrm m $; A:$\\rho=2800\\,\\mathrm{kg/m^3}$,$\\sigma_{adm}=300\\,\\mathrm{MPa}$; B:4500 kg/m\\(^{3}\\) y 650 MPa.",
+    "unknown": "Secciones y masas mínimas del modelo.",
+    "model": "Barra traccionada limitada por tensión admisible.",
+    "hyp": "Longitud y carga iguales; se puede elegir libremente área; no hay restricción de rigidez, unión ni temperatura.",
+    "eqs": [
+      "A_{min}=F/\\sigma_{adm},\\quad m_{min}=\\rho FL/\\sigma_{adm}."
+    ],
+    "steps": [
+      "Se calcula una sección diferente para cada material, no se comparan densidades con la misma sección."
+    ],
+    "results": "$A_A=133{,}333\\,\\mathrm{mm^2}$, $A_B=61{,}538\\,\\mathrm{mm^2}$; $ m_A=0.18667\\,\\mathrm{kg}$, $ m_B=0.13846\\,\\mathrm{kg}$.",
+    "check": "Las tensiones de cada sección recuperan el admisible. El material más denso produce menor masa en este problema.",
+    "limits": "La conclusión cambia si gobierna rigidez, estabilidad, fabricación o daño.",
+    "tests": [
+      {
+        "expression": "40000*.5*2800/300e6",
+        "expected": 0.18666666666666668,
+        "unit": "kg",
+        "symbolic": "rho*F*L/sigma",
+        "symbol_units": {
+          "rho": "kg/m^3",
+          "F": "N",
+          "L": "m",
+          "sigma": "Pa"
+        }
+      }
+    ]
+  },
+  {
+    "key": "P35",
+    "ch": 10,
+    "title": "Barrera térmica: modelo unidimensional",
+    "prompt": "Una pared plana ficticia combina convección, recubrimiento y metal. Calcule flujo térmico y temperatura en la interfaz recubrimiento--metal.",
+    "datos": "$T_g=1400$, $T_c=700\\,\\mathrm K$; $ h_g=1000$, $ h_c=3000\\,\\mathrm{W/(m^2K)}$; recubrimiento $\\delta_r=0{,}3\\,\\mathrm{mm}$, $ k_r=1{,}5\\,\\mathrm{W/(mK)}$; metal $\\delta_m=2\\,\\mathrm{mm}$, $ k_m=20\\,\\mathrm{W/(mK)}$.",
+    "unknown": "Flujo por área y temperatura de interfaz.",
+    "model": "Resistencias térmicas en serie.",
+    "hyp": "Estacionario 1 D; propiedades constantes; sin radiación, generación, contacto ni geometría real de álabe.",
+    "eqs": [
+      "q^{\\prime\\prime}=(T_g-T_c)/(1/h_g+\\delta_r/k_r+\\delta_m/k_m+1/h_c),",
+      "T_{r-m}=T_g-q^{\\prime\\prime}/h_g-q^{\\prime\\prime}\\delta_r/k_r."
+    ],
+    "steps": [
+      "La resistencia por unidad de área es 0,001633333 metros cuadrados kelvin por vatio. Se calcula el mismo flujo en cada capa."
+    ],
+    "results": "$ q^{\\prime\\prime}=428571.429\\,\\mathrm{W/m^2}$; $T_{r-m}=885.714\\,\\mathrm K$.",
+    "check": "La suma de caídas térmicas es 700 K; la interfaz queda entre las temperaturas de los fluidos.",
+    "limits": "No se atribuye esta temperatura a un motor real ni se predice vida del recubrimiento.",
+    "tests": [
+      {
+        "expression": "700/(1/1000+.0003/1.5+.002/20+1/3000)",
+        "expected": 428571.4285714285,
+        "unit": "W/m^2",
+        "symbolic": null,
+        "symbol_units": null
+      }
+    ]
+  }
+]

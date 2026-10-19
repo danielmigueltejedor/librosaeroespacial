@@ -1,0 +1,34 @@
+\chapter{Comportamiento mecánico y estados tensionales}\label{ch:02}
+\objetivos{Distinguir magnitudes nominales y verdaderas, manejar el tensor de tensiones y seleccionar una idealización constitutiva compatible con el ensayo.}
+\section{Del ensayo a la curva}
+En un ensayo uniaxial, la fuerza se transforma en tensión ingenieril mediante el área inicial, $s=F/A_0$, y la elongación en deformación ingenieril mediante $e=(L-L_0)/L_0$. La curva reúne respuesta elástica, posible cedencia, endurecimiento y eventual estricción. El máximo de tensión ingenieril es la resistencia a tracción; no debe confundirse con el inicio de la plasticidad ni con la tensión local de rotura.
+
+Si la deformación es uniforme y se aproxima el volumen como constante durante la plasticidad, $AL=A_0L_0$. De ahí se obtiene la tensión verdadera $\sigma=F/A=s(1+e)$ y la deformación logarítmica $\varepsilon=\ln(1+e)$. Estas conversiones dejan de describir por sí solas el campo local cuando se inicia la estricción. Aplicarlas a la elongación total de una probeta estrangulada puede dar una apariencia de precisión sin un modelo adecuado.
+\begin{equation}\sigma=s(1+e),\qquad\varepsilon=\ln(1+e)\quad\text{(deformación uniforme).}\label{eq:verdaderas}\end{equation}
+\section{Elasticidad, plasticidad y energía}
+La elasticidad describe una deformación recuperable al retirar la carga. La plasticidad añade deformación permanente. En el régimen uniaxial lineal, $\sigma=E\varepsilon_e$; si aparece plasticidad, la deformación total se descompone como $\varepsilon=\varepsilon_e+\varepsilon_p$ bajo pequeñas deformaciones. Un límite convencional al 0,2\,\% se determina con una recta paralela a la pendiente elástica desplazada una deformación de $0{,}002$, no con una pérdida del 0,2\,\% de la carga.
+
+La densidad de energía elástica en carga uniaxial lineal es el área bajo la recta:
+\begin{equation}u_e=\int_0^{\varepsilon_e}E\eta\,d\eta=\frac12 E\varepsilon_e^2=\frac{\sigma^2}{2E}.\label{eq:energiaelastica}\end{equation}
+Tiene unidades de $\mathrm{J/m^3}$, equivalentes a pascales. La energía por volumen absorbida en un ensayo completo no es la tenacidad a fractura $K_{IC}$, que emplea otra geometría y otras unidades. Tampoco el módulo $E$ cuantifica directamente resistencia: es una pendiente de rigidez constitutiva.
+\ilustra{tension-deformacion}{Curva esquemática de tensión ingenieril, descarga elástica y deformación residual. Los valores solo ilustran el modelo.}
+\section{Tensión como tensor}
+La fuerza por unidad de superficie depende de la orientación del plano. En pequeñas deformaciones y sin pares internos, el estado se representa mediante un tensor simétrico $\boldsymbol\sigma$. La tracción sobre un plano con normal unitaria $\mathbf n$ es $\mathbf t=\boldsymbol\sigma\mathbf n$. La tensión normal es $\sigma_n=\mathbf n^T\boldsymbol\sigma\mathbf n$ y la componente tangencial es la diferencia entre la tracción y esa componente normal.
+
+Las tensiones principales son los autovalores del tensor; sus direcciones son planos sin cortadura. Para un estado plano $(\sigma_x,\sigma_y,\tau_{xy})$,
+\begin{equation}\sigma_{1,2}=\frac{\sigma_x+\sigma_y}{2}\pm\sqrt{\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_{xy}^2}.\label{eq:principales}\end{equation}
+La tensión plana supone $\sigma_z=\tau_{xz}=\tau_{yz}=0$; puede aparecer deformación transversal por efecto de Poisson. La deformación plana impone $\varepsilon_z=\gamma_{xz}=\gamma_{yz}=0$ y, en general, origina $\sigma_z\ne0$. Estas idealizaciones no son intercambiables, particularmente junto a una grieta.
+\section{Criterios y concentraciones}
+Para materiales metálicos dúctiles aproximadamente isótropos se emplean criterios de inicio de cedencia como von Mises. En tensión plana,
+\begin{equation}\sigma_{\rm VM}=\sqrt{\sigma_x^2-\sigma_x\sigma_y+\sigma_y^2+3\tau_{xy}^2}.\label{eq:mises}\end{equation}
+La comparación $\sigma_{\rm VM}\leq\sigma_y$ no es un criterio universal de rotura y no basta para un compuesto anisótropo, un material frágil o una pieza con grieta. La tensión hidrostática y la triaxialidad adquieren importancia en otros mecanismos.
+
+Una entalla introduce $K_t=\sigma_{\max}/\sigma_{\rm nominal}$ en un análisis elástico concreto. El valor depende de geometría y definición de la tensión nominal. No es el mismo parámetro que $K_I$, cuyo significado y unidades se estudian en el capítulo~\ref{ch:03}. Si el máximo local induce plasticidad, la multiplicación puramente elástica no reproduce la distribución real.
+\caso{M02. Estado plano y margen de cedencia}{Para datos ficticios $\sigma_x=120$, $\sigma_y=40$ y $\tau_{xy}=30\,\mathrm{MPa}$, las tensiones principales son $80\pm50$: $130$ y $30\,\mathrm{MPa}$. Von Mises da $\sqrt{13900}=117{,}90\,\mathrm{MPa}$. Si se adopta $\sigma_y=240\,\mathrm{MPa}$, el cociente $\sigma_y/\sigma_{\rm VM}=2{,}036$ es un factor de comparación respecto a ese criterio de cedencia. No es un factor de seguridad frente a fatiga o fractura. La traza $130+30=120+40$ ofrece una comprobación independiente de la transformación.}
+\section{Temperatura, tasa y dispersión}
+El ensayo debe describir velocidad de deformación y temperatura porque los mecanismos activados térmicamente pueden cambiar la curva. Una ley ajustada en carga lenta puede no representar un impacto. Un ensayo de dureza estima resistencia a penetración bajo condiciones específicas; una conversión a resistencia a tracción es una correlación y necesita validación para la familia y el estado del material.
+
+La dispersión entre probetas exige distinguir valor medio, percentil y límite inferior de una población. Un gráfico de catálogo no contiene por sí solo la probabilidad de fallo de un componente. Cuando se utilicen valores ficticios en problemas, la interpretación debe permanecer dentro del modelo y no atribuir a una aleación real prestaciones no documentadas.
+\input{content/e02.tex}
+\resumen{La curva ingenieril usa geometría inicial; la verdadera requiere información actual y condiciones de conversión. El tensor describe tensiones en planos distintos. Von Mises trata cedencia de materiales compatibles con sus hipótesis; $K_t$ describe concentración geométrica y $K_I$ intensidad del campo de grieta. Son herramientas diferentes.}
+\fuentes{Roylance, curvas de ensayo y respuesta elástica \cite{MIT-SS,MIT-ELAS}; FAA--General, cap. 7 \cite{FAA-G}; materiales docentes de introducción y fractura.}

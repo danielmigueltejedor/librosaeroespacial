@@ -1,0 +1,31 @@
+\chapter{Mantenimiento y monitorización de aeromotores}\label{ch:22}
+\objetivos{Vincular degradación, parámetros e inspección; construir una secuencia de diagnóstico que distinga síntoma, hipótesis y evidencia.}
+\section{Una anomalía tiene contexto}
+El motor se evalúa con configuración, historial de uso, ambiente, eventos y datos de mantenimiento. Un valor aislado puede variar por altitud, temperatura, régimen, carga y estado del sensor. La comparación de tendencias necesita condiciones comparables o correcciones justificadas. Una corrección empírica tampoco elimina toda dependencia ambiental.
+
+La historia de arranques, ciclos térmicos, permanencias y excursiones ayuda a interpretar fatiga y fluencia. El número de horas no describe completamente esa historia. Se consideran piezas y módulos concretos y se conserva el seguimiento de límites de vida.
+\section{Inspección por zonas}
+En fan y compresor se examinan, según datos, daños por objetos extraños, erosión, suciedad, holguras y contactos. En cámara y turbina interesan grietas, quemaduras, deformación, pérdida de material o recubrimiento y otras indicaciones definidas. Las posiciones y dimensiones deben corresponder al sistema de referencia del manual.
+
+La boroscopia permite observar zonas internas, pero una imagen oblicua puede distorsionar tamaño. La cobertura y la calidad se registran. Una indicación de aspecto similar puede tener criterios diferentes según etapa, borde o cara del álabe. No se inventa una tolerancia genérica de longitud de grieta.
+\section{Lubricación, cojinetes y partículas}
+El aceite lubrica, extrae calor y transporta partículas. Presión y temperatura se interpretan con régimen y sistema. Los filtros, detectores y análisis de aceite aportan información sobre desgaste y contaminación, pero requieren tendencia, método y origen probable. Una concentración puntual de metal no identifica de forma única un cojinete concreto.
+
+Los cambios de aceite, horas desde toma y condiciones de muestreo afectan comparaciones. Una contaminación introducida al tomar la muestra puede generar una conclusión errónea. La evaluación combina indicaciones, inspección y datos del fabricante.
+\section{Vibraciones y órdenes}
+La vibración puede analizarse en tiempo, frecuencia y órdenes respecto a una velocidad de giro. La relación básica $f_n=nN/60$ conecta una orden $n$ con la velocidad $N$ en revoluciones por minuto. Un pico síncrono puede orientar una investigación de desequilibrio, pero no prueba por sí solo su causa. Alineación, holgura, rozamiento, excitación aerodinámica y montaje de sensor también intervienen.
+
+La amplitud depende de dirección, punto, variable medida y procesamiento. Desplazamiento, velocidad y aceleración no se comparan como números equivalentes. Una resonancia puede amplificar respuesta en un intervalo de régimen; la evaluación no se reduce a escoger el pico mayor sin conocer condiciones.
+\caso{M22. Orden de vibración}{Para un rotor ficticio a $12\,000\,\mathrm{rpm}$, la frecuencia de giro es $200\,\mathrm{Hz}$. Una componente a $400\,\mathrm{Hz}$ corresponde a orden 2 respecto a ese rotor. Si otro rotor gira a distinta velocidad, la misma frecuencia puede tener otra relación. El cálculo identifica una relación cinemática; no diagnostica un defecto ni define un límite de vibración.}
+\section{Temperaturas y rendimiento}
+La temperatura de escape, las velocidades de rotor, caudal de combustible y presiones se comparan bajo condiciones definidas. Un incremento de combustible para una prestación comparable puede indicar deterioro, pero también cambios de ambiente, configuración o medida. Los márgenes de temperatura y los criterios de retirada requieren la definición del fabricante.
+
+La limpieza de compresor puede recuperar parte de una degradación por depósitos, pero no repara erosión, grietas o cambios permanentes de geometría. Su conveniencia y procedimiento dependen del motor y datos aplicables. Interpretar una recuperación de rendimiento como prueba de integridad sería incorrecto.
+\ilustra{monitorizacion}{Cadena de diagnóstico: condiciones de medida, señal, hipótesis, corroboración e intervención documentada.}
+\section{Diagnóstico y cierre}
+Se define el síntoma, se valida la medición, se revisan eventos y se construyen hipótesis. Se priorizan pruebas por capacidad de discriminar, acceso y requisitos. Se contrasta evidencia y se decide dentro del procedimiento y alcance autorizado. La ausencia de confirmación de una hipótesis no prueba automáticamente la alternativa.
+
+Tras intervenir, se comprueba el resultado con los datos y condiciones previstos. La documentación debe conservar el problema original, acciones y evidencias. Un cambio de componente «por prueba» puede no resolver la causa y requiere el control que proceda.
+\input{content/e22.tex}
+\resumen{Los parámetros necesitan condiciones y tendencia. Frecuencia y orden no son diagnóstico. La boroscopia tiene cobertura y límites de medida. Una recuperación de rendimiento no demuestra ausencia de daño. La decisión relaciona señal, mecanismo, datos de mantenimiento y evidencia de cierre.}
+\fuentes{FAA--General, capítulos 5, 10 y 14 \cite{FAA-G}; CS-E 25 e información de mantenimiento \cite{CSE9}; documentos docentes de mantenimiento y mecanismos de materiales de la primera parte.}
