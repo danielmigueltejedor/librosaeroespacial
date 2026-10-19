@@ -1,0 +1,374 @@
+[
+  {
+    "claim": {
+      "status": "recorded",
+      "claim": {
+        "id": "CLM-0001",
+        "text": "La resistencia de la polar nivelada se expresa como AV²+B/V² con las hipótesis definidas.",
+        "status": "draft",
+        "classification": "PENDING",
+        "excerpts": [
+          "EVD-0004",
+          "EVD-0009"
+        ],
+        "section": "c04",
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "contract": {
+      "status": "recorded",
+      "contract": {
+        "schema_version": "1.0",
+        "id": "CLM-0001",
+        "contract": {
+          "variables": {
+            "A": "N*s^2/m^2",
+            "B": "N*m^2/s^2",
+            "V": "m/s",
+            "Y": "N"
+          },
+          "bindings": {
+            "A": "2",
+            "B": "3",
+            "V": "4"
+          },
+          "assumptions": [
+            {
+              "id": "positive_denominator",
+              "left": "V",
+              "relation": "gt",
+              "right": "0"
+            }
+          ],
+          "equations": [
+            {
+              "id": "expression_definition",
+              "left": "Y",
+              "right": "A*V**2+B/V**2"
+            }
+          ],
+          "representations": [
+            {
+              "record": "CLM-0001",
+              "role": "theory",
+              "requires": [
+                "positive_denominator"
+              ],
+              "checks": [
+                {
+                  "kind": "dimensions",
+                  "expression": "A*V**2+B/V**2",
+                  "expected_unit": "N"
+                },
+                {
+                  "kind": "defined",
+                  "expression": "A*V**2+B/V**2"
+                }
+              ]
+            }
+          ],
+          "derivations": []
+        },
+        "dependencies": {
+          "5cd4acb35f8e343c7d6faea03f75db7f25e97972558454cfee9063a43ac08804": "bfe2a1bdc5be1dd0685e0781394b607b1b47197f0522576da0ba5cb3e6c0953d",
+          "CLM-0001": "37b3f82a665a8af3b56d76bde64a35e9abe03d00d91858e7f657d9e6e4d934cf",
+          "EVD-0004": "74a16223d33cfbf9d19b4f36f936949ed747befa294a94db8fe9884dd5374c55",
+          "EVD-0009": "569acc85bdeb5c3259eee4107ee7d7e07a34e8886dfa95d81de5b039aded7ede",
+          "faf3c9f3f153ab10fbc8a5628d400e5b8499257c4adc848d939d0892f2a3740f": "5a7e6c1c6f32f6b1b8cf257b7b54ae2137a31c6403acb566f91e6d6a864e1176"
+        },
+        "input_sha256": "2f6b1d3d624d4c2d5badc5f5ed3a0d4115de3f0f6c36e35a658b87479791da8b",
+        "previous_revision": null,
+        "origin": "generator",
+        "revision_sha256": "c11d6f27e85b0c37eb15311e9b82737ce316a1268884056be5de7a59a4722f4f",
+        "recorded_at": "2026-10-18T22:29:34Z"
+      },
+      "stored_content_modified": true
+    }
+  },
+  {
+    "claim": {
+      "status": "recorded",
+      "claim": {
+        "id": "CLM-0002",
+        "text": "El gasto másico del reactor es cT por empuje; la definición de cT es másica.",
+        "status": "draft",
+        "classification": "PENDING",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "section": "c10",
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "contract": {
+      "status": "recorded",
+      "contract": {
+        "schema_version": "1.0",
+        "id": "CLM-0002",
+        "contract": {
+          "variables": {
+            "cT": "kg/(N*s)",
+            "T": "N",
+            "Y": "kg/s"
+          },
+          "bindings": {
+            "cT": "0.000017",
+            "T": "10000"
+          },
+          "assumptions": [
+            {
+              "id": "positive_denominator",
+              "left": "T",
+              "relation": "gt",
+              "right": "0"
+            }
+          ],
+          "equations": [
+            {
+              "id": "expression_definition",
+              "left": "Y",
+              "right": "cT*T"
+            }
+          ],
+          "representations": [
+            {
+              "record": "CLM-0002",
+              "role": "theory",
+              "requires": [
+                "positive_denominator"
+              ],
+              "checks": [
+                {
+                  "kind": "dimensions",
+                  "expression": "cT*T",
+                  "expected_unit": "kg/s"
+                },
+                {
+                  "kind": "defined",
+                  "expression": "cT*T"
+                }
+              ]
+            }
+          ],
+          "derivations": []
+        },
+        "dependencies": {
+          "1932d29774fed2ccef9c0712b2c7b347745bae706207ae32d14e46bef745a4a8": "bbffb1c67fa8c702e07bebdd6166310b4c50804f323a13248b7bb89128cdab2d",
+          "5cd4acb35f8e343c7d6faea03f75db7f25e97972558454cfee9063a43ac08804": "bfe2a1bdc5be1dd0685e0781394b607b1b47197f0522576da0ba5cb3e6c0953d",
+          "CLM-0002": "b6e27ea4f1e44c70fcfdf78bae159eedd5523e2a90351fbc2dcedc9f20a3e0be",
+          "EVD-0001": "9a8bceb4af19030b8bc2bd43276dae9168e650354911b2ecb8c1d557621cace3",
+          "EVD-0009": "569acc85bdeb5c3259eee4107ee7d7e07a34e8886dfa95d81de5b039aded7ede"
+        },
+        "input_sha256": "b52700291bed236be1fd471691a51bbf3d03e817551b23a0e8af7a08cb3b9a84",
+        "previous_revision": null,
+        "origin": "generator",
+        "revision_sha256": "310f93f57790c3508d8a3e135ae2eefca31282ee80f96e8b7053171a1aa3fbd7",
+        "recorded_at": "2026-10-18T22:29:34Z"
+      },
+      "stored_content_modified": true
+    }
+  },
+  {
+    "claim": {
+      "status": "recorded",
+      "claim": {
+        "id": "CLM-0003",
+        "text": "La potencia útil de hélice es eta por potencia al eje en el régimen de definición.",
+        "status": "draft",
+        "classification": "PENDING",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "section": "c15",
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "contract": {
+      "status": "recorded",
+      "contract": {
+        "schema_version": "1.0",
+        "id": "CLM-0003",
+        "contract": {
+          "variables": {
+            "eta": "1",
+            "P": "W",
+            "Y": "W"
+          },
+          "bindings": {
+            "eta": "0.8",
+            "P": "200000"
+          },
+          "assumptions": [
+            {
+              "id": "positive_denominator",
+              "left": "P",
+              "relation": "gt",
+              "right": "0"
+            }
+          ],
+          "equations": [
+            {
+              "id": "expression_definition",
+              "left": "Y",
+              "right": "eta*P"
+            }
+          ],
+          "representations": [
+            {
+              "record": "CLM-0003",
+              "role": "theory",
+              "requires": [
+                "positive_denominator"
+              ],
+              "checks": [
+                {
+                  "kind": "dimensions",
+                  "expression": "eta*P",
+                  "expected_unit": "W"
+                },
+                {
+                  "kind": "defined",
+                  "expression": "eta*P"
+                }
+              ]
+            }
+          ],
+          "derivations": []
+        },
+        "dependencies": {
+          "1932d29774fed2ccef9c0712b2c7b347745bae706207ae32d14e46bef745a4a8": "bbffb1c67fa8c702e07bebdd6166310b4c50804f323a13248b7bb89128cdab2d",
+          "5cd4acb35f8e343c7d6faea03f75db7f25e97972558454cfee9063a43ac08804": "bfe2a1bdc5be1dd0685e0781394b607b1b47197f0522576da0ba5cb3e6c0953d",
+          "CLM-0003": "aae64be34d48f29c4a3b26d448eac77f9e635665b38afbf77d85cf884addd58e",
+          "EVD-0001": "9a8bceb4af19030b8bc2bd43276dae9168e650354911b2ecb8c1d557621cace3",
+          "EVD-0009": "569acc85bdeb5c3259eee4107ee7d7e07a34e8886dfa95d81de5b039aded7ede"
+        },
+        "input_sha256": "eb9f52c77771a0d331ce41cdc5ee853235d5660413dbaade698c57b2b6207451",
+        "previous_revision": null,
+        "origin": "generator",
+        "revision_sha256": "b0e2689a0a3a0d67abcfdbef6a037068df006c31dd66902bcdd4a6c1d72a0e3a",
+        "recorded_at": "2026-10-18T22:29:34Z"
+      },
+      "stored_content_modified": true
+    }
+  },
+  {
+    "claim": {
+      "status": "recorded",
+      "claim": {
+        "id": "CLM-0004",
+        "text": "La tasa de ascenso aproximada por potencia excedente exige la ley de velocidad declarada.",
+        "status": "draft",
+        "classification": "PENDING",
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "section": "c13",
+        "corroboration": "two_witnesses"
+      },
+      "local_sources": {
+        "status": "UNKNOWN",
+        "prompted": false,
+        "source_count": 0,
+        "last_updated": "2026-10-18T22:04:42Z"
+      },
+      "project_state": "COURSE_DISCOVERY",
+      "released": false
+    },
+    "contract": {
+      "status": "recorded",
+      "contract": {
+        "schema_version": "1.0",
+        "id": "CLM-0004",
+        "contract": {
+          "variables": {
+            "Pd": "W",
+            "Pn": "W",
+            "W": "N",
+            "Y": "m/s"
+          },
+          "bindings": {
+            "Pd": "300000",
+            "Pn": "200000",
+            "W": "50000"
+          },
+          "assumptions": [
+            {
+              "id": "positive_denominator",
+              "left": "W",
+              "relation": "gt",
+              "right": "0"
+            }
+          ],
+          "equations": [
+            {
+              "id": "expression_definition",
+              "left": "Y",
+              "right": "(Pd-Pn)/W"
+            }
+          ],
+          "representations": [
+            {
+              "record": "CLM-0004",
+              "role": "theory",
+              "requires": [
+                "positive_denominator"
+              ],
+              "checks": [
+                {
+                  "kind": "dimensions",
+                  "expression": "(Pd-Pn)/W",
+                  "expected_unit": "m/s"
+                },
+                {
+                  "kind": "defined",
+                  "expression": "(Pd-Pn)/W"
+                }
+              ]
+            }
+          ],
+          "derivations": []
+        },
+        "dependencies": {
+          "1932d29774fed2ccef9c0712b2c7b347745bae706207ae32d14e46bef745a4a8": "bbffb1c67fa8c702e07bebdd6166310b4c50804f323a13248b7bb89128cdab2d",
+          "5cd4acb35f8e343c7d6faea03f75db7f25e97972558454cfee9063a43ac08804": "bfe2a1bdc5be1dd0685e0781394b607b1b47197f0522576da0ba5cb3e6c0953d",
+          "CLM-0004": "574867dd5939067fd5b701679e9d7e320cedc6788ec0404d37b4dc4b3f60ffdc",
+          "EVD-0001": "9a8bceb4af19030b8bc2bd43276dae9168e650354911b2ecb8c1d557621cace3",
+          "EVD-0009": "569acc85bdeb5c3259eee4107ee7d7e07a34e8886dfa95d81de5b039aded7ede"
+        },
+        "input_sha256": "791436bb9559c43e1b91e4bd347b14e44ebfc896b5e51cd4bc3bf13bccf5d5e0",
+        "previous_revision": null,
+        "origin": "generator",
+        "revision_sha256": "068b0fd5c10c79bad6afe2c5cd11d395dad0143bfff0d4e7c18a189a84dbd001",
+        "recorded_at": "2026-10-18T22:29:34Z"
+      },
+      "stored_content_modified": true
+    }
+  }
+]

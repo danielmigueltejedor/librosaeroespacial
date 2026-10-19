@@ -1,0 +1,65 @@
+\chapter{Qué estudia la mecánica de vuelo}\label{ch:intro}
+\objetivos{Elegir el nivel de modelo apropiado; distinguir actuaciones, equilibrio y estabilidad; formular una pregunta física que pueda resolverse y comprobarse.}
+
+\section{Del avión real a un problema matemático}
+Un avión se mueve porque el balance de fuerzas modifica la cantidad de movimiento y el balance de momentos modifica el momento angular. La aerodinámica y la propulsión proporcionan esas fuerzas; la mecánica de vuelo determina el movimiento que producen. La separación es útil, pero no absoluta: la velocidad modifica la sustentación y la resistencia, el movimiento cambia la incidencia del flujo, el consumo desplaza la masa y el control modifica las fuerzas que originaron el movimiento.
+
+Una pregunta de actuaciones pide qué puede conseguir el avión: qué carga transporta, cuánto tiempo permanece en vuelo, qué distancia recorre o qué pista necesita. Una pregunta de estabilidad pide cómo reacciona a una perturbación. Una pregunta de control pide qué acciones permiten alcanzar un objetivo. Un avión puede tener suficiente empuje para mantener una velocidad y ser inestable alrededor de esa condición. También puede ser estable en una condición que no satisface la misión por falta de combustible.
+
+El primer paso no consiste en buscar una fórmula, sino en definir qué se conoce y qué debe determinarse. Para calcular una autonomía hacen falta una masa inicial, una condición de terminación, un modelo de gasto y una ley de vuelo. ``Mantener crucero'' no especifica si se conserva TAS, Mach, altitud, sustentación adimensional o posición de la palanca de gases. Estas decisiones cambian la integral del consumo.
+
+\section{Jerarquía de modelos}
+\subsection{Punto material y trayectoria}
+El modelo de punto material conserva la masa y la trayectoria del centro de gravedad. Sustituye la actitud y los mandos por fuerzas disponibles, limitaciones o relaciones de equilibrio. Resulta adecuado para muchas actuaciones si el avión puede adquirir y mantener el estado requerido. En vuelo simétrico sin viento se emplean velocidad $V$, ángulo de trayectoria $\gamma$, distancia horizontal $x$ y altitud $h$:
+\begin{equation}
+ m\dot V=T-D-W\sin\gamma,\qquad
+ mV\dot\gamma=L-W\cos\gamma,
+ \label{eq:punto-masa}
+\end{equation}
+\begin{equation}
+ \dot x=V\cos\gamma,\qquad \dot h=V\sin\gamma,\qquad W=mg.
+\end{equation}
+Aquí el empuje se ha supuesto paralelo a la velocidad. Si forma un ángulo $\varepsilon$ con ella, aparecen $T\cos\varepsilon$ y $T\sin\varepsilon$ en las dos ecuaciones dinámicas. No es admisible añadir una corrección angular sólo a una de ellas.
+
+\subsection{Avión rígido de seis grados de libertad}
+El sólido rígido tiene tres coordenadas de posición y tres de orientación. Para integrarlo se añaden velocidades lineales y angulares. La actitud puede representarse por tres ángulos de Euler o por cuatro componentes de un cuaternión sujeto a una restricción de norma. Doce variables con Euler no significan doce grados de libertad geométricos: las velocidades son parte del estado dinámico necesario para integrar ecuaciones de segundo orden.
+
+El modelo rígido permite estudiar el equilibrio de momentos, la interacción de los mandos y los modos de movimiento. Sus coeficientes aerodinámicos siguen necesitando información externa. Añadir grados de libertad no mejora por sí solo una polar de mala calidad. Tampoco reproduce flexión del ala, vibración estructural, movimiento de combustible o pérdida dinámica si esas físicas no están incluidas.
+
+\subsection{Cuasiestacionariedad}
+Una misión de varias horas puede aproximarse mediante una sucesión de equilibrios. La masa cambia lentamente y el avión reajusta incidencia y gases. La hipótesis exige que el tiempo de reajuste sea pequeño frente al de variación de masa o atmósfera. Se conserva la evolución de $m(t)$ aunque se desprecie la aceleración de acomodación entre equilibrios. Es una reducción del problema dinámico, no una afirmación de masa constante.
+
+\hipotesis{Los modelos básicos de actuaciones emplean avión rígido, atmósfera local, gravedad constante y fuerzas aerodinámicas cuasiestacionarias. Las fórmulas de polar parabólica se aplican dentro del intervalo de sustentación y Mach para el que esa polar sea representativa. El control debe disponer de autoridad suficiente para mantener el trim.}
+
+\section{Tres preguntas diferentes sobre equilibrio}
+Un avión detenido sobre una pista puede tener velocidad y aceleración nulas gracias a las reacciones del suelo. Un avión en vuelo rectilíneo horizontal estacionario tiene velocidad no nula y aceleración aproximadamente nula. Un avión en viraje nivelado estacionario conserva rapidez y altura, pero tiene aceleración centrípeta. Confundir rapidez constante con aceleración nula elimina la fuerza que hace posible el viraje.
+
+También cambia el significado de ``constante'' al cambiar de referencia. En un viraje coordinado, las componentes de velocidad en ejes cuerpo pueden permanecer constantes mientras el vector velocidad gira respecto al horizonte local. El teorema de transporte permite relacionar ambas descripciones. Se desarrollará antes de utilizar las ecuaciones de Newton en ejes del avión.
+
+\section{Unidades, datos y precisión}
+La masa se expresará en kilogramos y el peso en newtons. Un dato denominado coloquialmente ``peso de 4.000 kg'' se interpretará como masa y se convertirá mediante $W=mg$. Los cálculos emplean $g_0=9.80665\SIu{m\,s^{-2}}$ salvo indicación. Una densidad de referencia no convierte una atmósfera real en ISA; es una condición de comparación.
+
+\begin{center}\begin{tabular}{lll}\toprule
+Magnitud & Unidad SI & Relación de conversión\\\midrule
+Velocidad & $\mathrm{m\,s^{-1}}$ & $1\SIu{kt}=1852/3600\SIu{m\,s^{-1}}$\\
+Altitud & $\mathrm m$ & $1\SIu{ft}=0.3048\SIu m$\\
+Fuerza & $\mathrm N$ & $1\SIu{lbf}=4.448221615\SIu N$\\
+Masa & $\mathrm{kg}$ & $1\SIu{lbm}=0.45359237\SIu{kg}$\\
+Potencia & $\mathrm W$ & $1\SIu{kW}=1000\SIu W$\\\bottomrule
+\end{tabular}\end{center}
+La precisión del resultado debe corresponder a la calidad de los datos. Con una polar estimada a dos cifras no tiene sentido atribuir significado físico a milímetros de pista, aunque se conserven más decimales en el archivo de cálculo para reproducir la operación.
+
+\section{Cómo se trabaja un problema}
+Conviene seguir una secuencia estable: dibujar los ejes, identificar velocidad respecto al aire y al suelo, escribir los balances, declarar las aproximaciones, resolver simbólicamente y sustituir al final. El resultado se contrasta con unidades, límites y un segundo cálculo cuando sea posible. Si una velocidad óptima cae por debajo de la pérdida, la respuesta física está en una frontera admisible, aunque la derivada de la función objetivo sea cero en otro punto.
+
+\caso{Ejemplo: una condición que no puede conservarse}{En vuelo horizontal, $C_L=2mg/(\rho V^2S)$. Si se consumen $500\SIu{kg}$ de una masa inicial de $5.000\SIu{kg}$ manteniendo $V$, $h$ y $S$, la sustentación adimensional final es $0.9C_{L,i}$. Mantener también $C_L$ exigiría cambiar la densidad o la velocidad. La comprobación consiste en sustituir la masa final en $L=\tfrac12\rho V^2SC_L$; conservar simultáneamente las tres condiciones daría una sustentación un 11.1\% mayor que el peso final.}
+
+\section{Lectura de esta edición}
+Los capítulos de actuaciones siguen el núcleo de la guía ULE 2026/2027. La estabilidad dinámica constituye una ampliación explícita. La simulación acompaña a los balances analíticos y ayuda a examinar sus límites. Los modelos de JSBSim empleados son modelos educativos abiertos, con advertencias propias sobre su validación; sus resultados no son datos medidos de un avión real.
+
+Cada deducción tiene un alcance: una identidad comprobada con álgebra simbólica puede coexistir con una hipótesis física inadecuada. Los registros distinguen reproducción aritmética, comprobación simbólica, unidades, convergencia y revisión experta pendiente. La indicación de portada ``En revisión'' conserva esta distinción.
+\input{content/t01}
+
+\repaso{¿Puede una aeronave tener $T=D$ y ascender?}{Sí, si pierde energía cinética durante el ascenso. A velocidad constante, con empuje paralelo a la trayectoria y sin otras fuentes de energía, $T=D$ implica $\sin\gamma=0$. La condición sobre la velocidad es esencial.}
+\resumen{Un modelo se elige por la pregunta y por los datos disponibles. Las actuaciones requieren restricciones y una ley de vuelo. La estabilidad estudia perturbaciones alrededor de una condición; el control proporciona acciones. Equilibrio, masa constante y movimiento estacionario no son términos intercambiables.}
+\fuentes{Guía docente ULE 2026/2027, bloques I--II y resultados de aprendizaje; How, MIT 16.333, lecciones 1 y 4 (actuaciones y modelos dinámicos). Deducciones, datos y ejemplos de elaboración propia.}

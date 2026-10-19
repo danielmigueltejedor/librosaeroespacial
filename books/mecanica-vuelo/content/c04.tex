@@ -1,0 +1,102 @@
+\chapter{Fuerzas, momentos y modelos aerodinámicos}\label{ch:fuerzas}
+\objetivos{Pasar de coeficientes a fuerzas y momentos; trasladar momentos al centro de gravedad; distinguir resistencia inducida, polar total y propulsión.}
+
+\section{Balance de fuerzas sobre el avión}
+En vuelo libre se distinguen fuerzas aerodinámicas, propulsivas y gravitatorias. En contacto con el suelo se añaden reacciones normales y tangenciales. La suma es vectorial y debe realizarse en un mismo sistema:
+\begin{equation}
+\vect F^b=\vect F_a^b+\vect F_T^b+m\vect g^b+\vect F_{\rm contacto}^b.
+\end{equation}
+La sustentación es perpendicular a la velocidad respecto al aire y la resistencia se opone a ella. No se definen respecto a la horizontal terrestre. En un planeo, la sustentación no es vertical; en un viraje, tiene una componente centrípeta. Las ecuaciones de equilibrio deben proyectarse después de definir esas direcciones.
+
+Si $\vect g^n=(0,0,g)^T$, la transformación del capítulo~\ref{ch:ejes} proporciona
+\begin{equation}
+\vect g^b=g(-\sin\theta,\sin\phi\cos\theta,\cos\phi\cos\theta)^T.
+\end{equation}
+El peso no produce momento respecto al centro de gravedad en un campo gravitatorio uniforme. Sí produce momento respecto a otro punto. El gradiente gravitatorio puede generar un pequeño momento en modelos de gran extensión; queda fuera del modelo académico local.
+
+\section{Coeficientes y dimensiones de referencia}
+Con $q_\infty=\tfrac12\rho V^2$, superficie $S$, envergadura $b$ y cuerda media aerodinámica $\bar c$:
+\begin{align}
+L&=q_\infty SC_L,&D&=q_\infty SC_D,&Y_w&=q_\infty SC_Y,\\
+\mathcal L&=q_\infty SbC_\ell,&\mathcal M&=q_\infty S\bar cC_m,&\mathcal N&=q_\infty SbC_n.
+\end{align}
+Se usa $\mathcal L$ para el momento de alabeo y $L$ para sustentación. Los coeficientes son adimensionales, pero su valor depende del área y longitudes de referencia. No puede compararse un $C_m$ referido a otra cuerda sin convertirlo.
+
+Un modelo general contiene dependencias como
+\begin{equation}
+C_m=C_m(\alpha,\beta,M,Re,\widehat p,\widehat q,\widehat r,\delta_e,\delta_a,\delta_r,\ldots),
+\end{equation}
+con $\widehat p=pb/(2V)$, $\widehat q=q\bar c/(2V)$ y $\widehat r=rb/(2V)$. El símbolo $q$ puede significar velocidad angular de cabeceo o presión dinámica: en esta edición la presión lleva subíndice $\infty$. Una derivada por radián no puede aplicarse a una perturbación numérica en grados sin conversión.
+
+\subsection{Modelo local de sustentación}
+Antes de la pérdida, una aproximación frecuente es
+\begin{equation}
+C_L=C_{L0}+a\alpha+C_{L\delta_e}\delta_e.
+\end{equation}
+Aquí $a$ es la pendiente del avión, no necesariamente la pendiente bidimensional de un perfil. La fórmula lineal no fija $C_{L\max}$: éste debe imponerse por otro dato. Extenderla indefinidamente permitiría sustentaciones imposibles y falsearía velocidades mínimas y radios de giro.
+
+\section{Polar parabólica y sus dos contribuciones}
+La polar académica más utilizada es
+\begin{equation}
+C_D=C_{D0}+kC_L^2,\qquad C_{D0}>0,\ k>0.\label{eq:polar}
+\end{equation}
+El primer término agrupa la resistencia extrapolada a sustentación nula en la configuración considerada. El segundo representa la variación cuadrática total. No siempre equivale sólo a resistencia inducida. Una separación útil es
+\begin{equation}
+C_D=C_{D0}+k_{\rm perfil}C_L^2+
+\frac{C_L^2}{\pi AR e_i},\qquad AR=b^2/S.
+\end{equation}
+La eficiencia de envergadura $e_i$ describe la distribución de sustentación y la resistencia inducida en el marco de la teoría que la define. Si se ajusta toda la polar a $k=1/(\pi AR e_O)$, el factor de Oswald $e_O$ cumple, bajo esta separación,
+\begin{equation}
+\frac1{e_O}=\frac1{e_i}+\pi ARk_{\rm perfil}.
+\label{eq:oswald}
+\end{equation}
+La igualdad $e_O=e_i$ requiere $k_{\rm perfil}=0$. También pueden intervenir variaciones con Mach, Reynolds, configuración y trim. El nombre de un parámetro no sustituye la definición del ajuste con que se obtuvo.
+
+\caso{Ejemplo: dos eficiencias diferentes}{Con $AR=9$, $e_i=0.88$ y $k_{\rm perfil}=0.009$, la parte inducida tiene pendiente $1/(\pi AR e_i)=0.04019$, mientras que $k=0.04919$. El factor equivalente de la polar total es $e_O=1/(\pi AR k)=0.719$. Aplicar $0.88$ como Oswald omitiría aproximadamente el 18.3\% del coeficiente cuadrático total. La separación sólo es válida dentro del ajuste parabólico adoptado.}
+
+\section{Resistencia en función de la velocidad}
+En vuelo nivelado, $L=W$ y por tanto $C_L=W/(q_\infty S)$. Sustituirlo en la polar da
+\begin{equation}
+D=\underbrace{\tfrac12\rho SC_{D0}}_A V^2+
+\underbrace{\frac{2kW^2}{\rho S}}_B\frac1{V^2}.
+\label{eq:dragAV}
+\end{equation}
+El término parásito aumenta con $V^2$ y el cuadrático asociado a sustentación disminuye con $V^2$. Este comportamiento no significa que la resistencia pueda reducirse indefinidamente volando despacio: el segundo término diverge y aparece la pérdida antes de llegar a $V=0$.
+
+La potencia de empuje necesaria es $P_n=DV=AV^3+B/V$. Sus mínimos no están en la misma velocidad. Derivando,
+\begin{equation}
+V_{D\min}=(B/A)^{1/4},\qquad
+V_{P\min}=(B/3A)^{1/4}=3^{-1/4}V_{D\min}.
+\end{equation}
+Estas expresiones presuponen $L=W$ y la misma polar; en maniobra se sustituye el peso sustentado por $nW$. La validez del óptimo exige que el $C_L$ resultante sea admisible.
+
+\section{Momento respecto a distintos puntos}
+Si se conoce la fuerza resultante $\vect F$ y el momento $\vect M_A$ respecto a $A$, el momento respecto a $G$ es
+\begin{equation}
+\vect M_G=\vect M_A+\vect r_{A/G}\times\vect F.
+\end{equation}
+El brazo va desde el punto nuevo al punto antiguo. En cuerpo, una fuerza vertical hacia arriba aplicada detrás del centro de gravedad produce cabeceo negativo. Dibujar esa situación es una comprobación útil del producto vectorial.
+
+Un motor descentrado también produce momento. Si un empuje $T$ dirigido en $x_b$ actúa en $\vect r=(0,y_T,z_T)$, su momento es $(0,z_TT,-y_TT)$. Un motor situado bajo el centro de gravedad tiene $z_T>0$ y contribución de morro arriba. Los efectos de admisión, chorro, hélice y estela pueden añadir otros términos que no se captan trasladando una fuerza puntual.
+
+\section{Masa, inercia y producto de inercia}
+Se define el tensor respecto a $G$ mediante
+\begin{equation}
+I=\int\big[(\vect r^T\vect r)I_3-\vect r\vect r^T\big],\dd m.
+\end{equation}
+Para simetría respecto al plano $x_bz_b$, las integrales de $xy$ y $yz$ se anulan. Se adopta $I_{xz}=\int xz\,\dd m$, de modo que
+\begin{equation}
+I=\begin{bmatrix}I_{xx}&0&-I_{xz}\\0&I_{yy}&0\\-I_{xz}&0&I_{zz}\end{bmatrix}.
+\end{equation}
+Algunas referencias llaman $I_{xz}$ al elemento del tensor, que aquí es $-I_{xz}$. El signo no se decide por memoria: debe compararse la definición integral. Un tensor físico de un cuerpo tridimensional no degenerado es simétrico y definido positivo; en particular $I_{xx}I_{zz}-I_{xz}^2>0$.
+
+\section{Empuje, potencia y consumo}
+El empuje es fuerza. La potencia de empuje es $P_T=\vect T\cdot\vect v_a$ cuando se evalúa el trabajo propulsivo respecto al aire. La potencia al eje de un motor de hélice, $P_{\rm eje}$, se relaciona mediante $P_T=\eta_pP_{\rm eje}$ en el régimen donde se define esa eficiencia. La igualdad $T=\eta_pP_{\rm eje}/V$ no debe extrapolarse al reposo: el modelo de eficiencia cambia y se necesita un modelo de empuje estático.
+
+Se definirán consumos másicos: $c_T=\dot m_f/T$ en $\mathrm{kg/(N\,s)}$ y $c_P=\dot m_f/P_{\rm eje}$ en $\mathrm{kg/J}$. Si una fuente emplea consumo ponderal, aparece un factor $g$. Conservar la misma letra y cambiar silenciosamente de definición es una de las causas de error de mayor tamaño en alcance.
+
+\input{content/t04}
+
+\repaso{¿Es correcto sumar $q_\infty SC_D$ a $q_\infty S\bar cC_m$?}{No: el primero es una fuerza y el segundo un momento. Tampoco pueden sumarse fuerzas en ejes cuerpo y viento sin transformarlas, aunque sus unidades coincidan.}
+\resumen{La polar total, el marco de referencia y el punto de momentos son parte del modelo. Los coeficientes requieren dimensiones de referencia y dominio. Empuje y potencia se relacionan por una velocidad, mientras que los consumos por empuje y por potencia tienen unidades diferentes.}
+\fuentes{How, MIT 16.333, lecciones 1, 2 y 4, secciones de polar, contribución de la cola y fuerzas. El formulario facilitado se utiliza para identificar familias y notación; las expresiones de esta edición se deducen de nuevo y no se consideran validadas por aparecer en él.}

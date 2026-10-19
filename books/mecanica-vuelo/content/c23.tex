@@ -1,0 +1,83 @@
+\chapter{Experimentos numéricos y comparación de modelos}\label{ch:numerics}
+\objetivos{Reproducir cuatro familias de práctica con ejemplos nuevos; analizar convergencia y discrepancias; diseñar una adquisición de datos sin inventar ensayos.}
+
+\section{Organización de los experimentos}
+Las cuatro familias siguen las competencias de las prácticas facilitadas: vuelo horizontal, ascenso, consumo en crucero y comparación de configuraciones. Se utilizan condiciones originales y se proporciona una metodología. No son una memoria de prácticas del estudiante ni se atribuyen ensayos personales o datos de SAULE inexistentes.
+
+Cada experimento conserva entradas, salidas con unidades, registro de ejecución y limitaciones. Los gráficos del libro se reconstruyen a partir de los CSV o de las ecuaciones indicadas. Un gráfico sintético lleva esa identificación; uno procedente de JSBSim indica el modelo y condiciones.
+
+\section{Familia 1: barrido de vuelo horizontal}
+La rejilla original del T-6 combina masas nominales de 5.600 y 5.850 lbm, altitudes de 5.000 y 9.000 ft y once CAS entre 115 y 215 kt. Se obtienen 44 trimas longitudinales. Se registran EAS y TAS resultantes: el eje de resistencia se dibuja frente a EAS, aunque la condición de entrada sea CAS.
+
+En una polar ideal, a igual masa y configuración, la resistencia frente a EAS depende poco de altitud si los coeficientes permanecen constantes. En un modelo completo pueden aparecer variaciones por Mach, Reynolds, trim, empuje inclinado y dispositivos. La coincidencia aproximada no debe imponerse por construcción.
+
+\ilustra{jsbsim-t6}{Rejilla de trim realmente ejecutada con el modelo educativo t6texan2. Las curvas se trazan frente a EAS resultante; cada punto procede de una instancia inicializada de nuevo.}
+
+La potencia necesaria de empuje se obtiene como $DV_{\rm TAS}$. A igual EAS y masa, la TAS aumenta con altura; por tanto, aun con resistencia aproximadamente igual, la potencia de empuje necesaria aumenta. Dibujar $DV_{\rm EAS}$ ocultaría precisamente ese efecto.
+
+\section{Familia 2: estimación de ascenso}
+Para cada punto de la rejilla se estabiliza el motor a mando máximo sin avanzar la trayectoria y se consulta el empuje disponible. Se calcula
+\begin{equation}
+P_d=T_{\max}V_{\rm TAS},\quad P_n=DV_{\rm TAS},\quad
+\dot h_{\rm aprox}=\frac{P_d-P_n}{W},\quad
+\sin\gamma_{\rm aprox}=\frac{T_{\max}-D}{W}.
+\end{equation}
+Es una estimación de actuaciones a partir de trimas horizontales, con $L\simeq W$; no se presenta como trim exacto de ascenso. La máxima tasa y el máximo ángulo se localizan con objetivos distintos. Con once puntos de velocidad sólo se tiene un máximo de rejilla; para afinar Vx o Vy debe refinarse el intervalo y comprobar convergencia en velocidad.
+
+\ilustra{jsbsim-ascenso}{Estimación de ascenso por exceso de potencia para una de las condiciones originales del T-6. Se utiliza potencia de empuje, de acuerdo con el tipo de motor y propulsor realmente configurados.}
+
+La tabla de motor puede usar Mach y altitud de densidad en pies. Leerla como altitud geométrica en metros produce una consulta incorrecta aunque la interpolación funcione. Multiplicar un empuje por un coeficiente tabulado sigue dando empuje: la velocidad TAS es necesaria para convertirlo en potencia.
+
+\section{Familia 3: crucero del 747 con consumo}
+Se inicializa el modelo B747 a 27.000 ft y CAS de 260 kt, con 36.000 lbm de combustible repartido entre los cuatro depósitos alimentadores y el quinto vacío. Se simulan 1.800 s con paso de 0.05 s y un control docente explícito de altura y TAS. No se impone masa constante.
+
+El control usa error de velocidad y su integral para gases y error de altura, velocidad vertical, cabeceo y tasa de cabeceo para elevador. Añade amortiguación lateral sencilla. Los mandos se limitan al intervalo permitido. Se registran errores máximos de seguimiento y no se describe el vuelo como altitud y velocidad exactamente constantes si los datos muestran deriva.
+
+\ilustra{jsbsim-b747}{Combustible calculado durante el crucero original de 30 minutos. El consumo procede de sumar los cuatro motores; no se presenta como dato experimental de un Boeing real.}
+
+\subsection{Comparaciones analíticas honestas}
+Una primera referencia congela el gasto inicial y calcula $\Delta m=\dot m_{f,0}t$. Es una aproximación de gasto constante, distinta de la integral de masa variable. Otra comparación identifica una polar y un consumo efectivo locales y usa la integral a TAS y densidad constantes. Sólo es legítimo llamar a esa segunda comparación modelo equivalente si se documenta el ajuste y su intervalo; no se atribuyen sus parámetros a un manual del fabricante.
+
+La masa de combustible se contrasta con $\int\sum_i\dot m_{f,i}\,\dd t$. El peso total se convierte a masa y se compara con masa vacía más combustible. Puede existir un desfase pequeño de actualización de una propiedad respecto a otra dentro del paso; se mide y registra en vez de interpretarlo inmediatamente como creación de masa.
+
+La ventana de media hora se complementa con dos simulaciones completas hasta agotar los depósitos alimentadores: 28\,000 y 36\,000 lbm iniciales, con el quinto depósito vacío. Se conserva el mismo esquema docente de control. La terminación se identifica mediante el contenido total accesible; el último paso tiene resolución temporal de 0.1 s.
+
+\begin{center}\begin{tabular}{rrrr}\toprule
+Combustible inicial (lbm)&Tiempo simulado (s)&Modelo equivalente (s)&Diferencia\\\midrule
+28000&4113.0&4105.3&0.187\\
+36000&5264.4&5313.6&-0.926\\
+\bottomrule\end{tabular}\end{center}
+El modelo equivalente ajusta $D=A_V+B_VW^2$ a cinco trimas del mismo modelo de avión y usa un consumo específico efectivo inicial. No es una fuente independiente ni una identificación experimental. El ajuste de resistencia tiene un error relativo máximo inferior al 0.01\% en esos cinco puntos; no describe por ello cualquier condición de vuelo.
+
+Las alturas derivan hasta aproximadamente 58 y 75 m respecto al objetivo en las dos autonomías, aunque el error máximo de TAS permanece por debajo de 0.06 m/s. Por tanto, la comparación no cumple exactamente altitud constante. El consumo inicial registrado también puede diferir ligeramente del que se establece al avanzar el motor. Esas limitaciones y la ausencia de un estudio de refinamiento de paso para las autonomías completas se conservan en el informe; la pequeña diferencia numérica no se presenta como validación experimental.
+
+\section{Convergencia temporal en un caso libre}
+El T-6 parte del mismo trim a CAS 155 kt y 5.000 ft y se integra libremente durante 60 s con pasos 0.10, 0.05 y 0.025 s. Se comparan altura, TAS, masa, actitud y aceleraciones finales. La diferencia entre resultados sucesivos aporta una estimación empírica de sensibilidad al paso.
+
+No se obtiene un orden formal sólo porque dos diferencias decrezcan. Los estados de motor, actualización de combustible, tolerancia de trim y términos terrestres pueden limitar el régimen asintótico. Se exige convergencia de las magnitudes de interés para ese caso, y se conserva como alcance separado de la convergencia de la ODE analítica de crucero.
+
+\section{Familia 4: método para SAULE sin datos inventados}
+No se ha accedido al simulador físico SAULE. Se propone un protocolo: fijar masa, combustible, potencia, hélice, temperatura y configuración; establecer un intervalo de altitud común; estabilizar velocidad indicada; registrar tiempo, altitud, IAS y datos de viento y temperatura disponibles; repetir con flaps retraídos y con una configuración de flaps definida. No se atribuye una IAS a TAS sin las correcciones necesarias.
+
+La tasa media se calcula por ajuste de $h(t)$ en el intervalo estabilizado, no diferenciando directamente una señal ruidosa. El ángulo requiere velocidad horizontal aérea o terrestre según lo que se quiera comparar:
+\begin{equation}
+\sin\gamma_a=\frac{\dot h-U_h}{V_{\rm TAS}},\qquad
+\tan\gamma_g=\frac{\dot h}{V_{g,H}}.
+\end{equation}
+Para un tramo de altura limitada, se reporta dispersión entre repeticiones y se descartan transitorios mediante un criterio previo. Elegir después sólo el intervalo que más favorece una configuración sesga la comparación.
+
+\subsection{Qué se puede predecir sobre flaps}
+Los flaps suelen modificar $C_{L\max}$, polar, trim y velocidad óptima. A una misma TAS y peso, la comparación de ángulo depende de empuje disponible y resistencia de cada configuración. Un aumento de sustentación máxima permite menor velocidad, pero no garantiza mayor ángulo de ascenso: el incremento de resistencia puede dominar. Para decidir se compara el máximo de $T_d-D$ dentro del dominio admisible de cada configuración, con su rendimiento de hélice y límites.
+
+Si se incluyen datos sintéticos para practicar un ajuste, deben etiquetarse en cabecera, gráfico y texto. No se mezclan en una tabla con mediciones sin una columna de procedencia. Esta edición entrega el método y no presenta ensayos SAULE como ejecutados.
+
+\section{Incertidumbre y discrepancia}
+Una diferencia entre teoría y simulación puede proceder de error numérico, definición de magnitud, aproximaciones físicas o parámetros. Se revisan primero unidades, ejes y condiciones, después discretización y finalmente modelo. Ajustar una polar no corrige una conversión de nudos ni una suma incompleta de motores.
+
+La incertidumbre de parámetros puede propagarse por sensibilidad: se perturba un parámetro dentro de su intervalo y se recalcula la magnitud. Esa variación no equivale a una distribución estadística sin justificar probabilidades. Para modelos educativos con parámetros estimados, un intervalo de sensibilidad suele ser más honesto que una barra de error aparentemente experimental.
+
+\input{content/t23}
+
+\repaso{¿Una trayectoria convergente de JSBSim prueba que el consumo de un avión real está bien modelado?}{No. La convergencia examina discretización de ese modelo y experimento. La fidelidad del consumo necesita datos independientes y condiciones comparables.}
+\resumen{Los experimentos reproducibles conservan sus entradas y resultados y declaran qué se ejecutó. La rejilla de trim, la estimación de ascenso, la trayectoria de crucero y la metodología de ensayo son evidencias diferentes. Las discrepancias se investigan sin convertir simulación en validación experimental.}
+\fuentes{Enunciado Ágora 2026/2027, cuatro familias prácticas, consultado para competencias. JSBSim 1.3.3 y resultados originales del proyecto. Los modelos y las condiciones de esta edición se distinguen de las prácticas evaluables y de datos experimentales no disponibles.}

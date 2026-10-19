@@ -1,0 +1,67 @@
+\chapter{Modelos propulsivos de aerorreactores}\label{ch:jets}
+\objetivos{Formular empuje y gasto de combustible; convertir consumos específicos; reconocer qué resultados dependen de un mapa real de motor.}
+
+\section{Empuje disponible y necesario}
+El empuje necesario se obtiene del balance de fuerzas del avión. El disponible procede de la planta propulsora bajo unas condiciones de entrada y una posición de mando. En vuelo horizontal con empuje alineado, $T_n=D$; en ascenso estacionario, $T_n=D+W\sin\gamma$. La igualdad entre ambos define una condición sostenible, pero no determina por sí sola el equilibrio de momentos.
+
+Un mapa general puede escribirse
+\begin{equation}
+T_d=T_d(h,M,\Delta T,\delta_T,\text{régimen}),\qquad
+\dot m_f=\dot m_f(h,M,\Delta T,\delta_T).
+\end{equation}
+La altitud y temperatura modifican caudal, condiciones termodinámicas y límites del motor. La velocidad modifica tanto la toma como el empuje neto. Suponer empuje constante con velocidad es una simplificación local, no una propiedad universal de todos los reactores.
+
+\section{Leyes simplificadas con densidad}
+Para ejercicios se emplea a veces
+\begin{equation}
+T_{d,\max}(h)=T_0\sigma^x,\qquad
+c_T(h)=c_{T0}\sigma^y,\qquad \sigma=\rho/\rho_0.
+\label{eq:lapse}
+\end{equation}
+Los exponentes $x,y$ son datos del modelo. No existe un único exponente correcto para cualquier turborreactor o turbofán. Una ley válida en troposfera puede cambiar sobre la tropopausa. Si se proporciona empuje a una altitud de referencia distinta de cero, debe normalizarse con esa densidad, no llamarlo empuje al nivel del mar.
+
+La posición de gases puede representarse como una fracción de empuje máximo sólo si se declara esa ley. En un motor tabulado, mitad de recorrido de la palanca no implica mitad de empuje neto ni mitad de gasto. Al ralentí puede existir consumo positivo con empuje neto pequeño o incluso insuficiente para compensar la resistencia.
+
+\section{Consumo específico másico y ponderal}
+Se usa
+\begin{equation}
+c_T=\frac{\dot m_f}{T},\qquad
+[c_T]=\mathrm{kg\,N^{-1}\,s^{-1}},\qquad
+\dot m=-c_TT.
+\label{eq:jetmassflow}
+\end{equation}
+Si $W=mg_0$, entonces $\dot W=-g_0c_TT$. Un consumo ponderal $\widetilde c_T=\dot W_f/T$ tiene unidad $\mathrm{s^{-1}}$ y satisface $\widetilde c_T=g_0c_T$. No se introducen ambos factores $g_0$ en la misma expresión.
+
+\caso{Ejemplo de conversión}{Un consumo $17.5\SIu{g/(kN\,s)}$ equivale a $17.5\times10^{-6}\SIu{kg/(N\,s)}$. Con $T=42\SIu{kN}$, el gasto es $0.735\SIu{kg\,s^{-1}}=2646\SIu{kg\,h^{-1}}=2.646\SIu{t\,h^{-1}}$. El consumo ponderal equivalente es $1.716\times10^{-4}\SIu{s^{-1}}$.}
+
+En unidades anglosajonas es habitual $(\mathrm{lbm/h})/\mathrm{lbf}$. Para convertir se multiplican por separado masa, tiempo y fuerza:
+\begin{equation}
+1\frac{\mathrm{lbm}}{\mathrm{lbf\,h}}
+=\frac{0.45359237}{4.448221615\times3600}
+\frac{\mathrm{kg}}{\mathrm{N\,s}}
+\simeq2.83255\times10^{-5}\frac{\mathrm{kg}}{\mathrm{N\,s}}.
+\end{equation}
+Identificar lbm y lbf porque ambas aparecen abreviadas como ``lb'' suprime dimensiones y produce errores de gravedad o de tiempo.
+
+\section{Potencia equivalente de un reactor}
+Para empuje paralelo a la velocidad aérea, $P_T=TV$. Aunque $T$ sea aproximadamente constante, $P_T$ aumenta linealmente con $V$. Por eso el exceso de empuje y el exceso de potencia alcanzan máximos en velocidades diferentes. El primero gobierna aproximadamente el ángulo de ascenso; el segundo, la tasa de ascenso.
+
+La potencia de empuje no equivale al flujo de energía térmica del combustible. Si se usa poder calorífico $H_f$, una eficiencia global podría definirse como $TV/(\dot m_fH_f)$. La definición exige el mismo sistema de referencia para el trabajo útil y no se extrapola al reposo como una eficiencia constante.
+
+\section{Motores múltiples y fallos}
+Con varios motores, se suman los empujes y los gastos. Si las condiciones son idénticas, el consumo específico efectivo del conjunto coincide con el de uno; si no, se calcula
+\begin{equation}
+c_{T,\rm ef}=\frac{\sum_i\dot m_{f,i}}{\sum_iT_i}.
+\end{equation}
+La pérdida de un motor no sólo reduce empuje: puede producir guiñada, exigir timón y aumentar resistencia de trim. Un problema de punto material que conserva la misma polar al apagar motores omite esos efectos y debe declararlo. El hecho de que $T_d>D$ en ese modelo no garantiza control direccional ni cumplimiento de velocidades mínimas de control.
+
+\section{Qué representa realmente un archivo de motor}
+En JSBSim se inspecciona el tipo de elemento, las tablas y el propulsor asociado. Un nombre de archivo no constituye un modelo físico. El archivo llamado PT6A--68 del conjunto utilizado contiene un elemento \texttt{turbine\_engine} y el avión T-6 lo acopla a un propulsor directo. Su salida principal es empuje; no representa por ese solo hecho el par al eje y el rendimiento de una hélice real. En los ejemplos se calcula $TV$ y se denomina potencia de empuje, sin atribuirle potencia al eje de un PT6.
+
+En el modelo B747 se suman cuatro motores. Registrar sólo la propiedad del primer motor mientras se compara con la resistencia del avión completo produce una discrepancia próxima a un factor cuatro. El tutorial registra por separado y suma los canales de motor; se incluye una comprobación de balance de combustible global.
+
+\input{content/t10}
+
+\repaso{Si se mantiene constante el consumo específico $c_T$, ¿es constante el gasto?}{Sólo si también se mantiene el empuje. En un crucero que aligera el avión, el empuje necesario puede disminuir, y el gasto disminuye aunque $c_T$ no cambie.}
+\resumen{Un modelo propulsivo debe definir empuje, gasto, mando y dependencia ambiental. La conversión de consumo específico exige distinguir masa y peso. Las potencias y los resultados de motores múltiples se construyen con magnitudes del mismo alcance físico.}
+\fuentes{Guía ULE, bloque de aerorreactores. JSBSim 1.3.3, archivos PT6A--68, GE--CF6--80C2--B1F y propulsión de los modelos t6texan2 y B747, inspeccionados. Las leyes de densidad son modelos docentes declarados, no mapas identificados de motores comerciales.}

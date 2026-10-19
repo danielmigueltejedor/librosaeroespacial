@@ -1,0 +1,876 @@
+[
+  {
+    "key": "S01",
+    "title": "Ejes, planeo y maniobra",
+    "time": 120,
+    "questions": [
+      {
+        "key": "S01.1",
+        "ch": 1,
+        "title": "Reconstrucción de velocidad y actitud",
+        "prompt": "Un avión tiene Euler $(\\phi,\\theta,\\psi)=(12,6,25)^\\circ$ y velocidad aérea NED $(82,-4,-3)\\SIu{m/s}$. Calcule velocidad cuerpo, TAS e incidencia. Explique por qué ascenso terrestre no determina el signo de w cuerpo.",
+        "data": "Secuencia pasiva 3--2--1; viento nulo en este caso.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Horizonte local fijo, convención del manual y velocidad no nula.",
+        "model": "Reconstrucción de velocidad y actitud",
+        "eqs": [
+          "\\vect v_a^b=C_{bn}\\vect v_a^n",
+          "V=\\|\\vect v_a\\|,\\quad\\alpha=\\operatorname{atan2}(w_a,u_a)"
+        ],
+        "steps": [
+          "Se construyen las tres rotaciones en orden y se multiplican por la velocidad NED.",
+          "Se calcula la norma y se compara antes y después de rotar.",
+          "El vector NED tiene componente abajo negativa, pero el componente cuerpo incluye la actitud."
+        ],
+        "tests": [
+          {
+            "name": "u cuerpo",
+            "expression": "72.54249385942714",
+            "expected": 72.54249385942714,
+            "unit": "m/s"
+          },
+          {
+            "name": "v cuerpo",
+            "expression": "-36.48536356702176",
+            "expected": -36.48536356702176,
+            "unit": "m/s"
+          },
+          {
+            "name": "w cuerpo",
+            "expression": "12.46614736144321",
+            "expected": 12.466147361443209,
+            "unit": "m/s"
+          },
+          {
+            "name": "TAS",
+            "expression": "sqrt(82**2+4**2+3**2)",
+            "expected": 82.15229759416349,
+            "unit": "m/s"
+          },
+          {
+            "name": "Incidencia",
+            "expression": "0.1701838906402428",
+            "expected": 0.1701838906402428,
+            "unit": "radian"
+          }
+        ],
+        "interpretation": "El ascenso se reconoce en NED; incidencia y w describen la dirección relativa al fuselaje.",
+        "independent": "Aplicar la transpuesta para recuperar el vector NED y comprobar norma y determinante.",
+        "limits": "El replay de los tres componentes literales no prueba la multiplicación: se conserva la prueba matricial de ida y vuelta.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      },
+      {
+        "key": "S01.2",
+        "ch": 1,
+        "title": "Alcance y duración con atmósfera variable",
+        "prompt": "Un planeador de 490 kg y S=17.6 m² desciende de 3400 a 600 m ISA manteniendo CL de mejor planeo en calma. Polar 0.0132+0.0305CL². Calcule CL, alcance aéreo, duración y alcance terrestre con viento de cara 6 m/s.",
+        "data": "ISA troposférica con constantes generales del cuaderno; CLmax=1.6.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Trayectoria aérea descendente, gamma<0; ruta terrestre alineada con viento.",
+        "hyp": "Masa y polar constantes; equilibrio local exacto y sucesión cuasiestacionaria; viento vertical nulo.",
+        "model": "Alcance y duración con atmósfera variable",
+        "eqs": [
+          "C_L=\\sqrt{C_{D0}/k},\\quad\\delta=\\arctan(C_D/C_L)",
+          "R_a=\\Delta hC_L/C_D",
+          "E=\\int_{h_f}^{h_i}\\dd h/s(h),\\quad R_g=R_a-6E"
+        ],
+        "steps": [
+          "Se obtiene CL y se comprueba con CLmax.",
+          "Se usa ángulo exacto para la velocidad local y descenso.",
+          "Se integra con densidad ISA y se resta el desplazamiento de viento durante todo el tiempo."
+        ],
+        "tests": [
+          {
+            "name": "CL óptimo",
+            "expression": "sqrt(.0132/.0305)",
+            "expected": 0.6578654005538683,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Alcance aéreo",
+            "expression": "69773.60308904665",
+            "expected": 69773.60308904665,
+            "unit": "m"
+          },
+          {
+            "name": "Duración",
+            "expression": "2433.668893184396",
+            "expected": 2433.668893184396,
+            "unit": "s"
+          },
+          {
+            "name": "Alcance terrestre",
+            "expression": "55171.58972994027",
+            "expected": 55171.58972994027,
+            "unit": "m"
+          }
+        ],
+        "interpretation": "No se reoptimiza el vuelo para viento; se evalúa la ley explícitamente impuesta.",
+        "independent": "Comparar cuadratura con la primitiva de potencia de temperatura y comprobar que Ra/E no se confunde con la TAS inicial.",
+        "limits": "La variación lenta de TAS se omite en el balance inercial local.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S01.3",
+        "ch": 1,
+        "title": "Viraje nivelado y pérdida",
+        "prompt": "Una aeronave vuela a 84 m/s con alabeo 38 grados. Masa 3100 kg, S=27 m², rho=0.96 kg/m³ y CLmax=1.55. Calcule n, radio, razón de giro y CL requerido; indique qué falta para probar viraje sostenido.",
+        "data": "Viraje coordinado en calma, altitud y rapidez constantes.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Empuje paralelo a velocidad; se comprueba sólo geometría y sustentación, sin mapa de propulsión.",
+        "model": "Viraje nivelado y pérdida",
+        "eqs": [
+          "n=1/\\cos\\phi,\\quad R=V^2/(g_0\\tan\\phi)",
+          "\\dot\\chi=g_0\\tan\\phi/V,\\quad C_L=2nmg_0/(\\rho V^2S)"
+        ],
+        "steps": [
+          "La sustentación se incrementa a nW.",
+          "Se calcula la aceleración centrípeta y se obtiene el radio.",
+          "Se verifica CL y se identifica que falta resistencia y empuje disponible para sostenibilidad."
+        ],
+        "tests": [
+          {
+            "name": "n",
+            "expression": "1/cos(38*pi/180)",
+            "expected": 1.2690182150725788,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Radio",
+            "expression": "84**2/(9.80665*tan(38*pi/180))",
+            "expected": 920.9330563193715,
+            "unit": "m"
+          },
+          {
+            "name": "Razón",
+            "expression": "9.80665*tan(38*pi/180)/84",
+            "expected": 0.09121184153788214,
+            "unit": "1/s"
+          },
+          {
+            "name": "CL requerido",
+            "expression": "2*3100*9.80665/(cos(38*pi/180)*.96*84**2*27)",
+            "expected": 0.4218777796194013,
+            "unit": "dimensionless"
+          }
+        ],
+        "interpretation": "La geometría puede ser posible por sustentación y aun no ser sostenible por motor.",
+        "independent": "Comprobar n g sin(phi)=V²/R y CL<=CLmax.",
+        "limits": "Sin límite estructural ni trim de momentos.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "key": "S02",
+    "title": "Crucero de reactor y leyes de pilotaje",
+    "time": 150,
+    "questions": [
+      {
+        "key": "S02.1",
+        "ch": 1,
+        "title": "Primera fase de autonomía",
+        "prompt": "Un reactor de 11400 kg y masa seca 9300 kg vuela 45 minutos a 6500 m ISA con CL de máxima autonomía. S=52 m², polar 0.024+0.044CL² y cT=1.68e-5 kg/(N s). Calcule masa final, distancia y velocidades extremas.",
+        "data": "Se conservan altitud y CL; no hay viento ni reserva en este cálculo.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Ruta horizontal y ejes viento; TAS variable.",
+        "hyp": "Polar y consumo constantes; T=D; masa variable y vuelo cuasiestacionario.",
+        "model": "Primera fase de autonomía",
+        "eqs": [
+          "C_L=\\sqrt{C_{D0}/k}",
+          "m_f=m_i\\exp[-g_0c_Tt/(C_L/C_D)]",
+          "R=K_m(\\sqrt{m_i}-\\sqrt{m_f})"
+        ],
+        "steps": [
+          "Se utiliza CL de autonomía de reactor.",
+          "Se invierte la integral temporal logarítmica para encontrar masa.",
+          "Se integra la velocidad variable para alcance y se calculan ambos extremos de TAS."
+        ],
+        "tests": [
+          {
+            "name": "Masa final",
+            "expression": "11400*exp(-9.80665*1.68e-5*2700/15.38643637241659)",
+            "expected": 11075.138821324019,
+            "unit": "kg"
+          },
+          {
+            "name": "Distancia",
+            "expression": "258956.7120367895",
+            "expected": 258956.7120367895,
+            "unit": "m"
+          },
+          {
+            "name": "Vi",
+            "expression": "96.60476426689088",
+            "expected": 96.60476426689088,
+            "unit": "m/s"
+          },
+          {
+            "name": "Vf",
+            "expression": "95.21836254653901",
+            "expected": 95.21836254653901,
+            "unit": "m/s"
+          }
+        ],
+        "interpretation": "La velocidad disminuye con masa aunque la altitud no cambie.",
+        "independent": "Integrar dm/dt y dx/dt con la ley CL fija y comprobar mA mayor que masa seca.",
+        "limits": "Se omiten ascenso y transitorios de mando.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S02.2",
+        "ch": 1,
+        "title": "Segunda fase a TAS fija",
+        "prompt": "Desde la masa final anterior, el reactor pasa a TAS 175 m/s a la misma altitud y continúa hasta masa seca 9300 kg. Calcule duración y alcance adicionales. No mantenga artificialmente constante CL.",
+        "data": "La fase comienza en la masa de enlace calculada; polar, S, cT y altitud de la primera fase.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Vuelo horizontal en calma; TAS constante y CL variable.",
+        "hyp": "Cambio idealizado instantáneo de velocidad sin combustible de transición; se declara como simplificación.",
+        "model": "Segunda fase a TAS fija",
+        "eqs": [
+          "D(W)=A_V+B_VW^2",
+          "E=\\frac{\\arctan(W_i\\sqrt{B_V/A_V})-\\arctan(W_f\\sqrt{B_V/A_V})}{g_0c_T\\sqrt{A_VB_V}}",
+          "R=175E"
+        ],
+        "steps": [
+          "Se actualiza la masa inicial de la fase.",
+          "Se calcula el nuevo CL para cada peso con la misma TAS.",
+          "Se evalúa la integral arcotangente y se añade al tiempo y distancia de la fase anterior si se solicita misión total."
+        ],
+        "tests": [
+          {
+            "name": "Tiempo adicional",
+            "expression": "8250.160620778601",
+            "expected": 8250.1606207786,
+            "unit": "s"
+          },
+          {
+            "name": "Distancia adicional",
+            "expression": "1443778.108636255",
+            "expected": 1443778.108636255,
+            "unit": "m"
+          },
+          {
+            "name": "Combustible de la segunda fase",
+            "expression": "11075.13882132402-9300",
+            "expected": 1775.13882132402,
+            "unit": "kg"
+          }
+        ],
+        "interpretation": "Cambiar la ley de vuelo obliga a cambiar la integral, conservando masa de enlace.",
+        "independent": "ODE de masa a TAS fija con evento final 9300 kg y comparación con arcotangente.",
+        "limits": "La aceleración entre leyes no se ha modelado y debe añadirse en una misión física más precisa.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S02.3",
+        "ch": 1,
+        "title": "Comprobación de dos restricciones",
+        "prompt": "Con los mismos datos, compruebe al inicio de la fase a TAS fija si CLmax=1.5 y empuje disponible 10500 N permiten sostener esa condición. Explique qué otra información se necesitaría.",
+        "data": "Use masa final de fase A, TAS 175 m/s y densidad ISA a 6500 m.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Empuje disponible dado en ese punto; sin margen añadido ni resistencia de coordinación.",
+        "model": "Comprobación de dos restricciones",
+        "eqs": [
+          "C_L=2mg_0/(\\rho V^2S)",
+          "D=q_\\infty S(C_{D0}+kC_L^2)",
+          "M_T=T_d-D"
+        ],
+        "steps": [
+          "Se calcula CL con la masa real de enlace.",
+          "Se evalúa resistencia y margen de empuje.",
+          "Ambas desigualdades son necesarias; faltan trim, Mach y otras limitaciones."
+        ],
+        "tests": [
+          {
+            "name": "CL de entrada",
+            "expression": "2*11075.13882132402*9.80665/(0.6238437179746107*175**2*52)",
+            "expected": 0.21864754362769231,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Resistencia",
+            "expression": "12966.53517526451",
+            "expected": 12966.53517526451,
+            "unit": "N"
+          },
+          {
+            "name": "Margen de empuje",
+            "expression": "-2466.535175264513",
+            "expected": -2466.535175264513,
+            "unit": "N"
+          }
+        ],
+        "interpretation": "Un margen positivo de empuje no demuestra estabilidad ni autoridad de elevador.",
+        "independent": "Sustituir T=D+MT y comprobar la magnitud de cada componente de resistencia.",
+        "limits": "El empuje se da sólo para esta condición, sin mapa completo.",
+        "level": "EXAM_LEVEL",
+        "score": 2
+      }
+    ]
+  },
+  {
+    "key": "S03",
+    "title": "Hélice, potencia y combustible de misión",
+    "time": 135,
+    "questions": [
+      {
+        "key": "S03.1",
+        "ch": 1,
+        "title": "Consumo de ascenso y masa de enlace",
+        "prompt": "Un avión parte con 2180 kg, de los que 420 kg son combustible. Mantiene potencia al eje 230 kW durante siete minutos, consumo 0.30 kg/kWh y eficiencia 0.78. Calcule gasto, combustible consumido y masa al comenzar crucero.",
+        "data": "No hay otra pérdida de masa; el resto de datos se usará en el siguiente problema.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Potencia y consumo específicos constantes en esa fase; no se calcula aquí la altura.",
+        "model": "Consumo de ascenso y masa de enlace",
+        "eqs": [
+          "\\dot m_f=c_PP_{eje}",
+          "m_{fin}=m_0-c_PP_{eje}t"
+        ],
+        "steps": [
+          "Se distingue potencia al eje de potencia de empuje.",
+          "Se convierte tiempo a horas o consumo a kg/J de forma coherente.",
+          "Se actualiza masa y combustible antes de calcular crucero."
+        ],
+        "tests": [
+          {
+            "name": "Gasto",
+            "expression": ".30*230/3600",
+            "expected": 0.019166666666666665,
+            "unit": "kg/s"
+          },
+          {
+            "name": "Combustible ascenso",
+            "expression": ".30*230*7/60",
+            "expected": 8.05,
+            "unit": "kg"
+          },
+          {
+            "name": "Masa de enlace",
+            "expression": "2180-.30*230*7/60",
+            "expected": 2171.95,
+            "unit": "kg"
+          }
+        ],
+        "interpretation": "El rendimiento de hélice no modifica el gasto definido por potencia al eje en este ejercicio.",
+        "independent": "Repetir en kg/kWh por kW y horas y comprobar la misma masa consumida.",
+        "limits": "La potencia constante no fija por sí sola la tasa de ascenso.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      },
+      {
+        "key": "S03.2",
+        "ch": 1,
+        "title": "Crucero con combustible de reserva",
+        "prompt": "Desde esa masa de enlace, el avión vuela a 2200 m ISA con CL de máximo alcance. S=21.4 m² y polar 0.028+0.049CL². Debe conservar 60 kg de combustible. Calcule masa final, alcance y tiempo, con eficiencia y consumo anteriores.",
+        "data": "Masa seca 1760 kg; reserva 60 kg: masa final requerida 1820 kg.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Ruta horizontal en calma, TAS variable para mantener CL.",
+        "hyp": "CL, altitud, eficiencia y consumo constantes en crucero; sin viento.",
+        "model": "Crucero con combustible de reserva",
+        "eqs": [
+          "C_L=\\sqrt{C_{D0}/k}",
+          "R=\\eta_p(C_L/C_D)\\ln(m_i/m_f)/(g_0c_P)",
+          "E=\\frac{2\\eta_p}{g_0c_P}\\sqrt{\\frac{\\rho S C_L}{2g_0}}\\frac{C_L}{C_D}(m_f^{-1/2}-m_i^{-1/2})"
+        ],
+        "steps": [
+          "Se incorpora la reserva a masa final, sin quemarla.",
+          "Se utiliza CL de alcance para hélice y no CL de autonomía.",
+          "Se integra tiempo con la TAS decreciente; no se divide por una sola velocidad inicial."
+        ],
+        "tests": [
+          {
+            "name": "Masa final",
+            "expression": "1760+60",
+            "expected": 1820.0,
+            "unit": "kg"
+          },
+          {
+            "name": "Alcance",
+            "expression": "2277734.329352913",
+            "expected": 2277734.329352913,
+            "unit": "m"
+          },
+          {
+            "name": "Duración",
+            "expression": "46090.80059705057",
+            "expected": 46090.80059705057,
+            "unit": "s"
+          }
+        ],
+        "interpretation": "La misión nominal termina con reserva y no al agotar el tanque.",
+        "independent": "Cuadratura en masa de avance y tiempo por gasto de potencia, verificando contabilidad de reserva.",
+        "limits": "No se comprueba aquí la potencia de crucero disponible; debe evaluarse en ambos extremos.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S03.3",
+        "ch": 1,
+        "title": "Comparar potencia y empuje para ascenso",
+        "prompt": "En una condición distinta, rho=1.02 kg/m³, m=2100 kg y TAS=59 m/s, calcule potencia necesaria con la polar anterior y tasa de ascenso aproximada con potencia al eje 230 kW. Explique por qué no basta con usar empuje máximo por un coeficiente.",
+        "data": "Eficiencia 0.78; S=21.4 m²; L≈W y polar de crucero como modelo docente.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Ángulo pequeño, velocidad constante y potencia disponible en el punto.",
+        "model": "Comparar potencia y empuje para ascenso",
+        "eqs": [
+          "P_n=D(V,m,\\rho)V",
+          "P_d=\\eta_pP_{eje}",
+          "\\dot h=(P_d-P_n)/(mg_0)"
+        ],
+        "steps": [
+          "Se calcula CL requerido a la TAS y densidad dadas.",
+          "Se obtiene resistencia y potencia necesaria.",
+          "Se resta de potencia útil y se divide por peso; empuje por un factor sigue siendo fuerza."
+        ],
+        "tests": [
+          {
+            "name": "Potencia necesaria",
+            "expression": "95035.2329900622",
+            "expected": 95035.2329900622,
+            "unit": "W"
+          },
+          {
+            "name": "Potencia disponible",
+            "expression": ".78*230000",
+            "expected": 179400.0,
+            "unit": "W"
+          },
+          {
+            "name": "Tasa de ascenso",
+            "expression": "4.096577177339953",
+            "expected": 4.096577177339953,
+            "unit": "m/s"
+          }
+        ],
+        "interpretation": "La potencia al eje excedente no se puede comparar directamente con DV sin aplicar rendimiento.",
+        "independent": "Comprobar que Tdis=eta Peje/V y (Tdis-D)V/W dan la misma tasa.",
+        "limits": "No incluye corrección de aceleración ni variación de eficiencia.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "key": "S04",
+    "title": "Operaciones y margen estático",
+    "time": 120,
+    "questions": [
+      {
+        "key": "S04.1",
+        "ch": 1,
+        "title": "Carrera con viento de cara",
+        "prompt": "Un avión de 1720 kg debe alcanzar TAS 37 m/s con viento de cara 5 m/s. S=20 m², rho=1.17 kg/m³, empuje 5500 N, rodadura 0.03 y CL de carrera 0.60; polar 0.033+0.050CL². Calcule velocidad terrestre final y carrera por integración.",
+        "data": "Vaire=Vsuelo+5 m/s; pista horizontal.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Pista terrestre y velocidad aérea alineada.",
+        "hyp": "Empuje finito constante; coeficientes de carrera fijos y reacción no negativa.",
+        "model": "Carrera con viento de cara",
+        "eqs": [
+          "V_{g,f}=37-5",
+          "a(V_g)=[T-D(V_g+5)-\\mu(W-L(V_g+5))]/m",
+          "s=\\int_0^{32}V_g/a(V_g)\\,\\dd V_g"
+        ],
+        "steps": [
+          "Se obtiene la velocidad terrestre objetivo sin confundirla con la aerodinámica.",
+          "Las fuerzas se evalúan con Vg+5 desde el inicio de carrera.",
+          "Se verifica aceleración y reacción y se integra distancia terrestre."
+        ],
+        "tests": [
+          {
+            "name": "Velocidad terrestre final",
+            "expression": "37-5",
+            "expected": 32.0,
+            "unit": "m/s"
+          },
+          {
+            "name": "Carrera",
+            "expression": "187.372228247384",
+            "expected": 187.372228247384,
+            "unit": "m"
+          },
+          {
+            "name": "Tiempo",
+            "expression": "11.50066281212102",
+            "expected": 11.50066281212102,
+            "unit": "s"
+          }
+        ],
+        "interpretation": "El viento modifica tanto velocidad final terrestre como fuerzas durante la carrera.",
+        "independent": "Marcha temporal independiente y comparación con cuadratura en velocidad; no usar una simple resta de distancia por viento.",
+        "limits": "Sin rotación ni obstáculo; no es prestación certificada.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S04.2",
+        "ch": 1,
+        "title": "Frenada y demora",
+        "prompt": "En calma, la misma aeronave toma a 29 m/s con CL residual 0.16, freno 0.29 y empuje nulo. Calcule carrera de frenado y distancia añadida por una demora de 1.2 s a velocidad media prescrita de 28 m/s.",
+        "data": "S, densidad y polar anteriores; la demora es una fase adicional.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Frenado de Coulomb, coeficientes constantes, sin pendiente ni empuje inverso.",
+        "model": "Frenada y demora",
+        "eqs": [
+          "b=[D+\\mu_b(W-L)]/m",
+          "s_b=\\int_0^{29}V_g/b(V_g)\\,\\dd V_g",
+          "s_d=28(1.2)"
+        ],
+        "steps": [
+          "Se conserva la descarga normal por sustentación residual.",
+          "Se integra con desaceleración positiva.",
+          "Se añade la fase de demora con su velocidad media dada."
+        ],
+        "tests": [
+          {
+            "name": "Frenado",
+            "expression": "149.6911072744775",
+            "expected": 149.6911072744775,
+            "unit": "m"
+          },
+          {
+            "name": "Demora",
+            "expression": "28*1.2",
+            "expected": 33.6,
+            "unit": "m"
+          },
+          {
+            "name": "Total terrestre",
+            "expression": "183.2911072744775",
+            "expected": 183.2911072744775,
+            "unit": "m"
+          }
+        ],
+        "interpretation": "Un retraso aumenta la distancia aun cuando la eficacia posterior del freno no cambie.",
+        "independent": "Comprobar balance energético de la fase frenada y signos de normal y desaceleración.",
+        "limits": "No incluye aproximación ni recogida.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      },
+      {
+        "key": "S04.3",
+        "ch": 1,
+        "title": "CG, punto neutro y mando",
+        "prompt": "Un modelo tiene aw=5.1, at=4.2, St/S=0.18, eta_t=0.9, epsilon_alpha=0.35, hac=0.25, ht=3.1 y Cm_alpha_f=0.06. Calcule hn, margen para h=0.35 y Cm_alpha. ¿Prueba esto estabilidad dinámica?",
+        "data": "Pendientes por radián, posiciones hacia atrás en unidades de cuerda.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Mando fijo y aerodinámica lineal; mismo datum y configuración.",
+        "model": "CG, punto neutro y mando",
+        "eqs": [
+          "K_t=\\eta_t(S_t/S)a_t(1-\\varepsilon_\\alpha)",
+          "h_n=(a_wh_{ac}+K_th_t-C_{m\\alpha,f})/(a_w+K_t)",
+          "C_{m\\alpha}=-(a_w+K_t)(h_n-h)"
+        ],
+        "steps": [
+          "Se calcula la contribución de cola a sustentación total.",
+          "Se despeja el CG neutral de la condición de pendiente nula.",
+          "Se evalúa el margen y se distingue tendencia estática de amortiguamiento."
+        ],
+        "tests": [
+          {
+            "name": "Punto neutro",
+            "expression": "0.4665977417154735",
+            "expected": 0.4665977417154735,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Margen",
+            "expression": "0.1165977417154735",
+            "expected": 0.1165977417154735,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Cm_alpha",
+            "expression": "-0.6462150000000001",
+            "expected": -0.6462150000000001,
+            "unit": "1/radian"
+          }
+        ],
+        "interpretation": "Un margen positivo no garantiza autovalores de parte real negativa; faltan derivadas de tasa y acoplamientos.",
+        "independent": "Evaluar directamente las tres contribuciones a Cm_alpha y comprobar el mismo valor.",
+        "limits": "No determina autoridad de elevador ni estabilidad de mando libre.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "key": "S05",
+    "title": "Newton--Euler y estabilidad como ampliación",
+    "time": 135,
+    "questions": [
+      {
+        "key": "S05.1",
+        "ch": 1,
+        "title": "Momento angular con producto de inercia",
+        "prompt": "Use Ixx=11000, Iyy=16500, Izz=21000 e Ixz=850 kg m², con entradas cruzadas negativas. Para omega=(0.10,0.06,-0.08) rad/s y momentos (700,-450,380) N m, calcule aceleraciones y compruebe el balance vectorial.",
+        "data": "Tensor constante y momentos respecto al CG.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Sólido rígido simétrico, sin masa móvil ni flujo de momento angular.",
+        "model": "Momento angular con producto de inercia",
+        "eqs": [
+          "\\vect H=I\\vect\\omega",
+          "\\dot{\\vect\\omega}=I^{-1}(\\vect M-\\vect\\omega\\times\\vect H)"
+        ],
+        "steps": [
+          "Se forma el tensor con -Ixz, no con +Ixz.",
+          "Se calculan los tres componentes de H y el producto giroscópico.",
+          "Se resuelve el sistema y se recuperan los momentos por sustitución."
+        ],
+        "tests": [
+          {
+            "name": "pdot",
+            "expression": "0.0675668182953176",
+            "expected": 0.0675668182953176,
+            "unit": "1/s^2"
+          },
+          {
+            "name": "qdot",
+            "expression": "-0.03230666666666666",
+            "expected": -0.03230666666666666,
+            "unit": "1/s^2"
+          },
+          {
+            "name": "rdot",
+            "expression": "0.01945294264528667",
+            "expected": 0.01945294264528667,
+            "unit": "1/s^2"
+          }
+        ],
+        "interpretation": "Los acoplamientos impiden dividir cada momento bruto por una sola inercia.",
+        "independent": "Resolver también el bloque p,r por determinante y verificar residuo vectorial próximo a precisión de máquina.",
+        "limits": "La reproducción de literales de aceleración no sustituye esas operaciones matriciales.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S05.2",
+        "ch": 1,
+        "title": "Derivadas de cola vertical",
+        "prompt": "Para q=2400 Pa, Sv=4.5 m², eficiencia 0.93, av=3.9/rad, x_v=-5.8 m y beta=2.5 grados, calcule fuerza y momento de cola. Razone el signo de Cn_beta y qué dato faltaría para amortiguamiento en guiñada.",
+        "data": "Flujo local beta igual al global; cola detrás del CG.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Cola lineal y sin interferencia; no hay timón.",
+        "model": "Derivadas de cola vertical",
+        "eqs": [
+          "Y_v=-q_\\infty\\eta_vS_va_v\\beta",
+          "N_v=x_vY_v"
+        ],
+        "steps": [
+          "Se convierte beta a radianes.",
+          "Se obtiene Y negativa y N positiva con el brazo cuerpo.",
+          "La derivada de tasa Cnr requiere cómo cambia el flujo local con r y no se deduce sólo del equilibrio estático."
+        ],
+        "tests": [
+          {
+            "name": "Fuerza",
+            "expression": "-2400*.93*4.5*3.9*2.5*pi/180",
+            "expected": -1709.1834831855272,
+            "unit": "N"
+          },
+          {
+            "name": "Momento",
+            "expression": "-5.8*(-2400*.93*4.5*3.9*2.5*pi/180)",
+            "expected": 9913.264202476057,
+            "unit": "N*m"
+          }
+        ],
+        "interpretation": "La tendencia direccional restauradora no determina todo el modo lateral.",
+        "independent": "Comprobar con r×F y con la derivada analítica de N respecto a beta.",
+        "limits": "No se incluyen fuselaje ni efectos de altura de cola sobre alabeo.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      },
+      {
+        "key": "S05.3",
+        "ch": 1,
+        "title": "Par modal y respuesta creciente",
+        "prompt": "Como ampliación, estudie una ecuación sintética xddot+0.5 xdot+3.24x=0. Calcule autovalores, periodo y tiempo de reducción a la mitad. Compare con cambiar el signo del término de tasa.",
+        "data": "x adimensional, tiempo en segundos; no es modelo de una aeronave identificada.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Sistema lineal autónomo sin forzamiento.",
+        "model": "Par modal y respuesta creciente",
+        "eqs": [
+          "\\lambda=-0.25\\pm i\\sqrt{3.24-0.25^2}",
+          "T=2\\pi/\\omega_d,\\quad t_{1/2}=\\ln2/0.25"
+        ],
+        "steps": [
+          "La parte real depende del coeficiente de tasa y su signo.",
+          "Se calcula frecuencia amortiguada y se distingue periodo de decaimiento.",
+          "Al cambiar el signo de tasa, la parte real pasa a positiva y la envolvente crece."
+        ],
+        "tests": [
+          {
+            "name": "Frecuencia amortiguada",
+            "expression": "sqrt(3.24-.25**2)",
+            "expected": 1.7825543469975889,
+            "unit": "1/s"
+          },
+          {
+            "name": "Periodo",
+            "expression": "2*pi/sqrt(3.24-.25**2)",
+            "expected": 3.5248211746040443,
+            "unit": "s"
+          },
+          {
+            "name": "Semiamplitud",
+            "expression": "log(2)/.25",
+            "expected": 2.772588722239781,
+            "unit": "s"
+          }
+        ],
+        "interpretation": "La rigidez positiva puede coexistir con crecimiento cuando el amortiguamiento es negativo.",
+        "independent": "Traza y determinante del sistema equivalente de dos estados y solución exponencial.",
+        "limits": "Contenido dinámico de ampliación; no se atribuye como bloque explícito a la guía oficial.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "key": "S06",
+    "title": "Auditoría de simulación y decisión de modelo",
+    "time": 120,
+    "questions": [
+      {
+        "key": "S06.1",
+        "ch": 1,
+        "title": "Revisar una autonomía ejecutada",
+        "prompt": "En el experimento original B747 de 28000 lbm, el tiempo simulado hasta agotamiento es el de los datos adjuntos. Compare con congelar el gasto inicial y con el modelo equivalente. Calcule diferencias relativas y explique por qué ninguna constituye validación experimental.",
+        "data": "Tiempo simulado 4113.000000 s; gasto constante 4003.098950 s; equivalente 4105.333000 s. Deriva máxima de altura 58.253 m; paso 0.1 s.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Propiedades SI del experimento; tiempo de simulación y combustible de depósitos alimentadores.",
+        "hyp": "Datos realmente ejecutados del modelo educativo, no mediciones de avión real.",
+        "model": "Revisar una autonomía ejecutada",
+        "eqs": [
+          "\\epsilon_c=E_{const}/E_{sim}-1",
+          "\\epsilon_{eq}=E_{eq}/E_{sim}-1"
+        ],
+        "steps": [
+          "Se distingue gasto congelado de masa variable y modelo equivalente ajustado al mismo simulador.",
+          "Se calculan diferencias con el mismo denominador.",
+          "La deriva de altura impide afirmar altitud perfectamente constante y falta refinamiento completo del paso."
+        ],
+        "tests": [
+          {
+            "name": "Error de gasto constante",
+            "expression": "-0.02672041080284193",
+            "expected": -0.026720410802841932,
+            "unit": "dimensionless"
+          },
+          {
+            "name": "Error del equivalente",
+            "expression": "-0.001864089420181236",
+            "expected": -0.001864089420181236,
+            "unit": "dimensionless"
+          }
+        ],
+        "interpretation": "El ajuste comparte modelo de origen y no es evidencia experimental independiente.",
+        "independent": "Revisar el CSV y la condición de agotamiento; sumar gasto de cuatro motores e integrar combustible.",
+        "limits": "No se infiere autonomía certificada ni se oculta error de seguimiento.",
+        "level": "EXAM_LEVEL",
+        "score": 4
+      },
+      {
+        "key": "S06.2",
+        "ch": 1,
+        "title": "Potencia disponible y ejes de velocidad",
+        "prompt": "Un registro sintético indica empuje máximo 2500 lbf, factor de tabla 0.64, TAS 340 ft/s y EAS 285 ft/s. Calcule empuje disponible, potencia correcta y error al multiplicar por EAS. Identifique el error dimensional de llamar potencia al empuje por el factor.",
+        "data": "1 lbf=4.448221615 N y 1 ft=0.3048 m; datos sintéticos originales.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Factor adimensional de empuje y velocidad alineada con empuje.",
+        "model": "Potencia disponible y ejes de velocidad",
+        "eqs": [
+          "T_d=T_{base}f",
+          "P_d=T_dV_{TAS}",
+          "P_{err}/P_d=V_{EAS}/V_{TAS}"
+        ],
+        "steps": [
+          "Se aplica el factor a fuerza, conservando unidades de fuerza.",
+          "Se convierte TAS y se calcula potencia.",
+          "Se cuantifica la subestimación que produciría EAS en ese producto."
+        ],
+        "tests": [
+          {
+            "name": "Empuje disponible",
+            "expression": "2500*.64*4.448221615",
+            "expected": 7117.154583999999,
+            "unit": "N"
+          },
+          {
+            "name": "Potencia correcta",
+            "expression": "2500*.64*4.448221615*340*.3048",
+            "expected": 737564.963849088,
+            "unit": "W"
+          },
+          {
+            "name": "Error relativo por EAS",
+            "expression": "285/340-1",
+            "expected": -0.16176470588235295,
+            "unit": "dimensionless"
+          }
+        ],
+        "interpretation": "El gráfico puede usar EAS como abscisa, pero la ordenada de potencia física utiliza TAS.",
+        "independent": "Verificar dimensionalmente N por m/s y comparar ambas conversiones completas.",
+        "limits": "El ejemplo no atribuye estas cifras a PT6 ni a un modelo ejecutado.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      },
+      {
+        "key": "S06.3",
+        "ch": 1,
+        "title": "Comparar flaps sin inventar un ensayo",
+        "prompt": "Dos configuraciones docentes tienen la misma sustentación requerida CL=0.85. Limpia: CD0=0.025, k=0.045. Flaps: CD0=0.040, k=0.047. Con qS=29000 N y empuje 4400 N, calcule márgenes de empuje. ¿Permite concluir qué configuración tiene mayor ángulo máximo global?",
+        "data": "Comparación a la misma condición local y mismo empuje; no son datos SAULE.",
+        "unknown": "Magnitudes y conclusiones solicitadas en el enunciado.",
+        "frame": "Cuerpo x adelante, y derecha, z abajo; NED cuando corresponda.",
+        "hyp": "Polar parabólica, mismas referencias y L=qS CL; empuje paralelo a trayectoria.",
+        "model": "Comparar flaps sin inventar un ensayo",
+        "eqs": [
+          "D=q_\\infty S(C_{D0}+kC_L^2)",
+          "M_T=T-D"
+        ],
+        "steps": [
+          "Se calculan ambas resistencias en el mismo CL y presión dinámica.",
+          "Se comparan márgenes de empuje del punto.",
+          "Para el máximo global hay que optimizar velocidad, comprobar CLmax, rendimiento y mapa de empuje de cada configuración."
+        ],
+        "tests": [
+          {
+            "name": "Margen limpia",
+            "expression": "4400-29000*(.025+.045*.85**2)",
+            "expected": 2732.1375000000003,
+            "unit": "N"
+          },
+          {
+            "name": "Margen flaps",
+            "expression": "4400-29000*(.040+.047*.85**2)",
+            "expected": 2255.2325,
+            "unit": "N"
+          }
+        ],
+        "interpretation": "La configuración limpia tiene menor resistencia en este punto, pero un solo punto no prueba el máximo global de ascenso de cada configuración.",
+        "independent": "Comparar diferencia de resistencias con qS por diferencia de CD y comprobar mismo signo del margen.",
+        "limits": "Datos docentes; no hay ensayo físico SAULE ni velocidades óptimas identificadas.",
+        "level": "EXAM_LEVEL",
+        "score": 3
+      }
+    ]
+  }
+]

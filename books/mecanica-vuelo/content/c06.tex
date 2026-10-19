@@ -1,0 +1,70 @@
+\chapter{Equilibrio y cálculo de trim}\label{ch:trim}
+\objetivos{Formular el trim como problema de residuos; identificar incógnitas y restricciones; valorar convergencia, factibilidad y autoridad de control.}
+
+\section{Trim como condición de movimiento}
+El trim es un estado y un conjunto de mandos que sostienen un movimiento prescrito. En vuelo rectilíneo horizontal puede escribirse $\dot u=\dot v=\dot w=\dot p=\dot q=\dot r=0$ en cuerpo, con actitud constante. En un viraje estacionario la actitud puede conservar alabeo y cabeceo mientras cambia la guiñada; las condiciones deben formularse para ese movimiento.
+
+No todo estado que satisface equilibrio de fuerzas satisface equilibrio de momentos. Una polar de actuaciones puede predecir $L=W$ con una incidencia para la cual el estabilizador no tiene mando suficiente. Un límite de trim es entonces parte de la envolvente de vuelo.
+
+\section{Trim longitudinal elemental}
+Para vuelo nivelado, empuje aproximadamente paralelo al viento y configuración fija, se plantean
+\begin{align}
+q_\infty S(C_{L0}+a\alpha+a_e\delta_e)&=W,\\
+C_{m0}+C_{m\alpha}\alpha+C_{m\delta_e}\delta_e&=0,\\
+T(\delta_T,V,h)&=q_\infty S\left(C_{D0}+kC_L^2\right).
+\label{eq:trim-simple}
+\end{align}
+Las dos primeras son lineales en $\alpha$ y $\delta_e$ si sus coeficientes se consideran constantes. La tercera determina gases si el mapa de motor es invertible. Si el empuje va paralelo a cuerpo y no a viento, hay que recuperar $T\sin\alpha$ en el balance normal y $T\cos\alpha$ en el longitudinal.
+
+La matriz del sistema aerodinámico es
+\begin{equation}
+\begin{bmatrix}a&a_e\\C_{m\alpha}&C_{m\delta_e}\end{bmatrix}
+\begin{bmatrix}\alpha\\\delta_e\end{bmatrix}=
+\begin{bmatrix}W/(q_\infty S)-C_{L0}\\-C_{m0}\end{bmatrix}.
+\end{equation}
+Un determinante pequeño significa que modificar incidencia y elevador produce cambios casi dependientes en sustentación y momento. La solución puede volverse muy sensible a errores de datos. Una solución algebraica con $|\delta_e|$ mayor que el límite físico no es un trim realizable.
+
+\caso{Ejemplo original: incidencia y elevador}{Sean $m=2.100\SIu{kg}$, $S=24\SIu{m^2}$, $\rho=1.05\SIu{kg\,m^{-3}}$, $V=65\SIu{m\,s^{-1}}$, $C_{L0}=0.25$, $a=5.1\SIu{rad^{-1}}$, $a_e=0.25\SIu{rad^{-1}}$, $C_{m0}=0.04$, $C_{m\alpha}=-0.70$ y $C_{m\delta_e}=-1.05\SIu{rad^{-1}}$. El $C_L$ requerido es $0.3869$. De la segunda ecuación, $\delta_e=(0.04-0.70\alpha)/1.05$. Sustituyendo en la primera se obtiene $\alpha\simeq0.02582\SIu{rad}=1.48^\circ$ y $\delta_e\simeq0.02088\SIu{rad}=1.20^\circ$. Con $C_{D0}=0.027$, $k=0.047$, el empuje necesario es aproximadamente $1.811\SIu{kN}$. Las tres sustituciones deben rehacerse con los valores sin redondear. Este resultado supone que los coeficientes referidos a elevador corresponden al signo positivo declarado, no al de cualquier mando real.}
+
+\section{Formulación no lineal}
+En un modelo más completo se agrupan incógnitas en $\vect z$, por ejemplo incidencia, resbalamiento, elevador, alerón, timón y gases. Los residuos son aceleraciones o fuerzas y momentos:
+\begin{equation}
+\vect R(\vect z;V,h,m,\text{movimiento prescrito})=\vect0.
+\end{equation}
+El número de ecuaciones independientes debe igualar al de incógnitas libres. Fijar más condiciones de las compatibles sobreespecifica el problema; dejar un mando libre puede producir una familia de soluciones. Un solucionador de mínimos cuadrados siempre puede devolver un número, incluso cuando no existe una raíz física. Por eso se examina el residuo final y cada restricción.
+
+\subsection{Newton y diferencias finitas}
+La iteración de Newton resuelve $J\Delta\vect z=-\vect R$, donde $J_{ij}=\partial R_i/\partial z_j$. Las diferencias centradas aproximan
+\begin{equation}
+J_{ij}\approx\frac{R_i(\vect z+\varepsilon_j\vect e_j)-R_i(\vect z-\varepsilon_j\vect e_j)}{2\varepsilon_j}.
+\end{equation}
+Pasos grandes introducen error de truncamiento y pueden atravesar discontinuidades de tablas. Pasos diminutos amplifican ruido numérico y cancelación. Conviene repetir con varios pasos y escalar variables: un radián de elevador, un newton y un metro no deben tener el mismo peso numérico por accidente.
+
+\subsection{Escalado de residuos}
+Se pueden normalizar fuerzas por $W$ y momentos por $W\bar c$ o por $q_\infty S\bar c$. Si se emplean aceleraciones, deben especificarse tolerancias lineales y angulares distintas. Una tolerancia $10^{-5}$ carece de significado físico sin unidades. La norma del residuo no reemplaza sus componentes: un error lateral pequeño en fuerza puede ser grande respecto al objetivo de coordinación.
+
+\section{Factibilidad antes y después de resolver}
+Antes del cálculo se comprueba que $C_L$ requerido no supera el máximo, que el empuje o potencia disponibles son suficientes y que la configuración permite la maniobra. Después se revisan mandos, incidencia, velocidades, límites de tablas y coherencia del motor. En una rama posterior a la pérdida puede aparecer una raíz numérica que no es el equilibrio estable buscado.
+
+Las restricciones se tratan explícitamente: $0\leq\delta_T\leq1$, límites de mandos, $V>0$ y densidad positiva. Recortar una variable a un límite después de resolver destruye la raíz. Es mejor resolver con cotas o declarar que la condición no admite trim con el conjunto de mandos disponible.
+
+\section{Continuación de una familia de trimas}
+Para construir una curva resistencia--velocidad se parte de un trim factible y se cambia la velocidad en pasos moderados. La solución anterior sirve como estimación inicial. Se registran también los fallos. Un hueco en la curva puede significar falta de empuje, pérdida de autoridad, mala estimación inicial o un problema del modelo; no debe interpolarse sin diagnóstico.
+
+En cada punto hay que conservar la configuración y las magnitudes que se pretendían fijar. Si el software ajusta otra variable durante el trim, se registra su valor final. En las pruebas del proyecto se comprobó la velocidad realmente alcanzada: el orden de asignación de las condiciones iniciales puede modificarla antes de ejecutar la simulación.
+
+\section{Verificar el trim mediante una trayectoria}
+Una prueba útil consiste en integrar algunos segundos con mandos congelados. Debe partirse del estado de trim y registrar aceleraciones y deriva de altura, velocidad y actitud. Una pequeña deriva puede provenir del consumo, de diferencias entre las tolerancias y el integrador o de términos terrestres. Una deriva importante obliga a revisar si el estado realmente es estacionario.
+
+Esta prueba no establece estabilidad. Un equilibrio inestable puede conservarse durante un intervalo corto si la perturbación inicial es muy pequeña. Para estudiar estabilidad se perturba de forma controlada o se linealiza el sistema, como se hace en el capítulo de ampliación.
+
+\section{Trim en JSBSim}
+La interfaz de Python permite cargar un modelo, establecer condiciones iniciales, activar motores, ejecutar la inicialización y solicitar trim longitudinal. La llamada puede fallar y debe conservarse el error. El modo longitudinal no es un trim lateral completo. Tampoco demuestra que todas las velocidades de una tabla de actuaciones sean sostenibles.
+
+En la colección ejecutada se construyen 44 puntos originales del modelo T-6, con dos cantidades de combustible y dos altitudes. Se registran CAS solicitada, TAS y EAS resultantes, resistencia, sustentación, empuje y residuos de aceleración. En otro experimento se integra un trim durante 60 segundos con tres pasos temporales. La convergencia se limita a ese experimento y no se generaliza a todo el simulador.
+
+\input{content/t06}
+
+\repaso{Un solucionador devuelve una norma de residuo muy pequeña y gases $1.12$. ¿Se ha encontrado un vuelo horizontal posible?}{No con una palanca limitada al intervalo $[0,1]$. El resultado revela la demanda del modelo extrapolado. Debe buscarse otra velocidad, altitud, masa o configuración, o declarar la condición inviable.}
+\resumen{Trim es un problema de balances y restricciones. La convergencia numérica exige residuos pequeños, pero la factibilidad exige además mandos y estados admisibles. El equilibrio encontrado debe registrarse y comprobarse con una integración coherente con su definición.}
+\fuentes{Guía docente ULE, bloque de ecuaciones generales y prácticas de simulación. How, MIT 16.333, lecciones 2 y 4. JSBSim 1.3.3, interfaz FGFDMExec y FGTrim consultadas; tutorial y ejemplos originales desarrollados para esta edición.}

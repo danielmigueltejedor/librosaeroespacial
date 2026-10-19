@@ -1,0 +1,71 @@
+\section{Taller resuelto: Intersección con un límite de Mach}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Un reactor de 7600 kg, S=42 m² y polar 0.024+0.044CL² dispone de 10000 N a 7000 m ISA. CLmax=1.5 y Mach máximo 0.62. Halle el intervalo horizontal admisible según esas tres restricciones.}
+
+\apartado{2. Datos}{Empuje constante con velocidad en el intervalo; límite de Mach local.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Velocidades TAS y vuelo horizontal en calma.}
+
+\apartado{5. Hipótesis físicas}{Polar fija y trim asumido posible; no se añaden otros límites estructurales.}
+
+\apartado{6. Modelo matemático}{Intersección con un límite de Mach}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}V_\pm^2=[T\pm\sqrt{T^2-4AB}]/(2A)\end{equation}
+
+\begin{equation}V_{inf}=\max(V_-,V_{stall})\end{equation}
+
+\begin{equation}V_{sup}=\min(V_+,M_{max}a)\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se encuentran ambas raíces de equilibrio.
+
+\item Se compara la raíz baja con pérdida.
+
+\item Se convierte Mach a TAS usando temperatura de 7000 m.
+
+\item Si el intervalo resultante quedase vacío, no habría vuelo horizontal que cumpla las restricciones.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Raíz baja:\quad $45.89235518801077\simeq 45.89236\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Raíz alta:\quad $177.6278273287518\simeq 177.6278\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Pérdida:\quad $63.3533649190066\simeq 63.35336\,\mathrm{m\,s^{-1}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Raíz baja & $45.89236\,\mathrm{m\,s^{-1}}$\\
+
+Raíz alta & $177.6278\,\mathrm{m\,s^{-1}}$\\
+
+Pérdida & $63.35336\,\mathrm{m\,s^{-1}}$\\
+
+Límite TAS por Mach & $193.6096\,\mathrm{m\,s^{-1}}$\\
+
+Límite inferior & $63.35336\,\mathrm{m\,s^{-1}}$\\
+
+Límite superior & $177.6278\,\mathrm{m\,s^{-1}}$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{La máxima velocidad de empuje puede quedar excluida por Mach; la raíz baja puede quedar excluida por pérdida.}
+
+\apartado{12. Comprobación independiente y alcance}{Evaluar D en las fronteras y comprobar CL y Mach con los valores finales.}
+
+\apartado{13. Limitaciones}{Una envolvente completa requiere centro de gravedad, autoridad de mando y otros límites operativos.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

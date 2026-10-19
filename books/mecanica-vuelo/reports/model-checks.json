@@ -1,0 +1,490 @@
+{
+  "checks": [
+    {
+      "id": "V001",
+      "name": "Rotación NED-cuerpo: ortogonalidad",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Matriz pasiva Euler 3-2-1",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V002",
+      "name": "Rotación NED-cuerpo: determinante",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Rotación propia",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V003",
+      "name": "Rotación viento-cuerpo",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Ejes viento x paralelo a velocidad relativa al aire",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V004",
+      "name": "Rotación viento-cuerpo: dirección velocidad",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Definición alpha y beta",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V005",
+      "name": "Jacobiano Euler: determinante",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Singularidad en cos(theta)=0",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V006",
+      "name": "Gravedad: proyección",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "NED z positivo abajo",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V007",
+      "name": "Newton-Euler: tres términos de inercia cruzada",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "J=integral x z dm; tensor usa -J",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V008",
+      "name": "Trabajo giroscópico nulo",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Tensor simétrico constante",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V009",
+      "name": "Mínimo D: V cuarta=B/A",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "A,B>0 y V>0; mínimo global por límites infinitos",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V010",
+      "name": "Mínimo P: V cuarta=B/(3A)",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "A,B>0, dominio físico debe excluir pérdida",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V011",
+      "name": "Máxima L/D",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Polar parabólica con CD0,k>0; eta y consumos constantes si se aplica a misión",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V012",
+      "name": "Máximo CL^(3/2)/CD",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Polar parabólica con CD0,k>0; eta y consumos constantes si se aplica a misión",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V013",
+      "name": "Máximo sqrt(CL)/CD",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Polar parabólica con CD0,k>0; eta y consumos constantes si se aplica a misión",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V014",
+      "name": "Integral jet a TAS y altitud constantes",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "W es peso, cT consumo másico por empuje",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V015",
+      "name": "Integral alcance jet a CL y rho constantes",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "V=K sqrt(m), masa decreciente",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V016",
+      "name": "Integral autonomía hélice a CL y rho constantes",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "cP por potencia al eje, eta constante",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V017",
+      "name": "Oswald frente a eficiencia de envergadura",
+      "kind": "SYMBOLICALLY_CHECKED",
+      "passed": true,
+      "detail": "0",
+      "scope": "Sólo si resistencia de perfil adicional es kprof CL²",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V018",
+      "name": "Fuerza aerodinámica",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[mass] * [length] / [time] ** 2",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V019",
+      "name": "Potencia de empuje",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[mass] * [length] ** 2 / [time] ** 3",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V020",
+      "name": "Gasto combustible jet",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[mass] / [time]",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V021",
+      "name": "Gasto combustible hélice",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[mass] / [time]",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V022",
+      "name": "Breguet temporal jet",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[time]",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V023",
+      "name": "Breguet alcance hélice",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[length]",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V024",
+      "name": "Aceleración angular",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "1 / [time] ** 2",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V025",
+      "name": "Radio de viraje",
+      "kind": "DIMENSIONALLY_CHECKED",
+      "passed": true,
+      "detail": "[length]",
+      "scope": "Unidades SI antes de sustitución numérica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V026",
+      "name": "Integración masa jet, paso máximo 300s",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "time": 15252.245844461853,
+        "range": 1601485.8136684946,
+        "evaluations": 356,
+        "relative_error": 9.992007221626409e-16
+      },
+      "scope": "ODE solve_ivp frente a integral analítica arctan; no valida polar",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V027",
+      "name": "Integración masa jet, paso máximo 120s",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "time": 15252.245844461895,
+        "range": 1601485.813668499,
+        "evaluations": 812,
+        "relative_error": 1.7763568394002505e-15
+      },
+      "scope": "ODE solve_ivp frente a integral analítica arctan; no valida polar",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V028",
+      "name": "Integración masa jet, paso máximo 30s",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "time": 15252.24584446181,
+        "range": 1601485.81366849,
+        "evaluations": 3098,
+        "relative_error": 3.774758283725532e-15
+      },
+      "scope": "ODE solve_ivp frente a integral analítica arctan; no valida polar",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V029",
+      "name": "Atmósfera h=0m",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "T": 288.15,
+        "p": 101325.0,
+        "rho": 1.225000018124288,
+        "a": 340.293988026089
+      },
+      "scope": "ISA implementada hasta 20 km; altitud geopotencial",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V030",
+      "name": "Atmósfera h=10999.999m",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "T": 216.65000649999996,
+        "p": 22632.04366382102,
+        "rho": 0.3639176945688732,
+        "a": 295.06949793545436
+      },
+      "scope": "ISA implementada hasta 20 km; altitud geopotencial",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V031",
+      "name": "Atmósfera h=11000m",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "T": 216.64999999999998,
+        "p": 22632.040095007793,
+        "rho": 0.3639176481016034,
+        "a": 295.0694935090715
+      },
+      "scope": "ISA implementada hasta 20 km; altitud geopotencial",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V032",
+      "name": "Atmósfera h=11000.001m",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "T": 216.64999999999998,
+        "p": 22632.03652619507,
+        "rho": 0.363917590715971,
+        "a": 295.0694935090715
+      },
+      "scope": "ISA implementada hasta 20 km; altitud geopotencial",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V033",
+      "name": "Atmósfera h=20000m",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "T": 216.64999999999998,
+        "p": 5474.877424281044,
+        "rho": 0.08803468478868634,
+        "a": 295.0694935090715
+      },
+      "scope": "ISA implementada hasta 20 km; altitud geopotencial",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V034",
+      "name": "Continuidad ISA en 11 km",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": "Valores a ambos lados de la tropopausa",
+      "scope": "No es comparación con observaciones meteorológicas",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V035",
+      "name": "Transformaciones aleatorias ida y vuelta",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": 4.440892098500626e-16,
+      "scope": "200 casos con semilla fija; complemento de prueba simbólica",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V036",
+      "name": "Residuo Newton-Euler numérico",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": [
+        0.11870340754227857,
+        -0.026305999999999996,
+        0.02730800662801251
+      ],
+      "scope": "Tensor definido positivo; producto de inercia no nulo",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V037",
+      "name": "Equilibrio planeo CL=0.4",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "gamma": -0.07823995970372703,
+        "V": 90.58367613730823,
+        "sink": 7.080034613663778,
+        "horizontal": 90.30656394979307,
+        "residual_N": 9.094947017729282e-13
+      },
+      "scope": "Descenso estacionario exacto, sin empuje",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V038",
+      "name": "Equilibrio planeo CL=0.8",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "gamma": -0.06670090596316637,
+        "V": 64.07916613219192,
+        "sink": 4.270969857932482,
+        "horizontal": 63.936674519947346,
+        "residual_N": 7.275957614183426e-12
+      },
+      "scope": "Descenso estacionario exacto, sin empuje",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V039",
+      "name": "Equilibrio planeo CL=1.1",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "gamma": -0.07229198221500681,
+        "V": 54.63626357608462,
+        "sink": 3.94632436330632,
+        "horizontal": 54.49355761532703,
+        "residual_N": 4.547473508864641e-13
+      },
+      "scope": "Descenso estacionario exacto, sin empuje",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V040",
+      "name": "Mínimo resistencia: optimizador independiente",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "optimizer": 67.51214150082902,
+        "formula": 67.51214340987656
+      },
+      "scope": "Mismo modelo, algoritmos distintos",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V041",
+      "name": "Viraje: balance centrípeto",
+      "kind": "ARITHMETIC_REPLAYED",
+      "passed": true,
+      "detail": {
+        "n": 1.220774588761456,
+        "radius": 1179.6075983757073,
+        "rate": 0.07629655838426944
+      },
+      "scope": "Nivelado coordinado, viento nulo",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V042",
+      "name": "Rodadura: cuadratura frente a marcha temporal dt=0.02",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "distance": 177.08534019473316,
+        "reference": 177.1070481211429,
+        "time": 10.885828626162324
+      },
+      "scope": "Modelo de rodadura; sin rotación ni distancia sobre obstáculo",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V043",
+      "name": "Rodadura: cuadratura frente a marcha temporal dt=0.01",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "distance": 177.09618913199066,
+        "reference": 177.1070481211429,
+        "time": 10.886331921074488
+      },
+      "scope": "Modelo de rodadura; sin rotación ni distancia sobre obstáculo",
+      "expert_review": "PENDING"
+    },
+    {
+      "id": "V044",
+      "name": "Rodadura: cuadratura frente a marcha temporal dt=0.005",
+      "kind": "NUMERICALLY_CONVERGED",
+      "passed": true,
+      "detail": {
+        "distance": 177.10161688093848,
+        "reference": 177.1070481211429,
+        "time": 10.886583782816984
+      },
+      "scope": "Modelo de rodadura; sin rotación ni distancia sobre obstáculo",
+      "expert_review": "PENDING"
+    }
+  ],
+  "total": 44,
+  "passed": 44,
+  "failed": 0,
+  "vocabulary": "Estados de este registro externo; no son estados añadidos a Studium.",
+  "limitations": [
+    "Revisión experta pendiente.",
+    "La coherencia dimensional no establece la validez del modelo.",
+    "Convergencia de estas ODE no implica convergencia de todos los ejemplos JSBSim."
+  ]
+}

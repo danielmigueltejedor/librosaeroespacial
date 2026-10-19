@@ -1,0 +1,71 @@
+\chapter{Vuelo horizontal y envolvente de velocidades}\label{ch:nivelado}
+\objetivos{Resolver las dos ramas de equilibrio; introducir pérdida, Mach y límites de motor; interpretar la variación con peso y altitud.}
+
+\section{Resistencia necesaria y mínimo global}
+Para masa y densidad fijas, con polar parabólica y $L=W$,
+\begin{equation}
+D(V)=AV^2+B/V^2,\quad
+A=\tfrac12\rho SC_{D0},\quad B=2kW^2/(\rho S).
+\end{equation}
+La derivada $2AV-2B/V^3$ cambia de negativa a positiva en $V_E=(B/A)^{1/4}$. Puesto que la función diverge en ambos extremos positivos, ese punto es un mínimo global matemático:
+\begin{equation}
+D_{\min}=2\sqrt{AB}=2W\sqrt{kC_{D0}}=W/E_{a,\max}.
+\end{equation}
+La independencia de $D_{\min}$ respecto a densidad sólo se mantiene si la polar permanece constante y el óptimo no queda excluido por restricciones.
+
+\ilustra{resistencia}{Descomposición de la resistencia en vuelo nivelado de un avión docente de $4.800\SIu{kg}$ a $4.500\SIu m$ ISA. La curva se inicia en la pérdida del modelo; no se prolonga hasta velocidad nula.}
+
+\section{Dos velocidades para un empuje constante}
+Si $T_d=T$ es independiente de velocidad en el intervalo considerado, el equilibrio $T=D$ da una ecuación cuadrática en $z=V^2$:
+\begin{equation}
+Az^2-Tz+B=0,\qquad
+V_{\pm}^2=\frac{T\pm\sqrt{T^2-4AB}}{2A}.
+\label{eq:jetroots}
+\end{equation}
+Hay dos raíces positivas si $T>D_{\min}$, una doble si $T=D_{\min}$ y ninguna si el empuje es menor. Entre las dos raíces, $T>D$ y hay margen de aceleración; fuera, el empuje no compensa la resistencia de vuelo horizontal del modelo.
+
+Para evitar pérdida de precisión cuando $T$ es mucho mayor que $D_{\min}$, la raíz pequeña se evalúa mejor como
+\begin{equation}
+V_-^2=\frac{2B}{T+\sqrt{T^2-4AB}},
+\end{equation}
+que es algebraicamente equivalente y evita restar números próximos. La coincidencia de ambas expresiones en un caso ordinario no garantiza estabilidad numérica en todos los extremos.
+
+\section{Forma adimensional}
+Definiendo $v=V/V_E$ y $\tau=T/D_{\min}$,
+\begin{equation}
+\frac{D}{D_{\min}}=\frac12(v^2+v^{-2}),\quad
+v_\pm=\sqrt{\tau\pm\sqrt{\tau^2-1}}.
+\end{equation}
+El producto $v_+v_-=1$ sirve como comprobación. La raíz pequeña no es automáticamente una velocidad mínima de vuelo: puede exigir una sustentación superior a $C_{L\max}$.
+
+\section{Pérdida y límite inferior utilizable}
+Con $L=W$, la velocidad de pérdida del modelo es
+\begin{equation}
+V_{\rm stall}=\sqrt{\frac{2W}{\rho SC_{L\max}}}.
+\end{equation}
+El intervalo de vuelo horizontal debe satisfacer simultáneamente $V\geq V_{\rm stall}$ y $D(V)\leq T_{d,\max}(V,h)$, además de trim y límites operativos. Si el límite inferior de empuje queda por debajo de pérdida, la frontera aerodinámica gobierna. Si incluso a $V_{\rm stall}$ falta empuje, puede existir una velocidad mínima mayor en la rama descendente de resistencia, siempre que el resto de la envolvente lo permita.
+
+Una pérdida real no se representa por una pared matemática: intervienen incidencia, maniobra, configuración y dinámica. La velocidad utilizada en operaciones incorpora los márgenes y procedimientos correspondientes, que no se deducen de esta sola fórmula.
+
+\section{Límites superiores}
+Una condición de Mach impone $V\leq M_{\max}a(h)$. Una condición de EAS o presión dinámica fija otro límite TAS que aumenta al disminuir densidad. Puede existir además una velocidad máxima estructural, una limitación por temperatura o un límite de mando.
+
+No deben tratarse como intercambiables un límite de Mach y uno en nudos indicados. En la troposfera, la velocidad del sonido disminuye al subir; mantener Mach constante reduce TAS. Mantener EAS constante aumenta TAS al subir. La intersección de límites produce cambios de régimen que deben localizarse, no suavizarse para obtener una curva aparentemente continua.
+
+\ilustra{velocidades-altura}{TAS requerida para mantener una EAS de $60\SIu{m\,s^{-1}}$ en ISA. La conversión no aplica correcciones instrumentales y no identifica EAS con IAS.}
+
+\section{Efectos de peso y altitud}
+Si la masa disminuye, $V_E\propto\sqrt W$ y $D_{\min}\propto W$. El avión necesita menos empuje en el óptimo y puede aumentar su margen. A una TAS fija, la parte parásita permanece igual en una altitud fija, mientras que la parte cuadrática disminuye con $W^2$.
+
+Al subir a masa fija, el mínimo de resistencia se desplaza a mayor TAS, pero el empuje disponible suele disminuir. La velocidad máxima absoluta del modelo no tiene por qué aparecer al nivel del mar ni en el techo. Para buscarla se optimiza sobre altitud después de aplicar pérdida, motor, Mach y estructura. Un resultado interior que ignora una frontera de Mach puede no ser admisible.
+
+\caso{Ejemplo original: dos raíces y una restricción}{Sea $m=4.800\SIu{kg}$, $S=28\SIu{m^2}$, $C_{D0}=0.024$, $k=0.046$, $C_{L\max}=1.55$ y densidad ISA a $4.500\SIu m$. Se calcula $A$, $B$ y $D_{\min}$ antes de elegir $T=6.500\SIu N$. Las dos raíces de la ecuación~\eqref{eq:jetroots} se comprueban sustituyéndolas en $D(V)$. Después se compara la raíz baja con $V_{\rm stall}$ y la alta con cualquier límite de Mach impuesto. Los valores de $T$ y polar son docentes y no corresponden al modelo T-6 ni al 747.}
+
+\section{Estabilidad de velocidad: alcance de un argumento simple}
+Si se congela altitud y se supone que la sustentación se reajusta instantáneamente, $m\dot V=T-D(V)$. Una perturbación pequeña satisface $m\delta\dot V\simeq-D'(V_0)\delta V$. La rama alta, con $D'>0$, resulta amortiguada en este modelo escalar; la baja, con $D'<0$, puede divergir. No es una clasificación completa de estabilidad longitudinal: faltan actitud, incidencia, altura, mando y dinámica del motor. El argumento sólo explica la tendencia del balance de empuje bajo las restricciones asumidas.
+
+\input{content/t11}
+
+\repaso{¿Qué significa un discriminante negativo al resolver $T=D$?}{Que no existe vuelo horizontal a ese peso y densidad con el empuje constante elegido dentro del modelo. No significa que el avión no pueda descender ni que un motor de mapa distinto tenga el mismo resultado.}
+\resumen{Las raíces de equilibrio son candidatas. La envolvente utilizable es la intersección de balances, pérdida, límites de velocidad, propulsión y trim. Las variables adimensionales ayudan a comprobar el álgebra, pero no eliminan esas fronteras físicas.}
+\fuentes{How, MIT 16.333, lección 1, resistencia y vuelo nivelado. Guía ULE, actuaciones en el punto de aerorreactores. Desarrollo y restricciones de los ejemplos propios.}

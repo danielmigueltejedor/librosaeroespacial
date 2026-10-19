@@ -1,0 +1,65 @@
+\section{Taller resuelto: Auditar la energía de una frenada}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Con el avión anterior, considere toma en calma a 30 m/s, empuje nulo, CL residual 0.17 y freno 0.31. Calcule distancia, tiempo y energía inicial que deben disipar conjuntamente aire y ruedas.}
+
+\apartado{2. Datos}{Masa 1680 kg, S=20.2 m² y la misma polar; pista horizontal.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Velocidad terrestre y fuerza resistente opuesta al avance.}
+
+\apartado{5. Hipótesis físicas}{Masa, coeficientes y freno constantes; no hay demora de aplicación ni inversión de empuje.}
+
+\apartado{6. Modelo matemático}{Auditar la energía de una frenada}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}b=[D+\mu_b(W-L)]/m\end{equation}
+
+\begin{equation}s=\int_0^{V_0}V/b\,\dd V,\quad t=\int_0^{V_0}\dd V/b\end{equation}
+
+\begin{equation}E_{k,0}=mV_0^2/2\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se integra distancia y tiempo sobre la misma desaceleración variable.
+
+\item Se calcula energía terrestre inicial.
+
+\item Para auditar el balance, se integra por separado el trabajo de resistencia y freno a lo largo de la trayectoria.
+
+\item No se asigna toda la energía a discos: parte se disipa aerodinámicamente.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Distancia:\quad $150.8149625143146\simeq 150.815\,\mathrm m$.\par
+
+\noindent Tiempo:\quad $9.991985415506646\simeq 9.991985\,\mathrm s$.\par
+
+\noindent Energía inicial:\quad $\frac{1680 \cdot 30^{2}}{2}\simeq 756000\,\mathrm J$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Distancia & $150.815\,\mathrm m$\\
+
+Tiempo & $9.991985\,\mathrm s$\\
+
+Energía inicial & $756000\,\mathrm J$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El trabajo total puede cerrar aunque la fracción absorbida por frenos requiera otra integral.}
+
+\apartado{12. Comprobación independiente y alcance}{Integrar (D+Ffreno) dx y comparar con energía inicial; al usar dx=V/b dV el balance se reduce a integral de mV.}
+
+\apartado{13. Limitaciones}{No predice temperatura de frenos sin capacidad térmica, transferencia de calor y reparto de energía.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

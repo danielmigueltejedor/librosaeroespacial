@@ -1,0 +1,65 @@
+\section{Taller resuelto: Viento de cara: fuerza y distancia}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Para masa 1680 kg, S=20.2 m², rho=1.20 y empuje 5400 N, calcule carrera hasta TAS 34 m/s en calma y con viento de cara 5 m/s. Use rodadura 0.03, CL de carrera 0.63 y polar 0.034+0.051CL².}
+
+\apartado{2. Datos}{La velocidad terrestre objetivo cambia de 34 a 29 m/s.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Pista horizontal; fuerzas con velocidad aérea y distancia con velocidad terrestre.}
+
+\apartado{5. Hipótesis físicas}{Empuje finito constante; sin rotación ni obstáculo; mismo estado atmosférico y configuración.}
+
+\apartado{6. Modelo matemático}{Viento de cara: fuerza y distancia}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}V_a=V_g+U\end{equation}
+
+\begin{equation}a=[T-D(V_a)-\mu(W-L(V_a))]/m\end{equation}
+
+\begin{equation}s=\int_0^{V_{g,f}}V_g/a(V_g)\,\dd V_g\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se prepara un caso en calma y otro con su objetivo terrestre distinto.
+
+\item En el caso con viento las fuerzas se evalúan con velocidad aérea desde Vg=0.
+
+\item Se comprueban aceleración positiva y contacto y se integran ambas carreras.
+
+\item Se compara reducción de distancia y se distingue de una simple corrección de velocidad final.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Carrera en calma:\quad $208.6565284657509\simeq 208.6565\,\mathrm m$.\par
+
+\noindent Carrera con viento:\quad $152.6346719423097\simeq 152.6347\,\mathrm m$.\par
+
+\noindent Reducción relativa:\quad $0.2684883954284547\simeq 0.2684884\,$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Carrera en calma & $208.6565\,\mathrm m$\\
+
+Carrera con viento & $152.6347\,\mathrm m$\\
+
+Reducción relativa & $0.2684884\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El viento reduce la carrera por varios términos del mismo balance; no es sólo una resta de avance al final.}
+
+\apartado{12. Comprobación independiente y alcance}{Marcha temporal con eventos de velocidad aérea y revisión de fuerzas iniciales en ambos casos.}
+
+\apartado{13. Limitaciones}{No se estudia viento de cola con flujo invertido ni ráfagas.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

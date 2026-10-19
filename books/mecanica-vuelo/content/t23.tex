@@ -1,0 +1,63 @@
+\section{Taller resuelto: Interpretar un refinamiento realmente ejecutado}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{En el ensayo libre de 60 s del T-6 se usaron pasos 0.10, 0.05 y 0.025 s. Compare las TAS finales y calcule diferencias sucesivas. ¿Permiten asignar un orden universal a JSBSim?}
+
+\apartado{2. Datos}{Los tres CSV y registros de versión están incluidos en el proyecto; las condiciones iniciales y duración son comunes.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Misma propiedad TAS SI al final de cada trayectoria.}
+
+\apartado{5. Hipótesis físicas}{Comparación de un experimento libre concreto, sin atribuir todo el error a una sola potencia de paso.}
+
+\apartado{6. Modelo matemático}{Interpretar un refinamiento realmente ejecutado}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}\Delta_1=|V_{0.10}-V_{0.05}|\end{equation}
+
+\begin{equation}\Delta_2=|V_{0.05}-V_{0.025}|\end{equation}
+
+\begin{equation}p_{observado}=\ln(\Delta_1/\Delta_2)/\ln2\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se extraen los valores finales sin redondear antes de restarlos.
+
+\item Se calculan diferencias y un orden observado sólo como indicador condicionado.
+
+\item La mezcla de actualización de masa, tolerancia de trim e integradores impide generalizarlo a todos los estados y casos.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Diferencia primera:\quad $5.151754832866118 \cdot 10^{-5}\simeq 5.151755\times10^{-5}\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Diferencia segunda:\quad $2.087958689855895 \cdot 10^{-5}\simeq 2.087959\times10^{-5}\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Orden observado condicionado:\quad $1.302970770044629\simeq 1.302971\,$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Diferencia primera & $5.151755\times10^{-5}\,\mathrm{m\,s^{-1}}$\\
+
+Diferencia segunda & $2.087959\times10^{-5}\,\mathrm{m\,s^{-1}}$\\
+
+Orden observado condicionado & $1.302971\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{Las diferencias pequeñas y decrecientes aportan sensibilidad temporal para esta TAS final; no prueban un orden formal global.}
+
+\apartado{12. Comprobación independiente y alcance}{Comprobar también altura, actitud y masa final en los registros y repetir con otro paso si la aplicación exige tolerancias más estrictas.}
+
+\apartado{13. Limitaciones}{Las autonomías completas del 747 no se declaran convergentes por este ensayo corto de otra aeronave.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,94 @@
+\chapter{Cinemática, transporte y viento}\label{ch:cinematica}
+\objetivos{Derivar correctamente un vector expresado en ejes móviles; reconstruir una trayectoria; introducir el viento sin mezclar velocidades inerciales y aerodinámicas.}
+
+\section{Derivar componentes no es derivar el vector}
+Sea $\vect A=A_x\vect e_x+A_y\vect e_y+A_z\vect e_z$ una magnitud expresada en una base que gira con velocidad angular $\vect\omega_{b/i}$. Al derivar respecto a un observador inercial aparecen dos contribuciones: las variaciones de componentes y las de la base. Como $\dot{\vect e}_j=\vect\omega_{b/i}\times\vect e_j$,
+\begin{equation}
+\left(\frac{\dd\vect A}{\dd t}\right)_i
+=\left(\frac{\dd\vect A}{\dd t}\right)_b+\vect\omega_{b/i}\times\vect A.
+\label{eq:transporte}
+\end{equation}
+La ecuación es vectorial. Todos los términos pueden expresarse en cuerpo, pero cada derivada conserva el significado del observador que la define. Un vector fijo en el avión tiene derivada de componentes nula y puede estar girando rápidamente respecto al suelo.
+
+Para la velocidad del centro de gravedad, $\vect v^b=(u,v,w)^T$, y $\vect\omega^b=(p,q,r)^T$:
+\begin{equation}
+\vect a^b=\begin{bmatrix}\dot u+qw-rv\\\dot v+ru-pw\\\dot w+pv-qu\end{bmatrix}.
+\label{eq:aceleracion-cuerpo}
+\end{equation}
+El término $qw$ no es una fuerza; es parte de la aceleración que aparece al expresar la derivada inercial en una base móvil. Trasladarlo al otro miembro de una ecuación de movimiento no cambia su origen cinemático.
+
+\caso{Ejemplo: componentes constantes en viraje}{Supóngase $\vect v^b=(80,0,0)\SIu{m\,s^{-1}}$ y $\vect\omega^b=(0,0,0.06)\SIu{rad\,s^{-1}}$. Aunque $\dot u=\dot v=\dot w=0$, la aceleración es $(0,4.8,0)\SIu{m\,s^{-2}}$. El radio de la curva es $80/0.06=1.333\SIu{km}$. La comprobación $V^2/R=4.8\SIu{m\,s^{-2}}$ muestra por qué no puede identificarse estacionariedad de componentes con ausencia de fuerza lateral. Este ejemplo cinemático no fija por sí mismo el alabeo ni las fuerzas que producirían ese movimiento.}
+
+\section{Movimiento de un punto del sólido}
+Sea $P$ un punto fijo en el avión y $G$ su centro de gravedad. Con $\vect r_{P/G}$ fijo en cuerpo,
+\begin{align}
+\vect v_P&=\vect v_G+\vect\omega\times\vect r_{P/G},\\
+\vect a_P&=\vect a_G+\dot{\vect\omega}\times\vect r_{P/G}
++\vect\omega\times(\vect\omega\times\vect r_{P/G}).
+\end{align}
+La primera corrección de aceleración es tangencial y la segunda centrípeta. Un sensor instalado lejos del centro de gravedad no mide su aceleración sin estas correcciones. Si el punto se mueve respecto al avión, como una masa deslizante, aparecen además la aceleración relativa y $2\vect\omega\times\vect v_{\rm rel}$.
+
+\section{Integración de posición}
+En un horizonte plano fijo, la velocidad respecto al suelo transformada a NED da
+\begin{equation}
+\begin{bmatrix}\dot x_N\\\dot x_E\\\dot h\end{bmatrix}=
+\begin{bmatrix}1&0&0\\0&1&0\\0&0&-1\end{bmatrix}
+C_{nb}\vect v_g^b.
+\label{eq:posicion-local}
+\end{equation}
+El signo de $\dot h$ procede de que NED apunta abajo. Si se usan $V_g$, ángulo de trayectoria sobre el suelo $\gamma_g$ y curso $\chi_g$:
+\begin{equation}
+\dot x_N=V_g\cos\gamma_g\cos\chi_g,\quad
+\dot x_E=V_g\cos\gamma_g\sin\chi_g,\quad
+\dot h=V_g\sin\gamma_g.
+\end{equation}
+En Tierra esférica, latitud, longitud y radio sustituyen a las coordenadas planas. Sobre una esfera de radio $R_T$, las relaciones aproximadas son $\dot\lambda=V_N/(R_T+h)$ y $\dot\ell=V_E/[(R_T+h)\cos\lambda]$. La singularidad de la longitud en los polos es de coordenadas y se evita propagando en ECEF.
+
+\section{Velocidad del suelo, velocidad del aire y viento}
+El viento es la velocidad de la masa de aire respecto al suelo. La suma vectorial fundamental es
+\begin{equation}
+\vect v_g^n=\vect v_a^n+\vect v_w^n.\label{eq:triangulo-viento}
+\end{equation}
+La aerodinámica depende de $\vect v_a$, mientras que la trayectoria terrestre depende de $\vect v_g$. En viento uniforme y estacionario la aceleración inercial del avión puede coincidir con la derivada inercial de la velocidad relativa al aire. Eso no autoriza a identificarlas en un viento variable.
+
+Si $\vect v_w=\vect v_w(\vect r,t)$ y se desprecia rotación terrestre,
+\begin{equation}
+\vect a_g=\left(\frac{\dd\vect v_a}{\dd t}\right)_i
++\frac{\partial\vect v_w}{\partial t}
++(\vect v_g\cdot\nabla)\vect v_w.
+\end{equation}
+El gradiente se recorre con la velocidad del avión respecto al suelo. Un viento que no cambia con el reloj sí cambia para el avión cuando éste entra en otra zona del campo. Las ráfagas pueden producir además ángulos y velocidades angulares efectivas que exigen modelos aerodinámicos no estacionarios.
+
+\subsection{Corrección de deriva}
+Para mantener una ruta norte con viento transversal al este $U_E$, la velocidad aérea lateral debe ser $-U_E$. Si la TAS es $V$ y no hay componente vertical,
+\begin{equation}
+V\sin\psi=-U_E,\qquad V_{g,N}=\sqrt{V^2-U_E^2}+U_N.
+\end{equation}
+Sólo existe solución con $|U_E|\leq V$. El rumbo apunta hacia el viento. Un viento de cara reduce el avance sobre el suelo, pero no cambia por sí solo la polar de resistencia si la velocidad respecto al aire permanece igual.
+
+\caso{Ejemplo: navegación con viento cruzado}{Para $V=72\SIu{m\,s^{-1}}$, $U_E=14\SIu{m\,s^{-1}}$ y $U_N=-8\SIu{m\,s^{-1}}$, se obtiene $\psi=-11.21^\circ$ y $V_{g,N}=62.63\SIu{m\,s^{-1}}$. La componente al este es $72\sin\psi+14=0$ dentro del redondeo. Recorrer $180\SIu{km}$ requiere aproximadamente $47.9$ minutos, frente a $41.7$ en calma. El cálculo presupone rumbo ajustado, viento uniforme y TAS mantenida.}
+
+\section{TAS, EAS, CAS e IAS}
+TAS es el módulo de la velocidad respecto al aire. EAS es una velocidad de comparación que reproduce la presión dinámica con densidad estándar de referencia:
+\begin{equation}
+q_\infty=\tfrac12\rho V_{\rm TAS}^2
+=\tfrac12\rho_0 V_{\rm EAS}^2,\qquad
+V_{\rm EAS}=V_{\rm TAS}\sqrt{\rho/\rho_0}.
+\end{equation}
+CAS procede de la presión de impacto medida por el sistema pitot y de una calibración estándar; incluye la relación compresible entre presión y Mach. IAS es la indicación instrumental previa a las correcciones de instalación e instrumento que llevan a CAS. A baja velocidad CAS y EAS se aproximan, pero no son idénticas por definición.
+
+En flujo isentrópico subsónico perfecto,
+\begin{equation}
+\frac{q_c}{p}=\left(1+\frac{\kappa-1}{2}M^2\right)^{\kappa/(\kappa-1)}-1.
+\end{equation}
+Para obtener CAS se transforma $q_c$ a la velocidad que produciría esa presión de impacto en la atmósfera de referencia al nivel del mar. Para obtener TAS se usa la presión y temperatura locales. Sustituir $q_c$ por $q_\infty$ sólo es la aproximación incompresible. En los CSV del proyecto se registran las tres velocidades que proporciona JSBSim; no se etiqueta CAS como EAS.
+
+\section{Correcciones terrestres: cuándo importan}
+La aproximación de Tierra plana es adecuada si la escala de la trayectoria y los tiempos hacen pequeñas las correcciones por curvatura y rotación. En ECEF aparecen Coriolis $2\vect\Omega\times\vect v$ y aceleración centrífuga $\vect\Omega\times(\vect\Omega\times\vect r)$. Es necesario decidir si $g$ ya representa gravedad efectiva; añadir centrífuga a una gravedad que ya la incluye cuenta dos veces el mismo efecto.
+
+\errorcomun{En una atmósfera en movimiento, $m\dot{\vect v}_a=\sum\vect F$ no es una ecuación general. Faltan la aceleración de la masa de aire y, si se derivan componentes cuerpo, los términos de transporte. El modelo de viento debe estar definido antes de simplificar.}
+\input{content/t03}
+
+\repaso{¿Se mantiene EAS constante al ascender con TAS constante?}{No. En ISA la densidad disminuye y $V_{\rm EAS}=V_{\rm TAS}\sqrt{\rho/\rho_0}$ disminuye. La presión dinámica también cae.}
+\resumen{El transporte suma el cambio de componentes y el giro de la base. La navegación utiliza velocidad sobre el suelo; las fuerzas aerodinámicas utilizan velocidad relativa al aire. Cada velocidad indicada o equivalente necesita una definición y una conversión coherente.}
+\fuentes{How, MIT 16.333, lección 4, pp. 4--2 a 4--4; lección 14, pp. internas 12--2 a 12--4, consultadas para viento no uniforme. JSBSim 1.3.3, FGInitialCondition y FGAuxiliary, conversiones de velocidad consultadas en el código.}

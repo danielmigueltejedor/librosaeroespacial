@@ -1,0 +1,61 @@
+\section{Taller resuelto: Elegir hipótesis antes de calcular}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Una aeronave horizontal de 5400 kg consume 420 kg manteniendo TAS 110 m/s, densidad 0.85 kg/m³ y S=32 m². Calcule CL inicial y final y compruebe si podría mantenerse además incidencia constante con una sustentación lineal de configuración fija.}
+
+\apartado{2. Datos}{$m_i=5400\SIu{kg}$, $m_f=4980\SIu{kg}$; la polar y mando no cambian.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Vuelo horizontal en calma y magnitudes aerodinámicas en viento.}
+
+\apartado{5. Hipótesis físicas}{Sucesión cuasiestacionaria de trimas; relación CL-alpha fija para la pregunta de incidencia.}
+
+\apartado{6. Modelo matemático}{Elegir hipótesis antes de calcular}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}C_L=2mg_0/(\rho V^2S)\end{equation}
+
+\begin{equation}C_{L,f}/C_{L,i}=m_f/m_i\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item El peso inicial y final se calculan por separado.
+
+\item La presión dinámica es constante porque lo son TAS y densidad.
+
+\item Al disminuir peso debe disminuir CL. Con relación lineal fija, cambia incidencia; conservarla exigiría otra modificación del modelo.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent CL inicial:\quad $2 \cdot 5400 \cdot 9.80665 \frac{1}{0.85 \cdot 32 \cdot 110^{2}}\simeq 0.3218031\,$.\par
+
+\noindent CL final:\quad $2 \cdot 4980 \cdot 9.80665 \frac{1}{0.85 \cdot 32 \cdot 110^{2}}\simeq 0.2967739\,$.\par
+
+\noindent Razón de CL:\quad $\frac{4980}{5400}\simeq 0.9222222\,$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+CL inicial & $0.3218031\,$\\
+
+CL final & $0.2967739\,$\\
+
+Razón de CL & $0.9222222\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{La ley de vuelo no puede fijar más magnitudes de las compatibles con el equilibrio.}
+
+\apartado{12. Comprobación independiente y alcance}{Recalcular sustentación final con el CL inicial y comparar con el peso final; el exceso revela la incompatibilidad.}
+
+\apartado{13. Limitaciones}{Un cambio de elevador puede modificar CL a incidencia fija en un modelo más completo; aquí se ha fijado expresamente la relación de sustentación.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,67 @@
+\section{Taller resuelto: Medir el error de planeo tendido}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Un planeador de 455 kg, S=16.2 m² y polar 0.014+0.032CL² vuela a CL=0.78 en rho=1.05. Compare TAS y descenso exactos con la aproximación L=W y seno de delta igual a tangente.}
+
+\apartado{2. Datos}{Equilibrio estacionario sin empuje; gamma negativo.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Trayectoria aérea en calma y fuerzas viento.}
+
+\apartado{5. Hipótesis físicas}{La misma polar se utiliza en ambas comparaciones; sólo cambian las aproximaciones trigonométricas.}
+
+\apartado{6. Modelo matemático}{Medir el error de planeo tendido}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}\delta=\arctan(C_D/C_L)\end{equation}
+
+\begin{equation}V_{exacto}=\sqrt{2W\cos\delta/(\rho SC_L)}\end{equation}
+
+\begin{equation}s_{exacto}=V_{exacto}\sin\delta\end{equation}
+
+\begin{equation}V_{aprox}=\sqrt{2W/(\rho SC_L)},\quad s_{aprox}=V_{aprox}C_D/C_L\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se evalúa un único CD y ángulo para ambas vías.
+
+\item Se conserva coseno en el equilibrio exacto.
+
+\item Se calcula el error relativo de descenso y se interpreta su tamaño respecto a datos de polar.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent TAS exacta:\quad $25.92279696817117\simeq 25.9228\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Descenso exacto:\quad $1.111291422418273\simeq 1.111291\,\mathrm{m\,s^{-1}}$.\par
+
+\noindent Descenso aproximado:\quad $1.11282561690377\simeq 1.112826\,\mathrm{m\,s^{-1}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+TAS exacta & $25.9228\,\mathrm{m\,s^{-1}}$\\
+
+Descenso exacto & $1.111291\,\mathrm{m\,s^{-1}}$\\
+
+Descenso aproximado & $1.112826\,\mathrm{m\,s^{-1}}$\\
+
+Error relativo de descenso & $0.001380551\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{La aproximación es buena para una eficiencia elevada, pero la igualdad exacta y la aproximada no son la misma relación.}
+
+\apartado{12. Comprobación independiente y alcance}{Comprobar que el cociente de velocidades es sqrt(cos(delta)) y evaluar energía DV/W en el caso exacto.}
+
+\apartado{13. Limitaciones}{Un error pequeño de trigonometría no compensa incertidumbre grande de la polar o falta de trim.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

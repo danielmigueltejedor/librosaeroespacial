@@ -1,0 +1,76 @@
+\chapter{Aproximación, toma y frenado}\label{ch:landing}
+\objetivos{Separar fases de aterrizaje; integrar una frenada con sustentación residual; interpretar el efecto del viento y del coeficiente de frenado.}
+
+\section{Definición del problema}
+La distancia de aterrizaje puede incluir aproximación desde una altura definida, recogida, transición de carga al tren y carrera de frenado. Cada modelo debe identificar su punto inicial y final. Comparar una carrera desde toma con una distancia desde obstáculo sin distinguirlas produce una conclusión falsa incluso si ambos cálculos son correctos por separado.
+
+Se estudiará una pista horizontal y velocidad terrestre positiva. El modelo no incluye antideslizamiento detallado, calentamiento de frenos, aquaplaning ni dispersión de pilotaje. Esos efectos requieren datos específicos. Una distancia académica no sustituye la información aprobada de la aeronave y del estado de pista.
+
+\section{Aproximación estabilizada}
+Con ángulo de descenso $\gamma_a<0$, rapidez aérea constante y empuje paralelo a la trayectoria,
+\begin{equation}
+T-D=W\sin\gamma_a,\qquad L=W\cos\gamma_a.
+\end{equation}
+El empuje necesario puede ser positivo aun descendiendo, pues la resistencia supera la componente del peso que ayuda al avance. Si se prescribe ángulo y velocidad incompatibles con el motor o la configuración, no existe esa aproximación estacionaria.
+
+Para una altura inicial $H$ y una recogida que comienza a $h_f$, el tramo recto en calma tiene longitud $(H-h_f)/\tan|\gamma_a|$. Con viento, la pendiente sobre el terreno cambia porque la velocidad horizontal terrestre es distinta de la aérea.
+
+\section{Recogida geométrica}
+Una aproximación circular de radio $R_f$ que cambia trayectoria desde $-\delta$ hasta horizontal proporciona
+\begin{equation}
+h_f=R_f(1-\cos\delta),\qquad x_f=R_f\sin\delta.
+\end{equation}
+La geometría no determina por sí sola velocidad de toma ni momento de cabeceo. En realidad, la recogida intercambia energía, modifica incidencia y puede reducir velocidad. Si el ejercicio mantiene velocidad constante se declara el control y la potencia implícitos; si se supone una desaceleración, se integra o se acota su efecto.
+
+Una altura de recogida mayor que la altura inicial del problema exige replantear la fase: no se añade una distancia de aproximación negativa. La comprobación geométrica debe preceder a la suma de fases.
+
+\section{Dinámica de frenado}
+Después de la toma, con sustentación residual $L$ y reacción normal $N=W-L$,
+\begin{equation}
+m\dot V_g=T-D-\mu_b(W-L).
+\label{eq:landingbrake}
+\end{equation}
+Aquí $T$ es positivo hacia delante; empuje inverso se representaría por un valor negativo si el modelo lo permite. Se define desaceleración positiva
+\begin{equation}
+b(V_g)=\frac{D+\mu_b(W-L)-T}{m}>0.
+\end{equation}
+La distancia y tiempo desde $V_{g,0}$ hasta reposo son
+\begin{equation}
+s_b=\int_0^{V_{g,0}}\frac{V_g}{b(V_g)}\,\dd V_g,
+\qquad t_b=\int_0^{V_{g,0}}\frac{1}{b(V_g)}\,\dd V_g.
+\end{equation}
+El sentido de los límites ya incorpora que la velocidad disminuye; no se introduce otro signo negativo arbitrario.
+
+\section{Sustentación residual y descarga de rueda}
+La sustentación reduce carga normal y, en el modelo de Coulomb, capacidad de frenado. Una configuración que aumenta resistencia pero mantiene mucha sustentación puede frenar peor que otra que descarga aerodinámicamente el ala y carga las ruedas. Los spoilers pueden cambiar ambas magnitudes. No se decide el efecto por el nombre del dispositivo, sino por $D$ y $L$ en el balance.
+
+Con $C_L$ constante y sin viento, la contribución aerodinámica a la desaceleración contiene $C_D-\mu_bC_L$. Puede ser positiva o negativa. Al aumentar $C_L$, una polar parabólica aumenta resistencia cuadrática, pero también reduce reacción normal: los dos efectos compiten. El modelo sólo vale mientras $N\geq0$ y la ley de freno sea representativa.
+
+\section{Aproximación de desaceleración constante}
+Si $b$ se aproxima por un valor constante,
+\begin{equation}
+s_b\simeq V_{g,0}^2/(2b),\qquad t_b\simeq V_{g,0}/b.
+\end{equation}
+Es útil para estimación de orden de magnitud. Un aumento del 10\% en velocidad de toma aumenta aproximadamente 21\% la distancia si $b$ no cambia. La conclusión debe revisarse cuando resistencia aerodinámica, freno o empuje dependen mucho de velocidad.
+
+\ilustra{aterrizaje-freno}{Sensibilidad de la carrera al coeficiente de frenado en un modelo docente con empuje nulo y sustentación residual fija en coeficiente. No incorpora estado real de pista ni temperatura de frenos.}
+
+\section{Viento y condiciones ambientales}
+Con viento de cara $U>0$, la misma velocidad aérea de toma corresponde a menor $V_g$. Eso reduce energía cinética terrestre que deben disipar frenos y resistencia respecto a la pista. Durante la carrera se evalúan fuerzas con $V_a=V_g+U$, no con $V_g$. Si se conserva sólo una desaceleración constante, el efecto del viento se limita artificialmente al cambio de velocidad inicial.
+
+Mayor altitud o temperatura suelen aumentar TAS para la misma EAS de aproximación, elevando energía de toma y carrera, si el resto de condiciones se mantiene. La masa también afecta la velocidad de pérdida y la energía. Las relaciones simples no describen todos los cambios de configuración, frenos y procedimientos.
+
+\caso{Ejemplo original de frenado}{Un avión docente de $1.500\SIu{kg}$ toma a $30\SIu{m\,s^{-1}}$ terrestres en calma. Se usa $S=18\SIu{m^2}$, $\rho=1.225\SIu{kg\,m^{-3}}$, polar $0.035+0.055C_L^2$, $C_L=0.20$, $T=0$ y $\mu_b=0.30$. La desaceleración se calcula a cada velocidad con la ecuación~\eqref{eq:landingbrake}. Se integra $V_g/b$ y se contrasta con una integración temporal hasta el evento $V_g=0$. El ejemplo no incluye distancia aérea ni retraso de aplicación de freno; ambas deben añadirse explícitamente si el problema las exige.}
+
+\section{Retraso de frenado y energía}
+Un retraso $t_d$ entre toma y aplicación efectiva de freno añade una fase de rodadura con su propia desaceleración. Aproximar su distancia por $V_{g,0}t_d$ es conservador sólo bajo condiciones concretas; si actúan resistencia y empuje, la velocidad cambia. Para una auditoría energética se comprueba
+\begin{equation}
+\tfrac12mV_{g,0}^2=\int (D+F_b-T)\,\dd x
+\end{equation}
+en pista horizontal y masa constante. La energía de frenado en ruedas no es necesariamente toda la energía inicial, pues una parte la disipa el aire. El balance global no determina temperaturas de discos sin un modelo térmico.
+
+\input{content/t18}
+
+\repaso{¿Reduce siempre la frenada aumentar la sustentación después de tocar?}{No. La sustentación descarga las ruedas y reduce $\mu_b(W-L)$. Hay que comparar ese efecto con el aumento de resistencia y cualquier cambio del sistema de frenado.}
+\resumen{La distancia total depende de las fases incluidas y de sus condiciones de enlace. El frenado se integra con velocidad terrestre, fuerzas aerodinámicas basadas en velocidad aérea y reacción normal reducida por sustentación. Las simplificaciones conservan un alcance académico explícito.}
+\fuentes{Guía ULE, aterrizaje. Modelos de rodadura y energía derivados de nuevo; formulario facilitado consultado como mapa de familias de ecuaciones. No se atribuyen distancias docentes a actuaciones certificadas.}

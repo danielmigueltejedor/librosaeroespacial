@@ -1,0 +1,67 @@
+\section{Taller resuelto: Integrar un ascenso consumiendo masa}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Un reactor docente asciende de 1200 a 4200 m ISA a TAS constante de 90 m/s. Parte con 5300 kg. S=31 m², polar 0.025+0.047CL², empuje máximo 9500 $sigma^{0}$.8 N y cT=1.8e-5 kg/(N s). Calcule tiempo, combustible y avance aproximado.}
+
+\apartado{2. Datos}{Ley TAS fija; gravedad constante y densidad ISA actualizada.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Trayectoria aérea sin viento; aproximación de ángulo pequeño para L y avance.}
+
+\apartado{5. Hipótesis físicas}{L≈W, xdot≈V; motor a empuje máximo y consumo específico constante; masa actualizada en cada evaluación.}
+
+\apartado{6. Modelo matemático}{Integrar un ascenso consumiendo masa}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}c(h,m)=[T(h)-D(V,m,\rho(h))]V/(mg_0)\end{equation}
+
+\begin{equation}\dd m/\dd h=-c_TT/c\end{equation}
+
+\begin{equation}\dd t/\dd h=1/c,\quad\dd x/\dd h=V/c\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se calcula atmósfera y empuje en cada altura.
+
+\item La resistencia usa masa instantánea y TAS mantenida.
+
+\item Se integran simultáneamente masa, tiempo y avance con altura como variable.
+
+\item Se comprueba que la tasa permanece positiva y no se cruza un techo.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Tiempo de ascenso:\quad $474.9347544190674\simeq 474.9348\,\mathrm s$.\par
+
+\noindent Masa final:\quad $5234.768171992241\simeq 5234.768\,\mathrm{kg}$.\par
+
+\noindent Combustible consumido:\quad $65.23182800775885\simeq 65.23183\,\mathrm{kg}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Tiempo de ascenso & $474.9348\,\mathrm s$\\
+
+Masa final & $5234.768\,\mathrm{kg}$\\
+
+Combustible consumido & $65.23183\,\mathrm{kg}$\\
+
+Avance aproximado & $42744.13\,\mathrm m$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El consumo reduce el peso durante el ascenso y cambia la resistencia y la tasa; congelar masa produce otro problema.}
+
+\apartado{12. Comprobación independiente y alcance}{Repetir con paso máximo de altura dividido por dos y contrastar x=Vt para la aproximación usada.}
+
+\apartado{13. Limitaciones}{No incluye la corrección cos(gamma) ni xdot=V cos(gamma); la etiqueta de avance aproximado conserva ese límite.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

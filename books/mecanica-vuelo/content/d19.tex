@@ -1,0 +1,47 @@
+\section{El mando de trim como función de sustentación}
+En una región lineal se consideran
+\begin{equation}
+C_L=C_{L0}+a\alpha+a_e\delta_e,\qquad
+C_m=C_{m0}+m_\alpha\alpha+m_e\delta_e.
+\end{equation}
+Aquí $m_\alpha$ abrevia $C_{m\alpha}$ y $m_e$ abrevia $C_{m\delta_e}$; no son masas. Al imponer $C_m=0$, el sistema es
+\begin{equation}
+\begin{bmatrix}a&a_e\\m_\alpha&m_e\end{bmatrix}
+\begin{bmatrix}\alpha\\\delta_e\end{bmatrix}
+=\begin{bmatrix}C_L-C_{L0}\\-C_{m0}\end{bmatrix}.
+\end{equation}
+Con determinante $\Delta_t=am_e-a_em_\alpha\neq0$,
+\begin{align}
+\alpha&=\frac{m_e(C_L-C_{L0})+a_eC_{m0}}{\Delta_t},\\
+\delta_e&=\frac{-aC_{m0}-m_\alpha(C_L-C_{L0})}{\Delta_t}.
+\end{align}
+La pendiente de mando con CL es $\dd\delta_e/\dd C_L=-m_\alpha/\Delta_t$. Si se desprecia sustentación de elevador, $a_e=0$ y resulta $-m_\alpha/(am_e)$. Esta aproximación se usa a menudo para relacionar pendiente de mando y margen estático, pero hay que conservar el efecto de elevador cuando sea relevante.
+
+\subsection{Límites de sustentación por autoridad de mando}
+Los límites $\delta_{e,min}$ y $\delta_{e,max}$ se convierten en fronteras de CL mediante la ecuación de trim. Una velocidad suficientemente baja puede exigir un mando fuera del rango antes de alcanzar el CLmax aerodinámico. La velocidad mínima de equilibrio depende entonces del control y no sólo de la pérdida del ala.
+
+La presión dinámica modifica la fuerza y momento dimensionales y la fuerza de mando, aunque los coeficientes lineales no cambien. Si se estudia capacidad del actuador, debe añadirse el momento de charnela y su transmisión. Una solución con coeficientes dentro del rango no garantiza que el actuador suministre el par requerido a alta presión dinámica.
+
+\section{Mando libre: relación adicional de charnela}
+Sea $C_h=C_{h0}+C_{h\alpha}\alpha+C_{h\delta}\delta_e$ un modelo de momento de charnela. Con mando idealmente libre, sin fricción ni muelle, $C_h=0$ y
+\begin{equation}
+\frac{\dd\delta_e}{\dd\alpha}=-\frac{C_{h\alpha}}{C_{h\delta}},
+\end{equation}
+si $C_{h\delta}\neq0$. La derivada total del momento del avión pasa a
+\begin{equation}
+\left(\frac{\dd C_m}{\dd\alpha}\right)_{libre}
+=C_{m\alpha}-C_{m\delta_e}\frac{C_{h\alpha}}{C_{h\delta}}.
+\end{equation}
+La sustentación total también cambia por $C_{L\delta_e}\dd\delta_e/\dd\alpha$. Por tanto, el punto neutro de mando libre se determina con el sistema modificado completo. No se obtiene conservando sin más la pendiente total del caso de mando fijo.
+
+Con fricción, rigidez de transmisión, tabulador o muelle, la condición de equilibrio de charnela añade esos términos y puede introducir zonas muertas o no linealidad. La derivada libre sólo representa el régimen donde esa relación sea válida. No se atribuye a una aeronave real sin datos de mando.
+
+\section{Centro de gravedad, cola y resistencia de trim}
+Una fuerza de cola descendente puede exigir que el ala produzca más sustentación que el peso total, aumentando su contribución de resistencia. Una cola que sustenta hacia arriba también modifica el reparto. El cálculo de actuaciones con una polar de avión completo debe corresponder a la condición de trim; si la polar sólo representa ala, se añaden cola e interferencias de forma coherente.
+
+El reparto se obtiene de fuerza y momento, no de la regla de que una cola convencional ``siempre empuja hacia abajo''. Dependiendo de centro de gravedad, momento de ala, incidencia y potencia, el signo puede cambiar. La estabilidad estática se relaciona con derivadas y brazos, mientras el signo de la fuerza de cola en trim depende de las contribuciones constantes.
+
+\section{Estimación de derivadas y error de ajuste}
+Para obtener $C_{m\alpha}$ de datos, se mantiene fijo mando y se perturba incidencia en un intervalo local. Se ajusta una recta y se examinan residuos. Si se reoptimiza el elevador para que Cm vuelva a cero en cada punto, la pendiente observada es una relación de mando de trim y no la derivada de momento con mando fijo.
+
+Los datos pueden tener incertidumbre en incidencia y momento; un ajuste de mínimos cuadrados que supone exacta la abscisa puede sesgar una pendiente si el error de incidencia es importante. Para el nivel del curso basta identificar ese límite y realizar sensibilidad de la pendiente al intervalo de ajuste. No se comunica un punto neutro con más precisión que la permitida por las derivadas de partida.

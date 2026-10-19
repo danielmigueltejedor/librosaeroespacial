@@ -1,0 +1,285 @@
+{
+  "status": "ok",
+  "advisory": true,
+  "stored_content_modified": false,
+  "contracts": [
+    {
+      "claim": "CLM-0001",
+      "section": "c04",
+      "revision": "c11d6f27e85b0c37eb15311e9b82737ce316a1268884056be5de7a59a4722f4f",
+      "state": "current",
+      "checks": [
+        {
+          "record": "CLM-0001",
+          "role": "theory",
+          "index": 0,
+          "kind": "dimensions",
+          "category": "dimensions",
+          "status": "DIMENSIONALLY_VERIFIED",
+          "detail": "formula reduces to [length]^1*[mass]^1*[time]^-2, matching N",
+          "inputs": {
+            "kind": "dimensions",
+            "expression": "A*V**2+B/V**2",
+            "expected_unit": "N"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c04"
+        },
+        {
+          "record": "CLM-0001",
+          "role": "theory",
+          "index": 1,
+          "kind": "defined",
+          "category": "domain",
+          "status": "DOMAIN_POINT_CHECKED",
+          "detail": "Finite real value at the declared point: 515/16",
+          "inputs": {
+            "kind": "defined",
+            "expression": "A*V**2+B/V**2"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c04"
+        }
+      ],
+      "assumptions": {
+        "positive_denominator": "ASSUMPTIONS_CHECKED"
+      },
+      "verification": {
+        "arithmetic": "NOT_CHECKED",
+        "symbolic": "NOT_CHECKED",
+        "dimensions": "DIMENSIONALLY_VERIFIED",
+        "domain": "DOMAIN_POINT_CHECKED",
+        "assumptions": "ASSUMPTIONS_CHECKED",
+        "model": "NOT_CHECKED",
+        "numerical_convergence": "NOT_CHECKED",
+        "documentary": "EVIDENCE_LOCATED",
+        "expert_review": "PENDING"
+      },
+      "scientific_validity": "not_established",
+      "evidence": {
+        "excerpts": [
+          "EVD-0004",
+          "EVD-0009"
+        ],
+        "blockers": [],
+        "semantic_support": "not_established"
+      }
+    },
+    {
+      "claim": "CLM-0002",
+      "section": "c10",
+      "revision": "310f93f57790c3508d8a3e135ae2eefca31282ee80f96e8b7053171a1aa3fbd7",
+      "state": "current",
+      "checks": [
+        {
+          "record": "CLM-0002",
+          "role": "theory",
+          "index": 0,
+          "kind": "dimensions",
+          "category": "dimensions",
+          "status": "DIMENSIONALLY_VERIFIED",
+          "detail": "formula reduces to [mass]^1*[time]^-1, matching kg/s",
+          "inputs": {
+            "kind": "dimensions",
+            "expression": "cT*T",
+            "expected_unit": "kg/s"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c10"
+        },
+        {
+          "record": "CLM-0002",
+          "role": "theory",
+          "index": 1,
+          "kind": "defined",
+          "category": "domain",
+          "status": "DOMAIN_POINT_CHECKED",
+          "detail": "Finite real value at the declared point: 17/100",
+          "inputs": {
+            "kind": "defined",
+            "expression": "cT*T"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c10"
+        }
+      ],
+      "assumptions": {
+        "positive_denominator": "ASSUMPTIONS_CHECKED"
+      },
+      "verification": {
+        "arithmetic": "NOT_CHECKED",
+        "symbolic": "NOT_CHECKED",
+        "dimensions": "DIMENSIONALLY_VERIFIED",
+        "domain": "DOMAIN_POINT_CHECKED",
+        "assumptions": "ASSUMPTIONS_CHECKED",
+        "model": "NOT_CHECKED",
+        "numerical_convergence": "NOT_CHECKED",
+        "documentary": "EVIDENCE_LOCATED",
+        "expert_review": "PENDING"
+      },
+      "scientific_validity": "not_established",
+      "evidence": {
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "blockers": [],
+        "semantic_support": "not_established"
+      }
+    },
+    {
+      "claim": "CLM-0003",
+      "section": "c15",
+      "revision": "b0e2689a0a3a0d67abcfdbef6a037068df006c31dd66902bcdd4a6c1d72a0e3a",
+      "state": "current",
+      "checks": [
+        {
+          "record": "CLM-0003",
+          "role": "theory",
+          "index": 0,
+          "kind": "dimensions",
+          "category": "dimensions",
+          "status": "DIMENSIONALLY_VERIFIED",
+          "detail": "formula reduces to [length]^2*[mass]^1*[time]^-3, matching W",
+          "inputs": {
+            "kind": "dimensions",
+            "expression": "eta*P",
+            "expected_unit": "W"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c15"
+        },
+        {
+          "record": "CLM-0003",
+          "role": "theory",
+          "index": 1,
+          "kind": "defined",
+          "category": "domain",
+          "status": "DOMAIN_POINT_CHECKED",
+          "detail": "Finite real value at the declared point: 160000",
+          "inputs": {
+            "kind": "defined",
+            "expression": "eta*P"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c15"
+        }
+      ],
+      "assumptions": {
+        "positive_denominator": "ASSUMPTIONS_CHECKED"
+      },
+      "verification": {
+        "arithmetic": "NOT_CHECKED",
+        "symbolic": "NOT_CHECKED",
+        "dimensions": "DIMENSIONALLY_VERIFIED",
+        "domain": "DOMAIN_POINT_CHECKED",
+        "assumptions": "ASSUMPTIONS_CHECKED",
+        "model": "NOT_CHECKED",
+        "numerical_convergence": "NOT_CHECKED",
+        "documentary": "EVIDENCE_LOCATED",
+        "expert_review": "PENDING"
+      },
+      "scientific_validity": "not_established",
+      "evidence": {
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "blockers": [],
+        "semantic_support": "not_established"
+      }
+    },
+    {
+      "claim": "CLM-0004",
+      "section": "c13",
+      "revision": "068b0fd5c10c79bad6afe2c5cd11d395dad0143bfff0d4e7c18a189a84dbd001",
+      "state": "current",
+      "checks": [
+        {
+          "record": "CLM-0004",
+          "role": "theory",
+          "index": 0,
+          "kind": "dimensions",
+          "category": "dimensions",
+          "status": "DIMENSIONALLY_VERIFIED",
+          "detail": "formula reduces to [length]^1*[time]^-1, matching m/s",
+          "inputs": {
+            "kind": "dimensions",
+            "expression": "(Pd-Pn)/W",
+            "expected_unit": "m/s"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c13"
+        },
+        {
+          "record": "CLM-0004",
+          "role": "theory",
+          "index": 1,
+          "kind": "defined",
+          "category": "domain",
+          "status": "DOMAIN_POINT_CHECKED",
+          "detail": "Finite real value at the declared point: 2",
+          "inputs": {
+            "kind": "defined",
+            "expression": "(Pd-Pn)/W"
+          },
+          "requires": [
+            "positive_denominator"
+          ],
+          "scope": "Declared expressions and bindings only; correspondence to prose and physical conditions requires review.",
+          "section": "c13"
+        }
+      ],
+      "assumptions": {
+        "positive_denominator": "ASSUMPTIONS_CHECKED"
+      },
+      "verification": {
+        "arithmetic": "NOT_CHECKED",
+        "symbolic": "NOT_CHECKED",
+        "dimensions": "DIMENSIONALLY_VERIFIED",
+        "domain": "DOMAIN_POINT_CHECKED",
+        "assumptions": "ASSUMPTIONS_CHECKED",
+        "model": "NOT_CHECKED",
+        "numerical_convergence": "NOT_CHECKED",
+        "documentary": "EVIDENCE_LOCATED",
+        "expert_review": "PENDING"
+      },
+      "scientific_validity": "not_established",
+      "evidence": {
+        "excerpts": [
+          "EVD-0001",
+          "EVD-0009"
+        ],
+        "blockers": [],
+        "semantic_support": "not_established"
+      }
+    }
+  ],
+  "coverage": {
+    "claims": 4,
+    "annotated_claims": 4,
+    "current_contracts": 4
+  },
+  "scientific_validity": "not_established"
+}

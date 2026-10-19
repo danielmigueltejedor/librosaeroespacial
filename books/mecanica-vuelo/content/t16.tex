@@ -1,0 +1,65 @@
+\section{Taller resuelto: Cuánto cuesta elegir autonomía en vez de alcance}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Un avión de hélice pasa de 1850 a 1510 kg a 2000 m ISA. S=19.4 m², polar 0.026+0.047CL², eficiencia 0.80 y consumo 0.295 kg/kWh. Compare alcance y duración si conserva CL de máximo alcance o de máxima autonomía.}
+
+\apartado{2. Datos}{Las dos leyes usan las mismas masas y altitud; CLmax=1.6.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Crucero horizontal en calma, TAS variable con masa.}
+
+\apartado{5. Hipótesis físicas}{Polar, rendimiento y consumo constantes; se comparan dos objetivos factibles dentro del modelo.}
+
+\apartado{6. Modelo matemático}{Cuánto cuesta elegir autonomía en vez de alcance}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}C_{L,R}=\sqrt{C_{D0}/k},\quad C_{L,E}=\sqrt{3C_{D0}/k}\end{equation}
+
+\begin{equation}R=\eta_p(C_L/C_D)\ln(m_i/m_f)/(g_0c_P)\end{equation}
+
+\begin{equation}E=\frac{2\eta_p}{g_0c_P}\sqrt{\frac{\rho S C_L}{2g_0}}\frac{C_L}{C_D}(m_f^{-1/2}-m_i^{-1/2})\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se comprueba que ambos CL son inferiores al máximo.
+
+\item Se evalúan alcance y tiempo para cada uno con sus funciones objetivo.
+
+\item Se compara la ganancia de tiempo con la reducción de alcance, sin usar una velocidad única para ambas leyes.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Alcance con CL de alcance:\quad $2891630.340736772\simeq 2891630\,\mathrm m$.\par
+
+\noindent Tiempo con CL de alcance:\quad $60889.3458142539\simeq 60889.35\,\mathrm s$.\par
+
+\noindent Alcance con CL de autonomía:\quad $2504225.333431897\simeq 2504225\,\mathrm m$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Alcance con CL de alcance & $2891630\,\mathrm m$\\
+
+Tiempo con CL de alcance & $60889.35\,\mathrm s$\\
+
+Alcance con CL de autonomía & $2504225\,\mathrm m$\\
+
+Tiempo con CL de autonomía & $69398.85\,\mathrm s$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{Optimizar permanencia sacrifica distancia para las mismas masas y condiciones de este modelo.}
+
+\apartado{12. Comprobación independiente y alcance}{Cuadraturas de distancia y tiempo por gasto para ambas leyes; comprobar las derivadas de objetivos.}
+
+\apartado{13. Limitaciones}{No se añade resistencia de trim ni variación de eficiencia a baja velocidad.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,68 @@
+\chapter{El modelo de planeador}\label{ch:planeador}
+\objetivos{Derivar el equilibrio de planeo; relacionar polar, ángulo y velocidades; distinguir relaciones exactas de aproximaciones de pequeño ángulo.}
+
+\section{La energía que sostiene el movimiento}
+Un planeador en aire en calma consume energía potencial para compensar el trabajo de la resistencia. Puede mantener velocidad constante mientras desciende porque la componente del peso paralela a la trayectoria equilibra $D$. Si además mantiene altura y no recibe energía del aire o de una planta propulsora, no puede sostener un vuelo estacionario con resistencia positiva.
+
+Se adopta $\gamma<0$ en descenso y empuje nulo. Las ecuaciones de punto material son
+\begin{equation}
+m\dot V=-D-W\sin\gamma,\qquad mV\dot\gamma=L-W\cos\gamma.
+\end{equation}
+En planeo rectilíneo estacionario,
+\begin{equation}
+D=-W\sin\gamma,\quad L=W\cos\gamma,\quad
+\tan(-\gamma)=D/L=C_D/C_L.\label{eq:planeo-exacto}
+\end{equation}
+La razón $L/D$ es la eficiencia aerodinámica. En calma coincide con el avance horizontal por unidad de altura perdida, porque $\dot x/(-\dot h)=\cot(-\gamma)=L/D$. Esta igualdad geométrica es exacta para el movimiento definido.
+
+\ilustra{fuerzas-planeo}{Equilibrio de un planeo estacionario: sustentación normal a la velocidad aérea, resistencia opuesta a ella y peso vertical. Las longitudes de flecha son esquemáticas.}
+
+\section{Velocidad y descenso exactos}
+Definiendo $\delta=-\gamma>0$, para un $C_L$ elegido se calcula $\delta=\arctan(C_D/C_L)$. La velocidad necesaria es
+\begin{equation}
+V=\sqrt{\frac{2W\cos\delta}{\rho SC_L}},\qquad
+s=-\dot h=V\sin\delta,\qquad V_H=V\cos\delta.
+\label{eq:planeo-velocidad}
+\end{equation}
+Combinando $\cos\delta=C_L/\sqrt{C_L^2+C_D^2}$ se obtiene otra forma útil:
+\begin{equation}
+V=\sqrt{\frac{2W}{\rho S}}(C_L^2+C_D^2)^{-1/4},\quad
+s=\sqrt{\frac{2W}{\rho S}}\frac{C_D}{(C_L^2+C_D^2)^{3/4}}.
+\end{equation}
+Las dos expresiones de velocidad deben coincidir; sirven como comprobación independiente de implementación. La velocidad horizontal no es TAS y la tasa de descenso no es el ángulo de planeo.
+
+\section{Aproximación de planeo tendido}
+Para $C_D/C_L\ll1$, $\cos\delta\simeq1$ y $\sin\delta\simeq\tan\delta\simeq C_D/C_L$. Así,
+\begin{equation}
+V\simeq\sqrt{\frac{2W}{\rho SC_L}},\qquad
+s\simeq\sqrt{\frac{2W}{\rho S}}\frac{C_D}{C_L^{3/2}}.
+\label{eq:descenso-aprox}
+\end{equation}
+La aproximación $L\simeq W$ simplifica la optimización, pero no debe mezclarse con una afirmación de exactitud en descensos pronunciados. Con eficiencia 25, $\delta\simeq2.29^\circ$ y el error relativo de sustituir $\cos\delta$ por uno es aproximadamente $0.08\%$. Con eficiencia 3, el error ya supera el 5\%.
+
+\section{Polar de descenso}
+Al recorrer los $C_L$ admisibles se obtiene una curva de tasa de descenso frente a velocidad. En la aproximación tendida, la tangente desde el origen identifica la mínima razón $s/V$, relacionada con mejor planeo. El punto más bajo identifica mínimo descenso. Son criterios diferentes: uno maximiza distancia por altura y otro tiempo por altura.
+
+\ilustra{polar-descenso}{Polar de descenso de un planeador docente. Se emplea la aproximación tendida con masa constante y densidad de nivel del mar. El dominio de utilización debe recortarse con la pérdida y otros límites.}
+
+El límite $V\to0$ de la expresión parabólica no describe un vuelo posible, pues exige $C_L\to\infty$. En el extremo rápido, una polar de baja velocidad tampoco describe necesariamente el aumento de resistencia por compresibilidad o los límites estructurales. Los extremos matemáticos no eliminan la necesidad de una envolvente.
+
+\section{Influencia de la masa y de la densidad}
+A igual $C_L$ y polar, $\delta$ no depende del peso. Tanto $V$ como $s$ varían como $\sqrt{W/\rho}$. Por eso un planeador lastrado puede conservar aproximadamente el mismo ángulo de planeo y recorrer la misma distancia en calma desde una altura dada, pero lo hace más rápido y permanece menos tiempo en el aire. La sustentación máxima, el número de Reynolds y el estado superficial pueden cambiar la polar real: la independencia del alcance respecto a la masa pertenece al modelo, no a cualquier avión en cualquier condición.
+
+A mayor altura ISA, la TAS de un $C_L$ dado aumenta. La EAS correspondiente es aproximadamente constante para masa constante en planeo tendido. No se debe introducir la densidad de la altitud inicial en toda una integral de descenso de varios kilómetros sin evaluar el error.
+
+\caso{Ejemplo original: un punto de planeo}{Sean $m=420\SIu{kg}$, $S=15.8\SIu{m^2}$, $C_{D0}=0.013$, $k=0.031$, $C_L=0.65$ y $\rho=1.225\SIu{kg\,m^{-3}}$. Entonces $C_D=0.02610$, $L/D=24.90$ y $\gamma\simeq-2.30^\circ$. La velocidad se calcula con $\cos\gamma$ en el numerador; la tasa de descenso se obtiene como $-V\sin\gamma$, no multiplicando por un ángulo en grados. Desde $1.000\SIu m$ de altura sobre el punto final, el alcance geométrico en calma es aproximadamente $24.90\SIu{km}$, si el mismo $C_L$ y polar se mantienen.}
+
+\section{Balance energético como segunda vía}
+Multiplicando la ecuación tangencial por $V$ y utilizando $\dot h=V\sin\gamma$,
+\begin{equation}
+\frac{\dd}{\dd t}\left(\tfrac12mV^2+mgh\right)=-DV.
+\end{equation}
+En planeo estacionario, $mgs=DV$ y $s=DV/W$. Esta relación es exacta cuando la velocidad es constante. Reemplazar además $L$ por $W$ al evaluar $D$ introduce la aproximación de ángulo pequeño. Una recuperación de velocidad después de una perturbación puede intercambiar energía cinética y potencial; no se predice con una simple tabla de descenso estacionario.
+
+\input{content/t07}
+
+\repaso{¿Mejora la eficiencia aerodinámica al añadir lastre si la polar permanece igual?}{No en este modelo. Cambian las velocidades características y la tasa de descenso. El beneficio de penetración frente a viento depende de la velocidad sobre el suelo y de las condiciones de la misión.}
+\resumen{El planeo equilibra resistencia con peso tangencial y sustentación con peso normal. El alcance por altura depende de $L/D$, mientras que el tiempo depende también de la velocidad. La aproximación tendida se usa con su error y su dominio declarados.}
+\fuentes{How, MIT 16.333, lección 1, secciones de planeo y balance energético. Familias de ejercicios identificadas en los materiales facilitados; datos y desarrollos de esta edición son originales.}

@@ -1,0 +1,71 @@
+\chapter{JSBSim como herramienta de ingeniería}\label{ch:jsbsim}
+\objetivos{Identificar modelos y propiedades; preparar un caso reproducible; interpretar ejes y unidades del simulador; distinguir ejecución, verificación y validación.}
+
+\section{Motor de dinámica y entorno de simulación}
+JSBSim es un motor de dinámica de vuelo. Puede ejecutarse sin un entorno visual y utilizarse desde Python para barridos, trim y simulaciones temporales. La imagen de un avión en pantalla no es la evidencia esencial de un cálculo de ingeniería: lo son las condiciones iniciales, ecuaciones y tablas del modelo, versión, entradas y resultados registrados.
+
+El proyecto utiliza la versión 1.3.3 y fija el commit de sus modelos. Se conserva un inventario con huellas digitales de los archivos de avión y motor. Una actualización del programa o un cambio de XML constituye otro experimento, aunque se mantenga el mismo nombre de aeronave. La fecha de descarga y la versión se distinguen de la fecha de creación de modelos antiguos incluidos en la distribución.
+
+\section{Arquitectura de un modelo}
+Un archivo de aeronave contiene geometría, masa e inercia, contactos con el suelo, propulsión, mandos, sistemas y funciones aerodinámicas. Puede referirse a motores y propulsores externos. Los estados evolucionan bajo la acción de esos módulos y se comunican a través de propiedades.
+
+Una función cuyo nombre contiene ``coefficient'' puede devolver una fuerza si en su definición ya multiplica por presión dinámica y área. Se inspecciona la expresión, no sólo el nombre. Multiplicar de nuevo por $q_\infty S$ duplicaría la dimensionalización. Del mismo modo, una tabla puede almacenar un factor de empuje y no el empuje directamente.
+
+\section{Ejes estructurales y cuerpo}
+Los puntos de instalación se describen frecuentemente en un sistema estructural con $x$ hacia atrás y $z$ hacia arriba. El sistema cuerpo tiene $x$ adelante y $z$ abajo y origen en el centro de gravedad. Las distancias relativas se transforman para calcular fuerzas y momentos. Un brazo leído del XML no se introduce como coordenada cuerpo sin revisar este convenio.
+
+El manual de referencia facilitado, de 2011, describe la arquitectura histórica y los sistemas de referencia. Para propiedades y algoritmos de esta edición se contrasta con el código 1.3.3. Un pasaje antiguo no prueba que una implementación actual sea idéntica.
+
+\section{Unidades de propiedades}
+Los XML permiten indicar unidades en muchas magnitudes. Las propiedades de salida utilizadas aquí conservan unidades que a menudo aparecen en su sufijo. Por ejemplo, velocidad verdadera en ft/s, peso en lbf y combustible en lbm. El proyecto convierte explícitamente a SI y escribe la unidad en cada cabecera CSV.
+
+\begin{center}\begin{tabular}{ll}\toprule
+Propiedad utilizada & Interpretación en este experimento\\\midrule
+\texttt{velocities/vtrue-fps} & TAS en ft/s\\
+\texttt{velocities/ve-kts} & EAS en kt\\
+\texttt{velocities/vc-kts} & CAS en kt\\
+\texttt{forces/fwx-aero-lbs} & Resistencia reportada en lbf\\
+\texttt{forces/fwz-aero-lbs} & Sustentación reportada en lbf\\
+\texttt{propulsion/total-fuel-lbs} & Masa total de combustible en lbm\\\bottomrule
+\end{tabular}\end{center}
+Las salidas de fuerza de viento anteriores no se interpretan como componentes cartesianas firmadas $(-D,Y,-L)$: FGAerodynamics cambia signos para reportar resistencia y sustentación positivas en esos canales. Para sumar fuerzas en cuerpo se usan sus componentes correspondientes o se realiza la transformación con el convenio correcto.
+
+\section{Inicialización y orden de operaciones}
+El procedimiento reproducible carga el modelo, fija localización y altitud, establece la condición de velocidad, configura combustible y dispositivos, activa motores, ejecuta inicialización y realiza trim. Después consulta las condiciones realmente alcanzadas. Algunos ajustes de condiciones iniciales pueden recalcular otras magnitudes; por eso la comprobación posterior forma parte del procedimiento.
+
+La distribución de combustible modifica masa, centro de gravedad e inercia. Un modelo con cinco depósitos no implica que todos alimenten motores de la misma manera. En el 747 utilizado, los motores tienen alimentaciones definidas a depósitos concretos. El ejemplo original reparte combustible entre los cuatro depósitos que alimentan motores y deja vacío el quinto; no se cuenta combustible inaccesible como autonomía útil.
+
+\section{Un caso XML original ejecutado}
+El proyecto incluye una inicialización con CAS de 155 kt, altitud de 5.000 ft y posición genérica. Se utiliza el modelo T-6 educativo y se ejecuta una trayectoria libre de 60 s a paso de 0.05 s. La inicialización externa se carga mediante la interfaz del simulador, se activa motor y se realiza trim longitudinal antes de avanzar.
+
+\begin{verbatim}
+<initialize name="Ejemplo docente original">
+  <latitude unit="DEG">42.6</latitude>
+  <longitude unit="DEG">-5.6</longitude>
+  <altitude unit="FT">5000</altitude>
+  <gamma unit="DEG">0</gamma>
+  <vc unit="KTS">155</vc>
+</initialize>
+\end{verbatim}
+El archivo completo añade la orientación inicial y el guion de ejecución. No es un archivo del modelo externo modificado: se mantiene separado y se proporciona su ruta al cargarlo. La ejecución produce 61 registros de un segundo, incluido el estado inicial, y conserva el archivo de resultados.
+
+\section{Trim y condiciones de integración}
+El trim longitudinal ajusta variables para reducir residuos del movimiento longitudinal. Un fallo de trim debe registrarse con las condiciones que lo causan. Un éxito no demuestra coordinación lateral completa ni estabilidad. Se revisan aceleraciones, incidencia, gases y estado de dispositivos.
+
+Para integración se fijan paso temporal y duración. Un paso pequeño no garantiza exactitud si el integrador, tablas, discontinuidades o mandos están mal configurados. También hay estados de motor y actuadores: reiniciar sólo la posición del avión puede dejar memoria de un caso anterior. Los barridos de esta edición construyen instancias nuevas para evitar contaminación entre puntos.
+
+\section{Modelos disponibles y alcance de sus resultados}
+El modelo t6texan2 está marcado BETA y el B747 ALPHA. Sus propias notas indican uso educativo, datos públicos y estimaciones, y no respaldo del fabricante. Se conserva esa limitación en el informe. El nombre PT6A--68 de un archivo no basta para atribuirle un modelo de turbohélice físicamente detallado: la configuración observada usa un motor de empuje y propulsor directo.
+
+Por ello se realizan dos comparaciones distintas: un modelo analítico docente de polar parabólica y los resultados del modelo JSBSim disponible. Las diferencias no se ocultan ajustando parámetros hasta igualar una curva; se identifican las físicas, configuración, convenciones y condiciones que difieren.
+
+\section{Verificar y validar}
+Verificar pregunta si se han resuelto correctamente las ecuaciones y convertido las unidades del modelo declarado. Validar pregunta si el modelo representa con precisión suficiente la realidad para un uso concreto. Comparar dos programas que implementan hipótesis parecidas aporta verificación cruzada, pero no reemplaza datos experimentales independientes.
+
+Una trayectoria suave o un trim con residuo pequeño no constituye validación experimental. Para validación hacen falta datos, incertidumbres, condiciones de ensayo, criterios de aceptación y revisión técnica apropiados. Esta edición entrega ejecuciones y pruebas internas; mantiene pendiente la revisión experta y no afirma validación de las aeronaves reales.
+
+\input{content/t22}
+
+\repaso{¿Puede una propiedad llamada \texttt{fwz-aero-lbs} ser positiva para sustentación hacia arriba?}{Sí en los canales consultados: la implementación reporta la magnitud de sustentación con su convenio de salida. El sufijo de ejes no autoriza a tratarla automáticamente como un componente cartesiano positivo hacia abajo.}
+\resumen{Un experimento de simulación requiere versión, modelo, condiciones, unidades y resultados. Se inspeccionan las expresiones y alimentaciones, se comprueba el estado inicial alcanzado y se separan los archivos propios de los modelos externos. Ejecución reproducible y validación experimental son evidencias distintas.}
+\fuentes{JSBSim 1.3.3: interfaz Python, FGAerodynamics, FGInitialCondition, FGAccelerations y XML de modelos consultados. JSBSim Reference Manual facilitado, sección de usuario 2.2--2.5 y formulación matemática, usado como referencia histórica. Guía de instalación, presentación y enunciado Ágora consultados.}

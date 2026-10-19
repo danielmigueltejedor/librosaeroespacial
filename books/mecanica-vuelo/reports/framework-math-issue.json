@@ -1,0 +1,18 @@
+{
+  "commit": "675274202360f717f3b835444e26d0f95d2a3c33",
+  "issue": "MATH-001",
+  "statement": "\\begin{bmatrix}\\dot x_N\\\\\\dot x_E\\\\\\dot h\\end{bmatrix}=\\begin{bmatrix}1&0&0\\\\0&1&0\\\\0&0&-1\\end{bmatrix}C_{nb}\\boldsymbol{v}_g^b",
+  "left_interpreted": "Matrix([[Derivative(x_N(t), t)], [Derivative(x_E(t), t)], [Derivative(h(t), t)]])",
+  "right_interpreted": "Matrix([[C_nb*v_g_vec**b, 0, 0], [0, C_nb*v_g_vec**b, 0], [0, 0, -C_nb*v_g_vec**b]])",
+  "left_shape": [
+    3,
+    1
+  ],
+  "right_shape": [
+    3,
+    3
+  ],
+  "outcome": "Outcome(kind='contradiction', premises=(), detail='the shapes differ')",
+  "diagnosis": "La matriz Cnb y el vector vg se interpretan como escalares cuando se multiplican por una matriz explícita. El comprobador devuelve contradicción por formas distintas, aunque la expresión física usa Cnb de 3x3 y vg de 3x1.",
+  "action": "No se modifica el framework ni la ecuación correcta. Se conserva el hallazgo y se exige revisión humana; no se declara superada la auditoría de ecuaciones."
+}

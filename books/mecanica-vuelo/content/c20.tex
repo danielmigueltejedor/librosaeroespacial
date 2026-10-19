@@ -1,0 +1,63 @@
+\chapter{Estabilidad lateral y direccional}\label{ch:lat-static}
+\objetivos{Interpretar resbalamiento y momentos restauradores; determinar signos de las derivadas; distinguir efectos estáticos de amortiguamiento y acoplamiento dinámico.}
+
+\section{Convenciones antes de interpretar signos}
+Se conserva cuerpo con $x$ adelante, $y$ derecha y $z$ abajo. $\beta>0$ significa componente de velocidad aérea positiva hacia la derecha del avión. El momento $\mathcal N>0$ gira el morro hacia la derecha y $\mathcal L>0$ baja el ala derecha. Para una perturbación de resbalamiento, un comportamiento direccional restaurador típico requiere $C_{n\beta}>0$: el morro gira hacia la dirección de la velocidad y reduce el resbalamiento.
+
+El efecto diedro estabilizador se expresa habitualmente como $C_{\ell\beta}<0$: un resbalamiento positivo produce un momento que eleva el ala derecha. La interpretación lateral es más indirecta que la longitudinal, porque el ángulo de alabeo no genera por sí solo un momento aerodinámico en aire uniforme; actúa mediante gravedad, resbalamiento y acoplamientos. No se convierte esa derivada aislada en una prueba completa de estabilidad en alabeo.
+
+\section{Modelo lineal de fuerzas y momentos}
+Cerca de un trim simétrico,
+\begin{align}
+C_Y&=C_{Y\beta}\beta+C_{Yp}\frac{pb}{2V}+C_{Yr}\frac{rb}{2V}+C_{Y\delta_r}\delta_r+\cdots,\\
+C_\ell&=C_{\ell\beta}\beta+C_{\ell p}\frac{pb}{2V}+C_{\ell r}\frac{rb}{2V}
++C_{\ell\delta_a}\delta_a+C_{\ell\delta_r}\delta_r,\\
+C_n&=C_{n\beta}\beta+C_{np}\frac{pb}{2V}+C_{nr}\frac{rb}{2V}
++C_{n\delta_a}\delta_a+C_{n\delta_r}\delta_r.
+\end{align}
+Las derivadas respecto a $pb/(2V)$ no tienen el mismo valor numérico ni las mismas dimensiones interpretativas que derivadas dimensionales respecto a $p$. Al convertir, se conserva el factor $b/(2V)$ y la normalización de momento $q_\infty Sb$.
+
+\ilustra{lateral-derivadas}{Ejemplo lineal de signos restauradores de diedro y estabilidad direccional con el convenio de resbalamiento declarado. La figura representa derivadas estáticas, no autovalores.}
+
+\section{Contribución del estabilizador vertical}
+Considérese una cola vertical detrás del centro de gravedad, con coordenada cuerpo $x_v<0$. Una aproximación lineal de su fuerza lateral es
+\begin{equation}
+Y_v\simeq-q_vS_va_v\beta_v.
+\end{equation}
+Para $\beta_v\simeq\beta>0$, $Y_v<0$ y el momento de guiñada $N_v=x_vY_v$ es positivo. Así,
+\begin{equation}
+C_{n\beta,v}\simeq\eta_v\frac{S_v}{S}\frac{|x_v|}{b}a_v
+\end{equation}
+si se desprecia modificación de flujo lateral y se usa $q_v=\eta_vq_\infty$. La fuerza de cola también produce momento de alabeo si está a una altura $z_v\neq0$: $\mathcal L_v=-z_vY_v$. Por eso un dispositivo direccional puede alterar el comportamiento lateral.
+
+El fuselaje puede aportar una contribución desestabilizadora de guiñada. Su magnitud depende de geometría y flujo. No se asigna un signo y valor universal sin un modelo o dato; se suma a la cola para obtener la derivada total de la aeronave.
+
+\section{Diedro, flecha y posición de ala}
+Con diedro geométrico positivo, el resbalamiento modifica la incidencia efectiva de las semialas de manera desigual. En una representación elemental, la semiala del lado de llegada del flujo aumenta sustentación y aparece un momento restaurador. La flecha también produce una diferencia de condiciones de flujo entre ambas semialas en resbalamiento y puede contribuir al efecto diedro.
+
+La posición vertical del ala y la interacción con fuselaje modifican la distribución de presión y la fuerza lateral. Explicarlo sólo como ``péndulo'' puede inducir a pensar que el peso aplicado en el centro de gravedad produce un momento respecto a él. En un campo uniforme no lo produce; la contribución debe atribuirse a fuerzas aerodinámicas y sus brazos, además de la cinemática de la trayectoria.
+
+\section{Amortiguamiento en alabeo y guiñada}
+Una tasa de alabeo positiva baja el ala derecha. El movimiento local cambia su incidencia de forma que suele aumentar la sustentación de esa semiala y oponerse al giro: típicamente $C_{\ell p}<0$. La contribución se obtiene integrando los incrementos de fuerza por el brazo a lo largo de la envergadura.
+
+Para una semiala a coordenada $y$, la velocidad vertical debida a giro es aproximadamente $w=py$. En un modelo de tiras, el incremento de momento es proporcional a $-p\int y^2c(y)\,\dd y$, de donde procede el signo amortiguador si la pendiente local de sustentación es positiva.
+
+En guiñada, la cola detrás del centro de gravedad recibe una velocidad lateral local $v_v\simeq v+rx_v$. Con $r>0$ y $x_v<0$, el término de tasa genera una fuerza que suele producir momento de guiñada negativo: $C_{nr}<0$. Estas derivadas son dinámicas por depender de tasas; no sustituyen a las derivadas estáticas de resbalamiento.
+
+\section{Acoplamientos y mandos}
+El alerón produce momento de alabeo y puede producir guiñada adversa por cambios de resistencia entre alas. El timón produce guiñada y fuerza lateral y, por su altura y el efecto diedro, puede inducir alabeo. Una coordinación de mandos puede reducir resbalamiento, pero no se deduce imponiendo sólo $C_Y=0$: en un movimiento curvo también intervienen gravedad y aceleración lateral.
+
+La bola de coordinación, el resbalamiento aerodinámico y la fuerza lateral no son magnitudes idénticas en cualquier maniobra. Un análisis académico debe especificar qué condición considera coordinada y qué variables registra.
+
+\caso{Ejemplo original: signos y fuerza de cola}{Se adopta $q_\infty=2.200\SIu{Pa}$, $S_v=4.2\SIu{m^2}$, $\eta_v=0.90$, $a_v=3.6\SIu{rad^{-1}}$, $x_v=-5.4\SIu m$ y $\beta=3^\circ=0.05236\SIu{rad}$. La fuerza aproximada es $Y_v=-q_\infty\eta_vS_va_v\beta\simeq-1.568\SIu{kN}$ y el momento $N_v\simeq+8.465\SIu{kN\,m}$. La comprobación consiste en calcular el producto vectorial con el brazo en cuerpo: ambos signos negativos dan guiñada positiva. La estimación omite interferencia y cambios de flujo local.}
+
+\section{Qué se puede concluir de los signos}
+$C_{n\beta}>0$ y $C_{\ell\beta}<0$ son tendencias estáticas favorables con el convenio indicado. No garantizan que el modo espiral sea estable ni que el balanceo holandés esté suficientemente amortiguado. Las inercias, velocidades, amortiguamientos y acoplamientos entran en la matriz dinámica.
+
+Una derivada extraída de un archivo tabulado debe evaluarse cerca del trim y con configuración fija. En ángulos grandes puede cambiar de signo. Un ajuste lineal sobre un intervalo enorme puede ocultar ese cambio y no representar la respuesta a pequeñas perturbaciones.
+
+\input{content/t20}
+
+\repaso{¿Por qué una cola vertical detrás del centro de gravedad suele estabilizar guiñada?}{Con $\beta>0$ produce fuerza lateral negativa y, al actuar con $x_v<0$, genera momento de guiñada positivo que orienta el morro hacia la velocidad aérea. La conclusión depende del convenio de $\beta$ y de los signos de los brazos.}
+\resumen{La estabilidad lateral-direccional se interpreta con ejes y resbalamiento explícitos. Cola, diedro y geometría producen tendencias estáticas; las tasas introducen amortiguamiento. Los acoplamientos y las inercias impiden inferir estabilidad dinámica a partir de dos signos aislados.}
+\fuentes{How, MIT 16.333, lección 8, pp. internas 7--1 a 7--3, consultadas para ecuaciones laterales y signos de amortiguamiento; guía ULE, introducción a derivadas lateral-direccionales. Deducción de cola y ejemplo propios.}

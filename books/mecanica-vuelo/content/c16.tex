@@ -1,0 +1,86 @@
+\chapter{Actuaciones de aviones de hélice}\label{ch:prop-performance}
+\objetivos{Derivar alcance y autonomía con consumo por potencia; comparar los óptimos con los de reactor; integrar maniobras y misiones de hélice.}
+
+\section{Vuelo horizontal y ascenso}
+En equilibrio nivelado, $P_T=DV$. Con eficiencia constante, $P_{\rm eje,n}=DV/\eta_p$. Para una potencia al eje constante, la mejor tasa de ascenso aproximada se obtiene minimizando $DV$; por ello Vy coincide con la velocidad de mínima potencia necesaria si $\eta_p$ también es constante. Si $\eta_p(V)$ cambia, se maximiza $\eta_p(V)P_{\rm eje,d}(V)-DV$, y la conclusión puede variar.
+
+El mejor ángulo maximiza $T_d-D=\eta_pP_{\rm eje,d}/V-D$. Con potencia constante, el empuje disponible disminuye con velocidad; no se traslada el resultado Vx de un reactor de empuje constante. Cerca de baja velocidad debe emplearse un mapa de hélice que no sea singular.
+
+\section{Integral general de consumo}
+Con gasto másico por potencia al eje,
+\begin{equation}
+\dot W=-g_0c_PP_{\rm eje}=-\frac{g_0c_P}{\eta_p}DV.
+\end{equation}
+Las integrales de tiempo y distancia en calma son
+\begin{equation}
+E=\int_{W_f}^{W_i}\frac{\eta_p}{g_0c_PDV}\,\dd W,
+\qquad R_a=\int_{W_f}^{W_i}\frac{\eta_p}{g_0c_PD}\,\dd W.
+\label{eq:prop-general}
+\end{equation}
+Comparadas con las de reactor, aparece un factor adicional de velocidad en el gasto. Ésta es la razón física de que cambien las condiciones óptimas. No es una diferencia puramente algebraica entre dos fórmulas memorizadas.
+
+\section{Alcance a $C_L$ constante}
+Si $\eta_p,c_P$ y polar son constantes, $D=W C_D/C_L$. Se obtiene
+\begin{equation}
+R_a=\frac{\eta_p}{g_0c_P}\frac{C_L}{C_D}\ln\frac{W_i}{W_f}.
+\label{eq:prop-breguet}
+\end{equation}
+La velocidad ha desaparecido porque mayor avance por segundo se compensa con mayor potencia y gasto por segundo. Bajo estas hipótesis, el alcance óptimo se consigue con máxima eficiencia aerodinámica, $C_L=\sqrt{C_{D0}/k}$. El resultado ideal no depende directamente de densidad, pero la capacidad de mantener el vuelo sí depende de potencia, Mach, pérdida y variación real de eficiencia y consumo.
+
+Esta fórmula es compatible con altitud fija y $C_L$ constante porque no exige sacar una velocidad constante de la integral. La TAS disminuye como $\sqrt W$. Si el rendimiento cambia durante esa reducción, debe conservarse dentro de la integral.
+
+\section{Autonomía a densidad y $C_L$ constantes}
+Usando $V=\sqrt{2W/(\rho SC_L)}$,
+\begin{equation}
+E=\frac{2\eta_p}{g_0c_P}\sqrt{\frac{\rho S}{2}}
+\frac{C_L^{3/2}}{C_D}
+\left(\frac1{\sqrt{W_f}}-\frac1{\sqrt{W_i}}\right).
+\label{eq:prop-endurance}
+\end{equation}
+El óptimo de autonomía maximiza $C_L^{3/2}/C_D$ y conduce a $C_L=\sqrt{3C_{D0}/k}$, si es admisible. Es el mismo criterio de mínimo descenso en planeo tendido y de mínima potencia necesaria para un peso dado, porque en ambos casos se minimiza la potencia resistente bajo las mismas aproximaciones.
+
+Con $c_P$ y $\eta_p$ constantes, mayor densidad favorece el tiempo de vuelo: reduce TAS y potencia requerida para el mismo $C_L$. No se concluye que una altitud concreta sea óptima sin revisar mapa de motor, temperatura, obstáculos, meteorología y restricciones. Si el ejercicio prescribe una ley de consumo con altura, esa ley puede modificar la tendencia.
+
+\section{Comparación de los cuatro óptimos clásicos}
+\begin{center}\begin{tabular}{lll}\toprule
+Propulsión y objetivo & Función a maximizar & $C_L$ interior\\\midrule
+Reactor: autonomía & $C_L/C_D$ & $\sqrt{C_{D0}/k}$\\
+Reactor: alcance a $\rho$ fija & $\sqrt{C_L}/C_D$ & $\sqrt{C_{D0}/(3k)}$\\
+Hélice: alcance & $C_L/C_D$ & $\sqrt{C_{D0}/k}$\\
+Hélice: autonomía a $\rho$ fija & $C_L^{3/2}/C_D$ & $\sqrt{3C_{D0}/k}$\\\bottomrule
+\end{tabular}\end{center}
+La tabla presupone polar parabólica y consumos específicos constantes; para hélice, también eficiencia constante. No son velocidades universales del avión. En cada misión se convierten a TAS con el peso instantáneo y se comprueban límites.
+
+\section{TAS y altitud constantes}
+Con $D(W)=A_V+B_VW^2$ y $V$ fijo,
+\begin{equation}
+R_a=\frac{\eta_p}{g_0c_P\sqrt{A_VB_V}}
+\left[\arctan\!\left(W_i\sqrt{\frac{B_V}{A_V}}\right)
+-\arctan\!\left(W_f\sqrt{\frac{B_V}{A_V}}\right)\right],
+\end{equation}
+y $E=R_a/V$. La semejanza con el caso de reactor a TAS fija proviene de la misma integral de $1/D(W)$; las constantes y su significado físico son diferentes. Sustituir $c_T$ por $c_P$ sin cambiar unidades y factores de velocidad no reproduce esta derivación.
+
+\section{Viento y estrategia}
+Con viento de cola constante, $R_g=R_a+UE$. Como el tiempo depende de la velocidad elegida, el óptimo de alcance terrestre puede diferir del de máxima eficiencia. En viento de cara conviene generalmente aumentar velocidad dentro del modelo; el cálculo correcto maximiza alcance terrestre por combustible y conserva la variación de masa. Una regla de velocidad fija añadida por intuición no sustituye la optimización si se necesita precisión.
+
+\section{Virajes y techo en potencia}
+En viraje nivelado, $P_n=AV^3+Bn^2/V$. La mínima potencia necesaria aumenta con $n^{3/2}$ y su velocidad con $\sqrt n$ si la polar permanece igual. La condición de viraje sostenido es $\eta_pP_{\rm eje,d}\geq P_n(V,n)$. Un motor que permite vuelo nivelado puede no sostener el mismo avión en un viraje de carga elevada.
+
+El techo absoluto por potencia satisface $\max_V[\eta_pP_{\rm eje,d}-P_n]=0$. Si la potencia al eje disminuye con densidad mientras la mínima potencia necesaria aumenta como $\rho^{-1/2}$, la diferencia se reduce al subir. Las restricciones pueden fijar un techo anterior. Para servicio se impone una tasa residual explícita.
+
+\caso{Ejemplo original: dimensionar una misión}{Un avión docente tiene masa seca $1.120\SIu{kg}$, $S=17.5\SIu{m^2}$, polar $0.026+0.049C_L^2$, $\eta_p=0.79$ y $c_P=0.29\SIu{kg/kWh}$. Se desea recorrer $1.100\SIu{km}$ en calma con $C_L$ de máximo alcance, sin reserva en este ejercicio. La razón de masas es
+\[
+\frac{m_i}{m_f}=\exp\!\left(\frac{g_0c_PR_a}{\eta_pE_{a,\max}}\right).
+\]
+Con $m_f=1.120\SIu{kg}$ se obtiene la masa inicial y el combustible por diferencia. Después, a la altitud elegida, se calculan $V_i,V_f$ y $P_{\rm eje,i},P_{\rm eje,f}$ para comprobar que la potencia disponible basta durante toda la misión. El alcance integral por sí solo no garantiza esa factibilidad.}
+
+\section{Misión de varias fases con hélice}
+La salida y el ascenso usan un gasto ligado a potencia y tiempo. El crucero parte de la masa ya reducida. Si se mantiene velocidad fija en una fase y $C_L$ fijo en otra, se cambia la integral en la frontera y se conservan los estados. El descenso puede consumir combustible al ralentí: no se impone gasto cero salvo motor apagado declarado.
+
+La reserva se define como combustible no consumido en la misión nominal o como fase adicional con condiciones concretas. Debe evitarse contar una misma reserva como masa final en Breguet y sumarla otra vez al combustible inicial. Una tabla de contabilidad por fases aclara esta diferencia.
+
+\input{content/t16}
+
+\repaso{¿Qué cambia si $\eta_p$ cae al reducir velocidad?}{El criterio de máxima autonomía deja de depender sólo de $C_L^{3/2}/C_D$. El gasto incluye $1/\eta_p(V)$ y el óptimo debe obtenerse con la eficiencia variable dentro de la función objetivo o de la integral.}
+\resumen{Para hélice, máximo alcance ideal coincide con máxima eficiencia y máxima autonomía con mínima potencia. Estas conclusiones dependen de rendimiento y consumo constantes. El cierre de una misión exige comprobar potencia y actualizar combustible en cada fase.}
+\fuentes{Guía ULE, bloque de hélices y misiones mixtas. Derivaciones propias desde consumo por potencia, contrastadas dimensionalmente y mediante diferenciación de primitivas. Los problemas del cuaderno emplean datos nuevos.}

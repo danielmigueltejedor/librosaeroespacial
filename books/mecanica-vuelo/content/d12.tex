@@ -1,0 +1,71 @@
+\section{Integración explícita con empuje constante}
+\subsection{Parametrizar las dos ramas}
+En altitud fija, se escribe $D=AV^2+CW^2/V^2$, donde $A=\rho SC_{D0}/2$ y $C=2k/(\rho S)$. Con empuje constante $T_c$,
+\begin{equation}
+AV^4-T_cV^2+CW^2=0.
+\end{equation}
+La existencia exige $W\leq T_c/(2\sqrt{AC})$. Se define
+\begin{equation}
+W=K_W\sin2\zeta,\quad K_W=\frac{T_c}{2\sqrt{AC}},\qquad 0<\zeta\leq\frac\pi4.
+\end{equation}
+Entonces las dos velocidades son
+\begin{equation}
+V_+=\sqrt{T_c/A}\cos\zeta,\qquad
+V_-=\sqrt{T_c/A}\sin\zeta.
+\end{equation}
+La rama alta aumenta velocidad al disminuir peso y $\zeta$; la baja la reduce. Ambas se encuentran en el mínimo de resistencia cuando $\zeta=\pi/4$. La selección de una rama debe conservar pérdida, Mach y trim durante todo el recorrido.
+
+\subsection{Tiempo y alcance de cada rama}
+El peso cambia linealmente: $\dot W=-g_0c_TT_c$. Por tanto,
+\begin{equation}
+E=\frac{W_i-W_f}{g_0c_TT_c}.
+\end{equation}
+La distancia se obtiene con $\int V\,\dd W/(g_0c_TT_c)$. Como $\dd W=2K_W\cos2\zeta\,\dd\zeta$, la rama alta exige
+\begin{equation}
+\int\cos\zeta\cos2\zeta\,\dd\zeta
+=\sin\zeta-\frac23\sin^3\zeta.
+\end{equation}
+De ahí,
+\begin{equation}
+R_+=\frac{\sqrt{T_c/A}}{g_0c_T\sqrt{AC}}
+\left[\sin\zeta-\frac23\sin^3\zeta\right]_{\zeta_f}^{\zeta_i}.
+\end{equation}
+Para la rama baja,
+\begin{equation}
+R_-=\frac{\sqrt{T_c/A}}{g_0c_T\sqrt{AC}}
+\left[\cos\zeta-\frac23\cos^3\zeta\right]_{\zeta_f}^{\zeta_i}.
+\end{equation}
+Ambas primitivas se verifican por diferenciación. El tiempo puede coincidir para las dos ramas porque el gasto es idéntico, mientras la distancia cambia con velocidad. Igual consumo total no implica igual alcance.
+
+\section{Crucero con ascenso: la corrección que suele omitirse}
+La fórmula logarítmica con V y eficiencia constantes se derivó suponiendo $T=D$. Un crucero que cambia de altura no cumple esa igualdad exactamente. Para trayectoria rectilínea de ángulo constante y velocidad constante,
+\begin{equation}
+L=W\cos\gamma,\qquad
+T=W\left(\frac{\cos\gamma}{E_a}+\sin\gamma\right).
+\end{equation}
+Si además $E_a,c_T,\gamma$ son constantes, el tiempo y alcance horizontal son
+\begin{equation}
+E=\frac{\ln(W_i/W_f)}{g_0c_T(\cos\gamma/E_a+\sin\gamma)},\qquad
+R_H=V\cos\gamma\,E.
+\end{equation}
+Cuando $\gamma\to0$ se recupera la expresión horizontal. En un crucero con ascenso real, $\gamma$ puede variar y la densidad debe ser compatible con peso, velocidad, sustentación y atmósfera. La fórmula anterior es un caso condicionado, no una solución automática de crucero ascendente ISA.
+
+La aproximación habitual $T\simeq D$ en ascenso muy lento omite el término $W\sin\gamma$. Su importancia relativa frente a D es aproximadamente $E_a\gamma$ para ángulos pequeños. Incluso un ángulo pequeño puede producir una corrección apreciable si la eficiencia es grande. Por ejemplo, con $E_a=18$ y $\gamma=0.2^\circ$, la escala relativa es del orden del 6\%. El error no se juzga sólo mirando que el ángulo sea menor que un grado.
+
+\section{Óptimo local frente a óptimo de misión}
+Maximizar alcance específico local consiste en maximizar $V/(c_TD)$ en el estado actual. Un óptimo integral puede coincidir con mantener un CL óptimo si las dependencias se separan y no existen restricciones que acoplen el futuro. Si el motor cambia consumo con altura, hay reservas, escalones de nivel, tramos restringidos o coste de ascenso, la decisión actual puede modificar los estados posteriores.
+
+Una formulación de misión usa estados $m,h,x$ y controles como velocidad y gases. Se integra cada candidato conservando restricciones y se compara el objetivo total. Para una búsqueda numérica sencilla se pueden discretizar altitudes y leyes de velocidad, resolver cada misión y conservar sólo las factibles. El resultado se declara óptimo dentro de esa familia de candidatos, sin confundirlo con un óptimo global de todas las trayectorias posibles.
+
+\subsection{Combustible por distancia terrestre}
+Con viento de cola U uniforme, el alcance específico terrestre local es $(V+U)/(c_TD)$ en vuelo horizontal alineado. Su condición óptima respecto a V incluye derivadas de consumo y resistencia:
+\begin{equation}
+\frac1{V+U}-\frac1{c_T}\frac{\partial c_T}{\partial V}
+-\frac1D\frac{\partial D}{\partial V}=0.
+\end{equation}
+La derivada se evalúa conservando peso y condición ambiental del punto. Con cT constante y calma se reduce a $D-VD'=0$, que para $D=AV^2+B/V^2$ conduce a $V^4=3B/A$. Esta comprobación conecta el criterio local de alcance con el CL de máximo alcance de reactor.
+
+\section{Sensibilidad de una misión y reservas}
+Una misión que llega exactamente con masa seca es sensible a cualquier variación adversa de viento o consumo. Para explorar sensibilidad se recalcula con cT aumentado, polar modificada o viento desfavorable y se registra qué restricciones se activan. Si se prescribe reserva como masa, se conserva en el peso final. Si se prescribe como tiempo de espera, se resuelve esa fase con su ley y se transporta su combustible durante las fases anteriores.
+
+No se debe añadir un porcentaje genérico a una fórmula y presentarlo como reserva operativa universal. El análisis académico puede utilizar una reserva dada por el enunciado y estudiar cómo cambia la masa inicial. La definición operacional y normativa de reservas requiere el contexto y documentos aplicables y queda fuera de estas expresiones de diseño docente.

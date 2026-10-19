@@ -1,0 +1,63 @@
+\section{Taller resuelto: Un límite de CG con margen mínimo}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Con aw=5.0, at=4.3, St/S=0.20, eta=0.93, $epsilon_{alpha}$=0.33, hac=0.25, ht=3.3 y $Cm_{alpha,f}$=0.09, determine el CG más retrasado que conserva margen estático mínimo 0.08.}
+
+\apartado{2. Datos}{Posiciones adimensionales hacia atrás; pendientes por radián; mando fijo.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Momento de cabeceo positivo morro arriba; referencia de posición común.}
+
+\apartado{5. Hipótesis físicas}{Modelo lineal con punto neutro independiente de CG dentro de las hipótesis declaradas.}
+
+\apartado{6. Modelo matemático}{Un límite de CG con margen mínimo}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}K_t=\eta_t(S_t/S)a_t(1-\varepsilon_\alpha)\end{equation}
+
+\begin{equation}h_n=(a_wh_{ac}+K_th_t-C_{m\alpha,f})/(a_w+K_t)\end{equation}
+
+\begin{equation}h_{max}=h_n-SM_{min}\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item Se calcula punto neutro conservando sustentación de cola en la pendiente total.
+
+\item Se resta el margen exigido para fijar el límite retrasado.
+
+\item Se evalúa la pendiente de momento en ese límite para comprobar el requisito.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Punto neutro:\quad $0.5289791696547569\simeq 0.5289792\,$.\par
+
+\noindent CG máximo:\quad $0.4489791696547569\simeq 0.4489792\,$.\par
+
+\noindent $Cm_{alpha}$ en límite:\quad $-0.44286928\simeq -0.4428693\,\mathrm{rad^{-1}}$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Punto neutro & $0.5289792\,$\\
+
+CG máximo & $0.4489792\,$\\
+
+$Cm_{alpha}$ en límite & $-0.4428693\,\mathrm{rad^{-1}}$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El requisito fija una frontera estática y no determina por sí solo límites de mando, estructura o certificación.}
+
+\apartado{12. Comprobación independiente y alcance}{Sustituir el CG límite en la expresión directa de ala, cola y fuselaje y recuperar -a por 0.08.}
+
+\apartado{13. Limitaciones}{El punto neutro puede cambiar con Mach, potencia, configuración o mando libre.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}

@@ -1,0 +1,71 @@
+\section{Taller resuelto: Trim no lineal con empuje en cuerpo}
+
+\noindent\textbf{Nivel:} Intermedio.
+
+\apartado{1. Enunciado}{Resuelva el equilibrio de un avión a 66 m/s y rho=1.04 con empuje paralelo a cuerpo. Masa 2450 kg, S=26 m², CL=0.24+5.2alpha+0.28delta, Cm=0.045-0.72alpha-1.08delta y polar 0.026+0.046CL².}
+
+\apartado{2. Datos}{Vuelo horizontal: cabeceo theta=alpha; ángulos en radianes; límites de elevador ±0.35 rad y T entre 0 y 5000 N.}
+
+\apartado{3. Incógnitas}{Las magnitudes y comprobaciones solicitadas en el caso.}
+
+\apartado{4. Sistema de referencia}{Ejes viento para fuerzas y cuerpo para dirección de empuje.}
+
+\apartado{5. Hipótesis físicas}{Modelo lineal de coeficientes, geometría exacta del empuje y momento propulsivo nulo respecto al CG.}
+
+\apartado{6. Modelo matemático}{Trim no lineal con empuje en cuerpo}
+
+\apartado{7. Ecuaciones simbólicas}{Se parte de los balances y definiciones siguientes.}
+
+\begin{equation}T\cos\alpha-D=0\end{equation}
+
+\begin{equation}L+T\sin\alpha-W=0\end{equation}
+
+\begin{equation}C_{m0}+C_{m\alpha}\alpha+C_{m\delta}\delta=0\end{equation}
+
+\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}
+
+\begin{enumerate}
+
+\item La fuerza de empuje se proyecta en dos direcciones.
+
+\item Se plantean tres incógnitas y tres residuos; la incidencia aparece además dentro de CL.
+
+\item Se resuelve con una estimación inicial física y se comprueban límites de mando y empuje.
+
+\item Se sustituyen resultados sin redondear en los tres balances.
+
+\end{enumerate}
+
+\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}
+
+\noindent Incidencia:\quad $0.03096866927911081\simeq 0.03096867\,\mathrm{rad}$.\par
+
+\noindent Elevador:\quad $0.02102088714725946\simeq 0.02102089\,\mathrm{rad}$.\par
+
+\noindent Empuje:\quad $1980.757910247429\simeq 1980.758\,\mathrm N$.\par
+
+\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}
+
+\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule
+
+Incidencia & $0.03096867\,\mathrm{rad}$\\
+
+Elevador & $0.02102089\,\mathrm{rad}$\\
+
+Empuje & $1980.758\,\mathrm N$\\
+
+Residuo tangencial & $4.547474\times10^{-13}\,\mathrm N$\\
+
+Residuo normal & $3.637979\times10^{-12}\,\mathrm N$\\
+
+Residuo de momento adimensional & $3.469447\times10^{-18}\,$\\
+
+\bottomrule\end{tabular}\end{center}
+
+\apartado{11. Interpretación}{El componente vertical del empuje reduce ligeramente la sustentación aerodinámica necesaria frente a L=W.}
+
+\apartado{12. Comprobación independiente y alcance}{Resolver desde varias estimaciones iniciales y comprobar residuos por componente; compararlo con el modelo que omite T sin(alpha).}
+
+\apartado{13. Limitaciones}{La norma combina un residuo adimensional de momento con fuerzas sólo como diagnóstico de raíz; una tolerancia física debe escalar ambos tipos por separado.}
+
+\par\smallskip\noindent{\footnotesize\textit{Datos y solución originales. Las sustituciones registradas se reproducen con SymPy y Studium; eso no establece validación experimental ni revisión experta.}}
