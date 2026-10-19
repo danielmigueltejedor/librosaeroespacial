@@ -18,6 +18,8 @@
 
 \studiumchapterguide{La mecánica de fluidos es mecánica newtoniana aplicada a un medio continuo. Antes de escribir una sola ecuación de un fluido conviene, por tanto, tener firmes las piezas de la mecánica de partículas y de sólidos que se reutilizarán a lo largo del libro: las leyes de Newton y el papel de los sistemas de referencia inerciales, los teoremas del momento lineal y del momento angular para sistemas de partículas, y la relación entre trabajo, energía cinética y energía potencial. Este capítulo repasa esos resultados con el nivel de rigor que exigirán después el teorema del transporte de Reynolds y las ecuaciones de Navier-Stokes, y señala en cada caso qué hipótesis habrá que revisar cuando el sistema deje de ser un conjunto discreto de partículas y pase a ser un fluido.}
 
+\noindent\textit{Lectura de contraste 2026:} para las leyes de Newton, momentos, oscilaciones y referencias no inerciales se toma como referencia matemática complementaria el tratado de Taylor \cite{ref26-taylor}.\par
+
 \section{Leyes de Newton y sistemas de referencia inerciales}
 
 Las leyes de Newton no se enuncian en el vacío: presuponen un sistema de referencia en el que valen. Un sistema de referencia inercial es aquel en el que una partícula sobre la que no actúa ninguna fuerza neta permanece en reposo o se mueve con velocidad constante en línea recta; en él las leyes de la naturaleza se observan sin necesidad de corregir por la aceleración del propio observador. La primera ley, o ley de inercia, desempeña precisamente esa función operativa: define la clase de sistemas de referencia en los que la segunda ley puede escribirse sin términos adicionales. Dos sistemas inerciales cualesquiera se mueven uno respecto a otro con velocidad relativa constante y están relacionados por una transformación de Galileo, \(\mathbf{r}' = \mathbf{r} - \mathbf{V}_0 t\), que deja invariantes las aceleraciones. Esta invariancia es la razón profunda de que la física de un ensayo en túnel aerodinámico, con el aire moviéndose y el modelo en reposo, sea la misma que la de un avión que vuela a través de aire en calma. En la práctica ningún laboratorio terrestre es estrictamente inercial, porque la Tierra gira; el error que se comete al tratarlo como tal es pequeño para la mayoría de los problemas de ingeniería, pero deja de serlo en la dinámica de la atmósfera y del océano, como se verá en los capítulos 2 y 16.
@@ -2629,6 +2631,9 @@ Presión: fuerza normal de compresión por unidad de superficie que el fluido ej
 
 
 
+% Revision bibliografica 2026: material original, contrastes verificables.
+\input{../content/refuerzo-hidrostatica-2026.tex}
+
 \section{Desarrollos y práctica}
 
 Las deducciones que siguen parten de la ecuación fundamental de la hidrostática \(\eqref{eq:c05-general}\) y la integran en los casos que aparecen en ingeniería aeroespacial: el líquido de densidad constante \(\eqref{eq:c05-hidrostatica}\), incluida la superficie libre de un líquido en rotación; la fuerza y el centro de presiones sobre una compuerta \(\eqref{eq:c05-fuerza}\); y la atmósfera, primero isoterma \(\eqref{eq:c05-isoterma}\) y después con gradiente térmico constante \(\eqref{eq:c05-troposfera}\), que es el modelo de la troposfera estándar. En los ejercicios es esencial distinguir entre presión absoluta y manométrica y, en los gases, recordar que la densidad varía con la altura.
@@ -3330,6 +3335,9 @@ Factor de fricción de Darcy: \(f_D = 8\tau_w/(\rho V^{2})\), cociente adimensio
 \end{tcolorbox}
 
 
+
+% Revision bibliografica 2026: material original, contrastes verificables.
+\input{../content/refuerzo-viscosos-2026.tex}
 
 \section{Desarrollos y práctica}
 
@@ -7473,6 +7481,9 @@ Presión de remanso: presión que alcanzaría el fluido si se decelerase hasta e
 
 
 
+% Revision bibliografica 2026: material original, contrastes verificables.
+\input{../content/refuerzo-bernoulli-2026.tex}
+
 \section{Desarrollos y práctica}
 
 Las deducciones de este capítulo recorren el camino desde el teorema del transporte de Reynolds \(\eqref{eq:c12-rtt}\) hasta las ecuaciones diferenciales: la ecuación de continuidad \(\eqref{eq:c12-continuidad}\) y su forma incompresible \(\eqref{eq:c12-incompresible}\), la función de corriente \(\eqref{eq:c12-psi}\), el flujo potencial alrededor de un cilindro \(\eqref{eq:c12-cilindro}\) y la ecuación de Bernoulli \(\eqref{eq:c12-bernoulli}\) con su aplicación al tubo de Pitot \(\eqref{eq:c12-pitot}\). En los ejercicios, antes de aplicar esta forma de Bernoulli hay que comprobar las cinco hipótesis usadas en este capítulo: flujo estacionario, incompresible, no viscoso, entre puntos de una misma línea de corriente (salvo que el flujo sea irrotacional) y sin máquinas que intercambien trabajo con el fluido entre esos puntos.
@@ -8720,6 +8731,9 @@ Ecuaciones de Navier-Stokes: ecuaciones de conservación de la cantidad de movim
 
 
 
+% Revision bibliografica 2026: material original, contrastes verificables.
+\input{../content/refuerzo-navier-stokes-2026.tex}
+
 \section{Desarrollos y práctica}
 
 Las deducciones de este capítulo obtienen las ecuaciones del movimiento de un fluido a partir de la ecuación de Cauchy \(\eqref{eq:c14-cauchy}\): la de Euler \(\eqref{eq:c14-euler}\) para un fluido ideal, la forma de Lamb de la aceleración convectiva y las ecuaciones de Navier-Stokes incompresibles \(\eqref{eq:c14-ns}\), cuya componente cartesiana \(\eqref{eq:c14-ns-x}\) se usa en los ejercicios. La solución de Taylor-Green \(\eqref{eq:c14-tg}\) y el balance de disipación viscosa \(\eqref{eq:c14-disipacion}\) permiten comprobar sobre casos concretos que las ecuaciones son coherentes. En los problemas conviene verificar primero que el campo propuesto cumple la continuidad y después sustituirlo en cada componente de la ecuación de cantidad de movimiento.
@@ -9793,6 +9807,8 @@ Con la aproximación de aguas someras, la velocidad de propagación de una onda 
 \label{chap:c16}
 
 \studiumchapterguide{El último capítulo del libro trata dos ingredientes que la guía docente incluye al final del Tema 6 y que son imprescindibles para entender la atmósfera y el océano, el medio en el que vuelan las aeronaves: las variaciones de densidad que producen fuerzas de flotación, tratadas con la aproximación de Boussinesq, y la rotación de la Tierra, que obliga a escribir las ecuaciones del movimiento en un sistema de referencia giratorio y conduce, a gran escala, al equilibrio geostrófico. Ambos completan el recorrido iniciado en el capítulo 2 con las fuerzas de inercia y en el capítulo 5 con la atmósfera estándar.}
+
+\noindent\textit{Lectura de contraste 2026:} el tratamiento de inestabilidades y fenómenos geofísicos se cotejará con Tritton \cite{ref26-tritton}; la evidencia localizada de cada afirmación sigue pendiente de auditarse por separado.\par
 
 \section{Aproximación de Boussinesq}
 
@@ -19652,5 +19668,10 @@ Los registros siguientes se conservan de la edición importada. «Dos testimonio
 \bibitem{src156} Quantity (Wolfram Language Documentation). \url{https://reference.wolfram.com/language/ref/Quantity.html}
 \bibitem{src157} FindFit: Find parameters to best fit data (Wolfram Language Documentation). \url{https://reference.wolfram.com/language/ref/FindFit.html}
 \bibitem{CHENCINER-MONTGOMERY} A. Chenciner y R. Montgomery, \emph{A remarkable periodic solution of the three-body problem in the case of equal masses}, Annals of Mathematics 152 (2000), 881--901. \url{https://arxiv.org/abs/math/0011268}. Consulta: 19 de octubre de 2026. Se consultó el resumen y la identificación de la solución periódica; no se declara revisión completa de la demostración.
+\bibitem{ref26-white} F. M. White, \emph{Fluid Mechanics}, 7.\ ed., McGraw--Hill, 2011. Secciones de contraste: 2, 3.5, 4.3, 4.10 y 6.4.
+\bibitem{ref26-shaughnessy} E. J. Shaughnessy Jr., I. M. Katz y J. P. Schaffer, \emph{Introduction to Fluid Mechanics}, Oxford University Press, 2005. Contraste de cinemática y ecuaciones de conservación.
+\bibitem{ref26-tritton} D. J. Tritton, \emph{Physical Fluid Dynamics}, 2.\ ed., Clarendon Press, 1988. Lectura complementaria sobre dinámica y estabilidad de flujos.
+\bibitem{ref26-boas} M. L. Boas, \emph{Mathematical Methods in the Physical Sciences}, 3.\ ed., Wiley, 2006. Capítulo 6: análisis vectorial.
+\bibitem{ref26-taylor} J. R. Taylor, \emph{Classical Mechanics}, University Science Books, 2005. Fundamentos de mecánica clásica.
 \end{thebibliography}
 \end{document}
