@@ -1,0 +1,29 @@
+
+\section{Contraste bibliográfico: Pitot, hipótesis y sensibilidad}
+\label{sec:ref26-pitot}
+
+La ecuación \(p+\rho V^2/2+\rho gz=\mathrm{cte}\) se usa, en su forma elemental, \emph{a lo largo de una línea de corriente} de un flujo estacionario, incompresible, sin disipación viscosa apreciable ni trabajo de máquinas entre los puntos elegidos. No debe extrapolarse sin correcciones a conductos con pérdidas, a través de ventiladores, a ondas de choque o a aceleraciones con densidad variable. Una constante común para todas las líneas de corriente requiere hipótesis adicionales, como flujo irrotacional en la región considerada.
+
+Para una sonda Pitot-estática ideal, aproximadamente a la misma cota, la diferencia entre la presión de estancamiento y la estática es \(\Delta p=p_t-p_s=\rho V^2/2\); por tanto:
+\begin{equation}
+ V=\sqrt{\frac{2\Delta p}{\rho}},\qquad
+ \frac{dV}{V}=\frac12\left(\frac{d(\Delta p)}{\Delta p}-\frac{d\rho}{\rho}\right).
+ \label{eq:ref26-pitot}
+\end{equation}
+La primera fórmula exige condiciones de calibración apropiadas y efectos de compresibilidad pequeños. La segunda es un diferencial de primer orden, útil para estimar la sensibilidad, no una identidad exacta para incertidumbres finitas.
+
+\begin{tcolorbox}[title={Ejemplo guiado original: velocidad e incertidumbre}, studiumdef, breakable]
+Un tubo Pitot-estático mide \(\Delta p=240\,\mathrm{Pa}\) en aire cuya densidad local estimada es \(1{,}20\,\mathrm{kg\,m^{-3}}\). El modelo ideal arroja
+\[
+ V=\sqrt{\frac{2\cdot240}{1{,}20}}=\mathbf{20{,}0\,\mathrm{m\,s^{-1}}}.
+\]
+Si las cotas de error son \(|\delta(\Delta p)|\leq2\,\mathrm{Pa}\) y \(|\delta\rho|\leq0{,}02\,\mathrm{kg\,m^{-3}}\), la propagación lineal conservadora da
+\[
+ \frac{|\delta V|}{V}\ \lesssim\
+ \frac12\left(\frac{2}{240}+\frac{0{,}02}{1{,}20}\right)
+ =0{,}0125=1{,}25\,\%.
+\]
+Es una estimación de primer orden: no incorpora desalineación de la sonda, calibración, sesgo ni compresibilidad. Si se especificasen incertidumbres estándar independientes, su combinación estadística sería distinta de la suma conservadora.
+\end{tcolorbox}
+
+\textbf{Autocomprobación.} Demuestre que multiplicar por cuatro \(\Delta p\) multiplica por dos \(V\) cuando la densidad se mantiene. Indique por qué conocer \(p_t\) sin conocer \(p_s\) no basta para hallar la velocidad. Deducción propia apoyada en el alcance de Bernoulli de White, sección 3.5 \cite{ref26-white}.
