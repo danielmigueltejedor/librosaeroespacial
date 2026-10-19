@@ -11,3 +11,8 @@ Los anexos de auditoría de Estructuras y Fluidos separan sus registros con pár
 Los logs se revisan tras tres pasadas efectivas. `pdf-checks.json` revisa todas las páginas en busca de glifos de sustitución, texto fuera de caja, destinos internos inválidos y páginas vacías. `visual-samples.json` identifica páginas renderizadas; su aprobación solo se registra tras mirar las imágenes. Se revisan muestras de portadas, índices, capítulos, matemáticas, figuras, problemas, apéndices, bibliografía y cierre, cuando existen.
 
 La inspección es por muestreo. No acredita cada ángulo, flecha o escala de todas las figuras. Se conservan casos heredados de `fitmath`; esta revisión no afirma que se hayan sustituido todos por divisiones automáticas de ecuaciones largas.
+
+
+## Ampliación: figuras y auditorías pendientes
+
+Se completa el recorrido de las 358 representaciones únicas del atlas. Se corrigen contraste, rótulos, cotas, escalas, llamadas, cajas, perfiles y recortes; las figuras densas usan tablas asociadas. Diez prácticas de Fluidos pasan a PDF vectorial. La revisión es del autor y no suplanta el dictamen experto.

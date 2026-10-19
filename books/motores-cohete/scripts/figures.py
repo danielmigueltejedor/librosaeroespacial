@@ -1,5 +1,6 @@
 """28 figuras originales de modelos docentes. PDFs vectoriales y SVG editables."""
 from pathlib import Path
+import os
 import json,math
 import numpy as np
 import matplotlib
@@ -14,16 +15,19 @@ def canvas(title):
  f,a=plt.subplots(figsize=(7.2,4.2),layout='constrained');a.set_title(title,pad=13);a.grid(alpha=.18);return f,a
 def save(ch,f,model,caption):
  key=f'c{ch:02d}'
- for ext in ['pdf','svg']:f.savefig(O/f'{key}.{ext}')
- f.savefig(O/f'{key}.png',dpi=140);plt.close(f);META.append(dict(key=key,chapter=ch,model=model,caption=caption,original=True))
+ if not os.environ.get('STUDIUM_FIGURES') or key in os.environ['STUDIUM_FIGURES'].split(','):
+  for ext in ['pdf','svg']:f.savefig(O/f'{key}.{ext}')
+  f.savefig(O/f'{key}.png',dpi=140)
+ plt.close(f);META.append(dict(key=key,chapter=ch,model=model,caption=caption,original=True))
 def schematic(title):
  f,a=canvas(title);a.set(xlim=(0,10),ylim=(0,6));a.axis('off');return f,a
 def box(a,x,y,w,h,t,c=B):
  a.add_patch(Rectangle((x,y),w,h,ec=c,fc='#eef3f8',lw=1.5));a.text(x+w/2,y+h/2,t,ha='center',va='center',fontsize=9)
 def arrow(a,p,q,t='',c=B):
  a.annotate('',xy=q,xytext=p,arrowprops={'arrowstyle':'->','lw':1.6,'color':c})
- if t:a.text((p[0]+q[0])/2,(p[1]+q[1])/2+.18,t,ha='center',fontsize=9,color=c)
-f,a=canvas('Energía de chorro fija: dos compromisos distintos');v=np.linspace(2000,30000,200);a.plot(v/1000,1200/v,c=B);a.set(xlabel='Velocidad de escape (km/s)',ylabel='Empuje (N)');a.text(15,.45,'Potencia cinética: 600 W\nChorro axial uniforme');save(1,f,'F=2Pj/v; Pj600W; sin presión de salida','A potencia de chorro fija, aumentar la rapidez reduce el empuje. Modelo axial monocinético, sin término de presión.')
+ if t:
+  vertical=abs(q[0]-p[0])<.2*abs(q[1]-p[1]);a.annotate(t,((p[0]+q[0])/2,(p[1]+q[1])/2),xytext=(8,0) if vertical else (0,7),textcoords='offset points',ha='left' if vertical else 'center',va='center' if vertical else 'bottom',fontsize=9,color=c,bbox={'facecolor':'white','edgecolor':'none','pad':.5})
+f,a=canvas('Potencia cinética de chorro fija');v=np.linspace(2000,30000,200);a.plot(v/1000,1200/v,c=B);a.set(xlabel='Velocidad de escape (km/s)',ylabel='Empuje (N)');a.text(15,.45,'Potencia cinética: 600 W\nChorro axial uniforme');save(1,f,'F=2Pj/v; Pj600W; sin presión de salida','A potencia de chorro fija, aumentar la rapidez reduce el empuje. Modelo axial monocinético, sin término de presión.')
 f,a=schematic('Volumen de control y convenio axial');box(a,1.6,2.1,3,1.8,'Cámara\ny masa a bordo');a.plot([4.6,5.3,7.8],[3.9,3.5,4.2],c=B,lw=2);a.plot([4.6,5.3,7.8],[2.1,2.5,1.8],c=B,lw=2);a.add_patch(Rectangle((1.3,1.5),6.7,3,fill=False,ls='--',ec=P));arrow(a,(6.3,3),(9.3,3),'Escape: uₓ = −vₑ',C);arrow(a,(2,4.9),(.4,4.9),'+x, empuje',B);arrow(a,(7.8,.8),(9,.8),'Normal exterior',G);a.text(7.9,4.6,'Salida: pₑ, Aₑ',ha='center');a.text(4.9,.3,'Presión exterior uniforme: pₐ · Esquema sin escala',ha='center');save(2,f,'Eje positivo hacia delante; salida atrás; n_x=-1','El escape cruza hacia atrás y la reacción propulsiva apunta hacia delante. El cierre de presión utiliza la diferencia entre salida y ambiente.')
 f,a=canvas('Estados estáticos y de remanso');M=np.linspace(0,4,300)
 for name,fn,col in [('T/T₀',lambda m:stagnation_ratios(m,1.4)['T_T0'],B),('p/p₀',lambda m:stagnation_ratios(m,1.4)['p_p0'],C)]:a.plot(M,[fn(m) for m in M],label=name,c=col)
@@ -54,7 +58,7 @@ for p,col in [(1,B),(10,C)]:
  z=[r for r in rows if r['p_bar']==p];a.plot([r['T_K'] for r in z],[r['mole_fractions']['H2O'] for r in z],marker='o',c=col,label=f'{p} bar')
 a.set(xlabel='Temperatura fijada (K)',ylabel='Fracción molar H₂O',ylim=(0,1.05));a.legend();save(15,f,'CEA3.3.4 TP; seis especies neutras H2O,H2,O2,OH,O,H; tresT porp','Resultados TP reales de software, con segmentos como guía visual entre estados discretos. No es una expansión de tobera ni un ensayo de motor.')
 f,a=canvas('Vaporización de gota: escala del diámetro');t=np.linspace(0,4,300)
-for d,col in [(1,B),(2,C)]:a.plot(t,np.maximum(d*d-t,0),c=col,label=f'd₀/dref = {d}')
+for d,col in [(1,B),(2,C)]:a.plot(t,np.where(t<=d*d,d*d-t,np.nan),c=col,label=f'd₀/dref = {d}');a.scatter([d*d],[0],color=col,s=18)
 a.set(xlabel='Tiempo · K / dref²',ylabel='d² / dref²');a.legend();save(16,f,'Leyd²=d0²-Kt; líneas sólohastaagotamiento','Modelo de gota aislada con propiedades constantes. Duplicar diámetro cuadruplica la escala de duración.')
 f,a=schematic('Pared y refrigerante: resistencias en serie');names=['Gas\nTaw','Convección\n1/hg','Pared\nδ/k','Convección\n1/hl','Fluido\nTl']
 for i,t in enumerate(names):
@@ -63,7 +67,7 @@ for i,t in enumerate(names):
 a.text(5,4.5,'Régimen estacionario · misma área de referencia',ha='center');a.text(5,1.2,'q″ = (Taw − Tl) / (1/hg + δ/k + 1/hl)',ha='center');save(17,f,'Convección-conducción plana-convección; sinradiación ni almacenamiento','Red térmica ideal. Las temperaturas de pared se obtienen de las caídas parciales; no se igualan a la temperatura del gas.')
 f,a=canvas('Expansión de una masa fija de gas');vr=np.linspace(1,4,200);a.plot(vr,1/vr,c=B,label='Isotérmica');a.plot(vr,vr**(-1.4),c=C,label='Adiabática reversible, γ = 1.4');a.set(xlabel='V/V₀',ylabel='p/p₀');a.legend();save(18,f,'pV^kconst; k1 y1.4; masa fija','Dos procesos límite para gas ideal. No representan directamente un reservorio rígido que pierde masa.')
 f,ax=plt.subplots(2,2,figsize=(8,5.8),layout='constrained')
-for a,title,names,sub in zip(ax.flat,['Presión de gas','Generador de gas','Combustión escalonada','Expansor'],[['Depósito','Cámara','Tobera'],['Generador','Turbina','Descarga auxiliar'],['Precombustión','Turbina','Cámara principal'],['Refrigeración','Turbina','Cámara principal']],['Sin eje principal','Parte del caudal fuera de cámara','Masa de turbina vuelve a cámara','Calor recuperado aporta energía de eje']):
+for a,title,names,sub in zip(ax.flat,['Presión de gas','Generador de gas','Combustión escalonada','Expansor'],[['Depósito','Cámara','Tobera'],['Generador','Turbina','Descarga\nauxiliar'],['Precombustión','Turbina','Cámara\nprincipal'],['Refrigeración','Turbina','Cámara\nprincipal']],['Sin eje principal','Parte del caudal fuera de cámara','Masa de turbina vuelve a cámara','Calor recuperado aporta energía de eje']):
  a.axis('off');a.set(xlim=(0,10),ylim=(0,4));a.set_title(title)
  for j,t in enumerate(names):
   box(a,.1+j*3.35,1.4,2.9,1.1,t)
@@ -91,12 +95,15 @@ f,a=schematic('Navegación, guiado y control');names=['Sensores\ny estimación',
 for i,n in enumerate(names):
  box(a,.15+i*2.5,2.4,2.15,1.3,n)
  if i<3:arrow(a,(2.3+i*2.5,3.05),(2.65+i*2.5,3.05))
-a.plot([8.8,8.8,1.2,1.2],[2.4,1.3,1.3,2.4],c=C);a.text(5,.8,'Realimentación de estado y medidas',ha='center',color=C);a.text(5,4.6,'Funciones distintas, acopladas por dinámica e incertidumbre',ha='center');save(28,f,'Diagrama funcional de lazo; sinleyvuelo','El objetivo de misión, la estimación del estado y la autoridad de actuación deben ser compatibles. Es un esquema conceptual de funciones.')
+a.plot([8.8,8.8,1.2],[2.4,1.3,1.3],c=C);arrow(a,(1.2,1.3),(1.2,2.4),c=C);a.text(5,.8,'Realimentación de estado y medidas',ha='center',color=C);a.text(5,4.6,'Funciones distintas, acopladas por dinámica e incertidumbre',ha='center');save(28,f,'Diagrama funcional de lazo; sinleyvuelo','El objetivo de misión, la estimación del estado y la autoridad de actuación deben ser compatibles. Es un esquema conceptual de funciones.')
 # Portada vectorial provisional, misma composición de la colección Studium.
 f=plt.figure(figsize=(8.2677,11.6929),facecolor='#142c40');a=f.add_axes([0,0,1,1]);a.set(xlim=(0,1),ylim=(0,1));a.axis('off')
 for i in range(24):
  x=np.linspace(0,1,300);y=.25+i*.018+.07*np.sin(5*x+i*.12);a.plot(x,y,c='#00b8cd',alpha=.10+i*.01,lw=.8)
 x=np.linspace(.12,.9,300);radius=.035+.16*((x-.35)/.55)**2;a.plot(x,.56+radius,c='white',lw=3);a.plot(x,.56-radius,c='white',lw=3)
 for z in np.linspace(-.025,.025,7):a.plot(x,.56+z*(1+8*np.maximum(x-.35,0)),c='#00b8cd',lw=1.3,alpha=.65)
-a.add_patch(Circle((.73,.79),.15,fill=False,ec='#487086',lw=.8));a.text(.12,.17,'',color='white');f.savefig(O/'cover-art.pdf',facecolor='#142c40');plt.close(f)
+a.add_patch(Circle((.73,.79),.15,fill=False,ec='#487086',lw=.8));a.text(.12,.17,'',color='white');
+if not os.environ.get('STUDIUM_FIGURES'):f.savefig(O/'cover-art.pdf',facecolor='#142c40')
+plt.close(f)
+(R/'evidence').mkdir(exist_ok=True)
 (R/'evidence/figures.json').write_text(json.dumps(META,ensure_ascii=False,indent=2));print(len(META),'figuras originales')

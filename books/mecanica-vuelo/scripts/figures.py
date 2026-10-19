@@ -1,5 +1,6 @@
 """Figuras originales. Los parámetros son docentes salvo CSV JSBSim identificado."""
 from pathlib import Path
+import os
 import json,csv
 import numpy as np
 import matplotlib
@@ -12,7 +13,9 @@ plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'axes.spines.top
 def save(name,ax,xlabel=None,ylabel=None):
     if xlabel:ax.set_xlabel(xlabel)
     if ylabel:ax.set_ylabel(ylabel)
-    ax.grid(alpha=.2);ax.figure.tight_layout();ax.figure.savefig(ROOT/'figures'/f'{name}.pdf');plt.close(ax.figure)
+    ax.grid(alpha=.2);ax.figure.tight_layout()
+    if not os.environ.get('STUDIUM_FIGURES') or name in os.environ['STUDIUM_FIGURES'].split(','):ax.figure.savefig(ROOT/'figures'/f'{name}.pdf')
+    plt.close(ax.figure)
 def plot(name,x,ys,xlabel,ylabel):
     fig,ax=plt.subplots(figsize=(7,3.8))
     for label,y in ys:ax.plot(x,y,label=label)
@@ -46,7 +49,10 @@ plot('leyes-pilotaje',mf/4800,[('V constante',np.ones_like(mf)),('CL y densidad 
 T=6500
 excess=(T-p.drag(v,m,rho))/(m*G)
 plot('ascenso',v,[('Tasa de ascenso aproximada',v*excess)],'TAS (m/s)','Velocidad vertical (m/s)')
-plot('vx-vy',v,[('Exceso de empuje (kN)',(T-p.drag(v,m,rho))/1000),('Exceso de potencia / 100 kW',v*(T-p.drag(v,m,rho))/1e5)],'TAS (m/s)','Escalas indicadas en la leyenda')
+fig,axes=plt.subplots(2,1,figsize=(7,5.2),sharex=True);et=T-p.drag(v,m,rho);ep=v*et
+for ax,values,unit in [(axes[0],et/1000,'Exceso de empuje (kN)'),(axes[1],ep/1000,'Exceso de potencia (kW)')]:
+ ax.plot(v,values);opt=int(np.argmax(values));ax.axvline(v[opt],color='#8a4e0c',ls='--',lw=1);ax.scatter([v[opt]],[values[opt]],color='#8a4e0c');ax.set_ylabel(unit);ax.grid(alpha=.2);ax.annotate(f'Máximo de rejilla: {v[opt]:.1f} m/s',(v[opt],values[opt]),xytext=(6,-18),textcoords='offset points',fontsize=8)
+save('vx-vy',axes[1],'TAS (m/s)')
 ceiling=[]
 hceil=np.linspace(0,16000,240)
 for z in hceil:
@@ -89,11 +95,13 @@ for name in ['t6-trim-grid.csv','b747-cruise-1800s.csv']:
 # Diagramas vectoriales con ejes y fuerzas definidos, sin figuras protegidas.
 fig,ax=plt.subplots(figsize=(7,3.8));ax.set_aspect('equal');ax.axis('off')
 g=-.12; tangent=np.array([np.cos(g),np.sin(g)]);normal=np.array([-np.sin(g),np.cos(g)])
-for vec,label,color in [(tangent*2,'V','#184a82'),(-tangent*.9,'D','#8a4e0c'),(normal*1.7,'L','#1b6b3a'),(np.array([0,-1.8]),'W','#603082')]:
- ax.annotate('',xy=vec,xytext=(0,0),arrowprops=dict(arrowstyle='->',lw=2,color=color));ax.text(*(vec*1.1),label,color=color)
+for vec,label,color in [(tangent*2,'V','#184a82'),(-tangent*(-1.8*np.sin(g)),'D','#8a4e0c'),(normal*(1.8*np.cos(g)),'L','#1b6b3a'),(np.array([0,-1.8]),'W','#603082')]:
+ ax.annotate('',xy=vec,xytext=(0,0),arrowprops=dict(arrowstyle='->',lw=2,color=color))
+ if label=='D':ax.annotate(label,xy=vec,xytext=(-.75,.4),color=color,arrowprops={'arrowstyle':'-','color':color,'lw':.7})
+ else:ax.text(*(vec*1.1),label,color=color)
 ax.plot([-2,2],[.24,-.24],':',color='gray');ax.scatter([0],[0],color='#142c40');ax.set_xlim(-2.5,2.5);ax.set_ylim(-2.2,2.3);save('fuerzas-planeo',ax)
-fig,ax=plt.subplots(figsize=(7,3.8));ax.axis('off');phi=np.deg2rad(35)
-for vec,label in [(np.array([np.sin(phi),np.cos(phi)])*2,'L'),(np.array([0,-1.8]),'W')]:
+fig,ax=plt.subplots(figsize=(6,4.6));ax.set_aspect('equal');ax.axis('off');phi=np.deg2rad(35)
+for vec,label in [(np.array([np.sin(phi),np.cos(phi)])*2,'L'),(np.array([0,-2*np.cos(phi)]),'W')]:
  ax.annotate('',xy=vec,xytext=(0,0),arrowprops=dict(arrowstyle='->',lw=2));ax.text(*(vec*1.1),label)
-ax.plot([-1.5,1.5],[1.5*np.tan(phi),-1.5*np.tan(phi)],color='#184a82',lw=3);ax.set_xlim(-2,2);ax.set_ylim(-2.2,2.5);save('fuerzas-viraje',ax)
+ax.plot([-1.5,1.5],[1.5*np.tan(phi),-1.5*np.tan(phi)],color='#184a82',lw=3);ax.plot([0,2*np.sin(phi)],[2*np.cos(phi),2*np.cos(phi)],':',color='gray');ax.annotate('',(2*np.sin(phi),0),(0,0),arrowprops={'arrowstyle':'->','color':'#8a4e0c','lw':1.5});ax.text(.5,-.35,r'$L\sin\phi$',color='#8a4e0c');ax.text(-1.85,1.85,r'$L\cos\phi=W$',fontsize=10);ax.set_xlim(-2,2);ax.set_ylim(-2.2,2.5);save('fuerzas-viraje',ax)
 print('Figuras PDF originales:',len(list((ROOT/'figures').glob('*.pdf'))))
