@@ -1,0 +1,108 @@
+{
+  "generator": "scripts/redraw_practice_figures.py",
+  "classification": "derived",
+  "figures": [
+    {
+      "id": "FIG-0080",
+      "file": "figures/FIG-0080/figure.pdf",
+      "sha256": "39ecb91521957c12e54871f096822b1a86cfc902995a7c741a5d32488581f77d",
+      "model": "Troposphere: ideal dry air, constant lapse and gravity",
+      "checks": {
+        "sea_level": true,
+        "p_11km": true
+      }
+    },
+    {
+      "id": "FIG-0081",
+      "file": "figures/FIG-0081/figure.pdf",
+      "sha256": "a70dda7190a257eaee00530ee6d0188b2b1cef5d3afcdbcc5a8d6ba7939cb09e",
+      "model": "Quadratic drag projectile with ground event",
+      "checks": {
+        "impact": true,
+        "energy_dissipates": true,
+        "shorter_range": true
+      }
+    },
+    {
+      "id": "FIG-0082",
+      "file": "figures/FIG-0082/figure.pdf",
+      "sha256": "1f4c7081781468d2a59312372955fcad87dc7e3070f7562b477ef42f408029fd",
+      "model": "Nonlinear pendulum, L=1 m",
+      "checks": {
+        "small_angle_limit": true,
+        "period_increases": true
+      }
+    },
+    {
+      "id": "FIG-0083",
+      "file": "figures/FIG-0083/figure.pdf",
+      "sha256": "3fca6bb7172c730f0b3c802e7900de8aefcc5ca8519625d8585cc0e32498bfc7",
+      "model": "psi=x²y+2xy², u=psi_y, v=-psi_x",
+      "checks": {
+        "point_velocity": true,
+        "divergence_identity": true,
+        "acceleration_at_point": true
+      }
+    },
+    {
+      "id": "FIG-0084",
+      "file": "figures/FIG-0084/figure.pdf",
+      "sha256": "4c4a35399fb9cfe8c6812a5a51881512793f1c30e174d5ca1d294922243eef51",
+      "model": "Ideal incompressible Venturi, d1=100 mm, rho=998 kg/m³",
+      "checks": {
+        "reference_flow": true
+      }
+    },
+    {
+      "id": "FIG-0085",
+      "file": "figures/FIG-0085/figure.pdf",
+      "sha256": "018b49a5d987b01c8c1663d9ce70c8a2a21d0137a68db502d7fa5d2fbb2c4b82",
+      "model": "Inviscid cylinder Cp=1−(2sinθ+G)²",
+      "checks": {
+        "stagnation_no_circulation": true
+      }
+    },
+    {
+      "id": "FIG-0086",
+      "file": "figures/FIG-0086/figure.pdf",
+      "sha256": "f6d15aa9e807966694d10db4ac42fd714bbcb92a5790f7ef576b7e0417b88e68",
+      "model": "Couette–Poiseuille: eta(1+P−P eta)",
+      "checks": {
+        "both_wall_conditions": true
+      }
+    },
+    {
+      "id": "FIG-0087",
+      "file": "figures/FIG-0087/figure.pdf",
+      "sha256": "d60977beab30f90bc7f882568ae9d8a2fcab72b83f57cf0e43bb1ccb204f46e7",
+      "model": "Concentric-cylinder Couette: Ar+B/r",
+      "checks": {
+        "inner_wall": true,
+        "outer_wall": true
+      }
+    },
+    {
+      "id": "FIG-0088",
+      "file": "figures/FIG-0088/figure.pdf",
+      "sha256": "d2f6181f26d8b00ab296b452752a7c1f634eeb685e848dabbb01082e0cc1aa9a",
+      "model": "Log least-squares power law on original rounded table",
+      "checks": {
+        "exponent": true
+      }
+    },
+    {
+      "id": "FIG-0089",
+      "file": "figures/FIG-0089/figure.pdf",
+      "sha256": "9f33f08d58ec58c07ffdc905c3d9246ccb8857855d2fde82c488f1045bda8604",
+      "model": "Exact startup Couette Fourier series, 160 terms (not NDSolve output)",
+      "checks": {
+        "walls_2s": true,
+        "walls_10s": true,
+        "walls_30s": true,
+        "walls_60s": true,
+        "walls_200s": true,
+        "stationary_limit": true
+      }
+    }
+  ]
+}

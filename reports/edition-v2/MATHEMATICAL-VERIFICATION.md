@@ -22,3 +22,8 @@ El registro `equation-register.json` localiza los bloques matemáticos de los do
 python -m pip install -r requirements-audit.txt
 python scripts/audit-library.py
 ```
+
+
+## Ampliación: figuras y auditorías pendientes
+
+La ampliación añade 141 controles de figuras ligados a sus fuentes, además de los 125 controles seleccionados anteriores: tensor y geometría de Mohr, balances y momentos, series/condiciones de contorno, tablas y 44 estados de plena potencia. Las seis trayectorias de agotamiento usan tres pasos. Los resultados detallados están en figure-science-checks.json y endurance-convergence.json.

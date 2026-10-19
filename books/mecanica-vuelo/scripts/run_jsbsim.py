@@ -36,8 +36,18 @@ def model():
             row=get(f);row.update(tank_each_lbm=fuel,requested_h_ft=h,requested_CAS_kts=vc)
             # Potencia disponible: motor estabilizado a gas máximo, sin avanzar avión.
             f['fcs/throttle-cmd-norm']=1
-            f.get_propulsion().get_steady_state()
+            # Update FCS and cached propulsion inputs while the airframe is held.
+            # GetSteadyState alone reuses the inputs from the last executive run.
+            held={k:f[k] for k in ['velocities/vtrue-fps','position/h-sl-ft','simulation/sim-time-sec']}
+            f.suspend_integration()
+            try:
+                assert f.run()
+                f.get_propulsion().get_steady_state()
+            finally:f.resume_integration()
+            assert abs(f['fcs/throttle-pos-norm']-1)<1e-12
+            assert all(abs(f[k]-v)<1e-10 for k,v in held.items())
             Tmax=f['propulsion/engine/thrust-lbs']*LBF
+            row['max_throttle_position']=f['fcs/throttle-pos-norm'];row['max_engine_n1']=f['propulsion/engine/n1'];row['held_airframe']=True
             row['max_thrust_N']=Tmax;row['max_thrust_power_W']=Tmax*row['TAS_m_s']
             row['excess_power_approx_m_s']=(Tmax-row['drag_N'])*row['TAS_m_s']/(row['mass_kg']*9.80665)
             row['sin_gamma_approx']=(Tmax-row['drag_N'])/(row['mass_kg']*9.80665)

@@ -66,6 +66,6 @@ En Fluidos y Cohete se conservan las huellas y los JPEG originales de la importa
 
 Las fotos de Atar y GEnx y sus adaptaciones de encuadre mantienen CC BY-SA 3.0. Deben conservarse autor, título, fuente, enlace de licencia e indicación del recorte. Su incorporación no atribuye respaldo del fotógrafo. Para NASA se reconoce procedencia y no se implica respaldo de la institución; la licencia del contenido se comprueba individualmente, sin suponer que todo archivo institucional es de dominio público.
 
-Las portadas antiguas `figures/cover.jpeg` de Estructuras y Turbomáquinas se conservan por trazabilidad; su autoría y permiso original siguen sin identificar y no se usan en los PDF actuales. La ilustración anterior de Vuelo permanece recuperable en el historial.
+Las portadas antiguas `figures/cover.jpeg` de Estructuras y Turbomáquinas, cuya autoría y permiso no se pudieron identificar, se han retirado del árbol de distribución. Sus bytes y su trazabilidad siguen recuperables en el historial Git anterior a esta revisión. Se verificó que ninguna entrada de compilación actual las utiliza. La ilustración anterior de Vuelo permanece recuperable en el historial.
 
 Las entradas JSON registran dimensiones, URL de descarga cuando se conoce, modificaciones y SHA-256. `fetch-library-covers.py` reproduce las dos sustituciones, y el script de Vuelo su foto X-29. La compilación usa recursos incluidos y no necesita descargar fotografías.

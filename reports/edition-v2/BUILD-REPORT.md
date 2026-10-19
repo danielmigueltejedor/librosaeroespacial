@@ -28,7 +28,7 @@ La compilación ha ejecutado tres pasadas por volumen con pdfLaTeX, sin shell es
 | turbomaquinas | turbomaquinas-problemas.pdf | 3 | COMPILED | Sí |
 | turbomaquinas | turbomaquinas-simulacros.pdf | 3 | COMPILED | Sí |
 
-Revisión automática de páginas: PASSED; 21 volúmenes, 2212 páginas. Comprueba texto fuera de caja, caracteres de sustitución, páginas vacías, identidad de colección, destinos internos y logs. Véase pdf-checks.json.
+Revisión automática de páginas: PASSED; 21 volúmenes, 2218 páginas. Comprueba texto fuera de caja, caracteres de sustitución, páginas vacías, identidad de colección, destinos internos y logs. Véase pdf-checks.json.
 
 La inspección visual de muestras se registra por separado. El comprobador no busca semánticamente toda fórmula cortada o toda flecha incorrecta. Los logs de cada ejecución se guardan en dist/studium/<libro>/<entrada>/pass-N.log y los recibos en build-report.json; GitHub Actions los vuelve a producir.
 

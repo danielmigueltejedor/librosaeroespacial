@@ -4,8 +4,8 @@ Los recuentos se obtienen de entradas registradas e inclusiones TeX. Los bloques
 
 | Asignatura | Volumen | Capítulos | Apéndices | Páginas | Bloques matemáticos | Compilación |
 |---|---|---:|---:|---:|---:|---|
-| Teoría de Estructuras | manual | 8 | 6 | 274 | 803 | COMPILED |
-| Teoría de Estructuras | problemas | 8 | 0 | 162 | 596 | COMPILED |
+| Teoría de Estructuras | manual | 8 | 6 | 278 | 803 | COMPILED |
+| Teoría de Estructuras | problemas | 8 | 0 | 163 | 596 | COMPILED |
 | Teoría de Estructuras | simulacros | 8 | 0 | 51 | 132 | COMPILED |
 | Materiales y Mantenimiento de Motores Aeroespaciales | manual | 25 | 4 | 108 | 42 | COMPILED |
 | Materiales y Mantenimiento de Motores Aeroespaciales | problemas | 7 | 0 | 39 | 37 | COMPILED |
@@ -13,7 +13,7 @@ Los recuentos se obtienen de entradas registradas e inclusiones TeX. Los bloques
 | Mecánica de Fluidos | manual | 23 | 5 | 312 | 907 | COMPILED |
 | Mecánica de Fluidos | problemas | 23 | 0 | 67 | 48 | COMPILED |
 | Mecánica de Fluidos | simulacros | 8 | 0 | 36 | 20 | COMPILED |
-| Mecánica de Vuelo | manual | 23 | 18 | 143 | 269 | COMPILED |
+| Mecánica de Vuelo | manual | 23 | 18 | 144 | 269 | COMPILED |
 | Mecánica de Vuelo | problemas | 4 | 0 | 50 | 121 | COMPILED |
 | Mecánica de Vuelo | simulacros | 12 | 0 | 31 | 46 | COMPILED |
 | Motores Cohete | manual | 28 | 13 | 160 | 275 | COMPILED |

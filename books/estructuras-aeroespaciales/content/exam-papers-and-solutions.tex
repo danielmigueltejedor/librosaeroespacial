@@ -1024,26 +1024,32 @@ Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; l
 \centering
 \begingroup
 \setbox0=\hbox{\begin{tikzpicture}
-\draw[-stealth] (-0.3900,0) -- (3.3900,0) node[right,font=\small] {$\sigma$};
-\draw[-stealth] (0,-1.6581) -- (0,1.7581) node[above,font=\small] {$\tau$};
-% studium:circle centre=80.0 radius=75.0 scale=0.016774193548387096
-\draw[thick] (1.3419,0) circle (1.2581);
-% studium:circle centre=77.5 radius=77.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (1.3000,0) circle (1.3000);
-% studium:circle centre=2.5 radius=2.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (0.0419,0) circle (0.0419);
-\draw[red!70!black,thick] (2.3484,-0.7548) -- (0.3355,0.7548);
-% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.016774193548387096
-\fill[red!70!black] (2.3484,-0.7548) circle (0.06) node[anchor=north west,font=\small] {$P_x\,(140;\,-45)$};
-% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.016774193548387096
-\fill[red!70!black] (0.3355,0.7548) circle (0.06) node[anchor=south east,font=\small] {$P_y\,(20;\,45)$};
-\fill (1.3419,0) circle (0.04) node[below,font=\small] {$C$};
-\fill[blue!60!black] (2.6000,0) circle (0.05) node[anchor=south west,font=\small,blue!60!black] {$\sigma_1 = 155$};
-\fill[blue!60!black] (0.0839,0) circle (0.05) node[anchor=south east,font=\small,blue!60!black] {$\sigma_2 = 5$};
-\draw[densely dotted] (1.3419,0) -- (1.3419,1.2581) node[above right,font=\small] {$\tau_{\max} = 75$};
-\draw[-stealth,violet] (1.7948,-0.3397) arc (-36.870:0:0.5661);
-\node[font=\small,violet,anchor=west] at (1.9710,-0.2265) {$2\theta_p = 36{,}87^\circ$};
-\node[font=\small,anchor=north west] at (-0.3900,-1.7581) {tensiones en MPa};
+% Equal stress scales; translated abscissa, not a false zero-stress axis.
+\draw[-stealth] (-2.99667,0) -- (2.85000,0) node[right,font=\small] {$\sigma-\sigma_m$};
+\draw[-stealth] (0,-2.82333) -- (0,2.82333) node[above,font=\small] {$\tau_M$};
+% studium:circle centre=80.0 radius=75.0 scale=0.029333333333333336 offset=80.0
+\draw[thick] (0.00000,0) circle (2.20000);
+% studium:circle centre=77.5 radius=77.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-0.07333,0) circle (2.27333);
+% studium:circle centre=2.5 radius=2.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-2.27333,0) circle (0.07333);
+\draw[red!70!black,thick] (1.76000,-1.32000) -- (-1.76000,1.32000);
+% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (1.76000,-1.32000) circle (.045);
+\node[font=\small,anchor=north,red!70!black,fill=white,inner sep=1pt] at (2.04160,-1.53120) {$P_x$};
+% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (-1.76000,1.32000) circle (.045);
+\node[font=\small,anchor=south,red!70!black,fill=white,inner sep=1pt] at (-2.04160,1.53120) {$P_y$};
+\fill (0,0) circle (.035) node[below right,font=\small] {$C$};
+\fill[blue!60!black] (2.2,0) circle (.04) node[above right,font=\small] {$\sigma_1$};
+\fill[blue!60!black] (-2.2,0) circle (.04) node[above left,font=\small] {$\sigma_2$};
+\draw[dotted] (0,0) -- (0,2.2);
+\draw[-stealth,violet] (0.56000,-0.42000) arc (-36.86990:0:.7);
+\node[font=\small,anchor=north west,align=left] at (-2.99667,-3.17333) {
+$\sigma_m=80.00,\quad R=\tau_{\max,xy}=75.00\ \mathrm{MPa}$\\
+$P_x=(140;-45),\quad P_y=(20;45)\ \mathrm{MPa}$\\
+$\sigma_1=155.00,\quad \sigma_2=5.00,\quad\tau_{\max,3D}=77.50\ \mathrm{MPa}$\\
+$\tau_M=-\tau_{nt},\quad 2\theta_p=36.87^\circ$; misma escala en ambos ejes.};
 \end{tikzpicture}}%
 \count0=\ht0
 \advance\count0 by \dp0
@@ -1078,73 +1084,91 @@ Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; l
 \fi
 \ifnum\count8>\count6
 \resizebox{\linewidth}{!}{\begin{tikzpicture}
-\draw[-stealth] (-0.3900,0) -- (3.3900,0) node[right,font=\small] {$\sigma$};
-\draw[-stealth] (0,-1.6581) -- (0,1.7581) node[above,font=\small] {$\tau$};
-% studium:circle centre=80.0 radius=75.0 scale=0.016774193548387096
-\draw[thick] (1.3419,0) circle (1.2581);
-% studium:circle centre=77.5 radius=77.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (1.3000,0) circle (1.3000);
-% studium:circle centre=2.5 radius=2.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (0.0419,0) circle (0.0419);
-\draw[red!70!black,thick] (2.3484,-0.7548) -- (0.3355,0.7548);
-% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.016774193548387096
-\fill[red!70!black] (2.3484,-0.7548) circle (0.06) node[anchor=north west,font=\small] {$P_x\,(140;\,-45)$};
-% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.016774193548387096
-\fill[red!70!black] (0.3355,0.7548) circle (0.06) node[anchor=south east,font=\small] {$P_y\,(20;\,45)$};
-\fill (1.3419,0) circle (0.04) node[below,font=\small] {$C$};
-\fill[blue!60!black] (2.6000,0) circle (0.05) node[anchor=south west,font=\small,blue!60!black] {$\sigma_1 = 155$};
-\fill[blue!60!black] (0.0839,0) circle (0.05) node[anchor=south east,font=\small,blue!60!black] {$\sigma_2 = 5$};
-\draw[densely dotted] (1.3419,0) -- (1.3419,1.2581) node[above right,font=\small] {$\tau_{\max} = 75$};
-\draw[-stealth,violet] (1.7948,-0.3397) arc (-36.870:0:0.5661);
-\node[font=\small,violet,anchor=west] at (1.9710,-0.2265) {$2\theta_p = 36{,}87^\circ$};
-\node[font=\small,anchor=north west] at (-0.3900,-1.7581) {tensiones en MPa};
+% Equal stress scales; translated abscissa, not a false zero-stress axis.
+\draw[-stealth] (-2.99667,0) -- (2.85000,0) node[right,font=\small] {$\sigma-\sigma_m$};
+\draw[-stealth] (0,-2.82333) -- (0,2.82333) node[above,font=\small] {$\tau_M$};
+% studium:circle centre=80.0 radius=75.0 scale=0.029333333333333336 offset=80.0
+\draw[thick] (0.00000,0) circle (2.20000);
+% studium:circle centre=77.5 radius=77.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-0.07333,0) circle (2.27333);
+% studium:circle centre=2.5 radius=2.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-2.27333,0) circle (0.07333);
+\draw[red!70!black,thick] (1.76000,-1.32000) -- (-1.76000,1.32000);
+% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (1.76000,-1.32000) circle (.045);
+\node[font=\small,anchor=north,red!70!black,fill=white,inner sep=1pt] at (2.04160,-1.53120) {$P_x$};
+% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (-1.76000,1.32000) circle (.045);
+\node[font=\small,anchor=south,red!70!black,fill=white,inner sep=1pt] at (-2.04160,1.53120) {$P_y$};
+\fill (0,0) circle (.035) node[below right,font=\small] {$C$};
+\fill[blue!60!black] (2.2,0) circle (.04) node[above right,font=\small] {$\sigma_1$};
+\fill[blue!60!black] (-2.2,0) circle (.04) node[above left,font=\small] {$\sigma_2$};
+\draw[dotted] (0,0) -- (0,2.2);
+\draw[-stealth,violet] (0.56000,-0.42000) arc (-36.86990:0:.7);
+\node[font=\small,anchor=north west,align=left] at (-2.99667,-3.17333) {
+$\sigma_m=80.00,\quad R=\tau_{\max,xy}=75.00\ \mathrm{MPa}$\\
+$P_x=(140;-45),\quad P_y=(20;45)\ \mathrm{MPa}$\\
+$\sigma_1=155.00,\quad \sigma_2=5.00,\quad\tau_{\max,3D}=77.50\ \mathrm{MPa}$\\
+$\tau_M=-\tau_{nt},\quad 2\theta_p=36.87^\circ$; misma escala en ambos ejes.};
 \end{tikzpicture}}%
 \else
 \ifnum\count0>\count4
 \resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
-\draw[-stealth] (-0.3900,0) -- (3.3900,0) node[right,font=\small] {$\sigma$};
-\draw[-stealth] (0,-1.6581) -- (0,1.7581) node[above,font=\small] {$\tau$};
-% studium:circle centre=80.0 radius=75.0 scale=0.016774193548387096
-\draw[thick] (1.3419,0) circle (1.2581);
-% studium:circle centre=77.5 radius=77.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (1.3000,0) circle (1.3000);
-% studium:circle centre=2.5 radius=2.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (0.0419,0) circle (0.0419);
-\draw[red!70!black,thick] (2.3484,-0.7548) -- (0.3355,0.7548);
-% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.016774193548387096
-\fill[red!70!black] (2.3484,-0.7548) circle (0.06) node[anchor=north west,font=\small] {$P_x\,(140;\,-45)$};
-% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.016774193548387096
-\fill[red!70!black] (0.3355,0.7548) circle (0.06) node[anchor=south east,font=\small] {$P_y\,(20;\,45)$};
-\fill (1.3419,0) circle (0.04) node[below,font=\small] {$C$};
-\fill[blue!60!black] (2.6000,0) circle (0.05) node[anchor=south west,font=\small,blue!60!black] {$\sigma_1 = 155$};
-\fill[blue!60!black] (0.0839,0) circle (0.05) node[anchor=south east,font=\small,blue!60!black] {$\sigma_2 = 5$};
-\draw[densely dotted] (1.3419,0) -- (1.3419,1.2581) node[above right,font=\small] {$\tau_{\max} = 75$};
-\draw[-stealth,violet] (1.7948,-0.3397) arc (-36.870:0:0.5661);
-\node[font=\small,violet,anchor=west] at (1.9710,-0.2265) {$2\theta_p = 36{,}87^\circ$};
-\node[font=\small,anchor=north west] at (-0.3900,-1.7581) {tensiones en MPa};
+% Equal stress scales; translated abscissa, not a false zero-stress axis.
+\draw[-stealth] (-2.99667,0) -- (2.85000,0) node[right,font=\small] {$\sigma-\sigma_m$};
+\draw[-stealth] (0,-2.82333) -- (0,2.82333) node[above,font=\small] {$\tau_M$};
+% studium:circle centre=80.0 radius=75.0 scale=0.029333333333333336 offset=80.0
+\draw[thick] (0.00000,0) circle (2.20000);
+% studium:circle centre=77.5 radius=77.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-0.07333,0) circle (2.27333);
+% studium:circle centre=2.5 radius=2.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-2.27333,0) circle (0.07333);
+\draw[red!70!black,thick] (1.76000,-1.32000) -- (-1.76000,1.32000);
+% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (1.76000,-1.32000) circle (.045);
+\node[font=\small,anchor=north,red!70!black,fill=white,inner sep=1pt] at (2.04160,-1.53120) {$P_x$};
+% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (-1.76000,1.32000) circle (.045);
+\node[font=\small,anchor=south,red!70!black,fill=white,inner sep=1pt] at (-2.04160,1.53120) {$P_y$};
+\fill (0,0) circle (.035) node[below right,font=\small] {$C$};
+\fill[blue!60!black] (2.2,0) circle (.04) node[above right,font=\small] {$\sigma_1$};
+\fill[blue!60!black] (-2.2,0) circle (.04) node[above left,font=\small] {$\sigma_2$};
+\draw[dotted] (0,0) -- (0,2.2);
+\draw[-stealth,violet] (0.56000,-0.42000) arc (-36.86990:0:.7);
+\node[font=\small,anchor=north west,align=left] at (-2.99667,-3.17333) {
+$\sigma_m=80.00,\quad R=\tau_{\max,xy}=75.00\ \mathrm{MPa}$\\
+$P_x=(140;-45),\quad P_y=(20;45)\ \mathrm{MPa}$\\
+$\sigma_1=155.00,\quad \sigma_2=5.00,\quad\tau_{\max,3D}=77.50\ \mathrm{MPa}$\\
+$\tau_M=-\tau_{nt},\quad 2\theta_p=36.87^\circ$; misma escala en ambos ejes.};
 \end{tikzpicture}}%
 \else
 \begin{tikzpicture}
-\draw[-stealth] (-0.3900,0) -- (3.3900,0) node[right,font=\small] {$\sigma$};
-\draw[-stealth] (0,-1.6581) -- (0,1.7581) node[above,font=\small] {$\tau$};
-% studium:circle centre=80.0 radius=75.0 scale=0.016774193548387096
-\draw[thick] (1.3419,0) circle (1.2581);
-% studium:circle centre=77.5 radius=77.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (1.3000,0) circle (1.3000);
-% studium:circle centre=2.5 radius=2.5 scale=0.016774193548387096
-\draw[densely dashed,gray] (0.0419,0) circle (0.0419);
-\draw[red!70!black,thick] (2.3484,-0.7548) -- (0.3355,0.7548);
-% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.016774193548387096
-\fill[red!70!black] (2.3484,-0.7548) circle (0.06) node[anchor=north west,font=\small] {$P_x\,(140;\,-45)$};
-% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.016774193548387096
-\fill[red!70!black] (0.3355,0.7548) circle (0.06) node[anchor=south east,font=\small] {$P_y\,(20;\,45)$};
-\fill (1.3419,0) circle (0.04) node[below,font=\small] {$C$};
-\fill[blue!60!black] (2.6000,0) circle (0.05) node[anchor=south west,font=\small,blue!60!black] {$\sigma_1 = 155$};
-\fill[blue!60!black] (0.0839,0) circle (0.05) node[anchor=south east,font=\small,blue!60!black] {$\sigma_2 = 5$};
-\draw[densely dotted] (1.3419,0) -- (1.3419,1.2581) node[above right,font=\small] {$\tau_{\max} = 75$};
-\draw[-stealth,violet] (1.7948,-0.3397) arc (-36.870:0:0.5661);
-\node[font=\small,violet,anchor=west] at (1.9710,-0.2265) {$2\theta_p = 36{,}87^\circ$};
-\node[font=\small,anchor=north west] at (-0.3900,-1.7581) {tensiones en MPa};
+% Equal stress scales; translated abscissa, not a false zero-stress axis.
+\draw[-stealth] (-2.99667,0) -- (2.85000,0) node[right,font=\small] {$\sigma-\sigma_m$};
+\draw[-stealth] (0,-2.82333) -- (0,2.82333) node[above,font=\small] {$\tau_M$};
+% studium:circle centre=80.0 radius=75.0 scale=0.029333333333333336 offset=80.0
+\draw[thick] (0.00000,0) circle (2.20000);
+% studium:circle centre=77.5 radius=77.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-0.07333,0) circle (2.27333);
+% studium:circle centre=2.5 radius=2.5 scale=0.029333333333333336 offset=80.0
+\draw[densely dashed,gray] (-2.27333,0) circle (0.07333);
+\draw[red!70!black,thick] (1.76000,-1.32000) -- (-1.76000,1.32000);
+% studium:mohrpoint Px sigma=140.0 tau=-45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (1.76000,-1.32000) circle (.045);
+\node[font=\small,anchor=north,red!70!black,fill=white,inner sep=1pt] at (2.04160,-1.53120) {$P_x$};
+% studium:mohrpoint Py sigma=20.0 tau=45.0 scale=0.029333333333333336 offset=80.0
+\fill[red!70!black] (-1.76000,1.32000) circle (.045);
+\node[font=\small,anchor=south,red!70!black,fill=white,inner sep=1pt] at (-2.04160,1.53120) {$P_y$};
+\fill (0,0) circle (.035) node[below right,font=\small] {$C$};
+\fill[blue!60!black] (2.2,0) circle (.04) node[above right,font=\small] {$\sigma_1$};
+\fill[blue!60!black] (-2.2,0) circle (.04) node[above left,font=\small] {$\sigma_2$};
+\draw[dotted] (0,0) -- (0,2.2);
+\draw[-stealth,violet] (0.56000,-0.42000) arc (-36.86990:0:.7);
+\node[font=\small,anchor=north west,align=left] at (-2.99667,-3.17333) {
+$\sigma_m=80.00,\quad R=\tau_{\max,xy}=75.00\ \mathrm{MPa}$\\
+$P_x=(140;-45),\quad P_y=(20;45)\ \mathrm{MPa}$\\
+$\sigma_1=155.00,\quad \sigma_2=5.00,\quad\tau_{\max,3D}=77.50\ \mathrm{MPa}$\\
+$\tau_M=-\tau_{nt},\quad 2\theta_p=36.87^\circ$; misma escala en ambos ejes.};
 \end{tikzpicture}%
 \fi
 \fi
@@ -1243,11 +1267,11 @@ $My$ & $4000000.0\,\mathrm{N\,mm}$ & esfuerzo aplicado con signo\\
 \draw[<->,gray] (0.0000,-6.4000) -- (2.7500,-6.4000);
 \node[font=\small,anchor=north] at (1.3750,-6.4000) {$60$~\mbox{mm}};
 \draw[<->,gray] (3.2000,0.0000) -- (3.2000,-5.5000);
-\node[font=\small,anchor=west] at (3.2000,-2.7500) {$120$~\mbox{mm}};
+\node[font=\small,anchor=west] at (3.2000,-1.3750) {$120$~\mbox{mm}};
 % studium:point G z=30 y=60
 \fill[black] (1.3750,-2.7500) circle (0.06);
 \node[font=\small,anchor=south west] at (1.3750,-2.7500) {$G$};
-\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[right,font=\small] {$z$};
+\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[above left,font=\small] {$z$};
 \draw[-stealth,thin] (1.3750,-2.7500) -- (1.3750,-5.9000) node[below,font=\small] {$y$};
 \draw[<->,gray] (-0.9000,0.0000) -- (-0.9000,-2.7500);
 \node[font=\small,anchor=east,gray!30!black] at (-0.9000,-1.3750) {$y_G = 60$~\mbox{mm}};
@@ -1290,11 +1314,11 @@ $My$ & $4000000.0\,\mathrm{N\,mm}$ & esfuerzo aplicado con signo\\
 \draw[<->,gray] (0.0000,-6.4000) -- (2.7500,-6.4000);
 \node[font=\small,anchor=north] at (1.3750,-6.4000) {$60$~\mbox{mm}};
 \draw[<->,gray] (3.2000,0.0000) -- (3.2000,-5.5000);
-\node[font=\small,anchor=west] at (3.2000,-2.7500) {$120$~\mbox{mm}};
+\node[font=\small,anchor=west] at (3.2000,-1.3750) {$120$~\mbox{mm}};
 % studium:point G z=30 y=60
 \fill[black] (1.3750,-2.7500) circle (0.06);
 \node[font=\small,anchor=south west] at (1.3750,-2.7500) {$G$};
-\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[right,font=\small] {$z$};
+\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[above left,font=\small] {$z$};
 \draw[-stealth,thin] (1.3750,-2.7500) -- (1.3750,-5.9000) node[below,font=\small] {$y$};
 \draw[<->,gray] (-0.9000,0.0000) -- (-0.9000,-2.7500);
 \node[font=\small,anchor=east,gray!30!black] at (-0.9000,-1.3750) {$y_G = 60$~\mbox{mm}};
@@ -1307,11 +1331,11 @@ $My$ & $4000000.0\,\mathrm{N\,mm}$ & esfuerzo aplicado con signo\\
 \draw[<->,gray] (0.0000,-6.4000) -- (2.7500,-6.4000);
 \node[font=\small,anchor=north] at (1.3750,-6.4000) {$60$~\mbox{mm}};
 \draw[<->,gray] (3.2000,0.0000) -- (3.2000,-5.5000);
-\node[font=\small,anchor=west] at (3.2000,-2.7500) {$120$~\mbox{mm}};
+\node[font=\small,anchor=west] at (3.2000,-1.3750) {$120$~\mbox{mm}};
 % studium:point G z=30 y=60
 \fill[black] (1.3750,-2.7500) circle (0.06);
 \node[font=\small,anchor=south west] at (1.3750,-2.7500) {$G$};
-\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[right,font=\small] {$z$};
+\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[above left,font=\small] {$z$};
 \draw[-stealth,thin] (1.3750,-2.7500) -- (1.3750,-5.9000) node[below,font=\small] {$y$};
 \draw[<->,gray] (-0.9000,0.0000) -- (-0.9000,-2.7500);
 \node[font=\small,anchor=east,gray!30!black] at (-0.9000,-1.3750) {$y_G = 60$~\mbox{mm}};
@@ -1323,11 +1347,11 @@ $My$ & $4000000.0\,\mathrm{N\,mm}$ & esfuerzo aplicado con signo\\
 \draw[<->,gray] (0.0000,-6.4000) -- (2.7500,-6.4000);
 \node[font=\small,anchor=north] at (1.3750,-6.4000) {$60$~\mbox{mm}};
 \draw[<->,gray] (3.2000,0.0000) -- (3.2000,-5.5000);
-\node[font=\small,anchor=west] at (3.2000,-2.7500) {$120$~\mbox{mm}};
+\node[font=\small,anchor=west] at (3.2000,-1.3750) {$120$~\mbox{mm}};
 % studium:point G z=30 y=60
 \fill[black] (1.3750,-2.7500) circle (0.06);
 \node[font=\small,anchor=south west] at (1.3750,-2.7500) {$G$};
-\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[right,font=\small] {$z$};
+\draw[-stealth,thin] (1.3750,-2.7500) -- (3.3500,-2.7500) node[above left,font=\small] {$z$};
 \draw[-stealth,thin] (1.3750,-2.7500) -- (1.3750,-5.9000) node[below,font=\small] {$y$};
 \draw[<->,gray] (-0.9000,0.0000) -- (-0.9000,-2.7500);
 \node[font=\small,anchor=east,gray!30!black] at (-0.9000,-1.3750) {$y_G = 60$~\mbox{mm}};

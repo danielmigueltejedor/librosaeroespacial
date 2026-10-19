@@ -1,10 +1,12 @@
 """Figuras originales académicas. Valores sintéticos, sin datos de motores reales."""
 from pathlib import Path
+import os
 import sys,json
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FixedLocator,FixedFormatter,NullFormatter
 from matplotlib.patches import Rectangle,FancyBboxPatch
 R=Path(__file__).resolve().parents[1]
 OUT=R/'figures';OUT.mkdir(exist_ok=True)
@@ -12,7 +14,10 @@ plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,'axes.spines.top
 B='#184a82';C='#00a5bc';O='#aa671a';P='#653389';G='#277144';L='#e8f0fa'
 META=[]
 def save(key,fig,scope):
- fig.tight_layout();fig.savefig(OUT/(key+'.pdf'));fig.savefig(OUT/(key+'.png'),dpi=140);plt.close(fig);META.append({'key':key,'scope':scope,'source':'scripts/figures.py'})
+ fig.tight_layout()
+ if not os.environ.get('STUDIUM_FIGURES') or key in os.environ['STUDIUM_FIGURES'].split(','):
+  fig.savefig(OUT/(key+'.pdf'));fig.savefig(OUT/(key+'.png'),dpi=140)
+ plt.close(fig);META.append({'key':key,'scope':scope,'source':'scripts/figures.py'})
 def flow(key,labels,scope,cycle=False):
  fig,ax=plt.subplots(figsize=(8,1.35 if len(labels)<=5 else 3.0));ax.set(xlim=(-1.5,9.5),ylim=(.95,2.65) if len(labels)<=5 else (-.5,3.7));ax.axis('off')
  n=len(labels)
@@ -28,7 +33,7 @@ def flow(key,labels,scope,cycle=False):
  if cycle and n==6:ax.annotate('',(0,2.1),(0,1.1),arrowprops={'arrowstyle':'->','color':B,'lw':1.5})
  save(key,fig,scope)
 flow('cadena-material',['Proceso\ny tratamiento','Microestructura\ny defectos','Propiedades\ny dispersión','Respuesta\nen servicio','Seguimiento\ny revisión'],'Mapa conceptual, no ley causal determinista.')
-fig,ax=plt.subplots(figsize=(7,3.4));x=np.array([0,.003,.012,.05,.11,.16,.2]);y=np.array([0,210,245,305,350,330,280]);ax.plot(x,y,color=B,lw=2,label='Carga: ejemplo sintético');ax.plot([.105,.105-345/70000],[345,0],color=O,ls='--',lw=1.8,label='Descarga elástica ideal');ax.set(xlabel='Deformación ingenieril e (−)',ylabel='Tensión ingenieril s (MPa)',xlim=(0,.21),ylim=(0,390));ax.annotate('Estricción\n(esquema)',(.16,330),(.14,390),arrowprops={'arrowstyle':'->','color':B},ha='center');ax.legend(loc='lower right',fontsize=9);save('tension-deformacion',fig,'Curva sintética, descarga con E=70 GPa; no material concreto.')
+fig,ax=plt.subplots(figsize=(7,3.4));x=np.array([0,.003,.012,.05,.11,.16,.2]);y=np.array([0,210,245,305,350,330,280]);ax.plot(x,y,color=B,lw=2,label='Carga: ejemplo sintético');unload=float(np.interp(.105,x,y));ax.plot([.105,.105-unload/70000],[unload,0],color=O,ls='--',lw=1.8,label='Descarga elástica ideal');ax.set(xlabel='Deformación ingenieril e (−)',ylabel='Tensión ingenieril s (MPa)',xlim=(0,.21),ylim=(0,390));ax.annotate('Estricción\n(esquema)',(.16,330),(.14,390),arrowprops={'arrowstyle':'->','color':B},ha='center');ax.legend(loc='lower right',fontsize=9);save('tension-deformacion',fig,'Curva sintética, descarga con E=70 GPa; no material concreto.')
 fig,axs=plt.subplots(1,4,figsize=(9,2.5))
 for i,ax in enumerate(axs):
  ax.set(xlim=(-1.3,1.3),ylim=(-1.3,1.3));ax.axis('off');ax.set_aspect('equal')
@@ -45,9 +50,14 @@ for i,ax in enumerate(axs):
 save('modos-grieta',fig,'Representación cinemática; símbolos de salida y entrada fuera del plano en modo III.')
 a=np.linspace(.0001,.015,300);fig,ax=plt.subplots(figsize=(7,3));ax.plot(a*1000,180*np.sqrt(np.pi*a),color=B,label=r'$K_I=180\sqrt{\pi a}$');ax.axhline(32,color=O,ls='--',label=r'$K_{IC}=32$');ac=(32/180)**2/np.pi;ax.scatter([ac*1000],[32],color=P);ax.axvline(ac*1000,color=P,ls=':',lw=1);ax.set(xlabel='Semilongitud a (mm)',ylabel=r'Intensidad ($\mathrm{MPa\sqrt{m}}$)',ylim=(0,43));ax.legend();save('fractura-critica',fig,'MFEL, placa ancha, Y=1, tensión remota180MPa. Tenacidad ficticia32MPa√m.')
 t=np.linspace(0,2,500);fig,ax=plt.subplots(figsize=(7,2.8));ax.plot(t,120+100*np.sin(2*np.pi*t),color=B);ax.axhline(120,color=O,ls='--',label=r'$\sigma_m=120$ MPa');ax.axhline(220,color='gray',lw=.8);ax.axhline(20,color='gray',lw=.8);ax.annotate('',(.25,220),(.25,120),arrowprops={'arrowstyle':'<->','color':P});ax.text(.29,170,r'$\sigma_a=100$ MPa',color=P);ax.set(xlabel='Tiempo ilustrativo (s)',ylabel='Tensión (MPa)',ylim=(-10,260));ax.legend(loc='lower right');save('ciclo-fatiga',fig,'Historia sintética sinusoidal, máximo220mínimo20MPa, frecuencia1Hz.')
-fig,axs=plt.subplots(1,2,figsize=(8,3));N=np.logspace(3,7,200);axs[0].loglog(N,600*(N/1e3)**(-.12),color=B);axs[0].set(xlabel='Ciclos N (−)',ylabel='Amplitud ilustrativa (MPa)',title='Tramo S–N sintético');dk=np.logspace(.6,1.7,200);axs[1].loglog(dk,1e-12*dk**3,color=O,lw=2);axs[1].set(xlabel=r'$\Delta K$ ($\mathrm{MPa\sqrt{m}}$)',ylabel='da/dN (m/ciclo)',title='Tramo de Paris: m=3');save('sn-paris',fig,'Modelos sintéticos de tramos ajustados; no se representa umbral ni inestabilidad como ley de Paris.')
+fig,axs=plt.subplots(1,2,figsize=(8,3));N=np.logspace(3,7,200);axs[0].loglog(N,600*(N/1e3)**(-.12),color=B);axs[0].set(xlabel='Ciclos N (−)',ylabel='Amplitud ilustrativa (MPa)',title='Tramo S–N sintético');dk=np.logspace(.6,1.7,200);axs[1].loglog(dk,1e-12*dk**3,color=O,lw=2);axs[1].set(xlabel=r'$\Delta K$ ($\mathrm{MPa\sqrt{m}}$)',ylabel='da/dN (m/ciclo)',title='Tramo de Paris: m=3');axs[1].xaxis.set_major_locator(FixedLocator([4,10,20,40]));axs[1].xaxis.set_major_formatter(FixedFormatter(['4','10','20','40']));axs[1].xaxis.set_minor_formatter(NullFormatter());save('sn-paris',fig,'Modelos sintéticos de tramos ajustados; no se representa umbral ni inestabilidad como ley de Paris.')
 t=np.linspace(0,1.1,300);eps=.003+.01*(1-np.exp(-10*t))+.012*t+.02*t**7;fig,ax=plt.subplots(figsize=(7,3));ax.plot(t,eps,color=B,lw=2);ax.axvspan(0,.2,color=C,alpha=.09);ax.axvspan(.2,.6,color=G,alpha=.08);ax.axvspan(.6,1.1,color=O,alpha=.08);ax.set(xlabel='Tiempo normalizado (−)',ylabel='Deformación ilustrativa (−)',xlim=(0,1.1));ax.text(.08,.05,'Primaria',fontsize=9);ax.text(.32,.05,'Casi estacionaria',fontsize=9);ax.text(.82,.05,'Terciaria',fontsize=9);save('fluencia-curva',fig,'Curva sintética con evolución de tasa; no ajustada a una aleación ni a un tiempo de rotura.')
-flow('corrosion',['Ánodo\nOxidación','Electrolito\nTransporte iónico','Cátodo\nReducción'],'Mapa de funciones electroquímicas; se necesita también continuidad electrónica. No representa una velocidad.')
+fig,ax=plt.subplots(figsize=(8,3));ax.set(xlim=(-.6,8.6),ylim=(-.4,3.9));ax.axis('off')
+for xx,txt in [(0,'Ánodo\nOxidación'),(6,'Cátodo\nReducción')]:
+ ax.add_patch(FancyBboxPatch((xx,1.3),2,1.2,boxstyle='round,pad=.04',edgecolor=B,facecolor=L));ax.text(xx+1,1.9,txt,ha='center',va='center')
+ax.plot([1,1],[2.5,2.9],color=B);ax.plot([7,7],[2.9,2.5],color=B);ax.annotate('',(7,2.9),(1,2.9),arrowprops={'arrowstyle':'->','color':O,'lw':1.5});ax.text(4,3.15,'Electrones: conexión metálica exterior',ha='center',fontsize=9)
+ax.plot([1,1,7,7],[1.25,.25,.25,1.25],color=C,lw=1.5);ax.annotate('',(5.8,.25),(2.2,.25),arrowprops={'arrowstyle':'<->','color':C,'lw':1.5});ax.text(4,.65,'Electrolito: continuidad iónica',ha='center',fontsize=9);ax.text(4,-.15,'Esquema funcional; no representa velocidad de corrosión',ha='center',fontsize=8)
+save('corrosion',fig,'Celda galvánica conceptual: continuidad electrónica exterior e iónica por el electrolito; los iones no se identifican como electrones.')
 fig,axs=plt.subplots(1,2,figsize=(8,3));axs[0].plot([0,1,3,3.2,4,5,8,9],[20,500,500,20,20,180,180,20],color=B);axs[0].set(xlabel='Tiempo (escala ilustrativa)',ylabel='Temperatura (°C)',title='Historia ficticia');axs[0].text(1.4,400,'Solubilización',fontsize=8);axs[0].text(5,220,'Maduración',fontsize=8);u=np.linspace(0,10,100);axs[1].plot(u,100+220*(u/3)*np.exp(1-u/3),color=O);axs[1].set(xlabel='Tiempo de maduración (ilustrativo)',ylabel='Resistencia (escala ilustrativa)',title='Máximo y sobreenvejecimiento');save('tratamiento-termico',fig,'Historia y respuesta sintéticas. No receta de fabricación ni predicción de una aleación real.')
 fig,axs=plt.subplots(1,2,figsize=(8,3));
 for i,(ori,col) in enumerate(zip([0,90,90,0],[B,C,C,B])):
