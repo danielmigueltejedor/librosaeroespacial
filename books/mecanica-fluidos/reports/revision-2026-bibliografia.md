@@ -73,6 +73,14 @@ Cada sección expone hipótesis de aplicación, signos, dimensiones, condiciones
 | 12–14: balances, esfuerzo y Navier–Stokes | White cap. 3–4; Shaughnessy cap. 11 | base |
 | 15–16: adimensionalización y flujos geofísicos | White cap. 5; Tritton (pendiente de cotejo) | ampliación, priorización curricular pendiente |
 
+## Mejora del itinerario de estudio incorporada con la guía firmada
+
+El antiguo anexo de plan de estudio mostraba **23 entradas en inglés del tipo `4 concepts planned`** (16 temas/capítulos teóricos + 7 talleres). Ahora, cada entrada expone **un objetivo de comprobación redactado en castellano** y verificable con un problema o derivación: hipótesis, balances, propiedades del flujo, semejanza y simulación. Se retiran los marcadores `\\checkmark` que podían sugerir que ya se habían superado los contenidos.
+
+El plan incorpora además una orientación docente propia (`content/orientacion-guia-ule-2026.tex`) sobre correspondencia curricular, 150 horas de trabajo y reglas de evaluación. Se ha añadido `tests/test_fluidos_guia_ule_2026.py` al `unittest discover` del workflow existente para comprobar estructura, horarios, evaluación, ediciones y ausencia de placeholders. **Es una comprobación estructural, no certificación académica**.
+
+**Pendientes de revisión sustantiva con los libros aportados:** comparar cada derivación con localizadores físicos y ediciones correctas, profundizar en apartados con tratamiento insuficiente, revisar todas las soluciones, validar experimentos/talleres y contrastar matemáticamente el manuscrito completo con revisión independiente.
+
 ## Gates antes de publicar nueva edición
 
 - Compilar **manual, problemas y simulacros** con `python3 scripts/build-studium-books.py mecanica-fluidos --check` y luego sin `--check`.
