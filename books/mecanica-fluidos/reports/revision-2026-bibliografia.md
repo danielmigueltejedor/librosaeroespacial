@@ -1,11 +1,36 @@
 # Mecánica de Fluidos — contraste bibliográfico y primera mejora (19-10-2026)
 
-## Alcance y límite de la guía ULE
+## Guía docente oficial ULE 2026-2027 — **verificada íntegramente**
 
-- Asignatura **0710311**, obligatoria, 2.º curso, 1.er cuatrimestre, 6 ECTS del Grado en Ingeniería Aeroespacial (ULE), curso **2026-2027**.
-- Ficha oficial: https://www.unileon.es/estudiantes/oferta-academica/grados/grado-en-ingenieria-aeroespacial/plan-estudios?cursoa=2026&id=0710311&te=G
-- Visor oficial de guía: https://visor-guiadocente.unileon.es/snapshots/2026-2027/0710311
-- **Limitación verificable:** el visor web no devolvió temario, evaluación y bibliografía completos en contenido legible para esta auditoría. No se presenta un programa reconstruido del manual como si fuera el programa firmado por la universidad; la coincidencia con el curso queda **pendiente de comprobación**.
+- Fuente: `2026-2027_0710311(1).pdf`, guía docente de seis páginas **firmada por la Universidad de León** el 18 de agosto de 2026. Verificación del documento original: [sede electrónica](https://sede.unileon.es/tramitador/entrada?idLogica=verificarFirmaIframe&codigoCSV=6334-7054-7866*4642-6679&entrada=ciudadano&idEntidad=ULE). No se distribuye una copia del PDF dentro del repositorio.
+- Asignatura **0710311**, 2.º curso, 1.er semestre, presencial, castellano, **6 ECTS**. Profesor responsable: **Miguel Zorita Calvo**; otro profesor: **Eduardo García Ortega** (p. 1).
+- Programa oficial: **seis temas** (p. 2); corresponden a los encabezados de los **16 capítulos teóricos** del manual. Coinciden los grandes apartados, pero aún debe comprobarse individualmente la precisión y profundidad de todos los conceptos.
+- Distribución de las **150 horas** (p. 3): 60 presenciales, 90 de trabajo autónomo. Por modalidad: **27** h de sesión magistral, **12** h de resolución de problemas y **21** h de prácticas informáticas presenciales (más 30 h no presenciales para cada modalidad).
+- Evaluación (pp. 3–4): **70 % examen escrito**, **30 % ejercicios realizados presencialmente durante el curso**. **Mínimo 5/10 en el examen escrito**; de otro modo la nota de convocatoria es la del examen. Con 5 o más en el examen, la ponderación se aplica garantizando al menos un 5 final. El componente de ejercicios se conserva para la segunda convocatoria **del mismo curso**, no para cursos siguientes.
+- El profesor comunicará previamente los materiales permitidos en las pruebas: **no se presupone examen con ordenador, apuntes ni formulario**. La guía no fija duración ni número de problemas del examen, y no prescribe siete prácticas ni cuatro simulacros.
+- La fuente de verdad para el temario, evaluación, bibliografía y las salvedades está en [el mapa exacto y estructurado de la guía](../bibliography/guia-docente-ule-2026-2027.json).
+
+### Correspondencia comprobada por tema oficial y encabezados del manual
+
+| Tema oficial (guía p. 2) | Capítulos del manual | Núcleo evaluable descrito en la guía |
+| --- | --- | --- |
+| 1. Fundamentos de mecánica clásica | 1–2 | Newton, momentos, referencias inerciales/no inerciales, energía, Lagrange, Lorenz, tres cuerpos y mapa logístico |
+| 2. Fundamentos de dinámica de fluidos | 3–4 | Continuo, modelos ideales/newtonianos, campos cinemáticos, derivada material, condiciones de contorno |
+| 3. Estudio de casos | 5–9 | Hidrostática, arrastre/sustentación, canales/tubos, Couette/Poiseuille, oscilaciones, propulsión y aerogeneradores |
+| 4. Similaridad dinámica | 10 | Reynolds, similitud, coeficientes aerodinámicos, Darcy–Weisbach y teorema Pi |
+| 5. Formalismo matemático y aplicaciones | 11–13 | Operadores, Gauss/Stokes/Helmholtz, transporte, continuidad, Bernoulli, Fick/Fourier, tensores |
+| 6. Ecuaciones de Navier–Stokes | 14–16 | Conservación, Euler/Navier–Stokes, régimen de Stokes, hidrostática, Boussinesq, rotación y geostrofía |
+
+Esta tabla **no** debe confundirse con una revisión exhaustiva de física ni permite concluir que cada sección de la guía esté desarrollada con la profundidad apropiada. Los siete talleres de Mathematica del libro son materiales propios; su número y contenido no se deducen de la guía (que solo exige prácticas informáticas).
+
+### Bibliografía **de la guía** frente a los PDF aportados (pp. 4–5)
+
+La ULE incluye en sus fuentes **Boas (2006), White (2016), Tritton (2011), Shaughnessy/Katz/Schaffer (2005), Taylor (2005)**, y añade **recursos Wolfram Mathematica, vídeos de Miguel Zorita, Anderson (1995), Kundu et al. (2016), Walter Lewin (2014), Powers (2024) y Strogatz (2018)**.
+
+Cinco de estas referencias están representadas por archivos aportados por el usuario. Hay que distinguir:
+- **White:** la guía registra **2016**; el archivo aportado se identifica como **7.ª edición de 2011**. No trasplantar localizadores de la edición de 2016 a la de 2011 sin cotejo.
+- **Tritton:** la guía registra **2011**, frente al registro histórico de edición de 1988 de la copia catalogada. Queda pendiente inspeccionar el ejemplar aportado para decidir si es edición, reimpresión o digitalización de otra versión.
+- Las otras referencias adicionales de la ULE **no se consideran PDF proporcionados**; se pueden consultar por enlaces públicos o registrarlas como pendientes si se usan.
 
 ## Libros aportados (consulta privada, no redistribuida)
 
@@ -34,7 +59,7 @@ El manual no parte de cero: contiene 16 capítulos teóricos, 7 capítulos de pr
 
 Cada sección expone hipótesis de aplicación, signos, dimensiones, condiciones límite, ejemplo original y ejercicio de autocomprobación. Se han incluido mediante `\\input` en `latex/manual.tex` para conservar la plantilla común, sin replicar problemas protegidos.
 
-## Matriz orientativa de lecturas por temas del MANUAL — no equivale a mapa oficial ULE
+## Lecturas complementarias recomendadas por capítulos del MANUAL (interpretación editorial propia)
 
 | Capítulos | Base recomendada | Naturaleza |
 | --- | --- | --- |
@@ -53,7 +78,7 @@ Cada sección expone hipótesis de aplicación, signos, dimensiones, condiciones
 - Compilar **manual, problemas y simulacros** con `python3 scripts/build-studium-books.py mecanica-fluidos --check` y luego sin `--check`.
 - Ejecutar `python3 books/mecanica-fluidos/scripts/check_refuerzo_2026.py` y `python3 books/mecanica-fluidos/scripts/check_fluid_bank.py` si hay dependencias.
 - Inspeccionar cada página de las cuatro nuevas secciones (saltos, etiquetas, tablas, dimensiones).
-- Leer la **guía docente completa y firmada** de 2026-2027, y documentar temas obligatorios, prácticas, criterios de examen y prioridades. No confundir el plan del manual con la guía.
+- **Hecho:** lectura del PDF oficial y matriz de correspondencia de los seis temas. **Pendiente:** auditoría de cada subapartado, hipótesis y derivación con referencias localizadas; no confundir correspondencia de títulos con aprobación académica.
 - Revisar todas las afirmaciones de alto riesgo; asignar localizador de fuente preciso, derivación reproducible, y revisión independiente. Tritton y Taylor requieren cotejo visual por páginas.
-- Mantener los cinco PDF originales **fuera del repositorio**, por derechos de autor.
+- Mantener los cinco PDF bibliográficos y la copia firmada aportada **fuera del repositorio**; usar enlaces y metadatos sin redistribuir material.
 - No crear un release final ni declarar validación académica completa sin completar los gates.
