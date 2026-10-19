@@ -13,3 +13,7 @@ Cada libro conserva una carpeta estable bajo `books/<slug>/`. Las cinco carpetas
 Las cinco colecciones contienen manual, problemas resueltos y simulacros: quince PDF en total. Estructuras reúne los 105 ejercicios de su manual y cuatro simulacros de entrenamiento por selección de veinte casos del mismo banco. Fluidos añade 48 problemas resueltos, siete talleres y cuatro simulacros originales. Los comandos se ejecutan desde la raíz del repositorio. Los PDF generados no se versionan como fuentes; sus entregas se guardan en Releases y las recompilaciones en los artefactos de GitHub Actions.
 
 No se crean carpetas `v2`, `final-final` ni copias de trabajo privadas. Las fuentes y recursos editables se versionan directamente. La integración académica de las importaciones en AeroBooks queda explícitamente pendiente; no se fabrica un `book.toml`, un ledger ni aprobaciones para simularla.
+
+## Importación en curso: Mecánica de Vuelo
+
+La nueva asignatura se está preparando en la rama `import/mecanica-vuelo`; sus tres volúmenes y recursos editoriales se incorporarán antes de completar la importación. No se fusionará esta rama sin las fuentes y las figuras.
