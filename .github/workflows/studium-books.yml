@@ -5,22 +5,18 @@ on:
   push:
     branches: [main]
     paths:
-      - "books/estructuras-aeroespaciales/**"
-      - "books/mecanica-fluidos/**"
-      - "books/turbomaquinas/**"
-      - "books/tecnologia-aeroespacial/**"
-      - "books/motores-cohete/**"
-      - "scripts/build-studium-books.py"
+      - "books/**"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements-audit.txt"
       - "shared/latex/**"
       - ".github/workflows/studium-books.yml"
   pull_request:
     paths:
-      - "books/estructuras-aeroespaciales/**"
-      - "books/mecanica-fluidos/**"
-      - "books/turbomaquinas/**"
-      - "books/tecnologia-aeroespacial/**"
-      - "books/motores-cohete/**"
-      - "scripts/build-studium-books.py"
+      - "books/**"
+      - "scripts/**"
+      - "tests/**"
+      - "requirements-audit.txt"
       - "shared/latex/**"
       - ".github/workflows/studium-books.yml"
 
@@ -33,6 +29,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -40,10 +38,31 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern
-      - name: Check and compile the fifteen volumes
+      - name: Check and compile every registered volume
         run: python3 scripts/build-studium-books.py all
+      - name: Install scientific audit dependencies
+        run: python -m pip install -r requirements-audit.txt
+      - name: Test build evidence and framework contracts
+        run: python -m unittest discover -s tests -v
+      - name: Replay scoped scientific and preservation audits
+        run: python scripts/audit-library.py
+      - name: Check every PDF page and inventory the collection
+        run: |
+          python scripts/audit-studium-pdfs.py --output reports/edition-v2/pdf-checks.json
+          python scripts/inventory-library.py
+          python scripts/coverage-library.py
+          python scripts/audit-library-bibliography.py
+          python scripts/summarize-library-builds.py
       - uses: actions/upload-artifact@v4
         with:
           name: studium-pdfs
           path: dist/studium/*/*.pdf
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: studium-audit-evidence
+          path: |
+            reports/edition-v2/
+            dist/studium/*/build-report.json
           if-no-files-found: error

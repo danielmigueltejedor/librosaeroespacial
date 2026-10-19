@@ -970,7 +970,7 @@ El sistema de Lorenz traslada esas ideas a ecuaciones diferenciales con origen d
 \begin{equation}
 \dot x = \sigma\,(y - x),\qquad \dot y = x\,(\rho_R - z) - y,\qquad \dot z = x\,y - \beta z, \label{eq:c02-lorenz}
 \end{equation}
-donde \(x\) mide la intensidad del movimiento convectivo, \(y\) y \(z\) describen la distribución de temperatura, \(\sigma\) es el número de Prandtl, \(\rho_R\) un número de Rayleigh normalizado (se escribe con subíndice para no confundirlo con la densidad) y \(\beta\) un factor geométrico. Para los valores clásicos \(\sigma = 10\), \(\beta = 8/3\) y \(\rho_R = 28\), las trayectorias no convergen a un punto fijo ni a un ciclo límite, sino a un conjunto de estructura fractal, el atractor de Lorenz, sobre el que la dependencia sensible de las condiciones iniciales hace imposible la predicción a largo plazo aunque las ecuaciones sean deterministas. El problema de los tres cuerpos, mencionado en la guía docente, es el ejemplo histórico del mismo fenómeno en mecánica celeste: a diferencia del problema de dos cuerpos, no admite una solución general en forma cerrada y, para la mayoría de condiciones iniciales, es caótico, de modo que solo puede abordarse numéricamente. Para un ingeniero aeroespacial la lección es doble: las trayectorias de misiones que aprovechan varios cuerpos celestes se diseñan con integración numérica cuidadosa, y la turbulencia, gobernada por las ecuaciones de Navier-Stokes, hereda esa sensibilidad, por lo que se describe estadísticamente.
+donde \(x\) mide la intensidad del movimiento convectivo, \(y\) y \(z\) describen la distribución de temperatura, \(\sigma\) es el número de Prandtl, \(\rho_R\) un número de Rayleigh normalizado (se escribe con subíndice para no confundirlo con la densidad) y \(\beta\) un factor geométrico. Para los valores clásicos \(\sigma = 10\), \(\beta = 8/3\) y \(\rho_R = 28\), muchas trayectorias se aproximan a un conjunto de estructura fractal, el atractor de Lorenz, sobre el que la dependencia sensible de las condiciones iniciales hace imposible la predicción a largo plazo aunque las ecuaciones sean deterministas. El problema de los tres cuerpos, mencionado en la guía docente, es el ejemplo histórico del mismo fenómeno en mecánica celeste: a diferencia del problema de dos cuerpos, no admite una solución general en forma cerrada y puede presentar dinámica caótica; también admite soluciones regulares y periódicas. Por ejemplo, tres masas iguales poseen una órbita periódica plana en forma de ocho \cite{CHENCINER-MONTGOMERY}. La integración numérica es una herramienta general, pero la ausencia de una solución elemental general no demuestra caos para un estado inicial concreto. Para un ingeniero aeroespacial la lección es doble: las trayectorias de misiones que aprovechan varios cuerpos celestes se diseñan con integración numérica cuidadosa, y la turbulencia, gobernada por las ecuaciones de Navier-Stokes, hereda esa sensibilidad, por lo que se describe estadísticamente.
 
 \begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
 
@@ -4048,13 +4048,50 @@ Escritas al revés, \(D = C_D\,\tfrac12\rho V_\infty^{2} S\) y \(L = C_L\,\tfrac
 
 \section{Resistencia de cuerpos romos y fuselados}
 
-El coeficiente de resistencia de una esfera lisa ilustra los regímenes de la resistencia en función del número de Reynolds \(\mathrm{Re} = \rho V d/\mu\). A números de Reynolds muy bajos la inercia del fluido es despreciable y la resistencia es proporcional a la velocidad; Stokes obtuvo en 1851, resolviendo las ecuaciones del movimiento sin el término de inercia, que una esfera de radio \(R\) experimenta una resistencia \(D = 6\pi\mu R V = 3\pi\mu V d\), de la que un tercio procede de la presión y dos tercios de la fricción. Dividiendo por la presión dinámica y por el área frontal resulta
+El coeficiente de resistencia de una esfera lisa ilustra los regímenes de la resistencia en función del número de Reynolds \(\mathrm{Re} = \rho V d/\mu\). A números de Reynolds muy bajos, la inercia convectiva es pequeña frente a la difusión viscosa a las escalas elegidas. Para despreciar también la inercia temporal se necesita además \(L^2/(\nu T)\ll1\), donde \(T\) es la escala temporal impuesta. En el problema estacionario de una esfera con corriente uniforme lejos de ella, la resistencia es proporcional a la velocidad; Stokes obtuvo en 1851, resolviendo las ecuaciones del movimiento sin el término de inercia, que una esfera de radio \(R\) experimenta una resistencia \(D = 6\pi\mu R V = 3\pi\mu V d\), de la que un tercio procede de la presión y dos tercios de la fricción. Dividiendo por la presión dinámica y por el área frontal resulta
 \begin{equation}
 C_D = \frac{24}{\mathrm{Re}}, \qquad \mathrm{Re} \ll 1. \label{eq:c07-stokes}
 \end{equation}
 La ley de Stokes es una aproximación asintótica para \(\mathrm{Re}\ll 1\); \(\mathrm{Re}<1\) no garantiza por sí solo un error inferior al 10\,\%. La primera corrección de Oseen, \(C_D\approx(24/\mathrm{Re})(1+3\mathrm{Re}/16)\), añade un término del 18{,}75\,\% de la predicción de Stokes cuando se extrapola a \(\mathrm{Re}=1\). Esta corrección tampoco proporciona una cota rigurosa del error en ese punto. Rige la sedimentación de gotas de niebla, de partículas de ceniza volcánica y de aerosoles: igualando la resistencia de Stokes al peso menos el empuje se obtiene la velocidad de sedimentación \(V_t = (\rho_p - \rho_f)\,g\,d^{2}/(18\mu)\). Una gota de agua de 20 micrómetros en aire estándar cae a \((1000 - 1{,}225)\cdot 9{,}81\cdot(20\times 10^{-6})^{2}/(18\cdot 1{,}7894\times 10^{-5}) \approx 0{,}01217\) m/s, con un número de Reynolds \(1{,}225\cdot 0{,}01217\cdot 20\times 10^{-6}/1{,}7894\times 10^{-5} \approx 0{,}0167\), lo que confirma a posteriori el régimen. Por eso las nubes, formadas por gotas de ese tamaño, pueden mantenerse en suspensión con corrientes ascendentes muy débiles.
 
 Al aumentar el número de Reynolds, la inercia gana importancia, la corriente se desprende de la parte posterior de la esfera y aparecen sucesivamente una burbuja de recirculación estacionaria, una estela no estacionaria con desprendimiento periódico de torbellinos y, por encima de unos miles, una estela turbulenta. En un amplio intervalo, aproximadamente entre \(10^{3}\) y \(2\times 10^{5}\), el coeficiente de resistencia de la esfera es casi constante, del orden de 0,4 a 0,5, y la resistencia crece con el cuadrado de la velocidad: es el régimen de Newton, propio de los cuerpos romos. En torno a \(\mathrm{Re} \approx 3\times 10^{5}\) se produce la crisis de la resistencia: la capa límite se vuelve turbulenta antes de desprenderse, resiste mejor el gradiente de presión adverso, el desprendimiento se retrasa, la estela se estrecha y el coeficiente cae bruscamente de unos 0,5 a unos 0,2. La rugosidad adelanta la transición: por eso una pelota de golf con hoyuelos llega más lejos que una lisa. Para un cuerpo fuselado la situación es muy distinta: la corriente permanece adherida casi hasta el borde de salida, la resistencia de presión es pequeña y domina la de fricción, de modo que el coeficiente basado en el área frontal puede ser decenas de veces menor que el de un cilindro del mismo espesor. El carenado de los trenes de aterrizaje, de los soportes de motor y de las antenas responde exactamente a esta idea.
+
+
+\subsection{Ejemplo: Reynolds pequeño con inercia temporal importante}
+\begin{studiumworked}{Dos escalas independientes en un flujo oscilatorio}
+\textbf{Enunciado y datos.} Una pared oscila con amplitud de velocidad
+\(U=10^{-5}\,\mathrm{m\,s^{-1}}\) junto a un líquido newtoniano de
+\(\nu=10^{-6}\,\mathrm{m^2\,s^{-1}}\). Para una escala de longitud
+\(L=10^{-3}\,\mathrm m\) y tiempo impuesto \(T=0.1\,\mathrm s\),
+¿puede sustituirse el flujo por una sucesión de soluciones estacionarias?
+
+\textbf{Hipótesis y modelo.} Flujo paralelo \(u(y,t)\), pared infinita,
+fluido incompresible, sin gradiente longitudinal de presión ni convección.
+La ecuación exacta de este modelo es \(\partial_tu=\nu\partial_{yy}u\).
+Al introducir \(y=Ly^*\), \(t=Tt^*\) y \(u=Uu^*\), resulta
+\[
+ \frac{L^2}{\nu T}\,\partial_{t^*}u^*=\partial_{y^*y^*}u^*.
+\]
+\textbf{Cálculo y resultado.}
+\[
+ Re=\frac{UL}{\nu}=0.01,\qquad
+ \frac{L^2}{\nu T}=10.
+\]
+Ambos cocientes son adimensionales. El pequeño Reynolds no elimina
+el término temporal: la aproximación cuasiestacionaria no está justificada.
+Para excitación sinusoidal \(\omega=1/T=10\,\mathrm{s^{-1}}\),
+la solución periódica en un semiespacio es
+\[
+ u=Ue^{-y/\delta}\cos(\omega t-y/\delta),\qquad
+ \delta=\sqrt{\frac{2\nu}{\omega}}=0.4472\,\mathrm{mm}.
+\]
+\textbf{Comprobación.} La sustitución verifica la ecuación de difusión,
+\(u(0,t)=U\cos\omega t\) y \(u\to0\) al alejarse de la pared.
+El periodo de oscilación es \(2\pi T\), no \(T\).
+\textbf{Límites.} Es la respuesta periódica tras el transitorio inicial;
+no reproduce una esfera acelerada ni un contorno finito. Se ha comprobado
+el modelo diferencial y sus escalas, sin atribuir validación experimental.
+\end{studiumworked}
 
 \section{Sustentación}
 
@@ -4322,7 +4359,7 @@ relación usada en el texto (paso intermedio no comprobado por separado)
 
 \noindent\textbf{Variables}
 \begin{itemize}
-\item $K$: factor de resistencia inducida
+\item $K$: coeficiente cuadrático total de la polar
 \end{itemize}
 
 {\noindent\footnotesize Comprobación dimensional del modelo.\par}
@@ -4453,7 +4490,7 @@ Una avioneta de 1100 kg tiene una superficie alar de \(16{,}2\) m\(^2\), \(C_{L,
 \item $\rho = 1.225\,\mathrm{kg}\,\mathrm{m}^{-3}$ — densidad
 \item $V = 55\,\mathrm{m}\,\mathrm{s}^{-1}$ — velocidad de vuelo
 \item $CD_{0} = 0.027$ — resistencia parásita
-\item $K = 0.054$ — factor de resistencia inducida
+\item $K = 0.054$ — coeficiente cuadrático total de la polar
 \end{itemize}
 
 \noindent\textbf{Incógnita}
@@ -11753,7 +11790,7 @@ $i$ & momento de inercia respecto a un eje & $\mathrm{kg m^{2}}$ \\
 $I_{sp}$ & impulso específico & $\mathrm{s}$ \\
 $I_{xc}$ & momento de inercia de área respecto al eje horizontal que pasa por el centroide & $\mathrm{m^{4}}$ \\
 $J$ & grado de avance de una hélice &  \\
-$K$ & factor de resistencia inducida de la polar parabólica &  \\
+$K$ & coeficiente cuadrático total de la polar de la polar parabólica &  \\
 $L'$ & sustentación por unidad de envergadura & $\mathrm{N\,m^{-1}}$ \\
 $M$ & masa total de un sistema de partículas & $\mathrm{kg}$ \\
 $N$ & frecuencia de Brunt-Väisälä & $\mathrm{1\,s^{-1}}$ \\
@@ -18647,727 +18684,730 @@ La carcasa obliga a que la velocidad se anule a 5 mm de la superficie del eje, c
 
 \(15 + 273.15 = 288.15\)
 \chapter{Auditoría de fuentes}
+Los registros siguientes se conservan de la edición importada. «Dos testimonios» indica procedencia documental múltiple, sin demostrar que ambas fuentes respalden la afirmación ni que sean independientes. Las comprobaciones reproducidas, simbólicas y dimensionales tienen alcances distintos. Esta revisión de la colección no renueva automáticamente esos estados históricos ni añade aprobación experta. Los resultados actuales se separan en el expediente de revisión de la colección.
 
-\noindent Estado de las fuentes: PENDING. 157 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 104.
-\noindent ¶1: dos testimonios.
-\noindent ¶2: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶3: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶4: comprobación rehecha.
-\noindent ¶5: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 no comprobable automáticamente.
-\noindent ¶6: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.
-\noindent ¶7: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶8: dos testimonios. Ecuaciones: 2 valor o condición, 2 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶9: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶10: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 aproximación, 5 no comprobable automáticamente.
-\noindent ¶11: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶12: comprobación rehecha.
-\noindent ¶13: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶14: dos testimonios.
-\noindent ¶15: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶16: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.
-\noindent ¶17: comprobación rehecha. Ecuaciones: 4 aproximación, 3 no comprobable automáticamente.
-\noindent ¶18: comprobación rehecha. Ecuaciones: 1 definición, 1 no comprobable automáticamente.
-\noindent ¶19: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 aproximación, 3 no comprobable automáticamente.
-\noindent ¶20: dos testimonios. Ecuaciones: 2 valor o condición, 1 paso de derivación sin comprobar, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶21: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶22: dos testimonios.
-\noindent ¶23: dos testimonios.
-\noindent ¶24: dos testimonios.
-\noindent ¶25: dos testimonios. Ecuaciones: 2 valor o condición, 1 paso de derivación sin comprobar, 2 aproximación, 1 no comprobable automáticamente.
-\noindent ¶26: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 no comprobable automáticamente.
-\noindent ¶27: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 2 aproximación, 1 no comprobable automáticamente.
-\noindent ¶28: dos testimonios.
-\noindent ¶29: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶30: dos testimonios.
-\noindent ¶31: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.
-\noindent ¶32: dos testimonios. Ecuaciones: 4 aproximación, 2 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶33: comprobación rehecha.
-\noindent ¶34: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶35: comprobación rehecha.
-\noindent ¶36: dos testimonios.
-\noindent ¶37: dos testimonios.
-\noindent ¶38: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶39: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 5 paso de derivación sin comprobar.
-\noindent ¶40: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶41: comprobación rehecha. Ecuaciones: 6 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶42: comprobación rehecha.
-\noindent ¶43: comprobación rehecha. Ecuaciones: 3 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶44: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶45: dos testimonios.
-\noindent ¶46: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶47: comprobación rehecha.
-\noindent ¶48: dos testimonios. Ecuaciones: 1 valor o condición.
-\noindent ¶49: dos testimonios.
-\noindent ¶50: dos testimonios.
-\noindent ¶51: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar, 4 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶52: dos testimonios. Ecuaciones: 1 aproximación.
-\noindent ¶53: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente.
-\noindent ¶54: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶55: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶56: dos testimonios. Ecuaciones: 1 valor o condición, 3 paso de derivación sin comprobar, 2 aproximación.
-\noindent ¶57: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 2 aproximación, 2 no comprobable automáticamente.
-\noindent ¶58: comprobación rehecha.
-\noindent ¶59: dos testimonios.
-\noindent ¶60: dos testimonios.
-\noindent ¶61: comprobación rehecha. Ecuaciones: 2 paso de derivación sin comprobar, 5 no comprobable automáticamente.
-\noindent ¶62: comprobación rehecha. Ecuaciones: 1 derivación comprobada, 2 no comprobable automáticamente.
-\noindent ¶63: comprobación rehecha. Ecuaciones: 1 valor o condición, 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶64: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶65: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 aproximación, 4 no comprobable automáticamente.
-\noindent ¶66: dos testimonios. Ecuaciones: 1 aproximación.
-\noindent ¶67: comprobación rehecha. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶68: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶69: dos testimonios.
-\noindent ¶70: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶71: dos testimonios.
-\noindent ¶72: comprobación rehecha.
-\noindent ¶73: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶74: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 2 aproximación, 2 no comprobable automáticamente.
-\noindent ¶75: dos testimonios. Ecuaciones: 1 aproximación.
-\noindent ¶76: dos testimonios.
-\noindent ¶77: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.
-\noindent ¶78: dos testimonios. Ecuaciones: 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶79: comprobación rehecha. Ecuaciones: 1 aproximación.
-\noindent ¶80: comprobación rehecha.
-\noindent ¶81: dos testimonios.
-\noindent ¶82: dos testimonios.
-\noindent ¶83: comprobación rehecha. Ecuaciones: 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶84: dos testimonios. Ecuaciones: 1 valor o condición, 2 aproximación, 2 no comprobable automáticamente.
-\noindent ¶85: dos testimonios. Ecuaciones: 2 derivación comprobada, 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶86: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶87: dos testimonios. Ecuaciones: 2 valor o condición, 1 no comprobable automáticamente.
-\noindent ¶88: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 1 no comprobable automáticamente.
-\noindent ¶89: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶90: dos testimonios. Ecuaciones: 1 definición.
-\noindent ¶91: dos testimonios.
-\noindent ¶92: dos testimonios.
-\noindent ¶93: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶94: dos testimonios.
-\noindent ¶95: dos testimonios. Ecuaciones: 2 definición, 1 aproximación.
-\noindent ¶96: dos testimonios. Ecuaciones: 1 valor o condición, 1 paso de derivación sin comprobar, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶97: comprobación rehecha.
-\noindent ¶98: comprobación rehecha. Ecuaciones: 1 valor o condición, 1 aproximación.
-\noindent ¶99: dos testimonios. Ecuaciones: 2 derivación comprobada, 2 no comprobable automáticamente.
-\noindent ¶100: comprobación rehecha. Ecuaciones: 3 paso de derivación sin comprobar, 1 aproximación, 5 no comprobable automáticamente.
-\noindent ¶101: dos testimonios.
-\noindent ¶102: dos testimonios.
-\noindent ¶103: dos testimonios.
-\noindent ¶104: comprobación rehecha.
-\noindent ¶105: comprobación rehecha.
-\noindent ¶106: dos testimonios. Ecuaciones: 1 derivación comprobada, 5 valor o condición, 3 paso de derivación sin comprobar, 1 no comprobable automáticamente.
-\noindent ¶107: dos testimonios. Ecuaciones: 4 definición, 1 no comprobable automáticamente.
-\noindent ¶108: dos testimonios. Ecuaciones: 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶109: dos testimonios. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶110: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 3 no comprobable automáticamente.
-\noindent ¶111: comprobación rehecha.
-\noindent ¶112: dos testimonios.
-\noindent ¶113: dos testimonios.
-\noindent ¶114: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.
-\noindent ¶115: un extracto. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶116: un extracto. Ecuaciones: 1 derivación comprobada, 2 paso de derivación sin comprobar, 6 no comprobable automáticamente.
-\noindent ¶117: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.
-\noindent ¶118: dos testimonios. Ecuaciones: 1 derivación comprobada, 3 no comprobable automáticamente.
-\noindent ¶119: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶120: dos testimonios.
-\noindent ¶121: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente.
-\noindent ¶122: dos testimonios.
-\noindent ¶123: comprobación rehecha. Ecuaciones: 1 definición.
-\noindent ¶124: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶125: dos testimonios. Ecuaciones: 1 derivación comprobada.
-\noindent ¶126: comprobación rehecha. Ecuaciones: 3 valor o condición, 1 paso de derivación sin comprobar, 4 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶127: dos testimonios.
-\noindent ¶128: dos testimonios. Ecuaciones: 6 no comprobable automáticamente.
-\noindent ¶129: dos testimonios. Ecuaciones: 2 valor o condición, 2 paso de derivación sin comprobar.
-\noindent ¶130: dos testimonios.
-\noindent ¶131: dos testimonios. Ecuaciones: 1 aproximación.
-\noindent ¶132: comprobación rehecha.
-\noindent ¶133: dos testimonios.
-\noindent ¶134: dos testimonios.
-\noindent ¶135: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶136: dos testimonios. Ecuaciones: 2 aproximación, 4 no comprobable automáticamente, 1 sin respaldo.
-\noindent ¶137: comprobación rehecha.
-\noindent ¶138: dos testimonios. Ecuaciones: 2 derivación comprobada.
-\noindent ¶139: comprobación rehecha. Ecuaciones: 3 no comprobable automáticamente, 2 sin respaldo.
-\noindent ¶140: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.
-\noindent ¶141: dos testimonios.
-\noindent ¶142: dos testimonios.
-\noindent ¶143: dos testimonios.
-\noindent ¶144: comprobación rehecha.
-\noindent ¶145: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶146: dos testimonios. Ecuaciones: 1 derivación comprobada, 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶147: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.
-\noindent ¶148: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.
-\noindent ¶149: dos testimonios.
-\noindent ¶150: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶151: dos testimonios.
-\noindent ¶152: dos testimonios.
-\noindent ¶153: dos testimonios.
-\noindent ¶154: comprobación rehecha. Ecuaciones: 4 definición.
-\noindent ¶155: dos testimonios. Ecuaciones: 1 aproximación.
-\noindent ¶156: comprobación rehecha. Ecuaciones: 1 definición, 1 aproximación, 1 no comprobable automáticamente.
-\noindent ¶157: comprobación rehecha.
-\noindent ¶158: comprobación rehecha. Ecuaciones: 1 definición, 3 no comprobable automáticamente.
-\noindent ¶159: dos testimonios. Ecuaciones: 2 aproximación.
-\noindent ¶160: comprobación rehecha.
-\noindent ¶161: dos testimonios.
-\noindent ¶162: dos testimonios.
-\noindent ¶163: comprobación rehecha. Ecuaciones: 2 paso de derivación sin comprobar, 1 aproximación, 3 no comprobable automáticamente.
-\noindent ¶164: comprobación rehecha. Ecuaciones: 1 aproximación, 1 no comprobable automáticamente.
-\noindent ¶165: dos testimonios. Ecuaciones: 2 aproximación, 1 no comprobable automáticamente.
-\noindent ¶166: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar.
-\noindent ¶167: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶168: comprobación rehecha.
-\noindent ¶169: dos testimonios.
-\noindent ¶170: dos testimonios.
-\noindent ¶171: dos testimonios.
-\noindent ¶172: dos testimonios.
-\noindent ¶173: dos testimonios.
-\noindent ¶174: comprobación rehecha.
-\noindent ¶175: dos testimonios.
-\noindent ¶176: dos testimonios.
-\noindent ¶177: dos testimonios.
-\noindent ¶178: dos testimonios.
-\noindent ¶179: dos testimonios.
-\noindent ¶180: dos testimonios.
-\noindent ¶181: dos testimonios.
-\noindent ¶182: dos testimonios.
-\noindent ¶183: comprobación rehecha.
-\noindent ¶184: dos testimonios.
-\noindent ¶185: dos testimonios.
-\noindent ¶186: dos testimonios.
-\noindent ¶187: dos testimonios.
-\noindent ¶188: dos testimonios.
-\noindent ¶189: dos testimonios.
-\noindent ¶190: dos testimonios.
-\noindent ¶191: comprobación rehecha.
-\noindent ¶192: dos testimonios.
-\noindent ¶193: comprobación rehecha.
-\noindent ¶194: dos testimonios.
-\noindent ¶195: comprobación rehecha.
-\noindent ¶196: dos testimonios.
-\noindent ¶197: comprobación rehecha.
-\noindent ¶198: dos testimonios.
-\noindent ¶199: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 1 no comprobable automáticamente.
-\noindent ¶200: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶201: dos testimonios. Ecuaciones: 1 aproximación, 1 no comprobable automáticamente.
-\noindent ¶202: dos testimonios. Ecuaciones: 1 aritmética comprobada.
-\noindent ¶203: comprobación rehecha.
-\noindent ¶204: dos testimonios.
-\noindent ¶205: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶206: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.
-\noindent ¶207: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶208: dos testimonios. Ecuaciones: 2 derivación comprobada, 2 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶209: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶210: comprobación rehecha. Ecuaciones: 1 ejemplo reproducido, 2 aritmética comprobada, 2 no comprobable automáticamente.
-\noindent ¶211: dos testimonios.
-\noindent ¶212: comprobación rehecha.
-\noindent ¶213: comprobación rehecha.
-\noindent ¶214: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶215: comprobación rehecha. Ecuaciones: 1 ejemplo reproducido, 2 aritmética comprobada, 3 valor o condición, 7 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶216: dos testimonios. Ecuaciones: 2 aritmética comprobada, 7 no comprobable automáticamente.
-\noindent ¶217: dos testimonios.
-\noindent ¶218: dos testimonios.
-\noindent ¶219: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 paso de derivación sin comprobar.
-\noindent ¶220: dos testimonios. Ecuaciones: 2 aritmética comprobada, 10 no comprobable automáticamente.
-\noindent ¶221: dos testimonios.
-\noindent ¶222: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶223: dos testimonios. Ecuaciones: 1 derivación comprobada, 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.
-\noindent ¶224: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶225: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶226: dos testimonios.
-\noindent ¶227: dos testimonios.
-\noindent ¶228: dos testimonios.
-\noindent ¶229: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶230: dos testimonios.
-\noindent ¶231: dos testimonios. Ecuaciones: 1 aritmética comprobada, 2 valor o condición.
-\noindent ¶232: dos testimonios. Ecuaciones: 3 valor o condición, 4 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶233: dos testimonios. Ecuaciones: 1 aproximación, 3 no comprobable automáticamente.
-\noindent ¶234: dos testimonios. Ecuaciones: 4 aritmética comprobada, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.
-\noindent ¶235: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 valor o condición, 2 aproximación, 5 no comprobable automáticamente.
-\noindent ¶236: dos testimonios.
-\noindent ¶237: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶238: dos testimonios.
-\noindent ¶239: dos testimonios. Ecuaciones: 1 derivación comprobada, 2 no comprobable automáticamente.
-\noindent ¶240: dos testimonios.
-\noindent ¶241: dos testimonios.
-\noindent ¶242: dos testimonios.
-\noindent ¶243: dos testimonios.
-\noindent ¶244: dos testimonios. Ecuaciones: 2 valor o condición.
-\noindent ¶245: dos testimonios.
-\noindent ¶246: dos testimonios. Ecuaciones: 10 no comprobable automáticamente.
-\noindent ¶247: dos testimonios.
-\noindent ¶248: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.
-\noindent ¶249: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶250: comprobación rehecha.
-\noindent ¶251: dos testimonios.
-\noindent ¶252: dos testimonios.
-\noindent ¶253: dos testimonios. Ecuaciones: 1 valor o condición, 2 no comprobable automáticamente.
-\noindent ¶254: dos testimonios.
-\noindent ¶255: dos testimonios. Ecuaciones: 2 valor o condición, 3 no comprobable automáticamente.
-\noindent ¶256: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶257: dos testimonios. Ecuaciones: 2 valor o condición, 2 no comprobable automáticamente.
-\noindent ¶258: dos testimonios.
-\noindent ¶259: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 no comprobable automáticamente.
-\noindent ¶260: dos testimonios. Ecuaciones: 4 valor o condición, 4 no comprobable automáticamente.
-\noindent ¶261: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶262: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶263: dos testimonios.
-\noindent ¶264: dos testimonios.
-\noindent ¶265: dos testimonios.
-\noindent ¶266: dos testimonios. Ecuaciones: 6 no comprobable automáticamente.
-\noindent ¶267: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶268: dos testimonios.
-\noindent ¶269: dos testimonios.
-\noindent ¶270: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶271: dos testimonios.
-\noindent ¶272: dos testimonios. Ecuaciones: 1 aritmética comprobada.
-\noindent ¶273: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.
-\noindent ¶274: dos testimonios. Ecuaciones: 4 valor o condición, 1 no comprobable automáticamente.
-\noindent ¶275: dos testimonios.
-\noindent ¶276: dos testimonios.
-\noindent ¶277: dos testimonios.
-\noindent ¶278: dos testimonios. Ecuaciones: 1 aritmética comprobada, 3 valor o condición, 6 no comprobable automáticamente.
-\noindent ¶279: comprobación rehecha. Ecuaciones: 1 valor o condición.
-\noindent ¶280: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.
-\noindent ¶281: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.
-\noindent ¶282: comprobación rehecha.
-\noindent ¶283: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.
+
+
+\noindent Estado de las fuentes: PENDING. 157 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 104.\par
+\noindent ¶1: dos testimonios.\par
+\noindent ¶2: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶3: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶4: comprobación rehecha.\par
+\noindent ¶5: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 no comprobable automáticamente.\par
+\noindent ¶6: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.\par
+\noindent ¶7: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶8: dos testimonios. Ecuaciones: 2 valor o condición, 2 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶9: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶10: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 aproximación, 5 no comprobable automáticamente.\par
+\noindent ¶11: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶12: comprobación rehecha.\par
+\noindent ¶13: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶14: dos testimonios.\par
+\noindent ¶15: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶16: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.\par
+\noindent ¶17: comprobación rehecha. Ecuaciones: 4 aproximación, 3 no comprobable automáticamente.\par
+\noindent ¶18: comprobación rehecha. Ecuaciones: 1 definición, 1 no comprobable automáticamente.\par
+\noindent ¶19: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 aproximación, 3 no comprobable automáticamente.\par
+\noindent ¶20: dos testimonios. Ecuaciones: 2 valor o condición, 1 paso de derivación sin comprobar, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶21: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶22: dos testimonios.\par
+\noindent ¶23: dos testimonios.\par
+\noindent ¶24: dos testimonios.\par
+\noindent ¶25: dos testimonios. Ecuaciones: 2 valor o condición, 1 paso de derivación sin comprobar, 2 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶26: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 no comprobable automáticamente.\par
+\noindent ¶27: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 2 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶28: dos testimonios.\par
+\noindent ¶29: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶30: dos testimonios.\par
+\noindent ¶31: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.\par
+\noindent ¶32: dos testimonios. Ecuaciones: 4 aproximación, 2 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶33: comprobación rehecha.\par
+\noindent ¶34: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶35: comprobación rehecha.\par
+\noindent ¶36: dos testimonios.\par
+\noindent ¶37: dos testimonios.\par
+\noindent ¶38: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶39: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 5 paso de derivación sin comprobar.\par
+\noindent ¶40: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶41: comprobación rehecha. Ecuaciones: 6 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶42: comprobación rehecha.\par
+\noindent ¶43: comprobación rehecha. Ecuaciones: 3 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶44: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶45: dos testimonios.\par
+\noindent ¶46: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶47: comprobación rehecha.\par
+\noindent ¶48: dos testimonios. Ecuaciones: 1 valor o condición.\par
+\noindent ¶49: dos testimonios.\par
+\noindent ¶50: dos testimonios.\par
+\noindent ¶51: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar, 4 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶52: dos testimonios. Ecuaciones: 1 aproximación.\par
+\noindent ¶53: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente.\par
+\noindent ¶54: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶55: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶56: dos testimonios. Ecuaciones: 1 valor o condición, 3 paso de derivación sin comprobar, 2 aproximación.\par
+\noindent ¶57: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 2 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶58: comprobación rehecha.\par
+\noindent ¶59: dos testimonios.\par
+\noindent ¶60: dos testimonios.\par
+\noindent ¶61: comprobación rehecha. Ecuaciones: 2 paso de derivación sin comprobar, 5 no comprobable automáticamente.\par
+\noindent ¶62: comprobación rehecha. Ecuaciones: 1 derivación comprobada, 2 no comprobable automáticamente.\par
+\noindent ¶63: comprobación rehecha. Ecuaciones: 1 valor o condición, 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶64: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶65: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 aproximación, 4 no comprobable automáticamente.\par
+\noindent ¶66: dos testimonios. Ecuaciones: 1 aproximación.\par
+\noindent ¶67: comprobación rehecha. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶68: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶69: dos testimonios.\par
+\noindent ¶70: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶71: dos testimonios.\par
+\noindent ¶72: comprobación rehecha.\par
+\noindent ¶73: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶74: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 2 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶75: dos testimonios. Ecuaciones: 1 aproximación.\par
+\noindent ¶76: dos testimonios.\par
+\noindent ¶77: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.\par
+\noindent ¶78: dos testimonios. Ecuaciones: 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶79: comprobación rehecha. Ecuaciones: 1 aproximación.\par
+\noindent ¶80: comprobación rehecha.\par
+\noindent ¶81: dos testimonios.\par
+\noindent ¶82: dos testimonios.\par
+\noindent ¶83: comprobación rehecha. Ecuaciones: 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶84: dos testimonios. Ecuaciones: 1 valor o condición, 2 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶85: dos testimonios. Ecuaciones: 2 derivación comprobada, 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶86: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶87: dos testimonios. Ecuaciones: 2 valor o condición, 1 no comprobable automáticamente.\par
+\noindent ¶88: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶89: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶90: dos testimonios. Ecuaciones: 1 definición.\par
+\noindent ¶91: dos testimonios.\par
+\noindent ¶92: dos testimonios.\par
+\noindent ¶93: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶94: dos testimonios.\par
+\noindent ¶95: dos testimonios. Ecuaciones: 2 definición, 1 aproximación.\par
+\noindent ¶96: dos testimonios. Ecuaciones: 1 valor o condición, 1 paso de derivación sin comprobar, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶97: comprobación rehecha.\par
+\noindent ¶98: comprobación rehecha. Ecuaciones: 1 valor o condición, 1 aproximación.\par
+\noindent ¶99: dos testimonios. Ecuaciones: 2 derivación comprobada, 2 no comprobable automáticamente.\par
+\noindent ¶100: comprobación rehecha. Ecuaciones: 3 paso de derivación sin comprobar, 1 aproximación, 5 no comprobable automáticamente.\par
+\noindent ¶101: dos testimonios.\par
+\noindent ¶102: dos testimonios.\par
+\noindent ¶103: dos testimonios.\par
+\noindent ¶104: comprobación rehecha.\par
+\noindent ¶105: comprobación rehecha.\par
+\noindent ¶106: dos testimonios. Ecuaciones: 1 derivación comprobada, 5 valor o condición, 3 paso de derivación sin comprobar, 1 no comprobable automáticamente.\par
+\noindent ¶107: dos testimonios. Ecuaciones: 4 definición, 1 no comprobable automáticamente.\par
+\noindent ¶108: dos testimonios. Ecuaciones: 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶109: dos testimonios. Ecuaciones: 1 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶110: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 aproximación, 3 no comprobable automáticamente.\par
+\noindent ¶111: comprobación rehecha.\par
+\noindent ¶112: dos testimonios.\par
+\noindent ¶113: dos testimonios.\par
+\noindent ¶114: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.\par
+\noindent ¶115: un extracto. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶116: un extracto. Ecuaciones: 1 derivación comprobada, 2 paso de derivación sin comprobar, 6 no comprobable automáticamente.\par
+\noindent ¶117: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.\par
+\noindent ¶118: dos testimonios. Ecuaciones: 1 derivación comprobada, 3 no comprobable automáticamente.\par
+\noindent ¶119: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶120: dos testimonios.\par
+\noindent ¶121: dos testimonios. Ecuaciones: 1 valor o condición, 1 no comprobable automáticamente.\par
+\noindent ¶122: dos testimonios.\par
+\noindent ¶123: comprobación rehecha. Ecuaciones: 1 definición.\par
+\noindent ¶124: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶125: dos testimonios. Ecuaciones: 1 derivación comprobada.\par
+\noindent ¶126: comprobación rehecha. Ecuaciones: 3 valor o condición, 1 paso de derivación sin comprobar, 4 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶127: dos testimonios.\par
+\noindent ¶128: dos testimonios. Ecuaciones: 6 no comprobable automáticamente.\par
+\noindent ¶129: dos testimonios. Ecuaciones: 2 valor o condición, 2 paso de derivación sin comprobar.\par
+\noindent ¶130: dos testimonios.\par
+\noindent ¶131: dos testimonios. Ecuaciones: 1 aproximación.\par
+\noindent ¶132: comprobación rehecha.\par
+\noindent ¶133: dos testimonios.\par
+\noindent ¶134: dos testimonios.\par
+\noindent ¶135: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶136: dos testimonios. Ecuaciones: 2 aproximación, 4 no comprobable automáticamente, 1 sin respaldo.\par
+\noindent ¶137: comprobación rehecha.\par
+\noindent ¶138: dos testimonios. Ecuaciones: 2 derivación comprobada.\par
+\noindent ¶139: comprobación rehecha. Ecuaciones: 3 no comprobable automáticamente, 2 sin respaldo.\par
+\noindent ¶140: dos testimonios. Ecuaciones: 4 no comprobable automáticamente.\par
+\noindent ¶141: dos testimonios.\par
+\noindent ¶142: dos testimonios.\par
+\noindent ¶143: dos testimonios.\par
+\noindent ¶144: comprobación rehecha.\par
+\noindent ¶145: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶146: dos testimonios. Ecuaciones: 1 derivación comprobada, 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶147: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.\par
+\noindent ¶148: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar.\par
+\noindent ¶149: dos testimonios.\par
+\noindent ¶150: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶151: dos testimonios.\par
+\noindent ¶152: dos testimonios.\par
+\noindent ¶153: dos testimonios.\par
+\noindent ¶154: comprobación rehecha. Ecuaciones: 4 definición.\par
+\noindent ¶155: dos testimonios. Ecuaciones: 1 aproximación.\par
+\noindent ¶156: comprobación rehecha. Ecuaciones: 1 definición, 1 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶157: comprobación rehecha.\par
+\noindent ¶158: comprobación rehecha. Ecuaciones: 1 definición, 3 no comprobable automáticamente.\par
+\noindent ¶159: dos testimonios. Ecuaciones: 2 aproximación.\par
+\noindent ¶160: comprobación rehecha.\par
+\noindent ¶161: dos testimonios.\par
+\noindent ¶162: dos testimonios.\par
+\noindent ¶163: comprobación rehecha. Ecuaciones: 2 paso de derivación sin comprobar, 1 aproximación, 3 no comprobable automáticamente.\par
+\noindent ¶164: comprobación rehecha. Ecuaciones: 1 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶165: dos testimonios. Ecuaciones: 2 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶166: comprobación rehecha. Ecuaciones: 1 paso de derivación sin comprobar.\par
+\noindent ¶167: comprobación rehecha. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶168: comprobación rehecha.\par
+\noindent ¶169: dos testimonios.\par
+\noindent ¶170: dos testimonios.\par
+\noindent ¶171: dos testimonios.\par
+\noindent ¶172: dos testimonios.\par
+\noindent ¶173: dos testimonios.\par
+\noindent ¶174: comprobación rehecha.\par
+\noindent ¶175: dos testimonios.\par
+\noindent ¶176: dos testimonios.\par
+\noindent ¶177: dos testimonios.\par
+\noindent ¶178: dos testimonios.\par
+\noindent ¶179: dos testimonios.\par
+\noindent ¶180: dos testimonios.\par
+\noindent ¶181: dos testimonios.\par
+\noindent ¶182: dos testimonios.\par
+\noindent ¶183: comprobación rehecha.\par
+\noindent ¶184: dos testimonios.\par
+\noindent ¶185: dos testimonios.\par
+\noindent ¶186: dos testimonios.\par
+\noindent ¶187: dos testimonios.\par
+\noindent ¶188: dos testimonios.\par
+\noindent ¶189: dos testimonios.\par
+\noindent ¶190: dos testimonios.\par
+\noindent ¶191: comprobación rehecha.\par
+\noindent ¶192: dos testimonios.\par
+\noindent ¶193: comprobación rehecha.\par
+\noindent ¶194: dos testimonios.\par
+\noindent ¶195: comprobación rehecha.\par
+\noindent ¶196: dos testimonios.\par
+\noindent ¶197: comprobación rehecha.\par
+\noindent ¶198: dos testimonios.\par
+\noindent ¶199: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 1 no comprobable automáticamente.\par
+\noindent ¶200: dos testimonios. Ecuaciones: 2 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶201: dos testimonios. Ecuaciones: 1 aproximación, 1 no comprobable automáticamente.\par
+\noindent ¶202: dos testimonios. Ecuaciones: 1 aritmética comprobada.\par
+\noindent ¶203: comprobación rehecha.\par
+\noindent ¶204: dos testimonios.\par
+\noindent ¶205: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶206: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 paso de derivación sin comprobar, 1 no comprobable automáticamente.\par
+\noindent ¶207: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶208: dos testimonios. Ecuaciones: 2 derivación comprobada, 2 valor o condición, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶209: dos testimonios. Ecuaciones: 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶210: comprobación rehecha. Ecuaciones: 1 ejemplo reproducido, 2 aritmética comprobada, 2 no comprobable automáticamente.\par
+\noindent ¶211: dos testimonios.\par
+\noindent ¶212: comprobación rehecha.\par
+\noindent ¶213: comprobación rehecha.\par
+\noindent ¶214: dos testimonios. Ecuaciones: 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶215: comprobación rehecha. Ecuaciones: 1 ejemplo reproducido, 2 aritmética comprobada, 3 valor o condición, 7 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶216: dos testimonios. Ecuaciones: 2 aritmética comprobada, 7 no comprobable automáticamente.\par
+\noindent ¶217: dos testimonios.\par
+\noindent ¶218: dos testimonios.\par
+\noindent ¶219: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 paso de derivación sin comprobar.\par
+\noindent ¶220: dos testimonios. Ecuaciones: 2 aritmética comprobada, 10 no comprobable automáticamente.\par
+\noindent ¶221: dos testimonios.\par
+\noindent ¶222: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶223: dos testimonios. Ecuaciones: 1 derivación comprobada, 3 paso de derivación sin comprobar, 2 no comprobable automáticamente.\par
+\noindent ¶224: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶225: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶226: dos testimonios.\par
+\noindent ¶227: dos testimonios.\par
+\noindent ¶228: dos testimonios.\par
+\noindent ¶229: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶230: dos testimonios.\par
+\noindent ¶231: dos testimonios. Ecuaciones: 1 aritmética comprobada, 2 valor o condición.\par
+\noindent ¶232: dos testimonios. Ecuaciones: 3 valor o condición, 4 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶233: dos testimonios. Ecuaciones: 1 aproximación, 3 no comprobable automáticamente.\par
+\noindent ¶234: dos testimonios. Ecuaciones: 4 aritmética comprobada, 1 paso de derivación sin comprobar, 3 no comprobable automáticamente.\par
+\noindent ¶235: dos testimonios. Ecuaciones: 1 aritmética comprobada, 1 valor o condición, 2 aproximación, 5 no comprobable automáticamente.\par
+\noindent ¶236: dos testimonios.\par
+\noindent ¶237: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶238: dos testimonios.\par
+\noindent ¶239: dos testimonios. Ecuaciones: 1 derivación comprobada, 2 no comprobable automáticamente.\par
+\noindent ¶240: dos testimonios.\par
+\noindent ¶241: dos testimonios.\par
+\noindent ¶242: dos testimonios.\par
+\noindent ¶243: dos testimonios.\par
+\noindent ¶244: dos testimonios. Ecuaciones: 2 valor o condición.\par
+\noindent ¶245: dos testimonios.\par
+\noindent ¶246: dos testimonios. Ecuaciones: 10 no comprobable automáticamente.\par
+\noindent ¶247: dos testimonios.\par
+\noindent ¶248: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 valor o condición, 1 aproximación, 2 no comprobable automáticamente.\par
+\noindent ¶249: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶250: comprobación rehecha.\par
+\noindent ¶251: dos testimonios.\par
+\noindent ¶252: dos testimonios.\par
+\noindent ¶253: dos testimonios. Ecuaciones: 1 valor o condición, 2 no comprobable automáticamente.\par
+\noindent ¶254: dos testimonios.\par
+\noindent ¶255: dos testimonios. Ecuaciones: 2 valor o condición, 3 no comprobable automáticamente.\par
+\noindent ¶256: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶257: dos testimonios. Ecuaciones: 2 valor o condición, 2 no comprobable automáticamente.\par
+\noindent ¶258: dos testimonios.\par
+\noindent ¶259: dos testimonios. Ecuaciones: 1 derivación comprobada, 1 no comprobable automáticamente.\par
+\noindent ¶260: dos testimonios. Ecuaciones: 4 valor o condición, 4 no comprobable automáticamente.\par
+\noindent ¶261: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶262: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶263: dos testimonios.\par
+\noindent ¶264: dos testimonios.\par
+\noindent ¶265: dos testimonios.\par
+\noindent ¶266: dos testimonios. Ecuaciones: 6 no comprobable automáticamente.\par
+\noindent ¶267: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶268: dos testimonios.\par
+\noindent ¶269: dos testimonios.\par
+\noindent ¶270: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶271: dos testimonios.\par
+\noindent ¶272: dos testimonios. Ecuaciones: 1 aritmética comprobada.\par
+\noindent ¶273: dos testimonios. Ecuaciones: 3 no comprobable automáticamente.\par
+\noindent ¶274: dos testimonios. Ecuaciones: 4 valor o condición, 1 no comprobable automáticamente.\par
+\noindent ¶275: dos testimonios.\par
+\noindent ¶276: dos testimonios.\par
+\noindent ¶277: dos testimonios.\par
+\noindent ¶278: dos testimonios. Ecuaciones: 1 aritmética comprobada, 3 valor o condición, 6 no comprobable automáticamente.\par
+\noindent ¶279: comprobación rehecha. Ecuaciones: 1 valor o condición.\par
+\noindent ¶280: dos testimonios. Ecuaciones: 1 no comprobable automáticamente.\par
+\noindent ¶281: comprobación rehecha. Ecuaciones: 2 no comprobable automáticamente.\par
+\noindent ¶282: comprobación rehecha.\par
+\noindent ¶283: dos testimonios. Ecuaciones: 2 no comprobable automáticamente.\par
 
 \medskip
-\noindent Newton's laws of motion (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P3, \P5, \P7, \P9, \P12, \P170, \P222, \P223, \P225, \P227, \P228, \P229, \P230, \P246.
-\noindent Inertial frame of reference (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P4, \P13.
-\noindent Newton's Laws of Motion (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P2, \P3, \P170.
-\noindent Conservation of Momentum (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P5.
-\noindent Angular momentum (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P6, \P8, \P11, \P13, \P149.
-\noindent Center of mass (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7.
-\noindent Rigid body dynamics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P8.
-\noindent Work (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P9, \P248.
-\noindent Conservative force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P10, \P11, \P13.
-\noindent Fictitious force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P15, \P22, \P23, \P171.
-\noindent Lagrangian mechanics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P18, \P19, \P23, \P172.
-\noindent Lorenz system (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P20, \P21.
-\noindent Coriolis force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P16, \P17, \P22, \P165, \P171, \P172.
-\noindent Centrifugal force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P16.
-\noindent Harmonic oscillator (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P82, \P83, \P84, \P85, \P86, \P91, \P181, \P182.
-\noindent Logistic map (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P20, \P23.
-\noindent Three-body problem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P21.
-\noindent Continuum mechanics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P24, \P25.
-\noindent Fluid (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P24, \P27, \P28, \P36.
-\noindent International Standard Atmosphere (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P25, \P26, \P32, \P51, \P56, \P57, \P59, \P177, \P239, \P241.
-\noindent Knudsen number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P26, \P35, \P36, \P173.
-\noindent Mean free path (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P26.
-\noindent Newtonian fluid (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P28, \P33, \P140, \P141, \P143, \P147, \P150.
-\noindent Body force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P29, \P30.
-\noindent Surface force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P29.
-\noindent Cauchy stress tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P30, \P134, \P137, \P138, \P143, \P149, \P191, \P192.
-\noindent Viscosity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P34, \P36, \P136, \P173, \P200.
-\noindent Water (data page) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P32.
-\noindent Viscosity (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P32.
-\noindent Lagrangian and Eulerian specification of the flow field (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P44, \P48.
-\noindent Material derivative (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P42, \P43, \P48, \P174, \P175, \P219, \P220, \P221.
-\noindent Streamlines, streaklines, and pathlines (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P39, \P40, \P41, \P44, \P47, \P175, \P219, \P221.
-\noindent Incompressible flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P44, \P125, \P220.
-\noindent Mach Number (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P44, \P107.
-\noindent Laminar flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P45, \P66.
-\noindent Turbulence (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P45.
-\noindent No-slip condition (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P46, \P48.
-\noindent Boundary Layer (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P46, \P155.
-\noindent Pascal's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P49, \P50, \P51, \P53, \P59, \P176, \P177.
-\noindent Archimedes' principle (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P49, \P55, \P59.
-\noindent Hydrostatics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P50, \P176.
-\noindent Pressure measurement (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P52, \P53, \P58, \P84.
-\noindent Pressure (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P52.
-\noindent Center of pressure (fluid mechanics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P54.
-\noindent Metacentric height (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P55.
-\noindent Barometric formula (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P56.
-\noindent Earth Atmosphere Model - Metric Units (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P56, \P57, \P238, \P239, \P244.
-\noindent Couette flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P60, \P61, \P62, \P63, \P70, \P150, \P178, \P266, \P270, \P278, \P280, \P283.
-\noindent Hagen-Poiseuille equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P60, \P64, \P65, \P66, \P70, \P86, \P178.
-\noindent Darcy-Weisbach equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P65, \P68, \P110.
-\noindent Moody chart (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P65, \P68, \P110.
-\noindent Reynolds number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P66, \P69, \P106, \P107, \P108, \P232.
-\noindent Entrance length (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P67, \P69, \P70.
-\noindent Drag (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P71, \P72, \P74, \P75, \P77, \P179.
-\noindent Drag Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P71, \P73, \P80, \P180, \P222, \P224, \P226, \P228, \P229, \P230, \P246, \P247, \P251.
-\noindent Lift Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P73, \P76, \P78.
-\noindent Stokes's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P74.
-\noindent Drag coefficient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P75.
-\noindent Drag crisis (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P75, \P81.
-\noindent Lift (force) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P76, \P179.
-\noindent Lift coefficient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P76, \P78, \P81.
-\noindent Lift-induced drag (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P77, \P81, \P180.
-\noindent Drag curve (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P77.
-\noindent Terminal velocity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P79, \P225.
-\noindent Resonance (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P82, \P87, \P89, \P91.
-\noindent Damping (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P85, \P90, \P181.
-\noindent Q factor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P85, \P87, \P90.
-\noindent Vortex shedding (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P88, \P89.
-\noindent Strouhal number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P88, \P91, \P182.
-\noindent Control volume (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P92, \P93, \P94, \P101, \P102, \P183, \P184.
-\noindent Thrust Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P92, \P93, \P94, \P95, \P97, \P101, \P184.
-\noindent Rocket Thrust (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P95.
-\noindent Specific impulse (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P95.
-\noindent Tsiolkovsky rocket equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P96, \P102.
-\noindent Ideal Rocket Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P96.
-\noindent Propulsive efficiency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P98.
-\noindent Momentum theory (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P99.
-\noindent Betz's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P99, \P100, \P102.
-\noindent Dimensional analysis (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P103, \P104.
-\noindent Similitude (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P103, \P108, \P109, \P112, \P185, \P234, \P235, \P274.
-\noindent Buckingham pi theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P105, \P106, \P111, \P112, \P185, \P186, \P231, \P232, \P233, \P236, \P237, \P271, \P272, \P275, \P276.
-\noindent Reynolds Number (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107, \P108, \P186.
-\noindent Mach number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107.
-\noindent Froude number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107, \P109.
-\noindent Darcy friction factor formulae (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P110, \P112.
-\noindent Gradient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P113, \P114.
-\noindent Divergence theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P113, \P118, \P121, \P124, \P188.
-\noindent Laplace operator (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P114.
-\noindent Divergence (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P115, \P120.
-\noindent Curl (mathematics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P116, \P119, \P120, \P127, \P142, \P187.
-\noindent Flux (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P117, \P118.
-\noindent Circulation (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P117, \P129, \P187, \P261, \P264.
-\noindent Stokes' theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P119, \P121, \P188.
-\noindent Helmholtz decomposition (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P119, \P121.
-\noindent Reynolds transport theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P122, \P123, \P133, \P145, \P190.
-\noindent Bernoulli's principle (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P122, \P130, \P131, \P132, \P146, \P189, \P258, \P259, \P260, \P262, \P263.
-\noindent Continuity equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P124, \P125.
-\noindent Conservation of Mass (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P124, \P190, \P259, \P262.
-\noindent Stream function (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P126, \P128, \P133, \P214, \P215, \P217, \P218, \P253, \P257.
-\noindent Vorticity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P127, \P155, \P216, \P218, \P254.
-\noindent Potential flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P128.
-\noindent Potential flow around a circular cylinder (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P129, \P133, \P261.
-\noindent Bernoulli's Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P130.
-\noindent Pitot - Static Tube - Speedometer (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P131, \P189.
-\noindent Fick's laws of diffusion (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P134, \P135, \P136, \P143.
-\noindent Thermal conduction (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P135.
-\noindent Viscous stress tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P138, \P140, \P141, \P192.
-\noindent Strain-rate tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P139, \P142.
-\noindent Navier-Stokes equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P144, \P147, \P148, \P151, \P152, \P193, \P194, \P205, \P206, \P207, \P209, \P277, \P278.
-\noindent Cauchy momentum equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P145, \P146, \P151, \P194, \P205.
-\noindent Euler equations (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P146, \P152.
-\noindent Navier-Stokes Equations (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P148.
-\noindent Non-dimensionalization and scaling of the Navier-Stokes equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P153, \P154, \P155, \P160, \P161, \P196.
-\noindent Stokes flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P153, \P156, \P157, \P161, \P195.
-\noindent Lubrication theory (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P158, \P196.
-\noindent Shallow water equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P159, \P161.
-\noindent Primitive equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P159.
-\noindent Boussinesq approximation (buoyancy) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P162, \P163, \P169.
-\noindent Rossby number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P162, \P165, \P168, \P198.
-\noindent Brunt-Väisälä frequency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P164, \P169.
-\noindent Coriolis frequency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P165.
-\noindent Geostrophic wind (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P166, \P169, \P197, \P198.
-\noindent Taylor-Proudman theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P167.
-\noindent Fluid Mechanics (lecture notes, DAMTP, University of Cambridge) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P199, \P200, \P201, \P202, \P204, \P205, \P206, \P207, \P208, \P209, \P210, \P211, \P212, \P213, \P214, \P216, \P217, \P252, \P254, \P255, \P265, \P267, \P268.
-\noindent Taylor-Couette flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P199, \P200, \P201, \P203, \P204, \P211, \P267, \P269.
-\noindent Vortex (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P202, \P208.
-\noindent Inclined plane (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P222.
-\noindent Power (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P223, \P224, \P226, \P227, \P249.
-\noindent Plume (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P231, \P234.
-\noindent Archimedes number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P232, \P234, \P235, \P236, \P273, \P274.
-\noindent Richardson number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P233, \P237.
-\noindent Grashof number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P233.
-\noindent Mathematica Resources: Learning Tools, Examples, Training, and Support (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P238.
-\noindent Set: Assign values to variables and expressions (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P243.
-\noindent SetDelayed: Make an assignment to an unevaluated expression (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P243.
-\noindent D: Differentiate a Function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P253.
-\noindent Solve: Find a solution to an equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P258, \P259.
-\noindent NIntegrate: Get a numerical approximation to an integral (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P241.
-\noindent DSolve: Solve a differential equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P241, \P245, \P246, \P251, \P260, \P263, \P265, \P266, \P267, \P269.
-\noindent Plot: Visualize or graph a function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242, \P244, \P264.
-\noindent ParametricPlot: Plot Parametric Curves (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242, \P247.
-\noindent Manipulate: Create an Interactive User Interface (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242.
-\noindent NDSolve: Numerically solve a differential equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P245, \P248, \P249, \P250, \P268, \P277, \P278, \P279, \P280, \P281, \P282, \P283.
-\noindent WhenEvent (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P247, \P248, \P260.
-\noindent StreamPlot: Generate a plot of a vector field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P252, \P255, \P257.
-\noindent Grad: Gradient of a scalar, vector or tensor field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P253, \P256.
-\noindent Curl: The rotational/curl of a vector, scalar or tensor field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P254, \P256.
-\noindent ContourPlot: Make a contour plot of a function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P255.
-\noindent Integrate: Compute definite, indefinite, region and other integrals (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P261, \P270.
-\noindent DimensionalCombinations (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P271, \P272, \P273.
-\noindent Quantity (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P273, \P276.
-\noindent FindFit: Find parameters to best fit data (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P274, \P275.
+\noindent Newton's laws of motion (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P3, \P5, \P7, \P9, \P12, \P170, \P222, \P223, \P225, \P227, \P228, \P229, \P230, \P246.\par
+\noindent Inertial frame of reference (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P4, \P13.\par
+\noindent Newton's Laws of Motion (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P2, \P3, \P170.\par
+\noindent Conservation of Momentum (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P5.\par
+\noindent Angular momentum (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P6, \P8, \P11, \P13, \P149.\par
+\noindent Center of mass (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7.\par
+\noindent Rigid body dynamics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P8.\par
+\noindent Work (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P9, \P248.\par
+\noindent Conservative force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P10, \P11, \P13.\par
+\noindent Fictitious force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P15, \P22, \P23, \P171.\par
+\noindent Lagrangian mechanics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P18, \P19, \P23, \P172.\par
+\noindent Lorenz system (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P14, \P20, \P21.\par
+\noindent Coriolis force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P16, \P17, \P22, \P165, \P171, \P172.\par
+\noindent Centrifugal force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P16.\par
+\noindent Harmonic oscillator (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P82, \P83, \P84, \P85, \P86, \P91, \P181, \P182.\par
+\noindent Logistic map (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P20, \P23.\par
+\noindent Three-body problem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P21.\par
+\noindent Continuum mechanics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P24, \P25.\par
+\noindent Fluid (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P24, \P27, \P28, \P36.\par
+\noindent International Standard Atmosphere (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P25, \P26, \P32, \P51, \P56, \P57, \P59, \P177, \P239, \P241.\par
+\noindent Knudsen number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P26, \P35, \P36, \P173.\par
+\noindent Mean free path (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P26.\par
+\noindent Newtonian fluid (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P28, \P33, \P140, \P141, \P143, \P147, \P150.\par
+\noindent Body force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P29, \P30.\par
+\noindent Surface force (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P29.\par
+\noindent Cauchy stress tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P30, \P134, \P137, \P138, \P143, \P149, \P191, \P192.\par
+\noindent Viscosity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P34, \P36, \P136, \P173, \P200.\par
+\noindent Water (data page) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P32.\par
+\noindent Viscosity (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P32.\par
+\noindent Lagrangian and Eulerian specification of the flow field (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P44, \P48.\par
+\noindent Material derivative (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P42, \P43, \P48, \P174, \P175, \P219, \P220, \P221.\par
+\noindent Streamlines, streaklines, and pathlines (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P39, \P40, \P41, \P44, \P47, \P175, \P219, \P221.\par
+\noindent Incompressible flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P44, \P125, \P220.\par
+\noindent Mach Number (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P44, \P107.\par
+\noindent Laminar flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P45, \P66.\par
+\noindent Turbulence (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P45.\par
+\noindent No-slip condition (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P46, \P48.\par
+\noindent Boundary Layer (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P46, \P155.\par
+\noindent Pascal's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P49, \P50, \P51, \P53, \P59, \P176, \P177.\par
+\noindent Archimedes' principle (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P49, \P55, \P59.\par
+\noindent Hydrostatics (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P50, \P176.\par
+\noindent Pressure measurement (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P52, \P53, \P58, \P84.\par
+\noindent Pressure (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P52.\par
+\noindent Center of pressure (fluid mechanics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P54.\par
+\noindent Metacentric height (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P55.\par
+\noindent Barometric formula (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P56.\par
+\noindent Earth Atmosphere Model - Metric Units (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P56, \P57, \P238, \P239, \P244.\par
+\noindent Couette flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P60, \P61, \P62, \P63, \P70, \P150, \P178, \P266, \P270, \P278, \P280, \P283.\par
+\noindent Hagen-Poiseuille equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P60, \P64, \P65, \P66, \P70, \P86, \P178.\par
+\noindent Darcy-Weisbach equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P65, \P68, \P110.\par
+\noindent Moody chart (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P65, \P68, \P110.\par
+\noindent Reynolds number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P66, \P69, \P106, \P107, \P108, \P232.\par
+\noindent Entrance length (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P67, \P69, \P70.\par
+\noindent Drag (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P71, \P72, \P74, \P75, \P77, \P179.\par
+\noindent Drag Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P71, \P73, \P80, \P180, \P222, \P224, \P226, \P228, \P229, \P230, \P246, \P247, \P251.\par
+\noindent Lift Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P73, \P76, \P78.\par
+\noindent Stokes's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P74.\par
+\noindent Drag coefficient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P75.\par
+\noindent Drag crisis (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P75, \P81.\par
+\noindent Lift (force) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P76, \P179.\par
+\noindent Lift coefficient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P76, \P78, \P81.\par
+\noindent Lift-induced drag (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P77, \P81, \P180.\par
+\noindent Drag curve (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P77.\par
+\noindent Terminal velocity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P79, \P225.\par
+\noindent Resonance (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P82, \P87, \P89, \P91.\par
+\noindent Damping (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P85, \P90, \P181.\par
+\noindent Q factor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P85, \P87, \P90.\par
+\noindent Vortex shedding (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P88, \P89.\par
+\noindent Strouhal number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P88, \P91, \P182.\par
+\noindent Control volume (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P92, \P93, \P94, \P101, \P102, \P183, \P184.\par
+\noindent Thrust Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P92, \P93, \P94, \P95, \P97, \P101, \P184.\par
+\noindent Rocket Thrust (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P95.\par
+\noindent Specific impulse (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P95.\par
+\noindent Tsiolkovsky rocket equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P96, \P102.\par
+\noindent Ideal Rocket Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P96.\par
+\noindent Propulsive efficiency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P98.\par
+\noindent Momentum theory (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P99.\par
+\noindent Betz's law (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P99, \P100, \P102.\par
+\noindent Dimensional analysis (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P103, \P104.\par
+\noindent Similitude (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P103, \P108, \P109, \P112, \P185, \P234, \P235, \P274.\par
+\noindent Buckingham pi theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P105, \P106, \P111, \P112, \P185, \P186, \P231, \P232, \P233, \P236, \P237, \P271, \P272, \P275, \P276.\par
+\noindent Reynolds Number (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107, \P108, \P186.\par
+\noindent Mach number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107.\par
+\noindent Froude number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P107, \P109.\par
+\noindent Darcy friction factor formulae (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P110, \P112.\par
+\noindent Gradient (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P113, \P114.\par
+\noindent Divergence theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P113, \P118, \P121, \P124, \P188.\par
+\noindent Laplace operator (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P114.\par
+\noindent Divergence (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P115, \P120.\par
+\noindent Curl (mathematics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P116, \P119, \P120, \P127, \P142, \P187.\par
+\noindent Flux (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P117, \P118.\par
+\noindent Circulation (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P117, \P129, \P187, \P261, \P264.\par
+\noindent Stokes' theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P119, \P121, \P188.\par
+\noindent Helmholtz decomposition (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P119, \P121.\par
+\noindent Reynolds transport theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P122, \P123, \P133, \P145, \P190.\par
+\noindent Bernoulli's principle (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P122, \P130, \P131, \P132, \P146, \P189, \P258, \P259, \P260, \P262, \P263.\par
+\noindent Continuity equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P124, \P125.\par
+\noindent Conservation of Mass (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P124, \P190, \P259, \P262.\par
+\noindent Stream function (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P126, \P128, \P133, \P214, \P215, \P217, \P218, \P253, \P257.\par
+\noindent Vorticity (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P127, \P155, \P216, \P218, \P254.\par
+\noindent Potential flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P128.\par
+\noindent Potential flow around a circular cylinder (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P129, \P133, \P261.\par
+\noindent Bernoulli's Equation (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P130.\par
+\noindent Pitot - Static Tube - Speedometer (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P131, \P189.\par
+\noindent Fick's laws of diffusion (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P134, \P135, \P136, \P143.\par
+\noindent Thermal conduction (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P135.\par
+\noindent Viscous stress tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P138, \P140, \P141, \P192.\par
+\noindent Strain-rate tensor (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P139, \P142.\par
+\noindent Navier-Stokes equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P144, \P147, \P148, \P151, \P152, \P193, \P194, \P205, \P206, \P207, \P209, \P277, \P278.\par
+\noindent Cauchy momentum equation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P145, \P146, \P151, \P194, \P205.\par
+\noindent Euler equations (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P146, \P152.\par
+\noindent Navier-Stokes Equations (Beginner's Guide to Aeronautics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P148.\par
+\noindent Non-dimensionalization and scaling of the Navier-Stokes equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P153, \P154, \P155, \P160, \P161, \P196.\par
+\noindent Stokes flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P153, \P156, \P157, \P161, \P195.\par
+\noindent Lubrication theory (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P158, \P196.\par
+\noindent Shallow water equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P159, \P161.\par
+\noindent Primitive equations (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P159.\par
+\noindent Boussinesq approximation (buoyancy) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P162, \P163, \P169.\par
+\noindent Rossby number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P162, \P165, \P168, \P198.\par
+\noindent Brunt-Väisälä frequency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P164, \P169.\par
+\noindent Coriolis frequency (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P165.\par
+\noindent Geostrophic wind (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P166, \P169, \P197, \P198.\par
+\noindent Taylor-Proudman theorem (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P167.\par
+\noindent Fluid Mechanics (lecture notes, DAMTP, University of Cambridge) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P199, \P200, \P201, \P202, \P204, \P205, \P206, \P207, \P208, \P209, \P210, \P211, \P212, \P213, \P214, \P216, \P217, \P252, \P254, \P255, \P265, \P267, \P268.\par
+\noindent Taylor-Couette flow (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P199, \P200, \P201, \P203, \P204, \P211, \P267, \P269.\par
+\noindent Vortex (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P202, \P208.\par
+\noindent Inclined plane (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P222.\par
+\noindent Power (physics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P223, \P224, \P226, \P227, \P249.\par
+\noindent Plume (fluid dynamics) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P231, \P234.\par
+\noindent Archimedes number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P232, \P234, \P235, \P236, \P273, \P274.\par
+\noindent Richardson number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P233, \P237.\par
+\noindent Grashof number (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P233.\par
+\noindent Mathematica Resources: Learning Tools, Examples, Training, and Support (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P238.\par
+\noindent Set: Assign values to variables and expressions (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P243.\par
+\noindent SetDelayed: Make an assignment to an unevaluated expression (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P243.\par
+\noindent D: Differentiate a Function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P253.\par
+\noindent Solve: Find a solution to an equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P240, \P258, \P259.\par
+\noindent NIntegrate: Get a numerical approximation to an integral (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P241.\par
+\noindent DSolve: Solve a differential equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P241, \P245, \P246, \P251, \P260, \P263, \P265, \P266, \P267, \P269.\par
+\noindent Plot: Visualize or graph a function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242, \P244, \P264.\par
+\noindent ParametricPlot: Plot Parametric Curves (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242, \P247.\par
+\noindent Manipulate: Create an Interactive User Interface (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P242.\par
+\noindent NDSolve: Numerically solve a differential equation (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P245, \P248, \P249, \P250, \P268, \P277, \P278, \P279, \P280, \P281, \P282, \P283.\par
+\noindent WhenEvent (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P247, \P248, \P260.\par
+\noindent StreamPlot: Generate a plot of a vector field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P252, \P255, \P257.\par
+\noindent Grad: Gradient of a scalar, vector or tensor field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P253, \P256.\par
+\noindent Curl: The rotational/curl of a vector, scalar or tensor field (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P254, \P256.\par
+\noindent ContourPlot: Make a contour plot of a function (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P255.\par
+\noindent Integrate: Compute definite, indefinite, region and other integrals (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P261, \P270.\par
+\noindent DimensionalCombinations (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P271, \P272, \P273.\par
+\noindent Quantity (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P273, \P276.\par
+\noindent FindFit: Find parameters to best fit data (Wolfram Language Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P274, \P275.\par
 
-\noindent REV-0001:  scientific
+\noindent REV-0001:  scientific\par
 
-\noindent REV-0002: c01 scientific
+\noindent REV-0002: c01 scientific\par
 
-\noindent REV-0003: c02 scientific
+\noindent REV-0003: c02 scientific\par
 
-\noindent REV-0004: c03 scientific
+\noindent REV-0004: c03 scientific\par
 
-\noindent REV-0005: c04 scientific
+\noindent REV-0005: c04 scientific\par
 
-\noindent REV-0006: c05 scientific
+\noindent REV-0006: c05 scientific\par
 
-\noindent REV-0007: c06 scientific
+\noindent REV-0007: c06 scientific\par
 
-\noindent REV-0008: c07 scientific
+\noindent REV-0008: c07 scientific\par
 
-\noindent REV-0009: c08 scientific
+\noindent REV-0009: c08 scientific\par
 
-\noindent REV-0010: c09 scientific
+\noindent REV-0010: c09 scientific\par
 
-\noindent REV-0011: c10 scientific
+\noindent REV-0011: c10 scientific\par
 
-\noindent REV-0012: c11 scientific
+\noindent REV-0012: c11 scientific\par
 
-\noindent REV-0013: c12 scientific
+\noindent REV-0013: c12 scientific\par
 
-\noindent REV-0014: c13 scientific
+\noindent REV-0014: c13 scientific\par
 
-\noindent REV-0015: c14 scientific
+\noindent REV-0015: c14 scientific\par
 
-\noindent REV-0016: c15 scientific
+\noindent REV-0016: c15 scientific\par
 
-\noindent REV-0017: c16 scientific
+\noindent REV-0017: c16 scientific\par
 
-\noindent REV-0018: c03 scientific
+\noindent REV-0018: c03 scientific\par
 
-\noindent REV-0019: c09 scientific
+\noindent REV-0019: c09 scientific\par
 
-\noindent REV-0020: c11 scientific
+\noindent REV-0020: c11 scientific\par
 
-\noindent REV-0021: c15 scientific
+\noindent REV-0021: c15 scientific\par
 
-\noindent REV-0022: c16 scientific
+\noindent REV-0022: c16 scientific\par
 
-\noindent REV-0023: c06 scientific
+\noindent REV-0023: c06 scientific\par
 
-\noindent REV-0024: c12 scientific
+\noindent REV-0024: c12 scientific\par
 
-\noindent REV-0025: c02 scientific
+\noindent REV-0025: c02 scientific\par
 
-\noindent REV-0026: c04 scientific
+\noindent REV-0026: c04 scientific\par
 
-\noindent REV-0027: c05 scientific
+\noindent REV-0027: c05 scientific\par
 
-\noindent REV-0028: c06 scientific
+\noindent REV-0028: c06 scientific\par
 
-\noindent REV-0029: c08 scientific
+\noindent REV-0029: c08 scientific\par
 
-\noindent REV-0030: c09 scientific
+\noindent REV-0030: c09 scientific\par
 
-\noindent REV-0031: c16 scientific
+\noindent REV-0031: c16 scientific\par
 
-\noindent REV-0032: c01 scientific
+\noindent REV-0032: c01 scientific\par
 
-\noindent REV-0033: c14 scientific
+\noindent REV-0033: c14 scientific\par
 
-\noindent REV-0034: m03 scientific
+\noindent REV-0034: m03 scientific\par
 
-\noindent REV-0035: m06 scientific
+\noindent REV-0035: m06 scientific\par
 
-\noindent REV-0036: m07 scientific
+\noindent REV-0036: m07 scientific\par
 
-\noindent REV-0037:  scientific
+\noindent REV-0037:  scientific\par
 
-\noindent REV-0038:  scientific
+\noindent REV-0038:  scientific\par
 
-\noindent REV-0039:  scientific
+\noindent REV-0039:  scientific\par
 
-\noindent REV-0040:  scientific
+\noindent REV-0040:  scientific\par
 
-\noindent REV-0041:  scientific
+\noindent REV-0041:  scientific\par
 
-\noindent REV-0042:  scientific
+\noindent REV-0042:  scientific\par
 
-\noindent REV-0043:  scientific
+\noindent REV-0043:  scientific\par
 
-\noindent REV-0044:  scientific
+\noindent REV-0044:  scientific\par
 
-\noindent REV-0045:  scientific
+\noindent REV-0045:  scientific\par
 
-\noindent REV-0046:  scientific
+\noindent REV-0046:  scientific\par
 
-\noindent REV-0047:  scientific
+\noindent REV-0047:  scientific\par
 
-\noindent REV-0048:  scientific
+\noindent REV-0048:  scientific\par
 
-\noindent REV-0049:  scientific
+\noindent REV-0049:  scientific\par
 
-\noindent REV-0050:  scientific
+\noindent REV-0050:  scientific\par
 
-\noindent REV-0051:  scientific
+\noindent REV-0051:  scientific\par
 
-\noindent REV-0052:  scientific
+\noindent REV-0052:  scientific\par
 
-\noindent REV-0053:  scientific
+\noindent REV-0053:  scientific\par
 
-\noindent REV-0054:  scientific
+\noindent REV-0054:  scientific\par
 
-\noindent REV-0055:  scientific
+\noindent REV-0055:  scientific\par
 
-\noindent REV-0056:  scientific
+\noindent REV-0056:  scientific\par
 
-\noindent REV-0057:  scientific
+\noindent REV-0057:  scientific\par
 
-\noindent REV-0058:  scientific
+\noindent REV-0058:  scientific\par
 
-\noindent REV-0059:  scientific
+\noindent REV-0059:  scientific\par
 
-\noindent REV-0060:  scientific
+\noindent REV-0060:  scientific\par
 
-\noindent REV-0061:  scientific
+\noindent REV-0061:  scientific\par
 
-\noindent REV-0062:  scientific
+\noindent REV-0062:  scientific\par
 
-\noindent REV-0063:  scientific
+\noindent REV-0063:  scientific\par
 
-\noindent REV-0064:  scientific
+\noindent REV-0064:  scientific\par
 
-\noindent REV-0065:  scientific
+\noindent REV-0065:  scientific\par
 
-\noindent REV-0066:  scientific
+\noindent REV-0066:  scientific\par
 
-\noindent REV-0067:  scientific
+\noindent REV-0067:  scientific\par
 
-\noindent REV-0068:  scientific
+\noindent REV-0068:  scientific\par
 
-\noindent REV-0069:  scientific
+\noindent REV-0069:  scientific\par
 
-\noindent REV-0070:  scientific
+\noindent REV-0070:  scientific\par
 
-\noindent REV-0071:  scientific
+\noindent REV-0071:  scientific\par
 
-\noindent REV-0072:  scientific
+\noindent REV-0072:  scientific\par
 
-\noindent REV-0073:  scientific
+\noindent REV-0073:  scientific\par
 
-\noindent REV-0074:  scientific
+\noindent REV-0074:  scientific\par
 
-\noindent REV-0075:  scientific
+\noindent REV-0075:  scientific\par
 
-\noindent REV-0076:  scientific
+\noindent REV-0076:  scientific\par
 
-\noindent REV-0077:  scientific
+\noindent REV-0077:  scientific\par
 
-\noindent REV-0078:  scientific
+\noindent REV-0078:  scientific\par
 
-\noindent REV-0079:  scientific
+\noindent REV-0079:  scientific\par
 
-\noindent REV-0080:  scientific
+\noindent REV-0080:  scientific\par
 
-\noindent REV-0081:  scientific
+\noindent REV-0081:  scientific\par
 
-\noindent REV-0082:  scientific
+\noindent REV-0082:  scientific\par
 
-\noindent REV-0083:  scientific
+\noindent REV-0083:  scientific\par
 
-\noindent REV-0084:  scientific
+\noindent REV-0084:  scientific\par
 
-\noindent REV-0085:  scientific
+\noindent REV-0085:  scientific\par
 
-\noindent REV-0086:  scientific
+\noindent REV-0086:  scientific\par
 
-\noindent REV-0087:  scientific
+\noindent REV-0087:  scientific\par
 
-\noindent REV-0088:  scientific
+\noindent REV-0088:  scientific\par
 
-\noindent REV-0089:  scientific
+\noindent REV-0089:  scientific\par
 
-\noindent REV-0090:  scientific
+\noindent REV-0090:  scientific\par
 
-\noindent REV-0091:  scientific
+\noindent REV-0091:  scientific\par
 
-\noindent REV-0092:  scientific
+\noindent REV-0092:  scientific\par
 
-\noindent REV-0093:  scientific
+\noindent REV-0093:  scientific\par
 
-\noindent REV-0094:  scientific
+\noindent REV-0094:  scientific\par
 
-\noindent REV-0095:  scientific
+\noindent REV-0095:  scientific\par
 
-\noindent REV-0096:  scientific
+\noindent REV-0096:  scientific\par
 
-\noindent REV-0097:  scientific
+\noindent REV-0097:  scientific\par
 
-\noindent REV-0098:  scientific
+\noindent REV-0098:  scientific\par
 
-\noindent REV-0099:  scientific
+\noindent REV-0099:  scientific\par
 
-\noindent REV-0100:  scientific
+\noindent REV-0100:  scientific\par
 
-\noindent REV-0101:  scientific
+\noindent REV-0101:  scientific\par
 
-\noindent REV-0102:  scientific
+\noindent REV-0102:  scientific\par
 
-\noindent REV-0103:  scientific
+\noindent REV-0103:  scientific\par
 
-\noindent REV-0104:  scientific
+\noindent REV-0104:  scientific\par
 
-\noindent REV-0105:  scientific
+\noindent REV-0105:  scientific\par
 
-\noindent REV-0106:  scientific
+\noindent REV-0106:  scientific\par
 
-\noindent REV-0107:  scientific
+\noindent REV-0107:  scientific\par
 
-\noindent REV-0108:  scientific
+\noindent REV-0108:  scientific\par
 
-\noindent REV-0109:  scientific
+\noindent REV-0109:  scientific\par
 
-\noindent REV-0110:  scientific
+\noindent REV-0110:  scientific\par
 
-\noindent REV-0111:  scientific
+\noindent REV-0111:  scientific\par
 
-\noindent REV-0112:  scientific
+\noindent REV-0112:  scientific\par
 
-\noindent REV-0113:  scientific
+\noindent REV-0113:  scientific\par
 
-\noindent REV-0114:  scientific
+\noindent REV-0114:  scientific\par
 
-\noindent REV-0115:  scientific
+\noindent REV-0115:  scientific\par
 
-\noindent REV-0116:  scientific
+\noindent REV-0116:  scientific\par
 
-\noindent REV-0117:  scientific
+\noindent REV-0117:  scientific\par
 
-\noindent REV-0118:  scientific
+\noindent REV-0118:  scientific\par
 
-\noindent REV-0119:  scientific
+\noindent REV-0119:  scientific\par
 
-\noindent REV-0120:  scientific
+\noindent REV-0120:  scientific\par
 
-\noindent REV-0121:  scientific
+\noindent REV-0121:  scientific\par
 
-\noindent REV-0122:  scientific
+\noindent REV-0122:  scientific\par
 
-\noindent REV-0123:  scientific
+\noindent REV-0123:  scientific\par
 
-\noindent REV-0124:  scientific
+\noindent REV-0124:  scientific\par
 
-\noindent REV-0125:  scientific
+\noindent REV-0125:  scientific\par
 
-\noindent REV-0126:  scientific
+\noindent REV-0126:  scientific\par
 
-\noindent REV-0127:  scientific
+\noindent REV-0127:  scientific\par
 
-\noindent REV-0128:  scientific
+\noindent REV-0128:  scientific\par
 
-\noindent REV-0129:  scientific
+\noindent REV-0129:  scientific\par
 
-\noindent REV-0130:  scientific
+\noindent REV-0130:  scientific\par
 
-\noindent REV-0131:  scientific
+\noindent REV-0131:  scientific\par
 
-\noindent REV-0132:  scientific
+\noindent REV-0132:  scientific\par
 
-\noindent REV-0133:  scientific
+\noindent REV-0133:  scientific\par
 
-\noindent REV-0134:  scientific
+\noindent REV-0134:  scientific\par
 
-\noindent REV-0135:  scientific
+\noindent REV-0135:  scientific\par
 
-\noindent REV-0136:  scientific
+\noindent REV-0136:  scientific\par
 
-\noindent REV-0137:  scientific
+\noindent REV-0137:  scientific\par
 
-\noindent REV-0138:  scientific
+\noindent REV-0138:  scientific\par
 
-\noindent REV-0139:  scientific
+\noindent REV-0139:  scientific\par
 
-\noindent REV-0140:  scientific
+\noindent REV-0140:  scientific\par
 
-\noindent REV-0141:  scientific
+\noindent REV-0141:  scientific\par
 \chapter{Plan de estudio}
 
 \section*{Tema 1. Fundamentos de mecánica clásica}
@@ -19611,5 +19651,6 @@ La carcasa obliga a que la velocidad se anule a 5 mm de la superficie del eje, c
 \bibitem{src155} DimensionalCombinations (Wolfram Language Documentation). \url{https://reference.wolfram.com/language/ref/DimensionalCombinations.html}
 \bibitem{src156} Quantity (Wolfram Language Documentation). \url{https://reference.wolfram.com/language/ref/Quantity.html}
 \bibitem{src157} FindFit: Find parameters to best fit data (Wolfram Language Documentation). \url{https://reference.wolfram.com/language/ref/FindFit.html}
+\bibitem{CHENCINER-MONTGOMERY} A. Chenciner y R. Montgomery, \emph{A remarkable periodic solution of the three-body problem in the case of equal masses}, Annals of Mathematics 152 (2000), 881--901. \url{https://arxiv.org/abs/math/0011268}. Consulta: 19 de octubre de 2026. Se consultó el resumen y la identificación de la solución periódica; no se declara revisión completa de la demostración.
 \end{thebibliography}
 \end{document}

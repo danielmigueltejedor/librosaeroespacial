@@ -1,0 +1,491 @@
+[
+  {
+    "key": "ISA-gradiente-hidrostatica",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Gradiente constante, gas ideal, H geopotencial, T>0",
+    "evidence": "0"
+  },
+  {
+    "key": "ISA-limite-isotermo",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Límite L→0 a H,Tb positivos",
+    "evidence": "0"
+  },
+  {
+    "key": "D-min-derivada",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Polar parabólica, peso/rho constantes y V>0",
+    "evidence": "0"
+  },
+  {
+    "key": "P-min-derivada",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Potencia aerodinámica necesaria, no potencia del eje",
+    "evidence": "0"
+  },
+  {
+    "key": "eficiencia-optimo",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "CL positivo, CD0,K constantes",
+    "evidence": "0"
+  },
+  {
+    "key": "Oswald-no-es-ei",
+    "status": "VERIFICADO",
+    "method": "SymPy: contraejemplo algebraico",
+    "scope": "No igualar resistencia inducida y CD0 con perfil cuadrático no nulo",
+    "evidence": "-pi*AR*C0*ei*kp/(pi*AR*ei*kp + 1)"
+  },
+  {
+    "key": "Oswald-caso-restringido",
+    "status": "VERIFICADO",
+    "method": "SymPy",
+    "scope": "El balance aislado sólo se recupera con kp=0",
+    "evidence": null
+  },
+  {
+    "key": "Pitot-incompresible-limite",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Gas caloríficamente perfecto, isentrópico, M→0",
+    "evidence": "0"
+  },
+  {
+    "key": "cohete-integral",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Empuje ideal, c constante, sin pérdidas externas",
+    "evidence": "0"
+  },
+  {
+    "key": "orbita-energia",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Órbita circular, dos cuerpos, energía específica",
+    "evidence": "0"
+  },
+  {
+    "key": "dim-rho",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "p/(R*T)",
+      "units": {
+        "p": "Pa",
+        "R": "J/(kg*K)",
+        "T": "K"
+      },
+      "target": "kg/m^3"
+    }
+  },
+  {
+    "key": "dim-sound",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "(gamma*R*T)**0.5",
+      "units": {
+        "gamma": "",
+        "R": "J/(kg*K)",
+        "T": "K"
+      },
+      "target": "m/s"
+    }
+  },
+  {
+    "key": "dim-Re",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "rho*V*c/mu",
+      "units": {
+        "rho": "kg/m^3",
+        "V": "m/s",
+        "c": "m",
+        "mu": "Pa*s"
+      },
+      "target": ""
+    }
+  },
+  {
+    "key": "dim-lift",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "rho*V**2*S*CL/2",
+      "units": {
+        "rho": "kg/m^3",
+        "V": "m/s",
+        "S": "m^2",
+        "CL": ""
+      },
+      "target": "N"
+    }
+  },
+  {
+    "key": "dim-power",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "F*V",
+      "units": {
+        "F": "N",
+        "V": "m/s"
+      },
+      "target": "W"
+    }
+  },
+  {
+    "key": "dim-hydraulic",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "dp*Q",
+      "units": {
+        "dp": "Pa",
+        "Q": "m^3/s"
+      },
+      "target": "W"
+    }
+  },
+  {
+    "key": "dim-electric",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "I**2*Relec",
+      "units": {
+        "I": "A",
+        "Relec": "ohm"
+      },
+      "target": "W"
+    }
+  },
+  {
+    "key": "dim-rocket",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "ve+(pe-pa)*Ae/mdot",
+      "units": {
+        "ve": "m/s",
+        "pe": "Pa",
+        "pa": "Pa",
+        "Ae": "m^2",
+        "mdot": "kg/s"
+      },
+      "target": "m/s"
+    }
+  },
+  {
+    "key": "dim-orbit",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "(mu/r)**0.5",
+      "units": {
+        "mu": "m^3/s^2",
+        "r": "m"
+      },
+      "target": "m/s"
+    }
+  },
+  {
+    "key": "dim-bending",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "Mb*y/Iz",
+      "units": {
+        "Mb": "N*m",
+        "y": "m",
+        "Iz": "m^4"
+      },
+      "target": "Pa"
+    }
+  },
+  {
+    "key": "dim-range-jet",
+    "status": "VERIFICADO",
+    "method": "Pint: dimensiones",
+    "scope": "Consistencia dimensional, no validación física",
+    "evidence": {
+      "expression": "V/cT*LD*logratio",
+      "units": {
+        "V": "m/s",
+        "cT": "1/s",
+        "LD": "",
+        "logratio": ""
+      },
+      "target": "m"
+    }
+  },
+  {
+    "key": "ISA-ODE-0",
+    "status": "VERIFICADO",
+    "method": "SciPy: integración hidrostática independiente",
+    "scope": "0–20 km; constante g en H, gas seco",
+    "evidence": {
+      "formula": 101325.0,
+      "ode": 101324.99987986854
+    }
+  },
+  {
+    "key": "ISA-ODE-5000",
+    "status": "VERIFICADO",
+    "method": "SciPy: integración hidrostática independiente",
+    "scope": "0–20 km; constante g en H, gas seco",
+    "evidence": {
+      "formula": 54019.888188145786,
+      "ode": 54019.88818814581
+    }
+  },
+  {
+    "key": "ISA-ODE-11000",
+    "status": "VERIFICADO",
+    "method": "SciPy: integración hidrostática independiente",
+    "scope": "0–20 km; constante g en H, gas seco",
+    "evidence": {
+      "formula": 22632.040095007793,
+      "ode": 22632.040095007782
+    }
+  },
+  {
+    "key": "ISA-ODE-15000",
+    "status": "VERIFICADO",
+    "method": "SciPy: integración hidrostática independiente",
+    "scope": "0–20 km; constante g en H, gas seco",
+    "evidence": {
+      "formula": 12044.552807152813,
+      "ode": 12044.552845793543
+    }
+  },
+  {
+    "key": "ISA-ODE-20000",
+    "status": "VERIFICADO",
+    "method": "SciPy: integración hidrostática independiente",
+    "scope": "0–20 km; constante g en H, gas seco",
+    "evidence": {
+      "formula": 5474.877424281044,
+      "ode": 5474.87744184527
+    }
+  },
+  {
+    "key": "ISA-continuidad-11000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-continuidad-20000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-continuidad-32000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-continuidad-47000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-continuidad-51000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-continuidad-71000.0",
+    "status": "VERIFICADO",
+    "method": "Límites numéricos de tramos",
+    "scope": "Continuidad de p,T, no derivadas",
+    "evidence": null
+  },
+  {
+    "key": "ISA-tabla-11000",
+    "status": "VERIFICADO",
+    "method": "Comparación tabla estándar",
+    "scope": "NASA TM X-74335, capa baja",
+    "evidence": {
+      "H": 11000,
+      "T": 216.64999999999998,
+      "p": 22632.040095007793,
+      "rho": 0.3639176481016034,
+      "a": 295.0694935090715,
+      "mu": 1.4215474148823518e-05
+    }
+  },
+  {
+    "key": "dominio-isa(-1,)",
+    "status": "VERIFICADO",
+    "method": "Prueba de rechazo",
+    "scope": "Datos fuera del dominio declarado no deben generar resultados físicos",
+    "evidence": null
+  },
+  {
+    "key": "dominio-isa(90000,)",
+    "status": "VERIFICADO",
+    "method": "Prueba de rechazo",
+    "scope": "Datos fuera del dominio declarado no deben generar resultados físicos",
+    "evidence": null
+  },
+  {
+    "key": "dominio-pitot_mach(90000, 100000)",
+    "status": "VERIFICADO",
+    "method": "Prueba de rechazo",
+    "scope": "Datos fuera del dominio declarado no deben generar resultados físicos",
+    "evidence": null
+  },
+  {
+    "key": "dominio-pitot_mach(200000, 100000)",
+    "status": "VERIFICADO",
+    "method": "Prueba de rechazo",
+    "scope": "Datos fuera del dominio declarado no deben generar resultados físicos",
+    "evidence": null
+  },
+  {
+    "key": "dominio-drag(0, 1, 1, 1, 1, 1)",
+    "status": "VERIFICADO",
+    "method": "Prueba de rechazo",
+    "scope": "Datos fuera del dominio declarado no deben generar resultados físicos",
+    "evidence": null
+  },
+  {
+    "key": "Pitot-inversa-0.01",
+    "status": "VERIFICADO",
+    "method": "Inversión vs relación directa",
+    "scope": "Subsónico isentrópico, gamma1.4",
+    "evidence": null
+  },
+  {
+    "key": "Pitot-inversa-0.3",
+    "status": "VERIFICADO",
+    "method": "Inversión vs relación directa",
+    "scope": "Subsónico isentrópico, gamma1.4",
+    "evidence": null
+  },
+  {
+    "key": "Pitot-inversa-0.7",
+    "status": "VERIFICADO",
+    "method": "Inversión vs relación directa",
+    "scope": "Subsónico isentrópico, gamma1.4",
+    "evidence": null
+  },
+  {
+    "key": "Pitot-inversa-0.95",
+    "status": "VERIFICADO",
+    "method": "Inversión vs relación directa",
+    "scope": "Subsónico isentrópico, gamma1.4",
+    "evidence": null
+  },
+  {
+    "key": "Dmin-optimizacion",
+    "status": "VERIFICADO",
+    "method": "SciPy: búsqueda escalar vs expresión cerrada",
+    "scope": "Mismo modelo; métodos matemáticos distintos",
+    "evidence": {
+      "analytic": 81.14819709220879,
+      "numeric": 81.14819697880591
+    }
+  },
+  {
+    "key": "empuje-dos-raices",
+    "status": "VERIFICADO",
+    "method": "Sustitución de ambas raíces",
+    "scope": "Existen matemáticamente; requieren CLmax y límites Mach por separado",
+    "evidence": null
+  },
+  {
+    "key": "empuje-sin-equilibrio",
+    "status": "VERIFICADO",
+    "method": "Discriminante negativo",
+    "scope": "Empuje constante menor que Dmin",
+    "evidence": null
+  },
+  {
+    "key": "cono-envolvente",
+    "status": "VERIFICADO",
+    "method": "Geometría del frente tangente",
+    "scope": "Rectilíneo supersónico, a constante, suelo plano",
+    "evidence": null
+  },
+  {
+    "key": "optimum-jet-range",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Polar parabólica, consumos/rendimiento constantes; óptimo local instantáneo",
+    "evidence": "0"
+  },
+  {
+    "key": "optimum-prop-endurance",
+    "status": "VERIFICADO",
+    "method": "SymPy: residuo simbólico",
+    "scope": "Polar parabólica, consumos/rendimiento constantes; óptimo local instantáneo",
+    "evidence": "0"
+  },
+  {
+    "key": "dim-consumo-jet",
+    "status": "VERIFICADO",
+    "method": "Pint",
+    "scope": "Consumo másico por empuje multiplicado por g",
+    "evidence": null
+  },
+  {
+    "key": "dim-range-prop",
+    "status": "VERIFICADO",
+    "method": "Pint",
+    "scope": "Consumo específico por potencia en kg/J",
+    "evidence": null
+  },
+  {
+    "key": "Breguet-ODE-peso",
+    "status": "VERIFICADO",
+    "method": "SciPy: balance diferencial independiente",
+    "scope": "Modelo ideal de crucero cuasiestacionario; no incluye pérdidas de misión",
+    "evidence": {
+      "time_s": 8318.147984049381,
+      "range_m": 831814.7984049383,
+      "final_weight_N": 33000.00000000768
+    }
+  },
+  {
+    "key": "Breguet-ODE-distancia",
+    "status": "VERIFICADO",
+    "method": "Integración conjunta de x y W",
+    "scope": "TAS constante; viento nulo",
+    "evidence": null
+  },
+  {
+    "key": "NASA-error-dimensiones-detectado",
+    "status": "VERIFICADO",
+    "method": "Pint: rechazo de suma dimensional incompatible",
+    "scope": "Errata observada en definición web V_eq; se utiliza ve+(pe-pa)Ae/mdot, no (ve+(pe-pa)Ae)/mdot",
+    "evidence": null
+  }
+]

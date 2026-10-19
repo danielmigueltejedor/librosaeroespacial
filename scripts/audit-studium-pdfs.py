@@ -1,9 +1,12 @@
 """Audit every generated page; visual review remains a separate declared step."""
 from pathlib import Path
-import json,hashlib,re,unicodedata
+import json,hashlib,re,unicodedata,argparse
 from collections import Counter
 import pymupdf
 ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output',type=Path,default=ROOT/'reports/bundle-audit/pdf-checks.json')
+args=parser.parse_args()
 volumes=[]
 for registry in sorted((ROOT/'books').glob('*/studium-import.json')):
     config=json.loads(registry.read_text());slug=registry.parent.name
@@ -30,7 +33,8 @@ for registry in sorted((ROOT/'books').glob('*/studium-import.json')):
         if re.search(r'Overfull \\[hv]box|undefined references|undefined citations|multiply[- ]defined|Missing character:|Undefined control sequence',log):problems.append('final composition log failed')
         volumes.append(dict(slug=slug,volume=item['title'],file=str(pdf.relative_to(ROOT)),pages=len(doc),sha256=hashlib.sha256(pdf.read_bytes()).hexdigest(),bookmarks=len(doc.get_toc()),text_spans_by_size=font.most_common(5),issues=problems))
 report=dict(status='PASSED' if all(not v['issues'] for v in volumes) else 'FAILED',volumes=len(volumes),pages=sum(v['pages'] for v in volumes),scope='Every page: text bounds, empty pages, replacement glyphs, internal destinations, cover status; final LaTeX warnings. Does not establish scientific correctness or replace visual inspection.',documents=volumes)
-(ROOT/'reports/bundle-audit/pdf-checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+args.output.parent.mkdir(parents=True,exist_ok=True)
+args.output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 print(report['status'],report['volumes'],'volumes;',report['pages'],'pages')
 for v in volumes:
     if v['issues']:print(v['file'],v['issues'][:10])

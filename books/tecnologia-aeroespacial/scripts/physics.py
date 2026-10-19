@@ -25,6 +25,20 @@ def drag(V,rho,W,S,CD0,K,n=1):
  if min(V,rho,W,S,CD0,K,n)<=0:raise ValueError('Parámetros positivos requeridos')
  q=.5*rho*V*V;CL=n*W/(q*S);return q*S*(CD0+K*CL*CL)
 def drag_limits(T,rho,W,S,CD0,K):
- A=.5*rho*S*CD0;B=2*K*W*W/(rho*S);disc=T*T-4*A*B
- if disc<0:return []
- return [math.sqrt((T-math.sqrt(disc))/(2*A)),math.sqrt((T+math.sqrt(disc))/(2*A))]
+ """Positive mathematical speeds for constant thrust; stall/Mach limits are external.
+
+ Use the product of the quadratic roots for the lower speed, avoiding
+ catastrophic cancellation in T-sqrt(T*T-4*A*B). A repeated root is returned
+ twice for compatibility with callers expecting a lower/upper pair.
+ """
+ if not all(math.isfinite(x) and x>0 for x in (T,rho,W,S,CD0,K)):
+  raise ValueError('Empuje y parámetros de la polar finitos y positivos')
+ A=.5*rho*S*CD0;B=2*K*W*W/(rho*S)
+ minimum=2*math.sqrt(A)*math.sqrt(B)
+ if T<minimum:return []
+ # Scaled discriminant avoids overflow of T*T and cancellation near zero.
+ ratio=minimum/T
+ root=T*math.sqrt(max(0.,(1-ratio)*(1+ratio)))
+ upper_square=(T/2+root/2)/A
+ lower_square=B/(T/2+root/2)
+ return [math.sqrt(lower_square),math.sqrt(upper_square)]
