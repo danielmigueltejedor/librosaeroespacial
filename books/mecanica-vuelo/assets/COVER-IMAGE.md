@@ -1,24 +1,16 @@
-# Imagen de portada y logotipo: Mecánica de Vuelo — Studium
+# Fotografía de las tres portadas de Mecánica de Vuelo
 
-## Imagen incorporada en esta edición
+NASA, **X-29 in Banked Flight**, 24 de julio de 1987, foto EC87-0182-14.
+La misma fotografía real se utiliza en manual, problemas y simulacros.
 
-- Archivo: `cover-hero.jpg` (1800 × 1500 píxeles).
-- Imagen única de esta asignatura: ilustración aeronáutica fotorrealista original, generada digitalmente en octubre de 2026.
-- Descripción: aeronave monoplaza blanca en viraje/alabeo sobre paisaje montañoso; visual orientada a estabilidad, control y actuaciones de vuelo.
-- No es fotografía real de NASA ni documenta un modelo identificado; no afirmar lo contrario.
-- Formato 1800×1500, encuadre sin estiramiento y sin texto; retícula usada en los 3 volúmenes.
+- [Ficha y licencia de la imagen](https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg).
+- [Condiciones de reutilización de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/).
+- Consulta: 19 de octubre de 2026. Autor institucional: NASA; no se ha identificado fotógrafo individual.
+- Dominio público en Estados Unidos por autoría NASA; reutilización educativa con reconocimiento de procedencia y sin implicar respaldo institucional.
+- Original de 2474 × 1978 píxeles; recorte proporcional central y remuestreo a 1800 × 1500, sin alteración generativa, marcas de agua ni modificación del contenido documental.
+- `cover-photo.json` registra URL original, dimensiones y SHA-256 del original y del recurso incorporado.
+- `cover-credit.tex` lleva el crédito al interior de los tres PDF.
 
-## Logotipo
+La ilustración digital de la importación se conserva en el historial Git. El logotipo raster importado sigue disponible en `studium-horizontal.png`; la cabecera utiliza ahora el texto vectorial STUDIUM de la plantilla común.
 
-- Fuente: `framework/docs/assets/studium-logo-dark.png` (suministrado dentro del ZIP original).
-- Archivo de integración: `assets/studium-horizontal.png` con transparencia.
-- Consiste exclusivamente en el símbolo y las letras auténticas del logo original, remaquetados horizontalmente para encajar en la cabecera blanca.
-- El lema «BIBLIOTECA DE INGENIERÍA» sigue compuesto como texto independiente.
-
-## Fuente fotográfica pública alternativa, no incluida
-
-Si se prefiere una fotografía histórica real para la portada, hay una buena opción NASA:
-X-29 en viraje (EC87-0182-14, 24 de julio de 1987), https://www.nasa.gov/image-article/x-29-banks-over-desert-terrain/ y
-https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg .
-No está incluida en el PDF actual, para evitar atribuir falsamente imágenes ajenas.
-El script opcional `scripts/obtain_cover_photo.py` puede reemplazar la imagen actual por esa fotografía si en el futuro se dispone de acceso a Internet.
+Para repetir la descarga y el recorte: `python3 books/mecanica-vuelo/scripts/obtain_cover_photo.py`, desde la raíz del repositorio. Compilar después con el constructor común. La descarga requiere red; la compilación usa el JPEG incluido y funciona sin ella.

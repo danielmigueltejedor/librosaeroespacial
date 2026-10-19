@@ -31,11 +31,12 @@
   "editorial_revision": {
     "date": "2026-10-19",
     "cover_image": "assets/cover-hero.jpg",
-    "cover_description": "Ilustración aeronáutica digital original, no fotografía documental",
-    "logo_asset": "assets/studium-horizontal.png",
-    "logo_width_bp": 185,
+    "cover_description": "Fotografía NASA X-29, EC87-0182-14; autoría y condiciones comprobadas 2026-10-19.",
     "standard": "shared/EDITORIAL_STANDARD.md",
-    "integration_status": "El diseño se mantiene en el preámbulo local de la edición; no migrado a shared/latex."
+    "integration_status": "Los tres volúmenes usan shared/latex; el preámbulo local conserva solo macros de la disciplina.",
+    "status": "EN REVISIÓN",
+    "review_gate": "blocked",
+    "cover_credit": "assets/cover-photo.json"
   },
   "excluded": [
     "private source PDFs",
@@ -46,7 +47,10 @@
     "temporary LaTeX output",
     "font caches"
   ],
-  "shared_resources": [],
+  "shared_resources": [
+    "shared/latex/studium-editorial.tex",
+    "shared/latex/studium-cover.tex"
+  ],
   "import_notes": [
     "Edición Studium completa en formato LaTeX; no se declara nueva revisión científica independiente.",
     "El logo se ha reducido de 225 bp a 185 bp manteniendo la fotografía de portada y los tres volúmenes.",

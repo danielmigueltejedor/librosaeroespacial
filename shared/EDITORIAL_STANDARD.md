@@ -1,6 +1,6 @@
 # Norma común de la colección Studium
 
-Los quince volúmenes de las cinco asignaturas cargan `shared/latex/studium-editorial.tex` y `studium-cover.tex`. Las reglas visuales se editan una sola vez. Cada proyecto conserva únicamente su fotografía, crédito, título y edición en `editorial-config.tex`.
+Los veintiún volúmenes de las siete asignaturas cargan `shared/latex/studium-editorial.tex` y `studium-cover.tex`. Las reglas visuales se editan una sola vez. Cada proyecto conserva únicamente su fotografía, crédito, título y edición en `editorial-config.tex`.
 
 ## Composición
 
@@ -21,7 +21,7 @@ Los quince volúmenes de las cinco asignaturas cargan `shared/latex/studium-edit
 
 ## Organización de los capítulos
 
-Los 103 capítulos principales de los manuales abren con **Orientación del capítulo** y cierran con **Comprobación final**. Se conservan las secciones técnicas de cada disciplina, sus deducciones, ejemplos y ejercicios. Las antiguas «Autofichas» se llaman **Autoevaluación** y se sitúan al final del capítulo. Cuando ya existe un resumen, se presenta como **Síntesis del capítulo**; no se fabrica un resumen científico para los capítulos que no lo tenían.
+Los 103 capítulos de las cinco importaciones iniciales de los manuales abren con **Orientación del capítulo** y cierran con **Comprobación final**. Se conservan las secciones técnicas de cada disciplina, sus deducciones, ejemplos y ejercicios. Las antiguas «Autofichas» se llaman **Autoevaluación** y se sitúan al final del capítulo. Cuando ya existe un resumen, se presenta como **Síntesis del capítulo**; no se fabrica un resumen científico para los capítulos que no lo tenían.
 
 Los recuadros de deducciones se llaman **Desarrollos del modelo** y los de ejercicios **Ejercicios propuestos**. Los problemas del cuaderno de Turbomáquinas usan la misma familia de recuadros que los otros cuadernos. Los niveles de dificultad y los tipos de ejercicio se presentan en español.
 
@@ -41,3 +41,9 @@ python3 scripts/build-studium-books.py all
 ```
 
 Los recursos compartidos están declarados en cada `studium-import.json`; el compilador solo permite dependencias comunes registradas bajo `shared/latex/`. Los PDF se generan en `dist/studium/<libro>/`.
+
+## Incorporaciones del 19 de octubre de 2026
+
+Mecánica de Vuelo y Materiales y Mantenimiento usan la misma plantilla compartida. Sus adaptadores locales conservan notación, créditos y macros propias. La raíz del recurso compartido se configura según el directorio de compilación. Las portadas usan coordenadas físicas en puntos PDF (bp), fotografía proporcional, bloque de título y posiciones comunes; el título largo de Materiales utiliza 26/29 puntos. No se altera la escala de las ecuaciones para ocultar defectos. Los avisos de revisión académica se conservan dentro de los volúmenes.
+
+La fotografía real X-29 sustituye la ilustración digital de las tres portadas de Vuelo; se incluye procedencia y licencia en cada PDF. Los recursos históricos siguen en Git. El constructor registra entradas efectivamente leídas y sus huellas, usa una fecha de compilación fija y rechaza referencias o citas sin resolver. Esto no constituye aprobación científica.

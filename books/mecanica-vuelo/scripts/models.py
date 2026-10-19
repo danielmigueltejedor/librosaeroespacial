@@ -4,7 +4,7 @@ No son modelos certificados. Polar parabólica, flujo subsónico y vuelo
 cuasiestacionario salvo cuando una función declara otra cosa.
 """
 from dataclasses import dataclass
-from math import sqrt, exp, atan, log, sin, cos, tan
+from math import sqrt, exp, atan, log, sin, cos, tan, isfinite, inf
 import numpy as np
 from scipy.integrate import quad, solve_ivp
 from scipy.optimize import minimize_scalar, brentq
@@ -112,7 +112,10 @@ def integrate_jet(polar,mi,mf,rho,V,cT,rtol=1e-9,max_step=60):
     return dict(time=sol.t_events[0][0],range=sol.y_events[0][0,1],evaluations=sol.nfev)
 
 def turn(V,bank):
-    if abs(bank)>=np.pi/2: raise ValueError('Viraje nivelado exige |phi| < pi/2')
+    if not isfinite(V) or V<=0 or not isfinite(bank) or abs(bank)>=np.pi/2:
+        raise ValueError('Viraje nivelado: V finita positiva y |phi| < pi/2')
+    if bank==0:
+        return dict(n=1.,radius=inf,rate=0.)
     return dict(n=1/cos(bank),radius=V*V/(G*abs(tan(bank))),rate=G*tan(bank)/V)
 
 def ground_roll(polar,m,rho,Vtarget,thrust,mu,cl_ground,wind=0,braking=False):

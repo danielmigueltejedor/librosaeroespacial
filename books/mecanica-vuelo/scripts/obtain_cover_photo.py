@@ -43,13 +43,28 @@ def main() -> None:
     cropped.save(tmp, format='JPEG', quality=93, optimize=True, progressive=True, subsampling=0)
     tmp.replace(out)
     (ROOT / "assets" / "cover-credit.tex").write_text(
-        r'''\noindent\textbf{Imagen de portada.} Fotografía NASA,\n'''
-        r'''X-29 (número 1) durante un viraje sobre el desierto de Mojave,\n'''
-        r'''24 de julio de 1987, ID EC87-0182-14. Investigación sobre\n'''
-        r'''cualidades de vuelo, actuaciones e integración de sistemas.\n'''
-        r'''Material de dominio público estadounidense de autoría NASA;\n'''
-        r'''su uso en esta obra independiente no implica respaldo institucional.\n'''
+        "\\noindent\\textbf{Imagen de portada.} Fotografía NASA,\n"
+        "X-29 número 1 en viraje sobre el desierto de Mojave,\n"
+        "24 de julio de 1987, ID EC87-0182-14. Fuente: "
+        "\\href{https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg}{Wikimedia Commons}.\n"
+        "Dominio público en Estados Unidos (autoría NASA); reutilización educativa conforme a "
+        "\\href{https://www.nasa.gov/nasa-brand-center/images-and-media/}{las condiciones NASA}. "
+        "Recorte proporcional y remuestreo a 1800 por 1500 píxeles; sin alteración del contenido. "
+        "Consulta: 19 de octubre de 2026. No implica respaldo institucional.\n",
+        encoding="utf-8",
     )
+    import json
+    (ROOT / "assets" / "cover-photo.json").write_text(json.dumps(dict(
+        author="NASA", title="X-29 in Banked Flight", photo_id="EC87-0182-14",
+        image_date="1987-07-24", consulted_on="2026-10-19",
+        source="https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg",
+        original_url=URL, license="PD-USGov-NASA (United States); educational reuse under NASA media guidelines",
+        license_url="https://www.nasa.gov/nasa-brand-center/images-and-media/",
+        attribution="NASA; no institutional endorsement",
+        modifications="Proportional central crop and Lanczos resampling to 1800x1500; JPEG encoding; no generative edits",
+        original_dimensions=list(image.size), original_sha256=hashlib.sha256(data).hexdigest(),
+        output_sha256=hashlib.sha256(out.read_bytes()).hexdigest(), output="assets/cover-hero.jpg"
+    ), ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     print(f"Imagen X-29 aplicada: {out}; SHA256 original: {hashlib.sha256(data).hexdigest()}")
     if args.rebuild:
         for tex in ("main.tex", "problemas.tex", "simulacros.tex"):

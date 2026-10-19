@@ -62,3 +62,16 @@ book:
 
 clean:
 	cd books/$(BOOK) && latexmk -C
+
+.PHONY: library-check library-build library-inventory
+library-check:
+	$(PYTHON) scripts/audit-library.py
+
+library-build:
+	$(PYTHON) scripts/build-studium-books.py all
+	$(PYTHON) scripts/audit-studium-pdfs.py --output reports/edition-v2/pdf-checks.json
+
+library-inventory:
+	$(PYTHON) scripts/inventory-library.py
+	$(PYTHON) scripts/coverage-library.py
+	$(PYTHON) scripts/audit-library-bibliography.py

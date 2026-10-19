@@ -1,0 +1,234 @@
+{
+  "checks": [
+    {
+      "name": "C07 condicion de estacionariedad L/D",
+      "equations": [
+        "eq:c07-polar"
+      ],
+      "status": "PASS",
+      "assumptions": "CD0>0, K>0, CL>0",
+      "residual": "0"
+    },
+    {
+      "name": "C07 maximo L/D",
+      "equations": [
+        "eq:c07-polar"
+      ],
+      "status": "PASS",
+      "assumptions": "polar parabolica valida; CD0,K>0",
+      "residual": "0"
+    },
+    {
+      "name": "C07 K CL^2 es termino cuadratico total, no siempre inducido",
+      "equations": [
+        "eq:c07-polar",
+        "eq:c07-inducida"
+      ],
+      "status": "PASS",
+      "assumptions": "K=1/(pi ei AR)+cd2, cd2>0",
+      "residual": "0"
+    },
+    {
+      "name": "C07 esquiador elimina rozamiento seco",
+      "equations": [
+        "eq:c07-dos-pendientes"
+      ],
+      "status": "PASS",
+      "assumptions": "cos(theta1) distinto de 0; denominador distinto de 0",
+      "residual": "0"
+    },
+    {
+      "name": "C07 coastdown dos puntos",
+      "equations": [
+        "eq:c07-deceleracion"
+      ],
+      "status": "PASS",
+      "assumptions": "deceleracion positiva; V1^2 != V2^2",
+      "residual": "0"
+    },
+    {
+      "name": "C06 balance Couette-Poiseuille",
+      "equations": [
+        "eq:c06-couette"
+      ],
+      "status": "PASS",
+      "assumptions": "mu>0; placas en y=0,h",
+      "residual": "0"
+    },
+    {
+      "name": "C06 condicion fija",
+      "equations": [
+        "eq:c06-couette"
+      ],
+      "status": "PASS",
+      "assumptions": "u(0)=0",
+      "residual": "0"
+    },
+    {
+      "name": "C06 condicion movil",
+      "equations": [
+        "eq:c06-couette"
+      ],
+      "status": "PASS",
+      "assumptions": "u(h)=U",
+      "residual": "0"
+    },
+    {
+      "name": "C06 caudal general Couette-Poiseuille",
+      "equations": [
+        "eq:c06-couette",
+        "eq:c06-caudal-plano"
+      ],
+      "status": "PASS",
+      "assumptions": "q escrito en el libro para U=0",
+      "residual": "0"
+    },
+    {
+      "name": "C06 caudal Hagen-Poiseuille",
+      "equations": [
+        "eq:c06-hagen",
+        "eq:c06-perfil-tubo"
+      ],
+      "status": "PASS",
+      "assumptions": "flujo laminar desarrollado",
+      "residual": "0"
+    },
+    {
+      "name": "C08 periodo de columna en U",
+      "equations": [
+        "eq:c08-tubo-u"
+      ],
+      "status": "PASS",
+      "assumptions": "L total columna=h, no viscosidad",
+      "residual": "0"
+    },
+    {
+      "name": "C09 rendimiento propulsivo cuando ve distinto de v0",
+      "equations": [
+        "eq:c09-rendimiento"
+      ],
+      "status": "PASS",
+      "assumptions": "ve>v0>0; combustible y presion adaptada",
+      "residual": "0"
+    },
+    {
+      "name": "C09 limite rendimiento propulsivo",
+      "equations": [
+        "eq:c09-rendimiento"
+      ],
+      "status": "PASS",
+      "assumptions": "limite a lo largo de ve>v0",
+      "residual": "0"
+    },
+    {
+      "name": "C10 exponentes Buckingham fuerza esfera",
+      "equations": [
+        "eq:c10-exponentes"
+      ],
+      "status": "PASS",
+      "assumptions": "dimensiones M L T",
+      "residual": "0"
+    },
+    {
+      "name": "C04 formula traza inyeccion continua",
+      "equations": [
+        "eq:c04-traza"
+      ],
+      "status": "PASS",
+      "assumptions": "u0>0, 0<=tau<=t",
+      "residual": "0"
+    },
+    {
+      "name": "C05 equilibrio hidrostatico isoterma",
+      "equations": [
+        "eq:c05-isoterma"
+      ],
+      "status": "PASS",
+      "assumptions": "T,Rair,g constantes",
+      "residual": "0"
+    },
+    {
+      "name": "C11 vorticidad fuera del eje",
+      "equations": [
+        "eq:c11-torbellino"
+      ],
+      "status": "PASS",
+      "assumptions": "r>0; singularidad axial excluida",
+      "residual": "0"
+    },
+    {
+      "name": "C15 pelicula solucion EDP",
+      "equations": [
+        "eq:c15-pelicula"
+      ],
+      "status": "PASS",
+      "assumptions": "laminar, estacionaria, sin gradiente presion x",
+      "residual": "0"
+    },
+    {
+      "name": "C15 pelicula caudal",
+      "equations": [
+        "eq:c15-pelicula"
+      ],
+      "status": "PASS",
+      "assumptions": "sin esfuerzos tangenciales en superficie",
+      "residual": "0"
+    },
+    {
+      "name": "M04 vaciado deposito ecuacion diferencial para 0<t<tv",
+      "equations": [
+        "eq:m04-vaciado"
+      ],
+      "status": "PASS",
+      "assumptions": "solo t<tv, raiz positiva; extrapolar despues de tv es incorrecto",
+      "residual": "0"
+    },
+    {
+      "name": "M04 vaciado deposito tiempo final",
+      "equations": [
+        "eq:m04-vaciado"
+      ],
+      "status": "PASS",
+      "assumptions": "h(tv)=0",
+      "residual": "0"
+    },
+    {
+      "name": "M04 Venturi inversion delta p",
+      "equations": [
+        "eq:m04-venturi"
+      ],
+      "status": "PASS",
+      "assumptions": "ideal, incompresible, sin perdidas; 0<beta<1",
+      "residual": "0"
+    },
+    {
+      "name": "M07 cada modo satisface difusion",
+      "equations": [
+        "eq:m07-serie",
+        "eq:m07-arranque"
+      ],
+      "status": "PASS",
+      "assumptions": "n entero positivo, t>0",
+      "residual": "0"
+    },
+    {
+      "name": "C16 balance geostrofico x",
+      "equations": [
+        "eq:c16-geostrofico"
+      ],
+      "status": "PASS",
+      "assumptions": "latitud con f != 0; corriente estacionaria balanceada",
+      "residual": "0"
+    },
+    {
+      "name": "C16 balance geostrofico y",
+      "equations": [
+        "eq:c16-geostrofico"
+      ],
+      "status": "PASS",
+      "assumptions": "latitud con f != 0; corriente estacionaria balanceada",
+      "residual": "0"
+    }
+  ],
+  "scope": "selected_exact_identities_not_general_scientific_certification"
+}

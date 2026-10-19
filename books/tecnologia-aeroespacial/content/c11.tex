@@ -256,3 +256,25 @@ A peso y densidad dados, el máximo alcance específico de hélice se relaciona 
 \section{Resumen y autoevaluación}
 \resumen{Las actuaciones resultan de combinar aerodinámica, propulsión y dinámica. En vuelo nivelado, velocidad y coeficiente de sustentación están ligados por el peso. El mínimo de resistencia difiere del mínimo de potencia. La existencia de una raíz debe contrastarse con pérdida y otros límites. Los giros aumentan carga y resistencia; ascenso y aceleración comparten el exceso de potencia disponible.}
 ¿Qué se modifica al aumentar ángulo de ataque y conservar peso y altura en un nuevo equilibrio? ¿Por qué hay dos intersecciones matemáticas con empuje constante? ¿Puede un avión mantener altura a otra velocidad si pierde empuje en su estado inicial? ¿Qué diferencia un giro posible instantáneamente de otro sostenible?
+
+\subsection{Evaluación estable de las dos velocidades de equilibrio}
+Si \(D=AV^2+B/V^2\), con \(A,B>0\), el equilibrio con empuje constante
+\(T\) exige \(T\geq2\sqrt{AB}\). La raíz inferior escrita como diferencia
+\(T-\sqrt{T^2-4AB}\) puede perder todas sus cifras al restar números próximos.
+La racionalización da las expresiones equivalentes
+\begin{align}
+ V_-^2&=\frac{2B}{T+\sqrt{T^2-4AB}},&
+ V_+^2&=\frac{T+\sqrt{T^2-4AB}}{2A}.
+\end{align}
+\textbf{Ejemplo de cálculo y comprobación.} Con
+\(A=0.5\,\mathrm{kg\,m^{-1}}\),
+\(B=8\times10^6\,\mathrm{N\,m^2\,s^{-2}}\) y
+\(T=10^{12}\,\mathrm N\), el límite de empuje es \(4000\,\mathrm N\).
+La forma racionalizada conserva \(V_-\simeq2.8284\times10^{-3}\,\mathrm{m\,s^{-1}}\)
+y \(V_+\simeq1.4142\times10^6\,\mathrm{m\,s^{-1}}\),
+y ambos valores restituyen \(D=T\). La resta directa puede producir cero
+para la raíz inferior en aritmética de doble precisión.
+Estos datos son una prueba de esfuerzo del algoritmo, \emph{no un avión
+físicamente admisible}: hay que aplicar por separado pérdida,
+compresibilidad, estructura y dominio de la polar. No se debe confundir
+una raíz calculada con una actuación realizable.

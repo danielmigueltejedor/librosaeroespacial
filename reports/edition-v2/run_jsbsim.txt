@@ -1,0 +1,129 @@
+
+
+     JSBSim Flight Dynamics Model v1.3.3 [GitHub build 2002/commit 66f7fafc07fe13e7ede9db20873030fed2881713] Oct 16 2026 00:38:24
+            [JSBSim-ML v2.0]
+
+JSBSim startup beginning ...
+
+{
+  "version": "1.3.3",
+  "commit": "66f7fafc07fe13e7ede9db20873030fed2881713",
+  "t6_grid_rows": 44,
+  "trim_failures": [],
+  "convergence": [
+    {
+      "dt": 0.1,
+      "time_s": 60.00000000000058,
+      "h_m": 1524.125819303915,
+      "TAS_m_s": 85.735620007657,
+      "EAS_m_s": 79.58605085009421,
+      "CAS_m_s": 79.69413516980642,
+      "mass_kg": 2717.7038542939463,
+      "fuel_kg": 449.7355763044537,
+      "drag_N": 2487.3247751570602,
+      "lift_N": 26556.95074093669,
+      "thrust_N": 2483.8647435244275,
+      "thrust_power_W": 212955.68380122673,
+      "fuel_flow_kg_s": 0.06427989492565093,
+      "alpha_deg": 1.8469961497641063,
+      "theta_rad": 0.032102331826575604,
+      "udot_m_s2": -0.0004502869894925794,
+      "wdot_m_s2": -2.188531275305081e-05
+    },
+    {
+      "dt": 0.05,
+      "time_s": 59.99999999999873,
+      "h_m": 1524.1264589689495,
+      "TAS_m_s": 85.73556849010868,
+      "EAS_m_s": 79.58600049829587,
+      "CAS_m_s": 79.69408466557397,
+      "mass_kg": 2717.7006402992,
+      "fuel_kg": 449.7355763044537,
+      "drag_N": 2487.325583041097,
+      "lift_N": 26556.91504363546,
+      "thrust_N": 2483.865275314272,
+      "thrust_power_W": 212955.6014319094,
+      "fuel_flow_kg_s": 0.06427989492565093,
+      "alpha_deg": 1.8469957951889002,
+      "theta_rad": 0.03210237827371068,
+      "udot_m_s2": -0.00045097166045561087,
+      "wdot_m_s2": -3.137308991644545e-05
+    },
+    {
+      "dt": 0.025,
+      "time_s": 59.99999999999766,
+      "h_m": 1524.1265541314274,
+      "TAS_m_s": 85.73554761052178,
+      "EAS_m_s": 79.58598074003723,
+      "CAS_m_s": 79.69406483518532,
+      "mass_kg": 2717.699033301827,
+      "fuel_kg": 449.7355763044537,
+      "drag_N": 2487.3287019667696,
+      "lift_N": 26556.900855723663,
+      "thrust_N": 2483.865525962325,
+      "thrust_power_W": 212955.57105927664,
+      "fuel_flow_kg_s": 0.06427989492565093,
+      "alpha_deg": 1.8469956255432523,
+      "theta_rad": 0.032102232463345745,
+      "udot_m_s2": -0.0004505870075266084,
+      "wdot_m_s2": -3.622933748018227e-05
+    }
+  ],
+  "b747": {
+    "initial": {
+      "time_s": 0.0,
+      "h_m": 8229.599999998865,
+      "TAS_m_s": 200.1557040533596,
+      "EAS_m_s": 129.37831200301855,
+      "CAS_m_s": 133.7555555554395,
+      "mass_kg": 253928.26620392,
+      "fuel_kg": 16329.32532,
+      "drag_N": 193883.23495960803,
+      "lift_N": 2470587.736562747,
+      "thrust_N": 194300.79790088747,
+      "thrust_power_W": 38890413.00198167,
+      "fuel_flow_kg_s": 3.255560404584866,
+      "alpha_deg": 3.7018010072207606,
+      "theta_rad": 0.06460861582964456,
+      "udot_m_s2": -2.6766745488608735e-05,
+      "wdot_m_s2": 2.9400646673758504e-05
+    },
+    "final": {
+      "time_s": 1799.9999999989107,
+      "h_m": 8256.044081198761,
+      "TAS_m_s": 200.21446906659406,
+      "EAS_m_s": 129.21523755073906,
+      "CAS_m_s": 133.6019844404275,
+      "mass_kg": 248259.7451248972,
+      "fuel_kg": 10660.648032231216,
+      "drag_N": 189843.00344563494,
+      "lift_N": 2414146.2371969735,
+      "thrust_N": 190403.7437948453,
+      "thrust_power_W": 38121584.47217675,
+      "fuel_flow_kg_s": 3.1241749191525807,
+      "alpha_deg": 3.5705277668374857,
+      "theta_rad": 0.06238767444635484,
+      "udot_m_s2": 1.4668332334051116e-05,
+      "wdot_m_s2": -0.00023924456518314516
+    },
+    "altitude_max_error_m": 26.444081199895663,
+    "TAS_max_error_m_s": 0.059031596377081996,
+    "initial_effective_cT_kg_Ns": 1.6755260090313793e-05,
+    "frozen_initial_flow_burn_kg": 5860.008728252759,
+    "simulated_burn_kg": 5668.677287768784
+  },
+  "caveats": [
+    "Modelos upstream educativos ALPHA/BETA, sin validación experimental.",
+    "La rejilla de trim usa CAS solicitada y registra EAS y TAS resultantes.",
+    "T6: surrogate de empuje turbine_engine+direct, no potencia al eje de PT6.",
+    "Estimaciones de ascenso usan L≈W y equilibrio horizontal; no son trim de ascenso.",
+    "B747 usa control proporcional/integral docente; no es un piloto automático certificado.",
+    "Convergencia T6 se limita a la trayectoria libre de 60 s."
+  ],
+  "model_sha256": {
+    "simulations/jsbsim-upstream/aircraft/t6texan2/t6texan2.xml": "93e66a368324391d6b3c7d7254052772427919e3ddfa57b1defceb978729feae",
+    "simulations/jsbsim-upstream/aircraft/B747/B747.xml": "da5c74608dc7a53402270efa150083316d87018726ea25c66a2f30be05e484a9",
+    "simulations/jsbsim-upstream/engine/PT6A-68.xml": "033bacf06e3dbd41b2d384c442e614ae70ebbcd3868540266cee7a3ef5bfc400",
+    "simulations/jsbsim-upstream/engine/GE-CF6-80C2-B1F.xml": "4b63dde10ba1cccd518068162eb05681ee4ba7b939bf13ed2362dd5a5d596942"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "run_at": "2026-10-19T03:39:06.610450+00:00",
+  "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "packages": {
+    "sympy": "1.14.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pint": "0.26.1",
+    "pymupdf": "1.28.2"
+  },
+  "status": "PASSED",
+  "scope": "Existing audits plus selected independently derived checks; no automatic expert approval.",
+  "runs": [
+    {
+      "id": "structures",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/audit-estructuras.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "188aade08227d79953f0931e76b0978b5bb74dc463c4fcbe25ec9fc85f5e7147",
+      "output": "structures.txt"
+    },
+    {
+      "id": "structures-companions",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/audit-estructuras-companions.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "e38d51f8a2f173a98b14a7092e6792b514394d8b3e2c4da8df05e71db5e82ac9",
+      "output": "structures-companions.txt"
+    },
+    {
+      "id": "turbomachinery",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/audit-turbomaquinas.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "cc22ec15a0c11efc6114fd4cc01427fe4c6a5af3d1222d5101a71f6fceace34c",
+      "output": "turbomachinery.txt"
+    },
+    {
+      "id": "fluids-symbolic",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-fluidos/scripts/verificaciones_simbolicas_fase6.py",
+        "--json",
+        "/private/tmp/studium-library-work-20261019/reports/edition-v2/fluids-symbolic.json"
+      ],
+      "exit_code": 0,
+      "script_sha256": "34f0a33ecd1f9a2a56d7542018d601a6480850eed9720bddeda0f9b4ee22421b",
+      "output": "fluids-symbolic.txt"
+    },
+    {
+      "id": "fluids-bank",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-fluidos/scripts/check_fluid_bank.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "fb37084559b2def282347f191425406450b3c11bb4987083c2b431e6487a09b1",
+      "output": "fluids-bank.txt"
+    },
+    {
+      "id": "technology-models",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/tecnologia-aeroespacial/scripts/check_science.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "da881ebe08cf5d456654329f7844ba4396e8e156dc5e7268cd1f3cf8df2bcdcb",
+      "output": "technology-models.txt"
+    },
+    {
+      "id": "technology-bank",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/tecnologia-aeroespacial/scripts/check_bank.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "dcb58af12902bdd7ec0c796345eaab7bad3de2eb0da9d68852d4b72fa9f4e3b2",
+      "output": "technology-bank.txt"
+    },
+    {
+      "id": "rocket-models",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/motores-cohete/scripts/check_science.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "4460161f7958dcd3814435762cce7e8c704fc3138604f14209cfb5ff28dfe58c",
+      "output": "rocket-models.txt"
+    },
+    {
+      "id": "flight-models",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-vuelo/scripts/verify_models.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "8954f03239e66d802287c16059edd131edcf95112c35c1b5332cdf307680e43c",
+      "output": "flight-models.txt"
+    },
+    {
+      "id": "flight-additional",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-vuelo/scripts/additional_checks.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "571b50fe0184039155c5b2c8c7c661326924d10974494de4084256ea0b1feed4",
+      "output": "flight-additional.txt"
+    },
+    {
+      "id": "flight-bank",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-vuelo/scripts/validate_problem_bank.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "be2783d96ecf8aa3277a7d809664f29b31896382baa9ab03399c27a57f3ac5f6",
+      "output": "flight-bank.txt"
+    },
+    {
+      "id": "flight-all-cases",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "books/mecanica-vuelo/scripts/validate_all_cases.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "78023ae4df7d6efcca69603e33fea947f580388c047d29160ca19733d0035db5",
+      "output": "flight-all-cases.txt"
+    },
+    {
+      "id": "independent-models",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/verify-library-models.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "e088c179f7cd321b707e07559fd2907b26729b1663187bb7987c97a6aa3466be",
+      "output": "independent-models.txt"
+    },
+    {
+      "id": "preservation",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/check-library-preservation.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "b6a84ce427189de126179f30b28759855dcf9b1955663026dc8533d40e817bef",
+      "output": "preservation.txt"
+    }
+  ]
+}
