@@ -7,3 +7,8 @@
 tests/fixtures/native-v02/** whitespace=-blank-at-eol
 # Preserve the original coordinate files byte for byte.
 books/turbomaquinas/practice/*.csv -text whitespace=cr-at-eol
+
+# Preserve CRLF in source audit CSVs; retain historic LaTeX sample verbatim.
+books/materiales-mantenimiento-motores/reports/*.csv whitespace=cr-at-eol
+books/materiales-mantenimiento-motores/templates/*.csv whitespace=cr-at-eol
+books/materiales-mantenimiento-motores/content/simulacros-muestra.tex whitespace=-blank-at-eof
