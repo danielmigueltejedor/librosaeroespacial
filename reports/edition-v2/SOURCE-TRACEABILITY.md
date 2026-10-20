@@ -11,3 +11,8 @@ La referencia nueva de Chenciner y Montgomery se comprobó en [arXiv, math/00112
 En normativa se consultaron los catálogos oficiales de [aeronavegabilidad continuada de EASA](https://www.easa.europa.eu/en/regulations/continuing-airworthiness), [aeronavegabilidad inicial](https://www.easa.europa.eu/en/regulations/initial-airworthiness-and-environmental-protection) y la [ficha EASA de US-2024-14-03](https://ad.easa.europa.eu/ad/US-2024-14-03). Se confirma identificación y efectividad histórica de esta última, sin convertir una ficha o el campo Supersedure en prueba exhaustiva del estado actual FAA. La revisión completa de vigencia y aplicabilidad por aeronave permanece pendiente. EAR septiembre de 2025 se conserva como versión histórica, no como sustituto de actos y AMC posteriores.
 
 No se ha consultado íntegramente la bibliografía comercial recomendada, no se inventan páginas y no se reproducen fuentes privadas. Las nuevas fotografías se documentan separadamente en IMAGE-CREDITS.md.
+
+
+## Ampliación: figuras y auditorías pendientes
+
+Los redibujos conservan procedencia explícita: los nuevos PDF de prácticas no se presentan como exportaciones recién obtenidas de Mathematica; los raster históricos siguen disponibles. Los recibos PNG→PDF y las huellas de revisión permiten detectar sustituciones y revisiones obsoletas. El registro normativo importado contiene 36 entradas; la comprobación de vigencia FAA y la revisión semántica integral siguen pendientes.

@@ -15,3 +15,8 @@ Se han recuperado y consultado las siete guías oficiales ULE 2026/2027. `offici
 Se añade a Fluidos un ejemplo autocontenido con enunciado, datos, incógnita, hipótesis, EDP, adimensionalización, resultados, unidades, interpretación y límites. La relación entre Reynolds e inercia temporal puede estudiarse desde el manual. Tecnología explica el cálculo estable de las raíces y el límite entre una prueba algorítmica y una actuación físicamente admisible.
 
 La matriz es documental, no una equivalencia automática de competencia. La suficiencia semántica MANUAL→PROBLEMAS→SIMULACROS y cada resultado de aprendizaje requieren revisión individual antes de cerrar la edición. No se declara autosuficiencia completa por contar capítulos, detectar una palabra o igualar identificadores. No se eliminan ejercicios para esconder lagunas. La correspondencia temática propuesta es interpretación editorial, distinta de los encabezados oficiales conservados en el registro de guías.
+
+
+## Ampliación: figuras y auditorías pendientes
+
+Las leyendas de paneles explicitan origen/sentido de la coordenada y separan magnitud de signo del flujo; Mohr expone puntos, valores, giro y máximos; las prácticas redibujadas muestran unidades y leyendas completas. Son mejoras de comprensión concretas. El mapa de 151 capítulos no se convierte por ello en aprobación de suficiencia de todas las competencias.

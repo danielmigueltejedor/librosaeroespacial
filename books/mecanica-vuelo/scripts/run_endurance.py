@@ -2,7 +2,7 @@
 Comparación analítica local identificada con puntos de trim, no datos reales.
 """
 from pathlib import Path
-import csv,json,math
+import csv,json,math,os
 import numpy as np
 from probe_jsbsim import setup
 from run_jsbsim import get,write,LBM,LBF
@@ -13,6 +13,8 @@ def initialized(fuel_each,dt=.1):
     for i in range(5):f[f'propulsion/tank[{i}]/contents-lbs']=fuel_each if i<4 else 0
     f.run_ic();f.do_trim(0)
     return f
+DT=float(os.environ.get("STUDIUM_ENDURANCE_DT", ".1"))
+if not 0 < DT <= .2:raise ValueError("Invalid endurance time step")
 fit=[]
 for fuel in [2000,4000,6000,8000,10000]:
     f=initialized(fuel);fit.append(get(f))
@@ -22,11 +24,11 @@ fit_error=float(np.max(abs((A+B*x)/y-1)))
 write('b747-analytic-fit-trims.csv',fit)
 out=[]
 for fuel in [7000,9000]:
-    dt=.1;f=initialized(fuel,dt);initial=get(f)
+    dt=DT;f=initialized(fuel,dt);initial=get(f)
     V0=f['velocities/vtrue-fps'];h0=f['position/h-sl-ft'];th0=f['attitude/theta-rad']
     e0=f['fcs/elevator-cmd-norm'];t0=f['fcs/throttle-cmd-norm'];integ=0
     rows=[initial];reason='TIME_LIMIT'
-    for j in range(200000):
+    for j in range(round(20000/dt)):
         desired=th0+np.clip(.00008*(h0-f['position/h-sl-ft'])-.002*f['velocities/h-dot-fps'],-.06,.06)
         elevator=e0-1.8*(desired-f['attitude/theta-rad'])+1.3*f['velocities/q-rad_sec']
         ev=V0-f['velocities/vtrue-fps'];integ+=ev*dt
@@ -36,7 +38,7 @@ for fuel in [7000,9000]:
         f['fcs/aileron-cmd-norm']=float(np.clip(-f['attitude/phi-rad']-.3*f['velocities/p-rad_sec'],-.3,.3))
         f['fcs/rudder-cmd-norm']=float(np.clip(-.5*f['aero/beta-rad']+.1*f['velocities/r-rad_sec'],-.3,.3))
         assert f.run()
-        if (j+1)%100==0:rows.append(get(f))
+        if (j+1)%round(10/dt)==0:rows.append(get(f))
         if f['propulsion/total-fuel-lbs']<=.001:
             reason='USABLE_FUEL_EXHAUSTED';rows.append(get(f));break
     final=rows[-1];write(f'b747-endurance-{fuel*4}lbm.csv',rows)
@@ -49,9 +51,9 @@ for fuel in [7000,9000]:
       equivalent_polar_time_s=analytic,relative_difference_equivalent=(duration/analytic-1),
       max_height_error_m=max(abs(r['h_m']-initial['h_m']) for r in rows),
       max_TAS_error_m_s=max(abs(r['TAS_m_s']-initial['TAS_m_s']) for r in rows)))
-report=dict(cases=out,equivalent_drag_model=dict(A_N=float(A),B_per_N=float(B),max_relative_fit_error=fit_error,
+report=dict(dt_s=DT,cases=out,equivalent_drag_model=dict(A_N=float(A),B_per_N=float(B),max_relative_fit_error=fit_error,
        scope='D=A+B W² ajustado a cinco trimas del mismo modelo a CAS 260 kt y 27000 ft.'),
        scope='Simulación educativa hasta agotamiento de depósitos alimentadores. No es autonomía certificada ni ensayo.',
-       convergence='No se ha realizado aquí refinamiento del paso en las autonomías completas; pendiente.')
+       convergence='Esta ejecución usa un solo paso; el estudio completo a 0.1/0.05/0.025 s se registra por separado en reports/edition-v2/endurance-convergence.json.')
 (R/'reports/endurance-results.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps(report,ensure_ascii=False,indent=2))

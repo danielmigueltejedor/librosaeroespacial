@@ -22,6 +22,8 @@ TASKS=[
  ('flight-bank',['books/mecanica-vuelo/scripts/validate_problem_bank.py'],['books/mecanica-vuelo/reports/problem-checks.json']),
  ('flight-all-cases',['books/mecanica-vuelo/scripts/validate_all_cases.py'],['books/mecanica-vuelo/reports/all-cases-checks.json']),
  ('independent-models',['scripts/verify-library-models.py'],[]),
+ ('figure-science',['scripts/verify-figure-science.py'],[]),
+ ('figure-review',['scripts/audit-figure-review.py'],[]),
  ('preservation',['scripts/check-library-preservation.py'],[]),
 ]
 

@@ -8,9 +8,14 @@
 | REM-04 | HIGH | Revisión independiente | Autor y revisor de esta pasada son el mismo modelo; falta revisión experta independiente según AGENTS.md |
 | REM-05 | HIGH | Flujo nativo Studium | verify --full bloquea; estados de cierre no implementados y fuentes pendientes; no se asigna RELEASED |
 | REM-06 | HIGH | Mantenimiento | Estado actual FAA de las AD y aplicabilidad por configuración incompletos; el libro mantiene conclusiones condicionales |
-| REM-07 | MEDIUM | Figuras | La revisión visual es por muestreo; falta contrastar científicamente cada flecha, escala y dato de todas las figuras |
-| REM-08 | MEDIUM | Simulación | Las autonomías B747 se reejecutan a su paso original; falta refinamiento temporal completo y validación experimental; los modelos son educativos |
-| REM-09 | MEDIUM | Reproducción | Se comprueban compilación, entradas y contenido; no se promete igualdad binaria de todos los PDF entre distribuciones TeX y códecs distintos |
-| REM-10 | LOW | Archivo de imágenes | Las antiguas portadas de Estructuras/Turbomáquinas se preservan como recursos históricos de licencia no identificada; los PDF actuales usan otras imágenes documentadas |
 
 Los errores confirmados de `confirmed-issues.json` se corrigen y prueban; estos pendientes describen alcance aún no aprobado, no falsos errores confirmados. La entrega es una integración en borrador. No se declara superada la lista completa de aceptación del encargo ni científicamente certificada la biblioteca.
+
+## Pendientes de la pasada anterior atendidos
+
+- REM-07: inspección visual de las 358 representaciones únicas y correcciones gráficas/científicas implementadas. El atlas y los recibos se describen en FIGURE-AUDIT.md. Los invariantes comprobados no se convierten en certificación general.
+- REM-08, parte numérica: seis autonomías completas con refinamiento temporal; ambas convergen bajo el criterio documentado. Se conserva como limitación externa la validación con datos reales de vuelo. Véase SIMULATION-AUDIT.md.
+- REM-09: se distinguen reproducibilidad de fuentes, ejecución, contenido y huellas de la identidad binaria entre motores. Se verifican todas las entradas/salidas actuales; la igualdad binaria entre distribuciones distintas no se exige ni se promete.
+- REM-10: retirados del árbol de distribución los dos archivos de portada con permiso no identificado; siguen recuperables en el historial. Las portadas actuales tienen créditos específicos.
+
+La revisión experta independiente, la auditoría semántica completa de cada fuente/ecuación, la profundidad de todas las competencias, la vigencia/aplicabilidad FAA y las etapas no implementadas de Studium siguen sin aprobación. Una etiqueta de revisión visual o una ejecución correcta no cierra esos puntos.

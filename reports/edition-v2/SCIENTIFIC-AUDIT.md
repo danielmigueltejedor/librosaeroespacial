@@ -15,3 +15,8 @@ Se implementan correcciones en las fuentes, modelos y materiales de estudio; las
 `confirmed-issues.json` contiene para cada incidencia archivo, ubicación, evidencia, corrección, prueba y estado final, incluidos problemas editoriales y de compilación. No se ha detectado un error en una ecuación solo porque Studium no pueda procesarla.
 
 Los casos históricos A–I se ejercitan con optimización de polar, integrabilidad de presión, semejanza con viscosidades distintas, difusión oscilatoria, singularidades de rendimiento y potencia, balance energético, centro de presión inclinado y rotaciones pasivas. Las pruebas no pretenden revisar todas sus aplicaciones en todos los ejercicios. J se comprueba de forma específica en los simulacros de Estructuras; K mediante conservación de citas e identificadores; L con logs y páginas de los PDF.
+
+
+## Ampliación: figuras y auditorías pendientes
+
+Se incorporan las incidencias FIG-001–FIG-013: signos de cargas y presión, suma de cortantes, potencia JSBSim, convenios de Mohr y representación de modelos. Están implementadas en manuscritos y generadores. FIGURE-AUDIT.md y SIMULATION-AUDIT.md describen el alcance; confirmed-issues.json conserva localización, evidencia y comprobación.

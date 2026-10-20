@@ -326,3 +326,14 @@ python3 scripts/build-studium-books.py all
 python3 scripts/audit-studium-pdfs.py --output reports/edition-v2/pdf-checks.json
 python3 scripts/inventory-library.py
 ```
+
+La ampliación de figuras se documenta en [FIGURE-AUDIT.md](reports/edition-v2/FIGURE-AUDIT.md) y la de simulaciones en [SIMULATION-AUDIT.md](reports/edition-v2/SIMULATION-AUDIT.md). El atlas incluye todas las representaciones únicas y sus apariciones; una revisión de autor no equivale a aprobación independiente.
+
+```sh
+python3 scripts/render-figure-atlas.py
+python3 scripts/verify-figure-science.py
+python3 scripts/audit-figure-review.py
+# Auditoría ampliada: modelos fijados, ejecutados en copia aislada.
+python3 scripts/replay-flight-simulations.py
+python3 scripts/audit-endurance-convergence.py
+```

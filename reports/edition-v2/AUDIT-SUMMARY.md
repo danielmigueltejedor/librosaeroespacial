@@ -28,3 +28,8 @@ python scripts/summarize-library-builds.py
 ```
 
 La compilación requiere pdfLaTeX con español, Latin Modern, TikZ y tcolorbox. Los JPEG necesarios ya están incluidos. Las descargas fotográficas son opcionales y se registran con procedencia y huellas. Las auditorías históricas no se sobrescriben por las nuevas ejecuciones.
+
+
+## Ampliación del 19 de octubre: figuras y simulación
+
+Se inspeccionan las 358 representaciones del atlas y se modifican 97 de ellas respecto a la pasada anterior, con 141 controles científicos adicionales. Se corrigen errores confirmados de sentido, escala, potencia y representación; se completa el refinamiento de las dos autonomías con seis trayectorias hasta agotamiento. Se retiran dos portadas antiguas sin permiso identificado. Los límites académicos que siguen abiertos se especifican en REMAINING-ISSUES.md. Esta sigue siendo una integración en borrador, sin merge ni certificación general.

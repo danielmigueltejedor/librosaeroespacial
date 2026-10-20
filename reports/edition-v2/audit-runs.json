@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-19T03:39:06.610450+00:00",
+  "run_at": "2026-10-19T12:18:37.016937+00:00",
   "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
   "packages": {
     "sympy": "1.14.0",
@@ -47,7 +47,7 @@
         "/private/tmp/studium-audit-20261019/bin/python",
         "books/mecanica-fluidos/scripts/verificaciones_simbolicas_fase6.py",
         "--json",
-        "/private/tmp/studium-library-work-20261019/reports/edition-v2/fluids-symbolic.json"
+        "/private/tmp/studium-figures-audit-20261019/reports/edition-v2/fluids-symbolic.json"
       ],
       "exit_code": 0,
       "script_sha256": "34f0a33ecd1f9a2a56d7542018d601a6480850eed9720bddeda0f9b4ee22421b",
@@ -144,13 +144,33 @@
       "output": "independent-models.txt"
     },
     {
+      "id": "figure-science",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/verify-figure-science.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "62c0289e19875c3d84f1dba92c31d631eb1ae3e7612a755135e16144aa496cb8",
+      "output": "figure-science.txt"
+    },
+    {
+      "id": "figure-review",
+      "command": [
+        "/private/tmp/studium-audit-20261019/bin/python",
+        "scripts/audit-figure-review.py"
+      ],
+      "exit_code": 0,
+      "script_sha256": "0a2a29e73371673ebffd5ecfa379da03b0fa721c8125c5e419f21db66d640e6c",
+      "output": "figure-review.txt"
+    },
+    {
       "id": "preservation",
       "command": [
         "/private/tmp/studium-audit-20261019/bin/python",
         "scripts/check-library-preservation.py"
       ],
       "exit_code": 0,
-      "script_sha256": "b6a84ce427189de126179f30b28759855dcf9b1955663026dc8533d40e817bef",
+      "script_sha256": "51a731b5745e7807fe77746350a507c1f2a01362b91d9d0f242218900e72080f",
       "output": "preservation.txt"
     }
   ]
