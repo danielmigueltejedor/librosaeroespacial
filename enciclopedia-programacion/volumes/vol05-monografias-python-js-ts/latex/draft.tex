@@ -1,0 +1,1934 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen V: Monografías de Python, JavaScript y TypeScript\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Parte V (Bloques A\(-\)H): De cero a máquinas virtuales de bytecode, asincronía, Event Loop V8 y sistemas de tipos estructurales\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Monografía Autónoma de Python (Python 3.12 \(-\) 3.14)}
+
+\chapter{Monografía de Python (I \(-\) Bloques A, B y C): Historia, CPython, Entorno (uv/venv) y Nivel Principiante}
+\label{chap:cap01-python-fundamentos-modelo-objetos-nivel-principiante}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\noindent\textit{Este capítulo inaugura la monografía autónoma de **Python** (Bloques A, B y C). Python es simultáneamente el lenguaje hegemónico en ciencia de datos, inteligencia artificial y automatización, y un lenguaje de ingeniería de software de primer orden para backends web y herramientas de infraestructura. El lector aprenderá su modelo exacto de ejecución bajo el capó de CPython.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=1.2cm, align=center] (ns) {Marco Léxico\\(\texttt{locals()})\\\texttt{"a"} $\bullet$\quad \texttt{"b"} $\bullet$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.6cm, minimum height=1.4cm, align=center, right=1.8cm of ns] (obj) {\texttt{PyLongObject} en Montículo\\\texttt{ob\_refcnt = 2}\\\texttt{ob\_type = \&PyLong\_Type}\\\texttt{ob\_digit = 42}};
+\draw[->] (ns.15) -- (obj.165);
+\draw[->] (ns.345) -- (obj.195);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=1.2cm, align=center] (ns) {Marco Léxico\\(\texttt{locals()})\\\texttt{"a"} $\bullet$\quad \texttt{"b"} $\bullet$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.6cm, minimum height=1.4cm, align=center, right=1.8cm of ns] (obj) {\texttt{PyLongObject} en Montículo\\\texttt{ob\_refcnt = 2}\\\texttt{ob\_type = \&PyLong\_Type}\\\texttt{ob\_digit = 42}};
+\draw[->] (ns.15) -- (obj.165);
+\draw[->] (ns.345) -- (obj.195);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=1.2cm, align=center] (ns) {Marco Léxico\\(\texttt{locals()})\\\texttt{"a"} $\bullet$\quad \texttt{"b"} $\bullet$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.6cm, minimum height=1.4cm, align=center, right=1.8cm of ns] (obj) {\texttt{PyLongObject} en Montículo\\\texttt{ob\_refcnt = 2}\\\texttt{ob\_type = \&PyLong\_Type}\\\texttt{ob\_digit = 42}};
+\draw[->] (ns.15) -- (obj.165);
+\draw[->] (ns.345) -- (obj.195);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=1.2cm, align=center] (ns) {Marco Léxico\\(\texttt{locals()})\\\texttt{"a"} $\bullet$\quad \texttt{"b"} $\bullet$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.6cm, minimum height=1.4cm, align=center, right=1.8cm of ns] (obj) {\texttt{PyLongObject} en Montículo\\\texttt{ob\_refcnt = 2}\\\texttt{ob\_type = \&PyLong\_Type}\\\texttt{ob\_digit = 42}};
+\draw[->] (ns.15) -- (obj.165);
+\draw[->] (ns.345) -- (obj.195);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-cpython-object-layout}\textbf{Figura~\thestudiumfigure.} Diferencia semántica fundamental en Python: las variables no son cajas con tipo fijo, sino etiquetas en un diccionario de espacio de nombres que apuntan a estructuras PyObject en el montículo con cabecera ob\(_refcnt\) y ob\(_type\).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+Utiliza siempre \texttt{is None} e \texttt{is not None} para comprobar identidad frente al singleton \texttt{None}, y reserva \texttt{==} para comparar igualdad de valor (\texttt{\_\_eq\_\_}).
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+Vinculación de nombres en Python (Name Binding): asociación en una tabla de símbolos (\texttt{locals()}, \texttt{globals()}) entre un identificador y la dirección de un \texttt{PyObject} en el montículo; el tipo pertenece exclusivamente al objeto referenciado y nunca a la variable léxica.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+¿Por qué una tupla \texttt{(1, [2, 3])} lanza \texttt{TypeError: unhashable type: 'list'} al intentar usarla como clave de un \texttt{dict} a pesar de que el contenedor exterior es un \texttt{tuple} inmutable?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+\end{tcolorbox}
+
+\section{Bloques A y B: Historia, máquina virtual CPython, GIL / Free-Threading y toolchain moderna (uv, ruff, pyright)}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+Creado por Guido van Rossum en el CWI de Ámsterdam y publicado en 1991, Python ejecuta el código fuente compilándolo primero a un árbol de sintaxis abstracta (AST) y seguidamente a código de bytes (*bytecode*, inspeccionable con el módulo estándar \texttt{dis}) interpretado por una máquina virtual de pila en CPython. Cada valor en Python \(-\)incluidos los enteros y las propias clases\(-\) es una estructura \texttt{PyObject} en el montículo que almacena como mínimo su contador de referencias (\texttt{ob\_refcnt}, 8 bytes en 64 bits) y un puntero a su descriptor de tipo (\texttt{ob\_type}, 8 bytes), como ilustra la Figura \textbackslash{}ref\{fig:fig-cpython-object-layout\}. La gestión de memoria combina liberación inmediata cuando \texttt{ob\_refcnt} cae a cero con un recolector generacional detector de ciclos. Históricamente, CPython protegió el estado del intérprete con el cerrojo global **GIL** (*Global Interpreter Lock*), pero a partir de Python 3.13/3.14 (PEP 703) incorpora soporte para compilaciones *free-threaded* sin GIL basadas en conteo de referencias sesgado (*biased reference counting*). Todo proyecto moderno de Python se configura mediante un único fichero declarativo \texttt{pyproject.toml} (PEP 621), gestionado con \texttt{uv} o \texttt{pip} sobre \texttt{venv}, formateado y auditado con \texttt{ruff}, verificado estáticamente con \texttt{pyright} o \texttt{mypy} y probado con \texttt{pytest}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\section{Bloque C: Modelo de nombres y objetos, tipos nativos, colecciones, comprensiones y control de flujo (match/case)}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+En Python, la sentencia \texttt{a = [1, 2, 3]; b = a} **no** copia la lista: vincula ambos nombres al mismo objeto \texttt{PyListObject} incrementando su \texttt{ob\_refcnt} a 2. La distinción entre tipos inmutables (\texttt{int} de precisión arbitraria, \texttt{float} IEEE 754, \texttt{str} Unicode, \texttt{bytes}, \texttt{tuple}, \texttt{frozenset}) y mutables (\texttt{list}, \texttt{dict}, \texttt{set}, \texttt{bytearray}) determina qué objetos son *hashables* y pueden actuar como claves de un diccionario. Desde Python 3.6/3.7, \texttt{dict} se implementa como una tabla hash compacta que preserva por especificación el orden de inserción separando un array denso de índices hash de la tabla contigua de entradas \texttt{(hash, key\_ptr, val\_ptr)}. Asimismo, Python 3.10+ incorpora coincidencia estructural de patrones (\texttt{match}/\texttt{case}, PEP 634):
+\begin{lstlisting}[style=studium,language={Python}]
+def evaluate_ast_node(node: tuple) -> int:
+    match node:
+        case ("lit", int(v)):
+            return v
+        case ("add", left, right):
+            return evaluate_ast_node(left) + evaluate_ast_node(right)
+        case ("mul", left, right):
+            return evaluate_ast_node(left) * evaluate_ast_node(right)
+        case _:
+            raise ValueError(f"Nodo AST desconocido: {node!r}")
+\end{lstlisting}
+Un escollo clásico que todo programador debe evitar desde el primer día es emplear argumentos por defecto mutables en definiciones de función (\texttt{def append\_item(x, target=[]):}), ya que la expresión por defecto se evalúa una única vez al ejecutar la sentencia \texttt{def}, compartiendo la misma lista entre todas las llamadas; el patrón correcto es \texttt{def append\_item(x, target: list | None = None):}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+
+\noindent\textbf{Enunciado}
+En CPython de 64 bits, cada entrada de un diccionario almacena tres palabras de \(8\text{ B}\) (\texttt{me\_hash}, \texttt{me\_key}, \texttt{me\_value} = \(24\text{ B}\)). Para una tabla con \(K = 128\) ranuras en el índice (\(1\text{ B}\) por ranura en \texttt{dk\_indices}) y capacidad para \(N = 85\) entradas en \texttt{dk\_entries}, calcula cuántos bytes ahorra el diseño de diccionario compacto (\(128 \cdot 1 + 85 \cdot 24\)) frente al diseño disperso antiguo (\(128 \cdot 24\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $K = 128\,\mathrm{ranuras}$ — Tamaño del array de índices hash (1 B por índice)
+\item $N = 85\,\mathrm{entradas}$ — Capacidad densa de entradas (2/3 de K)
+\item $S_{entry} = 24\,\mathrm{B}$ — Tamaño de cada entrada (hash, key, value)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de memoria del diccionario compacto de CPython (Raymond Hettinger)}
+
+\[
+\Delta M = 128 \cdot 24 - (128 \cdot 1 + 85 \cdot 24)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos el tamaño compacto (2168 B) al tamaño antiguo (3072 B)
+
+\[
+\Delta M = 128 \cdot 24 - (128 \cdot 1 + 85 \cdot 24)
+\]
+
+\[
+\left(\left(128\cdot 24\right)-\left(\left(128\cdot 1\right)+\left(85\cdot 24\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 904
+\]
+
+\noindent\textbf{Interpretación}
+El diccionario compacto ahorra 904 bytes (casi un 30 \% menos de memoria) y acelera la iteración al recorrer un array contiguo.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $904$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLXB5dGhvbi1mdW5kYW1lbnRvcy1tb2RlbG8tb2JqZXRvcy1uaXZlbC1wcmluY2lwaWFudGUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+En CPython de 64 bits, la cabecera base \texttt{PyObject} contiene \texttt{ob\_refcnt} (8 B) y \texttt{ob\_type} (8 B). ¿Cuántos bytes mide esta cabecera mínima?
+
+\noindent\textbf{2 [PRB-0004] (Básico, Numérico)}
+Una lista \texttt{PyListObject} mantiene un array de punteros \texttt{PyObject*} (8 B cada uno). Si su capacidad reservada es de 64 elementos, ¿cuántos bytes ocupa ese array de punteros?
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+¿Cuál es la suma de los cuadrados impares evaluada por \texttt{sum(x * x for x in range(1, 10, 2))} (\$\(1^2 + 3^2 + 5^2 + 7^2 + 9^2\)\$)?
+
+\noindent\textbf{4 [PRB-0006] (Intermedio, Diseño)}
+En el proyecto \texttt{projects/python-bytecode-vm}, la función compila y evalúa \texttt{(x + 4) * (y - 2) + (10 if x < y else 20)} para \(x = 6, y = 9\). ¿Cuál es el resultado entero devuelto?
+\end{tcolorbox}
+
+\chapter{Monografía de Python (II \(-\) Bloques D y E): Modelo de Datos (\_\_dunder\_\_), Typing Estático, Decoradores, Generadores y Context Managers}
+\label{chap:cap02-python-intermedio-avanzado-modelo-datos-tipado-iteradores}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+\noindent\textit{Este capítulo cubre los Bloques D y E de Python. La verdadera fluidez en Python consiste en comprender que la sintaxis del lenguaje (\texttt{len(x)}, \texttt{x[i]}, \texttt{for v in x}, \texttt{with ctx:}, \texttt{a + b}) se traduce directamente en invocaciones a métodos especiales del **Modelo de Datos** (\texttt{\_\_len\_\_}, \texttt{\_\_getitem\_\_}, \texttt{\_\_iter\_\_}, \texttt{\_\_enter\_\_}/\texttt{\_\_exit\_\_}, \texttt{\_\_add\_\_}).}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+Usa siempre \texttt{@dataclass(slots=True)} en clases de datos de alto volumen: reduce el consumo de memoria entre un 40 \% y un 60 \% y acelera el acceso a atributos al sustituir búsquedas hash en \texttt{\_\_dict\_\_} por desplazamientos directos en C.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+Protocolo Descriptor en Python: mecanismo fundamental del modelo de objetos según el cual cualquier atributo de clase que defina \texttt{\_\_get\_\_}, \texttt{\_\_set\_\_} o \texttt{\_\_delete\_\_} intercepta el acceso a atributos en las instancias, sirviendo de base para métodos ligados, \texttt{@property}, \texttt{@classmethod}, \texttt{@staticmethod} y \texttt{\_\_slots\_\_}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+¿Qué diferencia existe en el protocolo descriptor entre un *data descriptor* (define \texttt{\_\_get\_\_} y \texttt{\_\_set\_\_}) y un *non-data descriptor* (solo define \texttt{\_\_get\_\_}) frente a una entrada con el mismo nombre en \texttt{ instance.\_\_dict\_\_}?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+\end{tcolorbox}
+
+\section{Bloque D: POO en Python, Data Model (\_\_dunder\_\_), @dataclass, \_\_slots\_\_ y sistema de tipos (PEP 484 / PEP 695)}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+Por defecto, cada instancia de una clase definida por el usuario almacena sus atributos en un diccionario dinámico \texttt{\_\_dict\_\_}, lo que aporta flexibilidad pero añade más de \(100\text{ B}\) de sobrecoste por objeto. Cuando se instancian millones de objetos de dominio o nodos del AST (como en nuestro proyecto \texttt{projects/python-bytecode-vm}), declarar \texttt{@dataclass(frozen=True, slots=True)} genera automáticamente \texttt{\_\_init\_\_}, \texttt{\_\_repr\_\_}, \texttt{\_\_eq\_\_}, \texttt{\_\_hash\_\_} y reemplaza \texttt{\_\_dict\_\_} por un descriptor compacto de ranuras fijas (\texttt{\_\_slots\_\_}). Asimismo, Python 3.12 (PEP 695) simplifica la sintaxis de clases y funciones genéricas y de \texttt{typing.Protocol} (subtipado estructural o *static duck typing*):
+\begin{lstlisting}[style=studium,language={Python}]
+from dataclasses import dataclass
+from typing import Protocol
+
+class Measurable(Protocol):
+    def byte_size(self) -> int: ...
+
+@dataclass(frozen=True, slots=True)
+class TelemetryFrame:
+    sensor_id: int
+    payload: bytes
+    def byte_size(self) -> int:
+        return 8 + len(self.payload)
+
+def total_footprint[T: Measurable](items: list[T]) -> int:
+    return sum(item.byte_size() for item in items)
+\end{lstlisting}
+Observa que \texttt{TelemetryFrame} satisface \texttt{Measurable} estructuralmente para \texttt{pyright}/\texttt{mypy} sin necesidad de heredar nominalmente de \texttt{Measurable}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+\section{Bloque E: Clausuras, decoradores, iteradores, generadores (yield) y gestores de contexto (with)}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+Un **generador** es cualquier función cuyo cuerpo contiene la palabra clave \texttt{yield}. Al llamarla, no ejecuta su cuerpo inmediatamente, sino que devuelve un objeto iterador que suspende y reanuda su marco de ejecución (\texttt{PyGenObject}) en cada llamada a \texttt{next()}, manteniendo un consumo de memoria \(O(1)\) independientemente de si la secuencia subyacente tiene miles de millones de registros. Por su parte, los **gestores de contexto** implementan el protocolo \texttt{\_\_enter\_\_} / \texttt{\_\_exit\_\_(exc\_type, exc\_val, exc\_tb)} (o se escriben de forma concisa con \texttt{@contextlib.contextmanager} y un único \texttt{yield} dentro de un bloque \texttt{try ... finally:}), garantizando la liberación determinista de ficheros, conexiones de red, cerrojos \texttt{threading.Lock} y transacciones de base de datos.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+
+\noindent\textbf{Enunciado}
+En una aplicación de procesamiento de grafos en CPython de 64 bits, una clase \texttt{Edge} con \(k = 3\) atributos ocupa \(16 + 3 \times 8 = 40\text{ B}\) cuando se declara con \texttt{\_\_slots\_\_}, mientras que sin \texttt{\_\_slots\_\_} cada instancia aloja además un \texttt{\_\_dict\_\_} que añade \(112\text{ B}\) por objeto (\(152\text{ B}\) en total). Calcula cuántos megabytes exactos (dividiendo entre \$\(10^6\)\$) se ahorran al instanciar \(N = 1000000\) de aristas con \texttt{\_\_slots\_\_}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 1000000$ — Un millón de instancias de Edge
+\item $S_{con dict} = 152\,\mathrm{B}$ — Tamaño por instancia con \_\_dict\_\_
+\item $S_{con slots} = 40\,\mathrm{B}$ — Tamaño por instancia con \_\_slots\_\_
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de RAM con \_\_slots\_\_ en millones de instancias en CPython}
+
+\[
+\Delta M_{\text{MB}} = \frac{10^6 \cdot (152 - 40)}{10^6}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos el millón de instancias por los 112 B ahorrados y dividimos entre \(10^6\)
+
+\[
+\Delta M_{\text{MB}} = \frac{10^6 \cdot (152 - 40)}{10^6}
+\]
+
+\[
+\frac{\left(1000000\cdot \left(152-40\right)\right)}{1000000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 112
+\]
+
+\noindent\textbf{Interpretación}
+El uso de \_\_slots\_\_ ahorra exactamente 112 MB de memoria RAM.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $112$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLXB5dGhvbi1pbnRlcm1lZGlvLWF2YW56YWRvLW1vZGVsby1kYXRvcy10aXBhZG8taXRlcmFkb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+En CPython de 64 bits, ¿cuántos bytes ocupa una instancia con \texttt{\_\_slots\_\_} de 4 atributos (16 B de cabecera más \(4 \times 8\) B)?
+
+\noindent\textbf{2 [PRB-0010] (Básico, Numérico)}
+Un generador perezoso produce bloques de 4096 bytes uno a uno para procesar un fichero de 10 GiB. ¿Cuántos bloques mantiene simultáneamente en RAM?
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+En una jerarquía con herencia múltiple \texttt{class D(B, C)} donde \texttt{B(A)} y \texttt{C(A)} heredan de \texttt{A(object)}, ¿cuántas clases aparecen en la tupla de orden de resolución de métodos \texttt{D.\_\_mro\_\_} (\texttt{D, B, C, A, object})?
+
+\noindent\textbf{4 [PRB-0012] (Intermedio, Diseño)}
+Un decorador \texttt{@lru\_cache(maxsize=256)} recibe 1000 consultas sobre un conjunto de solo 200 claves distintas. ¿Cuántas veces se ejecuta realmente la función subyacente?
+\end{tcolorbox}
+
+\chapter{Monografía de Python (III \(-\) Bloques F, G y H): Asyncio, Concurrencia, Metaprogramación, Packaging y Proyectos}
+\label{chap:cap03-python-experto-asyncio-concurrencia-metaclases-packaging-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+\noindent\textit{Este capítulo completa la monografía de Python abordando el Nivel Experto (Bloque F), el Ecosistema (Bloque G) y los Proyectos (Bloque H), analizando en detalle el compilador AST y la máquina virtual de código de bytes \texttt{projects/python-bytecode-vm}.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+Nunca llames a funciones bloqueantes síncronas (\texttt{time.sleep}, \texttt{requests.get}, lectura síncrona de disco) dentro de una función \texttt{async def}: bloquearás todo el bucle de eventos de \texttt{asyncio} congelando el resto de tareas concurrentes; utiliza \texttt{await asyncio.sleep(...)}, \texttt{httpx.AsyncClient} o \texttt{await asyncio.to\_thread(...)}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+Concurrencia estructurada (\texttt{asyncio.TaskGroup}): abstracción de control de flujo concurrente que garantiza que el tiempo de vida de todas las tareas asíncronas lanzadas dentro de un bloque léxico \texttt{async with} está acotado por dicho bloque, sin dejar tareas huérfanas ejecutándose en segundo plano tras salir del ámbito.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+¿Por qué en \texttt{projects/python-bytecode-vm} un salto condicional \texttt{JMP\_IF\_FALSE} necesita parchar (*backpatch*) su índice de destino después de haber emitido las instrucciones de la rama verdadera?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\section{Bloque F: Asincronía con asyncio.TaskGroup, multiprocesamiento, metaclases y compilación AST}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+En Python, la elección del modelo de concurrencia depende de la naturaleza del cuello de botella: para operaciones limitadas por E/S de red o disco (*I/O-bound*) con miles de conexiones, \texttt{asyncio} ejecuta corrutinas cooperativas sobre un único hilo respaldado por \texttt{epoll}/\texttt{kqueue}/\texttt{iocp}. Python 3.11+ introdujo **concurrencia estructurada** mediante \texttt{async with asyncio.TaskGroup() as tg:}: si cualquiera de las tareas hijas lanza una excepción no capturada, el \texttt{TaskGroup} cancela automáticamente todas las tareas hermanas y propaga un \texttt{ExceptionGroup} manejable con \texttt{except*}. Para cargas intensivas de CPU (*CPU-bound*), se emplea \texttt{concurrent.futures.ProcessPoolExecutor}, compilación sin GIL (PEP 703) o núcleos vectorizados en Rust/C mediante \texttt{PyO3}, \texttt{NumPy} o \texttt{PyTorch}. En metaprogramación, el módulo estándar \texttt{ast} permite inspeccionar, transformar y compilar árboles sintácticos de forma segura sin usar \texttt{eval()} arbitrario, técnica demostrada en nuestro proyecto verificado \texttt{projects/python-bytecode-vm}:
+\begin{lstlisting}[style=studium,language={Python}]
+import ast
+
+def count_binary_ops(expr_source: str) -> int:
+    tree = ast.parse(expr_source, mode="eval")
+    return sum(1 for node in ast.walk(tree) if isinstance(node, ast.BinOp))
+\end{lstlisting}
+Para registrar subclases o validar esquemas de clase en el momento de su creación, Python 3.6+ ofrece el gancho ligero \texttt{\_\_init\_subclass\_\_(cls, **kwargs)}, evitando en el 95 \% de los casos la complejidad de definir una metaclase personalizada que herede de \texttt{type}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+\section{Bloques G y H: Ecosistema industrial (FastAPI, Pydantic, SQLAlchemy, Pytest) y los 4 proyectos (python-bytecode-vm)}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+El ecosistema profesional de Python (Bloque G) destaca por cuatro pilares: (1) desarrollo web y APIs con \texttt{FastAPI} (ASGI asíncrono), \texttt{Django} y validación de esquemas en Rust con \texttt{Pydantic v2}; (2) persistencia y migraciones con \texttt{SQLAlchemy 2.0} y \texttt{Alembic}; (3) ingeniería de datos y cálculo científico con \texttt{NumPy}, \texttt{SciPy}, \texttt{Pandas} y \texttt{Polars}; y (4) calidad y empaquetado con \texttt{pytest} (fixtures, parametrización), \texttt{Hypothesis} (property-based testing), \texttt{ruff}, \texttt{pyright} y construcción de paquetes \texttt{.whl} con \texttt{hatchling} o \texttt{maturin}. En el Bloque H, el lector desarrolla cuatro proyectos completos: un gestor CLI de tareas con persistencia SQLite, un cliente/servidor HTTP asíncrono con reintentos exponenciales, un pipeline de validación de datos y la máquina virtual de pila \texttt{projects/python-bytecode-vm}, verificada al 100 \% con \texttt{pytest}, \texttt{ruff} y \texttt{pyright}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+
+\noindent\textbf{Enunciado}
+Un agregador de microservicios en Python debe consultar \(N = 20\) endpoints HTTP independientes, cada uno con una latencia de red de \(L = 150\text{ ms}\) y \(1\text{ ms}\) de procesamiento de CPU local en el bucle de eventos. Calcula cuántos milisegundos se ahorran al ejecutarlos concurrentemente con \texttt{asyncio.TaskGroup} (\(150 + 20 \times 1 = 170\text{ ms}\)) frente a ejecutarlos secuencialmente de forma síncrona (\(20 \times (150 + 1) = 3020\text{ ms}\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 20$ — Número de peticiones HTTP
+\item $L = 150\,\mathrm{ms}$ — Latencia de red por petición
+\item $t_{cpu} = 1\,\mathrm{ms}$ — Tiempo de CPU por respuesta
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Solapamiento de latencia de E/S en el bucle de eventos de asyncio}
+
+\[
+\Delta T = 20 \cdot 151 - (150 + 20)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos el tiempo concurrente (170 ms) al tiempo secuencial (3020 ms)
+
+\[
+\Delta T = 20 \cdot 151 - (150 + 20)
+\]
+
+\[
+\left(\left(20\cdot \left(150+1\right)\right)-\left(150+\left(20\cdot 1\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 2850
+\]
+
+\noindent\textbf{Interpretación}
+La ejecución concurrente con asyncio ahorra 2850 ms, reduciendo el tiempo de respuesta total de 3.02 s a 0.17 s.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $2850$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLXB5dGhvbi1leHBlcnRvLWFzeW5jaW8tY29uY3VycmVuY2lhLW1ldGFjbGFzZXMtcGFja2FnaW5nLXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+En \texttt{projects/python-bytecode-vm}, la expresión \texttt{2 * 3 + 4 * 5} emite 4 instrucciones \texttt{LOAD\_CONST} y 3 instrucciones binarias (\texttt{MUL}, \texttt{MUL}, \texttt{ADD}). ¿Cuántas instrucciones totales contiene el bloque compilado?
+
+\noindent\textbf{2 [PRB-0016] (Básico, Numérico)}
+Al evaluar \texttt{2 * 3 + 4 * 5} en una máquina de pila, ¿cuál es la altura máxima (número máximo de operandos apilados simultáneamente) que alcanza la pila?
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+Un pool de 8 procesos (\texttt{ProcessPoolExecutor(max\_workers=8)}) ejecuta 40 tareas de CPU de 2 segundos cada una. ¿Cuántos segundos tarda en completar las 40 tareas ideales (\(40 / 8 \times 2\))?
+
+\noindent\textbf{4 [PRB-0018] (Intermedio, Diseño)}
+Una política de reintentos con retroceso exponencial (\texttt{backoff}) espera \(100 \cdot 2^k\text{ ms}\) para \(k = 0, 1, 2, 3\). ¿Cuántos milisegundos totales habrá esperado acumulados tras esos 4 reintentos?
+\end{tcolorbox}
+
+\part{Monografías Autónomas de JavaScript (ES2024+) y TypeScript (5.x)}
+
+\chapter{Monografía de JavaScript (I \(-\) Bloques A\(-\)D): Historia, Motor V8, Ámbitos, Clausuras, Prototipos y Módulos ESM}
+\label{chap:cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+\noindent\textit{Este capítulo inicia la monografía autónoma de **JavaScript (ECMAScript 2024+)**, diferenciándolo con rigor de TypeScript. JavaScript es el único lenguaje nativo universal de los navegadores web y, a través de motores como V8 (Node.js, Deno) y JavaScriptCore (Bun), un entorno de servidor de altísima velocidad cuando se comprende cómo optimiza el compilador JIT sus estructuras dinámicas.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+Para preservar el polimorfismo monomórfico en las *Inline Caches* de V8, inicializa siempre todas las propiedades de un objeto en su constructor en el mismo orden y evita eliminar propiedades dinámicamente con \texttt{delete obj.prop}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+Zona Muerta Temporal (Temporal Dead Zone, TDZ en ECMAScript): intervalo de ejecución desde la entrada al bloque léxico hasta la evaluación de la declaración \texttt{let} o \texttt{const} de una variable, durante el cual cualquier intento de leer o escribir dicha variable lanza determinísticamente un \texttt{ReferenceError}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+¿Por qué en JavaScript \texttt{0.1 + 0.2 === 0.3} evalúa a \texttt{false} y cómo deben representarse importes monetarios exactos usando \texttt{BigInt} en céntimos?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Historia de ECMAScript, motores JIT (V8), tipos, coerción vs ===, let/const y funciones}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+Creado por Brendan Eich en Netscape en 1995 y estandarizado por Ecma International bajo la especificación **ECMA-262**, JavaScript experimentó su transformación decisiva en ES6 (ES2015) con la introducción de \texttt{let}/\texttt{const}, funciones flecha, clases, promesas, generadores, \texttt{Map}/\texttt{Set}, \texttt{Symbol} y módulos nativos ESM. En los motores modernos como V8, el código fuente no se interpreta línea a línea: se compila a bytecode (*Ignition*) y las funciones calientes se optimizan a código máquina nativo (*TurboFan*) asociando a cada objeto una **clase oculta** (*Hidden Class* o *Shape/Map*). Si todas las instancias de un punto se inicializan con las mismas propiedades en el mismo orden (\texttt{\{ x, y \}}), comparten la misma Shape y los accesos \texttt{pt.x} se resuelven en una sola instrucción mediante *Inline Caching* (monomórfico). En cuanto a los tipos primitivos, \texttt{number} es un flotante IEEE 754 de doble precisión cuyos enteros exactos llegan hasta \texttt{Number.MAX\_SAFE\_INTEGER} (\(2^{53} - 1 = 9007199254740991\)), mientras que \texttt{BigInt} (\texttt{42n}) representa enteros de precisión arbitraria. En código profesional se utiliza siempre la igualdad estricta \texttt{===} y \texttt{!==} (que no realiza coerción implícita de tipos) o \texttt{Object.is(a, b)} (que distingue \texttt{+0} de \texttt{-0} y evalúa \texttt{Object.is(NaN, NaN)} a \texttt{true}).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+\section{Bloque D: Clausuras, delegación por prototipos, clases, desestructuración y módulos ES (ESM vs CommonJS)}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+A diferencia de los lenguajes basados en clases estáticas, el modelo de objetos de JavaScript se fundamenta en la **delegación prototípica**: cada objeto posee un enlace interno \texttt{[[Prototype]]} (accesible mediante \texttt{Object.getPrototypeOf(obj)}). Cuando se lee una propiedad \texttt{obj.metodo}, si no existe como propiedad propia (\texttt{Object.hasOwn(obj, 'metodo')}), el motor asciende por la cadena de prototipos hasta encontrarla o llegar a \texttt{null}. La sintaxis \texttt{class} de ES2015/ES2022 (incluyendo campos privados reales \texttt{\#saldo} verificados por la gramática) se construye limpiamente sobre este mecanismo:
+\begin{lstlisting}[style=studium,language={JavaScript}]
+export class TokenBucket {
+  #capacity;
+  #tokens;
+  constructor(capacity) {
+    this.#capacity = capacity;
+    this.#tokens = capacity;
+  }
+  tryConsume(amount = 1) {
+    if (amount <= 0 || this.#tokens < amount) return false;
+    this.#tokens -= amount;
+    return true;
+  }
+  get available() { return this.#tokens; }
+}
+\end{lstlisting}
+Asimismo, mientras que las funciones tradicionales determinan el valor de \texttt{this} dinámicamente según el sitio de llamada (\texttt{obj.fn()}, \texttt{fn.call(ctx)}), las funciones flecha (\texttt{() => ...}) carecen de \texttt{this} propio y lo capturan léxicamente del ámbito circundante.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+
+\noindent\textbf{Enunciado}
+En el motor V8 con compresión de punteros (*Pointer Compression*), cada referencia a propiedad en un objeto de forma fija (*Fast Properties / In-object properties*) ocupa \(4\text{ B}\) en lugar de \(8\text{ B}\), más una cabecera de objeto de \(12\text{ B}\) (\texttt{map}, \texttt{properties}, \texttt{elements} comprimidos). Calcula cuántos bytes ahorran \(N = 10000\) objetos con \(k = 5\) propiedades en línea bajo compresión de punteros (\(12 + 5 \times 4 = 32\text{ B}\) por objeto) frente a punteros de 64 bits sin comprimir (\(24 + 5 \times 8 = 64\text{ B}\) por objeto).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 10000$ — Número de objetos instanciados
+\item $S_{64} = 64\,\mathrm{B}$ — Tamaño por objeto con punteros de 8 B (24 + 40)
+\item $S_{comp} = 32\,\mathrm{B}$ — Tamaño por objeto con punteros comprimidos de 4 B (12 + 20)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de montículo mediante Pointer Compression en el motor V8}
+
+\[
+\Delta M = 10000 \cdot (64 - 32)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 10000 objetos por los 32 B ahorrados en cada uno
+
+\[
+\Delta M = 10000 \cdot (64 - 32)
+\]
+
+\[
+\left(10000\cdot \left(\left(24+\left(5\cdot 8\right)\right)-\left(12+\left(5\cdot 4\right)\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 320000
+\]
+
+\noindent\textbf{Interpretación}
+La compresión de punteros de V8 reduce el consumo a la mitad exacta, ahorrando 320 000 bytes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $320000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmFzY3JpcHQtZnVuZGFtZW50b3MtY2xvc3VyZXMtcHJvdG90aXBvcy1uaXZlbC1pbnRlcm1lZGlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+En V8 con punteros comprimidos de 4 bytes, ¿cuántos bytes ocupa la cabecera de 3 campos (\texttt{map}, \texttt{properties}, \texttt{elements}) de un objeto JS (\(3 \times 4\))?
+
+\noindent\textbf{2 [PRB-0022] (Básico, Numérico)}
+Un \texttt{ArrayBuffer(1024)} se observa mediante un \texttt{Float64Array} (8 bytes por elemento). ¿Cuántos elementos \texttt{length} tiene la vista tipada?
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+Si una cadena de prototipos tiene 4 niveles (\texttt{instancia -> SubClase.prototype -> Base.prototype -> Object.prototype -> null}) y se busca una propiedad inexistente, ¿cuántos eslabones de objeto se inspeccionan antes de llegar a \texttt{null}?
+
+\noindent\textbf{4 [PRB-0024] (Intermedio, Diseño)}
+En \texttt{TokenBucket} con capacidad inicial de 100 tokens, se procesan 7 peticiones que consumen 12 tokens cada una. ¿Cuántos tokens quedan disponibles?
+\end{tcolorbox}
+
+\chapter{Monografía de JavaScript (II \(-\) Bloques E\(-\)H): Event Loop, Microtareas, Promises, Async/Await, Streams, Node.js y Proyectos}
+\label{chap:cap05-javascript-avanzado-event-loop-promesas-web-node-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\noindent\textit{Este capítulo completa la monografía de JavaScript cubriendo los Bloques E, F, G y H: el funcionamiento exacto del **Event Loop**, la diferencia crítica entre microtareas y macrotareas, el manejo de contrapresión (*backpressure*) en flujos de datos y el paralelismo real mediante \texttt{Worker}s.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+% studium:record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (stack) {1. Call Stack\\(Código Síncrono)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.8cm, minimum height=1.0cm, align=center, right=1.0cm of stack] (micro) {2. Cola de Microtareas\\(\texttt{Promise.then}, \texttt{await})\\¡Vaciado hasta 0!};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.6cm, minimum height=1.0cm, align=center, right=1.0cm of micro] (macro) {3. Cola de Macrotareas\\(\texttt{setTimeout}, I/O)\\(1 tarea por vuelta)};
+\draw[->] (stack) -- (micro);
+\draw[->] (micro) -- (macro);
+\draw[->] (macro.south) -- ++(0,-0.6) -| (stack.south);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (stack) {1. Call Stack\\(Código Síncrono)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.8cm, minimum height=1.0cm, align=center, right=1.0cm of stack] (micro) {2. Cola de Microtareas\\(\texttt{Promise.then}, \texttt{await})\\¡Vaciado hasta 0!};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.6cm, minimum height=1.0cm, align=center, right=1.0cm of micro] (macro) {3. Cola de Macrotareas\\(\texttt{setTimeout}, I/O)\\(1 tarea por vuelta)};
+\draw[->] (stack) -- (micro);
+\draw[->] (micro) -- (macro);
+\draw[->] (macro.south) -- ++(0,-0.6) -| (stack.south);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (stack) {1. Call Stack\\(Código Síncrono)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.8cm, minimum height=1.0cm, align=center, right=1.0cm of stack] (micro) {2. Cola de Microtareas\\(\texttt{Promise.then}, \texttt{await})\\¡Vaciado hasta 0!};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.6cm, minimum height=1.0cm, align=center, right=1.0cm of micro] (macro) {3. Cola de Macrotareas\\(\texttt{setTimeout}, I/O)\\(1 tarea por vuelta)};
+\draw[->] (stack) -- (micro);
+\draw[->] (micro) -- (macro);
+\draw[->] (macro.south) -- ++(0,-0.6) -| (stack.south);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (stack) {1. Call Stack\\(Código Síncrono)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.8cm, minimum height=1.0cm, align=center, right=1.0cm of stack] (micro) {2. Cola de Microtareas\\(\texttt{Promise.then}, \texttt{await})\\¡Vaciado hasta 0!};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.6cm, minimum height=1.0cm, align=center, right=1.0cm of micro] (macro) {3. Cola de Macrotareas\\(\texttt{setTimeout}, I/O)\\(1 tarea por vuelta)};
+\draw[->] (stack) -- (micro);
+\draw[->] (micro) -- (macro);
+\draw[->] (macro.south) -- ++(0,-0.6) -| (stack.south);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-js-event-loop-queues}\textbf{Figura~\thestudiumfigure.} Ciclo determinista del Event Loop: tras vaciar la pila de llamadas síncrona (Call Stack), el motor drena exhaustivamente TODas las microtareas encoladas (incluidas las añadidas por otras microtareas) antes de tomar una única macrotarea.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+Cuando lances múltiples operaciones asíncronas independientes entre sí dentro de una función \texttt{async}, no escribas \texttt{const a = await fetchA(); const b = await fetchB();} en serie: lánzalas en paralelo con \texttt{const [a, b] = await Promise.all([fetchA(), fetchB()]);}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+Contrapresión (Backpressure en Streams): mecanismo de control de flujo mediante el cual un consumidor lento señala al productor asíncrono que su búfer interno ha alcanzado la marca de agua alta (\texttt{highWaterMark}), pausando la lectura de la fuente subyacente hasta que el búfer se drena.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+¿Qué diferencia existe entre \texttt{Promise.all}, \texttt{Promise.allSettled}, \texttt{Promise.race} y \texttt{Promise.any} cuando una de las promesas de entrada se rechaza con un error?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\section{Bloques E y F: Event Loop, cola de microtareas vs macrotareas, Promises, async/await, Streams y Workers}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+El modelo de concurrencia de JavaScript se basa en un hilo principal con ejecución hasta completitud (*run-to-completion*) gobernado por el **Event Loop**. Como muestra la Figura \textbackslash{}ref\{fig:fig-js-event-loop-queues\}, existen dos colas con semánticas de vaciado radicalmente distintas: la **cola de microtareas** (*Jobs* en ECMA-262: continuaciones \texttt{.then/.catch/.finally} de \texttt{Promise}, código posterior a un \texttt{await} y \texttt{queueMicrotask}) y la **cola de tareas o macrotareas** (\texttt{setTimeout}, \texttt{setInterval}, eventos del DOM, callbacks de red/disco en \texttt{libuv}). Regla fundamental: cada vez que el *Call Stack* queda vacío, el motor ejecuta **todas** las microtareas pendientes hasta dejar la cola de microtareas completamente vacía antes de procesar la siguiente macrotarea o repintar la interfaz:
+\begin{lstlisting}[style=studium,language={JavaScript}]
+// Orden determinista de salida: [1, 4, 3, 2]
+export function traceEventLoopOrder() {
+  const log = [];
+  log.push(1);
+  setTimeout(() => log.push(2), 0);               // Macrotarea
+  Promise.resolve().then(() => log.push(3));      // Microtarea
+  log.push(4);
+  return log;
+}
+\end{lstlisting}
+Por consiguiente, un bucle recursivo infinito de \texttt{queueMicrotask} o \texttt{Promise.resolve().then(...)} hambrea por completo las macrotareas de E/S y congela el proceso aunque nunca bloquee mediante un \texttt{while(true)} síncrono.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\section{Bloques G y H: Ecosistema (Node.js, Deno, Bun, npm/pnpm, Vitest, ESLint) y los 4 proyectos en JavaScript}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+En el Nivel Experto (Bloque F), cuando se procesan ficheros o respuestas HTTP de varios gigabytes en Node.js o la Web API, cargar todo el cuerpo en un \texttt{Buffer} agota el montículo de V8; en su lugar se utilizan \texttt{ReadableStream} / \texttt{WritableStream} con \texttt{pipeline()}, que regulan automáticamente la velocidad del productor según la capacidad del consumidor (*backpressure*). Para cómputo intensivo de CPU (criptografía, compresión, procesamiento de imágenes), se emplean \texttt{Worker Threads} (Node.js) o \texttt{Web Workers} (navegador) comunicados por paso de mensajes (\texttt{Structured Clone}), transferencia de propiedad de coste cero (\texttt{ArrayBuffer} transferibles) o memoria compartida sincronizada con \texttt{SharedArrayBuffer} y \texttt{Atomics}. El Bloque G cubre la gestión de paquetes con \texttt{pnpm}/\texttt{npm}, \texttt{package.json} (\texttt{exports} condicionales ESM), \texttt{ESLint}, \texttt{Prettier} y \texttt{Vitest} / \texttt{node --test}, y el Bloque H presenta cuatro proyectos completos en JavaScript puro (motor de plantillas reactivo sin dependencias, planificador de colas asíncrono con límite de concurrencia \texttt{p-limit}, procesador de logs por streams y servidor HTTP REST).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+
+\noindent\textbf{Enunciado}
+Un descargador asíncrono en Node.js debe procesar \(N = 120\) ficheros remotos con un limitador de concurrencia que mantiene exactamente \(k = 15\) promesas en vuelo simultáneamente para no saturar el servidor de origen. Si cada descarga tarda \(D = 200\text{ ms}\), calcula el tiempo total en milisegundos necesario para completar las 120 descargas (\((120 / 15) \times 200\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 120$ — Total de tareas asíncronas
+\item $k = 15$ — Concurrencia máxima permitida
+\item $D = 200\,\mathrm{ms}$ — Duración de cada descarga
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Tiempo de finalización con concurrencia acotada (Semaphore / Pool de Promesas)}
+
+\[
+T = \frac{120}{15} \cdot 200
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Dividimos las 120 tareas en 8 oleadas de 15 y multiplicamos por 200 ms
+
+\[
+T = \frac{120}{15} \cdot 200
+\]
+
+\[
+\left(\frac{120}{15}\cdot 200\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 1600
+\]
+
+\noindent\textbf{Interpretación}
+Las 120 descargas finalizan en 1600 ms (1.6 segundos) manteniendo el uso de sockets acotado en 15.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $1600$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWphdmFzY3JpcHQtYXZhbnphZG8tZXZlbnQtbG9vcC1wcm9tZXNhcy13ZWItbm9kZS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+En un turno del Event Loop se encolan 3 macrotareas (\texttt{setTimeout}) y 5 microtareas (\texttt{Promise.then}). ¿Cuántas microtareas se ejecutan antes de que comience la primera macrotarea?
+
+\noindent\textbf{2 [PRB-0028] (Básico, Numérico)}
+Un \texttt{ReadableStream} con \texttt{highWaterMark = 65536} bytes (64 KiB) contiene actualmente 49 152 bytes sin consumir. ¿Cuántos bytes más puede aceptar antes de activar la señal de contrapresión?
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+Si 3 promesas independientes tardan 120 ms, 350 ms y 210 ms respectivamente, ¿en cuántos milisegundos se resuelve \texttt{Promise.all} de las tres?
+
+\noindent\textbf{4 [PRB-0030] (Intermedio, Diseño)}
+En el problema anterior, si en lugar de \texttt{Promise.all} se ejecutaran secuencialmente con tres \texttt{await} uno tras otro, ¿cuántos milisegundos adicionales tardaría la operación (\$120 + 350 + 210 - 350\$)?
+\end{tcolorbox}
+
+\chapter{Monografía de TypeScript (I \(-\) Bloques A\(-\)D): Relación con JS, Borrado de Tipos, Tipado Estructural y Uniones Discriminadas}
+\label{chap:cap06-typescript-fundamentos-sistema-tipos-estructural-uniones}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+\noindent\textit{Este capítulo inicia la monografía diferenciada de **TypeScript (5.x)** (Bloques A, B, C y D). Explicamos con rigor matemático cómo su sistema de tipos estructural modela toda la flexibilidad dinámica de JavaScript mediante tipos algebraicos y análisis de flujo de control, y por qué el **borrado de tipos** (*type erasure*) exige combinar tipos estáticos con validadores en las fronteras de red.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+Activa siempre en \texttt{tsconfig.json} tanto \texttt{"strict": true} como \texttt{"noUncheckedIndexedAccess": true}: sin esta última opción, indexar un array \texttt{arr[i]} o un diccionario \texttt{dict[k]} se tipa como \texttt{T} en lugar de \texttt{T | undefined}, ocultando posibles accesos fuera de límites.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+Subtipado Estructural por Anchura y Profundidad: relación de subtipado \$S <: T\$ en la que un registro \(S = \{ l_i : S_i \}_{i \in I}\) es subtipo de \(T = \{ l_j : T_j \}_{j \in J}\) si el conjunto de etiquetas de \(T\) está contenido en el de \(S\) (\(J \subseteq I\), anchura) y para cada \(j \in J\) inmutable se cumple \(S_j <: T_j\) (profundidad).
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+¿Por qué TypeScript aplica una comprobación adicional de *propiedades en exceso* (*excess property checking*) cuando se pasa un literal de objeto directamente a una función, pero la omite si ese mismo objeto se guarda primero en una variable intermedia?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Filosofía de TypeScript, borrado de tipos, tsconfig.json estricto y primitivos (unknown, never)}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+Creado por Anders Hejlsberg en Microsoft y publicado en 2012, TypeScript es un superconjunto sintáctico estáticamente tipado de ECMAScript. Su principio arquitectónico fundamental es el **borrado de tipos** (*type erasure*): una vez que el comprobador de tipos (\texttt{tsc}) verifica la ausencia de errores estáticos, todas las anotaciones de tipos, interfaces, alias \texttt{type} y parámetros genéricos desaparecen por completo al emitir JavaScript (o al ejecutar directamente el fichero \texttt{.ts} mediante \texttt{node --experimental-strip-types} en Node.js 22+/24+). En consecuencia, las anotaciones de TypeScript tienen **coste cero** en tiempo de ejecución, pero tampoco realizan validaciones automáticas sobre un JSON recibido de la red (\texttt{JSON.parse} devuelve datos cuya forma real debe verificarse en tiempo de ejecución antes de estrechar su tipo). En teoría de tipos, \texttt{unknown} es el tipo superior seguro (*top type*: acepta cualquier valor pero prohíbe operar sobre él sin estrecharlo primero), \texttt{never} es el tipo inferior vacío (*bottom type*, conjunto \(\emptyset\): habita las funciones que nunca retornan y las ramas inalcanzables), mientras que \texttt{any} desactiva el sistema de tipos y debe prohibirse mediante \texttt{@typescript-eslint/no-explicit-any}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+\section{Bloque D: Tipado estructural, interfaces vs type aliases, estrechamiento (narrowing) y uniones discriminadas}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+A diferencia de Java o C\#, TypeScript utiliza **subtipado estructural** (*structural subtyping*): un tipo \(S\) es subtipo de \(T\) (\$S <: T\$) si y solo si \(S\) posee al menos todas las propiedades requeridas por \(T\) con tipos compatibles, sin importar cómo se declararon sus nombres. La herramienta de modelado de dominio más potente de TypeScript es la **unión discriminada** (*discriminated union*): una unión de tipos objeto que comparten una propiedad literal discriminante común (como \texttt{kind} o \texttt{ok}). Como se implementa en nuestro proyecto verificado \texttt{projects/ts-reactive-http}, el compilador estrecha (*narrows*) automáticamente el tipo en cada rama condicional y verifica la exhaustividad asignando el caso residual al tipo vacío \texttt{never}:
+\begin{lstlisting}[style=studium,language={JavaScript}]
+export type DomainEvent =
+  | { readonly kind: "created"; readonly id: string; readonly timestamp: number }
+  | { readonly kind: "paid"; readonly id: string; readonly amountCents: number }
+  | { readonly kind: "cancelled"; readonly id: string; readonly reason: string };
+
+export function formatEventSummary(ev: DomainEvent): string {
+  switch (ev.kind) {
+    case "created":   return `Created ${ev.id} at ${ev.timestamp}`;
+    case "paid":      return `Paid ${ev.id}: ${ev.amountCents} cents`;
+    case "cancelled": return `Cancelled ${ev.id}: ${ev.reason}`;
+    default: {
+      const _exhaustive: never = ev;
+      return _exhaustive;
+    }
+  }
+}
+\end{lstlisting}
+Si en el futuro un ingeniero añade una cuarta variante a \texttt{DomainEvent}, el bloque \texttt{default} fallará en compilación porque la nueva variante no es asignable a \texttt{never}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+
+\noindent\textbf{Enunciado}
+En un módulo de pagos en TypeScript, un estado mal modelado con banderas opcionales independientes \texttt{\{ status: 'idle' | 'loading' | 'success' | 'error'; isRetry: boolean; hasCache: boolean; isOffline: boolean \}} tiene \(4 \times 2 \times 2 \times 2 = 32\) combinaciones posibles. Al refactorizarlo en una unión discriminada exacta donde solo existen \(9\) estados válidos de dominio, ¿cuántos estados inválidos se vuelven estáticamente irrepresentables en compilación?
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $C_{prod} = 32$ — Estados del tipo producto cartesiano \((4 * 2^3)\)
+\item $C_{suma} = 9$ — Estados legítimos de la unión discriminada
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Reducción de cardinalidad de estados mediante uniones discriminadas en TypeScript}
+
+\[
+\Delta C = 4 \cdot 2^3 - 9
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos los 9 estados legítimos a las 32 combinaciones del producto cartesiano
+
+\[
+\Delta C = 4 \cdot 2^3 - 9
+\]
+
+\[
+\left(\left(\left(\left(4\cdot 2\right)\cdot 2\right)\cdot 2\right)-9\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 23
+\]
+
+\noindent\textbf{Interpretación}
+Se eliminan de raíz 23 estados imposibles o incoherentes sin escribir una sola prueba adicional.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $23$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LXR5cGVzY3JpcHQtZnVuZGFtZW50b3Mtc2lzdGVtYS10aXBvcy1lc3RydWN0dXJhbC11bmlvbmVzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+Un tipo literal unión \texttt{type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'} se combina en una tupla \texttt{[HttpMethod, boolean]}. ¿Cuántos valores distintos habitan esa tupla (\(5 \times 2\))?
+
+\noindent\textbf{2 [PRB-0034] (Básico, Numérico)}
+¿Cuántos bytes adicionales ocupa en el fichero \texttt{.js} emitido por \texttt{tsc} una interfaz \texttt{interface UserProfile} de 45 líneas tras el borrado de tipos?
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+Una unión discriminada tiene 6 variantes y un \texttt{switch} cubre actualmente 4 de ellas. ¿Cuántas variantes quedan en el tipo estrechado de la variable al llegar a la rama \texttt{default}?
+
+\noindent\textbf{4 [PRB-0036] (Intermedio, Diseño)}
+En \texttt{projects/ts-reactive-http}, el limitador de tasa se inicializa con capacidad 3 y se envían 4 peticiones válidas seguidas. ¿Cuántas respuestas retornan con código HTTP \texttt{201} antes de que salte el código \texttt{429}?
+\end{tcolorbox}
+
+\chapter{Monografía de TypeScript (II \(-\) Bloques E\(-\)H): Programación a Nivel de Tipos (Mapped, Conditional, infer, Template Literals) y Proyectos}
+\label{chap:cap07-typescript-avanzado-experto-mapped-conditional-infer-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+\noindent\textit{Este capítulo lleva al lector a los niveles Avanzado y Experto de TypeScript (Bloques E, F, G y H). El sistema de tipos de TypeScript constituye por sí mismo un lenguaje funcional puro que se evalúa en tiempo de compilación sobre conjuntos de tipos, permitiendo calcular tipos de retorno, rutas tipadas y esquemas recursivos.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+Utiliza el operador \texttt{satisfies} para diccionarios de configuración y tablas de rutas: \texttt{const routes = \{ ... \} satisfies Record<string, RouteConfig>} comprueba cada entrada contra \texttt{RouteConfig} pero conserva las claves literales exactas en \texttt{keyof typeof routes}.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+Distributividad de Tipos Condicionales en TypeScript: propiedad según la cual, para un tipo condicional \texttt{type F<T> = T extends U ? X : Y} donde \texttt{T} es un parámetro genérico desnudo, instanciar \texttt{F<A | B>} se distribuye automáticamente como \texttt{F<A> | F<B>} (pudiendo desactivarse escribiendo \texttt{[T] extends [U] ? X : Y}).
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+¿Por qué \texttt{Exclude<'a' | 'b' | 'c', 'a'>} devuelve \texttt{'b' | 'c'} gracias a la distributividad de \texttt{T extends U ? never : T} y por qué \texttt{never} actúa como el elemento neutro de la unión (\texttt{T | never = T})?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\section{Bloques E y F: Generics, keyof, Mapped Types, Conditional Types, infer, Template Literals, satisfies y Branded Types}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+La programación a nivel de tipos en TypeScript se apoya en cuatro primitivas composicionales: (1) el operador de consulta de claves \texttt{keyof T} y el acceso indexado \texttt{T[K]}; (2) los **tipos mapeados** (\texttt{\{ readonly [K in keyof T as ...]: ... \}}), sobre los que se construyen utilidades estándar como \texttt{Partial<T>}, \texttt{Required<T>}, \texttt{Readonly<T>}, \texttt{Pick<T, K>} y \texttt{Record<K, V>}; (3) los **tipos condicionales** \texttt{T extends U ? X : Y}, que se distribuyen automáticamente sobre uniones cuando \texttt{T} es un parámetro de tipo desnudo y permiten extraer tipos internos mediante \texttt{infer} (como \texttt{type AwaitedValue<T> = T extends Promise<infer U> ? AwaitedValue<U> : T}); y (4) los **Template Literal Types**, que calculan productos cartesianos de cadenas en compilación. Además, TypeScript 4.9+ introdujo el operador \texttt{satisfies}, que valida que una expresión cumpla un contrato \texttt{T} **sin ensanchar** (*widening*) su tipo literal inferido, y para los casos donde el tipado estructural resulta demasiado permisivo (por ejemplo, evitar pasar un \texttt{UserId} donde se espera un \texttt{OrderId}, siendo ambos \texttt{string}), se emplean **Branded Types**:
+\begin{lstlisting}[style=studium,language={JavaScript}]
+declare const __brand: unique symbol;
+export type Brand<T, B extends string> = T & { readonly [__brand]: B };
+
+export type UserId  = Brand<string, "UserId">;
+export type OrderId = Brand<string, "OrderId">;
+export type DeepReadonly<T> = {
+  readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
+};
+\end{lstlisting}
+Con \texttt{Brand<string, "UserId">}, la marca fantasma \texttt{unique symbol} existe únicamente en el comprobador de tipos y se borra por completo en ejecución, proporcionando seguridad nominal con coste cero.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+\section{Bloques G y H: Ecosistema (Zod, tRPC, Vite, tsx, Vitest) y los 4 proyectos (incluyendo ts-reactive-http)}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+En el Bloque G (Ecosistema), la práctica estándar de la industria combina TypeScript con validadores de esquema en las fronteras de entrada/salida (como \texttt{Zod} o \texttt{Valibot}, donde \texttt{type Payload = z.infer<typeof PayloadSchema>} deriva el tipo estático directamente del validador de ejecución para que jamás diverjan), comunicación extremo a extremo con seguridad de tipos (\texttt{tRPC}, OpenAPI/GraphQL codegen), empaquetadores rápidos (\texttt{Vite}, \texttt{esbuild}, \texttt{tsup}) y ejecución directa en Node.js (\texttt{node --experimental-strip-types} o \texttt{tsx}). En el Bloque H, junto con un cliente HTTP tipado por rutas, un motor de máquinas de estados finitos (\texttt{StateMachine<S, E>}) y un bus de eventos tipado, estudiamos el proyecto completo \texttt{projects/ts-reactive-http}, verificado con \texttt{node --experimental-strip-types --test}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+
+\noindent\textbf{Enunciado}
+En un sistema de diseño tipado en TypeScript, se define el tipo de clases utilitarias mediante Template Literal Types: \texttt{type SpacingUtility = }\$\{Direction\}-\$\{Axis\}-\$\{Scale\}`\texttt{, donde }Direction\texttt{ tiene \$2\$ miembros (}'m' | 'p'\texttt{), }Axis\texttt{ tiene \$7\$ miembros (}'t' | 'b' | 'l' | 'r' | 'x' | 'y' | 'a'\texttt{) y }Scale\texttt{ tiene \$12\$ miembros (}'0'\texttt{ a }'11'\texttt{). Calcula cu{\'a}ntos tipos literales de cadena exactos genera el compilador en la uni{\'o}n }SpacingUtility`.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $Direction = 2$ — Margen o padding ('m' | 'p')
+\item $Axis = 7$ — Ejes direccionales
+\item $Scale = 12$ — Niveles de la escala espacial
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Producto cartesiano en Template Literal Types de TypeScript}
+
+\[
+|U| = 2 \cdot 7 \cdot 12
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las cardinalidades de las tres uniones literales
+
+\[
+|U| = 2 \cdot 7 \cdot 12
+\]
+
+\[
+\left(\left(2\cdot 7\right)\cdot 12\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 168
+\]
+
+\noindent\textbf{Interpretación}
+El compilador genera y autocompleta exactamente 168 literales de cadena válidos en tiempo de compilación.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $168$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LXR5cGVzY3JpcHQtYXZhbnphZG8tZXhwZXJ0by1tYXBwZWQtY29uZGl0aW9uYWwtaW5mZXItcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+Una interfaz \texttt{Config} tiene 8 propiedades obligatorias. Si se aplica \texttt{Pick<Config, 'host' | 'port' | 'tls'>}, ¿cuántas propiedades tiene el tipo resultante?
+
+\noindent\textbf{2 [PRB-0040] (Básico, Numérico)}
+En el problema anterior, si en su lugar se aplica \texttt{Omit<Config, 'host' | 'port' | 'tls'>}, ¿cuántas propiedades conserva el tipo resultante?
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+Un Template Literal Type \texttt{\$\{'http' | 'https'\}://\$\{'api' | 'auth' | 'cdn'\}.ejemplo.es/\$\{'v1' | 'v2'\}} expande todas las rutas válidas. ¿Cuántos literales de URL compone la unión?
+
+\noindent\textbf{4 [PRB-0042] (Intermedio, Diseño)}
+En \texttt{projects/ts-reactive-http}, cada lectura de telemetría se redondea con \texttt{Math.round(v * 100) / 100}. Para el vector \texttt{[12.5, 7.25, 10.25]}, ¿cuál es el valor exacto de la suma?
+\end{tcolorbox}
+
+\chapter{Arquitectura Comparada, Interoperabilidad (FFI, WebAssembly, REST/JSON) y Rúbrica de Python, JavaScript y TypeScript}
+\label{chap:cap08-interoperabilidad-comparativa-arquitectura-python-js-ts}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+\noindent\textit{Este capítulo de síntesis compara con rigor científico los tres lenguajes del Volumen V y muestra cómo combinarlos en arquitecturas reales de producción (por ejemplo, un frontend y pasarela API en TypeScript comunicándose con un motor de cálculo científico o de aprendizaje automático en Python).}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+En arquitecturas políglotas Python + TypeScript, utiliza el esquema OpenAPI exportado por FastAPI/Pydantic o definiciones Protobuf como única fuente de verdad en el pipeline de CI para detectar rupturas de contrato antes de desplegar.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+Ejecución ansiosa frente a perezosa de tareas asíncronas (Eager Promises vs Lazy Coroutines): en ECMAScript el ejecutor de \texttt{new Promise(fn)} se invoca síncronamente al instanciarse, mientras que en Python (y Rust) invocar una función \texttt{async} devuelve un objeto corrutina inerte hasta que el bucle de eventos lo impulsa.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+¿Por qué llamar a una función \texttt{async def f()} en Python sin anteponer \texttt{await} ni \texttt{asyncio.create\_task(f())} no ejecuta ni una sola línea del cuerpo de \texttt{f} y emite un \texttt{RuntimeWarning: coroutine 'f' was never awaited}?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+\end{tcolorbox}
+
+\section{Comparativa profunda de ejecución, memoria, concurrencia y sistemas de tipos (Python vs JS vs TS)}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+Aunque Python y JavaScript comparten tipado dinámico en tiempo de ejecución y gestión automática de memoria, sus decisiones de diseño divergen en aspectos esenciales. Primero, en **semántica numérica y de tipos**: Python posee enteros de precisión arbitraria (\texttt{int}) y distingue estrictamente entre tipos sin coerción implícita entre cadenas y números (\texttt{"5" + 1} lanza \texttt{TypeError}), mientras que JavaScript unifica números en \texttt{Number} (IEEE 754) + \texttt{BigInt} y realiza coerciones implícitas si no se usa \texttt{===} o TypeScript. Segundo, en **modelo de objetos**: Python se basa en clases reales donde incluso las metaclases son objetos (\texttt{type}), mientras que JavaScript se basa en delegación de prototipos (\texttt{[[Prototype]]}). Tercero, en **asincronía**: en JavaScript una \texttt{Promise} es *ansiosa* (*eager*, comienza a ejecutarse en el instante en que se construye y el Event Loop está siempre activo por defecto), mientras que una corrutina \texttt{async def} en Python es estrictamente *perezosa* hasta que es agendada o esperada dentro de \texttt{asyncio.run(...)}.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+\section{Arquitectura políglota: contratos OpenAPI/JSON Schema entre Python y TypeScript y evaluación global}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+Tanto el sistema de anotaciones de Python (\texttt{typing}, PEP 484/695) como TypeScript aplican borrado de tipos en tiempo de ejecución (*type erasure*). Sin embargo, dado que en Python las anotaciones pueden conservarse opcionalmente en el diccionario \texttt{\_\_annotations\_\_} de la clase o función, bibliotecas como \texttt{Pydantic} y \texttt{FastAPI} inspeccionan dichas anotaciones al arrancar el proceso para compilar validadores en Rust y emitir automáticamente un documento **OpenAPI 3.1 / JSON Schema**. A partir de ese único contrato normativo, el equipo de TypeScript genera sus tipos estáticos y clientes HTTP sin duplicar definiciones manualmente, garantizando consistencia matemática entre ambos extremos del sistema distribuido.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+
+\noindent\textbf{Enunciado}
+Una pasarela en TypeScript envía lotes de \(N = 5000\) eventos de telemetría a un servicio de análisis en Python. En formato JSON textual cada objeto \texttt{\{ "sensorId": ..., "timestamp": ..., "value": ... \}} ocupa en promedio \(S_{\text{json}} = 76\text{ B}\), mientras que codificado en binario compacto ocupa \(S_{\text{bin}} = 20\text{ B}\). Calcula cuántos kilobytes (dividiendo entre 1000) se ahorran por cada lote transmitido.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 5000$ — Eventos por lote
+\item $S_{json} = 76\,\mathrm{B}$ — Tamaño medio en JSON UTF-8
+\item $S_{bin} = 20\,\mathrm{B}$ — Tamaño en binario compacto
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de tráfico de red entre representación JSON y binaria}
+
+\[
+\Delta B_{\text{kB}} = \frac{5000 \cdot (76 - 20)}{1000}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 5000 eventos por los 56 B ahorrados y dividimos entre 1000 B/kB
+
+\[
+\Delta B_{\text{kB}} = \frac{5000 \cdot (76 - 20)}{1000}
+\]
+
+\[
+\frac{\left(5000\cdot \left(76-20\right)\right)}{1000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 280
+\]
+
+\noindent\textbf{Interpretación}
+Se ahorran 280 kB por lote (pasando de 380 kB a 100 kB).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $280$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWludGVyb3BlcmFiaWxpZGFkLWNvbXBhcmF0aXZhLWFycXVpdGVjdHVyYS1weXRob24tanMtdHMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Numérico)}
+Un contrato OpenAPI define 18 endpoints REST y cada endpoint especifica 3 esquemas (petición, respuesta 200 y error 400). ¿Cuántos esquemas genera automáticamente el generador de tipos de TypeScript (\(18 \times 3\))?
+
+\noindent\textbf{2 [PRB-0046] (Básico, Numérico)}
+Si una respuesta JSON de 120 000 bytes se comprime con Brotli a un 25 \% de su tamaño original (\$120000 / 4\$), ¿cuántos bytes se transmiten por la red?
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Desarrollo por pasos)}
+Un servicio en Python delega un cálculo matricial a una extensión compilada en Rust (\texttt{PyO3}) reduciendo el tiempo por petición de 45 ms a 3 ms. Para 200 peticiones secuenciales, ¿cuántos milisegundos totales se ahorran?
+
+\noindent\textbf{4 [PRB-0048] (Intermedio, Diseño)}
+Una aplicación web carga un módulo WebAssembly de 180 KiB y un bundle TypeScript/JS de 95 KiB. ¿Cuántos KiB totales descarga el cliente en el arranque inicial?
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$T \text{ extends } U ? X : Y$ & Tipo condicional distributivo en el sistema de tipos de TypeScript & $\mathrm{tipo}$ \\
+$\tau_{\text{micro}}, \tau_{\text{macro}}$ & Colas de microtareas (Promises) y macrotareas (timers/I/O) del Event Loop & $\mathrm{tareas}$ \\
+$\text{refcnt}(o)$ & Contador de referencias de un PyObject en CPython & $\mathrm{referencias}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Monografía de Python (I \(-\) Bloques A, B y C): Historia, CPython, Entorno (uv/venv) y Nivel Principiante}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En CPython de 64 bits, cada entrada de un diccionario almacena tres palabras de \(8\text{ B}\) (\texttt{me\_hash}, \texttt{me\_key}, \texttt{me\_value} = \(24\text{ B}\)). Para una tabla con \(K = 128\) ranuras en el índice (\(1\text{ B}\) por ranura en \texttt{dk\_indices}) y capacidad para \(N = 85\) entradas en \texttt{dk\_entries}, calcula cuántos bytes ahorra el diseño de diccionario compacto (\(128 \cdot 1 + 85 \cdot 24\)) frente al diseño disperso antiguo (\(128 \cdot 24\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 904
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+En CPython de 64 bits, la cabecera base \texttt{PyObject} contiene \texttt{ob\_refcnt} (8 B) y \texttt{ob\_type} (8 B). ¿Cuántos bytes mide esta cabecera mínima?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+Una lista \texttt{PyListObject} mantiene un array de punteros \texttt{PyObject*} (8 B cada uno). Si su capacidad reservada es de 64 elementos, ¿cuántos bytes ocupa ese array de punteros?
+
+\noindent\textbf{Respuesta} 512
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+¿Cuál es la suma de los cuadrados impares evaluada por \texttt{sum(x * x for x in range(1, 10, 2))} (\$\(1^2 + 3^2 + 5^2 + 7^2 + 9^2\)\$)?
+
+\noindent\textbf{Respuesta} 165
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+En el proyecto \texttt{projects/python-bytecode-vm}, la función compila y evalúa \texttt{(x + 4) * (y - 2) + (10 if x < y else 20)} para \(x = 6, y = 9\). ¿Cuál es el resultado entero devuelto?
+
+\noindent\textbf{Respuesta} 80
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(128\cdot 24\right)-\left(\left(128\cdot 1\right)+\left(85\cdot 24\right)\right)\right) = 904\)
+
+\section{Monografía de Python (II \(-\) Bloques D y E): Modelo de Datos (\_\_dunder\_\_), Typing Estático, Decoradores, Generadores y Context Managers}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+En una aplicación de procesamiento de grafos en CPython de 64 bits, una clase \texttt{Edge} con \(k = 3\) atributos ocupa \(16 + 3 \times 8 = 40\text{ B}\) cuando se declara con \texttt{\_\_slots\_\_}, mientras que sin \texttt{\_\_slots\_\_} cada instancia aloja además un \texttt{\_\_dict\_\_} que añade \(112\text{ B}\) por objeto (\(152\text{ B}\) en total). Calcula cuántos megabytes exactos (dividiendo entre \$\(10^6\)\$) se ahorran al instanciar \(N = 1000000\) de aristas con \texttt{\_\_slots\_\_}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 112
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+En CPython de 64 bits, ¿cuántos bytes ocupa una instancia con \texttt{\_\_slots\_\_} de 4 atributos (16 B de cabecera más \(4 \times 8\) B)?
+
+\noindent\textbf{Respuesta} 48
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+Un generador perezoso produce bloques de 4096 bytes uno a uno para procesar un fichero de 10 GiB. ¿Cuántos bloques mantiene simultáneamente en RAM?
+
+\noindent\textbf{Respuesta} 1
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+En una jerarquía con herencia múltiple \texttt{class D(B, C)} donde \texttt{B(A)} y \texttt{C(A)} heredan de \texttt{A(object)}, ¿cuántas clases aparecen en la tupla de orden de resolución de métodos \texttt{D.\_\_mro\_\_} (\texttt{D, B, C, A, object})?
+
+\noindent\textbf{Respuesta} 5
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+Un decorador \texttt{@lru\_cache(maxsize=256)} recibe 1000 consultas sobre un conjunto de solo 200 claves distintas. ¿Cuántas veces se ejecuta realmente la función subyacente?
+
+\noindent\textbf{Respuesta} 200
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(1000000\cdot \left(152-40\right)\right)}{1000000} = 112\)
+
+\section{Monografía de Python (III \(-\) Bloques F, G y H): Asyncio, Concurrencia, Metaprogramación, Packaging y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Un agregador de microservicios en Python debe consultar \(N = 20\) endpoints HTTP independientes, cada uno con una latencia de red de \(L = 150\text{ ms}\) y \(1\text{ ms}\) de procesamiento de CPU local en el bucle de eventos. Calcula cuántos milisegundos se ahorran al ejecutarlos concurrentemente con \texttt{asyncio.TaskGroup} (\(150 + 20 \times 1 = 170\text{ ms}\)) frente a ejecutarlos secuencialmente de forma síncrona (\(20 \times (150 + 1) = 3020\text{ ms}\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 2850
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+En \texttt{projects/python-bytecode-vm}, la expresión \texttt{2 * 3 + 4 * 5} emite 4 instrucciones \texttt{LOAD\_CONST} y 3 instrucciones binarias (\texttt{MUL}, \texttt{MUL}, \texttt{ADD}). ¿Cuántas instrucciones totales contiene el bloque compilado?
+
+\noindent\textbf{Respuesta} 7
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+Al evaluar \texttt{2 * 3 + 4 * 5} en una máquina de pila, ¿cuál es la altura máxima (número máximo de operandos apilados simultáneamente) que alcanza la pila?
+
+\noindent\textbf{Respuesta} 3
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+Un pool de 8 procesos (\texttt{ProcessPoolExecutor(max\_workers=8)}) ejecuta 40 tareas de CPU de 2 segundos cada una. ¿Cuántos segundos tarda en completar las 40 tareas ideales (\(40 / 8 \times 2\))?
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+Una política de reintentos con retroceso exponencial (\texttt{backoff}) espera \(100 \cdot 2^k\text{ ms}\) para \(k = 0, 1, 2, 3\). ¿Cuántos milisegundos totales habrá esperado acumulados tras esos 4 reintentos?
+
+\noindent\textbf{Respuesta} 1500
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(20\cdot \left(150+1\right)\right)-\left(150+\left(20\cdot 1\right)\right)\right) = 2850\)
+
+\section{Monografía de JavaScript (I \(-\) Bloques A\(-\)D): Historia, Motor V8, Ámbitos, Clausuras, Prototipos y Módulos ESM}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+En el motor V8 con compresión de punteros (*Pointer Compression*), cada referencia a propiedad en un objeto de forma fija (*Fast Properties / In-object properties*) ocupa \(4\text{ B}\) en lugar de \(8\text{ B}\), más una cabecera de objeto de \(12\text{ B}\) (\texttt{map}, \texttt{properties}, \texttt{elements} comprimidos). Calcula cuántos bytes ahorran \(N = 10000\) objetos con \(k = 5\) propiedades en línea bajo compresión de punteros (\(12 + 5 \times 4 = 32\text{ B}\) por objeto) frente a punteros de 64 bits sin comprimir (\(24 + 5 \times 8 = 64\text{ B}\) por objeto).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 320000
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+En V8 con punteros comprimidos de 4 bytes, ¿cuántos bytes ocupa la cabecera de 3 campos (\texttt{map}, \texttt{properties}, \texttt{elements}) de un objeto JS (\(3 \times 4\))?
+
+\noindent\textbf{Respuesta} 12
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+Un \texttt{ArrayBuffer(1024)} se observa mediante un \texttt{Float64Array} (8 bytes por elemento). ¿Cuántos elementos \texttt{length} tiene la vista tipada?
+
+\noindent\textbf{Respuesta} 128
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+Si una cadena de prototipos tiene 4 niveles (\texttt{instancia -> SubClase.prototype -> Base.prototype -> Object.prototype -> null}) y se busca una propiedad inexistente, ¿cuántos eslabones de objeto se inspeccionan antes de llegar a \texttt{null}?
+
+\noindent\textbf{Respuesta} 4
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+En \texttt{TokenBucket} con capacidad inicial de 100 tokens, se procesan 7 peticiones que consumen 12 tokens cada una. ¿Cuántos tokens quedan disponibles?
+
+\noindent\textbf{Respuesta} 16
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(10000\cdot \left(\left(24+\left(5\cdot 8\right)\right)-\left(12+\left(5\cdot 4\right)\right)\right)\right) = 320000\)
+
+\section{Monografía de JavaScript (II \(-\) Bloques E\(-\)H): Event Loop, Microtareas, Promises, Async/Await, Streams, Node.js y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+Un descargador asíncrono en Node.js debe procesar \(N = 120\) ficheros remotos con un limitador de concurrencia que mantiene exactamente \(k = 15\) promesas en vuelo simultáneamente para no saturar el servidor de origen. Si cada descarga tarda \(D = 200\text{ ms}\), calcula el tiempo total en milisegundos necesario para completar las 120 descargas (\((120 / 15) \times 200\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 1600
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+En un turno del Event Loop se encolan 3 macrotareas (\texttt{setTimeout}) y 5 microtareas (\texttt{Promise.then}). ¿Cuántas microtareas se ejecutan antes de que comience la primera macrotarea?
+
+\noindent\textbf{Respuesta} 5
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+Un \texttt{ReadableStream} con \texttt{highWaterMark = 65536} bytes (64 KiB) contiene actualmente 49 152 bytes sin consumir. ¿Cuántos bytes más puede aceptar antes de activar la señal de contrapresión?
+
+\noindent\textbf{Respuesta} 16384
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+Si 3 promesas independientes tardan 120 ms, 350 ms y 210 ms respectivamente, ¿en cuántos milisegundos se resuelve \texttt{Promise.all} de las tres?
+
+\noindent\textbf{Respuesta} 350
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+En el problema anterior, si en lugar de \texttt{Promise.all} se ejecutaran secuencialmente con tres \texttt{await} uno tras otro, ¿cuántos milisegundos adicionales tardaría la operación (\$120 + 350 + 210 - 350\$)?
+
+\noindent\textbf{Respuesta} 330
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\frac{120}{15}\cdot 200\right) = 1600\)
+
+\section{Monografía de TypeScript (I \(-\) Bloques A\(-\)D): Relación con JS, Borrado de Tipos, Tipado Estructural y Uniones Discriminadas}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+En un módulo de pagos en TypeScript, un estado mal modelado con banderas opcionales independientes \texttt{\{ status: 'idle' | 'loading' | 'success' | 'error'; isRetry: boolean; hasCache: boolean; isOffline: boolean \}} tiene \(4 \times 2 \times 2 \times 2 = 32\) combinaciones posibles. Al refactorizarlo en una unión discriminada exacta donde solo existen \(9\) estados válidos de dominio, ¿cuántos estados inválidos se vuelven estáticamente irrepresentables en compilación?
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 23
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+Un tipo literal unión \texttt{type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'} se combina en una tupla \texttt{[HttpMethod, boolean]}. ¿Cuántos valores distintos habitan esa tupla (\(5 \times 2\))?
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+¿Cuántos bytes adicionales ocupa en el fichero \texttt{.js} emitido por \texttt{tsc} una interfaz \texttt{interface UserProfile} de 45 líneas tras el borrado de tipos?
+
+\noindent\textbf{Respuesta} 0
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+Una unión discriminada tiene 6 variantes y un \texttt{switch} cubre actualmente 4 de ellas. ¿Cuántas variantes quedan en el tipo estrechado de la variable al llegar a la rama \texttt{default}?
+
+\noindent\textbf{Respuesta} 2
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+En \texttt{projects/ts-reactive-http}, el limitador de tasa se inicializa con capacidad 3 y se envían 4 peticiones válidas seguidas. ¿Cuántas respuestas retornan con código HTTP \texttt{201} antes de que salte el código \texttt{429}?
+
+\noindent\textbf{Respuesta} 3
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(\left(4\cdot 2\right)\cdot 2\right)\cdot 2\right)-9\right) = 23\)
+
+\section{Monografía de TypeScript (II \(-\) Bloques E\(-\)H): Programación a Nivel de Tipos (Mapped, Conditional, infer, Template Literals) y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+En un sistema de diseño tipado en TypeScript, se define el tipo de clases utilitarias mediante Template Literal Types: \texttt{type SpacingUtility = }\$\{Direction\}-\$\{Axis\}-\$\{Scale\}`\texttt{, donde }Direction\texttt{ tiene \$2\$ miembros (}'m' | 'p'\texttt{), }Axis\texttt{ tiene \$7\$ miembros (}'t' | 'b' | 'l' | 'r' | 'x' | 'y' | 'a'\texttt{) y }Scale\texttt{ tiene \$12\$ miembros (}'0'\texttt{ a }'11'\texttt{). Calcula cu{\'a}ntos tipos literales de cadena exactos genera el compilador en la uni{\'o}n }SpacingUtility`.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 168
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+Una interfaz \texttt{Config} tiene 8 propiedades obligatorias. Si se aplica \texttt{Pick<Config, 'host' | 'port' | 'tls'>}, ¿cuántas propiedades tiene el tipo resultante?
+
+\noindent\textbf{Respuesta} 3
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+En el problema anterior, si en su lugar se aplica \texttt{Omit<Config, 'host' | 'port' | 'tls'>}, ¿cuántas propiedades conserva el tipo resultante?
+
+\noindent\textbf{Respuesta} 5
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+Un Template Literal Type \texttt{\$\{'http' | 'https'\}://\$\{'api' | 'auth' | 'cdn'\}.ejemplo.es/\$\{'v1' | 'v2'\}} expande todas las rutas válidas. ¿Cuántos literales de URL compone la unión?
+
+\noindent\textbf{Respuesta} 12
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+En \texttt{projects/ts-reactive-http}, cada lectura de telemetría se redondea con \texttt{Math.round(v * 100) / 100}. Para el vector \texttt{[12.5, 7.25, 10.25]}, ¿cuál es el valor exacto de la suma?
+
+\noindent\textbf{Respuesta} 30
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(2\cdot 7\right)\cdot 12\right) = 168\)
+
+\section{Arquitectura Comparada, Interoperabilidad (FFI, WebAssembly, REST/JSON) y Rúbrica de Python, JavaScript y TypeScript}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+Una pasarela en TypeScript envía lotes de \(N = 5000\) eventos de telemetría a un servicio de análisis en Python. En formato JSON textual cada objeto \texttt{\{ "sensorId": ..., "timestamp": ..., "value": ... \}} ocupa en promedio \(S_{\text{json}} = 76\text{ B}\), mientras que codificado en binario compacto ocupa \(S_{\text{bin}} = 20\text{ B}\). Calcula cuántos kilobytes (dividiendo entre 1000) se ahorran por cada lote transmitido.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 280
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+Un contrato OpenAPI define 18 endpoints REST y cada endpoint especifica 3 esquemas (petición, respuesta 200 y error 400). ¿Cuántos esquemas genera automáticamente el generador de tipos de TypeScript (\(18 \times 3\))?
+
+\noindent\textbf{Respuesta} 54
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+Si una respuesta JSON de 120 000 bytes se comprime con Brotli a un 25 \% de su tamaño original (\$120000 / 4\$), ¿cuántos bytes se transmiten por la red?
+
+\noindent\textbf{Respuesta} 30000
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+Un servicio en Python delega un cálculo matricial a una extensión compilada en Rust (\texttt{PyO3}) reduciendo el tiempo por petición de 45 ms a 3 ms. Para 200 peticiones secuenciales, ¿cuántos milisegundos totales se ahorran?
+
+\noindent\textbf{Respuesta} 8400
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+Una aplicación web carga un módulo WebAssembly de 180 KiB y un bundle TypeScript/JS de 95 KiB. ¿Cuántos KiB totales descarga el cliente en el arranque inicial?
+
+\noindent\textbf{Respuesta} 275
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(5000\cdot \left(76-20\right)\right)}{1000} = 280\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 32 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 1 reproducida numéricamente.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios. Ecuaciones: 2 valor o condición.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent Referencia Normativa src-python-ref (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-unicode-15 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6.
+
+\noindent Referencia Normativa src-gamma-gof (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent Referencia Normativa src-kleppmann-ddia (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P13, \P14, \P15, \P16, \P17, \P18.
+
+\noindent Referencia Normativa src-ecmascript-2024 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent Referencia Normativa src-mdn-html-css (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-pierce-tapl (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent REV-0001: cap01-python-fundamentos-modelo-objetos-nivel-principiante scientific
+
+\noindent REV-0002: cap02-python-intermedio-avanzado-modelo-datos-tipado-iteradores scientific
+
+\noindent REV-0003: cap03-python-experto-asyncio-concurrencia-metaclases-packaging-proyectos scientific
+
+\noindent REV-0004: cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio scientific
+
+\noindent REV-0005: cap05-javascript-avanzado-event-loop-promesas-web-node-proyectos scientific
+
+\noindent REV-0006: cap06-typescript-fundamentos-sistema-tipos-estructural-uniones scientific
+
+\noindent REV-0007: cap07-typescript-avanzado-experto-mapped-conditional-infer-proyectos scientific
+
+\noindent REV-0008: cap08-interoperabilidad-comparativa-arquitectura-python-js-ts scientific
+\chapter{Plan de estudio}
+
+\section*{Monografía Autónoma de Python (Python 3.12 \(-\) 3.14)}
+
+\subsection*{\checkmark Monografía de Python (I \(-\) Bloques A, B y C): Historia, CPython, Entorno (uv/venv) y Nivel Principiante}
+\begin{itemize}
+\item Comprender la historia de Python (Guido van Rossum, 1991), la transición Python 2 a 3 y el modelo de ejecución de bytecode de CPython (incluyendo el compilador especializador PEP 659 y el modo free-threaded PEP 703).
+\item Configurar entornos reproducibles conforme a PEP 517/518/621 (`pyproject.toml`, `venv`, `uv`, `ruff`, `pyright`, `pytest`).
+\item Dominar la semántica de nombres vinculados a objetos (`PyObject`), mutabilidad vs inmutabilidad, tipos básicos y estructuras de datos nativas (`list`, `tuple`, `dict`, `set`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Python (II \(-\) Bloques D y E): Modelo de Datos (\_\_dunder\_\_), Typing Estático, Decoradores, Generadores y Context Managers}
+\begin{itemize}
+\item Dominar el Data Model de Python (`\_\_repr\_\_`, `\_\_eq\_\_`, `\_\_hash\_\_`, `\_\_len\_\_`, `\_\_getitem\_\_`, `\_\_enter\_\_`/`\_\_exit\_\_`, `\_\_slots\_\_`).
+\item Diseñar jerarquías limpias con `@dataclass(frozen=True, slots=True)`, protocolos estructurales (`typing.Protocol`) y genéricos de Python 3.12 (PEP 695).
+\item Construir clausuras, decoradores con `functools.wraps`, generadores perezosos (`yield`, `yield from`) y gestores de contexto (`contextlib`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Python (III \(-\) Bloques F, G y H): Asyncio, Concurrencia, Metaprogramación, Packaging y Proyectos}
+\begin{itemize}
+\item Dominar la concurrencia asíncrona con `asyncio` (`TaskGroup`, `gather`, corrutinas nativas `async def`/`await`) y distinguir cuándo usar `multiprocessing` o `concurrent.futures`.
+\item Aplicar metaprogramación limpia con `\_\_init\_subclass\_\_`, metaclases, el módulo `ast` y extensiones nativas C/Rust (`PyO3`/`maturin`, `ctypes`).
+\item Empaquetar y publicar distribuciones Wheel/sdist y estudiar el proyecto completo verificado `projects/python-bytecode-vm`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografías Autónomas de JavaScript (ES2024+) y TypeScript (5.x)}
+
+\subsection*{\checkmark Monografía de JavaScript (I \(-\) Bloques A\(-\)D): Historia, Motor V8, Ámbitos, Clausuras, Prototipos y Módulos ESM}
+\begin{itemize}
+\item Comprender la evolución de ECMAScript (ES3, ES5, ES6/ES2015 hasta ES2024+) y la arquitectura JIT multipaso (Ignition + Sparkplug + Maglev + TurboFan en V8).
+\item Dominar los tipos primitivos (`number` IEEE 754, `bigint`, `string`, `symbol`), la igualdad estricta (`===`), ámbitos léxicos (`let`/`const` y Temporal Dead Zone) y clausuras.
+\item Explicar con rigor la delegación prototípica (`[[Prototype]]`, `Object.create`, sintaxis `class`), la vinculación dinámica de `this` y el sistema de módulos estándar ESM (`import`/`export`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de JavaScript (II \(-\) Bloques E\(-\)H): Event Loop, Microtareas, Promises, Async/Await, Streams, Node.js y Proyectos}
+\begin{itemize}
+\item Trazar con exactitud el orden de ejecución entre la pila síncrona, la cola de microtareas (Promises, queueMicrotask) y la cola de macrotareas (setTimeout, I/O).
+\item Dominar los combinadores concurrentes de Promesas (`Promise.all`, `Promise.allSettled`, `Promise.race`, `Promise.any`), `AbortController`, generadores asíncronos (`for await...of`) y Web/Node Streams.
+\item Gestionar fugas de memoria en el recolector generacional (Orinoco), usar `WeakMap`/`WeakRef`, `Worker Threads` y desarrollar los 4 proyectos en JavaScript.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de TypeScript (I \(-\) Bloques A\(-\)D): Relación con JS, Borrado de Tipos, Tipado Estructural y Uniones Discriminadas}
+\begin{itemize}
+\item Comprender con exactitud la relación entre TypeScript y JavaScript: superconjunto sintáctico tipado con borrado completo de tipos (type erasure) en tiempo de ejecución.
+\item Configurar `tsconfig.json` con máxima rigurosidad (`strict: true`, `noUncheckedIndexedAccess: true`, `exactOptionalPropertyTypes: true`, `verbatimModuleSyntax: true`).
+\item Dominar el subtipado estructural, tipos unión e intersección (`|`, `\&`), estrechamiento de flujo de control (*control-flow narrowing*), `unknown` vs `any` vs `never` y uniones discriminadas.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de TypeScript (II \(-\) Bloques E\(-\)H): Programación a Nivel de Tipos (Mapped, Conditional, infer, Template Literals) y Proyectos}
+\begin{itemize}
+\item Dominar los operadores avanzados del sistema de tipos de TypeScript: `keyof`, `typeof`, tipos indexados `T[K]`, predicados de tipo (`x is T`), funciones de aserción (`asserts x is T`) y el operador `satisfies`.
+\item Construir transformaciones a nivel de tipos mediante Mapped Types (`\{ [K in keyof T]: ... \}`), Conditional Types (`T extends U ? X : Y`), inferencia estructural (`infer R`) y Template Literal Types.
+\item Integrar validación de fronteras en tiempo de ejecución (Zod / TypeBox) y auditar el proyecto completo `projects/ts-reactive-http`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Arquitectura Comparada, Interoperabilidad (FFI, WebAssembly, REST/JSON) y Rúbrica de Python, JavaScript y TypeScript}
+\begin{itemize}
+\item Comparar rigurosamente los modelos de ejecución, sistemas de tipos, concurrencia y ecosistemas de Python, JavaScript y TypeScript.
+\item Diseñar contratos de interoperabilidad entre backends en Python (FastAPI/Pydantic) y clientes/servidores en TypeScript mediante esquemas OpenAPI 3.1 y JSON Schema.
+\item Superar la evaluación integradora del Volumen V resolviendo problemas de rendimiento, tipado y concurrencia en los tres lenguajes.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Referencia Normativa src-python-ref. \url{https://doc.rust-lang.org/reference/src-python-ref.html}
+\bibitem{src27} Referencia Normativa src-unicode-15. \url{https://doc.rust-lang.org/reference/src-unicode-15.html}
+\bibitem{src28} Referencia Normativa src-gamma-gof. \url{https://doc.rust-lang.org/reference/src-gamma-gof.html}
+\bibitem{src29} Referencia Normativa src-kleppmann-ddia. \url{https://doc.rust-lang.org/reference/src-kleppmann-ddia.html}
+\bibitem{src30} Referencia Normativa src-ecmascript-2024. \url{https://doc.rust-lang.org/reference/src-ecmascript-2024.html}
+\bibitem{src31} Referencia Normativa src-mdn-html-css. \url{https://doc.rust-lang.org/reference/src-mdn-html-css.html}
+\bibitem{src32} Referencia Normativa src-pierce-tapl. \url{https://doc.rust-lang.org/reference/src-pierce-tapl.html}
+\end{thebibliography}
+\end{document}

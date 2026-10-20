@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+
+\draw[thick, ->] (0,0) -- (12.5,0);
+\foreach \x/\yr/\lbl in {0.8/1843/Lovelace (Nota G), 3.6/1854/Boole (Lógica), 6.8/1936/Church-Turing, 10.2/1945/Von Neumann} {
+    \filldraw[blue!70!black] (\x,0) circle (2.5pt);
+    \node[above, font=\scriptsize\bfseries] at (\x,0.2) {\yr};
+    \node[below, font=\scriptsize, align=center] at (\x,-0.2) {\lbl};
+}
+
+\end{tikzpicture}
+\end{document}

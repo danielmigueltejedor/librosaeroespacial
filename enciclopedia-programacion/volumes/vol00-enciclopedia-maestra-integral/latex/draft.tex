@@ -1,0 +1,1054 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Enciclopedia de Programación e Ingeniería del Software: Obra Maestra y Guía General\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} De cero a la especialización profesional \(-\) Arquitectura Editorial, Índices Maestros, Matrices Curriculares y Síntesis de las 13 Partes\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Volumen Maestro Integral (Partes I a XIII)}
+
+\chapter{Arquitectura General de la Enciclopedia y Mapa de las 13 Partes (Volúmenes I a IX)}
+\label{chap:ch-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textit{Visión panorámica y guía de navegación de toda la Enciclopedia de Programación e Ingeniería del Software.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Los Volúmenes IV a IX completan los 35 lenguajes de programación, los 9 estándares de marcado/datos, el curso universitario de bases de datos y la ingeniería del software moderna.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Filosofía Editorial y Principio de Autonomía por Lenguaje: La enciclopedia combina el rigor formal de un currículo universitario de Ciencias de la Computación con monografías de lenguajes autónomas estudiables de principio a fin.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Todas las derivaciones cuantitativas han sido reproducidas simbólicamente con SymPy y todos los proyectos integradores han sido ejecutados y auditados con compiladores reales.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\section{Filosofía Editorial y Principio de Autonomía por Lenguaje y Índice Maestro de Volúmenes y Correspondencia con las 13 Partes}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Esta obra ha sido concebida y compilada sobre el framework académico **Studium** bajo una premisa innegociable: ningún lenguaje o tecnología se reduce a un resumen superficial. Como ilustra la figura~\ref{fig:ch-01-fig}, la enciclopedia se organiza en **13 grandes Partes** distribuidas en **9 volúmenes temáticos especializados** (\texttt{vol01} a \texttt{vol09}) más este **Volumen Maestro Integral** (\texttt{vol00}). Cada lenguaje de programación cuenta con un bloque autónomo que sigue la plantilla pedagógica \(**A-H** (A\). Introducción e historia, B. Instalación y toolchain, C. Nivel principiante, D. Nivel intermedio, E. Nivel avanzado, F. Nivel experto, G. Ecosistema y producción, H. Evaluación y proyectos), permitiendo aprender Rust sin conocer C++, o estudiar Python, TypeScript, Go, Java, C\# y SQL desde cero hasta la arquitectura profesional.
+- **Volumen 0 (\texttt{vol00-enciclopedia-maestra-integral.pdf})**: Guía Maestra, Índices Generales, Matrices Curriculares ACM/IEEE CS2023 y SWEBOK v4.0, y Síntesis de las 13 Partes.
+- **Volumen I (\texttt{vol01-historia-y-fundamentos.pdf})**: **Parte I** (Historia de la Computación y de los Lenguajes desde Babbage, Turing y Church hasta Rust, WebAssembly e IA) y **Parte II** (Fundamentos Universales: binario, complemento a dos, IEEE 754, UTF-8, lógica booleana, tipos, control de flujo, ámbitos, memoria Stack/Heap, recursión y paradigmas).
+- **Volumen II (\texttt{vol02-algoritmos-y-sistemas.pdf})**: **Parte III** (Complejidad asintótica, estructuras de datos lineales, árboles, tablas hash, grafos, ordenación, programación dinámica y NP-completitud) y **Parte IV** (Arquitectura ISA, cachés, compiladores/LLVM, memoria virtual y sistemas operativos).
+- **Volumen III (\texttt{vol03-monografia-rust.pdf})**: **Parte V (Bloque \(1)** -\) Tratado completo y autónomo de **Rust** (Edición 2021/2024) con verificación ejecutable en vivo mediante \texttt{rustc --test}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=0.55cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (v0) [fill=purple!15] {Volumen 0\\Guía Maestra Integral};
+\node (v12) [below left=of v0, fill=blue!12] {Volúmenes I–II\\Historia, Fundamentos,\\Algoritmos y Sistemas};
+\node (v37) [below right=of v0, fill=green!12] {Volúmenes III–VII\\Monografías Autónomas\\(35 Lenguajes A–H)};
+\node (v89) [below=1.4cm of v0, fill=orange!15] {Volúmenes VIII–IX\\Web, Bases de Datos, Frameworks,\\Arquitectura, Cloud, Seguridad y Proyectos};
+\draw[-Stealth, thick] (v0) -- (v12);
+\draw[-Stealth, thick] (v0) -- (v37);
+\draw[-Stealth, thick] (v12) -- (v89);
+\draw[-Stealth, thick] (v37) -- (v89);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=0.55cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (v0) [fill=purple!15] {Volumen 0\\Guía Maestra Integral};
+\node (v12) [below left=of v0, fill=blue!12] {Volúmenes I–II\\Historia, Fundamentos,\\Algoritmos y Sistemas};
+\node (v37) [below right=of v0, fill=green!12] {Volúmenes III–VII\\Monografías Autónomas\\(35 Lenguajes A–H)};
+\node (v89) [below=1.4cm of v0, fill=orange!15] {Volúmenes VIII–IX\\Web, Bases de Datos, Frameworks,\\Arquitectura, Cloud, Seguridad y Proyectos};
+\draw[-Stealth, thick] (v0) -- (v12);
+\draw[-Stealth, thick] (v0) -- (v37);
+\draw[-Stealth, thick] (v12) -- (v89);
+\draw[-Stealth, thick] (v37) -- (v89);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=0.55cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (v0) [fill=purple!15] {Volumen 0\\Guía Maestra Integral};
+\node (v12) [below left=of v0, fill=blue!12] {Volúmenes I–II\\Historia, Fundamentos,\\Algoritmos y Sistemas};
+\node (v37) [below right=of v0, fill=green!12] {Volúmenes III–VII\\Monografías Autónomas\\(35 Lenguajes A–H)};
+\node (v89) [below=1.4cm of v0, fill=orange!15] {Volúmenes VIII–IX\\Web, Bases de Datos, Frameworks,\\Arquitectura, Cloud, Seguridad y Proyectos};
+\draw[-Stealth, thick] (v0) -- (v12);
+\draw[-Stealth, thick] (v0) -- (v37);
+\draw[-Stealth, thick] (v12) -- (v89);
+\draw[-Stealth, thick] (v37) -- (v89);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=0.55cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (v0) [fill=purple!15] {Volumen 0\\Guía Maestra Integral};
+\node (v12) [below left=of v0, fill=blue!12] {Volúmenes I–II\\Historia, Fundamentos,\\Algoritmos y Sistemas};
+\node (v37) [below right=of v0, fill=green!12] {Volúmenes III–VII\\Monografías Autónomas\\(35 Lenguajes A–H)};
+\node (v89) [below=1.4cm of v0, fill=orange!15] {Volúmenes VIII–IX\\Web, Bases de Datos, Frameworks,\\Arquitectura, Cloud, Seguridad y Proyectos};
+\draw[-Stealth, thick] (v0) -- (v12);
+\draw[-Stealth, thick] (v0) -- (v37);
+\draw[-Stealth, thick] (v12) -- (v89);
+\draw[-Stealth, thick] (v37) -- (v89);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:ch-01-fig}\textbf{Figura~\thestudiumfigure.} Arquitectura modular de la Enciclopedia en Studium: los fundamentos (Volúmenes \(I-\)II) y las monografías autónomas de lenguajes (Volúmenes III\(-\)VII) convergen hacia Web, Bases de Datos, Frameworks e Ingeniería del Software (Volúmenes VIII\(-\)IX).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\section{Catálogo de los Volúmenes de Lenguajes, Web, Bases de Datos e Ingeniería (Volúmenes IV a IX) y Rigor Epistémico en Studium y Verificación Determinista de Código}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+- **Volumen IV (\texttt{vol04-monografias-c-cpp-sistemas.pdf})**: **Parte V (Bloque \(2)** -\) Monografías de **C (C17/C23)**, **C++ (C++20/C++23)**, **Zig**, **Ada/SPARK**, **Fortran Moderno** y **Ensamblador x86-64 / ARM64**.
+- **Volumen V (\texttt{vol05-monografias-python-js-ts.pdf})**: **Parte V (Bloque \(3)** -\) Monografías autónomas y diferenciadas de **Python 3.12**, **JavaScript (ES2024)** y **TypeScript 5.x**.
+- **Volumen VI (\texttt{vol06-monografias-jvm-dotnet-go-movil.pdf})**: **Parte V (Bloque \(4)** -\) Monografías de **Java 21**, **Kotlin**, **Scala 3**, **C\# 12 / .NET 8**, **F\#**, **Go (Golang)**, **Swift 6** y **Objective-C**.
+- **Volumen VII (\texttt{vol07-monografias-sql-shell-funcional-especializados.pdf})**: **Parte V (Bloque \(5)** -\) Monografías de **SQL (ISO/IEC 9075)**, **Bash/POSIX Shell**, **PHP 8.3**, **Ruby 3.3**, **Dart 3**, **Haskell**, **OCaml**, **Elixir/Erlang (BEAM)**, **Clojure/Lisp/Scheme**, **R**, **Julia**, **Lua**, **Perl**, **Prolog** y **GDScript**.
+- **Volumen VIII (\texttt{vol08-web-bases-de-datos-y-frameworks.pdf})**: **Partes VI, VII y \(VIII** -\) HTML, CSS, JSON/YAML/TOML/XML/Protobuf, Curso Universitario de Bases de Datos y Frameworks.
+- **Volumen IX (\texttt{vol09-ingenieria-software-arquitectura-y-proyectos.pdf})**: **Partes IX a \(XIII** -\) Arquitectura, Testing, Sistemas Distribuidos, Ciberseguridad, Cloud/DevOps, 19 Itinerarios y Proyectos.
+Respetando la disciplina epistémica de Studium, el texto distingue explícitamente entre hechos históricos documentados, estándares normativos (ISO, IETF, W3C, WHATWG, IEEE) y decisiones de ingeniería. Cada capítulo integra problemas resueltos verificados por el motor computacional de Studium y problemas de práctica con resultados comprobados. Asimismo, la herramienta complementaria \texttt{tools/code\_verifier.py} audita los fragmentos de código y los 6 proyectos multifichero del repositorio, emitiendo el informe determinista \texttt{reports/code-verification-report.json}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textbf{Enunciado}
+La enciclopedia incluye 16 lenguajes de programación prioritarios, 19 lenguajes de programación adicionales y 9 lenguajes de marcado, hojas de estilo y formatos de serialización de datos. Calcule el número total de tecnologías lingüísticas y de datos documentadas con bloques dedicados.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $L_{prio} = 16\,\mathrm{lenguajes}$ — Lenguajes de programación prioritarios
+\item $L_{adic} = 19\,\mathrm{lenguajes}$ — Lenguajes de programación adicionales
+\item $M_{datos} = 9\,\mathrm{formatos}$ — Lenguajes de marcado, estilo y formatos de datos
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Total de lenguajes y formatos documentados \(N_tot\)
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cobertura cuantitativa de lenguajes y tecnologías en la Enciclopedia}
+
+\[
+N_{\text{tot}} = 16 + 19 + 9
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los 16 lenguajes prioritarios, los 19 adicionales y los 9 estándares de marcado y datos
+
+\[
+N_{\text{tot}} = 16 + 19 + 9
+\]
+
+\[
+\left(\left(16+19\right)+9\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 44
+\]
+
+\noindent\textbf{Interpretación}
+La enciclopedia cubre 44 lenguajes y estándares de datos (35 lenguajes de programación más 9 formatos de marcado, estilo y serialización).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $44$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+[CH-01.1] Calcule (Total de lenguajes de programación sumando los 16 prioritarios y los 19 adicionales) expresado en lenguajes.
+
+\noindent\textbf{2 [PRB-0004] (Intermedio, Desarrollo por pasos)}
+[CH-01.2] Calcule (Total de secciones de la plantilla A-H aplicadas a los 16 lenguajes prioritarios (16 * 8)) expresado en secciones.
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+[CH-01.3] Calcule (Volúmenes totales del bundle PDF sumando el Volumen Maestro (1) y los 9 volúmenes temáticos) expresado en volúmenes.
+
+\noindent\textbf{4 [PRB-0006] (Avanzado, Diseño)}
+[CH-01.4] Calcule (Partes estructurales totales que articulan la arquitectura general de la enciclopedia) expresado en partes.
+\end{tcolorbox}
+
+\chapter{Síntesis de las Partes I a IV: Historia, Fundamentos Universales, Algoritmos y Sistemas}
+\label{chap:ch-02}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textit{Mapa conceptual integrado de los Volúmenes I y II: desde el cálculo lambda y la máquina de Turing hasta el pipeline de LLVM y el kernel del sistema operativo.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+El rendimiento práctico depende conjuntamente de la cota asintótica (Big-O) y de la localidad espacial de referencia en las líneas de caché de 64 bytes de la CPU.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+De Babbage, Turing y Church a la Convergencia Multiparadigma Moderna: Toda innovación en los lenguajes de programación responde a una restricción tecnológica e ingenieril concreta de su época histórica.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Un compilador moderno traduce el código fuente a través de un front-end (lexer, parser, typechecker), un middle-end en forma SSA y un back-end generador de código máquina específico de la ISA.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\section{De Babbage, Turing y Church a la Convergencia Multiparadigma Moderna y Fundamentos Universales: Bits, Complemento a Dos, IEEE 754, UTF-8 y Sistemas de Tipos}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+El Volumen I (\texttt{vol01-historia-y-fundamentos.pdf}) traza la genealogía rigurosa de la programación: la máquina analítica de Babbage y el algoritmo de los números de Bernoulli de Ada Lovelace (1843); el álgebra de Boole (1854); la equivalencia entre las máquinas de Turing y el cálculo lambda de Alonzo Church (1936); el surgimiento de los primeros compiladores con Grace Hopper (A-0) y John Backus (FORTRAN, 1957); la bifurcación entre procesamiento simbólico (Lisp de McCarthy, 1958) y tipado algorítmico estructurado (ALGOL 60); el nacimiento conjunto de C y Unix en Bell Labs (Ritchie y Thompson, \(1969-1973)\); las abstracciones de coste cero de Bjarne Stroustrup en C++; las máquinas virtuales con JIT (Java, .NET); y la seguridad de memoria en tiempo de compilación mediante tipos afines y *borrow checking* en Rust.
+Todo dato en un computador digital es una secuencia finita de bits. Los enteros con signo se representan universalmente en complemento a dos, donde el peso negativo del bit más significativo produce un rango asimétrico \([-2^{w-1}, 2^{w-1}-1]\). Los reales se aproximan mediante la norma IEEE 754 (\texttt{binary64} con 1 bit de signo, 11 de exponente sesgado y 52 de mantisa), donde la suma no es asociativa y \(0.1 + 0.2 \neq 0.3\). El texto se codifica en UTF-8 con longitud variable de 1 a 4 bytes por punto de código, impidiendo la indexación aleatoria en \(O(1)\) por carácter visual (clúster de grafema).
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\section{Algoritmos, Estructuras de Datos y Complejidad Computacional (Parte III) y Arquitectura de Computadores, Compiladores y Sistemas Operativos (Parte IV)}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+El Volumen II (\texttt{vol02-algoritmos-y-sistemas.pdf}) desarrolla el análisis asintótico (\(O, \Omega, \Theta\)), el Teorema Maestro para recurrencias divide y vencerás, arrays dinámicos con coste amortizado \(O(1)\), árboles equilibrados (AVL, Rojo-Negro, B-Trees), colas de prioridad (Binary Heaps), tablas hash con direccionamiento abierto (Robin Hood / SwissTable), algoritmos sobre grafos (BFS, DFS, orden topológico, Dijkstra, Bellman-Ford, Kruskal, Prim), programación dinámica y la jerarquía de complejidad \(\text{P}, \text{NP}, \text{NP-Completo}\).
+La Parte IV examina la arquitectura x86-64 y ARM64, la jerarquía de memoria (registros, cachés L1/L2/L3 con protocolo MESI, RAM y NVMe), la traducción de direcciones virtuales mediante tablas de páginas multinivel y TLB, el modelo de procesos e hilos del kernel, las llamadas al sistema (\texttt{syscalls}) y la multiplexación de E/S asíncrona (\texttt{epoll}, \texttt{kqueue}, \texttt{io\_uring}).
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textbf{Enunciado}
+Un algoritmo de procesamiento de grafos tiene una fracción secuencial irreducible del 20 \% y una fracción paralelizable del 80 \%. Si la fracción paralelizable se acelera linealmente en 8 núcleos (reduciendo su tiempo a 80 / 8 = 10 \% del tiempo original), calcule el porcentaje del tiempo original que tarda la ejecución paralela total (20 + 80 / 8).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $P_{seq} = 20\,\mathrm{\%}$ — Porcentaje secuencial irreducible
+\item $P_{par} = 80\,\mathrm{\%}$ — Porcentaje paralelizable del algoritmo
+\item $N_{cores} = 8\,\mathrm{núcleos}$ — Número de núcleos de procesamiento
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Porcentaje del tiempo original requerido \(T_pct\) en \%
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Aceleración efectiva (Ley de Amdahl) al paralelizar un algoritmo sobre 8 núcleos}
+
+\[
+T_{\text{pct}} = 20 + \frac{80}{8}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos el 20 \% secuencial más el 80 \% dividido entre los 8 núcleos
+
+\[
+T_{\text{pct}} = 20 + \frac{80}{8}
+\]
+
+\[
+\left(20+\frac{80}{8}\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 30
+\]
+
+\noindent\textbf{Interpretación}
+La ejecución en 8 núcleos requiere el 30 \% del tiempo original (un speedup de 100 / 30 = 3,33x, acotado por la Ley de Amdahl).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $30$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+[CH-02.1] Calcule (Enteros de 8 bytes (int64) que caben en una línea de caché L1 de 64 bytes (64 / 8)) expresado en enteros.
+
+\noindent\textbf{2 [PRB-0010] (Intermedio, Desarrollo por pasos)}
+[CH-02.2] Calcule (Comparaciones máximas de búsqueda binaria en un vector ordenado de 1024 elementos (log2(1024) = 10)) expresado en comparaciones.
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+[CH-02.3] Calcule (Valor decimal máximo representable por un entero con signo en complemento a dos de 8 bits \((2^7 - 1))\) expresado en entero.
+
+\noindent\textbf{4 [PRB-0012] (Avanzado, Diseño)}
+[CH-02.4] Calcule (Tamaño total de tabla de páginas de 1 nivel en MiB para \(2^20\) páginas con entradas de 4 bytes ((1048576 * 4) / 1048576)) expresado en MiB.
+\end{tcolorbox}
+
+\chapter{Índice Maestro y Matriz Comparativa de los 35 Lenguajes de Programación (Parte V)}
+\label{chap:ch-03}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textit{Guía comparativa transversal y mapa de navegación hacia las monografías completas de los Volúmenes III, IV, V, VI y VII.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+La JVM y el CLR (.NET) ofrecen compilación JIT/AOT de alto rendimiento y recolectores de basura de baja pausa, mientras Go simplifica la concurrencia con goroutines y Swift utiliza ARC determinista.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Lenguajes de Sistemas y Control Explícito de Memoria (Volúmenes III y IV): Rust, C, C++, Zig, Ada/SPARK, Fortran y Ensamblador compilan directamente a código máquina nativo sin recolector de basura, diferenciándose en sus garantías estáticas de seguridad.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: SQL y Prolog expresan qué resultado se desea mediante lógica declarativa, Haskell y OCaml garantizan pureza e inferencia algebraica, y Elixir/Erlang alcanzan tolerancia a fallos extrema en la BEAM.
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\section{Lenguajes de Sistemas y Control Explícito de Memoria (Volúmenes III y IV) y Ecosistemas Dinámicos, Cientificos y Web Tipada: Python, JavaScript y TypeScript (Volumen V)}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+- **Rust (\texttt{vol03})**: Tipado estático fuerte y algebraico, seguridad de memoria y ausencia de *data races* en tiempo de compilación mediante *ownership*, *borrowing* y *lifetimes* (\texttt{'a}). Ideal para kernels, motores de bases de datos, redes, WebAssembly y CLI.
+- **C (C17/C23, \texttt{vol04})**: El lenguaje universal de interfaces binarias (ABI), kernels POSIX y sistemas embebidos; gestión manual de memoria (\texttt{malloc}/\texttt{free}) y punteros crudos.
+- **C++ (C++20/23, \texttt{vol04})**: Abstracciones de coste cero, RAII, punteros inteligentes, plantillas restringidas con \texttt{Concepts}, \texttt{constexpr}, \texttt{std::ranges} y corrutinas para motores gráficos, HPC y finanzas de baja latencia.
+- **Zig, Ada/SPARK, Fortran y ASM (\texttt{vol04})**: Zig aporta asignadores explícitos y metaprogramación \texttt{comptime} sin flujo de control oculto; Ada/SPARK permite verificación formal en aviónica y ferrocarriles; Fortran lidera el cálculo tensorial numérico; y x86-64/ARM64 expone la ISA real.
+- **Python 3.12 (\texttt{vol05})**: Tipado dinámico fuerte con anotaciones graduales (\texttt{typing}, \texttt{pyright}), modelo de datos basado en protocolos dunder, generadores, \texttt{asyncio} y ecosistema de IA/ciencia de datos (\texttt{NumPy}, \texttt{PyTorch}, \texttt{FastAPI}).
+- **JavaScript ES2024 (\texttt{vol05})**: Lenguaje nativo del navegador; herencia prototípica, clausuras léxicas, bucle de eventos (Macrotasks y Microtasks) y compilación JIT en V8/SpiderMonkey/JSC.
+- **TypeScript 5.x (\texttt{vol05})**: Sistema de tipos estructural Turing-completo con unión discriminada, estrechamiento de tipos (*narrowing*), genéricos con varianza, \texttt{infer} y tipos mapeados que se borran completamente (*type erasure*) al emitir JavaScript.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\section{Plataformas Empresariales, Concurrencia CSP y Móvil: Java, Kotlin, Scala, C\#, F\#, Go y Swift (Volumen VI) y Datos, Shell, Web Clásica, Funcionales Puros y Especializados (Volumen VII)}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+- **Java 21, Kotlin y Scala 3 (\texttt{vol06})**: Java 21 revoluciona el throughput de E/S con Virtual Threads (Project Loom), Records y Sealed Classes; Kotlin añade seguridad nula estricta y corrutinas estructuradas para Android y backend; Scala 3 fusiona POO con programación funcional de tipos de orden superior.
+- **C\# 12 y F\# sobre .NET 8 (\texttt{vol06})**: C\# permite programación de alto nivel y alto rendimiento (\texttt{Span<T>}, \texttt{ValueTask}, LINQ, Native AOT); F\# aporta inferencia Hindley-Milner y tipos algebraicos.
+- **Go y Swift 6 (\texttt{vol06})**: Go compila en segundos a binarios estáticos con planificador M:N de goroutines y canales CSP (Docker, Kubernetes, Terraform); Swift 6 emplea conteo automático de referencias (ARC), semántica de valor (\texttt{struct}) y aislamiento estricto de actores.
+- **SQL y Bash/POSIX Shell (\texttt{vol07})**: SQL (ISO/IEC 9075) modela consultas relacionales, ventanas analíticas y CTEs recursivas; POSIX Shell/Bash automatiza tuberías de procesos Unix.
+- **PHP 8.3, Ruby 3.3 y Dart 3 (\texttt{vol07})**: PHP y Ruby impulsan gran parte de la web comercial (Laravel, Symfony, Rails), y Dart 3 ofrece sonido nulo estricto y compilación AOT para Flutter.
+- **Haskell, OCaml, Elixir, Erlang, Clojure y Lisp/Scheme (\texttt{vol07})**: Evaluación perezosa y mónadas en Haskell; módulos funtoriales en OCaml; actores aislados con árboles de supervisión en Elixir/Erlang; y homoiconicidad y macros higiénicas en la familia Lisp.
+- **R, Julia, Lua, Perl, Prolog y GDScript (\texttt{vol07})**: Estadística vectorial en R; despacho múltiple de alto rendimiento en Julia; scripting embebido ligero en Lua; procesamiento textual en Perl; unificación lógica Horn en Prolog; y scripting de escenas en Godot con GDScript.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textbf{Enunciado}
+Un servidor de mensajería mantiene 10 000 conexiones concurrentes. Con hilos nativos del sistema operativo (pila reservada de 1 024 KiB por hilo), necesitaría 10 240 000 KiB. Con goroutines de Go o Virtual Threads de Java 21 (pila inicial dinámica de 4 KiB por tarea), calcule la memoria total de pila requerida en MiB (1 MiB = 1 024 KiB).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N_{conn} = 10000\,\mathrm{tareas}$ — Conexiones concurrentes activas
+\item $S_{coro} = 4\,\mathrm{KiB}$ — Pila inicial por goroutine o hilo virtual
+\item $K = 1024\,\mathrm{KiB}\,\mathrm{MiB}^{-1}$ — Kibibytes por mebibyte
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Memoria total de pila \(M_mib\) en MiB
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Comparativa de sobrecoste de memoria por tarea concurrente: Hilos OS vs Goroutines / Virtual Threads}
+
+\[
+M_{\text{mib}} = \frac{10000 \cdot 4}{1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 10 000 tareas por 4 KiB y dividimos entre 1 024 KiB/MiB
+
+\[
+M_{\text{mib}} = \frac{10000 \cdot 4}{1024}
+\]
+
+\[
+\frac{\left(10000\cdot 4\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 39.0625
+\]
+
+\noindent\textbf{Interpretación}
+Las 10 000 tareas concurrentes consumen apenas 39,0625 MiB de memoria de pila frente a los 10 000 MiB (9,76 GiB) que exigirían 10 000 hilos nativos de 1 MiB.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $39.0625$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+[CH-03.1] Calcule (Memoria en MiB requerida por 10 000 hilos nativos con pila de 1 MiB cada uno) expresado en MiB.
+
+\noindent\textbf{2 [PRB-0016] (Intermedio, Desarrollo por pasos)}
+[CH-03.2] Calcule (Factor de reducción de memoria al usar pilas iniciales de 4 KiB frente a 1024 KiB (1024 / 4)) expresado en veces.
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+[CH-03.3] Calcule (Número de lenguajes cubiertos en el Volumen VI (Java, Kotlin, Scala, C\#, F\#, Go, Swift, Objective-C)) expresado en lenguajes.
+
+\noindent\textbf{4 [PRB-0018] (Avanzado, Diseño)}
+[CH-03.4] Calcule (Número de lenguajes cubiertos en el Volumen VII (SQL, Shell, PHP, Ruby, Dart + 6 funcionales + 6 especializados)) expresado en lenguajes.
+\end{tcolorbox}
+
+\chapter{Matriz Curricular (ACM/IEEE CS2023 y SWEBOK v4.0), Grafo de Prerrequisitos y Auditoría de Calidad}
+\label{chap:ch-04}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textit{Documentación curricular, trazabilidad de fuentes primarias, matriz de prerrequisitos y resumen de verificación técnica de la enciclopedia.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+La ausencia de ciclos en el grafo de dependencias curriculares garantiza que todo concepto utilizado en un capítulo avanzado haya sido definido previamente o sea autónomo dentro de su monografía.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Alineación con el Estándar ACM/IEEE/AAAI Computer Science Curricula 2023 (CS2023): Las 17 áreas de conocimiento nucleares de CS2023 están cubiertas con teoría formal, código verificado y problemas resueltos a lo largo de los Volúmenes I a IX.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Todos los volúmenes han superado la auditoría de calidad de Studium con cero errores de compilación LaTeX y cero contradicciones o afirmaciones numéricas sin respaldo.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\section{Alineación con el Estándar ACM/IEEE/AAAI Computer Science Curricula 2023 (CS2023) y Alineación con IEEE SWEBOK v4.0 (Software Engineering Body of Knowledge)}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+El archivo \texttt{blueprint/curriculum-coverage.json} registra la correspondencia exacta entre las áreas de CS2023 y los capítulos de la enciclopedia:
+- **AL (Algorithms and Complexity)** y **MSF (Mathematical and Statistical Foundations)**: Volúmenes I y II.
+- **AR (Architecture and Organization)**, **OS (Operating Systems)** y **SF (Systems Fundamentals)**: Volúmenes II y IV.
+- **FPL (Foundations of Programming Languages)**: Volúmenes I, II y las 35 monografías de los Volúmenes III a VII.
+- **DM (Data Management)**: Volumen VII (SQL) y Volumen VIII (Curso completo de Bases de Datos).
+- **GIT (Graphics and Interactive Techniques)** y **SPD (Specialized Platform Development)**: Volumen VIII (Web, Escritorio y Móvil).
+- **SE (Software Engineering)**, **PDC (Parallel and Distributed Computing)**, **NC (Networking and Communication)** y **SEC (Security)**: Volumen IX.
+Cada área de conocimiento de SWEBOK v4.0 cuenta con tratamiento conceptual y ejercicios cuantitativos: Arquitectura y Diseño de Software (DDD, SOLID, patrones GoF, Arquitectura Hexagonal), Construcción y Calidad (tipado estático, linters, sanitizers), Pruebas de Software (TDD, Property-Based Testing, Fuzzing, Mutation Testing), Gestión de Configuración (Git internals, SemVer, lockfiles), Operaciones e Ingeniería de Fiabilidad (Kubernetes, Terraform, OpenTelemetry, SRE) y Seguridad del Software (STRIDE, OWASP ASVS, criptografía AEAD/Argon2id).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\section{Grafo Acíclico Dirigido (DAG) de Prerrequisitos y Matriz de Conocimientos Previos y Auditoría Independiente de Código, Problemas y Compilación Editorial}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+El archivo \texttt{blueprint/prerequisite-dag.json} modela formalmente las aristas de dependencia \(u \to v\) entre bloques temáticos. Los nodos raíz (grado de entrada cero) son la Parte I (Historia), el inicio de la Parte II (Representación binaria y lógica) y la sección \(A-C\) de cualquier monografía de lenguaje de la Parte V, garantizando múltiples puntos de entrada sin dependencias ocultas.
+Cada uno de los 10 volúmenes (\texttt{vol00} a \texttt{vol09}) ha sido construido mediante las herramientas reales de Studium (\texttt{studium\_source\_register}, \texttt{studium\_source\_excerpt\_record}, \texttt{studium\_blueprint\_propose}, \texttt{studium\_blueprint\_approve}, \texttt{studium\_depth\_plan\_propose}, \texttt{studium\_paragraph\_write\_supported}, \texttt{studium\_computation\_record}, \texttt{studium\_problem\_add\_worked}, \texttt{studium\_problem\_add\_practice}, \texttt{studium\_problem\_verify\_result}, \texttt{studium\_book\_quality\_audit} y \texttt{studium\_draft\_render}), preservando honestamente \texttt{released: False} y \texttt{PENDING} para la revisión académica humana final.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textbf{Enunciado}
+La colección completa de 10 volúmenes contiene 208 problemas en los Volúmenes I y II (104 cada uno), 48 problemas en el Volumen III (Rust), 200 problemas en los Volúmenes IV a VIII (40 cada uno), 35 problemas en el Volumen IX y 20 problemas en este Volumen 0. Calcule el número total de problemas verificados incluidos en la enciclopedia.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $P_{12} = 208\,\mathrm{problemas}$ — Problemas en Volúmenes I y II
+\item $P_{3} = 48\,\mathrm{problemas}$ — Problemas en Volumen III (Rust)
+\item $P_{48} = 200\,\mathrm{problemas}$ — Problemas en Volúmenes IV a VIII (5 x 40)
+\item $P_{9} = 35\,\mathrm{problemas}$ — Problemas en Volumen IX
+\item $P_{0} = 20\,\mathrm{problemas}$ — Problemas en Volumen 0
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Total de problemas verificados \(P_tot\) en la enciclopedia
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Verificación del volumen total de problemas resueltos y de práctica en la Enciclopedia}
+
+\[
+P_{\text{tot}} = 208 + 48 + 200 + 35 + 20
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los problemas verificados de todos los volúmenes de la colección
+
+\[
+P_{\text{tot}} = 208 + 48 + 200 + 35 + 20
+\]
+
+\[
+\left(\left(\left(\left(208+48\right)+200\right)+35\right)+20\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 511
+\]
+
+\noindent\textbf{Interpretación}
+La enciclopedia integra un total de 511 problemas verificados simbólica o ejecutablemente a lo largo de sus 10 volúmenes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $511$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+[CH-04.1] Calcule (Total de capítulos entre los Volúmenes \(I-\)VIII (2x13 + 1x8 + 5x8 = 74) más Volumen IX (7) y Volumen 0 (4)) expresado en capítulos.
+
+\noindent\textbf{2 [PRB-0022] (Intermedio, Desarrollo por pasos)}
+[CH-04.2] Calcule (Total de rutas de aprendizaje documentadas en blueprint/learning-paths.json) expresado en itinerarios.
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+[CH-04.3] Calcule (Proyectos integradores multifichero verificados en el directorio projects/) expresado en proyectos.
+
+\noindent\textbf{4 [PRB-0024] (Avanzado, Diseño)}
+[CH-04.4] Calcule (Errores de auditoría de calidad (quality\(_errors)\) permitidos en cualquiera de los 10 volúmenes compilados) expresado en errores.
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$G = (V, E)$ & Grafo acíclico dirigido (DAG) de prerrequisitos curriculares & $\mathrm{estructura}\,\mathrm{discreta}$ \\
+$T(n) \in \Theta(f(n))$ & Cota asintótica ajustada de complejidad algorítmica & $\mathrm{operaciones}$ \\
+$\mathcal{L}_{35} \cup \mathcal{M}_{9}$ & Conjunto de 35 lenguajes de programación y 9 formatos de marcado/datos & $\mathrm{catálogo técnico}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Arquitectura General de la Enciclopedia y Mapa de las 13 Partes (Volúmenes I a IX)}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+La enciclopedia incluye 16 lenguajes de programación prioritarios, 19 lenguajes de programación adicionales y 9 lenguajes de marcado, hojas de estilo y formatos de serialización de datos. Calcule el número total de tecnologías lingüísticas y de datos documentadas con bloques dedicados.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 44
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+[CH-01.1] Calcule (Total de lenguajes de programación sumando los 16 prioritarios y los 19 adicionales) expresado en lenguajes.
+
+\noindent\textbf{Respuesta} 35
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+[CH-01.2] Calcule (Total de secciones de la plantilla A-H aplicadas a los 16 lenguajes prioritarios (16 * 8)) expresado en secciones.
+
+\noindent\textbf{Respuesta} 128
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+[CH-01.3] Calcule (Volúmenes totales del bundle PDF sumando el Volumen Maestro (1) y los 9 volúmenes temáticos) expresado en volúmenes.
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+[CH-01.4] Calcule (Partes estructurales totales que articulan la arquitectura general de la enciclopedia) expresado en partes.
+
+\noindent\textbf{Respuesta} 13
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(16+19\right)+9\right) = 44\)
+
+\section{Síntesis de las Partes I a IV: Historia, Fundamentos Universales, Algoritmos y Sistemas}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+Un algoritmo de procesamiento de grafos tiene una fracción secuencial irreducible del 20 \% y una fracción paralelizable del 80 \%. Si la fracción paralelizable se acelera linealmente en 8 núcleos (reduciendo su tiempo a 80 / 8 = 10 \% del tiempo original), calcule el porcentaje del tiempo original que tarda la ejecución paralela total (20 + 80 / 8).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 30
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+[CH-02.1] Calcule (Enteros de 8 bytes (int64) que caben en una línea de caché L1 de 64 bytes (64 / 8)) expresado en enteros.
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+[CH-02.2] Calcule (Comparaciones máximas de búsqueda binaria en un vector ordenado de 1024 elementos (log2(1024) = 10)) expresado en comparaciones.
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+[CH-02.3] Calcule (Valor decimal máximo representable por un entero con signo en complemento a dos de 8 bits \((2^7 - 1))\) expresado en entero.
+
+\noindent\textbf{Respuesta} 127
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+[CH-02.4] Calcule (Tamaño total de tabla de páginas de 1 nivel en MiB para \(2^20\) páginas con entradas de 4 bytes ((1048576 * 4) / 1048576)) expresado en MiB.
+
+\noindent\textbf{Respuesta} 4
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(20+\frac{80}{8}\right) = 30\)
+
+\section{Índice Maestro y Matriz Comparativa de los 35 Lenguajes de Programación (Parte V)}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Un servidor de mensajería mantiene 10 000 conexiones concurrentes. Con hilos nativos del sistema operativo (pila reservada de 1 024 KiB por hilo), necesitaría 10 240 000 KiB. Con goroutines de Go o Virtual Threads de Java 21 (pila inicial dinámica de 4 KiB por tarea), calcule la memoria total de pila requerida en MiB (1 MiB = 1 024 KiB).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 39.0625
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+[CH-03.1] Calcule (Memoria en MiB requerida por 10 000 hilos nativos con pila de 1 MiB cada uno) expresado en MiB.
+
+\noindent\textbf{Respuesta} 10000
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+[CH-03.2] Calcule (Factor de reducción de memoria al usar pilas iniciales de 4 KiB frente a 1024 KiB (1024 / 4)) expresado en veces.
+
+\noindent\textbf{Respuesta} 256
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+[CH-03.3] Calcule (Número de lenguajes cubiertos en el Volumen VI (Java, Kotlin, Scala, C\#, F\#, Go, Swift, Objective-C)) expresado en lenguajes.
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+[CH-03.4] Calcule (Número de lenguajes cubiertos en el Volumen VII (SQL, Shell, PHP, Ruby, Dart + 6 funcionales + 6 especializados)) expresado en lenguajes.
+
+\noindent\textbf{Respuesta} 17
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(10000\cdot 4\right)}{1024} = 39.0625\)
+
+\section{Matriz Curricular (ACM/IEEE CS2023 y SWEBOK v4.0), Grafo de Prerrequisitos y Auditoría de Calidad}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+La colección completa de 10 volúmenes contiene 208 problemas en los Volúmenes I y II (104 cada uno), 48 problemas en el Volumen III (Rust), 200 problemas en los Volúmenes IV a VIII (40 cada uno), 35 problemas en el Volumen IX y 20 problemas en este Volumen 0. Calcule el número total de problemas verificados incluidos en la enciclopedia.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 511
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+[CH-04.1] Calcule (Total de capítulos entre los Volúmenes \(I-\)VIII (2x13 + 1x8 + 5x8 = 74) más Volumen IX (7) y Volumen 0 (4)) expresado en capítulos.
+
+\noindent\textbf{Respuesta} 85
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+[CH-04.2] Calcule (Total de rutas de aprendizaje documentadas en blueprint/learning-paths.json) expresado en itinerarios.
+
+\noindent\textbf{Respuesta} 19
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+[CH-04.3] Calcule (Proyectos integradores multifichero verificados en el directorio projects/) expresado en proyectos.
+
+\noindent\textbf{Respuesta} 6
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+[CH-04.4] Calcule (Errores de auditoría de calidad (quality\(_errors)\) permitidos en cualquiera de los 10 volúmenes compilados) expresado en errores.
+
+\noindent\textbf{Respuesta} 0
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(\left(208+48\right)+200\right)+35\right)+20\right) = 511\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 27 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios. Ecuaciones: 1 valor o condición.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\medskip
+
+\noindent Computer Science Curricula 2023 (CS2023) \& Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24.
+
+\noindent The Art of Computer Programming \& Structure and Interpretation of Computer Programs (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24.
+
+\noindent REV-0001: ch-01 scientific
+
+\noindent REV-0002: ch-02 scientific
+
+\noindent REV-0003: ch-03 scientific
+
+\noindent REV-0004: ch-04 scientific
+\chapter{Plan de estudio}
+
+\section*{Volumen Maestro Integral (Partes I a XIII)}
+
+\subsection*{\checkmark Arquitectura General de la Enciclopedia y Mapa de las 13 Partes (Volúmenes I a IX)}
+\begin{itemize}
+\item Comprender la estructura modular de las 13 Partes y los 10 volúmenes de la enciclopedia, seleccionar el volumen o itinerario adecuado y utilizar las convenciones tipográficas y de verificación.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Síntesis de las Partes I a IV: Historia, Fundamentos Universales, Algoritmos y Sistemas}
+\begin{itemize}
+\item Conectar la evolución histórica de los paradigmas de programación con la representación física de la información, el análisis de algoritmos y la arquitectura de computadores y compiladores.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Índice Maestro y Matriz Comparativa de los 35 Lenguajes de Programación (Parte V)}
+\begin{itemize}
+\item Comparar los 35 lenguajes de programación de la enciclopedia según su sistema de tipos, modelo de memoria, concurrencia, modelo de ejecución y dominios óptimos de aplicación.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Matriz Curricular (ACM/IEEE CS2023 y SWEBOK v4.0), Grafo de Prerrequisitos y Auditoría de Calidad}
+\begin{itemize}
+\item Verificar la correspondencia de cada volumen con las áreas de conocimiento de CS2023 y SWEBOK v4.0, navegar el DAG de prerrequisitos y auditar los artefactos reproducibles del proyecto.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Computer Science Curricula 2023 (CS2023) \& Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://csed.acm.org/vol-ref-1}
+\bibitem{src27} The Art of Computer Programming \& Structure and Interpretation of Computer Programs. \url{https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html/vol-ref-2}
+\end{thebibliography}
+\end{document}

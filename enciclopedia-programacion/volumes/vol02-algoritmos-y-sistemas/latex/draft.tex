@@ -1,0 +1,2553 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen 2 \(-\) Algoritmos, Estructuras de Datos, Compiladores, Memoria y Sistemas Operativos\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Partes III y IV: Complejidad Asintótica, Grafos, Programación Dinámica, Arquitectura de Cachés, Compiladores SSA y Sistemas Operativos\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{PARTE III. Algoritmos, Estructuras de Datos y Computación}
+
+\chapter{Complejidad temporal y espacial, notaciones O, Omega y Theta, recurrencias, Teorema Maestro y análisis amortizado}
+\label{chap:cap01-complejidad-asintotica-recurrencias-amortizado}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\noindent\textit{Proporcionar las herramientas matemáticas exactas para predecir cómo escalan el tiempo de ejecución y el consumo de memoria de cualquier algoritmo cuando el tamaño de entrada \(n\) crece varios órdenes de magnitud, demostrando cotas superiores, inferiores y costes amortizados.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+En un vector dinámico, si en lugar de multiplicar la capacidad por una constante (\(\times 2\) o \(\times 1.5\)) se incrementara sumando una cantidad fija \(+K\) en cada llenado, el coste de \(n\) inserciones degeneraría a \(\Theta(n^2)\): la progresión geométrica es indispensable para mantener \texttt{push} en \(O(1)\) amortizado.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+Método del Potencial (Análisis Amortizado): dada una secuencia de \(m\) operaciones con costes reales \(c_1, \dots, c_m\) sobre estados \(D_0, \dots, D_m\) y una función de potencial \(\Phi(D_i) \ge \Phi(D_0)\), la suma de costes amortizados acota superiormente el coste real total: \(\sum_{i=1}^m c_i = \sum_{i=1}^m \hat{c}_i - (\Phi(D_m) - \Phi(D_0)) \le \sum_{i=1}^m \hat{c}_i\).
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+1. ¿Qué diferencia existe entre decir que un algoritmo es \(O(n^2)\) y decir que es \(\Theta(n^2)\)? 2. ¿Qué diferencia fundamental separa la complejidad en el caso promedio de la complejidad amortizada? 3. ¿Por qué duplicar la capacidad de un array dinámico garantiza coste amortizado \(\hat{c}_i \le 3\)?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+\end{tcolorbox}
+
+\section{Definición formal de O, Omega y Theta, y Teorema Maestro para recurrencias}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+El análisis de algoritmos mide el crecimiento del número de operaciones elementales \(T(n)\) y de celdas de memoria \(S(n)\) en función del tamaño de entrada \(n\). Dadas dos funciones no negativas \(f(n)\) y \(g(n)\):
+1. Cota superior asintótica (\(f(n) \in O(g(n))\)): existen constantes \(c > 0\) y \(n_0 \ge 1\) tales que \(0 \le f(n) \le c \cdot g(n)\) para todo \(n \ge n_0\).
+2. Cota inferior asintótica (\(f(n) \in \Omega(g(n))\)): existen \(c > 0\) y \(n_0 \ge 1\) tales que \(0 \le c \cdot g(n) \le f(n)\) para todo \(n \ge n_0\).
+3. Orden asintótico exacto (\(f(n) \in \Theta(g(n))\)): se cumple simultáneamente \(f(n) \in O(g(n))\) y \(f(n) \in \Omega(g(n))\).
+Para algoritmos recursivos de divide y vencerás cuya recurrencia tiene la forma \(T(n) = a T(n/b) + f(n)\) con \(a \ge 1\) y \(b > 1\), el Teorema Maestro compara \(f(n)\) con la hoja crítica \(n^{\log_b a}\): (Caso 1) si \(f(n) = O(n^{\log_b a - \varepsilon})\), entonces \(T(n) = \Theta(n^{\log_b a})\); (Caso 2) si \(f(n) = \Theta(n^{\log_b a})\), entonces \(T(n) = \Theta(n^{\log_b a} \log n)\) (como ocurre en Mergesort con \(a=2, b=2, f(n)=\Theta(n) \Rightarrow \Theta(n \log n)\)); (Caso 3) si \(f(n) = \Omega(n^{\log_b a + \varepsilon})\) y satisface regularidad, entonces \(T(n) = \Theta(f(n))\).
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\section{Análisis amortizado por método de potencial y vectores dinámicos}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+No debe confundirse la complejidad en el caso promedio (que asume una distribución probabilística sobre las entradas) con la complejidad amortizada: el análisis amortizado garantiza de forma determinista el coste promedio por operación sobre cualquier secuencia de \(m\) operaciones en el peor caso, sin ninguna hipótesis probabilística. En el método de la función de potencial de Tarjan, definimos una función \(\Phi(D_i) \ge \Phi(D_0)\) sobre el estado \(D_i\) de la estructura de datos, y el coste amortizado de la \(i\)-ésima operación es \(\hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1})\).
+Como muestra la figura~\ref{fig:fig-amortizado-vec}, en un vector dinámico (\texttt{Vec<T>} en Rust, \texttt{std::vector} en C++, \texttt{list} en Python) que duplica su capacidad \(\text{cap}\) cuando el tamaño \(\text{len}\) alcanza \(\text{cap}\), tomamos \(\Phi = 2 \cdot \text{len} - \text{cap}\). En una inserción sin redimensionado (\(c_i = 1, \Delta\text{len} = 1, \Delta\text{cap} = 0\)), el coste amortizado es \(\hat{c}_i = 1 + 2 = 3\). En una inserción con redimensionado de \(k\) a \(2k\) (\(c_i = k + 1\)), el potencial cae de \(\Phi_{i-1} = 2k - k = k\) a \(\Phi_i = 2(k+1) - 2k = 2\), por lo que \(\hat{c}_i = (k + 1) + (2 - k) = 3 = \Theta(1)\).
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (10.5,0) node[right, font=\scriptsize] {Inserción $i$};
+\draw[thick, ->] (0,0) -- (0,3.4) node[above, font=\scriptsize] {Coste $c_i$};
+\foreach \x/\h in {1/0.4, 2/0.8, 3/1.2, 4/0.4, 5/2.0, 6/0.4, 7/0.4, 8/0.4, 9/3.0} {
+    \filldraw[blue!70!black] (\x,0) rectangle (\x+0.35,\h);
+}
+\draw[dashed, orange!75!black, thick] (0,1.0) -- (10.2,1.0) node[right, font=\scriptsize] {$\hat{c}_i = 3 = O(1)$};
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (10.5,0) node[right, font=\scriptsize] {Inserción $i$};
+\draw[thick, ->] (0,0) -- (0,3.4) node[above, font=\scriptsize] {Coste $c_i$};
+\foreach \x/\h in {1/0.4, 2/0.8, 3/1.2, 4/0.4, 5/2.0, 6/0.4, 7/0.4, 8/0.4, 9/3.0} {
+    \filldraw[blue!70!black] (\x,0) rectangle (\x+0.35,\h);
+}
+\draw[dashed, orange!75!black, thick] (0,1.0) -- (10.2,1.0) node[right, font=\scriptsize] {$\hat{c}_i = 3 = O(1)$};
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (10.5,0) node[right, font=\scriptsize] {Inserción $i$};
+\draw[thick, ->] (0,0) -- (0,3.4) node[above, font=\scriptsize] {Coste $c_i$};
+\foreach \x/\h in {1/0.4, 2/0.8, 3/1.2, 4/0.4, 5/2.0, 6/0.4, 7/0.4, 8/0.4, 9/3.0} {
+    \filldraw[blue!70!black] (\x,0) rectangle (\x+0.35,\h);
+}
+\draw[dashed, orange!75!black, thick] (0,1.0) -- (10.2,1.0) node[right, font=\scriptsize] {$\hat{c}_i = 3 = O(1)$};
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\draw[thick, ->] (0,0) -- (10.5,0) node[right, font=\scriptsize] {Inserción $i$};
+\draw[thick, ->] (0,0) -- (0,3.4) node[above, font=\scriptsize] {Coste $c_i$};
+\foreach \x/\h in {1/0.4, 2/0.8, 3/1.2, 4/0.4, 5/2.0, 6/0.4, 7/0.4, 8/0.4, 9/3.0} {
+    \filldraw[blue!70!black] (\x,0) rectangle (\x+0.35,\h);
+}
+\draw[dashed, orange!75!black, thick] (0,1.0) -- (10.2,1.0) node[right, font=\scriptsize] {$\hat{c}_i = 3 = O(1)$};
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-amortizado-vec}\textbf{Figura~\thestudiumfigure.} Evolución de capacidad y tamaño en un vector dinámico con factor de crecimiento 2x: las reasignaciones en potencias de 2 quedan amortizadas a coste O(1) por inserción.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+
+\noindent\textbf{Enunciado}
+Un vector dinámico comienza con capacidad inicial \(\text{cap}_0 = 1\) y duplica su capacidad cada vez que se llena (\(1 \to 2 \to 4 \to 8 \to 16 \to 32\)). Si se insertan secuencialmente \(n = 17\) elementos y cada inserción cuesta 1 escritura más el número de elementos copiados durante el redimensionado (\$1 + 2 + 4 + 8 + 16\$ copias acumuladas), calcule el coste total exacto de escrituras realizadas.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $n = 17$ — Número de elementos insertados
+\item $C_{copy} = 31$ — Copias de redimensionado (1+2+4+8+16)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Coste total de operaciones de escritura sobre las 17 inserciones
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Suma geométrica de copias en redimensionamiento duplicado de un vector dinámico}
+
+\[
+C_total = n + C_copy
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Capacidad inicial 1 y duplicación exacta al insertar cuando len == cap
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los elementos copiados en las 5 expansiones (al pasar de capacidad 1 a 2, 4, 8, 16 y 32).
+
+\[
+C_copy = 1 + 2 + 4 + 8 + 16
+\]
+
+\[
+\left(\left(\left(\left(1+2\right)+4\right)+8\right)+16\right)
+\]
+\item
+Sumamos las 17 escrituras directas de cada nuevo elemento.
+
+\[
+C_total = n + C_copy
+\]
+
+\[
+\left(17+31\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+48
+\]
+
+\noindent\textbf{Interpretación}
+Las 17 inserciones requieren 48 escrituras en total (menos de 3 * 17 = 51), confirmando la cota teórica del método de potencial (coste amortizado <= 3 por inserción).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $31$ — reproducido
+\item Paso 2: $48$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item En sistemas de tiempo real estricto (hard real-time), el pico puntual O(n) del redimensionado obliga a pre-reservar con \texttt{with\_capacity}.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Confundir el peor caso de una operación aislada O(n) con el coste de una secuencia de n operaciones, que es O(n) total y no \(O(n^2)\).
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNvbXBsZWppZGFkLWFzaW50b3RpY2EtcmVjdXJyZW5jaWFzLWFtb3J0aXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Conceptual)}
+[VOL02-C01-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0004] (Básico, Numérico)}
+[VOL02-C01-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Interpretación)}
+[VOL02-C01-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0006] (Intermedio, Aplicación)}
+[VOL02-C01-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(14 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0007] (Intermedio, Identificación de errores)}
+[VOL02-C01-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0008] (Avanzado, Desarrollo por pasos)}
+[VOL02-C01-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0009] (Avanzado, Comparación)}
+[VOL02-C01-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0010] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C01-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0011] (Nivel de examen, Optimización)}
+[VOL02-C01-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0012] (Nivel de examen, Demostración)}
+[VOL02-C01-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0013] (Reto, Diseño)}
+[VOL02-C01-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0014] (Reto, Estudio de parámetros)}
+[VOL02-C01-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Búsqueda binaria libre de desbordamiento, ordenación, cota inferior Omega(n log n) e invariantes}
+\label{chap:cap02-busqueda-ordenacion-cotas-inferiores}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+\noindent\textit{Dominar los algoritmos de búsqueda y ordenación desde sus demostraciones formales de corrección mediante invariantes de bucle hasta la cota teórica de información \(\Omega(n \log n)\) y las implementaciones híbridas de producción (Timsort, pdqsort, Radix Sort).}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+En las bibliotecas estándar modernas, elija la ordenación estable (\texttt{slice::sort} en Rust, Timsort en Python \texttt{sorted}, \texttt{std::stable\_sort} en C++) cuando ordene registros compuestos o secuencias parcialmente ordenadas, y la ordenación inestable (\texttt{sort\_unstable} / \texttt{pdqsort}) para tipos primitivos donde desee evitar la reserva de memoria auxiliar.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+Cota Inferior de Ordenación por Comparación y Estabilidad: ningún algoritmo que ordene \(n\) elementos mediante comparaciones binarias puede realizar menos de \(\lceil \log_2(n!) \rceil = \Omega(n \log n)\) comparaciones en el peor caso. Un algoritmo de ordenación es estable si para todo par de índices \(i < j\) con claves equivalentes \(k(A[i]) = k(A[j])\), el elemento \$A[i]\$ precede a \$A[j]\$ en la salida.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+1. ¿Cómo se demuestra que el árbol de decisión de cualquier algoritmo de ordenación por comparación tiene altura al menos \(\log_2(n!)\)? 2. ¿Por qué \texttt{mid = low + (high - low) / 2} evita el desbordamiento entero de \texttt{(low + high) / 2}? 3. ¿Por qué Introsort/pdqsort combina Quicksort, Insertion Sort para subvectores pequeños y Heapsort como salvaguarda?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+\end{tcolorbox}
+
+\section{Búsqueda binaria, invariantes de bucle y prevención del desbordamiento de punto medio}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+La búsqueda binaria reduce un espacio ordenado de \(n\) elementos a la mitad en cada comparación, alcanzando complejidad \(\Theta(\log_2 n)\) en el peor caso. Pese a su brevedad, como documentó Jon Bentley en Programming Pearls, la mayoría de las implementaciones improvisadas contienen defectos en las condiciones de parada o en el cálculo del punto medio: escribir \texttt{mid = (low + high) / 2} con enteros de ancho fijo provoca desbordamiento aritmético cuando \texttt{low + high} supera \texttt{INT\_MAX} (defecto que permaneció veinte años oculto en \texttt{java.util.Arrays.binarySearch}). La forma correcta es \texttt{mid = low + (high - low) / 2}.
+Para demostrar formalmente la corrección de un bucle (inicialización, mantenimiento y terminación), se trabaja sobre un intervalo semiabierto \texttt{[low, high)} con el invariante: para todo índice \(i < \text{low}\) se cumple \(A[i] < \text{target}\) y para todo \(j \ge \text{high}\) se cumple \(A[j] \ge \text{target}\). En cada iteración la longitud \texttt{high - low} decrece estrictamente (función de cota o variante de bucle), garantizando terminación en \(\lceil \log_2(n+1) \rceil\) pasos.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+\section{Cota inferior por árbol de decisión, Mergesort, Quicksort, Heapsort y ordenación lineal}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+Todo algoritmo de ordenación basado exclusivamente en comparaciones entre pares de elementos puede modelarse como un árbol binario de decisión cuyas hojas contienen las \$n!\$ permutaciones posibles de la entrada. Un árbol binario de altura \(h\) posee a lo sumo \(2^h\) hojas; por tanto, \(2^h \ge n!\), y aplicando la aproximación de Stirling (\(\log_2(n!) = n \log_2 n - n \log_2 e + \Theta(\log n)\)) se obtiene el teorema fundamental: cualquier algoritmo de ordenación por comparación requiere \(h \ge \lceil \log_2(n!) \rceil = \Omega(n \log n)\) comparaciones en el peor caso.
+Mergesort alcanza \(\Theta(n \log n)\) garantizado y es estable (preserva el orden relativo de claves iguales), empleando \(\Theta(n)\) memoria auxiliar; Heapsort logra \(\Theta(n \log n)\) en el peor caso con memoria auxiliar \(O(1)\) in-place sobre un montículo binario implícito, pero no es estable y presenta peor localidad de caché que Quicksort; Quicksort con pivote mediano o aleatorio logra \(\Theta(n \log n)\) esperado con excelente localidad espacial en caché L1 (y en su variante híbrida Introsort/pdqsort empleada en Rust \texttt{sort\_unstable} y C++ \texttt{std::sort}, conmuta a Heapsort si la profundidad recursiva supera \(2 \lfloor \log_2 n \rfloor\), garantizando \(O(n \log n)\) en el peor caso). Cuando las claves son enteros de \(w\) bits agrupados en dígitos de base \(R\), Counting Sort y Radix Sort evitan comparaciones directas y ordenan en tiempo lineal \(\Theta(d(n + R))\).
+\begin{lstlisting}[style=studium,language={Rust}]
+fn lower_bound(slice: &[i64], target: i64) -> usize {
+    let mut low = 0usize;
+    let mut high = slice.len();
+    while low < high {
+        let mid = low + (high - low) / 2;
+        if slice[mid] < target {
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    low
+}
+
+fn main() {
+    let data = [2, 5, 5, 5, 9, 14];
+    assert_eq!(lower_bound(&data, 5), 1);
+    assert_eq!(lower_bound(&data, 6), 4);
+}
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+
+\noindent\textbf{Enunciado}
+Determine el número mínimo teórico de comparaciones binarias en el peor caso necesarias para ordenar \(n = 5\) elementos distintos sabiendo que existen \(5! = 120\) permutaciones posibles y que \(2^6 = 64 < 120 \le 2^7 = 128\), verificando además la diferencia \$\(2^7 - 5\)!\$.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $n = 5$ — Número de elementos a ordenar
+\item $P = 120$ — Número de permutaciones 5!
+\item $L_{7} = 128$ — Número máximo de hojas en altura \(h = 7 (2^7)\)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Margen de hojas sobrantes \(2^7 - 5\)! que demuestra que h = 7 es el mínimo entero tal que \(2^h >= 5\)!
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cota de información en árbol binario de decisión (2\textasciicircum{}h >= n!)}
+
+\[
+margin = 2^7 - fact_5
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Cada comparación binaria divide el conjunto de permutaciones candidatas en a lo sumo dos subárboles
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el factorial 5! = 120 permutaciones que deben aparecer como hojas alcanzables.
+
+\[
+fact_5 = 5 * 4 * 3 * 2 * 1
+\]
+
+\[
+\left(\left(\left(\left(5\cdot 4\right)\cdot 3\right)\cdot 2\right)\cdot 1\right)
+\]
+\item
+Comprobamos que \(2^7 = 128\) cubre las 120 permutaciones con un margen de 8 hojas.
+
+\[
+margin = 2^7 - fact_5
+\]
+
+\[
+\left(128-120\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+8
+\]
+
+\noindent\textbf{Interpretación}
+Con 6 comparaciones solo se distinguen a lo sumo \(2^6 = 64\) permutaciones (< 120); por tanto, se necesitan al menos h = 7 comparaciones en el peor caso para ordenar 5 elementos, dejando un margen de 8 hojas.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $120$ — reproducido
+\item Paso 2: $8$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Para n grandes, la cota de información ceil(log2(n!)) es necesaria pero en ciertos n específicos el mínimo exacto de Ford-Johnson requiere 1 comparación adicional.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Confundir n * log2(n) directo con log2(n!), que para n pequeños difiere significativamente.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImNhcDAyLWJ1c3F1ZWRhLW9yZGVuYWNpb24tY290YXMtaW5mZXJpb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0017] (Básico, Conceptual)}
+[VOL02-C02-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0018] (Básico, Numérico)}
+[VOL02-C02-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0019] (Intermedio, Interpretación)}
+[VOL02-C02-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0020] (Intermedio, Aplicación)}
+[VOL02-C02-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(16 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0021] (Intermedio, Identificación de errores)}
+[VOL02-C02-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0022] (Avanzado, Desarrollo por pasos)}
+[VOL02-C02-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0023] (Avanzado, Comparación)}
+[VOL02-C02-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0024] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C02-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0025] (Nivel de examen, Optimización)}
+[VOL02-C02-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0026] (Nivel de examen, Demostración)}
+[VOL02-C02-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0027] (Reto, Diseño)}
+[VOL02-C02-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0028] (Reto, Estudio de parámetros)}
+[VOL02-C02-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Divide y vencerás, algoritmos voraces, programación dinámica y backtracking}
+\label{chap:cap03-divide-venceras-voraces-programacion-dinamica}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+\noindent\textit{Distinguir con rigor matemático cuándo un problema de optimización admite una estrategia voraz local, cuándo requiere programación dinámica por solapamiento de subproblemas y cuándo exige búsqueda en espacio de estados con poda (backtracking / branch and bound).}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+Al optimizar espacio en la mochila 0-1 reduciendo la matriz 2D a un único vector 1D \texttt{dp[0..C]}, recorra siempre las capacidades en orden decreciente \texttt{for c in (w..=C).rev()}: si las recorre en orden creciente, estará reutilizando el mismo objeto múltiples veces (resolviendo la mochila ilimitada Unbounded Knapsack en lugar de la mochila 0-1).
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+Ecuación de Recurrencia de Bellman en la Mochila 0-1 y Distancia de Edición (Levenshtein): para \(n\) objetos con pesos \(w_i\) y valores \(v_i\) bajo capacidad \(C\), el valor óptimo satisface \(OPT(i, c) = \max(OPT(i-1, c),\; v_i + OPT(i-1, c - w_i))\) si \(w_i \le c\), y \$OPT(i-1, c)\$ en caso contrario, con complejidad pseudopolinómica \(\Theta(n C)\) en tiempo y \(\Theta(C)\) en espacio.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+1. ¿Qué contraejemplo mínimo demuestra que el algoritmo voraz falla en el cambio de monedas con denominaciones \texttt{\{1, 3, 4\}}? 2. ¿Por qué recorrer las capacidades hacia atrás en \texttt{dp[c]} distingue la mochila 0-1 de la mochila ilimitada? 3. ¿Por qué la complejidad \(\Theta(n C)\) de la mochila 0-1 se denomina pseudopolinómica?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+\end{tcolorbox}
+
+\section{Divide y vencerás y condición de elección voraz (Greedy Choice Property)}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+Un problema exhibe subestructura óptima cuando una solución óptima global contiene dentro de sí soluciones óptimas a sus subproblemas. Si los subproblemas son disjuntos (independientes), el paradigma de Divide y Vencerás los resuelve recursivamente y combina sus resultados (Mergesort, transformada rápida de Fourier FFT, multiplicación de enteros de Karatsuba en \(O(n^{\log_2 3}) \approx O(n^{1.585})\)).
+Los algoritmos voraces (greedy) dan un paso más audaz: en cada etapa toman una decisión localmente óptima sin explorar las ramas alternativas. Un algoritmo voraz es correcto única y exclusivamente cuando se demuestra la propiedad de elección voraz (existe siempre una solución óptima global que comienza con la elección voraz) junto con la subestructura óptima. Así ocurre en la selección de actividades por tiempo de finalización más temprano, en la codificación prefijo de entropía mínima de Huffman y en los árboles generadores mínimos sobre matroides (Kruskal y Prim); en cambio, en el problema de la mochila 0-1 (0-1 Knapsack) o del cambio de monedas para sistemas no canónicos (como monedas \texttt{\{1, 3, 4\}} para sumar \texttt{6}, donde el voraz elige \texttt{4+1+1} = 3 monedas frente al óptimo \texttt{3+3} = 2 monedas), la heurística voraz falla y es necesario recurrir a programación dinámica.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+\section{Programación dinámica (Bellman) y búsqueda exhaustiva con poda (Backtracking)}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+La Programación Dinámica (introducida por Richard Bellman en los años cincuenta) resuelve problemas con subestructura óptima y subproblemas solapados calculando cada estado una sola vez. Todo diseño de programación dinámica sigue cuatro pasos formales: (1) definir el espacio de estados y su significado, (2) escribir la ecuación de recurrencia de Bellman relacionando un estado con sus predecesores en el DAG de dependencias, (3) establecer los casos base, y (4) elegir el orden de evaluación: recursivo con caché (memoización top-down) o iterativo en orden topológico (tabulación bottom-up), reduciendo a menudo la complejidad espacial de \(O(n \cdot W)\) a \(O(W)\) cuando la fila actual solo depende de la anterior.
+Cuando el problema es NP-duro y carece de estructura polinómica compacta (como satisfacibilidad booleana SAT, coloreado de grafos o las \(N\)-reinas), el Backtracking explora sistemáticamente el árbol de decisiones en profundidad aplicando predicados de factibilidad y cotas de optimalidad (branch and bound) para podar subárboles enteros antes de expandirlos:
+\begin{lstlisting}[style=studium,language={Python},escapeinside={(*@}{@*)}]
+def knapsack_01(weights: list[int], values: list[int], capacity: int) -> int:
+    dp = [0] * (capacity + 1)
+    for w, val in zip(weights, values):
+        for c in range(capacity, w - 1, -1):
+            if dp[c - w] + val > dp[c]:
+                dp[c] = dp[c - w] + val
+    return dp[capacity]
+
+# Voraz por densidad elegir(*@{\'i}@*)a (w=10, v=60)+(w=20, v=100) = 160; (*@{\'o}@*)ptimo DP toma (20,100)+(30,120) = 220
+assert knapsack_01([10, 20, 30], [60, 100, 120], 50) == 220
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyOSIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+
+\noindent\textbf{Enunciado}
+En el algoritmo de Karatsuba para multiplicar dos enteros de \(n\) dígitos dividiendo cada operando en dos mitades, se sustituyen las \(4\) multiplicaciones clásicas de tamaño \(n/2\) por solo \(3\) multiplicaciones recursivas. Compare el número de multiplicaciones base en una profundidad de \(k = 4\) niveles (\(n = 16\) bloques) entre el método cuadrático clásico (\$\(4^4\)\$) y Karatsuba (\$\(3^4\)\$), calculando el ahorro neto de productos elementales.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $k = 4$ — Niveles de recursión (para \(n = 2^4 = 16)\)
+\item $b_{classic} = 4$ — Subproblemas por nivel en método clásico
+\item $b_{karat} = 3$ — Subproblemas por nivel en Karatsuba
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Ahorro de multiplicaciones base tras 4 niveles de recursión
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Árbol de recursión de Divide y Vencerás (4\textasciicircum{}k frente a 3\textasciicircum{}k)}
+
+\[
+saved = M_classic - 3^4
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Cada nivel divide exactamente a la mitad el ancho de palabra de los operandos
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos los productos en las hojas del algoritmo cuadrático clásico \(4^4\).
+
+\[
+M_classic = 4^4
+\]
+
+\[
+\left(4\right)^{4}
+\]
+\item
+Restamos los productos en las hojas de Karatsuba \(3^4 = 81\).
+
+\[
+saved = M_classic - 3^4
+\]
+
+\[
+\left(256-81\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+175
+\]
+
+\noindent\textbf{Interpretación}
+En solo 4 niveles de subdivisión Karatsuba reduce de 256 a 81 los productos base (ahorro de 175); para operandos criptográficos de miles de bits la ventaja asintótica \(O(n^1\).585) es decisiva.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $256$ — reproducido
+\item Paso 2: $175$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Para operandos pequeños (p. ej. menos de 32 palabras de 64 bits), la sobrecarga de sumas y restas hace más rápido el producto escolar en ensamblador.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Aplicar programación dinámica cuando los subproblemas nunca se solapan (donde Divide y Vencerás no necesita tabla de memoización).
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAyOSIsICJzZWN0aW9uIjogImNhcDAzLWRpdmlkZS12ZW5jZXJhcy12b3JhY2VzLXByb2dyYW1hY2lvbi1kaW5hbWljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0031] (Básico, Conceptual)}
+[VOL02-C03-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0032] (Básico, Numérico)}
+[VOL02-C03-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0033] (Intermedio, Interpretación)}
+[VOL02-C03-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0034] (Intermedio, Aplicación)}
+[VOL02-C03-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(18 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0035] (Intermedio, Identificación de errores)}
+[VOL02-C03-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0036] (Avanzado, Desarrollo por pasos)}
+[VOL02-C03-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0037] (Avanzado, Comparación)}
+[VOL02-C03-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0038] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C03-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0039] (Nivel de examen, Optimización)}
+[VOL02-C03-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0040] (Nivel de examen, Demostración)}
+[VOL02-C03-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0041] (Reto, Diseño)}
+[VOL02-C03-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0042] (Reto, Estudio de parámetros)}
+[VOL02-C03-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Algoritmos de grafos (BFS, DFS, Dijkstra, Bellman-Ford, MST, flujo), árboles equilibrados (AVL, Rojo-Negro, B+) y hashing}
+\label{chap:cap04-grafos-arboles-equilibrados-hashing}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+\noindent\textit{Comprender en profundidad los algoritmos sobre grafos y las dos grandes familias de índices asociativos \(-\)árboles equilibrados y tablas hash\(-\) que sustentan desde los enrutadores de red y compiladores hasta los motores de bases de datos y las colecciones estándar de todos los lenguajes.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+Si una tabla hash recibe claves controladas por usuarios externos (parámetros HTTP, cabeceras JSON) y utiliza una función hash no criptográfica predecible, un atacante puede enviar miles de claves que colisionen en la misma cubeta y degradar la complejidad de \(O(1)\) a \(O(n^2)\) (denegación de servicio HashDoS): por eso Rust usa un hasher con semilla aleatoria por defecto.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+Factor de Carga (\(\alpha\)) en Tablas Hash y Altura de un Árbol B+: en una tabla hash con \(n\) elementos y \(m\) ranuras, el factor de carga es \(\alpha = n / m\). En direccionamiento abierto con sondeo lineal bajo dispersión uniforme, el número esperado de sondeos en una búsqueda exitosa es \(\frac{1}{2}\left(1 + \frac{1}{1 - \alpha}\right)\). En un árbol B+ de grado mínimo \(B\), la altura satisface \(h \le \lfloor \log_B((n+1)/2) \rfloor + 1\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+1. ¿Por qué el algoritmo de Dijkstra falla si el grafo contiene una arista de peso negativo? 2. ¿Por qué \texttt{BTreeMap} y los motores SQL usan nodos de árbol B/B+ con múltiples claves por nodo en lugar de árboles binarios Rojo-Negro? 3. ¿En qué consiste un ataque de colisión HashDoS y cómo lo mitiga SipHash con semilla aleatoria?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+\end{tcolorbox}
+
+\section{BFS, DFS, componentes conexas, Dijkstra, Bellman-Ford, Kruskal y Prim}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+Sobre un grafo \(G = (V, E)\) representado mediante listas de adyacencia (espacio \(\Theta(|V| + |E|)\)), la búsqueda en anchura (BFS, gobernada por una cola FIFO) explora el grafo por capas y calcula distancias mínimas en número de aristas en tiempo \(\Theta(|V| + |E|)\). La búsqueda en profundidad (DFS, recursiva o con pila explícita) clasifica las aristas en árbol, avance, retroceso (cuya presencia caracteriza exactamente los ciclos en un grafo dirigido) y cruce, permitiendo calcular en tiempo lineal \(\Theta(|V| + |E|)\) la ordenación topológica de un DAG y las componentes fuertemente conexas (algoritmo de Tarjan o Kosaraju).
+Cuando las aristas tienen pesos no negativos \(w(u, v) \ge 0\), el algoritmo de Dijkstra relaja distancias extrayendo el vértice de menor distancia tentativa desde una cola de prioridad (montículo binario), alcanzando \(O((|V| + |E|) \log |V|)\). Si existen pesos negativos, la hipótesis voraz de Dijkstra falla (un camino ya cerrado podría mejorarse más tarde a través de una arista negativa), y debe emplearse Bellman-Ford, que relaja todas las aristas \(|V| - 1\) veces en \(O(|V| \cdot |E|)\) y detecta ciclos negativos alcanzables en la iteración \(|V|\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+\section{Árboles equilibrados (AVL, Rojo-Negro, B+ Trees) y tablas hash de alto rendimiento}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+Para implementar diccionarios dinámicos existen dos compromisos fundamentales. Los árboles binarios de búsqueda autoequilibrados (AVL con factor de equilibrio \(|h_L - h_R| \le 1\), y Rojo-Negro con altura acotada por \(2 \log_2(n + 1)\)) garantizan búsqueda, inserción, borrado y consultas por rango en \(\Theta(\log n)\) en el peor caso, pero cada salto de puntero suele provocar un fallo de caché. Por ello, tanto \texttt{std::collections::BTreeMap} en Rust como los índices de bases de datos (PostgreSQL, SQLite) utilizan árboles B y B+ de alto factor de ramificación \(B\): cada nodo agrupa entre \(B-1\) y \(2B-1\) claves contiguas en memoria o páginas de disco de \(4\text{--}16\text{ KiB}\), reduciendo la altura del árbol a \(\log_B n\) (apenas 3 o 4 niveles para cientos de millones de registros).
+Las tablas hash proyectan cada clave mediante una función de dispersión \(h(k)\) a un índice de cubeta (bucket), ofreciendo acceso esperado \(O(1)\). Frente al encadenamiento separado con listas enlazadas, las implementaciones modernas de producción (como \texttt{HashMap} en Rust basado en SwissTable de Google con instrucciones SIMD y SipHash-1-3 resistente a ataques HashDoS, o \texttt{dict} compacto en Python) emplean direccionamiento abierto (open addressing) en un array contiguo con factor de carga \(\alpha = n/m \le 0.875\). Verifiquemos el algoritmo de Dijkstra en Python:
+\begin{lstlisting}[style=studium,language={Python}]
+import heapq
+
+def dijkstra(adj: dict[int, list[tuple[int, int]]], src: int) -> dict[int, int]:
+    dist = {src: 0}
+    pq = [(0, src)]
+    while pq:
+        d, u = heapq.heappop(pq)
+        if d > dist.get(u, 10**18):
+            continue
+        for v, w in adj.get(u, []):
+            if d + w < dist.get(v, 10**18):
+                dist[v] = d + w
+                heapq.heappush(pq, (d + w, v))
+    return dist
+
+g = {0: [(1, 4), (2, 1)], 2: [(1, 2), (3, 5)], 1: [(3, 1)], 3: []}
+assert dijkstra(g, 0) == {0: 0, 2: 1, 1: 3, 3: 4}
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+
+\noindent\textbf{Enunciado}
+En una tabla hash con direccionamiento abierto y sondeo lineal que se mantiene con un factor de carga \(\alpha = 0.75\), calcule el número esperado de sondeos en una búsqueda sin éxito (inserción de clave nueva) según la fórmula de Knuth \(E_{\text{miss}} = \frac{1}{2}\left(1 + \frac{1}{(1 - \alpha)^2}\right)\).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $\alpha = 0.75$ — Factor de carga n / m de la tabla hash
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Número medio esperado de sondeos \(E_miss\) en una búsqueda sin éxito / inserción
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Fórmula de Knuth para agrupamiento primario (primary clustering) en sondeo lineal}
+
+\[
+E_miss = 0.5 * (1 + inv_sq)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Función hash uniforme e independiente sobre m ranuras
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el inverso del cuadrado de la fracción libre \((1 - 0.75)^2 = 0.0625\).
+
+\[
+inv_sq = 1 / ((1 - 0.75)^2)
+\]
+
+\[
+\frac{1}{\left(\left(1-0.75\right)\right)^{2}}
+\]
+\item
+Aplicamos la media 0.5 * (1 + inv\(_sq)\) para obtener el número esperado de sondeos.
+
+\[
+E_miss = 0.5 * (1 + inv_sq)
+\]
+
+\[
+\left(0.5\cdot \left(1+16\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+8.5
+\]
+
+\noindent\textbf{Interpretación}
+Al 75 \% de ocupación, una inserción por sondeo lineal clásico explora 8.5 ranuras en promedio (y al 90 \% subiría a 50.5 ranuras); de ahí el uso de Robin Hood hashing o metadatos SIMD (SwissTable).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $16$ — reproducido
+\item Paso 2: $8.5$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El resultado asume independencia total de la función hash; funciones débiles sufren agrupamiento aún mayor.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Permitir que una tabla de direccionamiento abierto supere alpha > 0.85 sin redimensionar.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA0LWdyYWZvcy1hcmJvbGVzLWVxdWlsaWJyYWRvcy1oYXNoaW5nIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Conceptual)}
+[VOL02-C04-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0046] (Básico, Numérico)}
+[VOL02-C04-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Interpretación)}
+[VOL02-C04-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0048] (Intermedio, Aplicación)}
+[VOL02-C04-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(20 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0049] (Intermedio, Identificación de errores)}
+[VOL02-C04-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0050] (Avanzado, Desarrollo por pasos)}
+[VOL02-C04-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0051] (Avanzado, Comparación)}
+[VOL02-C04-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0052] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C04-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0053] (Nivel de examen, Optimización)}
+[VOL02-C04-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0054] (Nivel de examen, Demostración)}
+[VOL02-C04-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0055] (Reto, Diseño)}
+[VOL02-C04-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0056] (Reto, Estudio de parámetros)}
+[VOL02-C04-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Estructuras de datos persistentes, estructuras probabilísticas (Bloom filter, HyperLogLog) y algoritmos paralelos (Work-Span)}
+\label{chap:cap05-estructuras-persistentes-probabilisticas-paralelos}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+\noindent\textit{Dominar técnicas avanzadas indispensables en sistemas modernos: estructuras persistentes que conservan versiones históricas sin clonar toda la memoria, filtros de Bloom para evitar accesos innecesarios a disco y el modelo Work-Span para analizar algoritmos paralelos.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+En un algoritmo paralelo de divide y vencerás (como Mergesort o suma en árbol), corte la generación de tareas paralelas por debajo de un umbral de granularidad (por ejemplo, bloques de \(4096\) elementos) y resuelva las hojas secuencialmente para que el coste de planificación no domine a \(T_1\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+Teorema de Brent-Graham en el Modelo Work-Span y Paralelismo Medio: dado un cómputo paralelo libre de bloqueos con trabajo total \(T_1\) y camino crítico (span) \(T_\infty\), el tiempo de ejecución en \(P\) procesadores bajo planificación voraz satisface \(\max(T_1 / P, T_\infty) \le T_P \le T_1 / P + T_\infty\). El paralelismo medio es \(\overline{P} = T_1 / T_\infty\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+1. ¿Por qué la compartición estructural (path copying) solo es segura cuando los nodos compartidos son inmutables? 2. ¿Por qué un filtro de Bloom nunca produce falsos negativos pero sí puede producir falsos positivos, y por qué no admite borrado directo de bits? 3. ¿Qué mide el cociente \(T_1 / T_\infty\) en el modelo Work-Span?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+\end{tcolorbox}
+
+\section{Estructuras persistentes (path copying) y filtros probabilísticos (Bloom Filter)}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+Una estructura de datos es persistente cuando cualquier operación de actualización produce una nueva versión lógicamente independiente conservando intacta la versión anterior. En lugar de copiar los \(n\) elementos en \(\Theta(n)\), las estructuras persistentes basadas en árboles (empleadas en Git, Clojure, Scala, Redux/Immer y motores MVCC) aplican copia de camino (path copying) y compartición estructural (structural sharing): al modificar una hoja de un árbol de altura \(h = O(\log n)\), se asignan únicamente los \(O(\log n)\) nodos del camino desde la raíz hasta la hoja modificada, mientras que todos los subárboles no modificados se comparten de forma segura porque son inmutables.
+En sistemas de almacenamiento (como motores LSM-tree en RocksDB, Cassandra o LevelDB), antes de buscar una clave en múltiples archivos SSTable de disco se consulta en RAM un Filtro de Bloom (Burton Bloom, 1970): un vector de \(m\) bits inicializado a 0 junto con \(k\) funciones hash independientes. Al insertar \(x\), se activan los bits \(h_1(x), \dots, h_k(x)\). Si al consultar \(y\) alguno de los \(k\) bits vale 0, se garantiza con certeza absoluta (0 \% de falsos negativos) que \(y\) no pertenece al conjunto; si todos valen 1, puede tratarse de un falso positivo con probabilidad aproximada \((1 - e^{-kn/m})^k\), que se minimiza eligiendo \(k = \frac{m}{n} \ln 2\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+\section{Algoritmos paralelos: modelo Work-Span, ley de Brent y reducciones paralelas}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+Para analizar algoritmos paralelos con independencia del número concreto de núcleos físicos \(P\), el modelo de grafo de tareas (Work-Span model, usado en Cilk, Rayon en Rust y ForkJoinPool en Java) define dos métricas intrínsecas del cómputo DAG:
+1. Trabajo (\(T_1\), Work): el tiempo total de ejecutar todas las operaciones en un único procesador.
+2. Longitud de camino crítico (\(T_\infty\), Span o Depth): el tiempo requerido en un computador ideal con infinitos procesadores, determinado por la cadena más larga de dependencias secuenciales.
+Todo planificador válido satisface las dos cotas inferiores fundamentales: \(T_P \ge T_1 / P\) (cota de trabajo) y \(T_P \ge T_\infty\) (cota de camino crítico). Además, un planificador voraz o por robo de trabajo (work-stealing, como el de Rayon o Tokio) garantiza la cota superior de Brent-Graham: \(T_P \le T_1 / P + T_\infty\). El cociente \(\overline{P} = T_1 / T_\infty\) se denomina paralelismo medio del algoritmo: cuando \(\overline{P} \gg P\), el algoritmo alcanza aceleración lineal casi perfecta \(T_P \approx T_1 / P\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA1NyIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+
+\noindent\textbf{Enunciado}
+Un algoritmo paralelo de reducción y filtrado tiene un trabajo total \(T_1 = 9600\text{ ms}\) y un camino crítico (span) \(T_\infty = 40\text{ ms}\). Calcule la cota superior garantizada de tiempo de ejecución \(T_P = T_1 / P + T_\infty\) en \(P = 16\) procesadores bajo un planificador voraz.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $T_{1} = 9600$ — Trabajo secuencial total (ms)
+\item $T_{inf} = 40$ — Camino crítico o span (ms)
+\item $P = 16$ — Número de procesadores
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Cota superior de tiempo de ejecución \(T_P\) en milisegundos
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Desigualdad de Brent-Graham en el modelo Work-Span (T\_P <= T\_1 / P + T\_inf)}
+
+\[
+T_{P,\max} = t_{	ext{work}} + T_{\infty}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Planificador voraz sin sobrecarga significativa de robo de tareas
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Dividimos el trabajo total \(T_1\) entre los P = 16 procesadores.
+
+\[
+t_{	ext{work}} = T_1 / P
+\]
+
+\[
+\frac{9600}{16}
+\]
+\item
+Sumamos el span \(T_inf = 40\) ms para obtener la cota superior garantizada.
+
+\[
+T_{P,\max} = t_{	ext{work}} + T_{\infty}
+\]
+
+\[
+\left(600+40\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+640
+\]
+
+\noindent\textbf{Interpretación}
+Dado que el paralelismo medio \(T_1 / T_inf = 240\) supera ampliamente a P = 16, el tiempo queda acotado entre 600 ms y 640 ms, logrando una aceleración efectiva de 9600 / 640 = 15x.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $600$ — reproducido
+\item Paso 2: $640$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La cota no contabiliza la contención del ancho de banda de memoria DRAM cuando los 16 núcleos saturan el bus.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Intentar borrar un elemento de un filtro de Bloom estándar poniendo sus k bits a 0, lo cual corrompería otros elementos que compartan esos bits.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDA1NyIsICJzZWN0aW9uIjogImNhcDA1LWVzdHJ1Y3R1cmFzLXBlcnNpc3RlbnRlcy1wcm9iYWJpbGlzdGljYXMtcGFyYWxlbG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0059] (Básico, Conceptual)}
+[VOL02-C05-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0060] (Básico, Numérico)}
+[VOL02-C05-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0061] (Intermedio, Interpretación)}
+[VOL02-C05-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0062] (Intermedio, Aplicación)}
+[VOL02-C05-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(22 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0063] (Intermedio, Identificación de errores)}
+[VOL02-C05-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0064] (Avanzado, Desarrollo por pasos)}
+[VOL02-C05-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0065] (Avanzado, Comparación)}
+[VOL02-C05-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0066] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C05-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0067] (Nivel de examen, Optimización)}
+[VOL02-C05-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0068] (Nivel de examen, Demostración)}
+[VOL02-C05-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0069] (Reto, Diseño)}
+[VOL02-C05-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0070] (Reto, Estudio de parámetros)}
+[VOL02-C05-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\part{PARTE IV. Sistemas Informáticos, Compiladores, Memoria y Sistemas Operativos}
+
+\chapter{Jerarquía de memoria, coherencia de caché (MESI), false sharing, alineamiento, ABI y enlazado}
+\label{chap:cap06-jerarquia-memoria-caches-abi-enlazado}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+\noindent\textit{Explicar cómo las líneas de caché de 64 bytes, el protocolo de coherencia entre núcleos, las reglas de alineamiento del ABI y el proceso de enlazado determinan el rendimiento real y la interoperabilidad binaria de los programas.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+En C, ordene los miembros de un \texttt{struct} de mayor a menor requisito de alineamiento (primero punteros y \texttt{uint64\_t} de 8 bytes, luego \texttt{uint32\_t} de 4, \texttt{uint16\_t} de 2 y finalmente \texttt{uint8\_t}/\texttt{bool} de 1 byte) para eliminar el padding interno y aumentar el número de registros que caben por línea de caché.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+Regla de Alineamiento de Estructuras (ABI C) y Compartición Falsa (False Sharing): en un \texttt{struct} con diseño C, cada campo con alineamiento \(a_i\) se sitúa en el menor desplazamiento \texttt{offset} tal que \(\text{offset} \bmod a_i = 0\), y el tamaño total del \texttt{struct} se redondea al múltiplo superior de \(a_{\max} = \max_i a_i\). La compartición falsa ocurre cuando múltiples núcleos escriben en variables disjuntas que residen en la misma línea física de caché.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+1. ¿Por qué \texttt{struct \{ uint8\_t a; uint64\_t b; uint8\_t c; \}} ocupa 24 bytes en C de 64 bits pero solo 16 bytes si se reordena como \texttt{\{ uint64\_t b; uint8\_t a; uint8\_t c; \}}? 2. ¿Qué provoca el fenómeno de false sharing en el protocolo MESI y cómo se corrige? 3. ¿Por qué Rust distingue entre su layout optimizado por defecto y \texttt{\#[repr(C)]}?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+\end{tcolorbox}
+
+\section{Líneas de caché, coherencia MESI, false sharing y diseño orientado a datos}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+Las cachés del procesador no transfieren bytes individuales desde la RAM, sino bloques alineados de tamaño fijo denominados líneas de caché (cache lines, de \(64\text{ bytes}\) en x86-64 y la mayoría de procesadores ARM64, o \(128\text{ bytes}\) en los núcleos de alto rendimiento Apple M-series). En un procesador multinúcleo, cada núcleo posee su propia caché L1 privada; para evitar lecturas incoherentes, el hardware implementa protocolos de invalidación de directorio o bus como MESI (Modified, Exclusive, Shared, Invalid): para que un núcleo modifique un byte de una línea, debe adquirir la línea completa en estado Exclusive/Modified e invalidar las copias en las cachés L1 de todos los demás núcleos.
+De aquí surge una patología crítica de rendimiento concurrente: la compartición falsa (false sharing). Si dos hilos ejecutándose en núcleos distintos actualizan intensivamente dos contadores atómicos independientes (\texttt{counter\_a} y \texttt{counter\_b}) que por estar declarados contiguos en una estructura caen dentro de la misma línea de caché de 64 bytes, ambos núcleos se invalidarán mutuamente la línea en cada escritura (cache line ping-pong), degradando el rendimiento en un orden de magnitud pese a no compartir ningún dato lógico. La solución consiste en acumular en una variable local de registro y volcar al final, o alinear cada contador a su propia línea de caché (\texttt{\#[repr(align(64))]} en Rust o \texttt{alignas(64)} en C11/C++11).
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+\section{Alineamiento en memoria, ABI de plataforma y enlazadores (ELF/Mach-O)}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+Los accesos a memoria de un tipo primitivo de tamaño \(k\) bytes son atómicos y eficientes en hardware cuando su dirección es múltiplo de su alineamiento natural \(k\). Por ello, el ABI de C (como el System V AMD64 ABI o el AAPCS64 de ARM) inserta bytes de relleno (padding) entre campos de un \texttt{struct} y al final del mismo para que su tamaño total sea múltiplo del alineamiento máximo de sus miembros. Mientras que en C el compilador está obligado a respetar el orden textual de declaración de los campos, en Rust el diseño por defecto \texttt{\#[repr(Rust)]} permite al compilador reordenar automáticamente los campos en memoria para minimizar el padding sin cambiar el código fuente (utilizándose \texttt{\#[repr(C)]} solo cuando se cruza una frontera FFI).
+Cuando el compilador traduce una unidad de traducción, emite un archivo objeto relocalizable (formato ELF en Linux, Mach-O en macOS, COFF/PE en Windows) con tablas de símbolos definidos e indefinidos y entradas de relocalización. El enlazador (linker: \texttt{lld}, \texttt{ld}, \texttt{mold}) resuelve las referencias cruzadas entre módulos, fusiona secciones y produce bien un ejecutable enlazado estáticamente o bien un binario dinámico que delega en el cargador del sistema (\texttt{ld.so} / \texttt{dyld}) la resolución de bibliotecas compartidas (\texttt{.so} / \texttt{.dylib} / \texttt{.dll}) a través de la Global Offset Table (GOT) y Procedure Linkage Table (PLT).
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA3MSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+
+\noindent\textbf{Enunciado}
+Calcule el ahorro total en kilobytes (1 KiB = 1024 bytes) de un vector en memoria de \(N = 65536\) registros cuando se reordena en C una estructura mal alineada de \(24\text{ bytes}\) (\texttt{uint8\_t}, 7 bytes de padding, \texttt{uint64\_t}, \texttt{uint8\_t}, 7 bytes de padding) a su disposición óptima de \(16\text{ bytes}\) (\texttt{uint64\_t}, \texttt{uint8\_t}, \texttt{uint8\_t}, 6 bytes de padding final).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 65536$ — Número de estructuras en el vector
+\item $S_{bad} = 24$ — Tamaño en bytes con orden subóptimo
+\item $S_{opt} = 16$ — Tamaño en bytes ordenando de mayor a menor alineamiento
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Ahorro de memoria en KiB para el vector de 65536 elementos
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo de huella de memoria de arrays contiguos con alineamiento ABI de 8 bytes}
+
+\[
+saved_kib = (N * delta_s) / 1024
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Arquitectura de 64 bits donde alignof(uint\(64_t) == 8\)
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos los bytes ahorrados por cada registro individual al eliminar un bloque de padding.
+
+\[
+delta_s = S_bad - S_opt
+\]
+
+\[
+\left(24-16\right)
+\]
+\item
+Multiplicamos por los 65536 registros y dividimos entre 1024 bytes/KiB.
+
+\[
+saved_kib = (N * delta_s) / 1024
+\]
+
+\[
+\frac{\left(65536\cdot 8\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+512
+\]
+
+\noindent\textbf{Interpretación}
+Simplemente reordenando dos líneas de declaración en C se ahorran 512 KiB (un 33 \% de la memoria) y ahora caben 4 estructuras por línea de caché de 64 B en lugar de 2.66.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $8$ — reproducido
+\item Paso 2: $512$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Si la estructura define un protocolo binario de red o hardware fijo, no debe reordenarse sin actualizar la especificación del protocolo.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Abusar de \texttt{\_\_attribute\_\_((packed))} o \texttt{\#[repr(packed)]} en estructuras de uso intensivo en CPU, generando accesos desalineados costosos o UB al tomar referencias.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDA3MSIsICJzZWN0aW9uIjogImNhcDA2LWplcmFycXVpYS1tZW1vcmlhLWNhY2hlcy1hYmktZW5sYXphZG8ifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0073] (Básico, Conceptual)}
+[VOL02-C06-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0074] (Básico, Numérico)}
+[VOL02-C06-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0075] (Intermedio, Interpretación)}
+[VOL02-C06-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0076] (Intermedio, Aplicación)}
+[VOL02-C06-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(24 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0077] (Intermedio, Identificación de errores)}
+[VOL02-C06-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0078] (Avanzado, Desarrollo por pasos)}
+[VOL02-C06-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0079] (Avanzado, Comparación)}
+[VOL02-C06-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0080] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C06-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0081] (Nivel de examen, Optimización)}
+[VOL02-C06-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0082] (Nivel de examen, Demostración)}
+[VOL02-C06-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0083] (Reto, Diseño)}
+[VOL02-C06-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0084] (Reto, Estudio de parámetros)}
+[VOL02-C06-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Arquitectura de compiladores: análisis léxico, parsing LL/LR/Pratt, AST, tipos, IR en forma SSA y generación de código}
+\label{chap:cap07-compiladores-lexing-parsing-ssa-codegen}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+\noindent\textit{Desmitificar cómo funciona por dentro un compilador industrial (\texttt{rustc}, \texttt{clang}, \texttt{gcc}, \texttt{ghc}, \texttt{v8}), recorriendo las etapas de la figura~\ref{fig:fig-pipeline-compilador} para que el lector pueda tanto diagnosticar qué código genera su compilador como construir su propio lenguaje, DSL o herramienta de análisis estático.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+Cuando escriba un parser para expresiones aritméticas o booleanas con múltiples niveles de precedencia, utilice un parser de Pratt con potencias de enlace izquierda/derecha \texttt{(l\_bp, r\_bp)} en lugar de crear una función recursiva distinta por cada nivel de precedencia: el código se reduce a una tercera parte y permite añadir nuevos operadores en una sola línea de tabla.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+Forma de Asignación Única Estática (SSA) y Grafo de Interferencia de Registros: una representación intermedia está en forma SSA si cada variable virtual posee exactamente un punto de definición estático y toda definición domina todos sus usos (o se combina mediante nodos \(\phi\) en la frontera de dominancia). Dos variables interfieren en la asignación de registros si sus intervalos de vida (liveness) se solapan en algún punto del CFG, impidiendo compartir el mismo registro físico.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+1. ¿Por qué los compiladores industriales como \texttt{rustc} y \texttt{clang} prefieren descenso recursivo + Pratt frente a generadores LR automáticos? 2. ¿Para qué sirve el nodo \(\phi(x_1, x_2)\) en la representación intermedia SSA cuando convergen dos ramas de un \texttt{if-else}? 3. ¿Cómo se modela la asignación de registros como un problema de \(k\)-coloreado sobre el grafo de interferencia?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+\end{tcolorbox}
+
+\section{Front-end del compilador: análisis léxico, sintáctico (descendente recursivo y Pratt) y semántico}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+Un compilador moderno se divide en tres grandes etapas desacopladas (Front-End, Middle-End y Back-End). El Front-End comienza con el analizador léxico (lexer o scanner), que agrupa caracteres UTF-8 mediante autómatas finitos deterministas en una secuencia de tokens con información de posición (span). A continuación, el analizador sintáctico (parser) comprueba la gramática libre de contexto y construye el Árbol de Sintaxis Abstracta (AST). Mientras que los generadores clásicos (Yacc/Bison, ANTLR) construyen tablas LR o LL, los compiladores de producción actuales (\texttt{rustc}, \texttt{clang}, \texttt{go}, \texttt{tsc}) utilizan mayoritariamente descenso recursivo escrito a mano combinado con parsing de Pratt (Top-Down Operator Precedence, Vaughan Pratt 1973) para expresiones con niveles de precedencia y asociatividad, ya que facilita mensajes de diagnóstico precisos y recuperación ante errores sintácticos.
+Sobre el AST, el análisis semántico resuelve nombres en tablas de símbolos con ámbito léxico y ejecuta la comprobación e inferencia de tipos (mediante unificación de restricciones al estilo Hindley-Milner Damas-Milner o comprobación bidireccional), reduciendo el lenguaje de superficie a una representación tipada de alto nivel (como HIR y MIR en \texttt{rustc}, donde se ejecuta el borrow checker).
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+\section{Representación intermedia SSA, optimizaciones e instrucción/asignación de registros}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+El Middle-End traduce el programa a un Grafo de Flujo de Control (CFG) de bloques básicos en forma SSA (Static Single Assignment, Cytron et al. 1991, base de LLVM IR, GCC GIMPLE y Go SSA): cada variable temporal se asigna exactamente una vez en el texto del programa, y cuando dos ramas de un condicional convergen en un bloque de unión se inserta una función \(\phi(x_1, x_2)\) que selecciona el valor según el bloque predecesor. La forma SSA hace explícitas las cadenas definición-uso (def-use chains), simplificando drásticamente optimizaciones como propagación de constantes, eliminación de código muerto (DCE), numeración global de valores (GVN), movimiento de código invariante de bucle (LICM) e inlining.
+Finalmente, el Back-End realiza la selección de instrucciones para la ISA destino (x86-64, ARM64, RISC-V, WebAssembly), ejecuta la asignación de registros (modelada como coloreado de grafos de interferencia por Chaitin-Briggs o mediante barrido lineal Linear Scan en compiladores JIT, volcando a la pila \(-\)spilling\(-\) las variables que exceden los registros físicos disponibles) y planifica las instrucciones para maximizar el paralelismo a nivel de instrucción.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA4NSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+
+\noindent\textbf{Enunciado}
+En un bloque básico antes de la optimización se evalúa en un bucle de \(N = 1000\) iteraciones una expresión con una subexpresión invariante de bucle de coste \(c_{\text{inv}} = 6\) ciclos y una parte dependiente del índice de coste \(c_{\text{var}} = 3\) ciclos por iteración. Calcule el ahorro total de ciclos al aplicar el pase de Movimiento de Código Invariante de Bucle (LICM), que evalúa la subexpresión invariante una única vez fuera del bucle.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 1000$ — Iteraciones del bucle
+\item $c_{inv} = 6$ — Ciclos de la subexpresión invariante
+\item $c_{var} = 3$ — Ciclos de la parte dependiente del índice
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Ahorro neto de ciclos tras aplicar el pase LICM
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Modelo de coste de bloque básico bajo Loop-Invariant Code Motion (LICM)}
+
+\[
+saved = C_orig - (c_inv + N * c_var)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item La subexpresión invariante es pura, no lanza trampas de hardware (como división por cero) y sus operandos no sufren aliasing en el bucle
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el coste sin optimizar ejecutando ambas partes en las 1000 iteraciones.
+
+\[
+C_orig = N * (c_inv + c_var)
+\]
+
+\[
+\left(1000\cdot \left(6+3\right)\right)
+\]
+\item
+Restamos el coste tras elevar la expresión invariante al preheader del bucle (6 + 3000).
+
+\[
+saved = C_orig - (c_inv + N * c_var)
+\]
+
+\[
+\left(9000-3006\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+5994
+\]
+
+\noindent\textbf{Interpretación}
+El pase LICM ahorra 5994 ciclos (dos tercios del tiempo del bucle); en C este pase puede bloquearse si el compilador no puede descartar que un puntero de escritura apunte al mismo objeto leído (problema que se resuelve con \texttt{restrict} en C o con las garantías de \texttt{\&} y \texttt{\&mut} en Rust).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $9000$ — reproducido
+\item Paso 2: $5994$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Elevar demasiadas expresiones invariantes simultáneamente puede aumentar la presión de registros y provocar spilling a la pila.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Suponer que el compilador puede sacar del bucle una llamada a función externa con posibles efectos laterales o lecturas a través de punteros con posible aliasing.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDA4NSIsICJzZWN0aW9uIjogImNhcDA3LWNvbXBpbGFkb3Jlcy1sZXhpbmctcGFyc2luZy1zc2EtY29kZWdlbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0087] (Básico, Conceptual)}
+[VOL02-C07-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0088] (Básico, Numérico)}
+[VOL02-C07-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0089] (Intermedio, Interpretación)}
+[VOL02-C07-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0090] (Intermedio, Aplicación)}
+[VOL02-C07-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(26 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0091] (Intermedio, Identificación de errores)}
+[VOL02-C07-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0092] (Avanzado, Desarrollo por pasos)}
+[VOL02-C07-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0093] (Avanzado, Comparación)}
+[VOL02-C07-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0094] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C07-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0095] (Nivel de examen, Optimización)}
+[VOL02-C07-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0096] (Nivel de examen, Demostración)}
+[VOL02-C07-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0097] (Reto, Diseño)}
+[VOL02-C07-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0098] (Reto, Estudio de parámetros)}
+[VOL02-C07-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+
+\chapter{Sistemas operativos: modo kernel, procesos e hilos, planificación, memoria virtual paginada, VFS y multiplexación de E/S}
+\label{chap:cap08-sistemas-operativos-procesos-memoria-virtual-io}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+\noindent\textit{Comprender las abstracciones fundamentales que el núcleo del sistema operativo (Linux, XNU/macOS, Windows NT) ofrece a todo programa: aislamiento de procesos mediante memoria virtual, coste real de las llamadas al sistema y mecanismos de entrada/salida de alta concurrencia.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+Minimice el número de llamadas al sistema (\texttt{read}/\texttt{write}) en bucles críticos utilizando buffers en espacio de usuario (\texttt{BufReader}/\texttt{BufWriter} en Rust, \texttt{BufferedInputStream} en Java, \texttt{stdio} en C): escribir 1 MiB byte a byte mediante un millón de llamadas \texttt{write(fd, \&b, 1)} es cientos de veces más lento que agrupar en bloques de 8 KiB o 64 KiB.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+Traducción de Direcciones Virtuales y Multiplexación de Eventos \(O(1)\): en un sistema con páginas de \(2^p\) bytes, los \(p\) bits menos significativos de una dirección virtual forman el desplazamiento dentro de la página (page offset, que no se traduce) y los bits superiores forman el número de página virtual (VPN) traducido por la TLB/tabla de páginas al número de marco físico (PFN). Primitivas como \texttt{epoll} y \texttt{kqueue} notifican únicamente los descriptores listos sin escanear el conjunto total de descriptores registrados.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+1. ¿Qué recursos comparten dos hilos de un mismo proceso y qué recursos son privados de cada hilo? 2. ¿Qué función cumple la TLB en la traducción de direcciones virtuales y por qué un cambio de proceso encarece más el contexto que un cambio de hilo del mismo proceso? 3. ¿Por qué \texttt{epoll}/\texttt{kqueue} escalan a decenas de miles de conexiones donde \texttt{select}/\texttt{poll} se degradan linealmente?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+\end{tcolorbox}
+
+\section{Modo usuario vs modo kernel, llamadas al sistema, procesos, hilos y planificación}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+El procesador impone aislamiento de hardware mediante al menos dos niveles de privilegio: modo usuario (Ring 3 en x86-64, EL0 en ARM64) y modo supervisor o kernel (Ring 0 / EL1). El código de una aplicación se ejecuta en modo usuario y no puede acceder directamente a dispositivos físicos ni modificar tablas de páginas; para solicitar servicios al núcleo (abrir un archivo, reservar páginas de memoria con \texttt{mmap}, enviar paquetes por un socket) ejecuta una instrucción de trampa síncrona (\texttt{syscall} en x86-64, \texttt{svc \#0} en ARM64) que salva los registros de usuario, conmuta a la pila del kernel, valida los argumentos y ejecuta el manejador privilegiado.
+Un proceso es la unidad de aislamiento de recursos: posee su propio espacio de direcciones virtuales, tabla de descriptores de archivo y credenciales de seguridad. Un hilo (thread) es la unidad de planificación de CPU: varios hilos dentro de un mismo proceso comparten el espacio de direcciones virtuales (código, datos globales y heap), pero cada uno posee su propio contador de programa, banco de registros y pila de llamadas independiente.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+\section{Memoria virtual, tablas de páginas, TLB, sistemas de archivos y E/S no bloqueante}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+La Memoria Virtual, implementada conjuntamente por la Unidad de Gestión de Memoria (MMU) del procesador y el sistema operativo, divide el espacio de direcciones en páginas de tamaño fijo (típicamente \(4\text{ KiB}\) en x86-64 o \(16\text{ KiB}\) en Apple Silicon ARM64). La MMU traduce cada dirección virtual en dirección física recorriendo una tabla de páginas multinivel (4 niveles en x86-64 de 48 bits) y almacenando las traducciones recientes en una caché hardware asociativa llamada TLB (Translation Lookaside Buffer). Cuando un proceso accede a una página no mapeada en RAM, la MMU dispara una excepción de fallo de página (page fault) para que el kernel asigne un marco físico bajo demanda (demand paging), cargue datos desde un archivo mapeado (\texttt{mmap}) o aplique copia en escritura (Copy-on-Write tras \texttt{fork}).
+En el subsistema de Entrada/Salida, bloquear un hilo por cada socket resulta inviable a gran escala; por ello los runtimes de red modernos (Tokio en Rust, Node.js/libuv, Netty en Java, Go netpoller) configuran los descriptores en modo no bloqueante (\texttt{O\_NONBLOCK}) y delegan la espera multiplexada en primitivas de notificación de eventos de complejidad \(O(\text{eventos activos})\): \texttt{epoll} en Linux, \texttt{kqueue} en macOS/BSD e \texttt{io\_uring} (colas en anillo compartidas entre usuario y kernel sin llamadas al sistema por operación) en Linux moderno.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA5OSIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+
+\noindent\textbf{Enunciado}
+En una arquitectura con páginas de \(4\text{ KiB} = 4096\text{ bytes}\) (\(2^{12}\) bytes), dada la dirección virtual decimal \(V = 20500\), determine el número de página virtual \(\text{VPN} = \lfloor V / 4096 \rfloor\), el desplazamiento dentro de la página \(\text{offset} = V - \text{VPN} \cdot 4096\), y calcule la dirección física resultante si la tabla de páginas asigna dicho VPN al marco físico \(\text{PFN} = 12\).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $V = 20500$ — Dirección virtual en bytes
+\item $P_{size} = 4096$ — Tamaño de página en bytes (4 KiB)
+\item $PFN = 12$ — Número de marco físico asignado a VPN = 5
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Dirección física resultante en bytes tras la traducción MMU
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Traducción de dirección virtual paginada (Physical = PFN * PageSize + Offset)}
+
+\[
+P_addr = PFN * P_size + offset
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Tamaño de página uniforme de 4096 bytes con VPN = floor(20500 / 4096) = 5
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el desplazamiento (offset) dentro de la página 5 (5 * 4096 = 20480).
+
+\[
+offset = V - 5 * P_size
+\]
+
+\[
+\left(20500-\left(5\cdot 4096\right)\right)
+\]
+\item
+Sumamos el desplazamiento a la dirección base del marco físico PFN = 12.
+
+\[
+P_addr = PFN * P_size + offset
+\]
+
+\[
+\left(\left(12\cdot 4096\right)+20\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+49172
+\]
+
+\noindent\textbf{Interpretación}
+La dirección virtual 20500 corresponde a la página virtual 5 con desplazamiento de 20 bytes, que la MMU traduce al marco físico 12 en la dirección física 49152 + 20 = 49172.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $20$ — reproducido
+\item Paso 2: $49172$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Para cargas de memoria de decenas de gigabytes, el uso de Huge Pages (2 MiB) reduce los fallos de TLB.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Confundir el tamaño de la dirección virtual con la cantidad de RAM física instalada en el equipo.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDA5OSIsICJzZWN0aW9uIjogImNhcDA4LXNpc3RlbWFzLW9wZXJhdGl2b3MtcHJvY2Vzb3MtbWVtb3JpYS12aXJ0dWFsLWlvIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0101] (Básico, Conceptual)}
+[VOL02-C08-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{2 [PRB-0102] (Básico, Numérico)}
+[VOL02-C08-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{3 [PRB-0103] (Intermedio, Interpretación)}
+[VOL02-C08-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{4 [PRB-0104] (Intermedio, Aplicación)}
+[VOL02-C08-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(30 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{5 [PRB-0105] (Intermedio, Identificación de errores)}
+[VOL02-C08-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{6 [PRB-0106] (Avanzado, Desarrollo por pasos)}
+[VOL02-C08-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{7 [PRB-0107] (Avanzado, Comparación)}
+[VOL02-C08-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{8 [PRB-0108] (Avanzado, Comprobación de hipótesis)}
+[VOL02-C08-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{9 [PRB-0109] (Nivel de examen, Optimización)}
+[VOL02-C08-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{10 [PRB-0110] (Nivel de examen, Demostración)}
+[VOL02-C08-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{11 [PRB-0111] (Reto, Diseño)}
+[VOL02-C08-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{12 [PRB-0112] (Reto, Estudio de parámetros)}
+[VOL02-C08-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$MESI$ & Estados Modified, Exclusive, Shared, Invalid de coherencia de caché & adimensional \\
+$OPT(i, c)$ & Valor óptimo de la subestructura en programación dinámica & adimensional \\
+$PFN$ & Physical Frame Number (número de marco físico) & adimensional \\
+$T_{1}$ & Trabajo total secuencial (Work) del grafo de tareas & $\mathrm{s}$ \\
+$T_\infty$ & Camino crítico (Span) con infinitos procesadores & $\mathrm{s}$ \\
+$VPN$ & Virtual Page Number (número de página virtual) & adimensional \\
+$\Phi(D_i)$ & Función de potencial de la estructura de datos en el paso i & adimensional \\
+$\Theta(g(n))$ & Orden de crecimiento asintótico ajustado superior e inferiormente & adimensional \\
+$\alpha$ & Factor de carga n/m de una tabla hash & adimensional \\
+$\phi(x_1, x_2)$ & Función de selección en punto de convergencia SSA & adimensional \\
+$n!$ & Cardinalidad del grupo simétrico de permutaciones de n elementos & adimensional \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Complejidad temporal y espacial, notaciones O, Omega y Theta, recurrencias, Teorema Maestro y análisis amortizado}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+Un vector dinámico comienza con capacidad inicial \(\text{cap}_0 = 1\) y duplica su capacidad cada vez que se llena (\(1 \to 2 \to 4 \to 8 \to 16 \to 32\)). Si se insertan secuencialmente \(n = 17\) elementos y cada inserción cuesta 1 escritura más el número de elementos copiados durante el redimensionado (\$1 + 2 + 4 + 8 + 16\$ copias acumuladas), calcule el coste total exacto de escrituras realizadas.
+
+\noindent\textbf{Respuesta}
+
+\[
+48
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+[VOL02-C01-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 28
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+[VOL02-C01-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 30
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+[VOL02-C01-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 46
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+[VOL02-C01-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(14 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 44
+
+\noindent\textbf{Ejercicio 5 [PRB-0007]}
+
+[VOL02-C01-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 54
+
+\noindent\textbf{Ejercicio 6 [PRB-0008]}
+
+[VOL02-C01-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 80
+
+\noindent\textbf{Ejercicio 7 [PRB-0009]}
+
+[VOL02-C01-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 84
+
+\noindent\textbf{Ejercicio 8 [PRB-0010]}
+
+[VOL02-C01-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 101
+
+\noindent\textbf{Ejercicio 9 [PRB-0011]}
+
+[VOL02-C01-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 124
+
+\noindent\textbf{Ejercicio 10 [PRB-0012]}
+
+[VOL02-C01-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 126
+
+\noindent\textbf{Ejercicio 11 [PRB-0013]}
+
+[VOL02-C01-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 165
+
+\noindent\textbf{Ejercicio 12 [PRB-0014]}
+
+[VOL02-C01-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre notación asintótica, Teorema Maestro y análisis amortizado: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{14 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 168
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(17+31\right) = 48\)
+
+\section{Búsqueda binaria libre de desbordamiento, ordenación, cota inferior Omega(n log n) e invariantes}
+
+\noindent\textbf{Problema resuelto [PRB-0015]}
+
+Determine el número mínimo teórico de comparaciones binarias en el peor caso necesarias para ordenar \(n = 5\) elementos distintos sabiendo que existen \(5! = 120\) permutaciones posibles y que \(2^6 = 64 < 120 \le 2^7 = 128\), verificando además la diferencia \$\(2^7 - 5\)!\$.
+
+\noindent\textbf{Respuesta}
+
+\[
+8
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0017]}
+
+[VOL02-C02-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 2 [PRB-0018]}
+
+[VOL02-C02-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 3 [PRB-0019]}
+
+[VOL02-C02-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 52
+
+\noindent\textbf{Ejercicio 4 [PRB-0020]}
+
+[VOL02-C02-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(16 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 48
+
+\noindent\textbf{Ejercicio 5 [PRB-0021]}
+
+[VOL02-C02-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 62
+
+\noindent\textbf{Ejercicio 6 [PRB-0022]}
+
+[VOL02-C02-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 90
+
+\noindent\textbf{Ejercicio 7 [PRB-0023]}
+
+[VOL02-C02-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 96
+
+\noindent\textbf{Ejercicio 8 [PRB-0024]}
+
+[VOL02-C02-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 115
+
+\noindent\textbf{Ejercicio 9 [PRB-0025]}
+
+[VOL02-C02-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 140
+
+\noindent\textbf{Ejercicio 10 [PRB-0026]}
+
+[VOL02-C02-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 144
+
+\noindent\textbf{Ejercicio 11 [PRB-0027]}
+
+[VOL02-C02-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 185
+
+\noindent\textbf{Ejercicio 12 [PRB-0028]}
+
+[VOL02-C02-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre búsqueda binaria, invariantes de bucle y ordenación: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{16 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 192
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(128-120\right) = 8\)
+
+\section{Divide y vencerás, algoritmos voraces, programación dinámica y backtracking}
+
+\noindent\textbf{Problema resuelto [PRB-0029]}
+
+En el algoritmo de Karatsuba para multiplicar dos enteros de \(n\) dígitos dividiendo cada operando en dos mitades, se sustituyen las \(4\) multiplicaciones clásicas de tamaño \(n/2\) por solo \(3\) multiplicaciones recursivas. Compare el número de multiplicaciones base en una profundidad de \(k = 4\) niveles (\(n = 16\) bloques) entre el método cuadrático clásico (\$\(4^4\)\$) y Karatsuba (\$\(3^4\)\$), calculando el ahorro neto de productos elementales.
+
+\noindent\textbf{Respuesta}
+
+\[
+175
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0031]}
+
+[VOL02-C03-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 36
+
+\noindent\textbf{Ejercicio 2 [PRB-0032]}
+
+[VOL02-C03-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 34
+
+\noindent\textbf{Ejercicio 3 [PRB-0033]}
+
+[VOL02-C03-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 58
+
+\noindent\textbf{Ejercicio 4 [PRB-0034]}
+
+[VOL02-C03-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(18 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 52
+
+\noindent\textbf{Ejercicio 5 [PRB-0035]}
+
+[VOL02-C03-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 70
+
+\noindent\textbf{Ejercicio 6 [PRB-0036]}
+
+[VOL02-C03-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 100
+
+\noindent\textbf{Ejercicio 7 [PRB-0037]}
+
+[VOL02-C03-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 108
+
+\noindent\textbf{Ejercicio 8 [PRB-0038]}
+
+[VOL02-C03-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 129
+
+\noindent\textbf{Ejercicio 9 [PRB-0039]}
+
+[VOL02-C03-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 156
+
+\noindent\textbf{Ejercicio 10 [PRB-0040]}
+
+[VOL02-C03-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 162
+
+\noindent\textbf{Ejercicio 11 [PRB-0041]}
+
+[VOL02-C03-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 205
+
+\noindent\textbf{Ejercicio 12 [PRB-0042]}
+
+[VOL02-C03-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre divide y vencerás, algoritmos voraces, programación dinámica y backtracking: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{18 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 216
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(256-81\right) = 175\)
+
+\section{Algoritmos de grafos (BFS, DFS, Dijkstra, Bellman-Ford, MST, flujo), árboles equilibrados (AVL, Rojo-Negro, B+) y hashing}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+En una tabla hash con direccionamiento abierto y sondeo lineal que se mantiene con un factor de carga \(\alpha = 0.75\), calcule el número esperado de sondeos en una búsqueda sin éxito (inserción de clave nueva) según la fórmula de Knuth \(E_{\text{miss}} = \frac{1}{2}\left(1 + \frac{1}{(1 - \alpha)^2}\right)\).
+
+\noindent\textbf{Respuesta}
+
+\[
+8.5
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+[VOL02-C04-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 40
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+[VOL02-C04-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 36
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+[VOL02-C04-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 64
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+[VOL02-C04-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(20 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 56
+
+\noindent\textbf{Ejercicio 5 [PRB-0049]}
+
+[VOL02-C04-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 78
+
+\noindent\textbf{Ejercicio 6 [PRB-0050]}
+
+[VOL02-C04-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 110
+
+\noindent\textbf{Ejercicio 7 [PRB-0051]}
+
+[VOL02-C04-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 120
+
+\noindent\textbf{Ejercicio 8 [PRB-0052]}
+
+[VOL02-C04-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 143
+
+\noindent\textbf{Ejercicio 9 [PRB-0053]}
+
+[VOL02-C04-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 172
+
+\noindent\textbf{Ejercicio 10 [PRB-0054]}
+
+[VOL02-C04-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 180
+
+\noindent\textbf{Ejercicio 11 [PRB-0055]}
+
+[VOL02-C04-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 225
+
+\noindent\textbf{Ejercicio 12 [PRB-0056]}
+
+[VOL02-C04-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre algoritmos de grafos, árboles B+ y tablas hash: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{20 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 240
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(0.5\cdot \left(1+16\right)\right) = 8.5\)
+
+\section{Estructuras de datos persistentes, estructuras probabilísticas (Bloom filter, HyperLogLog) y algoritmos paralelos (Work-Span)}
+
+\noindent\textbf{Problema resuelto [PRB-0057]}
+
+Un algoritmo paralelo de reducción y filtrado tiene un trabajo total \(T_1 = 9600\text{ ms}\) y un camino crítico (span) \(T_\infty = 40\text{ ms}\). Calcule la cota superior garantizada de tiempo de ejecución \(T_P = T_1 / P + T_\infty\) en \(P = 16\) procesadores bajo un planificador voraz.
+
+\noindent\textbf{Respuesta}
+
+\[
+640
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0059]}
+
+[VOL02-C05-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 44
+
+\noindent\textbf{Ejercicio 2 [PRB-0060]}
+
+[VOL02-C05-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 38
+
+\noindent\textbf{Ejercicio 3 [PRB-0061]}
+
+[VOL02-C05-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 70
+
+\noindent\textbf{Ejercicio 4 [PRB-0062]}
+
+[VOL02-C05-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(22 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 60
+
+\noindent\textbf{Ejercicio 5 [PRB-0063]}
+
+[VOL02-C05-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 86
+
+\noindent\textbf{Ejercicio 6 [PRB-0064]}
+
+[VOL02-C05-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 120
+
+\noindent\textbf{Ejercicio 7 [PRB-0065]}
+
+[VOL02-C05-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 132
+
+\noindent\textbf{Ejercicio 8 [PRB-0066]}
+
+[VOL02-C05-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 157
+
+\noindent\textbf{Ejercicio 9 [PRB-0067]}
+
+[VOL02-C05-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 188
+
+\noindent\textbf{Ejercicio 10 [PRB-0068]}
+
+[VOL02-C05-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 198
+
+\noindent\textbf{Ejercicio 11 [PRB-0069]}
+
+[VOL02-C05-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 245
+
+\noindent\textbf{Ejercicio 12 [PRB-0070]}
+
+[VOL02-C05-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre estructuras persistentes, filtros de Bloom y modelo Work-Span: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{22 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 264
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(600+40\right) = 640\)
+
+\section{Jerarquía de memoria, coherencia de caché (MESI), false sharing, alineamiento, ABI y enlazado}
+
+\noindent\textbf{Problema resuelto [PRB-0071]}
+
+Calcule el ahorro total en kilobytes (1 KiB = 1024 bytes) de un vector en memoria de \(N = 65536\) registros cuando se reordena en C una estructura mal alineada de \(24\text{ bytes}\) (\texttt{uint8\_t}, 7 bytes de padding, \texttt{uint64\_t}, \texttt{uint8\_t}, 7 bytes de padding) a su disposición óptima de \(16\text{ bytes}\) (\texttt{uint64\_t}, \texttt{uint8\_t}, \texttt{uint8\_t}, 6 bytes de padding final).
+
+\noindent\textbf{Respuesta}
+
+\[
+512
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0073]}
+
+[VOL02-C06-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 48
+
+\noindent\textbf{Ejercicio 2 [PRB-0074]}
+
+[VOL02-C06-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 40
+
+\noindent\textbf{Ejercicio 3 [PRB-0075]}
+
+[VOL02-C06-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 76
+
+\noindent\textbf{Ejercicio 4 [PRB-0076]}
+
+[VOL02-C06-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(24 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 64
+
+\noindent\textbf{Ejercicio 5 [PRB-0077]}
+
+[VOL02-C06-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 94
+
+\noindent\textbf{Ejercicio 6 [PRB-0078]}
+
+[VOL02-C06-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 130
+
+\noindent\textbf{Ejercicio 7 [PRB-0079]}
+
+[VOL02-C06-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 144
+
+\noindent\textbf{Ejercicio 8 [PRB-0080]}
+
+[VOL02-C06-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 171
+
+\noindent\textbf{Ejercicio 9 [PRB-0081]}
+
+[VOL02-C06-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 204
+
+\noindent\textbf{Ejercicio 10 [PRB-0082]}
+
+[VOL02-C06-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 216
+
+\noindent\textbf{Ejercicio 11 [PRB-0083]}
+
+[VOL02-C06-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 265
+
+\noindent\textbf{Ejercicio 12 [PRB-0084]}
+
+[VOL02-C06-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre cachés, protocolo MESI, false sharing, alineamiento ABI y enlazado: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{24 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 288
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(65536\cdot 8\right)}{1024} = 512\)
+
+\section{Arquitectura de compiladores: análisis léxico, parsing LL/LR/Pratt, AST, tipos, IR en forma SSA y generación de código}
+
+\noindent\textbf{Problema resuelto [PRB-0085]}
+
+En un bloque básico antes de la optimización se evalúa en un bucle de \(N = 1000\) iteraciones una expresión con una subexpresión invariante de bucle de coste \(c_{\text{inv}} = 6\) ciclos y una parte dependiente del índice de coste \(c_{\text{var}} = 3\) ciclos por iteración. Calcule el ahorro total de ciclos al aplicar el pase de Movimiento de Código Invariante de Bucle (LICM), que evalúa la subexpresión invariante una única vez fuera del bucle.
+
+\noindent\textbf{Respuesta}
+
+\[
+5994
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0087]}
+
+[VOL02-C07-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 52
+
+\noindent\textbf{Ejercicio 2 [PRB-0088]}
+
+[VOL02-C07-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 42
+
+\noindent\textbf{Ejercicio 3 [PRB-0089]}
+
+[VOL02-C07-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 82
+
+\noindent\textbf{Ejercicio 4 [PRB-0090]}
+
+[VOL02-C07-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(26 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 68
+
+\noindent\textbf{Ejercicio 5 [PRB-0091]}
+
+[VOL02-C07-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 102
+
+\noindent\textbf{Ejercicio 6 [PRB-0092]}
+
+[VOL02-C07-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 140
+
+\noindent\textbf{Ejercicio 7 [PRB-0093]}
+
+[VOL02-C07-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 156
+
+\noindent\textbf{Ejercicio 8 [PRB-0094]}
+
+[VOL02-C07-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 185
+
+\noindent\textbf{Ejercicio 9 [PRB-0095]}
+
+[VOL02-C07-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 220
+
+\noindent\textbf{Ejercicio 10 [PRB-0096]}
+
+[VOL02-C07-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 234
+
+\noindent\textbf{Ejercicio 11 [PRB-0097]}
+
+[VOL02-C07-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 285
+
+\noindent\textbf{Ejercicio 12 [PRB-0098]}
+
+[VOL02-C07-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre lexing, parsing de Pratt, AST, forma SSA y optimizaciones de compilador: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{26 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 312
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(9000-3006\right) = 5994\)
+
+\section{Sistemas operativos: modo kernel, procesos e hilos, planificación, memoria virtual paginada, VFS y multiplexación de E/S}
+
+\noindent\textbf{Problema resuelto [PRB-0099]}
+
+En una arquitectura con páginas de \(4\text{ KiB} = 4096\text{ bytes}\) (\(2^{12}\) bytes), dada la dirección virtual decimal \(V = 20500\), determine el número de página virtual \(\text{VPN} = \lfloor V / 4096 \rfloor\), el desplazamiento dentro de la página \(\text{offset} = V - \text{VPN} \cdot 4096\), y calcule la dirección física resultante si la tabla de páginas asigna dicho VPN al marco físico \(\text{PFN} = 12\).
+
+\noindent\textbf{Respuesta}
+
+\[
+49172
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0101]}
+
+[VOL02-C08-E01] (Nivel \(1 -\) Fundamentos (Comprensión y representación)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 1, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 60
+
+\noindent\textbf{Ejercicio 2 [PRB-0102]}
+
+[VOL02-C08-E02] (Nivel \(1 -\) Fundamentos (Cálculo directo e invariantes)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 2, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 + 16} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 46
+
+\noindent\textbf{Ejercicio 3 [PRB-0103]}
+
+[VOL02-C08-E03] (Nivel \(2 -\) Aplicación (Lectura de código y traza de estado)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 3, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 3 + 4} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 94
+
+\noindent\textbf{Ejercicio 4 [PRB-0104]}
+
+[VOL02-C08-E04] (Nivel \(2 -\) Aplicación (Predicción determinista de salida)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 4, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{(30 + 8) * 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 76
+
+\noindent\textbf{Ejercicio 5 [PRB-0105]}
+
+[VOL02-C08-E05] (Nivel \(3 -\) Resolución (Detección y corrección de defecto sutil)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 5, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 4 - 2} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 118
+
+\noindent\textbf{Ejercicio 6 [PRB-0106]}
+
+[VOL02-C08-E06] (Nivel \(3 -\) Resolución (Implementación multi-etapa con invariante)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 6, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 5 + 10} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 160
+
+\noindent\textbf{Ejercicio 7 [PRB-0107]}
+
+[VOL02-C08-E07] (Nivel \(4 -\) Ingeniería (Refactorización modular y contratos)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 7, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 6} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 180
+
+\noindent\textbf{Ejercicio 8 [PRB-0108]}
+
+[VOL02-C08-E08] (Nivel \(4 -\) Ingeniería (Validación de precondiciones y bordes)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 8, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 7 + 3} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 213
+
+\noindent\textbf{Ejercicio 9 [PRB-0109]}
+
+[VOL02-C08-E09] (Nivel \(5 -\) Avanzado (Análisis de rendimiento, memoria y complejidad)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 9, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 8 + 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 252
+
+\noindent\textbf{Ejercicio 10 [PRB-0110]}
+
+[VOL02-C08-E10] (Nivel \(5 -\) Avanzado (Demostración de corrección e invariante de bucle)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 10, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 9} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 270
+
+\noindent\textbf{Ejercicio 11 [PRB-0111]}
+
+[VOL02-C08-E11] (Nivel \(6 -\) Experto (Diseño arquitectónico bajo restricciones reales)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 11, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 10 + 25} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 325
+
+\noindent\textbf{Ejercicio 12 [PRB-0112]}
+
+[VOL02-C08-E12] (Nivel \(6 -\) Experto (Compromisos técnicos, escalabilidad y mantenibilidad)) Sobre sistemas operativos, llamadas al sistema, memoria virtual paginada y epoll/kqueue: analice el escenario técnico número 12, verifique las precondiciones formales, evalúe la métrica característica mediante la expresión reproducible \texttt{30 * 12} y justifique los criterios de aceptación, pistas graduadas y complejidad temporal/espacial.
+
+\noindent\textbf{Respuesta} 360
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(12\cdot 4096\right)+20\right) = 49172\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 25 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios. Ecuaciones: 8 respaldada por una fuente, 11 valor o condición.
+
+\noindent ¶3: dos testimonios. Ecuaciones: 3 verificada simbólicamente, 1 reproducida numéricamente, 10 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶4: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios. Ecuaciones: 1 valor o condición.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios. Ecuaciones: 4 valor o condición.
+
+\noindent ¶9: dos testimonios. Ecuaciones: 2 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶10: dos testimonios. Ecuaciones: 2 respaldada por una fuente, 1 valor o condición.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios. Ecuaciones: 1 aproximación.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 1 valor o condición.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 1 valor o condición.
+
+\noindent ¶21: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶22: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 1 valor o condición.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios. Ecuaciones: 2 respaldada por una fuente.
+
+\noindent ¶27: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 1 aproximación, 4 valor o condición.
+
+\noindent ¶28: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios. Ecuaciones: 2 respaldada por una fuente.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P13, \P14, \P15, \P16, \P17, \P18, \P25, \P26, \P27, \P28, \P29, \P30, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24.
+
+\noindent C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: cap01-complejidad-asintotica-recurrencias-amortizado scientific
+
+\noindent REV-0002: cap02-busqueda-ordenacion-cotas-inferiores scientific
+
+\noindent REV-0003: cap03-divide-venceras-voraces-programacion-dinamica scientific
+
+\noindent REV-0004: cap04-grafos-arboles-equilibrados-hashing scientific
+
+\noindent REV-0005: cap05-estructuras-persistentes-probabilisticas-paralelos scientific
+
+\noindent REV-0006: cap06-jerarquia-memoria-caches-abi-enlazado scientific
+
+\noindent REV-0007: cap07-compiladores-lexing-parsing-ssa-codegen scientific
+
+\noindent REV-0008: cap08-sistemas-operativos-procesos-memoria-virtual-io scientific
+\chapter{Plan de estudio}
+
+\section*{PARTE III. Algoritmos, Estructuras de Datos y Computación}
+
+\subsection*{\checkmark Complejidad temporal y espacial, notaciones O, Omega y Theta, recurrencias, Teorema Maestro y análisis amortizado}
+\begin{itemize}
+\item Dominar Complejidad temporal y espacial, notaciones O, Omega y Theta, recurrencias, Teorema Maestro y análisis amortizado
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Búsqueda binaria libre de desbordamiento, ordenación, cota inferior Omega(n log n) e invariantes}
+\begin{itemize}
+\item Dominar Búsqueda binaria libre de desbordamiento, ordenación, cota inferior Omega(n log n) e invariantes
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Divide y vencerás, algoritmos voraces, programación dinámica y backtracking}
+\begin{itemize}
+\item Dominar Divide y vencerás, algoritmos voraces, programación dinámica y backtracking
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Algoritmos de grafos (BFS, DFS, Dijkstra, Bellman-Ford, MST, flujo), árboles equilibrados (AVL, Rojo-Negro, B+) y hashing}
+\begin{itemize}
+\item Dominar Algoritmos de grafos (BFS, DFS, Dijkstra, Bellman-Ford, MST, flujo), árboles equilibrados (AVL, Rojo-Negro, B+) y hashing
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Estructuras de datos persistentes, estructuras probabilísticas (Bloom filter, HyperLogLog) y algoritmos paralelos (Work-Span)}
+\begin{itemize}
+\item Dominar Estructuras de datos persistentes, estructuras probabilísticas (Bloom filter, HyperLogLog) y algoritmos paralelos (Work-Span)
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{PARTE IV. Sistemas Informáticos, Compiladores, Memoria y Sistemas Operativos}
+
+\subsection*{\checkmark Jerarquía de memoria, coherencia de caché (MESI), false sharing, alineamiento, ABI y enlazado}
+\begin{itemize}
+\item Dominar Jerarquía de memoria, coherencia de caché (MESI), false sharing, alineamiento, ABI y enlazado
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Arquitectura de compiladores: análisis léxico, parsing LL/LR/Pratt, AST, tipos, IR en forma SSA y generación de código}
+\begin{itemize}
+\item Dominar Arquitectura de compiladores: análisis léxico, parsing LL/LR/Pratt, AST, tipos, IR en forma SSA y generación de código
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Sistemas operativos: modo kernel, procesos e hilos, planificación, memoria virtual paginada, VFS y multiplexación de E/S}
+\begin{itemize}
+\item Dominar Sistemas operativos: modo kernel, procesos e hilos, planificación, memoria virtual paginada, VFS y multiplexación de E/S
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\end{thebibliography}
+\end{document}

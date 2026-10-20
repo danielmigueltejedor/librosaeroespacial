@@ -1,0 +1,1585 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen IX: Ingeniería del Software, Arquitectura, Sistemas Distribuidos, Seguridad y Proyectos\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Enciclopedia de Programación e Ingeniería del Software \(-\) Partes IX, X, XI, XII y XIII\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Partes IX\(-\)XIII: Ingeniería Profesional, Cloud, Seguridad e Itinerarios}
+
+\chapter{Principios de Diseño (SOLID, acoplamiento/cohesión), Patrones GoF y Refactorización}
+\label{chap:ch-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textit{Fundamentos del diseño modular de software mantenible: cohesión funcional, inversión de dependencias y catálogo crítico de patrones creacionales, estructurales y de comportamiento.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Muchos de los 23 patrones clásicos de Gamma, Helm, Johnson y Vlissides (1994) se simplifican radicalmente mediante funciones de orden superior, tipos suma y traits.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Cohesión, Acoplamiento y Métrica de Inestabilidad de Paquetes: El diseño modular busca maximizar la cohesión interna de cada módulo mientras dirige el acoplamiento hacia abstracciones estables.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: La refactorización es una transformación del código fuente que preserva estrictamente el comportamiento externo observable mientras mejora su estructura interna.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\section{Cohesión, Acoplamiento y Métrica de Inestabilidad de Paquetes y Los Cinco Principios SOLID bajo una Lente Moderna}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+La complejidad accidental de un sistema crece cuadráticamente con el acoplamiento implícito entre sus componentes. Dado un módulo o paquete, su acoplamiento aferente \(C_a\) cuenta cuántos módulos externos dependen de él, y su acoplamiento eferente \(C_e\) cuenta de cuántos módulos externos depende él. La métrica de inestabilidad \(I = C_e / (C_a + C_e) \in [0, 1]\) caracteriza desde paquetes máximamente estables (\(I = 0\), como el modelo de dominio puro) hasta paquetes volátiles (\(I = 1\), como adaptadores de interfaz o puntos de entrada \texttt{main}). El Principio de Dependencias Estables dicta que un módulo sólo debe depender de módulos con menor o igual inestabilidad.
+1) **Responsabilidad Única (SRP)**: un módulo debe tener una única razón de cambio asociada a un actor de negocio. 2) **Abierto/Cerrado (OCP)**: el comportamiento debe poder extenderse mediante polimorfismo o composición de funciones sin modificar el código ya verificado. 3) **Sustitución de Liskov (LSP)**: formalizado por Barbara Liskov y Jeannette Wing, exige que todo subtipo preserve los invariantes e historia observable del supertipo. 4) **Segregación de Interfaces (ISP)**: ningún cliente debe verse forzado a depender de métodos que no utiliza. 5) **Inversión de Dependencias (DIP)**: los módulos de alto nivel definen las interfaces (traits, protocolos) que implementan los módulos de infraestructura de bajo nivel.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\section{Patrones de Diseño GoF en Lenguajes Modernos: De Clases a Funciones y Tipos Algebraicos y Deuda Técnica, Code Smells y Disciplina de Refactorización Segura}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Los patrones creacionales (\texttt{Factory Method}, \texttt{Abstract Factory}, \texttt{Builder}) encapsulan la construcción válida de objetos complejos; en particular, el patrón \texttt{Type-State Builder} en Rust o TypeScript verifica en tiempo de compilación que todos los campos obligatorios se hayan configurado antes de invocar \texttt{.build()}. Los patrones estructurales (\texttt{Adapter}, \texttt{Decorator}, \texttt{Facade}, \texttt{Proxy}, \texttt{Composite}) traducen interfaces o añaden responsabilidades transversales (telemetría, reintentos, caché) sin alterar la implementación subyacente. Los patrones de comportamiento (\texttt{Strategy}, \texttt{Observer}, \texttt{Command}, \texttt{State}, \texttt{Iterator}) modelan algoritmos intercambiables y máquinas de estados.
+Acuñada por Ward Cunningham, la metáfora de la deuda técnica describe el interés compuesto que se paga en cada entrega futura cuando se pospone el reflejo de un aprendizaje de dominio en la arquitectura del código. Toda refactorización (extracción de funciones puras, sustitución de condicionales anidados por polimorfismo o pattern matching exhaustivo, introducción de objetos valor) debe ejecutarse en pasos atómicos respaldados por una batería rápida de pruebas automatizadas.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textbf{Enunciado}
+En una arquitectura modular, el paquete de facturación es importado por 18 módulos externos (acoplamiento aferente Ca = 18) e importa únicamente 2 bibliotecas estándar de tipos (acoplamiento eferente Ce = 2). Calcule el índice de inestabilidad I expresado en porcentaje.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $C_{a} = 18\,\mathrm{módulos}$ — Acoplamiento aferente (dependientes entrantes)
+\item $C_{e} = 2\,\mathrm{módulos}$ — Acoplamiento eferente (dependencias salientes)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Índice de inestabilidad porcentual \(I_pct\) en \%
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo de la métrica de inestabilidad de un paquete de dominio}
+
+\[
+I_{\text{pct}} = \frac{2}{18 + 2} \cdot 100
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Aplicamos la fórmula de Martin I = Ce / (Ca + Ce) multiplicada por 100
+
+\[
+I_{\text{pct}} = \frac{2}{18 + 2} \cdot 100
+\]
+
+\[
+\frac{\left(2\cdot 100\right)}{\left(18+2\right)}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 10
+\]
+
+\noindent\textbf{Interpretación}
+El paquete presenta una inestabilidad baja del 10 \%, acorde con su rol como núcleo de negocio estable del que dependen otros 18 módulos.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $10$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+[CH-01.1] Calcule (Índice de inestabilidad porcentual de un adaptador HTTP con Ca = 1 y Ce = 9) expresado en \%.
+
+\noindent\textbf{2 [PRB-0004] (Intermedio, Desarrollo por pasos)}
+[CH-01.2] Calcule (Distancia a la secuencia principal en porcentaje si A = 40 \% e I = 50 \% (|40 + 50 - 100|)) expresado en \%.
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+[CH-01.3] Calcule (Reducción de complejidad ciclomática al descomponer un método de complejidad 19 en 4 funciones de complejidad 2) expresado en puntos.
+
+\noindent\textbf{4 [PRB-0006] (Avanzado, Diseño)}
+[CH-01.4] Calcule (Número de clases eliminadas al reemplazar 6 clases Strategy de un solo método por funciones de primera clase) expresado en clases.
+\end{tcolorbox}
+
+\chapter{Arquitectura del Software: DDD, Arquitectura Hexagonal/Limpia, Microservicios y APIs (REST, GraphQL, gRPC)}
+\label{chap:ch-02}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textit{Arquitectura de sistemas de software a escala empresarial: fronteras de dominio, estilos arquitectónicos, CQRS, Event Sourcing y diseño de contratos de comunicación.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Un monolito modular bien acotado ofrece fronteras lógicas limpias con transacciones ACID locales y cero sobrecoste de red, debiendo extraerse microservicios solo ante necesidades reales de escalado o despliegue independiente.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Domain-Driven Design (DDD): Diseño Estratégico y Táctico: El diseño estratégico divide un dominio complejo en Contextos Acotados (Bounded Contexts) con Lenguaje Ubicuo propio, evitando el antipatrón de un modelo canónico único gigante.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: REST sobre HTTP/JSON sobresale en interoperabilidad pública, GraphQL optimiza consultas de clientes con grafos de vista diversos y gRPC sobre HTTP/2 + Protobuf domina la comunicación interna de baja latencia.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\section{Domain-Driven Design (DDD): Diseño Estratégico y Táctico y Arquitectura Hexagonal (Puertos y Adaptadores) y Arquitectura Limpia}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+En el nivel estratégico, DDD identifica subdominios principales (Core, donde reside la ventaja competitiva), de soporte y genéricos, estableciendo mapas de contexto (Context Maps) con capas anticorrupción (ACL) para traducir conceptos entre sistemas. En el nivel táctico, distingue **Entidades** (definidas por su identidad persistente a lo largo del tiempo), **Objetos Valor** (definidos exclusivamente por sus atributos e inmutables por construcción, como \texttt{ImporteMonetario}), **Agregados** (fronteras de consistencia transaccional gobernadas por su Aggregate Root) y **Eventos de Dominio** (hechos inmutables ocurridos en el pasado).
+Formulada por Alistair Cockburn y popularizada junto a la Arquitectura Limpia de Robert C. Martin, la Arquitectura Hexagonal representada en la figura~\ref{fig:ch-02-fig} organiza el software en anillos concéntricos. El núcleo contiene las entidades y casos de uso de aplicación; alrededor suyo se sitúan los puertos de entrada (invocados por controladores HTTP, consumidores de colas o CLI) y los puertos de salida (interfaces de repositorios, pasarelas de pago o relojes de sistema), cuyas implementaciones concretas residen en la capa externa de infraestructura.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (in) [fill=blue!10] {Adaptadores Primarios\\(REST / gRPC / CLI)};
+\node (usecase) [right=of in, fill=green!12] {Puertos de Entrada\\(Casos de Uso)};
+\node (domain) [right=of usecase, fill=yellow!18] {Núcleo de Dominio\\(Entidades y Reglas)};
+\node (portout) [right=of domain, fill=green!12] {Puertos de Salida\\(Interfaces Repo)};
+\node (out) [right=of portout, fill=orange!15] {Adaptadores Secundarios\\(PostgreSQL / Kafka)};
+\draw[-Stealth, thick] (in) -- (usecase);
+\draw[-Stealth, thick] (usecase) -- (domain);
+\draw[-Stealth, thick] (domain) -- (portout);
+\draw[Stealth-, thick, dashed] (portout) -- (out);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (in) [fill=blue!10] {Adaptadores Primarios\\(REST / gRPC / CLI)};
+\node (usecase) [right=of in, fill=green!12] {Puertos de Entrada\\(Casos de Uso)};
+\node (domain) [right=of usecase, fill=yellow!18] {Núcleo de Dominio\\(Entidades y Reglas)};
+\node (portout) [right=of domain, fill=green!12] {Puertos de Salida\\(Interfaces Repo)};
+\node (out) [right=of portout, fill=orange!15] {Adaptadores Secundarios\\(PostgreSQL / Kafka)};
+\draw[-Stealth, thick] (in) -- (usecase);
+\draw[-Stealth, thick] (usecase) -- (domain);
+\draw[-Stealth, thick] (domain) -- (portout);
+\draw[Stealth-, thick, dashed] (portout) -- (out);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (in) [fill=blue!10] {Adaptadores Primarios\\(REST / gRPC / CLI)};
+\node (usecase) [right=of in, fill=green!12] {Puertos de Entrada\\(Casos de Uso)};
+\node (domain) [right=of usecase, fill=yellow!18] {Núcleo de Dominio\\(Entidades y Reglas)};
+\node (portout) [right=of domain, fill=green!12] {Puertos de Salida\\(Interfaces Repo)};
+\node (out) [right=of portout, fill=orange!15] {Adaptadores Secundarios\\(PostgreSQL / Kafka)};
+\draw[-Stealth, thick] (in) -- (usecase);
+\draw[-Stealth, thick] (usecase) -- (domain);
+\draw[-Stealth, thick] (domain) -- (portout);
+\draw[Stealth-, thick, dashed] (portout) -- (out);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (in) [fill=blue!10] {Adaptadores Primarios\\(REST / gRPC / CLI)};
+\node (usecase) [right=of in, fill=green!12] {Puertos de Entrada\\(Casos de Uso)};
+\node (domain) [right=of usecase, fill=yellow!18] {Núcleo de Dominio\\(Entidades y Reglas)};
+\node (portout) [right=of domain, fill=green!12] {Puertos de Salida\\(Interfaces Repo)};
+\node (out) [right=of portout, fill=orange!15] {Adaptadores Secundarios\\(PostgreSQL / Kafka)};
+\draw[-Stealth, thick] (in) -- (usecase);
+\draw[-Stealth, thick] (usecase) -- (domain);
+\draw[-Stealth, thick] (domain) -- (portout);
+\draw[Stealth-, thick, dashed] (portout) -- (out);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:ch-02-fig}\textbf{Figura~\thestudiumfigure.} Arquitectura Hexagonal (Puertos y Adaptadores): los adaptadores primarios invocan puertos de entrada (casos de uso) y el dominio invoca puertos de salida implementados por adaptadores secundarios.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\section{Monolito Modular frente a Microservicios, CQRS y Patrón Outbox Transaccional y Diseño de APIs: REST (OpenAPI), GraphQL, gRPC y WebSockets}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Distribuir prematuramente un sistema sin fronteras de dominio maduras engendra un 'monolito distribuido' que sufre la latencia, los fallos parciales y la complejidad operativa de los microservicios sin obtener autonomía de despliegue. Cuando un sistema requiere publicar eventos en un broker (Kafka, RabbitMQ) tras actualizar su base de datos, escribir simultáneamente en ambos sin coordinación dos fases es inseguro; el patrón **Transactional Outbox** resuelve este problema insertando el evento en una tabla \texttt{outbox} dentro de la misma transacción ACID local y reenviándolo de forma asíncrona con garantía \texttt{at-least-once}.
+En una API RESTful madura, los recursos se modelan como sustantivos jerárquicos, los métodos HTTP respetan su semántica de seguridad e idempotencia (\texttt{GET} y \texttt{HEAD} seguros; \texttt{PUT} y \texttt{DELETE} idempotentes; \texttt{POST} con clave \texttt{Idempotency-Key} para pagos), y los errores se devuelven en formato estándar RFC 9457 (\texttt{Problem Details for HTTP APIs}). En GraphQL es imprescindible implementar el patrón \texttt{DataLoader} para agrupar consultas y evitar el problema \(N+1\).
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textbf{Enunciado}
+Una consulta GraphQL solicita una lista de 50 pedidos junto con los datos del autor de cada pedido. Sin agrupación (N+1), el servidor ejecuta 1 consulta para la lista y 50 consultas individuales de 2 ms de latencia cada una. Con DataLoader, ejecuta solo 2 consultas (la lista y un único SELECT ... WHERE id IN (...)) de 2 ms cada una. Calcule el tiempo total de base de datos ahorrado en ms.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 50\,\mathrm{pedidos}$ — Número de elementos de la lista
+\item $t_{q} = 2\,\mathrm{ms}$ — Latencia por consulta a la base de datos
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Tiempo de base de datos ahorrado \(T_ahorro\) en ms
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Eliminación del problema N+1 en un resolver GraphQL mediante DataLoader}
+
+\[
+T_{\text{ahorro}} = (50 + 1) \cdot 2 - 2 \cdot 2
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos el tiempo de las 2 consultas agrupadas al tiempo de las N + 1 = 51 consultas secuenciales
+
+\[
+T_{\text{ahorro}} = (50 + 1) \cdot 2 - 2 \cdot 2
+\]
+
+\[
+\left(\left(\left(50+1\right)\cdot 2\right)-\left(2\cdot 2\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 98
+\]
+
+\noindent\textbf{Interpretación}
+DataLoader reduce el tiempo de consultas de 102 ms a 4 ms, ahorrando exactamente 98 ms por petición.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $98$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+[CH-02.1] Calcule (Consultas SQL ahorradas al resolver 120 elementos con DataLoader (2 consultas) frente a N+1 (121 consultas)) expresado en consultas.
+
+\noindent\textbf{2 [PRB-0010] (Intermedio, Desarrollo por pasos)}
+[CH-02.2] Calcule (Latencia acumulada en ms de una cadena síncrona de 6 microservicios con 8 ms por salto) expresado en ms.
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+[CH-02.3] Calcule (Disponibilidad porcentual aproximada (en centésimas x100) de 3 servicios en serie al 99 \% cada uno (10000 - 3*100)) expresado en centésimas de \%.
+
+\noindent\textbf{4 [PRB-0012] (Avanzado, Diseño)}
+[CH-02.4] Calcule (Tamaño de página máximo devuelto si una API REST limita page\(_size <= 100\) cuando el cliente solicita 5000) expresado en registros.
+\end{tcolorbox}
+
+\chapter{Control de Versiones (Git Internals), Calidad, Testing, Property-Based Testing y Fuzzing}
+\label{chap:ch-03}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textit{Ingeniería de calidad y verificación de software: modelo de objetos de Git, TDD, dobles de prueba, pruebas basadas en propiedades y análisis de mutación.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+El Property-Based Testing genera cientos de entradas aleatorias estructuradas para refutar invariantes universales y reduce automáticamente el contraejemplo al caso mínimo reproducible.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Arquitectura Interna de Git: Almacén Direccionable por Contenido y Grafo DAG: Git no almacena diferencias incrementales por commit, sino instantáneas completas modeladas como un grafo acíclico dirigido (DAG) de cuatro objetos inmutables: blob, tree, commit y tag.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: La cobertura de líneas del 100 \% no garantiza que las aserciones detecten defectos; el Mutation Testing mide la eficacia real de los tests inyectando mutantes sintácticos.
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\section{Arquitectura Interna de Git: Almacén Direccionable por Contenido y Grafo DAG y Pirámide de Testing, TDD y Dobles de Prueba (Stubs, Fakes, Mocks)}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Bajo el directorio \texttt{.git/objects}, Git opera como un sistema de archivos clave-valor direccionable por contenido (Content-Addressable Storage) donde la clave de cada objeto es el hash criptográfico (SHA-1 o SHA-256) de su cabecera más su contenido comprimido con zlib. Un **blob** almacena los bytes de un archivo sin su nombre; un **tree** asocia nombres de archivo y permisos con hashes de blobs y sub-trees; y un **commit** apunta al tree raíz de la instantánea, a sus commits padres y a los metadatos de autoría. Las ramas (\texttt{refs/heads/*}) son simples punteros móviles de 41 bytes hacia un commit.
+El ciclo Test-Driven Development (TDD: Red -> Green -> Refactor) utiliza las pruebas como herramienta de diseño de interfaces antes de escribir la implementación. Siguiendo la taxonomía de Gerard Meszaros, es fundamental distinguir entre **Stubs** (devuelven respuestas preconfiguradas), **Fakes** (implementaciones funcionales ligeras, como un repositorio en memoria) y **Mocks** (verifican interacciones salientes). Abusar de mocks acoplados a detalles internos produce pruebas frágiles que se rompen ante cualquier refactorización legítima.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\section{Property-Based Testing (QuickCheck, Hypothesis, proptest) y Reducción Automática (Shrinking) y Fuzzing Guiado por Cobertura (libFuzzer, AFL++) y Mutation Testing}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Mientras una prueba basada en ejemplos comprueba una tupla concreta (\texttt{assert ordenar([3,1,2]) == [1,2,3]}), una prueba basada en propiedades (introducida por Claessen y Hughes en QuickCheck para Haskell y disponible en Hypothesis para Python o \texttt{proptest} para Rust) declara propiedades algebraicas que deben cumplirse para toda entrada válida: idempotencia (\texttt{f(f(x)) == f(x)}), inversión (\texttt{decode(encode(x)) == x}) o preservación de invariantes estructurales. Al encontrar un fallo, el motor aplica *shrinking* en el árbol de generación para entregar el contraejemplo más simple.
+En analizadores de protocolos, compiladores y parsers binarios, el Fuzzing guiado por cobertura (Coverage-Guided Fuzzing con \texttt{cargo-fuzz} / \texttt{libFuzzer}) instrumenta las aristas del grafo de control de flujo y muta el corpus de entradas cada vez que una mutación descubre una nueva ruta de ejecución. Por su parte, herramientas de Mutation Testing (\texttt{mutmut}, \texttt{cargo-mutants}, \texttt{Stryker}) modifican operadores en el código de producción (\texttt{<} por \texttt{<=}, \texttt{+} por \texttt{-}) y verifican qué porcentaje de mutantes son detectados ('muertos') por la suite de tests.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textbf{Enunciado}
+Una herramienta de Mutation Testing genera 250 mutantes sintácticos sobre el módulo de liquidación financiera. De ellos, 10 son mutantes equivalentes (no alteran la semántica) y la batería de pruebas detecta y hace fallar 216 de los mutantes restantes. Calcule el Mutation Score porcentual sobre los mutantes no equivalentes.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $M_{tot} = 250\,\mathrm{mutantes}$ — Total de mutantes generados
+\item $M_{eq} = 10\,\mathrm{mutantes}$ — Mutantes semánticamente equivalentes
+\item $M_{kill} = 216\,\mathrm{mutantes}$ — Mutantes detectados (killed) por los tests
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Puntuación de mutación \(S_mut\) en \%
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo del Mutation Score en una auditoría de calidad de pruebas}
+
+\[
+S_{\text{mut}} = \frac{216}{250 - 10} \cdot 100
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Dividimos los 216 mutantes detectados entre los 240 mutantes no equivalentes (250 - 10) y multiplicamos por 100
+
+\[
+S_{\text{mut}} = \frac{216}{250 - 10} \cdot 100
+\]
+
+\[
+\frac{\left(216\cdot 100\right)}{\left(250-10\right)}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 90
+\]
+
+\noindent\textbf{Interpretación}
+La suite de pruebas alcanza un Mutation Score del 90 \%, identificando exactamente los 24 mutantes supervivientes que requieren nuevas aserciones.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $90$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+[CH-03.1] Calcule (Mutantes supervivientes que requieren nuevos tests en el módulo auditado (250 - 10 - 216)) expresado en mutantes.
+
+\noindent\textbf{2 [PRB-0016] (Intermedio, Desarrollo por pasos)}
+[CH-03.2] Calcule (Objetos nuevos creados en Git al modificar 1 archivo dentro de un subdirectorio de profundidad 2 (1 blob + 3 trees + 1 commit)) expresado en objetos.
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+[CH-03.3] Calcule (Casos generados en 5 segundos por un fuzzer libFuzzer que ejecuta 18 000 iteraciones por segundo) expresado en ejecuciones.
+
+\noindent\textbf{4 [PRB-0018] (Avanzado, Diseño)}
+[CH-03.4] Calcule (Tiempo total de CI en segundos para 1 200 tests unitarios de 2 ms y 30 tests de integración de 200 ms) expresado en s.
+\end{tcolorbox}
+
+\chapter{Sistemas Distribuidos, Consenso (Raft), Resiliencia, Observabilidad (OpenTelemetry) y SRE}
+\label{chap:ch-04}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textit{Teoría y práctica de los sistemas distribuidos modernos: falacias de la red, relojes de Lamport/vectoriales, consenso Raft, trazabilidad distribuida e ingeniería de fiabilidad.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Reintentar llamadas fallidas inmediatamente o con intervalos fijos provoca tormentas de reintentos (Thundering Herd) que tumban al servicio en recuperación; añadir Jitter aleatorio descorrela la carga.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Tiempo Físico vs Tiempo Lógico: Relojes de Lamport y Relojes Vectoriales: En ausencia de un reloj físico global perfectamente sincronizado, la relación happened-before de Lamport define un orden parcial estricto sobre los eventos de un sistema distribuido.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: El contexto de propagación W3C Trace Context (traceparent) correlaciona logs y métricas a través de decenas de servicios mediante un identificador global de traza y spans jerárquicos.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\section{Tiempo Físico vs Tiempo Lógico: Relojes de Lamport y Relojes Vectoriales y Consenso Distribuido con Raft: Elección de Líder y Replicación de Log}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Los relojes físicos de cuarzo en servidores distintos sufren deriva térmica, y la sincronización NTP presenta incertidumbres de milisegundos que impiden ordenar causalmente eventos de microsegundos. Leslie Lamport formalizó en 1978 la relación causal \(a \to b\) (happened-before): si \(a \to b\), entonces las marcas lógicas cumplen \(L(a) < L(b)\). Los **Relojes Vectoriales** \(V \in \mathbb{N}^N\) extienden esta propiedad logrando una equivalencia exacta: \(V(a) < V(b) \iff a \to b\), permitiendo detectar exactamente cuándo dos escrituras son concurrentes y requieren resolución de conflictos (CRDTs o reconciliación).
+En Raft, el tiempo se divide en mandatos (*terms*) numerados monotónicamente. Todo nodo se encuentra en uno de tres estados: *Follower*, *Candidate* o *Leader*. Si un seguidor no recibe latidos (\texttt{AppendEntries} vacíos) del líder durante su tiempo de espera aleatorio (p. ej., \(150-300\) ms), incrementa su mandato, pasa a candidato y solicita votos (\texttt{RequestVote}). La restricción de votación garantiza que sólo un candidato cuyo log esté al menos tan actualizado como el de la mayoría de los nodos puede ser elegido líder.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\section{Patrones de Resiliencia: Timeouts, Exponential Backoff con Jitter, Circuit Breaker e Idempotencia y Observabilidad con OpenTelemetry (Métricas, Logs, Trazas) y Disciplina SRE (SLI/SLO)}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Toda llamada de red debe poseer un \texttt{timeout} explícito y acotado. Cuando una operación es idempotente (o transporta un token único \texttt{Idempotency-Key} registrado atómicamente por el receptor), los fallos transitorios pueden reintentarse aplicando espera exponencial con jitter completo: \(t_{\text{wait}} \sim U(0, \min(T_{\max}, T_{\text{base}} \cdot 2^{\text{intento}}))\). Si la tasa de fallos supera un umbral crítico, un **Circuit Breaker** abre el circuito y falla rápidamente en local para permitir que el sistema aguas abajo se recupere.
+OpenTelemetry estandariza la instrumentación de telemetría neutral respecto al proveedor: **Métricas** (contadores, gauges e histogramas de latencia p50/p95/p99), **Logs estructurados** en JSON y **Trazas distribuidas** (grafos de *spans* con \texttt{trace\_id} y \texttt{span\_id}). En Site Reliability Engineering (SRE), la fiabilidad se gobierna mediante Indicadores de Nivel de Servicio (SLI, p. ej., proporción de peticiones HTTP exitosas en menos de 200 ms) y Objetivos (SLO, p. ej., 99,9 \% mensual, lo que otorga un presupuesto de error de 43,2 minutos cada 30 días).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textbf{Enunciado}
+Un servicio crítico de pagos define un SLO de disponibilidad del 99,9 \% medido sobre una ventana de 30 días (43 200 minutos totales). Calcule el presupuesto de error mensual en minutos durante los cuales el servicio puede experimentar indisponibilidad sin violar su SLO.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $T_{mes} = 43200\,\mathrm{min}$ — Minutos totales en 30 días (30 x 24 x 60)
+\item $p_{err} = 0.001\,\mathrm{fracción}$ — Fracción permitida de error (1 - 0,999)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Presupuesto de error \(E_min\) en minutos
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo del Presupuesto de Error (Error Budget) mensual para un SLO del 99,9 \%}
+
+\[
+E_{\text{min}} = \frac{43200}{1000}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 43 200 minutos del mes por la fracción permitida de indisponibilidad (1 / 1000)
+
+\[
+E_{\text{min}} = \frac{43200}{1000}
+\]
+
+\[
+\frac{43200}{1000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 43.2
+\]
+
+\noindent\textbf{Interpretación}
+Un SLO de 'tres nueves' (99,9 \%) concede exactamente 43,2 minutos de presupuesto de error cada 30 días.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $43.2$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+[CH-04.1] Calcule (Presupuesto de error anual en minutos para un SLO de cuatro nueves 99,99 \% (525600 / 10000)) expresado en min.
+
+\noindent\textbf{2 [PRB-0022] (Intermedio, Desarrollo por pasos)}
+[CH-04.2] Calcule (Nodos totales mínimos en un clúster Raft para tolerar f = 3 fallos simultáneos (2 * 3 + 1)) expresado en nodos.
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+[CH-04.3] Calcule (Tope de espera en ms en el cuarto reintento (intento=4) con backoff exponencial de base 50 ms \((50 * 2^4))\) expresado en ms.
+
+\noindent\textbf{4 [PRB-0024] (Avanzado, Diseño)}
+[CH-04.4] Calcule (Disponibilidad porcentual de un servicio con MTTF = 990 horas y MTTR = 10 horas (990 * 100 / (990 + 10))) expresado en \%.
+\end{tcolorbox}
+
+\chapter{Ciberseguridad Aplicada, Criptografía (TLS 1.3, Argon2id, AEAD), OAuth2/OIDC y Supply Chain}
+\label{chap:ch-05}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\noindent\textit{Ingeniería de seguridad defensiva desde el diseño (Secure by Design): modelado de amenazas STRIDE, criptografía moderna, identidad federada y seguridad de dependencias.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+El flujo Authorization Code con PKCE (RFC 7636) protege tanto a aplicaciones móviles y SPA como a servidores web frente a la interceptación del código de autorización.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Modelado de Amenazas (STRIDE) y Defensa en Profundidad ante OWASP Top 10: La seguridad no es una capa añadida al final del desarrollo, sino una propiedad emergente del diseño verificada mediante el principio de mínimo privilegio y fronteras de confianza explícitas.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Fijar hashes criptográficos en archivos de bloqueo (Cargo.lock, package-lock.json), generar inventarios SBOM y firmar artefactos en CI/CD protege contra ataques de confusión de dependencias.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\section{Modelado de Amenazas (STRIDE) y Defensa en Profundidad ante OWASP Top 10 y Criptografía Aplicada Moderna: TLS 1.3, AEAD (AES-GCM / ChaCha20-Poly1305) y Argon2id}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+La metodología STRIDE clasifica las amenazas sobre cada flujo de datos en seis categorías: **S**poofing (suplantación de identidad), **T**ampering (manipulación de datos), **R**epudiation (repudio sin rastro auditable), **I**nformation Disclosure (fuga de información), **D**enial of Service (denegación de servicio) y **E**levation of Privilege (escalada de privilegios). Para neutralizar las vulnerabilidades más críticas del OWASP Top \(10 -\)como Broken Access Control (IDOR), Injection (SQLi, XSS, Command Injection) y Server-Side Request Forgery (SSRF\()-\) el sistema debe verificar la autorización a nivel de objeto en cada petición, utilizar consultas parametrizadas, aplicar cabeceras \texttt{Content-Security-Policy} (CSP) y restringir las conexiones salientes del servidor hacia rangos IP privados o de metadatos cloud (\texttt{169.254.169.254}).
+Las comunicaciones en tránsito deben protegerse con **TLS 1.3** (RFC 8446), que completa el handshake en 1-RTT y exige intercambio de claves efímeras Diffie-Hellman sobre curvas elípticas (ECDHE con X25519) para garantizar Secreto Perfecto hacia Adelante (*Forward Secrecy*). Para datos en reposo, los esquemas **AEAD** (Authenticated Encryption with Associated Data) como \texttt{AES-256-GCM} o \texttt{ChaCha20-Poly1305} proporcionan simultáneamente confidencialidad e integridad mediante una etiqueta de autenticación de 128 bits. Para contraseñas, **Argon2id** exige una cantidad configurable de memoria RAM (p. ej., 64 MiB por hash) que neutraliza ataques paralelos con GPUs y ASICs.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\section{Autenticación y Autorización Moderna: OAuth 2.1, OpenID Connect (OIDC), PKCE y Passkeys y Seguridad de la Cadena de Suministro (Supply Chain): Lockfiles, SBOM, Sigstore y SLSA}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+OAuth 2.1 delega autorización mientras que OpenID Connect (OIDC) añade una capa de identidad mediante un \texttt{ID Token} firmado en formato JWT (con algoritmos asimétricos \texttt{RS256} o \texttt{EdDSA}, verificando siempre la cabecera \texttt{alg}, el emisor \texttt{iss}, la audiencia \texttt{aud} y la expiración \texttt{exp}). En el flujo con **PKCE** (Proof Key for Code Exchange), el cliente genera un secreto efímero \texttt{code\_verifier} y envía su hash SHA-256 (\texttt{code\_challenge}) al iniciar el login, impidiendo que un atacante que intercepte el código de retorno pueda canjearlo por tokens.
+El software moderno depende de cientos de paquetes transitivos de código abierto. Asegurar la cadena de suministro conforme al marco **SLSA** (Supply-chain Levels for Software Artifacts) requiere compilar en entornos efímeros reproducibles, verificar sumas SHA-256 en lockfiles, emitir una lista de materiales de software (**SBOM** en formato CycloneDX o SPDX) y firmar imágenes y binarios sin claves de larga duración mediante certificados efímeros de **Sigstore/Cosign**.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\noindent\textbf{Enunciado}
+Un servidor configura Argon2id con un coste de memoria de 64 MiB por verificación de contraseña y 3 iteraciones. Si un atacante intenta evaluar en paralelo 512 candidatos simultáneos en una GPU, calcule la memoria VRAM total en GiB (1 GiB = 1024 MiB) necesaria para sostener esos 512 hilos sin penalización de ancho de banda.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $M_{hash} = 64\,\mathrm{MiB}$ — Memoria requerida por instancia de Argon2id
+\item $N_{par} = 512\,\mathrm{hilos}$ — Candidatos evaluados en paralelo
+\item $K = 1024\,\mathrm{MiB}\,\mathrm{GiB}^{-1}$ — Mebibytes por gibibyte
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Memoria VRAM requerida \(V_gib\) en GiB
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Coste de memoria agregado de Argon2id frente a ataques de fuerza bruta en GPU}
+
+\[
+V_{\text{gib}} = \frac{512 \cdot 64}{1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 512 hilos por 64 MiB y dividimos entre 1024 MiB/GiB
+
+\[
+V_{\text{gib}} = \frac{512 \cdot 64}{1024}
+\]
+
+\[
+\frac{\left(512\cdot 64\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 32
+\]
+
+\noindent\textbf{Interpretación}
+Evaluar tan solo 512 contraseñas en paralelo exige 32 GiB de VRAM dedicada, reduciendo en varios órdenes de magnitud la velocidad de fuerza bruta respecto a SHA-256.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $32$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+[CH-05.1] Calcule (Bytes totales de sobrecoste criptográfico en AES-256-GCM por mensaje (12 bytes de nonce IV + 16 bytes de tag)) expresado en bytes.
+
+\noindent\textbf{2 [PRB-0028] (Intermedio, Desarrollo por pasos)}
+[CH-05.2] Calcule (Bits de entropía de una clave aleatoria de 32 bytes generada con un CSPRNG del sistema operativo (32 * 8)) expresado en bits.
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+[CH-05.3] Calcule (Reducción de latencia de establecimiento en ms al pasar de TLS 1.2 (2-RTT) a TLS 1.3 (1-RTT) con RTT = 45 ms) expresado en ms.
+
+\noindent\textbf{4 [PRB-0030] (Avanzado, Diseño)}
+[CH-05.4] Calcule (Hilos concurrentes máximos de Argon2id (64 MiB) en un servidor de autenticación con 4096 MiB dedicados) expresado en hilos.
+\end{tcolorbox}
+
+\chapter{Infraestructura Cloud, Contenedores (Docker/OCI), Kubernetes, Terraform (IaC) y Pipelines CI/CD}
+\label{chap:ch-06}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\noindent\textit{Ingeniería de plataformas, contenedores Linux (namespaces y cgroups v2), orquestación declarativa, infraestructura como código e integración y entrega continua.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Declarar la infraestructura en código versionado con estado remoto bloqueable elimina la deriva de configuración (Configuration Drift) entre entornos de pruebas y producción.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Anatomía de los Contenedores Linux: Namespaces, cgroups v2 y OverlayFS: Un contenedor no es una máquina virtual con hipervisor propio, sino un grupo de procesos aislados en el mismo kernel Linux mediante namespaces y acotados en recursos mediante cgroups v2.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Desacoplar el despliegue técnico (Deployment) del lanzamiento funcional (Release) mediante despliegues Canary y Feature Flags reduce el radio de impacto de regresiones en producción.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\section{Anatomía de los Contenedores Linux: Namespaces, cgroups v2 y OverlayFS y Orquestación con Kubernetes: Bucle de Reconciliación, Pods, Probes y Autoscaling}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+El kernel Linux proporciona tres mecanismos que sustentan el estándar OCI (Open Container Initiative): 1) **Namespaces** (\texttt{pid}, \texttt{net}, \texttt{mnt}, \texttt{uts}, \texttt{ipc}, \texttt{user}, \texttt{cgroup}), que restringen qué procesos, interfaces de red y puntos de montaje puede observar el contenedor; 2) **Control Groups (cgroups v2)**, que contabilizan y limitan el consumo de CPU, memoria RAM y E/S de disco; y 3) sistemas de archivos en unión (**OverlayFS**), que superponen capas inmutables direccionadas por hash SHA-256 con una capa superior efímera de escritura.
+\begin{lstlisting}[style=studium,escapeinside={(*@}{@*)}]
+# Etapa 1: Compilaci(*@{\'o}@*)n est(*@{\'a}@*)tica reproducible
+FROM rust:1.80-alpine AS builder
+WORKDIR /src
+COPY Cargo.toml Cargo.lock ./
+COPY src ./src
+RUN cargo build --release --locked
+
+# Etapa 2: Imagen m(*@{\'i}@*)nima sin shell ni usuario root
+FROM gcr.io/distroless/cc-debian12:nonroot
+COPY --from=builder /src/target/release/motor-kv /usr/local/bin/motor-kv
+USER nonroot:nonroot
+ENTRYPOINT ["/usr/local/bin/motor-kv"]
+\end{lstlisting}
+En Kubernetes, la unidad mínima desplegable es el **Pod** (uno o más contenedores que comparten namespace de red y volúmenes). Los controladores (\texttt{Deployment}, \texttt{StatefulSet}, \texttt{DaemonSet}) supervisan la salud de los pods mediante tres sondas: \texttt{startupProbe}, \texttt{readinessProbe} (que retira el pod del balanceador \texttt{Service} cuando no puede recibir tráfico sin matarlo) y \texttt{livenessProbe} (que reinicia el contenedor ante interbloqueos fatales). Todo contenedor de producción debe declarar \texttt{resources.requests} (usados por el \texttt{kube-scheduler}) y \texttt{limits}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\section{Infraestructura como Código (IaC) con Terraform y Gestión de Estado y Pipelines CI/CD y Estrategias de Despliegue Progresivo (Blue/Green, Canary, Feature Flags)}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Terraform construye un grafo acíclico dirigido (DAG) de dependencias entre recursos cloud (redes VPC, clústeres EKS/GKE, bases de datos RDS, políticas IAM) y calcula un plan de ejecución determinista (\texttt{terraform plan}) antes de aplicar mutaciones (\texttt{terraform apply}). El archivo de estado (\texttt{terraform.tfstate}) debe almacenarse en un backend remoto cifrado con bloqueo transaccional y jamás incluir secretos en texto plano.
+Un pipeline de Integración Continua (CI) verifica automáticamente en cada Pull Request: formateo, análisis estático (linters y chequeo de tipos), pruebas unitarias y de integración, auditoría de vulnerabilidades (CVE) y compilación del artefacto firmado. En Entrega Continua (CD), un despliegue **Canary** encamina inicialmente el \(1-5\) \% del tráfico real a la nueva versión y promueve automáticamente al 100 \% sólo si los SLIs de tasa de error y latencia p99 permanecen dentro del umbral.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\noindent\textbf{Enunciado}
+Un Deployment de Kubernetes tiene actualmente 4 pods en ejecución con una utilización media de CPU del 90 \%. Si el Horizontal Pod Autoscaler (HPA) está configurado para mantener una utilización objetivo del 60 \% según la fórmula \(R_des = R_act * (U_act / U_obj)\), calcule el número de réplicas al que escalará el clúster.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $R_{act} = 4\,\mathrm{pods}$ — Réplicas actuales en ejecución
+\item $U_{act} = 90\,\mathrm{\%}$ — Utilización media actual de CPU
+\item $U_{obj} = 60\,\mathrm{\%}$ — Utilización objetivo configurada en el HPA
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Número deseado de réplicas \(R_des\) en pods
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Dimensionamiento de réplicas Kubernetes mediante Horizontal Pod Autoscaler (HPA)}
+
+\[
+R_{\text{des}} = \frac{4 \cdot 90}{60}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 4 réplicas actuales por la razón entre la utilización actual (90 \%) y la objetivo (60 \%)
+
+\[
+R_{\text{des}} = \frac{4 \cdot 90}{60}
+\]
+
+\[
+\frac{\left(4\cdot 90\right)}{60}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 6
+\]
+
+\noindent\textbf{Interpretación}
+El controlador HPA escala el Deployment a 6 pods para restablecer la utilización media de CPU en el 60 \%.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $6$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+[CH-06.1] Calcule (Reducción en MB de una imagen Docker al usar multi-stage distroless de 22 MB frente a la imagen de compilación de 840 MB) expresado en MB.
+
+\noindent\textbf{2 [PRB-0034] (Intermedio, Desarrollo por pasos)}
+[CH-06.2] Calcule (Solicitudes de CPU totales en millicores reservadas por un Deployment de 6 pods con request de 250m cada uno) expresado en mCPU.
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+[CH-06.3] Calcule (Tráfico en req/s recibido por la versión Canary (5 \%) en un servicio que recibe 12 000 req/s totales) expresado en req/s.
+
+\noindent\textbf{4 [PRB-0036] (Avanzado, Diseño)}
+[CH-06.4] Calcule (Pods disponibles mínimos durante un RollingUpdate de 10 réplicas con maxUnavailable = 2) expresado en pods.
+\end{tcolorbox}
+
+\chapter{Itinerarios de Especialización Profesional (19 Rutas) y Proyectos Integradores Verificados}
+\label{chap:ch-07}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\noindent\textit{Síntesis de las 19 rutas formativas de la enciclopedia y análisis técnico de los 6 proyectos integradores verificados incluidos en el repositorio.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Los proyectos de lenguajes dinámicos, tipado estructural y bases de datos demuestran compilación a bytecode, control de flujo reactivo con Token Bucket y contabilidad de doble partida en BCNF.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Arquitectura de los 19 Itinerarios de Aprendizaje Personalizados: El grafo acíclico dirigido (DAG) de prerrequisitos permite trazar rutas óptimas tanto para quien comienza desde cero absoluto como para ingenieros que se especializan en un nuevo dominio.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: La evaluación de competencias combina corrección algorítmica, seguridad de memoria y tipos, claridad arquitectónica, cobertura de pruebas y observabilidad en producción.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\section{Arquitectura de los 19 Itinerarios de Aprendizaje Personalizados y Proyectos Integradores de Sistemas: Motor KV en Rust, Arena Allocator en C17 y Planificador en C++20}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+La enciclopedia estructura 19 itinerarios completos documentados en \texttt{blueprint/learning-paths.json}: 1) **Cero Absoluto a Primer Empleo Profesional**, 2) **Grado Universitario Completo en Ciencias de la Computación (ACM/IEEE CS2023)**, 3) **Ingeniería de Sistemas y Bajo Nivel (C, C++, Rust, Zig, ASM)**, 4) **Desarrollo Web Full-Stack Moderno (HTML, CSS, TS, React/Next.js, SQL)**, 5) **Ingeniería Backend y Sistemas Distribuidos (Go, Java/Spring, C\#/.NET, Rust/Axum)**, 6) **Ciencia de Datos, Computación Científica e IA (Python, R, Julia, SQL)**, 7) **Desarrollo Móvil Nativo y Multiplataforma (Swift, Kotlin, Dart/Flutter)**, 8) **Ingeniería de Bases de Datos y Plataformas de Datos**, 9) **Cloud, DevOps, SRE y Ciberseguridad**, 10) **Programación Funcional y Lenguajes Declarativos (Haskell, OCaml, Elixir, Erlang, Scala, F\#, Clojure, Prolog)**, y 9 rutas adicionales de especialización directa por ecosistema.
+1) En \texttt{projects/rust-kv-engine}, se desarrolla en Rust 2021 un motor de almacenamiento clave-valor persistente basado en Write-Ahead Log (WAL) binario con sumas de verificación CRC32 (polinomio IEEE \texttt{0xEDB88320}), compactación atómica y recuperación ante corrupción. 2) En \texttt{projects/c-arena-allocator}, se implementa en C17 estricto un asignador lineal de memoria (*Arena Allocator*) con alineación a potencias de dos y un analizador de paquetes binarios de red de copia cero (*zero-copy*) verificado con AddressSanitizer y UndefinedBehaviorSanitizer. 3) En \texttt{projects/cpp-task-scheduler}, se construye en C++20 un planificador de tareas por prioridad restringido estáticamente mediante \texttt{concept ExecutableTask} y \texttt{std::ranges}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\section{Proyectos Integradores de Alto Nivel y Datos: VM en Python 3.12, Router HTTP en TypeScript y Ledger SQL y Rúbricas de Evaluación por Niveles de Competencia (Principiante a Experto)}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+4) En \texttt{projects/python-bytecode-vm}, se implementa en Python 3.12 un compilador de expresiones aritméticas y variables a bytecode con plegado de constantes (*Constant Folding*) y su máquina virtual de pila, verificado con \texttt{pytest}, \texttt{ruff} y \texttt{pyright}. 5) En \texttt{projects/ts-reactive-http}, se construye en TypeScript 5 un enrutador HTTP declarativo con tubería de middlewares y limitador de tasa (*Token Bucket*) ejecutado nativamente en Node.js. 6) En \texttt{projects/sql-transactional-ledger}, se diseña en SQL un libro mayor contable de doble partida en BCNF con triggers de invariantes, CTEs recursivas de jerarquía de cuentas y funciones de ventana.
+Cada proyecto e itinerario se evalúa mediante cinco dimensiones objetivas: 1) **Exactitud funcional y manejo de casos límite**, 2) **Uso idiomático del lenguaje y de su sistema de tipos**, 3) **Complejidad temporal y espacial asintótica y constantes reales de caché/E/S**, 4) **Calidad de pruebas automatizadas (unitarias, propiedades y sanitizers)**, y 5) **Documentación técnica, reproducibilidad del build y ausencia total de advertencias del compilador**.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\noindent\textbf{Enunciado}
+Un estudiante autodidacta aborda el itinerario de Ingeniería Backend y Sistemas Distribuidos, que comprende 720 horas de estudio teórico y proyectos prácticos. Si dedica de forma constante 15 horas semanales, calcule el número exacto de semanas necesarias para completar la especialización.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $H_{tot} = 720\,\mathrm{horas}$ — Horas totales del itinerario formativo
+\item $h_{sem} = 15\,\mathrm{horas}\,\mathrm{semana}^{-1}$ — Dedicación semanal constante
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Duración del itinerario \(S_sem\) en semanas
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Planificación temporal de un itinerario formativo completo de 720 horas}
+
+\[
+S_{\text{sem}} = \frac{720}{15}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Dividimos las 720 horas totales del itinerario entre las 15 horas semanales
+
+\[
+S_{\text{sem}} = \frac{720}{15}
+\]
+
+\[
+\frac{720}{15}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 48
+\]
+
+\noindent\textbf{Interpretación}
+Con una dedicación sostenida de 15 horas semanales, el estudiante completa el itinerario profesional en 48 semanas (menos de un año natural).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $48$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+[CH-07.1] Calcule (Horas dedicadas a práctica y proyectos si representan el 60 \% de un itinerario de 720 horas) expresado en horas.
+
+\noindent\textbf{2 [PRB-0040] (Intermedio, Desarrollo por pasos)}
+[CH-07.2] Calcule (Total de pruebas ejecutadas al correr las 6 suites de los proyectos integradores con un promedio de 5 aserciones por proyecto) expresado en aserciones.
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+[CH-07.3] Calcule (Bytes de cabecera por registro en el motor WAL de Rust (4 B CRC32 + 4 B key\(_len + 4 B\) val\(_len + 1 B\) op)) expresado en bytes.
+
+\noindent\textbf{4 [PRB-0042] (Avanzado, Diseño)}
+[CH-07.4] Calcule (Saldo neto verificado en una partida contable doble donde la suma de cargos es 18 500 y la de abonos es 18 500) expresado en unidades.
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$A = T_{\text{MTTF}} / T_{\text{tot}}$ & Disponibilidad estacionaria de un sistema reparable & $\mathrm{fracción}$ \\
+$I = \frac{C_e}{C_a + C_e}$ & Métrica de inestabilidad de paquetes de Robert C. Martin & adimensional \\
+$N \ge 2f + 1$ & Nodos requeridos en consenso tolerante a f fallos de parada (Raft/Paxos) & $\mathrm{nodos}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Principios de Diseño (SOLID, acoplamiento/cohesión), Patrones GoF y Refactorización}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En una arquitectura modular, el paquete de facturación es importado por 18 módulos externos (acoplamiento aferente Ca = 18) e importa únicamente 2 bibliotecas estándar de tipos (acoplamiento eferente Ce = 2). Calcule el índice de inestabilidad I expresado en porcentaje.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 10
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+[CH-01.1] Calcule (Índice de inestabilidad porcentual de un adaptador HTTP con Ca = 1 y Ce = 9) expresado en \%.
+
+\noindent\textbf{Respuesta} 90
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+[CH-01.2] Calcule (Distancia a la secuencia principal en porcentaje si A = 40 \% e I = 50 \% (|40 + 50 - 100|)) expresado en \%.
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+[CH-01.3] Calcule (Reducción de complejidad ciclomática al descomponer un método de complejidad 19 en 4 funciones de complejidad 2) expresado en puntos.
+
+\noindent\textbf{Respuesta} 11
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+[CH-01.4] Calcule (Número de clases eliminadas al reemplazar 6 clases Strategy de un solo método por funciones de primera clase) expresado en clases.
+
+\noindent\textbf{Respuesta} 6
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(2\cdot 100\right)}{\left(18+2\right)} = 10\)
+
+\section{Arquitectura del Software: DDD, Arquitectura Hexagonal/Limpia, Microservicios y APIs (REST, GraphQL, gRPC)}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+Una consulta GraphQL solicita una lista de 50 pedidos junto con los datos del autor de cada pedido. Sin agrupación (N+1), el servidor ejecuta 1 consulta para la lista y 50 consultas individuales de 2 ms de latencia cada una. Con DataLoader, ejecuta solo 2 consultas (la lista y un único SELECT ... WHERE id IN (...)) de 2 ms cada una. Calcule el tiempo total de base de datos ahorrado en ms.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 98
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+[CH-02.1] Calcule (Consultas SQL ahorradas al resolver 120 elementos con DataLoader (2 consultas) frente a N+1 (121 consultas)) expresado en consultas.
+
+\noindent\textbf{Respuesta} 119
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+[CH-02.2] Calcule (Latencia acumulada en ms de una cadena síncrona de 6 microservicios con 8 ms por salto) expresado en ms.
+
+\noindent\textbf{Respuesta} 48
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+[CH-02.3] Calcule (Disponibilidad porcentual aproximada (en centésimas x100) de 3 servicios en serie al 99 \% cada uno (10000 - 3*100)) expresado en centésimas de \%.
+
+\noindent\textbf{Respuesta} 9700
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+[CH-02.4] Calcule (Tamaño de página máximo devuelto si una API REST limita page\(_size <= 100\) cuando el cliente solicita 5000) expresado en registros.
+
+\noindent\textbf{Respuesta} 100
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(50+1\right)\cdot 2\right)-\left(2\cdot 2\right)\right) = 98\)
+
+\section{Control de Versiones (Git Internals), Calidad, Testing, Property-Based Testing y Fuzzing}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Una herramienta de Mutation Testing genera 250 mutantes sintácticos sobre el módulo de liquidación financiera. De ellos, 10 son mutantes equivalentes (no alteran la semántica) y la batería de pruebas detecta y hace fallar 216 de los mutantes restantes. Calcule el Mutation Score porcentual sobre los mutantes no equivalentes.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 90
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+[CH-03.1] Calcule (Mutantes supervivientes que requieren nuevos tests en el módulo auditado (250 - 10 - 216)) expresado en mutantes.
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+[CH-03.2] Calcule (Objetos nuevos creados en Git al modificar 1 archivo dentro de un subdirectorio de profundidad 2 (1 blob + 3 trees + 1 commit)) expresado en objetos.
+
+\noindent\textbf{Respuesta} 5
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+[CH-03.3] Calcule (Casos generados en 5 segundos por un fuzzer libFuzzer que ejecuta 18 000 iteraciones por segundo) expresado en ejecuciones.
+
+\noindent\textbf{Respuesta} 90000
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+[CH-03.4] Calcule (Tiempo total de CI en segundos para 1 200 tests unitarios de 2 ms y 30 tests de integración de 200 ms) expresado en s.
+
+\noindent\textbf{Respuesta} 8.4
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(216\cdot 100\right)}{\left(250-10\right)} = 90\)
+
+\section{Sistemas Distribuidos, Consenso (Raft), Resiliencia, Observabilidad (OpenTelemetry) y SRE}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+Un servicio crítico de pagos define un SLO de disponibilidad del 99,9 \% medido sobre una ventana de 30 días (43 200 minutos totales). Calcule el presupuesto de error mensual en minutos durante los cuales el servicio puede experimentar indisponibilidad sin violar su SLO.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 43.2
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+[CH-04.1] Calcule (Presupuesto de error anual en minutos para un SLO de cuatro nueves 99,99 \% (525600 / 10000)) expresado en min.
+
+\noindent\textbf{Respuesta} 52.56
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+[CH-04.2] Calcule (Nodos totales mínimos en un clúster Raft para tolerar f = 3 fallos simultáneos (2 * 3 + 1)) expresado en nodos.
+
+\noindent\textbf{Respuesta} 7
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+[CH-04.3] Calcule (Tope de espera en ms en el cuarto reintento (intento=4) con backoff exponencial de base 50 ms \((50 * 2^4))\) expresado en ms.
+
+\noindent\textbf{Respuesta} 800
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+[CH-04.4] Calcule (Disponibilidad porcentual de un servicio con MTTF = 990 horas y MTTR = 10 horas (990 * 100 / (990 + 10))) expresado en \%.
+
+\noindent\textbf{Respuesta} 99
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{43200}{1000} = 43.2\)
+
+\section{Ciberseguridad Aplicada, Criptografía (TLS 1.3, Argon2id, AEAD), OAuth2/OIDC y Supply Chain}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+Un servidor configura Argon2id con un coste de memoria de 64 MiB por verificación de contraseña y 3 iteraciones. Si un atacante intenta evaluar en paralelo 512 candidatos simultáneos en una GPU, calcule la memoria VRAM total en GiB (1 GiB = 1024 MiB) necesaria para sostener esos 512 hilos sin penalización de ancho de banda.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 32
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+[CH-05.1] Calcule (Bytes totales de sobrecoste criptográfico en AES-256-GCM por mensaje (12 bytes de nonce IV + 16 bytes de tag)) expresado en bytes.
+
+\noindent\textbf{Respuesta} 28
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+[CH-05.2] Calcule (Bits de entropía de una clave aleatoria de 32 bytes generada con un CSPRNG del sistema operativo (32 * 8)) expresado en bits.
+
+\noindent\textbf{Respuesta} 256
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+[CH-05.3] Calcule (Reducción de latencia de establecimiento en ms al pasar de TLS 1.2 (2-RTT) a TLS 1.3 (1-RTT) con RTT = 45 ms) expresado en ms.
+
+\noindent\textbf{Respuesta} 45
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+[CH-05.4] Calcule (Hilos concurrentes máximos de Argon2id (64 MiB) en un servidor de autenticación con 4096 MiB dedicados) expresado en hilos.
+
+\noindent\textbf{Respuesta} 64
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(512\cdot 64\right)}{1024} = 32\)
+
+\section{Infraestructura Cloud, Contenedores (Docker/OCI), Kubernetes, Terraform (IaC) y Pipelines CI/CD}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+Un Deployment de Kubernetes tiene actualmente 4 pods en ejecución con una utilización media de CPU del 90 \%. Si el Horizontal Pod Autoscaler (HPA) está configurado para mantener una utilización objetivo del 60 \% según la fórmula \(R_des = R_act * (U_act / U_obj)\), calcule el número de réplicas al que escalará el clúster.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 6
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+[CH-06.1] Calcule (Reducción en MB de una imagen Docker al usar multi-stage distroless de 22 MB frente a la imagen de compilación de 840 MB) expresado en MB.
+
+\noindent\textbf{Respuesta} 818
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+[CH-06.2] Calcule (Solicitudes de CPU totales en millicores reservadas por un Deployment de 6 pods con request de 250m cada uno) expresado en mCPU.
+
+\noindent\textbf{Respuesta} 1500
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+[CH-06.3] Calcule (Tráfico en req/s recibido por la versión Canary (5 \%) en un servicio que recibe 12 000 req/s totales) expresado en req/s.
+
+\noindent\textbf{Respuesta} 600
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+[CH-06.4] Calcule (Pods disponibles mínimos durante un RollingUpdate de 10 réplicas con maxUnavailable = 2) expresado en pods.
+
+\noindent\textbf{Respuesta} 8
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(4\cdot 90\right)}{60} = 6\)
+
+\section{Itinerarios de Especialización Profesional (19 Rutas) y Proyectos Integradores Verificados}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+Un estudiante autodidacta aborda el itinerario de Ingeniería Backend y Sistemas Distribuidos, que comprende 720 horas de estudio teórico y proyectos prácticos. Si dedica de forma constante 15 horas semanales, calcule el número exacto de semanas necesarias para completar la especialización.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 48
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+[CH-07.1] Calcule (Horas dedicadas a práctica y proyectos si representan el 60 \% de un itinerario de 720 horas) expresado en horas.
+
+\noindent\textbf{Respuesta} 432
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+[CH-07.2] Calcule (Total de pruebas ejecutadas al correr las 6 suites de los proyectos integradores con un promedio de 5 aserciones por proyecto) expresado en aserciones.
+
+\noindent\textbf{Respuesta} 30
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+[CH-07.3] Calcule (Bytes de cabecera por registro en el motor WAL de Rust (4 B CRC32 + 4 B key\(_len + 4 B\) val\(_len + 1 B\) op)) expresado en bytes.
+
+\noindent\textbf{Respuesta} 13
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+[CH-07.4] Calcule (Saldo neto verificado en una partida contable doble donde la suma de cargos es 18 500 y la de abonos es 18 500) expresado en unidades.
+
+\noindent\textbf{Respuesta} 0
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{720}{15} = 48\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 28 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 2 valor o condición.
+
+\noindent ¶21: dos testimonios. Ecuaciones: 1 valor o condición.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\medskip
+
+\noindent Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0) \& Clean Architecture (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent In Search of an Understandable Consensus Algorithm (Raft) \& Site Reliability Engineering (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent OWASP Application Security Verification Standard (ASVS 4.0) \& NIST SP 800-63B (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent REV-0001: ch-01 scientific
+
+\noindent REV-0002: ch-02 scientific
+
+\noindent REV-0003: ch-03 scientific
+
+\noindent REV-0004: ch-04 scientific
+
+\noindent REV-0005: ch-05 scientific
+
+\noindent REV-0006: ch-06 scientific
+
+\noindent REV-0007: ch-07 scientific
+\chapter{Plan de estudio}
+
+\section*{Partes IX\(-\)XIII: Ingeniería Profesional, Cloud, Seguridad e Itinerarios}
+
+\subsection*{\checkmark Principios de Diseño (SOLID, acoplamiento/cohesión), Patrones GoF y Refactorización}
+\begin{itemize}
+\item Evaluar cuantitativamente el acoplamiento aferente y eferente, aplicar los principios SOLID sin sobreingeniería e implementar patrones de diseño GoF con tipos modernos.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Arquitectura del Software: DDD, Arquitectura Hexagonal/Limpia, Microservicios y APIs (REST, GraphQL, gRPC)}
+\begin{itemize}
+\item Diseñar sistemas bajo Arquitectura Hexagonal y Domain-Driven Design, elegir justificadamente entre monolitos modulares y microservicios, y especificar contratos de API REST, GraphQL y gRPC.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Control de Versiones (Git Internals), Calidad, Testing, Property-Based Testing y Fuzzing}
+\begin{itemize}
+\item Comprender el almacén direccionable por contenido de Git, diseñar estrategias de pruebas en pirámide/trofeo y verificar invariantes con Property-Based Testing, Fuzzing y Mutation Testing.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Sistemas Distribuidos, Consenso (Raft), Resiliencia, Observabilidad (OpenTelemetry) y SRE}
+\begin{itemize}
+\item Razonar sobre tiempo lógico y orden parcial, implementar patrones de resiliencia (Circuit Breaker, Backoff con Jitter, Idempotencia), instrumentar sistemas con OpenTelemetry y gestionar presupuestos de error SRE.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Ciberseguridad Aplicada, Criptografía (TLS 1.3, Argon2id, AEAD), OAuth2/OIDC y Supply Chain}
+\begin{itemize}
+\item Mitigar vulnerabilidades del OWASP Top 10, aplicar primitivas criptográficas estándar (Argon2id, AES-GCM, Ed25519), diseñar flujos OAuth 2.1 / OIDC con PKCE y asegurar la cadena de suministro de software.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Infraestructura Cloud, Contenedores (Docker/OCI), Kubernetes, Terraform (IaC) y Pipelines CI/CD}
+\begin{itemize}
+\item Construir imágenes OCI multi-stage mínimas y sin privilegios root, operar clústeres Kubernetes declarativos, aprovisionar infraestructura con Terraform y automatizar despliegues progresivos.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Itinerarios de Especialización Profesional (19 Rutas) y Proyectos Integradores Verificados}
+\begin{itemize}
+\item Planificar un itinerario de estudio personalizado desde nivel cero hasta nivel experto y ejecutar proyectos integradores completos con arquitectura de producción.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0) \& Clean Architecture. \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering/vol-ref-1}
+\bibitem{src27} In Search of an Understandable Consensus Algorithm (Raft) \& Site Reliability Engineering. \url{https://raft.github.io/raft.pdf/vol-ref-2}
+\bibitem{src28} OWASP Application Security Verification Standard (ASVS 4.0) \& NIST SP 800-63B. \url{https://owasp.org/www-project-application-security-verification-standard/vol-ref-3}
+\end{thebibliography}
+\end{document}

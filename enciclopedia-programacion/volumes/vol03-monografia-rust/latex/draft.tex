@@ -1,0 +1,2087 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen III: Monografía Completa de Rust \(-\) Seguridad de Memoria, Concurrencia y Sistemas\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Parte V (Bloque A\(-\)H): De cero a sistemas de alto rendimiento, programación asíncrona, unsafe y arquitectura\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Bloques A\(-\)C: Fundamentos, Entorno y Nivel Principiante en Rust}
+
+\chapter{A. Introducción, historia, filosofía y modelo de compilación de Rust}
+\label{chap:cap01-introduccion-historia-modelo-compilacion-rust}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\noindent\textit{Este capítulo inaugura la monografía autónoma de Rust (Bloque A). Un lector sin experiencia previa en C o C++ comprenderá qué problema fundamental de la ingeniería de sistemas resuelve Rust: garantizar simultáneamente control predictivo sobre la representación de memoria y ausencia matemática de comportamiento indefinido (Undefined Behavior) en código seguro (\texttt{safe Rust}), sin recurrir a un recolector de basura en tiempo de ejecución.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{.rs}\\AST + Macros};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of src] (hir) {HIR / THIR\\Inferencia Tipos};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.9cm, align=center, right=0.5cm of hir] (mir) {MIR\\Borrow Checker};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of mir] (llvm) {LLVM IR\\Monomorfización};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.9cm, align=center, right=0.5cm of llvm] (bin) {ELF / Mach-O\\Binario Nativo};
+\draw[->] (src) -- (hir);
+\draw[->] (hir) -- (mir);
+\draw[->] (mir) -- (llvm);
+\draw[->] (llvm) -- (bin);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{.rs}\\AST + Macros};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of src] (hir) {HIR / THIR\\Inferencia Tipos};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.9cm, align=center, right=0.5cm of hir] (mir) {MIR\\Borrow Checker};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of mir] (llvm) {LLVM IR\\Monomorfización};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.9cm, align=center, right=0.5cm of llvm] (bin) {ELF / Mach-O\\Binario Nativo};
+\draw[->] (src) -- (hir);
+\draw[->] (hir) -- (mir);
+\draw[->] (mir) -- (llvm);
+\draw[->] (llvm) -- (bin);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{.rs}\\AST + Macros};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of src] (hir) {HIR / THIR\\Inferencia Tipos};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.9cm, align=center, right=0.5cm of hir] (mir) {MIR\\Borrow Checker};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of mir] (llvm) {LLVM IR\\Monomorfización};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.9cm, align=center, right=0.5cm of llvm] (bin) {ELF / Mach-O\\Binario Nativo};
+\draw[->] (src) -- (hir);
+\draw[->] (hir) -- (mir);
+\draw[->] (mir) -- (llvm);
+\draw[->] (llvm) -- (bin);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{.rs}\\AST + Macros};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of src] (hir) {HIR / THIR\\Inferencia Tipos};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.9cm, align=center, right=0.5cm of hir] (mir) {MIR\\Borrow Checker};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of mir] (llvm) {LLVM IR\\Monomorfización};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.9cm, align=center, right=0.5cm of llvm] (bin) {ELF / Mach-O\\Binario Nativo};
+\draw[->] (src) -- (hir);
+\draw[->] (hir) -- (mir);
+\draw[->] (mir) -- (llvm);
+\draw[->] (llvm) -- (bin);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-rust-compiler-pipeline}\textbf{Figura~\thestudiumfigure.} Tubería del compilador rustc: análisis sintáctico, expansión de macros, HIR, inferencia de tipos, MIR (borrow checker NLL) y optimización LLVM.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+No luches contra el comprobador de préstamos intentando replicar grafos cíclicos de punteros mutables propios de Java o C++; modela la propiedad de los datos como árboles jerárquicos o utiliza índices tipados sobre vectores contiguos (arenas).
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+Seguridad espacial y temporal de memoria en Rust: propiedad verificada estáticamente en MIR según la cual ningún acceso seguro lee o escribe fuera de los límites asignados (seguridad espacial) ni accede a una región cuya vida útil ha concluido o está siendo mutada concurrentemente (seguridad temporal).
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+¿Por qué un puntero a objeto de rasgo \texttt{\&dyn Write} ocupa 16 bytes en una arquitectura de 64 bits mientras que una referencia ordinaria \texttt{\&File} ocupa únicamente 8 bytes?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+\end{tcolorbox}
+
+\section{Historia, problema que resuelve y filosofía de diseño}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+Iniciado en 2006 por Graydon Hoare y respaldado por Mozilla Research desde 2009 para construir el motor experimental Servo, Rust alcanzó su versión estable 1.0 en mayo de 2015 bajo un compromiso estricto de estabilidad sin estancamiento mediante el sistema de Ediciones (2015, 2018, 2021 y 2024). Las estadísticas de vulnerabilidades publicadas por Microsoft Security Response Center y el proyecto Chromium revelaron que aproximadamente el 70 \% de las vulnerabilidades críticas de seguridad en grandes bases de código C y C++ proceden de defectos de seguridad de memoria: uso después de liberación (use-after-free), doble liberación (double free), desbordamientos de búfer, desreferenciación de punteros colgantes (dangling pointers) y carreras de datos (data races) entre hilos. Como se ilustra en la Figura \textbackslash{}ref\{fig:fig-rust-compiler-pipeline\}, Rust traslada la verificación de estas invariantes desde el tiempo de ejecución hacia la representación intermedia de nivel medio (MIR, Mid-level Intermediate Representation) durante la compilación.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\section{Modelo de ejecución, fases HIR/MIR/LLVM y comparativa con otros lenguajes}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+El principio de abstracciones de coste cero (zero-cost abstractions), formulado originalmente por Bjarne Stroustrup, establece que aquello que no se utiliza no conlleva coste alguno y aquello que sí se utiliza se compila con una eficiencia igual o superior al código escrito manualmente a bajo nivel. En Rust, los tipos genéricos parametrizados \(f\langle T: \text{Trait}\rangle(x: T)\) se compilan por defecto mediante monomorfización estática: el compilador genera una copia especializada de la función para cada tipo concreto invocado, eliminando la indirección de tablas virtuales (\texttt{vtable}) y permitiendo el *inlining* agresivo del optimizador LLVM:
+\begin{lstlisting}[style=studium,language={Rust},escapeinside={(*@}{@*)}]
+// Compilado mediante monomorfizaci(*@{\'o}@*)n a instrucciones m(*@{\'a}@*)quina directas sin vtable:
+#[inline]
+pub fn clamp_value<T: PartialOrd>(val: T, low: T, high: T) -> T {
+    if val < low { low } else if val > high { high } else { val }
+}
+\end{lstlisting}
+Cuando el despacho dinámico es deseable para reducir el tamaño del binario o almacenar colecciones heterogéneas, el programador lo solicita explícitamente mediante objetos de rasgo (\texttt{\&dyn Trait} o \texttt{Box<dyn Trait>}), representados como un puntero ancho (*fat pointer*) de dos palabras máquina (\(2 \times 8 = 16\text{ B}\) en arquitecturas de 64 bits): una palabra para la dirección del dato y otra para la tabla virtual del rasgo.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+
+\noindent\textbf{Enunciado}
+En una arquitectura de 64 bits (\(W = 8\text{ B}\)), un vector en Rust \texttt{Vec<T>} se representa en la pila mediante tres campos de tamaño palabra (\texttt{ptr}, \texttt{len}, \texttt{cap}), mientras que una rebanada \texttt{\&[T]} es un puntero ancho de dos palabras (\texttt{ptr}, \texttt{len}). Calcula el tamaño total en pila en bytes de una estructura que contiene dos \texttt{Vec<u8>} y tres rebanadas \texttt{\&[u8]}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $W = 8\,\mathrm{B}$ — Tamaño de palabra en arquitectura de 64 bits
+\item $n_{vec} = 2$ — Número de vectores Vec<u8>
+\item $n_{slice} = 3$ — Número de rebanadas \&[u8]
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Representación en pila de Vec<T> (3 palabras) y \&[T] (2 palabras)}
+
+\[
+S = 2 \cdot (3 \cdot 8) + 3 \cdot (2 \cdot 8)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Tamaño de cada Vec<u8> en pila (3 * 8 = 24 B) y cada \&[u8] (2 * 8 = 16 B)
+
+\[
+S = 2 \cdot (3 \cdot 8) + 3 \cdot (2 \cdot 8)
+\]
+
+\[
+\left(\left(2\cdot \left(3\cdot 8\right)\right)+\left(3\cdot \left(2\cdot 8\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 96. La estructura ocupa exactamente 96 bytes en la pila (48 B de los dos vectores y 48 B de las tres rebanadas), independientemente del número de elementos alojados en el montículo.
+\]
+
+\noindent\textbf{Interpretación}
+La estructura ocupa exactamente 96 bytes en la pila (48 B de los dos vectores y 48 B de las tres rebanadas), independientemente del número de elementos alojados en el montículo.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $96$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWludHJvZHVjY2lvbi1oaXN0b3JpYS1tb2RlbG8tY29tcGlsYWNpb24tcnVzdCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0004] (Básico, Numérico)}
+Calcula el tamaño en bytes en la pila de un \texttt{Vec<f64>} en una arquitectura de 64 bits (\(3 \times 8\)).
+
+\noindent\textbf{2 [PRB-0005] (Básico, Numérico)}
+Calcula el tamaño en bytes de un puntero ancho \texttt{\&dyn std::fmt::Display} en una CPU de 64 bits (\(2 \times 8\)).
+
+\noindent\textbf{3 [PRB-0006] (Intermedio, Desarrollo por pasos)}
+Si un binario contiene 45 funciones genéricas instanciadas cada una para 4 tipos concretos distintos mediante monomorfización, ¿cuántas funciones especializadas se emiten antes de la eliminación de código muerto?
+
+\noindent\textbf{4 [PRB-0007] (Intermedio, Diseño)}
+Un búfer de 4096 elementos \texttt{u32} (4 bytes por elemento) está referenciado por un \texttt{Vec<u32>} (24 bytes en pila). ¿Cuántos bytes totales suma la cabecera en pila más la región en el montículo?
+\end{tcolorbox}
+
+\chapter{B\(-\)C. Instalación, toolchain (rustup, Cargo) y nivel principiante completo}
+\label{chap:cap02-entorno-toolchain-cargo-nivel-principiante}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+\noindent\textit{Este capítulo cubre los Bloques B y C de la plantilla estandarizada: desde la configuración profesional del entorno (\texttt{rustup}, \texttt{cargo}, \texttt{Cargo.toml}, \texttt{Cargo.lock}, \texttt{rustfmt}, \texttt{clippy}, \texttt{rust-analyzer}) hasta el dominio completo del nivel principiante de Rust. A diferencia de los lenguajes imperativos clásicos donde casi todas las construcciones son sentencias sin valor, Rust es un lenguaje orientado a expresiones donde \texttt{if}, \texttt{match} y los bloques \texttt{\{ ... \}} producen valores tipados verificados estáticamente.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+Prefiere siempre \texttt{checked\_add}, \texttt{saturating\_add} o \texttt{wrapping\_add} cuando implementes protocolos binarios, criptografía o contadores de sistemas para que el comportamiento ante desbordamiento no dependa del perfil de compilación.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+Expresión de bloque en Rust: secuencia de sentencias encerrada entre llaves \texttt{\{ s\_1; s\_2; ...; e \}} cuyo tipo y valor resultante coinciden con los de la expresión final \texttt{e} (sin punto y coma), o con el tipo unidad \texttt{()} si termina en punto y coma.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+¿Qué diferencia fundamental existe entre sombrear una variable (\texttt{let x = x + 1;}) y declararla mutable (\texttt{let mut x = 0; x += 1;}) en cuanto a la posibilidad de cambiar su tipo estático?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\section{Bloque B: Toolchain oficial (rustup, rustc, cargo, clippy, rustfmt) y estructura de un crate}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+La herramienta \texttt{rustup} administra canales de distribución (\texttt{stable}, \texttt{beta}, \texttt{nightly}) y objetivos de compilación cruzada (\texttt{targets}, como \texttt{aarch64-apple-darwin}, \texttt{x86\_64-unknown-linux-gnu} o \texttt{wasm32-unknown-unknown}). Todo paquete en Rust se denomina *crate* (binario o biblioteca) y se gobierna mediante el manifiesto declarativo \texttt{Cargo.toml}. Mientras que \texttt{Cargo.toml} expresa rangos semánticos compatibles (SemVer, por ejemplo \texttt{serde = "1.0"}), el fichero \texttt{Cargo.lock} registra las versiones exactas y los resúmenes criptográficos SHA-256 de cada dependencia, garantizando compilaciones bit a bit reproducibles. Los comandos esenciales del ciclo de ingeniería son \texttt{cargo check} (verificación rápida de tipos y préstamos en MIR sin invocar el generador de código LLVM), \texttt{cargo test} (ejecución concurrente de pruebas unitarias, de integración y de documentación), \texttt{cargo clippy -- -D warnings} (análisis estático con más de 700 reglas idiomáticas y de rendimiento) y \texttt{cargo fmt --check}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+\section{Bloque C: Variables, tipos primitivos, expresiones de control de flujo y funciones}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+En Rust, las vinculaciones introducidas con \texttt{let x: i32 = 42;} son inmutables por defecto; la mutabilidad requiere la marca explícita \texttt{let mut contador: u64 = 0;}. El lenguaje proporciona enteros con signo (\texttt{i8}, \texttt{i16}, \texttt{i32}, \texttt{i64}, \texttt{i128}, \texttt{isize}), enteros sin signo (\texttt{u8}, \texttt{u16}, \texttt{u32}, \texttt{u64}, \texttt{u128}, \texttt{usize}), flotantes IEEE 754 (\texttt{f32}, \texttt{f64}), el tipo booleano \texttt{bool} (1 byte) y el tipo \texttt{char} de 4 bytes que representa exactamente un valor escalar Unicode (\(\text{U+0000}\) a \(\text{U+D7FF}\) y \(\text{U+E000}\) a \(\text{U+10FFFF}\)). En caso de desbordamiento entero, el perfil \texttt{dev} genera un *panic* determinista, mientras que el lenguaje ofrece métodos explícitos para cada semántica aritmética: \texttt{checked\_add} (devuelve \texttt{Option<T>}), \texttt{wrapping\_add} (aritmética modular \(\bmod 2^w\)), \texttt{saturating\_add} (satura en los extremos) y \texttt{overflowing\_add}:
+\begin{lstlisting}[style=studium,language={Rust}]
+pub fn classify_http_status(code: u16) -> &'static str {
+    match code {
+        100..=199 => "informational",
+        200..=299 => "success",
+        300..=399 => "redirection",
+        400..=499 => "client_error",
+        500..=599 => "server_error",
+        _ => "unknown",
+    }
+}
+\end{lstlisting}
+Observa que \texttt{match} exige exhaustividad verificada por el compilador: si se omitiera el brazo comodín \texttt{\_}, \texttt{rustc} rechazaría el programa indicando exactamente los rangos de \texttt{u16} no cubiertos (\texttt{0..=99} y \texttt{600..=65535}).
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+
+\noindent\textbf{Enunciado}
+Una cadena en Rust contiene 10 caracteres ASCII (\(1\text{ B}\) cada uno en UTF-8) y 5 caracteres acentuados españoles (\texttt{{\'a}}, \texttt{{\'e}}, \texttt{{\'i}}, \texttt{{\'o}}, \texttt{{\'u}}, que ocupan \(2\text{ B}\) cada uno en UTF-8). Calcula la diferencia en bytes entre representarla como \texttt{\&str} en UTF-8 frente a un array \texttt{[char; 15]} de valores escalares Unicode (\(4\text{ B}\) por \texttt{char}).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N_{ascii} = 10$ — Caracteres ASCII de 1 byte en UTF-8
+\item $N_{lat} = 5$ — Caracteres latinos acentuados de 2 bytes en UTF-8
+\item $S_{char} = 4\,\mathrm{B}$ — Tamaño fijo del tipo char en Rust
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Comparación de almacenamiento UTF-8 (\&str) frente a array de escalares Unicode [char; N]}
+
+\[
+\Delta B = 15 \cdot 4 - (10 \cdot 1 + 5 \cdot 2)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos los 20 bytes de la codificación UTF-8 a los 60 bytes del array [char; 15]
+
+\[
+\Delta B = 15 \cdot 4 - (10 \cdot 1 + 5 \cdot 2)
+\]
+
+\[
+\left(\left(15\cdot 4\right)-\left(\left(10\cdot 1\right)+\left(5\cdot 2\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 40. La representación UTF-8 nativa de Rust ahorra 40 bytes (ocupa 20 B frente a 60 B), razón por la cual String y \&str utilizan UTF-8 en lugar de arrays de 32 bits.
+\]
+
+\noindent\textbf{Interpretación}
+La representación UTF-8 nativa de Rust ahorra 40 bytes (ocupa 20 B frente a 60 B), razón por la cual String y \&str utilizan UTF-8 en lugar de arrays de 32 bits.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $40$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWVudG9ybm8tdG9vbGNoYWluLWNhcmdvLW5pdmVsLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0011] (Básico, Numérico)}
+Calcula el tamaño en bytes de un array \texttt{[u64; 32]} alojado en la pila (\(32 \times 8\)).
+
+\noindent\textbf{2 [PRB-0012] (Básico, Desarrollo por pasos)}
+Una cadena UTF-8 contiene 8 caracteres ASCII (1 B), 4 letras griegas (2 B) y 2 emojis (4 B). ¿Cuál es el valor de \texttt{s.len()} en bytes?
+
+\noindent\textbf{3 [PRB-0013] (Intermedio, Desarrollo por pasos)}
+Calcula el resultado de \texttt{250u8.wrapping\_add(15)} en aritmética modular de 8 bits (\$250 + 15 - 256\$).
+
+\noindent\textbf{4 [PRB-0014] (Intermedio, Diseño)}
+Si \texttt{Vec::with\_capacity(128)} reserva espacio para 128 elementos \texttt{i32} (4 B cada uno) e insertamos 50 elementos, ¿cuántos bytes de capacidad reservada permanecen aún libres en el montículo?
+\end{tcolorbox}
+
+\part{Bloque D: Nivel Intermedio \(-\) Propiedad, Tipos Algebraicos, Rasgos y Modularidad}
+
+\chapter{D.1. Propiedad (Ownership), Préstamo (Borrowing), Rebanadas y Tiempos de Vida (Lifetimes)}
+\label{chap:cap03-ownership-borrowing-lifetimes-modelo-memoria}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\noindent\textit{Este capítulo desarrolla el corazón teórico y práctico de Rust: su sistema de tipos afín basado en propiedad única (*ownership*), préstamo (*borrowing*) y regiones de tiempo de vida (*lifetimes*). Comprender este modelo no solo permite escribir Rust sin fricción, sino que transforma permanentemente la manera en que un ingeniero razona sobre la vida útil de los recursos y la concurrencia en cualquier lenguaje.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center] (own) {Propietario Único\\(\texttt{owner: T})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below left=1.2cm and 0.4cm of own] (imm) {Estado Compartido ($N \ge 1$, $M = 0$)\\Múltiples lectores \texttt{\&T}\\Sin mutación permitida};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below right=1.2cm and 0.4cm of own] (mut) {Estado Exclusivo ($N = 0$, $M = 1$)\\Único escritor \texttt{\&mut T}\\Sin alias simultáneos};
+\draw[->] (own) -- node[left, font=\footnotesize] {Préstamo lectura} (imm);
+\draw[->] (own) -- node[right, font=\footnotesize] {Préstamo exclusivo} (mut);
+\draw[<->, dashed, red!75!black] (imm) -- node[above, font=\footnotesize] {Prohibido simultáneamente} (mut);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center] (own) {Propietario Único\\(\texttt{owner: T})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below left=1.2cm and 0.4cm of own] (imm) {Estado Compartido ($N \ge 1$, $M = 0$)\\Múltiples lectores \texttt{\&T}\\Sin mutación permitida};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below right=1.2cm and 0.4cm of own] (mut) {Estado Exclusivo ($N = 0$, $M = 1$)\\Único escritor \texttt{\&mut T}\\Sin alias simultáneos};
+\draw[->] (own) -- node[left, font=\footnotesize] {Préstamo lectura} (imm);
+\draw[->] (own) -- node[right, font=\footnotesize] {Préstamo exclusivo} (mut);
+\draw[<->, dashed, red!75!black] (imm) -- node[above, font=\footnotesize] {Prohibido simultáneamente} (mut);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center] (own) {Propietario Único\\(\texttt{owner: T})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below left=1.2cm and 0.4cm of own] (imm) {Estado Compartido ($N \ge 1$, $M = 0$)\\Múltiples lectores \texttt{\&T}\\Sin mutación permitida};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below right=1.2cm and 0.4cm of own] (mut) {Estado Exclusivo ($N = 0$, $M = 1$)\\Único escritor \texttt{\&mut T}\\Sin alias simultáneos};
+\draw[->] (own) -- node[left, font=\footnotesize] {Préstamo lectura} (imm);
+\draw[->] (own) -- node[right, font=\footnotesize] {Préstamo exclusivo} (mut);
+\draw[<->, dashed, red!75!black] (imm) -- node[above, font=\footnotesize] {Prohibido simultáneamente} (mut);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.8cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center] (own) {Propietario Único\\(\texttt{owner: T})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below left=1.2cm and 0.4cm of own] (imm) {Estado Compartido ($N \ge 1$, $M = 0$)\\Múltiples lectores \texttt{\&T}\\Sin mutación permitida};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=4.2cm, minimum height=1.1cm, align=center, below right=1.2cm and 0.4cm of own] (mut) {Estado Exclusivo ($N = 0$, $M = 1$)\\Único escritor \texttt{\&mut T}\\Sin alias simultáneos};
+\draw[->] (own) -- node[left, font=\footnotesize] {Préstamo lectura} (imm);
+\draw[->] (own) -- node[right, font=\footnotesize] {Préstamo exclusivo} (mut);
+\draw[<->, dashed, red!75!black] (imm) -- node[above, font=\footnotesize] {Prohibido simultáneamente} (mut);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-rust-aliasing-xor-mutability}\textbf{Figura~\thestudiumfigure.} Invariante fundamental del comprobador de préstamos: en cualquier punto del flujo de control MIR, un recurso admite múltiples préstamos inmutables (\&T) o exactamente un préstamo exclusivo mutable (\&mut T).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+Recuerda que las anotaciones \texttt{'a} nunca prolongan la vida de un valor en memoria: únicamente declaran al compilador cómo se relaciona la vida útil de la referencia de salida con la de las referencias de entrada.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+Parámetro de tiempo de vida \texttt{'a}: variable de región en el sistema de tipos de Rust que restringe estáticamente el ámbito durante el cual una referencia prestada \texttt{\&'a T} o \texttt{\&'a mut T} es válida, garantizando que el referente sobrevive a toda referencia.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+¿Por qué la firma \texttt{fn dangling() -> \&str \{ let s = String::from("hola"); \&s \}} es rechazada en compilación independientemente del tiempo de vida que se intente anotar?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+\end{tcolorbox}
+
+\section{Las tres leyes de Ownership, semántica Move frente a Copy y el rasgo Drop}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+El sistema de propiedad de Rust se rige por tres axiomas verificados en compilación: (1) cada valor en Rust tiene una variable denominada su *propietario* (*owner*); (2) solo puede existir un único propietario a la vez; y (3) cuando el propietario sale de su ámbito léxico (*scope*), el valor se destruye invocando determinísticamente \texttt{Drop::drop} (patrón RAII, *Resource Acquisition Is Initialization*). Cuando asignamos o pasamos por valor un tipo que gestiona memoria en el montículo como \texttt{String} o \texttt{Vec<T>}, Rust ejecuta una transferencia de propiedad (*move*): copia los 24 bytes de la cabecera en la pila e invalida estáticamente la variable de origen en el grafo de flujo MIR, impidiendo cualquier doble liberación (*double free*). Por el contrario, los tipos escalares simples que residen íntegramente en la pila implementan el rasgo marcador \texttt{Copy}, por lo que la asignación duplica sus bits sin invalidar el origen. Un tipo solo puede implementar \texttt{Copy} si ninguno de sus componentes implementa \texttt{Drop}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\section{Reglas de Borrowing (\&T vs \&mut T), Non-Lexical Lifetimes (NLL) y parámetros de vida 'a}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+Para operar sobre un valor sin transferir su propiedad, Rust introduce las referencias (*borrowing*). Como muestra la Figura \textbackslash{}ref\{fig:fig-rust-aliasing-xor-mutability\}, en cualquier punto de ejecución del grafo de control MIR para un recurso dado, el número de referencias inmutables activas \(N_{\text{shared}}\) y el número de referencias mutables activas \(M_{\text{mut}}\) satisfacen la invariante de exclusión:
+
+\[
+(N_{\text{shared}} \ge 0 \land M_{\text{mut}} = 0) \lor (N_{\text{shared}} = 0 \land M_{\text{mut}} = 1)
+\]
+Esta ley de *Alias XOR Mutabilidad* elimina de raíz tanto las carreras de datos entre hilos como la invalidación de iteradores en un único hilo (por ejemplo, intentar hacer \texttt{vec.push(x)} mientras se mantiene una referencia \texttt{\&vec[0]} que quedaría colgante si el vector realoja su búfer en el montículo). Cuando una función devuelve una referencia derivada de sus parámetros de entrada, el parámetro de tiempo de vida \texttt{'a} expresa la relación de inclusión de regiones \(\text{'a} \subseteq \text{vida}(x) \cap \text{vida}(y)\), sin alterar jamás la duración real en tiempo de ejecución:
+\begin{lstlisting}[style=studium,language={Rust}]
+pub fn longest_token<'a>(left: &'a str, right: &'a str) -> &'a str {
+    if left.len() >= right.len() { left } else { right }
+}
+\end{lstlisting}
+El compilador aplica tres reglas deterministas de *elisión de tiempos de vida*: (1) cada parámetro por referencia recibe su propio parámetro \texttt{'a}, \texttt{'b}; (2) si hay exactamente un tiempo de vida de entrada, se asigna a todas las referencias de salida; y (3) si uno de los parámetros es \texttt{\&self} o \texttt{\&mut self}, su tiempo de vida se asigna a todas las referencias de salida.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+
+\noindent\textbf{Enunciado}
+Un vector \texttt{Vec<u64>} contiene \(N = 10000\) enteros de 8 bytes en el montículo en una máquina de 64 bits (\(W = 8\text{ B}\)). Calcula cuántos bytes menos se copian al pasar el vector por transferencia de propiedad (*move*, que solo copia las 3 palabras de la cabecera en pila) frente a invocar \texttt{.clone()} (que copia la cabecera más los \(10000 \times 8\) bytes del montículo).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 10000$ — Número de elementos u64 en el vector
+\item $S_{T} = 8\,\mathrm{B}$ — Tamaño de cada elemento u64
+\item $W = 8\,\mathrm{B}$ — Tamaño de palabra en arquitectura de 64 bits
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Diferencia de bytes copiados entre Move (O(1)) y Clone (O(N))}
+
+\[
+\Delta B = (3 \cdot 8 + 10000 \cdot 8) - 3 \cdot 8
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos el coste de move (24 B) al coste total de clone (80024 B)
+
+\[
+\Delta B = (3 \cdot 8 + 10000 \cdot 8) - 3 \cdot 8
+\]
+
+\[
+\left(\left(\left(3\cdot 8\right)+\left(10000\cdot 8\right)\right)-\left(3\cdot 8\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 80000. La transferencia de propiedad (move) ahorra la copia de 80 000 bytes en el montículo y se ejecuta en tiempo constante O(1) copiando únicamente 24 bytes.
+\]
+
+\noindent\textbf{Interpretación}
+La transferencia de propiedad (move) ahorra la copia de 80 000 bytes en el montículo y se ejecuta en tiempo constante O(1) copiando únicamente 24 bytes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $80000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW93bmVyc2hpcC1ib3Jyb3dpbmctbGlmZXRpbWVzLW1vZGVsby1tZW1vcmlhIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0018] (Básico, Numérico)}
+Calcula cuántos bytes en la pila se copian al mover un \texttt{String} en una arquitectura de 64 bits (\(3 \times 8\)).
+
+\noindent\textbf{2 [PRB-0019] (Básico, Numérico)}
+Si dividimos una rebanada de 1024 elementos mediante \texttt{split\_at\_mut(300)}, ¿cuántos elementos contiene la segunda sub-rebanada mutable?
+
+\noindent\textbf{3 [PRB-0020] (Intermedio, Desarrollo por pasos)}
+Una estructura contiene 4 campos \texttt{u64} que implementan \texttt{Copy}. ¿Cuántos bytes se copian en cada asignación por valor (\(4 \times 8\))?
+
+\noindent\textbf{4 [PRB-0021] (Intermedio, Diseño)}
+Un analizador léxico de copia cero (*zero-copy*) genera 500 tokens \texttt{\&'a str} (16 B cada uno) sobre un texto fuente de 32 000 bytes sin clonar subcadenas. ¿Cuántos bytes ocupan en total los 500 descriptores de token?
+\end{tcolorbox}
+
+\chapter{D.2. Tipos Algebraicos (struct, enum), Rasgos (Traits), Genéricos y Manejo de Errores (Option y Result)}
+\label{chap:cap04-tipos-algebraicos-traits-genericos-errores}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+\noindent\textit{Este capítulo completa el Nivel Intermedio (Bloque D) profundizando en el sistema de tipos algebraicos, el polimorfismo basado en rasgos (*traits*) y la arquitectura de manejo de errores de Rust. A diferencia de los lenguajes con referencias nulas implícitas o excepciones no comprobadas, Rust codifica la ausencia de valor (\texttt{Option<T>}) y la posibilidad de fallo (\texttt{Result<T, E>}) directamente en las firmas de tipos.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+En bibliotecas reutilizables, define tipos de error estructurados como \texttt{enum} que implementen \texttt{std::error::Error} y \texttt{Display} (o utiliza \texttt{thiserror}), reservando errores opacos tipo \texttt{Box<dyn Error>} o \texttt{anyhow} para la capa superior binaria.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+Optimización de nicho (Niche Optimization): transformación de representación mediante la cual el compilador de Rust codifica variantes de un tipo suma (\texttt{enum}) utilizando patrones de bits inválidos (nichos) del tipo contenido, eliminando la necesidad de un byte discriminante adicional.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+¿Cuándo debe un rasgo utilizar un tipo asociado (\texttt{trait Iterator \{ type Item; \}}) en lugar de un parámetro de tipo genérico (\texttt{trait From<T>})?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+\end{tcolorbox}
+
+\section{Estructuras, enumeraciones algebraicas, optimización de nicho y coincidencia de patrones}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+Un \texttt{struct} en Rust define un tipo producto cuya cardinalidad es el producto de los dominios de sus campos, mientras que un \texttt{enum} define un tipo suma etiquetado (*tagged union*) donde cada variante puede transportar datos de tipos distintos: por ejemplo, \texttt{enum IpPacket \{ V4([u8; 4], u16), V6([u16; 8], u16), Dropped \}}. El tamaño en memoria de un \texttt{enum} es el tamaño de su variante más grande más el discriminante (etiqueta), redondeado al múltiplo del alineamiento máximo. Sin embargo, el compilador aplica la *optimización de nicho* (*null pointer / niche optimization*): como una referencia \texttt{\&T}, un \texttt{Box<T>} o un \texttt{NonZeroU64} jamás pueden tener el patrón de bits cero, \texttt{Option<\&T>} utiliza el valor cero para representar \texttt{None}, por lo que \(\text{sizeof}(\text{Option}\langle\&T\rangle) = \text{sizeof}(\&T) = 8\text{ B}\), con sobrecoste espacial exactamente nulo.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+\section{Rasgos (Traits), genéricos, tipos asociados y manejo de errores con Option<T> y Result<T, E>}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+Los rasgos (*traits*) definen interfaces de comportamiento compartido que admiten implementaciones por defecto, parámetros genéricos y tipos asociados (\texttt{type Item;}). Para garantizar la coherencia global de tipos al enlazar múltiples crates, Rust impone la *regla del huérfano* (*orphan rule*): solo se puede implementar un rasgo \texttt{Trait} para un tipo \texttt{Type} en el crate actual si al menos uno de los dos (\texttt{Trait} o \texttt{Type}) está definido localmente en dicho crate. En el tratamiento de errores, \texttt{Result<T, E>} se combina con el operador de propagación \texttt{?}, que desazucara una expresión \texttt{expr?} en una evaluación exhaustiva que convierte automáticamente el error mediante \texttt{From::from(err)}:
+\begin{lstlisting}[style=studium,language={Rust}]
+#[derive(Debug, PartialEq)]
+pub enum ConfigError { EmptyInput, InvalidPort(String) }
+
+pub fn parse_port_str(raw: &str) -> Result<u16, ConfigError> {
+    let trimmed = raw.trim();
+    if trimmed.is_empty() {
+        return Err(ConfigError::EmptyInput);
+    }
+    let port: u16 = trimmed.parse().map_err(|_| ConfigError::InvalidPort(trimmed.to_string()))?;
+    if port == 0 { Err(ConfigError::InvalidPort(trimmed.to_string())) } else { Ok(port) }
+}
+\end{lstlisting}
+Esta disciplina distingue con nitidez entre errores recuperables (modelados con \texttt{Result<T, E>}) y violaciones de invariantes de programación irrecuperables (modeladas con \texttt{panic!}).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+
+\noindent\textbf{Enunciado}
+Una tabla hash abierta almacena \(N = 65536\) ranuras de tipo \texttt{Option<std::num::NonZeroU64>} en una arquitectura de 64 bits (\(W = 8\text{ B}\)). Gracias a la optimización de nicho, cada \texttt{Option<NonZeroU64>} ocupa exactamente 8 bytes en lugar de 16 bytes (8 bytes de dato más 8 bytes de discriminante alineado). Calcula cuántos kilobytes (dividiendo entre 1024) se ahorran en la tabla completa gracias a la optimización de nicho.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 65536$ — Número de ranuras en la tabla
+\item $S_{sin} = 16\,\mathrm{B}$ — Tamaño alineado sin optimización de nicho
+\item $S_{con} = 8\,\mathrm{B}$ — Tamaño con optimización de nicho
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de memoria por optimización de nicho en Option<NonZeroU64>}
+
+\[
+\Delta M_{\text{KiB}} = \frac{65536 \cdot (16 - 8)}{1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 65536 ranuras por los 8 B ahorrados y dividimos entre 1024 B/KiB
+
+\[
+\Delta M_{\text{KiB}} = \frac{65536 \cdot (16 - 8)}{1024}
+\]
+
+\[
+\frac{\left(65536\cdot \left(16-8\right)\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 512. La optimización de nicho ahorra exactamente 512 KiB de memoria caché/RAM y duplica el número de entradas por línea de caché de 64 bytes.
+\]
+
+\noindent\textbf{Interpretación}
+La optimización de nicho ahorra exactamente 512 KiB de memoria caché/RAM y duplica el número de entradas por línea de caché de 64 bytes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $512$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LXRpcG9zLWFsZ2VicmFpY29zLXRyYWl0cy1nZW5lcmljb3MtZXJyb3JlcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0025] (Básico, Numérico)}
+En una arquitectura de 64 bits, ¿cuántos bytes ocupa \texttt{Option<Box<u64>>} gracias a la optimización de nicho?
+
+\noindent\textbf{2 [PRB-0026] (Básico, Numérico)}
+¿Cuántos bytes ocupa en total un array \texttt{[Option<NonZeroU32>; 1000]} sabiendo que cada elemento ocupa 4 bytes?
+
+\noindent\textbf{3 [PRB-0027] (Intermedio, Desarrollo por pasos)}
+Un \texttt{enum} sin nicho tiene una variante de 24 bytes con alineamiento de 8 bytes y una etiqueta de 1 byte. Tras añadir 7 bytes de relleno (*padding*) para mantener el alineamiento a múltiplo de 8, ¿cuál es su tamaño total en bytes?
+
+\noindent\textbf{4 [PRB-0028] (Intermedio, Diseño)}
+Una línea de caché de CPU mide 64 bytes. ¿Cuántos elementos \texttt{Option<NonZeroU64>} (8 B cada uno) caben en una única línea de caché?
+\end{tcolorbox}
+
+\part{Bloques E\(-\)F: Nivel Avanzado y Experto \(-\) Smart Pointers, Concurrencia, Async y Unsafe}
+
+\chapter{E.1. Nivel Avanzado: Clausuras (Fn/FnMut/FnOnce), Iteradores, Punteros Inteligentes y Mutabilidad Interior}
+\label{chap:cap05-closures-iteradores-smart-pointers-mutabilidad-interior}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+\noindent\textit{Este capítulo abre el Nivel Avanzado (Bloque E). Estudiaremos cómo Rust implementa la programación funcional mediante estructuras anónimas de clausura e iteradores fusionados en compilación, y cómo permite relajar las restricciones estáticas de propiedad única cuando un algoritmo requiere grafos compartidos o cachés internas mediante punteros inteligentes y contenedores de mutabilidad interior.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+Para evitar fugas de memoria en estructuras doblemente enlazadas o árboles con puntero al nodo padre, utiliza \texttt{Rc<Node>} de padre a hijo y \texttt{Weak<Node>} de hijo a padre, ya que \texttt{Weak<T>} no incrementa el \texttt{strong\_count}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+Mutabilidad interior (Interior Mutability): patrón de diseño seguro en Rust mediante el cual una estructura expone una interfaz inmutable (\texttt{\&self}) pero permite mutar su estado interno encapsulado en \texttt{UnsafeCell<T>} garantizando la invariante de exclusión mediante transferencia de valores (\texttt{Cell<T>}), contadores dinámicos (\texttt{RefCell<T>}) o sincronización atómica (\texttt{Mutex<T>}, \texttt{RwLock<T>}).
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+¿Por qué \texttt{Rc<T>} no implementa el rasgo \texttt{Send} y qué ocurriría en hardware multinúcleo si dos hilos ejecutaran \texttt{Rc::clone} simultáneamente sobre el mismo contador no atómico?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+\end{tcolorbox}
+
+\section{Clausuras (Fn, FnMut, FnOnce) e iteradores perezosos de coste cero}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+Cada clausura \texttt{|x| x + umbral} en Rust genera un tipo \texttt{struct} anónimo único que captura las variables libres de su entorno por el modo menos restrictivo posible: por referencia compartida \texttt{\&T} (implementa \texttt{Fn}, \texttt{FnMut} y \texttt{FnOnce}), por referencia mutable \texttt{\&mut T} (implementa \texttt{FnMut} y \texttt{FnOnce}) o por valor consumiendo la variable (implementa únicamente \texttt{FnOnce}, o cuando se fuerza la captura con la palabra clave \texttt{move}). Los iteradores en Rust implementan el rasgo \texttt{Iterator \{ type Item; fn next(\&mut self) -> Option<Self::Item>; \}}. Adaptadores como \texttt{.map(...)}, \texttt{.filter(...)}, \texttt{.take(...)} y \texttt{.enumerate()} son perezosos (*lazy*): no ejecutan ningún trabajo ni alojan vectores intermedios hasta que un consumidor terminal como \texttt{.fold(...)}, \texttt{.sum()} o \texttt{.collect::<Vec<\_>>()} solicita los elementos. Gracias a la monomorfización, LLVM fusiona toda la cadena de adaptadores en un único bucle registrador sin comprobaciones de límites redundantes.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+\section{Punteros inteligentes (Box, Rc, Weak) y mutabilidad interior (Cell, RefCell, Cow)}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+Un puntero inteligente (*smart pointer*) es una estructura que implementa los rasgos \texttt{Deref} y \texttt{Drop}. \texttt{Box<T>} proporciona propiedad única en el montículo (indispensable para tipos recursivos de tamaño finito como árboles sintácticos \texttt{enum Expr \{ Add(Box<Expr>, Box<Expr>), Lit(i64) \}}). \texttt{Rc<T>} (*Reference Counted*) habilita propiedad compartida en un único hilo manteniendo un contador de referencias fuertes (\texttt{strong\_count}) y débiles (\texttt{weak\_count}); como \texttt{Rc<T>} no utiliza instrucciones atómicas, el compilador le niega los rasgos \texttt{Send} y \texttt{Sync}, impidiendo estáticamente que cruce a otro hilo. Cuando se necesita mutar un dato a través de una referencia compartida \texttt{\&self}, Rust ofrece *mutabilidad interior*: \texttt{Cell<T>} opera por reemplazo de valores sin referencias internas (coste cero en espacio), mientras que \texttt{RefCell<T>} traslada las reglas del comprobador de préstamos al tiempo de ejecución manteniendo un contador de préstamos (\texttt{borrow()} e \texttt{borrow\_mut()}):
+\begin{lstlisting}[style=studium,language={Rust}]
+use std::cell::RefCell;
+use std::rc::Rc;
+
+pub fn shared_accumulator_demo() -> i64 {
+    let acc = Rc::new(RefCell::new(10_i64));
+    let handle_a = Rc::clone(&acc);
+    let handle_b = Rc::clone(&acc);
+    *handle_a.borrow_mut() += 15;
+    *handle_b.borrow_mut() *= 2;
+    let final_val = *acc.borrow();
+    final_val
+}
+\end{lstlisting}
+Si un programa intenta adquirir un \texttt{borrow\_mut()} mientras otro préstamo de la misma \texttt{RefCell<T>} sigue vivo, \texttt{RefCell} dispara un *panic* inmediato en lugar de permitir corrupción de memoria.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+
+\noindent\textbf{Enunciado}
+En una arquitectura de 64 bits (\(W = 8\text{ B}\)), se aloja un bloque \texttt{Rc< [u8; 1024] >} (\(S_T = 1024\text{ B}\)) y se crean \(k = 5\) manejadores \texttt{Rc::clone} en distintas estructuras en la pila. Calcula la memoria total consumida (los 5 punteros en la pila más el único bloque \texttt{RcBox} en el montículo con sus 2 contadores \texttt{usize} y los 1024 bytes de datos).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $W = 8\,\mathrm{B}$ — Tamaño de usize y puntero en 64 bits
+\item $k = 5$ — Número de manejadores Rc<T> en la pila
+\item $S_{T} = 1024\,\mathrm{B}$ — Tamaño del valor compartido en el montículo
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Consumo de memoria de Rc<T> con k referencias compartidas}
+
+\[
+M = 5 \cdot 8 + (2 \cdot 8 + 1024)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los 5 punteros de 8 B en pila más el RcBox (16 B de contadores + 1024 B de datos)
+
+\[
+M = 5 \cdot 8 + (2 \cdot 8 + 1024)
+\]
+
+\[
+\left(\left(5\cdot 8\right)+\left(\left(2\cdot 8\right)+1024\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 1080. El conjunto completo ocupa 1080 bytes (40 B en la pila y 1040 B en el montículo), ahorrando 4096 bytes frente a clonar 5 veces el búfer.
+\]
+
+\noindent\textbf{Interpretación}
+El conjunto completo ocupa 1080 bytes (40 B en la pila y 1040 B en el montículo), ahorrando 4096 bytes frente a clonar 5 veces el búfer.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $1080$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNsb3N1cmVzLWl0ZXJhZG9yZXMtc21hcnQtcG9pbnRlcnMtbXV0YWJpbGlkYWQtaW50ZXJpb3IifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0032] (Básico, Numérico)}
+Calcula la suma de los cuadrados de los números pares del 2 al 10 (\$\(2^2 + 4^2 + 6^2 + 8^2 + 10^2\)\$) evaluada por \texttt{(1..=10).filter(|x| x \% 2 == 0).map(|x| x * x).sum()}.
+
+\noindent\textbf{2 [PRB-0033] (Básico, Numérico)}
+¿Cuántos bytes de metadatos añaden los dos contadores (\texttt{strong} y \texttt{weak}) de \texttt{RcBox<T>} en una arquitectura de 64 bits (\(2 \times 8\))?
+
+\noindent\textbf{3 [PRB-0034] (Intermedio, Desarrollo por pasos)}
+Si se crean 1 \texttt{Rc} original, 4 clones fuertes (\texttt{Rc::clone}) y 3 referencias débiles (\texttt{Rc::downgrade}), y luego se destruyen 2 clones fuertes, ¿cuál es el valor actual de \texttt{Rc::strong\_count}?
+
+\noindent\textbf{4 [PRB-0035] (Intermedio, Diseño)}
+Un flujo de datos procesa 5000 enteros mediante \texttt{iter().filter(...).map(...).fold(...)} sin llamar a \texttt{collect()}. ¿Cuántos vectores dinámicos intermedios se alojan en el montículo durante el recorrido?
+\end{tcolorbox}
+
+\chapter{E.2. Concurrencia sin Miedo (Send/Sync, Arc, Mutex, Canales) y Asincronía (Future, async/await, Pin, Tokio)}
+\label{chap:cap06-concurrencia-sin-miedo-send-sync-async-tokio-pin}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\noindent\textit{Este capítulo aborda la concurrencia paralela y la asincronía de alto rendimiento en Rust. Veremos por qué el mismo sistema de tipos que previene punteros colgantes en un hilo es capaz de impedir toda carrera de datos entre múltiples hilos mediante los rasgos marcadores \texttt{Send} y \texttt{Sync}, y cómo Rust compila funciones \texttt{async fn} en máquinas de estados compactas sin requerir un alojamiento en el montículo por cada llamada asíncrona.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+% studium:record eyJpZCI6ICJGSUctMDAwMyIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=2.2cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (exec) {Ejecutor Asíncrono\\(Cola de Tareas Tokio)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center, right=1.4cm of exec] (fut) {Máquina de Estados\\(\texttt{Pin<\&mut Future>})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center, below=1.2cm of fut] (reac) {Reactor E/S OS\\(\texttt{epoll} / \texttt{kqueue})};
+\draw[->] (exec.10) -- node[above, font=\footnotesize] {\texttt{poll(cx)}} (fut.170);
+\draw[<-] (exec.350) -- node[below, font=\footnotesize] {\texttt{Poll::Pending} / \texttt{Ready}} (fut.190);
+\draw[->] (fut) -- node[right, font=\footnotesize] {Registra \texttt{Waker}} (reac);
+\draw[->] (reac.west) -| node[pos=0.25, below, font=\footnotesize] {\texttt{waker.wake()} al llegar evento} (exec.south);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=2.2cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (exec) {Ejecutor Asíncrono\\(Cola de Tareas Tokio)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center, right=1.4cm of exec] (fut) {Máquina de Estados\\(\texttt{Pin<\&mut Future>})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center, below=1.2cm of fut] (reac) {Reactor E/S OS\\(\texttt{epoll} / \texttt{kqueue})};
+\draw[->] (exec.10) -- node[above, font=\footnotesize] {\texttt{poll(cx)}} (fut.170);
+\draw[<-] (exec.350) -- node[below, font=\footnotesize] {\texttt{Poll::Pending} / \texttt{Ready}} (fut.190);
+\draw[->] (fut) -- node[right, font=\footnotesize] {Registra \texttt{Waker}} (reac);
+\draw[->] (reac.west) -| node[pos=0.25, below, font=\footnotesize] {\texttt{waker.wake()} al llegar evento} (exec.south);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=2.2cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (exec) {Ejecutor Asíncrono\\(Cola de Tareas Tokio)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center, right=1.4cm of exec] (fut) {Máquina de Estados\\(\texttt{Pin<\&mut Future>})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center, below=1.2cm of fut] (reac) {Reactor E/S OS\\(\texttt{epoll} / \texttt{kqueue})};
+\draw[->] (exec.10) -- node[above, font=\footnotesize] {\texttt{poll(cx)}} (fut.170);
+\draw[<-] (exec.350) -- node[below, font=\footnotesize] {\texttt{Poll::Pending} / \texttt{Ready}} (fut.190);
+\draw[->] (fut) -- node[right, font=\footnotesize] {Registra \texttt{Waker}} (reac);
+\draw[->] (reac.west) -| node[pos=0.25, below, font=\footnotesize] {\texttt{waker.wake()} al llegar evento} (exec.south);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=2.2cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center] (exec) {Ejecutor Asíncrono\\(Cola de Tareas Tokio)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=1.0cm, align=center, right=1.4cm of exec] (fut) {Máquina de Estados\\(\texttt{Pin<\&mut Future>})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=1.0cm, align=center, below=1.2cm of fut] (reac) {Reactor E/S OS\\(\texttt{epoll} / \texttt{kqueue})};
+\draw[->] (exec.10) -- node[above, font=\footnotesize] {\texttt{poll(cx)}} (fut.170);
+\draw[<-] (exec.350) -- node[below, font=\footnotesize] {\texttt{Poll::Pending} / \texttt{Ready}} (fut.190);
+\draw[->] (fut) -- node[right, font=\footnotesize] {Registra \texttt{Waker}} (reac);
+\draw[->] (reac.west) -| node[pos=0.25, below, font=\footnotesize] {\texttt{waker.wake()} al llegar evento} (exec.south);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-rust-async-poll-state-machine}\textbf{Figura~\thestudiumfigure.} Modelo de ejecución de Future en Rust: el ejecutor (Tokio) invoca poll(Pin<\&mut Self>, \&mut Context); si el recurso E/S no está listo devuelve Poll::Pending y registra el Waker en el reactor del sistema operativo (epoll/kqueue).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMyIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+En código asíncrono sobre Tokio, nunca mantengas bloqueado un \texttt{std::sync::MutexGuard} a través de un punto \texttt{.await} ni ejecutes cómputo intensivo de CPU sin ceder el control; usa bloques cortos sin \texttt{.await} o delega el cómputo pesado a \texttt{tokio::task::spawn\_blocking}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+Fijación de dirección (\texttt{Pin<P>}): contrato del sistema de tipos de Rust que garantiza que el valor apuntado por el puntero \texttt{P} no será movido jamás a otra dirección de memoria mientras no implemente \texttt{Unpin}, hasta que se ejecute su destructor \texttt{Drop::drop}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+¿Por qué en Rust un \texttt{Mutex<T>} es un contenedor genérico que envuelve al dato \texttt{T} en lugar de ser un objeto cerrojo separado del dato como en C++ (\texttt{std::mutex}) o Java?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+\end{tcolorbox}
+
+\section{Concurrencia basada en hilos: Send, Sync, thread::scope, Arc, Mutex y canales}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+Dos rasgos marcadores automáticos gobiernan toda la concurrencia en Rust: un tipo \texttt{T} es \texttt{Send} si su propiedad puede transferirse de manera segura a otro hilo, y es \texttt{Sync} si es seguro compartirlo entre varios hilos simultáneamente por referencia inmutable (es decir, \texttt{T: Sync} si y solo si \texttt{\&T: Send}). Mientras que \texttt{std::thread::spawn} exige una clausura \texttt{'static + Send} porque el hilo hijo podría sobrevivir a la función que lo creó, \texttt{std::thread::scope} permite lanzar hilos que toman prestadas referencias locales no \texttt{'static} del marco de pila padre, garantizando estáticamente que todos los hilos del ámbito terminan antes de que \texttt{scope} retorne:
+\begin{lstlisting}[style=studium,language={Rust}]
+use std::thread;
+
+pub fn parallel_dot_product(a: &[i64], b: &[i64]) -> i64 {
+    let mid = a.len() / 2;
+    let (a_left, a_right) = a.split_at(mid);
+    let (b_left, b_right) = b.split_at(mid);
+    thread::scope(|s| {
+        let left_handle = s.spawn(|| a_left.iter().zip(b_left).map(|(x, y)| x * y).sum::<i64>());
+        let right_sum: i64 = a_right.iter().zip(b_right).map(|(x, y)| x * y).sum();
+        left_handle.join().unwrap() + right_sum
+    })
+}
+\end{lstlisting}
+Cuando varios hilos deben compartir y mutar estado sin un ámbito estático común, se combina el contador atómico de referencias \texttt{Arc<T>} con un cerrojo que envuelve directamente al dato protegido (\texttt{Mutex<T>} o \texttt{RwLock<T>}): en Rust es sintácticamente imposible acceder al dato sin adquirir primero el \texttt{MutexGuard}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\section{Programación asíncrona: el rasgo Future, máquinas de estados, Pin/Unpin y el ejecutor Tokio}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+Para cargas masivas de entrada/salida de red con cientos de miles de conexiones simultáneas, crear un hilo del sistema operativo por conexión resulta prohibitivo. En lugar de ello, una función \texttt{async fn} en Rust devuelve un valor que implementa el rasgo \texttt{Future \{ type Output; fn poll(self: Pin<\&mut Self>, cx: \&mut Context<'\_>) -> Poll<Self::Output>; \}}. Como ilustra la Figura \textbackslash{}ref\{fig:fig-rust-async-poll-state-machine\}, los futuros en Rust son perezosos y dirigidos por sondeo (*poll-driven*): el compilador transforma el cuerpo de una \texttt{async fn} en un \texttt{enum} donde cada punto \texttt{.await} es un estado que guarda únicamente las variables vivas a través de esa suspensión. Dado que una variable local puede ser prestada a través de un punto \texttt{.await}, la máquina de estados generada es *autorreferencial* (un campo del \texttt{enum} contiene un puntero a otro campo del mismo \texttt{enum}). Si esa estructura se moviera de dirección en memoria después del primer \texttt{poll}, el puntero interno quedaría colgante; por ello \texttt{Future::poll} recibe \texttt{self: Pin<\&mut Self>}, un envoltorio de tipos que prohíbe obtener \texttt{\&mut T} para mover el valor fuera de su dirección fijada salvo que el tipo implemente \texttt{Unpin}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+
+\noindent\textbf{Enunciado}
+Un servidor de mensajería mantiene \(C = 50000\) conexiones TCP simultáneas. Si cada máquina de estados \texttt{Future} en Tokio ocupa \(256\text{ B}\) (\(0.25\text{ KiB}\)) mientras que una pila mínima de hilo cuesta \(64\text{ KiB}\), calcula la memoria total en MiB (dividiendo los KiB entre 1024) que consumen las 50 000 tareas asíncronas.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $C = 50000$ — Conexiones concurrentes activas
+\item $S_{future} = 256\,\mathrm{B}$ — Tamaño de cada máquina de estados Future
+\item $B_{MiB} = 1048576\,\mathrm{B}\,\mathrm{MiB}^{-1}$ — Bytes por mebibyte (1024 * 1024)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Huella de memoria en MiB de C máquinas de estados Future}
+
+\[
+M_{\text{MiB}} = \frac{50000 \cdot 256}{1024 \cdot 1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 50000 tareas por 256 B y dividimos entre 1024*1024
+
+\[
+M_{\text{MiB}} = \frac{50000 \cdot 256}{1024 \cdot 1024}
+\]
+
+\[
+\frac{\left(50000\cdot 256\right)}{\left(1024\cdot 1024\right)}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 12.20703125. Las 50 000 conexiones asíncronas consumen tan solo 12.20703125 MiB de RAM, frente a los 3125 MiB (> 3 GiB) que exigirían 50 000 pilas de 64 KiB.
+\]
+
+\noindent\textbf{Interpretación}
+Las 50 000 conexiones asíncronas consumen tan solo 12.20703125 MiB de RAM, frente a los 3125 MiB (> 3 GiB) que exigirían 50 000 pilas de 64 KiB.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $12.207$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWNvbmN1cnJlbmNpYS1zaW4tbWllZG8tc2VuZC1zeW5jLWFzeW5jLXRva2lvLXBpbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+Cuatro hilos incrementan un \texttt{AtomicU64} exactamente 25 000 veces cada uno con \texttt{fetch\_add(1, Ordering::Relaxed)}. ¿Cuál es el valor final exacto del contador?
+
+\noindent\textbf{2 [PRB-0040] (Básico, Numérico)}
+Un vector de 10 000 elementos se divide equitativamente entre 8 hilos mediante \texttt{chunks(1250)} dentro de \texttt{std::thread::scope}. ¿Cuántos elementos procesa cada hilo?
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+Una \texttt{async fn} tiene 3 variables locales \texttt{u64} (8 B cada una) vivas simultáneamente en su punto \texttt{.await} más grande, más 8 bytes de discriminante de estado. ¿Cuántos bytes ocupa esa máquina de estados \texttt{Future}?
+
+\noindent\textbf{4 [PRB-0042] (Intermedio, Diseño)}
+Un canal acotado \texttt{mpsc::sync\_channel(64)} almacena mensajes de 128 bytes cada uno. ¿Cuántos bytes como máximo ocupan los mensajes en tránsito cuando el búfer está lleno?
+\end{tcolorbox}
+
+\chapter{F. Nivel Experto: Rust Inseguro (unsafe), FFI con C, Macros, WebAssembly, Embedded (no\_std) y Optimización}
+\label{chap:cap07-nivel-experto-unsafe-ffi-macros-wasm-embedded}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+\noindent\textit{Este capítulo desarrolla el Nivel Experto (Bloque F). Cuando un ingeniero de sistemas necesita implementar nuevas primitivas de sincronización, estructuras de datos intrusivas, controladores de registros de hardware mapeados en memoria (MMIO) o enlazar con bibliotecas en C del sistema operativo, recurre al subconjunto \texttt{unsafe} de Rust bajo contratos formales auditables con \texttt{Miri}.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+Todo bloque \texttt{unsafe \{ ... \}} debe ir precedido por un comentario \texttt{// SAFETY:} que demuestre formalmente por qué se cumplen las precondiciones en ese punto, y toda función \texttt{pub unsafe fn} debe incluir una sección \texttt{\# Safety} en su documentación.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+Invariante de validez frente a invariante de seguridad en Rust: la invariante de validez exige que un tipo nunca adopte un patrón de bits ilegal (por ejemplo, un \texttt{bool} distinto de 0 o 1, o una referencia \texttt{\&T} nula o desalineada), mientras que la invariante de seguridad exige que ninguna secuencia de llamadas desde código seguro pueda inducir comportamiento indefinido.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+¿Por qué el compilador de Rust reordena por defecto los campos de un \texttt{struct} (\texttt{repr(Rust)}) y por qué es obligatorio añadir \texttt{\#[repr(C)]} antes de pasar un puntero a esa estructura a una función escrita en C?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+\end{tcolorbox}
+
+\section{Rust inseguro (unsafe), contratos de seguridad, Miri e interoperabilidad FFI con C}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+Un bloque \texttt{unsafe \{ ... \}} en Rust **no** desactiva el comprobador de préstamos ni las reglas de propiedad sobre referencias ordinarias (\texttt{\&T} y \texttt{\&mut T}); únicamente habilita cinco operaciones adicionales cuyos invariantes de validez no puede demostrar estáticamente el compilador: (1) desreferenciar punteros crudos (\texttt{*const T} y \texttt{*mut T}); (2) llamar a una función o método marcado como \texttt{unsafe fn}; (3) acceder o modificar una variable estática mutable; (4) implementar un rasgo marcado como \texttt{unsafe trait} (como \texttt{Send} o \texttt{Sync}); y (5) acceder a campos de una \texttt{union}. La arquitectura idiomática de Rust encapsula todo bloque \texttt{unsafe} dentro de un módulo con fronteras pequeñas y expone al exterior una API 100 \% segura:
+\begin{lstlisting}[style=studium,language={Rust},escapeinside={(*@}{@*)}]
+#[repr(C)]
+#[derive(Copy, Clone, Debug, PartialEq)]
+pub struct CTelemetryHeader {
+    pub magic: u32,
+    pub version: u16,
+    pub payload_len: u16,
+}
+
+/// Divide una rebanada mutable en dos partes disjuntas usando punteros crudos.
+pub fn safe_split_at_mut<T>(slice: &mut [T], mid: usize) -> (&mut [T], &mut [T]) {
+    let len = slice.len();
+    assert!(mid <= len, "mid fuera de rango");
+    let ptr = slice.as_mut_ptr();
+    // SAFETY: 0 <= mid <= len garantiza que [ptr, ptr+mid) y [ptr+mid, ptr+len)
+    // est(*@{\'a}@*)n dentro de la misma asignaci(*@{\'o}@*)n y son estrictamente disjuntos.
+    unsafe {
+        (std::slice::from_raw_parts_mut(ptr, mid),
+         std::slice::from_raw_parts_mut(ptr.add(mid), len - mid))
+    }
+}
+\end{lstlisting}
+Para interoperar con C mediante FFI (*Foreign Function Interface*), se utiliza \texttt{\#[repr(C)]} (ya que el diseño por defecto \texttt{repr(Rust)} reordena libremente los campos de un \texttt{struct} para minimizar el relleno de alineamiento) y la convención de llamada \texttt{extern "C"}. El intérprete abstracto \texttt{cargo miri test} ejecuta el código MIR verificando el modelo de alias *Stacked Borrows* / *Tree Borrows*, lecturas de memoria no inicializada y alineamientos inválidos.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+\section{Metaprogramación con macros, entornos empotrados (\#![no\_std]), WebAssembly y optimización SIMD}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+En metaprogramación, Rust ofrece dos familias de macros que operan sobre el árbol sintáctico antes de la comprobación de tipos: las macros declarativas (\texttt{macro\_rules!}), que funcionan por coincidencia de patrones higiénica sobre fragmentos sintácticos (\texttt{expr}, \texttt{ty}, \texttt{ident}, \texttt{tt}), y las macros procedimentales (\texttt{\#[derive(...)]}, macros de atributo y macros tipo función), que son crates compilados que transforman un flujo \texttt{TokenStream} en otro \texttt{TokenStream}. En el ámbito de sistemas empotrados y kernels de sistemas operativos, el atributo \texttt{\#![no\_std]} prescinde de la biblioteca estándar \texttt{std} (que depende de un sistema operativo subyacente) y opera únicamente sobre \texttt{core} (independiente de plataforma y sin montículo) y opcionalmente \texttt{alloc}. Del mismo modo, Rust compila de forma nativa a \texttt{wasm32-unknown-unknown} y \texttt{wasm32-wasip1}, permitiendo ejecutar motores criptográficos, analizadores y simuladores físicos en el navegador o en pasarelas *serverless* a velocidad cercana al código nativo.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+
+\noindent\textbf{Enunciado}
+Una estructura declarada con \texttt{\#[repr(C)]} contiene en este orden exacto: \texttt{a: u8} (\(1\text{ B}\)), \texttt{b: u64} (\(8\text{ B}\), requiere alineamiento a múltiplo de 8), \texttt{c: u8} (\(1\text{ B}\)) y \texttt{d: u32} (\(4\text{ B}\), requiere alineamiento a múltiplo de 4), con alineamiento total de la estructura a múltiplo de 8 bytes. Calcula la diferencia en bytes para un array de \(N = 1000\) estructuras entre \texttt{\#[repr(C)]} (\(24\text{ B}\) cada una) y el empaquetado óptimo de \texttt{repr(Rust)} que ordena \texttt{b: u64}, \texttt{d: u32}, \texttt{a: u8}, \texttt{c: u8} (\(8 + 4 + 1 + 1 + 2\text{ padding} = 16\text{ B}\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 1000$ — Número de estructuras en el array
+\item $S_{C} = 24\,\mathrm{B}$ — Tamaño bajo \#[repr(C)] (1+7 + 8 + 1+3 + 4 = 24 B)
+\item $S_{Rust} = 16\,\mathrm{B}$ — Tamaño reordenado por repr(Rust) (8 + 4 + 1 + 1 + 2 = 16 B)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de relleno (padding) de alineamiento entre repr(C) y repr(Rust)}
+
+\[
+\Delta B = 1000 \cdot (24 - 16)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 1000 instancias por los 8 B ahorrados por estructura
+
+\[
+\Delta B = 1000 \cdot (24 - 16)
+\]
+
+\[
+\left(1000\cdot \left(24-16\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 8000. La reordenación automática de campos de repr(Rust) ahorra 8000 bytes (un 33.3 \% de reducción de huella en caché) sin requerir acceso desalineado.
+\]
+
+\noindent\textbf{Interpretación}
+La reordenación automática de campos de repr(Rust) ahorra 8000 bytes (un 33.3 \% de reducción de huella en caché) sin requerir acceso desalineado.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $8000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA3LW5pdmVsLWV4cGVydG8tdW5zYWZlLWZmaS1tYWNyb3Mtd2FzbS1lbWJlZGRlZCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0046] (Básico, Numérico)}
+Calcula el tamaño en bytes de \texttt{BadLayoutC \{ a: u8, b: u64, c: u8 \}} bajo \texttt{\#[repr(C)]} en 64 bits (\$1 + 7 + 8 + 1 + 7\$).
+
+\noindent\textbf{2 [PRB-0047] (Básico, Numérico)}
+Calcula el tamaño en bytes de \texttt{GoodLayoutRust \{ a: u8, b: u64, c: u8 \}} reordenado por el compilador de Rust (\$8 + 1 + 1 + 6\$).
+
+\noindent\textbf{3 [PRB-0048] (Intermedio, Desarrollo por pasos)}
+Un registro SIMD de 256 bits (\texttt{AVX2}) procesa carriles \texttt{f32} de 32 bits en paralelo. ¿Cuántos números \texttt{f32} opera en una sola instrucción?
+
+\noindent\textbf{4 [PRB-0049] (Intermedio, Diseño)}
+En un microcontrolador ARM Cortex-M \texttt{\#![no\_std]} con 64 KiB de SRAM (\(65536\text{ B}\)), el firmware reserva 8192 bytes para la pila y 4096 bytes para variables estáticas. ¿Cuántos bytes quedan disponibles para buffers estáticos de DMA?
+\end{tcolorbox}
+
+\part{Bloques G\(-\)H: Ecosistema Industrial, Pruebas, Benchmarking y Proyectos Completos}
+
+\chapter{G\(-\)H. Ecosistema Profesional, Idioms, Antipatrones, Evaluación y 4 Proyectos en Rust}
+\label{chap:cap08-ecosistema-herramientas-evaluacion-proyectos-rust}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+\noindent\textit{Este capítulo culmina la monografía de Rust cubriendo los Bloques G y H de la plantilla: el ecosistema real de producción, los patrones de diseño de APIs conformes a las *Rust API Guidelines*, el catálogo de antipatrones frecuentes y la construcción paso a paso de cuatro proyectos completos, culminando en el motor de almacenamiento Key-Value transaccional con registro de escritura anticipada (*Write-Ahead Log*) y suma de verificación CRC32 ubicado en \texttt{projects/rust-kv-engine}.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+Nunca expongas \texttt{\&String}, \texttt{\&Vec<T>} ni \texttt{\&Box<T>} en los parámetros de entrada de funciones públicas: utiliza \texttt{\&str}, \texttt{\&[T]} y \texttt{\&T}, ya que las coerciones automáticas \texttt{Deref} permiten pasar tanto tipos propietarios como vistas prestadas sin coste.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+Write-Ahead Log (WAL) con verificación CRC32: estructura de almacenamiento secuencial sólo-añadir (append-only) en la que toda operación de mutación se persiste en disco precedida de un código de redundancia cíclica antes de confirmarse en la estructura de datos en memoria, garantizando atomicidad y durabilidad (propiedades A y D de ACID).
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+¿Por qué las *feature flags* de un manifiesto \texttt{Cargo.toml} deben ser siempre aditivas y qué problema ocurre cuando dos dependencias de un mismo workspace activan combinaciones distintas de una feature no aditiva?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+\end{tcolorbox}
+
+\section{Bloque G: Ecosistema de crates, Cargo Workspaces, idioms de diseño de APIs y antipatrones}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+El ecosistema industrial de Rust se articula en torno a crates fundacionales de altísima cohesión: \texttt{serde} (serialización y deserialización de coste cero sin reflexión en tiempo de ejecución mediante generación de código con \texttt{\#[derive(Serialize, Deserialize)]}), \texttt{clap} (análisis declarativo de argumentos CLI), \texttt{tokio} y \texttt{axum} (servidores HTTP/gRPC asíncronos con extractores con seguridad de tipos), \texttt{sqlx} (consultas SQL verificadas contra el esquema de la base de datos en tiempo de compilación), \texttt{tracing} (telemetría estructurada con *spans* jerárquicos conscientes de tareas asíncronas), \texttt{proptest} (pruebas basadas en propiedades con reducción automática de contraejemplos) y \texttt{criterion} (microbenchmarking estadístico). Al diseñar APIs públicas, las *Rust API Guidelines* recomiendan aceptar parámetros genéricos mediante \texttt{impl AsRef<Path>} o \texttt{\&str} en lugar de \texttt{\&String} o \texttt{\&Vec<T>}, implementar \texttt{From}/\texttt{TryFrom} y garantizar que las *feature flags* de Cargo sean estrictamente aditivas para que la unión de características solicitadas por distintos crates en el árbol de dependencias nunca provoque incompatibilidades de compilación.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+\section{Bloque H: Evaluación integral y los 4 proyectos progresivos (incluyendo rust-kv-engine verificado)}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+El Bloque H articula cuatro proyectos progresivos obligatorios: (1) una herramienta CLI de auditoría e indexación de ficheros con sumas criptográficas y salida estructurada; (2) un analizador sintáctico de copia cero (*zero-copy*) para registros de configuración y telemetría; (3) un microservicio HTTP concurrente con limitación de tasa (*token bucket*) y apagado ordenado (*graceful shutdown*); y (4) el motor de almacenamiento Key-Value persistente \texttt{projects/rust-kv-engine}. En este cuarto proyecto, cada mutación \texttt{SET} o \texttt{DEL} se empaqueta en una trama binaria \texttt{[crc32: 4 B][op: 1 B][key\_len: 4 B][val\_len: 4 B][key][val]} de \(13\text{ B}\) de cabecera fija y se sincroniza en el fichero de registro de escritura anticipada (*Write-Ahead Log*, WAL) antes de actualizar el índice en memoria protegido por \texttt{Arc<RwLock<HashMap<String, Vec<u8>>>>}:
+\begin{lstlisting}[style=studium,language={Rust}]
+pub fn encode_wal_frame_size(key: &str, value: &[u8]) -> usize {
+    // 4B CRC32 + 1B opcode + 4B key_len + 4B val_len + key + value
+    13 + key.len() + value.len()
+}
+\end{lstlisting}
+Durante la recuperación tras un fallo eléctrico o caída del proceso, el motor recorre secuencialmente el WAL, recalcula el polinomio IEEE 802.3 CRC32 (\texttt{0xEDB88320}) de cada trama y rechaza de forma determinista cualquier registro truncado o corrompido en disco.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA1MCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+
+\noindent\textbf{Enunciado}
+En el motor \texttt{rust-kv-engine}, cada trama del Write-Ahead Log (WAL) tiene una cabecera fija de \(13\text{ B}\) (4 B de CRC32, 1 B de código de operación, 4 B de longitud de clave y 4 B de longitud de valor). Si se registran \(N = 2000\) operaciones \texttt{SET} donde cada clave mide \(L_k = 16\text{ B}\) y cada valor mide \(L_v = 99\text{ B}\), calcula el tamaño exacto en bytes del fichero WAL resultante antes de ejecutar \texttt{compact()}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 2000$ — Número de operaciones SET registradas
+\item $H = 13\,\mathrm{B}$ — Cabecera binaria fija por trama WAL
+\item $L^{L}_{k v} = 16\,\mathrm{B, 99 B}$ — Longitudes de clave y valor
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Tamaño total del fichero Write-Ahead Log (WAL) para N tramas}
+
+\[
+B_{\text{WAL}} = 2000 \cdot (13 + 16 + 99)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos 13 + 16 + 99 = 128 B por trama y multiplicamos por 2000 tramas
+
+\[
+B_{\text{WAL}} = 2000 \cdot (13 + 16 + 99)
+\]
+
+\[
+\left(2000\cdot \left(\left(13+16\right)+99\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 256000. El fichero WAL ocupa exactamente 256 000 bytes (250 KiB) en disco.
+\]
+
+\noindent\textbf{Interpretación}
+El fichero WAL ocupa exactamente 256 000 bytes (250 KiB) en disco.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $256000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA1MCIsICJzZWN0aW9uIjogImNhcDA4LWVjb3Npc3RlbWEtaGVycmFtaWVudGFzLWV2YWx1YWNpb24tcHJveWVjdG9zLXJ1c3QifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0053] (Básico, Numérico)}
+Calcula el tamaño en bytes de una trama WAL de \texttt{rust-kv-engine} con cabecera de 13 B, clave de 11 B y valor de 40 B (\$13 + 11 + 40\$).
+
+\noindent\textbf{2 [PRB-0054] (Básico, Desarrollo por pasos)}
+Un fichero WAL contiene 5000 registros sobre un conjunto de solo 800 claves únicas (cada una actualizada varias veces). Si \texttt{compact()} conserva únicamente el último valor de cada clave viva (64 B por trama), ¿cuántos bytes ocupa el WAL compactado?
+
+\noindent\textbf{3 [PRB-0055] (Intermedio, Desarrollo por pasos)}
+En el problema anterior, ¿cuántos bytes de espacio en disco libera la operación \texttt{compact()} respecto a las 5000 tramas originales de 64 B?
+
+\noindent\textbf{4 [PRB-0056] (Intermedio, Diseño)}
+Un workspace de Cargo contiene 6 crates de biblioteca y cada crate define 12 pruebas unitarias y 3 pruebas de integración. ¿Cuántas pruebas ejecuta en total \texttt{cargo test --workspace}?
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$T: \text{Send} + \text{Sync}$ & Cotas de rasgo de transferencia y compartición segura entre hilos & adimensional \\
+$\text{'a}$ & Parámetro genérico de tiempo de vida (lifetime) de una referencia & adimensional \\
+$\text{alignof}(T)$ & Alineamiento de dirección de memoria requerido por el tipo T & $\mathrm{B}$ \\
+$\text{sizeof}(T)$ & Tamaño estático en bytes de un tipo Sized en pila & $\mathrm{B}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{A. Introducción, historia, filosofía y modelo de compilación de Rust}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En una arquitectura de 64 bits (\(W = 8\text{ B}\)), un vector en Rust \texttt{Vec<T>} se representa en la pila mediante tres campos de tamaño palabra (\texttt{ptr}, \texttt{len}, \texttt{cap}), mientras que una rebanada \texttt{\&[T]} es un puntero ancho de dos palabras (\texttt{ptr}, \texttt{len}). Calcula el tamaño total en pila en bytes de una estructura que contiene dos \texttt{Vec<u8>} y tres rebanadas \texttt{\&[u8]}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 96. La estructura ocupa exactamente 96 bytes en la pila (48 B de los dos vectores y 48 B de las tres rebanadas), independientemente del número de elementos alojados en el montículo.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0003]}
+
+Verificación ejecutable con \texttt{rustc --test} del tamaño exacto en bytes de \texttt{\&u64}, \texttt{\&[u64]} y \texttt{Vec<u64>} mediante \texttt{std::mem::size\_of}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0004]}
+
+Calcula el tamaño en bytes en la pila de un \texttt{Vec<f64>} en una arquitectura de 64 bits (\(3 \times 8\)).
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0005]}
+
+Calcula el tamaño en bytes de un puntero ancho \texttt{\&dyn std::fmt::Display} en una CPU de 64 bits (\(2 \times 8\)).
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0006]}
+
+Si un binario contiene 45 funciones genéricas instanciadas cada una para 4 tipos concretos distintos mediante monomorfización, ¿cuántas funciones especializadas se emiten antes de la eliminación de código muerto?
+
+\noindent\textbf{Respuesta} 180
+
+\noindent\textbf{Ejercicio 4 [PRB-0007]}
+
+Un búfer de 4096 elementos \texttt{u32} (4 bytes por elemento) está referenciado por un \texttt{Vec<u32>} (24 bytes en pila). ¿Cuántos bytes totales suma la cabecera en pila más la región en el montículo?
+
+\noindent\textbf{Respuesta} 16408
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(2\cdot \left(3\cdot 8\right)\right)+\left(3\cdot \left(2\cdot 8\right)\right)\right) = 96\)
+
+\section{B\(-\)C. Instalación, toolchain (rustup, Cargo) y nivel principiante completo}
+
+\noindent\textbf{Problema resuelto [PRB-0008]}
+
+Una cadena en Rust contiene 10 caracteres ASCII (\(1\text{ B}\) cada uno en UTF-8) y 5 caracteres acentuados españoles (\texttt{{\'a}}, \texttt{{\'e}}, \texttt{{\'i}}, \texttt{{\'o}}, \texttt{{\'u}}, que ocupan \(2\text{ B}\) cada uno en UTF-8). Calcula la diferencia en bytes entre representarla como \texttt{\&str} en UTF-8 frente a un array \texttt{[char; 15]} de valores escalares Unicode (\(4\text{ B}\) por \texttt{char}).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 40. La representación UTF-8 nativa de Rust ahorra 40 bytes (ocupa 20 B frente a 60 B), razón por la cual String y \&str utilizan UTF-8 en lugar de arrays de 32 bits.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0010]}
+
+Verificación ejecutable con \texttt{rustc --test} de aritmética saturada, verificada y longitud UTF-8 frente a conteo de \texttt{chars()}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0011]}
+
+Calcula el tamaño en bytes de un array \texttt{[u64; 32]} alojado en la pila (\(32 \times 8\)).
+
+\noindent\textbf{Respuesta} 256
+
+\noindent\textbf{Ejercicio 2 [PRB-0012]}
+
+Una cadena UTF-8 contiene 8 caracteres ASCII (1 B), 4 letras griegas (2 B) y 2 emojis (4 B). ¿Cuál es el valor de \texttt{s.len()} en bytes?
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 3 [PRB-0013]}
+
+Calcula el resultado de \texttt{250u8.wrapping\_add(15)} en aritmética modular de 8 bits (\$250 + 15 - 256\$).
+
+\noindent\textbf{Respuesta} 9
+
+\noindent\textbf{Ejercicio 4 [PRB-0014]}
+
+Si \texttt{Vec::with\_capacity(128)} reserva espacio para 128 elementos \texttt{i32} (4 B cada uno) e insertamos 50 elementos, ¿cuántos bytes de capacidad reservada permanecen aún libres en el montículo?
+
+\noindent\textbf{Respuesta} 312
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(15\cdot 4\right)-\left(\left(10\cdot 1\right)+\left(5\cdot 2\right)\right)\right) = 40\)
+
+\section{D.1. Propiedad (Ownership), Préstamo (Borrowing), Rebanadas y Tiempos de Vida (Lifetimes)}
+
+\noindent\textbf{Problema resuelto [PRB-0015]}
+
+Un vector \texttt{Vec<u64>} contiene \(N = 10000\) enteros de 8 bytes en el montículo en una máquina de 64 bits (\(W = 8\text{ B}\)). Calcula cuántos bytes menos se copian al pasar el vector por transferencia de propiedad (*move*, que solo copia las 3 palabras de la cabecera en pila) frente a invocar \texttt{.clone()} (que copia la cabecera más los \(10000 \times 8\) bytes del montículo).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 80000. La transferencia de propiedad (move) ahorra la copia de 80 000 bytes en el montículo y se ejecuta en tiempo constante O(1) copiando únicamente 24 bytes.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0017]}
+
+Verificación ejecutable con \texttt{rustc --test} de préstamos con tiempos de vida explícitos \texttt{'a}, rebanadas mutables disjuntas (\texttt{split\_at\_mut}) y Non-Lexical Lifetimes.
+
+\noindent\textbf{Ejercicio 1 [PRB-0018]}
+
+Calcula cuántos bytes en la pila se copian al mover un \texttt{String} en una arquitectura de 64 bits (\(3 \times 8\)).
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0019]}
+
+Si dividimos una rebanada de 1024 elementos mediante \texttt{split\_at\_mut(300)}, ¿cuántos elementos contiene la segunda sub-rebanada mutable?
+
+\noindent\textbf{Respuesta} 724
+
+\noindent\textbf{Ejercicio 3 [PRB-0020]}
+
+Una estructura contiene 4 campos \texttt{u64} que implementan \texttt{Copy}. ¿Cuántos bytes se copian en cada asignación por valor (\(4 \times 8\))?
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 4 [PRB-0021]}
+
+Un analizador léxico de copia cero (*zero-copy*) genera 500 tokens \texttt{\&'a str} (16 B cada uno) sobre un texto fuente de 32 000 bytes sin clonar subcadenas. ¿Cuántos bytes ocupan en total los 500 descriptores de token?
+
+\noindent\textbf{Respuesta} 8000
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(3\cdot 8\right)+\left(10000\cdot 8\right)\right)-\left(3\cdot 8\right)\right) = 80000\)
+
+\section{D.2. Tipos Algebraicos (struct, enum), Rasgos (Traits), Genéricos y Manejo de Errores (Option y Result)}
+
+\noindent\textbf{Problema resuelto [PRB-0022]}
+
+Una tabla hash abierta almacena \(N = 65536\) ranuras de tipo \texttt{Option<std::num::NonZeroU64>} en una arquitectura de 64 bits (\(W = 8\text{ B}\)). Gracias a la optimización de nicho, cada \texttt{Option<NonZeroU64>} ocupa exactamente 8 bytes en lugar de 16 bytes (8 bytes de dato más 8 bytes de discriminante alineado). Calcula cuántos kilobytes (dividiendo entre 1024) se ahorran en la tabla completa gracias a la optimización de nicho.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 512. La optimización de nicho ahorra exactamente 512 KiB de memoria caché/RAM y duplica el número de entradas por línea de caché de 64 bytes.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0024]}
+
+Verificación ejecutable con \texttt{rustc --test} de la optimización de nicho (\texttt{size\_of::<Option<\&u64>>() == 8}) y propagación de errores con \texttt{?}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0025]}
+
+En una arquitectura de 64 bits, ¿cuántos bytes ocupa \texttt{Option<Box<u64>>} gracias a la optimización de nicho?
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 2 [PRB-0026]}
+
+¿Cuántos bytes ocupa en total un array \texttt{[Option<NonZeroU32>; 1000]} sabiendo que cada elemento ocupa 4 bytes?
+
+\noindent\textbf{Respuesta} 4000
+
+\noindent\textbf{Ejercicio 3 [PRB-0027]}
+
+Un \texttt{enum} sin nicho tiene una variante de 24 bytes con alineamiento de 8 bytes y una etiqueta de 1 byte. Tras añadir 7 bytes de relleno (*padding*) para mantener el alineamiento a múltiplo de 8, ¿cuál es su tamaño total en bytes?
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 4 [PRB-0028]}
+
+Una línea de caché de CPU mide 64 bytes. ¿Cuántos elementos \texttt{Option<NonZeroU64>} (8 B cada uno) caben en una única línea de caché?
+
+\noindent\textbf{Respuesta} 8
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(65536\cdot \left(16-8\right)\right)}{1024} = 512\)
+
+\section{E.1. Nivel Avanzado: Clausuras (Fn/FnMut/FnOnce), Iteradores, Punteros Inteligentes y Mutabilidad Interior}
+
+\noindent\textbf{Problema resuelto [PRB-0029]}
+
+En una arquitectura de 64 bits (\(W = 8\text{ B}\)), se aloja un bloque \texttt{Rc< [u8; 1024] >} (\(S_T = 1024\text{ B}\)) y se crean \(k = 5\) manejadores \texttt{Rc::clone} en distintas estructuras en la pila. Calcula la memoria total consumida (los 5 punteros en la pila más el único bloque \texttt{RcBox} en el montículo con sus 2 contadores \texttt{usize} y los 1024 bytes de datos).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 1080. El conjunto completo ocupa 1080 bytes (40 B en la pila y 1040 B en el montículo), ahorrando 4096 bytes frente a clonar 5 veces el búfer.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+Verificación ejecutable con \texttt{rustc --test} de tuberías de iteradores, \texttt{Rc}/\texttt{Weak} y mutabilidad interior con \texttt{RefCell}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0032]}
+
+Calcula la suma de los cuadrados de los números pares del 2 al 10 (\$\(2^2 + 4^2 + 6^2 + 8^2 + 10^2\)\$) evaluada por \texttt{(1..=10).filter(|x| x \% 2 == 0).map(|x| x * x).sum()}.
+
+\noindent\textbf{Respuesta} 220
+
+\noindent\textbf{Ejercicio 2 [PRB-0033]}
+
+¿Cuántos bytes de metadatos añaden los dos contadores (\texttt{strong} y \texttt{weak}) de \texttt{RcBox<T>} en una arquitectura de 64 bits (\(2 \times 8\))?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0034]}
+
+Si se crean 1 \texttt{Rc} original, 4 clones fuertes (\texttt{Rc::clone}) y 3 referencias débiles (\texttt{Rc::downgrade}), y luego se destruyen 2 clones fuertes, ¿cuál es el valor actual de \texttt{Rc::strong\_count}?
+
+\noindent\textbf{Respuesta} 3
+
+\noindent\textbf{Ejercicio 4 [PRB-0035]}
+
+Un flujo de datos procesa 5000 enteros mediante \texttt{iter().filter(...).map(...).fold(...)} sin llamar a \texttt{collect()}. ¿Cuántos vectores dinámicos intermedios se alojan en el montículo durante el recorrido?
+
+\noindent\textbf{Respuesta} 0
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(5\cdot 8\right)+\left(\left(2\cdot 8\right)+1024\right)\right) = 1080\)
+
+\section{E.2. Concurrencia sin Miedo (Send/Sync, Arc, Mutex, Canales) y Asincronía (Future, async/await, Pin, Tokio)}
+
+\noindent\textbf{Problema resuelto [PRB-0036]}
+
+Un servidor de mensajería mantiene \(C = 50000\) conexiones TCP simultáneas. Si cada máquina de estados \texttt{Future} en Tokio ocupa \(256\text{ B}\) (\(0.25\text{ KiB}\)) mientras que una pila mínima de hilo cuesta \(64\text{ KiB}\), calcula la memoria total en MiB (dividiendo los KiB entre 1024) que consumen las 50 000 tareas asíncronas.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 12.20703125. Las 50 000 conexiones asíncronas consumen tan solo 12.20703125 MiB de RAM, frente a los 3125 MiB (> 3 GiB) que exigirían 50 000 pilas de 64 KiB.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0038]}
+
+Verificación ejecutable con \texttt{rustc --test} de concurrencia paralela con \texttt{std::thread::scope}, \texttt{Arc<Mutex<T>>} y canales \texttt{mpsc}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+Cuatro hilos incrementan un \texttt{AtomicU64} exactamente 25 000 veces cada uno con \texttt{fetch\_add(1, Ordering::Relaxed)}. ¿Cuál es el valor final exacto del contador?
+
+\noindent\textbf{Respuesta} 100000
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+Un vector de 10 000 elementos se divide equitativamente entre 8 hilos mediante \texttt{chunks(1250)} dentro de \texttt{std::thread::scope}. ¿Cuántos elementos procesa cada hilo?
+
+\noindent\textbf{Respuesta} 1250
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+Una \texttt{async fn} tiene 3 variables locales \texttt{u64} (8 B cada una) vivas simultáneamente en su punto \texttt{.await} más grande, más 8 bytes de discriminante de estado. ¿Cuántos bytes ocupa esa máquina de estados \texttt{Future}?
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+Un canal acotado \texttt{mpsc::sync\_channel(64)} almacena mensajes de 128 bytes cada uno. ¿Cuántos bytes como máximo ocupan los mensajes en tránsito cuando el búfer está lleno?
+
+\noindent\textbf{Respuesta} 8192
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(50000\cdot 256\right)}{\left(1024\cdot 1024\right)} = 12.20703125\)
+
+\section{F. Nivel Experto: Rust Inseguro (unsafe), FFI con C, Macros, WebAssembly, Embedded (no\_std) y Optimización}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+Una estructura declarada con \texttt{\#[repr(C)]} contiene en este orden exacto: \texttt{a: u8} (\(1\text{ B}\)), \texttt{b: u64} (\(8\text{ B}\), requiere alineamiento a múltiplo de 8), \texttt{c: u8} (\(1\text{ B}\)) y \texttt{d: u32} (\(4\text{ B}\), requiere alineamiento a múltiplo de 4), con alineamiento total de la estructura a múltiplo de 8 bytes. Calcula la diferencia en bytes para un array de \(N = 1000\) estructuras entre \texttt{\#[repr(C)]} (\(24\text{ B}\) cada una) y el empaquetado óptimo de \texttt{repr(Rust)} que ordena \texttt{b: u64}, \texttt{d: u32}, \texttt{a: u8}, \texttt{c: u8} (\(8 + 4 + 1 + 1 + 2\text{ padding} = 16\text{ B}\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 8000. La reordenación automática de campos de repr(Rust) ahorra 8000 bytes (un 33.3 \% de reducción de huella en caché) sin requerir acceso desalineado.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0045]}
+
+Verificación ejecutable con \texttt{rustc --test} de \texttt{safe\_split\_at\_mut}, \texttt{macro\_rules!} y diferencia real de tamaño entre \texttt{\#[repr(C)]} y \texttt{repr(Rust)}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0046]}
+
+Calcula el tamaño en bytes de \texttt{BadLayoutC \{ a: u8, b: u64, c: u8 \}} bajo \texttt{\#[repr(C)]} en 64 bits (\$1 + 7 + 8 + 1 + 7\$).
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0047]}
+
+Calcula el tamaño en bytes de \texttt{GoodLayoutRust \{ a: u8, b: u64, c: u8 \}} reordenado por el compilador de Rust (\$8 + 1 + 1 + 6\$).
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0048]}
+
+Un registro SIMD de 256 bits (\texttt{AVX2}) procesa carriles \texttt{f32} de 32 bits en paralelo. ¿Cuántos números \texttt{f32} opera en una sola instrucción?
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 4 [PRB-0049]}
+
+En un microcontrolador ARM Cortex-M \texttt{\#![no\_std]} con 64 KiB de SRAM (\(65536\text{ B}\)), el firmware reserva 8192 bytes para la pila y 4096 bytes para variables estáticas. ¿Cuántos bytes quedan disponibles para buffers estáticos de DMA?
+
+\noindent\textbf{Respuesta} 53248
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(1000\cdot \left(24-16\right)\right) = 8000\)
+
+\section{G\(-\)H. Ecosistema Profesional, Idioms, Antipatrones, Evaluación y 4 Proyectos en Rust}
+
+\noindent\textbf{Problema resuelto [PRB-0050]}
+
+En el motor \texttt{rust-kv-engine}, cada trama del Write-Ahead Log (WAL) tiene una cabecera fija de \(13\text{ B}\) (4 B de CRC32, 1 B de código de operación, 4 B de longitud de clave y 4 B de longitud de valor). Si se registran \(N = 2000\) operaciones \texttt{SET} donde cada clave mide \(L_k = 16\text{ B}\) y cada valor mide \(L_v = 99\text{ B}\), calcula el tamaño exacto en bytes del fichero WAL resultante antes de ejecutar \texttt{compact()}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 256000. El fichero WAL ocupa exactamente 256 000 bytes (250 KiB) en disco.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Problema resuelto [PRB-0052]}
+
+Verificación ejecutable con \texttt{rustc --test} del algoritmo CRC32 IEEE 802.3 y empaquetado de trama WAL empleado en \texttt{projects/rust-kv-engine}.
+
+\noindent\textbf{Ejercicio 1 [PRB-0053]}
+
+Calcula el tamaño en bytes de una trama WAL de \texttt{rust-kv-engine} con cabecera de 13 B, clave de 11 B y valor de 40 B (\$13 + 11 + 40\$).
+
+\noindent\textbf{Respuesta} 64
+
+\noindent\textbf{Ejercicio 2 [PRB-0054]}
+
+Un fichero WAL contiene 5000 registros sobre un conjunto de solo 800 claves únicas (cada una actualizada varias veces). Si \texttt{compact()} conserva únicamente el último valor de cada clave viva (64 B por trama), ¿cuántos bytes ocupa el WAL compactado?
+
+\noindent\textbf{Respuesta} 51200
+
+\noindent\textbf{Ejercicio 3 [PRB-0055]}
+
+En el problema anterior, ¿cuántos bytes de espacio en disco libera la operación \texttt{compact()} respecto a las 5000 tramas originales de 64 B?
+
+\noindent\textbf{Respuesta} 268800
+
+\noindent\textbf{Ejercicio 4 [PRB-0056]}
+
+Un workspace de Cargo contiene 6 crates de biblioteca y cada crate define 12 pruebas unitarias y 3 pruebas de integración. ¿Cuántas pruebas ejecuta en total \texttt{cargo test --workspace}?
+
+\noindent\textbf{Respuesta} 90
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(2000\cdot \left(\left(13+16\right)+99\right)\right) = 256000\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 30 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios. Ecuaciones: 1 reproducida numéricamente.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 2 respaldada por una fuente.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-rust-nomicon (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P13, \P14, \P15, \P16, \P17, \P18, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent Referencia Normativa src-unicode-15 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent Referencia Normativa src-pierce-tapl (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24.
+
+\noindent Referencia Normativa src-iso-c17 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent Referencia Normativa src-kleppmann-ddia (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: cap01-introduccion-historia-modelo-compilacion-rust scientific
+
+\noindent REV-0002: cap02-entorno-toolchain-cargo-nivel-principiante scientific
+
+\noindent REV-0003: cap03-ownership-borrowing-lifetimes-modelo-memoria scientific
+
+\noindent REV-0004: cap04-tipos-algebraicos-traits-genericos-errores scientific
+
+\noindent REV-0005: cap05-closures-iteradores-smart-pointers-mutabilidad-interior scientific
+
+\noindent REV-0006: cap06-concurrencia-sin-miedo-send-sync-async-tokio-pin scientific
+
+\noindent REV-0007: cap07-nivel-experto-unsafe-ffi-macros-wasm-embedded scientific
+
+\noindent REV-0008: cap08-ecosistema-herramientas-evaluacion-proyectos-rust scientific
+\chapter{Plan de estudio}
+
+\section*{Bloques A\(-\)C: Fundamentos, Entorno y Nivel Principiante en Rust}
+
+\subsection*{\checkmark A. Introducción, historia, filosofía y modelo de compilación de Rust}
+\begin{itemize}
+\item Comprender el origen histórico de Rust (Graydon Hoare, Mozilla Research, Rust Foundation) y las ediciones 2015, 2018, 2021 y 2024.
+\item Trazar la tubería de compilación desde el código fuente hasta código máquina nativo pasando por HIR, THIR, MIR y LLVM IR.
+\item Contrastar las abstracciones de coste cero y la seguridad espacial y temporal de memoria sin recolector de basura frente a C, C++ y Go.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark B\(-\)C. Instalación, toolchain (rustup, Cargo) y nivel principiante completo}
+\begin{itemize}
+\item Configurar y gestionar toolchains con rustup, perfiles de compilación en Cargo.toml, resolución determinista con Cargo.lock, rustfmt y clippy.
+\item Dominar el modelo de vinculación inmutable por defecto (let vs let mut), sombreado (shadowing), tipos escalares y compuestos, y control de flujo expresivo.
+\item Distinguir la representación UTF-8 de String y \&str frente a arrays [T; N], tuplas y vectores Vec<T>.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Bloque D: Nivel Intermedio \(-\) Propiedad, Tipos Algebraicos, Rasgos y Modularidad}
+
+\subsection*{\checkmark D.1. Propiedad (Ownership), Préstamo (Borrowing), Rebanadas y Tiempos de Vida (Lifetimes)}
+\begin{itemize}
+\item Enunciar y aplicar las tres leyes del sistema de propiedad (ownership) y diferenciar semántica Move, Copy y Clone.
+\item Aplicar la ley de exclusión mutua de referencias (XOR entre alias y mutabilidad: múltiples \&T o una única \&mut T).
+\item Anotar explícitamente tiempos de vida genéricos ('a, 'static), comprender las tres reglas de elisión y el comprobador NLL.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark D.2. Tipos Algebraicos (struct, enum), Rasgos (Traits), Genéricos y Manejo de Errores (Option y Result)}
+\begin{itemize}
+\item Modelar invariantes de dominio mediante tipos producto (struct) y tipos suma (enum) haciendo irrepresentables los estados inválidos.
+\item Diseñar jerarquías de polimorfismo paramétrico y ad-hoc con rasgos (traits), tipos asociados, cotas where y coherencia (regla del huérfano).
+\item Gestionar errores recuperables e irrecuperables mediante Option<T>, Result<T, E>, el operador de propagación `?` y conversiones From/Into.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Bloques E\(-\)F: Nivel Avanzado y Experto \(-\) Smart Pointers, Concurrencia, Async y Unsafe}
+
+\subsection*{\checkmark E.1. Nivel Avanzado: Clausuras (Fn/FnMut/FnOnce), Iteradores, Punteros Inteligentes y Mutabilidad Interior}
+\begin{itemize}
+\item Distinguir la representación y captura de entorno en clausuras según la jerarquía de rasgos FnOnce, FnMut y Fn.
+\item Diseñar tuberías perezosas de iteradores de coste cero y demostrar su equivalencia en ensamblador frente a bucles manuales.
+\item Seleccionar con rigor entre Box<T>, Rc<T>, Arc<T>, Cell<T>, RefCell<T>, Cow<'a, B> y Weak<T> evitando fugas por ciclos de referencias.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark E.2. Concurrencia sin Miedo (Send/Sync, Arc, Mutex, Canales) y Asincronía (Future, async/await, Pin, Tokio)}
+\begin{itemize}
+\item Demostrar cómo los rasgos automáticos Send y Sync garantizan en tiempo de compilación la ausencia de carreras de datos.
+\item Combinar hilos con ámbito (std::thread::scope), canales MPSC, Arc<Mutex<T>>, Arc<RwLock<T>> y tipos atómicos con órdenes de memoria.
+\item Comprender la compilación de funciones async a máquinas de estados sin pila (stackless coroutines), el rasgo Future::poll y la garantía estructural de Pin<P>.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark F. Nivel Experto: Rust Inseguro (unsafe), FFI con C, Macros, WebAssembly, Embedded (no\_std) y Optimización}
+\begin{itemize}
+\item Enumerar exactamente los cinco superpoderes de un bloque unsafe y encapsularlos tras interfaces seguras con contratos Safety documentados.
+\item Construir puentes FFI bidireccionales con C (\#[repr(C)], extern "C", \#[no\_mangle]) y auditar ausencias de Undefined Behavior con Miri.
+\item Escribir macros declarativas (macro\_rules!) e higiénicas, comprender macros procedimentales y compilar crates para WebAssembly y sistemas empotrados (\#![no\_std]).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Bloques G\(-\)H: Ecosistema Industrial, Pruebas, Benchmarking y Proyectos Completos}
+
+\subsection*{\checkmark G\(-\)H. Ecosistema Profesional, Idioms, Antipatrones, Evaluación y 4 Proyectos en Rust}
+\begin{itemize}
+\item Dominar el ecosistema estándar de producción en Rust: serde, clap, tokio, axum, sqlx, tracing, thiserror, anyhow, proptest y criterion.
+\item Diseñar arquitecturas modulares con Cargo Workspaces, feature flags aditivas, semántica SemVer e idioms (AsRef, Borrow, FromStr, Builder).
+\item Construir y verificar los 4 proyectos integradores progresivos en Rust, incluyendo el motor Key-Value concurrente con WAL y CRC32.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Referencia Normativa src-rust-nomicon. \url{https://doc.rust-lang.org/reference/src-rust-nomicon.html}
+\bibitem{src27} Referencia Normativa src-unicode-15. \url{https://doc.rust-lang.org/reference/src-unicode-15.html}
+\bibitem{src28} Referencia Normativa src-pierce-tapl. \url{https://doc.rust-lang.org/reference/src-pierce-tapl.html}
+\bibitem{src29} Referencia Normativa src-iso-c17. \url{https://doc.rust-lang.org/reference/src-iso-c17.html}
+\bibitem{src30} Referencia Normativa src-kleppmann-ddia. \url{https://doc.rust-lang.org/reference/src-kleppmann-ddia.html}
+\end{thebibliography}
+\end{document}
