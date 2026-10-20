@@ -1,5 +1,20 @@
 # Mecánica de Fluidos
 
+## Revisión bibliográfica 2026-2027 (en curso)
+
+Se han inventariado cinco libros aportados para consulta privada: White (7.ª ed.), Shaughnessy/Katz/Schaffer, Tritton, Boas y Taylor. Los PDF no se incluyen en Git por derechos de autor. El manual añade cuatro secciones de contraste con derivaciones y ejemplos **originales** sobre compuertas, flujo Couette–Poiseuille, sonda Pitot y ecuaciones de Navier–Stokes.
+
+**Guía oficial cotejada:** el PDF firmado de la ULE 2026-2027 (asignatura **0710311**) permite mapear los **seis temas** de la asignatura a los **16 capítulos teóricos** del manual. El examen escrito representa el **70 %** y exige **5/10 como mínimo**; los ejercicios realizados presencialmente durante el curso aportan el **30 %**. Las siete prácticas y cuatro simulacros incluidos en el repositorio son material de estudio propio, no formato oficial confirmado. Esta mejora sigue siendo **parcial**: no certifica las afirmaciones pendientes de fase 6 ni constituye una edición académica cerrada. Consultar [informe de revisión](reports/revision-2026-bibliografia.md), [correspondencia detallada con la guía](bibliography/guia-docente-ule-2026-2027.json) y [manifest bibliográfico](bibliography/revision-2026-bibliografia.json).
+
+Verificar cálculos e integración documental:
+
+```sh
+python3 books/mecanica-fluidos/scripts/check_refuerzo_2026.py
+```
+
+Para cerrar los cambios es obligatorio compilar los tres volúmenes, inspeccionar las páginas modificadas y auditar la profundidad real de cada subtema frente a la guía ya cotejada. No reclasificar fuentes PENDING por el simple hecho de haber localizado nuevos libros.
+
+
 Revisión científica fase 6 del manuscrito de 290 páginas anterior a la revisión de maquetación. Incluye las últimas correcciones locales, posteriores a la copia de clase. Los informes conservan el alcance y los pendientes de cada fase.
 
 ## Editar y compilar

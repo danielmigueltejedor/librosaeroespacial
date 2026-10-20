@@ -1,0 +1,44 @@
+name: Mecánica de Fluidos — PDFs de revisión
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "books/mecanica-fluidos/**"
+      - "shared/latex/**"
+      - "scripts/build-studium-books.py"
+      - ".github/workflows/fluidos-pdfs.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fluidos-pdfs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pdfLaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern poppler-utils
+      - name: Build 3 PDFs (manual, problemas, simulacros)
+        run: python3 scripts/build-studium-books.py mecanica-fluidos
+      - name: Verify 3 PDFs exist and are readable
+        run: |
+          set -euo pipefail
+          for part in manual problemas simulacros; do
+            file="dist/studium/mecanica-fluidos/mecanica-fluidos-${part}.pdf"
+            test -s "$file"
+            pdfinfo "$file" | grep -E '^Pages:'
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mecanica-fluidos-ule-2026-2027-pdfs
+          path: dist/studium/mecanica-fluidos/mecanica-fluidos-*.pdf
+          if-no-files-found: error
