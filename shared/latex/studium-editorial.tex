@@ -1,5 +1,6 @@
 % One editorial system for the seven Studium subjects.
 % Load after \documentclass, before book-specific configuration.
+\providecommand{\studiumsharedroot}{../../../shared/latex}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -39,24 +40,7 @@
 \definecolor{studiumCheckFrame}{RGB}{96,48,130}
 \definecolor{studiumCodeBack}{RGB}{245,245,242}
 \definecolor{studiumCodeRule}{RGB}{48,48,52}
-\titleformat{\chapter}[display]{\normalfont\filright}{\large\mdseries\scshape\chaptertitlename\ \thechapter}{1ex}{\normalfont\huge\bfseries}
-\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
-\titleformat{name=\chapter,numberless}[display]{\normalfont\filright}{}{0pt}{\normalfont\huge\bfseries}
-\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{.8em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{.7em}{}
-\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{.7em}{}
-\makeatletter
-\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.5em}}
-\patchcmd{\l@chapter}{1.5em}{2.5em}{}{}
-\@openrightfalse
-\let\cleardoublepage\clearpage
-\makeatother
-\setcounter{secnumdepth}{2}\setcounter{tocdepth}{1}
-\setlength{\parindent}{1.5em}\setlength{\parskip}{3pt plus .5pt}
-\setlength{\emergencystretch}{2em}\raggedbottom
-\setlist{itemsep=2pt,topsep=4pt,leftmargin=*}
-\setlist[description]{style=nextline,leftmargin=0pt,labelwidth=0pt,labelindent=0pt}
-\allowdisplaybreaks[2]
+\input{\studiumsharedroot/studium-typography.tex}
 \newcounter{studiumfigure}
 \makeatletter\@addtoreset{studiumfigure}{chapter}\makeatother
 \renewcommand{\thestudiumfigure}{\thechapter.\arabic{studiumfigure}}
@@ -82,11 +66,6 @@
 \newcommand{\figura}[2]{\begin{figure}[tbp]\centering\includegraphics[width=.83\linewidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}\noindent La figura~\ref{fig:#1} ofrece una representación del modelo discutido.}
 \newsavebox{\studiumMathBox}
 \newcommand{\fitmath}[1]{\sbox{\studiumMathBox}{$\displaystyle #1$}\ifdim\wd\studiumMathBox>\linewidth\resizebox{\linewidth}{!}{\usebox{\studiumMathBox}}\else\usebox{\studiumMathBox}\fi}
-\pagestyle{fancy}\fancyhf{}
-\fancyhead[LE]{\footnotesize\thepage\hspace{1.5em}\mdseries\scshape\nouppercase{\leftmark}}
-\fancyhead[RO]{\footnotesize\mdseries\scshape\nouppercase{\leftmark}\hspace{1.5em}\thepage}
-\renewcommand{\headrulewidth}{.4pt}\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
 \lstdefinestyle{studium}{basicstyle=\ttfamily\small,columns=fullflexible,keepspaces=true,showstringspaces=false,breaklines=true,breakatwhitespace=false,frame=leftline,framerule=1.15pt,rulecolor=\color{studiumCodeRule},backgroundcolor=\color{studiumCodeBack},xleftmargin=1.15em,framexleftmargin=.75em,aboveskip=.9em,belowskip=.7em,tabsize=4,keywordstyle=\ttfamily\bfseries,commentstyle=\ttfamily\itshape,stringstyle=\ttfamily}
 \lstset{style=studium}
 \providecommand{\studiumsharedroot}{../../../shared/latex}

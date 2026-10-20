@@ -212,7 +212,7 @@ VOL03_SPEC: dict[str, object] = {
                         "Todo paquete en Rust se denomina *crate* (binario o biblioteca) y se gobierna mediante el manifiesto declarativo "
                         "`Cargo.toml`. Mientras que `Cargo.toml` expresa rangos semánticos compatibles (SemVer, por ejemplo `serde = \"1.0\"`), "
                         "el fichero `Cargo.lock` registra las versiones exactas y los resúmenes criptográficos SHA-256 de cada dependencia, "
-                        "garantizando compilaciones bit a bit reproducibles. Los comandos esenciales del ciclo de ingeniería son `cargo check` "
+                        "fijando versiones de dependencias, sin garantizar por sí solo reproducibilidad binaria. Los comandos esenciales del ciclo de ingeniería son `cargo check` "
                         "(verificación rápida de tipos y préstamos en MIR sin invocar el generador de código LLVM), `cargo test` "
                         "(ejecución concurrente de pruebas unitarias, de integración y de documentación), `cargo clippy -- -D warnings` "
                         "(análisis estático con más de 700 reglas idiomáticas y de rendimiento) y `cargo fmt --check`."

@@ -10,13 +10,7 @@ import shutil
 import sys
 from pathlib import Path
 
-STUDIUM_SRC = Path("/Users/danielmigueltejedor/Documents/Developer/studium/src")
-if str(STUDIUM_SRC) not in sys.path:
-    sys.path.insert(0, str(STUDIUM_SRC))
-
-from studium.authoring.audit import _asserted_quantities  # noqa: E402
 from studium.authoring.computation import evaluate  # noqa: E402
-from studium.authoring.grounding import math_statements  # noqa: E402
 from studium.authoring.render import render_draft  # noqa: E402
 from studium.cli.app import main as studium_main  # noqa: E402
 from studium.mcp.server import dispatch, open_workspace  # noqa: E402
@@ -89,7 +83,7 @@ def fill_solution_expected(solution: dict[str, object]) -> dict[str, object]:
     return filled
 
 
-def build_studium_volume(spec: dict[str, object]) -> dict[str, object]:
+def _generate_studium_volume(spec: dict[str, object]) -> dict[str, object]:
     """Construye un volumen completo como proyecto nativo de Studium (`COMPUTER_SCIENCE`, `es`),
     ejecuta todas las comprobaciones deterministas y compila el PDF.
     """
@@ -98,11 +92,22 @@ def build_studium_volume(spec: dict[str, object]) -> dict[str, object]:
     subtitle = str(spec["subtitle"])
     target_pages = int(spec.get("target_pages", 65))
 
+    catalog = json.loads(SOURCES_PATH.read_text(encoding="utf-8")) + list(spec.get("extra_sources", []))
+    known = {str(row["id"]) for row in catalog}
+    missing = sorted({str(key) for ch in spec["chapters"] for key in ch.get("sources", [])} - known)
+    if missing:
+        raise ValueError(f"Unresolved sources: {missing}")
+
+    for item in catalog:
+        if str(item["id"]) in {str(key) for ch in spec["chapters"] for key in ch.get("sources", [])}:
+            if item.get("text_origin") != "opened_source_quote" or not item.get("locator") or not item.get("retrieved_on") or item.get("license_verified") is not True or not item.get("license_evidence_url"):
+                raise ValueError(f"Source {item['id']} has no traceable opened quotation")
+
     VOLUMES_DIR.mkdir(parents=True, exist_ok=True)
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     book_dir = VOLUMES_DIR / slug
     if book_dir.exists():
-        shutil.rmtree(book_dir)
+        raise FileExistsError(f"Refusing to regenerate existing authoring records: {book_dir}")
 
     rc = studium_main([
         "create",
@@ -137,44 +142,16 @@ def build_studium_volume(spec: dict[str, object]) -> dict[str, object]:
     extra_sources = list(spec.get("extra_sources", []))
     all_sources = json.loads(json.dumps(catalog_sources + extra_sources, ensure_ascii=False))
     chapters: list[dict[str, object]] = list(spec["chapters"])
-    source_supplements: dict[str, list[str]] = {}
-    for ch in chapters:
-        ch_texts = [str(ch.get("purpose", "")), str(ch.get("definition", "")), str(ch.get("self_check", ""))]
-        if ch.get("consejo"):
-            ch_texts.append(str(ch["consejo"]))
-        for para in ch.get("paragraphs", []):
-            if isinstance(para, dict):
-                ch_texts.append(str(para.get("text", "")))
-        combined = "\n".join(ch_texts)
-        additions: list[str] = []
-        for _kind, stmt in math_statements(combined):
-            stmt_str = f"${stmt}$"
-            if stmt_str not in additions:
-                additions.append(stmt_str)
-        for q_name, q_val in _asserted_quantities(combined):
-            q_str = f"{q_name} = {q_val}"
-            if q_str not in additions:
-                additions.append(q_str)
-        if additions:
-            addon_line = " Fórmulas y constantes de referencia: " + " ; ".join(additions) + "."
-            for src_key in ch.get("sources", []):
-                source_supplements.setdefault(str(src_key), []).append(addon_line)
     existing_ids = {str(item["id"]) for item in all_sources}
-    for ch in chapters:
-        for src_key in ch.get("sources", []):
-            sk = str(src_key)
-            if sk not in existing_ids:
-                all_sources.append({
-                    "id": sk,
-                    "title": f"Referencia Normativa {sk}",
-                    "url": f"https://doc.rust-lang.org/reference/{sk}.html",
-                    "text": f"Especificación técnica y semántica formal para {sk}.",
-                })
-                existing_ids.add(sk)
+    missing = sorted({str(key) for ch in chapters for key in ch.get("sources", [])} - existing_ids)
+    if missing:
+        raise ValueError(f"Unresolved source identifiers; authentic evidence required: {missing}")
+    used_ids = {str(key) for ch in chapters for key in ch.get("sources", [])}
+    all_sources = [item for item in all_sources if str(item["id"]) in used_ids]
     for item in all_sources:
-        sid = str(item["id"])
-        if sid in source_supplements:
-            item["text"] = str(item["text"]) + "".join(source_supplements[sid])
+        if item.get("text_origin") != "opened_source_quote" or not item.get("locator") or not item.get("retrieved_on") or item.get("license_verified") is not True or not item.get("license_evidence_url"):
+            raise ValueError(f"Source {item['id']} requires an authentic opened quotation and locator; client summaries are not excerpts")
+    # Source bytes are never supplemented with the manuscript's own assertions.
     excerpts: dict[str, str] = {}
     for item in all_sources:
         src_res = dispatch(
@@ -526,3 +503,19 @@ def build_studium_volume(spec: dict[str, object]) -> dict[str, object]:
     }
     print(f"[OK] {slug}: {pages} páginas, {summary['words']} palabras, {summary['problems']} problemas -> {dist_pdf.name}")
     return summary
+
+
+def build_studium_volume(spec: dict[str, object], *, operation: str = "compile") -> dict[str, object]:
+    """Compile existing records; generating a new volume is a separate operation.
+
+    Existing journals are never regenerated. Editorial updates must be append-only
+    revisions with their existing ids. Generated candidates live in temporary trees.
+    """
+    from build_collection import compile_volume, generate_new_volume
+
+    slug = str(spec["slug"])
+    if operation == "compile":
+        return compile_volume(slug)
+    if operation == "generate":
+        return generate_new_volume(spec, _generate_studium_volume)
+    raise ValueError("operation must be compile or generate; update existing records with explicit revisions")

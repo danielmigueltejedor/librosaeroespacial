@@ -1,0 +1,15 @@
+% Programming adaptation of the shared Studium typography and cover.
+\usepackage{tikz,enumitem,etoolbox,needspace,microtype}
+\geometry{a4paper,margin=2.5cm,headheight=14pt}
+\definecolor{studiumInk}{HTML}{142C40}
+\definecolor{studiumCyan}{RGB}{0,184,205}
+\newcommand{\studiumsharedroot}{../../../../shared/latex}
+\input{\studiumsharedroot/studium-typography.tex}
+\input{\studiumsharedroot/studium-cover.tex}
+\renewcommand{\studiumcovercollection}{BIBLIOTECA DE PROGRAMACIÓN}
+\renewcommand{\studiumcoverdiscipline}{OBRA DE ESTUDIO INDEPENDIENTE}
+\renewcommand{\studiumcoverinstitution}{Enciclopedia de Programación e Ingeniería del Software}
+\renewcommand{\studiumcoveredition}{Edición en revisión}
+\fancyfoot[C]{\footnotesize Borrador de estudio: revisión técnica y de fuentes pendiente}
+\lstset{style=studium,keywordstyle=\ttfamily\bfseries\color{studiumDefFrame},commentstyle=\ttfamily\itshape\color{studiumTipFrame},numberstyle=\tiny\color{studiumCodeRule}}
+\ifdefined\pdftrailerid\pdftrailerid{}\fi

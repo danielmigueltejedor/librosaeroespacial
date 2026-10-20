@@ -20,6 +20,15 @@ int main(void) {
     void *overflow = arena_alloc_aligned(&arena, 512, 8);
     assert(overflow == NULL);
 
+    assert(arena_alloc_aligned(&arena, 1, 0) == NULL);
+    assert(arena_alloc_aligned(&arena, 1, 3) == NULL);
+    assert(arena_alloc_aligned(&arena, 0, 1) == NULL);
+    assert(arena_alloc_aligned(&arena, SIZE_MAX, 1) == NULL);
+    size_t saved = arena.offset;
+    arena.offset = SIZE_MAX;
+    assert(arena_alloc_aligned(&arena, 1, 1) == NULL);
+    arena.offset = saved;
+
     uint8_t frame[] = {0xA5, 0x5A, 0x01, 0x03, 0x00, 0x00, 0x00, 0x04, 'T', 'E', 'L', 'E'};
     TelemetryPacket pkt;
     assert(parse_telemetry_packet(frame, sizeof(frame), &pkt) == true);
@@ -28,6 +37,12 @@ int main(void) {
 
     /* Trama truncada debe rechazarse limpiamente */
     assert(parse_telemetry_packet(frame, 10, &pkt) == false);
+
+    assert(!parse_telemetry_packet(NULL, 100, &pkt));
+    assert(!parse_telemetry_packet(frame, 7, &pkt));
+    assert(!parse_telemetry_packet(frame, sizeof(frame), NULL));
+    frame[0] = 0;
+    assert(!parse_telemetry_packet(frame, sizeof(frame), &pkt));
 
     arena_reset(&arena);
     assert(arena.offset == 0);

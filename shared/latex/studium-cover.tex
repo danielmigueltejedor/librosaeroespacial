@@ -1,5 +1,9 @@
 % Shared cover: every letter remains editable vector text; photographs keep original pixels.
 \providecommand{\studiumcoverphoto}{}
+\providecommand{\studiumcovercollection}{BIBLIOTECA DE INGENIERÍA}
+\providecommand{\studiumcoverdiscipline}{GRADO EN INGENIERÍA AEROESPACIAL}
+\providecommand{\studiumcoverinstitution}{Universidad de León}
+\providecommand{\studiumcoveryear}{2026}
 \providecommand{\studiumcoveredition}{Primera edición}
 \providecommand{\studiumcovercategory}{MANUAL UNIVERSITARIO}
 \providecommand{\studiumphotocredit}{Crédito y procedencia en el proyecto del libro.}
@@ -24,14 +28,14 @@
 \fill[white] (0,0) rectangle (595.276,89.5);
 \node[anchor=west,text=studiumInk,font=\sffamily\bfseries\fontsize{18}{20}\selectfont,inner sep=0pt] at (51.223,38.5){STUDIUM};
 \fill[studiumCyan] (51.223,61.5) rectangle (80.8,63.7);
-\node[anchor=west,text=studiumInk,font=\sffamily\fontsize{9}{11}\selectfont,inner sep=0pt] at (89.49,65.5){BIBLIOTECA DE INGENIERÍA};
+\node[anchor=west,text=studiumInk,font=\sffamily\fontsize{9}{11}\selectfont,inner sep=0pt] at (89.49,65.5){\studiumcovercollection};
 \node[anchor=west,text=studiumCyan,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,608){#3};
 \node[anchor=north west,text=white,text width=493pt,font=\rmfamily\bfseries\fontsize{\studiumcovertitlesize}{\studiumcovertitleleading}\selectfont,inner sep=0pt] at (51.223,627){#1};
 \node[anchor=north west,text=white!82!studiumInk,text width=493pt,font=\sffamily\fontsize{11}{14}\selectfont,inner sep=0pt] at (51.223,730){#2};
-\node[anchor=west,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,774){GRADO EN INGENIERÍA AEROESPACIAL};
-\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,789){Universidad de León};
+\node[anchor=west,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,774){\studiumcoverdiscipline};
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,789){\studiumcoverinstitution};
 \draw[white!75!studiumInk,line width=.4pt] (51.223,801) -- (544.05,801);
-\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,822){2026};
+\node[anchor=west,text=white!82!studiumInk,font=\sffamily\fontsize{10}{12}\selectfont,inner sep=0pt] at (51.223,822){\studiumcoveryear};
 \node[anchor=east,text=white,font=\sffamily\bfseries\fontsize{10}{12}\selectfont,inner sep=0pt] at (544.05,822){\studiumcoveredition};
 \end{scope}\end{tikzpicture}\null\end{titlepage}\hypersetup{pageanchor=true}}
 \newcommand{\portada}[2]{\studiumcover{#1}{#2}{\studiumcovercategory}}

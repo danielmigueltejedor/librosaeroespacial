@@ -32,7 +32,7 @@ def _normalize_spec(raw: dict[str, object]) -> dict[str, object]:
         extra_sources.append({
             "id": f"src-vol-extra-{i+1}",
             "title": s["title"],
-            "url": s["url"].rstrip("/") + f"/vol-ref-{i+1}",
+            "url": s["url"],
             "text": " ".join(s["excerpts"]),
         })
     spec["extra_sources"] = extra_sources
@@ -723,7 +723,7 @@ VOL08_SPEC = {
         },
         {
             "id": "CH-06",
-            "title": "Bases de Datos Distribuidas, NoSQL, Teorema CAP/PACELC, PostgreSQL, SQLite, MongoDB y Redis",
+            "title": "Bases de datos distribuidas: modelos y compromisos",
             "prerequisites": "CH-05 (Motores de almacenamiento y transacciones ACID).",
             "learning_outcomes": "Diseñar topologías de replicación y particionamiento (sharding), evaluar compromisos CAP/PACELC y seleccionar con criterio técnico entre motores relacionales y NoSQL.",
             "summary": "Arquitectura de bases de datos a escala: replicación síncrona/asíncrona, particionamiento por hash consistente y rango, transacciones distribuidas y motores de producción.",

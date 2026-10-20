@@ -47,3 +47,15 @@ Los recursos compartidos están declarados en cada `studium-import.json`; el com
 Mecánica de Vuelo y Materiales y Mantenimiento usan la misma plantilla compartida. Sus adaptadores locales conservan notación, créditos y macros propias. La raíz del recurso compartido se configura según el directorio de compilación. Las portadas usan coordenadas físicas en puntos PDF (bp), fotografía proporcional, bloque de título y posiciones comunes; el título largo de Materiales utiliza 26/29 puntos. No se altera la escala de las ecuaciones para ocultar defectos. Los avisos de revisión académica se conservan dentro de los volúmenes.
 
 La fotografía real X-29 sustituye la ilustración digital de las tres portadas de Vuelo; se incluye procedencia y licencia en cada PDF. Los recursos históricos siguen en Git. El constructor registra entradas efectivamente leídas y sus huellas, usa una fecha de compilación fija y rechaza referencias o citas sin resolver. Esto no constituye aprobación científica.
+
+## Colección de programación: adaptación del 20 de octubre de 2026
+
+La jerarquía, espaciado y cabeceras se encuentran en
+`shared/latex/studium-typography.tex`, cargado por la plantilla tradicional y por
+el adaptador de programación. Las siete importaciones declaran ese recurso.
+La portada común admite `studiumcovercollection`, `studiumcoverdiscipline`,
+`studiumcoverinstitution` y `studiumcoveryear`. Los valores históricos de
+Ingeniería Aeroespacial y Universidad de León se conservan como predeterminados.
+La enciclopedia los configura como biblioteca de programación y obra de estudio
+independiente. Las licencias fotográficas se conservan en los créditos de cada
+volumen y en su manifiesto. El diseño común no concede aprobación académica.

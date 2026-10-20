@@ -22,3 +22,22 @@ def test_division_by_zero_raises_clean_exception() -> None:
     vm = StackVM()
     with pytest.raises(ZeroDivisionError):
         vm.execute(bytecode)
+
+
+def test_compiler_reuse_discards_previous_program() -> None:
+    compiler = BytecodeCompiler()
+    compiler.compile_source("100")
+    assert StackVM().execute(compiler.compile_source("2 + 3")) == 5
+
+
+@pytest.mark.parametrize("source", ["f(1)", "[1, 2]", "True", "x.y", "not 1", "1 ** 2"])
+def test_unsupported_syntax_is_rejected_instead_of_partially_evaluated(source) -> None:
+    with pytest.raises(TypeError):
+        BytecodeCompiler().compile_source(source)
+
+
+def test_unary_signs_and_undefined_variables() -> None:
+    compiler = BytecodeCompiler()
+    assert StackVM().execute(compiler.compile_source("-2 * (3 + +4)")) == -14
+    with pytest.raises(NameError):
+        StackVM().execute(compiler.compile_source("missing + 1"))

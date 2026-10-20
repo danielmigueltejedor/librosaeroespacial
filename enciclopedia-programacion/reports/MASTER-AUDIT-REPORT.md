@@ -1,3 +1,5 @@
+> INFORME HISTÓRICO SUPERADO. Sus afirmaciones de verificación no establecen corrección técnica o pedagógica. Consulte PROGRESS.md y los inventarios actuales.
+
 # INFORME MAESTRO DE AUDITORÍA Y ENTREGA — ENCICLOPEDIA DE PROGRAMACIÓN E INGENIERÍA DEL SOFTWARE
 
 ## 1. Resumen Ejecutivo

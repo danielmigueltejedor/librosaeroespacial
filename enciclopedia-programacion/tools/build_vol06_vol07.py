@@ -808,7 +808,7 @@ VOL06_SPEC: dict[str, object] = {
                 {"id": "cpt-kt-coroutines-cps-flow", "title": "Transformación Continuation-Passing Style (CPS) de funciones suspend, concurrencia estructurada y flujos fríos/calientes"},
             ],
             "subsections": [
-                {"id": "sec-v6-7-1", "title": "Bloques A–D: Filosofía de Kotlin, interoperabilidad JVM/KMP, null-safety, data/sealed classes y extensiones"},
+                {"id": "sec-v6-7-1", "title": "Kotlin: tipos, extensiones e interoperabilidad"},
                 {"id": "sec-v6-7-2", "title": "Bloques E–H: Funciones inline/reified, DSLs, Coroutines (suspend, CPS, Flow), ecosistema (Ktor, Compose) y proyectos"},
             ],
             "purpose": (
@@ -1068,7 +1068,7 @@ VOL07_SPEC: dict[str, object] = {
             ],
             "subsections": [
                 {"id": "sec-v7-1-1", "title": "Bloques A–D: Modelo relacional, DDL con restricciones, orden lógico de SELECT, lógica trivaluada (NULL) y JOINs"},
-                {"id": "sec-v7-1-2", "title": "Bloques E–H: CTEs recursivas, funciones de ventana (OVER), transacciones, EXPLAIN y projects/sql-transactional-ledger"},
+                {"id": "sec-v7-1-2", "title": "SQL: consultas recursivas, ventanas y transacciones"},
             ],
             "figure": {
                 "key": "fig-sql-logical-execution-order",
