@@ -14,5 +14,7 @@
   ],
   "outcome": "Outcome(kind='contradiction', premises=(), detail='the shapes differ')",
   "diagnosis": "La matriz Cnb y el vector vg se interpretan como escalares cuando se multiplican por una matriz explícita. El comprobador devuelve contradicción por formas distintas, aunque la expresión física usa Cnb de 3x3 y vg de 3x1.",
-  "action": "No se modifica el framework ni la ecuación correcta. Se conserva el hallazgo y se exige revisión humana; no se declara superada la auditoría de ecuaciones."
+  "action": "No se modifica el framework ni la ecuación correcta. Se conserva el hallazgo y se exige revisión humana; no se declara superada la auditoría de ecuaciones.",
+  "status": "RESOLVED_IN_STUDIUM",
+  "resolution_Action": "Corregido en Studium (src/studium/authoring/latex_calculus.py): check_relation y _Parser.multiply detectan factores simbólicos o vectores sin dimensión matricial declarada al multiplicar una matriz explícita y devuelven None (not_machine_checkable) en lugar de un falso diagnóstico de contradicción por formas."
 }
