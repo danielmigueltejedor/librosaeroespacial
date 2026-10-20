@@ -118,3 +118,15 @@ def test_integral_keeps_each_volumes_named_toc_destinations():
         name = result.pages[number * 2]['/Annots'][0].get_object()['/A']['/D']
         assert name == f'vol{number}:chapter.1'
         assert result.get_destination_page_number(result.named_destinations[name]) == number * 2 + 1
+
+
+def test_new_generation_refuses_content_free_exercise_templates(tmp_path, monkeypatch):
+    import studium_volume_helper as helper
+    catalog = tmp_path / "sources.json"
+    catalog.write_text("[]")
+    monkeypatch.setattr(helper, "SOURCES_PATH", catalog)
+    monkeypatch.setattr(helper, "VOLUMES_DIR", tmp_path / "volumes")
+    with pytest.raises(ValueError, match="concrete technical scenario"):
+        helper._generate_studium_volume({"slug": "vol00-test", "title": "Test", "subtitle": "Test",
+            "chapters": [{"sources": [], "exercises": [{"prompt": "analice el escenario técnico número 1"}]}]})
+    assert not (tmp_path / "volumes").exists()

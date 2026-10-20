@@ -98,6 +98,11 @@ def _generate_studium_volume(spec: dict[str, object]) -> dict[str, object]:
     if missing:
         raise ValueError(f"Unresolved sources: {missing}")
 
+    for chapter in spec["chapters"]:
+        for exercise in (chapter.get("exercises") or chapter.get("practice_problems") or []):
+            if "analice el escenario técnico número" in str(exercise.get("prompt", "")):
+                raise ValueError("Exercise template has no concrete technical scenario")
+
     for item in catalog:
         if str(item["id"]) in {str(key) for ch in spec["chapters"] for key in ch.get("sources", [])}:
             if item.get("text_origin") != "opened_source_quote" or not item.get("locator") or not item.get("retrieved_on") or item.get("license_verified") is not True or not item.get("license_evidence_url"):
@@ -132,6 +137,9 @@ def _generate_studium_volume(spec: dict[str, object]) -> dict[str, object]:
         str(VOLUMES_DIR),
     ])
     assert rc == 0, f"studium create falló con código {rc} para {slug}"
+
+    with (book_dir / "project.toml").open("a", encoding="utf-8") as handle:
+        handle.write('\n[render]\nfrontmatter = []\nappendices = ["solutions"]\n')
 
     session = open_workspace(str(VOLUMES_DIR))
     assert session is not None

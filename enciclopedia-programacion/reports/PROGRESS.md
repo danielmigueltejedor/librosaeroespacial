@@ -3,15 +3,47 @@
 ## Estado de entrega
 
 Hito implementado y comprobable, **sin aprobación académica**. La misión completa
-no está terminada. La revisión individual de los 75 capítulos, de las 511
-actividades y de su suficiencia curricular permanece abierta. No hay release
+no está terminada. La revisión individual de los 75 capítulos, de las 299 actividades activas y de su suficiencia curricular permanece abierta. No hay release
 manifest ni fusión en main.
 
 Referencias reproducibles iniciales:
 - Librosaeroespacial: `63fe34a23d4f8beb65a92c09d99123d52cec39c8`.
 - Studium: `ebf953dedbd9c483f9651ff93b2a66135db2dc80` (main remoto al iniciar).
-- Studium requerido por esta edición: `f5f7bd021a984184c2ac4af202f44f2f771b6f87`,
+- Studium requerido por esta edición: `42ddba1ceb422573ead05020975076f3e9b4cb1b`,
   [PR #79](https://github.com/danielmigueltejedor/studium/pull/79).
+
+## Depuración solicitada: solo material de lectura pertinente
+
+Se quita la hoja de fórmulas vacía de los diez volúmenes. También se omiten la
+notación con unidades heredadas, la auditoría interna, el plan de trabajo y los
+prefacios genéricos repetidos. Los informes de control permanecen separados.
+La guía no contiene ejercicios de inventario ni apéndice vacío; los volúmenes
+I y II conservan sus desarrollos resueltos dentro de los capítulos, sin duplicarlos
+al final. Las monografías conservan las respuestas a su práctica independiente.
+
+Se retiran 212 actividades: 192 plantillas aritméticas sin escenario y 20
+actividades de inventario de la guía. Los registros originales se conservan
+mediante revisiones con los mismos identificadores. Quedan 299 actividades
+activas (291 numéricas, 8 pruebas Rust), distribuidas en los mismos 75 capítulos.
+La retirada no completa los bancos de práctica que ahora necesitan desarrollo.
+
+Se corrigen 38 registros iniciales y dos enunciados relacionados con el WAL; se acortan los
+títulos de la guía y se eliminan de 11 títulos las promesas de cuatro proyectos
+inexistentes. Las correcciones incluyen las garantías de unsafe, memcpy,
+representación de clases valor Kotlin, gestión ARC, strict_types de PHP, índices
+SQL, cascada CSS, durabilidad SQLite y datos sensibles del estado Terraform.
+Los seis laboratorios se describen según sus archivos reales: el WAL Rust está
+en memoria, la cola C++ es FIFO y el módulo TypeScript no es un servidor HTTP.
+Las referencias primarias consultadas se registran sin fabricar extractos ni
+promoverlas a aprobación independiente.
+
+`reader-cleanup.json` documenta las retiradas y correcciones. Los controles de
+los diez volúmenes se encuentran en `reader-edition-checks.json`: no aparecen
+capítulos automáticos sobrantes, se comprueban las huellas canónicas de párrafos (41 metadatos reparados) y se repiten
+87 pasos aritméticos almacenados. Esto no demuestra la corrección semántica de
+cada actividad. La revisión independiente de fuentes, profundidad y soluciones
+continúa pendiente. Los 61 fragmentos conservan 22 pendientes o ilustraciones;
+las seis suites de proyectos pasan y no hay fallos en las comprobaciones ejecutadas.
 
 ## Diagnóstico y correcciones implementadas
 
@@ -58,19 +90,19 @@ No se atribuye durabilidad en disco al WAL ni un servidor HTTP al limitador.
 
 ## Verificación medida
 
-- Studium: **1090 pruebas pasan, 2 omitidas** (paquetes TeX catalán/gallego ausentes).
+- Studium: **1094 pruebas pasan, 2 omitidas** (paquetes TeX catalán/gallego ausentes).
 - Ruff: pasa. Pyright: cero errores con el intérprete del entorno de pruebas.
-- Librosaeroespacial: **74 pruebas pasan, 7 subtests pasan**, incluida preservación
+- Librosaeroespacial: **75 pruebas pasan, 7 subtests pasan**, incluida preservación
   de correcciones y destinos de índices en la unión de PDF.
 - Seis proyectos: `PROJECT_TEST_COMMAND_PASSED`; estas pruebas finitas no son
   una certificación de corrección general.
-- Fragmentos vigentes: **62**; clasificaciones:
-  `{"SYNTAX_VALIDATED": 14, "COMPILED": 17, "TESTS_PASSED": 8, "UNVERIFIED": 22, "LITERAL_OR_PSEUDOCODE": 1}`.
+- Fragmentos vigentes: **61**; clasificaciones:
+  `{"SYNTAX_VALIDATED": 14, "COMPILED": 17, "TESTS_PASSED": 8, "UNVERIFIED": 21, "LITERAL_OR_PSEUDOCODE": 1}`.
 - Fallos de comprobaciones ejecutadas: **0**. Pendientes o
-  ilustraciones no verificadas: **23**. Estado global de código:
+  ilustraciones no verificadas: **22**. Estado global de código:
   `INCOMPLETE`, nunca «verificación completa».
-- Integral: **486 páginas**; se comprueban los
-  **644 enlaces internos nombrados**
+- Integral: **343 páginas**; se comprueban los
+  **529 enlaces internos nombrados**
   contra su página original más el desplazamiento. Se preservan las anotaciones.
 - El manual de Mecánica de Fluidos recompilado conserva sus **316 páginas** y
   texto extraído idéntico. Los siete adaptadores superan la comprobación de
@@ -81,16 +113,16 @@ No se atribuye durabilidad en disco al WAL ni un servidor HTTP al limitador.
 
 | Volumen | Páginas de revisión | Overfull | Underfull registrados |
 | --- | ---: | ---: | ---: |
-| vol00 | 28 | 0 | 2 |
-| vol01 | 65 | 0 | 1 |
-| vol02 | 65 | 0 | 1 |
-| vol03 | 51 | 0 | 4 |
-| vol04 | 48 | 0 | 4 |
-| vol05 | 47 | 0 | 5 |
-| vol06 | 48 | 0 | 4 |
-| vol07 | 49 | 0 | 3 |
-| vol08 | 44 | 0 | 1 |
-| vol09 | 41 | 0 | 2 |
+| vol00 | 12 | 0 | 1 |
+| vol01 | 32 | 0 | 1 |
+| vol02 | 32 | 0 | 0 |
+| vol03 | 42 | 0 | 4 |
+| vol04 | 39 | 0 | 4 |
+| vol05 | 38 | 0 | 5 |
+| vol06 | 39 | 0 | 3 |
+| vol07 | 40 | 0 | 2 |
+| vol08 | 36 | 0 | 1 |
+| vol09 | 33 | 0 | 1 |
 
 No hay referencias/citas indefinidas, caracteres ausentes ni errores graves de
 LaTeX en estas compilaciones. Los PDF se generan como artefactos y no se añaden
@@ -99,21 +131,19 @@ incluye autoría, fotografías y plantillas compartidas.
 
 ## Reproducción desde un clon limpio y CI
 
-Se clona el commit `a7d8d096322b196c677f3c76ed7f8c28b4b43699` en otro directorio y
+En la entrega anterior a esta depuración se clonó el commit `a7d8d096322b196c677f3c76ed7f8c28b4b43699` en otro directorio y
 se crea un entorno Python 3.12 vacío. Studium se instala desde su commit público
 de GitHub, sin PYTHONPATH ni un clon hermano. Los diez volúmenes y la edición
 integral se reconstruyen con **bytes idénticos** y huellas de entrada iguales;
-Git queda limpio en el clon. Ver `clean-clone-reproduction.json`. El entorno
+Git quedó limpio en aquel clon. Esa prueba corresponde a la edición anterior; no se atribuye identidad binaria de clon limpio a esta depuración. Ver `clean-clone-reproduction.json`. El entorno
 resuelto se conserva en `requirements-constraints.txt`.
 
-La CI de Studium PR #79 pasa en Python 3.11 y 3.12, además de la comprobación de
-descripción. La CI de la PR del libro se comprueba por separado; estos resultados
-no constituyen revisión académica.
+La CI de la entrega anterior de Studium pasó en Python 3.11 y 3.12. Para el nuevo commit se registran los resultados locales anteriores; al consultar sus checks no había nuevas ejecuciones. La CI del nuevo cambio del libro se comprueba por separado. Ninguno de estos controles constituye revisión académica.
 
 ## Inspección visual y límites
 
 Se inspeccionan las muestras renderizadas de los diez volúmenes, sus portadas,
-índices, aperturas, ejercicios, respuestas, notación y bibliografía. La matriz
+índices, aperturas, ejercicios, respuestas y bibliografía. La matriz
 `visual-review/matrix.json` enumera las páginas y declara al revisor: el mismo
 modelo en una pasada visual, **no una revisión académica independiente**.
 Se conservan antes/después de la portada Rust y muestras de código.

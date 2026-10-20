@@ -11,6 +11,24 @@ aritmética, diversidad bibliográfica y compilación no validan una implementac
 ni la suficiencia de su explicación. La revisión curricular de los 75 capítulos
 sigue abierta; los recuentos de palabras no la sustituyen.
 
+## Edición de lectura depurada
+
+Se elimina la hoja de fórmulas vacía y los apéndices de notación, auditoría interna
+y plan de trabajo automático. La portada ya incluye orientación y alcance, por
+lo que se omiten los prefacios genéricos repetidos. Se mantienen capítulos,
+actividades útiles, soluciones de práctica, bibliografía y créditos. La guía y
+los dos primeros volúmenes no duplican en un apéndice los desarrollos ya resueltos.
+
+Se retiran mediante revisiones, conservando su historial, 192 ejercicios de
+plantilla sin escenario técnico y 20 ejercicios de inventario del volumen guía.
+Quedan 299 actividades activas: 291 numéricas y 8 pruebas Rust. No se presentan
+como 299 programas verificados. Las correcciones focalizadas están registradas
+en `reports/reader-cleanup.json`; los controles de toda la colección, en
+`reports/reader-edition-checks.json`.
+
+Cada `project.toml` selecciona explícitamente las secciones de lectura mediante
+`[render]`. Los libros STEM sin esa configuración conservan sus apéndices.
+
 ## Resultados y estado
 
 - `reports/baseline-inventory.json`: referencia Git, inventario y recompilación
