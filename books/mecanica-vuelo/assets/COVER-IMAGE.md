@@ -1,16 +1,22 @@
-# Fotografía de las tres portadas de Mecánica de Vuelo
+# Fotografías de las tres portadas de Mecánica de Vuelo
 
-NASA, **X-29 in Banked Flight**, 24 de julio de 1987, foto EC87-0182-14.
-La misma fotografía real se utiliza en manual, problemas y simulacros.
+Cada uno de los tres volúmenes de **Mecánica de Vuelo** utiliza una fotografía histórica distinta de dominio público de la NASA (aspecto 6:5, 1800 × 1500 píxeles, recorte proporcional central con remuestreo Lanczos y sin alteración generativa):
 
-- [Ficha y licencia de la imagen](https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg).
-- [Condiciones de reutilización de NASA](https://www.nasa.gov/nasa-brand-center/images-and-media/).
-- Consulta: 19 de octubre de 2026. Autor institucional: NASA; no se ha identificado fotógrafo individual.
-- Dominio público en Estados Unidos por autoría NASA; reutilización educativa con reconocimiento de procedencia y sin implicar respaldo institucional.
-- Original de 2474 × 1978 píxeles; recorte proporcional central y remuestreo a 1800 × 1500, sin alteración generativa, marcas de agua ni modificación del contenido documental.
-- `cover-photo.json` registra URL original, dimensiones y SHA-256 del original y del recurso incorporado.
-- `cover-credit.tex` lleva el crédito al interior de los tres PDF.
+1. **Manual universitario (`assets/cover-manual.jpg`)**:
+   - **Título**: *AD-1 in flight (EC81-15846)* — Avión experimental de ala oblicua NASA AD-1 (N805NA) en vuelo con flecha asimétrica de 60 grados (vuelo n.º 30, 1 de julio de 1981).
+   - **Autor / Fuente**: NASA / Dryden Flight Research Center ([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:AD-1_in_flight_(EC81-15846).jpg)).
+   - **Dimensiones originales**: 3000 × 2400 píxeles (relación 5:4, que permite un recorte 6:5 con la aeronave íntegra de morro a cola y de punta a punta de ala).
 
-La ilustración digital de la importación se conserva en el historial Git. El logotipo raster importado sigue disponible en `studium-horizontal.png`; la cabecera utiliza ahora el texto vectorial STUDIUM de la plantilla común.
+2. **Cuaderno de problemas (`assets/cover-problemas.jpg`)**:
+   - **Título**: *Grumman X-29 Cockpit (EC89-0254-1)* — Cabina e instrumentación de ensayo del X-29 (septiembre de 1989).
+   - **Autor / Fuente**: NASA / DFRC / Bob Brown ([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Grumman_X-29_Cockpit.jpg)).
+   - **Dimensiones originales**: 3000 × 2404 píxeles.
 
-Para repetir la descarga y el recorte: `python3 books/mecanica-vuelo/scripts/obtain_cover_photo.py`, desde la raíz del repositorio. Compilar después con el constructor común. La descarga requiere red; la compilación usa el JPEG incluido y funciona sin ella.
+3. **Simulacros y soluciones (`assets/cover-simulacros.jpg`)**:
+   - **Título**: *X-29 in Banked Flight (EC87-0182-14)* — Grumman X-29 n.º 1 en viraje sobre el desierto de Mojave (24 de julio de 1987).
+   - **Autor / Fuente**: NASA ([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg)).
+   - **Dimensiones originales**: 1800 × 1500 píxeles.
+
+Trazabilidad:
+- `assets/cover-photo.json` registra URL original, fecha de consulta, dimensiones y sumas SHA-256 tanto del archivo original como del JPEG incorporado en cada volumen.
+- `assets/cover-credit-manual.tex`, `assets/cover-credit-problemas.tex` y `assets/cover-credit-simulacros.tex` incluyen el crédito correspondiente en el interior de cada PDF.

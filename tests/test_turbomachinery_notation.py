@@ -46,3 +46,21 @@ class TurbomachineryNotationTests(unittest.TestCase):
         for volume in meta["volumes"]:
             self.assertTrue(volume["license"].startswith("PD-USGov-NASA"))
             self.assertTrue(volume["consulted_on"])
+
+    def test_no_mathit_or_english_dimensionless_in_turbomachinery_publications(self):
+        pub = ROOT / "books/turbomaquinas/publication"
+        for fname in ("turbomaquinas-ule-2026.tex", "problemas-resueltos.tex", "simulacros-originales.tex"):
+            content = (pub / fname).read_text(encoding="utf-8")
+            self.assertNotIn(r"\mathit{", content, f"\mathit leak in {fname}")
+            self.assertNotIn("en dimensionless", content, f"English dimensionless in {fname}")
+            self.assertNotIn(r"\textasciicircum", content, f"\textasciicircum in {fname}")
+            self.assertNotIn("C_	heta", content, f"TAB control character in {fname}")
+
+    def test_structures_and_fluids_no_english_placeholders_or_raw_python_math(self):
+        est = (ROOT / "books/estructuras-aeroespaciales/latex/manual.tex").read_text(encoding="utf-8")
+        self.assertNotIn("concepts planned", est)
+        self.assertNotIn(r"\textasciicircum", est)
+        self.assertNotIn("**", est)
+        flu = (ROOT / "books/mecanica-fluidos/latex/manual.tex").read_text(encoding="utf-8")
+        self.assertNotIn(r"\textasciicircum", flu)
+        self.assertNotIn("**", flu)

@@ -119,7 +119,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Con $Y$ dado, se evalúa $K_I$ y se divide por la tenacidad supuesta: $K_I/K_{IC}=Y\sigma\sqrt{\pi a}/K_{IC}$. No se sustituye $a$ por una longitud total.}
 \apartado{Sustitución numérica}{$K_I=1{,}12(210)\sqrt{\pi(0{,}0018)}$ MPa$\sqrt{\mathrm m}$; el cociente divide ese valor por 42 en la misma unidad.}
 \caso{Resultado}{$K_I=17.6868\,\mathrm{MPa\sqrt m}$; $K_I/K_{IC}=0.4211$.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{MPa*m\textasciicircum{}0.5}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad resulta inferior a la tenacidad supuesta, con una conclusión estática y condicionada.}
 \apartado{Verificación}{Elevar al cuadrado permite comprobar $K_I^2/(Y^2\sigma^2)=\pi a $. La comparación resulta inferior a uno dentro del modelo.}
 \apartado{Limitaciones}{No se han comprobado espesor ni fatiga o corrosión; no es criterio de aceptación en servicio.}
@@ -161,7 +161,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La ecuación implícita es $f(a)=180\sqrt{\pi a/\cos(\pi a/0{,}08)}-30=0$. Se usa bisección en $0<a<0{,}04$ m; el argumento es positivo y la función crece en el dominio.}
 \apartado{Sustitución numérica}{La raíz se sustituye en $180\sqrt{\pi a/\cos(\pi a/0{,}08)}$. El valor de intensidad debe recuperar 30. La comparación de placa infinita es $a_{\infty}=(30/180)^2/\pi$ m.}
 \caso{Resultado}{$ a_c=8.36874\,\mathrm{mm}$; con $Y=1$, $ a_{c,\infty}=8.84194\,\mathrm{mm}$.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{MPa*m\textasciicircum{}0.5}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La corrección por anchura eleva intensidad y reduce el tamaño crítico respecto a la placa infinita.}
 \apartado{Verificación}{La sustitución de la raíz en la expresión completa recupera 30 MPa raíz de m; el tamaño finito es menor porque Y>1. Se comprueba ac<W/2.}
 \apartado{Limitaciones}{No se extrapola esta solución a una grieta de borde, superficie, otro sistema de carga o plasticidad extensa.}
@@ -233,7 +233,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Se calcula $\sigma_{min}=R\sigma_{max}$ y después $\Delta\sigma=(1-R)\sigma_{max}$. La misma geometría permite escribir $\Delta K=(1-R)K_{max}$.}
 \apartado{Sustitución numérica}{$R=40/200=0{,}2$; $\Delta\sigma=200-40=160$ MPa. $K_{max}=1{,}1(200)\sqrt{\pi(0{,}0025)}$ y $\Delta K=1{,}1(160)\sqrt{\pi(0{,}0025)}$, ambos en MPa$\sqrt{\mathrm m}$.}
 \caso{Resultado}{$K_{max}=19.4970$; $K_{min}=3.8994$; $\Delta K=15.5976\,\mathrm{MPa\sqrt m}$; $R=0{,}20$.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{MPa*m\textasciicircum{}0.5}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad máxima y el rango responden a preguntas físicas distintas: inestabilidad y crecimiento.}
 \apartado{Verificación}{$K_{min}/K_{max}=R$ y $K_{max}-K_{min}=\Delta K$. La intensidad máxima queda por debajo de la tenacidad supuesta en el modelo.}
 \apartado{Limitaciones}{Un $\Delta K$ positivo no garantiza validez de Paris: se necesita dominio de crecimiento, umbral, razón de carga y condiciones. La comparación estática no excluye propagación.}
@@ -255,7 +255,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Enunciado}{Calcule vida entre dos tamaños para una ley de Paris con exponente 2 y explique por qué no se usa la expresión de potencia con denominador 1-m/2.}
 \apartado{Datos}{$ a_i=0{,}8\,\mathrm{mm}$; $ a_f=5\,\mathrm{mm}$; $Y=1$; $\Delta\sigma=90\,\mathrm{MPa}$; $ m=2$; $C=5\times10^{-10}\,\mathrm{m/ciclo}/(\mathrm{MPa\sqrt m})^2$.}
 \apartado{Incógnitas}{N.}
-\apartado{Modelo físico}{Integración de da/[C(Delta K)\textasciicircum{}2].}
+\apartado{Modelo físico}{Integración de $\mathrm{d}a/[C(\Delta K)^{2}]$.}
 \apartado{Hipótesis}{Región de Paris y condiciones constantes asumidas; mismos límites físicos que P16.}
 \apartado{Ecuaciones}{\[N=\frac{\ln(a_f/a_i)}{C(\Delta\sigma\sqrt\pi)^2}.\]}
 \apartado{Desarrollo algebraico}{Con exponente dos, el integrando es proporcional a $1/a$. Se integra como $\ln a$; el cociente de tamaños dentro del logaritmo es adimensional.}
@@ -349,7 +349,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La igualdad de deformación longitudinal permite sumar fuerzas de fases y obtener la regla de mezcla. Densidad usa la misma partición volumétrica sin vacíos.}
 \apartado{Sustitución numérica}{$E_L=0{,}58(240)+0{,}42(3{,}5)$ GPa; $\rho=0{,}58(1800)+0{,}42(1200)$ kg/m$^3$; se convierte GPa a Pa antes de dividir.}
 \caso{Resultado}{$E_L=140.670\,\mathrm{GPa}$; $\rho=1548.0\,\mathrm{kg/m^3}$; $E_L/\rho=9.08721\times10^{7}\,\mathrm{m^2/s^2}$.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{GPa, kg/m\textasciicircum{}3}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{GPa}$, $\mathrm{kg\,m^{-3}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La fracción de fibra eleva rigidez longitudinal y modifica masa dentro de una idealización sin vacíos.}
 \apartado{Verificación}{Ambas propiedades quedan entre las de las fases. Con fracción de fibra cero se recuperan propiedades de matriz.}
 \apartado{Limitaciones}{El cociente no predice por sí solo rigidez de un panel ni otros modos de carga; no se atribuye a producto real.}
@@ -377,7 +377,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Para cada cara, $I=bt^3/12+bt(h/2)^2$. Se suman las dos y se multiplica por $E$. La referencia monolítica usa espesor $2t$.}
 \apartado{Sustitución numérica}{$EI=2(70\times10^9)(0{,}04)(0{,}001)[0{,}03^2/4+0{,}001^2/12]$ N m$^2$; $EI_0=(70\times10^9)(0{,}04)(0{,}002)^3/12$.}
 \caso{Resultado}{$EI=1260.4667\,\mathrm{N\,m^2}$; $EI_0=1.86667\,\mathrm{N\,m^2}$; razón 675.25.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{N*m\textasciicircum{}2}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{N\,m^{2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Separar caras aumenta inercia, pero el beneficio exige que núcleo y unión mantengan la arquitectura.}
 \apartado{Verificación}{Ambas expresiones tienen unidades de rigidez a flexión. Si h=t, las caras contiguas recuperan la inercia de espesor 2 t.}
 \apartado{Limitaciones}{No se comprueban cortadura, aplastamiento, arrugamiento ni despegue. La comparación de masa excluye explícitamente el núcleo.}
@@ -434,7 +434,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{En régimen 1D estacionario el flujo es común a todas las resistencias. La suma de caídas da $T_g-T_c=q^{\prime\prime}R_{tot}$. Después se restan convección caliente y recubrimiento para hallar la interfaz.}
 \apartado{Sustitución numérica}{$R_{tot}=1/1000+0{,}0003/1{,}5+0{,}002/20+1/3000$ m$^2$ K/W; $q^{\prime\prime}=700/R_{tot}$; $T_{r-m}=1400-q^{\prime\prime}(1/1000+0{,}0003/1{,}5)$ K.}
 \caso{Resultado}{$ q^{\prime\prime}=428571.429\,\mathrm{W/m^2}$; $T_{r-m}=885.714\,\mathrm K$.}
-\apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{W/m\textasciicircum{}2}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
+\apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{W\,m^{-2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El reparto de caídas térmicas determina la interfaz dentro de la pared plana idealizada.}
 \apartado{Verificación}{La suma de caídas térmicas es 700 K; la interfaz queda entre las temperaturas de los fluidos.}
 \apartado{Limitaciones}{No se atribuye esta temperatura a un motor real ni se predice vida del recubrimiento.}

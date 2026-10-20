@@ -37,3 +37,9 @@ Los registros antiguos se conservan en el historial con su condición de
 obsolescencia; los controles vigentes se identifican en
 `native-computations.json`. Las fuentes siguen pendientes y no se utiliza la
 reproducción aritmética para promoverlas de autoridad.
+
+## Estado tras la auditoría v4 de Studium
+
+En la rama de corrección del repositorio `studium` (`src/studium/authoring/latex_calculus.py`), se ha corregido la incidencia **MATH-001**:
+- `_Parser.symbol_or_function` sólo registra un identificador en `context.vectors` cuando no está definido como `sympy.MatrixBase` explícita, permitiendo ejecutar `_check_vectors([left, right], context.vectors)` en todas las relaciones.
+- `_Parser.multiply` registra `context.matrix_symbol_product = True` cuando una matriz explícita se multiplica por una expresión escalar con símbolos libres (como una matriz de rotación simbólica $C_{nb}$ no declarada como `MatrixBase`). En tal caso, `check_relation` devuelve `None` (`not_machine_checkable`) en lugar de `Outcome(kind='contradiction', detail='the shapes differ')`, mientras que dos matrices explícitas de dimensiones incompatibles siguen diagnosticándose como contradicción.
