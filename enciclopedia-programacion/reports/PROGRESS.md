@@ -97,6 +97,19 @@ LaTeX en estas compilaciones. Los PDF se generan como artefactos y no se añaden
 a Git. La fecha de compilación está fijada en `build-config.json`; el manifest
 incluye autoría, fotografías y plantillas compartidas.
 
+## Reproducción desde un clon limpio y CI
+
+Se clona el commit `a7d8d096322b196c677f3c76ed7f8c28b4b43699` en otro directorio y
+se crea un entorno Python 3.12 vacío. Studium se instala desde su commit público
+de GitHub, sin PYTHONPATH ni un clon hermano. Los diez volúmenes y la edición
+integral se reconstruyen con **bytes idénticos** y huellas de entrada iguales;
+Git queda limpio en el clon. Ver `clean-clone-reproduction.json`. El entorno
+resuelto se conserva en `requirements-constraints.txt`.
+
+La CI de Studium PR #79 pasa en Python 3.11 y 3.12, además de la comprobación de
+descripción. La CI de la PR del libro se comprueba por separado; estos resultados
+no constituyen revisión académica.
+
 ## Inspección visual y límites
 
 Se inspeccionan las muestras renderizadas de los diez volúmenes, sus portadas,
