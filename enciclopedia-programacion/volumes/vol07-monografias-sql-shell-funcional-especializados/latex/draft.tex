@@ -1,0 +1,2004 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen VII: Monografías de SQL, Shell, PHP, Ruby, Dart, Funcionales y Científicos\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Parte V (Bloques A\(-\)H): Consultas declarativas, automatización UNIX, ecosistemas web/móvil, programación funcional pura, BEAM y cálculo científico\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Monografías de Datos, Automatización de Sistemas y Desarrollo Web/Móvil}
+
+\chapter{Monografía de SQL (Bloques A\(-\)H): Álgebra Relacional, DDL/DML, Lógica Trivaluada, CTEs Recursivas, Funciones de Ventana y Optimización}
+\label{chap:cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\noindent\textit{Este capítulo desarrolla la monografía completa (Bloques \(A-H)\) de **SQL (ISO/IEC 9075:2023)**. SQL no es un simple lenguaje de consulta superficial, sino un lenguaje declarativo funcional basado en el álgebra y el cálculo relacional de primer orden (con recursión de punto fijo y funciones analíticas de ventana) que todo ingeniero de software y datos debe dominar en profundidad.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center] (from) {1. \texttt{FROM / JOIN}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of from] (where) {2. \texttt{WHERE}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of where] (group) {3. \texttt{GROUP BY}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of group] (having) {4. \texttt{HAVING}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.8cm, align=center, below=0.7cm of from] (win) {5. \texttt{WINDOW}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of win] (sel) {6. \texttt{SELECT}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of sel] (ord) {7. \texttt{ORDER BY}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of ord] (lim) {8. \texttt{LIMIT}};
+\draw[->] (from) -- (where);
+\draw[->] (where) -- (group);
+\draw[->] (group) -- (having);
+\draw[->] (having.south) -- ++(0,-0.3) -| (win.north);
+\draw[->] (win) -- (sel);
+\draw[->] (sel) -- (ord);
+\draw[->] (ord) -- (lim);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center] (from) {1. \texttt{FROM / JOIN}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of from] (where) {2. \texttt{WHERE}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of where] (group) {3. \texttt{GROUP BY}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of group] (having) {4. \texttt{HAVING}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.8cm, align=center, below=0.7cm of from] (win) {5. \texttt{WINDOW}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of win] (sel) {6. \texttt{SELECT}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of sel] (ord) {7. \texttt{ORDER BY}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of ord] (lim) {8. \texttt{LIMIT}};
+\draw[->] (from) -- (where);
+\draw[->] (where) -- (group);
+\draw[->] (group) -- (having);
+\draw[->] (having.south) -- ++(0,-0.3) -| (win.north);
+\draw[->] (win) -- (sel);
+\draw[->] (sel) -- (ord);
+\draw[->] (ord) -- (lim);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center] (from) {1. \texttt{FROM / JOIN}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of from] (where) {2. \texttt{WHERE}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of where] (group) {3. \texttt{GROUP BY}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of group] (having) {4. \texttt{HAVING}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.8cm, align=center, below=0.7cm of from] (win) {5. \texttt{WINDOW}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of win] (sel) {6. \texttt{SELECT}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of sel] (ord) {7. \texttt{ORDER BY}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of ord] (lim) {8. \texttt{LIMIT}};
+\draw[->] (from) -- (where);
+\draw[->] (where) -- (group);
+\draw[->] (group) -- (having);
+\draw[->] (having.south) -- ++(0,-0.3) -| (win.north);
+\draw[->] (win) -- (sel);
+\draw[->] (sel) -- (ord);
+\draw[->] (ord) -- (lim);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center] (from) {1. \texttt{FROM / JOIN}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of from] (where) {2. \texttt{WHERE}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of where] (group) {3. \texttt{GROUP BY}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of group] (having) {4. \texttt{HAVING}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.5cm, minimum height=0.8cm, align=center, below=0.7cm of from] (win) {5. \texttt{WINDOW}};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of win] (sel) {6. \texttt{SELECT}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.4cm, minimum height=0.8cm, align=center, right=0.35cm of sel] (ord) {7. \texttt{ORDER BY}};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.1cm, minimum height=0.8cm, align=center, right=0.35cm of ord] (lim) {8. \texttt{LIMIT}};
+\draw[->] (from) -- (where);
+\draw[->] (where) -- (group);
+\draw[->] (group) -- (having);
+\draw[->] (having.south) -- ++(0,-0.3) -| (win.north);
+\draw[->] (win) -- (sel);
+\draw[->] (sel) -- (ord);
+\draw[->] (ord) -- (lim);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-sql-logical-execution-order}\textbf{Figura~\thestudiumfigure.} Orden lógico de evaluación de una consulta SQL frente al orden léxico de escritura: un alias definido en SELECT no existe aún cuando se evalúan WHERE, GROUP BY o HAVING.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+En funciones de ventana con \texttt{ORDER BY} que calculan acumulados (\texttt{SUM(...) OVER (ORDER BY fecha)}), especifica explícitamente \texttt{ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW}: el marco por defecto del estándar SQL cuando hay \texttt{ORDER BY} es \texttt{RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW}, que agrupa de golpe todas las filas empatadas en \texttt{fecha}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+Predicado Sargable en SQL (Search Argument Able): condición de filtro de la forma \texttt{columna\_indexada OP expresi{\'o}n\_constante} que permite al motor de almacenamiento posicionarse directamente en las páginas hoja de un árbol B+ (\texttt{Index Seek / Index Range Scan}) sin evaluar una transformación fila por fila.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+¿Qué diferencia exacta de numeración producen \texttt{ROW\_NUMBER()}, \texttt{RANK()} y \texttt{DENSE\_RANK()} ante una secuencia de puntuaciones \texttt{[100, 90, 90, 80]}?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Modelo relacional, DDL con restricciones, orden lógico de SELECT, lógica trivaluada (NULL) y JOINs}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+Aunque en SQL escribimos léxicamente \texttt{SELECT ... FROM ... WHERE ...}, el motor relacional evalúa la consulta siguiendo el orden lógico estricto mostrado en la Figura \textbackslash{}ref\{fig:fig-sql-logical-execution-order\}: \texttt{FROM} y \texttt{JOIN} construyen primero el producto cartesiano filtrado por \texttt{ON}; \texttt{WHERE} descarta las filas cuya condición no evalúa a \texttt{TRUE}; \texttt{GROUP BY} particiona las filas en grupos; \texttt{HAVING} filtra grupos agregados; \texttt{WINDOW} calcula funciones de ventana; \texttt{SELECT} proyecta las columnas y asigna alias; \texttt{DISTINCT} elimina duplicados; \texttt{ORDER BY} ordena el conjunto resultante; y \texttt{LIMIT}/\texttt{FETCH FIRST} recorta la salida. Un escollo clásico proviene de la **lógica trivaluada (3VL)** de \texttt{NULL} (\texttt{TRUE}, \texttt{FALSE}, \texttt{UNKNOWN}): cualquier comparación ordinaria \texttt{col = NULL} o \texttt{col <> NULL} produce \texttt{UNKNOWN}. Si una subconsulta de \texttt{WHERE id NOT IN (SELECT parent\_id FROM t)} devuelve un solo \texttt{NULL}, la expresión \texttt{id <> v1 AND id <> NULL} evalúa a \texttt{UNKNOWN} para todas las filas y la consulta devuelve un conjunto vacío; por ello debe utilizarse siempre \texttt{WHERE NOT EXISTS (...)} o \texttt{IS DISTINCT FROM}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\section{Bloques E\(-\)H: CTEs recursivas, funciones de ventana (OVER), transacciones, EXPLAIN y projects/sql-transactional-ledger}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+En el Nivel Avanzado y Experto (Bloques E y F), las **expresiones de tabla común recursivas** (\texttt{WITH RECURSIVE}) permiten recorrer árboles jerárquicos y grafos (como el plan contable de nuestro proyecto verificado \texttt{projects/sql-transactional-ledger}), mientras que las **funciones de ventana** (\texttt{OVER (PARTITION BY ... ORDER BY ... ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)}) calculan saldos acumulados, medias móviles y clasificaciones (\texttt{ROW\_NUMBER}, \texttt{RANK}, \texttt{DENSE\_RANK}, \texttt{LAG}, \texttt{LEAD}) en una sola pasada sin colapsar las filas individuales:
+\begin{lstlisting}[style=studium,language={SQL}]
+SELECT
+    account_id,
+    entry_id,
+    debit_cents - credit_cents AS delta_cents,
+    SUM(debit_cents - credit_cents) OVER (
+        PARTITION BY account_id
+        ORDER BY entry_id
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS running_balance_cents
+FROM journal_lines;
+\end{lstlisting}
+Para que el optimizador de costes pueda emplear un índice B+ Tree, los predicados de \texttt{WHERE} deben ser **sargables** (*Search Argument Able*): aplicar una función sobre la columna indexada (\texttt{WHERE YEAR(created\_at) = 2026}) impide el recorrido por rango del índice y fuerza un escaneo completo de tabla (\texttt{Seq Scan}), debiendo reescribirse como \texttt{WHERE created\_at >= '2026-01-01' AND created\_at < '2027-01-01'}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+
+\noindent\textbf{Enunciado}
+En el proyecto \texttt{projects/sql-transactional-ledger}, la cuenta de Caja (\texttt{account\_id = 110}) registra tres apuntes sucesivos \texttt{(debit\_cents, credit\_cents)}: \texttt{(500000, 0)}, \texttt{(125000, 0)} y \texttt{(0, 40000)}. Calcula el saldo acumulado en céntimos (\texttt{running\_balance\_cents}) que devuelve la función de ventana \texttt{SUM(debit\_cents - credit\_cents) OVER (...)} en la tercera fila.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $d_{1} = 500000\,\mathrm{centimos}$ — Aportación inicial de capital
+\item $d_{2} = 125000\,\mathrm{centimos}$ — Cobro de factura SaaS
+\item $c_{3} = 40000\,\mathrm{centimos}$ — Pago de infraestructura cloud
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo de saldo acumulado por función de ventana SQL en sql-transactional-ledger}
+
+\[
+B_3 = 500000 + 125000 - 40000
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los tres deltas algebraicos de la partición account\(_id = 110\)
+
+\[
+B_3 = 500000 + 125000 - 40000
+\]
+
+\[
+\left(\left(\left(500000-0\right)+\left(125000-0\right)\right)+\left(0-40000\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 585000
+\]
+
+\noindent\textbf{Interpretación}
+El saldo acumulado en la tercera fila es exactamente 585 000 céntimos (5850.00 EUR), idéntico a la aserción de \texttt{verify\_ledger.py}.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $585000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLW1vbm9ncmFmaWEtc3FsLWRkbC1kbWwtY3RlLXZlbnRhbmFzLW9wdGltaXphY2lvbiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+Ante las puntuaciones \texttt{[100, 90, 90, 80]}, ¿qué valor entero asigna \texttt{RANK()} al cuarto elemento (\texttt{80}) tras el empate en la posición 2?
+
+\noindent\textbf{2 [PRB-0004] (Básico, Numérico)}
+Ante las mismas puntuaciones \texttt{[100, 90, 90, 80]}, ¿qué valor entero asigna \texttt{DENSE\_RANK()} al cuarto elemento (\texttt{80})?
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+Un producto cartesiano \texttt{CROSS JOIN} entre una tabla de 120 tiendas y una tabla de 365 días del año genera todas las combinaciones \texttt{(tienda, d{\'i}a)}. ¿Cuántas filas produce?
+
+\noindent\textbf{4 [PRB-0006] (Intermedio, Diseño)}
+Una consulta con paginación \texttt{LIMIT 50 OFFSET 400} devuelve la página 9 de resultados. ¿Cuál es el número de orden (base 1) de la primera fila devuelta en esa página (\$400 + 1\$)?
+\end{tcolorbox}
+
+\chapter{Monografía de Bash y POSIX Shell (Bloques A\(-\)H): Tuberías, Redirecciones, Expansiones Seguras, Trap, Herramientas UNIX y Proyectos}
+\label{chap:cap02-monografia-bash-posix-shell-automatizacion-sistemas}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+\noindent\textit{Este capítulo presenta la monografía completa (Bloques \(A-H)\) de **Bash y POSIX Shell**. Los scripts de shell son el pegamento universal de los sistemas Linux/macOS, los contenedores Docker y los pipelines de CI/CD. Enseñamos a escribirlos con rigor de ingeniería de sistemas: inmunes a espacios en nombres de fichero, con limpieza atómica de directorios temporales y auditados con \texttt{shellcheck}.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+Integra siempre \texttt{shellcheck -S warning script.sh} en tu editor y en CI: detecta al instante variables sin entrecomillar (SC2086), pérdida de estado de salida al usar \texttt{local x=\$(cmd)} en una sola línea (SC2155) y problemas de subshells en tuberías.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+Código de estado de salida por señal en POSIX (\texttt{128 + N}): convención del intérprete de comandos según la cual un proceso terminado de forma abrupta por la señal número \(N\) reporta en \texttt{\$?} el código de salida \(128 + N\) (por ejemplo, \texttt{130} para \texttt{SIGINT = 2} o \texttt{137} para \texttt{SIGKILL = 9}).
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+¿Por qué la línea \texttt{local salida="\$(comando\_que\_falla)"} en Bash oculta el código de error de \texttt{comando\_que\_falla} (porque \texttt{local} es un comando builtin cuyo propio código de retorno es \texttt{0}) y debe escribirse en dos líneas separadas (\texttt{local salida; salida="\$(comando\_que\_falla)"})?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Filosofía UNIX, POSIX sh vs Bash, descriptores de fichero, redirecciones, entrecomillado y expansiones}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+En el modelo de procesos POSIX, cada comando hereda tres descriptores de fichero abiertos: \texttt{0} (entrada estándar), \texttt{1} (salida estándar) y \texttt{2} (error estándar), y al terminar devuelve un código de estado entero entre \texttt{0} y \texttt{255} donde **\texttt{0} significa éxito** (verdadero en \texttt{if cmd; then} y en los operadores de cortocircuito \texttt{cmd1 \&\& cmd2} y \texttt{cmd1 || cmd2}) y cualquier valor distinto de cero indica fallo. El orden de las redirecciones se evalúa de izquierda a derecha: \texttt{cmd > salida.log 2>\&1} apunta primero el descriptor \texttt{1} a \texttt{salida.log} y luego duplica el descriptor \texttt{2} hacia donde apunta \texttt{1} (ambos van al fichero). La causa número uno de fallos y vulnerabilidades de inyección en scripts de shell es dejar expansiones sin comillas dobles (\texttt{\$archivo} en lugar de \texttt{"\$archivo"}), lo que dispara la división por palabras (*word splitting* según \texttt{IFS}) y la expansión de comodines (*pathname expansion* \texttt{*}, \texttt{?}).
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+\section{Bloques E\(-\)H: Modo estricto, arrays, trap de limpieza, herramientas (awk, sed, jq), ShellCheck y 4 proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+Todo script de automatización en Bash debe comenzar configurando el modo estricto (\texttt{set -euo pipefail}, que aborta ante comandos fallidos, variables no definidas y errores intermedios en una tubería) y registrando un manejador \texttt{trap} sobre la pseudo-señal \texttt{EXIT} para eliminar de forma garantizada los recursos temporales:
+\begin{lstlisting}[style=studium,language={bash}]
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+readonly WORK_DIR="$(mktemp -d)"
+cleanup() {
+    rm -rf -- "$WORK_DIR"
+}
+trap cleanup EXIT INT TERM
+
+count_non_empty_lines() {
+    local target_file="${1:?Ruta de fichero obligatoria}"
+    grep -cve '^[[:space:]]*$' -- "$target_file"
+}
+\end{lstlisting}
+Observa el uso de \texttt{--} antes de \texttt{"\$target\_file"} y \texttt{"\$WORK\_DIR"}: indica el fin de las opciones de bandera, impidiendo que un fichero cuyo nombre empiece por guion (\texttt{-rf}) sea interpretado como una opción por \texttt{grep} o \texttt{rm}. Para procesar listas de ficheros con nombres arbitrarios (incluyendo saltos de línea), se combina siempre el delimitador nulo: \texttt{find . -type f -name '*.log' -print0 | xargs -0 sha256sum}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+
+\noindent\textbf{Enunciado}
+Un contenedor en un pipeline de despliegue termina abruptamente con código de salida \texttt{\$? = 137} tras intervenir el *OOM Killer* del kernel Linux (\texttt{SIGKILL = 9}), y otro proceso aborta por violación de segmento (\texttt{SIGSEGV = 11}, código \(128 + 11 = 139\)). Calcula la suma de los números de las dos señales POSIX subyacentes obtenidas restando \(128\) a cada código de salida (\((137 - 128) + (139 - 128)\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $E_{1} = 137$ — Código de salida por SIGKILL (128 + 9)
+\item $E_{2} = 139$ — Código de salida por SIGSEGV (128 + 11)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Decodificación de señales POSIX a partir del código de estado 128 + N}
+
+\[
+S = (137 - 128) + (139 - 128)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos 128 a cada código para recuperar los números de señal 9 y 11 y los sumamos
+
+\[
+S = (137 - 128) + (139 - 128)
+\]
+
+\[
+\left(\left(137-128\right)+\left(139-128\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 20
+\]
+
+\noindent\textbf{Interpretación}
+Las señales subyacentes son la 9 (SIGKILL) y la 11 (SIGSEGV), cuya suma es 20.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $20$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLW1vbm9ncmFmaWEtYmFzaC1wb3NpeC1zaGVsbC1hdXRvbWF0aXphY2lvbi1zaXN0ZW1hcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+Un script en ejecución es interrumpido por el usuario pulsando \texttt{Ctrl+C} (\texttt{SIGINT = 2}). ¿Qué código de salida \texttt{\$?} reporta el shell (\$128 + 2\$)?
+
+\noindent\textbf{2 [PRB-0010] (Básico, Numérico)}
+Un proceso recibe la señal de terminación ordenada \texttt{SIGTERM = 15} sin capturarla. ¿Cuál es su código de salida (\$128 + 15\$)?
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+Un comando \texttt{xargs -0 -n 50 -P 4} procesa una lista de 600 ficheros pasándolos en lotes de 50 ficheros por invocación. ¿Cuántos procesos hijos lanza en total \texttt{xargs} (\$600 / 50\$)?
+
+\noindent\textbf{4 [PRB-0012] (Intermedio, Diseño)}
+Una máscara \texttt{umask 027} se resta de los permisos base \texttt{666} (octal) para la creación de ficheros regulares (\$666 - 27\$ en dígito a dígito: \(6-0=6\), \(6-2=4\), \(6-7\to 0\)). ¿Cuál es el permiso octal resultante expresado como entero de tres dígitos?
+\end{tcolorbox}
+
+\chapter{Monografías de PHP 8.3+, Ruby 3.3+ y Dart 3.x (Bloques A\(-\)H): Motores Zend, YJIT y Compilación AOT/JIT Multiplataforma}
+\label{chap:cap03-monografias-php-ruby-dart-web-movil}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+\noindent\textit{Este capítulo agrupa las monografías completas (Bloques \(A-H)\) de tres lenguajes esenciales en el desarrollo web y móvil de producción: **PHP 8.3+**, **Ruby 3.3+** y **Dart 3.x**.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+En PHP 8+, incluye siempre \texttt{declare(strict\_types=1);} en la primera línea de todos tus ficheros \texttt{.php} y utiliza la expresión \texttt{match (\$valor) \{ ... \}} en lugar de \texttt{switch (\$valor)}: \texttt{match} compara con identidad estricta (\texttt{===}), no requiere \texttt{break} y lanza \texttt{UnhandledMatchError} si olvidas un caso.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+Nulabilidad Sólida (Sound Null-Safety en Dart 3): propiedad del sistema de tipos según la cual, una vez que el programa compila, es matemáticamente imposible en tiempo de ejecución que una expresión de tipo no anulable \texttt{T} evalúe a \texttt{null}, permitiendo al compilador AOT eliminar comprobaciones de puntero nulo.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+¿Qué diferencia exacta existe en Ruby entre una instancia de \texttt{Proc.new \{ return 1 \}} y un \texttt{lambda} (\texttt{-> \{ return 1 \}}) en cuanto al efecto de \texttt{return} y la comprobación del número de argumentos?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+\end{tcolorbox}
+
+\section{Monografía de PHP 8.3+ (Bloques A\(-\)H): Zend Engine, tipado estricto, enums, Composer/PSR y arquitectura web}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+**PHP 8.x** ha experimentado una transformación profunda respecto a sus versiones históricas: al encabezar cada fichero con \texttt{declare(strict\_types=1);}, el motor Zend desactiva las coerciones escalares silenciosas y verifica contratos de tipos de unión (\texttt{int|float}), intersección (\texttt{Countable\&Iterator}), clases inmutables \texttt{readonly class}, enumeraciones respaldadas (\texttt{enum Status: string}), atributos de metadatos (\texttt{\#[Route(...)]}) y expresiones \texttt{match} con comparación estricta (\texttt{===}). En producción, **OPcache** mantiene el bytecode precompilado en memoria compartida entre trabajadores PHP-FPM (o en servidores persistentes como FrankenPHP / RoadRunner), y el gestor de paquetes \texttt{Composer} junto con las normas **PSR** (*PHP Standards Recommendations*: PSR-4 autoloading, PSR-7 mensajes HTTP, PSR-11 contenedores DI, PSR-15 middlewares) articula los ecosistemas de \texttt{Symfony} y \texttt{Laravel}, verificados estáticamente con \texttt{PHPStan} (nivel máximo) y probados con \texttt{PHPUnit}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+\section{Monografías de Ruby 3.3+ y Dart 3.x (Bloques A\(-\)H): Bloques/Metaprogramación en Ruby e Isolates/AOT en Dart}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+En **Ruby 3.3+** (creado por Yukihiro «Matz» Matsumoto), absolutamente todo valor es un objeto y toda operación es un envío de mensaje; las clases son abiertas, la herencia múltiple se resuelve linealmente mediante *mixins* (\texttt{include} e \texttt{prepend} de módulos) y cada método puede recibir un bloque anónimo invocado con \texttt{yield} o convertido en clausura \texttt{Proc}. Con el compilador JIT en proceso **YJIT** (escrito en Rust dentro de CRuby), las aplicaciones \texttt{Ruby on Rails} logran mejoras notables de latencia, mientras que los **Ractors** proporcionan paralelismo de actores sin compartir estado mutable. Por su parte, **Dart 3.x** ofrece **nulabilidad sólida** (*sound null-safety*: el compilador AOT garantiza que una variable no anulable jamás contiene \texttt{null}, optimizando el código máquina emitido), clases selladas (\texttt{sealed class}) con *pattern matching* exhaustivo y un modelo de concurrencia basado en **Isolates** (hebras con montículos de memoria independientes que se comunican por puertos de mensajes o transferencia de \texttt{TransferableTypedData}), compilando en modo JIT con *stateful hot reload* durante el desarrollo y en binario nativo **AOT** para producción en iOS, Android, escritorio y web:
+\begin{lstlisting}[style=studium]
+sealed class ApiResponse<T> {}
+final class ApiSuccess<T> extends ApiResponse<T> {
+  final T data;
+  const ApiSuccess(this.data);
+}
+final class ApiFailure<T> extends ApiResponse<T> {
+  final int statusCode;
+  const ApiFailure(this.statusCode);
+}
+
+String describeResponse<T>(ApiResponse<T> res) => switch (res) {
+  ApiSuccess(data: final d)       => 'OK: $d',
+  ApiFailure(statusCode: final c) => 'HTTP Error $c',
+};
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+
+\noindent\textbf{Enunciado}
+Un servidor de producción con \(8192\text{ MiB}\) de RAM reserva \(2048\text{ MiB}\) para el sistema operativo y el búfer de OPcache/Redis, dejando \(M_{\text{avail}} = 6144\text{ MiB}\) para el pool de trabajadores PHP-FPM. Si cada trabajador consume en carga punta \(m_{\text{worker}} = 48\text{ MiB}\) de memoria privada, calcula el valor óptimo de \texttt{pm.max\_children} (\$6144 / 48\$).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $M_{avail} = 6144\,\mathrm{MiB}$ — RAM neta disponible para trabajadores PHP-FPM
+\item $m_{worker} = 48\,\mathrm{MiB}$ — Consumo privado RSS por proceso trabajador
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Dimensionamiento de pm.max\_children en PHP-FPM sin agotamiento de RAM}
+
+\[
+N_{\max} = \frac{6144}{48}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Dividimos la memoria disponible entre el consumo por trabajador
+
+\[
+N_{\max} = \frac{6144}{48}
+\]
+
+\[
+\frac{6144}{48}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 128
+\]
+
+\noindent\textbf{Interpretación}
+El servidor puede ejecutar de forma segura hasta 128 trabajadores PHP-FPM concurrentes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $128$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLW1vbm9ncmFmaWFzLXBocC1ydWJ5LWRhcnQtd2ViLW1vdmlsIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+En Flutter/Dart, para sostener una tasa de refresco de pantalla de \(120\text{ Hz}\), el presupuesto total por fotograma (construcción + diseño + pintado) es \(1000 / 120\text{ ms}\). ¿Cuántos milisegundos caben en 12 fotogramas consecutivos?
+
+\noindent\textbf{2 [PRB-0016] (Básico, Numérico)}
+En Ruby, la expresión \texttt{(1..10).select(\&:even?).map \{ |x| x * 3 \}.sum} suma el triple de los pares del 2 al 10 (\((2+4+6+8+10) \times 3\)). ¿Cuál es el resultado?
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+Si OPcache evita recompilar 85 ficheros PHP por petición HTTP (ahorrando \(0.4\text{ ms}\) por fichero), ¿cuántos milisegundos de CPU ahorra en cada petición (\(85 \times 0.4\))?
+
+\noindent\textbf{4 [PRB-0018] (Intermedio, Diseño)}
+Un Isolate de fondo en Dart procesa un lote de 400 imágenes en grupos de 25 imágenes devolviendo el progreso al Isolate principal tras cada grupo. ¿Cuántos mensajes de progreso envía?
+\end{tcolorbox}
+
+\part{Monografías de Lenguajes Funcionales Estáticos y Concurrentes (Haskell, OCaml, F\#, Scala, BEAM, Lisp)}
+
+\chapter{Monografía de Haskell (Bloques A\(-\)H): Pureza, Evaluación Perezosa, Inferencia Hindley-Milner, Typeclasses y Mónadas}
+\label{chap:cap04-monografia-haskell-funcional-puro-tipos-monadas}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+\noindent\textit{Este capítulo desarrolla la monografía completa (Bloques \(A-H)\) de **Haskell (GHC 9.x)**. Estudiar Haskell enseña en su forma más pura los conceptos que posteriormente han adoptado Rust (\texttt{Trait}, \texttt{Option}, \texttt{Result}), Scala, Swift y TypeScript: tipos algebraicos, clases de tipos, composición monádica y pruebas basadas en propiedades.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+En Haskell de producción, utiliza siempre \texttt{newtype} en lugar de \texttt{data} cuando envuelvas un único campo con un solo constructor (\texttt{newtype CustomerId = CustomerId Int}): \texttt{newtype} garantiza distinción de tipos en compilación pero se borra por completo en ejecución con cero sobrecoste de puntero.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+Forma Normal Débil a la Cabeza (Weak Head Normal Form, WHNF en Haskell): estado de reducción de una expresión en el que su capa más externa ya no es un redex (es un constructor de datos como \texttt{Just thunk}, un literal primitivo o una abstracción lambda \texttt{\textbackslash{}x -> ...}), aunque sus subexpresiones internas permanezcan sin evaluar.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+¿Por qué el sistema de tipos de Haskell impide ejecutar \texttt{putStrLn " enviando misil "} dentro de una transacción \texttt{atomically :: STM a -> IO a} de memoria transaccional por software?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Filosofía pura de Haskell, GHC/Cabal/Stack, currificación, evaluación perezosa, ADTs y Typeclasses}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+En **Haskell**, toda función es matemática y **referencialmente transparente**: para una misma entrada, produce siempre la misma salida sin mutar variables globales ni realizar entrada/salida oculta. Todas las funciones de varios argumentos están currificadas por defecto (\texttt{add :: Int -> Int -> Int} es \texttt{Int -> (Int -> Int)}), permitiendo la aplicación parcial directa (\texttt{map (+10) [1, 2, 3]}). La estrategia de evaluación por defecto es no estricta (*lazy evaluation* / *call-by-need*): las expresiones no se evalúan al pasarse como argumento, sino que se empaquetan en una suspensión en el montículo denominada **thunk** que se reduce a *Weak Head Normal Form* (WHNF) solo cuando la coincidencia de patrones exige conocer su constructor exterior, compartiendo el resultado para no recalcularlo. Cuando se acumulan sumas en un pliegue izquierdo, usar \texttt{foldl} perezoso construye una cadena de \(N\) *thunks* \texttt{(((0 + x1) + x2) ...)} que desborda la memoria (*space leak*); la solución profesional consiste en usar siempre la variante estricta \texttt{Data.List.foldl'}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+\section{Bloques E\(-\)H: Functor, Applicative, Monad (IO, Reader, State, Either), concurrencia STM, QuickCheck y proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+Haskell parametriza constructores de tipos de *kind* \texttt{* -> *} mediante la jerarquía algebraica \texttt{Functor} (\texttt{fmap :: (a -> b) -> f a -> f b}), \texttt{Applicative} (\texttt{pure :: a -> f a}, \texttt{(<*>) :: f (a -> b) -> f a -> f b}) y **\texttt{Monad}** (\texttt{(>>=) :: m a -> (a -> m b) -> m b}). Toda instancia de \texttt{Monad} debe satisfacer las tres leyes monádicas: identidad por la izquierda (\texttt{return a >>= k == k a}), identidad por la derecha (\texttt{m >>= return == m}) y asociatividad (\texttt{(m >>= k) >>= h == m >>= (\textbackslash{}x -> k x >>= h)}). La notación \texttt{do} es azúcar sintáctico directo sobre \texttt{(>>=)}:
+\begin{lstlisting}[style=studium,language={Haskell}]
+module SafeEval (Expr(..), eval) where
+
+data Expr = Lit Int | Add Expr Expr | Div Expr Expr
+  deriving (Show, Eq)
+
+eval :: Expr -> Either String Int
+eval (Lit n)     = Right n
+eval (Add e1 e2) = do
+  v1 <- eval e1
+  v2 <- eval e2
+  Right (v1 + v2)
+eval (Div e1 e2) = do
+  v1 <- eval e1
+  v2 <- eval e2
+  if v2 == 0 then Left "division by zero" else Right (div v1 v2)
+\end{lstlisting}
+Gracias a que las lecturas y escrituras de estado están controladas por el sistema de tipos, Haskell ofrece **Software Transactional Memory (STM)**: transacciones en memoria (\texttt{TVar}, \texttt{atomically}, \texttt{retry}, \texttt{orElse}) que se componen sin posibilidad de interbloqueos (*deadlocks*), ya que el tipo \texttt{STM a} prohíbe estáticamente ejecutar efectos \texttt{IO} irreversibles dentro de un bloque que podría reintentarse.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+
+\noindent\textbf{Enunciado}
+En GHC de 64 bits, cada celda \texttt{(:)} de una lista enlazada \texttt{[Int]} en el montículo ocupa \(3\) palabras de \(8\text{ B}\) (\(24\text{ B}\) por nodo). Una tubería \texttt{sum (map (*2) (map (+1) [1..N]))} para \(N = 100000\) elementos, si se evaluara de forma estricta sin fusión, alojaría \(3\) listas de \(100000\) celdas (\(3 \times 100000 \times 24\text{ B}\)). Gracias a la fusión \texttt{foldr/build} de GHC con \texttt{-O2}, las tres listas desaparecen y el bucle se ejecuta en registros alojando \(0\text{ B}\) de celdas. Calcula cuántos kilobytes (dividiendo entre 1000) ahorra la desforestación.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $k_{listas} = 3$ — Listas intermedias eliminadas
+\item $N = 100000$ — Elementos de la secuencia
+\item $S_{cons} = 24\,\mathrm{B}$ — Tamaño de una celda cons en GHC 64 bits
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de montículo mediante desforestación foldr/build en GHC}
+
+\[
+\Delta M_{\text{kB}} = \frac{3 \cdot 100000 \cdot 24}{1000}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos 3 * 100000 * 24 B y dividimos entre 1000 B/kB
+
+\[
+\Delta M_{\text{kB}} = \frac{3 \cdot 100000 \cdot 24}{1000}
+\]
+
+\[
+\frac{\left(\left(3\cdot 100000\right)\cdot 24\right)}{1000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 7200
+\]
+
+\noindent\textbf{Interpretación}
+La fusión de flujos de GHC evita alojar 7200 kB (7.2 MB) de celdas intermedias.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $7200$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LW1vbm9ncmFmaWEtaGFza2VsbC1mdW5jaW9uYWwtcHVyby10aXBvcy1tb25hZGFzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+En el evaluador monádico \texttt{eval (Div (Add (Lit 20) (Lit 22)) (Lit 6))}, ¿qué valor entero \texttt{Right v} devuelve la expresión (\((20 + 22) / 6\))?
+
+\noindent\textbf{2 [PRB-0022] (Básico, Numérico)}
+\texttt{QuickCheck} ejecuta por defecto 100 casos generados aleatoriamente por cada propiedad \texttt{prop\_*}. Si un módulo define 18 propiedades, ¿cuántos casos de prueba verifica \texttt{quickCheck} en total?
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+En la expresión aplicativa \texttt{[(+10), (*2), (+100)] <*> [1, 2, 3, 4]}, la instancia \texttt{Applicative} de listas aplica cada una de las 3 funciones a cada uno de los 4 valores. ¿Cuántos elementos contiene la lista resultante?
+
+\noindent\textbf{4 [PRB-0024] (Intermedio, Diseño)}
+Un \texttt{newtype} en Haskell envuelve un \texttt{Int64} (8 B). ¿Cuántos bytes de sobrecoste adicional añade el constructor del \texttt{newtype} en tiempo de ejecución tras el borrado de GHC?
+\end{tcolorbox}
+
+\chapter{Monografías de OCaml 5.x y F\# (.NET) (Bloques A\(-\)H): Módulos de Orden Superior (Functors), Efectos Algebraicos y Expresiones de Computación}
+\label{chap:cap05-monografias-ocaml-fsharp-ml-sistemas-tipos}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+\noindent\textit{Este capítulo presenta las monografías completas (Bloques \(A-H)\) de los dos principales exponentes industriales de la familia **ML** (*Meta Language*): **OCaml 5.x** (el lenguaje de elección para escribir compiladores, demostradores de teoremas como Coq/Rocq y sistemas de negociación algorítmica de baja latencia como en Jane Street) y **F\#** (el lenguaje funcional primero del ecosistema .NET).}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+En OCaml, define siempre un fichero de interfaz explícito \texttt{.mli} para cada módulo \texttt{.ml}: mantener abstractos los tipos internos en el \texttt{.mli} garantiza el encapsulamiento de invariantes y acelera la compilación incremental con \texttt{dune}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+Entero etiquetado de 63 bits en OCaml (Tagged Integer): representación en máquina de 64 bits en la que un entero matemático \(n\) se codifica en registro como la palabra \((2n + 1)\) (desplazado 1 bit a la izquierda con el bit menos significativo fijado a \texttt{1}), permitiendo al recolector de basura distinguirlo instantáneamente de cualquier puntero alineado (cuyo bit 0 es \texttt{0}) sin alojar en el montículo.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+¿Por qué la codificación de un entero \(n\) como \(2n + 1\) en OCaml permite que la suma de dos enteros etiquetados se implemente en ensamblador como \texttt{(a + b) - 1} en un solo ciclo de reloj sin desencajonar punteros?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+\end{tcolorbox}
+
+\section{Monografía de OCaml 5.x (Bloques A\(-\)H): Inferencia ML, Functors de módulos, representación en memoria y efectos algebraicos}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+**OCaml** (desarrollado en INRIA por Xavier Leroy y su equipo) combina evaluación estricta predecible, un compilador nativo rapidísimo (\texttt{ocamlopt}) con un recolector generacional incremental de latencias sub-milisegundo y el sistema de módulos más potente de la industria: en OCaml, los módulos (\texttt{struct ... end}) tienen tipos llamados firmas (\texttt{sig ... end}), y un **Functor** es una función a nivel de módulos que recibe un módulo como argumento y devuelve un nuevo módulo especializado (por ejemplo, \texttt{Map.Make(String)} construye un árbol AVL tipado para claves \texttt{string}). En cuanto a su representación de bajo nivel en 64 bits, OCaml reserva el bit menos significativo de cada palabra como etiqueta del recolector de basura (\texttt{1} para enteros inmediatos sin puntero \texttt{int} de **63 bits**, y \texttt{0} para punteros alineados al montículo). Además, **OCaml 5** incorpora paralelismo multinúcleo real (\texttt{Domain.spawn}) y **manejadores de efectos algebraicos** (*Effect Handlers*), que permiten definir planificadores asíncronos como bibliotecas puras sin colorear las funciones con \texttt{async}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+\section{Monografía de F\# sobre .NET (Bloques A\(-\)H): Tuberías, unidades de medida ([<Measure>]), Computation Expressions y proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+Por su parte, **F\#** (diseñado por Don Syme en Microsoft Research) traslada la elegancia de OCaml al CLR de .NET. Entre sus innovaciones más notables destacan las **unidades de medida verificadas en compilación** (\texttt{[<Measure>] type m}, \texttt{[<Measure>] type s}, \texttt{[<Measure>] type N = kg m / s\textasciicircum{}2}), que previenen errores dimensionales (como el accidente de la sonda Mars Climate Orbiter) y se borran por completo al emitir el bytecode CIL con coste cero en tiempo de ejecución:
+\begin{lstlisting}[style=studium]
+[<Measure>] type m
+[<Measure>] type s
+[<Measure>] type kg
+
+let kineticEnergy (mass: float<kg>) (velocity: float<m/s>) : float<kg * m^2 / s^2> =
+    0.5 * mass * velocity * velocity
+\end{lstlisting}
+Asimismo, F\# generaliza las mónadas, los generadores y las consultas mediante una construcción sintáctica unificada: las **expresiones de computación** (*Computation Expressions*: \texttt{seq \{ yield ... \}}, \texttt{async \{ let! x = ... \}}, \texttt{task \{ ... \}}, \texttt{result \{ ... \}}).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+
+\noindent\textbf{Enunciado}
+En el compilador nativo \texttt{ocamlopt} de 64 bits, cualquier entero \texttt{int} \(n\) se almacena en un registro de CPU mediante la representación etiquetada \(R(n) = 2n + 1\) (con el bit 0 puesto a 1 para indicar al recolector de basura que no es un puntero). Calcula el valor decimal exacto de la palabra en registro \(R(n)\) para el entero de aplicación \(n = 1500\).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $n = 1500$ — Valor entero lógico en el programa OCaml
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Codificación de enteros inmediatos de 63 bits (2n + 1) en OCaml}
+
+\[
+R(1500) = 2 \cdot 1500 + 1
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Desplazamos 1 bit a la izquierda (multiplicar por 2) y activamos el bit de etiqueta (+1)
+
+\[
+R(1500) = 2 \cdot 1500 + 1
+\]
+
+\[
+\left(\left(2\cdot 1500\right)+1\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 3001
+\]
+
+\noindent\textbf{Interpretación}
+El registro de CPU almacena el valor impar 3001 (0xBB9), que el recolector identifica en O(1) como un valor inmediato no rastreable.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $3001$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LW1vbm9ncmFmaWFzLW9jYW1sLWZzaGFycC1tbC1zaXN0ZW1hcy10aXBvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+En OCaml, si un registro contiene la palabra etiquetada \(R(n) = 85\), ¿cuál es el entero lógico \(n = (85 - 1) / 2\)?
+
+\noindent\textbf{2 [PRB-0028] (Básico, Numérico)}
+En F\#, la función \texttt{kineticEnergy} calcula \(0.5 \cdot m \cdot v^2\). Para una masa \(m = 4\text{ kg}\) y velocidad \(v = 15\text{ m/s}\), ¿cuántos julios (\(\text{kg}\cdot\text{m}^2/\text{s}^2\)) devuelve?
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+¿Cuántos bytes adicionales ocupa en el ensamblado \texttt{.dll} de .NET la anotación de unidades \texttt{[<Measure>] type kg} tras la compilación de F\#?
+
+\noindent\textbf{4 [PRB-0030] (Intermedio, Diseño)}
+En OCaml de 64 bits, cada bloque en el montículo tiene 1 palabra de cabecera (8 B) que codifica tamaño, color GC y etiqueta de constructor, seguida de \(k\) campos de 8 B. ¿Cuántos bytes ocupa un nodo de árbol binario con 3 campos (\texttt{valor}, \texttt{izq}, \texttt{der})?
+\end{tcolorbox}
+
+\chapter{Monografías de Elixir, Erlang/OTP (BEAM), Scala 3, Clojure y Lisp/Scheme (Bloques A\(-\)H)}
+\label{chap:cap06-monografias-beam-elixir-erlang-scala3-clojure-lisp}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\noindent\textit{Este capítulo desarrolla las monografías completas (Bloques \(A-H)\) de cinco lenguajes fundamentales de la computación concurrente y funcional: **Erlang/OTP** y **Elixir** (sobre la máquina virtual BEAM), **Scala 3**, **Clojure** y **Lisp/Scheme**.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.6cm, minimum height=0.9cm, align=center] (root) {Supervisor Raíz\\(\texttt{:one\_for\_one})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=0.9cm, align=center, below left=1.1cm and 0.6cm of root] (w1) {\texttt{GenServer}: Telemetría\\(Montículo Aislado)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below right=1.1cm and 0.6cm of root] (sub) {Supervisor de Sesiones\\(\texttt{:DynamicSupervisor})};
+\draw[->] (root) -- (w1);
+\draw[->] (root) -- (sub);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.6cm, minimum height=0.9cm, align=center] (root) {Supervisor Raíz\\(\texttt{:one\_for\_one})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=0.9cm, align=center, below left=1.1cm and 0.6cm of root] (w1) {\texttt{GenServer}: Telemetría\\(Montículo Aislado)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below right=1.1cm and 0.6cm of root] (sub) {Supervisor de Sesiones\\(\texttt{:DynamicSupervisor})};
+\draw[->] (root) -- (w1);
+\draw[->] (root) -- (sub);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.6cm, minimum height=0.9cm, align=center] (root) {Supervisor Raíz\\(\texttt{:one\_for\_one})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=0.9cm, align=center, below left=1.1cm and 0.6cm of root] (w1) {\texttt{GenServer}: Telemetría\\(Montículo Aislado)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below right=1.1cm and 0.6cm of root] (sub) {Supervisor de Sesiones\\(\texttt{:DynamicSupervisor})};
+\draw[->] (root) -- (w1);
+\draw[->] (root) -- (sub);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=3.6cm, minimum height=0.9cm, align=center] (root) {Supervisor Raíz\\(\texttt{:one\_for\_one})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=3.2cm, minimum height=0.9cm, align=center, below left=1.1cm and 0.6cm of root] (w1) {\texttt{GenServer}: Telemetría\\(Montículo Aislado)};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below right=1.1cm and 0.6cm of root] (sub) {Supervisor de Sesiones\\(\texttt{:DynamicSupervisor})};
+\draw[->] (root) -- (w1);
+\draw[->] (root) -- (sub);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-otp-supervision-tree}\textbf{Figura~\thestudiumfigure.} Árbol de supervisión OTP en Erlang/Elixir: los supervisores monitorizan procesos trabajadores (GenServer) aislados en memoria y aplican estrategias deterministas de reinicio (one\_for\_one, rest\_for\_one, one\_for\_all).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+En Erlang y Elixir, evita acumular millones de mensajes sin procesar en el buzón (*mailbox*) de un único \texttt{GenServer} usando \texttt{cast} asíncrono sin control: utiliza \texttt{GenServer.call} (que aplica contrapresión síncrona al llamador) o procesadores con demanda controlada como \texttt{GenStage} y \texttt{Broadway}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+Homoiconicidad (Code-as-Data en la familia Lisp): propiedad de un lenguaje cuya representación sintáctica primaria (S-expressions en Common Lisp/Scheme y EDN en Clojure) coincide directamente con las estructuras de datos primitivas manipulables por el propio lenguaje, haciendo trivial la metaprogramación por macros.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+¿Por qué en un vector persistente inmutable de Clojure con factor de ramificación \(B = 32\), acceder o actualizar un elemento entre \(32^4 = 1048576\) elementos requiere recorrer únicamente 4 niveles de punteros?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+\end{tcolorbox}
+
+\section{Monografías de Erlang/OTP y Elixir sobre la BEAM (Bloques A\(-\)H): Actores aislados, GenServer y Supervisores}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+Creado por Joe Armstrong, Robert Virding y Mike Williams en Ericsson para conmutadores telefónicos con una disponibilidad del \(99.9999999\%\) (*nueve nueves*), **Erlang** y su compañero moderno **Elixir** (creado por José Valim) se ejecutan sobre la máquina virtual **BEAM**. En la BEAM, cada actor (proceso Erlang/Elixir, que ocupa apenas \(\approx 2.6\text{ KiB}\) iniciales) posee su **propio montículo privado inmutable** y su propio recolector de basura independiente: no existe memoria mutable compartida ni pausas globales *Stop-The-World* que detengan a todo el nodo. La tolerancia a fallos se estructura mediante **OTP** (*Open Telecom Platform*) y la filosofía *«Let it crash»*: como ilustra la Figura \textbackslash{}ref\{fig:fig-otp-supervision-tree\}, cuando un proceso trabajador (\texttt{GenServer}) encuentra un estado corrupto inesperado, muere limpiamente liberando su montículo instantáneamente y su \texttt{Supervisor} padre lo reinicia a un estado inicial conocido válido:
+\begin{lstlisting}[style=studium]
+defmodule TelemetryCounter do
+  use GenServer
+
+  def start_link(initial \\ 0), do: GenServer.start_link(__MODULE__, initial, name: __MODULE__)
+  def increment(delta),          do: GenServer.call(__MODULE__, {:inc, delta})
+
+  @impl true
+  def init(initial), do: {:ok, initial}
+
+  @impl true
+  def handle_call({:inc, delta}, _from, state) do
+    new_state = state + delta
+    {:reply, new_state, new_state}
+  end
+end
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\section{Monografías de Scala 3, Clojure y Common Lisp / Scheme (Bloques A\(-\)H): Tipos dependientes, HAMT y macros}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+**Scala 3** (Martin Odersky, EPFL) unifica la programación orientada a objetos y funcional sobre el cálculo **DOT** (*Dependent Object Types*), reemplazando los antiguos \texttt{implicit} sobrecargados de Scala 2 por las abstracciones contextuales limpias \texttt{given} y \texttt{using}, tipos unión (\texttt{A | B}) e intersección (\texttt{A \& B}) y enumeraciones algebraicas (\texttt{enum}). Por su parte, **Lisp** (John McCarthy, 1958; estandarizado en **Common Lisp** y **Scheme** R7RS) y **Clojure** (Rich Hickey, sobre la JVM) se distinguen por la **homoiconicidad** (*el código es datos*: el programa se escribe directamente como listas de símbolos o vectores que son el propio AST del lenguaje), lo que permite escribir macros sintácticas que transforman el lenguaje desde dentro. Clojure aporta además vectores y mapas persistentes inmutables implementados como árboles trie de factor de ramificación 32 (**HAMT**, *Hash Array Mapped Trie* con compartición estructural \(O(\log_{32} N)\)), donde producir una versión modificada de un vector de un millón de elementos copia a lo sumo \(\lceil \log_{32}(10^6) \rceil = 4\) nodos internos.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+
+\noindent\textbf{Enunciado}
+En el vector persistente inmutable de Clojure y Scala (\texttt{Vector}), cada nodo interno contiene \(32\) punteros. Para un vector con \(N = 1048576\) elementos (\$\(32^4\)\$, profundidad \(d = 4\) niveles), crear un nuevo vector con un elemento actualizado mediante **compartición estructural** (*path copying*) clona únicamente los \(d = 4\) nodos de \(32\) referencias a lo largo del camino modificado, reutilizando todos los demás nodos. Calcula cuántas referencias de puntero se copian en esa actualización (\(4 \times 32\)).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $d = 4\,\mathrm{niveles}$ — Profundidad del trie para \(32^4 = 1048576\) elementos
+\item $B = 32\,\mathrm{punteros}$ — Factor de ramificación por nodo
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Coste de actualización por Path Copying en vectores persistentes de ramificación 32}
+
+\[
+P_{\text{copiados}} = 4 \cdot 32
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 4 niveles modificados por las 32 ranuras de cada nodo
+
+\[
+P_{\text{copiados}} = 4 \cdot 32
+\]
+
+\[
+\left(4\cdot 32\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 128
+\]
+
+\noindent\textbf{Interpretación}
+Actualizar inmutablemente un vector de más de un millón de elementos copia únicamente 128 punteros, compartiendo el 99.99 \% de la estructura.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $128$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWFzLWJlYW0tZWxpeGlyLWVybGFuZy1zY2FsYTMtY2xvanVyZS1saXNwIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+Un nodo de la máquina virtual BEAM ejecuta 25 000 procesos Elixir aislados, cada uno con un montículo inicial de 3 KiB. ¿Cuántos KiB suman en total esos 25 000 procesos?
+
+\noindent\textbf{2 [PRB-0034] (Básico, Numérico)}
+En el planificador preventivo de la BEAM, cada proceso dispone de un presupuesto de \texttt{2000} reducciones (llamadas a función) antes de ceder la CPU a otro proceso. Si un proceso ejecuta 14 000 llamadas a función, ¿cuántas rodajas de planificación (*context switches*) consume?
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+En un árbol persistente de Clojure con factor de ramificación 32, ¿cuántos elementos caben en \(d = 3\) niveles (\$\(32^3\)\$)?
+
+\noindent\textbf{4 [PRB-0036] (Intermedio, Diseño)}
+Un supervisor OTP configurado con estrategia \texttt{:one\_for\_all} supervisa 6 procesos trabajadores y uno de ellos falla. ¿Cuántos procesos trabajadores reinicia el supervisor?
+\end{tcolorbox}
+
+\part{Monografías de Lenguajes Científicos, Embebidos y Lógicos (Julia, R, Lua, Perl, Objective-C, Prolog, GDScript)}
+
+\chapter{Monografías de Julia y R (Bloques A\(-\)H): Despacho Múltiple, Especialización JIT LLVM, Vectorización y Ciencia de Datos}
+\label{chap:cap07-monografias-julia-r-computacion-cientifica-estadistica}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+\noindent\textit{Este capítulo desarrolla las monografías completas (Bloques \(A-H)\) de los dos lenguajes especializados en cálculo numérico, simulación física y estadística avanzada: **Julia** y **R**.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+En estructuras \texttt{struct} de Julia que van a participar en bucles numéricos intensivos, nunca declares campos con tipos abstractos (\texttt{x::Real} o \texttt{v::Vector\{Number\}}): parametriza siempre la estructura (\texttt{struct Particle\{T<:Real\} x::T end}) para que el compilador conozca el tamaño exacto del campo y lo aloje en línea sin punteros.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+Estabilidad de Tipos (Type Stability en Julia): propiedad de un método según la cual el compilador puede inferir un único tipo concreto (no abstracto ni unión abierta \texttt{Any}) para su valor de retorno y todas sus variables internas a partir únicamente de los tipos de los argumentos de entrada.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+¿Por qué en Julia la función \texttt{f(x) = x > 0 ? x : 0.0} es inestable en tipos cuando se llama con un \texttt{Int64} (porque una rama devuelve \texttt{Int64} y la otra \texttt{Float64}), y cómo la corrige \texttt{zero(x)}?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+\end{tcolorbox}
+
+\section{Monografía de Julia (Bloques A\(-\)H): Despacho múltiple, estabilidad de tipos, broadcasting fusionado y HPC}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+Creado en el MIT por Jeff Bezanson, Stefan Karpinski, Viral B. Shah y Alan Edelman, **Julia** fue diseñado para eliminar el «problema de los dos lenguajes» (prototipar en un lenguaje dinámico lento y reescribir en C/Fortran para producción). El núcleo semántico de Julia es el **despacho múltiple** (*multiple dispatch*): las funciones genéricas seleccionan el método más específico considerando simultáneamente el tipo concreto de **todos** sus argumentos, y cuando se invoca un método con una tupla de tipos concretos, el compilador JIT genera código máquina LLVM especializado para esa firma exacta. La regla de oro del rendimiento en Julia es la **estabilidad de tipos** (*type stability*, verificable con \texttt{@code\_warntype}): el tipo del valor de retorno de una función debe depender exclusivamente de los tipos de sus argumentos y nunca de sus valores en tiempo de ejecución. Además, la sintaxis de difusión con punto \texttt{y .= a .* x .+ b} fusiona a nivel sintáctico múltiples operaciones elementales en un único bucle SIMD en el sitio sin alojar ningún array temporal:
+\begin{lstlisting}[style=studium,escapeinside={(*@}{@*)}]
+abstract type DissipationLaw end
+struct LinearDrag <: DissipationLaw
+    coeff::Float64
+end
+
+# Despacho m(*@{\'u}@*)ltiple especializado y bucle fusionado sin alojamientos (0 bytes):
+function apply_damping!(v::AbstractVector{Float64}, law::LinearDrag, dt::Float64)
+    @. v = v * (1.0 - law.coeff * dt)
+    return v
+end
+\end{lstlisting}
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+\section{Monografía de R (Bloques A\(-\)H): Vectores, data frames, fórmulas estadísticas, Tidyverse/data.table y Quarto}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+Por su parte, **R** (Ross Ihaka y Robert Gentleman, heredero del lenguaje S de John Chambers en Bell Labs) es el estándar en bioestadística, econometría y ciencia de datos reproducible. En R no existen escalares aislados: el número \texttt{42} es un vector numérico de longitud 1, todas las operaciones aritméticas están vectorizadas en C/Fortran bajo el capó, los valores faltantes tipados \texttt{NA} (*Not Available*) son ciudadanos de primera clase y los objetos siguen semántica funcional **Copy-on-Modify**. Asimismo, R posee evaluación perezosa de argumentos mediante promesas (*Non-Standard Evaluation*, NSE) y un operador de fórmulas simbólicas (\texttt{y \textasciitilde{} x1 + x2 + x1:x2}) que construye matrices de diseño para regresión lineal (\texttt{lm}), modelos lineales generalizados (\texttt{glm}) y efectos mixtos.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+
+\noindent\textbf{Enunciado}
+Una expresión vectorial \texttt{w = a .* x .+ b .* y .- c} contiene \(k = 4\) operaciones binarias sobre vectores de \(N = 1000000\) de elementos \texttt{Float64} (\(8\text{ B}\) cada uno). En un lenguaje sin fusión de expresiones, evaluar los 4 operadores materializaría \(4\) vectores temporales en memoria (\(4 \times 10^6 \times 8\text{ B}\)). En Julia, al escribir \texttt{@. w = a * x + b * y - c} sobre un vector preasignado \texttt{w}, la fusión sintáctica aloja \(0\text{ B}\). Calcula cuántos megabytes exactos (dividiendo entre \$\(10^6\)\$) ahorra la fusión de Julia.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $k = 4\,\mathrm{operaciones}$ — Vectores temporales evitados
+\item $N = 1000000$ — Longitud de los vectores Float64
+\item $S_{f64} = 8\,\mathrm{B}$ — Tamaño de cada Float64
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de asignaciones mediante Loop Fusion de broadcasting en Julia}
+
+\[
+\Delta M_{\text{MB}} = \frac{4 \cdot 10^6 \cdot 8}{10^6}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos \(4 * 10^6 * 8 B\) y dividimos entre \(10^6 B/MB\)
+
+\[
+\Delta M_{\text{MB}} = \frac{4 \cdot 10^6 \cdot 8}{10^6}
+\]
+
+\[
+\frac{\left(\left(4\cdot 1000000\right)\cdot 8\right)}{1000000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 32
+\]
+
+\noindent\textbf{Interpretación}
+La fusión sintáctica de Julia ahorra 32 MB de asignaciones temporales por evaluación y maximiza la localidad en caché L1/L2.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $32$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWFzLWp1bGlhLXItY29tcHV0YWNpb24tY2llbnRpZmljYS1lc3RhZGlzdGljYSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+En Julia, si una función genérica tiene 4 métodos especializados para el primer argumento y 4 para el segundo (todas las combinaciones de pares), ¿cuántos métodos especializados forman la tabla de despacho (\(4 \times 4\))?
+
+\noindent\textbf{2 [PRB-0040] (Básico, Numérico)}
+En R, un \texttt{data.frame} tiene 12 columnas numéricas (\texttt{double} de 8 B) y 50 000 filas. ¿Cuántos bytes suman los datos de las 12 columnas (\(12 \times 50000 \times 8\))?
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+En un modelo lineal en R con intercepto y \(p = 5\) predictores continuos más todas las interacciones de pares entre los 5 predictores (\(5 \times 4 / 2 = 10\)), ¿cuántos coeficientes \(\beta\) estima en total \texttt{lm()} (\$1 + 5 + 10\$)?
+
+\noindent\textbf{4 [PRB-0042] (Intermedio, Diseño)}
+Una validación cruzada de \(K = 10\) pliegues (*10-fold CV*) repetida 5 veces evalúa una rejilla de 8 hiperparámetros. ¿Cuántos ajustes del modelo ejecuta en total (\(10 \times 5 \times 8\))?
+\end{tcolorbox}
+
+\chapter{Monografías de Lua 5.4+, Perl 5, Objective-C, Prolog y GDScript (Bloques A\(-\)H): Scripting Embebido, Unificación Lógica y Motores}
+\label{chap:cap08-monografias-lua-perl-objc-prolog-gdscript}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+\noindent\textit{Este capítulo cierra las monografías de lenguajes de la Parte V completando los Bloques \(A-H\) para **Lua**, **Perl**, **Objective-C**, **Prolog** y **GDScript**.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+En GDScript (Godot 4), añade anotaciones de tipos estáticos explícitas (\texttt{var vel: Vector2}, \texttt{func calc(x: float) -> float:}) en todos los scripts de física e inteligencia artificial: permite a la máquina virtual de Godot emitir opcodes tipados directos evitando la resolución dinámica de variantes en cada fotograma.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+Unificador General Máximo (Most General Unifier, MGU en Prolog): sustitución de variables \(\theta\) tal que, dados dos términos lógicos \(s\) y \(t\), los hace sintácticamente idénticos (\(s\theta = t\theta\)) y cualquier otro unificador \(\sigma\) de \(s\) y \(t\) es una instancia de \(\theta\) (\(\sigma = \theta\gamma\)).
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+¿Qué diferencia fundamental existe entre la asignación destructiva \texttt{x = x + 1} de un lenguaje imperativo y la unificación \texttt{X = Y + 1} frente a la evaluación aritmética \texttt{X is Y + 1} en Prolog?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+\end{tcolorbox}
+
+\section{Monografías de Lua 5.4+, Perl 5 y Objective-C (Bloques A\(-\)H): Tablas/Metatablas, Regex y objc\_msgSend}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+Diseñado en la PUC-Rio (Roberto Ierusalimschy, Waldemar Celes y Luiz Henrique de Figueiredo), **Lua** es el lenguaje de scripting embebido por excelencia en motores de videojuegos, Redis, Nginx/OpenResty y Neovim: todo su intérprete ANSI C ocupa menos de \(300\text{ KiB}\) y se ejecuta sobre una máquina virtual basada en registros. La única estructura de datos compuesta de Lua es la **tabla**, implementada internamente como una estructura híbrida que combina una parte de array denso (indexada desde \texttt{1}) y una parte de tabla hash; asociando a una tabla una **metatabla** con metamétodos como \texttt{\_\_index} y \texttt{\_\_call}, se implementan sistemas de objetos, proxies y sobrecarga de operadores:
+\begin{lstlisting}[style=studium,language={Lua}]
+local Vector2D = {}
+Vector2D.__index = Vector2D
+
+function Vector2D.new(x, y)
+    return setmetatable({ x = x or 0, y = y or 0 }, Vector2D)
+end
+
+function Vector2D:magnitude_sq()
+    return self.x * self.x + self.y * self.y
+end
+\end{lstlisting}
+En **Perl 5** (Larry Wall), todo módulo moderno comienza con \texttt{use v5.36; use strict; use warnings;} y distingue por sigilo e invocación entre contexto escalar (\texttt{\$x}), lista (\texttt{@arr}) y tabla asociativa (\texttt{\%hash}), habiendo definido el estándar moderno de expresiones regulares (PCRE). En **Objective-C** (Brad Cox), las llamadas \texttt{[receiver message:arg]} no se resuelven por desplazamiento de tabla virtual fija como en C++, sino mediante el despachador dinámico en tiempo de ejecución \texttt{objc\_msgSend(receiver, @selector(message:), arg)}, lo que permite enviar mensajes a \texttt{nil} de forma segura (no-op que devuelve cero) e introspeccionar selectores dinámicamente.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+\section{Monografías de Prolog y GDScript (Bloques A\(-\)H): Unificación lógica (SLD) y programación de motores de videojuegos}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+En el paradigma lógico declarativo, un programa en **Prolog** (Alain Colmerauer y Philippe Roussel, 1972; ISO Prolog / SWI-Prolog) consta de una base de conocimientos de **cláusulas de Horn**: hechos (\texttt{padre(juan, maria).}) y reglas (\texttt{ancestro(X, Y) :- padre(X, Z), ancestro(Z, Y).}). Ante una consulta, el motor ejecuta **resolución SLD** combinando el algoritmo de **unificación sintáctica de Robinson** (que calcula el unificador general máximo, MGU, vinculando variables lógicas en ambos sentidos) con búsqueda en profundidad y retroceso (*backtracking*) automático, además de aritmética con restricciones sobre dominios finitos (\texttt{use\_module(library(clpfd))}). Finalmente, **GDScript** (el lenguaje específico de dominio del motor libre **Godot Engine 4.x**) ofrece tipado gradual estático (\texttt{var speed: float = 250.0}), referencias directas a nodos del árbol de escenas y comunicación desacoplada mediante el patrón Observador con señales tipadas (\texttt{signal health\_changed(new\_hp: int)}), separando estrictamente el bucle visual (\texttt{\_process(delta)}) del paso fijo del motor de física (\texttt{\_physics\_process(delta)}).
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+
+\noindent\textbf{Enunciado}
+En la implementación C de las tablas híbridas de Lua 5.4, cuando una tabla almacena claves enteras consecutivas \texttt{1..N}, se alojan en la parte array (\texttt{TValue} de \(16\text{ B}\) por elemento: 8 B de valor más 1 B de etiqueta alineado), mientras que en la parte hash cada nodo (\texttt{Node}) ocupa \(32\text{ B}\) (clave + valor + enlace \texttt{next}). Calcula cuántos bytes ahorra una tabla Lua de \(N = 4000\) elementos al indexarse secuencialmente desde \texttt{1} hasta \texttt{4000} (parte array de \(16\text{ B}\)) frente a usar claves dispersas en la parte hash (\(32\text{ B}\) por nodo).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 4000$ — Elementos en la tabla Lua
+\item $S_{hash} = 32\,\mathrm{B}$ — Tamaño por nodo en la parte hash
+\item $S_{array} = 16\,\mathrm{B}$ — Tamaño por TValue en la parte array
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de memoria de la parte Array frente a la parte Hash en tablas híbridas de Lua 5.4}
+
+\[
+\Delta M = 4000 \cdot (32 - 16)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 4000 elementos por los 16 B ahorrados al residir en la parte array
+
+\[
+\Delta M = 4000 \cdot (32 - 16)
+\]
+
+\[
+\left(4000\cdot \left(32-16\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 64000
+\]
+
+\noindent\textbf{Interpretación}
+Usar índices enteros consecutivos desde 1 ahorra 64 000 bytes (la mitad exacta de memoria) y evita el cálculo de hashes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $64000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWx1YS1wZXJsLW9iamMtcHJvbG9nLWdkc2NyaXB0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Numérico)}
+En el ejemplo de Lua \texttt{Vector2D.new(6, 8):magnitude\_sq()}, ¿qué valor devuelve \$\(6^2 + 8^2\)\$?
+
+\noindent\textbf{2 [PRB-0046] (Básico, Numérico)}
+En Godot Engine (GDScript), el bucle \texttt{\_physics\_process(delta)} se ejecuta por defecto a una frecuencia fija de 60 tics por segundo. ¿Cuántos pasos de física ejecuta exactamente en 15 segundos (\(60 \times 15\))?
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Desarrollo por pasos)}
+Un predicado no determinista en Prolog tiene 3 cláusulas que se ramifican en profundidad \(d = 4\) niveles (\$\(3^4\)\$ hojas en el árbol de búsqueda SLD). Si el operador de corte \texttt{!} poda 2 de las 3 ramas en la raíz, ¿cuántas hojas se ahorra explorar (\$\(3^4 - 3^3\)\$)?
+
+\noindent\textbf{4 [PRB-0048] (Intermedio, Diseño)}
+En la API de pila en C de Lua (\texttt{lua\_State}), una función nativa empuja 5 argumentos a la pila, invoca \texttt{lua\_pcall(L, 4, 2, 0)} (que consume la función más los 4 argumentos y empuja 2 resultados). Si antes de empezar había 3 elementos en la pila, ¿cuántos elementos hay en la pila al terminar (\$3 + 2\$)?
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$\sigma_p(R), \pi_L(R), R \bowtie S$ & Operadores de selección, proyección y reunión natural del álgebra relacional & $\mathrm{relación}$ \\
+$m \gg= f : M\langle B \rangle$ & Operador bind (>>=) de una mónada en programación funcional & $\mathrm{tipo}$ \\
+$w \text{ OVER } (P, O)$ & Marco de evaluación de una función de ventana en SQL estándar & $\mathrm{ventana}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Monografía de SQL (Bloques A\(-\)H): Álgebra Relacional, DDL/DML, Lógica Trivaluada, CTEs Recursivas, Funciones de Ventana y Optimización}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En el proyecto \texttt{projects/sql-transactional-ledger}, la cuenta de Caja (\texttt{account\_id = 110}) registra tres apuntes sucesivos \texttt{(debit\_cents, credit\_cents)}: \texttt{(500000, 0)}, \texttt{(125000, 0)} y \texttt{(0, 40000)}. Calcula el saldo acumulado en céntimos (\texttt{running\_balance\_cents}) que devuelve la función de ventana \texttt{SUM(debit\_cents - credit\_cents) OVER (...)} en la tercera fila.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 585000
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+Ante las puntuaciones \texttt{[100, 90, 90, 80]}, ¿qué valor entero asigna \texttt{RANK()} al cuarto elemento (\texttt{80}) tras el empate en la posición 2?
+
+\noindent\textbf{Respuesta} 4
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+Ante las mismas puntuaciones \texttt{[100, 90, 90, 80]}, ¿qué valor entero asigna \texttt{DENSE\_RANK()} al cuarto elemento (\texttt{80})?
+
+\noindent\textbf{Respuesta} 3
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+Un producto cartesiano \texttt{CROSS JOIN} entre una tabla de 120 tiendas y una tabla de 365 días del año genera todas las combinaciones \texttt{(tienda, d{\'i}a)}. ¿Cuántas filas produce?
+
+\noindent\textbf{Respuesta} 43800
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+Una consulta con paginación \texttt{LIMIT 50 OFFSET 400} devuelve la página 9 de resultados. ¿Cuál es el número de orden (base 1) de la primera fila devuelta en esa página (\$400 + 1\$)?
+
+\noindent\textbf{Respuesta} 401
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(500000-0\right)+\left(125000-0\right)\right)+\left(0-40000\right)\right) = 585000\)
+
+\section{Monografía de Bash y POSIX Shell (Bloques A\(-\)H): Tuberías, Redirecciones, Expansiones Seguras, Trap, Herramientas UNIX y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+Un contenedor en un pipeline de despliegue termina abruptamente con código de salida \texttt{\$? = 137} tras intervenir el *OOM Killer* del kernel Linux (\texttt{SIGKILL = 9}), y otro proceso aborta por violación de segmento (\texttt{SIGSEGV = 11}, código \(128 + 11 = 139\)). Calcula la suma de los números de las dos señales POSIX subyacentes obtenidas restando \(128\) a cada código de salida (\((137 - 128) + (139 - 128)\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 20
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+Un script en ejecución es interrumpido por el usuario pulsando \texttt{Ctrl+C} (\texttt{SIGINT = 2}). ¿Qué código de salida \texttt{\$?} reporta el shell (\$128 + 2\$)?
+
+\noindent\textbf{Respuesta} 130
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+Un proceso recibe la señal de terminación ordenada \texttt{SIGTERM = 15} sin capturarla. ¿Cuál es su código de salida (\$128 + 15\$)?
+
+\noindent\textbf{Respuesta} 143
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+Un comando \texttt{xargs -0 -n 50 -P 4} procesa una lista de 600 ficheros pasándolos en lotes de 50 ficheros por invocación. ¿Cuántos procesos hijos lanza en total \texttt{xargs} (\$600 / 50\$)?
+
+\noindent\textbf{Respuesta} 12
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+Una máscara \texttt{umask 027} se resta de los permisos base \texttt{666} (octal) para la creación de ficheros regulares (\$666 - 27\$ en dígito a dígito: \(6-0=6\), \(6-2=4\), \(6-7\to 0\)). ¿Cuál es el permiso octal resultante expresado como entero de tres dígitos?
+
+\noindent\textbf{Respuesta} 640
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(137-128\right)+\left(139-128\right)\right) = 20\)
+
+\section{Monografías de PHP 8.3+, Ruby 3.3+ y Dart 3.x (Bloques A\(-\)H): Motores Zend, YJIT y Compilación AOT/JIT Multiplataforma}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Un servidor de producción con \(8192\text{ MiB}\) de RAM reserva \(2048\text{ MiB}\) para el sistema operativo y el búfer de OPcache/Redis, dejando \(M_{\text{avail}} = 6144\text{ MiB}\) para el pool de trabajadores PHP-FPM. Si cada trabajador consume en carga punta \(m_{\text{worker}} = 48\text{ MiB}\) de memoria privada, calcula el valor óptimo de \texttt{pm.max\_children} (\$6144 / 48\$).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 128
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+En Flutter/Dart, para sostener una tasa de refresco de pantalla de \(120\text{ Hz}\), el presupuesto total por fotograma (construcción + diseño + pintado) es \(1000 / 120\text{ ms}\). ¿Cuántos milisegundos caben en 12 fotogramas consecutivos?
+
+\noindent\textbf{Respuesta} 100
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+En Ruby, la expresión \texttt{(1..10).select(\&:even?).map \{ |x| x * 3 \}.sum} suma el triple de los pares del 2 al 10 (\((2+4+6+8+10) \times 3\)). ¿Cuál es el resultado?
+
+\noindent\textbf{Respuesta} 90
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+Si OPcache evita recompilar 85 ficheros PHP por petición HTTP (ahorrando \(0.4\text{ ms}\) por fichero), ¿cuántos milisegundos de CPU ahorra en cada petición (\(85 \times 0.4\))?
+
+\noindent\textbf{Respuesta} 34
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+Un Isolate de fondo en Dart procesa un lote de 400 imágenes en grupos de 25 imágenes devolviendo el progreso al Isolate principal tras cada grupo. ¿Cuántos mensajes de progreso envía?
+
+\noindent\textbf{Respuesta} 16
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{6144}{48} = 128\)
+
+\section{Monografía de Haskell (Bloques A\(-\)H): Pureza, Evaluación Perezosa, Inferencia Hindley-Milner, Typeclasses y Mónadas}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+En GHC de 64 bits, cada celda \texttt{(:)} de una lista enlazada \texttt{[Int]} en el montículo ocupa \(3\) palabras de \(8\text{ B}\) (\(24\text{ B}\) por nodo). Una tubería \texttt{sum (map (*2) (map (+1) [1..N]))} para \(N = 100000\) elementos, si se evaluara de forma estricta sin fusión, alojaría \(3\) listas de \(100000\) celdas (\(3 \times 100000 \times 24\text{ B}\)). Gracias a la fusión \texttt{foldr/build} de GHC con \texttt{-O2}, las tres listas desaparecen y el bucle se ejecuta en registros alojando \(0\text{ B}\) de celdas. Calcula cuántos kilobytes (dividiendo entre 1000) ahorra la desforestación.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 7200
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+En el evaluador monádico \texttt{eval (Div (Add (Lit 20) (Lit 22)) (Lit 6))}, ¿qué valor entero \texttt{Right v} devuelve la expresión (\((20 + 22) / 6\))?
+
+\noindent\textbf{Respuesta} 7
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+\texttt{QuickCheck} ejecuta por defecto 100 casos generados aleatoriamente por cada propiedad \texttt{prop\_*}. Si un módulo define 18 propiedades, ¿cuántos casos de prueba verifica \texttt{quickCheck} en total?
+
+\noindent\textbf{Respuesta} 1800
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+En la expresión aplicativa \texttt{[(+10), (*2), (+100)] <*> [1, 2, 3, 4]}, la instancia \texttt{Applicative} de listas aplica cada una de las 3 funciones a cada uno de los 4 valores. ¿Cuántos elementos contiene la lista resultante?
+
+\noindent\textbf{Respuesta} 12
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+Un \texttt{newtype} en Haskell envuelve un \texttt{Int64} (8 B). ¿Cuántos bytes de sobrecoste adicional añade el constructor del \texttt{newtype} en tiempo de ejecución tras el borrado de GHC?
+
+\noindent\textbf{Respuesta} 0
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(3\cdot 100000\right)\cdot 24\right)}{1000} = 7200\)
+
+\section{Monografías de OCaml 5.x y F\# (.NET) (Bloques A\(-\)H): Módulos de Orden Superior (Functors), Efectos Algebraicos y Expresiones de Computación}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+En el compilador nativo \texttt{ocamlopt} de 64 bits, cualquier entero \texttt{int} \(n\) se almacena en un registro de CPU mediante la representación etiquetada \(R(n) = 2n + 1\) (con el bit 0 puesto a 1 para indicar al recolector de basura que no es un puntero). Calcula el valor decimal exacto de la palabra en registro \(R(n)\) para el entero de aplicación \(n = 1500\).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 3001
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+En OCaml, si un registro contiene la palabra etiquetada \(R(n) = 85\), ¿cuál es el entero lógico \(n = (85 - 1) / 2\)?
+
+\noindent\textbf{Respuesta} 42
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+En F\#, la función \texttt{kineticEnergy} calcula \(0.5 \cdot m \cdot v^2\). Para una masa \(m = 4\text{ kg}\) y velocidad \(v = 15\text{ m/s}\), ¿cuántos julios (\(\text{kg}\cdot\text{m}^2/\text{s}^2\)) devuelve?
+
+\noindent\textbf{Respuesta} 450
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+¿Cuántos bytes adicionales ocupa en el ensamblado \texttt{.dll} de .NET la anotación de unidades \texttt{[<Measure>] type kg} tras la compilación de F\#?
+
+\noindent\textbf{Respuesta} 0
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+En OCaml de 64 bits, cada bloque en el montículo tiene 1 palabra de cabecera (8 B) que codifica tamaño, color GC y etiqueta de constructor, seguida de \(k\) campos de 8 B. ¿Cuántos bytes ocupa un nodo de árbol binario con 3 campos (\texttt{valor}, \texttt{izq}, \texttt{der})?
+
+\noindent\textbf{Respuesta} 32
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(2\cdot 1500\right)+1\right) = 3001\)
+
+\section{Monografías de Elixir, Erlang/OTP (BEAM), Scala 3, Clojure y Lisp/Scheme (Bloques A\(-\)H)}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+En el vector persistente inmutable de Clojure y Scala (\texttt{Vector}), cada nodo interno contiene \(32\) punteros. Para un vector con \(N = 1048576\) elementos (\$\(32^4\)\$, profundidad \(d = 4\) niveles), crear un nuevo vector con un elemento actualizado mediante **compartición estructural** (*path copying*) clona únicamente los \(d = 4\) nodos de \(32\) referencias a lo largo del camino modificado, reutilizando todos los demás nodos. Calcula cuántas referencias de puntero se copian en esa actualización (\(4 \times 32\)).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 128
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+Un nodo de la máquina virtual BEAM ejecuta 25 000 procesos Elixir aislados, cada uno con un montículo inicial de 3 KiB. ¿Cuántos KiB suman en total esos 25 000 procesos?
+
+\noindent\textbf{Respuesta} 75000
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+En el planificador preventivo de la BEAM, cada proceso dispone de un presupuesto de \texttt{2000} reducciones (llamadas a función) antes de ceder la CPU a otro proceso. Si un proceso ejecuta 14 000 llamadas a función, ¿cuántas rodajas de planificación (*context switches*) consume?
+
+\noindent\textbf{Respuesta} 7
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+En un árbol persistente de Clojure con factor de ramificación 32, ¿cuántos elementos caben en \(d = 3\) niveles (\$\(32^3\)\$)?
+
+\noindent\textbf{Respuesta} 32768
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+Un supervisor OTP configurado con estrategia \texttt{:one\_for\_all} supervisa 6 procesos trabajadores y uno de ellos falla. ¿Cuántos procesos trabajadores reinicia el supervisor?
+
+\noindent\textbf{Respuesta} 6
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(4\cdot 32\right) = 128\)
+
+\section{Monografías de Julia y R (Bloques A\(-\)H): Despacho Múltiple, Especialización JIT LLVM, Vectorización y Ciencia de Datos}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+Una expresión vectorial \texttt{w = a .* x .+ b .* y .- c} contiene \(k = 4\) operaciones binarias sobre vectores de \(N = 1000000\) de elementos \texttt{Float64} (\(8\text{ B}\) cada uno). En un lenguaje sin fusión de expresiones, evaluar los 4 operadores materializaría \(4\) vectores temporales en memoria (\(4 \times 10^6 \times 8\text{ B}\)). En Julia, al escribir \texttt{@. w = a * x + b * y - c} sobre un vector preasignado \texttt{w}, la fusión sintáctica aloja \(0\text{ B}\). Calcula cuántos megabytes exactos (dividiendo entre \$\(10^6\)\$) ahorra la fusión de Julia.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 32
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+En Julia, si una función genérica tiene 4 métodos especializados para el primer argumento y 4 para el segundo (todas las combinaciones de pares), ¿cuántos métodos especializados forman la tabla de despacho (\(4 \times 4\))?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+En R, un \texttt{data.frame} tiene 12 columnas numéricas (\texttt{double} de 8 B) y 50 000 filas. ¿Cuántos bytes suman los datos de las 12 columnas (\(12 \times 50000 \times 8\))?
+
+\noindent\textbf{Respuesta} 4800000
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+En un modelo lineal en R con intercepto y \(p = 5\) predictores continuos más todas las interacciones de pares entre los 5 predictores (\(5 \times 4 / 2 = 10\)), ¿cuántos coeficientes \(\beta\) estima en total \texttt{lm()} (\$1 + 5 + 10\$)?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+Una validación cruzada de \(K = 10\) pliegues (*10-fold CV*) repetida 5 veces evalúa una rejilla de 8 hiperparámetros. ¿Cuántos ajustes del modelo ejecuta en total (\(10 \times 5 \times 8\))?
+
+\noindent\textbf{Respuesta} 400
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(4\cdot 1000000\right)\cdot 8\right)}{1000000} = 32\)
+
+\section{Monografías de Lua 5.4+, Perl 5, Objective-C, Prolog y GDScript (Bloques A\(-\)H): Scripting Embebido, Unificación Lógica y Motores}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+En la implementación C de las tablas híbridas de Lua 5.4, cuando una tabla almacena claves enteras consecutivas \texttt{1..N}, se alojan en la parte array (\texttt{TValue} de \(16\text{ B}\) por elemento: 8 B de valor más 1 B de etiqueta alineado), mientras que en la parte hash cada nodo (\texttt{Node}) ocupa \(32\text{ B}\) (clave + valor + enlace \texttt{next}). Calcula cuántos bytes ahorra una tabla Lua de \(N = 4000\) elementos al indexarse secuencialmente desde \texttt{1} hasta \texttt{4000} (parte array de \(16\text{ B}\)) frente a usar claves dispersas en la parte hash (\(32\text{ B}\) por nodo).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 64000
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+En el ejemplo de Lua \texttt{Vector2D.new(6, 8):magnitude\_sq()}, ¿qué valor devuelve \$\(6^2 + 8^2\)\$?
+
+\noindent\textbf{Respuesta} 100
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+En Godot Engine (GDScript), el bucle \texttt{\_physics\_process(delta)} se ejecuta por defecto a una frecuencia fija de 60 tics por segundo. ¿Cuántos pasos de física ejecuta exactamente en 15 segundos (\(60 \times 15\))?
+
+\noindent\textbf{Respuesta} 900
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+Un predicado no determinista en Prolog tiene 3 cláusulas que se ramifican en profundidad \(d = 4\) niveles (\$\(3^4\)\$ hojas en el árbol de búsqueda SLD). Si el operador de corte \texttt{!} poda 2 de las 3 ramas en la raíz, ¿cuántas hojas se ahorra explorar (\$\(3^4 - 3^3\)\$)?
+
+\noindent\textbf{Respuesta} 54
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+En la API de pila en C de Lua (\texttt{lua\_State}), una función nativa empuja 5 argumentos a la pila, invoca \texttt{lua\_pcall(L, 4, 2, 0)} (que consume la función más los 4 argumentos y empuja 2 resultados). Si antes de empezar había 3 elementos en la pila, ¿cuántos elementos hay en la pila al terminar (\$3 + 2\$)?
+
+\noindent\textbf{Respuesta} 5
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(4000\cdot \left(32-16\right)\right) = 64000\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 36 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios. Ecuaciones: 1 respaldada por una fuente.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios. Ecuaciones: 1 reproducida numéricamente, 1 valor o condición.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios. Ecuaciones: 2 respaldada por una fuente.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent Referencia Normativa src-sql-2023 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6.
+
+\noindent Referencia Normativa src-codd-1970 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6.
+
+\noindent Referencia Normativa src-posix-2017 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent Referencia Normativa src-bryant-ohallaron (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent Referencia Normativa src-ecmascript-2024 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P13, \P14, \P15, \P16, \P17, \P18.
+
+\noindent Referencia Normativa src-unicode-15 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P13, \P14, \P15, \P16, \P17, \P18.
+
+\noindent Referencia Normativa src-pierce-tapl (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36.
+
+\noindent Referencia Normativa src-knuth-taocp (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-csharp-spec (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent Referencia Normativa src-kleppmann-ddia (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P31, \P32, \P33, \P34, \P35, \P36.
+
+\noindent IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent Referencia Normativa src-iso-c17 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion scientific
+
+\noindent REV-0002: cap02-monografia-bash-posix-shell-automatizacion-sistemas scientific
+
+\noindent REV-0003: cap03-monografias-php-ruby-dart-web-movil scientific
+
+\noindent REV-0004: cap04-monografia-haskell-funcional-puro-tipos-monadas scientific
+
+\noindent REV-0005: cap05-monografias-ocaml-fsharp-ml-sistemas-tipos scientific
+
+\noindent REV-0006: cap06-monografias-beam-elixir-erlang-scala3-clojure-lisp scientific
+
+\noindent REV-0007: cap07-monografias-julia-r-computacion-cientifica-estadistica scientific
+
+\noindent REV-0008: cap08-monografias-lua-perl-objc-prolog-gdscript scientific
+\chapter{Plan de estudio}
+
+\section*{Monografías de Datos, Automatización de Sistemas y Desarrollo Web/Móvil}
+
+\subsection*{\checkmark Monografía de SQL (Bloques A\(-\)H): Álgebra Relacional, DDL/DML, Lógica Trivaluada, CTEs Recursivas, Funciones de Ventana y Optimización}
+\begin{itemize}
+\item Comprender el fundamento relacional de SQL (E. F. Codd, 1970; estándar ISO/IEC 9075:2023) y el orden lógico exacto de evaluación de una consulta (`FROM -> WHERE -> GROUP BY -> HAVING -> WINDOW -> SELECT -> DISTINCT -> ORDER BY -> LIMIT`).
+\item Dominar la lógica trivaluada de `NULL` (`TRUE`, `FALSE`, `UNKNOWN`), todos los tipos de `JOIN` (incluso `LATERAL`), subconsultas correlacionadas, CTEs recursivas (`WITH RECURSIVE`) y funciones de ventana (`ROW\_NUMBER`, `RANK`, `LAG`, `SUM() OVER (...)`).
+\item Interpretar planes de ejecución (`EXPLAIN ANALYZE`), diseñar índices compuestos sargables y verificar el libro mayor financiero `projects/sql-transactional-ledger`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Bash y POSIX Shell (Bloques A\(-\)H): Tuberías, Redirecciones, Expansiones Seguras, Trap, Herramientas UNIX y Proyectos}
+\begin{itemize}
+\item Distinguir con rigor entre el estándar portable POSIX `sh` (IEEE Std 1003.1) y las extensiones de GNU Bash (`[[ ... ]]`, arrays indexados/asociativos, sustitución de procesos `<(...)`).
+\item Dominar los descriptores de fichero (`0` stdin, `1` stdout, `2` stderr), tuberías (`|`), códigos de salida (`\$?`), entrecomillado seguro y expansiones de parámetros (`\$\{var:-def\}`, `\$\{var:?err\}`).
+\item Escribir scripts de producción robustos con modo estricto (`set -euo pipefail`), limpieza atómica mediante `trap ... EXIT`, integración con `find`/`xargs -0`/`jq`/`awk` y verificación con `shellcheck`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografías de PHP 8.3+, Ruby 3.3+ y Dart 3.x (Bloques A\(-\)H): Motores Zend, YJIT y Compilación AOT/JIT Multiplataforma}
+\begin{itemize}
+\item Dominar PHP moderno (8.3+): tipado estricto (`declare(strict\_types=1)`), tipos de unión/intersección, `readonly class`, `enum` respaldados, Fibers, OPcache/JIT, Composer, estándares PSR y Laravel/Symfony.
+\item Dominar Ruby (3.3+): modelo de objetos puro, bloques/`Proc`/lambdas, mixins con `Module`, metaprogramación, compilador YJIT, concurrencia con Fibers/Ractors y ecosistema Bundler/RSpec/Rails.
+\item Dominar Dart (3.x): *sound null-safety*, modificadores de clase (`sealed`, `final`, `interface`), coincidencia de patrones, concurrencia por memoria aislada (*Isolates*) y compilación JIT/AOT para Flutter.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografías de Lenguajes Funcionales Estáticos y Concurrentes (Haskell, OCaml, F\#, Scala, BEAM, Lisp)}
+
+\subsection*{\checkmark Monografía de Haskell (Bloques A\(-\)H): Pureza, Evaluación Perezosa, Inferencia Hindley-Milner, Typeclasses y Mónadas}
+\begin{itemize}
+\item Comprender la transparencia referencial, la evaluación no estricta (perezosa por necesidad, *call-by-need* con *thunks*), la currificación universal y el sistema de tipos Hindley-Milner de GHC.
+\item Diseñar tipos de datos algebraicos (`data`, `newtype`), sinónimos de tipos, polimorfismo de clases de tipos (`Eq`, `Ord`, `Monoid`) y tipos de orden superior (*Higher-Kinded Types*, `* -> *`).
+\item Dominar la jerarquía `Functor` (`fmap`), `Applicative` (`<*>`) y `Monad` (`>>=`, notación `do`), el aislamiento puro de efectos con `IO`, `STM` (*Software Transactional Memory*) y pruebas de propiedades con `QuickCheck`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografías de OCaml 5.x y F\# (.NET) (Bloques A\(-\)H): Módulos de Orden Superior (Functors), Efectos Algebraicos y Expresiones de Computación}
+\begin{itemize}
+\item Dominar la familia ML (Robin Milner): evaluación estricta por valor con inferencia Hindley-Milner completa, tipos algebraicos, coincidencia de patrones y mutabilidad explícita (`ref`, `mutable`).
+\item En OCaml 5.x: programar módulos parametrizados de orden superior (*Functors*), variantes polimórficas, paralelismo nativo con *Domains* y concurrencia mediante manejadores de efectos algebraicos (*Effect Handlers*).
+\item En F\#: dominar el operador tubería (`|>`), unidades de medida estáticas (`[<Measure>]`), proveedores de tipos y expresiones de computación (`async \{ ... \}`, `seq \{ ... \}`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografías de Elixir, Erlang/OTP (BEAM), Scala 3, Clojure y Lisp/Scheme (Bloques A\(-\)H)}
+\begin{itemize}
+\item Comprender la máquina virtual BEAM (Erlang/Elixir): aislamiento total de memoria por proceso, recolección de basura por proceso, paso de mensajes asíncrono y árboles de supervisión OTP (*let it crash*).
+\item Dominar Elixir (tuberías `|>`, protocolos, macros higiénicas, `GenServer`, `Supervisor`, `Phoenix LiveView`) y Erlang/OTP (coincidencia de patrones binarios, actualización de código en caliente).
+\item Dominar Scala 3 (cálculo DOT, `enum`, `given`/`using`, tipos unión/intersección, ZIO/Cats Effect), Clojure (estructuras persistentes HAMT, átomos/STM, REPL) y Lisp/Scheme (homoiconicidad, S-expressions y macros `defmacro`/`syntax-rules`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografías de Lenguajes Científicos, Embebidos y Lógicos (Julia, R, Lua, Perl, Objective-C, Prolog, GDScript)}
+
+\subsection*{\checkmark Monografías de Julia y R (Bloques A\(-\)H): Despacho Múltiple, Especialización JIT LLVM, Vectorización y Ciencia de Datos}
+\begin{itemize}
+\item Comprender cómo Julia resuelve el «problema de los dos lenguajes» mediante despacho múltiple (*multiple dispatch*), inferencia de estabilidad de tipos y compilación JIT sobre LLVM.
+\item Dominar en Julia los tipos paramétricos abstractos y concretos, la difusión vectorizada fusionada con punto (`f.(x) .+ g.(y)`), macros metaprogramáticas y álgebra lineal/ecuaciones diferenciales (`DifferentialEquations.jl`).
+\item Dominar R (4.x): vectores atómicos con semántica Copy-on-Modify, factores, matrices, `data.frame` / `tibble` / `data.table`, programación funcional (`purrr`), modelado estadístico (`y \textasciitilde{} x1 + x2`) y visualización con la Gramática de Gráficos (`ggplot2`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografías de Lua 5.4+, Perl 5, Objective-C, Prolog y GDScript (Bloques A\(-\)H): Scripting Embebido, Unificación Lógica y Motores}
+\begin{itemize}
+\item Dominar Lua (5.4+ / LuaJIT): máquina virtual basada en registros, tablas híbridas (array + hash), metatablas (`\_\_index`, `\_\_newindex`, `\_\_add`), corrutinas asimétricas y la API de pila en C (`lua\_State*`).
+\item Comprender Perl 5 (contexto escalar vs lista, expresiones regulares PCRE, CPAN, `use strict; use warnings;`) y Objective-C (paso de mensajes dinámico Smalltalk `objc\_msgSend`, categorías y puente con Swift/C).
+\item Dominar Prolog (cláusulas de Horn, resolución SLD, unificación sintáctica de Robinson, retroceso y corte `!`) y GDScript (árbol de escenas de Godot, señales desacopladas y procesado por fotograma `\_process`/`\_physics\_process`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Referencia Normativa src-sql-2023. \url{https://doc.rust-lang.org/reference/src-sql-2023.html}
+\bibitem{src27} Referencia Normativa src-codd-1970. \url{https://doc.rust-lang.org/reference/src-codd-1970.html}
+\bibitem{src28} Referencia Normativa src-posix-2017. \url{https://doc.rust-lang.org/reference/src-posix-2017.html}
+\bibitem{src29} Referencia Normativa src-bryant-ohallaron. \url{https://doc.rust-lang.org/reference/src-bryant-ohallaron.html}
+\bibitem{src30} Referencia Normativa src-ecmascript-2024. \url{https://doc.rust-lang.org/reference/src-ecmascript-2024.html}
+\bibitem{src31} Referencia Normativa src-unicode-15. \url{https://doc.rust-lang.org/reference/src-unicode-15.html}
+\bibitem{src32} Referencia Normativa src-pierce-tapl. \url{https://doc.rust-lang.org/reference/src-pierce-tapl.html}
+\bibitem{src33} Referencia Normativa src-knuth-taocp. \url{https://doc.rust-lang.org/reference/src-knuth-taocp.html}
+\bibitem{src34} Referencia Normativa src-csharp-spec. \url{https://doc.rust-lang.org/reference/src-csharp-spec.html}
+\bibitem{src35} Referencia Normativa src-kleppmann-ddia. \url{https://doc.rust-lang.org/reference/src-kleppmann-ddia.html}
+\bibitem{src36} Referencia Normativa src-iso-c17. \url{https://doc.rust-lang.org/reference/src-iso-c17.html}
+\end{thebibliography}
+\end{document}

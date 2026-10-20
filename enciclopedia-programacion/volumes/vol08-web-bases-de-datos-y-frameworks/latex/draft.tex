@@ -1,0 +1,1909 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen VIII: Desarrollo Web, Formatos de Datos, Bases de Datos y Frameworks\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Enciclopedia de Programación e Ingeniería del Software \(-\) Partes VI, VII y VIII\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Partes VI\(-\)VIII: Web, Almacenamiento y Ecosistemas de Producción}
+
+\chapter{HTML Living Standard y Accesibilidad Web (WCAG / ARIA)}
+\label{chap:ch-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textit{Estudio riguroso de HTML como lenguaje de marcado declarativo (no de programación de propósito general), su gramática, ciclo de parseo en el navegador y validación accesible.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+La API de validación de restricciones de HTML5 verifica tipos, patrones regulares y rangos antes del envío HTTP, pero jamás sustituye la validación en el servidor.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Naturaleza declarativa de HTML y el estándar vivo WHATWG: HTML es un lenguaje formal de marcado estructural e hipertextual, no un lenguaje de programación Turing-completo.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Los atributos async, defer y type='module' desacoplan la descarga de scripts del bloqueo del parser HTML.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\section{Naturaleza declarativa de HTML y el estándar vivo WHATWG y Semántica estructural, árbol de accesibilidad (AOM) y WAI-ARIA}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+A diferencia de un lenguaje de programación imperativo o funcional, HTML (HyperText Markup Language, mantenido como Living Standard por WHATWG) describe de manera declarativa la estructura semántica de un documento mediante elementos delimitados por etiquetas, atributos clave-valor y referencias de entidades. Carece de variables mutables, bucles condicionales o abstracción funcional general. El analizador sintáctico de HTML5 implementa una máquina de estados finitos con reglas deterministas de recuperación de errores: incluso ante etiquetas mal anidadas, construye el mismo árbol DOM en todos los motores conformes (Blink, WebKit, Gecko).
+\begin{lstlisting}[style=studium,language={HTML},escapeinside={(*@}{@*)}]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de Telemetr(*@{\'i}@*)a Industrial</title>
+</head>
+<body>
+  <header role="banner">
+    <h1>Estado del Cl(*@{\'u}@*)ster Principal</h1>
+  </header>
+  <main id="contenido-principal">
+    <article aria-labelledby="sec-latencia">
+      <h2 id="sec-latencia">M(*@{\'e}@*)tricas de Latencia p99</h2>
+      <p>Latencia actual: <data value="4.2">4,2 ms</data></p>
+    </article>
+  </main>
+</body>
+</html>
+\end{lstlisting}
+El navegador construye en paralelo al DOM el Árbol de Accesibilidad (Accessibility Object Model), consultado por lectores de pantalla mediante APIs nativas (IAccessible2, UIAutomation, NSAccessibility). La primera regla de WAI-ARIA establece que siempre debe preferirse un elemento HTML nativo (\texttt{<button>}, \texttt{<nav>}, \texttt{<main>}, \texttt{<dialog>}) sobre un \texttt{<div>} genérico con \texttt{role="button"}, ya que el elemento nativo proporciona automáticamente navegación por teclado (\texttt{Tab}, \texttt{Enter}, \texttt{Space}), gestión de foco y estados implícitos. Como se ilustra en la figura~\ref{fig:ch-01-fig}, el DOM alimenta tanto el Render Tree visual como la estructura semántica.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNoLTAxIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=0.45cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (bytes) [fill=blue!10] {Bytes UTF-8\\(HTML / CSS)};
+\node (dom) [right=of bytes, fill=green!10] {Árboles\\DOM + CSSOM};
+\node (render) [right=of dom, fill=yellow!15] {Render Tree\\(Nodos visibles)};
+\node (layout) [right=of render, fill=orange!15] {Layout / Reflow\\(Geometría)};
+\node (paint) [right=of layout, fill=purple!15] {Paint \& Composite\\(Capas GPU)};
+\draw[-Stealth, thick] (bytes) -- (dom);
+\draw[-Stealth, thick] (dom) -- (render);
+\draw[-Stealth, thick] (render) -- (layout);
+\draw[-Stealth, thick] (layout) -- (paint);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=0.45cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (bytes) [fill=blue!10] {Bytes UTF-8\\(HTML / CSS)};
+\node (dom) [right=of bytes, fill=green!10] {Árboles\\DOM + CSSOM};
+\node (render) [right=of dom, fill=yellow!15] {Render Tree\\(Nodos visibles)};
+\node (layout) [right=of render, fill=orange!15] {Layout / Reflow\\(Geometría)};
+\node (paint) [right=of layout, fill=purple!15] {Paint \& Composite\\(Capas GPU)};
+\draw[-Stealth, thick] (bytes) -- (dom);
+\draw[-Stealth, thick] (dom) -- (render);
+\draw[-Stealth, thick] (render) -- (layout);
+\draw[-Stealth, thick] (layout) -- (paint);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=0.45cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (bytes) [fill=blue!10] {Bytes UTF-8\\(HTML / CSS)};
+\node (dom) [right=of bytes, fill=green!10] {Árboles\\DOM + CSSOM};
+\node (render) [right=of dom, fill=yellow!15] {Render Tree\\(Nodos visibles)};
+\node (layout) [right=of render, fill=orange!15] {Layout / Reflow\\(Geometría)};
+\node (paint) [right=of layout, fill=purple!15] {Paint \& Composite\\(Capas GPU)};
+\draw[-Stealth, thick] (bytes) -- (dom);
+\draw[-Stealth, thick] (dom) -- (render);
+\draw[-Stealth, thick] (render) -- (layout);
+\draw[-Stealth, thick] (layout) -- (paint);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=0.45cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (bytes) [fill=blue!10] {Bytes UTF-8\\(HTML / CSS)};
+\node (dom) [right=of bytes, fill=green!10] {Árboles\\DOM + CSSOM};
+\node (render) [right=of dom, fill=yellow!15] {Render Tree\\(Nodos visibles)};
+\node (layout) [right=of render, fill=orange!15] {Layout / Reflow\\(Geometría)};
+\node (paint) [right=of layout, fill=purple!15] {Paint \& Composite\\(Capas GPU)};
+\draw[-Stealth, thick] (bytes) -- (dom);
+\draw[-Stealth, thick] (dom) -- (render);
+\draw[-Stealth, thick] (render) -- (layout);
+\draw[-Stealth, thick] (layout) -- (paint);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:ch-01-fig}\textbf{Figura~\thestudiumfigure.} Tubería de renderizado del navegador (Critical Rendering Path): desde el flujo de bytes UTF-8 hasta el árbol DOM, CSSOM, Render Tree, Layout y Composite.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\section{Formularios nativos, validación de restricciones y seguridad en enlaces y Carga eficiente de recursos, módulos ES y Web Components}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+Los controles de formulario (\texttt{<input>}, \texttt{<select>}, \texttt{<textarea>}) asociados explícitamente mediante \texttt{<label for="id">} exponen validación declarativa (\texttt{required}, \texttt{type="email"}, \texttt{min}, \texttt{max}, \texttt{pattern}). No obstante, dado que cualquier cliente puede falsificar peticiones HTTP ignorando el navegador, toda validación en el cliente es estrictamente una mejora de experiencia de usuario (UX) y el servidor debe revalidar íntegramente la carga útil. Asimismo, los enlaces externos con \texttt{target="\_blank"} deben incluir \texttt{rel="noopener noreferrer"} para aislar el contexto de navegación y evitar ataques de tabnabbing inverso.
+Cuando el parser HTML encuentra una etiqueta \texttt{<script>} clásica sin atributos, detiene la construcción del DOM hasta descargar y ejecutar el script. El atributo \texttt{defer} descarga el script en paralelo y pospone su ejecución en orden hasta que el DOM está completo (\texttt{DOMContentLoaded}), mientras que \texttt{type="module"} activa el sistema de módulos ECMAScript en modo estricto con diferimiento implícito. Adicionalmente, la especificación HTML incluye \texttt{<template>} y \texttt{<slot>} como base de Web Components y Shadow DOM para encapsular estructura y estilo.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+
+\noindent\textbf{Enunciado}
+Una página HTML descarga un documento base en 40 ms, una hoja CSS bloqueante de renderizado en 65 ms en paralelo con un script clásico bloqueante de 110 ms, y ejecuta el layout final en 15 ms tras ambos recursos. Calcule el tiempo total hasta el First Contentful Paint (FCP) en milisegundos.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $t_{html} = 40\,\mathrm{ms}$ — Tiempo de descarga del HTML base
+\item $t_{css} = 65\,\mathrm{ms}$ — Tiempo de descarga de la hoja CSS
+\item $t_{js} = 110\,\mathrm{ms}$ — Tiempo del script bloqueante mayor
+\item $t_{layout} = 15\,\mathrm{ms}$ — Tiempo de Layout y Paint
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Tiempo total hasta First Contentful Paint \(T_fcp\) en ms
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo del tiempo de bloqueo del Critical Rendering Path}
+
+\[
+T_{\text{fcp}} = 40 + 110 + 15
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos el tiempo base HTML, el máximo de las descargas en paralelo (max(65, 110) = 110 ms) y el tiempo de layout
+
+\[
+T_{\text{fcp}} = 40 + 110 + 15
+\]
+
+\[
+\left(\left(40+110\right)+15\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 165
+\]
+
+\noindent\textbf{Interpretación}
+El First Contentful Paint ocurre a los 165 ms; añadir defer al script reduciría la espera crítica de recursos de 110 ms a 65 ms.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $165$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNoLTAxIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+[CH-01.1] Calcule (Reducción de latencia FCP al diferir un script de 110 ms dejando solo el CSS de 65 ms (40 + 65 + 15)) expresado en ms.
+
+\noindent\textbf{2 [PRB-0004] (Intermedio, Desarrollo por pasos)}
+[CH-01.2] Calcule (Tamaño total en KiB de un documento HTML de 18 KiB más 3 iconos SVG inline de 4 KiB cada uno) expresado en KiB.
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+[CH-01.3] Calcule (Número total de nodos DOM generados por una tabla de 25 filas con 4 celdas por fila más el nodo tr por fila) expresado en nodos.
+
+\noindent\textbf{4 [PRB-0006] (Avanzado, Diseño)}
+[CH-01.4] Calcule (Ahorro porcentual de transferencia al comprimir con Brotli un HTML de 80 KiB a 16 KiB) expresado en \%.
+\end{tcolorbox}
+
+\chapter{CSS Moderno: Cascada, Especificidad, Flexbox, Grid y Container Queries}
+\label{chap:ch-02}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textit{Monografía técnica de CSS como lenguaje declarativo de presentación visual, geometría de cajas, contextos de apilamiento, diseño adaptable e ingeniería de sistemas de diseño.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Flexbox distribuye espacio a lo largo de un eje principal dinámico, mientras que CSS Grid impone una malla bidimensional explícita de filas y columnas.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Algoritmo de la Cascada, Capas (@layer) y Especificidad Lexicográfica: El motor CSS resuelve conflictos entre declaraciones mediante una jerarquía estricta donde el origen y las capas (@layer) preceden a la especificidad del selector.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Animar exclusivamente transform y opacity evita recalcular el Layout (Reflow) y el Paint, delegando la interpolación al hilo compositor de la GPU.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\section{Algoritmo de la Cascada, Capas (@layer) y Especificidad Lexicográfica y Modelo de Caja, Box-Sizing y Propiedades Lógicas Internacionalizadas}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Para cada propiedad de cada elemento DOM, el motor CSS filtra las declaraciones aplicables y elige un único valor ganador evaluando en orden: 1) Origen e importancia (\texttt{!important} de usuario/autor), 2) Contexto de encapsulación (Shadow DOM), 3) Capas de cascada explícitas (\texttt{@layer reset, base, components, utilities}), 4) Especificidad del selector expresada como el vector lexicográfico \(S = (a, b, c)\) donde \(a\) cuenta selectores de ID (\texttt{\#nav}), \(b\) cuenta clases, atributos y pseudoclases (\texttt{.activo}, \texttt{[type="text"]}, \texttt{:hover}, mientras \texttt{:where()} aporta 0 y \texttt{:is()} toma el máximo de su lista), y \(c\) cuenta selectores de tipo y pseudoelementos (\texttt{article}, \texttt{::before}), y finalmente 5) Orden de aparición en el código fuente.
+\begin{lstlisting}[style=studium]
+@layer base, components;
+
+@layer base {
+  :root {
+    --espacio-base: 1rem;
+    --color-superficie: oklch(98% 0.01 250);
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .panel-metricas {
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--espacio-base);
+    background: var(--color-superficie);
+  }
+}
+\end{lstlisting}
+En el modelo tradicional \texttt{content-box}, el ancho visual ocupado por una caja es \(W_{\text{total}} = W_{\text{content}} + 2P + 2B\). Al declarar \texttt{box-sizing: border-box}, el ancho declarado fija directamente \(W_{\text{total}}\), descontando \texttt{padding} y \texttt{border} del área interior disponible. Además, el CSS moderno reemplaza propiedades físicas (\texttt{margin-left}, \texttt{width}) por propiedades lógicas relativas al flujo de escritura (\texttt{margin-inline-start}, \texttt{inline-size}, \texttt{block-size}), soportando automáticamente idiomas de derecha a izquierda (RTL) como árabe o hebreo sin duplicar hojas de estilo.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\section{Contextos de Formato: Flexbox Unidimensional y CSS Grid Bidimensional y Container Queries, Rendimiento de Animaciones y Compositor GPU}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+Un contenedor \texttt{display: flex} calcula el tamaño base (\texttt{flex-basis}) de sus hijos directos y reparte el espacio libre positivo según los factores \texttt{flex-grow} o absorbe el déficit según \texttt{flex-shrink} ponderado por el tamaño base. Por su parte, \texttt{display: grid} permite definir pistas elásticas con la unidad fraccional \texttt{fr}, funciones \texttt{minmax()} y alineación de subrejillas mediante \texttt{subgrid}, permitiendo que componentes anidados alineen sus cabeceras y pies exactamente con la retícula del contenedor abuelo.
+Modificar propiedades geométricas (\texttt{width}, \texttt{top}, \texttt{margin}) en cada fotograma invalida el árbol de layout y obliga a la CPU a recalcular posiciones y repintar píxeles, provocando caídas por debajo de 60 FPS (presupuesto de 16,67 ms por fotograma). En cambio, \texttt{transform: translate3d(...)} y \texttt{opacity} operan sobre texturas ya rasterizadas en la GPU.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+
+\noindent\textbf{Enunciado}
+Un contenedor Flex tiene un ancho interior de 960 px y contiene dos paneles con flex-basis de 200 px y 160 px respectivamente. Sus factores flex-grow son 2 y 1. Calcule el ancho final en píxeles del primer panel tras repartir el espacio libre.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $W_{cont} = 960\,\mathrm{px}$ — Ancho interior del contenedor Flex
+\item $B_{1} = 200\,\mathrm{px}$ — Tamaño base flex-basis del panel 1
+\item $B_{2} = 160\,\mathrm{px}$ — Tamaño base flex-basis del panel 2
+\item $g_{1} = 2$ — Factor flex-grow del panel 1
+\item $g_{2} = 1$ — Factor flex-grow del panel 2
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Ancho final del primer panel \(W_1\) en px
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Distribución proporcional de espacio libre en Flexbox}
+
+\[
+W_1 = 200 + \frac{2}{2 + 1} \cdot (960 - 200 - 160)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el espacio libre (960 - 200 - 160 = 600 px) y asignamos dos tercios al primer panel
+
+\[
+W_1 = 200 + \frac{2}{2 + 1} \cdot (960 - 200 - 160)
+\]
+
+\[
+\left(200+\frac{\left(2\cdot \left(\left(960-200\right)-160\right)\right)}{3}\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 600
+\]
+
+\noindent\textbf{Interpretación}
+El primer panel alcanza un ancho final exacto de 600 px y el segundo panel ocupa los 360 px restantes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $600$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNoLTAyIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+[CH-02.1] Calcule (Ancho final del segundo panel en el contenedor Flex de 960 px (160 + 600 / 3)) expresado en px.
+
+\noindent\textbf{2 [PRB-0010] (Intermedio, Desarrollo por pasos)}
+[CH-02.2] Calcule (Valor entero codificado en base 100 de la especificidad (1, 2, 3) para comparación rápida) expresado en puntos.
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+[CH-02.3] Calcule (Ancho de una columna 1fr en un CSS Grid de 1200 px con 3 columnas iguales y 2 huecos (gap) de 24 px) expresado en px.
+
+\noindent\textbf{4 [PRB-0012] (Avanzado, Diseño)}
+[CH-02.4] Calcule (Ancho de área de contenido en border-box para una caja de 320 px con padding de 16 px y borde de 2 px por lado) expresado en px.
+\end{tcolorbox}
+
+\chapter{Formatos de Intercambio, Configuración y Documentación: JSON, YAML, TOML, XML, CSV, Markdown y Protobuf}
+\label{chap:ch-03}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textit{Estudio comparativo y riguroso de los lenguajes de serialización, configuración y marcado ligero empleados en sistemas distribuidos e infraestructura.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Todo analizador XML en producción debe deshabilitar la resolución de entidades externas (XXE) y la expansión recursiva de DTD.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+JSON (RFC 8259) y Validación Contractual con JSON Schema: JSON proporciona una gramática libre de contexto mínima y determinista, ideal para APIs web cuando se acompaña de validación estructural mediante JSON Schema.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Protocol Buffers reduce entre 3 y 10 veces el tamaño de carga útil y el tiempo de CPU frente a JSON al codificar campos con etiquetas numéricas y enteros Varint.
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\section{JSON (RFC 8259) y Validación Contractual con JSON Schema y YAML 1.2 vs TOML v1.0: Configuración Humana y Trampas Semánticas}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+Especificado en el RFC 8259, JSON admite únicamente seis tipos de valores: objetos (pares clave-valor con claves de tipo cadena), arrays ordenados, cadenas UTF-8, números en punto flotante IEEE 754, booleanos (\texttt{true}, \texttt{false}) y \texttt{null}. No admite comentarios, comas finales ni referencias cíclicas. Un riesgo clásico de interoperabilidad ocurre cuando enteros de 64 bits (\texttt{int64} mayores que \(2^{53} - 1\)) se deserializan en motores JavaScript, perdiendo precisión en el mantisa de 53 bits; por ello, los identificadores de 64 bits deben serializarse como cadenas textuales.
+\begin{lstlisting}[style=studium]
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id_transaccion", "importe_centimos", "moneda"],
+  "properties": {
+    "id_transaccion": { "type": "string", "pattern": "^[0-9a-fA-F-]{36}$" },
+    "importe_centimos": { "type": "integer", "minimum": 1 },
+    "moneda": { "enum": ["EUR", "USD", "GBP"] }
+  },
+  "additionalProperties": false
+}
+\end{lstlisting}
+YAML 1.2 se utiliza masivamente en Kubernetes, Ansible y pipelines CI/CD gracias a su sintaxis concisa, soporte de comentarios y reutilización mediante anclas (\texttt{\&base}) y alias (\texttt{*base}). Sin embargo, presenta riesgos conocidos: en YAML 1.1 literales sin comillas como \texttt{NO} (código ISO de Noruega) u \texttt{on} se convertían silenciosamente en booleanos (\texttt{false}, \texttt{true}), y la carga insegura de etiquetas arbitrarias (\texttt{!!python/object/apply}) permite ejecución remota de código si no se invoca exclusivamente \texttt{yaml.safe\_load}. Por contraste, TOML (\texttt{Cargo.toml}, \texttt{pyproject.toml}) utiliza secciones explícitas \texttt{[tabla]} y tipos literales sin ambigüedad de indentación.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\section{XML, Namespaces, XSD y Prevención de Ataques XXE y CSV (RFC 4180), Markdown (CommonMark) y Serialización Binaria con Protocol Buffers}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+XML sigue siendo el estándar normativo en facturación electrónica, banca (ISO 20022) y federación de identidad (SAML 2.0) gracias a sus espacios de nombres (\texttt{xmlns}) y validación formal con XML Schema (XSD). No obstante, su soporte histórico de Document Type Definitions (DTD) habilita vulnerabilidades críticas: la inyección de Entidades Externas XML (XXE) permite leer archivos locales del servidor (\texttt{file:///etc/passwd}), y la bomba de entidades recursivas (Billion Laughs) agota gigabytes de memoria RAM a partir de menos de 1 KiB de entrada.
+Mientras CSV (RFC 4180) requiere escapar comillas dobles y neutralizar fórmulas iniciales (\texttt{=}, \texttt{+}, \texttt{-}, \texttt{@}) para evitar CSV Injection en hojas de cálculo, y CommonMark estandariza la gramática de Markdown para documentación técnica, las comunicaciones de alta frecuencia entre microservicios emplean formatos binarios con esquema como Protocol Buffers (Protobuf v3). En Protobuf, cada campo se identifica en el flujo binario mediante un único byte de cabecera \texttt{(field\_number << 3) | wire\_type}, permitiendo evolucionar esquemas añadiendo nuevos campos sin romper clientes antiguos.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+
+\noindent\textbf{Enunciado}
+Un mensaje JSON de telemetría ocupa 140 bytes en texto UTF-8. Al codificar los mismos 4 campos numéricos en Protocol Buffers v3, cada campo requiere 1 byte de etiqueta (tag) y 3 bytes de valor Varint promedio. Calcule el ahorro porcentual de ancho de banda logrado por Protobuf.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $B_{json} = 140\,\mathrm{bytes}$ — Tamaño del mensaje en JSON
+\item $n_{campos} = 4\,\mathrm{campos}$ — Número de campos del mensaje
+\item $B_{campo} = 4\,\mathrm{bytes}$ — Bytes por campo en Protobuf (1 tag + 3 valor)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Ahorro porcentual de bytes \(A_pct\) en \%
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Compresión binaria de un mensaje de telemetría con Protocol Buffers frente a JSON}
+
+\[
+A_{\text{pct}} = \frac{140 - 4 \cdot 4}{140} \cdot 100
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el tamaño en Protobuf (4 * 4 = 16 bytes) y el porcentaje de reducción respecto a 140 bytes
+
+\[
+A_{\text{pct}} = \frac{140 - 4 \cdot 4}{140} \cdot 100
+\]
+
+\[
+\frac{\left(\left(140-\left(4\cdot 4\right)\right)\cdot 100\right)}{140}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 88.5714285714
+\]
+
+\noindent\textbf{Interpretación}
+Protocol Buffers reduce el tamaño del mensaje de 140 bytes a 16 bytes, ahorrando aproximadamente un 88,57 \% del ancho de banda.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $88.5714$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNoLTAzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+[CH-03.1] Calcule (Tamaño en bytes del mensaje Protobuf con 4 campos de 4 bytes cada uno) expresado en bytes.
+
+\noindent\textbf{2 [PRB-0016] (Intermedio, Desarrollo por pasos)}
+[CH-03.2] Calcule (Valor del byte de cabecera Protobuf para el campo número 3 con wire\(_type 2 (\)length-delimited: 3*8 + 2)) expresado en entero.
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+[CH-03.3] Calcule (Codificación ZigZag de sint32 para el entero negativo -15 (-2 * -15 - 1)) expresado en entero.
+
+\noindent\textbf{4 [PRB-0018] (Avanzado, Diseño)}
+[CH-03.4] Calcule (Tráfico diario ahorrado en MB al enviar 10 millones de mensajes de 16 B en lugar de 116 B (dividiendo entre \(10^6))\) expresado en MB.
+\end{tcolorbox}
+
+\chapter{Teoría Relacional, Modelado Entidad-Relación y Normalización (1NF a BCNF)}
+\label{chap:ch-04}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textit{Fundamentos matemáticos del modelo relacional de E. F. Codd, equivalencia entre álgebra y cálculo relacional, cierre de atributos y teoría formal de la normalización.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Un esquema relacional en BCNF elimina toda redundancia derivada de dependencias funcionales al exigir que todo determinante no trivial sea superclave.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+El Modelo Relacional de Codd y las Claves Relacionales: Una relación matemática es un subconjunto finito del producto cartesiano de dominios atómicos donde el orden de tuplas y atributos carece de significado semántico.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: La descomposición de R en R1 y R2 es una reunión sin pérdida si y solo si (R1 intersect R2) es superclave de R1 o de R2.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\section{El Modelo Relacional de Codd y las Claves Relacionales y Dependencias Funcionales, Axiomas de Armstrong y Cierre de Atributos}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Formulado por Edgar F. Codd en 1970, el modelo relacional independiza la representación lógica de los datos respecto a su disposición física en almacenamiento secundario. Dado un esquema \(R(A_1, A_2, \dots, A_n)\), un subconjunto de atributos \(K \subseteq R\) es una superclave si no pueden existir dos tuplas distintas \(t_1 \neq t_2\) en ninguna instancia válida \(r(R)\) tales que \(t_1[K] = t_2[K]\). Una superclave mínima (ningún subconjunto propio suyo es superclave) constituye una clave candidata, de las cuales se designa una clave primaria (PK) sujeta a integridad de entidad (ningún atributo primo puede ser \texttt{NULL}).
+Una dependencia funcional \(X \to Y\) afirma que los valores del conjunto de atributos \(X\) determinan unívocamente los valores de \(Y\). Los tres axiomas de Armstrong (reflexividad, aumentatividad y transitividad) son correctos y completos para inferir todas las dependencias implicadas \(F^+\). En la práctica ingenieril, en lugar de enumerar \(F^+\) (cuyo tamaño puede ser exponencial), calculamos el cierre de atributos \(X^+\) partiendo de \(\text{resultado} = X\) y añadiendo iterativamente \(W\) cada vez que \(V \to W \in F\) cumple \(V \subseteq \text{resultado}\).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\section{Anomalías de Diseño y Jerarquía de Formas Normales (1NF, 2NF, 3NF y BCNF) y Descomposición sin Pérdida (Lossless-Join) y Preservación de Dependencias}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+Mezclar múltiples entidades independientes en una sola tabla provoca anomalías de inserción (no poder registrar un departamento sin empleados), actualización (modificar un dato repetido en miles de filas con riesgo de inconsistencia) y borrado. La Primera Forma Normal (1NF) exige dominios atómicos; la 2NF prohíbe dependencias parciales de atributos no primos respecto a una clave compuesta; la 3NF prohíbe dependencias transitivas entre atributos no primos; y la Forma Normal de Boyce-Codd (BCNF) exige que para toda \(X \to Y\) no trivial, \(X\) sea superclave.
+Dividir una tabla sin verificar el teorema de Heath produce descomposiciones con pérdida (lossy joins) donde la reunión natural \(R_1 \bowtie R_2\) genera tuplas espurias inexistentes en la relación original. Mientras que toda relación admite una descomposición en BCNF sin pérdida de información, en ocasiones aislar todas las dependencias en tablas individuales sólo es posible en 3NF mediante el algoritmo de síntesis de recubrimiento canónico.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+
+\noindent\textbf{Enunciado}
+Una tabla desnormalizada de líneas de pedido con 50 000 filas repite en cada fila los 120 bytes de datos del cliente (habiendo solo 2 000 clientes distintos). Al descomponer a BCNF en Lineas(50 000 filas) y Clientes(2 000 filas x 120 bytes), calcule el espacio total en KiB (1 KiB = 1024 B) ahorrado por no repetir los 120 bytes en las 48 000 filas excedentes.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N_{exc} = 48000\,\mathrm{filas}$ — Filas donde se repetían los datos del cliente
+\item $B_{cli} = 120\,\mathrm{bytes}$ — Bytes redundantes por fila
+\item $K = 1024\,\mathrm{bytes}\,\mathrm{KiB}^{-1}$ — Bytes por kibibyte
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Espacio ahorrado \(S_kib\) en KiB
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Eliminación de redundancia mediante descomposición a BCNF}
+
+\[
+S_{\text{kib}} = \frac{48000 \cdot 120}{1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 48 000 filas redundantes por 120 bytes y dividimos entre 1024
+
+\[
+S_{\text{kib}} = \frac{48000 \cdot 120}{1024}
+\]
+
+\[
+\frac{\left(48000\cdot 120\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 5625
+\]
+
+\noindent\textbf{Interpretación}
+La normalización a BCNF ahorra exactamente 5 625 KiB de almacenamiento redundante y elimina las anomalías de actualización.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $5625$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNoLTA0In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+[CH-04.1] Calcule (Espacio en KiB ocupado por la nueva tabla Clientes con 2048 filas de 128 bytes (2048 * 128 / 1024)) expresado en KiB.
+
+\noindent\textbf{2 [PRB-0022] (Intermedio, Desarrollo por pasos)}
+[CH-04.2] Calcule (Número de superclaves en una relación de 5 atributos cuya única clave candidata tiene 2 atributos (2\textasciicircum{}(5-2))) expresado en superclaves.
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+[CH-04.3] Calcule (Tuplas espurias generadas al hacer join de dos proyecciones mal descompuestas que producen 140 filas frente a 100 reales) expresado en tuplas.
+
+\noindent\textbf{4 [PRB-0024] (Avanzado, Diseño)}
+[CH-04.4] Calcule (Número de atributos en la intersección R1 n R2 si |R1|=4, |R2|=5 y |R1 U R2|=7) expresado en atributos.
+\end{tcolorbox}
+
+\chapter{Motores de Almacenamiento, Índices B+-Tree / LSM, Transacciones ACID y MVCC}
+\label{chap:ch-05}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\noindent\textit{Ingeniería interna de sistemas gestores de bases de datos (SGBD): Buffer Pool, Write-Ahead Logging (ARIES), optimizadores basados en costes y control de concurrencia multiversión.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+La regla WAL garantiza atomicidad y durabilidad exigiendo que todo registro de log (UNDO/REDO) llegue a almacenamiento no volátil antes de confirmar la transacción o volcar la página sucia.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Árboles B+ (B+-Trees) frente a LSM-Trees (Log-Structured Merge-Trees): Un árbol B+ con factor de ramificación B=250 localiza cualquier clave entre 1 000 millones de filas en tan solo 4 lecturas de página.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: El aislamiento por instantáneas (Snapshot Isolation / Repeatable Read en PostgreSQL) evita lecturas sucias, no repetibles y fantasmas, pero permite Write Skew si no se emplea Serializable Snapshot Isolation (SSI).
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\section{Árboles B+ (B+-Trees) frente a LSM-Trees (Log-Structured Merge-Trees) y Diseño de Índices Compuestos, Índices Cubrientes (Covering) y Optimizadores de Costes}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Los motores relacionales clásicos (PostgreSQL, InnoDB, SQLite) organizan tablas e índices en páginas de disco de 8 KiB o 16 KiB estructuradas como árboles B+, como muestra la figura~\ref{fig:ch-05-fig}. Todos los valores residen en el nivel de las hojas, las cuales están doblemente enlazadas para acelerar escaneos por rango (\texttt{BETWEEN}). En contrapartida, motores de alta tasa de ingesta (RocksDB, Cassandra, ScyllaDB) emplean LSM-Trees: toda escritura se registra secuencialmente en un log en disco y en una estructura ordenada en RAM (\texttt{MemTable}); al llenarse, se vuelca como un archivo inmutable (\texttt{SSTable}) compactado en segundo plano y acelerado mediante filtros de Bloom.
+El optimizador de consultas (Query Planner) utiliza histogramas de distribución, cardinalidad (NDV) y factores de correlación física para estimar el coste en E/S y CPU de distintos planes de ejecución (\texttt{Index Scan}, \texttt{Bitmap Heap Scan}, \texttt{Seq Scan}, \texttt{Hash Join}, \texttt{Merge Join}, \texttt{Nested Loop}). Cuando un índice incluye todas las columnas requeridas por una consulta (por ejemplo, \texttt{CREATE INDEX idx\_pedidos ON pedidos (cliente\_id, fecha) INCLUDE (total)}), el motor ejecuta un \texttt{Index-Only Scan} sin necesidad de acceder a las páginas de la tabla principal (Heap).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNoLTA1In0=
+% studium:record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=0.6cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (root) [fill=blue!12] {Raíz B+\\$[50 \mid 100]$};
+\node (l1) [below left=of root, fill=green!12] {Hoja 1\\$[10, 25, 40]$};
+\node (l2) [below=of root, fill=green!12] {Hoja 2\\$[50, 75, 90]$};
+\node (l3) [below right=of root, fill=green!12] {Hoja 3\\$[100, 120, 150]$};
+\draw[-Stealth, thick] (root) -- (l1);
+\draw[-Stealth, thick] (root) -- (l2);
+\draw[-Stealth, thick] (root) -- (l3);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l1) -- (l2);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l2) -- (l3);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=0.6cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (root) [fill=blue!12] {Raíz B+\\$[50 \mid 100]$};
+\node (l1) [below left=of root, fill=green!12] {Hoja 1\\$[10, 25, 40]$};
+\node (l2) [below=of root, fill=green!12] {Hoja 2\\$[50, 75, 90]$};
+\node (l3) [below right=of root, fill=green!12] {Hoja 3\\$[100, 120, 150]$};
+\draw[-Stealth, thick] (root) -- (l1);
+\draw[-Stealth, thick] (root) -- (l2);
+\draw[-Stealth, thick] (root) -- (l3);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l1) -- (l2);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l2) -- (l3);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=0.6cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (root) [fill=blue!12] {Raíz B+\\$[50 \mid 100]$};
+\node (l1) [below left=of root, fill=green!12] {Hoja 1\\$[10, 25, 40]$};
+\node (l2) [below=of root, fill=green!12] {Hoja 2\\$[50, 75, 90]$};
+\node (l3) [below right=of root, fill=green!12] {Hoja 3\\$[100, 120, 150]$};
+\draw[-Stealth, thick] (root) -- (l1);
+\draw[-Stealth, thick] (root) -- (l2);
+\draw[-Stealth, thick] (root) -- (l3);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l1) -- (l2);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l2) -- (l3);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=0.6cm and 0.5cm, every node/.style={font=\scriptsize, draw, rounded corners=2pt, align=center, inner sep=3.5pt}}
+\node (root) [fill=blue!12] {Raíz B+\\$[50 \mid 100]$};
+\node (l1) [below left=of root, fill=green!12] {Hoja 1\\$[10, 25, 40]$};
+\node (l2) [below=of root, fill=green!12] {Hoja 2\\$[50, 75, 90]$};
+\node (l3) [below right=of root, fill=green!12] {Hoja 3\\$[100, 120, 150]$};
+\draw[-Stealth, thick] (root) -- (l1);
+\draw[-Stealth, thick] (root) -- (l2);
+\draw[-Stealth, thick] (root) -- (l3);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l1) -- (l2);
+\draw[Stealth-Stealth, dashed, thick, blue!70!black] (l2) -- (l3);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:ch-05-fig}\textbf{Figura~\thestudiumfigure.} Estructura de un índice Árbol B+ (B+-Tree): los nodos internos dirigen la búsqueda por claves separadoras y las hojas enlazadas almacenan los punteros o tuplas en orden secuencial.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\section{Transacciones ACID, Write-Ahead Logging (WAL) y Protocolo ARIES y Niveles de Aislamiento, Anomalías de Concurrencia y MVCC (Snapshot Isolation)}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+Las garantías ACID comprenden Atomicidad (todo o nada mediante registros UNDO), Consistencia (preservación de invariantes e integridad referencial), Aislamiento (ejecución concurrente equivalente a una planificación controlada) y Durabilidad (persistencia mediante registros REDO en el Write-Ahead Log). Tras un fallo eléctrico, el algoritmo de recuperación ARIES ejecuta tres fases a partir del último punto de control (Checkpoint): Análisis, REDO (repitiendo la historia hasta el estado exacto previo al fallo) y UNDO (revirtiendo transacciones inconclusas).
+Bajo MVCC, cada transacción recibe un identificador monotónico (\texttt{txid}) y cada actualización inserta una nueva versión de la tupla marcada con el intervalo de validez \texttt{[xmin, xmax)}. Así, las lecturas leen una instantánea consistente sin bloquear a los escritores. Sin embargo, dos transacciones concurrentes que leen un mismo invariante y escriben en filas disjuntas pueden cometer la anomalía de asimetría de escritura (\texttt{Write Skew}); prevenirla requiere bloqueos explícitos (\texttt{SELECT ... FOR UPDATE}) o el algoritmo SSI (\texttt{SERIALIZABLE}).
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+
+\noindent\textbf{Enunciado}
+En una base de datos con páginas de 8 KiB, cada nodo interno de un índice B+ tiene un factor de ramificación efectivo de 200 hijos y cada página hoja almacena 80 entradas de índice. Calcule el número total de filas (en millones) que puede indexar un árbol B+ de altura h = 3 (1 raíz, 1 nivel intermedio de nodos internos y 1 nivel de hojas).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $B_{int} = 200\,\mathrm{hijos}\,\mathrm{nodo}^{-1}$ — Factor de ramificación de nodos internos
+\item $C_{hoja} = 80\,\mathrm{filas}\,\mathrm{hoja}^{-1}$ — Entradas almacenadas por página hoja
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Capacidad total en millones de filas \(N_millones\)
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Capacidad de direccionamiento de un Árbol B+ de 3 niveles}
+
+\[
+N_{\text{millones}} = \frac{200 \cdot 200 \cdot 80}{10^6}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 200 hijos de la raíz por los 200 hijos del nivel intermedio por las 80 filas por hoja y dividimos entre \(10^6\)
+
+\[
+N_{\text{millones}} = \frac{200 \cdot 200 \cdot 80}{10^6}
+\]
+
+\[
+\frac{\left(\left(200\cdot 200\right)\cdot 80\right)}{1000000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 3.2
+\]
+
+\noindent\textbf{Interpretación}
+Con solo 3 niveles (y los 2 primeros en RAM), el árbol B+ direcciona hasta 3,2 millones de filas requiriendo como máximo una única lectura física de disco para la hoja.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $3.2$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNoLTA1In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+[CH-05.1] Calcule (Número de páginas hoja en el árbol B+ de 3 niveles con factor de ramificación 200 (200 * 200)) expresado en hojas.
+
+\noindent\textbf{2 [PRB-0028] (Intermedio, Desarrollo por pasos)}
+[CH-05.2] Calcule (Memoria RAM en KiB requerida para mantener en Buffer Pool la raíz y los 200 nodos internos de 8 KiB ((1 + 200) * 8)) expresado en KiB.
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+[CH-05.3] Calcule (Coste estimado en unidades de página de un Index Scan que lee 3 niveles de índice más 12 páginas de Heap) expresado en páginas.
+
+\noindent\textbf{4 [PRB-0030] (Avanzado, Diseño)}
+[CH-05.4] Calcule (Tasa de escritura WAL en MB/s para 5 000 transacciones por segundo que generan 400 bytes de log cada una) expresado en MB/s.
+\end{tcolorbox}
+
+\chapter{Bases de Datos Distribuidas, NoSQL, Teorema CAP/PACELC, PostgreSQL, SQLite, MongoDB y Redis}
+\label{chap:ch-06}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\noindent\textit{Arquitectura de bases de datos a escala: replicación síncrona/asíncrona, particionamiento por hash consistente y rango, transacciones distribuidas y motores de producción.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+PostgreSQL combina relacionalidad estricta con tipos JSONB indexados (GIN), mientras que SQLite en modo WAL ofrece lecturas concurrentes embebidas de latencia sub-milisegundo.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Teorema CAP y Clasificación PACELC en Almacenamiento Distribuido: El modelo PACELC extiende el teorema CAP demostrando que incluso en ausencia de particiones de red existe una disyuntiva fundamental entre latencia (L) y consistencia (C).
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Los almacenes documentales eliminan el coste de joins cuando el agregado se consulta íntegro, y Redis proporciona estructuras atómicas en RAM con latencia de microsegundos.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\section{Teorema CAP y Clasificación PACELC en Almacenamiento Distribuido y Replicación Líder-Seguidor, Quórums de Lectura/Escritura y Sharding}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+El teorema CAP (Brewer, demostrado formalmente por Gilbert y Lynch) establece que ante una partición de red (P) entre nodos, un almacén de datos distribuido debe elegir entre cancelar la operación para preservar la Consistencia linealizable (CP) o responder con datos potencialmente desactualizados para preservar la Disponibilidad (AP). El teorema PACELC (Abadi) añade que, incluso cuando el sistema opera normalmente (Else), debe decidirse entre replicar síncronamente (penalizando la Latencia L a cambio de Consistencia C) o asíncronamente.
+Cuando el volumen de escrituras o el conjunto de datos supera la capacidad de un único nodo, los datos se dividen horizontalmente en particiones (Shards). El particionamiento por rango facilita consultas secuenciales pero puede sufrir puntos calientes (hotspots) si todas las escrituras llevan la marca temporal actual; el particionamiento por Hash Consistente (con nodos virtuales en un anillo de \(2^{32}\) posiciones) distribuye uniformemente la carga y minimiza el movimiento de claves al añadir o retirar servidores.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\section{PostgreSQL y SQLite en Producción: De Sistemas Embebidos a Escala Empresarial y Motores NoSQL Especializados: Documentos (MongoDB) y Memoria Clave-Valor (Redis)}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+PostgreSQL constituye el estándar de referencia en ingeniería de datos moderna: soporta índices B-Tree, Hash, GiST, SP-GiST, GIN (para documentos \texttt{JSONB} y búsqueda de texto completo) y BRIN (para series temporales masivas), además de particionamiento declarativo y replicación lógica. Por su parte, SQLite ejecuta el motor transaccional completo dentro del espacio de direcciones del proceso anfitrión sin latencia de red; al activar \texttt{PRAGMA journal\_mode = WAL;} y \texttt{PRAGMA synchronous = NORMAL;}, alcanza decenas de miles de operaciones por segundo en un único archivo de disco.
+MongoDB almacena documentos en formato binario BSON sobre el motor WiredTiger, resultando idóneo para catálogos polimórficos donde la entidad raíz y sus subdocumentos forman un agregado de consulta cohesivo. Redis (y alternativas compatibles como Valkey) mantiene estructuras de datos ricas en memoria (Strings, Hashes, Sorted Sets, Streams, HyperLogLog) sobre un bucle de eventos monohilo libre de contención de cerrojos, ejecutando scripts Lua de forma atómica para cachés distribuidas, colas de trabajo y limitadores de tasa (rate limiters).
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+
+\noindent\textbf{Enunciado}
+Un clúster de base de datos distribuida mantiene N = 5 réplicas de cada partición. Si las escrituras se configuran con un quórum de confirmación W = 3 nodos para tolerar la caída de 2 réplicas, calcule el número mínimo de nodos R que debe consultar una lectura para garantizar intersección estricta (W + R > N => R = N - W + 1).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 5\,\mathrm{nodos}$ — Factor total de replicación
+\item $W = 3\,\mathrm{nodos}$ — Quórum de escritura confirmada
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Quórum mínimo de lectura R en nodos
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo del quórum mínimo de lectura para consistencia fuerte}
+
+\[
+R = 5 - 3 + 1
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Aplicamos la condición de intersección de quórum estricto R = N - W + 1
+
+\[
+R = 5 - 3 + 1
+\]
+
+\[
+\left(\left(5-3\right)+1\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 3
+\]
+
+\noindent\textbf{Interpretación}
+Basta con leer de R = 3 réplicas cualesquiera para garantizar que al menos una contiene la última escritura confirmada por W = 3 nodos.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $3$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNoLTA2In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+[CH-06.1] Calcule (Quórum de lectura requerido si N = 7 réplicas y W = 4 escrituras (7 - 4 + 1)) expresado en nodos.
+
+\noindent\textbf{2 [PRB-0034] (Intermedio, Desarrollo por pasos)}
+[CH-06.2] Calcule (Porcentaje de claves redistribuidas por Hash Consistente al pasar de 9 a 10 nodos (100 / 10)) expresado en \%.
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+[CH-06.3] Calcule (Memoria RAM total en GB para almacenar en Redis 50 millones de claves de 200 bytes promedio (dividiendo entre \(10^9))\) expresado en GB.
+
+\noindent\textbf{4 [PRB-0036] (Avanzado, Diseño)}
+[CH-06.4] Calcule (Número máximo de fallos de nodo tolerados por un clúster Raft de 5 nodos ((5 - 1) / 2)) expresado en nodos.
+\end{tcolorbox}
+
+\chapter{Frameworks Web Frontend y Full-Stack: React, Angular, Vue, Svelte y Next.js}
+\label{chap:ch-07}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\noindent\textit{Arquitectura interna y patrones de ingeniería de los principales frameworks de interfaz de usuario web.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Vue 3 rastrea dependencias en tiempo de ejecución mediante objetos Proxy de ES6, mientras que Svelte compila las asignaciones reactivas en actualizaciones quirúrgicas del DOM en tiempo de build.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Del DOM Imperativo a la UI Declarativa: Función Estado -> Vista: Los frameworks frontend modernos modelan la interfaz como una proyección determinista V = f(S) del estado actual, automatizando la sincronización incremental del DOM.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Separar la caché de estado del servidor (TanStack Query / SWR) del estado efímero de la interfaz reduce drásticamente la complejidad de almacenes globales como Redux.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\section{Del DOM Imperativo a la UI Declarativa: Función Estado -> Vista y React y Next.js: Reconciliación Fiber, Hooks, Server Components e Hidratación}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Manipular manualmente nodos DOM ante eventos asíncronos conduce a transiciones de estado no controladas y fugas de memoria. Los frameworks modernos adoptan un paradigma declarativo donde el desarrollador describe cómo debe lucir la interfaz para cada estado \(S\), y el motor de ejecución determina el conjunto mínimo de mutaciones DOM necesarias. Existen dos grandes estrategias: reconciliación de Árbol Virtual (Virtual DOM en React y Vue) y reactividad de grano fino basada en grafos de dependencias o compilación anticipada (Signals en Angular/Solid y compilador de Svelte).
+En React, los componentes funcionales son funciones puras que utilizan Hooks (\texttt{useState}, \texttt{useReducer}, \texttt{useMemo}, \texttt{useEffect}) almacenados en una lista enlazada asociada al nodo Fiber. En aplicaciones full-stack con Next.js (App Router), los React Server Components (RSC) se ejecutan exclusivamente en el servidor \(-\)accediendo directamente a bases de datos sin enviar su código JavaScript al navegador\(-\), reservando los Client Components (\texttt{"use client"}) para islas de interactividad que requieren hidratación.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\section{Angular, Vue y Svelte: Inyección de Dependencias, Proxies Reactivos y Compilación y Gestión de Estado: Estado Local, Estado Global y Caché de Estado Remoto}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+Angular ofrece una plataforma empresarial opinada en TypeScript con inyección de dependencias jerárquica, enrutamiento tipado, RxJS y reactividad moderna mediante \texttt{signal()} y \texttt{computed()}. Vue 3 combina la Composition API (\texttt{ref}, \texttt{reactive}) implementada sobre \texttt{Proxy} con un compilador de plantillas que marca banderas de parcheo (\texttt{PatchFlags}) para saltar subárboles estáticos. Svelte prescinde del Virtual DOM compilando cada componente en código JavaScript imperativo mínimo.
+Uno de los antipatrones más frecuentes en ingeniería frontend consiste en volcar respuestas HTTP crudas en un almacén global único sin políticas de invalidación, reintento ni deduplicación. La arquitectura moderna distingue estrictamente entre estado del servidor (gestionado mediante cachés declarativas con \texttt{stale-while-revalidate} y actualización optimista), estado de la URL (filtros y paginación sincronizados con el router) y estado puramente local de la interfaz.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+
+\noindent\textbf{Enunciado}
+Una aplicación SPA tradicional descarga un bundle monolítico de 480 KiB de JavaScript. Al migrar a una arquitectura híbrida SSR + Server Components, el 65 \% del código de presentación y formateo permanece en el servidor. Calcule el tamaño en KiB del bundle JavaScript que aún debe descargar e hidratar el navegador.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $B_{spa} = 480\,\mathrm{KiB}$ — Tamaño original del bundle SPA
+\item $p_{srv} = 65\,\mathrm{\%}$ — Porcentaje migrado a Server Components
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Tamaño del bundle cliente restante \(B_cli\) en KiB
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Reducción del bundle JavaScript mediante React Server Components y Code Splitting}
+
+\[
+B_{\text{cli}} = 480 \cdot \frac{100 - 65}{100}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el 35 \% restante del bundle original de 480 KiB
+
+\[
+B_{\text{cli}} = 480 \cdot \frac{100 - 65}{100}
+\]
+
+\[
+\frac{\left(480\cdot \left(100-65\right)\right)}{100}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 168
+\]
+
+\noindent\textbf{Interpretación}
+El cliente solo descarga e hidrata 168 KiB de JavaScript, reduciendo el Time to Interactive (TTI) en dispositivos móviles.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $168$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNoLTA3In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+[CH-07.1] Calcule (Ahorro absoluto en KiB al reducir el bundle de 480 KiB a 168 KiB) expresado en KiB.
+
+\noindent\textbf{2 [PRB-0040] (Intermedio, Desarrollo por pasos)}
+[CH-07.2] Calcule (Tiempo de parseo y compilación JS en móvil a razón de 1,5 ms por cada KiB para 168 KiB) expresado en ms.
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+[CH-07.3] Calcule (Nodos re-evaluados con Signals en una lista de 500 filas cuando cambia 1 celda frente a 500 sin memoización (ahorro)) expresado en nodos.
+
+\noindent\textbf{4 [PRB-0042] (Avanzado, Diseño)}
+[CH-07.4] Calcule (Número de peticiones de red tras deduplicar 6 componentes que solicitan simultáneamente el mismo endpoint) expresado en peticiones.
+\end{tcolorbox}
+
+\chapter{Frameworks Backend, Escritorio y Móvil: FastAPI, Spring Boot, ASP.NET Core, Axum, Qt, Tauri y Flutter}
+\label{chap:ch-08}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+\noindent\textit{Análisis arquitectónico de los ecosistemas de servidor de alto rendimiento y de las plataformas de interfaz gráfica de escritorio y dispositivos móviles.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+Tauri reduce en un orden de magnitud el consumo de memoria RAM y el tamaño del instalador frente a Electron al reutilizar el WebView nativo del sistema operativo y ejecutar el backend en Rust.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNoLTA4In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+Arquitectura de Frameworks Backend: Middleware, Inyección de Dependencias y Ciclo HTTP: Todos los frameworks backend modernos estructuran el procesamiento de peticiones como una composición funcional de middlewares alrededor de un controlador tipado.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNoLTA4In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+Razone y verifique por qué se cumple el invariante de ingeniería: Flutter dibuja cada píxel en su propio lienzo GPU mediante el motor Impeller sin depender de widgets OEM, mientras que SwiftUI y Jetpack Compose ofrecen integración nativa declarativa.
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNoLTA4In0=
+\end{tcolorbox}
+
+\section{Arquitectura de Frameworks Backend: Middleware, Inyección de Dependencias y Ciclo HTTP y Comparativa de Ecosistemas Backend: Productividad, Tipado y Rendimiento Extremo}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+Tanto en ecosistemas asíncronos orientados a eventos (Fastify/Express en Node.js, FastAPI sobre ASGI/Uvicorn en Python, Axum/Actix sobre Tokio en Rust, Phoenix sobre BEAM en Elixir) como en plataformas empresariales multihilo o con hilos virtuales (Spring Boot 3 en Java 21, ASP.NET Core en .NET 8, Django, Ruby on Rails, Laravel), cada petición HTTP atraviesa una cadena concéntrica de middlewares (trazabilidad, CORS, autenticación JWT/OIDC, rate limiting) antes de deserializar y validar el payload hacia un DTO tipado.
+En FastAPI (Python), las anotaciones de tipos estándar junto con Pydantic v2 (escrito en Rust) validan cargas JSON y generan automáticamente la especificación OpenAPI 3.1. En Spring Boot y ASP.NET Core, el contenedor de Inyección de Dependencias (IoC) gestiona el ciclo de vida de servicios (\texttt{Singleton}, \texttt{Scoped} por petición, \texttt{Transient}), facilitando las pruebas unitarias mediante inversión de dependencias. En Rust, Axum aprovecha el sistema de tipos para extraer parámetros y estado compartido (\texttt{State<Arc<AppState>>}) con coste de abstracción nulo.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+\section{Aplicaciones de Escritorio: Qt (C++), .NET MAUI, Electron y Tauri (Rust + WebView) y Desarrollo Móvil: SwiftUI (iOS), Jetpack Compose (Android), Flutter y React Native}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+Para aplicaciones de escritorio de misión crítica (CAD, instrumentación médica, edición de vídeo), Qt 6 en C++ proporciona renderizado acelerado por hardware y un sistema de señales y ranuras (\texttt{signals \& slots}) nativo. Cuando se desea reutilizar tecnologías web en escritorio, Electron empaqueta una instancia completa de Chromium y Node.js por aplicación (\textasciitilde{}150 MB en disco y cientos de MB de RAM base), mientras que Tauri delega la interfaz al WebView del sistema (WebKitGTK, WebView2, WKWebView) y comunica el frontend con un binario nativo en Rust mediante IPC tipado.
+El desarrollo móvil moderno ha convergido hacia interfaces declarativas reactivas: SwiftUI en el ecosistema Apple y Jetpack Compose en Android eliminan los antiguos archivos XML/Storyboards imperativos. En el ámbito multiplataforma, React Native sincroniza componentes JavaScript/TypeScript con vistas nativas OEM mediante la nueva arquitectura JSI (JavaScript Interface) sin puente serializado, mientras que Flutter (Dart AOT) controla directamente el pipeline gráfico con Impeller.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNoLTA4In0=
+
+\noindent\textbf{Enunciado}
+Una estación de trabajo ejecuta simultáneamente 4 utilidades corporativas de escritorio. Empaquetadas con Electron, cada instancia consume 220 MB de memoria RAM debido a procesos Chromium independientes; migradas a Tauri (Rust + WebView compartido), cada instancia consume 45 MB. Calcule la memoria RAM total ahorrada en megabytes.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N_{apps} = 4\,\mathrm{aplicaciones}$ — Número de aplicaciones ejecutadas
+\item $M_{elec} = 220\,\mathrm{MB}$ — Memoria por aplicación en Electron
+\item $M_{tauri} = 45\,\mathrm{MB}$ — Memoria por aplicación en Tauri
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Memoria RAM total ahorrada \(M_ahorro\) en MB
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de memoria RAM en escritorio con Tauri frente a Electron}
+
+\[
+M_{\text{ahorro}} = 4 \cdot (220 - 45)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 4 aplicaciones por la diferencia de consumo unitario (220 - 45 = 175 MB)
+
+\[
+M_{\text{ahorro}} = 4 \cdot (220 - 45)
+\]
+
+\[
+\left(4\cdot \left(220-45\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 700
+\]
+
+\noindent\textbf{Interpretación}
+La migración de las 4 utilidades a Tauri libera exactamente 700 MB de memoria RAM en la estación de trabajo.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $700$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNoLTA4In0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Numérico)}
+[CH-08.1] Calcule (Reducción del tamaño de descarga en MB al pasar de un instalador Electron de 115 MB a uno Tauri de 8 MB) expresado en MB.
+
+\noindent\textbf{2 [PRB-0046] (Intermedio, Desarrollo por pasos)}
+[CH-08.2] Calcule (Presupuesto de tiempo por fotograma en milisegundos (redondeado a centésimas x100) para una app Flutter a 120 Hz (100000 / 125)) expresado en centésimas de ms.
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Desarrollo por pasos)}
+[CH-08.3] Calcule (Capacidad total de peticiones por segundo en un clúster de 6 pods Axum que procesan 35 000 req/s cada uno) expresado en req/s.
+
+\noindent\textbf{4 [PRB-0048] (Avanzado, Diseño)}
+[CH-08.4] Calcule (Instancias de un servicio Scoped creadas durante un lote de 250 peticiones HTTP si se inyecta 2 veces por petición) expresado en instancias.
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$S = (a, b, c)$ & Vector lexicográfico de especificidad CSS & adimensional \\
+$X \to Y$ & Dependencia funcional relacional en esquema R & $\mathrm{relación lógica}$ \\
+$h = \lceil \log_B(N) \rceil$ & Altura de un árbol B+ con factor de ramificación B & $\mathrm{niveles de página}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{HTML Living Standard y Accesibilidad Web (WCAG / ARIA)}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+Una página HTML descarga un documento base en 40 ms, una hoja CSS bloqueante de renderizado en 65 ms en paralelo con un script clásico bloqueante de 110 ms, y ejecuta el layout final en 15 ms tras ambos recursos. Calcule el tiempo total hasta el First Contentful Paint (FCP) en milisegundos.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 165
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+[CH-01.1] Calcule (Reducción de latencia FCP al diferir un script de 110 ms dejando solo el CSS de 65 ms (40 + 65 + 15)) expresado en ms.
+
+\noindent\textbf{Respuesta} 120
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+[CH-01.2] Calcule (Tamaño total en KiB de un documento HTML de 18 KiB más 3 iconos SVG inline de 4 KiB cada uno) expresado en KiB.
+
+\noindent\textbf{Respuesta} 30
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+[CH-01.3] Calcule (Número total de nodos DOM generados por una tabla de 25 filas con 4 celdas por fila más el nodo tr por fila) expresado en nodos.
+
+\noindent\textbf{Respuesta} 125
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+[CH-01.4] Calcule (Ahorro porcentual de transferencia al comprimir con Brotli un HTML de 80 KiB a 16 KiB) expresado en \%.
+
+\noindent\textbf{Respuesta} 80
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(40+110\right)+15\right) = 165\)
+
+\section{CSS Moderno: Cascada, Especificidad, Flexbox, Grid y Container Queries}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+Un contenedor Flex tiene un ancho interior de 960 px y contiene dos paneles con flex-basis de 200 px y 160 px respectivamente. Sus factores flex-grow son 2 y 1. Calcule el ancho final en píxeles del primer panel tras repartir el espacio libre.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 600
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+[CH-02.1] Calcule (Ancho final del segundo panel en el contenedor Flex de 960 px (160 + 600 / 3)) expresado en px.
+
+\noindent\textbf{Respuesta} 360
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+[CH-02.2] Calcule (Valor entero codificado en base 100 de la especificidad (1, 2, 3) para comparación rápida) expresado en puntos.
+
+\noindent\textbf{Respuesta} 10203
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+[CH-02.3] Calcule (Ancho de una columna 1fr en un CSS Grid de 1200 px con 3 columnas iguales y 2 huecos (gap) de 24 px) expresado en px.
+
+\noindent\textbf{Respuesta} 384
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+[CH-02.4] Calcule (Ancho de área de contenido en border-box para una caja de 320 px con padding de 16 px y borde de 2 px por lado) expresado en px.
+
+\noindent\textbf{Respuesta} 284
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(200+\frac{\left(2\cdot \left(\left(960-200\right)-160\right)\right)}{3}\right) = 600\)
+
+\section{Formatos de Intercambio, Configuración y Documentación: JSON, YAML, TOML, XML, CSV, Markdown y Protobuf}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Un mensaje JSON de telemetría ocupa 140 bytes en texto UTF-8. Al codificar los mismos 4 campos numéricos en Protocol Buffers v3, cada campo requiere 1 byte de etiqueta (tag) y 3 bytes de valor Varint promedio. Calcule el ahorro porcentual de ancho de banda logrado por Protobuf.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 88.5714285714
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+[CH-03.1] Calcule (Tamaño en bytes del mensaje Protobuf con 4 campos de 4 bytes cada uno) expresado en bytes.
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+[CH-03.2] Calcule (Valor del byte de cabecera Protobuf para el campo número 3 con wire\(_type 2 (\)length-delimited: 3*8 + 2)) expresado en entero.
+
+\noindent\textbf{Respuesta} 26
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+[CH-03.3] Calcule (Codificación ZigZag de sint32 para el entero negativo -15 (-2 * -15 - 1)) expresado en entero.
+
+\noindent\textbf{Respuesta} 29
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+[CH-03.4] Calcule (Tráfico diario ahorrado en MB al enviar 10 millones de mensajes de 16 B en lugar de 116 B (dividiendo entre \(10^6))\) expresado en MB.
+
+\noindent\textbf{Respuesta} 1000
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(140-\left(4\cdot 4\right)\right)\cdot 100\right)}{140} = 88.5714285714\)
+
+\section{Teoría Relacional, Modelado Entidad-Relación y Normalización (1NF a BCNF)}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+Una tabla desnormalizada de líneas de pedido con 50 000 filas repite en cada fila los 120 bytes de datos del cliente (habiendo solo 2 000 clientes distintos). Al descomponer a BCNF en Lineas(50 000 filas) y Clientes(2 000 filas x 120 bytes), calcule el espacio total en KiB (1 KiB = 1024 B) ahorrado por no repetir los 120 bytes en las 48 000 filas excedentes.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 5625
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+[CH-04.1] Calcule (Espacio en KiB ocupado por la nueva tabla Clientes con 2048 filas de 128 bytes (2048 * 128 / 1024)) expresado en KiB.
+
+\noindent\textbf{Respuesta} 256
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+[CH-04.2] Calcule (Número de superclaves en una relación de 5 atributos cuya única clave candidata tiene 2 atributos (2\textasciicircum{}(5-2))) expresado en superclaves.
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+[CH-04.3] Calcule (Tuplas espurias generadas al hacer join de dos proyecciones mal descompuestas que producen 140 filas frente a 100 reales) expresado en tuplas.
+
+\noindent\textbf{Respuesta} 40
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+[CH-04.4] Calcule (Número de atributos en la intersección R1 n R2 si |R1|=4, |R2|=5 y |R1 U R2|=7) expresado en atributos.
+
+\noindent\textbf{Respuesta} 2
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(48000\cdot 120\right)}{1024} = 5625\)
+
+\section{Motores de Almacenamiento, Índices B+-Tree / LSM, Transacciones ACID y MVCC}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+En una base de datos con páginas de 8 KiB, cada nodo interno de un índice B+ tiene un factor de ramificación efectivo de 200 hijos y cada página hoja almacena 80 entradas de índice. Calcule el número total de filas (en millones) que puede indexar un árbol B+ de altura h = 3 (1 raíz, 1 nivel intermedio de nodos internos y 1 nivel de hojas).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 3.2
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+[CH-05.1] Calcule (Número de páginas hoja en el árbol B+ de 3 niveles con factor de ramificación 200 (200 * 200)) expresado en hojas.
+
+\noindent\textbf{Respuesta} 40000
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+[CH-05.2] Calcule (Memoria RAM en KiB requerida para mantener en Buffer Pool la raíz y los 200 nodos internos de 8 KiB ((1 + 200) * 8)) expresado en KiB.
+
+\noindent\textbf{Respuesta} 1608
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+[CH-05.3] Calcule (Coste estimado en unidades de página de un Index Scan que lee 3 niveles de índice más 12 páginas de Heap) expresado en páginas.
+
+\noindent\textbf{Respuesta} 15
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+[CH-05.4] Calcule (Tasa de escritura WAL en MB/s para 5 000 transacciones por segundo que generan 400 bytes de log cada una) expresado en MB/s.
+
+\noindent\textbf{Respuesta} 2
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(200\cdot 200\right)\cdot 80\right)}{1000000} = 3.2\)
+
+\section{Bases de Datos Distribuidas, NoSQL, Teorema CAP/PACELC, PostgreSQL, SQLite, MongoDB y Redis}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+Un clúster de base de datos distribuida mantiene N = 5 réplicas de cada partición. Si las escrituras se configuran con un quórum de confirmación W = 3 nodos para tolerar la caída de 2 réplicas, calcule el número mínimo de nodos R que debe consultar una lectura para garantizar intersección estricta (W + R > N => R = N - W + 1).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 3
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+[CH-06.1] Calcule (Quórum de lectura requerido si N = 7 réplicas y W = 4 escrituras (7 - 4 + 1)) expresado en nodos.
+
+\noindent\textbf{Respuesta} 4
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+[CH-06.2] Calcule (Porcentaje de claves redistribuidas por Hash Consistente al pasar de 9 a 10 nodos (100 / 10)) expresado en \%.
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+[CH-06.3] Calcule (Memoria RAM total en GB para almacenar en Redis 50 millones de claves de 200 bytes promedio (dividiendo entre \(10^9))\) expresado en GB.
+
+\noindent\textbf{Respuesta} 10
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+[CH-06.4] Calcule (Número máximo de fallos de nodo tolerados por un clúster Raft de 5 nodos ((5 - 1) / 2)) expresado en nodos.
+
+\noindent\textbf{Respuesta} 2
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(5-3\right)+1\right) = 3\)
+
+\section{Frameworks Web Frontend y Full-Stack: React, Angular, Vue, Svelte y Next.js}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+Una aplicación SPA tradicional descarga un bundle monolítico de 480 KiB de JavaScript. Al migrar a una arquitectura híbrida SSR + Server Components, el 65 \% del código de presentación y formateo permanece en el servidor. Calcule el tamaño en KiB del bundle JavaScript que aún debe descargar e hidratar el navegador.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 168
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+[CH-07.1] Calcule (Ahorro absoluto en KiB al reducir el bundle de 480 KiB a 168 KiB) expresado en KiB.
+
+\noindent\textbf{Respuesta} 312
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+[CH-07.2] Calcule (Tiempo de parseo y compilación JS en móvil a razón de 1,5 ms por cada KiB para 168 KiB) expresado en ms.
+
+\noindent\textbf{Respuesta} 252
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+[CH-07.3] Calcule (Nodos re-evaluados con Signals en una lista de 500 filas cuando cambia 1 celda frente a 500 sin memoización (ahorro)) expresado en nodos.
+
+\noindent\textbf{Respuesta} 499
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+[CH-07.4] Calcule (Número de peticiones de red tras deduplicar 6 componentes que solicitan simultáneamente el mismo endpoint) expresado en peticiones.
+
+\noindent\textbf{Respuesta} 1
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(480\cdot \left(100-65\right)\right)}{100} = 168\)
+
+\section{Frameworks Backend, Escritorio y Móvil: FastAPI, Spring Boot, ASP.NET Core, Axum, Qt, Tauri y Flutter}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+Una estación de trabajo ejecuta simultáneamente 4 utilidades corporativas de escritorio. Empaquetadas con Electron, cada instancia consume 220 MB de memoria RAM debido a procesos Chromium independientes; migradas a Tauri (Rust + WebView compartido), cada instancia consume 45 MB. Calcule la memoria RAM total ahorrada en megabytes.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 700
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+[CH-08.1] Calcule (Reducción del tamaño de descarga en MB al pasar de un instalador Electron de 115 MB a uno Tauri de 8 MB) expresado en MB.
+
+\noindent\textbf{Respuesta} 107
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+[CH-08.2] Calcule (Presupuesto de tiempo por fotograma en milisegundos (redondeado a centésimas x100) para una app Flutter a 120 Hz (100000 / 125)) expresado en centésimas de ms.
+
+\noindent\textbf{Respuesta} 800
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+[CH-08.3] Calcule (Capacidad total de peticiones por segundo en un clúster de 6 pods Axum que procesan 35 000 req/s cada uno) expresado en req/s.
+
+\noindent\textbf{Respuesta} 210000
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+[CH-08.4] Calcule (Instancias de un servicio Scoped creadas durante un lote de 250 peticiones HTTP si se inyecta 2 veces por petición) expresado en instancias.
+
+\noindent\textbf{Respuesta} 250
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(4\cdot \left(220-45\right)\right) = 700\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 28 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios. Ecuaciones: 2 respaldada por una fuente.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 1 respaldada por una fuente, 2 valor o condición.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent HTML Living Standard \& CSS Cascading and Inheritance Level 5 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Database System Concepts (7th Edition) \& Designing Data-Intensive Applications (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Protocol Buffers v3, JSON Schema (RFC 8259) \& YAML 1.2.2 Specification (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42, \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: ch-01 scientific
+
+\noindent REV-0002: ch-02 scientific
+
+\noindent REV-0003: ch-03 scientific
+
+\noindent REV-0004: ch-04 scientific
+
+\noindent REV-0005: ch-05 scientific
+
+\noindent REV-0006: ch-06 scientific
+
+\noindent REV-0007: ch-07 scientific
+
+\noindent REV-0008: ch-08 scientific
+\chapter{Plan de estudio}
+
+\section*{Partes VI\(-\)VIII: Web, Almacenamiento y Ecosistemas de Producción}
+
+\subsection*{\checkmark HTML Living Standard y Accesibilidad Web (WCAG / ARIA)}
+\begin{itemize}
+\item Dominar la semántica estructural de HTML5, el algoritmo de construcción del DOM, formularios nativos, multimedia y árboles de accesibilidad (AOM/ARIA).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark CSS Moderno: Cascada, Especificidad, Flexbox, Grid y Container Queries}
+\begin{itemize}
+\item Calcular determinísticamente la resolución de la cascada CSS, diseñar layouts complejos con Flexbox y Grid, y aplicar propiedades lógicas y variables reactivas.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Formatos de Intercambio, Configuración y Documentación: JSON, YAML, TOML, XML, CSV, Markdown y Protobuf}
+\begin{itemize}
+\item Seleccionar y validar formatos de datos textuales y binarios, diseñar esquemas con JSON Schema y Protocol Buffers, y prevenir vulnerabilidades de deserialización.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Teoría Relacional, Modelado Entidad-Relación y Normalización (1NF a BCNF)}
+\begin{itemize}
+\item Traducir requisitos de dominio a esquemas relacionales en Forma Normal de Boyce-Codd (BCNF) garantizando reuniones sin pérdida (lossless-join) y preservación de dependencias.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Motores de Almacenamiento, Índices B+-Tree / LSM, Transacciones ACID y MVCC}
+\begin{itemize}
+\item Analizar la estructura física de páginas de disco, comparar árboles B+ frente a LSM-Trees, diseñar índices compuestos óptimos y depurar anomalías de concurrencia bajo niveles de aislamiento ANSI/serializable.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Bases de Datos Distribuidas, NoSQL, Teorema CAP/PACELC, PostgreSQL, SQLite, MongoDB y Redis}
+\begin{itemize}
+\item Diseñar topologías de replicación y particionamiento (sharding), evaluar compromisos CAP/PACELC y seleccionar con criterio técnico entre motores relacionales y NoSQL.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Frameworks Web Frontend y Full-Stack: React, Angular, Vue, Svelte y Next.js}
+\begin{itemize}
+\item Comprender los motores de reactividad (Virtual DOM, Signals, compilación estática), gestionar estado cliente/servidor e implementar Server-Side Rendering (SSR) e hidratación.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Frameworks Backend, Escritorio y Móvil: FastAPI, Spring Boot, ASP.NET Core, Axum, Qt, Tauri y Flutter}
+\begin{itemize}
+\item Diseñar tuberías de middleware backend, inyección de dependencias y validación de esquemas, y contrastar arquitecturas de escritorio y móvil nativas frente a multiplataforma.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} HTML Living Standard \& CSS Cascading and Inheritance Level 5. \url{https://html.spec.whatwg.org/vol-ref-1}
+\bibitem{src27} Database System Concepts (7th Edition) \& Designing Data-Intensive Applications. \url{https://www.db-book.com/vol-ref-2}
+\bibitem{src28} Protocol Buffers v3, JSON Schema (RFC 8259) \& YAML 1.2.2 Specification. \url{https://datatracker.ietf.org/doc/html/rfc8259/vol-ref-3}
+\end{thebibliography}
+\end{document}

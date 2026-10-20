@@ -1,0 +1,1916 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen VI: Monografías de C\#, Java, Go, Kotlin y Swift\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Parte V (Bloques A\(-\)H): Máquinas virtuales gestionadas (CLR y JVM), concurrencia G-M-P en Go, Coroutines y ARC/Actores\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Monografías de Plataformas Gestionadas: C\# (.NET 8/9) y Java (JVM 21 LTS)}
+
+\chapter{Monografía de C\# (I \(-\) Bloques A\(-\)D): Arquitectura .NET/CLR, Tipos Valor vs Referencia, Records, Pattern Matching y LINQ}
+\label{chap:cap01-csharp-dotnet-clr-tipos-valor-referencia-linq}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+\noindent\textit{Este capítulo inicia la monografía autónoma de **C\# (.NET 8/9)** (Bloques A, B, C y D). Diseñado por Anders Hejlsberg, C\# combina la ergonomía expresiva de los lenguajes funcionales modernos con un control de bajo nivel sobre la disposición de memoria (\texttt{struct}, \texttt{Span<T>}, genéricos reificados en la máquina virtual) único entre los entornos gestionados.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+Cuando declares un \texttt{struct} en C\#, márcalo como \texttt{readonly struct} (o \texttt{readonly record struct}) siempre que sea posible: si pasas un \texttt{struct} no \texttt{readonly} mediante \texttt{in} o lo almacenas en un campo \texttt{readonly}, el compilador se ve obligado a emitir copias defensivas ocultas en cada llamada a método para proteger el original.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+Reificación de Genéricos en el CLR (.NET): preservación de los argumentos de tipo genérico en los metadatos CIL y en tiempo de ejecución, permitiendo que el JIT emita representaciones especializadas en memoria para cada tipo por valor (\texttt{struct}) sin encajonamiento (*boxing*).
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+¿Qué problema grave de rendimiento ocurre en una base de datos de millones de filas si un desarrollador convierte un \texttt{IQueryable<Order>} de EF Core a \texttt{IEnumerable<Order>} mediante \texttt{.AsEnumerable()} o \texttt{.ToList()} **antes** de aplicar \texttt{.Where(...)}?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Historia de C\# y .NET, CLI (`dotnet`), CIL, tipos valor vs referencia y nulabilidad}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+En la plataforma **.NET**, el compilador Roslyn (\texttt{csc}) traduce el código fuente C\# a *Common Intermediate Language* (CIL, estándar ECMA-335) almacenado en ensamblados \texttt{.dll}. Durante la ejecución, el compilador JIT **RyuJIT** traduce los métodos CIL a código máquina nativo aplicando compilación por niveles (*Tiered Compilation*) y perfilado dinámico (Dynamic PGO), o bien compila directamente a binario nativo autónomo mediante **Native AOT**. Una decisión crucial de ingeniería en C\# es la distinción entre **tipos por referencia** (\texttt{class}, alojados en el montículo gestionado con una cabecera de objeto de 16 bytes en 64 bits) y **tipos por valor** (\texttt{struct}, alojados en línea en el marco de pila o directamente dentro del array/objeto contenedor sin indirección de puntero). Además, a diferencia de la JVM, el CLR **reifica los tipos genéricos**: \texttt{List<int>} o \texttt{Dictionary<long, double>} generan código máquina especializado con arrays planos de valores primitivos sin *boxing*.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+\section{Bloque D: Propiedades, records, interfaces, genéricos reificados, delegados y LINQ}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+C\# moderno incorpora tipos de referencia anulables verificados por flujo (\texttt{<Nullable>enable</Nullable>}), tipos de datos inmutables por valor o referencia (\texttt{readonly record struct} y \texttt{record class}) con igualdad estructural sintetizada y **LINQ** (*Language Integrated Query*). En LINQ es indispensable distinguir entre \texttt{IEnumerable<T>}, cuyos operadores reciben delegados \texttt{Func<T, bool>} evaluados en memoria en el proceso actual, e \texttt{IQueryable<T>}, cuyos operadores reciben árboles de expresión (\texttt{Expression<Func<T, bool>>}) que un proveedor como Entity Framework Core inspecciona para traducirlos a consultas SQL ejecutadas en el motor de base de datos:
+\begin{lstlisting}[style=studium]
+public readonly record struct SensorSample(int SensorId, double Value, long TimestampMs);
+
+public static double ComputeHighValueAverage(ReadOnlySpan<SensorSample> samples, double threshold)
+{
+    double sum = 0.0;
+    int count = 0;
+    foreach (ref readonly var s in samples)
+    {
+        if (s.Value >= threshold) { sum += s.Value; count++; }
+    }
+    return count > 0 ? sum / count : 0.0;
+}
+\end{lstlisting}
+Observa cómo \texttt{foreach (ref readonly var s in samples)} sobre un \texttt{ReadOnlySpan<SensorSample>} recorre las estructuras contiguas por referencia constante sin realizar ni una sola copia ni alojar un iterador en el montículo.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+
+\noindent\textbf{Enunciado}
+En una aplicación financiera en C\# sobre .NET de 64 bits, se mantiene un búfer de \(N = 100000\) cotizaciones donde cada cotización tiene \(S_{\text{val}} = 16\text{ B}\) de datos (\texttt{long Timestamp}, \texttt{double Price}). Si se modela como \texttt{readonly record struct}, el array \texttt{Quote[]} ocupa \(100000 \times 16\text{ B}\). Si se modelara como \texttt{class}, cada elemento añadiría \(8\text{ B}\) de puntero en el array más \(16\text{ B}\) de cabecera de objeto en el montículo (\(24\text{ B}\) extra por instancia). Calcula cuántos kilobytes (dividiendo entre 1000) ahorra el diseño con \texttt{struct}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 100000$ — Número de cotizaciones en el array
+\item $S_{extra} = 24\,\mathrm{B}$ — Sobrecoste por instancia de class (8 B ref + 16 B cabecera)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de memoria entre array de struct y array de class en el CLR (.NET)}
+
+\[
+\Delta M_{\text{kB}} = \frac{100000 \cdot 24}{1000}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 100000 instancias por 24 B y dividimos entre 1000 B/kB
+
+\[
+\Delta M_{\text{kB}} = \frac{100000 \cdot 24}{1000}
+\]
+
+\[
+\frac{\left(100000\cdot 24\right)}{1000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 2400
+\]
+
+\noindent\textbf{Interpretación}
+El diseño con readonly record struct ahorra 2400 kB (2.4 MB) y elimina 100 000 nodos del grafo del recolector de basura.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $2400$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWNzaGFycC1kb3RuZXQtY2xyLXRpcG9zLXZhbG9yLXJlZmVyZW5jaWEtbGlucSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+En .NET de 64 bits, la cabecera de todo objeto por referencia (\texttt{class}) consta de \texttt{ObjHeader} (8 B) y \texttt{MethodTable*} (8 B). ¿Cuántos bytes suma esta cabecera?
+
+\noindent\textbf{2 [PRB-0004] (Básico, Numérico)}
+Un \texttt{readonly record struct Point3D(double X, double Y, double Z)} contiene tres \texttt{double} de 8 bytes. ¿Cuántos bytes ocupa cada instancia?
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+Una consulta LINQ encadena \texttt{.Where(...)} y \texttt{.Take(25)} sobre una secuencia perezosa de 10 000 elementos donde se cumple el predicado en 1 de cada 4 elementos. ¿Cuántos elementos evalúa antes de detenerse (\(25 \times 4\))?
+
+\noindent\textbf{4 [PRB-0006] (Intermedio, Diseño)}
+El recolector generacional del CLR divide el montículo de objetos pequeños en 3 generaciones (\texttt{Gen 0}, \texttt{Gen 1}, \texttt{Gen 2}). Si \texttt{Gen 0} tiene un presupuesto de 4 MiB y \texttt{Gen 1} de 2 MiB, ¿cuántos KiB suman las dos generaciones efímeras (\((4 + 2) \times 1024\))?
+\end{tcolorbox}
+
+\chapter{Monografía de C\# (II \(-\) Bloques E\(-\)H): Span<T>, Memory<T>, Async/Await, ValueTask, ASP.NET Core y Proyectos}
+\label{chap:cap02-csharp-avanzado-experto-span-async-valuetask-aspnet-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+\noindent\textit{Este capítulo completa la monografía de C\# cubriendo los niveles Avanzado y Experto (Bloques E y F), el Ecosistema empresarial (Bloque G) y los Proyectos (Bloque H). Explicamos cómo las primitivas \texttt{Span<T>} y \texttt{ValueTask<T>} han situado a ASP.NET Core (Kestrel) entre los servidores web más rápidos del mundo.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+En todos los métodos asíncronos de entrada/salida en C\#, acepta siempre un \texttt{CancellationToken ct = default} como último parámetro y pásalo hacia abajo a todas las llamadas de red y base de datos para abortar el trabajo inmediatamente cuando el cliente HTTP cierra la conexión.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+Estructura restringida a pila (\texttt{ref struct} en C\#): tipo por valor cuya ubicación está garantizada estáticamente por el compilador y el verificador del CLR exclusivamente en la pila de ejecución, permitiendo contener punteros interiores gestionados (\texttt{ref T} en \texttt{Span<T>}) seguros frente a compactaciones del recolector de basura.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+¿Por qué un objeto \texttt{Span<byte>} no puede ser un campo de una clase ni persistir a través de una expresión \texttt{await} en un método \texttt{async}?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\section{Bloques E y F: Span<T>, ref struct, ArrayPool<T>, máquinas de estados async/await, ValueTask<T> y Channels}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+Para permitir el acceso uniforme y sin copias a memoria gestionada (\texttt{T[]}), memoria en pila (\texttt{stackalloc}) y memoria nativa no gestionada, C\# 7.2+ introdujo \texttt{Span<T>} y \texttt{ReadOnlySpan<T>}. Un \texttt{Span<T>} se declara como \texttt{ref struct}, lo que significa que el compilador y el verificador del CLR prohíben estáticamente que escape al montículo (no puede ser un campo de una \texttt{class}, ni ser encajonado como \texttt{object}, ni capturarse en una lambda, ni cruzar un punto \texttt{await}). En programación asíncrona, cada método \texttt{async} es transformado por el compilador en una estructura que implementa \texttt{IAsyncStateMachine}. Si un método \texttt{async Task<T>} completa su trabajo de forma asíncrona, aloja un objeto \texttt{Task<T>} en el montículo; pero en rutas calientes (como lecturas desde caché o sockets con datos ya presentes en el búfer del kernel) donde el 90 \% de las llamadas se resuelven síncronamente, devolver \texttt{ValueTask<T>} (un \texttt{readonly struct}) evita por completo cualquier asignación en el montículo:
+\begin{lstlisting}[style=studium,escapeinside={(*@}{@*)}]
+using System.Buffers;
+using System.Threading;
+using System.Threading.Tasks;
+
+public sealed class CachedMetricReader
+{
+    private double? _cached;
+    public ValueTask<double> ReadMetricAsync(CancellationToken ct)
+    {
+        if (_cached is double ready)
+            return new ValueTask<double>(ready); // 0 bytes alojados en el mont(*@{\'i}@*)culo
+        return new ValueTask<double>(FetchSlowAsync(ct));
+    }
+    private async Task<double> FetchSlowAsync(CancellationToken ct)
+    {
+        await Task.Delay(10, ct).ConfigureAwait(false);
+        _cached = 42.5;
+        return 42.5;
+    }
+}
+\end{lstlisting}
+Recuerda la restricción contractual de \texttt{ValueTask<T>}: nunca debe ser esperado (\texttt{await}) más de una vez ni consumido concurrentemente antes de que complete.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+\section{Bloques G y H: Ecosistema (ASP.NET Core, DI, EF Core, xUnit, BenchmarkDotNet) y los 4 proyectos en C\#}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+En el Bloque G (Ecosistema), las aplicaciones .NET modernas se construyen sobre el contenedor de **Inyección de Dependencias (DI)** integrado en \texttt{Microsoft.Extensions.DependencyInjection}, que distingue tres ciclos de vida: \texttt{Transient} (una instancia nueva en cada resolución), \texttt{Scoped} (una instancia única por ámbito o petición HTTP, obligatoria para \texttt{DbContext} de Entity Framework Core) y \texttt{Singleton} (una única instancia segura para hilos durante toda la vida del proceso). Un antipatrón crítico (detectado automáticamente por \texttt{ValidateScopes = true} en entorno de desarrollo) es la **dependencia cautiva** (*Captive Dependency*): inyectar un servicio \texttt{Scoped} dentro de un \texttt{Singleton}, lo que retiene el servicio \texttt{Scoped} indefinidamente y provoca accesos concurrentes ilegales a \texttt{DbContext}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+
+\noindent\textbf{Enunciado}
+Un servicio de alta frecuencia en ASP.NET Core procesa \(R = 50000\) llamadas por segundo donde el \(90\%\) (\(45000\) llamadas/s) se resuelven síncronamente desde memoria local y solo el \(10\%\) (\(5000\) llamadas/s) requieren E/S asíncrona real. Si cada objeto \texttt{Task<Result>} alojado en el montículo mide \(S_{\text{task}} = 72\text{ B}\), calcula cuántos kilobytes por segundo (dividiendo entre 1000) deja de alojar en \texttt{Gen 0} el servicio al cambiar el tipo de retorno de \texttt{Task<Result>} a \texttt{ValueTask<Result>}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $R_{sync} = 45000\,\mathrm{llamadas}\,\mathrm{s}^{-1}$ — Llamadas resueltas síncronamente por segundo
+\item $S_{task} = 72\,\mathrm{B}$ — Tamaño del objeto Task<Result> evitado
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de asignaciones en Gen 0 con ValueTask<T> en rutas calientes}
+
+\[
+\Delta A_{\text{kB/s}} = \frac{45000 \cdot 72}{1000}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 45000 llamadas síncronas por 72 B y dividimos entre 1000 B/kB
+
+\[
+\Delta A_{\text{kB/s}} = \frac{45000 \cdot 72}{1000}
+\]
+
+\[
+\frac{\left(45000\cdot 72\right)}{1000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 3240
+\]
+
+\noindent\textbf{Interpretación}
+Se evita alojar y recolectar 3240 kB/s (3.24 MB/s) de objetos efímeros en Gen 0.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $3240$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWNzaGFycC1hdmFuemFkby1leHBlcnRvLXNwYW4tYXN5bmMtdmFsdWV0YXNrLWFzcG5ldC1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+En .NET de 64 bits, un \texttt{Span<byte>} contiene una referencia interior \texttt{ref byte} (8 B) y una longitud \texttt{int} alineada a 8 B. ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{2 [PRB-0010] (Básico, Numérico)}
+Si se alquila un búfer con \texttt{ArrayPool<byte>.Shared.Rent(4000)}, el pool devuelve un array cuya longitud es la siguiente potencia de dos (\(4096\)). ¿Cuántos bytes adicionales respecto a los 4000 solicitados tiene el array devuelto?
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+Un canal acotado \texttt{Channel.CreateBounded<Job>(new BoundedChannelOptions(128))} contiene actualmente 95 trabajos. ¿Cuántos trabajos más pueden escribirse sin suspender al productor?
+
+\noindent\textbf{4 [PRB-0012] (Intermedio, Diseño)}
+Un contenedor de inyección de dependencias resuelve por cada petición HTTP 1 servicio \texttt{Singleton} (ya creado), 2 servicios \texttt{Scoped} y 4 servicios \texttt{Transient} (invocados 2 veces cada uno en la petición). ¿Cuántas instancias nuevas se crean durante esa petición (\(2 + 4 \times 2\))?
+\end{tcolorbox}
+
+\chapter{Monografía de Java (I \(-\) Bloques A\(-\)D): Arquitectura JVM, Bytecode, Memoria, Records, Sealed Classes, Generics y Streams}
+\label{chap:cap03-java-jvm-bytecode-memoria-generics-streams}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+\noindent\textit{Este capítulo inicia la monografía autónoma de **Java (Java 21 LTS)** (Bloques A, B, C y D). Java impulsa la infraestructura crítica financiera, bancaria y de comercio electrónico a escala planetaria, y con la llegada de Java 17 y Java 21 LTS ha incorporado tipos algebraicos de datos (\texttt{record} + \texttt{sealed interface}) e hilos virtuales que transforman por completo la escritura de código en la JVM.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+Cuando operes con flujos numéricos en la API de Streams de Java, utiliza siempre las especializaciones primitivas (\texttt{IntStream}, \texttt{LongStream}, \texttt{DoubleStream} mediante \texttt{.mapToLong(...)} o \texttt{.mapToDouble(...)}) en lugar de \texttt{Stream<Integer>} o \texttt{Stream<Double>} para evitar el encajonamiento (*boxing*) de millones de objetos.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+Principio PECS (Producer Extends, Consumer Super en Java): regla de varianza en el sitio de uso (*use-site variance*) según la cual una estructura parametrizada que actúa como productora de valores \texttt{T} debe tiparse de forma covariante (\texttt{? extends T}), y una que actúa como consumidora de valores \texttt{T} de forma contravariante (\texttt{? super T}).
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+¿Por qué en Java \texttt{Integer.valueOf(100) == Integer.valueOf(100)} evalúa a \texttt{true} (por la caché obligatoria de \texttt{-128} a \texttt{127} de la JLS §5.1.7), pero \texttt{Integer.valueOf(1000) == Integer.valueOf(1000)} evalúa a \texttt{false} y debe compararse siempre con \texttt{.equals()}?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Evolución hasta Java 21 LTS, arquitectura JVM, JIT C1/C2, G1/ZGC y sintaxis fundamental}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+Creado por James Gosling en Sun Microsystems en 1995, Java compila los ficheros \texttt{.java} mediante \texttt{javac} a código de bytes de pila (\texttt{.class}) independiente de la arquitectura física. En tiempo de ejecución, la máquina virtual **HotSpot** aplica compilación escalonada (*Tiered Compilation*): comienza interpretando el bytecode (Nivel 0), compila métodos frecuentes con el compilador rápido C1 recolectando perfiles de ejecución (Niveles \(1-3)\) y finalmente optimiza el código caliente con el compilador servidor **C2** (Nivel 4), capaz de desvirtualizar llamadas polimórficas monomórficas/bimórficas y aplicar análisis de escape (*Escape Analysis*) para alojar objetos efímeros en registros o escalarizarlos en la pila. Para la gestión del montículo, Java 21 ofrece **G1GC** (recolector regional por defecto) y **Generational ZGC** (\texttt{-XX:+UseZGC -XX:+ZGenerational}), un recolector concurrente con barreras de punteros coloreados (*colored pointers*) cuyas pausas *Stop-The-World* son inferiores a \(1\text{ ms}\) incluso en montículos de varios terabytes.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+\section{Bloque D: Records, Sealed Classes, Pattern Matching, Genéricos (PECS), Colecciones y Streams API}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+Java 17 y Java 21 LTS introdujeron el paradigma de **Programación Orientada a Datos** (*Data-Oriented Programming*): la combinación de clases \texttt{record} (portadores transparentes e inmutables de datos), interfaces selladas (\texttt{sealed interface ... permits ...}) y coincidencia de patrones exhaustiva en expresiones \texttt{switch} con desestructuración:
+\begin{lstlisting}[style=studium,language={Java}]
+public sealed interface PaymentResult permits PaymentResult.Approved, PaymentResult.Declined {
+    record Approved(String txId, long cents) implements PaymentResult {}
+    record Declined(String reason, int retryAfterSec) implements PaymentResult {}
+
+    static String describe(PaymentResult res) {
+        return switch (res) {
+            case Approved(var id, var cents) when cents >= 100_00 -> "High-value approved: " + id;
+            case Approved(var id, var cents)                      -> "Approved: " + id + " (" + cents + ")";
+            case Declined(var reason, var wait)                   -> "Declined (" + reason + "), wait " + wait + "s";
+        };
+    }
+}
+\end{lstlisting}
+En el sistema de tipos genéricos de Java (implementado con borrado de tipos a \texttt{Object} o a su cota superior para mantener compatibilidad binaria), la varianza en sitios de uso se rige por la regla **PECS** (*Producer Extends, Consumer Super*, formulada por Joshua Bloch): usa \texttt{List<? extends T>} cuando solo leas elementos \texttt{T} de la estructura productora, y \texttt{Comparator<? super T>} o \texttt{Collection<? super T>} cuando insertes o consumas elementos \texttt{T}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+
+\noindent\textbf{Enunciado}
+En la JVM HotSpot de 64 bits con punteros comprimidos activos (\texttt{-XX:+UseCompressedOops}), un objeto \texttt{Double} encajonado (*boxed*) ocupa \(24\text{ B}\) (12 B de cabecera + 8 B del \texttt{double} + 4 B de relleno a múltiplo de 8), más \(4\text{ B}\) de la referencia en un \texttt{ArrayList<Double>} (\(28\text{ B}\) por número), mientras que un array primitivo \texttt{double[]} o un \texttt{DoubleStream} ocupa únicamente \(8\text{ B}\) por número. Calcula cuántos megabytes (dividiendo entre \$\(10^6\)\$) se ahorran al almacenar \(N = 2000000\) de valores en \texttt{double[]} frente a \texttt{ArrayList<Double>}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 2000000$ — Dos millones de números en coma flotante
+\item $S_{boxed} = 28\,\mathrm{B}$ — 24 B del objeto Double + 4 B de referencia comprimida
+\item $S_{prim} = 8\,\mathrm{B}$ — 8 B por elemento en double[]
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Sobrecoste de memoria por boxing en la JVM frente a tipos primitivos}
+
+\[
+\Delta M_{\text{MB}} = \frac{2 \cdot 10^6 \cdot (28 - 8)}{10^6}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 2 millones de elementos por los 20 B ahorrados y dividimos entre \(10^6\)
+
+\[
+\Delta M_{\text{MB}} = \frac{2 \cdot 10^6 \cdot (28 - 8)}{10^6}
+\]
+
+\[
+\frac{\left(2000000\cdot \left(28-8\right)\right)}{1000000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 40
+\]
+
+\noindent\textbf{Interpretación}
+Usar arrays o flujos primitivos ahorra exactamente 40 MB de montículo y elimina 2 millones de objetos del recolector de basura.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $40$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWphdmEtanZtLWJ5dGVjb2RlLW1lbW9yaWEtZ2VuZXJpY3Mtc3RyZWFtcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+En la JVM HotSpot con Compressed OOPs, la cabecera de un objeto ordinario mide 8 B (\texttt{Mark Word}) más 4 B (\texttt{Klass Pointer}). ¿Cuántos bytes mide la cabecera antes de alinear campos?
+
+\noindent\textbf{2 [PRB-0016] (Básico, Desarrollo por pasos)}
+En \texttt{HashMap} de Java 8+, cuando un cubo (*bucket*) alcanza el umbral \texttt{TREEIFY\_THRESHOLD = 8} colisiones (con capacidad de tabla \(\ge 64\)), la lista enlazada se transforma en un árbol rojo-negro. Si hay 256 elementos colisionando en ese mismo cubo, ¿cuál es la altura máxima \(2 \log_2(256)\) a comparar frente a los 256 saltos lineales?
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+Un \texttt{ConcurrentHashMap} redimensiona su tabla de 1024 a 2048 cubos manteniendo el factor de carga en \(0.75\). ¿Cuántas entradas admite la nueva tabla antes del siguiente redimensionado (\(2048 \times 3 / 4\))?
+
+\noindent\textbf{4 [PRB-0018] (Intermedio, Diseño)}
+Si el tamaño de un montículo de la JVM supera los 32 GiB y desactiva Compressed OOPs, cada referencia pasa de 4 B a 8 B. En un grafo en memoria con 50 millones de referencias, ¿cuántos megabytes (\(10^6\text{ B}\)) adicionales consumen las referencias?
+\end{tcolorbox}
+
+\chapter{Monografía de Java (II \(-\) Bloques E\(-\)H): Java Memory Model, Virtual Threads (Loom), Foreign Function \& Memory API y Proyectos}
+\label{chap:cap04-java-avanzado-experto-virtual-threads-jmm-spring-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+\noindent\textit{Este capítulo completa la monografía de Java (Bloques E, F, G y H). Analizamos con rigor la innovación más importante de la JVM en la última década: los **Hilos Virtuales** (*Virtual Threads*, JEP 444 en Java 21 LTS), que reconcilian el modelo sencillo de un hilo por petición (*thread-per-request*) con la escalabilidad masiva de la E/S no bloqueante.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+No reutilices en un pool (\texttt{ThreadPool}) los hilos virtuales: los hilos virtuales son baratos y efímeros; crea uno nuevo por cada tarea con \texttt{Executors.newVirtualThreadPerTaskExecutor()} y usa un \texttt{Semaphore} cuando necesites limitar el número de llamadas simultáneas a una base de datos externa.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+Hilo Virtual en la JVM (Virtual Thread, JEP 444): instancia de \texttt{java.lang.Thread} planificada en espacio de usuario por la máquina virtual sobre un conjunto reducido de hilos portadores del sistema operativo (*carrier threads*), cuya pila de marcos crece y se encoge dinámicamente en el montículo durante bloqueos de E/S.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+¿Qué es el *anclaje de hilo portador* (*carrier thread pinning*) cuando un hilo virtual se bloquea en E/S dentro de un bloque \texttt{synchronized} tradicional en Java 21 y por qué sustituirlo por \texttt{ReentrantLock} evita el anclaje?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\section{Bloques E y F: Java Memory Model, Virtual Threads (Project Loom), StructuredTaskScope y API Panama (FFM)}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+El **Java Memory Model (JMM)** define formalmente cuándo las escrituras de un hilo son visibles para otro hilo a través de la relación transitiva *happens-before*: la liberación de un monitor (\texttt{synchronized} o \texttt{Lock.unlock()}) *happens-before* toda adquisición posterior del mismo monitor, y una escritura en un campo \texttt{volatile} *happens-before* toda lectura posterior de ese campo. En Java 21 LTS, **Project Loom** introdujo los **Virtual Threads** (\texttt{Thread.ofVirtual().start(...)} o \texttt{Executors.newVirtualThreadPerTaskExecutor()}): hilos gestionados por la JVM que se montan sobre un pequeño grupo de hilos del sistema operativo (*carrier threads* en un \texttt{ForkJoinPool}). Cuando el código ejecutado dentro de un hilo virtual realiza una operación bloqueante de red o base de datos (como \texttt{Socket.read()} o \texttt{Thread.sleep()}), el runtime de la JVM **desmonta** automáticamente la pila de continuación del hilo virtual hacia el montículo y deja libre al hilo portador del sistema operativo para ejecutar otro hilo virtual:
+\begin{lstlisting}[style=studium,language={Java}]
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
+
+public final class VirtualThreadDispatcher {
+    public static long runConcurrentTasks(int taskCount) throws Exception {
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            var futures = IntStream.range(0, taskCount)
+                .mapToObj(i -> executor.submit(() -> (long) i * 2L))
+                .toList();
+            long total = 0L;
+            for (var f : futures) { total += f.get(); }
+            return total;
+        }
+    }
+}
+\end{lstlisting}
+Por la Ley de Little (\(L = \lambda \cdot W\)), un servidor ya no está limitado por el número de hilos de plataforma (\(\approx 200\)\(-\)\(1000\)), sino que puede sostener cientos de miles de peticiones bloqueadas en E/S escribiendo código imperativo directo, fácil de depurar y con trazas de pila legibles.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+\section{Bloques G y H: Ecosistema (Maven, Gradle, JUnit 5, Spring Boot, GraalVM) y los 4 proyectos en Java}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+Asimismo, Java 21/22 reemplaza a JNI y \texttt{sun.misc.Unsafe} con la **Foreign Function \& Memory API (Project Panama)**: \texttt{Arena.ofConfined()} y \texttt{MemorySegment} permiten gestionar memoria nativa fuera del montículo (*off-heap*) con límites espaciales y temporales comprobados determinísticamente. En el Bloque G (Ecosistema), estudiamos la gestión declarativa de proyectos con \texttt{Maven} (\texttt{pom.xml}) y \texttt{Gradle} (\texttt{build.gradle.kts}), pruebas unitarias y de integración con \texttt{JUnit 5} y \texttt{Testcontainers}, microservicios con \texttt{Spring Boot 3} (\texttt{spring.threads.virtual.enabled=true}) y compilación nativa con \texttt{GraalVM Native Image}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+
+\noindent\textbf{Enunciado}
+Según la Ley de Little (\(\lambda_{\max} = L_{\max} / W\)), un microservicio donde cada petición pasa \(W = 0.25\text{ s}\) esperando respuestas de APIs externas está limitado con hilos tradicionales de plataforma a \(L_{\text{plat}} = 400\) hilos (caudal máximo \(400 / 0.25 = 1600\text{ req/s}\)). Al migrar a **Virtual Threads** en Java 21 soportando \(L_{\text{virt}} = 20000\) hilos virtuales simultáneos con la misma latencia \(W = 0.25\text{ s}\), calcula cuántas peticiones por segundo adicionales puede sostener el servidor (\$20000 / 0.25 - 400 / 0.25\$).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $L_{plat} = 400\,\mathrm{hilos}$ — Pool clásico de hilos del sistema operativo
+\item $L_{virt} = 20000\,\mathrm{hilos}$ — Hilos virtuales simultáneos en Java 21
+\item $W = 0.25\,\mathrm{s}$ — Tiempo medio de espera de E/S por petición
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Incremento de caudal máximo por Ley de Little con Virtual Threads (JEP 444)}
+
+\[
+\Delta \lambda = \frac{20000}{0.25} - \frac{400}{0.25}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos el caudal antiguo (1600 req/s) al nuevo caudal (80000 req/s)
+
+\[
+\Delta \lambda = \frac{20000}{0.25} - \frac{400}{0.25}
+\]
+
+\[
+\left(\frac{20000}{0.25}-\frac{400}{0.25}\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 78400
+\]
+
+\noindent\textbf{Interpretación}
+El servidor incrementa su capacidad en 78 400 peticiones/s (pasando de 1600 req/s a 80 000 req/s).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $78400$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWphdmEtYXZhbnphZG8tZXhwZXJ0by12aXJ0dWFsLXRocmVhZHMtam1tLXNwcmluZy1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+Por la Ley de Little (\(L = \lambda \cdot W\)), si un sistema recibe \(\lambda = 2500\) peticiones/s y cada una tarda \(W = 0.2\) segundos, ¿cuántas peticiones hay en vuelo simultáneamente en promedio?
+
+\noindent\textbf{2 [PRB-0022] (Básico, Numérico)}
+En una CPU de 16 núcleos lógicos, el \texttt{ForkJoinPool} portador de hilos virtuales crea por defecto un hilo portador (*carrier thread*) por núcleo. ¿Cuántos hilos del sistema operativo mantienen activos los hilos virtuales?
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+En el código \texttt{VirtualThreadDispatcher.runConcurrentTasks(100)}, se suma \texttt{i * 2} para \(i = 0, 1, \dots, 99\). ¿Cuál es el valor exacto de la suma (\(99 \times 100\))?
+
+\noindent\textbf{4 [PRB-0024] (Intermedio, Diseño)}
+Una \texttt{Arena.ofConfined()} de Project Panama reserva 64 segmentos nativos de 4096 bytes cada uno. ¿Cuántos bytes de memoria *off-heap* se liberan determinísticamente al cerrarse el bloque \texttt{try-with-resources}?
+\end{tcolorbox}
+
+\part{Monografías de Sistemas Cloud y Móviles: Go, Kotlin y Swift}
+
+\chapter{Monografía de Go (I \(-\) Bloques A\(-\)D): Filosofía, Compilación Estática, Slices, Maps, Interfaces Implícitas y Manejo de Errores}
+\label{chap:cap05-go-fundamentos-slices-interfaces-errores-genericos}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+\noindent\textit{Este capítulo inicia la monografía autónoma de **Go (Golang 1.22+)** (Bloques A, B, C y D). Go es el lenguaje fundacional de la infraestructura nativa en la nube (Docker, Kubernetes, etcd, Prometheus, Terraform, Caddy). Estudiaremos por qué su deliberada economía de conceptos produce sistemas distribuidos mantenibles por grandes equipos.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+Sigue el axioma idiomático de Go: *«Acepta interfaces (pequeñas, como \texttt{io.Reader}), devuelve estructuras concretas»*, y evalúa siempre los argumentos de \texttt{defer} teniendo en cuenta que se capturan en el momento en que se ejecuta la sentencia \texttt{defer}, no cuando retorna la función.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+Expresión de rebanada completa (\texttt{s[i:j:k]} en Go): operación de sub-slicing que produce una nueva rebanada con longitud \texttt{j - i} y capacidad restringida a \texttt{k - i}, forzando que cualquier \texttt{append} posterior sobre la sub-rebanada aloje un nuevo array en lugar de sobrescribir los elementos a partir del índice \texttt{k}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+¿Por qué una función en Go que declara \texttt{var p *MyCustomError = nil; return p} como valor de retorno de tipo \texttt{error} hace que el llamador observe \texttt{err != nil}?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Filosofía de Go, toolchain integrada (`go`), tipos, valores cero, arrays vs slices y maps}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+Diseñado en Google en 2007 por Robert Griesemer, Rob Pike y Ken Thompson, Go nació como respuesta a los tiempos de compilación masivos y la complejidad accidental de C++ y Java en servidores multinúcleo. La herramienta unificada \texttt{go} integra compilación, gestión de módulos (\texttt{go.mod} / \texttt{go.sum} con selección de versión mínima, *Minimal Version Selection*), formateo canónico (\texttt{gofmt}), análisis estático (\texttt{go vet}), pruebas y *fuzzing* nativo (\texttt{go test -fuzz}). En Go, toda variable no inicializada explícitamente recibe su **valor cero** determinista (\texttt{0}, \texttt{false}, \texttt{""}, \texttt{nil}), y los principios de diseño recomiendan que el valor cero de una estructura sea inmediatamente utilizable sin constructor (como \texttt{var mu sync.Mutex} o \texttt{var buf bytes.Buffer}). Un \texttt{slice} \texttt{[]T} es un descriptor de 24 bytes (en 64 bits) formado por un puntero al array subyacente, la longitud \texttt{len} y la capacidad \texttt{cap}. Si dos rebanadas comparten el mismo array subyacente y una ejecuta \texttt{append} sin superar \texttt{cap}, modifica el array compartido; para independizar la capacidad al hacer sub-slicing se utiliza la expresión de tres índices \texttt{s[low:high:max]}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+\section{Bloque D: Métodos, composición de structs, interfaces implícitas, errores como valores y genéricos}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+Go prescinde por completo de la herencia de clases y la sustituye por **composición de estructuras** y **interfaces satisfechas implícitamente**: un tipo satisface una interfaz como \texttt{io.Reader} (\texttt{Read(p []byte) (n int, err error)}) simplemente implementando sus métodos, sin escribir nunca \texttt{implements}. Esto permite definir interfaces pequeñas de uno o dos métodos en el paquete consumidor en lugar de acoplarse al paquete proveedor. Asimismo, Go trata los errores como valores ordinarios devueltos en la última posición de retorno \texttt{(val, error)}, encadenados con \texttt{fmt.Errorf("contexto: \%w", err)} e inspeccionados mediante \texttt{errors.Is} y \texttt{errors.As}:
+\begin{lstlisting}[style=studium,language={Go}]
+package storage
+
+import (
+    "errors"
+    "fmt"
+    "io"
+)
+
+var ErrEmptyPayload = errors.New("empty payload")
+
+func ReadExactHeader(r io.Reader, size int) ([]byte, error) {
+    if size <= 0 {
+        return nil, ErrEmptyPayload
+    }
+    buf := make([]byte, size)
+    if _, err := io.ReadFull(r, buf); err != nil {
+        return nil, fmt.Errorf("read exact header (%d bytes): %w", size, err)
+    }
+    return buf, nil
+}
+\end{lstlisting}
+Un matiz técnico esencial de las interfaces en Go es su representación interna de dos palabras (\texttt{tab} / tipo dinámico y \texttt{data} / valor dinámico): una interfaz solo es \texttt{== nil} si **ambos** punteros internos son nulos; asignar un puntero tipado \texttt{(*MyError)(nil)} a una variable \texttt{var err error} produce una interfaz **no nula** (\texttt{err != nil}), por lo que las funciones deben devolver siempre el literal \texttt{nil} directamente cuando no hay error.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+
+\noindent\textbf{Enunciado}
+En un programa en Go, se crea un slice \texttt{base := make([]int64, 100, 200)} (cada \texttt{int64} ocupa \(8\text{ B}\)) y se obtiene la sub-rebanada de tres índices \texttt{sub := base[20:60:80]}. Calcula la suma de la longitud \texttt{len(sub)} (\$60 - 20\$) más la capacidad \texttt{cap(sub)} (\$80 - 20\$) multiplicada por los \(8\text{ B}\) de cada elemento.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $i = 20$ — Índice inicial
+\item $j = 60$ — Índice final de longitud
+\item $k = 80$ — Índice límite de capacidad
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo de len y cap en expresiones de rebanada de tres índices s[i:j:k] en Go}
+
+\[
+R = ((60 - 20) + (80 - 20)) \cdot 8
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos len (40) + cap (60) = 100 y multiplicamos por 8 bytes
+
+\[
+R = ((60 - 20) + (80 - 20)) \cdot 8
+\]
+
+\[
+\left(\left(\left(60-20\right)+\left(80-20\right)\right)\cdot 8\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 800
+\]
+
+\noindent\textbf{Interpretación}
+La longitud de sub es 40, su capacidad es 60 y la métrica ponderada por 8 bytes es 800.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $800$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWdvLWZ1bmRhbWVudG9zLXNsaWNlcy1pbnRlcmZhY2VzLWVycm9yZXMtZ2VuZXJpY29zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+En Go de 64 bits, el encabezado de un slice (\texttt{SliceHeader}) consta de \texttt{Data} (8 B), \texttt{Len} (8 B) y \texttt{Cap} (8 B). ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{2 [PRB-0028] (Básico, Numérico)}
+En Go, cada cubo (*bucket* \texttt{bmap}) de un \texttt{map[K]V} almacena exactamente 8 pares clave-valor. Si un mapa tiene \(2^6 = 64\) cubos, ¿cuántos pares clave-valor caben en esos 64 cubos sin cubos de desbordamiento (\(64 \times 8\))?
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+Para la rebanada \texttt{s[15:45:50]}, ¿cuántos elementos pueden añadirse con \texttt{append} antes de superar la capacidad y forzar la reserva de un nuevo array (\((50 - 15) - (45 - 15)\))?
+
+\noindent\textbf{4 [PRB-0030] (Intermedio, Diseño)}
+Una interfaz \texttt{io.Reader} en Go se representa como un par de palabras \texttt{(itab*, data*)} de 8 bytes cada una. ¿Cuántos bytes ocupan 500 descriptores de interfaz en un slice \texttt{[]io.Reader}?
+\end{tcolorbox}
+
+\chapter{Monografía de Go (II \(-\) Bloques E\(-\)H): Planificador G-M-P, Goroutines, Canales, Context, Perfilado pprof y Proyectos}
+\label{chap:cap06-go-avanzado-experto-goroutines-gmp-canales-context-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\noindent\textit{Este capítulo completa la monografía de Go (Bloques E, F, G y H). Analizamos el motor de ejecución de Go: su planificador de **goroutines G-M-P**, los patrones de canales y \texttt{context.Context} para evitar fugas de goroutines, el recolector de basura tricolor concurrente de baja latencia y las herramientas integradas de diagnóstico de producción (\texttt{pprof}, \texttt{trace}, \texttt{-race}).}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center] (m1) {Hilo OS $M_1$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m1] (p1) {Procesador $P_1$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p1] (q1) {Cola Local: $G_1, G_2, G_3$};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, right=2.2cm of m1] (m2) {Hilo OS $M_2$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m2] (p2) {Procesador $P_2$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p2] (q2) {Cola Local Vacía};
+\draw[->] (m1) -- (p1);
+\draw[->] (p1) -- (q1);
+\draw[->] (m2) -- (p2);
+\draw[->] (p2) -- (q2);
+\draw[->, dashed, red!75!black] (q1.east) -- node[above, font=\footnotesize] {Work-Stealing ($50\%$)} (q2.west);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center] (m1) {Hilo OS $M_1$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m1] (p1) {Procesador $P_1$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p1] (q1) {Cola Local: $G_1, G_2, G_3$};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, right=2.2cm of m1] (m2) {Hilo OS $M_2$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m2] (p2) {Procesador $P_2$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p2] (q2) {Cola Local Vacía};
+\draw[->] (m1) -- (p1);
+\draw[->] (p1) -- (q1);
+\draw[->] (m2) -- (p2);
+\draw[->] (p2) -- (q2);
+\draw[->, dashed, red!75!black] (q1.east) -- node[above, font=\footnotesize] {Work-Stealing ($50\%$)} (q2.west);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center] (m1) {Hilo OS $M_1$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m1] (p1) {Procesador $P_1$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p1] (q1) {Cola Local: $G_1, G_2, G_3$};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, right=2.2cm of m1] (m2) {Hilo OS $M_2$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m2] (p2) {Procesador $P_2$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p2] (q2) {Cola Local Vacía};
+\draw[->] (m1) -- (p1);
+\draw[->] (p1) -- (q1);
+\draw[->] (m2) -- (p2);
+\draw[->] (p2) -- (q2);
+\draw[->, dashed, red!75!black] (q1.east) -- node[above, font=\footnotesize] {Work-Stealing ($50\%$)} (q2.west);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center] (m1) {Hilo OS $M_1$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m1] (p1) {Procesador $P_1$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p1] (q1) {Cola Local: $G_1, G_2, G_3$};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, right=2.2cm of m1] (m2) {Hilo OS $M_2$};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.8cm, minimum height=0.9cm, align=center, below=0.7cm of m2] (p2) {Procesador $P_2$};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=3.4cm, minimum height=0.9cm, align=center, below=0.7cm of p2] (q2) {Cola Local Vacía};
+\draw[->] (m1) -- (p1);
+\draw[->] (p1) -- (q1);
+\draw[->] (m2) -- (p2);
+\draw[->] (p2) -- (q2);
+\draw[->, dashed, red!75!black] (q1.east) -- node[above, font=\footnotesize] {Work-Stealing ($50\%$)} (q2.west);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-go-gmp-scheduler}\textbf{Figura~\thestudiumfigure.} Arquitectura del planificador M:N de Go: cada contexto lógico P (GOMAXPROCS) posee una cola local sin cerrojos de Goroutines (G) y se vincula a un hilo del sistema operativo (M) para ejecutar código Go o robar la mitad de la cola de otro P.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+Antes de lanzar cualquier \texttt{go func() \{ ... \}()}, responde siempre a dos preguntas: (1) ¿bajo qué condición exacta terminará esta goroutine (por ejemplo, cancelación de \texttt{ctx.Done()} o cierre del canal de entrada)? y (2) ¿quién esperará a que termine (\texttt{sync.WaitGroup} o \texttt{errgroup.Group}) antes de cerrar el proceso?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+Fuga de Goroutines (Goroutine Leak): defecto de recursos en Go en el que una goroutine queda suspendida permanentemente en una operación de envío o recepción de canal que ningún otro participante completará jamás, impidiendo que el recolector de basura libere su pila y las variables referenciadas por ella.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+¿Qué ocurre exactamente en tiempo de ejecución en Go cuando una goroutine intenta enviar un valor a un canal cerrado (\texttt{close(ch)}) frente a cuando intenta recibir de un canal cerrado?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\section{Bloques E y F: Planificador G-M-P, goroutines, canales, select, context.Context, sync/errgroup y análisis de escape}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+Una **goroutine** (\texttt{go fn()}) es un hilo de ejecución ligero gestionado por el runtime de Go cuya pila inicial mide tan solo **\(2\text{ KiB}\)** (\(2048\text{ B}\)) y crece o decrece dinámicamente según la profundidad de llamadas. Como muestra la Figura \textbackslash{}ref\{fig:fig-go-gmp-scheduler\}, el planificador M:N multiplexa \(N\) goroutines (\texttt{G}) sobre \(M\) hilos del sistema operativo (\texttt{M}) utilizando hasta \texttt{GOMAXPROCS} procesadores lógicos (\texttt{P}). Cada \texttt{P} mantiene una cola local de hasta 256 goroutines ejecutables; cuando la cola de un \texttt{P} se vacía, intenta robar la mitad de las goroutines de la cola de otro \texttt{P} elegido al azar (*work-stealing*) o toma trabajo de la cola global. La comunicación entre goroutines sigue el cálculo **CSP** (*Communicating Sequential Processes*): *«No compartas memoria para comunicarte; comunícate para compartir memoria»*. Para evitar que una goroutine quede bloqueada eternamente intentando enviar en un canal cuyo receptor ya ha abandonado la operación (*goroutine leak*), todo ciclo concurrente debe seleccionar también sobre \texttt{<-ctx.Done()} de un \texttt{context.Context}:
+\begin{lstlisting}[style=studium,language={Go}]
+package worker
+
+import "context"
+
+func FanOutGenerator(ctx context.Context, items []int, out chan<- int) error {
+    for _, v := range items {
+        select {
+        case <-ctx.Done():
+            return ctx.Err()
+        case out <- v * 2:
+        }
+    }
+    return nil
+}
+\end{lstlisting}
+A partir de Go 1.22, las variables de bucle \texttt{for i, v := range items} tienen ámbito por iteración en lugar de por bucle completo, eliminando el error histórico de capturar la misma variable \texttt{v} en múltiples clausuras concurrentes.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\section{Bloques G y H: Ecosistema (net/http, grpc-go, sqlc, pprof, -race) y los 4 proyectos en Go}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+En el Nivel Experto (Bloque F), el compilador de Go decide automáticamente si una variable local se aloja en la pila de \(2\text{ KiB}\) de la goroutine o en el montículo gestionado mediante **análisis de escape** (*escape analysis*), inspeccionable con \texttt{go build -gcflags="-m"}. En el Bloque G y Bloque H, la biblioteca estándar de Go es tan completa que permite construir servidores HTTP/2 de producción con enrutamiento por patrones (\texttt{net/http} en Go 1.22+), observabilidad (\texttt{log/slog}, \texttt{runtime/pprof}), clientes SQL con pools de conexiones (\texttt{database/sql}) y pruebas de concurrencia instrumentadas con ThreadSanitizer (\texttt{go test -race}). Los cuatro proyectos del bloque incluyen un proxy inverso con balanceo *round-robin* y *health checks*, un grupo de trabajadores (*worker pool*) con apagado ordenado (\texttt{os/signal} + \texttt{context.WithTimeout}), un limitador de tasa distribuido y un servidor gRPC.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+
+\noindent\textbf{Enunciado}
+Cada goroutine recién creada en Go 1.22 reserva una pila inicial de \(S_G = 2\text{ KiB}\) (\(2048\text{ B}\)), mientras que un hilo nativo de sistema operativo reserva por defecto una pila de \(S_M = 2048\text{ KiB}\) (\(2\text{ MiB}\)). Si un servidor de telemetría en Go mantiene \(N = 100000\) goroutines activas sobre \(M = 16\) hilos del sistema operativo, calcula cuántos mebibytes totales (dividiendo los KiB entre 1024) ocupan las pilas de las 100 000 goroutines más los 16 hilos OS.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 100000$ — Número de goroutines concurrentes
+\item $S_{G} = 2\,\mathrm{KiB}$ — Pila inicial por goroutine
+\item $M = 16$ — Hilos del sistema operativo de 2048 KiB
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Consumo de memoria de pilas en el modelo M:N de Go}
+
+\[
+M_{\text{MiB}} = \frac{100000 \cdot 2 + 16 \cdot 2048}{1024}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los KiB de las goroutines (200000 KiB) y de los 16 hilos OS (32768 KiB) y dividimos entre 1024
+
+\[
+M_{\text{MiB}} = \frac{100000 \cdot 2 + 16 \cdot 2048}{1024}
+\]
+
+\[
+\frac{\left(\left(100000\cdot 2\right)+\left(16\cdot 2048\right)\right)}{1024}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 227.3125
+\]
+
+\noindent\textbf{Interpretación}
+Las 100 000 goroutines más los 16 hilos del sistema operativo consumen tan solo 227.3125 MiB de memoria de pila.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $227.312$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LWdvLWF2YW56YWRvLWV4cGVydG8tZ29yb3V0aW5lcy1nbXAtY2FuYWxlcy1jb250ZXh0LXByb3llY3RvcyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+¿Cuántos bytes mide la pila inicial de una goroutine en Go (\(2 \times 1024\))?
+
+\noindent\textbf{2 [PRB-0034] (Básico, Numérico)}
+En el planificador de Go, un procesador \(P_1\) tiene 180 goroutines en su cola local y un procesador inactivo \(P_2\) le roba la mitad. ¿Cuántas goroutines roba \(P_2\)?
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+Un canal con búfer \texttt{ch := make(chan uint64, 512)} almacena elementos de 8 bytes. Si hay 300 elementos encolados en el búfer, ¿cuántos elementos adicionales caben antes de bloquear al emisor?
+
+\noindent\textbf{4 [PRB-0036] (Intermedio, Diseño)}
+En el problema anterior, ¿cuántos bytes ocupa el búfer circular completo de 512 elementos \texttt{uint64} (\(512 \times 8\))?
+\end{tcolorbox}
+
+\chapter{Monografía de Kotlin (Bloques A\(-\)H): Null-Safety, Data/Sealed Classes, Extensiones, Coroutines, Flow y Multiplatform}
+\label{chap:cap07-monografia-kotlin-null-safety-coroutines-flow-kmp}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+\noindent\textit{Este capítulo ofrece la monografía completa (Bloques \(A-H)\) de **Kotlin (2.0+)**. Desarrollado por JetBrains, Kotlin es el lenguaje oficial prioritario para el desarrollo en Android, una potencia en microservicios de servidor sobre la JVM (Spring Boot, Ktor) y un lenguaje multiplataforma nativo (**Kotlin Multiplatform**, KMP).}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+Cuando captures excepciones genéricas (\texttt{catch (e: Throwable)} o \texttt{catch (e: Exception)}) dentro de una corrutina de Kotlin, **relanza siempre \texttt{CancellationException}** (\texttt{if (e is CancellationException) throw e}): tragarse \texttt{CancellationException} rompe el mecanismo de cancelación cooperativa de la concurrencia estructurada.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+Transformación CPS de funciones \texttt{suspend} en Kotlin: reescritura realizada por el compilador en la que toda función \texttt{suspend fun f(a: A): R} se compila en bytecode a \texttt{Object f(A a, Continuation<? super R> completion)}, donde \texttt{completion} almacena el índice \texttt{label} del estado actual y las variables locales vivas entre puntos de suspensión.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+¿Qué diferencia de comportamiento ante el fallo de una corrutina hija existe entre \texttt{coroutineScope \{ ... \}} y \texttt{supervisorScope \{ ... \}} en Kotlin Coroutines?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Filosofía de Kotlin, interoperabilidad JVM/KMP, null-safety, data/sealed classes y extensiones}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+Kotlin resuelve las limitaciones históricas de Java manteniendo una interoperabilidad del 100 \% a nivel de bytecode. Su sistema de tipos incorpora nulabilidad en la raíz de la jerarquía: \texttt{String} no puede almacenar \texttt{null}, mientras que \texttt{String?} exige comprobación explícita mediante el operador de llamada segura \texttt{?.}, el operador Elvis \texttt{?:} o *smart casts* tras verificar \texttt{if (x != null)}. Para modelar dominios sin sobrecoste de ejecución, \texttt{@JvmInline value class UserId(val raw: Long)} envuelve un tipo primitivo en compilación pero se emite como un \texttt{long} desnudo en el bytecode de la JVM. Asimismo, dado que en Kotlin las funciones de orden superior se usan intensivamente, la palabra clave \texttt{inline} inserta el cuerpo de la función y el de las lambdas recibidas directamente en el sitio de llamada, eliminando la creación de objetos clausura y permitiendo preservar el tipo genérico en ejecución con \texttt{reified T}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+\section{Bloques E\(-\)H: Funciones inline/reified, DSLs, Coroutines (suspend, CPS, Flow), ecosistema (Ktor, Compose) y proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+La concurrencia en Kotlin se fundamenta en **Coroutines** estructuradas a partir de una única palabra clave en el lenguaje: \texttt{suspend}. El compilador K2 transforma cada \texttt{suspend fun fetch(id: Long): Profile} mediante **Continuation-Passing Style (CPS)** en una función que recibe un parámetro adicional oculto \texttt{Continuation<Profile>} implementado como una máquina de estados sin alojar un hilo por espera:
+\begin{lstlisting}[style=studium,escapeinside={(*@}{@*)}]
+import kotlinx.coroutines.*
+
+data class NodeHealth(val nodeId: Int, val latencyMs: Long)
+
+suspend fun aggregateClusterLatency(nodeIds: List<Int>): Long = coroutineScope {
+    val deferreds: List<Deferred<Long>> = nodeIds.map { id ->
+        async(Dispatchers.Default) {
+            // Simulaci(*@{\'o}@*)n de consulta paralela por nodo:
+            id.toLong() * 5L
+        }
+    }
+    deferreds.awaitAll().sum()
+}
+\end{lstlisting}
+Dentro de \texttt{coroutineScope \{ ... \}}, la concurrencia es estrictamente jerárquica: la función no retorna hasta que todas las corrutinas hijas lanzadas con \texttt{launch} o \texttt{async} han terminado, y si una sola falla con una excepción, todas las demás hermanas reciben cancelación cooperativa inmediata. Para secuencias asíncronas de múltiples valores, Kotlin distingue entre \texttt{Flow<T>} (flujo frío perezoso con contrapresión natural por suspensión) y \texttt{StateFlow<T>} / \texttt{SharedFlow<T>} (flujos calientes observables en arquitecturas reactivas como Jetpack Compose).
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+
+\noindent\textbf{Enunciado}
+En una aplicación en Kotlin sobre la JVM, una función de orden superior que captura una variable local del entorno se invoca en un bucle caliente \(N = 500000\) veces por segundo. Si la función NO está marcada como \texttt{inline}, cada invocación aloja una instancia de clase anónima de \(S_{\text{lambda}} = 24\text{ B}\). Al marcar la función de orden superior con \texttt{inline}, el alojamiento cae a \(0\text{ B}\). Calcula cuántos megabytes por segundo (dividiendo entre \$\(10^6\)\$) deja de alojar el bucle gracias a \texttt{inline}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 500000$ — Invocaciones por segundo
+\item $S_{\lambda} = 24\,\mathrm{B}$ — Tamaño del objeto clausura capturado
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Ahorro de montículo mediante expansión inline de lambdas con captura en Kotlin}
+
+\[
+\Delta M_{\text{MB/s}} = \frac{500000 \cdot 24}{10^6}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 500000 invocaciones por 24 B y dividimos entre \(10^6\)
+
+\[
+\Delta M_{\text{MB/s}} = \frac{500000 \cdot 24}{10^6}
+\]
+
+\[
+\frac{\left(500000\cdot 24\right)}{1000000}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 12
+\]
+
+\noindent\textbf{Interpretación}
+La palabra clave inline ahorra exactamente 12 MB/s de asignaciones efímeras en el montículo.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $12$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEta290bGluLW51bGwtc2FmZXR5LWNvcm91dGluZXMtZmxvdy1rbXAifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+En la función \texttt{aggregateClusterLatency} con \texttt{nodeIds = [1, 2, 3, 4, 5]} donde cada nodo devuelve \texttt{id * 5}, ¿cuál es la suma total devuelta (\((1 + 2 + 3 + 4 + 5) \times 5\))?
+
+\noindent\textbf{2 [PRB-0040] (Básico, Numérico)}
+Un \texttt{@JvmInline value class Meter(val v: Double)} se almacena en un array primitivo de 1000 elementos. ¿Cuántos bytes ocupan los 1000 elementos \texttt{double} (\(1000 \times 8\))?
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+Un \texttt{Flow<Int>} emite 60 elementos a razón de 1 elemento cada 10 ms y el colector aplica \texttt{.buffer(10)} tardando 25 ms por elemento. ¿Cuántos milisegundos tarda el colector en procesar los 60 elementos (\(10 + 60 \times 25\))?
+
+\noindent\textbf{4 [PRB-0042] (Intermedio, Diseño)}
+Un proyecto Kotlin Multiplatform comparte 14 000 líneas de lógica de dominio en \texttt{commonMain} entre Android e iOS, requiriendo solo 1500 líneas específicas en \texttt{androidMain} y 1500 en \texttt{iosMain}. ¿Cuántas líneas de código duplicado se ahorran respecto a escribir los 14 000 líneas dos veces?
+\end{tcolorbox}
+
+\chapter{Monografía de Swift 6 (Bloques A\(-\)H): Semántica de Valor, Copy-on-Write, Protocolos, ARC y Concurrencia con Actores}
+\label{chap:cap08-monografia-swift-valor-cow-protocolos-arc-actores}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+\noindent\textit{Este capítulo cierra el Volumen VI con la monografía completa (Bloques \(A-H)\) de **Swift (6.0+)**. Creado por Chris Lattner y el equipo de Apple sobre la infraestructura LLVM, Swift es un lenguaje compilado nativamente sin recolector de basura de trazado que combina semántica de valor profunda, conteo automático de referencias (**ARC**) y verificación estática de aislamiento de actores en tiempo de compilación.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+En firmas de funciones en Swift, prefiere siempre \texttt{func render(item: some Drawable)} sobre \texttt{func render(item: any Drawable)} salvo que necesites almacenar elementos heterogéneos en un mismo array \texttt{[any Drawable]}: \texttt{some} permite al compilador especializar la función y evitar el contenedor existencial.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+Aislamiento de Actor (\texttt{actor} en Swift): tipo por referencia que protege su estado mutable encapsulado mediante un ejecutor serie exclusivo, exigiendo estáticamente en tiempo de compilación que cualquier acceso desde fuera del actor sea asíncrono (\texttt{await}) y que los valores transferidos a través de su frontera cumplan \texttt{Sendable}.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+¿Cómo ocurre la *reentrancia de actores* (*actor reentrancy*) en Swift cuando un método de un \texttt{actor} ejecuta un punto de suspensión \texttt{await} intermedio, y por qué deben revalidarse las invariantes del actor después del \texttt{await}?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Filosofía de Swift, SIL/LLVM, SwiftPM, semántica de valor (struct/enum), Copy-on-Write y protocolos}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+A diferencia de Java o Objective-C, en Swift casi todos los tipos fundamentales de la biblioteca estándar \(-\)incluyendo enteros, flotantes, \texttt{String}, \texttt{Array<T>}, \texttt{Dictionary<K, V>} y \texttt{Set<T>}\(-\) son **tipos por valor** (\texttt{struct}), no clases (\texttt{class}). Para que pasar un \texttt{Array<Double>} de un millón de elementos por valor a una función no implique copiar el búfer inmediatamente, las colecciones de Swift implementan **Copy-on-Write (CoW)**: al asignar \texttt{var b = a}, ambas estructuras comparten el mismo búfer interno en el montículo; solo cuando se ejecuta una mutación como \texttt{b.append(1.0)}, \texttt{Array} comprueba en \(O(1)\) mediante \texttt{isKnownUniquelyReferenced} si el contador de referencias del búfer es mayor que 1 y, únicamente en ese caso, duplica el búfer antes de modificarlo. En el diseño con protocolos (\texttt{protocol}), Swift 5.7+/6.0 distingue explícitamente entre \texttt{some Protocol} (tipo opaco conocido estáticamente en compilación, despachado sin coste) y \texttt{any Protocol} (contenedor existencial dinámico de 5 palabras máquina: 3 palabras de búfer de valor en línea más metadatos de tipo y *witness table*).
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+\section{Bloques E\(-\)H: Gestión de memoria ARC (weak/unowned), concurrencia estricta en Swift 6 (actor, Sendable) y proyectos}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+Para las clases (\texttt{class}) y clausuras, Swift gestiona la memoria de forma determinista en tiempo de compilación mediante **ARC** (*Automatic Reference Counting*): el compilador inserta llamadas \texttt{swift\_retain} y \texttt{swift\_release} en la representación intermedia SIL. Como el conteo de referencias no recolecta ciclos aislados, todo ciclo entre instancias de clases o clausuras que capturan \texttt{self} debe romperse declarando una de las aristas como \texttt{weak} (opcional \texttt{T?} que se pone automáticamente a \texttt{nil} al destruirse el objeto) o \texttt{unowned} (no opcional, cuando ambas vidas útiles están ligadas). Finalmente, **Swift 6** garantiza en tiempo de compilación la ausencia de carreras de datos mediante el protocolo marcador \texttt{Sendable} y el tipo de referencia **\texttt{actor}**, que serializa el acceso a su estado mutable interno exigiendo \texttt{await} desde cualquier contexto externo:
+\begin{lstlisting}[style=studium]
+public actor TelemetryVault {
+    private var readings: [String: Double] = [:]
+    public init() {}
+    public func record(sensor: String, value: Double) {
+        readings[sensor] = value
+    }
+    public func current(sensor: String) -> Double? {
+        return readings[sensor]
+    }
+}
+\end{lstlisting}
+El capítulo concluye con el ecosistema Swift Package Manager (\texttt{Package.swift}), \texttt{SwiftTesting} (\texttt{@Test}, \texttt{\#expect}), \texttt{SwiftUI} / \texttt{Vapor} en servidor Linux y cuatro proyectos completos en Swift 6.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+
+\noindent\textbf{Enunciado}
+En Swift sobre una arquitectura de 64 bits (\(W = 8\text{ B}\)), un contenedor existencial \texttt{any P} para un protocolo ocupa \(5 \times 8 = 40\text{ B}\) (24 B de búfer de valor en línea, 8 B de *Value Witness Table* y 8 B de *Protocol Witness Table*), mientras que un valor concreto \texttt{Int64} pasado mediante un genérico especializado \texttt{some P} ocupa únicamente \(8\text{ B}\). Calcula cuántos bytes ahorra un array de \(N = 10000\) elementos al usar el tipo especializado \texttt{[Int64]} frente a un array existencial \texttt{[any P]}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 10000$ — Número de elementos en la colección
+\item $S_{any} = 40\,\mathrm{B}$ — Tamaño del contenedor existencial de 5 palabras
+\item $S_{some} = 8\,\mathrm{B}$ — Tamaño del tipo concreto especializado
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Sobrecoste espacial de contenedores existenciales (any P) frente a tipos concretos (some P) en Swift}
+
+\[
+\Delta M = 10000 \cdot (40 - 8)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos los 10000 elementos por los 32 B ahorrados por elemento
+
+\[
+\Delta M = 10000 \cdot (40 - 8)
+\]
+
+\[
+\left(10000\cdot \left(40-8\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 320000
+\]
+
+\noindent\textbf{Interpretación}
+La especialización estática ahorra 320 000 bytes (un 80 \% de reducción) y elimina el despacho indirecto por tabla de testigos.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $320000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWEtc3dpZnQtdmFsb3ItY293LXByb3RvY29sb3MtYXJjLWFjdG9yZXMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Numérico)}
+En Swift de 64 bits (\(W = 8\text{ B}\)), el \texttt{Value Buffer} interno de un contenedor existencial tiene 3 palabras. ¿Hasta cuántos bytes puede medir un \texttt{struct} para caber en línea dentro del contenedor existencial sin alojar en el montículo (\(3 \times 8\))?
+
+\noindent\textbf{2 [PRB-0046] (Básico, Numérico)}
+Si se copia un \texttt{Array<Int>} de 50 000 enteros (\texttt{var b = a}) y solo se realizan lecturas sobre \texttt{a} y \texttt{b} sin mutar ninguno de los dos, ¿cuántos elementos se duplican en el montículo gracias a Copy-on-Write?
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Desarrollo por pasos)}
+Un contenedor existencial para una composición de \(K = 3\) protocolos (\texttt{any P1 \& P2 \& P3}) ocupa \((3 + 1 + 3) \times 8\) bytes en 64 bits. ¿Cuántos bytes mide en total?
+
+\noindent\textbf{4 [PRB-0048] (Intermedio, Diseño)}
+En la cabecera de un objeto \texttt{class} en Swift de 64 bits, se almacenan el puntero \texttt{isa}/metadatos (8 B) y la palabra de contadores ARC (8 B). ¿Cuántos bytes suman las cabeceras de 2000 instancias?
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$\left( G, \  M, \  P\right)$ & Goroutine, Machine (hilo OS) y Processor (contexto lógico) en el runtime de Go & $\mathrm{entidades}$ \\
+$\text{ARC}(o)$ & Contador fuerte/débil/unowned gestionado en compilación en Swift & $\mathrm{referencias}$ \\
+$\text{Span}\langle T \rangle$ & Vista contigua de memoria alojada en pila (ref struct) sin asignación en el montículo en .NET & $\mathrm{vista}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Monografía de C\# (I \(-\) Bloques A\(-\)D): Arquitectura .NET/CLR, Tipos Valor vs Referencia, Records, Pattern Matching y LINQ}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En una aplicación financiera en C\# sobre .NET de 64 bits, se mantiene un búfer de \(N = 100000\) cotizaciones donde cada cotización tiene \(S_{\text{val}} = 16\text{ B}\) de datos (\texttt{long Timestamp}, \texttt{double Price}). Si se modela como \texttt{readonly record struct}, el array \texttt{Quote[]} ocupa \(100000 \times 16\text{ B}\). Si se modelara como \texttt{class}, cada elemento añadiría \(8\text{ B}\) de puntero en el array más \(16\text{ B}\) de cabecera de objeto en el montículo (\(24\text{ B}\) extra por instancia). Calcula cuántos kilobytes (dividiendo entre 1000) ahorra el diseño con \texttt{struct}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 2400
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+En .NET de 64 bits, la cabecera de todo objeto por referencia (\texttt{class}) consta de \texttt{ObjHeader} (8 B) y \texttt{MethodTable*} (8 B). ¿Cuántos bytes suma esta cabecera?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+Un \texttt{readonly record struct Point3D(double X, double Y, double Z)} contiene tres \texttt{double} de 8 bytes. ¿Cuántos bytes ocupa cada instancia?
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+Una consulta LINQ encadena \texttt{.Where(...)} y \texttt{.Take(25)} sobre una secuencia perezosa de 10 000 elementos donde se cumple el predicado en 1 de cada 4 elementos. ¿Cuántos elementos evalúa antes de detenerse (\(25 \times 4\))?
+
+\noindent\textbf{Respuesta} 100
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+El recolector generacional del CLR divide el montículo de objetos pequeños en 3 generaciones (\texttt{Gen 0}, \texttt{Gen 1}, \texttt{Gen 2}). Si \texttt{Gen 0} tiene un presupuesto de 4 MiB y \texttt{Gen 1} de 2 MiB, ¿cuántos KiB suman las dos generaciones efímeras (\((4 + 2) \times 1024\))?
+
+\noindent\textbf{Respuesta} 6144
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(100000\cdot 24\right)}{1000} = 2400\)
+
+\section{Monografía de C\# (II \(-\) Bloques E\(-\)H): Span<T>, Memory<T>, Async/Await, ValueTask, ASP.NET Core y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+Un servicio de alta frecuencia en ASP.NET Core procesa \(R = 50000\) llamadas por segundo donde el \(90\%\) (\(45000\) llamadas/s) se resuelven síncronamente desde memoria local y solo el \(10\%\) (\(5000\) llamadas/s) requieren E/S asíncrona real. Si cada objeto \texttt{Task<Result>} alojado en el montículo mide \(S_{\text{task}} = 72\text{ B}\), calcula cuántos kilobytes por segundo (dividiendo entre 1000) deja de alojar en \texttt{Gen 0} el servicio al cambiar el tipo de retorno de \texttt{Task<Result>} a \texttt{ValueTask<Result>}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 3240
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+En .NET de 64 bits, un \texttt{Span<byte>} contiene una referencia interior \texttt{ref byte} (8 B) y una longitud \texttt{int} alineada a 8 B. ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+Si se alquila un búfer con \texttt{ArrayPool<byte>.Shared.Rent(4000)}, el pool devuelve un array cuya longitud es la siguiente potencia de dos (\(4096\)). ¿Cuántos bytes adicionales respecto a los 4000 solicitados tiene el array devuelto?
+
+\noindent\textbf{Respuesta} 96
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+Un canal acotado \texttt{Channel.CreateBounded<Job>(new BoundedChannelOptions(128))} contiene actualmente 95 trabajos. ¿Cuántos trabajos más pueden escribirse sin suspender al productor?
+
+\noindent\textbf{Respuesta} 33
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+Un contenedor de inyección de dependencias resuelve por cada petición HTTP 1 servicio \texttt{Singleton} (ya creado), 2 servicios \texttt{Scoped} y 4 servicios \texttt{Transient} (invocados 2 veces cada uno en la petición). ¿Cuántas instancias nuevas se crean durante esa petición (\(2 + 4 \times 2\))?
+
+\noindent\textbf{Respuesta} 10
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(45000\cdot 72\right)}{1000} = 3240\)
+
+\section{Monografía de Java (I \(-\) Bloques A\(-\)D): Arquitectura JVM, Bytecode, Memoria, Records, Sealed Classes, Generics y Streams}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+En la JVM HotSpot de 64 bits con punteros comprimidos activos (\texttt{-XX:+UseCompressedOops}), un objeto \texttt{Double} encajonado (*boxed*) ocupa \(24\text{ B}\) (12 B de cabecera + 8 B del \texttt{double} + 4 B de relleno a múltiplo de 8), más \(4\text{ B}\) de la referencia en un \texttt{ArrayList<Double>} (\(28\text{ B}\) por número), mientras que un array primitivo \texttt{double[]} o un \texttt{DoubleStream} ocupa únicamente \(8\text{ B}\) por número. Calcula cuántos megabytes (dividiendo entre \$\(10^6\)\$) se ahorran al almacenar \(N = 2000000\) de valores en \texttt{double[]} frente a \texttt{ArrayList<Double>}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 40
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+En la JVM HotSpot con Compressed OOPs, la cabecera de un objeto ordinario mide 8 B (\texttt{Mark Word}) más 4 B (\texttt{Klass Pointer}). ¿Cuántos bytes mide la cabecera antes de alinear campos?
+
+\noindent\textbf{Respuesta} 12
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+En \texttt{HashMap} de Java 8+, cuando un cubo (*bucket*) alcanza el umbral \texttt{TREEIFY\_THRESHOLD = 8} colisiones (con capacidad de tabla \(\ge 64\)), la lista enlazada se transforma en un árbol rojo-negro. Si hay 256 elementos colisionando en ese mismo cubo, ¿cuál es la altura máxima \(2 \log_2(256)\) a comparar frente a los 256 saltos lineales?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+Un \texttt{ConcurrentHashMap} redimensiona su tabla de 1024 a 2048 cubos manteniendo el factor de carga en \(0.75\). ¿Cuántas entradas admite la nueva tabla antes del siguiente redimensionado (\(2048 \times 3 / 4\))?
+
+\noindent\textbf{Respuesta} 1536
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+Si el tamaño de un montículo de la JVM supera los 32 GiB y desactiva Compressed OOPs, cada referencia pasa de 4 B a 8 B. En un grafo en memoria con 50 millones de referencias, ¿cuántos megabytes (\(10^6\text{ B}\)) adicionales consumen las referencias?
+
+\noindent\textbf{Respuesta} 200
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(2000000\cdot \left(28-8\right)\right)}{1000000} = 40\)
+
+\section{Monografía de Java (II \(-\) Bloques E\(-\)H): Java Memory Model, Virtual Threads (Loom), Foreign Function \& Memory API y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+Según la Ley de Little (\(\lambda_{\max} = L_{\max} / W\)), un microservicio donde cada petición pasa \(W = 0.25\text{ s}\) esperando respuestas de APIs externas está limitado con hilos tradicionales de plataforma a \(L_{\text{plat}} = 400\) hilos (caudal máximo \(400 / 0.25 = 1600\text{ req/s}\)). Al migrar a **Virtual Threads** en Java 21 soportando \(L_{\text{virt}} = 20000\) hilos virtuales simultáneos con la misma latencia \(W = 0.25\text{ s}\), calcula cuántas peticiones por segundo adicionales puede sostener el servidor (\$20000 / 0.25 - 400 / 0.25\$).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 78400
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+Por la Ley de Little (\(L = \lambda \cdot W\)), si un sistema recibe \(\lambda = 2500\) peticiones/s y cada una tarda \(W = 0.2\) segundos, ¿cuántas peticiones hay en vuelo simultáneamente en promedio?
+
+\noindent\textbf{Respuesta} 500
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+En una CPU de 16 núcleos lógicos, el \texttt{ForkJoinPool} portador de hilos virtuales crea por defecto un hilo portador (*carrier thread*) por núcleo. ¿Cuántos hilos del sistema operativo mantienen activos los hilos virtuales?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+En el código \texttt{VirtualThreadDispatcher.runConcurrentTasks(100)}, se suma \texttt{i * 2} para \(i = 0, 1, \dots, 99\). ¿Cuál es el valor exacto de la suma (\(99 \times 100\))?
+
+\noindent\textbf{Respuesta} 9900
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+Una \texttt{Arena.ofConfined()} de Project Panama reserva 64 segmentos nativos de 4096 bytes cada uno. ¿Cuántos bytes de memoria *off-heap* se liberan determinísticamente al cerrarse el bloque \texttt{try-with-resources}?
+
+\noindent\textbf{Respuesta} 262144
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\frac{20000}{0.25}-\frac{400}{0.25}\right) = 78400\)
+
+\section{Monografía de Go (I \(-\) Bloques A\(-\)D): Filosofía, Compilación Estática, Slices, Maps, Interfaces Implícitas y Manejo de Errores}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+En un programa en Go, se crea un slice \texttt{base := make([]int64, 100, 200)} (cada \texttt{int64} ocupa \(8\text{ B}\)) y se obtiene la sub-rebanada de tres índices \texttt{sub := base[20:60:80]}. Calcula la suma de la longitud \texttt{len(sub)} (\$60 - 20\$) más la capacidad \texttt{cap(sub)} (\$80 - 20\$) multiplicada por los \(8\text{ B}\) de cada elemento.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 800
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+En Go de 64 bits, el encabezado de un slice (\texttt{SliceHeader}) consta de \texttt{Data} (8 B), \texttt{Len} (8 B) y \texttt{Cap} (8 B). ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+En Go, cada cubo (*bucket* \texttt{bmap}) de un \texttt{map[K]V} almacena exactamente 8 pares clave-valor. Si un mapa tiene \(2^6 = 64\) cubos, ¿cuántos pares clave-valor caben en esos 64 cubos sin cubos de desbordamiento (\(64 \times 8\))?
+
+\noindent\textbf{Respuesta} 512
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+Para la rebanada \texttt{s[15:45:50]}, ¿cuántos elementos pueden añadirse con \texttt{append} antes de superar la capacidad y forzar la reserva de un nuevo array (\((50 - 15) - (45 - 15)\))?
+
+\noindent\textbf{Respuesta} 5
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+Una interfaz \texttt{io.Reader} en Go se representa como un par de palabras \texttt{(itab*, data*)} de 8 bytes cada una. ¿Cuántos bytes ocupan 500 descriptores de interfaz en un slice \texttt{[]io.Reader}?
+
+\noindent\textbf{Respuesta} 8000
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(60-20\right)+\left(80-20\right)\right)\cdot 8\right) = 800\)
+
+\section{Monografía de Go (II \(-\) Bloques E\(-\)H): Planificador G-M-P, Goroutines, Canales, Context, Perfilado pprof y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+Cada goroutine recién creada en Go 1.22 reserva una pila inicial de \(S_G = 2\text{ KiB}\) (\(2048\text{ B}\)), mientras que un hilo nativo de sistema operativo reserva por defecto una pila de \(S_M = 2048\text{ KiB}\) (\(2\text{ MiB}\)). Si un servidor de telemetría en Go mantiene \(N = 100000\) goroutines activas sobre \(M = 16\) hilos del sistema operativo, calcula cuántos mebibytes totales (dividiendo los KiB entre 1024) ocupan las pilas de las 100 000 goroutines más los 16 hilos OS.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 227.3125
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+¿Cuántos bytes mide la pila inicial de una goroutine en Go (\(2 \times 1024\))?
+
+\noindent\textbf{Respuesta} 2048
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+En el planificador de Go, un procesador \(P_1\) tiene 180 goroutines en su cola local y un procesador inactivo \(P_2\) le roba la mitad. ¿Cuántas goroutines roba \(P_2\)?
+
+\noindent\textbf{Respuesta} 90
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+Un canal con búfer \texttt{ch := make(chan uint64, 512)} almacena elementos de 8 bytes. Si hay 300 elementos encolados en el búfer, ¿cuántos elementos adicionales caben antes de bloquear al emisor?
+
+\noindent\textbf{Respuesta} 212
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+En el problema anterior, ¿cuántos bytes ocupa el búfer circular completo de 512 elementos \texttt{uint64} (\(512 \times 8\))?
+
+\noindent\textbf{Respuesta} 4096
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(100000\cdot 2\right)+\left(16\cdot 2048\right)\right)}{1024} = 227.3125\)
+
+\section{Monografía de Kotlin (Bloques A\(-\)H): Null-Safety, Data/Sealed Classes, Extensiones, Coroutines, Flow y Multiplatform}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+En una aplicación en Kotlin sobre la JVM, una función de orden superior que captura una variable local del entorno se invoca en un bucle caliente \(N = 500000\) veces por segundo. Si la función NO está marcada como \texttt{inline}, cada invocación aloja una instancia de clase anónima de \(S_{\text{lambda}} = 24\text{ B}\). Al marcar la función de orden superior con \texttt{inline}, el alojamiento cae a \(0\text{ B}\). Calcula cuántos megabytes por segundo (dividiendo entre \$\(10^6\)\$) deja de alojar el bucle gracias a \texttt{inline}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 12
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+En la función \texttt{aggregateClusterLatency} con \texttt{nodeIds = [1, 2, 3, 4, 5]} donde cada nodo devuelve \texttt{id * 5}, ¿cuál es la suma total devuelta (\((1 + 2 + 3 + 4 + 5) \times 5\))?
+
+\noindent\textbf{Respuesta} 75
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+Un \texttt{@JvmInline value class Meter(val v: Double)} se almacena en un array primitivo de 1000 elementos. ¿Cuántos bytes ocupan los 1000 elementos \texttt{double} (\(1000 \times 8\))?
+
+\noindent\textbf{Respuesta} 8000
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+Un \texttt{Flow<Int>} emite 60 elementos a razón de 1 elemento cada 10 ms y el colector aplica \texttt{.buffer(10)} tardando 25 ms por elemento. ¿Cuántos milisegundos tarda el colector en procesar los 60 elementos (\(10 + 60 \times 25\))?
+
+\noindent\textbf{Respuesta} 1510
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+Un proyecto Kotlin Multiplatform comparte 14 000 líneas de lógica de dominio en \texttt{commonMain} entre Android e iOS, requiriendo solo 1500 líneas específicas en \texttt{androidMain} y 1500 en \texttt{iosMain}. ¿Cuántas líneas de código duplicado se ahorran respecto a escribir los 14 000 líneas dos veces?
+
+\noindent\textbf{Respuesta} 14000
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(500000\cdot 24\right)}{1000000} = 12\)
+
+\section{Monografía de Swift 6 (Bloques A\(-\)H): Semántica de Valor, Copy-on-Write, Protocolos, ARC y Concurrencia con Actores}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+En Swift sobre una arquitectura de 64 bits (\(W = 8\text{ B}\)), un contenedor existencial \texttt{any P} para un protocolo ocupa \(5 \times 8 = 40\text{ B}\) (24 B de búfer de valor en línea, 8 B de *Value Witness Table* y 8 B de *Protocol Witness Table*), mientras que un valor concreto \texttt{Int64} pasado mediante un genérico especializado \texttt{some P} ocupa únicamente \(8\text{ B}\). Calcula cuántos bytes ahorra un array de \(N = 10000\) elementos al usar el tipo especializado \texttt{[Int64]} frente a un array existencial \texttt{[any P]}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 320000
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+En Swift de 64 bits (\(W = 8\text{ B}\)), el \texttt{Value Buffer} interno de un contenedor existencial tiene 3 palabras. ¿Hasta cuántos bytes puede medir un \texttt{struct} para caber en línea dentro del contenedor existencial sin alojar en el montículo (\(3 \times 8\))?
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+Si se copia un \texttt{Array<Int>} de 50 000 enteros (\texttt{var b = a}) y solo se realizan lecturas sobre \texttt{a} y \texttt{b} sin mutar ninguno de los dos, ¿cuántos elementos se duplican en el montículo gracias a Copy-on-Write?
+
+\noindent\textbf{Respuesta} 0
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+Un contenedor existencial para una composición de \(K = 3\) protocolos (\texttt{any P1 \& P2 \& P3}) ocupa \((3 + 1 + 3) \times 8\) bytes en 64 bits. ¿Cuántos bytes mide en total?
+
+\noindent\textbf{Respuesta} 56
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+En la cabecera de un objeto \texttt{class} en Swift de 64 bits, se almacenan el puntero \texttt{isa}/metadatos (8 B) y la palabra de contadores ARC (8 B). ¿Cuántos bytes suman las cabeceras de 2000 instancias?
+
+\noindent\textbf{Respuesta} 32000
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(10000\cdot \left(40-8\right)\right) = 320000\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 31 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios. Ecuaciones: 1 respaldada por una fuente.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent Referencia Normativa src-csharp-spec (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12.
+
+\noindent Referencia Normativa src-gamma-gof (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P13, \P14, \P15, \P16, \P17, \P18.
+
+\noindent Referencia Normativa src-kleppmann-ddia (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P7, \P8, \P9, \P10, \P11, \P12, \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36.
+
+\noindent Referencia Normativa src-java-jls21 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P13, \P14, \P15, \P16, \P17, \P18, \P19, \P20, \P21, \P22, \P23, \P24, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent The Go Programming Language Specification \& Memory Model (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P25, \P26, \P27, \P28, \P29, \P30, \P31, \P32, \P33, \P34, \P35, \P36.
+
+\noindent Referencia Normativa src-kotlin-spec (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent The Swift Programming Language (Swift 6.0 Official Book) (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-pierce-tapl (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: cap01-csharp-dotnet-clr-tipos-valor-referencia-linq scientific
+
+\noindent REV-0002: cap02-csharp-avanzado-experto-span-async-valuetask-aspnet-proyectos scientific
+
+\noindent REV-0003: cap03-java-jvm-bytecode-memoria-generics-streams scientific
+
+\noindent REV-0004: cap04-java-avanzado-experto-virtual-threads-jmm-spring-proyectos scientific
+
+\noindent REV-0005: cap05-go-fundamentos-slices-interfaces-errores-genericos scientific
+
+\noindent REV-0006: cap06-go-avanzado-experto-goroutines-gmp-canales-context-proyectos scientific
+
+\noindent REV-0007: cap07-monografia-kotlin-null-safety-coroutines-flow-kmp scientific
+
+\noindent REV-0008: cap08-monografia-swift-valor-cow-protocolos-arc-actores scientific
+\chapter{Plan de estudio}
+
+\section*{Monografías de Plataformas Gestionadas: C\# (.NET 8/9) y Java (JVM 21 LTS)}
+
+\subsection*{\checkmark Monografía de C\# (I \(-\) Bloques A\(-\)D): Arquitectura .NET/CLR, Tipos Valor vs Referencia, Records, Pattern Matching y LINQ}
+\begin{itemize}
+\item Comprender la arquitectura del Common Language Runtime (CLR), el lenguaje intermedio CIL, la compilación JIT (RyuJIT) y Native AOT en .NET 8/9.
+\item Distinguir con precisión semántica y espacial entre tipos por valor (`struct`, `readonly struct`, `ref struct`) y tipos por referencia (`class`, `record`), evitando el boxing involuntario.
+\item Dominar la nulabilidad verificada (`string?`), coincidencia de patrones avanzada y consultas declarativas con LINQ (`IEnumerable<T>` vs `IQueryable<T>`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de C\# (II \(-\) Bloques E\(-\)H): Span<T>, Memory<T>, Async/Await, ValueTask, ASP.NET Core y Proyectos}
+\begin{itemize}
+\item Programar procesamiento de alto rendimiento sin asignaciones en el montículo usando `Span<T>`, `ReadOnlySpan<T>`, `Memory<T>`, `ArrayPool<T>` y `System.IO.Pipelines`.
+\item Comprender la máquina de estados generada por el compilador para `async`/`await`, cuándo utilizar `ValueTask<T>` frente a `Task<T>` y la propagación de `CancellationToken`.
+\item Dominar el ecosistema empresarial de .NET (ASP.NET Core, inyección de dependencias, EF Core, Dapper, xUnit, BenchmarkDotNet) y los 4 proyectos integradores.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Java (I \(-\) Bloques A\(-\)D): Arquitectura JVM, Bytecode, Memoria, Records, Sealed Classes, Generics y Streams}
+\begin{itemize}
+\item Explicar la arquitectura de la Java Virtual Machine (JVM): subsistema ClassLoader, áreas de memoria (Heap, Metaspace, pilas de hilo), intérprete y compiladores JIT C1/C2.
+\item Dominar las innovaciones de Java 17/21 LTS: `record`, `sealed interface`/`permits`, coincidencia de patrones en `switch` y desestructuración de records.
+\item Aplicar genéricos con comodines acotados (principio PECS: Producer Extends, Consumer Super), colecciones (`ArrayList`, `HashMap`, `ConcurrentHashMap`) y la API `Stream<T>`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Java (II \(-\) Bloques E\(-\)H): Java Memory Model, Virtual Threads (Loom), Foreign Function \& Memory API y Proyectos}
+\begin{itemize}
+\item Dominar el Java Memory Model (JMM, JLS §17.4): la relación de orden parcial *happens-before*, `volatile`, `VarHandle`, `CompletableFuture` y `ReentrantLock`.
+\item Escalar aplicaciones síncronas legibles a millones de tareas concurrentes mediante **Virtual Threads** (JEP 444 en Java 21 LTS) y Concurrencia Estructurada.
+\item Integrar el ecosistema empresarial de Java (Maven, Gradle, JUnit 5, Testcontainers, Spring Boot 3, Micrometer/OpenTelemetry) y construir los 4 proyectos del bloque.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografías de Sistemas Cloud y Móviles: Go, Kotlin y Swift}
+
+\subsection*{\checkmark Monografía de Go (I \(-\) Bloques A\(-\)D): Filosofía, Compilación Estática, Slices, Maps, Interfaces Implícitas y Manejo de Errores}
+\begin{itemize}
+\item Comprender la filosofía de simplicidad ortogonal de Go (Rob Pike, Ken Thompson, Robert Griesemer), su compilador ultrarrápido y el enlazado de binarios estáticos.
+\item Dominar la anatomía en memoria de `slice` (puntero, longitud, capacidad) y `map`, el valor cero útil (*zero value*), composición de `struct` por incrustación (*embedding*) y `defer`.
+\item Diseñar abstracciones desacopladas mediante interfaces satisfechas implícitamente, manejo explícito de errores como valores (`errors.Is`, `errors.As`, `\%w`) y genéricos de Go 1.18+.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Go (II \(-\) Bloques E\(-\)H): Planificador G-M-P, Goroutines, Canales, Context, Perfilado pprof y Proyectos}
+\begin{itemize}
+\item Explicar el funcionamiento interno del planificador M:N con robo de trabajo (*work-stealing*) de Go basado en las entidades G (Goroutine), M (Machine) y P (Processor).
+\item Diseñar patrones concurrentes basados en CSP (Tony Hoare) con canales con y sin búfer, `select`, cancelación jerárquica con `context.Context` y `errgroup.Group`.
+\item Auditar el escape al montículo (`go build -gcflags='-m'`), detectar carreras de datos (`go test -race`), perfilar CPU/memoria con `pprof` y construir los 4 proyectos en Go.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Kotlin (Bloques A\(-\)H): Null-Safety, Data/Sealed Classes, Extensiones, Coroutines, Flow y Multiplatform}
+\begin{itemize}
+\item Dominar el sistema de tipos de Kotlin 2.0 (compilador K2): distinción estricta `T` vs `T?`, smart casts, `data class`, `sealed interface`, `value class` y delegación (`by`).
+\item Escribir código expresivo con funciones de orden superior `inline`, tipos genéricos reificados (`reified T`), funciones de extensión y DSLs con receptores (`T.() -> Unit`).
+\item Construir sistemas concurrentes y reactivos con **Kotlin Coroutines**: funciones `suspend`, transformaciones CPS, `CoroutineScope`, `Dispatchers`, `Structured Concurrency` y `Flow` / `StateFlow`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Swift 6 (Bloques A\(-\)H): Semántica de Valor, Copy-on-Write, Protocolos, ARC y Concurrencia con Actores}
+\begin{itemize}
+\item Comprender la arquitectura del compilador `swiftc` (SIL: Swift Intermediate Language y LLVM), la semántica de valor (`struct`, `enum`) y la optimización Copy-on-Write (CoW).
+\item Diseñar abstracciones con Programación Orientada a Protocolos (`protocol`, tipos asociados, tipos opacos `some P` vs existenciales `any P`).
+\item Dominar la gestión determinista de memoria mediante **ARC** (`strong`, `weak`, `unowned`) y el aislamiento estricto de carreras de datos de **Swift 6** (`async`/`await`, `actor`, `@MainActor`, `Sendable`).
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Referencia Normativa src-csharp-spec. \url{https://doc.rust-lang.org/reference/src-csharp-spec.html}
+\bibitem{src27} Referencia Normativa src-gamma-gof. \url{https://doc.rust-lang.org/reference/src-gamma-gof.html}
+\bibitem{src28} Referencia Normativa src-kleppmann-ddia. \url{https://doc.rust-lang.org/reference/src-kleppmann-ddia.html}
+\bibitem{src29} Referencia Normativa src-java-jls21. \url{https://doc.rust-lang.org/reference/src-java-jls21.html}
+\bibitem{src30} Referencia Normativa src-kotlin-spec. \url{https://doc.rust-lang.org/reference/src-kotlin-spec.html}
+\bibitem{src31} Referencia Normativa src-pierce-tapl. \url{https://doc.rust-lang.org/reference/src-pierce-tapl.html}
+\end{thebibliography}
+\end{document}

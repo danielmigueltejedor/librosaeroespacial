@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage{tikz}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+
+\draw[thick, fill=blue!8] (0,0) rectangle (3.5,1.2) node[pos=.5, align=center, font=\scriptsize\bfseries] {Front-End\\Lexer $\to$ AST $\to$ Tipos};
+\draw[thick, ->] (3.5,0.6) -- (4.4,0.6);
+\draw[thick, fill=teal!10] (4.4,0) rectangle (8.1,1.2) node[pos=.5, align=center, font=\scriptsize\bfseries] {Middle-End\\CFG / Forma SSA ($\phi$)};
+\draw[thick, ->] (8.1,0.6) -- (9.0,0.6);
+\draw[thick, fill=orange!12] (9.0,0) rectangle (12.5,1.2) node[pos=.5, align=center, font=\scriptsize\bfseries] {Back-End\\Registros $\to$ ASM/ELF};
+
+\end{tikzpicture}
+\end{document}

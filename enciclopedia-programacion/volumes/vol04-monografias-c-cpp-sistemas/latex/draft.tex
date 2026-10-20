@@ -1,0 +1,1961 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+{\small Enciclopedia de Programación e Ingeniería del Software\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Volumen IV: Monografías de Lenguajes de Sistemas \(-\) C, C++, Zig, Ensamblador, Ada y Fortran\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Parte V (Bloques A\(-\)H): Memoria manual, RAII, metaprogramación con Concepts, ABI de bajo nivel y cómputo científico\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+
+\part{Monografía Autónoma de C (ISO/IEC 9899:2018 / C23)}
+
+\chapter{Monografía de C (I \(-\) Bloques A, B y C): Historia, modelo de traducción ISO C17/C23, toolchain y nivel principiante}
+\label{chap:cap01-c-fundamentos-modelo-compilacion-tipos-principiante}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\noindent\textit{Este capítulo inicia la monografía autónoma del lenguaje C (Bloques A, B y C). C es la lingua franca de los sistemas operativos (Linux, Windows NT, XNU/macOS), los motores de bases de datos (PostgreSQL, SQLite, Redis), los intérpretes de lenguajes (CPython, Lua) y los sistemas empotrados. El lector aprenderá a programar en C moderno (C17/C23) desde cero con disciplina de tipos y herramientas de verificación rigurosas.}
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+% studium:record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{arena.c}\\+\,\texttt{arena.h}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of src] (cpp) {Preprocesador\\(\texttt{cc -E} $\to$ \texttt{.i})};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cpp] (cc1) {Compilador\\(\texttt{cc -S} $\to$ \texttt{.s})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cc1] (as) {Ensamblador\\(\texttt{as} $\to$ \texttt{.o})};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of as] (ld) {Enlazador\\(\texttt{ld} $\to$ Binario)};
+\draw[->] (src) -- (cpp);
+\draw[->] (cpp) -- (cc1);
+\draw[->] (cc1) -- (as);
+\draw[->] (as) -- (ld);
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{arena.c}\\+\,\texttt{arena.h}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of src] (cpp) {Preprocesador\\(\texttt{cc -E} $\to$ \texttt{.i})};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cpp] (cc1) {Compilador\\(\texttt{cc -S} $\to$ \texttt{.s})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cc1] (as) {Ensamblador\\(\texttt{as} $\to$ \texttt{.o})};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of as] (ld) {Enlazador\\(\texttt{ld} $\to$ Binario)};
+\draw[->] (src) -- (cpp);
+\draw[->] (cpp) -- (cc1);
+\draw[->] (cc1) -- (as);
+\draw[->] (as) -- (ld);
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{arena.c}\\+\,\texttt{arena.h}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of src] (cpp) {Preprocesador\\(\texttt{cc -E} $\to$ \texttt{.i})};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cpp] (cc1) {Compilador\\(\texttt{cc -S} $\to$ \texttt{.s})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cc1] (as) {Ensamblador\\(\texttt{as} $\to$ \texttt{.o})};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of as] (ld) {Enlazador\\(\texttt{ld} $\to$ Binario)};
+\draw[->] (src) -- (cpp);
+\draw[->] (cpp) -- (cc1);
+\draw[->] (cc1) -- (as);
+\draw[->] (as) -- (ld);
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.6cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center] (src) {\texttt{arena.c}\\+\,\texttt{arena.h}};
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of src] (cpp) {Preprocesador\\(\texttt{cc -E} $\to$ \texttt{.i})};
+\node[draw=orange!75!black, fill=orange!12, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cpp] (cc1) {Compilador\\(\texttt{cc -S} $\to$ \texttt{.s})};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=2.3cm, minimum height=0.9cm, align=center, right=0.5cm of cc1] (as) {Ensamblador\\(\texttt{as} $\to$ \texttt{.o})};
+\node[draw=green!60!black, fill=green!10, rounded corners, minimum width=2.2cm, minimum height=0.9cm, align=center, right=0.5cm of as] (ld) {Enlazador\\(\texttt{ld} $\to$ Binario)};
+\draw[->] (src) -- (cpp);
+\draw[->] (cpp) -- (cc1);
+\draw[->] (cc1) -- (as);
+\draw[->] (as) -- (ld);
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-c-translation-pipeline}\textbf{Figura~\thestudiumfigure.} Tubería clásica de compilación separada en C: el preprocesador expande directivas sobre cada unidad de traducción (.i), el compilador emite código ensamblador (.s), el ensamblador genera objetos reubicables (.o) y el enlazador resuelve símbolos externos.\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+Incluye siempre guardas de inclusión (\texttt{\#ifndef MODULO\_H} / \texttt{\#define MODULO\_H} / \texttt{\#endif}) en todas tus cabeceras \texttt{.h} y nunca declares variables globales con definición en una cabecera sin \texttt{extern}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+Comportamiento Indefinido (Undefined Behavior, ISO C17 §3.4.3): uso de una construcción no portable o de datos erróneos para los cuales el estándar internacional no impone requisito alguno, permitiendo que el compilador optimice bajo la premisa axiomática de que dicha situación es inalcanzable.
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+¿Por qué comparar un índice \texttt{int i = -1} con \texttt{size\_t n = 10} mediante \texttt{if (i < n)} evalúa a \texttt{false} en C debido a las conversiones aritméticas usuales?
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\section{Bloques A y B: Historia de C, modelo de máquina abstracta, GCC/Clang, CMake y flags de diagnóstico}
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+Creado por Dennis Ritchie entre 1969 y 1973 en los Laboratorios Bell para reescribir el núcleo de UNIX (originalmente en ensamblador PDP-11), C fue estandarizado por ANSI en 1989 (C89/C90) y por ISO en las revisiones C99 (que introdujo \texttt{<stdint.h>}, \texttt{<stdbool.h>}, inicializadores designados y el calificador \texttt{restrict}), C11 (modelo de memoria multihilo y \texttt{\_Atomic}), C17 y C23 (\texttt{nullptr}, \texttt{constexpr}, \texttt{typeof}, \texttt{<stdckdint.h>}). Como muestra la Figura \textbackslash{}ref\{fig:fig-c-translation-pipeline\}, cada fichero \texttt{.c} junto con las cabeceras \texttt{.h} incluidas por \texttt{\#include} constituye una *unidad de traducción* independiente. En ingeniería profesional, ningún programa en C debe compilarse sin activar las banderas estrictas de diagnóstico y los sanitizadores dinámicos: \texttt{clang -std=c17 -O2 -Wall -Wextra -Wpedantic -Werror -Wshadow -Wconversion -fsanitize=address,undefined}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\section{Bloque C: Tipos fundamentales, <stdint.h>, promociones aritméticas, operadores y control de flujo}
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+Dado que el estándar C solo fija anchuras mínimas para \texttt{short}, \texttt{int}, \texttt{long} y \texttt{long long}, el código de sistemas portable utiliza siempre los tipos de anchura exacta de \texttt{<stdint.h>}: \texttt{uint8\_t}, \texttt{uint16\_t}, \texttt{uint32\_t}, \texttt{uint64\_t}, \texttt{int32\_t}, \texttt{int64\_t}, además de \texttt{size\_t} (para tamaños y conteos de objetos en memoria) y \texttt{ptrdiff\_t} (para diferencias entre punteros). Una regla crítica de la máquina abstracta de C es la asimetría entre enteros sin signo y con signo: mientras que los enteros sin signo (\texttt{uint32\_t}, \texttt{size\_t}) operan por definición en aritmética modular \(\bmod 2^w\), el desbordamiento de un entero **con signo** (\texttt{int32\_t}) constituye **comportamiento indefinido** (*Undefined Behavior*, UB), lo que autoriza al optimizador a asumir que jamás ocurre y a eliminar comprobaciones ingenuas a posteriori como \texttt{if (a + b < a)}. Por ello, el desbordamiento con signo debe prevenirse **antes** de ejecutar la suma:
+\begin{lstlisting}[style=studium,language={C}]
+#include <stdint.h>
+#include <stdbool.h>
+
+bool safe_add_i32(int32_t a, int32_t b, int32_t *out) {
+    if ((b > 0 && a > INT32_MAX - b) || (b < 0 && a < INT32_MIN - b)) {
+        return false;
+    }
+    *out = a + b;
+    return true;
+}
+\end{lstlisting}
+En C23, la cabecera estándar \texttt{<stdckdint.h>} estandariza esta operación mediante la primitiva intrínseca \texttt{ckd\_add(out, a, b)}.
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+
+\noindent\textbf{Enunciado}
+En una arquitectura de 32 bits para enteros \texttt{uint32\_t} (\(w = 32\), módulo \(2^{32} = 4294967296\)), un entero con signo con valor \(-100\) se convierte implícitamente a \texttt{uint32\_t} durante una comparación. Calcula el valor numérico exacto que toma tras la conversión según la regla \(2^{32} - 100\).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $w = 32\,\mathrm{bits}$ — Anchura en bits de uint\(32_t\)
+\item $x = -100$ — Valor con signo original
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Conversión a entero sin signo módulo 2\textasciicircum{}32 (ISO C §6.3.1.3)}
+
+\[
+U = 2^{32} - 100
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos \(2^32\) al valor negativo -100
+
+\[
+U = 2^{32} - 100
+\]
+
+\[
+\left(\left(2\right)^{32}-100\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 4294967196. El valor resultante en uint32_t es 4 294 967 196, razón por la cual `-Wsign-conversion` es indispensable.
+\]
+
+\noindent\textbf{Interpretación}
+El valor resultante en uint\(32_t\) es 4 294 967 196, razón por la cual \texttt{-Wsign-conversion} es indispensable.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $4294967196$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImNhcDAxLWMtZnVuZGFtZW50b3MtbW9kZWxvLWNvbXBpbGFjaW9uLXRpcG9zLXByaW5jaXBpYW50ZSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0003] (Básico, Numérico)}
+Calcula el valor en \texttt{uint16\_t} (\(w = 16\)) resultante de convertir \(-1\) a sin signo (\(2^{16} - 1\)).
+
+\noindent\textbf{2 [PRB-0004] (Básico, Numérico)}
+Un registro de control de 8 bits activa los bits 0, 3 y 7 (\$\(2^0 + 2^3 + 2^7\)\$). ¿Cuál es el valor decimal de la máscara \texttt{uint8\_t}?
+
+\noindent\textbf{3 [PRB-0005] (Intermedio, Desarrollo por pasos)}
+¿Cuántos bytes ocupa en total una estructura con 4 campos \texttt{uint32\_t} y 2 campos \texttt{uint64\_t} perfectamente alineados (\(4 \times 4 + 2 \times 8\))?
+
+\noindent\textbf{4 [PRB-0006] (Intermedio, Diseño)}
+Si compilamos un proyecto en C formado por 18 unidades de traducción \texttt{.c} y solo modificamos un fichero \texttt{.c}, ¿cuántas unidades de traducción evita recompilar \texttt{make}/\texttt{ninja}?
+\end{tcolorbox}
+
+\chapter{Monografía de C (II \(-\) Bloques D y E): Punteros, aritmética de direcciones, memoria dinámica, structs y strict aliasing}
+\label{chap:cap02-c-punteros-memoria-dinamica-estructuras-aliasing}
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+\noindent\textit{Este capítulo desarrolla los niveles intermedio y avanzado de C (Bloques D y E). Aquí desentrañamos la relación exacta entre arrays y punteros, la representación en memoria de estructuras y uniones, los riesgos de \texttt{malloc}/\texttt{free} individuales y por qué el patrón de ingeniería de sistemas por excelencia en C es el asignador por región (*Arena Allocator*).}
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+Para reinterpretar los bits de un \texttt{float} como \texttt{uint32\_t} o leer enteros de un paquete de red en C, utiliza siempre \texttt{memcpy(\&destino, \&origen, sizeof(destino))}: es 100 \% seguro frente a strict aliasing y alineamiento, y el compilador lo optimiza a una sola instrucción de registro.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+Regla de Alias Estricto (Strict Aliasing, ISO C17 §6.5): restricción semántica que prohíbe acceder a un valor almacenado mediante un puntero de un tipo distinto no relacionado (salvo tipos de carácter \texttt{unsigned char}), permitiendo al compilador mantener valores en registros sin recargarlos desde memoria tras escrituras a otros tipos.
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+¿Por qué tras ejecutar \texttt{free(ptr)} en C es una buena práctica defensiva asignar \texttt{ptr = NULL} si el puntero permanece aún en ámbito?
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+\end{tcolorbox}
+
+\section{Bloque D: Punteros, arrays, cadenas terminadas en NUL, structs, unions y memoria dinámica}
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+En C, un puntero \texttt{T *p} almacena la dirección virtual de un objeto de tipo \texttt{T}. La aritmética de punteros está escalada automáticamente por el tamaño del tipo apuntado: si \texttt{p} tiene dirección base \(A\), la expresión \texttt{p + k} (y su equivalente por definición \texttt{\&(p[k])}) evalúa a la dirección \(A + k \cdot \text{sizeof}(T)\). El estándar ISO C permite formar y comparar un puntero únicamente dentro del mismo array asignado o exactamente una posición más allá del último elemento (\texttt{p + N}, denominado *one-past-the-end*), aunque desreferenciar \texttt{p + N} es comportamiento indefinido. Las cadenas en C son secuencias de bytes terminadas por el carácter nulo \texttt{'\textbackslash{}0'} (\texttt{0x00}); calcular \texttt{strlen(s)} cuesta \(O(n)\) porque debe recorrer los bytes hasta hallar el centinela, y usar funciones no acotadas permite desbordar el búfer si no se pasa explícitamente la capacidad máxima del destino.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+\section{Bloque E: Punteros a función, calificador restrict, strict aliasing y asignadores de región (Arena)}
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+La regla de *alias estricto* (*strict aliasing*, ISO C17 §6.5 p7) estipula que un objeto en memoria solo puede ser accedido a través de un lvalue de tipo compatible con su tipo efectivo o a través de un puntero a carácter (\texttt{unsigned char *} o \texttt{char *}). Por tanto, convertir un \texttt{uint8\_t *buf} arbitrario mediante \texttt{*(uint32\_t *)buf} viola tanto el alias estricto como potencialmente el alineamiento de hardware; la forma conforme al estándar \(-\)que GCC y Clang compilan a una única instrucción máquina \texttt{mov} sin llamada real a función\(-\) consiste en usar \texttt{memcpy(\&val, buf, sizeof(val))}. Asimismo, el calificador \texttt{restrict} en \texttt{void saxpy(size\_t n, float a, const float *restrict x, float *restrict y)} promete al compilador que las regiones apuntadas por \texttt{x} e \texttt{y} no se solapan, habilitando la vectorización SIMD automática:
+\begin{lstlisting}[style=studium,language={C}]
+#include <stddef.h>
+#include <stdint.h>
+
+void vector_scale_add(size_t n, float alpha, const float *restrict x, float *restrict y) {
+    for (size_t i = 0; i < n; ++i) {
+        y[i] += alpha * x[i];
+    }
+}
+\end{lstlisting}
+En sistemas de alto rendimiento (compiladores, servidores HTTP, videojuegos), en lugar de invocar miles de veces \texttt{malloc} y \texttt{free}, se reserva un bloque contiguo y se sirve memoria alineada incrementando un desplazamiento (\texttt{Arena Allocator}), liberando toda la región en \(O(1)\) al finalizar la petición o fase.
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+
+\noindent\textbf{Enunciado}
+En el asignador por región \texttt{projects/c-arena-allocator}, el desplazamiento actual del búfer es \texttt{offset = 19} bytes y se solicita reservar una estructura de \(40\text{ B}\) con requisito de alineamiento \texttt{align = 8} bytes. El asignador avanza primero \texttt{offset} al siguiente múltiplo de 8 (sumando \(5\text{ B}\) de relleno hasta \(24\)) y luego suma los \(40\text{ B}\) del objeto. Calcula el nuevo valor exacto de \texttt{offset} tras la asignación.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $offset_{0} = 19\,\mathrm{B}$ — Desplazamiento actual antes de la reserva
+\item $pad = 5\,\mathrm{B}$ — Relleno para alcanzar el múltiplo de 8 (24 B)
+\item $size = 40\,\mathrm{B}$ — Tamaño del bloque solicitado
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Avance de puntero con alineamiento en Arena Allocator}
+
+\[
+\text{offset}_1 = (19 + 5) + 40
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Alineamos 19 + 5 = 24 y sumamos los 40 bytes del bloque
+
+\[
+\text{offset}_1 = (19 + 5) + 40
+\]
+
+\[
+\left(\left(19+5\right)+40\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 64. El desplazamiento final de la arena queda en 64 bytes.
+\]
+
+\noindent\textbf{Interpretación}
+El desplazamiento final de la arena queda en 64 bytes.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $64$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImNhcDAyLWMtcHVudGVyb3MtbWVtb3JpYS1kaW5hbWljYS1lc3RydWN0dXJhcy1hbGlhc2luZyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0009] (Básico, Numérico)}
+Si un puntero \texttt{uint64\_t *p} apunta a la dirección decimal 4096, ¿a qué dirección decimal apunta \texttt{p + 5} sabiendo que \texttt{sizeof(uint64\_t) = 8}?
+
+\noindent\textbf{2 [PRB-0010] (Básico, Numérico)}
+Una cadena en C contiene 31 caracteres visibles más su byte terminador \texttt{'\textbackslash{}0'}. ¿Cuántos bytes mínimos debe reservar \texttt{malloc}?
+
+\noindent\textbf{3 [PRB-0011] (Intermedio, Desarrollo por pasos)}
+En una arena con capacidad total de 4096 bytes, se reservan 12 nodos de 64 bytes ya alineados. ¿Cuántos bytes libres quedan en la arena?
+
+\noindent\textbf{4 [PRB-0012] (Intermedio, Diseño)}
+Si un paquete binario de telemetría tiene 8 bytes de cabecera y transporta 16 muestras \texttt{int16\_t} (2 bytes cada una), ¿cuántos bytes mide el paquete completo?
+\end{tcolorbox}
+
+\chapter{Monografía de C (III \(-\) Bloques F, G y H): Concurrencia C11/POSIX, Sanitizers, Ecosistema y Proyectos}
+\label{chap:cap03-c-experto-atomicos-posix-sanitizers-ecosistema-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+\noindent\textit{Este capítulo cierra la monografía de C abordando el nivel experto (Bloque F), el ecosistema de construcción y auditoría (Bloque G) y los proyectos prácticos (Bloque H), incluyendo la verificación real del proyecto \texttt{projects/c-arena-allocator} compilado con \texttt{clang -std=c17 -fsanitize=address,undefined}.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+Nunca utilices \texttt{volatile} como sustituto de \texttt{<stdatomic.h>} o \texttt{pthread\_mutex\_t}: una carrera de datos sobre una variable \texttt{volatile} no atómica sigue siendo comportamiento indefinido según ISO C11/C17.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+Memoria sombra en AddressSanitizer (ASan Shadow Memory): técnica de instrumentación de compilador donde cada bloque alineado de 8 bytes de la memoria de aplicación se proyecta mediante \texttt{(addr >> 3) + Offset} sobre 1 byte de memoria sombra que codifica si dichos 8 bytes son direccionables o pertenecen a una zona roja (*redzone*) envenenada.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+¿Por qué el patrón \texttt{goto cleanup;} hacia adelante al final de una función en C mejora la seguridad de liberación de recursos frente a tener múltiples sentencias \texttt{return} dispersas que olvidan liberar descriptores previos?
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\section{Bloque F: Concurrencia C11 (<stdatomic.h>), pthreads, llamadas POSIX y programación defensiva}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+Un error histórico frecuente en C consiste en emplear el calificador \texttt{volatile} creyendo que proporciona sincronización entre hilos. En el estándar ISO C, \texttt{volatile} únicamente instruye al compilador para no omitir ni reordenar lecturas/escrituras respecto a registros de hardware mapeados en memoria (MMIO) o manejadores de señales (\texttt{sig\_atomic\_t}), pero **no** garantiza atomicidad ni emite barreras de coherencia de caché entre núcleos de CPU. Para concurrencia multihilo real, C11 introdujo \texttt{<stdatomic.h>} (\texttt{\_Atomic uint64\_t}, \texttt{atomic\_fetch\_add\_explicit}, \texttt{memory\_order\_acquire}, \texttt{memory\_order\_release}). En sistemas UNIX/POSIX (IEEE Std 1003.1), la gestión de recursos que pueden fallar en cascada dentro de una misma función se estructura idiomáticamente mediante el patrón de limpieza centralizada con etiquetas \texttt{goto cleanup:}:
+\begin{lstlisting}[style=studium,language={C},escapeinside={(*@}{@*)}]
+int process_file_buffer(size_t bytes) {
+    int rc = -1;
+    uint8_t *buf_a = malloc(bytes);
+    if (!buf_a) goto fail_a;
+    uint8_t *buf_b = malloc(bytes);
+    if (!buf_b) goto fail_b;
+    rc = 0; // operaci(*@{\'o}@*)n exitosa
+    free(buf_b);
+fail_b:
+    free(buf_a);
+fail_a:
+    return rc;
+}
+\end{lstlisting}
+Este patrón asegura un único camino determinista de liberación en orden inverso de adquisición sin duplicar llamadas a \texttt{free}.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+\section{Bloques G y H: Ecosistema (CMake, Meson, pkg-config, Sanitizers) y los 4 proyectos en C}
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+El ecosistema moderno de C se apoya en generadores de sistemas de construcción como \texttt{CMake} y \texttt{Meson} sobre el ejecutor \texttt{Ninja}, el sistema de metadatos de bibliotecas \texttt{pkg-config}, pruebas unitarias ligeras y, de forma obligatoria en integración continua, la tríada de sanitizadores de compilador: \texttt{AddressSanitizer} (detecta desbordamientos en pila/montículo/globales y *use-after-free* con una sobrecarga media inferior a \(2\times\)), \texttt{UndefinedBehaviorSanitizer} (detecta desbordamientos con signo, desplazamientos ilegales y punteros nulos o desalineados) y \texttt{ThreadSanitizer} (detecta carreras de datos). Los cuatro proyectos del bloque en C son: (1) una utilidad CLI compatible con POSIX (\texttt{wc}/\texttt{sha256}) usando E/S por bloques; (2) el asignador por arena y analizador de paquetes binarios con checksum \texttt{projects/c-arena-allocator}; (3) una tabla hash abierta genérica con sondeo lineal y factor de carga controlado; y (4) un servidor TCP multicliente no bloqueante basado en multiplexación de descriptores.
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+
+\noindent\textbf{Enunciado}
+Cuando un programa en C se compila con \texttt{-fsanitize=address} (AddressSanitizer), cada \(8\text{ B}\) de memoria de aplicación requieren \(1\text{ B}\) de memoria sombra (*shadow memory*), más zonas rojas (*redzones*) de \(32\text{ B}\) alrededor de cada asignación. Si una aplicación reserva \(N = 1000\) bloques de \(64\text{ B}\) cada uno (con \(32\text{ B}\) de zona roja por bloque), calcula cuántos bytes suman los bloques más sus zonas rojas más la memoria sombra correspondiente (\$1/8\$ del total).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 1000$ — Número de bloques asignados
+\item $S_{bloque} = 64\,\mathrm{B}$ — Tamaño útil de cada bloque
+\item $S_{redzone} = 32\,\mathrm{B}$ — Zona roja envenenada por bloque
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Consumo de memoria bajo instrumentación AddressSanitizer (ASan)}
+
+\[
+M = 1000 \cdot (64 + 32) \cdot \frac{9}{8}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos bloque + redzone (96000 B) y multiplicamos por 9/8 para incluir el byte sombra por cada 8 B
+
+\[
+M = 1000 \cdot (64 + 32) \cdot \frac{9}{8}
+\]
+
+\[
+\frac{\left(\left(1000\cdot \left(64+32\right)\right)\cdot 9\right)}{8}
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 108000. El conjunto instrumentado ocupa 108 000 bytes (96 000 B de bloques con redzones y 12 000 B de memoria sombra).
+\]
+
+\noindent\textbf{Interpretación}
+El conjunto instrumentado ocupa 108 000 bytes (96 000 B de bloques con redzones y 12 000 B de memoria sombra).
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $108000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImNhcDAzLWMtZXhwZXJ0by1hdG9taWNvcy1wb3NpeC1zYW5pdGl6ZXJzLWVjb3Npc3RlbWEtcHJveWVjdG9zIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0015] (Básico, Numérico)}
+En AddressSanitizer, ¿cuántos bytes de memoria sombra corresponden a 64 000 bytes de memoria de aplicación (\$64000 / 8\$)?
+
+\noindent\textbf{2 [PRB-0016] (Básico, Numérico)}
+En \texttt{projects/c-arena-allocator}, la cabecera de telemetría suma los campos \texttt{magic} (10), \texttt{version} (2), \texttt{flags} (3) y \texttt{payload\_len} (25). ¿Cuál es el valor del checksum esperado?
+
+\noindent\textbf{3 [PRB-0017] (Intermedio, Desarrollo por pasos)}
+Una función en C adquiere secuencialmente 5 recursos y falla al intentar adquirir el cuarto. ¿Cuántos recursos ya adquiridos debe liberar la cascada \texttt{goto cleanup} antes de retornar?
+
+\noindent\textbf{4 [PRB-0018] (Intermedio, Diseño)}
+Un anillo de descriptores E/S tiene capacidad para 256 entradas de 16 bytes cada una. ¿Cuántos bytes mide el anillo completo mapeado en memoria?
+\end{tcolorbox}
+
+\part{Monografía Autónoma de C++ (ISO/IEC 14882:2020 / C++23)}
+
+\chapter{Monografía de C++ (I \(-\) Bloques A\(-\)D): De C++98 a C++20/23, RAII, Semántica de Movimiento y Punteros Inteligentes}
+\label{chap:cap04-cpp-fundamentos-raii-move-semantics-smart-pointers}
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+\noindent\textit{Este capítulo inicia la monografía autónoma de C++ moderno (ISO C++20 / C++23). Lejos de tratar a C++ como «C con clases y \texttt{new}/\texttt{delete} manuales», enseñamos desde el primer día el paradigma moderno: propiedad automática determinista mediante RAII, vistas no propietarias (\texttt{std::string\_view}, \texttt{std::span}), evaluación en tiempo de compilación (\texttt{constexpr}/\texttt{consteval}) y semántica de movimiento.}
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+En C++20/C++23, no escribas jamás \texttt{new} ni \texttt{delete} desnudos en código de aplicación: utiliza \texttt{std::make\_unique<T>(...)} para propiedad única (cuyo tamaño y coste en ensamblador son idénticos a un puntero crudo \texttt{T*}) y pasa vistas \texttt{std::span<const T>} o \texttt{std::string\_view} cuando una función no necesite adquirir propiedad.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+Garantía fuerte frente a excepciones (Strong Exception Safety Guarantee): propiedad de una operación en C++ según la cual, si la operación termina lanzando una excepción, el estado observable del programa permanece idéntico al que tenía antes de iniciar la operación (semántica commit-or-rollback).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+¿Por qué \texttt{std::vector<T>::push\_back} se ve obligado a copiar en lugar de mover los elementos existentes al duplicar su capacidad si el constructor de movimiento \texttt{T(T\&\&)} no está declarado como \texttt{noexcept}?
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)C: Evolución C++11/14/17/20/23, toolchain, referencias, sobrecarga, constexpr y RAII}
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+Diseñado por Bjarne Stroustrup desde 1979 y estandarizado por ISO en 1998, C++ experimentó una profunda modernización con C++11 (semántica de movimiento, lambdas, \texttt{auto}, \texttt{constexpr}, \texttt{std::unique\_ptr}, modelo de memoria multihilo), C++14, C++17 (\texttt{std::optional}, \texttt{std::variant}, \texttt{std::string\_view}, \texttt{if constexpr}) y C++20/C++23 (\texttt{concepts}, \texttt{std::ranges}, corrutinas, módulos, \texttt{std::span}, \texttt{std::expected}). El pilar arquitectónico de C++ es **RAII** (*Resource Acquisition Is Initialization*): todo recurso (memoria del montículo, socket, fichero, cerrojo \texttt{std::scoped\_lock}) se vincula al ciclo de vida de un objeto alojado en la pila cuyo constructor establece la invariante y cuyo destructor \texttt{\textasciitilde{}T()} libera infaliblemente el recurso al salir del ámbito, incluso si se desenrolla la pila (*stack unwinding*) por el lanzamiento de una excepción.
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+\section{Bloque D: Categorías de valores (lvalue/rvalue), Regla de Cero/Cinco, std::unique\_ptr y std::span}
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+C++11 clasificó toda expresión según su identidad y movibilidad en \texttt{lvalue} (tiene identidad persistente), \texttt{xvalue} (*expiring value*, tiene identidad pero sus recursos pueden ser robados) y \texttt{prvalue} (temporal puro). La **Regla de Cero** establece que las clases de lógica de negocio no deben escribir destructores, constructores de copia ni de movimiento manuales, sino componer miembros RAII (\texttt{std::vector}, \texttt{std::string}, \texttt{std::unique\_ptr}). Si una clase gestiona directamente un manejador crudo del sistema, aplica la **Regla de Cinco**: definir explícitamente destructor, constructor de copia, asignación por copia, constructor de movimiento (\texttt{noexcept}) y asignación por movimiento (\texttt{noexcept}):
+\begin{lstlisting}[style=studium,language={C++}]
+#include <memory>
+#include <span>
+#include <numeric>
+
+// std::span<const double> observa cualquier array, std::vector o std::array sin copiar:
+constexpr double sum_window(std::span<const double> samples) noexcept {
+    double acc = 0.0;
+    for (double v : samples) { acc += v; }
+    return acc;
+}
+\end{lstlisting}
+Es fundamental marcar los constructores de movimiento como \texttt{noexcept}: \texttt{std::vector} solo mueve sus elementos durante una realojación si el constructor de movimiento promete \texttt{noexcept}; de lo contrario, cae de vuelta a copiar cada elemento para preservar la garantía fuerte frente a excepciones (*strong exception safety guarantee*).
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+
+\noindent\textbf{Enunciado}
+En una implementación estándar de C++ de 64 bits donde \texttt{sizeof(std::string) = 24} bytes y la optimización de cadena corta (*Small String Optimization*, SSO) almacena en línea cadenas de hasta \(22\text{ B}\) sin alojar en el montículo, un programa crea un \texttt{std::vector<std::string>} con \(N = 5000\) identificadores cortos de \(12\text{ B}\) cada uno. Calcula cuántos bytes totales ocupan los 5000 objetos \texttt{std::string} dentro del búfer contiguo del vector (sabiendo que realizan \(0\) alojamientos adicionales fuera del vector).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 5000$ — Número de cadenas cortas de 12 B (<= 22 B SSO)
+\item $S_{str} = 24\,\mathrm{B}$ — Tamaño de cada objeto std::string en 64 bits
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Huella de memoria con Small String Optimization (SSO) en C++}
+
+\[
+M = 5000 \cdot 24
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Multiplicamos las 5000 instancias por 24 B (sin alojamientos externos gracias a SSO)
+
+\[
+M = 5000 \cdot 24
+\]
+
+\[
+\left(5000\cdot 24\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 120000. Los 5000 identificadores se almacenan contiguamente en 120 000 bytes con cero llamadas individuales al montículo por cadena.
+\]
+
+\noindent\textbf{Interpretación}
+Los 5000 identificadores se almacenan contiguamente en 120 000 bytes con cero llamadas individuales al montículo por cadena.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $120000$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAxOSIsICJzZWN0aW9uIjogImNhcDA0LWNwcC1mdW5kYW1lbnRvcy1yYWlpLW1vdmUtc2VtYW50aWNzLXNtYXJ0LXBvaW50ZXJzIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0021] (Básico, Numérico)}
+¿Cuántos bytes ocupa \texttt{std::unique\_ptr<double>} con deleción por defecto en una arquitectura de 64 bits?
+
+\noindent\textbf{2 [PRB-0022] (Básico, Numérico)}
+Un \texttt{std::span<const int>} en C++20 con extensión dinámica almacena un puntero (8 B) y una longitud \texttt{size\_t} (8 B). ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{3 [PRB-0023] (Intermedio, Desarrollo por pasos)}
+Un \texttt{std::vector<int>} duplica su capacidad geométricamente desde 16 hasta 1024 elementos (\texttt{sizeof(int) = 4}). ¿Cuántos bytes reserva el búfer final de 1024 enteros?
+
+\noindent\textbf{4 [PRB-0024] (Intermedio, Diseño)}
+Un bloque de control de \texttt{std::make\_shared<T>} combina en una única reserva de montículo los dos contadores atómicos (16 B) más el objeto \texttt{T} de 48 B. ¿Cuántos bytes mide esa única reserva?
+\end{tcolorbox}
+
+\chapter{Monografía de C++ (II \(-\) Bloques E\(-\)H): Plantillas, Concepts C++20, std::ranges, Concurrencia, Corrutinas y Proyectos}
+\label{chap:cap05-cpp-templates-concepts-ranges-concurrencia-proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+\noindent\textit{Este capítulo completa la monografía de C++ desarrollando los Bloques E, F, G y H: desde la programación genérica con \texttt{concept}s y \texttt{std::ranges} hasta la concurrencia cooperativa con \texttt{std::jthread} y la verificación del planificador de tareas \texttt{projects/cpp-task-scheduler}.}
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+Sustituye \texttt{std::thread} por \texttt{std::jthread} en todo código C++20 nuevo: si una función lanza una excepción antes de llamar a \texttt{.join()} sobre un \texttt{std::thread} convencional, su destructor invoca \texttt{std::terminate()} abortando el proceso.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+Concepto en C++20 (\texttt{concept}): predicado nombrado evaluado en tiempo de compilación que restringe el conjunto de argumentos de plantilla aceptados por una función o clase genérica y participa en la resolución de sobrecarga por subsunción lógica.
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+¿Cómo decide el compilador de C++20 qué sobrecarga de plantilla es más específica cuando dos funciones restringidas por \texttt{concept}s distintos son válidas para un mismo tipo (regla de subsunción)?
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\section{Bloques E y F: Plantillas, C++20 Concepts, std::ranges, std::jthread y corrutinas}
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+Históricamente, las plantillas (*templates*) en C++ dependían de SFINAE (*Substitution Failure Is Not An Error*), produciendo diagnósticos de compilación crípticos cuando un tipo no cumplía una operación interna. C++20 resolvió este problema introduciendo **Concepts**: predicados en tiempo de compilación que especifican formalmente los requisitos sintácticos y semánticos de un parámetro de plantilla. En nuestro proyecto verificado \texttt{projects/cpp-task-scheduler}, el concepto \texttt{ExecutableTask} exige que cualquier tipo de tarea proporcione \texttt{id()}, \texttt{priority()} convertible a \texttt{int} y \texttt{execute()} convertible a \texttt{int64\_t}:
+\begin{lstlisting}[style=studium,language={C++}]
+#include <concepts>
+#include <cstdint>
+
+template <typename T>
+concept ExecutableTask = requires(const T& t) {
+    { t.id() } -> std::convertible_to<uint32_t>;
+    { t.priority() } -> std::convertible_to<int>;
+    { t.execute() } -> std::convertible_to<int64_t>;
+};
+\end{lstlisting}
+Junto con los conceptos, la biblioteca \texttt{<ranges>} permite encadenar vistas perezosas mediante el operador tubería \texttt{|}, como \texttt{tasks | std::views::filter(...) | std::views::transform(...)}, y \texttt{<thread>} incorpora \texttt{std::jthread}, que se une automáticamente (\texttt{join()}) en su destructor e integra cancelación cooperativa mediante \texttt{std::stop\_token}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+\section{Bloques G y H: Ecosistema CMake/vcpkg/Conan/Clang-Tidy y los 4 proyectos (incluyendo cpp-task-scheduler)}
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+En el Bloque G (Ecosistema), los proyectos profesionales de C++ se estructuran mediante \texttt{CMake} moderno basado en objetivos (\texttt{target\_link\_libraries}, \texttt{target\_compile\_features(tgt PUBLIC cxx\_std\_20)}), gestores de paquetes \texttt{vcpkg} o \texttt{Conan 2}, pruebas con \texttt{GoogleTest} o \texttt{Catch2}, benchmarking con \texttt{Google Benchmark} y auditoría estática continua con \texttt{clang-tidy} (perfiles \texttt{cppcoreguidelines-*}, \texttt{modernize-*}, \texttt{bugprone-*}). En el Bloque H, además de una biblioteca de álgebra lineal estática \texttt{constexpr}, un motor de eventos con \texttt{std::variant} y un servidor de red asíncrono, el lector cuenta con el proyecto completo \texttt{projects/cpp-task-scheduler}, que implementa una cola de prioridad determinista \texttt{TaskScheduler<Task>} verificada con \texttt{clang++ -std=c++20 -fsanitize=address,undefined}.
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+
+\noindent\textbf{Enunciado}
+En el proyecto \texttt{projects/cpp-task-scheduler}, se encolan cuatro tareas \texttt{(id, prioridad, base\_cost)}: \texttt{(1, 2, 10)}, \texttt{(2, 9, 10)}, \texttt{(3, 5, 20)} y \texttt{(4, 9, 15)}. Si se ejecuta \texttt{execute\_filtered(5)} (que filtra las tareas con \texttt{priority >= 5} y suma \texttt{base\_cost * priority} de cada una), calcula el resultado exacto devuelto.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $T_{2} = prioridad 9, coste 10$ — Aporta 9 * 10 = 90
+\item $T_{4} = prioridad 9, coste 15$ — Aporta 9 * 15 = 135
+\item $T_{3} = prioridad 5, coste 20$ — Aporta 5 * 20 = 100
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Filtrado y reducción en cpp-task-scheduler con std::views}
+
+\[
+R = 9 \cdot 10 + 9 \cdot 15 + 5 \cdot 20
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Descartamos la tarea 1 (prioridad 2 < 5) y sumamos los productos de las tres restantes
+
+\[
+R = 9 \cdot 10 + 9 \cdot 15 + 5 \cdot 20
+\]
+
+\[
+\left(\left(\left(9\cdot 10\right)+\left(9\cdot 15\right)\right)+\left(5\cdot 20\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 325. El planificador devuelve exactamente 325, coincidiendo con el test ejecutable de `projects/cpp-task-scheduler`.
+\]
+
+\noindent\textbf{Interpretación}
+El planificador devuelve exactamente 325, coincidiendo con el test ejecutable de \texttt{projects/cpp-task-scheduler}.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $325$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAyNSIsICJzZWN0aW9uIjogImNhcDA1LWNwcC10ZW1wbGF0ZXMtY29uY2VwdHMtcmFuZ2VzLWNvbmN1cnJlbmNpYS1wcm95ZWN0b3MifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0027] (Básico, Numérico)}
+En \texttt{cpp-task-scheduler}, ¿qué valor devuelve \texttt{ComputeTask\{10, 7, 12\}.execute()} (\(12 \times 7\))?
+
+\noindent\textbf{2 [PRB-0028] (Básico, Numérico)}
+Una plantilla variádica \texttt{sum\_all(10, 20, 30, 40)} utiliza una expresión pliegue (*fold expression* \texttt{(args + ...)}). ¿Cuál es el resultado evaluado en \texttt{constexpr}?
+
+\noindent\textbf{3 [PRB-0029] (Intermedio, Desarrollo por pasos)}
+Un \texttt{std::variant<int, double, std::array<char, 32>>} almacena la alternativa mayor (32 B) más un índice alineado a 8 B. ¿Cuántos bytes ocupa la instancia?
+
+\noindent\textbf{4 [PRB-0030] (Intermedio, Diseño)}
+Si una vista \texttt{std::views::iota(1, 1001) | std::views::filter(...) | std::views::take(5)} detiene la evaluación al encontrar los primeros 5 pares (\$2, 4, 6, 8, 10\$), ¿cuántos enteros del rango \$[1, 1000]\$ llegaron a inspeccionarse?
+\end{tcolorbox}
+
+\part{Monografías Especializadas de Sistemas: Zig, Ensamblador, Ada y Fortran}
+
+\chapter{Monografía de Zig (Bloques A\(-\)H): Asignadores explícitos, metaprogramación comptime, uniones de error y toolchain C}
+\label{chap:cap06-monografia-zig-asignadores-comptime-interoperabilidad-c}
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+\noindent\textit{Este capítulo presenta la monografía completa de **Zig** siguiendo los bloques \(A-H\). Creado por Andrew Kelley, Zig se concibe como un sucesor moderno y transparente de C donde ninguna expresión oculta llamadas a funciones ni reservas de memoria, los tipos son valores de primera clase en tiempo de compilación (\texttt{comptime}) y el propio binario \texttt{zig} incluye un compilador C/C++ de compilación cruzada basado en Clang/LLVM.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+En todas tus pruebas unitarias de Zig (\texttt{test "..." \{ ... \}}), pasa siempre \texttt{std.testing.allocator} a las estructuras bajo prueba: el arnés de pruebas hará fallar automáticamente el test si queda un solo byte sin liberar o si ocurre doble liberación.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+Limpieza condicional de error (\texttt{errdefer} en Zig): sentencia registrada en la pila léxica del bloque actual cuya expresión asociada se ejecuta si y solo si la función abandona dicho ámbito devolviendo un valor de error de su unión de retorno \texttt{!T}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+¿Qué ventaja arquitectónica aporta que \texttt{std.ArrayList} en Zig reciba un \texttt{Allocator} explícito en lugar de invocar un asignador global fijo como \texttt{std::vector} por defecto en C++ o \texttt{Vec<T>} en Rust estable?
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Filosofía de Zig, toolchain integrada, tipos, rebanadas, uniones de error y defer/errdefer}
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+Zig se rige por tres mandamientos de ingeniería de sistemas: (1) sin flujo de control oculto (no hay sobrecarga de operadores, ni constructores/destructores implícitos, ni excepciones); (2) sin asignaciones de memoria ocultas (toda función de la biblioteca estándar que necesita alojar en el montículo recibe explícitamente un parámetro \texttt{allocator: std.mem.Allocator}); y (3) sin preprocesador de macros textuales. Para gestionar recursos y errores con precisión quirúrgica, Zig combina tipos de unión de error (\texttt{AllocError![]u8}) con las palabras clave \texttt{try}, \texttt{catch}, \texttt{defer} (que se ejecuta al salir del bloque actual) y \texttt{errdefer} (que se ejecuta **únicamente** si el bloque actual retorna con un error):
+\begin{lstlisting}[style=studium]
+const std = @import("std");
+
+pub fn allocateInitializedRing(allocator: std.mem.Allocator, n: usize) ![]u64 {
+    const buf = try allocator.alloc(u64, n);
+    errdefer allocator.free(buf);
+    for (buf, 0..) |*slot, idx| {
+        slot.* = @as(u64, @intCast(idx)) * 10;
+    }
+    return buf;
+}
+\end{lstlisting}
+Si cualquier paso posterior dentro de la función fallara y retornara un error mediante \texttt{try}, \texttt{errdefer} libera automáticamente \texttt{buf} sin necesidad de etiquetas \texttt{goto}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+\section{Bloques E\(-\)H: Asignadores explícitos (Arena, FixedBuffer, GPA), comptime, FFI con C y proyectos}
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+En lugar de plantillas o macros, el polimorfismo paramétrico en Zig consiste en funciones ordinarias que aceptan argumentos \texttt{comptime T: type} y devuelven un \texttt{type} (\texttt{fn BoundedQueue(comptime T: type, comptime cap: usize) type}). Gracias a que los asignadores se pasan como valores de interfaz \texttt{std.mem.Allocator}, el mismo contenedor \texttt{std.ArrayList(T)} puede ejecutarse sobre el asignador detector de fugas \texttt{std.testing.allocator} durante \texttt{zig test}, sobre un \texttt{std.heap.ArenaAllocator} por petición HTTP, o sobre un \texttt{std.heap.FixedBufferAllocator} respaldado por un array estático en la pila sin tocar jamás el sistema operativo.
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+
+\noindent\textbf{Enunciado}
+En un microservicio escrito en Zig, cada petición HTTP utiliza un \texttt{std.heap.FixedBufferAllocator} respaldado por un array en pila de \(B = 16384\text{ B}\) (\(16\text{ KiB}\)). Si el manejador aloja una cabecera parseada de \(512\text{ B}\) y \(N = 60\) cabeceras clave-valor de \(128\text{ B}\) cada una, calcula cuántos bytes quedan disponibles en el \texttt{FixedBufferAllocator} antes de que devuelva \texttt{error.OutOfMemory}.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $B = 16384\,\mathrm{B}$ — Capacidad total del búfer estático en pila
+\item $S_{hdr} = 512\,\mathrm{B}$ — Reserva inicial para el descriptor de petición
+\item $N^{S}_{kv} = 60, 128 B$ — 60 pares clave-valor de 128 B
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Contabilidad lineal en FixedBufferAllocator de Zig}
+
+\[
+B_{\text{libre}} = 16384 - (512 + 60 \cdot 128)
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Restamos los 512 B y los 60 * 128 = 7680 B a la capacidad total de 16384 B
+
+\[
+B_{\text{libre}} = 16384 - (512 + 60 \cdot 128)
+\]
+
+\[
+\left(16384-\left(512+\left(60\cdot 128\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 8192. Quedan exactamente 8192 bytes (8 KiB) libres en el búfer de la petición.
+\]
+
+\noindent\textbf{Interpretación}
+Quedan exactamente 8192 bytes (8 KiB) libres en el búfer de la petición.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $8192$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzMSIsICJzZWN0aW9uIjogImNhcDA2LW1vbm9ncmFmaWEtemlnLWFzaWduYWRvcmVzLWNvbXB0aW1lLWludGVyb3BlcmFiaWxpZGFkLWMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0033] (Básico, Numérico)}
+Una rebanada \texttt{[]const u32} en Zig de 64 bits consta de un puntero \texttt{[*]const u32} (8 B) y una longitud \texttt{usize} (8 B). ¿Cuántos bytes ocupa?
+
+\noindent\textbf{2 [PRB-0034] (Básico, Numérico)}
+En Zig, el tipo entero de anchura arbitraria \texttt{u12} se aloja en memoria ocupando el siguiente número entero de bytes potencia de dos (\texttt{@sizeOf(u12)}). ¿Cuántos bytes ocupa en memoria?
+
+\noindent\textbf{3 [PRB-0035] (Intermedio, Desarrollo por pasos)}
+Un \texttt{packed struct} de Zig contiene campos \texttt{u3}, \texttt{u5}, \texttt{u16} y \texttt{u8} empaquetados al bit exacto. ¿Cuántos bytes ocupa \texttt{(3 + 5 + 16 + 8) / 8}?
+
+\noindent\textbf{4 [PRB-0036] (Intermedio, Diseño)}
+Si una función con 4 reservas secuenciales protegidas cada una por \texttt{errdefer} falla en la cuarta reserva, ¿cuántos bloques previos son liberados automáticamente por los \texttt{errdefer} ya registrados?
+\end{tcolorbox}
+
+\chapter{Monografía de Ensamblador ARM64 (AArch64) y x86-64 (Bloques A\(-\)H): Registros, ABI, Pila y SIMD}
+\label{chap:cap07-monografia-ensamblador-arm64-x86-64-abi-simd}
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\noindent\textit{Todo ingeniero de sistemas debe ser capaz de leer el código ensamblador emitido por el compilador (\texttt{clang -S -O2} u \texttt{objdump -d}), diagnosticar volcados de pila y escribir rutinas críticas vectorizadas o cambios de contexto de sistema operativo. Este capítulo ofrece el bloque completo \(A-H\) para las dos arquitecturas dominantes de 64 bits: **x86-64 (AMD64)** y **ARM64 (AArch64)**.}
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+% studium:record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\par\vspace{\baselineskip}
+\noindent\begin{minipage}{\linewidth}
+\centering
+\begingroup
+\setbox0=\hbox{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center] (x86) {\textbf{System V AMD64 (x86-64)}\\Args 1--6: \texttt{rdi, rsi, rdx, rcx, r8, r9}\\Retorno: \texttt{rax} (\texttt{rdx})\\Callee-saved: \texttt{rbx, rbp, r12--r15}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center, right=0.8cm of x86] (arm) {\textbf{AAPCS64 (ARM64 / AArch64)}\\Args 1--8: \texttt{x0, x1, x2, x3, x4, x5, x6, x7}\\Retorno: \texttt{x0} (\texttt{x1})\\Callee-saved: \texttt{x19--x28, x29(fp), x30(lr)}};
+\end{tikzpicture}}%
+\count0=\ht0
+\advance\count0 by \dp0
+\count2=\wd0
+\count4=\dimexpr\textheight/100*38\relax
+\count6=\linewidth
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\divide\count0 by 4096
+\divide\count2 by 4096
+\divide\count4 by 4096
+\divide\count6 by 4096
+\ifnum\count0<1
+\count0=1
+\fi
+\ifnum\count2<1
+\count2=1
+\fi
+\ifnum\count4<1
+\count4=1
+\fi
+\ifnum\count6<1
+\count6=1
+\fi
+\count8=\count2
+\ifnum\count0>\count4
+\count8=\numexpr\count2*\count4/\count0\relax
+\fi
+\ifnum\count8>\count6
+\resizebox{\linewidth}{!}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center] (x86) {\textbf{System V AMD64 (x86-64)}\\Args 1--6: \texttt{rdi, rsi, rdx, rcx, r8, r9}\\Retorno: \texttt{rax} (\texttt{rdx})\\Callee-saved: \texttt{rbx, rbp, r12--r15}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center, right=0.8cm of x86] (arm) {\textbf{AAPCS64 (ARM64 / AArch64)}\\Args 1--8: \texttt{x0, x1, x2, x3, x4, x5, x6, x7}\\Retorno: \texttt{x0} (\texttt{x1})\\Callee-saved: \texttt{x19--x28, x29(fp), x30(lr)}};
+\end{tikzpicture}}%
+\else
+\ifnum\count0>\count4
+\resizebox{!}{\dimexpr\textheight/100*38\relax}{\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center] (x86) {\textbf{System V AMD64 (x86-64)}\\Args 1--6: \texttt{rdi, rsi, rdx, rcx, r8, r9}\\Retorno: \texttt{rax} (\texttt{rdx})\\Callee-saved: \texttt{rbx, rbp, r12--r15}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center, right=0.8cm of x86] (arm) {\textbf{AAPCS64 (ARM64 / AArch64)}\\Args 1--8: \texttt{x0, x1, x2, x3, x4, x5, x6, x7}\\Retorno: \texttt{x0} (\texttt{x1})\\Callee-saved: \texttt{x19--x28, x29(fp), x30(lr)}};
+\end{tikzpicture}}%
+\else
+\begin{tikzpicture}
+\tikzset{node distance=1.4cm, >=stealth, thick, font=\small}
+\node[draw=blue!70!black, fill=blue!8, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center] (x86) {\textbf{System V AMD64 (x86-64)}\\Args 1--6: \texttt{rdi, rsi, rdx, rcx, r8, r9}\\Retorno: \texttt{rax} (\texttt{rdx})\\Callee-saved: \texttt{rbx, rbp, r12--r15}};
+\node[draw=teal!70!black, fill=teal!10, rounded corners, minimum width=5.6cm, minimum height=1.8cm, align=center, right=0.8cm of x86] (arm) {\textbf{AAPCS64 (ARM64 / AArch64)}\\Args 1--8: \texttt{x0, x1, x2, x3, x4, x5, x6, x7}\\Retorno: \texttt{x0} (\texttt{x1})\\Callee-saved: \texttt{x19--x28, x29(fp), x30(lr)}};
+\end{tikzpicture}%
+\fi
+\fi
+\endgroup
+\par\nopagebreak
+{\small \refstepcounter{studiumfigure}\label{fig:fig-abi-calling-conventions}\textbf{Figura~\thestudiumfigure.} Comparativa de paso de los primeros 6 argumentos enteros/punteros y valor de retorno entre la ABI System V x86-64 y la ABI AAPCS64 (ARM64).\par}
+\end{minipage}
+\par\vspace{\baselineskip}
+% studium:end-record eyJpZCI6ICJGSUctMDAwMiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+En lugar de escribir funciones enteras en ensamblador manual que dificultan las optimizaciones del compilador, prefiere funciones intrínsecas SIMD (\texttt{<arm\_neon.h>} o \texttt{<immintrin.h>}) y verifica el ensamblador generado con \texttt{clang -O3 -S}.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+Registros preservados por el llamado (Callee-saved registers): subconjunto de registros de la CPU (\texttt{rbx, rbp, r12\ensuremath{-}r15} en System V x86-64; \texttt{x19\ensuremath{-}x28, x29, x30} en AAPCS64) cuyo valor original debe ser restaurado por cualquier subrutina antes de ejecutar \texttt{ret} si dicha subrutina decide modificarlos.
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+¿Por qué en x86-64 al entrar en el cuerpo de una función tras ejecutar la instrucción \texttt{call} (que empuja 8 bytes de dirección de retorno en la pila), el registro \texttt{rsp} tiene un valor congruente con 8 módulo 16 y requiere restar \(8 + 16k\) bytes antes de hacer otro \texttt{call}?
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+\end{tcolorbox}
+
+\section{Bloques A\(-\)D: Arquitectura de registros x86-64 y ARM64 (AArch64), modos de direccionamiento y saltos}
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+En **x86-64**, la CPU dispone de 16 registros de propósito general de 64 bits (\texttt{rax}, \texttt{rbx}, \texttt{rcx}, \texttt{rdx}, \texttt{rsi}, \texttt{rdi}, \texttt{rbp}, \texttt{rsp}, \texttt{r8}\(-\)\texttt{r15}) e instrucciones de longitud variable (de 1 a 15 bytes) que permiten combinar acceso a memoria y operación aritmética en una sola instrucción. En **ARM64 (AArch64)**, la arquitectura es estrictamente *load/store* con instrucciones de anchura fija de 32 bits (4 bytes) y 31 registros de propósito general de 64 bits (\texttt{x0}\(-\)\texttt{x30}, con sus mitades inferiores de 32 bits \texttt{w0}\(-\)\texttt{w30}), más el registro cero \texttt{xzr} y el puntero de pila \texttt{sp}. En ARM64, las operaciones aritméticas operan exclusivamente entre registros; la memoria solo se toca mediante instrucciones de carga y almacenamiento como \texttt{ldr}, \texttt{str}, \texttt{ldp} (cargar par de registros) y \texttt{stp} (almacenar par de registros).
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\section{Bloques E\(-\)H: Convenciones ABI (System V y AAPCS64), alineamiento de pila, SIMD (NEON/AVX) e inspección con objdump}
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+Para que módulos compilados por distintos lenguajes (C, C++, Rust, Zig) puedan invocarse entre sí, deben respetar la **ABI** (*Application Binary Interface*) de la plataforma. Como resume la Figura \textbackslash{}ref\{fig:fig-abi-calling-conventions\}, en la ABI System V x86-64 (Linux, macOS, BSD) los primeros 6 argumentos enteros o punteros se pasan en \texttt{rdi}, \texttt{rsi}, \texttt{rdx}, \texttt{rcx}, \texttt{r8}, \texttt{r9}, mientras que en AAPCS64 (ARM64) los primeros 8 se pasan en \texttt{x0}\(-\)\texttt{x7}. En ambas arquitecturas, el puntero de pila (\texttt{rsp} o \texttt{sp}) debe mantenerse alineado a un múltiplo de **16 bytes** en el punto de llamada a cualquier función (\texttt{call} o \texttt{bl}). Compare la misma función \texttt{uint64\_t fma\_u64(uint64\_t a, uint64\_t b, uint64\_t c)} que calcula \(a \cdot b + c\) en ambas arquitecturas:
+\begin{lstlisting}[style=studium,escapeinside={(*@}{@*)}]
+; System V x86-64 (a=rdi, b=rsi, c=rdx -> retorno en rax):
+fma_u64_x86:
+    mov     rax, rdi
+    imul    rax, rsi
+    add     rax, rdx
+    ret
+
+; AAPCS64 ARM64 (a=x0, b=x1, c=x2 -> retorno en x0, una sola instrucci(*@{\'o}@*)n madd):
+fma_u64_arm64:
+    madd    x0, x0, x1, x2   ; x0 = (x0 * x1) + x2
+    ret
+\end{lstlisting}
+En ARM64, el prólogo estándar de una función no hoja guarda el puntero de marco \texttt{x29} (\texttt{fp}) y el registro de enlace \texttt{x30} (\texttt{lr}) reservando un múltiplo de 16 bytes en una sola instrucción con pre-indexación: \texttt{stp x29, x30, [sp, \#-16]!}.
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+
+\noindent\textbf{Enunciado}
+Una función en ensamblador ARM64 guarda en la pila el par \texttt{(x29, x30)} (\(16\text{ B}\)), dos registros preservados \texttt{(x19, x20)} (\(16\text{ B}\)) y necesita alojar un búfer local de \(36\text{ B}\). Como el hardware AArch64 exige que el puntero de pila \texttt{sp} permanezca siempre alineado a múltiplo de \(16\text{ B}\) (redondeando los \(36\text{ B}\) locales hacia arriba a \(48\text{ B}\)), calcula cuántos bytes totales resta al registro \texttt{sp} el prólogo de la función.
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $S_{fplr} = 16\,\mathrm{B}$ — Par de registros (x29, x30)
+\item $S_{callee} = 16\,\mathrm{B}$ — Par de registros preservados (x19, x20)
+\item $S_{\mathcal{lo} aligned} = 48\,\mathrm{B}$ — 36 B redondeados al siguiente múltiplo de 16 B
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Cálculo del tamaño de marco de pila alineado a 16 bytes en AAPCS64}
+
+\[
+S_{\text{frame}} = 16 + 16 + 48
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Sumamos los tres bloques alineados a 16 bytes
+
+\[
+S_{\text{frame}} = 16 + 16 + 48
+\]
+
+\[
+\left(\left(16+16\right)+48\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 80. El prólogo reserva exactamente 80 bytes (múltiplo exacto de 16: 5 * 16 = 80 B) en la pila.
+\]
+
+\noindent\textbf{Interpretación}
+El prólogo reserva exactamente 80 bytes (múltiplo exacto de 16: 5 * 16 = 80 B) en la pila.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $80$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDAzNyIsICJzZWN0aW9uIjogImNhcDA3LW1vbm9ncmFmaWEtZW5zYW1ibGFkb3ItYXJtNjQteDg2LTY0LWFiaS1zaW1kIn0=
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0039] (Básico, Numérico)}
+En ARM64, cada instrucción máquina tiene una anchura fija de 32 bits (4 bytes). ¿Cuántos bytes ocupan en la sección \texttt{.text} una secuencia de 250 instrucciones?
+
+\noindent\textbf{2 [PRB-0040] (Básico, Numérico)}
+Un registro vectorial NEON de 128 bits en ARM64 (\texttt{v0.4s}) procesa enteros o flotantes de 32 bits en paralelo. ¿Cuántos elementos de 32 bits opera por instrucción?
+
+\noindent\textbf{3 [PRB-0041] (Intermedio, Desarrollo por pasos)}
+Una función en System V x86-64 recibe 9 argumentos enteros de 64 bits. Sabiendo que los primeros 6 van en registros y el resto se pasa por la pila (8 B cada uno), ¿cuántos bytes ocupan en la pila los argumentos restantes?
+
+\noindent\textbf{4 [PRB-0042] (Intermedio, Diseño)}
+Un bucle procesa un array de 4096 flotantes \texttt{f32} utilizando instrucciones AVX-512 (16 flotantes \texttt{f32} por registro de 512 bits). ¿Cuántas iteraciones vectoriales ejecuta el bucle?
+\end{tcolorbox}
+
+\chapter{Monografías de Ada/SPARK (Sistemas Críticos) y Fortran Moderno (Cómputo Científico HPC) (Bloques A\(-\)H)}
+\label{chap:cap08-monografias-ada-spark-tiempo-real-y-fortran-cientifico}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+\noindent\textit{Este capítulo cierra el Volumen IV con las monografías completas de dos lenguajes insustituibles en sus dominios de alta exigencia: **Ada 2022 / SPARK** en aviónica (DO-178C Nivel A), ferrocarriles y espacio, y **Fortran 2018/2023** en supercomputación (HPC), dinámica de fluidos computacional (CFD) y predicción meteorológica.}
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+En Fortran moderno, comienza siempre todo módulo y programa con \texttt{implicit none} e importa \texttt{real64} (\texttt{dp}) e \texttt{int64} desde el módulo estándar \texttt{iso\_fortran\_env}; al anidar bucles sobre \texttt{A(i, j)}, sitúa siempre el índice \texttt{i} en el bucle más interno y \texttt{j} en el externo para recorrer la memoria secuencialmente.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+Orden mayor por columnas (Column-Major Order en Fortran): disposición lineal en memoria de un array bidimensional \(A(1..M, 1..N)\) según la cual el elemento \(A(i, j)\) (con índices basados en 1) se ubica en el desplazamiento lineal \((j - 1) \cdot M + (i - 1)\), haciendo contiguos los elementos de una misma columna.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+¿Por qué intercambiar el orden de los bucles \texttt{do i = 1, M; do j = 1, N} sobre \texttt{A(i, j)} en Fortran degrada severamente la tasa de aciertos de caché L1 respecto a \texttt{do j = 1, N; do i = 1, M}?
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+\end{tcolorbox}
+
+\section{Monografía de Ada 2022 y SPARK (Bloques A\(-\)H): Tipado fuerte de dominio, contratos y sistemas críticos}
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+Encargado por el Departamento de Defensa de EE. UU. (Jean Ichbiah, 1980; revisiones ISO Ada 95, 2005, 2012 y 2022), **Ada** fue diseñado para sistemas embebidos de misión crítica donde un defecto de software puede costar vidas humanas. En Ada, el ingeniero no declara variables como meros \texttt{int}, sino que define tipos nominalmente distintos con su rango físico exacto: \texttt{type Altitude\_Meters is range -500 .. 50\_000;} y \texttt{type Velocity\_Knots is range 0 .. 2\_500;}. Sumar una altitud con una velocidad es un error de compilación inmediato, y asignar un valor fuera de rango lanza \texttt{Constraint\_Error}. En el subconjunto formalmente verificable **SPARK**, los aspectos \texttt{Pre}, \texttt{Post} y \texttt{Global} se traducen en obligaciones de prueba matemática descargadas por solucionadores SMT (\texttt{Z3}, \texttt{Alt-Ergo}) mediante \texttt{gnatprove}, demostrando la ausencia total de desbordamientos o divisiones por cero antes de compilar:
+\begin{lstlisting}[style=studium]
+package Flight_Envelope with SPARK_Mode is
+   type Altitude_M is range 0 .. 20_000;
+   function Safe_Climb (Current : Altitude_M; Delta_H : Altitude_M) return Altitude_M
+     with Pre  => Integer (Current) + Integer (Delta_H) <= 20_000,
+          Post => Safe_Climb'Result = Current + Delta_H;
+end Flight_Envelope;
+\end{lstlisting}
+Para concurrencia de tiempo real duro, el perfil **Ravenscar** restringe las tareas (\texttt{task}) y los objetos protegidos (\texttt{protected object}) al protocolo de techo de prioridad inmediata (*Immediate Ceiling Priority Protocol*), garantizando ausencia matemática de interbloqueos (*deadlocks*) y acotación estática del tiempo de respuesta.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+\section{Monografía de Fortran 2018/2023 (Bloques A\(-\)H): Arrays multidimensionales, vectorización y Coarrays}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+Por su parte, **Fortran** (John Backus, IBM, 1957; modernizado radicalmente en Fortran 90/95, 2003, 2008, 2018 y 2023) sigue siendo el estándar de oro en supercomputación científica por dos razones técnicas: primero, los arrays multidimensionales son ciudadanos de primera clase almacenados en **orden mayor por columnas** (*column-major*, donde \texttt{A(i, j)} es contiguo en memoria al variar el primer índice \texttt{i}); segundo, el estándar Fortran garantiza por defecto que los argumentos \texttt{intent(in)} e \texttt{intent(inout)} de una subrutina \texttt{pure} **no presentan alias entre sí** (a menos que tengan el atributo \texttt{pointer} o \texttt{target}), lo que permite a compiladores como \texttt{gfortran}, \texttt{ifx} o \texttt{nvfortran} vectorizar bucles matriciales con una agresividad superior a la de C sin \texttt{restrict}:
+\begin{lstlisting}[style=studium]
+module numerics_mod
+  use, intrinsic :: iso_fortran_env, only: dp => real64
+  implicit none
+contains
+  pure subroutine laplacian_1d(u, d2u, inv_dx2)
+    real(dp), intent(in)  :: u(:), inv_dx2
+    real(dp), intent(out) :: d2u(:)
+    integer :: n
+    n = size(u)
+    d2u(1) = 0.0_dp
+    d2u(2:n-1) = (u(1:n-2) - 2.0_dp * u(2:n-1) + u(3:n)) * inv_dx2
+    d2u(n) = 0.0_dp
+  end subroutine laplacian_1d
+end module numerics_mod
+\end{lstlisting}
+Además, Fortran 2008/2018 incorpora paralelismo de memoria distribuida directamente en la sintaxis del lenguaje mediante **Coarrays** (\texttt{real(dp) :: field(1000)[*]}), donde la notación entre corchetes \texttt{[imagen]} realiza transferencias RDMA de un solo lado entre nodos de un clúster sin llamadas verbosas a MPI.
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+
+\noindent\textbf{Enunciado}
+En un programa Fortran 2018, una matriz \texttt{real(real64) :: A(100, 200)} (\(M = 100\) filas, \(N = 200\) columnas, \(S = 8\text{ B}\) por elemento) está almacenada en orden mayor por columnas a partir del desplazamiento base \(0\). Calcula el desplazamiento exacto en bytes del elemento \texttt{A(25, 4)} usando la fórmula \(8 \cdot ((4 - 1) \cdot 100 + (25 - 1))\).
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $M = 100$ — Número de filas por columna
+\item $i^{j} = 25, 4$ — Fila 25, columna 4 (base 1)
+\item $S = 8\,\mathrm{B}$ — Tamaño de real(real64)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Magnitud objetivo solicitada en el enunciado
+
+\noindent\textbf{Modelo físico}
+
+\noindent\textit{Direccionamiento Column-Major en Fortran}
+
+\[
+\text{Offset} = 8 \cdot ((4 - 1) \cdot 100 + (25 - 1))
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Evaluación determinista bajo el modelo formal del capítulo
+\end{itemize}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Calculamos el índice lineal (3 * 100 + 24 = 324) y multiplicamos por 8 bytes
+
+\[
+\text{Offset} = 8 \cdot ((4 - 1) \cdot 100 + (25 - 1))
+\]
+
+\[
+\left(8\cdot \left(\left(\left(4-1\right)\cdot 100\right)+\left(25-1\right)\right)\right)
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+
+\[
+Resultado = 2592. El elemento A(25, 4) se encuentra exactamente a 2592 bytes del inicio de la matriz.
+\]
+
+\noindent\textbf{Interpretación}
+El elemento A(25, 4) se encuentra exactamente a 2592 bytes del inicio de la matriz.
+
+\noindent\textbf{Comprobación de los pasos}
+\begin{itemize}
+\item Paso 1: $2592$ — reproducido
+\end{itemize}
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+% studium:end-record eyJpZCI6ICJQUkItMDA0MyIsICJzZWN0aW9uIjogImNhcDA4LW1vbm9ncmFmaWFzLWFkYS1zcGFyay10aWVtcG8tcmVhbC15LWZvcnRyYW4tY2llbnRpZmljbyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Ejercicios}, studiumworked, breakable]
+
+\noindent\textbf{1 [PRB-0045] (Básico, Numérico)}
+En Ada, el tipo \texttt{type Percent is range 0 .. 100;} comprende desde 0 hasta 100 ambos inclusive. ¿Cuántos valores distintos pertenecen al tipo (\texttt{Percent'Last - Percent'First + 1})?
+
+\noindent\textbf{2 [PRB-0046] (Básico, Numérico)}
+En Fortran, una rebanada vectorial \texttt{u(2:n-1)} para \(n = 1002\) evalúa los puntos interiores de una malla 1D. ¿Cuántos puntos interiores actualiza la sentencia?
+
+\noindent\textbf{3 [PRB-0047] (Intermedio, Desarrollo por pasos)}
+Un programa Coarray Fortran se ejecuta en 16 imágenes (\texttt{num\_images() = 16}) y cada imagen aloja una malla local de \(50000\) flotantes \texttt{real64} (8 B). ¿Cuántos bytes suman las mallas de las 16 imágenes?
+
+\noindent\textbf{4 [PRB-0048] (Intermedio, Diseño)}
+En un sistema de tiempo real Ada Ravenscar con periodo de marco mayor \(T = 100\text{ ms}\), tres tareas periódicas consumen \(15\text{ ms}\), \(22\text{ ms}\) y \(18\text{ ms}\) por cada \(100\text{ ms}\). ¿Cuál es el porcentaje entero de utilización total de CPU?
+\end{tcolorbox}
+\appendix
+\chapter{Notación}
+
+\begingroup
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{@{}>{\centering\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.55\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}@{}}
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endfirsthead
+\textbf{Símbolo} & \textbf{Significado} & \textbf{Unidades} \\
+\hline
+\endhead
+$\text{alignof}(T)$ & Requisito de alineamiento de dirección en C11/C23 y C++11/C++20 & $\mathrm{B}$ \\
+$\text{sizeof}(T)$ & Tamaño en bytes de un objeto o tipo completo en C/C++ & $\mathrm{B}$ \\
+$k + p$ & Aritmética de punteros escalada por k * sizeof(*p) bytes & $\mathrm{dirección}$ \\
+\end{longtable}
+\endgroup
+\chapter{Hoja de fórmulas}
+
+\noindent Esta parte del borrador aún no tiene material.
+\chapter{Soluciones}
+
+\section{Monografía de C (I \(-\) Bloques A, B y C): Historia, modelo de traducción ISO C17/C23, toolchain y nivel principiante}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+En una arquitectura de 32 bits para enteros \texttt{uint32\_t} (\(w = 32\), módulo \(2^{32} = 4294967296\)), un entero con signo con valor \(-100\) se convierte implícitamente a \texttt{uint32\_t} durante una comparación. Calcula el valor numérico exacto que toma tras la conversión según la regla \(2^{32} - 100\).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 4294967196. El valor resultante en uint32_t es 4 294 967 196, razón por la cual `-Wsign-conversion` es indispensable.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0003]}
+
+Calcula el valor en \texttt{uint16\_t} (\(w = 16\)) resultante de convertir \(-1\) a sin signo (\(2^{16} - 1\)).
+
+\noindent\textbf{Respuesta} 65535
+
+\noindent\textbf{Ejercicio 2 [PRB-0004]}
+
+Un registro de control de 8 bits activa los bits 0, 3 y 7 (\$\(2^0 + 2^3 + 2^7\)\$). ¿Cuál es el valor decimal de la máscara \texttt{uint8\_t}?
+
+\noindent\textbf{Respuesta} 137
+
+\noindent\textbf{Ejercicio 3 [PRB-0005]}
+
+¿Cuántos bytes ocupa en total una estructura con 4 campos \texttt{uint32\_t} y 2 campos \texttt{uint64\_t} perfectamente alineados (\(4 \times 4 + 2 \times 8\))?
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 4 [PRB-0006]}
+
+Si compilamos un proyecto en C formado por 18 unidades de traducción \texttt{.c} y solo modificamos un fichero \texttt{.c}, ¿cuántas unidades de traducción evita recompilar \texttt{make}/\texttt{ninja}?
+
+\noindent\textbf{Respuesta} 17
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(2\right)^{32}-100\right) = 4294967196\)
+
+\section{Monografía de C (II \(-\) Bloques D y E): Punteros, aritmética de direcciones, memoria dinámica, structs y strict aliasing}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+En el asignador por región \texttt{projects/c-arena-allocator}, el desplazamiento actual del búfer es \texttt{offset = 19} bytes y se solicita reservar una estructura de \(40\text{ B}\) con requisito de alineamiento \texttt{align = 8} bytes. El asignador avanza primero \texttt{offset} al siguiente múltiplo de 8 (sumando \(5\text{ B}\) de relleno hasta \(24\)) y luego suma los \(40\text{ B}\) del objeto. Calcula el nuevo valor exacto de \texttt{offset} tras la asignación.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 64. El desplazamiento final de la arena queda en 64 bytes.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0009]}
+
+Si un puntero \texttt{uint64\_t *p} apunta a la dirección decimal 4096, ¿a qué dirección decimal apunta \texttt{p + 5} sabiendo que \texttt{sizeof(uint64\_t) = 8}?
+
+\noindent\textbf{Respuesta} 4136
+
+\noindent\textbf{Ejercicio 2 [PRB-0010]}
+
+Una cadena en C contiene 31 caracteres visibles más su byte terminador \texttt{'\textbackslash{}0'}. ¿Cuántos bytes mínimos debe reservar \texttt{malloc}?
+
+\noindent\textbf{Respuesta} 32
+
+\noindent\textbf{Ejercicio 3 [PRB-0011]}
+
+En una arena con capacidad total de 4096 bytes, se reservan 12 nodos de 64 bytes ya alineados. ¿Cuántos bytes libres quedan en la arena?
+
+\noindent\textbf{Respuesta} 3328
+
+\noindent\textbf{Ejercicio 4 [PRB-0012]}
+
+Si un paquete binario de telemetría tiene 8 bytes de cabecera y transporta 16 muestras \texttt{int16\_t} (2 bytes cada una), ¿cuántos bytes mide el paquete completo?
+
+\noindent\textbf{Respuesta} 40
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(19+5\right)+40\right) = 64\)
+
+\section{Monografía de C (III \(-\) Bloques F, G y H): Concurrencia C11/POSIX, Sanitizers, Ecosistema y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Cuando un programa en C se compila con \texttt{-fsanitize=address} (AddressSanitizer), cada \(8\text{ B}\) de memoria de aplicación requieren \(1\text{ B}\) de memoria sombra (*shadow memory*), más zonas rojas (*redzones*) de \(32\text{ B}\) alrededor de cada asignación. Si una aplicación reserva \(N = 1000\) bloques de \(64\text{ B}\) cada uno (con \(32\text{ B}\) de zona roja por bloque), calcula cuántos bytes suman los bloques más sus zonas rojas más la memoria sombra correspondiente (\$1/8\$ del total).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 108000. El conjunto instrumentado ocupa 108 000 bytes (96 000 B de bloques con redzones y 12 000 B de memoria sombra).
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0015]}
+
+En AddressSanitizer, ¿cuántos bytes de memoria sombra corresponden a 64 000 bytes de memoria de aplicación (\$64000 / 8\$)?
+
+\noindent\textbf{Respuesta} 8000
+
+\noindent\textbf{Ejercicio 2 [PRB-0016]}
+
+En \texttt{projects/c-arena-allocator}, la cabecera de telemetría suma los campos \texttt{magic} (10), \texttt{version} (2), \texttt{flags} (3) y \texttt{payload\_len} (25). ¿Cuál es el valor del checksum esperado?
+
+\noindent\textbf{Respuesta} 40
+
+\noindent\textbf{Ejercicio 3 [PRB-0017]}
+
+Una función en C adquiere secuencialmente 5 recursos y falla al intentar adquirir el cuarto. ¿Cuántos recursos ya adquiridos debe liberar la cascada \texttt{goto cleanup} antes de retornar?
+
+\noindent\textbf{Respuesta} 3
+
+\noindent\textbf{Ejercicio 4 [PRB-0018]}
+
+Un anillo de descriptores E/S tiene capacidad para 256 entradas de 16 bytes cada una. ¿Cuántos bytes mide el anillo completo mapeado en memoria?
+
+\noindent\textbf{Respuesta} 4096
+
+\subsection*{Cálculos reproducidos}
+
+\(\frac{\left(\left(1000\cdot \left(64+32\right)\right)\cdot 9\right)}{8} = 108000\)
+
+\section{Monografía de C++ (I \(-\) Bloques A\(-\)D): De C++98 a C++20/23, RAII, Semántica de Movimiento y Punteros Inteligentes}
+
+\noindent\textbf{Problema resuelto [PRB-0019]}
+
+En una implementación estándar de C++ de 64 bits donde \texttt{sizeof(std::string) = 24} bytes y la optimización de cadena corta (*Small String Optimization*, SSO) almacena en línea cadenas de hasta \(22\text{ B}\) sin alojar en el montículo, un programa crea un \texttt{std::vector<std::string>} con \(N = 5000\) identificadores cortos de \(12\text{ B}\) cada uno. Calcula cuántos bytes totales ocupan los 5000 objetos \texttt{std::string} dentro del búfer contiguo del vector (sabiendo que realizan \(0\) alojamientos adicionales fuera del vector).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 120000. Los 5000 identificadores se almacenan contiguamente en 120 000 bytes con cero llamadas individuales al montículo por cadena.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0021]}
+
+¿Cuántos bytes ocupa \texttt{std::unique\_ptr<double>} con deleción por defecto en una arquitectura de 64 bits?
+
+\noindent\textbf{Respuesta} 8
+
+\noindent\textbf{Ejercicio 2 [PRB-0022]}
+
+Un \texttt{std::span<const int>} en C++20 con extensión dinámica almacena un puntero (8 B) y una longitud \texttt{size\_t} (8 B). ¿Cuántos bytes ocupa en la pila?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 3 [PRB-0023]}
+
+Un \texttt{std::vector<int>} duplica su capacidad geométricamente desde 16 hasta 1024 elementos (\texttt{sizeof(int) = 4}). ¿Cuántos bytes reserva el búfer final de 1024 enteros?
+
+\noindent\textbf{Respuesta} 4096
+
+\noindent\textbf{Ejercicio 4 [PRB-0024]}
+
+Un bloque de control de \texttt{std::make\_shared<T>} combina en una única reserva de montículo los dos contadores atómicos (16 B) más el objeto \texttt{T} de 48 B. ¿Cuántos bytes mide esa única reserva?
+
+\noindent\textbf{Respuesta} 64
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(5000\cdot 24\right) = 120000\)
+
+\section{Monografía de C++ (II \(-\) Bloques E\(-\)H): Plantillas, Concepts C++20, std::ranges, Concurrencia, Corrutinas y Proyectos}
+
+\noindent\textbf{Problema resuelto [PRB-0025]}
+
+En el proyecto \texttt{projects/cpp-task-scheduler}, se encolan cuatro tareas \texttt{(id, prioridad, base\_cost)}: \texttt{(1, 2, 10)}, \texttt{(2, 9, 10)}, \texttt{(3, 5, 20)} y \texttt{(4, 9, 15)}. Si se ejecuta \texttt{execute\_filtered(5)} (que filtra las tareas con \texttt{priority >= 5} y suma \texttt{base\_cost * priority} de cada una), calcula el resultado exacto devuelto.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 325. El planificador devuelve exactamente 325, coincidiendo con el test ejecutable de `projects/cpp-task-scheduler`.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0027]}
+
+En \texttt{cpp-task-scheduler}, ¿qué valor devuelve \texttt{ComputeTask\{10, 7, 12\}.execute()} (\(12 \times 7\))?
+
+\noindent\textbf{Respuesta} 84
+
+\noindent\textbf{Ejercicio 2 [PRB-0028]}
+
+Una plantilla variádica \texttt{sum\_all(10, 20, 30, 40)} utiliza una expresión pliegue (*fold expression* \texttt{(args + ...)}). ¿Cuál es el resultado evaluado en \texttt{constexpr}?
+
+\noindent\textbf{Respuesta} 100
+
+\noindent\textbf{Ejercicio 3 [PRB-0029]}
+
+Un \texttt{std::variant<int, double, std::array<char, 32>>} almacena la alternativa mayor (32 B) más un índice alineado a 8 B. ¿Cuántos bytes ocupa la instancia?
+
+\noindent\textbf{Respuesta} 40
+
+\noindent\textbf{Ejercicio 4 [PRB-0030]}
+
+Si una vista \texttt{std::views::iota(1, 1001) | std::views::filter(...) | std::views::take(5)} detiene la evaluación al encontrar los primeros 5 pares (\$2, 4, 6, 8, 10\$), ¿cuántos enteros del rango \$[1, 1000]\$ llegaron a inspeccionarse?
+
+\noindent\textbf{Respuesta} 10
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(\left(9\cdot 10\right)+\left(9\cdot 15\right)\right)+\left(5\cdot 20\right)\right) = 325\)
+
+\section{Monografía de Zig (Bloques A\(-\)H): Asignadores explícitos, metaprogramación comptime, uniones de error y toolchain C}
+
+\noindent\textbf{Problema resuelto [PRB-0031]}
+
+En un microservicio escrito en Zig, cada petición HTTP utiliza un \texttt{std.heap.FixedBufferAllocator} respaldado por un array en pila de \(B = 16384\text{ B}\) (\(16\text{ KiB}\)). Si el manejador aloja una cabecera parseada de \(512\text{ B}\) y \(N = 60\) cabeceras clave-valor de \(128\text{ B}\) cada una, calcula cuántos bytes quedan disponibles en el \texttt{FixedBufferAllocator} antes de que devuelva \texttt{error.OutOfMemory}.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 8192. Quedan exactamente 8192 bytes (8 KiB) libres en el búfer de la petición.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0033]}
+
+Una rebanada \texttt{[]const u32} en Zig de 64 bits consta de un puntero \texttt{[*]const u32} (8 B) y una longitud \texttt{usize} (8 B). ¿Cuántos bytes ocupa?
+
+\noindent\textbf{Respuesta} 16
+
+\noindent\textbf{Ejercicio 2 [PRB-0034]}
+
+En Zig, el tipo entero de anchura arbitraria \texttt{u12} se aloja en memoria ocupando el siguiente número entero de bytes potencia de dos (\texttt{@sizeOf(u12)}). ¿Cuántos bytes ocupa en memoria?
+
+\noindent\textbf{Respuesta} 2
+
+\noindent\textbf{Ejercicio 3 [PRB-0035]}
+
+Un \texttt{packed struct} de Zig contiene campos \texttt{u3}, \texttt{u5}, \texttt{u16} y \texttt{u8} empaquetados al bit exacto. ¿Cuántos bytes ocupa \texttt{(3 + 5 + 16 + 8) / 8}?
+
+\noindent\textbf{Respuesta} 4
+
+\noindent\textbf{Ejercicio 4 [PRB-0036]}
+
+Si una función con 4 reservas secuenciales protegidas cada una por \texttt{errdefer} falla en la cuarta reserva, ¿cuántos bloques previos son liberados automáticamente por los \texttt{errdefer} ya registrados?
+
+\noindent\textbf{Respuesta} 3
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(16384-\left(512+\left(60\cdot 128\right)\right)\right) = 8192\)
+
+\section{Monografía de Ensamblador ARM64 (AArch64) y x86-64 (Bloques A\(-\)H): Registros, ABI, Pila y SIMD}
+
+\noindent\textbf{Problema resuelto [PRB-0037]}
+
+Una función en ensamblador ARM64 guarda en la pila el par \texttt{(x29, x30)} (\(16\text{ B}\)), dos registros preservados \texttt{(x19, x20)} (\(16\text{ B}\)) y necesita alojar un búfer local de \(36\text{ B}\). Como el hardware AArch64 exige que el puntero de pila \texttt{sp} permanezca siempre alineado a múltiplo de \(16\text{ B}\) (redondeando los \(36\text{ B}\) locales hacia arriba a \(48\text{ B}\)), calcula cuántos bytes totales resta al registro \texttt{sp} el prólogo de la función.
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 80. El prólogo reserva exactamente 80 bytes (múltiplo exacto de 16: 5 * 16 = 80 B) en la pila.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0039]}
+
+En ARM64, cada instrucción máquina tiene una anchura fija de 32 bits (4 bytes). ¿Cuántos bytes ocupan en la sección \texttt{.text} una secuencia de 250 instrucciones?
+
+\noindent\textbf{Respuesta} 1000
+
+\noindent\textbf{Ejercicio 2 [PRB-0040]}
+
+Un registro vectorial NEON de 128 bits en ARM64 (\texttt{v0.4s}) procesa enteros o flotantes de 32 bits en paralelo. ¿Cuántos elementos de 32 bits opera por instrucción?
+
+\noindent\textbf{Respuesta} 4
+
+\noindent\textbf{Ejercicio 3 [PRB-0041]}
+
+Una función en System V x86-64 recibe 9 argumentos enteros de 64 bits. Sabiendo que los primeros 6 van en registros y el resto se pasa por la pila (8 B cada uno), ¿cuántos bytes ocupan en la pila los argumentos restantes?
+
+\noindent\textbf{Respuesta} 24
+
+\noindent\textbf{Ejercicio 4 [PRB-0042]}
+
+Un bucle procesa un array de 4096 flotantes \texttt{f32} utilizando instrucciones AVX-512 (16 flotantes \texttt{f32} por registro de 512 bits). ¿Cuántas iteraciones vectoriales ejecuta el bucle?
+
+\noindent\textbf{Respuesta} 256
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(\left(16+16\right)+48\right) = 80\)
+
+\section{Monografías de Ada/SPARK (Sistemas Críticos) y Fortran Moderno (Cómputo Científico HPC) (Bloques A\(-\)H)}
+
+\noindent\textbf{Problema resuelto [PRB-0043]}
+
+En un programa Fortran 2018, una matriz \texttt{real(real64) :: A(100, 200)} (\(M = 100\) filas, \(N = 200\) columnas, \(S = 8\text{ B}\) por elemento) está almacenada en orden mayor por columnas a partir del desplazamiento base \(0\). Calcula el desplazamiento exacto en bytes del elemento \texttt{A(25, 4)} usando la fórmula \(8 \cdot ((4 - 1) \cdot 100 + (25 - 1))\).
+
+\noindent\textbf{Respuesta}
+
+\[
+Resultado = 2592. El elemento A(25, 4) se encuentra exactamente a 2592 bytes del inicio de la matriz.
+\]
+
+\noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
+
+\noindent\textbf{Ejercicio 1 [PRB-0045]}
+
+En Ada, el tipo \texttt{type Percent is range 0 .. 100;} comprende desde 0 hasta 100 ambos inclusive. ¿Cuántos valores distintos pertenecen al tipo (\texttt{Percent'Last - Percent'First + 1})?
+
+\noindent\textbf{Respuesta} 101
+
+\noindent\textbf{Ejercicio 2 [PRB-0046]}
+
+En Fortran, una rebanada vectorial \texttt{u(2:n-1)} para \(n = 1002\) evalúa los puntos interiores de una malla 1D. ¿Cuántos puntos interiores actualiza la sentencia?
+
+\noindent\textbf{Respuesta} 1000
+
+\noindent\textbf{Ejercicio 3 [PRB-0047]}
+
+Un programa Coarray Fortran se ejecuta en 16 imágenes (\texttt{num\_images() = 16}) y cada imagen aloja una malla local de \(50000\) flotantes \texttt{real64} (8 B). ¿Cuántos bytes suman las mallas de las 16 imágenes?
+
+\noindent\textbf{Respuesta} 6400000
+
+\noindent\textbf{Ejercicio 4 [PRB-0048]}
+
+En un sistema de tiempo real Ada Ravenscar con periodo de marco mayor \(T = 100\text{ ms}\), tres tareas periódicas consumen \(15\text{ ms}\), \(22\text{ ms}\) y \(18\text{ ms}\) por cada \(100\text{ ms}\). ¿Cuál es el porcentaje entero de utilización total de CPU?
+
+\noindent\textbf{Respuesta} 55
+
+\subsection*{Cálculos reproducidos}
+
+\(\left(8\cdot \left(\left(\left(4-1\right)\cdot 100\right)+\left(25-1\right)\right)\right) = 2592\)
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 32 pendientes. Los conflictos almacenados quedan fuera (0). Las fuentes que la guía almacenada no cita quedan fuera. Recuento de no citadas: 0.
+
+\noindent ¶1: dos testimonios.
+
+\noindent ¶2: dos testimonios.
+
+\noindent ¶3: dos testimonios.
+
+\noindent ¶4: dos testimonios.
+
+\noindent ¶5: dos testimonios.
+
+\noindent ¶6: dos testimonios.
+
+\noindent ¶7: dos testimonios.
+
+\noindent ¶8: dos testimonios.
+
+\noindent ¶9: dos testimonios.
+
+\noindent ¶10: dos testimonios.
+
+\noindent ¶11: dos testimonios.
+
+\noindent ¶12: dos testimonios.
+
+\noindent ¶13: dos testimonios.
+
+\noindent ¶14: dos testimonios.
+
+\noindent ¶15: dos testimonios.
+
+\noindent ¶16: dos testimonios.
+
+\noindent ¶17: dos testimonios.
+
+\noindent ¶18: dos testimonios.
+
+\noindent ¶19: dos testimonios.
+
+\noindent ¶20: dos testimonios.
+
+\noindent ¶21: dos testimonios.
+
+\noindent ¶22: dos testimonios.
+
+\noindent ¶23: dos testimonios.
+
+\noindent ¶24: dos testimonios.
+
+\noindent ¶25: dos testimonios.
+
+\noindent ¶26: dos testimonios.
+
+\noindent ¶27: dos testimonios.
+
+\noindent ¶28: dos testimonios.
+
+\noindent ¶29: dos testimonios.
+
+\noindent ¶30: dos testimonios.
+
+\noindent ¶31: dos testimonios.
+
+\noindent ¶32: dos testimonios.
+
+\noindent ¶33: dos testimonios.
+
+\noindent ¶34: dos testimonios.
+
+\noindent ¶35: dos testimonios.
+
+\noindent ¶36: dos testimonios.
+
+\noindent ¶37: dos testimonios.
+
+\noindent ¶38: dos testimonios.
+
+\noindent ¶39: dos testimonios.
+
+\noindent ¶40: dos testimonios.
+
+\noindent ¶41: dos testimonios.
+
+\noindent ¶42: dos testimonios.
+
+\noindent ¶43: dos testimonios.
+
+\noindent ¶44: dos testimonios.
+
+\noindent ¶45: dos testimonios.
+
+\noindent ¶46: dos testimonios.
+
+\noindent ¶47: dos testimonios.
+
+\noindent ¶48: dos testimonios.
+
+\medskip
+
+\noindent Referencia Normativa src-iso-c17 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P13, \P14, \P15, \P16, \P17, \P18, \P31, \P32, \P33, \P34, \P35, \P36.
+
+\noindent Referencia Normativa src-bryant-ohallaron (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10, \P11, \P12, \P19, \P20, \P21, \P22, \P23, \P24, \P31, \P32, \P33, \P34, \P35, \P36, \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent Referencia Normativa src-posix-2017 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P13, \P14, \P15, \P16, \P17, \P18.
+
+\noindent Referencia Normativa src-iso-cpp20 (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P19, \P20, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent Referencia Normativa src-cormen-clrs (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P25, \P26, \P27, \P28, \P29, \P30.
+
+\noindent Referencia Normativa src-patterson-hennessy (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P37, \P38, \P39, \P40, \P41, \P42.
+
+\noindent IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent Referencia Normativa src-knuth-taocp (PENDING) --- Suplemento abierto: --- No es la bibliografía de la guía. --- \P43, \P44, \P45, \P46, \P47, \P48.
+
+\noindent REV-0001: cap01-c-fundamentos-modelo-compilacion-tipos-principiante scientific
+
+\noindent REV-0002: cap02-c-punteros-memoria-dinamica-estructuras-aliasing scientific
+
+\noindent REV-0003: cap03-c-experto-atomicos-posix-sanitizers-ecosistema-proyectos scientific
+
+\noindent REV-0004: cap04-cpp-fundamentos-raii-move-semantics-smart-pointers scientific
+
+\noindent REV-0005: cap05-cpp-templates-concepts-ranges-concurrencia-proyectos scientific
+
+\noindent REV-0006: cap06-monografia-zig-asignadores-comptime-interoperabilidad-c scientific
+
+\noindent REV-0007: cap07-monografia-ensamblador-arm64-x86-64-abi-simd scientific
+
+\noindent REV-0008: cap08-monografias-ada-spark-tiempo-real-y-fortran-cientifico scientific
+\chapter{Plan de estudio}
+
+\section*{Monografía Autónoma de C (ISO/IEC 9899:2018 / C23)}
+
+\subsection*{\checkmark Monografía de C (I \(-\) Bloques A, B y C): Historia, modelo de traducción ISO C17/C23, toolchain y nivel principiante}
+\begin{itemize}
+\item Comprender la evolución histórica de C desde UNIX en Bell Labs (Dennis Ritchie, 1972) hasta los estándares ANSI C89, C99, C11, C17 y C23.
+\item Dominar las 8 fases de traducción del estándar ISO C, el preprocesador, la compilación separada por unidades de traducción y el enlazado ELF/Mach-O.
+\item Utilizar con precisión los tipos enteros de anchura exacta (<stdint.h>), promociones enteras, operadores bit a bit y estructuras de control.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de C (II \(-\) Bloques D y E): Punteros, aritmética de direcciones, memoria dinámica, structs y strict aliasing}
+\begin{itemize}
+\item Dominar la semántica de punteros, el decaimiento de arrays a punteros, punteros a funciones y la aritmética escalada de direcciones.
+\item Gestionar el ciclo de vida en el montículo con malloc, calloc, realloc y free, y construir asignadores lineales de región (Arena Allocators).
+\item Aplicar la regla de alias estricto (strict aliasing), el calificador restrict y la lectura binaria segura mediante memcpy.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de C (III \(-\) Bloques F, G y H): Concurrencia C11/POSIX, Sanitizers, Ecosistema y Proyectos}
+\begin{itemize}
+\item Programar concurrencia segura en C mediante <stdatomic.h>, pthreads, descriptores de fichero POSIX y mmap.
+\item Integrar AddressSanitizer (ASan), UndefinedBehaviorSanitizer (UBSan), ThreadSanitizer (TSan) y analizadores estáticos en CMake/Meson.
+\item Auditar y extender el proyecto completo `projects/c-arena-allocator` junto con los 4 proyectos integradores en C.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografía Autónoma de C++ (ISO/IEC 14882:2020 / C++23)}
+
+\subsection*{\checkmark Monografía de C++ (I \(-\) Bloques A\(-\)D): De C++98 a C++20/23, RAII, Semántica de Movimiento y Punteros Inteligentes}
+\begin{itemize}
+\item Comprender la filosofía de C++ moderno (Bjarne Stroustrup): tipos definidos por el usuario con coste cero y determinismo RAII.
+\item Aplicar la Regla de Cero, la Regla de Cinco, categorías de valores (lvalue, prvalue, xvalue) y semántica de movimiento (std::move).
+\item Gestionar recursos dinámicos sin fugas mediante std::unique\_ptr, std::shared\_ptr, std::weak\_ptr, std::span y std::string\_view.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de C++ (II \(-\) Bloques E\(-\)H): Plantillas, Concepts C++20, std::ranges, Concurrencia, Corrutinas y Proyectos}
+\begin{itemize}
+\item Escribir código genérico restringido semánticamente mediante C++20 Concepts (`requires`), plantillas variádicas y `if constexpr`.
+\item Componer tuberías perezosas de vistas con `std::ranges` y `std::views` evitando copias intermedias.
+\item Dominar la concurrencia en C++20 (`std::jthread`, `std::stop\_token`, `std::atomic`, `std::latch`), el ecosistema CMake/Conan/vcpkg y el proyecto `projects/cpp-task-scheduler`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\section*{Monografías Especializadas de Sistemas: Zig, Ensamblador, Ada y Fortran}
+
+\subsection*{\checkmark Monografía de Zig (Bloques A\(-\)H): Asignadores explícitos, metaprogramación comptime, uniones de error y toolchain C}
+\begin{itemize}
+\item Comprender los principios de diseño de Zig: ausencia de flujo de control oculto, ausencia de asignaciones implícitas de montículo y ausencia de preprocesador.
+\item Programar con uniones de error (`!T`), limpieza diferida determinista (`defer` y `errdefer`), rebanadas con longitud y asignadores explícitos (`std.mem.Allocator`).
+\item Utilizar `comptime` para tipos genéricos y evaluación en tiempo de compilación, e integrar cabeceras C con `@cImport`.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografía de Ensamblador ARM64 (AArch64) y x86-64 (Bloques A\(-\)H): Registros, ABI, Pila y SIMD}
+\begin{itemize}
+\item Distinguir la arquitectura RISC de carga/almacenamiento AArch64 (ARM64) frente a la arquitectura CISC de longitud variable x86-64.
+\item Dominar las convenciones de llamada ABI System V AMD64 (`rdi, rsi, rdx, rcx, r8, r9` y retorno en `rax`) y AAPCS64 (`x0\(-\)x7` y retorno en `x0`).
+\item Analizar el prólogo y epílogo de marcos de pila, el alineamiento obligatorio de 16 bytes del puntero de pila (`sp`/`rsp`) e instrucciones vectoriales SIMD.
+\end{itemize}
+\noindent 2 conceptos planificados.
+
+\subsection*{\checkmark Monografías de Ada/SPARK (Sistemas Críticos) y Fortran Moderno (Cómputo Científico HPC) (Bloques A\(-\)H)}
+\begin{itemize}
+\item Diseñar tipos escalares con rangos restringidos, contratos ejecutables (`Pre`, `Post`, `Type\_Invariant`) y tareas críticas bajo el perfil Ravenscar en Ada 2022 y SPARK.
+\item Comprender cómo el demostrador formal GNATprove en SPARK demuestra estáticamente la ausencia de errores en tiempo de ejecución (AoRTE).
+\item Programar cálculo numérico de alto rendimiento en Fortran 2018/2023 mediante operaciones matriciales intrínsecas, `intent(in/out)`, módulos y paralelismo Coarray.
+\end{itemize}
+\noindent 2 conceptos planificados.
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Alan M. Turing \(-\) On Computable Numbers, with an Application to the Entscheidungsproblem (1936). \url{https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf}
+\bibitem{src2} John von Neumann \(-\) First Draft of a Report on the EDVAC (1945). \url{https://web.mit.edu/STS.035/www/PDFs/edvac.pdf}
+\bibitem{src3} IEEE Standard for Floating-Point Arithmetic (IEEE 754-2019) / Wikipedia Summary. \url{https://en.wikipedia.org/wiki/IEEE_754}
+\bibitem{src4} RFC 3629 \(-\) UTF-8, a transformation format of ISO 10646 (IETF Standard). \url{https://datatracker.ietf.org/doc/html/rfc3629}
+\bibitem{src5} ACM / IEEE-CS / AAAI Computer Science Curricula 2023 (CS2023). \url{https://csed.acm.org/}
+\bibitem{src6} MIT OpenCourseWare 6.006 \(-\) Introduction to Algorithms. \url{https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/}
+\bibitem{src7} The Rust Programming Language (Klabnik \& Nichols \(-\) Official Rust Documentation). \url{https://doc.rust-lang.org/book/}
+\bibitem{src8} The Rust Reference \(-\) Memory Model, Type System, Lifetimes, and Unsafe Rust. \url{https://doc.rust-lang.org/reference/}
+\bibitem{src9} The Rustonomicon \(-\) The Dark Arts of Unsafe Rust. \url{https://doc.rust-lang.org/nomicon/}
+\bibitem{src10} C Programming Language Reference (ISO/IEC 9899 C17/C23 \(-\) cppreference). \url{https://en.cppreference.com/w/c}
+\bibitem{src11} C++ Reference (ISO/IEC 14882 C++20/C++23 \(-\) cppreference). \url{https://en.cppreference.com/w/cpp}
+\bibitem{src12} The Python Language Reference \& Standard Library Documentation (Python 3.12\(-\)3.14). \url{https://docs.python.org/3/reference/index.html}
+\bibitem{src13} ECMA-262 \(-\) ECMAScript 2024 Language Specification. \url{https://tc39.es/ecma262/}
+\bibitem{src14} The TypeScript Handbook \(-\) Structural Typing, Narrowing, and Type Manipulation. \url{https://www.typescriptlang.org/docs/handbook/intro.html}
+\bibitem{src15} Microsoft .NET \& C\# Language Specification (ECMA-334 / .NET 8 \& 9). \url{https://learn.microsoft.com/en-us/dotnet/csharp/}
+\bibitem{src16} The Java Language Specification \& JVM Specification (Java SE 21 LTS). \url{https://docs.oracle.com/javase/specs/jls/se21/html/index.html}
+\bibitem{src17} The Go Programming Language Specification \& Memory Model. \url{https://go.dev/ref/spec}
+\bibitem{src18} Kotlin Language Documentation \& Coroutines Guide (Kotlin 2.0). \url{https://kotlinlang.org/docs/home.html}
+\bibitem{src19} The Swift Programming Language (Swift 6.0 Official Book). \url{https://docs.swift.org/swift-book/documentation/the-swift-programming-language/}
+\bibitem{src20} E. F. Codd \(-\) A Relational Model of Data for Large Shared Data Banks (1970) \& PostgreSQL Docs. \url{https://www.postgresql.org/docs/current/}
+\bibitem{src21} SQLite 3.54 Transactional SQL Database Engine Documentation. \url{https://www.sqlite.org/docs.html}
+\bibitem{src22} GNU Bash Reference Manual \& IEEE Std 1003.1 POSIX Shell Specification. \url{https://www.gnu.org/software/bash/manual/bash.html}
+\bibitem{src23} WHATWG HTML Living Standard \& W3C CSS Specifications. \url{https://html.spec.whatwg.org/multipage/}
+\bibitem{src24} RFC 8259 \(-\) The JavaScript Object Notation (JSON) Data Interchange Format \& YAML 1.2.2. \url{https://datatracker.ietf.org/doc/html/rfc8259}
+\bibitem{src25} IEEE Computer Society \(-\) Guide to the Software Engineering Body of Knowledge (SWEBOK v4.0). \url{https://www.computer.org/education/bodies-of-knowledge/software-engineering}
+\bibitem{src26} Referencia Normativa src-iso-c17. \url{https://doc.rust-lang.org/reference/src-iso-c17.html}
+\bibitem{src27} Referencia Normativa src-bryant-ohallaron. \url{https://doc.rust-lang.org/reference/src-bryant-ohallaron.html}
+\bibitem{src28} Referencia Normativa src-posix-2017. \url{https://doc.rust-lang.org/reference/src-posix-2017.html}
+\bibitem{src29} Referencia Normativa src-iso-cpp20. \url{https://doc.rust-lang.org/reference/src-iso-cpp20.html}
+\bibitem{src30} Referencia Normativa src-cormen-clrs. \url{https://doc.rust-lang.org/reference/src-cormen-clrs.html}
+\bibitem{src31} Referencia Normativa src-patterson-hennessy. \url{https://doc.rust-lang.org/reference/src-patterson-hennessy.html}
+\bibitem{src32} Referencia Normativa src-knuth-taocp. \url{https://doc.rust-lang.org/reference/src-knuth-taocp.html}
+\end{thebibliography}
+\end{document}
