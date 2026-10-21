@@ -36,7 +36,15 @@ política no sustituye las restricciones de acceso de GitHub.
 
 El guard `release-bundle-guard.yml` revisa también las publicaciones manuales:
 si no puede descargar y validar el paquete completo contra el catálogo vigente,
-devuelve la publicación a borrador y deja el trabajo en error. Los flujos deben
-estar fusionados en la rama predeterminada para activarse. Las publicaciones
+devuelve la publicación a borrador y deja el trabajo en error. La política y el verificador deben
+fusionarse en la rama predeterminada para que el guard aplique sus comprobaciones. Las publicaciones
 creadas por el token de Actions no disparan otro flujo; el publicador comprueba
 por sí mismo el ZIP descargado antes de publicar.
+
+El evento de publicación puede cargar un workflow desde la etiqueta antes de
+que la PR esté fusionada. Por eso el guard detecta si la política aún no ha
+existido en la historia de la rama predeterminada: únicamente en esa primera
+instalación omite su actuación para una edición en revisión. El publicador
+sigue comprobando el ZIP descargado. Si la política ya existió y desaparece
+o queda incompleta, el control sigue siendo obligatorio y falla de forma
+visible. Se comprueba esa diferencia con repositorios Git temporales.

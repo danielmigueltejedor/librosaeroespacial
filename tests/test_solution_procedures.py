@@ -108,3 +108,17 @@ def test_variable_names_do_not_resolve_to_sympy_library_functions():
     from solution_steps import scalar_tex
     assert r'\mathrm{trace}' in scalar_tex('trace**2-4*det')
     assert scalar_tex('erfc(x)').startswith(r'\operatorname{erfc}')
+
+
+def test_jet_efficiency_respects_the_requested_negligible_fuel_approximation():
+    file=ROOT/'books/mecanica-fluidos/solutions/procedures.py'
+    spec=importlib.util.spec_from_file_location('fluid_jet_route',file)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    _,rows=numeric_steps(module.ROUTES[9]['steps'],dict(ma=50,mf=1,v0=250,ve=600))
+    values={r['target']:r['value'] for r in rows}
+    assert values['F']==18100 and values['Pu']==4525000
+    assert math.isclose(values['etaApprox'],10/17)
+    assert values['etap']>values['etaApprox']
+    source=(ROOT/'books/mecanica-fluidos/latex/manual.tex').read_text()
+    assert r'\eta_p \approx 0{,}594' not in source
+    assert source.count(r'\eta_p \approx 0{,}5882')>=2

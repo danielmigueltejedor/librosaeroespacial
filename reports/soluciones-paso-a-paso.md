@@ -34,10 +34,9 @@ en los PDF previstos: este número incluye rutas compartidas y no equivale a
 etiquetas y dibujos de las fuentes revisadas; se revisan visualmente páginas
 seleccionadas y sus continuaciones, no todas las páginas.
 
-Pruebas: 81 y siete subtests del repositorio de libros; 329 controles del banco
+Pruebas: 85 y siete subtests del repositorio de libros; 329 controles del banco
 de Fluidos; cero discrepancias relevantes con los valores históricos en los
-registros numéricos reproducidos de bancos nativos y heredados (tolerancia relativa
-5×10⁻⁴ y absoluta 10⁻⁸ para valores históricos redondeados). Los controles
+registros numéricos reproducidos de bancos nativos y heredados. Los controles
 no prueban por sí solos que los modelos representen máquinas reales.
 
 Studium ya no oculta el desarrollo cuando un ejercicio carece de figuras. La
@@ -55,3 +54,16 @@ y bibliográfica independiente. Véanse los informes de programación.
 El paquete completo contiene 32 PDF distribuidos en ocho temas. El inventario
 interior registra hashes, páginas y procedencia. Esta entrega es una revisión
 del mismo modelo autor, sin autoaprobación ni cierre académico independiente.
+
+La pasada ampliada reproduce los 16 grupos de controles existentes y todos pasan.
+Las 2461 páginas de ingeniería pasan el control automático de límites de texto,
+páginas vacías, caracteres de sustitución, destinos internos y composición. Esta
+comprobación no es una revisión visual de cada página. La auditoría bibliográfica
+localiza 350 registros de ingeniería y mantiene 211 pendientes de revisión
+documental; no se convierten en referencias verificadas.
+
+Se corrige la etiqueta de un giro que aparecía como desplazamiento en Estructuras.
+El turborreactor distingue el rendimiento solicitado sin combustible (0,5882)
+del contraste que lo conserva coherentemente (0,5940), y no deduce un consumo
+sin disponer de un modelo térmico. La política de publicación distingue su
+primera instalación de una política previamente instalada que haya desaparecido.

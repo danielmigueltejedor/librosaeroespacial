@@ -49,11 +49,14 @@ for i,m in reversed(list(enumerate(marks))):
  block=re.sub(pattern,'',block,count=1,flags=re.S)
  text=text[:m.start()]+block+text[end:]
 # Correct known conclusions rather than keeping a misleading old result.
-text=text.replace(r'\eta_p \approx 0{,}588',r'\eta_p \approx 0{,}5940')
+text=text.replace(r'\eta_p \approx 0{,}5940',r'\eta_p \approx 0{,}5882')
+text=text.replace(r'\eta_p \approx 0{,}594',r'\eta_p \approx 0{,}5882')
 text=text.replace('la fuerza de pico es varias veces mayor que la media.',
                   'la fuerza de pico no puede deducirse sin conocer la historia temporal del impacto.')
 text=text.replace('Una carrera de unos 1,3 km es del orden de las distancias de despegue reales de aviones de pasillo único; la cifra real es algo mayor porque la fuerza neta disminuye con la velocidad.',
                   'En el modelo dado, la distancia hasta la velocidad de rotación es 1312,5 m. No representa una distancia certificada de despegue: faltan la variación de fuerzas, la rotación y el ascenso posterior.')
+text=text.replace(r'Casi el 41 \% de la energía cinética comunicada al chorro se pierde en la estela; un turbofán que acelerase más aire a menos velocidad conseguiría el mismo empuje con menos combustible.',
+                  r'El apartado (b) solicita omitir el gasto de combustible y da $\eta_p\simeq0.5882$. Conservarlo coherentemente en los dos balances da el contraste $0.5940$. Una comparación de potencia cinética no determina por sí sola el consumo de combustible: también hace falta un modelo de rendimiento térmico.')
 manual.write_text(text)
 report=dict(scope='128 existing manual solutions, algebra and computed intermediate values; authored model review, not independent academic approval',
             reviewer='same authoring model',solutions=len(records),steps=sum(len(r['steps']) for r in records),records=records)

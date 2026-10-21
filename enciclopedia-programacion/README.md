@@ -21,7 +21,7 @@ ejecutan con herramientas reales; los resultados están en
 `reports/learning-verification.json` y el código editable en `learning/`.
 La guía del volumen 0 indica el orden recomendado y los prerrequisitos.
 
-[Descarga de la colección completa organizada por temas](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21).
+[Descarga de la colección completa organizada por temas](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21-r2).
 La revisión curricular independiente de los 75 capítulos sigue pendiente;
 estos recorridos no certifican los capítulos avanzados ni los demás lenguajes.
 

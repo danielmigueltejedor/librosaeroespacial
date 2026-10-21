@@ -2,7 +2,7 @@
 
 Repositorio monorepo para libros universitarios en LaTeX de **Daniel Miguel Tejedor**, de ingeniería, programación y otras materias.
 
-[Las siete asignaturas y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21) · [Auditoría de los veintiún volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
+[Las siete asignaturas y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21-r2) · [Auditoría de los veintiún volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
 
 La colección está construida sobre **AeroBooks**, un framework editorial y de control de calidad diseñado para que crear, revisar y mantener libros académicos a partir de fuentes sea sencillo, reproducible y compatible con flujos de trabajo asistidos por IA.
 

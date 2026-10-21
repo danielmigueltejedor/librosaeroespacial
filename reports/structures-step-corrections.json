@@ -1,0 +1,14 @@
+{
+  "baseline_commit": "d02c9a127e8d98840bf6f35e9374f2674519b140",
+  "scope": "Editorial quantity labels; numeric data and results unchanged; no independent approval",
+  "corrections": [
+    {
+      "problem_id": "PRB-0225",
+      "reason": "A unit virtual moment and the declared radian result determine rotation, not translational displacement.",
+      "before_model": "\\delta = \\int_{0}^{L}\\frac{M(x)\\,\\overline{M}(x)}{E I(x)}\\,\\mathrm{d}x",
+      "after_model": "\\varphi = \\int_{0}^{L}\\frac{M(x)\\,\\overline{M}(x)}{E I(x)}\\,\\mathrm{d}x",
+      "before_step": "Desplazamiento total por suma de tramos",
+      "after_step": "Giro total por suma de tramos"
+    }
+  ]
+}

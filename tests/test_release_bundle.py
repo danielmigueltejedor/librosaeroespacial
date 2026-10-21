@@ -116,3 +116,45 @@ def test_matching_hash_does_not_make_a_placeholder_a_book(collection):
             z.writestr(n,data)
     with pytest.raises(ValueError,match='Invalid PDF'):
         bundle.verify(out,entries)
+
+
+def _run_real_policy_stage(root, review):
+    import os, subprocess, textwrap
+    workflow=(Path(__file__).resolve().parents[1]/'.github/workflows/release-bundle-guard.yml').read_text()
+    stage=workflow.split('      - name: Detect installed default-branch policy\n',1)[1].split('      - uses:',1)[0]
+    shell=textwrap.dedent(stage.split('        run: |\n',1)[1])
+    output=root/'policy-output';output.write_text('')
+    subprocess.run(['bash','-e','-c',shell],cwd=root,env=os.environ|{'GITHUB_OUTPUT':str(output),'REVIEW_RELEASE':str(review).lower()},check=True,capture_output=True)
+    return output.read_text().strip()=='enabled=true'
+
+
+def _policy_git(root,*args):
+    import subprocess
+    subprocess.run(['git','-c','user.name=Policy fixture','-c','user.email=fixture@example.invalid',*args],cwd=root,check=True,capture_output=True)
+
+
+def test_uninstalled_policy_only_defers_review_releases(tmp_path):
+    _policy_git(tmp_path,'init','-q')
+    _policy_git(tmp_path,'commit','--allow-empty','-qm','Initial fixture')
+    assert not _run_real_policy_stage(tmp_path,True)
+    assert _run_real_policy_stage(tmp_path,False)
+
+
+def test_deleted_installed_policy_does_not_disable_the_guard(tmp_path):
+    _policy_git(tmp_path,'init','-q')
+    (tmp_path/'scripts').mkdir()
+    files=[tmp_path/'release-bundle.json',tmp_path/'scripts/package-release-bundle.py']
+    for p in files:p.write_text('fixture')
+    _policy_git(tmp_path,'add','.')
+    _policy_git(tmp_path,'commit','-qm','Install fixture policy')
+    assert _run_real_policy_stage(tmp_path,True)
+    for p in files:p.unlink()
+    _policy_git(tmp_path,'commit','-am','Remove fixture policy','-q')
+    assert _run_real_policy_stage(tmp_path,True)
+
+
+def test_incomplete_policy_fails_closed_even_during_first_install(tmp_path):
+    _policy_git(tmp_path,'init','-q')
+    _policy_git(tmp_path,'commit','--allow-empty','-qm','Initial fixture')
+    (tmp_path/'release-bundle.json').write_text('{}')
+    assert _run_real_policy_stage(tmp_path,True)
