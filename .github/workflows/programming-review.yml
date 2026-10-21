@@ -51,6 +51,7 @@ jobs:
           python enciclopedia-programacion/tools/check_integral.py
           python enciclopedia-programacion/tools/render_specimen.py
           python enciclopedia-programacion/tools/check_literal_fidelity.py
+          python enciclopedia-programacion/tools/check_prose_formatting.py
       - name: Upload review evidence (not an academic release)
         uses: actions/upload-artifact@v4
         with:
@@ -61,4 +62,5 @@ jobs:
             enciclopedia-programacion/reports/integral-navigation.json
             enciclopedia-programacion/reports/editorial-specimen.json
             enciclopedia-programacion/reports/literal-fidelity.json
+            enciclopedia-programacion/reports/prose-formatting.json
             enciclopedia-programacion/reports/learning-verification.json

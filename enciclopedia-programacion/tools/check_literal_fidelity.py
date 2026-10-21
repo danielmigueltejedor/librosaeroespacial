@@ -58,6 +58,8 @@ def main():
         lines.extend([f'BEGINFIXTURE{i}',*emit_prose(f'```{lang}\n{source}\n```'),f'ENDFIXTURE{i}'])
     inline=r'a_b%#$&{}^~\path/file <= >= "quoted"'
     lines += ['BEGININLINE',render_text_run('`'+inline+'`'),'ENDINLINE',r'\end{document}']
+    emphasis = '**Rust (`vol03`)**: *data races*. **$2\\text{ KiB}$**. **`0` significa éxito**. **`Monad`**.'
+    lines[-1:-1] = ['BEGINEMPHASIS', *emit_prose(emphasis), 'ENDEMPHASIS']
     checks=[]
     with tempfile.TemporaryDirectory(prefix='.literal-',dir=ROOT) as temporary:
         tex=Path(temporary)/'literal.tex';tex.write_text('\n'.join(lines))
@@ -69,6 +71,11 @@ def main():
             checks.append({'fixture':i,'matches_without_layout_whitespace':normalize(actual)==normalize(source),'expected':source,'actual':actual.strip()})
         actual=result.split('BEGININLINE',1)[1].split('ENDINLINE',1)[0]
         checks.append({'fixture':'inline','matches_without_layout_whitespace':normalize(actual)==normalize(inline),'expected':inline,'actual':actual.strip()})
+        actual=result.split('BEGINEMPHASIS',1)[1].split('ENDEMPHASIS',1)[0]
+        expected='Rust (vol03): data races. 2 KiB. 0 significa éxito. Monad.'
+        checks.append({'fixture':'emphasis_across_literals_and_math',
+                       'matches_without_layout_whitespace':normalize(actual)==normalize(expected),
+                       'expected':expected,'actual':actual.strip()})
         log=tex.with_suffix('.log').read_text(errors='replace')
         if 'Overfull' in log or 'Missing character:' in log:raise RuntimeError('Fixture composition failure')
         shutil.copyfile(tex.with_suffix('.pdf'),ROOT/'dist/review/literal-fidelity-specimen.pdf')

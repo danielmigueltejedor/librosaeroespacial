@@ -11,6 +11,15 @@ TOOLS = ROOT / 'enciclopedia-programacion/tools'
 sys.path.insert(0, str(TOOLS))
 import build_collection as pipeline
 import repair_evidence
+import check_prose_formatting
+
+
+def test_prose_formatting_spans_literals_and_preserves_program_operators():
+    assert check_prose_formatting.leaked_markers('**Rust (`vol03`)**: *data races*.') == []
+    assert check_prose_formatting.leaked_markers('**`0` significa éxito**') == []
+    assert check_prose_formatting.leaked_markers('**ρ = m/V** y **snake_case_name**') == []
+    assert check_prose_formatting.leaked_markers('`2**3` y `**kwargs`\n\n```python\nprint(2**3)\n```') == []
+    assert check_prose_formatting.leaked_markers('Una **negrita sin cierre')
 
 
 def test_regeneration_refuses_existing_journals_without_touching_them(tmp_path, monkeypatch):

@@ -44,6 +44,8 @@ jobs:
           python scripts/check-solution-builds.py
           python enciclopedia-programacion/tools/build_collection.py all --review-copy
           python enciclopedia-programacion/tools/check_integral.py
+          python enciclopedia-programacion/tools/check_prose_formatting.py
+          python enciclopedia-programacion/tools/check_literal_fidelity.py
       - name: Check packaging contracts and build complete ZIP
         run: |
           python -m pytest -q tests/test_release_bundle.py
