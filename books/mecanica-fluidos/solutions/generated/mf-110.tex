@@ -1,0 +1,85 @@
+\noindent\textbf{Elección del procedimiento.} Escribimos $A(t)=K(1+t/\tau)$, con $A\prime=K/\tau$. Entonces $u=A(x^2+2xy)$ y $v=-A(2xy+y^2)$. La continuidad cancela $A(2x+2y)$ con su opuesto. La derivada local usa $A\prime$ y la convectiva usa el gradiente espacial multiplicado por $(u,v)$.
+
+\begin{enumerate}
+
+\item Calcular el factor temporal en el instante de evaluación.
+
+\[\fitmath{\mathrm{At}=K\cdot \left(1+\frac{t}{\tau}\right)}\]
+
+\[\fitmath{\mathrm{At}=(1)\cdot \left(1+\frac{(2)}{(2)}\right)\approx 2\,\mathrm{1/(m\,s)}}\]
+
+\item Derivar el factor temporal manteniendo posición fija.
+
+\[\fitmath{\mathrm{Adot}=\frac{K}{\tau}}\]
+
+\[\fitmath{\mathrm{Adot}=\frac{(1)}{(2)}\approx 0.5\,\mathrm{1/(m\,s^{2}}}\]
+
+\item Derivar la función de corriente respecto a $y$.
+
+\[\fitmath{u=\mathrm{At}\cdot \left({x}^{2}+2\cdot x\cdot y\right)}\]
+
+\[\fitmath{u=(2)\cdot \left({(1)}^{2}+2\cdot (1)\cdot (1)\right)\approx 6\,\mathrm{m/s}}\]
+
+\item Derivar respecto a $x$ y cambiar signo.
+
+\[\fitmath{v=-\mathrm{At}\cdot \left(2\cdot x\cdot y+{y}^{2}\right)}\]
+
+\[\fitmath{v=-(2)\cdot \left(2\cdot (1)\cdot (1)+{(1)}^{2}\right)\approx -6\,\mathrm{m/s}}\]
+
+\item Componente local horizontal.
+
+\[\fitmath{\mathrm{alx}=\mathrm{Adot}\cdot \left({x}^{2}+2\cdot x\cdot y\right)}\]
+
+\[\fitmath{\mathrm{alx}=(0.5)\cdot \left({(1)}^{2}+2\cdot (1)\cdot (1)\right)\approx 1.5\,\mathrm{m/s^{2}}}\]
+
+\item Componente local vertical.
+
+\[\fitmath{\mathrm{aly}=-\mathrm{Adot}\cdot \left(2\cdot x\cdot y+{y}^{2}\right)}\]
+
+\[\fitmath{\mathrm{aly}=-(0.5)\cdot \left(2\cdot (1)\cdot (1)+{(1)}^{2}\right)\approx -1.5\,\mathrm{m/s^{2}}}\]
+
+\item Componente convectiva $uu_x+vu_y$.
+
+\[\fitmath{\mathrm{acx}=u\cdot \mathrm{At}\cdot \left(2\cdot x+2\cdot y\right)+v\cdot \mathrm{At}\cdot 2\cdot x}\]
+
+\[\fitmath{\mathrm{acx}=(6)\cdot (2)\cdot \left(2\cdot (1)+2\cdot (1)\right)+(-6)\cdot (2)\cdot 2\cdot (1)\approx 24\,\mathrm{m/s^{2}}}\]
+
+\item Componente convectiva $uv_x+vv_y$.
+
+\[\fitmath{\mathrm{acy}=-u\cdot \mathrm{At}\cdot 2\cdot y-v\cdot \mathrm{At}\cdot \left(2\cdot x+2\cdot y\right)}\]
+
+\[\fitmath{\mathrm{acy}=-(6)\cdot (2)\cdot 2\cdot (1)-(-6)\cdot (2)\cdot \left(2\cdot (1)+2\cdot (1)\right)\approx 24\,\mathrm{m/s^{2}}}\]
+
+\item Sumar las partes horizontalmente.
+
+\[\fitmath{\mathrm{ax}=\mathrm{alx}+\mathrm{acx}}\]
+
+\[\fitmath{\mathrm{ax}=(1.5)+(24)\approx 25.5\,\mathrm{m/s^{2}}}\]
+
+\item Sumar las partes verticalmente.
+
+\[\fitmath{\mathrm{ay}=\mathrm{aly}+\mathrm{acy}}\]
+
+\[\fitmath{\mathrm{ay}=(-1.5)+(24)\approx 22.5\,\mathrm{m/s^{2}}}\]
+
+\item Fuerza neta horizontal por volumen.
+
+\[\fitmath{\mathrm{fx}=\rho\cdot \mathrm{ax}}\]
+
+\[\fitmath{\mathrm{fx}=(1000)\cdot (25.5)\approx 25500\,\mathrm{N/m^{3}}}\]
+
+\item Fuerza neta vertical por volumen.
+
+\[\fitmath{\mathrm{fy}=\rho\cdot \mathrm{ay}}\]
+
+\[\fitmath{\mathrm{fy}=(1000)\cdot (22.5)\approx 22500\,\mathrm{N/m^{3}}}\]
+
+\item Obtener módulo del vector resultante.
+
+\[\fitmath{\mathrm{fmag}=\sqrt{{\mathrm{fx}}^{2}+{\mathrm{fy}}^{2}}}\]
+
+\[\fitmath{\mathrm{fmag}=\sqrt{{(25500)}^{2}+{(22500)}^{2}}\approx 34007.35\,\mathrm{N/m^{3}}}\]
+
+\end{enumerate}
+
+\noindent\textbf{Contraste y comparación.} Si se congela el campo con la misma velocidad instantánea, desaparece la aceleración local, pero permanece la convectiva $(24,24)\,\mathrm{m/s^2}$. No se anula toda la aceleración.

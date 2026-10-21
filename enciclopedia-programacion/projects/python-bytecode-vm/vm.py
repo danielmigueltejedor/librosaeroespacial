@@ -30,6 +30,7 @@ class BytecodeCompiler(ast.NodeVisitor):
         self.code: list[Instruction] = []
 
     def compile_source(self, source: str) -> list[Instruction]:
+        self.code = []
         tree = ast.parse(source, mode="exec")
         for stmt in tree.body:
             if isinstance(stmt, ast.Assign):
@@ -44,8 +45,21 @@ class BytecodeCompiler(ast.NodeVisitor):
         self.code.append(Instruction(OpCode.RETURN_VALUE))
         return list(self.code)
 
+    def generic_visit(self, node: ast.AST) -> None:
+        raise TypeError(f"Expresión no soportada: {type(node).__name__}")
+
+    def visit_UnaryOp(self, node: ast.UnaryOp) -> None:
+        if isinstance(node.op, ast.UAdd):
+            self.visit(node.operand)
+        elif isinstance(node.op, ast.USub):
+            self.code.append(Instruction(OpCode.LOAD_CONST, 0))
+            self.visit(node.operand)
+            self.code.append(Instruction(OpCode.SUB))
+        else:
+            raise TypeError(f"Operador unario no soportado: {type(node.op).__name__}")
+
     def visit_Constant(self, node: ast.Constant) -> None:
-        if not isinstance(node.value, (int, float)):
+        if isinstance(node.value, bool) or not isinstance(node.value, (int, float)):
             raise TypeError("Solo se admiten constantes numéricas")
         self.code.append(Instruction(OpCode.LOAD_CONST, node.value))
 

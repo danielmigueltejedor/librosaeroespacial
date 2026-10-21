@@ -1,0 +1,43 @@
+\textbf{Desarrollo de las magnitudes intermedias.} De $dm/dt=-c_TD=-c_Tmg_0/(L/D)$, separar variables da $E=(L/D)\ln(m_i/m_f)/(g_0c_T)$. Con CL fijo, $V=\sqrt{2g_0m/(\rho SC_L)}$; sustituir en $dx=Vdt$ deja integrar $m^{-1/2}$, cuya primitiva es $2\sqrt m$. Por eso $R=K_m(\sqrt{m_i}-\sqrt{m_f})$, con $K_m=2(L/D)\sqrt{2g_0/(\rho SC_L)}/(g_0c_T)$. Aquí se fija duración y se invierte la integral de tiempo: $m_f=m_i\exp[-g_0c_TE/(L/D)]$. Para autonomía de reactor se maximiza $L/D$ y se usa $C_L=\sqrt{C_{D0}/k}$.\begin{enumerate}
+
+\item Óptimo de autonomía del reactor.
+
+\[\fitmath{C_L=\sqrt{\frac{0.024}{0.044}}\approx 0.7385489\,}\]
+
+\item Eficiencia correspondiente.
+
+\[\fitmath{\mathrm{LD}=\frac{C_L}{0.024+0.044\cdot {C_L}^{2}}}\]
+
+\[\fitmath{\mathrm{LD}=\frac{(0.7385489459)}{0.024+0.044\cdot {(0.7385489459)}^{2}}\approx 15.38644\,}\]
+
+\item Invertir el logaritmo de la ley temporal.
+
+\[\fitmath{\mathrm{mf}=11400\cdot \exp\left(\frac{-9.80665\cdot 1.68\times10^{-5}\cdot 2700}{\mathrm{LD}}\right)}\]
+
+\[\fitmath{\mathrm{mf}=11400\cdot \exp\left(\frac{-9.80665\cdot 1.68\times10^{-5}\cdot 2700}{(15.38643637)}\right)\approx 11075.14\,\mathrm{kg}}\]
+
+\item Evaluar el coeficiente de distancia.
+
+\[\fitmath{\mathrm{Km}=\frac{2\cdot \mathrm{LD}}{9.80665\cdot 1.68\times10^{-5}}\cdot \sqrt{\frac{2\cdot 9.80665}{0.623843718\cdot 52\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Km}=\frac{2\cdot (15.38643637)}{9.80665\cdot 1.68\times10^{-5}}\cdot \sqrt{\frac{2\cdot 9.80665}{0.623843718\cdot 52\cdot (0.7385489459)}}\approx 168999\,\mathrm{m/kg^{.5}}}\]
+
+\item Integrar la velocidad que disminuye con la masa.
+
+\[\fitmath{R=\mathrm{Km}\cdot \left(\sqrt{11400}-\sqrt{\mathrm{mf}}\right)}\]
+
+\[\fitmath{R=(168999.0265)\cdot \left(\sqrt{11400}-\sqrt{(11075.13882)}\right)\approx 258956.7\,\mathrm{m}}\]
+
+\item Velocidad inicial.
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot 11400\cdot 9.80665}{0.623843718\cdot 52\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot 11400\cdot 9.80665}{0.623843718\cdot 52\cdot (0.7385489459)}}\approx 96.60476\,\mathrm{m/s}}\]
+
+\item Velocidad final.
+
+\[\fitmath{\mathrm{Vf}=\sqrt{\frac{2\cdot \mathrm{mf}\cdot 9.80665}{0.623843718\cdot 52\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Vf}=\sqrt{\frac{2\cdot (11075.13882)\cdot 9.80665}{0.623843718\cdot 52\cdot (0.7385489459)}}\approx 95.21836\,\mathrm{m/s}}\]
+
+\end{enumerate}

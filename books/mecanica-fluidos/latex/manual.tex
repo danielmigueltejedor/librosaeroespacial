@@ -697,15 +697,10 @@ s = \frac{m V^{2}}{2F}
 \item avión tratado como partícula
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Aceleración a = F/m
-\item
-Tiempo hasta la velocidad de rotación t = V/a
-\item
-Longitud recorrida \(s = m V^2/(2F)\)
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-001}
+\input{../solutions/generated/mf-001.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -713,28 +708,17 @@ Longitud recorrida \(s = m V^2/(2F)\)
 \frac{\left(\left(75\,\mathrm{m}\,\mathrm{s}^{-1}\right)\right)^{2} \left(70000\,\mathrm{kg}\right)}{2 \left(150000\,\mathrm{N}\right)}
 \]
 
-\noindent\textbf{Resultado}
-
-\[
-s \approx 1{,}31\times 10^{3}\ \mathrm{m}\quad (t = 35{,}0\ \mathrm{s},\ a \approx 2{,}14\ \mathrm{m/s^{2}})
-\]
+\noindent\textbf{Resultado}\quad\(a=\frac{15}{7}\,\mathrm{m/s^2},\quad t=35\,\mathrm{s},\quad s=1312.5\,\mathrm{m}.\)
 
 \noindent\textbf{Interpretación}
-Una carrera de unos 1,3 km es del orden de las distancias de despegue reales de aviones de pasillo único; la cifra real es algo mayor porque la fuerza neta disminuye con la velocidad.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.14286$ — reproducido
-\item Paso 2: $35$ — reproducido
-\item Paso 3: $1312.5$ — reproducido
-\end{itemize}
+En el modelo dado, la distancia hasta la velocidad de rotación es 1312,5 m. No representa una distancia certificada de despegue: faltan la variación de fuerzas, la rotación y el ascenso posterior.
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 \noindent\textbf{Limitaciones}
 \begin{itemize}
-\item el modelo de fuerza constante sobrestima la aceleración a alta velocidad
-\item no incluye la fase de rotación ni el ascenso hasta 35 ft
+\item el modelo de fuerza constante ignora la variación real de la fuerza neta con la velocidad
+\item no incluye la fase de rotación ni el ascenso posterior
 \end{itemize}
 
 \noindent\textbf{Errores frecuentes}
@@ -1162,15 +1146,10 @@ N = \frac{60}{2\pi}\sqrt{\frac{n g}{R}}
 \item se desprecia la componente de la gravedad en el plano de giro
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad angular $\Omega = (n g / R)^{1/2}$
-\item
-Aceleración de Coriolis 2 Omega v
-\item
-Velocidad de giro en rpm
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-002}
+\input{../solutions/generated/mf-002.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -1186,13 +1165,6 @@ N \approx 23{,}6\ \mathrm{rpm},\qquad a_{\mathrm{Cor}} = 2\Omega v \approx 2{,}4
 
 \noindent\textbf{Interpretación}
 La aceleración de Coriolis de un simple giro de cabeza es del orden de un cuarto de g y actúa sobre el oído interno de forma inesperada, lo que explica la desorientación característica de las centrifugadoras de radio corto.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.47614$ — reproducido
-\item Paso 2: $2.47614$ — reproducido
-\item Paso 3: $23.6454$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -1662,17 +1634,10 @@ potencia disipada en el cojinete
 \item viscosidad uniforme (sin calentamiento)
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad angular omega = 2 pi N / 60
-\item
-Esfuerzo cortante tau = mu omega R / c
-\item
-Par resistente M = tau (2 pi R L) R
-\item
-Potencia disipada
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-003}
+\input{../solutions/generated/mf-003.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -1688,14 +1653,6 @@ Potencia disipada
 
 \noindent\textbf{Interpretación}
 Más de 200 W se convierten en calor en un único cojinete; por eso los cojinetes de turbomáquinas necesitan circuitos de refrigeración del aceite, y la viscosidad real disminuye al calentarse.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $314.159$ — reproducido
-\item Paso 2: $2356.19$ — reproducido
-\item Paso 3: $0.74022$ — reproducido
-\item Paso 4: $232.547$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -2245,15 +2202,10 @@ a(L) = \frac{2 U_0^{2}}{L}
 \item campo de velocidad lineal en x
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad a la salida
-\item
-Tiempo de tránsito t = (L/U0) ln 2
-\item
-Aceleración a la salida
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-004}
+\input{../solutions/generated/mf-004.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -2269,13 +2221,6 @@ a(L) = 400\ \mathrm{m/s^{2}}\ (\approx 41\,g),\qquad t \approx 34{,}7\ \mathrm{m
 
 \noindent\textbf{Interpretación}
 La partícula duplica su velocidad en unos 35 ms; la aceleración es enteramente convectiva: la partícula acelera porque se desplaza hacia zonas donde el campo, fijo en el tiempo, tiene mayor velocidad.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $20$ — reproducido
-\item Paso 2: $0.0346574$ — reproducido
-\item Paso 3: $400$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -2913,15 +2858,10 @@ h_{cp} = h_c + \frac{H^{2}}{12\,h_c},\quad h_c = h_t + \frac{H}{2}
 \item la presión atmosférica actúa por ambas caras y se cancela
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Profundidad del centroide
-\item
-Fuerza hidrostática F = rho \(g h_c A\)
-\item
-Profundidad del centro de presiones
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-005}
+\input{../solutions/generated/mf-005.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -2937,13 +2877,6 @@ F \approx 1{,}47\times 10^{5}\ \mathrm{N},\qquad h_{cp} = 2{,}80\ \mathrm{m}
 
 \noindent\textbf{Interpretación}
 El centro de presiones está 0,30 m por debajo del centroide; la diferencia disminuiría si la ventana estuviera más profunda, porque la distribución de presiones se haría más uniforme.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.5$ — reproducido
-\item Paso 2: $147150$ — reproducido
-\item Paso 3: $2.8$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -3801,19 +3734,10 @@ caída de presión en el tramo
 \item tubo recto y liso
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad media
-\item
-Número de Reynolds
-\item
-Longitud de entrada
-\item
-Potencia disipada
-\item
-Caída de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-006}
+\input{../solutions/generated/mf-006.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -3829,15 +3753,6 @@ Caída de presión
 
 \noindent\textbf{Interpretación}
 El flujo es laminar, pero la longitud de entrada (unos 0,47 m) es el 16 \% del tramo: la caída real será algo mayor que la calculada. Con aceite frío, más viscoso, la caída aumentaría proporcionalmente a la viscosidad.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $5.30516$ — reproducido
-\item Paso 2: $1352.82$ — reproducido
-\item Paso 3: $0.466722$ — reproducido
-\item Paso 4: $42.4413$ — reproducido
-\item Paso 5: $282942$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -4519,19 +4434,10 @@ P = \tfrac12\rho V^{3} S\left[C_{D0} + K\left(\frac{2 m g}{\rho V^{2} S}\right)^
 \item atmósfera estándar a nivel del mar
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad de pérdida
-\item
-Coeficiente de sustentación a 55 m/s
-\item
-Coeficiente de resistencia
-\item
-Resistencia
-\item
-Potencia necesaria
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-007}
+\input{../solutions/generated/mf-007.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -4547,15 +4453,6 @@ V_s \approx 26{,}1\ \mathrm{m/s},\quad C_L \approx 0{,}360,\quad D \approx 1{,}0
 
 \noindent\textbf{Interpretación}
 Unos 75 CV de potencia útil, coherentes con los motores de 120 a 180 CV de este tipo de avionetas una vez descontado el rendimiento de la hélice. La relación L/D a esa velocidad es 0,3595/0,03398, unos 10,6.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $26.0712$ — reproducido
-\item Paso 2: $0.359514$ — reproducido
-\item Paso 3: $0.0339795$ — reproducido
-\item Paso 4: $1019.91$ — reproducido
-\item Paso 5: $56095.3$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -5055,17 +4952,10 @@ factor de amortiguamiento
 \item sin efectos de tensión superficial
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Pulsación natural
-\item
-Periodo sin amortiguamiento
-\item
-Número de Womersley
-\item
-Factor de amortiguamiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-008}
+\input{../solutions/generated/mf-008.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -5081,14 +4971,6 @@ Factor de amortiguamiento
 
 \noindent\textbf{Interpretación}
 La estimación sugiere un manómetro bien amortiguado, pero con Wo del orden de 2,5 el perfil no es parabólico y la estimación cuasiestacionaria es solo indicativa: el amortiguamiento real será algo mayor.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $6.26418$ — reproducido
-\item Paso 2: $1.00303$ — reproducido
-\item Paso 3: $2.49412$ — reproducido
-\item Paso 4: $0.643021$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -5676,15 +5558,10 @@ F = (\dot m_a + \dot m_f)\,v_e - \dot m_a v_0
 \item volumen de control en ejes ligados al motor
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Rendimiento propulsivo
-\item
-Potencia propulsiva útil
-\item
-Empuje neto
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-009}
+\input{../solutions/generated/mf-009.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -5695,18 +5572,11 @@ Empuje neto
 \noindent\textbf{Resultado}
 
 \[
-F \approx 18{,}1\ \mathrm{kN},\quad \eta_p \approx 0{,}588,\quad P_u \approx 4{,}5\ \mathrm{MW}
+F \approx 18{,}1\ \mathrm{kN},\quad \eta_p \approx 0{,}5882,\quad P_u \approx 4{,}5\ \mathrm{MW}
 \]
 
 \noindent\textbf{Interpretación}
-Casi el 41 \% de la energía cinética comunicada al chorro se pierde en la estela; un turbofán que acelerase más aire a menos velocidad conseguiría el mismo empuje con menos combustible.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.588235$ — reproducido
-\item Paso 2: $4525000$ — reproducido
-\item Paso 3: $18100$ — reproducido
-\end{itemize}
+El apartado (b) solicita omitir el gasto de combustible y da $\eta_p\simeq0.5882$. Conservarlo coherentemente en los dos balances da el contraste $0.5940$. Una comparación de potencia cinética no determina por sí sola el consumo de combustible: también hace falta un modelo de rendimiento térmico.
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -6366,17 +6236,10 @@ p_m = p_0\,\frac{V_p L_p}{V_m L_m}
 \item gas ideal: densidad proporcional a la presión
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds de vuelo
-\item
-Velocidad necesaria en túnel atmosférico
-\item
-Mach del modelo a 80 m/s
-\item
-Presión de operación del túnel
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-010}
+\input{../solutions/generated/mf-010.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -6392,14 +6255,6 @@ Presión de operación del túnel
 
 \noindent\textbf{Interpretación}
 Un túnel atmosférico necesitaría flujo supersónico para igualar \(\mathrm{Re}\), lo que destruiría la semejanza de Mach. Al presurizar hasta casi 9 atm y mantener la temperatura se iguala el número de Reynolds, pero \emph{no} el número de Mach: \(\mathrm{Ma}_m=80/340\approx0{,}235\) frente a \(\mathrm{Ma}_p=70/340\approx0{,}206\), una discrepancia relativa cercana al 14 \%. Para este ejemplo subsónico de Mach pequeño puede admitirse una aproximación de flujo incompresible, pero no debe afirmarse una similitud dinámica exacta en ambos números.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.19803\times 10^{7}$ — reproducido
-\item Paso 2: $700$ — reproducido
-\item Paso 3: $0.235294$ — reproducido
-\item Paso 4: $886594$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -6942,15 +6797,10 @@ u_{\theta,\max} = \frac{\Gamma_C}{2\pi a}
 \item vorticidad uniforme en el núcleo y nula fuera de él
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Vorticidad en el núcleo
-\item
-Velocidad a 30 m del eje
-\item
-Velocidad tangencial máxima
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-011}
+\input{../solutions/generated/mf-011.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -6966,13 +6816,6 @@ Velocidad tangencial máxima
 
 \noindent\textbf{Interpretación}
 Una velocidad tangencial de 21 m/s en un radio de pocos metros puede inducir en un avión ligero un balance mayor que el que pueden compensar sus alerones: de ahí las separaciones mínimas por estela turbulenta entre aviones.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $14.1471$ — reproducido
-\item Paso 2: $2.12207$ — reproducido
-\item Paso 3: $21.2207$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -7866,15 +7709,10 @@ V = \sqrt{\frac{2\,\Delta p}{\rho}}
 \item densidad local conocida
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad indicada (densidad de nivel del mar)
-\item
-Número de Mach
-\item
-Velocidad verdadera
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-012}
+\input{../solutions/generated/mf-012.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -7890,13 +7728,6 @@ V_{\mathrm{verdadera}} \approx 87{,}7\ \mathrm{m/s},\quad V_{\mathrm{indicada}} 
 
 \noindent\textbf{Interpretación}
 La velocidad indicada es un 14 \% menor que la verdadera. Lo que el piloto controla es la indicada, porque es la que fija la presión dinámica y, con ella, la sustentación y la velocidad de pérdida.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $75.5929$ — reproducido
-\item Paso 2: $0.26704$ — reproducido
-\item Paso 3: $87.7492$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -8389,17 +8220,10 @@ esfuerzo viscoso cortante tau\(_xy\)
 \item flujo incompresible (se comprueba)
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Divergencia
-\item
-Vorticidad omega\(_z\)
-\item
-Esfuerzo normal viscoso tau\(_xx\)
-\item
-Esfuerzo cortante viscoso tau\(_xy\)
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-013}
+\input{../solutions/generated/mf-013.tex}
 
 \noindent\textbf{Resultado}
 
@@ -8409,14 +8233,6 @@ Esfuerzo cortante viscoso tau\(_xy\)
 
 \noindent\textbf{Interpretación}
 Esfuerzos de milipascales, minúsculos frente a la presión atmosférica: en el aire la viscosidad solo importa donde los gradientes de velocidad son enormes, como en la capa límite.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0$ — reproducido
-\item Paso 2: $-160$ — reproducido
-\item Paso 3: $0.0017894$ — reproducido
-\item Paso 4: $0.00143152$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -9231,15 +9047,10 @@ t_{1/2} = \frac{\ln 2}{4\nu k_w^{2}},\quad k_w = \frac{2\pi}{\lambda_w}
 \item flujo laminar sin forzamiento
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de onda
-\item
-Tiempo de semidecaimiento en aire con 0,05 m
-\item
-Tiempo de semidecaimiento en agua
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-014}
+\input{../solutions/generated/mf-014.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -9255,13 +9066,6 @@ k_w \approx 62{,}8\ \mathrm{m^{-1}},\quad t_{1/2} \approx 43{,}6\ \mathrm{s}\ \t
 
 \noindent\textbf{Interpretación}
 El tiempo de decaimiento escala como el cuadrado de la longitud de onda dividido por la viscosidad cinemática: es la escala difusiva del capítulo 13. Los torbellinos pequeños se disipan mucho más deprisa que los grandes.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $62.8319$ — reproducido
-\item Paso 2: $0.75125$ — reproducido
-\item Paso 3: $43.5889$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -9760,15 +9564,10 @@ q = \frac{g\sin\theta\,h_f^{3}}{3\nu}
 \item agua newtoniana
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad en la superficie libre
-\item
-Número de Reynolds de la película
-\item
-Caudal por unidad de anchura
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-015}
+\input{../solutions/generated/mf-015.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -9784,13 +9583,6 @@ u_s \approx 0{,}219\ \mathrm{m/s},\quad q \approx 4{,}38\times 10^{-5}\ \mathrm{
 
 \noindent\textbf{Interpretación}
 La película es laminar, aunque a este número de Reynolds suele presentar ondas superficiales; la velocidad media es dos tercios de la superficial. Con viento sobre el parabrisas aparecería además un esfuerzo en la superficie libre.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.219191$ — reproducido
-\item Paso 2: $43.5334$ — reproducido
-\item Paso 3: $4.38381\times 10^{-5}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -10270,15 +10062,10 @@ V_g = \frac{1}{\rho f}\frac{\Delta p}{\Delta n}
 \item densidad uniforme en la región
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Parámetro de Coriolis
-\item
-Número de Rossby
-\item
-Viento geostrófico
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\phantomsection\label{solution:mf-016}
+\input{../solutions/generated/mf-016.tex}
 
 \noindent\textbf{Resultado}
 
@@ -10288,13 +10075,6 @@ f \approx 1{,}03\times 10^{-4}\ \mathrm{s^{-1}},\quad V_g \approx 8{,}1\ \mathrm
 
 \noindent\textbf{Interpretación}
 Un viento moderado, de unos 29 km/h, paralelo a las isobaras; con Ro del orden de 0,08 la aproximación geostrófica es buena. En superficie el viento real será más débil y cruzará las isobaras hacia la borrasca.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.000103126$ — reproducido
-\item Paso 2: $0.078358$ — reproducido
-\item Paso 3: $8.08074$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -10529,12 +10309,9 @@ comprobación: derivar $p(z)$ y sustituir
 
 Calcule la presión estática en la tropopausa estándar ($\mathrm{ISA}$, $z = 11\,000\,\mathrm{m}$) a partir de las condiciones al nivel del mar ($p_0 = 101\,325\,\mathrm{Pa}$, $T_0 = 288{,}15\,\mathrm{K}$), el gradiente térmico troposférico $L = 0{,}0065\,\mathrm{K\,m^{-1}}$, la constante del aire $R_g = 287{,}05287\,\mathrm{J\,kg^{-1}\,K^{-1}}$ y la gravedad normal $g_0 = 9{,}80665\,\mathrm{m\,s^{-2}}$.
 
-\noindent\textbf{Resolución}
+\noindent\textbf{Desarrollo paso a paso}
 
-Aplicando la ley barométrica politrópica de la troposfera estándar:
-\[
-p(z) = p_0\left(1 - \frac{L\,z}{T_0}\right)^{\frac{g_0}{L\,R_g}} = 101\,325\left(1 - \frac{0{,}0065\cdot 11\,000}{288{,}15}\right)^{\frac{9{,}80665}{0{,}0065\cdot 287{,}05287}}
-\]
+\input{../solutions/generated/mf-017.tex}
 
 \noindent\textbf{Respuesta}
 
@@ -10805,12 +10582,9 @@ T = \frac{4}{\omega_0}\cdot\frac{\pi}{2} = \frac{2\pi}{\omega_0}
 
 Determine el alcance horizontal en el vacío de un proyectil lanzado desde el suelo con velocidad inicial $v_0 = 30\,\mathrm{m\,s^{-1}}$ y ángulo de tiro $\theta_0 = 40^{\circ}$ sobre la horizontal ($g = 9{,}81\,\mathrm{m\,s^{-2}}$) como referencia previa al análisis con resistencia cuadrática.
 
-\noindent\textbf{Resolución}
+\noindent\textbf{Desarrollo paso a paso}
 
-De la integración balística sin rozamiento sobre terreno horizontal:
-\[
-x_{\max} = \frac{v_0^{2}\sin(2\theta_0)}{g} = \frac{30^{2}\sin(80^{\circ})}{9{,}81}
-\]
+\input{../solutions/generated/mf-018.tex}
 
 \noindent\textbf{Respuesta}
 
@@ -11243,12 +11017,9 @@ t_v = \frac{A}{a}\sqrt{\frac{2h_0}{g}}
 
 Un medidor de Venturi horizontal por el que circula agua ($\rho = 998\,\mathrm{kg\,m^{-3}}$) tiene diámetro de garganta $d_2 = 0{,}05\,\mathrm{m}$ y relación de diámetros $\beta = d_2/d_1 = 0{,}5$. Si la caída de presión estática entre la entrada y la garganta es $\Delta p = 20\,000\,\mathrm{Pa}$, calcule el caudal volumétrico ideal.
 
-\noindent\textbf{Resolución}
+\noindent\textbf{Desarrollo paso a paso}
 
-Por las ecuaciones de continuidad y de Bernoulli en régimen estacionario incompresible:
-\[
-Q = \frac{\pi d_2^{2}}{4}\sqrt{\frac{2\,\Delta p}{\rho(1 - \beta^{4})}} = \frac{\pi\cdot 0{,}05^{2}}{4}\sqrt{\frac{2\cdot 20\,000}{998\cdot(1 - 0{,}5^{4})}}
-\]
+\input{../solutions/generated/mf-019.tex}
 
 \noindent\textbf{Respuesta}
 
@@ -11783,15 +11554,9 @@ b_n = -\frac{2U}{n\pi}
 
 En el arranque de Couette entre dos placas separadas una distancia \(h=10\,\mathrm{mm}\), con viscosidad cinemática \(\nu=1{,}0\times10^{-6}\,\mathrm{m^2/s}\), calcule el tiempo viscoso característico de difusión de cantidad de movimiento a través de la separación.
 
-\noindent\textbf{Modelo y resolución}
+\noindent\textbf{Desarrollo paso a paso}
 
-A partir de la ecuación difusiva \(\partial_t u=\nu\,\partial_{yy}u\), la escala temporal que equilibra ambos términos es \(t_{\nu}=h^2/\nu\). Sustituyendo los datos en unidades del SI:
-
-\[
- t_{\nu}=\frac{h^2}{\nu}=\frac{(0{,}010\,\mathrm{m})^2}{1{,}0\times10^{-6}\,\mathrm{m^2/s}}=100\,\mathrm{s}.
-\]
-
-Este tiempo es una escala característica; no equivale al instante exacto en que el perfil se considera estacionario, que depende del criterio de tolerancia adoptado.
+\input{../solutions/generated/mf-020.tex}
 
 \noindent\textbf{Respuesta}
 
@@ -12515,6 +12280,7 @@ k_D = \frac{M\,(a_1 - a_2)}{V_1^{2} - V_2^{2}},\qquad R = M a_1 - k_D V_1^{2}
 
 Un avión de transporte de \(70\,000\) kg inicia la carrera de despegue desde el reposo. Modele la fuerza neta horizontal (empuje menos resistencia aerodinámica y rozamiento de rodadura) como constante e igual a 150 kN. Calcule la aceleración, el tiempo necesario para alcanzar la velocidad de rotación de 75 m/s y la longitud de pista recorrida hasta ese instante. Compruebe el resultado con el teorema del trabajo y la energía.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-001]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-001}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -12551,11 +12317,9 @@ v_a = \frac{m_h v_h}{m_a}
 \item no hay fuerzas exteriores durante el lanzamiento
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Celeridad de retroceso
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-021.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12571,11 +12335,6 @@ v_a = 0{,}375\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 El astronauta retrocede en sentido opuesto con una celeridad cuatro veces menor, la razón entre masas.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.375$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12608,11 +12367,9 @@ velocidad angular final
 \item despliegue simétrico (sin productos de inercia)
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad angular final
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-022.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12628,11 +12385,6 @@ Velocidad angular final
 
 \noindent\textbf{Interpretación}
 Aumentar el momento de inercia reduce la velocidad de giro en la misma proporción; es el principio de los mecanismos de desaceleración por yo-yo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.33333$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12667,13 +12419,9 @@ v_2 = \sqrt{v_1^{2} + 2 g\,\Delta z - 2W_D/m}
 \item solo trabajan el peso y la resistencia
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cuadrado de la celeridad final
-\item
-Celeridad final
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-023.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12689,12 +12437,6 @@ v_2 \approx 69{,}98\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 La resistencia disipa 1,5 MJ de los 2,35 MJ de energía potencial perdidos (alrededor del 64 \%); sin ella la celeridad final sería de unos 111 m/s.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $4897$ — reproducido
-\item Paso 2: $69.9786$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12727,11 +12469,9 @@ fuerza media de impacto
 \item el ave alcanza la velocidad del avión al final del impacto
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Fuerza media
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-024.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12746,12 +12486,7 @@ Fuerza media
 \]
 
 \noindent\textbf{Interpretación}
-Unas siete toneladas-fuerza aplicadas durante milisegundos; la fuerza de pico es varias veces mayor que la media.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $72000$ — reproducido
-\end{itemize}
+Unas siete toneladas-fuerza aplicadas durante milisegundos; la fuerza de pico no puede deducirse sin conocer la historia temporal del impacto.
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12786,13 +12521,9 @@ t = \frac{4\,(m_b L_b^{2}/3)\,\Omega}{\tau}
 \item sin resistencia aerodinámica
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Momento de inercia del rotor
-\item
-Tiempo de aceleración
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-025.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12809,12 +12540,6 @@ t \approx 14{,}7\ \mathrm{s}
 \noindent\textbf{Interpretación}
 En la realidad el par resistente aerodinámico crece con el cuadrado de la velocidad angular y el tiempo es mayor.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $5880$ — reproducido
-\item Paso 2: $14.7$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 \noindent\textbf{Errores frecuentes}
@@ -12824,6 +12549,7 @@ En la realidad el par resistente aerodinámico crece con el cuadrado de la veloc
 
 Una centrifugadora de entrenamiento para pilotos tiene un brazo de \(8{,}0\) m. (a) ¿A cuántas revoluciones por minuto debe girar para que la aceleración centrípeta en la cabina sea cinco veces la gravedad estándar, \(g = 9{,}81\) m/s\(^2\)? (b) Si el ocupante mueve la cabeza radialmente a \(0{,}5\) m/s, ¿qué aceleración de Coriolis percibe? Comente por qué ese efecto provoca desorientación.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-002]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-002}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -12854,11 +12580,9 @@ parámetro de Coriolis f
 f = 2\Omega\sin\varphi
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Parámetro de Coriolis
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-026.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12874,11 +12598,6 @@ f \approx 1{,}32\times 10^{-5}\ \mathrm{s^{-1}}
 
 \noindent\textbf{Interpretación}
 Unas siete veces menor que en León: cerca del ecuador la rotación terrestre apenas desvía los movimientos horizontales.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.32179\times 10^{-5}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12911,13 +12630,9 @@ Un anillo de radio \(R = 0{,}50\) m gira alrededor de su diámetro vertical a \(
 \item sin rozamiento
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cociente g/(Omega\(^2 R)\)
-\item
-Ángulo de equilibrio
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-027.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12933,12 +12648,6 @@ Cociente g/(Omega\(^2 R)\)
 
 \noindent\textbf{Interpretación}
 Por encima de la velocidad crítica $\Omega_c = (g/R)^{1/2} = 4{,}43\,\mathrm{rad\,s^{-1}}$ el punto más bajo deja de ser estable y la cuenta se sitúa fuera del eje.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.545$ — reproducido
-\item Paso 2: $56.9753$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -12963,13 +12672,9 @@ punto fijo no nulo
 x^{*} = 1 - 1/r
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Multiplicador f'(x*) = 2 - r
-\item
-Punto fijo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-028.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -12985,12 +12690,6 @@ x^{*} \approx 0{,}6429,\qquad f'(x^{*}) = -0{,}8
 
 \noindent\textbf{Interpretación}
 Como |f'| < 1 el punto fijo es estable, y como el multiplicador es negativo la convergencia es oscilante, alternando a uno y otro lado del punto fijo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $-0.8$ — reproducido
-\item Paso 2: $0.642857$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13016,11 +12715,9 @@ periodo de las pequeñas oscilaciones
 T_0 = 2\pi\sqrt{\ell/g}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Periodo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-029.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13036,11 +12733,6 @@ T_0 \approx 1{,}794\ \mathrm{s}
 
 \noindent\textbf{Interpretación}
 El periodo no depende de la masa ni, en la aproximación lineal, de la amplitud.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.79428$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13067,11 +12759,9 @@ densidad del aire
 \rho = \frac{p}{R_a T}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Densidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-030.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13087,11 +12777,6 @@ Densidad
 
 \noindent\textbf{Interpretación}
 Un 18 \% menos que al nivel del mar: el avión necesita más velocidad para la misma sustentación, y la carrera de despegue se alarga.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.00656$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13117,11 +12802,9 @@ número de Knudsen
 \mathrm{Kn} = \lambda/D
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Knudsen
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-031.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13137,11 +12820,6 @@ Número de Knudsen
 
 \noindent\textbf{Interpretación}
 En el límite del régimen continuo; en zonas de la sonda con escalas menores (bordes, capa límite) el deslizamiento ya puede ser apreciable.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.0088$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13169,13 +12847,9 @@ viscosidad a 1000 K
 \mu = \mu_0 (T/T_0)^{3/2}(T_0+S)/(T+S)
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Viscosidad a 288 K
-\item
-Viscosidad a 1000 K
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-032.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13191,12 +12865,6 @@ Viscosidad a 1000 K
 
 \noindent\textbf{Interpretación}
 Unas 2,3 veces mayor que a 288 K: al contrario que en los líquidos, calentar un gas lo hace más viscoso.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.78857\times 10^{-5}$ — no reproducido
-\item Paso 2: $4.15201\times 10^{-5}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13224,11 +12892,9 @@ cociente de viscosidades cinemáticas
 \frac{\nu_a}{\nu_w} = \frac{\mu_a/\rho_a}{\mu_w/\rho_w}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cociente
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-033.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13244,11 +12910,6 @@ Cociente
 
 \noindent\textbf{Interpretación}
 La cantidad de movimiento se difunde unas quince veces más deprisa en el aire: a igual velocidad y tamaño, el número de Reynolds en agua es unas quince veces mayor.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $14.5085$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13283,11 +12944,9 @@ viscosidad dinámica
 \item flujo laminar y fluido newtoniano
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Viscosidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-034.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13304,15 +12963,11 @@ Viscosidad
 \noindent\textbf{Interpretación}
 Del orden de un aceite de motor frío o de la glicerina diluida; el resultado exacto para holgura no delgada difiere en unos pocos por ciento.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.596831$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Un eje de 50 mm de diámetro gira a 3000 rpm dentro de un casquillo de 80 mm de longitud. La holgura radial, uniforme, es \(c = 0{,}10\) mm y está llena de un aceite de viscosidad \(\mu = 0{,}030\) Pa s. Suponiendo un perfil de velocidad lineal en la holgura, calcule el esfuerzo cortante en la superficie del eje, el par resistente y la potencia disipada por fricción viscosa.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-003]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-003}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -13345,11 +13000,9 @@ fuerza de arrastre
 F = \mu A U/h
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Fuerza
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-035.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13366,15 +13019,11 @@ F = 290\ \mathrm{N}
 \noindent\textbf{Interpretación}
 Duplicar el espesor de la película reduciría la fuerza a la mitad.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $290$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 En el tramo convergente de la toma de aire de un banco de ensayos, la velocidad a lo largo del eje es aproximadamente \(u = U_0(1 + x/L)\), con \(U_0 = 10\) m/s y \(L = 0{,}50\) m, entre \(x = 0\) y \(x = L\). (a) Calcule la aceleración de una partícula de fluido a la salida del tramo. (b) Calcule el tiempo que tarda una partícula en recorrerlo. (c) Explique por qué la partícula acelera aunque el flujo sea estacionario.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-004]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-004}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -13406,11 +13055,9 @@ En un conducto, la temperatura del aire es estacionaria pero aumenta a lo largo 
 \frac{DT}{Dt} = u\,\frac{\partial T}{\partial x}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Ritmo de calentamiento de la partícula
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-036.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13426,11 +13073,6 @@ DT/Dt = 1{,}0\ \mathrm{K/s}
 
 \noindent\textbf{Interpretación}
 Un termómetro fijo no registra ninguna variación, porque el campo es estacionario.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13458,15 +13100,9 @@ módulo de la aceleración
 |\mathbf{a}| = k^{2}\sqrt{x^{2} + y^{2}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-$x(t) = x_0\,\mathrm{e}^{kt}$
-\item
-$y(t) = y_0\,\mathrm{e}^{-kt}$
-\item
-Módulo de la aceleración
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-037.tex}
 
 \noindent\textbf{Resultado}
 
@@ -13476,13 +13112,6 @@ Módulo de la aceleración
 
 \noindent\textbf{Interpretación}
 El campo es estacionario, pero la partícula acelera alejándose del punto de remanso.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.71828$ — reproducido
-\item Paso 2: $0.735759$ — reproducido
-\item Paso 3: $11.2644$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13511,15 +13140,9 @@ aceleración total
 a = \beta\left(1 + \frac{x}{L}\right) + U^{2}\left(1 + \frac{x}{L}\right)\frac{1}{L}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Aceleración local
-\item
-Aceleración convectiva
-\item
-Aceleración total
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-038.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13535,13 +13158,6 @@ a = 7{,}5 + 675 = 682{,}5\ \mathrm{m/s^{2}}
 
 \noindent\textbf{Interpretación}
 Incluso durante un arranque rápido, la aceleración convectiva domina sobre la local en este conducto.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $7.5$ — reproducido
-\item Paso 2: $675$ — reproducido
-\item Paso 3: $682.5$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13568,15 +13184,9 @@ ordenada de la trayectoria en x = 4 m
 y = \frac{a x^{2}}{2 u_0^{2}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Pendiente de las líneas de corriente en t = 2 s
-\item
-Ordenada de la línea de corriente por el origen en t = 2 s y x = 4 m
-\item
-Ordenada de la trayectoria en x = 4 m
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-039.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13593,17 +13203,11 @@ y_{\mathrm{tray}} = 1{,}0\ \mathrm{m}\ \text{frente a}\ y_{\mathrm{lc}} = 2{,}0\
 \noindent\textbf{Interpretación}
 La partícula llega a x = 4 m en t = 2 s; la línea de corriente de ese instante tiene el doble de ordenada porque refleja la velocidad actual, no la historia.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.5$ — reproducido
-\item Paso 2: $2$ — reproducido
-\item Paso 3: $1$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 La pared vertical de un tanque de ensayos hidrodinámicos tiene una ventana de observación rectangular de \(2{,}0\) m de anchura y \(3{,}0\) m de altura cuyo borde superior está \(1{,}0\) m por debajo de la superficie libre del agua (\(\rho = 1000\) kg/m\(^3\), \(g = 9{,}81\) m/s\(^2\)). La otra cara de la ventana está a presión atmosférica. Calcule la fuerza hidrostática sobre la ventana y la profundidad de su centro de presiones.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-005]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-005}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -13635,11 +13239,9 @@ presión manométrica
 p - p_{atm} = \rho g h
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Presión manométrica
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-040.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13655,11 +13257,6 @@ p - p_{atm} = 9{,}81\times 10^{4}\ \mathrm{Pa} \approx 0{,}97\ \mathrm{atm}
 
 \noindent\textbf{Interpretación}
 Diez metros de agua equivalen casi a una atmósfera.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $98100$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13686,11 +13283,9 @@ sobrepresión
 \Delta p = \rho_m g h
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Sobrepresión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-041.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13706,11 +13301,6 @@ Sobrepresión
 
 \noindent\textbf{Interpretación}
 Corresponde a la presión dinámica de una corriente de aire de unos 49 m/s, como se verá en el capítulo 12.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1468.56$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13738,13 +13328,9 @@ diferencia de presión
 \Delta p = \rho_m g L\sin\theta
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Factor de amplificación 1/sen(theta)
-\item
-Diferencia de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-042.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13760,12 +13346,6 @@ Diferencia de presión
 
 \noindent\textbf{Interpretación}
 La inclinación multiplica la longitud leída por casi cuatro, lo que permite resolver diferencias de pocos pascales.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $3.8637$ — reproducido
-\item Paso 2: $240.699$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13792,11 +13372,9 @@ velocidad angular
 \Omega = \frac{\sqrt{2 g\,\Delta z}}{r}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad angular
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-043.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13812,11 +13390,6 @@ Velocidad angular
 
 \noindent\textbf{Interpretación}
 La forma de la superficie no depende de la densidad del líquido.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $7.00357$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13851,15 +13424,9 @@ m = \left(\frac{p}{R_a T_e} - \frac{p}{R_a T_i}\right)V
 \item aire seco
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Densidad exterior
-\item
-Densidad interior
-\item
-Masa sustentable
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-044.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13875,13 +13442,6 @@ m \approx 781\ \mathrm{kg}
 
 \noindent\textbf{Interpretación}
 Cada metro cúbico de aire caliente solo sustenta unos 0,28 kg: los globos necesitan volúmenes enormes, y en un día caluroso su capacidad disminuye.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.22501$ — reproducido
-\item Paso 2: $0.945966$ — reproducido
-\item Paso 3: $781.329$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -13911,15 +13471,9 @@ presión a 8000 m
 p = p_0\left(1 - \Gamma z/T_0\right)^{g/(R_a\Gamma)}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Temperatura a 8000 m
-\item
-Presión isoterma (comparación)
-\item
-Presión con gradiente térmico
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-045.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -13936,17 +13490,11 @@ p(8000\ \mathrm{m}) \approx 3{,}56\times 10^{4}\ \mathrm{Pa}
 \noindent\textbf{Interpretación}
 La hipótesis isoterma sobrestima la presión en un 10 \%, porque el aire frío de altura es más denso y la presión cae más deprisa.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $236.15$ — reproducido
-\item Paso 2: $39245.6$ — no reproducido
-\item Paso 3: $35599.4$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Una línea hidráulica de una aeronave tiene un diámetro interior de 6,0 mm y 3,0 m de longitud y transporta \(1{,}5\times 10^{-4}\) m\(^3\)/s de un aceite hidráulico de densidad 850 kg/m\(^3\) y viscosidad \(0{,}020\) Pa s. (a) Compruebe que el flujo es laminar. (b) Calcule la caída de presión en el tramo, suponiendo flujo completamente desarrollado. (c) Calcule la potencia disipada. (d) Discuta la validez de la hipótesis de flujo desarrollado.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-006]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-006}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -13980,17 +13528,9 @@ potencia de bombeo
 \dot W = \frac{32\mu L V}{D^{2}}\cdot\frac{\pi D^{2}}{4}V
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds
-\item
-Factor de fricción 64/Re
-\item
-Caída de presión f (L/D) rho \(V^2/2\)
-\item
-Potencia de bombeo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-046.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14006,14 +13546,6 @@ Potencia de bombeo
 
 \noindent\textbf{Interpretación}
 Régimen claramente laminar; la caída de presión coincide con 32 mu \(L V/D^2\), forma equivalente de la ley de Hagen-Poiseuille.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $348$ — reproducido
-\item Paso 2: $0.183908$ — reproducido
-\item Paso 3: $57600$ — reproducido
-\item Paso 4: $0.868588$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14040,13 +13572,9 @@ esfuerzo cortante
 \tau = \mu U/h
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Caudal por unidad de anchura q = U h/2
-\item
-Esfuerzo cortante
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-047.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14062,12 +13590,6 @@ Esfuerzo cortante
 
 \noindent\textbf{Interpretación}
 El esfuerzo es uniforme en toda la película porque no hay gradiente de presión.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.00075$ — reproducido
-\item Paso 2: $600$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14096,13 +13618,9 @@ caudal de fuga
 Q = \frac{(\Delta p/L_s)\,h^{3}}{12\mu}\,b
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Gradiente de presión
-\item
-Caudal de fuga
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-048.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14118,12 +13636,6 @@ Q \approx 4{,}4\times 10^{-7}\ \mathrm{m^{3}/s}\ (\approx 27\ \mathrm{ml/min})
 
 \noindent\textbf{Interpretación}
 Con una holgura de 40 micras la fuga sería ocho veces mayor.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2000000000$ — reproducido
-\item Paso 2: $4.44444\times 10^{-7}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14151,11 +13663,9 @@ viscosidad
 \mu = \frac{\pi R^{4}\Delta p}{8 L Q}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Viscosidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-049.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14172,15 +13682,11 @@ Viscosidad
 \noindent\textbf{Interpretación}
 Unas cinco veces la viscosidad del agua; conviene comprobar a posteriori que Re es pequeño y que el tubo es largo frente a la longitud de entrada.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.00490874$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Una avioneta de 1100 kg tiene una superficie alar de \(16{,}2\) m\(^2\), \(C_{L,\max} = 1{,}6\) sin flaps y una polar \(C_D = 0{,}027 + 0{,}054\,C_L^{2}\). A nivel del mar (\(\rho = 1{,}225\) kg/m\(^3\), \(g = 9{,}81\) m/s\(^2\)), calcule: (a) la velocidad de pérdida; (b) el coeficiente de sustentación, el coeficiente de resistencia y la resistencia en vuelo horizontal a 55 m/s; (c) la potencia necesaria para ese vuelo.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-007]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-007}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -14213,11 +13719,9 @@ resistencia
 D = \tfrac12\rho V^{2} A C_D
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Resistencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-050.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14233,11 +13737,6 @@ D \approx 1{,}08\ \mathrm{kN}
 
 \noindent\textbf{Interpretación}
 Un carenado fuselado podría reducir el coeficiente en un orden de magnitud.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1080.45$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14266,11 +13765,9 @@ coeficiente de sustentación
 C_L = \frac{2 m g}{\rho V^{2} S}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Coeficiente de sustentación
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-051.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14286,11 +13783,6 @@ C_L \approx 0{,}549
 
 \noindent\textbf{Interpretación}
 Un valor moderado, muy inferior al máximo, que deja margen para maniobrar sin entrar en pérdida.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.548644$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14317,15 +13809,9 @@ eficiencia aerodinámica máxima
 \left(\frac{L}{D}\right)_{\max} = \frac{1}{2}\sqrt{\frac{\pi e\mathcal{A}}{C_{D0}}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Factor K
-\item
-\(C_L\) óptimo
-\item
-Eficiencia máxima
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-052.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14341,13 +13827,6 @@ K \approx 0{,}0409,\quad C_L^{*} \approx 0{,}664,\quad (L/D)_{\max} \approx 18{,
 
 \noindent\textbf{Interpretación}
 En el óptimo el término cuadrático total de la polar satisface \(K C_L^{*2}=C_{D0}=0{,}018\). El dato de Oswald no permite separar por sí solo la resistencia inducida de una posible contribución cuadrática de la resistencia de perfil.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.0408613$ — reproducido
-\item Paso 2: $0.663712$ — reproducido
-\item Paso 3: $18.4365$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14376,13 +13855,9 @@ velocidad terminal a 3000 m
 V_t = \sqrt{\frac{2 m g}{\rho A C_D}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad terminal a nivel del mar
-\item
-Velocidad terminal a 3000 m
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-053.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14398,12 +13873,6 @@ V_t(3000\ \mathrm{m}) \approx 49{,}7\ \mathrm{m/s}\ \text{frente a}\ 42{,}8\ \ma
 
 \noindent\textbf{Interpretación}
 Al descender aumenta la densidad y con ella la resistencia, de modo que la velocidad terminal local disminuye y el paracaidista decelera suavemente.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $42.7836$ — reproducido
-\item Paso 2: $49.6638$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14432,13 +13901,9 @@ velocidad terminal
 V_t = \frac{(\rho_p - \rho_f) g d^{2}}{18\mu}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds a posteriori
-\item
-Velocidad terminal
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-054.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14454,12 +13919,6 @@ V_t \approx 6{,}85\ \mathrm{cm/s},\quad \mathrm{Re} \approx 0{,}14
 
 \noindent\textbf{Interpretación}
 Tardaría unas cuarenta horas en descender 10 km en aire en calma: la ceniza fina permanece días en la atmósfera, con el riesgo consiguiente para los motores.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.140672$ — reproducido
-\item Paso 2: $0.068495$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14485,13 +13944,9 @@ variación relativa de densidad
 \frac{\Delta\rho}{\rho} \sim \frac{1}{2}\left(\frac{V}{a_s}\right)^{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Mach
-\item
-Variación relativa de densidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-055.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14508,16 +13963,11 @@ Variación relativa de densidad
 \noindent\textbf{Interpretación}
 Un 2 \% es pequeño frente a otras incertidumbres: el modelo incompresible es adecuado en la aproximación.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.205882$ — reproducido
-\item Paso 2: $0.0211938$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Un manómetro en U contiene agua (\(\nu = 1{,}007\times 10^{-6}\) m\(^2\)/s) con una columna de longitud total \(L = 0{,}50\) m en un tubo de radio interior \(R = 1{,}0\) mm (\(g = 9{,}81\) m/s\(^2\)). (a) Calcule la pulsación natural y el periodo sin amortiguamiento. (b) Estime el factor de amortiguamiento con el modelo cuasiestacionario de Hagen-Poiseuille. (c) Calcule el número de Womersley y discuta la validez de la estimación.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-008]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-008}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -14550,11 +14000,9 @@ periodo de oscilación vertical
 T = 2\pi\sqrt{\frac{m}{\rho g A_w}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Periodo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-056.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14570,11 +14018,6 @@ T \approx 1{,}40\ \mathrm{s}
 
 \noindent\textbf{Interpretación}
 La masa de agua arrastrada, despreciada aquí, alarga algo el periodo real.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.4011$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14600,13 +14043,9 @@ factor de amortiguamiento
 \zeta = \frac{\delta}{\sqrt{4\pi^{2} + \delta^{2}}},\quad \delta = \ln\frac{x_1}{x_2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Decremento logarítmico
-\item
-Factor de amortiguamiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-057.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14622,12 +14061,6 @@ Factor de amortiguamiento
 
 \noindent\textbf{Interpretación}
 Un amortiguamiento del 8 \% del crítico: la estructura resonaría con una amplificación de unas seis veces.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.510826$ — reproducido
-\item Paso 2: $0.0810331$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14654,13 +14087,9 @@ frecuencia de desprendimiento
 f_s = \mathrm{St}\,V/d
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds
-\item
-Frecuencia de desprendimiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-058.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14676,12 +14105,6 @@ f_s \approx 60\ \mathrm{Hz},\quad \mathrm{Re} \approx 5{,}1\times 10^{4}
 
 \noindent\textbf{Interpretación}
 El número de Reynolds está dentro del intervalo \(10^2\) a \(10^5\) en que St es aproximadamente 0,2.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $51344$ — reproducido
-\item Paso 2: $60$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14708,11 +14131,9 @@ velocidad crítica
 V_c = \frac{f_n d}{\mathrm{St}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad crítica
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-059.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14728,11 +14149,6 @@ V_c \approx 27\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 La velocidad crítica cae dentro de la carrera de despegue: el mástil atravesará la resonancia en cada despegue y aterrizaje. Conviene rigidizarlo para subir su frecuencia natural o comprobar que el amortiguamiento limita la amplitud.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $27$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14758,15 +14174,9 @@ factor de amplificación a r = 0,9
 \frac{X}{F_0/k} = \frac{1}{\sqrt{(1 - r^{2})^{2} + (2\zeta r)^{2}}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Amplificación en resonancia (r = 1)
-\item
-Amplificación a r = 0,5
-\item
-Amplificación a r = 0,9
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-060.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14783,21 +14193,15 @@ X/X_{\mathrm{est}} \approx 4{,}76\ (r = 0{,}9),\quad 10\ (r = 1),\quad 1{,}33\ (
 \noindent\textbf{Interpretación}
 A solo un 10 \% de la resonancia la vibración se amplifica casi cinco veces: el soporte debería diseñarse con una frecuencia natural mucho más alta o mucho más baja que la excitación.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $10$ — reproducido
-\item Paso 2: $1.33038$ — no reproducido
-\item Paso 3: $4.75651$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Un turborreactor vuela a 250 m/s. Ingiere 50 kg/s de aire, quema 1,0 kg/s de combustible y expulsa los gases por una tobera adaptada (\(p_e = p_0\)) a 600 m/s respecto al motor. (a) Calcule el empuje neto. (b) Calcule el rendimiento propulsivo, despreciando el gasto de combustible. (c) Calcule la potencia propulsiva útil.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-009]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-009}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
-F \approx 18{,}1\ \mathrm{kN},\quad \eta_p \approx 0{,}588,\quad P_u \approx 4{,}5\ \mathrm{MW}
+F \approx 18{,}1\ \mathrm{kN},\quad \eta_p \approx 0{,}5882,\quad P_u \approx 4{,}5\ \mathrm{MW}
 \]
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
@@ -14826,11 +14230,9 @@ empuje
 F = \dot m v_e + (p_e - p_0) A_e
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Empuje
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-061.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14846,11 +14248,6 @@ F \approx 749\ \mathrm{kN}
 
 \noindent\textbf{Interpretación}
 El término de presión aporta solo un 3 \% del empuje.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $749000$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14877,13 +14274,9 @@ potencia máxima extraíble
 P_{\max} = \frac{16}{27}\cdot\tfrac12\rho\,\frac{\pi D^{2}}{4}V^{3}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Potencia cinética disponible
-\item
-Potencia máxima de Betz
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-062.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14899,12 +14292,6 @@ P_{\max} \approx 4{,}1\ \mathrm{MW}
 
 \noindent\textbf{Interpretación}
 Una turbina real con el 78 \% del límite daría unos 3,2 MW con este viento.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $6.92721\times 10^{6}$ — reproducido
-\item Paso 2: $4.10501\times 10^{6}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14932,13 +14319,9 @@ potencia ideal
 P = \frac{(m g)^{3/2}}{\sqrt{2\rho\pi R^{2}}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad inducida
-\item
-Potencia ideal
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-063.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -14954,12 +14337,6 @@ v_i \approx 10{,}0\ \mathrm{m/s},\quad P \approx 490\ \mathrm{kW}
 
 \noindent\textbf{Interpretación}
 La potencia real es de un 30 a un 50 \% mayor por las pérdidas de perfil y de punta de pala.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $9.97864$ — reproducido
-\item Paso 2: $489453$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -14986,17 +14363,9 @@ rendimiento propulsivo del turbofán
 \eta_p = \frac{2}{1 + v_e/v_0}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Gasto del turborreactor
-\item
-Rendimiento propulsivo del turborreactor
-\item
-Gasto del turbofán
-\item
-Rendimiento propulsivo del turbofán
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-064.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15012,14 +14381,6 @@ Rendimiento propulsivo del turbofán
 
 \noindent\textbf{Interpretación}
 El turbofán mueve casi cuatro veces más aire pero desperdicia mucha menos energía cinética en la estela.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $54.0541$ — reproducido
-\item Paso 2: $0.554217$ — reproducido
-\item Paso 3: $200$ — reproducido
-\item Paso 4: $0.821429$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15047,13 +14408,9 @@ incremento ideal de velocidad
 \Delta v = I_{sp} g_0\ln\frac{m_0}{m_f}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad efectiva de eyección
-\item
-Incremento de velocidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-065.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15070,16 +14427,11 @@ Incremento de velocidad
 \noindent\textbf{Interpretación}
 El ascenso real a órbita sufre pérdidas por gravedad y resistencia de 1,5 a 2 km/s, de ahí la necesidad de varias etapas.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2941.99$ — reproducido
-\item Paso 2: $4078.47$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Se quiere ensayar a escala 1:10 el ala de un avión de negocios que se aproxima a 70 m/s con una cuerda media de 2,5 m, en aire a nivel del mar (\(\rho = 1{,}225\) kg/m\(^3\), \(\mu = 1{,}7894\times 10^{-5}\) Pa s). El túnel disponible alcanza 80 m/s y puede presurizarse manteniendo la temperatura. (a) Calcule el número de Reynolds de vuelo. (b) ¿Qué velocidad haría falta en un túnel atmosférico para igualarlo? (c) ¿A qué presión debe operar el túnel a 80 m/s? (d) Compare los números de Mach del modelo y del prototipo (\(a_s = 340\) m/s).
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-010]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-010}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -15110,11 +14462,9 @@ número de grupos
 p = n - k
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de grupos
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-066.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15130,11 +14480,6 @@ p = 4:\ \ \frac{\Delta p}{\rho V^{2}},\ \frac{L}{D},\ \mathrm{Re},\ \frac{\varep
 
 \noindent\textbf{Interpretación}
 La proporcionalidad con L/D en flujo desarrollado reduce el problema a \(f_D(\)Re, epsilon/D).
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $4$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15162,15 +14507,9 @@ número de Reynolds
 \mathrm{Re} = \frac{\rho V c}{\mu}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Viscosidad (Sutherland)
-\item
-Número de Mach
-\item
-Número de Reynolds
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-067.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15186,13 +14525,6 @@ Número de Reynolds
 
 \noindent\textbf{Interpretación}
 Régimen de capa límite turbulenta y flujo transónico alto: ambos efectos deben reproducirse en el ensayo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.42155\times 10^{-5}$ — reproducido
-\item Paso 2: $0.779481$ — reproducido
-\item Paso 3: $2.35522\times 10^{7}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15218,11 +14550,9 @@ velocidad del modelo
 V_m = V_p\sqrt{L_m/L_p}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad del modelo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-068.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15238,11 +14568,6 @@ V_m \approx 1{,}41\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 El número de Reynolds del modelo será unas 350 veces menor que el del prototipo: la resistencia de fricción debe corregirse aparte.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.41421$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15270,13 +14595,9 @@ empuje del prototipo
 T = C_T\,\rho\,n^{2}D^{4}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad de avance correspondiente a J = 0,6
-\item
-Empuje
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-069.tex}
 
 \noindent\textbf{Resultado}
 
@@ -15286,12 +14607,6 @@ T \approx 7{,}66\ \mathrm{kN}\ \text{a}\ V = 60\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 El ensayo del modelo se traslada al prototipo a través de los coeficientes adimensionales, siempre que el número de Reynolds no cambie el comportamiento de las palas.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $60$ — reproducido
-\item Paso 2: $7656.25$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15321,15 +14636,9 @@ caída de presión
 \Delta p = f_D\frac{L}{D}\frac{\rho V^{2}}{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds
-\item
-Factor de fricción (Haaland)
-\item
-Caída de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-070.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15346,17 +14655,11 @@ Caída de presión
 \noindent\textbf{Interpretación}
 Unos 10 kPa por cada 100 m: alrededor de 1 m de columna de agua.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $99304.9$ — reproducido
-\item Paso 2: $0.019874$ — reproducido
-\item Paso 3: $9919.1$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 El torbellino de punta de ala que deja un avión de transporte en aproximación tiene una circulación de 400 m\(^2\)/s. Modélelo como un torbellino de Rankine: rotación como sólido rígido dentro de un núcleo de 3,0 m de radio y torbellino libre fuera de él, con velocidad continua en el borde del núcleo. Calcule la vorticidad en el núcleo, la velocidad tangencial máxima y la velocidad a 30 m del eje. Comente el riesgo para un avión ligero que lo atraviese.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-011]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-011}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -15386,11 +14689,9 @@ vorticidad omega\(_z\)
 \omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = -\dot\gamma
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Vorticidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-071.tex}
 
 \noindent\textbf{Resultado}
 
@@ -15400,11 +14701,6 @@ Vorticidad
 
 \noindent\textbf{Interpretación}
 Las partículas giran en sentido horario a 50 rad/s aunque se trasladen en línea recta.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $-100$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15430,11 +14726,9 @@ caudal
 Q = \frac{\pi R^{2}U_{\max}}{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Caudal
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-072.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15450,11 +14744,6 @@ Q \approx 7{,}85\times 10^{-3}\ \mathrm{m^{3}/s}
 
 \noindent\textbf{Interpretación}
 La velocidad media es la mitad de la máxima, como en el flujo de Hagen-Poiseuille.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.00785398$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15480,13 +14769,9 @@ circulación
 \Gamma_C = 2\pi\Omega R^{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Flujo de vorticidad 2 Omega pi \(R^2\)
-\item
-Circulación directa Omega R 2 pi R
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-073.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15502,12 +14787,6 @@ Circulación directa Omega R 2 pi R
 
 \noindent\textbf{Interpretación}
 Ambos cálculos coinciden, como exige el teorema de Stokes.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $3.01593$ — reproducido
-\item Paso 2: $3.01593$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15533,13 +14812,9 @@ caudal neto saliente
 Q = 3k\cdot\tfrac43\pi R^{3}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Flujo directo k R por 4 pi \(R^2\)
-\item
-Integral de la divergencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-074.tex}
 
 \noindent\textbf{Resultado}
 
@@ -15549,12 +14824,6 @@ Q \approx 10{,}05\ \mathrm{m^{3}/s}
 
 \noindent\textbf{Interpretación}
 El gas sale de la esfera porque cada partícula se dilata a un ritmo relativo de 3k = 0,3 por segundo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $10.0531$ — reproducido
-\item Paso 2: $10.0531$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15581,11 +14850,9 @@ divergencia
 \nabla\cdot\mathbf{u} = a + b + c
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Divergencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-075.tex}
 
 \noindent\textbf{Resultado}
 
@@ -15596,15 +14863,11 @@ Divergencia
 \noindent\textbf{Interpretación}
 El campo es solenoidal: cada partícula conserva su volumen aunque se deforme.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 Un avión vuela a 3000 m de altitud, donde la atmósfera estándar da \(\rho = 0{,}9091\) kg/m\(^3\) y una velocidad del sonido de unos 328,6 m/s. Su tubo de Pitot estático mide una diferencia entre presión total y estática de 3500 Pa. (a) Calcule la velocidad verdadera. (b) Calcule la velocidad que indicaría un anemómetro calibrado con la densidad del nivel del mar, \(1{,}225\) kg/m\(^3\). (c) Compruebe que la hipótesis incompresible es aceptable.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-012]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-012}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -15636,11 +14899,9 @@ velocidad en el estrechamiento
 V_2 = V_1 A_1/A_2
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad en el estrechamiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-076.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15656,11 +14917,6 @@ V_2 = 10\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 Reducir el área a la quinta parte multiplica la velocidad por cinco.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $10$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15686,11 +14942,9 @@ velocidad de salida
 V = \sqrt{2 g h}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad de salida
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-077.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15706,11 +14960,6 @@ V \approx 8{,}86\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 La velocidad real es algo menor por las pérdidas en el orificio, que se recogen con un coeficiente de velocidad próximo a 0,97.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $8.85889$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15738,13 +14987,9 @@ caudal
 Q = A_2\sqrt{\frac{2\Delta p}{\rho\,[1 - (A_2/A_1)^{2}]}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Velocidad en la garganta
-\item
-Caudal
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-078.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15760,12 +15005,6 @@ Q \approx 1{,}11\times 10^{-2}\ \mathrm{m^{3}/s}
 
 \noindent\textbf{Interpretación}
 El caudal real es un 1 o 2 \% menor; se corrige con un coeficiente de descarga calibrado.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $5.66252$ — reproducido
-\item Paso 2: $0.0111183$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15793,15 +15032,9 @@ coeficiente de sustentación
 c_l = \frac{\rho V\Gamma_C}{\tfrac12\rho V^{2} c} = \frac{2\Gamma_C}{V c}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Sustentación por unidad de envergadura
-\item
-Ángulo de ataque aproximado en grados, \(c_l/(2\) pi)
-\item
-Coeficiente de sustentación
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-079.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15817,13 +15050,6 @@ L' = 2940\ \mathrm{N/m},\quad c_l \approx 0{,}889,\quad \alpha \approx 8^{\circ}
 
 \noindent\textbf{Interpretación}
 El coeficiente no depende de la densidad: \(c_l = 2\) Gamma/(V c). El ángulo estimado está por debajo de la pérdida típica, por lo que la teoría lineal es aplicable.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2940$ — reproducido
-\item Paso 2: $8.10569$ — reproducido
-\item Paso 3: $0.888889$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15850,13 +15076,9 @@ presión manométrica en theta = 90 grados
 p - p_\infty = \tfrac12\rho U^{2}\,(1 - 4\sin^{2}\theta)
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Presión dinámica
-\item
-Presión manométrica en theta = 90 grados
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-080.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15873,16 +15095,11 @@ p - p_\infty = -735\ \mathrm{Pa}\ (C_p = -3)
 \noindent\textbf{Interpretación}
 En el flujo real la capa límite se desprende antes de los 90 grados a números de Reynolds subcríticos, la succión es menor y la presión posterior no se recupera: aparece la resistencia de forma.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $245$ — reproducido
-\item Paso 2: $-735$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 En un punto de un flujo plano de aire (\(\mu = 1{,}7894\times 10^{-5}\) Pa s) el campo de velocidades es localmente \(u = ax + by\), \(v = cx - ay\), con \(a = 50\) s\(^{-1}\), \(b = 120\) s\(^{-1}\) y \(c = -40\) s\(^{-1}\). (a) Compruebe que el flujo es incompresible. (b) Calcule la vorticidad. (c) Calcule los esfuerzos viscosos normal \(\tau_{xx}\) y cortante \(\tau_{xy}\).
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-013]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-013}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -15914,11 +15131,9 @@ flujo de calor
 q = \kappa\,\Delta T/L
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Flujo de calor
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-081.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15934,11 +15149,6 @@ q = 300\ \mathrm{W/m^{2}}
 
 \noindent\textbf{Interpretación}
 Si el agua estuviera en movimiento, la convección aumentaría mucho el transporte de calor.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $300$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -15964,13 +15174,9 @@ tiempo de penetración en aire
 t \sim L^{2}/\nu
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo en agua
-\item
-Tiempo en aire
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-082.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -15986,12 +15192,6 @@ t_{\mathrm{aire}} \sim 6{,}8\ \mathrm{s},\quad t_{\mathrm{agua}} \sim 99\ \mathr
 
 \noindent\textbf{Interpretación}
 La cantidad de movimiento se difunde unas quince veces más deprisa en el aire, el cociente de sus viscosidades cinemáticas.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $99.3049$ — reproducido
-\item Paso 2: $6.84603$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16017,11 +15217,9 @@ diferencia de presiones
 p - \bar p = (\lambda_v + \tfrac23\mu)\,\nabla\cdot\mathbf{u}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Diferencia de presiones
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-083.tex}
 
 \noindent\textbf{Resultado}
 
@@ -16031,11 +15229,6 @@ p - \bar p \approx 10^{-3}\ \mathrm{Pa}
 
 \noindent\textbf{Interpretación}
 Una milésima de pascal es despreciable: la hipótesis de Stokes no afecta a este flujo. Solo importa en compresiones extremadamente rápidas, como dentro de una onda de choque.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.001$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16061,11 +15254,9 @@ tiempo de difusión
 t \sim L^{2}/D_m
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo característico
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-084.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16081,11 +15272,6 @@ t \sim 500\ \mathrm{s}
 
 \noindent\textbf{Interpretación}
 Más de ocho minutos para un milímetro: sin convección, la mezcla de gases disueltos en líquidos es extraordinariamente lenta.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $500$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16112,13 +15298,9 @@ esfuerzo normal sobre el plano
 \sigma_n = -p + 2\tau\sin\theta\cos\theta
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente x del vector tensión
-\item
-Esfuerzo normal
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-085.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16134,12 +15316,6 @@ Esfuerzo normal
 
 \noindent\textbf{Interpretación}
 El esfuerzo cortante modifica la presión normal en solo 43 Pa: en los flujos de aire la presión domina abrumadoramente sobre los esfuerzos viscosos.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $-86577.5$ — reproducido
-\item Paso 2: $-99956.7$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16165,11 +15341,9 @@ gradiente de presión
 \frac{dp}{dx} = -\rho a
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Gradiente de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-086.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16185,11 +15359,6 @@ Gradiente de presión
 
 \noindent\textbf{Interpretación}
 La presión debe disminuir aguas abajo unos 2 kPa por metro para acelerar la columna de agua.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $-1996$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16216,11 +15385,9 @@ potencia disipada por unidad de área
 \int_0^{h}\Phi_v\,dy = \mu U^{2}/h
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Potencia disipada
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-087.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16236,11 +15403,6 @@ Potencia disipada
 
 \noindent\textbf{Interpretación}
 Coincide con tau\(_w U = (0\),\(05\cdot3/0\),\(0005)\cdot3\): toda la potencia aportada se disipa.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $900$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16267,11 +15429,9 @@ cociente viscoso/convectivo
 \frac{\mu U/L^{2}}{\rho U^{2}/L} = \frac{\nu}{U L} = \mathrm{Re}^{-1}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cociente
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-088.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16287,11 +15447,6 @@ Cociente
 
 \noindent\textbf{Interpretación}
 Lejos de las paredes el término viscoso es despreciable; solo importa en capas delgadas donde los gradientes son mucho mayores que U/L.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.4607\times 10^{-5}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16318,11 +15473,9 @@ diferencia de presión radial
 \Delta p = \tfrac12\rho\Omega^{2}r^{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Diferencia de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-089.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16338,11 +15491,6 @@ Diferencia de presión
 
 \noindent\textbf{Interpretación}
 La presión aumenta hacia la pared para proporcionar la aceleración centrípeta; es el mismo resultado hidrostático del capítulo 5.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $4491$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16368,11 +15516,9 @@ tiempo de semidecaimiento
 t_{1/2} = \frac{\ln 2}{4\nu(2\pi/\lambda_w)^{2}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo de semidecaimiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-090.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16389,15 +15535,11 @@ t_{1/2} \approx 0{,}75\ \mathrm{s}
 \noindent\textbf{Interpretación}
 Lo que gobierna la difusión de la cantidad de movimiento es la viscosidad cinemática, unas quince veces mayor en el aire, y la longitud de onda es además la mitad.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.75125$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 En un tanque de agua (\(\nu = 1{,}007\times 10^{-6}\) m\(^2\)/s) se genera una red de torbellinos de Taylor-Green con longitud de onda \(\lambda_w = 0{,}10\) m, es decir, con número de onda \(k_w = 2\pi/\lambda_w\). En variables dimensionales la velocidad decae como \(e^{-2\nu k_w^{2} t}\) y la energía cinética como \(e^{-4\nu k_w^{2} t}\). (a) Calcule el número de onda. (b) Calcule el tiempo en que la energía cinética se reduce a la mitad. (c) Repita el cálculo para aire estándar con \(\lambda_w = 0{,}05\) m.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-014]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-014}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -16408,6 +15550,7 @@ k_w \approx 62{,}8\ \mathrm{m^{-1}},\quad t_{1/2} \approx 43{,}6\ \mathrm{s}\ \t
 
 Una película de agua de lluvia de espesor uniforme \(0{,}30\) mm desciende por el parabrisas de una aeronave, inclinado \(30^\circ\) respecto a la horizontal, con el avión detenido y sin viento (\(\nu = 1{,}007\times 10^{-6}\) m\(^2\)/s, \(g = 9{,}81\) m/s\(^2\)). Calcule la velocidad en la superficie libre, el caudal por unidad de anchura y el número de Reynolds de la película, \(q/\nu\), y discuta si es razonable suponer flujo laminar.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-015]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-015}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -16439,11 +15582,9 @@ número de Reynolds
 \mathrm{Re} = U L/\nu
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-091.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16459,11 +15600,6 @@ Número de Reynolds
 
 \noindent\textbf{Interpretación}
 Régimen de Stokes: el flujo es lineal, reversible y difícil de mezclar.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.0993049$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16490,13 +15626,9 @@ espesor estimado de la capa límite
 \delta_{cl} \sim \sqrt{\nu L/U}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds
-\item
-Espesor estimado
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-092.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16512,12 +15644,6 @@ Espesor estimado
 
 \noindent\textbf{Interpretación}
 Solo una estimación de orden de magnitud: a este Re la capa límite es turbulenta en casi toda la cuerda y alcanza varios centímetros.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $9.58445\times 10^{6}$ — reproducido
-\item Paso 2: $0.000646021$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16544,11 +15670,9 @@ cociente aceleración vertical / gravedad
 \frac{W/T}{g}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cociente
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-093.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16564,11 +15688,6 @@ Cociente
 
 \noindent\textbf{Interpretación}
 La aproximación hidrostática es excelente a escala sinóptica; solo falla en movimientos convectivos intensos, con velocidades verticales de decenas de metros por segundo en minutos.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1.17982\times 10^{-8}$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16596,13 +15715,9 @@ velocidad en la superficie libre
 u_s = \frac{g\sin\theta\,h_f^{2}}{2\nu}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds de la película q/nu
-\item
-Velocidad en la superficie
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-094.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16618,12 +15733,6 @@ u_s \approx 8{,}5\ \mathrm{mm/s},\quad \mathrm{Re}_f \approx 0{,}06
 
 \noindent\textbf{Interpretación}
 Con un Reynolds de película tan pequeño la inercia es despreciable y la película es estable.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.056783$ — reproducido
-\item Paso 2: $0.00851744$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16649,13 +15758,9 @@ velocidad del tsunami
 c = \sqrt{g H}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo para 2000 km en horas
-\item
-Velocidad de propagación
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-095.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16671,12 +15776,6 @@ c \approx 198\ \mathrm{m/s}\ (\approx 713\ \mathrm{km/h}),\quad t \approx 2{,}8\
 
 \noindent\textbf{Interpretación}
 La longitud de onda de un tsunami, de cientos de kilómetros, es mucho mayor que la profundidad: el cociente de aspecto es pequeño y la presión es hidrostática aunque el océano tenga 4 km.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.80455$ — reproducido
-\item Paso 2: $198.091$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16703,11 +15802,9 @@ número de Rossby
 \mathrm{Ro} = U/(fL)
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Rossby
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-096.tex}
 
 \noindent\textbf{Resultado}
 
@@ -16717,11 +15814,6 @@ Número de Rossby
 
 \noindent\textbf{Interpretación}
 La inercia supera en más de dos órdenes de magnitud a la fuerza de Coriolis: el sentido de giro lo deciden las asimetrías del lavabo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $333.333$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16748,13 +15840,9 @@ gravedad reducida
 g' = g\,\frac{T - T_0}{T}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Variación relativa de densidad
-\item
-Gravedad reducida
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-097.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16770,12 +15858,6 @@ g' \approx 0{,}92\ \mathrm{m/s^{2}}
 
 \noindent\textbf{Interpretación}
 Una variación del 9 \% está en el límite de validez de la aproximación de Boussinesq; las térmicas reales, de pocos grados, la cumplen holgadamente.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.09375$ — reproducido
-\item Paso 2: $0.919687$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16803,11 +15885,9 @@ viento geostrófico
 V_g = \frac{1}{\rho\,2\Omega\sin\varphi}\frac{\partial p}{\partial n}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Viento geostrófico
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-098.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16823,11 +15903,6 @@ V_g \approx 18{,}4\ \mathrm{m/s}
 
 \noindent\textbf{Interpretación}
 Unos 66 km/h: un gradiente de presión notable, típico del paso de un frente.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $18.4181$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16854,11 +15929,9 @@ número de Rossby
 \mathrm{Ro} = \frac{U}{2\Omega L}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Rossby
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-099.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16874,11 +15947,6 @@ Número de Rossby
 
 \noindent\textbf{Interpretación}
 Con Ro tan pequeño la rotación domina y el fluido sobre el obstáculo se moverá con él formando una columna de Taylor, siempre que la viscosidad no lo impida (número de Ekman pequeño).
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.025$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16905,13 +15973,9 @@ frecuencia de Brunt-Väisälä
 N = \sqrt{\frac{g}{\rho_0}\left|\frac{d\rho}{dz}\right|}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Periodo 2 pi/N
-\item
-Frecuencia de Brunt-Väisälä
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-100.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16927,12 +15991,6 @@ N \approx 0{,}0138\ \mathrm{s^{-1}},\quad T \approx 7{,}6\ \mathrm{min}
 
 \noindent\textbf{Interpretación}
 Las ondas internas de la termoclina tienen periodos de minutos a horas; su frecuencia no puede superar N.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $454.143$ — reproducido
-\item Paso 2: $0.0138353$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -16959,11 +16017,9 @@ fuerza del asiento N
 N = m\,(g + k g)
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Fuerza del asiento
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-101.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -16979,11 +16035,6 @@ N = 2943\ \mathrm{N}\ (\text{cuatro veces el peso})
 
 \noindent\textbf{Interpretación}
 El astronauta percibe un factor de carga de 4, suma de la gravedad y de la aceleración del cohete.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2943$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17010,11 +16061,9 @@ gradiente de presión adverso crítico
 \frac{dp}{dx} = \frac{2\mu U}{h^{2}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Gradiente crítico
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-102.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -17031,15 +16080,11 @@ Gradiente crítico
 \noindent\textbf{Interpretación}
 Un gradiente adverso más intenso invierte el flujo junto a la pared fija: es el análogo laminar del desprendimiento.
 
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $200000$ — reproducido
-\end{itemize}
-
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
 En un mapa del tiempo a 45\(^\circ\) N las isobaras están separadas 4 hPa cada 400 km en una región donde la densidad del aire es de 1,2 kg/m\(^3\). (a) Calcule el parámetro de Coriolis (\(\Omega = 7{,}2921\times 10^{-5}\) rad/s). (b) Calcule el viento geostrófico. (c) Compruebe con el número de Rossby, tomando una escala de 1000 km, que la aproximación geostrófica es aplicable.
 
+\noindent La resolución completa, con la deducción y las operaciones intermedias, está en el \hyperref[solution:mf-016]{problema resuelto del capítulo correspondiente}, página~\pageref{solution:mf-016}.\par\medskip
 \noindent\textbf{Respuesta}
 
 \[
@@ -17080,15 +16125,9 @@ viscosidad dinámica
 \item copa inmóvil
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Par por unidad de longitud
-\item
-Viscosidad con holgura pequeña
-\item
-Viscosidad con la solución exacta
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-103.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17098,13 +16137,6 @@ Viscosidad con la solución exacta
 
 \noindent\textbf{Interpretación}
 Con una holgura del 5 \% del radio, la aproximación plana sobrestima la viscosidad un 7,6 \%: para un viscosímetro de precisión hay que usar la expresión exacta.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.02$ — reproducido
-\item Paso 2: $0.0397887$ — reproducido
-\item Paso 3: $0.0369918$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17145,15 +16177,9 @@ T = \frac{4\pi\mu L\,\Omega_2 R_1^{2}R_2^{2}}{R_2^{2} - R_1^{2}}
 \item sin efectos de extremo
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Coeficiente A
-\item
-Potencia del motor
-\item
-Par sobre el cilindro interior
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-104.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17163,13 +16189,6 @@ u_\theta = \frac{\Omega_2 R_2^{2}}{R_2^{2} - R_1^{2}}\left(r - \frac{R_1^{2}}{r}
 
 \noindent\textbf{Interpretación}
 Toda la potencia del motor se convierte en calor en la glicerina. El caso con el cilindro exterior girando es además estable frente a los torbellinos de Taylor, lo que lo hace preferible en viscosimetría.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $55.5556$ — reproducido
-\item Paso 2: $6.29994$ — reproducido
-\item Paso 3: $0.314997$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17208,15 +16227,9 @@ módulo del gradiente de presión en (1, 1)
 \item sin gravedad (o incluida en una presión modificada)
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Fuerza neta por unidad de volumen, rho |a|
-\item
-Fuerza viscosa por unidad de volumen, mu |lap u|
-\item
-Módulo del gradiente de presión
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-105.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17226,13 +16239,6 @@ Módulo del gradiente de presión
 
 \noindent\textbf{Interpretación}
 La fuerza viscosa es ahora un 11 \% de la fuerza neta y desvía el gradiente de presión respecto de la dirección de la aceleración; en el agua del ejemplo del texto era despreciable.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.381838$ — reproducido
-\item Paso 2: $0.0424264$ — reproducido
-\item Paso 3: $0.384187$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17264,13 +16270,9 @@ radio dentro del cual se disipa el 90 \% de la potencia
 1 - \frac{R^{2}}{r^{2}} = f \;\Rightarrow\; r = \frac{R}{\sqrt{1 - f}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Cociente r/R
-\item
-Radio
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-106.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -17286,12 +16288,6 @@ r = \sqrt{10}\,R \approx 47{,}4\ \mathrm{mm}
 
 \noindent\textbf{Interpretación}
 Casi toda la disipación ocurre a pocos radios del eje; una pared a una distancia de varios radios cambia el par de forma apreciable, mientras que una muy lejana apenas lo cambia.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $3.16228$ — reproducido
-\item Paso 2: $0.0474342$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17332,17 +16328,9 @@ potencia disipada por unidad de longitud
 \item sin gravedad ni efectos de extremo
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Reynolds de rotación
-\item
-Diferencia de presión
-\item
-Par por unidad de longitud
-\item
-Potencia por unidad de longitud
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-107.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17352,14 +16340,6 @@ u_\theta = \Omega R^{2}/r,\quad \dot W' \approx 6{,}28\ \mathrm{W/m},\quad p_\in
 
 \noindent\textbf{Interpretación}
 Flujo laminar plausible; toda la potencia se disipa en el aceite, la mayor parte a pocos radios del tubo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $38.8$ — reproducido
-\item Paso 2: $485$ — reproducido
-\item Paso 3: $0.125664$ — reproducido
-\item Paso 4: $6.28319$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17398,15 +16378,9 @@ celeridad en el punto
 u = -6Kxy,\qquad v = -3K\,(x^{2} - y^{2})
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente u en (1,1)
-\item
-Componente v en (1,1)
-\item
-Celeridad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-108.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17416,13 +16390,6 @@ Celeridad
 
 \noindent\textbf{Interpretación}
 psi es armónica, de modo que el flujo es a la vez incompresible e irrotacional (flujo en una esquina).
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $-1.2$ — reproducido
-\item Paso 2: $0$ — reproducido
-\item Paso 3: $1.2$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17458,15 +16425,9 @@ módulo de la fuerza neta por unidad de volumen
 \item flujo estacionario, plano e incompresible
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente \(a_x\)
-\item
-Componente \(a_y\)
-\item
-Fuerza neta por unidad de volumen
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-109.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17476,13 +16437,6 @@ Fuerza neta por unidad de volumen
 
 \noindent\textbf{Interpretación}
 Aunque en ese punto u = 0, la partícula se acelera en x porque su velocidad vertical la lleva hacia zonas donde u crece.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $108$ — reproducido
-\item Paso 2: $54$ — reproducido
-\item Paso 3: $144.897$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17514,15 +16468,9 @@ módulo de la fuerza neta por unidad de volumen
 \mathbf{a} = \frac{\partial\mathbf{u}}{\partial t} + (\mathbf{u}\cdot\nabla)\mathbf{u}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Aceleración total en x
-\item
-Aceleración total en y
-\item
-Fuerza neta por unidad de volumen
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-110.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17532,13 +16480,6 @@ Fuerza neta por unidad de volumen
 
 \noindent\textbf{Interpretación}
 El término local es pequeño frente al convectivo; si el campo fuera estacionario, la fuerza sería la convectiva sola, 3,\(39e4 N/m^3\), casi igual.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $25.5$ — reproducido
-\item Paso 2: $22.5$ — reproducido
-\item Paso 3: $34007.4$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17569,19 +16510,9 @@ módulo de la aceleración
 \mathbf{a} = (\nabla\mathbf{u})\,\mathbf{u}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-\[
-a_x
-\]
-\item
-\[
-a_y
-\]
-\item
-Módulo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-111.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17591,13 +16522,6 @@ Módulo
 
 \noindent\textbf{Interpretación}
 El flujo es estacionario y sin embargo la partícula se acelera: la aceleración es enteramente convectiva.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2$ — reproducido
-\item Paso 2: $1$ — reproducido
-\item Paso 3: $2.23607$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17635,13 +16559,9 @@ C_D A = \frac{2Mg\sin\varphi}{\rho V^{2}}
 \item sin rodadura ni viento
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente del peso
-\item
-Área de resistencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-112.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17651,12 +16571,6 @@ C_D A \approx 0{,}392\ \mathrm{m^{2}}
 
 \noindent\textbf{Interpretación}
 Valor típico de un ciclista con el tronco algo inclinado.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $52.8789$ — reproducido
-\item Paso 2: $0.391696$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17698,15 +16612,9 @@ C_D = \frac{2Mg\sin\varphi\,(V_1 + V_2)}{\rho A\,(V_2^{3} - V_1^{3})}
 \item sin rodadura ni viento
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente del peso
-\item
-Potencia de tracción
-\item
-Coeficiente de resistencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-113.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17716,13 +16624,6 @@ C_D \approx 0{,}300,\quad P \approx 30{,}0\ \mathrm{kW}
 
 \noindent\textbf{Interpretación}
 Coeficiente típico de una berlina moderna; la potencia coincide con un motor de 30 kW.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $470.668$ — reproducido
-\item Paso 2: $30030.5$ — reproducido
-\item Paso 3: $0.299663$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17756,15 +16657,9 @@ coeficiente de resistencia con la hipótesis de fuerza constante
 C_D = \frac{4Mg\sin\varphi}{\rho A\,(V_2^{2} - V_1^{2})}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Potencia en subida con fuerza constante
-\item
-Potencia en bajada con fuerza constante
-\item
-\(C_D\) con fuerza constante
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-114.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17774,13 +16669,6 @@ C_D \approx 0{,}456\ \text{(fuerza constante)},\ \text{con } P_1 \approx 37{,}7\
 
 \noindent\textbf{Interpretación}
 El modelo de fuerza constante exige potencias de 38 y 58 kW, incompatibles con un motor de 30 kW; el de potencia constante reproduce 30 kW y es el coherente. Dos velocidades fijan dos incógnitas en cualquiera de los modelos: solo un dato adicional (la potencia declarada) los discrimina.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $37662.2$ — reproducido
-\item Paso 2: $58215.6$ — reproducido
-\item Paso 3: $0.45638$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17814,17 +16702,9 @@ coeficiente de resistencia aerodinámica
 k_D = \frac{M\,(a_1 - a_2)}{V_1^{2} - V_2^{2}},\qquad C_D = \frac{2k_D}{\rho A}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Constante \(k_D\)
-\item
-Resistencia a la rodadura
-\item
-Coeficiente de rodadura R/(Mg)
-\item
-Coeficiente de resistencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-115.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17834,14 +16714,6 @@ k_D = 0{,}60\ \mathrm{kg/m},\quad R = 180\ \mathrm{N},\quad C_D \approx 0{,}435
 
 \noindent\textbf{Interpretación}
 A 30 m/s la resistencia aerodinámica (540 N) triplica la rodadura; a 15 m/s son comparables (135 N frente a 180 N).
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.6$ — reproducido
-\item Paso 2: $180$ — reproducido
-\item Paso 3: $0.0122324$ — reproducido
-\item Paso 4: $0.434783$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17880,15 +16752,9 @@ k_D = \frac{Mg\,\sin(\varphi_2 - \varphi_1)}{V_2^{2}\cos\varphi_1 - V_1^{2}\cos\
 \item mismo coeficiente de rozamiento y misma postura
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Constante \(k_D\)
-\item
-Coeficiente de rozamiento
-\item
-Área de resistencia
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-116.tex}
 
 \noindent\textbf{Resultado}
 
@@ -17898,13 +16764,6 @@ C_D A \approx 0{,}417\ \mathrm{m^{2}},\quad \mu_k \approx 0{,}050
 
 \noindent\textbf{Interpretación}
 Valores típicos de un esquiador agachado sobre nieve compacta. El resultado es sensible a las velocidades: un error del 1 \% en V2 cambia \(k_D\) aproximadamente un 5 \%.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.250049$ — reproducido
-\item Paso 2: $0.0500646$ — no reproducido
-\item Paso 3: $0.416748$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17938,11 +16797,9 @@ número de Arquímedes
 \mathrm{Ar} = \frac{\rho\,\Delta(\rho g)\,d^{3}}{\mu^{2}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Arquímedes
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-117.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -17955,11 +16812,6 @@ Número de Arquímedes
 \[
 \mathrm{Ar} = 2560
 \]
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2560$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -17991,13 +16843,9 @@ velocidad crítica del nuevo ensayo
 U_{c2} = U_{c1}\,\frac{d_1}{d_2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Ar del ensayo nuevo
-\item
-Velocidad crítica
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-118.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18007,12 +16855,6 @@ U_{c2} = 32{,}4\ \mathrm{mm/s}
 
 \noindent\textbf{Interpretación}
 El ensayo nuevo es semejante al de \(80 N/m^3\): mismo Ar y por tanto mismo Re.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $5120$ — reproducido
-\item Paso 2: $0.0324$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18043,13 +16885,9 @@ velocidad crítica en la mezcla
 \Delta(\rho g)_2 = \Delta(\rho g)_1\left(\frac{\mu_2}{\mu_1}\right)^{2},\qquad U_{c2} = U_{c1}\,\frac{\mu_2}{\mu_1}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Flotabilidad necesaria
-\item
-Velocidad crítica
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-119.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18059,12 +16897,6 @@ Velocidad crítica
 
 \noindent\textbf{Interpretación}
 Duplicar la viscosidad exige cuadruplicar la flotabilidad para mantener Ar y duplica la velocidad crítica.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $80$ — reproducido
-\item Paso 2: $0.0856$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18095,17 +16927,9 @@ velocidad crítica estimada
 U_c \approx U_{20}\left(\frac{30}{20}\right)^{n},\qquad n = \frac{\log(U_{40}/U_{20})}{\log 2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Arquímedes
-\item
-Diámetro del ensayo semejante con \(240 N/m^3\)
-\item
-Número de Richardson
-\item
-Velocidad crítica interpolada
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-120.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18115,14 +16939,6 @@ Velocidad crítica interpolada
 
 \noindent\textbf{Interpretación}
 La interpolación es razonable porque el punto está dentro del intervalo y la curva es suave; su incertidumbre es del orden de la dispersión de los datos. Un ensayo con 2,0 mm y \(240 N/m^3\) tendría Ar = 1920 y daría el resultado por semejanza.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1920$ — reproducido
-\item Paso 2: $0.002$ — reproducido
-\item Paso 3: $0.0513536$ — no reproducido
-\item Paso 4: $0.0483398$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18153,15 +16969,9 @@ módulo de la aceleración en (1, 2)
 \mathbf{a} = \nabla\!\left(\tfrac12|\mathbf{u}|^{2}\right),\qquad |\mathbf{u}|^{2} = 9K^{2}(x^{2} + y^{2})^{2}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Componente \(a_x\)
-\item
-Componente \(a_y\)
-\item
-Módulo
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-121.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18171,13 +16981,6 @@ Módulo
 
 \noindent\textbf{Interpretación}
 Sin vorticidad, el término u x omega desaparece y la aceleración apunta hacia donde crece la energía cinética.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $22.5$ — reproducido
-\item Paso 2: $45$ — reproducido
-\item Paso 3: $50.3115$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18209,15 +17012,9 @@ velocidad crítica predicha
 U_c = \frac{\mu}{\rho d}\,C\,\mathrm{Ar}^{n}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Número de Arquímedes
-\item
-Número de Reynolds crítico
-\item
-Velocidad crítica
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-122.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18227,13 +17024,6 @@ U_c \approx 48{,}3\ \mathrm{mm/s}
 
 \noindent\textbf{Interpretación}
 Difiere de la interpolación en un 0,1 \%, del orden del redondeo de los datos. Para \(500 N/m^3\), Ar = 32 000 queda muy fuera del intervalo medido (320 a 5120): sería una extrapolación sin respaldo.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $1920$ — reproducido
-\item Paso 2: $193.214$ — reproducido
-\item Paso 3: $0.0483035$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18264,15 +17054,9 @@ instante del 99 \%
 1 - 2e^{-\pi^{2}\nu t/h^{2}} = 0{,}99 \;\Rightarrow\; t = \frac{h^{2}}{\pi^{2}\nu}\ln 200
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo viscoso
-\item
-Peso del segundo término en t = 50 s
-\item
-Instante del 99 \%
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-123.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18282,13 +17066,6 @@ t_{99} \approx 53{,}7\ \mathrm{s} \approx 0{,}54\,h^{2}/\nu
 
 \noindent\textbf{Interpretación}
 El segundo modo aporta aproximadamente \(5{,}35\times10^{-9}\) al desarrollar la serie a los 50 s, por lo que el primer modo es suficiente para hallar el cruce al 99 \%. La aproximación analítica da 53,6832 s. La simulación citada comunicó 55,1 s, pero esa discrepancia de 1,42 s exige revisar la estimación de la derivada espacial y la convergencia numérica: al tiempo 55,1 s la serie predice una razón de esfuerzos de 0,991305, aproximadamente 0,1305 puntos porcentuales por encima del umbral.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $100$ — reproducido
-\item Paso 2: $5.35058\times 10^{-9}$ — reproducido
-\item Paso 3: $53.6832$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18318,15 +17095,9 @@ densidad a 5000 m
 p = p_0\left(1 + \lambda z/T_0\right)^{-g_0/(\lambda R)},\qquad \rho = p/(R T)
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Temperatura
-\item
-Presión
-\item
-Densidad
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-124.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18336,13 +17107,6 @@ T = 255{,}65\ \mathrm{K},\quad p \approx 54\,020\ \mathrm{Pa},\quad \rho \approx
 
 \noindent\textbf{Interpretación}
 A 5 km la densidad es el 60 \% de la del nivel del mar.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $255.65$ — reproducido
-\item Paso 2: $54019.9$ — reproducido
-\item Paso 3: $0.736116$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18374,15 +17138,9 @@ periodo exacto
 T = \frac{4K(m)}{\omega_0},\qquad m = \sin^{2}(\theta_0/2) = 1/2
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Periodo lineal
-\item
-Exceso relativo sobre el periodo lineal
-\item
-Periodo exacto
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-125.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18392,13 +17150,6 @@ T_{\mathrm{lin}} \approx 2{,}006\ \mathrm{s},\quad T \approx 2{,}368\ \mathrm{s}
 
 \noindent\textbf{Interpretación}
 Coincide con el resultado de NDSolve de la práctica; la aproximación lineal no sirve a 90 grados.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $2.00607$ — reproducido
-\item Paso 2: $0.180341$ — reproducido
-\item Paso 3: $2.36784$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18430,15 +17181,9 @@ tiempo de vaciado
 t_v = \frac{A}{a}\sqrt{\frac{2h_0}{g}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Tiempo para bajar de 2,0 m a 1,0 m
-\item
-Fracción del tiempo para la mitad inferior
-\item
-Tiempo de vaciado
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-126.tex}
 
 \noindent\textbf{Sustitución numérica}
 
@@ -18454,13 +17199,6 @@ t_v \approx 319\ \mathrm{s},\qquad t_{\mathrm{mitad\ inferior}}/t_v \approx 0{,}
 
 \noindent\textbf{Interpretación}
 El caudal disminuye con la raíz de la altura, de modo que el último metro tarda más del doble que el primero.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $93.5136$ — reproducido
-\item Paso 2: $0.707107$ — reproducido
-\item Paso 3: $319.275$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18491,13 +17229,9 @@ relación de radios mínima
 \frac{R_2^{2}}{R_2^{2} - R_1^{2}} \le 1 + e \;\Rightarrow\; \frac{R_2}{R_1} \ge \sqrt{\frac{1 + e}{e}}
 \]
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Exceso con R2/R1 = 4
-\item
-Relación de radios mínima
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-127.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18507,12 +17241,6 @@ R_2/R_1 \ge \sqrt{21} \approx 4{,}58\ \text{(exceso de par menor que 0,05)}
 
 \noindent\textbf{Interpretación}
 La pared debe estar a más de cuatro radios y medio para poder tratar el fluido como ilimitado; en un baño pequeño hay que usar el flujo de Couette circular.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.0666667$ — reproducido
-\item Paso 2: $4.58258$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 
@@ -18551,17 +17279,9 @@ potencia por unidad de longitud en el fluido ilimitado
 \item aceite newtoniano a temperatura uniforme
 \end{itemize}
 
-\noindent\textbf{Desarrollo}
-\begin{enumerate}
-\item
-Par por unidad de longitud, fluido ilimitado
-\item
-Par por unidad de longitud, con carcasa
-\item
-Potencia por unidad de longitud, con carcasa
-\item
-Potencia por unidad de longitud, fluido ilimitado
-\end{enumerate}
+\noindent\textbf{Desarrollo paso a paso}
+
+\input{../solutions/generated/mf-128.tex}
 
 \noindent\textbf{Resultado}
 
@@ -18571,14 +17291,6 @@ Potencia por unidad de longitud, fluido ilimitado
 
 \noindent\textbf{Interpretación}
 La carcasa obliga a que la velocidad se anule a 5 mm de la superficie del eje, con gradientes mucho mayores: el par y la potencia se multiplican por 3,27.
-
-\noindent\textbf{Comprobación de los pasos}
-\begin{itemize}
-\item Paso 1: $0.0942478$ — reproducido
-\item Paso 2: $0.308447$ — reproducido
-\item Paso 3: $46.2671$ — reproducido
-\item Paso 4: $14.1372$ — reproducido
-\end{itemize}
 
 \noindent\textbf{Comprobación de la respuesta} la aritmética del último paso reproduce la respuesta enunciada a la precisión con que está escrita. Es una reproducción aritmética; no valida el modelo físico ni sus hipótesis.
 

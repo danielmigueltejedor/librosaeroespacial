@@ -1,0 +1,8 @@
+\textbf{Integral de tiempo desarrollada.} Calcular $C_D=C_{D0}+kC_L^2$ y $\delta=\arctan(C_D/C_L)$. Del equilibrio exacto, $V(h)=\sqrt{2mg_0\cos\delta/[\rho(h)SC_L]}$ y $s(h)=V(h)\sin\delta$. Definir $K=\sqrt{2mg_0\cos\delta/(SC_L)}\sin\delta$ da $s=K/\sqrt\rho$. En la troposfera, $\rho=\rho_0(1-\beta h/T_0)^a$, con $a=g_0/(R\beta)-1$.\[\fitmath{E=\frac{\sqrt{\rho_0}}{K}\int_{h_f}^{h_i}(1-\beta h/T_0)^{a/2}dh=\frac{\sqrt{\rho_0}T_0}{K\beta(1+a/2)}\left[(1-\beta h_f/T_0)^{1+a/2}-(1-\beta h_i/T_0)^{1+a/2}\right]}\]Los parámetros intermedios son $C_L=1.145644$, $C_D=0.056$, $\delta=0.04884193\,\mathrm{rad}$ y $a=4.25588$. La evaluación por alturas permite contrastar el integrando:\begin{center}\begin{tabular}{rrrrr}
+\toprule $h$ (m) & $ho$ & $V$ (m/s) & $s$ (m/s) & $1/s$ (s/m)\\\midrule
+$500$ & $1.167269$ & $20.17227$ & $0.9848608$ & $1.015372$\\
+$1075$ & $1.103477$ & $20.74716$ & $1.012928$ & $0.9872367$\\
+$1650$ & $1.042387$ & $21.34645$ & $1.042188$ & $0.9595202$\\
+$2225$ & $0.9839183$ & $21.97155$ & $1.072706$ & $0.9322217$\\
+$2800$ & $0.9279926$ & $22.62392$ & $1.104557$ & $0.9053405$\\
+\bottomrule\end{tabular}\end{center}\[\fitmath{E\approx2207.537\,\mathrm s,\qquad R_a=(h_i-h_f)\frac{C_L}{C_D}\approx47053.23\,\mathrm m}\]\[\fitmath{R_g=R_a+U E\approx47053.23\,\mathrm m}\]En el modelo helicoidal tendido del enunciado, $n=1/\cos\phi$ y $E_n/E_1=n^{-3/2}=0.8296643$. Por tanto $E_n=1831.515\,\mathrm s$. Este escalado añade la aproximación de viraje tendido al cálculo recto anterior.

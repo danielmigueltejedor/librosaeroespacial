@@ -1,0 +1,43 @@
+\noindent\textbf{Elección del procedimiento.} En los apartados (a) y (c), el empuje adaptado es el flujo saliente de momento menos el entrante, conservando el combustible, y la potencia útil es $FV_0$. El apartado (b) pide explícitamente despreciar el combustible: su resultado es el cociente aproximado calculado al final. Si se define el rendimiento por el aumento de energía cinética del flujo, hay que conservar también esa masa en el denominador; $2V_0/(v_e+V_0)$ es la aproximación que omite combustible.
+
+\begin{enumerate}
+
+\item Sumar el combustible al aire para el caudal de salida.
+
+\[\fitmath{\mathrm{mg}=\mathrm{ma}+\mathrm{mf}}\]
+
+\[\fitmath{\mathrm{mg}=(50)+(1)\approx 51\,\mathrm{kg/s}}\]
+
+\item Aplicar el balance de momento en el marco ligado al motor, con tobera adaptada.
+
+\[\fitmath{F=\mathrm{mg}\cdot \mathrm{ve}-\mathrm{ma}\cdot v_{0}}\]
+
+\[\fitmath{F=(51)\cdot (600)-(50)\cdot (250)\approx 18100\,\mathrm{N}}\]
+
+\item La potencia propulsiva útil utiliza velocidad de vuelo.
+
+\[\fitmath{\mathrm{Pu}=F\cdot v_{0}}\]
+
+\[\fitmath{\mathrm{Pu}=(18100)\cdot (250)\approx 4525000\,\mathrm{W}}\]
+
+\item Calcular el aumento de energía cinética por segundo con los mismos caudales del balance.
+
+\[\fitmath{\mathrm{Pjet}=\frac{\mathrm{mg}\cdot {\mathrm{ve}}^{2}-\mathrm{ma}\cdot {v_{0}}^{2}}{2}}\]
+
+\[\fitmath{\mathrm{Pjet}=\frac{(51)\cdot {(600)}^{2}-(50)\cdot {(250)}^{2}}{2}\approx 7617500\,\mathrm{W}}\]
+
+\item Como contraste adicional, conservar el combustible también en el denominador de energía.
+
+\[\fitmath{\eta_p=\frac{\mathrm{Pu}}{\mathrm{Pjet}}}\]
+
+\[\fitmath{\eta_p=\frac{(4525000)}{(7617500)}\approx 0.5940269\,}\]
+
+\item Resultado solicitado en (b): despreciar combustible en ambos balances da esta fórmula aproximada.
+
+\[\fitmath{\mathrm{etaApprox}=\frac{2\cdot v_{0}}{\mathrm{ve}+v_{0}}}\]
+
+\[\fitmath{\mathrm{etaApprox}=\frac{2\cdot (250)}{(600)+(250)}\approx 0.5882353\,}\]
+
+\end{enumerate}
+
+\noindent\textbf{Contraste y comparación.} El empuje es $18100$ N. Con la definición cinética y los caudales completos, $\eta_p\simeq0.5940$; $0.5882$ corresponde a la aproximación sin combustible. El resultado pedido en (b) es $0.5882$. No mezclar los dos modelos en una misma razón de potencias.

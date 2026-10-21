@@ -35,6 +35,42 @@ $\eta$ & $0.82$ & rendimiento global\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{T=m\cdot g\cdot \mathrm{slope}+k\cdot {V}^{2}}\]
+
+\[\fitmath{T=(850)\cdot (9.81)\cdot (0.04)+(0.32)\cdot {(12)}^{2}\approx 379.62\,\mathrm{N}}\]
+
+\item Obtener $P_u$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Pu}=T\cdot V}\]
+
+\[\fitmath{\mathrm{Pu}=(379.62)\cdot (12)\approx 4555.44\,\mathrm{W}}\]
+
+\item Obtener $P_e$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Pe}=\frac{\mathrm{Pu}}{\eta}}\]
+
+\[\fitmath{\mathrm{Pe}=\frac{(4555.44)}{(0.82)}\approx 5555.415\,\mathrm{W}}\]
+
+\item Obtener $P_{e,2}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Pe}_{2}=\frac{\left(m\cdot g\cdot \mathrm{slope}+k\cdot {\left(1.2\cdot V\right)}^{2}\right)\cdot 1.2\cdot V}{\eta}}\]
+
+\[\fitmath{\mathrm{Pe}_{2}=\frac{\left((850)\cdot (9.81)\cdot (0.04)+(0.32)\cdot {\left(1.2\cdot (12)\right)}^{2}\right)\cdot 1.2\cdot (12)}{(0.82)}\approx 7022.55\,\mathrm{W}}\]
+
+\item Obtener $P_{e,2}/P_e$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ratio}=\frac{\mathrm{Pe}_{2}}{\mathrm{Pe}}}\]
+
+\[\fitmath{\mathrm{ratio}=\frac{(7022.549854)}{(5555.414634)}\approx 1.264091\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $T=379.62\,\mathrm{N}$.
@@ -91,6 +127,30 @@ $t$ & $6\,\mathrm{s}$ & tiempo\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $v$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{v=\frac{v_{0}}{1+\frac{k\cdot v_{0}\cdot t}{m}}}\]
+
+\[\fitmath{v=\frac{(8)}{1+\frac{(0.8)\cdot (8)\cdot (6)}{(24)}}\approx 3.076923\,\mathrm{m/s}}\]
+
+\item Obtener $x$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{x=\frac{m}{k}\cdot \ln\left(1+\frac{k\cdot v_{0}\cdot t}{m}\right)}\]
+
+\[\fitmath{x=\frac{(24)}{(0.8)}\cdot \ln\left(1+\frac{(0.8)\cdot (8)\cdot (6)}{(24)}\right)\approx 28.66534\,\mathrm{m}}\]
+
+\item Obtener $\Delta E$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{loss}=\frac{m\cdot \left({v_{0}}^{2}-{v}^{2}\right)}{2}}\]
+
+\[\fitmath{\mathrm{loss}=\frac{(24)\cdot \left({(8)}^{2}-{(3.076923077)}^{2}\right)}{2}\approx 654.3905\,\mathrm{J}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $v=3.07692\,\mathrm{m/s}$.
@@ -139,6 +199,42 @@ $t$ & $0.7\,\mathrm{s}$ & tiempo\\
 \item Integrar la velocidad para obtener el descenso.
 
 \item Aplicar energía mecánica: $mgz-mv^2/2$ es la energía disipada por la resistencia.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\tau$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{m}{b}}\]
+
+\[\fitmath{\tau=\frac{(0.04)}{(0.12)}\approx 0.3333333\,\mathrm{s}}\]
+
+\item Obtener $v_T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{vt}=\frac{m\cdot g}{b}}\]
+
+\[\fitmath{\mathrm{vt}=\frac{(0.04)\cdot (9.81)}{(0.12)}\approx 3.27\,\mathrm{m/s}}\]
+
+\item Obtener $v$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{v=\mathrm{vt}\cdot \left(1-\exp\left(\frac{-t}{\tau}\right)\right)}\]
+
+\[\fitmath{v=(3.27)\cdot \left(1-\exp\left(\frac{-(0.7)}{(0.3333333333)}\right)\right)\approx 2.869567\,\mathrm{m/s}}\]
+
+\item Obtener $z$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{z=\mathrm{vt}\cdot \left(t-\tau\cdot \left(1-\exp\left(\frac{-t}{\tau}\right)\right)\right)}\]
+
+\[\fitmath{z=(3.27)\cdot \left((0.7)-(0.3333333333)\cdot \left(1-\exp\left(\frac{-(0.7)}{(0.3333333333)}\right)\right)\right)\approx 1.332478\,\mathrm{m}}\]
+
+\item Obtener $E_d$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Ed}=m\cdot g\cdot z-\frac{m\cdot {v}^{2}}{2}}\]
+
+\[\fitmath{\mathrm{Ed}=(0.04)\cdot (9.81)\cdot (1.332477507)-\frac{(0.04)\cdot {(2.86956748)}^{2}}{2}\approx 0.3581758\,\mathrm{J}}\]
 
 \end{enumerate}
 
@@ -204,6 +300,42 @@ $t$ & $0.08\,\mathrm{s}$ & intervalo corto\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $a_{C,\theta}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ac}=-2\cdot \Omega\cdot \mathrm{vr}}\]
+
+\[\fitmath{\mathrm{ac}=-2\cdot (0.8)\cdot (0.15)\approx -0.24\,\mathrm{m/s^{2}}}\]
+
+\item Obtener $a_{cf}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{acf}={\Omega}^{2}\cdot r_{0}}\]
+
+\[\fitmath{\mathrm{acf}={(0.8)}^{2}\cdot (0.4)\approx 0.256\,\mathrm{m/s^{2}}}\]
+
+\item Obtener $s_\theta$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{sy}=\frac{\mathrm{ac}\cdot {t}^{2}}{2}}\]
+
+\[\fitmath{\mathrm{sy}=\frac{(-0.24)\cdot {(0.08)}^{2}}{2}\approx -0.000768\,\mathrm{m}}\]
+
+\item Obtener $\Omega t$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{eps}_{1}=\Omega\cdot t}\]
+
+\[\fitmath{\mathrm{eps}_{1}=(0.8)\cdot (0.08)\approx 0.064\,}\]
+
+\item Obtener $v_rt/r_0$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{eps}_{2}=\frac{\mathrm{vr}\cdot t}{r_{0}}}\]
+
+\[\fitmath{\mathrm{eps}_{2}=\frac{(0.15)\cdot (0.08)}{(0.4)}\approx 0.03\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $a_{C,\theta}=-0.24\,\mathrm{m/s^2}$.
@@ -261,6 +393,42 @@ $t$ & $1.2\,\mathrm{s}$ & tiempo\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\omega_n$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{wn}=\sqrt{\frac{k}{m}}}\]
+
+\[\fitmath{\mathrm{wn}=\sqrt{\frac{(80)}{(2)}}\approx 6.324555\,\mathrm{1/s}}\]
+
+\item Obtener $\zeta$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\zeta=\frac{b}{2\cdot \sqrt{k\cdot m}}}\]
+
+\[\fitmath{\zeta=\frac{(4)}{2\cdot \sqrt{(80)\cdot (2)}}\approx 0.1581139\,}\]
+
+\item Obtener $\omega_d$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{wd}=\sqrt{\frac{k}{m}-\frac{{b}^{2}}{4\cdot {m}^{2}}}}\]
+
+\[\fitmath{\mathrm{wd}=\sqrt{\frac{(80)}{(2)}-\frac{{(4)}^{2}}{4\cdot {(2)}^{2}}}\approx 6.244998\,\mathrm{1/s}}\]
+
+\item Obtener $A_{env}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{env}=x_{0}\cdot \sqrt{1+{\left(\frac{b}{2\cdot m\cdot \mathrm{wd}}\right)}^{2}}\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)}\]
+
+\[\fitmath{\mathrm{env}=(0.03)\cdot \sqrt{1+{\left(\frac{(4)}{2\cdot (2)\cdot (6.244997998)}\right)}^{2}}\cdot \exp\left(\frac{-(4)\cdot (1.2)}{2\cdot (2)}\right)\approx 0.009150937\,\mathrm{m}}\]
+
+\item Obtener $x$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{x=x_{0}\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)\cdot \left(\cos\left(\mathrm{wd}\cdot t\right)+\frac{b\cdot \sin\left(\mathrm{wd}\cdot t\right)}{2\cdot m\cdot \mathrm{wd}}\right)}\]
+
+\[\fitmath{x=(0.03)\cdot \exp\left(\frac{-(4)\cdot (1.2)}{2\cdot (2)}\right)\cdot \left(\cos\left((6.244997998)\cdot (1.2)\right)+\frac{(4)\cdot \sin\left((6.244997998)\cdot (1.2)\right)}{2\cdot (2)\cdot (6.244997998)}\right)\approx 0.004537102\,\mathrm{m}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\omega_n=6.32456\,\mathrm{s^{-1}}$.
@@ -313,6 +481,48 @@ $r$ & $16$ & parámetro r\\
 \item Evaluar el polinomio característico del jacobiano en cualquiera de esos dos equilibrios.
 
 \item Con coeficientes positivos, la condición adicional de Routh es $a_1a_2>a_3$. El origen tiene una dirección inestable para $r>1$.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $|x_e|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{xe}=\sqrt{\mathrm{bb}\cdot \left(\mathrm{rr}-1\right)}}\]
+
+\[\fitmath{\mathrm{xe}=\sqrt{(2.666666667)\cdot \left((16)-1\right)}\approx 6.324555\,}\]
+
+\item Obtener $z_e$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ze}=\mathrm{rr}-1}\]
+
+\[\fitmath{\mathrm{ze}=(16)-1\approx 15\,}\]
+
+\item Obtener $a_1$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{a_{1}=\mathrm{sig}+\mathrm{bb}+1}\]
+
+\[\fitmath{a_{1}=(10)+(2.666666667)+1\approx 13.66667\,}\]
+
+\item Obtener $a_2$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{a_{2}=\mathrm{bb}\cdot \left(\mathrm{sig}+\mathrm{rr}\right)}\]
+
+\[\fitmath{a_{2}=(2.666666667)\cdot \left((10)+(16)\right)\approx 69.33333\,}\]
+
+\item Obtener $a_3$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{a_{3}=2\cdot \mathrm{sig}\cdot \mathrm{bb}\cdot \left(\mathrm{rr}-1\right)}\]
+
+\[\fitmath{a_{3}=2\cdot (10)\cdot (2.666666667)\cdot \left((16)-1\right)\approx 800\,}\]
+
+\item Obtener $a_1a_2-a_3$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{margin}=a_{1}\cdot a_{2}-a_{3}}\]
+
+\[\fitmath{\mathrm{margin}=(13.66666667)\cdot (69.33333333)-(800)\approx 147.5556\,}\]
 
 \end{enumerate}
 
@@ -381,6 +591,42 @@ $\rho$ & $950\,\mathrm{kg/m^3}$ & densidad\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\tau$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{F}{A}}\]
+
+\[\fitmath{\tau=\frac{(3.6)}{(0.12)}\approx 30\,\mathrm{Pa}}\]
+
+\item Obtener $\mu$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mu=\frac{F\cdot h}{A\cdot U}}\]
+
+\[\fitmath{\mu=\frac{(3.6)\cdot (0.002)}{(0.12)\cdot (0.4)}\approx 0.15\,\mathrm{Pa\,s}}\]
+
+\item Obtener $\nu$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\nu=\frac{\mu}{\rho}}\]
+
+\[\fitmath{\nu=\frac{(0.15)}{(950)}\approx 0.0001578947\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=F\cdot U}\]
+
+\[\fitmath{\mathrm{power}=(3.6)\cdot (0.4)\approx 1.44\,\mathrm{W}}\]
+
+\item Obtener $\mathrm{Re}_h$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\rho\cdot U\cdot h}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(950)\cdot (0.4)\cdot (0.002)}{(0.15)}\approx 5.066667\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\tau=30\,\mathrm{Pa}$.
@@ -433,6 +679,42 @@ $\Delta p$ & $5\times10^{6}\,\mathrm{Pa}$ & incremento de presión\\
 \item Expandir la exponencial para obtener la fórmula lineal y comparar ambas.
 
 \item Comprobar la variación relativa frente a la tolerancia, separando esa variación del error de linealización.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\Delta p/K$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{eps}=\frac{\mathrm{dp}}{K}}\]
+
+\[\fitmath{\mathrm{eps}=\frac{(5000000)}{(1800000000)}\approx 0.002777778\,}\]
+
+\item Obtener $\rho$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\rho=\rho_{0}\cdot \exp\left(\frac{\mathrm{dp}}{K}\right)}\]
+
+\[\fitmath{\rho=(980)\cdot \exp\left(\frac{(5000000)}{(1800000000)}\right)\approx 982.726\,\mathrm{kg/m^{3}}}\]
+
+\item Obtener $\rho_{lin}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{rhol}=\rho_{0}\cdot \left(1+\frac{\mathrm{dp}}{K}\right)}\]
+
+\[\fitmath{\mathrm{rhol}=(980)\cdot \left(1+\frac{(5000000)}{(1800000000)}\right)\approx 982.7222\,\mathrm{kg/m^{3}}}\]
+
+\item Obtener $\Delta\rho/\rho_0$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{variation}=\frac{\rho}{\rho_{0}}-1}\]
+
+\[\fitmath{\mathrm{variation}=\frac{(982.7260066)}{(980)}-1\approx 0.002781639\,}\]
+
+\item Obtener $\varepsilon_{lin}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{error}=\frac{\rho-\mathrm{rhol}}{\rho}}\]
+
+\[\fitmath{\mathrm{error}=\frac{(982.7260066)-(982.7222222)}{(982.7260066)}\approx 3.850888\times10^{-6}\,}\]
 
 \end{enumerate}
 
@@ -490,6 +772,36 @@ $\mu$ & $1.8\times10^{-5}\,\mathrm{Pa\,s}$ & viscosidad\\
 \item Calcular ambos cocientes adimensionales: Reynolds compara inercia y viscosidad; Knudsen compara escalas molecular y macroscópica.
 
 \item La nueva holgura eleva Knudsen cien veces. Una fórmula de Couette con no deslizamiento ya no constituye por sí sola una predicción justificada.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\mathrm{Kn}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Kn}=\frac{\mathrm{lam}}{h}}\]
+
+\[\fitmath{\mathrm{Kn}=\frac{(6.5\times10^{-8})}{(5\times10^{-5})}\approx 0.0013\,}\]
+
+\item Obtener $\mathrm{Re}_h$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\rho\cdot U\cdot h}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(1.2)\cdot (0.02)\cdot (5\times10^{-5})}{(1.8\times10^{-5})}\approx 0.06666667\,}\]
+
+\item Obtener $\tau$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{\mu\cdot U}{h}}\]
+
+\[\fitmath{\tau=\frac{(1.8\times10^{-5})\cdot (0.02)}{(5\times10^{-5})}\approx 0.0072\,\mathrm{Pa}}\]
+
+\item Obtener $\mathrm{Kn}_2$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Kn}_{2}=\frac{100\cdot \mathrm{lam}}{h}}\]
+
+\[\fitmath{\mathrm{Kn}_{2}=\frac{100\cdot (6.5\times10^{-8})}{(5\times10^{-5})}\approx 0.13\,}\]
 
 \end{enumerate}
 
@@ -552,6 +864,36 @@ $y$ & $0.2\,\mathrm{m}$ & coordenada y\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $u$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{u=a\cdot x}\]
+
+\[\fitmath{u=(0.6)\cdot (0.3)\approx 0.18\,\mathrm{m/s}}\]
+
+\item Obtener $v$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{v=-a\cdot y}\]
+
+\[\fitmath{v=-(0.6)\cdot (0.2)\approx -0.12\,\mathrm{m/s}}\]
+
+\item Obtener $a_x$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ax}={a}^{2}\cdot x}\]
+
+\[\fitmath{\mathrm{ax}={(0.6)}^{2}\cdot (0.3)\approx 0.108\,\mathrm{m/s^{2}}}\]
+
+\item Obtener $a_y$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ay}={a}^{2}\cdot y}\]
+
+\[\fitmath{\mathrm{ay}={(0.6)}^{2}\cdot (0.2)\approx 0.072\,\mathrm{m/s^{2}}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $u=0.18\,\mathrm{m/s}$.
@@ -603,6 +945,42 @@ $t$ & $2\,\mathrm{s}$ & tiempo\\
 \item Calcular $\partial_xv-\partial_yu$ para obtener el signo de la vorticidad.
 
 \item El punto material se traslada en línea recta. El giro local de un elemento infinitesimal es $\omega_z/2$, que no es el giro orbital de esa partícula.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $u(y_0)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{vel}=\mathrm{Gm}\cdot y_{0}}\]
+
+\[\fitmath{\mathrm{vel}=(3)\cdot (0.02)\approx 0.06\,\mathrm{m/s}}\]
+
+\item Obtener $x(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{xf}=x_{0}+\mathrm{Gm}\cdot y_{0}\cdot t}\]
+
+\[\fitmath{\mathrm{xf}=(0.1)+(3)\cdot (0.02)\cdot (2)\approx 0.22\,\mathrm{m}}\]
+
+\item Obtener $\psi(y_0)-C$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\psi=\frac{\mathrm{Gm}\cdot {y_{0}}^{2}}{2}}\]
+
+\[\fitmath{\psi=\frac{(3)\cdot {(0.02)}^{2}}{2}\approx 0.0006\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\omega_z$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{wz}=-\mathrm{Gm}}\]
+
+\[\fitmath{\mathrm{wz}=-(3)\approx -3\,\mathrm{1/s}}\]
+
+\item Obtener $\Omega_{local}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{spin}=\frac{-\mathrm{Gm}}{2}}\]
+
+\[\fitmath{\mathrm{spin}=\frac{-(3)}{2}\approx -1.5\,\mathrm{1/s}}\]
 
 \end{enumerate}
 
@@ -662,6 +1040,42 @@ $y_0$ & $0.2\,\mathrm{m}$ & coordenada material inicial y\\
 \item Formar las derivadas espaciales y sumar los dos mecanismos de aceleración.
 
 \item Separar $dx_p/x_p=a(t)dt$ y $dy_p/y_p=-a(t)dt$; integrar desde cero.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $a(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{at}=a_{0}+b\cdot t}\]
+
+\[\fitmath{\mathrm{at}=(0.2)+(0.03)\cdot (2)\approx 0.26\,\mathrm{1/s}}\]
+
+\item Obtener $a_x$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ax}=\left(b+{\mathrm{at}}^{2}\right)\cdot x}\]
+
+\[\fitmath{\mathrm{ax}=\left((0.03)+{(0.26)}^{2}\right)\cdot (0.4)\approx 0.03904\,\mathrm{m/s^{2}}}\]
+
+\item Obtener $a_y$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ay}=\left({\mathrm{at}}^{2}-b\right)\cdot y}\]
+
+\[\fitmath{\mathrm{ay}=\left({(0.26)}^{2}-(0.03)\right)\cdot (0.3)\approx 0.01128\,\mathrm{m/s^{2}}}\]
+
+\item Obtener $x_p(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{xp}=x_{0}\cdot \exp\left(a_{0}\cdot t+\frac{b\cdot {t}^{2}}{2}\right)}\]
+
+\[\fitmath{\mathrm{xp}=(0.1)\cdot \exp\left((0.2)\cdot (2)+\frac{(0.03)\cdot {(2)}^{2}}{2}\right)\approx 0.1584074\,\mathrm{m}}\]
+
+\item Obtener $y_p(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{yp}=y_{0}\cdot \exp\left(-a_{0}\cdot t-\frac{b\cdot {t}^{2}}{2}\right)}\]
+
+\[\fitmath{\mathrm{yp}=(0.2)\cdot \exp\left(-(0.2)\cdot (2)-\frac{(0.03)\cdot {(2)}^{2}}{2}\right)\approx 0.1262567\,\mathrm{m}}\]
 
 \end{enumerate}
 
@@ -725,6 +1139,42 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 \item Integrar por separado fuerza y momento respecto de la bisagra; $s$ mide distancia sobre el panel, no profundidad vertical.
 
 \item Equilibrar momentos: $F_{ap}L=M$. La reacción de la bisagra completa el equilibrio de fuerzas.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $h_c$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{hc}=h_{0}+\frac{L\cdot \sin\left(\theta\right)}{2}}\]
+
+\[\fitmath{\mathrm{hc}=(0.4)+\frac{(2)\cdot \sin\left((1.047197551)\right)}{2}\approx 1.266025\,\mathrm{m}}\]
+
+\item Obtener $F$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{F=\rho\cdot g\cdot b\cdot L\cdot \mathrm{hc}}\]
+
+\[\fitmath{F=(1000)\cdot (9.81)\cdot (1.2)\cdot (2)\cdot (1.266025404)\approx 29807.3\,\mathrm{N}}\]
+
+\item Obtener $M$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{M=\rho\cdot g\cdot b\cdot \left(\frac{h_{0}\cdot {L}^{2}}{2}+\frac{\sin\left(\theta\right)\cdot {L}^{3}}{3}\right)}\]
+
+\[\fitmath{M=(1000)\cdot (9.81)\cdot (1.2)\cdot \left(\frac{(0.4)\cdot {(2)}^{2}}{2}+\frac{\sin\left((1.047197551)\right)\cdot {(2)}^{3}}{3}\right)\approx 36603.87\,\mathrm{N\,m}}\]
+
+\item Obtener $s_R$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{sr}=\frac{M}{F}}\]
+
+\[\fitmath{\mathrm{sr}=\frac{(36603.86948)}{(29807.30211)}\approx 1.228017\,\mathrm{m}}\]
+
+\item Obtener $F_{ap}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{hold}=\frac{M}{L}}\]
+
+\[\fitmath{\mathrm{hold}=\frac{(36603.86948)}{(2)}\approx 18301.93\,\mathrm{N}}\]
 
 \end{enumerate}
 
@@ -795,6 +1245,24 @@ $\Delta h$ & $0.18\,\mathrm{m}$ & desnivel de interfaces\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $p_A-p_B$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\left(\mathrm{rm}-\mathrm{rw}\right)\cdot g\cdot \mathrm{dh}}\]
+
+\[\fitmath{\mathrm{dp}=\left((13200)-(1000)\right)\cdot (9.81)\cdot (0.18)\approx 21542.76\,\mathrm{Pa}}\]
+
+\item Obtener $H_w$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Hw}=\frac{\mathrm{dp}}{\mathrm{rw}\cdot g}}\]
+
+\[\fitmath{\mathrm{Hw}=\frac{(21542.76)}{(1000)\cdot (9.81)}\approx 2.196\,\mathrm{m}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $p_A-p_B=21542.8\,\mathrm{Pa}$.
@@ -844,6 +1312,48 @@ $\theta$ & $0.05$ & ángulo en radianes\\
 \item Usar $I_{wp}=Lb^3/12$ para el eje longitudinal; no intercambiar manga y longitud.
 
 \item Calcular $GM$ y conservar el signo del momento: un $GM$ positivo produce un par opuesto a la escora.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $d$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{draft}=\frac{\mathrm{rs}}{\mathrm{rf}}\cdot h}\]
+
+\[\fitmath{\mathrm{draft}=\frac{(600)}{(1000)}\cdot (0.2)\approx 0.12\,\mathrm{m}}\]
+
+\item Obtener $BM$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{BM}=\frac{{b}^{2}}{12\cdot \mathrm{draft}}}\]
+
+\[\fitmath{\mathrm{BM}=\frac{{(0.4)}^{2}}{12\cdot (0.12)}\approx 0.1111111\,\mathrm{m}}\]
+
+\item Obtener $BG$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{BG}=\frac{h-\mathrm{draft}}{2}}\]
+
+\[\fitmath{\mathrm{BG}=\frac{(0.2)-(0.12)}{2}\approx 0.04\,\mathrm{m}}\]
+
+\item Obtener $GM$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{GM}=\mathrm{BM}-\mathrm{BG}}\]
+
+\[\fitmath{\mathrm{GM}=(0.1111111111)-(0.04)\approx 0.07111111\,\mathrm{m}}\]
+
+\item Obtener $W$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{W=\mathrm{rs}\cdot L\cdot b\cdot h\cdot g}\]
+
+\[\fitmath{W=(600)\cdot (0.8)\cdot (0.4)\cdot (0.2)\cdot (9.81)\approx 376.704\,\mathrm{N}}\]
+
+\item Obtener $M_R$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{moment}=-W\cdot \mathrm{GM}\cdot \theta}\]
+
+\[\fitmath{\mathrm{moment}=-(376.704)\cdot (0.07111111111)\cdot (0.05)\approx -1.339392\,\mathrm{N\,m}}\]
 
 \end{enumerate}
 
@@ -912,6 +1422,36 @@ $b$ & $0.2\,\mathrm{m}$ & anchura\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{q=\frac{U\cdot h}{2}+\frac{G\cdot {h}^{3}}{12\cdot \mu}}\]
+
+\[\fitmath{q=\frac{(0.3)\cdot (0.004)}{2}+\frac{(100)\cdot {(0.004)}^{3}}{12\cdot (0.08)}\approx 0.0006066667\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $Q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{Q=b\cdot q}\]
+
+\[\fitmath{Q=(0.2)\cdot (0.0006066666667)\approx 0.0001213333\,\mathrm{m^{3}/s}}\]
+
+\item Obtener $\tau_{xy}(0)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau_{0}=\frac{\mu\cdot U}{h}+\frac{G\cdot h}{2}}\]
+
+\[\fitmath{\tau_{0}=\frac{(0.08)\cdot (0.3)}{(0.004)}+\frac{(100)\cdot (0.004)}{2}\approx 6.2\,\mathrm{Pa}}\]
+
+\item Obtener $\tau_{xy}(h)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{tauh}=\frac{\mu\cdot U}{h}-\frac{G\cdot h}{2}}\]
+
+\[\fitmath{\mathrm{tauh}=\frac{(0.08)\cdot (0.3)}{(0.004)}-\frac{(100)\cdot (0.004)}{2}\approx 5.8\,\mathrm{Pa}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $q=0.000606667\,\mathrm{m^2/s}$.
@@ -976,6 +1516,42 @@ $Q$ & $1\times10^{-6}\,\mathrm{m^3/s}$ & caudal\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\Delta p$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\frac{8\cdot \mu\cdot L\cdot Q}{\pi\cdot {R}^{4}}}\]
+
+\[\fitmath{\mathrm{dp}=\frac{8\cdot (0.012)\cdot (0.8)\cdot (1\times10^{-6})}{\pi\cdot {(0.001)}^{4}}\approx 24446.2\,\mathrm{Pa}}\]
+
+\item Obtener $\bar u$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{um}=\frac{Q}{\pi\cdot {R}^{2}}}\]
+
+\[\fitmath{\mathrm{um}=\frac{(1\times10^{-6})}{\pi\cdot {(0.001)}^{2}}\approx 0.3183099\,\mathrm{m/s}}\]
+
+\item Obtener $\mathrm{Re}_D$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{2\cdot \rho\cdot \mathrm{um}\cdot R}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{2\cdot (980)\cdot (0.3183098862)\cdot (0.001)}{(0.012)}\approx 51.99061\,}\]
+
+\item Obtener $\tau_w$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{\mathrm{dp}\cdot R}{2\cdot L}}\]
+
+\[\fitmath{\tau=\frac{(24446.19926)\cdot (0.001)}{2\cdot (0.8)}\approx 15.27887\,\mathrm{Pa}}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=\mathrm{dp}\cdot Q}\]
+
+\[\fitmath{\mathrm{power}=(24446.19926)\cdot (1\times10^{-6})\approx 0.0244462\,\mathrm{W}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\Delta p=24446.2\,\mathrm{Pa}$.
@@ -1031,6 +1607,42 @@ $\rho$ & $900\,\mathrm{kg/m^3}$ & densidad\\
 \item Usar $\tau_{r\theta}=\mu(du_\theta/dr-u_\theta/r)=-2\mu B/r^2$ y multiplicar por área y brazo.
 
 \item Integrar el equilibrio radial. El par de entrada se da en módulo; el esfuerzo del líquido se opone al giro.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $A$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{aa}=\frac{-\Omega\cdot {\mathrm{Ri}}^{2}}{{\mathrm{Ro}}^{2}-{\mathrm{Ri}}^{2}}}\]
+
+\[\fitmath{\mathrm{aa}=\frac{-(15)\cdot {(0.02)}^{2}}{{(0.05)}^{2}-{(0.02)}^{2}}\approx -2.857143\,\mathrm{1/s}}\]
+
+\item Obtener $B$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{bb}=\frac{\Omega\cdot {\mathrm{Ri}}^{2}\cdot {\mathrm{Ro}}^{2}}{{\mathrm{Ro}}^{2}-{\mathrm{Ri}}^{2}}}\]
+
+\[\fitmath{\mathrm{bb}=\frac{(15)\cdot {(0.02)}^{2}\cdot {(0.05)}^{2}}{{(0.05)}^{2}-{(0.02)}^{2}}\approx 0.007142857\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{torque}=4\cdot \pi\cdot \mu\cdot L\cdot \mathrm{bb}}\]
+
+\[\fitmath{\mathrm{torque}=4\cdot \pi\cdot (0.4)\cdot (0.3)\cdot (0.007142857143)\approx 0.01077117\,\mathrm{N\,m}}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=\mathrm{torque}\cdot \Omega}\]
+
+\[\fitmath{\mathrm{power}=(0.01077117481)\cdot (15)\approx 0.1615676\,\mathrm{W}}\]
+
+\item Obtener $p(R_o)-p(R_i)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\rho\cdot \left(\frac{{\mathrm{aa}}^{2}\cdot \left({\mathrm{Ro}}^{2}-{\mathrm{Ri}}^{2}\right)}{2}+2\cdot \mathrm{aa}\cdot \mathrm{bb}\cdot \ln\left(\frac{\mathrm{Ro}}{\mathrm{Ri}}\right)+\frac{{\mathrm{bb}}^{2}}{2}\cdot \left(\frac{1}{{\mathrm{Ri}}^{2}}-\frac{1}{{\mathrm{Ro}}^{2}}\right)\right)}\]
+
+\[\fitmath{\mathrm{dp}=(900)\cdot \left(\frac{{(-2.857142857)}^{2}\cdot \left({(0.05)}^{2}-{(0.02)}^{2}\right)}{2}+2\cdot (-2.857142857)\cdot (0.007142857143)\cdot \ln\left(\frac{(0.05)}{(0.02)}\right)+\frac{{(0.007142857143)}^{2}}{2}\cdot \left(\frac{1}{{(0.02)}^{2}}-\frac{1}{{(0.05)}^{2}}\right)\right)\approx 22.26891\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -1099,6 +1711,48 @@ $S$ & $12\,\mathrm{m^2}$ & superficie\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $C_{L,*}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{C_L=\sqrt{\frac{\mathrm{cd}_{0}}{K}}}\]
+
+\[\fitmath{C_L=\sqrt{\frac{(0.025)}{(0.05)}}\approx 0.7071068\,}\]
+
+\item Obtener $V_*$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{V=\sqrt{\frac{2\cdot W}{\rho\cdot S\cdot C_L}}}\]
+
+\[\fitmath{V=\sqrt{\frac{2\cdot (4000)}{(1.1)\cdot (12)\cdot (0.7071067812)}}\approx 29.27626\,\mathrm{m/s}}\]
+
+\item Obtener $D_{min}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Dmin}=2\cdot W\cdot \sqrt{\mathrm{cd}_{0}\cdot K}}\]
+
+\[\fitmath{\mathrm{Dmin}=2\cdot (4000)\cdot \sqrt{(0.025)\cdot (0.05)}\approx 282.8427\,\mathrm{N}}\]
+
+\item Obtener $K_i$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Ki}=\frac{1}{\pi\cdot e\cdot \mathrm{AR}}}\]
+
+\[\fitmath{\mathrm{Ki}=\frac{1}{\pi\cdot (0.9)\cdot (9)}\approx 0.03929752\,}\]
+
+\item Obtener $K-K_i$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{rest}=K-\mathrm{Ki}}\]
+
+\[\fitmath{\mathrm{rest}=(0.05)-(0.03929751681)\approx 0.01070248\,}\]
+
+\item Obtener $(L/D)_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{LD}=\frac{W}{\mathrm{Dmin}}}\]
+
+\[\fitmath{\mathrm{LD}=\frac{(4000)}{(282.8427125)}\approx 14.14214\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $C_{L,*}=0.707107$.
@@ -1158,6 +1812,30 @@ $U_3$ & $8\,\mathrm{m/s}$ & velocidad de predicción\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $b$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{bfit}=\frac{\frac{F_{2}}{U_{2}}-\frac{F_{1}}{U_{1}}}{U_{2}-U_{1}}}\]
+
+\[\fitmath{\mathrm{bfit}=\frac{\frac{(1.2)}{(5)}-\frac{(0.3)}{(2)}}{(5)-(2)}\approx 0.03\,\mathrm{kg/m}}\]
+
+\item Obtener $a$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{afit}=\frac{F_{1}}{U_{1}}-\mathrm{bfit}\cdot U_{1}}\]
+
+\[\fitmath{\mathrm{afit}=\frac{(0.3)}{(2)}-(0.03)\cdot (2)\approx 0.09\,\mathrm{kg/s}}\]
+
+\item Obtener $F_3$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{F_{3}=\mathrm{afit}\cdot U_{3}+\mathrm{bfit}\cdot {U_{3}}^{2}}\]
+
+\[\fitmath{F_{3}=(0.09)\cdot (8)+(0.03)\cdot {(8)}^{2}\approx 2.64\,\mathrm{N}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $b=0.03\,\mathrm{kg/m}$.
@@ -1209,6 +1887,48 @@ $C_{L,lim}$ & $1.4$ & límite de sustentación\\
 \item Derivar: el mínimo interior satisface $KC_L^2=3C_{D0}$.
 
 \item Comprobar $C_{L,P}\le C_{L,lim}$; si no se cumple, el óptimo factible se busca en la frontera. Comparar con $C_{L,L/D}=\sqrt{C_{D0}/K}$.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $C_{L,P}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{CLP}=\sqrt{\frac{3\cdot \mathrm{cd}_{0}}{K}}}\]
+
+\[\fitmath{\mathrm{CLP}=\sqrt{\frac{3\cdot (0.03)}{(0.05)}}\approx 1.341641\,}\]
+
+\item Obtener $V_P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{VP}=\sqrt{\frac{2\cdot W}{\rho\cdot S\cdot \mathrm{CLP}}}}\]
+
+\[\fitmath{\mathrm{VP}=\sqrt{\frac{2\cdot (4000)}{(1.1)\cdot (12)\cdot (1.341640786)}}\approx 21.25396\,\mathrm{m/s}}\]
+
+\item Obtener $P_{min}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Pmin}=W\cdot \mathrm{VP}\cdot \left(\frac{\mathrm{cd}_{0}}{\mathrm{CLP}}+K\cdot \mathrm{CLP}\right)}\]
+
+\[\fitmath{\mathrm{Pmin}=(4000)\cdot (21.25396209)\cdot \left(\frac{(0.03)}{(1.341640786)}+(0.05)\cdot (1.341640786)\right)\approx 7604.049\,\mathrm{W}}\]
+
+\item Obtener $C_{L,L/D}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{CLD}=\sqrt{\frac{\mathrm{cd}_{0}}{K}}}\]
+
+\[\fitmath{\mathrm{CLD}=\sqrt{\frac{(0.03)}{(0.05)}}\approx 0.7745967\,}\]
+
+\item Obtener $V_{L/D}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{VD}=\sqrt{\frac{2\cdot W}{\rho\cdot S\cdot \mathrm{CLD}}}}\]
+
+\[\fitmath{\mathrm{VD}=\sqrt{\frac{2\cdot (4000)}{(1.1)\cdot (12)\cdot (0.7745966692)}}\approx 27.97179\,\mathrm{m/s}}\]
+
+\item Obtener $C_{L,lim}-C_{L,P}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{margin}=\mathrm{CLlim}-\mathrm{CLP}}\]
+
+\[\fitmath{\mathrm{margin}=(1.4)-(1.341640786)\approx 0.05835921\,}\]
 
 \end{enumerate}
 
@@ -1276,6 +1996,36 @@ $\eta_0$ & $0.03\,\mathrm{m}$ & desplazamiento de un brazo\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\omega$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\omega=\sqrt{\frac{2\cdot g}{L}}}\]
+
+\[\fitmath{\omega=\sqrt{\frac{2\cdot (9.81)}{(1.6)}}\approx 3.501785\,\mathrm{1/s}}\]
+
+\item Obtener $T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi}{\omega}}\]
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi}{(3.501785259)}\approx 1.794281\,\mathrm{s}}\]
+
+\item Obtener $Q_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Qmax}=A\cdot \omega\cdot \eta_{0}}\]
+
+\[\fitmath{\mathrm{Qmax}=(0.0006)\cdot (3.501785259)\cdot (0.03)\approx 6.303213\times10^{-5}\,\mathrm{m^{3}/s}}\]
+
+\item Obtener $E$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{energy}=\rho\cdot g\cdot A\cdot {\eta_{0}}^{2}}\]
+
+\[\fitmath{\mathrm{energy}=(1000)\cdot (9.81)\cdot (0.0006)\cdot {(0.03)}^{2}\approx 0.0052974\,\mathrm{J}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\omega=3.50179\,\mathrm{s^{-1}}$.
@@ -1328,6 +2078,48 @@ $y$ & $0.001\,\mathrm{m}$ & distancia a pared\\
 \item La solución compleja tiene un factor de amortiguación y otro de fase con la misma escala espacial.
 
 \item Derivar en pared. La amplitud de esfuerzo contiene $\sqrt2/\delta$; al promediar la potencia se conserva sólo la parte en fase con la velocidad.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\omega$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\omega=2\cdot \pi\cdot f}\]
+
+\[\fitmath{\omega=2\cdot \pi\cdot (2)\approx 12.56637\,\mathrm{1/s}}\]
+
+\item Obtener $\delta$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\delta=\sqrt{\frac{2\cdot \nu}{\omega}}}\]
+
+\[\fitmath{\delta=\sqrt{\frac{2\cdot (1\times10^{-5})}{(12.56637061)}}\approx 0.001261566\,\mathrm{m}}\]
+
+\item Obtener $|u|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{amp}=U\cdot \exp\left(\frac{-y}{\delta}\right)}\]
+
+\[\fitmath{\mathrm{amp}=(0.1)\cdot \exp\left(\frac{-(0.001)}{(0.001261566261)}\right)\approx 0.04526367\,\mathrm{m/s}}\]
+
+\item Obtener $\varphi$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{phase}=\frac{y}{\delta}}\]
+
+\[\fitmath{\mathrm{phase}=\frac{(0.001)}{(0.001261566261)}\approx 0.7926655\,}\]
+
+\item Obtener $|\tau_w|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\rho\cdot \nu\cdot U\cdot \sqrt{\frac{\omega}{\nu}}}\]
+
+\[\fitmath{\tau=(900)\cdot (1\times10^{-5})\cdot (0.1)\cdot \sqrt{\frac{(12.56637061)}{(1\times10^{-5})}}\approx 1.008898\,\mathrm{Pa}}\]
+
+\item Obtener $\overline P/A$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=\frac{\rho\cdot \nu\cdot {U}^{2}}{2\cdot \delta}}\]
+
+\[\fitmath{\mathrm{power}=\frac{(900)\cdot (1\times10^{-5})\cdot {(0.1)}^{2}}{2\cdot (0.001261566261)}\approx 0.03566995\,\mathrm{W/m^{2}}}\]
 
 \end{enumerate}
 
@@ -1390,6 +2182,36 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $t_d$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{td}=\frac{{h}^{2}}{\nu\cdot {\pi}^{2}}}\]
+
+\[\fitmath{\mathrm{td}=\frac{{(0.01)}^{2}}{(1\times10^{-5})\cdot {\pi}^{2}}\approx 1.013212\,\mathrm{s}}\]
+
+\item Obtener $U(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{amp}=U_{0}\cdot \exp\left(\frac{-t}{\mathrm{td}}\right)}\]
+
+\[\fitmath{\mathrm{amp}=(0.2)\cdot \exp\left(\frac{-(0.5)}{(1.013211836)}\right)\approx 0.1220996\,\mathrm{m/s}}\]
+
+\item Obtener $q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{q=\frac{2\cdot h\cdot \mathrm{amp}}{\pi}}\]
+
+\[\fitmath{q=\frac{2\cdot (0.01)\cdot (0.1220996051)}{\pi}\approx 0.0007773102\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\tau_{xy}(0)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{\rho\cdot \nu\cdot \mathrm{amp}\cdot \pi}{h}}\]
+
+\[\fitmath{\tau=\frac{(1000)\cdot (1\times10^{-5})\cdot (0.1220996051)\cdot \pi}{(0.01)}\approx 0.3835872\,\mathrm{Pa}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $t_d=1.01321\,\mathrm{s}$.
@@ -1448,6 +2270,48 @@ $\theta$ & $1.0472$ & ángulo de salida en radianes\\
 \item La presión de entrada empuja hacia $+x$; no se suma una fuerza de presión manométrica en la salida.
 
 \item Obtener primero pared sobre líquido y después invertir el signo para contestar la pregunta.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $A$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{A=\frac{\pi\cdot {D}^{2}}{4}}\]
+
+\[\fitmath{A=\frac{\pi\cdot {(0.04)}^{2}}{4}\approx 0.001256637\,\mathrm{m^{2}}}\]
+
+\item Obtener $V$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{V=\frac{Q}{A}}\]
+
+\[\fitmath{V=\frac{(0.02)}{(0.001256637061)}\approx 15.91549\,\mathrm{m/s}}\]
+
+\item Obtener $\dot m$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{md}=\rho\cdot Q}\]
+
+\[\fitmath{\mathrm{md}=(1000)\cdot (0.02)\approx 20\,\mathrm{kg/s}}\]
+
+\item Obtener $F_x$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Fx}=p\cdot A-\mathrm{md}\cdot V\cdot \left(\cos\left(\theta\right)-1\right)}\]
+
+\[\fitmath{\mathrm{Fx}=(120000)\cdot (0.001256637061)-(20)\cdot (15.91549431)\cdot \left(\cos\left((1.047197551)\right)-1\right)\approx 309.9514\,\mathrm{N}}\]
+
+\item Obtener $F_y$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Fy}=-\mathrm{md}\cdot V\cdot \sin\left(\theta\right)}\]
+
+\[\fitmath{\mathrm{Fy}=-(20)\cdot (15.91549431)\cdot \sin\left((1.047197551)\right)\approx -275.6644\,\mathrm{N}}\]
+
+\item Obtener $|\boldsymbol F|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Fmag}=\sqrt{{\mathrm{Fx}}^{2}+{\mathrm{Fy}}^{2}}}\]
+
+\[\fitmath{\mathrm{Fmag}=\sqrt{{(309.9513905)}^{2}+{(-275.6644477)}^{2}}\approx 414.8021\,\mathrm{N}}\]
 
 \end{enumerate}
 
@@ -1519,6 +2383,52 @@ $R$ & $2\,\mathrm{m}$ & radio de disco\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $A$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{A=\pi\cdot {R}^{2}}\]
+
+\[\fitmath{A=\pi\cdot {(2)}^{2}\approx 12.56637\,\mathrm{m^{2}}}\]
+
+\item Obtener $U_d$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ud}=U\cdot \left(1-a\right)}\]
+
+\[\fitmath{\mathrm{ud}=(10)\cdot \left(1-(0.25)\right)\approx 7.5\,\mathrm{m/s}}\]
+
+\item Obtener $U_w$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{uw}=U\cdot \left(1-2\cdot a\right)}\]
+
+\[\fitmath{\mathrm{uw}=(10)\cdot \left(1-2\cdot (0.25)\right)\approx 5\,\mathrm{m/s}}\]
+
+\item Obtener $T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{T=2\cdot \rho\cdot A\cdot {U}^{2}\cdot a\cdot \left(1-a\right)}\]
+
+\[\fitmath{T=2\cdot (1.2)\cdot (12.56637061)\cdot {(10)}^{2}\cdot (0.25)\cdot \left(1-(0.25)\right)\approx 565.4867\,\mathrm{N}}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=T\cdot \mathrm{ud}}\]
+
+\[\fitmath{\mathrm{power}=(565.4866776)\cdot (7.5)\approx 4241.15\,\mathrm{W}}\]
+
+\item Obtener $C_P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Cp}=4\cdot a\cdot {\left(1-a\right)}^{2}}\]
+
+\[\fitmath{\mathrm{Cp}=4\cdot (0.25)\cdot {\left(1-(0.25)\right)}^{2}\approx 0.5625\,}\]
+
+\item Obtener $C_{P,max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{maxcp}=\frac{16}{27}\approx 0.5925926\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $A=12.5664\,\mathrm{m^2}$.
@@ -1576,6 +2486,36 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 \item En laboratorio la componente longitudinal de salida es $U$; el cambio de momento da la fuerza sobre el carro.
 
 \item Comparar potencia con la pérdida de energía cinética del caudal realmente interceptado.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\dot m_c$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{md}=\rho\cdot A\cdot \left(V-U\right)}\]
+
+\[\fitmath{\mathrm{md}=(1000)\cdot (0.001)\cdot \left((20)-(5)\right)\approx 15\,\mathrm{kg/s}}\]
+
+\item Obtener $F$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{F=\mathrm{md}\cdot \left(V-U\right)}\]
+
+\[\fitmath{F=(15)\cdot \left((20)-(5)\right)\approx 225\,\mathrm{N}}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=F\cdot U}\]
+
+\[\fitmath{\mathrm{power}=(225)\cdot (5)\approx 1125\,\mathrm{W}}\]
+
+\item Obtener $\Delta\dot E_c$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{energy}=\frac{\mathrm{md}\cdot \left({V}^{2}-{U}^{2}-{\left(V-U\right)}^{2}\right)}{2}}\]
+
+\[\fitmath{\mathrm{energy}=\frac{(15)\cdot \left({(20)}^{2}-{(5)}^{2}-{\left((20)-(5)\right)}^{2}\right)}{2}\approx 1125\,\mathrm{W}}\]
 
 \end{enumerate}
 
@@ -1642,6 +2582,30 @@ $\rho_m$ & $1000\,\mathrm{kg/m^3}$ & densidad del modelo\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $U_m$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Um}=\mathrm{Up}\cdot \frac{\mathrm{num}}{\mathrm{nup}}\cdot \frac{\mathrm{Lp}}{\mathrm{Lm}}}\]
+
+\[\fitmath{\mathrm{Um}=(40)\cdot \frac{(1\times10^{-6})}{(1.5\times10^{-5})}\cdot \frac{(3)}{(0.15)}\approx 53.33333\,\mathrm{m/s}}\]
+
+\item Obtener $\mathrm{Re}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\mathrm{Up}\cdot \mathrm{Lp}}{\mathrm{nup}}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(40)\cdot (3)}{(1.5\times10^{-5})}\approx 8000000\,}\]
+
+\item Obtener $F_m/F_p$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{force}=\frac{\mathrm{rm}\cdot {\mathrm{Um}}^{2}\cdot {\mathrm{Lm}}^{2}}{\mathrm{rp}\cdot {\mathrm{Up}}^{2}\cdot {\mathrm{Lp}}^{2}}}\]
+
+\[\fitmath{\mathrm{force}=\frac{(1000)\cdot {(53.33333333)}^{2}\cdot {(0.15)}^{2}}{(1.2)\cdot {(40)}^{2}\cdot {(3)}^{2}}\approx 3.703704\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $U_m=53.3333\,\mathrm{m/s}$.
@@ -1695,6 +2659,24 @@ $D$ & $0.01\,\mathrm{m}$ & diámetro\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\mathrm{Re}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\rho\cdot U\cdot D}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(1000)\cdot (0.2)\cdot (0.01)}{(0.01)}\approx 200\,}\]
+
+\item Obtener $\Pi_1$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{CF}=\frac{F}{\rho\cdot {U}^{2}\cdot {D}^{2}}}\]
+
+\[\fitmath{\mathrm{CF}=\frac{(0.03)}{(1000)\cdot {(0.2)}^{2}\cdot {(0.01)}^{2}}\approx 7.5\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\mathrm{Re}=200$.
@@ -1743,6 +2725,42 @@ $L$ & $2\,\mathrm{m}$ & longitud\\
 \item Aplicar el factor de Darcy en su ecuación de caída de presión.
 
 \item Obtener la misma caída a partir del balance laminar; introducir $f_F$ sin su factor cuatro daría una pérdida cuatro veces menor.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\mathrm{Re}_D$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\rho\cdot V\cdot D}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(900)\cdot (1)\cdot (0.01)}{(0.009)}\approx 1000\,}\]
+
+\item Obtener $f_D$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{fD}=\frac{64}{\mathrm{Re}}}\]
+
+\[\fitmath{\mathrm{fD}=\frac{64}{(1000)}\approx 0.064\,}\]
+
+\item Obtener $f_F$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{fF}=\frac{16}{\mathrm{Re}}}\]
+
+\[\fitmath{\mathrm{fF}=\frac{16}{(1000)}\approx 0.016\,}\]
+
+\item Obtener $\Delta p$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\frac{\mathrm{fD}\cdot \frac{L}{D}\cdot \rho\cdot {V}^{2}}{2}}\]
+
+\[\fitmath{\mathrm{dp}=\frac{(0.064)\cdot \frac{(2)}{(0.01)}\cdot (900)\cdot {(1)}^{2}}{2}\approx 5760\,\mathrm{Pa}}\]
+
+\item Obtener $\Delta p_{Pois}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}_{2}=\frac{32\cdot \mu\cdot L\cdot V}{{D}^{2}}}\]
+
+\[\fitmath{\mathrm{dp}_{2}=\frac{32\cdot (0.009)\cdot (2)\cdot (1)}{{(0.01)}^{2}}\approx 5760\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -1808,6 +2826,36 @@ $t$ & $2\,\mathrm{s}$ & tiempo\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\nabla\cdot\boldsymbol u$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{div}=3\cdot a}\]
+
+\[\fitmath{\mathrm{div}=3\cdot (0.1)\approx 0.3\,\mathrm{1/s}}\]
+
+\item Obtener $Q_{sal}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{flux}=4\cdot \pi\cdot a\cdot {R}^{3}}\]
+
+\[\fitmath{\mathrm{flux}=4\cdot \pi\cdot (0.1)\cdot {(0.3)}^{3}\approx 0.0339292\,\mathrm{m^{3}/s}}\]
+
+\item Obtener $\mathcal V$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{volume}=\frac{4\cdot \pi\cdot {R}^{3}}{3}}\]
+
+\[\fitmath{\mathrm{volume}=\frac{4\cdot \pi\cdot {(0.3)}^{3}}{3}\approx 0.1130973\,\mathrm{m^{3}}}\]
+
+\item Obtener $\rho(t)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\rho=\rho_{0}\cdot \exp\left(-3\cdot a\cdot t\right)}\]
+
+\[\fitmath{\rho=(1000)\cdot \exp\left(-3\cdot (0.1)\cdot (2)\right)\approx 548.8116\,\mathrm{kg/m^{3}}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\nabla\cdot\boldsymbol u=0.3\,\mathrm{s^{-1}}$.
@@ -1858,6 +2906,36 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 \item La parte simétrica del gradiente se anula aunque su parte antisimétrica no lo haga.
 
 \item El balance centrípeto exige $dp/dr=\rho\Omega^2r$; integrar con presión central como referencia.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\Gamma$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{circulation}=2\cdot \pi\cdot \Omega\cdot {R}^{2}}\]
+
+\[\fitmath{\mathrm{circulation}=2\cdot \pi\cdot (2)\cdot {(0.15)}^{2}\approx 0.2827433\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\omega_z$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{vorticity}=2\cdot \Omega}\]
+
+\[\fitmath{\mathrm{vorticity}=2\cdot (2)\approx 4\,\mathrm{1/s}}\]
+
+\item Obtener $V$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{V=\Omega\cdot R}\]
+
+\[\fitmath{V=(2)\cdot (0.15)\approx 0.3\,\mathrm{m/s}}\]
+
+\item Obtener $\Delta p$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\frac{\rho\cdot {\Omega}^{2}\cdot {R}^{2}}{2}}\]
+
+\[\fitmath{\mathrm{dp}=\frac{(1000)\cdot {(2)}^{2}\cdot {(0.15)}^{2}}{2}\approx 45\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -1913,6 +2991,30 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 \item Calcular operadores en coordenadas cilíndricas y conservar los factores $r$.
 
 \item Aplicar Bernoulli en el campo irrotacional. Un contorno que rodea el agujero no limita una superficie enteramente contenida en el dominio del campo.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $Q^{\prime}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{flux}=2\cdot \pi\cdot C}\]
+
+\[\fitmath{\mathrm{flux}=2\cdot \pi\cdot (0.003)\approx 0.01884956\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\Gamma$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{circ}=2\cdot \pi\cdot K}\]
+
+\[\fitmath{\mathrm{circ}=2\cdot \pi\cdot (0.006)\approx 0.03769911\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $p_2-p_1$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\frac{\rho\cdot \left({C}^{2}+{K}^{2}\right)\cdot \left(\frac{1}{{r_{1}}^{2}}-\frac{1}{{r_{2}}^{2}}\right)}{2}}\]
+
+\[\fitmath{\mathrm{dp}=\frac{(1000)\cdot \left({(0.003)}^{2}+{(0.006)}^{2}\right)\cdot \left(\frac{1}{{(0.1)}^{2}}-\frac{1}{{(0.2)}^{2}}\right)}{2}\approx 1.6875\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -1983,6 +3085,30 @@ $h_1$ & $0.5\,\mathrm{m}$ & nivel final sobre orificio\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $t$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{time}=\frac{2\cdot \mathrm{At}}{\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g}}\cdot \left(\sqrt{h_{0}}-\sqrt{h_{1}}\right)}\]
+
+\[\fitmath{\mathrm{time}=\frac{2\cdot (0.8)}{(0.62)\cdot (0.0004)\cdot \sqrt{2\cdot (9.81)}}\cdot \left(\sqrt{(2)}-\sqrt{(0.5)}\right)\approx 1029.921\,\mathrm{s}}\]
+
+\item Obtener $Q_0$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{Q_{0}=\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g\cdot h_{0}}}\]
+
+\[\fitmath{Q_{0}=(0.62)\cdot (0.0004)\cdot \sqrt{2\cdot (9.81)\cdot (2)}\approx 0.001553518\,\mathrm{m^{3}/s}}\]
+
+\item Obtener $A_o/A_t$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ratio}=\frac{\mathrm{Ao}}{\mathrm{At}}}\]
+
+\[\fitmath{\mathrm{ratio}=\frac{(0.0004)}{(0.8)}\approx 0.0005\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $t=1029.92\,\mathrm{s}$.
@@ -2039,6 +3165,42 @@ $p_v$ & $2500\,\mathrm{Pa}$ & presión de vapor dada\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $V_1$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{V_{1}=\frac{Q}{A_{1}}}\]
+
+\[\fitmath{V_{1}=\frac{(0.02)}{(0.01)}\approx 2\,\mathrm{m/s}}\]
+
+\item Obtener $V_2$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{V_{2}=\frac{Q}{A_{2}}}\]
+
+\[\fitmath{V_{2}=\frac{(0.02)}{(0.004)}\approx 5\,\mathrm{m/s}}\]
+
+\item Obtener $p_{2,g}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{p_{2}=p_{1}+\frac{\rho\cdot \left({V_{1}}^{2}-{V_{2}}^{2}\right)}{2}-\rho\cdot g\cdot \mathrm{dz}}\]
+
+\[\fitmath{p_{2}=(60000)+\frac{(1000)\cdot \left({(2)}^{2}-{(5)}^{2}\right)}{2}-(1000)\cdot (9.81)\cdot (0.3)\approx 46557\,\mathrm{Pa}}\]
+
+\item Obtener $p_{2,abs}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{pabs}=p_{2}+\mathrm{patm}}\]
+
+\[\fitmath{\mathrm{pabs}=(46557)+(101325)\approx 147882\,\mathrm{Pa}}\]
+
+\item Obtener $p_{2,abs}-p_v$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{margin}=\mathrm{pabs}-\mathrm{pv}}\]
+
+\[\fitmath{\mathrm{margin}=(147882)-(2500)\approx 145382\,\mathrm{Pa}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $V_1=2\,\mathrm{m/s}$.
@@ -2092,6 +3254,34 @@ $p_\infty$ & $101325\,\mathrm{Pa}$ & presión lejana absoluta\\
 \item Aplicar Bernoulli desde la corriente lejana para obtener $C_p$ y localizar su mínimo.
 
 \item La integral simétrica de presión da resistencia y sustentación nulas. Es una propiedad de este modelo, no de un cilindro real.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $|u_\theta|_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Vmax}=2\cdot U}\]
+
+\[\fitmath{\mathrm{Vmax}=2\cdot (12)\approx 24\,\mathrm{m/s}}\]
+
+\item Obtener $C_{p,min}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Cpmin}=-3\approx -3\,}\]
+
+\item Obtener $p_{min}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{pmin}=\mathrm{pinf}-1.5\cdot \rho\cdot {U}^{2}}\]
+
+\[\fitmath{\mathrm{pmin}=(101325)-1.5\cdot (1.2)\cdot {(12)}^{2}\approx 101065.8\,\mathrm{Pa}}\]
+
+\item Obtener $q_\infty$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{q=\frac{\rho\cdot {U}^{2}}{2}}\]
+
+\[\fitmath{q=\frac{(1.2)\cdot {(12)}^{2}}{2}\approx 86.4\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -2155,6 +3345,30 @@ $p$ & $1200\,\mathrm{Pa}$ & presión\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\sigma_{nn}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{sn}=-p+\mu\cdot b}\]
+
+\[\fitmath{\mathrm{sn}=-(1200)+(0.3)\cdot (5)\approx -1198.5\,\mathrm{Pa}}\]
+
+\item Obtener $\tau_{tn}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{st}=-2\cdot \mu\cdot a}\]
+
+\[\fitmath{\mathrm{st}=-2\cdot (0.3)\cdot (2)\approx -1.2\,\mathrm{Pa}}\]
+
+\item Obtener $\Phi$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\varphi=\mu\cdot \left(4\cdot {a}^{2}+{b}^{2}\right)}\]
+
+\[\fitmath{\varphi=(0.3)\cdot \left(4\cdot {(2)}^{2}+{(5)}^{2}\right)\approx 12.3\,\mathrm{W/m^{3}}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\sigma_{nn}=-1198.5\,\mathrm{Pa}$.
@@ -2205,6 +3419,36 @@ $T_w$ & $300\,\mathrm{K}$ & temperatura de pared\\
 \item Integrar dos veces con temperaturas iguales en $y=0,h$. El máximo está en el plano medio.
 
 \item Aplicar Fourier en ambas paredes, cuidando sus normales; cada una evacúa la mitad del trabajo mecánico.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\Delta T_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{rise}=\frac{\mu\cdot {U}^{2}}{8\cdot \mathrm{kt}}}\]
+
+\[\fitmath{\mathrm{rise}=\frac{(0.15)\cdot {(3)}^{2}}{8\cdot (0.13)}\approx 1.298077\,\mathrm{K}}\]
+
+\item Obtener $T_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Tmax}=\mathrm{Tw}+\mathrm{rise}}\]
+
+\[\fitmath{\mathrm{Tmax}=(300)+(1.298076923)\approx 301.2981\,\mathrm{K}}\]
+
+\item Obtener $|q_w|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{qwall}=\frac{\mu\cdot {U}^{2}}{2\cdot h}}\]
+
+\[\fitmath{\mathrm{qwall}=\frac{(0.15)\cdot {(3)}^{2}}{2\cdot (0.002)}\approx 337.5\,\mathrm{W/m^{2}}}\]
+
+\item Obtener $P/A$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=\frac{\mu\cdot {U}^{2}}{h}}\]
+
+\[\fitmath{\mathrm{power}=\frac{(0.15)\cdot {(3)}^{2}}{(0.002)}\approx 675\,\mathrm{W/m^{2}}}\]
 
 \end{enumerate}
 
@@ -2260,6 +3504,30 @@ $A$ & $0.02\,\mathrm{m^2}$ & área\\
 \item Integrar la ley de Fick con las dos condiciones de concentración.
 
 \item Calcular $t_D$ como escala de orden de magnitud, sin identificarla con un tiempo exacto de establecimiento.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $J$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{J=\frac{D\cdot \left(c_{0}-c_{1}\right)}{h}}\]
+
+\[\fitmath{J=\frac{(2\times10^{-9})\cdot \left((10)-(1)\right)}{(0.0001)}\approx 0.00018\,\mathrm{kg/(m^{2}\,s)}}\]
+
+\item Obtener $\dot m$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{md}=J\cdot A}\]
+
+\[\fitmath{\mathrm{md}=(0.00018)\cdot (0.02)\approx 3.6\times10^{-6}\,\mathrm{kg/s}}\]
+
+\item Obtener $t_D$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{td}=\frac{{h}^{2}}{D}}\]
+
+\[\fitmath{\mathrm{td}=\frac{{(0.0001)}^{2}}{(2\times10^{-9})}\approx 5\,\mathrm{s}}\]
 
 \end{enumerate}
 
@@ -2321,6 +3589,42 @@ $\theta$ & $0.523599$ & inclinación en radianes\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{q=\frac{g\cdot \sin\left(\theta\right)\cdot {h}^{3}}{3\cdot \nu}}\]
+
+\[\fitmath{q=\frac{(9.81)\cdot \sin\left((0.5235987756)\right)\cdot {(0.001)}^{3}}{3\cdot (0.0001)}\approx 1.635\times10^{-5}\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $u_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{umax}=\frac{g\cdot \sin\left(\theta\right)\cdot {h}^{2}}{2\cdot \nu}}\]
+
+\[\fitmath{\mathrm{umax}=\frac{(9.81)\cdot \sin\left((0.5235987756)\right)\cdot {(0.001)}^{2}}{2\cdot (0.0001)}\approx 0.024525\,\mathrm{m/s}}\]
+
+\item Obtener $\tau_w$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\rho\cdot g\cdot \sin\left(\theta\right)\cdot h}\]
+
+\[\fitmath{\tau=(900)\cdot (9.81)\cdot \sin\left((0.5235987756)\right)\cdot (0.001)\approx 4.4145\,\mathrm{Pa}}\]
+
+\item Obtener $\mathrm{Re}_q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{q}{\nu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(1.635\times10^{-5})}{(0.0001)}\approx 0.1635\,}\]
+
+\item Obtener $p_{pared}-p_{atm}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{pb}=\rho\cdot g\cdot \cos\left(\theta\right)\cdot h}\]
+
+\[\fitmath{\mathrm{pb}=(900)\cdot (9.81)\cdot \cos\left((0.5235987756)\right)\cdot (0.001)\approx 7.646138\,\mathrm{Pa}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $q=1.635\times10^{-5}\,\mathrm{m^2/s}$.
@@ -2379,6 +3683,36 @@ $\mu$ & $0.01\,\mathrm{Pa\,s}$ & viscosidad\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $p$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{p=p_{0}-\frac{\rho\cdot {a}^{2}\cdot \left({x}^{2}+{y}^{2}\right)}{2}}\]
+
+\[\fitmath{p=(100000)-\frac{(1000)\cdot {(0.4)}^{2}\cdot \left({(0.3)}^{2}+{(0.2)}^{2}\right)}{2}\approx 99989.6\,\mathrm{Pa}}\]
+
+\item Obtener $\partial_xp$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{px}=-\rho\cdot {a}^{2}\cdot x}\]
+
+\[\fitmath{\mathrm{px}=-(1000)\cdot {(0.4)}^{2}\cdot (0.3)\approx -48\,\mathrm{Pa/m}}\]
+
+\item Obtener $\partial_yp$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{py}=-\rho\cdot {a}^{2}\cdot y}\]
+
+\[\fitmath{\mathrm{py}=-(1000)\cdot {(0.4)}^{2}\cdot (0.2)\approx -32\,\mathrm{Pa/m}}\]
+
+\item Obtener $\Phi$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\varphi=4\cdot \mu\cdot {a}^{2}}\]
+
+\[\fitmath{\varphi=4\cdot (0.01)\cdot {(0.4)}^{2}\approx 0.0064\,\mathrm{W/m^{3}}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $p=99989.6\,\mathrm{Pa}$.
@@ -2431,6 +3765,36 @@ $t$ & $0.5\,\mathrm{s}$ & tiempo desde arranque\\
 \item Derivar la función error complementaria; el signo negativo corresponde a $\partial u/\partial y<0$.
 
 \item Integrar el perfil en el semiespacio. La escala $2\sqrt{\nu t}$ no es un borde exacto del fluido en movimiento.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $u$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{u=U\cdot \operatorname{erfc}\left(\frac{y}{2\cdot \sqrt{\nu\cdot t}}\right)}\]
+
+\[\fitmath{u=(0.2)\cdot \operatorname{erfc}\left(\frac{(0.001)}{2\cdot \sqrt{(1\times10^{-6})\cdot (0.5)}}\right)\approx 0.0634621\,\mathrm{m/s}}\]
+
+\item Obtener $\tau_{xy}(0)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\tau=\frac{-\rho\cdot \nu\cdot U}{\sqrt{\pi\cdot \nu\cdot t}}}\]
+
+\[\fitmath{\tau=\frac{-(1000)\cdot (1\times10^{-6})\cdot (0.2)}{\sqrt{\pi\cdot (1\times10^{-6})\cdot (0.5)}}\approx -0.1595769\,\mathrm{Pa}}\]
+
+\item Obtener $q$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{q=2\cdot U\cdot \sqrt{\frac{\nu\cdot t}{\pi}}}\]
+
+\[\fitmath{q=2\cdot (0.2)\cdot \sqrt{\frac{(1\times10^{-6})\cdot (0.5)}{\pi}}\approx 0.0001595769\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\delta_s$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\delta=2\cdot \sqrt{\nu\cdot t}}\]
+
+\[\fitmath{\delta=2\cdot \sqrt{(1\times10^{-6})\cdot (0.5)}\approx 0.001414214\,\mathrm{m}}\]
 
 \end{enumerate}
 
@@ -2502,6 +3866,36 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\mu$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mu=\frac{F}{6\cdot \pi\cdot R\cdot U}}\]
+
+\[\fitmath{\mu=\frac{(9.424777961\times10^{-6})}{6\cdot \pi\cdot (0.0005)\cdot (0.001)}\approx 1\,\mathrm{Pa\,s}}\]
+
+\item Obtener $\mathrm{Re}_D$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{2\cdot \rho\cdot R\cdot U}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{2\cdot (1000)\cdot (0.0005)\cdot (0.001)}{(1)}\approx 0.001\,}\]
+
+\item Obtener $P$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{power}=F\cdot U}\]
+
+\[\fitmath{\mathrm{power}=(9.424777961\times10^{-6})\cdot (0.001)\approx 9.424778\times10^{-9}\,\mathrm{W}}\]
+
+\item Obtener $F(U/2)$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Fhalf}=\frac{F}{2}}\]
+
+\[\fitmath{\mathrm{Fhalf}=\frac{(9.424777961\times10^{-6})}{2}\approx 4.712389\times10^{-6}\,\mathrm{N}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $\mu=1\,\mathrm{Pa\,s}$.
@@ -2553,6 +3947,42 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 \item Escalar $DW/Dt$ con el tiempo advectivo para obtener $U^2H/L^2$.
 
 \item Integrar el orden de la corrección de gradiente vertical a lo largo de $H$ y compararlo con la presión hidrostática.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\varepsilon$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{eps}=\frac{H}{L}}\]
+
+\[\fitmath{\mathrm{eps}=\frac{(10)}{(1000)}\approx 0.01\,}\]
+
+\item Obtener $\mathrm{Fr}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Fr}=\frac{U}{\sqrt{g\cdot H}}}\]
+
+\[\fitmath{\mathrm{Fr}=\frac{(2)}{\sqrt{(9.81)\cdot (10)}}\approx 0.2019275\,}\]
+
+\item Obtener $a_z/g\ \mathrm{(escala)}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ratio}={\mathrm{Fr}}^{2}\cdot {\mathrm{eps}}^{2}}\]
+
+\[\fitmath{\mathrm{ratio}={(0.2019275109)}^{2}\cdot {(0.01)}^{2}\approx 4.077472\times10^{-6}\,}\]
+
+\item Obtener $p_h$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ph}=\rho\cdot g\cdot H}\]
+
+\[\fitmath{\mathrm{ph}=(1000)\cdot (9.81)\cdot (10)\approx 98100\,\mathrm{Pa}}\]
+
+\item Obtener $\delta p\ \mathrm{(escala)}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\rho\cdot {U}^{2}\cdot {\mathrm{eps}}^{2}}\]
+
+\[\fitmath{\mathrm{dp}=(1000)\cdot {(2)}^{2}\cdot {(0.01)}^{2}\approx 0.4\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -2610,6 +4040,36 @@ $T$ & $0.0001\,\mathrm{s}$ & tiempo impuesto\\
 \item Comparar inercia local con viscosidad: el cociente es Reynolds por Strouhal, no Reynolds solo.
 
 \item La presión viscosa sirve de referencia para escribir la ecuación adimensional; cuando la inercia local domina, puede no ser la presión efectiva dominante.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\mathrm{Re}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Re}=\frac{\rho\cdot U\cdot L}{\mu}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(1000)\cdot (0.0001)\cdot (0.001)}{(1)}\approx 0.0001\,}\]
+
+\item Obtener $\mathrm{St}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{St}=\frac{L}{U\cdot T}}\]
+
+\[\fitmath{\mathrm{St}=\frac{(0.001)}{(0.0001)\cdot (0.0001)}\approx 100000\,}\]
+
+\item Obtener $\mathrm{Re}\,\mathrm{St}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{product}=\mathrm{Re}\cdot \mathrm{St}}\]
+
+\[\fitmath{\mathrm{product}=(0.0001)\cdot (100000)\approx 10\,}\]
+
+\item Obtener $p_\nu$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{pressure}=\frac{\mu\cdot U}{L}}\]
+
+\[\fitmath{\mathrm{pressure}=\frac{(1)\cdot (0.0001)}{(0.001)}\approx 0.1\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -2674,6 +4134,36 @@ $L$ & $2\times10^{6}\,\mathrm{m}$ & escala horizontal\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $u_g$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{ug}=\frac{-\mathrm{py}}{\rho\cdot f}}\]
+
+\[\fitmath{\mathrm{ug}=\frac{-(-0.0006)}{(1.2)\cdot (0.0001)}\approx 5\,\mathrm{m/s}}\]
+
+\item Obtener $v_g$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{vg}=\frac{\mathrm{px}}{\rho\cdot f}}\]
+
+\[\fitmath{\mathrm{vg}=\frac{(0.0015)}{(1.2)\cdot (0.0001)}\approx 12.5\,\mathrm{m/s}}\]
+
+\item Obtener $|\boldsymbol u_g|$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{speed}=\sqrt{{\mathrm{ug}}^{2}+{\mathrm{vg}}^{2}}}\]
+
+\[\fitmath{\mathrm{speed}=\sqrt{{(5)}^{2}+{(12.5)}^{2}}\approx 13.46291\,\mathrm{m/s}}\]
+
+\item Obtener $\mathrm{Ro}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Ro}=\frac{\mathrm{speed}}{f\cdot L}}\]
+
+\[\fitmath{\mathrm{Ro}=\frac{(13.46291202)}{(0.0001)\cdot (2000000)}\approx 0.06731456\,}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $u_g=5\,\mathrm{m/s}$.
@@ -2735,6 +4225,42 @@ $\xi_0$ & $3\,\mathrm{m}$ & amplitud pequeña de parcela\\
 
 \end{enumerate}
 
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $N$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{N=\sqrt{g\cdot \alpha}}\]
+
+\[\fitmath{N=\sqrt{(9.81)\cdot (2\times10^{-5})}\approx 0.01400714\,\mathrm{1/s}}\]
+
+\item Obtener $T_N$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi}{N}}\]
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi}{(0.01400714104)}\approx 448.5701\,\mathrm{s}}\]
+
+\item Obtener $|w|_{max}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{wmax}=N\cdot \xi}\]
+
+\[\fitmath{\mathrm{wmax}=(0.01400714104)\cdot (3)\approx 0.04202142\,\mathrm{m/s}}\]
+
+\item Obtener $\alpha H$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{contrast}=\alpha\cdot H}\]
+
+\[\fitmath{\mathrm{contrast}=(2\times10^{-5})\cdot (50)\approx 0.001\,}\]
+
+\item Obtener $p_f-p_s$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{dp}=\rho_{0}\cdot g\cdot \left(H-\frac{\alpha\cdot {H}^{2}}{2}\right)}\]
+
+\[\fitmath{\mathrm{dp}=(1000)\cdot (9.81)\cdot \left((50)-\frac{(2\times10^{-5})\cdot {(50)}^{2}}{2}\right)\approx 490254.8\,\mathrm{Pa}}\]
+
+\end{enumerate}
+
 \textbf{Resultados.}\begin{itemize}
 
 \item $N=0.0140071\,\mathrm{s^{-1}}$.
@@ -2791,6 +4317,48 @@ $L$ & $0.01\,\mathrm{m}$ & longitud de referencia\\
 \item Formar los cocientes y verificar que son adimensionales.
 
 \item La condición $\beta\Delta T\ll1$ apoya una parte de la aproximación Boussinesq. Un umbral crítico requiere geometría y condiciones de contorno concretas.
+
+\end{enumerate}
+
+\textbf{Cálculo de cada magnitud.}
+
+\begin{enumerate}
+
+\item Obtener $\nu$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\nu=\frac{\mu}{\rho}}\]
+
+\[\fitmath{\nu=\frac{(0.001)}{(1000)}\approx 1\times10^{-6}\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\kappa_T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\kappa=\frac{\mathrm{kt}}{\rho\cdot \mathrm{cp}}}\]
+
+\[\fitmath{\kappa=\frac{(0.6)}{(1000)\cdot (4200)}\approx 1.428571\times10^{-7}\,\mathrm{m^{2}/s}}\]
+
+\item Obtener $\mathrm{Pr}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Pr}=\frac{\nu}{\kappa}}\]
+
+\[\fitmath{\mathrm{Pr}=\frac{(1\times10^{-6})}{(1.428571429\times10^{-7})}\approx 7\,}\]
+
+\item Obtener $\mathrm{Gr}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Gr}=\frac{g\cdot \beta\cdot \mathrm{dT}\cdot {L}^{3}}{{\nu}^{2}}}\]
+
+\[\fitmath{\mathrm{Gr}=\frac{(9.81)\cdot (0.0002)\cdot (5)\cdot {(0.01)}^{3}}{{(1\times10^{-6})}^{2}}\approx 9810\,}\]
+
+\item Obtener $\mathrm{Ra}$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{Ra}=\mathrm{Gr}\cdot \mathrm{Pr}}\]
+
+\[\fitmath{\mathrm{Ra}=(9810)\cdot (7)\approx 68670\,}\]
+
+\item Obtener $\beta\Delta T$ con la relación del modelo y los valores anteriores.
+
+\[\fitmath{\mathrm{variation}=\beta\cdot \mathrm{dT}}\]
+
+\[\fitmath{\mathrm{variation}=(0.0002)\cdot (5)\approx 0.001\,}\]
 
 \end{enumerate}
 

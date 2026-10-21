@@ -1,0 +1,49 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} El empuje suma momento y presión residual. Su cociente con caudal define velocidad efectiva. Como la masa decrece linealmente, integrar $dv=Fdt/(m_0-\dot mt)$ da $\Delta v=c\ln(m_0/m_f)$; no se divide el impulso entre una masa arbitraria.
+
+\begin{enumerate}
+
+\item Empuje completo con presión.
+
+\[\fitmath{F=5\cdot 2500+20000\cdot 0.02\approx 12900\,\mathrm{N}}\]
+
+\item Velocidad efectiva, distinta de velocidad de salida.
+
+\[\fitmath{c=\frac{F}{5}}\]
+
+\[\fitmath{c=\frac{(12900)}{5}\approx 2580\,\mathrm{m/s}}\]
+
+\item Impulso específico convencional.
+
+\[\fitmath{\mathrm{Isp}=\frac{c}{9.80665}}\]
+
+\[\fitmath{\mathrm{Isp}=\frac{(2580)}{9.80665}\approx 263.0868\,\mathrm{s}}\]
+
+\item Duración del consumo.
+
+\[\fitmath{\mathrm{tb}=\frac{1000-600}{5}\approx 80\,\mathrm{s}}\]
+
+\item Impulso total a empuje constante.
+
+\[\fitmath{I=F\cdot \mathrm{tb}}\]
+
+\[\fitmath{I=(12900)\cdot (80)\approx 1032000\,\mathrm{N\,s}}\]
+
+\item Integral de aceleración con masa variable.
+
+\[\fitmath{\mathrm{dv}=c\cdot \ln\left(\frac{1000}{600}\right)}\]
+
+\[\fitmath{\mathrm{dv}=(2580)\cdot \ln\left(\frac{1000}{600}\right)\approx 1317.93\,\mathrm{m/s}}\]
+
+\item Aceleración al inicio.
+
+\[\fitmath{a_{0}=\frac{F}{1000}}\]
+
+\[\fitmath{a_{0}=\frac{(12900)}{1000}\approx 12.9\,\mathrm{m/s^{2}}}\]
+
+\item Aceleración al final.
+
+\[\fitmath{\mathrm{af}=\frac{F}{600}}\]
+
+\[\fitmath{\mathrm{af}=\frac{(12900)}{600}\approx 21.5\,\mathrm{m/s^{2}}}\]
+
+\end{enumerate}

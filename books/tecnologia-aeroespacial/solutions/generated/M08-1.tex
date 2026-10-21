@@ -1,0 +1,41 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} El choque normal conserva masa, momento y entalpía total, pero genera entropía. Se calculan razones de presión y densidad, se usa gas ideal para la razón térmica y después se evalúa la diferencia de entropía.
+
+\begin{enumerate}
+
+\item Razón de presiones del choque normal.
+
+\[\fitmath{\mathrm{pr}=1+\frac{2\cdot 1.4}{1.4+1}\cdot \left({2}^{2}-1\right)\approx 4.5\,}\]
+
+\item Razón de densidades por conservación.
+
+\[\fitmath{\mathrm{rr}=\frac{\left(1.4+1\right)\cdot {2}^{2}}{\left(1.4-1\right)\cdot {2}^{2}+2}\approx 2.666667\,}\]
+
+\item La ecuación de estado relaciona ambas razones.
+
+\[\fitmath{\mathrm{Tr}=\frac{\mathrm{pr}}{\mathrm{rr}}}\]
+
+\[\fitmath{\mathrm{Tr}=\frac{(4.5)}{(2.666666667)}\approx 1.6875\,}\]
+
+\item Presión posterior.
+
+\[\fitmath{p_{2}=24000\cdot \mathrm{pr}}\]
+
+\[\fitmath{p_{2}=24000\cdot (4.5)\approx 108000\,\mathrm{Pa}}\]
+
+\item Temperatura posterior.
+
+\[\fitmath{T_{2}=220\cdot \mathrm{Tr}}\]
+
+\[\fitmath{T_{2}=220\cdot (1.6875)\approx 371.25\,\mathrm{K}}\]
+
+\item Mach posterior subsónico.
+
+\[\fitmath{M_{2}=\sqrt{\frac{1+0.2\cdot {2}^{2}}{1.4\cdot {2}^{2}-0.2}}\approx 0.5773503\,}\]
+
+\item Entropía positiva; no usar relaciones isentrópicas a través del choque.
+
+\[\fitmath{\mathrm{ds}=\frac{1.4\cdot 287.05287}{0.4}\cdot \ln\left(\mathrm{Tr}\right)-287.05287\cdot \ln\left(\mathrm{pr}\right)}\]
+
+\[\fitmath{\mathrm{ds}=\frac{1.4\cdot 287.05287}{0.4}\cdot \ln\left((1.6875)\right)-287.05287\cdot \ln\left((4.5)\right)\approx 93.94985\,\mathrm{J/(kg\,K)}}\]
+
+\end{enumerate}

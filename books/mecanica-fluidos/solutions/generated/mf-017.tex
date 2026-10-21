@@ -1,0 +1,23 @@
+\noindent\textbf{Elección del procedimiento.} La hidrostática da $dp/dz=-\rho g_0$. Sustituyendo $\rho=p/(R_gT)$ y $T=T_0-Lz$, se separa $dp/p=-g_0\,dz/[R_g(T_0-Lz)]$. Integrar desde el nivel del mar da $\ln(p/p_0)=[g_0/(R_gL)]\ln(T/T_0)$. Exponenciar recupera la ley barométrica.
+
+\begin{enumerate}
+
+\item Calcular primero la temperatura en la capa con gradiente.
+
+\[\fitmath{T=T_{0}-L\cdot z}\]
+
+\[\fitmath{T=(288.15)-(0.0065)\cdot (11000)\approx 216.65\,\mathrm{K}}\]
+
+\item El exponente debe ser adimensional.
+
+\[\fitmath{\mathrm{aexp}=\frac{g}{R_g\cdot L}}\]
+
+\[\fitmath{\mathrm{aexp}=\frac{(9.80665)}{(287.05287)\cdot (0.0065)}\approx 5.25588\,}\]
+
+\item Aplicar la potencia al cociente de temperaturas absolutas.
+
+\[\fitmath{p=p_{0}\cdot {\left(\frac{T}{T_{0}}\right)}^{\mathrm{aexp}}}\]
+
+\[\fitmath{p=(101325)\cdot {\left(\frac{(216.65)}{(288.15)}\right)}^{(5.255879813)}\approx 22632.04\,\mathrm{Pa}}\]
+
+\end{enumerate}

@@ -1,0 +1,31 @@
+\textbf{Desarrollo de las magnitudes intermedias.} Para hélice, $P_e=DV/\eta_p=mg_0V/[\eta_p(L/D)]$ y $dm/dt=-c_PP_e$. Introducir $V=\sqrt{2g_0m/(\rho SC_L)}$ deja $dt=-(\eta_p L/D)/(g_0c_P)\sqrt{\rho SC_L/(2g_0)}m^{-3/2}dm$. Integrar usa la primitiva $-2m^{-1/2}$ para tiempo; en distancia, $dx=Vdt$ deja $dm/m$ y un logaritmo. La fase previa consume $0.30(230)(7/60)=8.05$ kg, por lo que comienza con $2171.95$ kg. La masa final suma masa seca y reserva: $1760+60=1820$ kg. La reserva no se quema en esta fase.\begin{enumerate}
+
+\item Elegir el CL según el objetivo de la ley.
+
+\[\fitmath{C_L=\sqrt{\frac{0.028}{0.049}}\approx 0.7559289\,}\]
+
+\item Evaluar la polar.
+
+\[\fitmath{\mathrm{CLCD}=0.028+0.049\cdot {C_L}^{2}}\]
+
+\[\fitmath{\mathrm{CLCD}=0.028+0.049\cdot {(0.755928946)}^{2}\approx 0.056\,}\]
+
+\item Calcular eficiencia.
+
+\[\fitmath{\mathrm{CLLD}=\frac{C_L}{\mathrm{CLCD}}}\]
+
+\[\fitmath{\mathrm{CLLD}=\frac{(0.755928946)}{(0.056)}\approx 13.49873\,}\]
+
+\item Evaluar la integral de distancia.
+
+\[\fitmath{\mathrm{CLR}=\frac{0.78\cdot \mathrm{CLLD}}{9.80665\cdot 8.333333333\times10^{-8}}\cdot \ln\left(\frac{2171.95}{1820}\right)}\]
+
+\[\fitmath{\mathrm{CLR}=\frac{0.78\cdot (13.49873118)}{9.80665\cdot 8.333333333\times10^{-8}}\cdot \ln\left(\frac{2171.95}{1820}\right)\approx 2277734\,\mathrm{m}}\]
+
+\item Evaluar la integral de tiempo con ambas masas.
+
+\[\fitmath{\mathrm{CLE}=\frac{2\cdot 0.78\cdot \mathrm{CLLD}}{9.80665\cdot 8.333333333\times10^{-8}}\cdot \sqrt{\frac{0.9864069702\cdot 21.4\cdot C_L}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1820}}-\frac{1}{\sqrt{2171.95}}\right)}\]
+
+\[\fitmath{\mathrm{CLE}=\frac{2\cdot 0.78\cdot (13.49873118)}{9.80665\cdot 8.333333333\times10^{-8}}\cdot \sqrt{\frac{0.9864069702\cdot 21.4\cdot (0.755928946)}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1820}}-\frac{1}{\sqrt{2171.95}}\right)\approx 46090.8\,\mathrm{s}}\]
+
+\end{enumerate}

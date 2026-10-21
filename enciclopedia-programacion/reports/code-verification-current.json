@@ -1,0 +1,2719 @@
+{
+  "schema_version": 2,
+  "status": "INCOMPLETE",
+  "semantic_review": "required",
+  "trusted_execution": true,
+  "snippets_total": 83,
+  "counts_by_classification": {
+    "SYNTAX_VALIDATED": 18,
+    "COMPILED": 20,
+    "LITERAL_OR_PSEUDOCODE": 12,
+    "TESTS_PASSED": 8,
+    "UNVERIFIED": 25
+  },
+  "failed_count": 0,
+  "pending_count": 37,
+  "projects": [
+    {
+      "project": "rust-kv-engine",
+      "inputs": {
+        "Cargo.lock": "8c99120116c66c37ad95523dbc2aea104e03f87c40617f10eca706ef744fc353",
+        "Cargo.toml": "76ab7dd027184d4d7d8f981e5ef11bbacc763ee7cd484edfc9a0a65f2f29e527",
+        "src/lib.rs": "4d681cde7e7c9335d3e613d89b9169e589a23d420a562d2266753f8c84549259",
+        "src/main.rs": "8ef6279aedf769853c6e4a5e467f8b3850a8baecb87eebbba7db9cc6cba5b13b"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cargo",
+            "test",
+            "--quiet"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 4 tests\n....\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n\nrunning 0 tests\n\ntest result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "cargo": [
+          "cargo 1.98.1 (797e8a9bc 2026-08-05)"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    },
+    {
+      "project": "c-arena-allocator",
+      "inputs": {
+        "arena.c": "0da9f2161278a719616414ed0cfc8e61d72a6a624a20b8303aebd9a5b369d90f",
+        "arena.h": "3bcf4307e400c8720981c499c54ab4a8bb0610e63650d803a5aa48cca91e4a3d",
+        "test_arena.c": "970160b255f7c70b5b040287de237a62415e2c7bb0d0e3df9cc5f0b87c6ff613"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fsanitize=address,undefined",
+            "arena.c",
+            "test_arena.c",
+            "-o",
+            "tests"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/tests"
+          ],
+          "returncode": 0,
+          "stdout": "c-arena-allocator ok: align=8, p2[0]=0x1122334455667788\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "cc": [
+          "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    },
+    {
+      "project": "cpp-task-scheduler",
+      "inputs": {
+        "scheduler.hpp": "7c971e67333385bdc944f17aaeb5ecad755e1e133ed5f8e832d10d985ddac147",
+        "test_scheduler.cpp": "299fb4425c73b26100057995d8137a62729f1cff3c9fb269f9dd0becf388e737"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "c++",
+            "-std=c++20",
+            "-Wall",
+            "-Wextra",
+            "-Werror",
+            "-fsanitize=address,undefined",
+            "test_scheduler.cpp",
+            "-o",
+            "tests"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/tests"
+          ],
+          "returncode": 0,
+          "stdout": "cpp-task-scheduler ok: acc=60, ranges_sum=216\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "c++": [
+          "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    },
+    {
+      "project": "python-bytecode-vm",
+      "inputs": {
+        "test_vm.py": "2f0d68b856372dfe4b6fa8855a5b57c672d2b9ed3acef50e1479e78fdc491922",
+        "vm.py": "2a32058914f2aa3ccb1592574136b04414b04f12579e7a93005544575898c423"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "python",
+            "-m",
+            "pytest",
+            "-q",
+            "test_vm.py"
+          ],
+          "returncode": 0,
+          "stdout": "..........                                                               [100%]\n10 passed in 0.01s\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "python": [
+          "Python 3.12.15"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    },
+    {
+      "project": "ts-reactive-http",
+      "inputs": {
+        "router.ts": "1a2323a81309e4d6d4890a167407c502b10c8f885829a769b4a879a871c68a9c",
+        "test_router.ts": "9cf738894809cd49af497b5ee2d3c7638f850d0dc9f7a0d66852244c41413eaf"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "node",
+            "--test",
+            "test_router.ts"
+          ],
+          "returncode": 0,
+          "stdout": "✔ validateOrderPayload accepts valid payload and rejects malformed objects (0.328292ms)\n✔ TokenBucketLimiter enforces burst capacity and refills deterministically (0.083125ms)\n✔ limiter rejects nonfinite configuration and does not refill twice after clock rollback (0.16725ms)\n✔ quantity must be a positive safe integer (0.057792ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 75.481292\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "node": [
+          "v24.19.0"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    },
+    {
+      "project": "sql-transactional-ledger",
+      "inputs": {
+        "schema_and_queries.sql": "e84e51bd343ca31568337e282d8c90e67a639e65f3abb04fb3f9088a28b4446c",
+        "verify_ledger.py": "197d0420131077c581ce68c32878a90f378446fda1846fd4ba38ed6ecdff7eec"
+      },
+      "classification": "PROJECT_TEST_COMMAND_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "python",
+            "verify_ledger.py"
+          ],
+          "returncode": 0,
+          "stdout": "{'status': 'verified', 'sqlite_version': '3.53.4', 'running_balance_final_cents': 100000}\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_versions": {
+        "python": [
+          "Python 3.12.15"
+        ]
+      },
+      "scope": "Fixed project-specific regression suite; finite tests do not prove correctness. TypeScript is executed, not typechecked."
+    }
+  ],
+  "snippets": [
+    {
+      "schema_version": "1.0",
+      "source_sha256": "58aab944731745d2be9acd7c57d5e5932d0ad9a4e14f2a8e9edb6af34cf5cd49",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol01-historia-y-fundamentos:PAR-0003:1",
+      "section": "cap01-antecedentes-y-computabilidad"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "73b2cd03ead45bf7fe55ba070e6d4e28e6d2c49aac0b11e08efac5979181fdc3",
+      "language": "c",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.c",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol01-historia-y-fundamentos:PAR-0009:1",
+      "section": "cap02-primeros-ordenadores-y-compiladores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "392c7a5d66934aaa759c81a77a03a9f7185f4b055d350e1dae0cfd47ca9c963b",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol01-historia-y-fundamentos:PAR-0021:18",
+      "section": "cap04-representacion-binaria-ieee754-utf8"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "0aa3705a41032eb24461cf1b37a6fc8964bcb697e83326424f940c9e85098262",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol01-historia-y-fundamentos:PAR-0027:6",
+      "section": "cap05-logica-algebra-booleana-matematica-discreta"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "8e55c2db817a3edae279d4eaeec6cc467af48453d87e31e5f209c86c137b7ff1",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "warning: enum `ParsePortError` is never used\n --> example.rs:2:6\n  |\n2 | enum ParsePortError {\n  |      ^^^^^^^^^^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: function `parse_port` is never used\n --> example.rs:7:4\n  |\n7 | fn parse_port(raw: &str) -> Result<u16, ParsePortError> {\n  |    ^^^^^^^^^^\n\nwarning: function `main` is never used\n  --> example.rs:15:4\n   |\n15 | fn main() {\n   |    ^^^^\n\nwarning: 3 warnings emitted\n\n",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol01-historia-y-fundamentos:PAR-0039:4",
+      "section": "cap07-sistemas-de-tipos-control-ambito-errores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "5e6d8c3acd0aa3a0e90afc15a1ae2ef7124a445149fb9d55fa45849ef4bbd404",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "warning: function `lower_bound` is never used\n --> example.rs:1:4\n  |\n1 | fn lower_bound(slice: &[i64], target: i64) -> usize {\n  |    ^^^^^^^^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: function `main` is never used\n  --> example.rs:15:4\n   |\n15 | fn main() {\n   |    ^^^^\n\nwarning: 2 warnings emitted\n\n",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol02-algoritmos-y-sistemas:PAR-0009:3",
+      "section": "cap02-busqueda-ordenacion-cotas-inferiores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "6e30fcac9affa71786ea9b899bc46c3b15c25f63e13fee5c1d4d666e8224b166",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol02-algoritmos-y-sistemas:PAR-0015:1",
+      "section": "cap03-divide-venceras-voraces-programacion-dinamica"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "af45a4ba39227c1b3d85a52b5198f3fef1efb301a92947fe2910e4b015b03f59",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol02-algoritmos-y-sistemas:PAR-0021:4",
+      "section": "cap04-grafos-arboles-equilibrados-hashing"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "0d2cf95abd4c4f6b41a1203f566826309c73c82ff4e52292e3387351fa8d5dad",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0003:2",
+      "section": "cap01-introduccion-historia-modelo-compilacion-rust"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "8b9f47a5a88e02519256c13493361c5334e2869691f875adfccb1056d7d02806",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0009:25",
+      "section": "cap02-entorno-toolchain-cargo-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "000e77fb039a70e11949f4d35ea9d371ac9b4df2bc6c2e411e81f40aedca33c8",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "warning: function `main` is never used\n --> example.rs:1:4\n  |\n1 | fn main() {\n  |    ^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0014:10",
+      "section": "cap03-ownership-borrowing-lifetimes-modelo-memoria"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "7becfe8e0bab024582cab21aadfae2febed048ce26f7e4d1e9e810f13e7cf550",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0015:4",
+      "section": "cap03-ownership-borrowing-lifetimes-modelo-memoria"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "8ab628f1b3375131860b882cd4310a17db98fe74a0d9de984402809bb962f584",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0021:10",
+      "section": "cap04-tipos-algebraicos-traits-genericos-errores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "f417e83c1bb3fe1e0e56d2108cd03e679543bba8fd61f6bd4e9479bc05ba31d4",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0027:16",
+      "section": "cap05-closures-iteradores-smart-pointers-mutabilidad-interior"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "349ad66dac929cba3fb4aaea507852aa63b7a039e4bb8f546e79cbc6e06d68fb",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0032:11",
+      "section": "cap06-concurrencia-sin-miedo-send-sync-async-tokio-pin"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "a780f39e8e5b4a04bdf01852c46e395aeb678dcaa2414ba2384878f2ec123085",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0038:10",
+      "section": "cap07-nivel-experto-unsafe-ffi-macros-wasm-embedded"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "538ba06f0a4efb29b99c725b73e1b2dcde7cb74d6e8cae2db53fe7922ea31085",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0045:4",
+      "section": "cap08-ecosistema-herramientas-evaluacion-proyectos-rust"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "ea90f156d58f54b70f223414dd3c658432ad4d22a99b02a09916f2937424a25d",
+      "language": "rust",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--crate-type",
+            "lib",
+            "--emit=metadata",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "warning: function `main` is never used\n --> example.rs:1:4\n  |\n1 | fn main() {\n  |    ^^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol03-monografia-rust:PAR-0049:8",
+      "section": "cap02-entorno-toolchain-cargo-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "fffd72b540e52561d5880d70640b7e78eba0679c8d734676cae4bc2851394bc6",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol03-monografia-rust:PAR-0049:19",
+      "section": "cap02-entorno-toolchain-cargo-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "f75c5746e7ad79ce9303bb13846009a9b9187a395490cec1d9f0a4446b52ff8e",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_pointer_and_vec_layouts ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_pointer_and_vec_layouts ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0003"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "4444955c82dfa76cbbc1965118ced408eddd871e1d0d4f6bc409084ee10dadac",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_utf8_and_checked_arithmetic ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_utf8_and_checked_arithmetic ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0010"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "cc85b0478e32c269ab7a12a8a6334c601132a40af1f437d23629fb5c404228d2",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_lifetimes_and_disjoint_borrows ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_lifetimes_and_disjoint_borrows ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0017"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "9d0429b9cfb3430655f814e711fbb8600d58fc737be3c1fca8422b5a463ff159",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_niche_and_result_propagation ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_niche_and_result_propagation ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0024"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "b7ea3a69617fe53cc4deb1df5291cbea98cf7f08e827cf3d522043176f0501e7",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_iterators_and_rc_refcell ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_iterators_and_rc_refcell ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0031"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "a08749ab4ca26ca1d23dd84e65924ecd9d6a398089f5d576063362b597ae90de",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_scoped_threads_arc_mutex_and_mpsc ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_scoped_threads_arc_mutex_and_mpsc ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0038"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c3401bc2c691f10614a0e51b35c76a72f2998370e642234592747b4f0143dbc5",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "warning: fields `a`, `b`, and `c` are never read\n --> example.rs:3:25\n  |\n3 | struct GoodLayoutRust { a: u8, b: u64, c: u8 }\n  |        --------------   ^      ^       ^\n  |        |\n  |        fields in this struct\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: 1 warning emitted\n\n",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_repr_and_declarative_macro ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_repr_and_declarative_macro ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0045"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "b8081b754b41407b293b54e087bb76453e5d3f5848a6df173ed84be7a5e9cca5",
+      "language": "rust",
+      "requested_mode": "test",
+      "filename": null,
+      "declared_version": null,
+      "classification": "TESTS_PASSED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "rustc",
+            "--edition=2024",
+            "--test",
+            "example.rs",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        },
+        {
+          "command": [
+            "${WORKSPACE}/program"
+          ],
+          "returncode": 0,
+          "stdout": "\nrunning 1 test\ntest tests::verify_crc32_standard_check_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "rustc 1.98.1 (48a229cea 2026-09-01)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "\nrunning 1 test\ntest tests::verify_crc32_standard_check_value ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s\n\n",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Runner reported nonzero passing tests; inspect test adequacy separately.",
+      "id": "vol03-monografia-rust:PRB-0052"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "9c203e8a33a7da48814ff68a959aabfa43e07bc16e3cb4edc26fec2ae75b2438",
+      "language": "c",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.c",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0003:18",
+      "section": "cap01-c-fundamentos-modelo-compilacion-tipos-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "a102e1c671904af0bbc509a99aa6d3d3a244bb2d3b0ad307ce4c076d2d1b234e",
+      "language": "c",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.c",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0009:11",
+      "section": "cap02-c-punteros-memoria-dinamica-estructuras-aliasing"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "9aee099794d8628699f8e65ff46cb19ae2a7df6131d2eff6d7557c63e2d54f46",
+      "language": "c",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.c",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0014:10",
+      "section": "cap03-c-experto-atomicos-posix-sanitizers-ecosistema-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "fcd6c95d22d875024ac2265d4bd526f31375f2f5bd0c5aad173cb67bbd450133",
+      "language": "cpp",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "c++",
+            "-std=c++20",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.cpp",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0021:9",
+      "section": "cap04-cpp-fundamentos-raii-move-semantics-smart-pointers"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "e4c273da3253b77b8dd6353716e71a8352d765a455b287a8254bc181797d4e60",
+      "language": "cpp",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "c++",
+            "-std=c++20",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.cpp",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0026:8",
+      "section": "cap05-cpp-templates-concepts-ranges-concurrencia-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c55accc2951a0334b616c504a7cabbd1cc4c20d77942adb7f03c28abaca61c33",
+      "language": "zig",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0032:7",
+      "section": "cap06-monografia-zig-asignadores-comptime-interoperabilidad-c"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "72acf55ea4e52fb3b7ec2f5155a8a96d0e0d7ee0f1a1b8abb460aec6446cbaf7",
+      "language": "nasm",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0039:14",
+      "section": "cap07-monografia-ensamblador-arm64-x86-64-abi-simd"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "955453b1896ba30d7e049a9d530380ddc93fcf69b8af8cf8937f79982d899172",
+      "language": "ada",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0044:11",
+      "section": "cap08-monografias-ada-spark-tiempo-real-y-fortran-cientifico"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "2fa8fb18df8b4c9dbb50f13b2d888fa949549de3b31021c6614eb49ddc356789",
+      "language": "fortran",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0045:12",
+      "section": "cap08-monografias-ada-spark-tiempo-real-y-fortran-cientifico"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "fcfacc4f9bcb8a92a7f12500706ecd5460550ca63c72499abafd0a0fb97c4f14",
+      "language": "c",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "cc",
+            "-std=c17",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.c",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0049:5",
+      "section": "cap01-c-fundamentos-modelo-compilacion-tipos-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c0f891a0f1366d6d88eb7f7bd2ef1c5885679936625a6a1a5a6d9de4ebff0973",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0049:11",
+      "section": "cap01-c-fundamentos-modelo-compilacion-tipos-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "34c8e9007a58774d3d0ac111fd48a6d5278d8857283e205494c79d67086a6e1c",
+      "language": "cpp",
+      "requested_mode": "compile",
+      "filename": null,
+      "declared_version": null,
+      "classification": "COMPILED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "c++",
+            "-std=c++20",
+            "-Wall",
+            "-Wextra",
+            "-c",
+            "example.cpp",
+            "-o",
+            "program"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Apple clang version 21.0.0 (clang-2100.3.34.2)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Compiled without execution; behavior was not checked.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0050:10",
+      "section": "cap04-cpp-fundamentos-raii-move-semantics-smart-pointers"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "f2ad9f9afb0dd44a0813b2e44618cb82f1e1ce1ada0e7ab22e2e4757410e11fe",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol04-monografias-c-cpp-sistemas:PAR-0050:17",
+      "section": "cap04-cpp-fundamentos-raii-move-semantics-smart-pointers"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "9f927384177cf870d0511059e4ea16d498d30dc9b17efb9ada9397a227438365",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0003:18",
+      "section": "cap01-python-fundamentos-modelo-objetos-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "41165d77b645017b2a2d7cadcefc807936820b2dc53a7c7d715491c60a43a3c1",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0008:11",
+      "section": "cap02-python-intermedio-avanzado-modelo-datos-tipado-iteradores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "1d7be0fe378f02f0fedbfec933ca913fd9bc641ce0770b24e68d03178861dc6c",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0014:16",
+      "section": "cap03-python-experto-asyncio-concurrencia-metaclases-packaging-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "7821b515997c4e2d88aab25ea38e881c348141c6446391e48b650e17f165e975",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol05-monografias-python-js-ts:PAR-0014:30",
+      "section": "cap03-python-experto-asyncio-concurrencia-metaclases-packaging-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "e3e06c100c030645fc6b2aca38fdd75cffcf877a6db6ccc52b3ec6f190ea0fc2",
+      "language": "javascript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "node",
+            "--check",
+            "example.mjs"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "v24.19.0"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0021:8",
+      "section": "cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "284ac3607219ad140901c00a948bfb33f3e8e5a1cc9d854f20dc75feb0f3d631",
+      "language": "javascript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "node",
+            "--check",
+            "example.mjs"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "v24.19.0"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0026:8",
+      "section": "cap05-javascript-avanzado-event-loop-promesas-web-node-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "847985e35c767ccfd9d1c681b9fa761ef8cf50c4958c95db1227827c8fe6cc3e",
+      "language": "typescript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "tsc",
+            "--strict",
+            "--target",
+            "es2022",
+            "--noEmit",
+            "example.ts"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Version 5.9.3"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0033:5",
+      "section": "cap06-typescript-fundamentos-sistema-tipos-estructural-uniones"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "27305bbcfb5479cf1ed6f099f9fd65ac6b8c2cfceee924dad3bf0c9ba1f29ee4",
+      "language": "typescript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "tsc",
+            "--strict",
+            "--target",
+            "es2022",
+            "--noEmit",
+            "example.ts"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Version 5.9.3"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0038:18",
+      "section": "cap07-typescript-avanzado-experto-mapped-conditional-infer-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "1d8d803ce93ef5e5226304367a08e0545ead07a3e9eed26c4ab8c5fe45e6477c",
+      "language": "python",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0049:4",
+      "section": "cap01-python-fundamentos-modelo-objetos-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "5fcb856357a1f980f25fd4ab449a902dfb0f137782103123bf3ff9286bbe6060",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol05-monografias-python-js-ts:PAR-0049:13",
+      "section": "cap01-python-fundamentos-modelo-objetos-nivel-principiante"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "209527c12c7ce82a1bc5d68e9e0d8d1d46c338a1e4f2cfb247a9f6f9aa71e197",
+      "language": "javascript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "node",
+            "--check",
+            "example.mjs"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "v24.19.0"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0050:7",
+      "section": "cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "e7727ea3503a866db5c0a6d899f9c1ac00dc90364b5b4681b9b1280d9ec0bad6",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol05-monografias-python-js-ts:PAR-0050:10",
+      "section": "cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "fa01523509e1905fbfef22b85137c270db9def943da9ff4aebc9255c10c0ad69",
+      "language": "typescript",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "tsc",
+            "--strict",
+            "--target",
+            "es2022",
+            "--noEmit",
+            "example.ts"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "Version 5.9.3"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol05-monografias-python-js-ts:PAR-0051:6",
+      "section": "cap06-typescript-fundamentos-sistema-tipos-estructural-uniones"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c03f140204f8e3f4da391c32cabefb5ff658848ef19b68b6c96505ee516f4b8f",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol05-monografias-python-js-ts:PAR-0051:16",
+      "section": "cap06-typescript-fundamentos-sistema-tipos-estructural-uniones"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "e610e3fed6335c2986a23e61766676aeeec3204c641abec8e5d8da7a827648bc",
+      "language": "csharp",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0003:8",
+      "section": "cap01-csharp-dotnet-clr-tipos-valor-referencia-linq"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "1d78abddc462b764e92761e1f0fb0a4203f870961f8b6ecb8c9ddde180dc0f4b",
+      "language": "csharp",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0008:16",
+      "section": "cap02-csharp-avanzado-experto-span-async-valuetask-aspnet-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "62faf4ed716da214551b96dba3402ac8a3fd052b8db4673ba1241ba0cd77ed9d",
+      "language": "java",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0015:4",
+      "section": "cap03-java-jvm-bytecode-memoria-generics-streams"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "ecf2190c871ed6affe937cda16ad7e72b147edae34412fba46495ede7e94f4c1",
+      "language": "java",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0020:9",
+      "section": "cap04-java-avanzado-experto-virtual-threads-jmm-spring-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "3db16f52a67caed631c1eba14fc3035dadc8d011aa7d01aadea8a8e6e34aab6d",
+      "language": "go",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0027:8",
+      "section": "cap05-go-fundamentos-slices-interfaces-errores-genericos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "deb1739124764d179a8506c7db7bd4b24ef1ada26a07fd15296fb39f7ef03e68",
+      "language": "go",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0032:11",
+      "section": "cap06-go-avanzado-experto-goroutines-gmp-canales-context-proyectos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "4e595f2cb02d118eb981bc45ac1ef8a9d8f72b31f3ab59bf48c6931c4a4c2abd",
+      "language": "kotlin",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0039:4",
+      "section": "cap07-monografia-kotlin-null-safety-coroutines-flow-kmp"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "43133aecca8ac21c7f4159f6caf050c7f1ce82e69da6672f8bf59842d1e9b304",
+      "language": "swift",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0045:13",
+      "section": "cap08-monografia-swift-valor-cow-protocolos-arc-actores"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "650f3bd6060e1a903aa5e16133eba819757f844c2cb40755420870df96251560",
+      "language": "java",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0049:4",
+      "section": "cap03-java-jvm-bytecode-memoria-generics-streams"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "0778e886a185ce7623396e9b7dd0d483595ad0a546248839d6e833763734f545",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0049:8",
+      "section": "cap03-java-jvm-bytecode-memoria-generics-streams"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "f26dbb544cd68f5d48e3611519c6eea7bb86d00196ff9b948b3ec579804ee90f",
+      "language": "csharp",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0050:7",
+      "section": "cap01-csharp-dotnet-clr-tipos-valor-referencia-linq"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "9591d9b0cc4b2512031864599145b184f56207153d50628ef3de544c7f654fe4",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0050:14",
+      "section": "cap01-csharp-dotnet-clr-tipos-valor-referencia-linq"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "14996cb11f3e57f1bb64392f26b80998a93acde6020fb883605f19dd7657dc6c",
+      "language": "go",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0051:7",
+      "section": "cap05-go-fundamentos-slices-interfaces-errores-genericos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "1af0e6ee64a201128bbeac5eaaa75d96afce21fb82de4c06085ec4be74dfd120",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol06-monografias-jvm-dotnet-go-movil:PAR-0051:12",
+      "section": "cap05-go-fundamentos-slices-interfaces-errores-genericos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "d3decf5a4890590aaf23db521acd5007918b5df3dd65e8ce992ff257caada114",
+      "language": "bash",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "bash",
+            "-n",
+            "example.sh"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0009:4",
+      "section": "cap02-monografia-bash-posix-shell-automatizacion-sistemas"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "e6a738de0ae2ce45a4331eff330d5e91e0f6a733fb44941a06450ce0bb7ce5b4",
+      "language": "dart",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0015:9",
+      "section": "cap03-monografias-php-ruby-dart-web-movil"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "b39e150825208553bea8709b5fb14a0718a52c5122210ea04854c1a49c767713",
+      "language": "haskell",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0021:15",
+      "section": "cap04-monografia-haskell-funcional-puro-tipos-monadas"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c5106fa4fd37fb5cc17f7ce3917d09fe21e07d26e74756128e810b62c41c6b2e",
+      "language": "fsharp",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0027:4",
+      "section": "cap05-monografias-ocaml-fsharp-ml-sistemas-tipos"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "7bc862d93eaffc10e194b984731e82a97391352826620fea85066b6d5ea77187",
+      "language": "elixir",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0032:3",
+      "section": "cap06-monografias-beam-elixir-erlang-scala3-clojure-lisp"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "da22b0274b5f688293a324acc3c0af2f6f2c43ce6c4f0ed6bf918f828ca74733",
+      "language": "julia",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0038:3",
+      "section": "cap07-monografias-julia-r-computacion-cientifica-estadistica"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c02642e4ea89e5892daf69f10318aa6b53bd39d374c690ed80b30d9c331bf833",
+      "language": "lua",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0044:4",
+      "section": "cap08-monografias-lua-perl-objc-prolog-gdscript"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "0761bee1164f7baafb45fef769d649d48b0e264613e387f4e9d63fe91c1d2258",
+      "language": "sql",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0049:4",
+      "section": "cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "080c417683fad973747413b79b89fda0dd7d5fd65cdf99e05feeaa3d0814f6b6",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0049:12",
+      "section": "cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "fad29bb18537afa8c90c443ea41e7e707ef0b751296e27bcf79ff3dae8bddd46",
+      "language": "bash",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [
+        {
+          "command": [
+            "bash",
+            "-n",
+            "example.sh"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "timed_out": false,
+          "truncated": false
+        }
+      ],
+      "tool_version": [
+        "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)"
+      ],
+      "expected_stdout": null,
+      "observed_stdout": "",
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Tool accepted syntax; behavior was not checked.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0050:5",
+      "section": "cap02-monografia-bash-posix-shell-automatizacion-sistemas"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "4e02a13f422708ea3e9f4ed10b9b31a4e68823273e6b33c008f67298a2973902",
+      "language": "terminal",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "LITERAL_OR_PSEUDOCODE",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Literal illustration; no language execution claimed.",
+      "id": "vol07-monografias-sql-shell-funcional-especializados:PAR-0050:14",
+      "section": "cap02-monografia-bash-posix-shell-automatizacion-sistemas"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "41bbe3d539df9e8da9aa4001251601e4b8b03037de5311238105dc064d845845",
+      "language": "html",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol08-web-bases-de-datos-y-frameworks:PAR-0002:1",
+      "section": "ch-01"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "c03bf10160d02d3fd0319abafd7e1712da98279b06facea2c7916dd287b83885",
+      "language": "css",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol08-web-bases-de-datos-y-frameworks:PAR-0008:13",
+      "section": "ch-02"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "d10b55526b1748b44a5d0a21f6b39f1f0a6dec6f63ea52f75d4b61ff9ccf078d",
+      "language": "json",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "SYNTAX_VALIDATED",
+      "passed": true,
+      "commands": [],
+      "tool_version": "3.12.15",
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "Parsed without executing; behavior was not checked.",
+      "id": "vol08-web-bases-de-datos-y-frameworks:PAR-0014:5",
+      "section": "ch-03"
+    },
+    {
+      "schema_version": "1.0",
+      "source_sha256": "df52820b5bd6a722b24c3d0afbcb8dcf8786228ad42a4b82275bcf0bf24c7db8",
+      "language": "dockerfile",
+      "requested_mode": "syntax",
+      "filename": null,
+      "declared_version": null,
+      "classification": "UNVERIFIED",
+      "passed": null,
+      "commands": [],
+      "tool_version": null,
+      "expected_stdout": null,
+      "observed_stdout": null,
+      "limitations": [
+        "Finite tests do not prove correctness.",
+        "Resource limits are not a security sandbox."
+      ],
+      "detail": "No adapter for the requested language/mode.",
+      "id": "vol09-ingenieria-software-arquitectura-y-proyectos:PAR-0032:8",
+      "section": "ch-06"
+    }
+  ]
+}

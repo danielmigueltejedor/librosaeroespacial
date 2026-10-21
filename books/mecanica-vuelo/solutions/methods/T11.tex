@@ -1,0 +1,38 @@
+\textbf{Desarrollo de las magnitudes intermedias.} Con $D=AV^2+B/V^2$, imponer $D=T$ y multiplicar por $V^2$ produce una cuadrática en $y=V^2$: $Ay^2-Ty+B=0$. Una raíz existe si $T^2-4AB\ge0$. La raíz baja se calcula como $V_-^2=2B/[T+\sqrt{T^2-4AB}]$ para evitar restar dos números próximos. Después se intersecta el intervalo de motor con pérdida y Mach.\begin{enumerate}
+
+\item Coeficiente que multiplica V al cuadrado.
+
+\[\fitmath{A=0.5\cdot 0.589500721\cdot 42\cdot 0.024\approx 0.2971084\,\mathrm{kg/m}}\]
+
+\item Coeficiente del término inverso.
+
+\[\fitmath{B=\frac{2\cdot 0.044\cdot {\left(7600\cdot 9.80665\right)}^{2}}{0.589500721\cdot 42}\approx 1.97432\times10^{7}\,\mathrm{N\,m^{2}/s^{2}}}\]
+
+\item Comprobar discriminante no negativo.
+
+\[\fitmath{\mathrm{disc}={10000}^{2}-4\cdot A\cdot B}\]
+
+\[\fitmath{\mathrm{disc}={10000}^{2}-4\cdot (0.2971083634)\cdot (19743201.45)\approx 7.653652\times10^{7}\,\mathrm{N^{2}}}\]
+
+\item Raíz baja estable.
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{2\cdot B}{10000+\sqrt{\mathrm{disc}}}}}\]
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{2\cdot (19743201.45)}{10000+\sqrt{(76536518.92)}}}\approx 45.89236\,\mathrm{m/s}}\]
+
+\item Raíz alta.
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{10000+\sqrt{\mathrm{disc}}}{2\cdot A}}}\]
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{10000+\sqrt{(76536518.92)}}{2\cdot (0.2971083634)}}\approx 177.6278\,\mathrm{m/s}}\]
+
+\item Límite de sustentación.
+
+\[\fitmath{\mathrm{Vstall}=\sqrt{\frac{2\cdot 7600\cdot 9.80665}{0.589500721\cdot 42\cdot 1.5}}\approx 63.35336\,\mathrm{m/s}}\]
+
+\item Límite por velocidad del sonido local.
+
+\[\fitmath{\mathrm{VMach}=0.62\cdot 312.2734867\approx 193.6096\,\mathrm{m/s}}\]
+
+\end{enumerate}
+\par El límite inferior es el mayor entre raíz baja y pérdida; el superior, el menor entre raíz alta y límite de Mach. Comparar ambos extremos determina si la intersección está vacía.

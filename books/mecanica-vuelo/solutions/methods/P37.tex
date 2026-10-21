@@ -1,0 +1,49 @@
+\textbf{Por qué aparece una arcotangente.} Con TAS constante, $D=A+BW^2$ y $dW/dt=-g_0c_TD$. Separar da $dt=-dW/[g_0c_T(A+BW^2)]$. La sustitución $u=W\sqrt{B/A}$ convierte la integral en $du/(1+u^2)$, cuya primitiva es $\arctan u$. No se conserva la eficiencia al consumir masa.\begin{enumerate}
+
+\item Obtener CL inicial de mínima resistencia.
+
+\[\fitmath{\mathrm{CLi}=\sqrt{\frac{0.022}{0.046}}\approx 0.6915641\,}\]
+
+\item Fijar la TAS inicial que se mantendrá durante toda la fase.
+
+\[\fitmath{V=\sqrt{\frac{2\cdot 7000\cdot 9.80665}{0.6596967989\cdot 38\cdot \mathrm{CLi}}}}\]
+
+\[\fitmath{V=\sqrt{\frac{2\cdot 7000\cdot 9.80665}{0.6596967989\cdot 38\cdot (0.6915640748)}}\approx 88.9906\,\mathrm{m/s}}\]
+
+\item Coeficiente constante de resistencia a esa TAS.
+
+\[\fitmath{A=0.5\cdot 0.6596967989\cdot {V}^{2}\cdot 38\cdot 0.022}\]
+
+\[\fitmath{A=0.5\cdot 0.6596967989\cdot {(88.99060446)}^{2}\cdot 38\cdot 0.022\approx 2183.78\,\mathrm{N}}\]
+
+\item Coeficiente que multiplica al peso al cuadrado.
+
+\[\fitmath{B=\frac{2\cdot 0.046}{0.6596967989\cdot {V}^{2}\cdot 38}}\]
+
+\[\fitmath{B=\frac{2\cdot 0.046}{0.6596967989\cdot {(88.99060446)}^{2}\cdot 38}\approx 4.634166\times10^{-7}\,\mathrm{1/N}}\]
+
+\item Evaluar la primitiva arcotangente entre peso final e inicial.
+
+\[\fitmath{\mathrm{Eexact}=\frac{\arctan\left(7000\cdot 9.80665\cdot \sqrt{\frac{B}{A}}\right)-\arctan\left(5700\cdot 9.80665\cdot \sqrt{\frac{B}{A}}\right)}{9.80665\cdot 1.7\times10^{-5}\cdot \sqrt{A\cdot B}}}\]
+
+\[\fitmath{\mathrm{Eexact}=\frac{\arctan\left(7000\cdot 9.80665\cdot \sqrt{\frac{(4.63416551\times10^{-7})}{(2183.780441)}}\right)-\arctan\left(5700\cdot 9.80665\cdot \sqrt{\frac{(4.63416551\times10^{-7})}{(2183.780441)}}\right)}{9.80665\cdot 1.7\times10^{-5}\cdot \sqrt{(2183.780441)\cdot (4.63416551\times10^{-7})}}\approx 19234.01\,\mathrm{s}}\]
+
+\item Obtener eficiencia inicial para la aproximación distinta.
+
+\[\fitmath{\mathrm{LD}=\frac{\mathrm{CLi}}{0.022+0.046\cdot {\mathrm{CLi}}^{2}}}\]
+
+\[\fitmath{\mathrm{LD}=\frac{(0.6915640748)}{0.022+0.046\cdot {(0.6915640748)}^{2}}\approx 15.71737\,}\]
+
+\item Evaluar la hipótesis artificial de eficiencia fija por separado.
+
+\[\fitmath{\mathrm{Eapprox}=\frac{\mathrm{LD}}{9.80665\cdot 1.7\times10^{-5}}\cdot \ln\left(\frac{7000}{5700}\right)}\]
+
+\[\fitmath{\mathrm{Eapprox}=\frac{(15.71736534)}{9.80665\cdot 1.7\times10^{-5}}\cdot \ln\left(\frac{7000}{5700}\right)\approx 19368.84\,\mathrm{s}}\]
+
+\item Comparar los dos tiempos.
+
+\[\fitmath{\mathrm{error}=\frac{\mathrm{Eapprox}}{\mathrm{Eexact}}-1}\]
+
+\[\fitmath{\mathrm{error}=\frac{(19368.83765)}{(19234.00712)}-1\approx 0.007010007\,}\]
+
+\end{enumerate}

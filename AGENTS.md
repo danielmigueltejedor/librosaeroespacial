@@ -151,3 +151,14 @@ Un curso nuevo puede empezar solo con la asignatura y la institución. Las fuent
 Los libros ya existentes siguen en el contrato 0.2. No se les aplica la matriz de cobertura ni el ledger de ejercicios nuevos.
 
 El sistema no es infalible. Corta el paso cuando falta la capa correspondiente: sin fuente no hay investigación cerrada, sin evidencia no hay claim, sin verificación no hay ejercicio publicado, sin revisión independiente no pasa un resultado de alto riesgo, sin cobertura no hay capítulo, y sin gates en verde no hay release.
+
+## Publicación de la colección completa
+
+Toda nueva release de `librosstudium`, aunque actualice una sola materia, debe
+adjuntar `LibrosStudium-bundle-completo.zip` con todos los libros registrados,
+organizados por asignatura o tema. Usar `scripts/package-release-bundle.py` y el
+flujo `.github/workflows/release-bundle.yml`; verificar el ZIP descargado antes
+de publicar. El catálogo `release-bundle.json` debe crecer con la colección.
+Un paquete parcial o una carpeta sin sus PDF bloquea la publicación. Las
+revisiones pendientes se publican como prereleases con su estado explícito; el
+inventario de entrega no es una aprobación ni un release manifest académico.

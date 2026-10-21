@@ -1,0 +1,33 @@
+{
+  "scope": "all active prose/solution literal regions checked for unsupported glyphs, controls and fences; PDF fixture text compared without layout whitespace; exact editable source is shipped separately",
+  "records_checked": 827,
+  "literal_regions_checked": 2718,
+  "issues": [],
+  "roundtrip": [
+    {
+      "fixture": 0,
+      "matches_without_layout_whitespace": true,
+      "expected": "path = \"C:\\\\work\\\\file_name.txt\"\npattern = r\"\\b[a-z_]+\\b\"\nvalue = \"\\U0001f980\"\ntext = \"áéíóú ñ ü\"\noperators = \"<= >= != == & | ^ ~ % # $ { } [ ] _\"\nquote = 'single and \"double\"'\nliteral = \"\\\\end{lstlisting}\"\nmarkers = \"(*@ @*) (#@ @#) (|@ @|) [<@ @>]\"",
+      "actual": "path = \"C:\\\\work\\\\file_name.txt\"\npattern = r\"\\b[a-z_]+\\b\"\nvalue = \"\\U0001f980\"\ntext = \"áéíóú ñ ü\"\noperators = \"<= >= != == & | ^ ~ % # $ { } [ ] _\"\nquote = 'single and \"double\"'\nliteral = \"\\\\end{lstlisting}\"\nmarkers = \"(*@ @*) (#@ @#) (|@ @|) [<@ @>]\""
+    },
+    {
+      "fixture": 1,
+      "matches_without_layout_whitespace": true,
+      "expected": "const tpl = `Hello ${user_name}`;\nconst re = /[a-z_]+\\s*/gu;\nconst ok = left <= right && a !== b;",
+      "actual": "const tpl = `Hello ${user_name}`;\nconst re = /[a-z_]+\\s*/gu;\nconst ok = left <= right && a !== b;"
+    },
+    {
+      "fixture": 2,
+      "matches_without_layout_whitespace": true,
+      "expected": "fn borrow<'a>(xs: &'a [u8]) -> &'a [u8] { xs }\n// α β ≤ ≥ ≠",
+      "actual": "fn borrow<'a>(xs: &'a [u8]) -> &'a [u8] { xs }\n// α β ≤ ≥ ≠"
+    },
+    {
+      "fixture": "inline",
+      "matches_without_layout_whitespace": true,
+      "expected": "a_b%#$&{}^~\\path/file <= >= \"quoted\"",
+      "actual": "a_b %#$&{}^~\\path/file <= >= \"quoted\""
+    }
+  ],
+  "pdf_sha256": "f44d095561fa02225c9508f928eb28559d1f8a8fe34a4548503619ea12d4726c"
+}

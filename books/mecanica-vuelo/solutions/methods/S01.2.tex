@@ -1,0 +1,8 @@
+\textbf{Integral de tiempo desarrollada.} Calcular $C_D=C_{D0}+kC_L^2$ y $\delta=\arctan(C_D/C_L)$. Del equilibrio exacto, $V(h)=\sqrt{2mg_0\cos\delta/[\rho(h)SC_L]}$ y $s(h)=V(h)\sin\delta$. Definir $K=\sqrt{2mg_0\cos\delta/(SC_L)}\sin\delta$ da $s=K/\sqrt\rho$. En la troposfera, $\rho=\rho_0(1-\beta h/T_0)^a$, con $a=g_0/(R\beta)-1$.\[\fitmath{E=\frac{\sqrt{\rho_0}}{K}\int_{h_f}^{h_i}(1-\beta h/T_0)^{a/2}dh=\frac{\sqrt{\rho_0}T_0}{K\beta(1+a/2)}\left[(1-\beta h_f/T_0)^{1+a/2}-(1-\beta h_i/T_0)^{1+a/2}\right]}\]Los parámetros intermedios son $C_L=0.6578654$, $C_D=0.0264$, $\delta=0.04010827\,\mathrm{rad}$ y $a=4.25588$. La evaluación por alturas permite contrastar el integrando:\begin{center}\begin{tabular}{rrrrr}
+\toprule $h$ (m) & $ho$ & $V$ (m/s) & $s$ (m/s) & $1/s$ (s/m)\\\midrule
+$600$ & $1.155977$ & $26.78547$ & $1.074031$ & $0.9310721$\\
+$1300$ & $1.079255$ & $27.72119$ & $1.111551$ & $0.899644$\\
+$2000$ & $1.00649$ & $28.70576$ & $1.15103$ & $0.8687873$\\
+$2700$ & $0.9375395$ & $29.74261$ & $1.192605$ & $0.8385009$\\
+$3400$ & $0.8722622$ & $30.83545$ & $1.236425$ & $0.8087834$\\
+\bottomrule\end{tabular}\end{center}\[\fitmath{E\approx2433.669\,\mathrm s,\qquad R_a=(h_i-h_f)\frac{C_L}{C_D}\approx69773.6\,\mathrm m}\]\[\fitmath{R_g=R_a+U E\approx55171.59\,\mathrm m}\]

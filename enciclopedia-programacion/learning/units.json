@@ -1,0 +1,409 @@
+[
+  {
+    "key": "python",
+    "title": "Python",
+    "volume": 5,
+    "chapter_prefix": "cap01",
+    "source": "python/main.py",
+    "command": "python3 main.py",
+    "intro": "Empieza aquí si nunca has programado. Una variable da un nombre a un valor; una función reúne instrucciones y devuelve un resultado. La sangría delimita los bloques: las instrucciones bajo `for` se repiten y las que quedan fuera se ejecutan después del recorrido. En este recorrido usamos listas de números y funciones que no modifican la entrada. La lista vacía tiene un significado propio: no existe una media de cero mediciones. Devolver `None` permite distinguir esa ausencia del resultado numérico cero.\n\nAntes de sumar, decide el contrato. Aceptamos listas finitas de enteros o números reales ordinarios; dejamos fuera valores no numéricos, infinitos y NaN. Este ejercicio no es un analizador de archivos ni un cálculo exacto de dinero. Si introduces una cadena, no esperes que Python la convierta automáticamente al tipo deseado. Separa la lectura de datos de la función que los procesa: así puedes probarla con una lista construida por ti.",
+    "example": "values = [10, 20, 30]\ntotal = 0\nfor value in values:\n    total += value\nprint(total)",
+    "trace": "La ejecución empieza con `total = 0`. Después de leer 10, 20 y 30, el acumulador vale 10, 30 y 60. `print` está fuera del bucle y escribe una sola línea: `60`. Si lo sangras dentro, obtendrás tres líneas y estarás observando los resultados parciales. Escribe primero esa traza en papel y luego compruébala.\n\nLa media necesita además el número de elementos: `len(values)`. El caso vacío debe resolverse antes de dividir. En cambio, buscar la primera lectura alta exige detenerse al encontrarla, mediante `return`. Un índice cero es una posición válida; comprueba `result is None` para detectar ausencia. Una condición como `if not result` confundiría ese índice con un resultado falso.",
+    "errors": "Si aparece `IndentationError`, revisa el bloque que acabas de abrir con dos puntos. Si una función produce `None` inesperadamente, comprueba que existe un `return` en la ruta ejecutada. No confundas `print`, que muestra un valor, con `return`, que permite reutilizarlo. Para depurar un bucle, muestra temporalmente el elemento y el acumulador; retira esas impresiones al comprobar la salida exacta.",
+    "prompts": [
+      "Guiado. Escribe `summary(values)` sin copiar el solucionario: devuelve la media o `None` si no hay datos. Comprueba `[10,20,30] -> 20`, `[] -> None` y `[-4,-2] -> -3`. Pista: trata la ausencia antes de dividir.",
+      "Transferencia. Escribe `count_above(values, limit)` que cuente los valores estrictamente mayores que el límite sin cambiar la lista. Para `[10,20,20,30]` y 20 debe devolver 1; para la lista vacía, 0. Pista: la igualdad no supera el umbral.",
+      "Depuración. Una búsqueda devuelve 0 cuando no encuentra nada y también cuando el primer elemento cumple la condición. Corrige el contrato en `first_peak(values, limit)`: devuelve el primer índice cuyo valor supera el límite o `None`. Comprueba ausencia, índice cero y coincidencia al final."
+    ],
+    "explanations": [
+      "La guarda inicial evita dividir por cero y conserva una representación inequívoca de ausencia. El acumulador contiene la suma de los elementos ya visitados; al terminar se divide una sola vez.",
+      "El contador comienza en cero y aumenta únicamente cuando se cumple la comparación estricta. Los elementos iguales al límite quedan excluidos; el recorrido vacío conserva el cero.",
+      "El retorno dentro del bucle conserva la primera coincidencia. El retorno final solo se alcanza cuando ninguna sirve. `None` no coincide con ningún índice de la lista."
+    ],
+    "parts": [
+      "def summary",
+      "def count_above",
+      "def first_peak"
+    ],
+    "reference": "https://docs.python.org/3.12/tutorial/controlflow.html",
+    "paragraph_id": "PAR-0049",
+    "chapter": "cap01-python-fundamentos-modelo-objetos-nivel-principiante",
+    "slug": "vol05-monografias-python-js-ts",
+    "exercise_ids": [
+      "PRB-0049",
+      "PRB-0050",
+      "PRB-0051"
+    ],
+    "example_stdout": "60\n"
+  },
+  {
+    "key": "javascript",
+    "title": "JavaScript",
+    "volume": 5,
+    "chapter_prefix": "cap04",
+    "source": "javascript/main.js",
+    "command": "node main.js",
+    "intro": "JavaScript permite ejecutar un programa pequeño con Node.js sin crear una página web. Usaremos números, objetos, arrays, funciones y condiciones. Un objeto reúne propiedades con nombre; un array conserva una secuencia. `for...of` entrega sus elementos, mientras `let` declara un acumulador al que puedes asignar un nuevo valor. `const` impide reasignar el nombre; no convierte el objeto nombrado en una estructura inmutable.\n\nNuestro escenario es un carrito expresado en céntimos enteros. Cada elemento contiene `price` y `quantity`, ambos no negativos. Restringimos entradas y resultados a enteros seguros y cantidades pequeñas: este programa no sustituye a una biblioteca financiera. Escribe el dominio antes de implementar: ¿se permite un carrito vacío?, ¿cómo se redondea un descuento?, ¿en qué importe exacto empieza el envío gratuito? Esas decisiones forman parte del comportamiento que debes probar.",
+    "example": "const item = {price: 125, quantity: 2};\nconst cents = item.price * item.quantity;\nconsole.log(cents);",
+    "trace": "El objeto representa dos unidades de 125 céntimos. La multiplicación da 250 y la salida es `250`. Añadir elementos al carrito exige acumular un subtotal por producto, no sumar el precio una sola vez. En el ejemplo de práctica, los subtotales 250 y 300 producen 550.\n\nPara un descuento del diez por ciento sobre 101 céntimos hemos elegido redondear hacia abajo el importe final: 90 céntimos. No confundas esa regla con redondear el descuento y restarlo; algunas entradas producirían resultados diferentes. En la entrega gratuita, 4999, 5000 y 5001 prueban los dos lados y el punto exacto de la frontera.",
+    "errors": "La suma `\"125\" + 2` concatena texto; no la uses como conversión de datos. Compara valores esperados con `===` y valida números antes de operar con entradas externas. Si una prueba falla solo en 5000, revisa `>` frente a `>=`. Para rechazar porcentajes fraccionarios o fuera de rango, lanza un error claro en lugar de devolver un resultado silenciosamente incorrecto.",
+    "prompts": [
+      "Guiado. Implementa `total(items)` para sumar `price * quantity`. Usa el carrito de dos unidades de 125 y una de 300: resultado 550. El carrito vacío debe dar 0. Pista: inicializa una única vez antes del bucle.",
+      "Transferencia. Implementa `discount(cents, percent)`: redondea hacia abajo el importe final y rechaza porcentajes no enteros o fuera de 0..100 mediante `RangeError`. Para 101 y 10 da 90. Prueba también descuento total y porcentaje negativo.",
+      "Depuración. `return cents > 5000 ? 0 : 399` cobra envío en una compra que alcanza exactamente el umbral gratuito. Corrige `delivery(cents)` y prueba 4999, 5000 y 5001."
+    ],
+    "explanations": [
+      "Cada vuelta añade el subtotal de un producto. El valor inicial cero representa correctamente una colección sin productos.",
+      "La validación ocurre antes del cálculo. La regla de redondeo se aplica al importe final; el contrato limita los números a un rango pequeño y seguro.",
+      "El texto del requisito incluye el umbral: la comparación debe aceptar la igualdad. Las tres pruebas impiden corregir un extremo rompiendo el otro."
+    ],
+    "parts": [
+      "function total",
+      "function discount",
+      "function delivery"
+    ],
+    "reference": "https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html",
+    "paragraph_id": "PAR-0050",
+    "chapter": "cap04-javascript-fundamentos-closures-prototipos-nivel-intermedio",
+    "slug": "vol05-monografias-python-js-ts",
+    "exercise_ids": [
+      "PRB-0052",
+      "PRB-0053",
+      "PRB-0054"
+    ],
+    "example_stdout": "250\n"
+  },
+  {
+    "key": "typescript",
+    "title": "TypeScript",
+    "volume": 5,
+    "chapter_prefix": "cap06",
+    "source": "typescript/main.ts",
+    "command": "tsc --project tsconfig.json && node build/main.js",
+    "intro": "Realiza antes el recorrido de JavaScript. TypeScript añade comprobaciones estáticas, pero el programa final sigue ejecutándose como JavaScript. Un tipo no inspecciona por sí mismo el contenido recibido desde una red o un archivo. Por eso empezamos con `unknown`: obliga a comprobar el valor antes de usarlo como número.\n\nEl problema es aceptar un contador entero no negativo. El tipo `Result` expresa dos resultados posibles: éxito con un valor, o fallo con una explicación. La propiedad `ok` permite escoger la rama adecuada. Esta estructura evita reservar un número válido para señalar un error. No uses una conversión `as number` para saltarte la validación: cambiaría lo que cree el comprobador, sin cambiar el dato real.",
+    "example": "const input: unknown = 3;\nif (typeof input === \"number\") {\n  console.log(input + 1);\n}",
+    "trace": "La comprobación `typeof` permite usar el valor numéricamente y el programa escribe `4`. Si cambias la entrada a `\"3\"`, no se ejecuta la rama: el programa no convierte la cadena de forma implícita. Esa comprobación todavía admite NaN o un número fraccionario; el contador del ejercicio necesita además `Number.isSafeInteger` y la comparación con cero.\n\nUn resultado exitoso con valor cero es distinto de un fallo. En `withDefault`, escoge según `ok`; una expresión como `value || fallback` sustituiría incorrectamente el cero. Para explicar un fallo al usuario, consulta `error` únicamente dentro de la rama fallida.",
+    "errors": "Si el compilador dice que una propiedad no existe en una unión, revisa qué variante has identificado. No silencies el mensaje con `any`: formula una condición que pruebe el caso correcto. Si compila pero acepta una entrada inválida, falta validación en ejecución. Mantén ambas capas: compilar con `strict` y ejecutar pruebas con datos adversos.",
+    "prompts": [
+      "Guiado. Define `Result` como unión discriminada e implementa `parseCount(input: unknown)`. Acepta cero y enteros seguros positivos; rechaza cadena, NaN, negativos y fracciones. Pista: comprueba primero el tipo real.",
+      "Transferencia. Escribe `describe(result: Result)`: produce `count=3` para el éxito con 3 o `error=invalid count` para el fallo indicado. No emplees conversiones forzadas de tipo.",
+      "Depuración. Una implementación usa `value || fallback` y cambia un cero válido por 7. Escribe `withDefault(input, fallback)` basándote en `parseCount`: cero debe seguir siendo cero; `undefined` debe usar el valor alternativo. Se presupone que el valor alternativo ya satisface el contrato."
+    ],
+    "explanations": [
+      "La unión impide representar un éxito sin valor o un fallo sin mensaje en este contrato. La validación real rechaza entradas que una anotación estática por sí sola no transforma.",
+      "La condición sobre el discriminante estrecha la unión y permite acceder a la propiedad de esa variante. El mismo resultado puede presentarse sin repetir la validación.",
+      "La selección depende del estado de validación, no de la veracidad del número. Por eso cero permanece como resultado correcto."
+    ],
+    "parts": [
+      "type Result",
+      "function describe",
+      "function withDefault"
+    ],
+    "reference": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+    "paragraph_id": "PAR-0051",
+    "chapter": "cap06-typescript-fundamentos-sistema-tipos-estructural-uniones",
+    "slug": "vol05-monografias-python-js-ts",
+    "exercise_ids": [
+      "PRB-0055",
+      "PRB-0056",
+      "PRB-0057"
+    ],
+    "example_stdout": "4\n"
+  },
+  {
+    "key": "rust",
+    "title": "Rust",
+    "volume": 3,
+    "chapter_prefix": "cap02",
+    "source": "rust/main.rs",
+    "command": "rustc --edition=2021 main.rs -o app && ./app",
+    "intro": "Para empezar con Rust basta un archivo y un compilador; Cargo será útil cuando necesites paquetes y pruebas organizadas. `fn main` es el punto de entrada. `let` crea una vinculación y `mut` permite cambiar su valor. La firma de una función especifica qué recibe y qué devuelve. Aquí usamos texto prestado `&str`: la función lo consulta sin apropiarse de su almacenamiento.\n\nNuestro contrato convierte una lectura decimal en `u32`. La ausencia de signo negativo y el rango limitado son parte del tipo. Un texto inválido no es cero: se representa como `Err`. El llamador debe decidir qué hacer con ese resultado. En el segundo ejercicio elegimos omitir líneas inválidas; esa política sería inadecuada si cada línea tuviera que quedar registrada para una auditoría.",
+    "example": "fn main() {\n    let mut total = 0_u32;\n    for value in [2_u32, 3] {\n        total += value;\n    }\n    println!(\"{}\", total);\n}",
+    "trace": "La traza del acumulador es 0, 2 y 5. El programa imprime `5`. Para una lectura almacenada como texto, la conversión puede fallar antes de llegar a la suma. `parse_line(\" 12 \")` elimina espacios exteriores y produce `Ok(12)`; una cadena vacía o `\"-1\"` no satisface el contrato y produce un error.\n\nLa función que suma lecturas válidas utiliza un acumulador `u64`. En esta práctica limitamos la colección a mil lecturas, de modo que la suma de valores `u32` cabe en él. No generalices esta garantía a una entrada ilimitada. Cuando operamos directamente con dos `u32`, usamos `checked_add` para representar el desbordamiento como `None`.",
+    "errors": "Un mensaje sobre tipos enteros puede indicar que mezclaste un valor `u32` con el acumulador `u64`: convierte explícitamente mediante `u64::from`. No arregles un fallo de conversión añadiendo `unwrap` si el contrato admite texto inválido. Si el compilador rechaza modificar una variable, comprueba si declaraste la vinculación como mutable; decide después si realmente necesitas cambiarla.",
+    "prompts": [
+      "Guiado. Implementa `parse_line`, que recibe texto prestado y devuelve un resultado o error: ignora espacios exteriores y devuelve `invalid reading` si no se puede convertir. Comprueba texto vacío, negativo y una lectura válida.",
+      "Transferencia. Implementa `sum_valid(lines: &[&str]) -> u64` para un máximo de mil líneas. Omite las inválidas y suma las válidas. Para `[\"2\",\"bad\",\"3\"]` devuelve 5; para ninguna línea, 0. Explica qué información pierdes al omitir errores.",
+      "Depuración. Sustituye una suma que desborda por `bounded_add(left, right) -> Option<u32>`. `2 + 3` debe dar `Some(5)` y `u32::MAX + 1`, `None`, tanto al compilar para depuración como para producción."
+    ],
+    "explanations": [
+      "La conversión devuelve un resultado explícito. El mensaje propio conserva una interfaz estable para este ejercicio; una herramienta real podría necesitar más contexto del fallo.",
+      "El patrón `if let` incorpora únicamente valores exitosos. La ampliación de tipo evita desbordamientos bajo el límite de mil lecturas establecido.",
+      "La suma comprobada expresa la imposibilidad del resultado mediante el tipo de retorno y evita depender del perfil de compilación."
+    ],
+    "parts": [
+      "fn parse_line",
+      "fn sum_valid",
+      "fn bounded_add"
+    ],
+    "reference": "https://doc.rust-lang.org/book/ch03-05-control-flow.html",
+    "paragraph_id": "PAR-0049",
+    "chapter": "cap02-entorno-toolchain-cargo-nivel-principiante",
+    "slug": "vol03-monografia-rust",
+    "exercise_ids": [
+      "PRB-0057",
+      "PRB-0058",
+      "PRB-0059"
+    ],
+    "example_stdout": "5\n"
+  },
+  {
+    "key": "c",
+    "title": "C",
+    "volume": 4,
+    "chapter_prefix": "cap01",
+    "source": "c/main.c",
+    "command": "cc -std=c11 -Wall -Wextra -Werror main.c -o app && ./app",
+    "intro": "C obliga a hacer explícitos aspectos que otros lenguajes gestionan por ti. Un array pasado a una función no lleva automáticamente su longitud. El contrato debe indicar cuántos elementos puede leer y dónde puede escribir. Una función que recibe un puntero no puede deducir si la memoria correspondiente es válida.\n\nEmpieza con arrays locales, `size_t` para tamaños y funciones pequeñas. El ejercicio de máximo recibe un array y una salida mediante puntero: devuelve un booleano para señalar si existía algún elemento. Así no confunde un número negativo con un error. Se presupone que, si hay elementos, el array contiene al menos `n` enteros accesibles y `out` apunta a un entero escribible. El ejercicio de copia presupone cadenas terminadas en cero y regiones que no se solapan.",
+    "example": "#include <stdio.h>\nint main(void) {\n    int values[] = {-4, -2, -7};\n    printf(\"%d\\n\", values[0]);\n    return 0;\n}",
+    "trace": "El índice cero accede al primer entero, por lo que la salida es `-4`. En una búsqueda del máximo, iniciar el candidato en cero fallaría con este conjunto de negativos. Empieza por el primer elemento solo después de comprobar que existe. La traza del candidato será -4, -2 y -2.\n\nUna cadena de tres bytes necesita además el byte nulo final: `\"abc\"` requiere capacidad cuatro. `copy_text` rechaza antes de escribir cuando la capacidad no alcanza. Ese orden permite prometer que el destino conserva su contenido al fallar. `count_byte` trabaja con longitud explícita: cuenta bytes, no caracteres Unicode, una distinción necesaria si el archivo contiene UTF-8.",
+    "errors": "Un fallo de segmentación no indica qué precondición violaste. Revisa índices, longitudes y validez de punteros. Compila con advertencias y, cuando estén disponibles, sanitizadores de direcciones y comportamiento indefinido. Los sanitizadores comprueban las rutas ejecutadas; no demuestran que todos los posibles datos sean seguros. No conviertas punteros para ocultar una advertencia sin entender el contrato.",
+    "prompts": [
+      "Guiado. Implementa `maximum(values, n, out)` que devuelva falso con longitud cero sin tocar la salida y verdadero con el máximo en otro caso. Prueba solo negativos y una entrada vacía. Pista: cero no es un candidato universal.",
+      "Transferencia. Implementa `count_byte(text, n, target)`: cuenta coincidencias en los primeros n bytes. Para `\"aba\"`, longitud 3 y `a`, da 2. Con longitud cero puede recibir puntero nulo y debe devolver cero sin desreferenciarlo.",
+      "Depuración. Una copia acepta capacidad igual a `strlen(src)` y escribe fuera del destino al añadir el terminador. Corrige `copy_text(dst, capacity, src)` sin truncar: devuelve falso y no escribe si no cabe. Prueba capacidad 4 con `\"abc\"`, `\"abcd\"` y la cadena vacía."
+    ],
+    "explanations": [
+      "La guarda ocurre antes de la primera lectura. La salida se escribe solo cuando existe un resultado y el primer elemento inicializa correctamente incluso colecciones negativas.",
+      "El bucle usa la longitud explícita y no necesita buscar un terminador. La condición inicial impide toda lectura cuando n vale cero.",
+      "La condición de rechazo incluye la igualdad porque el terminador necesita un byte adicional. `memcpy` copia longitud más uno únicamente después de comprobar la capacidad; las regiones no se solapan por precondición."
+    ],
+    "parts": [
+      "bool maximum",
+      "size_t count_byte",
+      "bool copy_text"
+    ],
+    "reference": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+    "paragraph_id": "PAR-0049",
+    "chapter": "cap01-c-fundamentos-modelo-compilacion-tipos-principiante",
+    "slug": "vol04-monografias-c-cpp-sistemas",
+    "exercise_ids": [
+      "PRB-0049",
+      "PRB-0050",
+      "PRB-0051"
+    ],
+    "example_stdout": "-4\n"
+  },
+  {
+    "key": "cpp",
+    "title": "C++",
+    "volume": 4,
+    "chapter_prefix": "cap04",
+    "source": "cpp/main.cpp",
+    "command": "c++ -std=c++20 -Wall -Wextra -Werror main.cpp -o app && ./app",
+    "intro": "Empieza usando contenedores de la biblioteca estándar en lugar de reservar memoria manualmente. `std::vector` representa una secuencia, `std::string` texto y `std::map` asociaciones entre claves y valores. Un objeto local libera sus recursos al terminar su vida; este recorrido no necesita `new` ni `delete`.\n\nEl problema cuenta palabras ya separadas. No estamos tokenizando un archivo ni normalizando mayúsculas o Unicode: `\"Sol\"` y `\"sol\"` son claves distintas. Los contadores caben en `int` bajo el límite de mil palabras adoptado aquí. Recibir la colección como referencia constante evita copiarla y prohíbe modificarla a través de ese parámetro.",
+    "example": "#include <iostream>\n#include <vector>\nint main() {\n    std::vector<int> values{2, 3};\n    int total = 0;\n    for (int value : values) total += value;\n    std::cout << total << '\\n';\n}",
+    "trace": "La salida es `5`: el bucle recorre valores y el contenedor gestiona su almacenamiento. En un mapa de frecuencias, `++result[word]` inserta una clave ausente con contador inicial cero y luego lo incrementa. La secuencia sol, luna, sol deja sol con dos apariciones y luna con una.\n\nConsultar y modificar son operaciones distintas. Para preguntar por una palabra sin cambiar el mapa, usa `find` y compara el iterador con `end`. `operator[]` sería adecuado al contar, pero insertaría claves al consultar. El ejercicio final devuelve las claves repetidas siguiendo el orden del mapa; no depende del orden original de las palabras.",
+    "errors": "Si una función que debería consultar cambia el tamaño del mapa, busca un `operator[]`. Si el compilador reclama que intentas modificar un objeto constante, comprueba si elegiste la operación apropiada. Un error con plantillas puede ser largo: empieza por la primera línea referida a tu archivo y verifica los tipos de claves y valores.",
+    "prompts": [
+      "Guiado. Cuenta palabras con `frequencies(words)` y un mapa de contadores. La entrada sol, luna, sol produce sol con 2 y luna con 1. La lista vacía produce un mapa vacío; máximo mil palabras.",
+      "Transferencia. Implementa `lookup(counts, word)` sobre un mapa constante: devuelve cero para una clave ausente y no inserta ninguna entrada. Comprueba también que el tamaño permanece igual.",
+      "Depuración y ampliación. Escribe `repeated(counts)` para devolver solo palabras con frecuencia al menos dos, en el orden de claves del mapa. No excluyas una frecuencia exactamente dos. Prueba vacío y claves `a`, `b`, `z` con contadores 2, 1, 3."
+    ],
+    "explanations": [
+      "El acceso de escritura crea o recupera el contador; cada aparición añade una unidad. La colección de entrada se conserva.",
+      "La búsqueda devuelve un iterador y no inserta. El valor cero resuelve la ausencia dentro del contrato de frecuencias no negativas.",
+      "La comparación incluye dos. El recorrido del mapa ya entrega las claves ordenadas; la salida independiente conserva únicamente las que satisfacen el umbral."
+    ],
+    "parts": [
+      "std::map<std::string, int> frequencies",
+      "int lookup",
+      "std::vector<std::string> repeated"
+    ],
+    "reference": "https://eel.is/c++draft/map",
+    "paragraph_id": "PAR-0050",
+    "chapter": "cap04-cpp-fundamentos-raii-move-semantics-smart-pointers",
+    "slug": "vol04-monografias-c-cpp-sistemas",
+    "exercise_ids": [
+      "PRB-0052",
+      "PRB-0053",
+      "PRB-0054"
+    ],
+    "example_stdout": "5\n"
+  },
+  {
+    "key": "java",
+    "title": "Java",
+    "volume": 6,
+    "chapter_prefix": "cap03",
+    "source": "java/Main.java",
+    "command": "javac Main.java && java Main",
+    "intro": "Un programa Java sencillo puede comenzar con una clase que contenga `public static void main(String[] args)`. El nombre de la clase pública debe coincidir con el archivo. En este recorrido usamos una base compatible con Java 11; no necesitas aprender records ni hilos virtuales para resolverlo.\n\nNuestro escenario es una biblioteca con existencias por título. Un `Map<String, Integer>` asocia cada texto con un contador. Una variable que referencia el mapa permite observar y modificar ese mismo objeto; asignarla a otra variable no hace una copia del inventario. Para simplificar, los títulos no son nulos y los contadores son enteros no negativos pequeños.",
+    "example": "public class Main {\n    public static void main(String[] args) {\n        int units = 2;\n        if (units > 0) System.out.println(\"available\");\n    }\n}",
+    "trace": "El programa escribe `available` porque dos es mayor que cero. En el contador de títulos A, B, A, el mapa comienza vacío, incorpora A con una unidad, B con una y vuelve a asignar A con dos. El método `getOrDefault` permite consultar una clave ausente sin insertar nada.\n\nUn préstamo tiene un efecto sobre el inventario: comprobar y después restar una unidad. Si el título no está disponible, se lanza una excepción antes de modificar el mapa. Esto es una regla de negocio local; no constituye una operación segura frente a préstamos concurrentes. La concurrencia y las transacciones necesitan un contrato adicional.",
+    "errors": "Si `javac` no reconoce el archivo, comprueba que estás en la carpeta correcta y que se llama `Main.java`. Si aparece un posible valor nulo, revisa la consulta del mapa y el contrato de entradas. Una prueba que usa `assert` de Java puede quedar desactivada sin `-ea`; por eso el archivo de referencia emplea una función `check` que lanza un error siempre que falla la condición.",
+    "prompts": [
+      "Guiado. Implementa `count(titles)` para crear un mapa de existencias a partir de un array de títulos. A, B, A debe producir A con 2 y B con 1; el array vacío produce un mapa vacío.",
+      "Transferencia. Implementa `available(stock, title)`: devuelve cero si no hay entrada y no modifica el inventario. No supongas que toda consulta tiene una clave existente.",
+      "Depuración. Una operación resta antes de comprobar y puede dejar existencias negativas. Implementa `borrow(stock, title)`: reduce en uno si hay unidades; en otro caso lanza `IllegalArgumentException` sin cambiar el mapa. Prueba un préstamo correcto y un título ausente."
+    ],
+    "explanations": [
+      "El método consulta el contador anterior y vuelve a guardar el incremento. Los títulos se usan como claves y los contadores como valores.",
+      "Una consulta con valor alternativo expresa la ausencia y no agrega un título ficticio al inventario.",
+      "La precondición se comprueba antes del efecto. El caso fallido no crea la clave ausente ni decrementa otro título."
+    ],
+    "parts": [
+      "    static Map<String, Integer> count",
+      "    static int available",
+      "    static void borrow"
+    ],
+    "reference": "https://docs.oracle.com/javase/specs/jls/se11/html/jls-14.html",
+    "paragraph_id": "PAR-0049",
+    "chapter": "cap03-java-jvm-bytecode-memoria-generics-streams",
+    "slug": "vol06-monografias-jvm-dotnet-go-movil",
+    "exercise_ids": [
+      "PRB-0049",
+      "PRB-0050",
+      "PRB-0051"
+    ],
+    "example_stdout": "available\n"
+  },
+  {
+    "key": "csharp",
+    "title": "C#",
+    "volume": 6,
+    "chapter_prefix": "cap01",
+    "source": "csharp/Program.cs",
+    "command": "dotnet run --project Learning.csproj",
+    "intro": "C# se ejecuta aquí mediante un proyecto mínimo de .NET 8. Copia el archivo `Learning.csproj` incluido junto a `Program.cs`; no necesitas paquetes externos. Una clase contiene métodos, `Main` inicia el programa y `foreach` recorre los elementos de una colección. Usaremos enteros en céntimos y un diccionario por categoría.\n\nUna tupla de nombre de categoría e importe representa un gasto. Los nombres de los campos mejoran la lectura; no son un mecanismo de validación. El contrato admite categorías no nulas y cantidades enteras que deben caber al sumarse. Al usar `checked`, un desbordamiento en el total se convierte en un error visible en lugar de envolver silenciosamente el valor.",
+    "example": "using System;\nclass Program {\n    static void Main() {\n        int cents = 125;\n        int quantity = 4;\n        Console.WriteLine(cents * quantity);\n    }\n}",
+    "trace": "El programa muestra `500`. Al agrupar food con 125 y 75, el diccionario conserva food con 200. Una consulta a una categoría que aún no existe utiliza cero como valor previo mediante `TryGetValue`.\n\nLeer un número desde texto añade otra frontera: `TryParse` distingue conversión fallida de un valor válido. El contrato pide un entero estrictamente positivo, de modo que convertir `\"0\"` no basta para aceptarlo. En el problema de presupuesto, dos enteros grandes pueden desbordar al multiplicarse; convierte uno de los operandos a `long` antes del producto. Convertir el resultado después del producto llegaría demasiado tarde.",
+    "errors": "Si un proyecto no encuentra `Main`, revisa qué archivo está compilando y evita mantener dos versiones del ejemplo en la misma carpeta. Si una entrada textual falla, conserva el booleano de `TryParse`: no confundas el cero que queda en la salida con una conversión válida. Para depurar un presupuesto incorrecto, observa el tipo de la multiplicación además de sus valores.",
+    "prompts": [
+      "Guiado. Implementa `Totals(entries)` para agrupar importes por categoría. food con 125 y 75 da 200; bus con 100 queda separado. La entrada vacía da diccionario vacío. Usa suma comprobada.",
+      "Transferencia. Implementa `TryPositive(text, out value)`: solo devuelve verdadero si el texto se convierte a `int` y el valor es mayor que cero. Prueba `\"12\"`, `\"0\"` y `\"abc\"`.",
+      "Depuración. `price * quantity <= balance` puede aceptar una compra que desborda el entero. Implementa `Affordable` para enteros no negativos, rechazando negativos y calculando el producto en `long`. Prueba igualdad exacta y dos unidades a precio `int.MaxValue`."
+    ],
+    "explanations": [
+      "Cada categoría mantiene su acumulador independiente. `checked` protege la suma; un proyecto real debe decidir cómo comunicar ese fallo.",
+      "La conjunción exige éxito de conversión y positividad. El valor de salida solo debe utilizarse como válido cuando la función devuelve verdadero.",
+      "La ampliación ocurre antes de multiplicar. El producto de dos enteros no negativos de 32 bits cabe en un entero con signo de 64 bits, y la comparación incluye el presupuesto exacto."
+    ],
+    "parts": [
+      "    static Dictionary<string, int> Totals",
+      "    static bool TryPositive",
+      "    static bool Affordable"
+    ],
+    "reference": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements",
+    "paragraph_id": "PAR-0050",
+    "chapter": "cap01-csharp-dotnet-clr-tipos-valor-referencia-linq",
+    "slug": "vol06-monografias-jvm-dotnet-go-movil",
+    "exercise_ids": [
+      "PRB-0052",
+      "PRB-0053",
+      "PRB-0054"
+    ],
+    "example_stdout": "500\n"
+  },
+  {
+    "key": "go",
+    "title": "Go",
+    "volume": 6,
+    "chapter_prefix": "cap05",
+    "source": "go/main.go",
+    "command": "go run main.go",
+    "intro": "Go permite comenzar con un archivo que declare `package main`, importe lo necesario y defina `func main()`. `:=` declara una variable con tipo inferido en el contexto permitido; `=` asigna a una ya declarada. Los bloques usan llaves y el formato habitual se aplica con `gofmt`.\n\nNuestro primer problema lee un puerto desde texto. Una conversión correcta no basta: un entero fuera de 1..65535 tampoco cumple el contrato. Go permite devolver el valor y un error por separado; el llamador comprueba el error antes de utilizar el puerto. El cero devuelto al fallar no debe tratarse como un puerto válido.",
+    "example": "package main\nimport \"fmt\"\nfunc main() {\n    total := 0\n    for _, value := range []int{2, 3} {\n        total += value\n    }\n    fmt.Println(total)\n}",
+    "trace": "La salida es `5`. En el bucle, el primer componente del recorrido sería el índice; `_` indica que no lo utilizamos. Si sumaras ese índice, obtendrías uno en lugar de cinco. Anota ambos componentes para entender el error antes de cambiar el código.\n\nEl mapa de estados empieza con `make(map[string]int)`. Una lectura de una clave ausente produce el cero del tipo; por eso incrementar el contador de una etiqueta nueva da uno. Esa comodidad no significa que puedas escribir en un mapa nulo: construir el mapa es parte de la función. En el ejercicio de intervalos, un intervalo con extremos iguales es válido; solo se rechaza cuando el extremo inferior supera al superior.",
+    "errors": "No ignores un error solo porque la entrada de ejemplo funciona. Añade texto vacío, caracteres no numéricos y valores fuera de rango. Si el compilador avisa de una variable no utilizada, comprueba si te falta usar el error. Si un contador falla al escribir, revisa si inicializaste el mapa en lugar de declarar únicamente su variable.",
+    "prompts": [
+      "Guiado. Implementa `parsePort(text) (int, error)` con `strconv.Atoi`: acepta 8080, rechaza cero, 65536, texto vacío y `abc`. Al fallar devuelve cero y un error no nulo.",
+      "Transferencia. Implementa `frequencies(statuses)` con un mapa nuevo. ok, bad, ok da ok con 2 y bad con 1; una entrada nula o vacía da un mapa vacío utilizable. Los contadores caben en `int` para esta colección pequeña.",
+      "Depuración. La condición `low >= high` rechaza un intervalo de un único punto. Implementa `validateRange(low, high) error`: acepta 3..3 y rechaza 4..3. Explica por qué el llamador debe inspeccionar el error."
+    ],
+    "explanations": [
+      "La validación reúne conversión y rango. Un error de cualquiera de las dos fases invalida el valor.",
+      "La creación del mapa permite escribir y la consulta de una clave nueva comienza en cero. El bucle vacío conserva el mapa inicial.",
+      "Una comparación estricta expresa el contrato elegido. El resultado de error forma parte de la interfaz, no de una impresión opcional por consola."
+    ],
+    "parts": [
+      "func parsePort",
+      "func frequencies",
+      "func validateRange"
+    ],
+    "reference": "https://go.dev/ref/spec",
+    "paragraph_id": "PAR-0051",
+    "chapter": "cap05-go-fundamentos-slices-interfaces-errores-genericos",
+    "slug": "vol06-monografias-jvm-dotnet-go-movil",
+    "exercise_ids": [
+      "PRB-0055",
+      "PRB-0056",
+      "PRB-0057"
+    ],
+    "example_stdout": "5\n"
+  },
+  {
+    "key": "sql",
+    "title": "SQL",
+    "volume": 7,
+    "chapter_prefix": "cap01",
+    "source": "sql/schema.sql",
+    "command": "sqlite3 :memory: \".read schema.sql\" \".read ex1.sql\"",
+    "intro": "SQL describe el resultado que quieres obtener de relaciones de datos. No escribes un bucle por cada fila para producir una suma agrupada: expresas qué columnas relacionas, filtras y agregas. Esta práctica usa SQLite y un conjunto pequeño reproducible; otros motores pueden diferir en funciones y reglas específicas.\n\nPrepara tres clientes y tres pedidos con el archivo `schema.sql` incluido. Ada tiene pedidos de 100 y 200 céntimos; Grace uno de 300; Linus ninguno. Un pedido está pagado, otro no y el tercero tiene estado desconocido, representado como `NULL`. Decidir que desconocido cuenta como pendiente es una regla explícita de este ejercicio, no una propiedad universal del negocio.",
+    "example": "SELECT customer_id, cents\nFROM orders\nWHERE cents >= 200\nORDER BY customer_id, id;",
+    "trace": "La consulta devuelve las parejas 1,200 y 2,300. El filtro decide qué filas entran y `ORDER BY` fija cómo se muestran. Sin esa cláusula no prometas un orden concreto. En el primer problema, agrupar por cliente combina sus pedidos: aparecen 1,300 y 2,300.\n\nUn cliente sin pedidos no aparece si partes únicamente de la tabla de pedidos. El `LEFT JOIN` conserva al cliente y completa con nulos las columnas sin correspondencia. Por eso `COUNT(o.id)` da cero para Linus, mientras `COUNT(*)` contaría la fila conservada y daría uno. Para estados desconocidos, `paid = 0` no los selecciona; `COALESCE(paid, 0)` expresa la política adoptada.",
+    "errors": "Si una suma se duplica, revisa cuántas filas produce la relación antes de agregar. Si desaparecen clientes sin pedidos, comprueba si un filtro sobre la tabla derecha del `LEFT JOIN` se colocó en `WHERE` y eliminó las filas nulas. No arregles una consulta quitando columnas al azar: muestra primero las filas intermedias y cuenta su multiplicidad.",
+    "prompts": [
+      "Guiado. Escribe la suma de céntimos por `customer_id`, ordenada por ese identificador. Con el conjunto dado debe devolver `(1,300)` y `(2,300)`; con tabla de pedidos vacía, ninguna fila.",
+      "Transferencia. Devuelve todos los identificadores de cliente y su número de pedidos, incluyendo clientes sin pedidos. Resultado `(1,2), (2,1), (3,0)`. Pista: distingue contar filas de contar una clave no nula.",
+      "Depuración. `WHERE paid = 0` omite el pedido con estado desconocido. En este contrato, desconocido se considera pendiente. Devuelve los identificadores de pedidos pendientes, ordenados: 2 y 3. Explica por qué no basta comparar un nulo con cero."
+    ],
+    "explanations": [
+      "La agregación se aplica a las filas de cada cliente. No inventa grupos cuando no hay pedidos.",
+      "La combinación externa conserva clientes sin coincidencias y la cuenta de la clave del pedido omite los valores nulos.",
+      "La sustitución explícita del estado desconocido aplica la regla del enunciado antes de comparar. No se atribuye ese significado a todos los nulos de una base de datos."
+    ],
+    "parts": [
+      "ex1.sql",
+      "ex2.sql",
+      "ex3.sql"
+    ],
+    "reference": "https://www.sqlite.org/lang_select.html",
+    "paragraph_id": "PAR-0049",
+    "chapter": "cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion",
+    "slug": "vol07-monografias-sql-shell-funcional-especializados",
+    "exercise_ids": [
+      "PRB-0049",
+      "PRB-0050",
+      "PRB-0051"
+    ],
+    "example_stdout": null
+  },
+  {
+    "key": "bash",
+    "title": "Bash",
+    "volume": 7,
+    "chapter_prefix": "cap02",
+    "source": "bash/main.sh",
+    "command": "bash test.sh",
+    "intro": "Bash coordina programas y rutas. Una variable de shell contiene texto; las comillas determinan cómo se expande en argumentos. La primera habilidad necesaria es conservar exactamente un nombre de archivo que contiene espacios. Usa `printf` para mostrar texto y comillas dobles alrededor de expansiones de variables.\n\nEste recorrido usa Bash, no promete compatibilidad con todo shell POSIX. Las funciones de la referencia se cargan desde `main.sh` y se prueban con `test.sh`. El intérprete concreto debe ser Bash; ejecutar el archivo mediante otro shell puede cambiar el significado. Los archivos de prueba se crean en una carpeta temporal y el script los retira al salir.",
+    "example": "#!/usr/bin/env bash\nname='a b.txt'\nprintf '%s\\n' \"$name\"",
+    "trace": "El programa escribe una sola línea, `a b.txt`. El espacio pertenece al nombre y no separa dos argumentos. En una función que recorre `\"$1\"/*.txt`, las comillas conservan la carpeta recibida y el asterisco exterior permite buscar sus archivos. Si no hay coincidencias, el patrón puede quedar sin expandir; el guardado `[ -f \"$file\" ]` evita presentarlo como un archivo real.\n\n`\"$#\"` contiene el número de argumentos, no el número de palabras del texto de un argumento. La llamada con `\"a b\"` y `\"*\"` tiene dos argumentos. Al leer una línea, `IFS= read -r` conserva espacios y barras; además, un último fragmento sin salto de línea merece tratamiento explícito. El código devuelve estado 2 para archivo inexistente y 1 si un archivo no contiene ninguna línea.",
+    "errors": "No analices la salida de `ls` para reconstruir rutas. Si un nombre con espacios falla, observa primero cuántos argumentos recibe el comando. Distingue salida de texto y estado de salida: `return 2` comunica un fallo, mientras `printf 2` escribiría el carácter dos. Este listado imprime una ruta por línea y por contrato excluye nombres que contengan saltos de línea; un inventario general necesitaría delimitadores nulos.",
+    "prompts": [
+      "Guiado. Implementa `list_txt(directory)` para imprimir los archivos regulares `.txt` de una carpeta. Conserva espacios en las rutas; si no hay coincidencias no imprimas el patrón literal. Por contrato los nombres no contienen saltos de línea.",
+      "Transferencia. Implementa `count_args` que escriba el número de argumentos. Debe dar 2 para `\"a b\" \"*\"` y 0 sin argumentos. No reconstruyas el conteo a partir de `$*`.",
+      "Depuración. Una lectura usa `read line` y pierde barras o rechaza el último fragmento sin salto. Implementa `first_line(path)` conservando el contenido: imprime la primera línea o fragmento; devuelve 2 si el archivo no existe y 1 si está vacío. Prueba un nombre con espacios y un archivo sin salto final."
+    ],
+    "explanations": [
+      "El patrón expande únicamente la parte sin comillas. La prueba de archivo regular descarta un patrón sin coincidencias y subdirectorios terminados en .txt.",
+      "El shell ya mantiene el conteo de argumentos. Consultarlo evita separar de nuevo textos que contienen espacios.",
+      "La opción -r evita interpretar barras y el IFS vacío evita retirar espacios. La comprobación del fragmento conserva texto leído cuando falta el salto final; el estado no se confunde con la salida textual."
+    ],
+    "parts": [
+      "list_txt()",
+      "count_args()",
+      "first_line()"
+    ],
+    "reference": "https://www.gnu.org/software/bash/manual/html_node/Quoting.html",
+    "paragraph_id": "PAR-0050",
+    "chapter": "cap02-monografia-bash-posix-shell-automatizacion-sistemas",
+    "slug": "vol07-monografias-sql-shell-funcional-especializados",
+    "exercise_ids": [
+      "PRB-0052",
+      "PRB-0053",
+      "PRB-0054"
+    ],
+    "example_stdout": "a b.txt\n"
+  }
+]

@@ -1,0 +1,13 @@
+\textbf{Resolución numérica que puede reproducirse.} La ecuación de momento se despeja como $\delta=(0.045-0.72\alpha)/1.08$. El equilibrio tangencial da $T=D/\cos\alpha$. Sustituir ambos en el vertical reduce tres incógnitas a una: $f(\alpha)=qSC_L(\alpha)+D(\alpha)\tan\alpha-mg_0=0$, con $qS=58893.12\,\mathrm N$, $C_L=0.24+5.2\alpha+0.28\delta$ y $D=qS(0.026+0.046C_L^2)$. Se elige un intervalo con cambio de signo. En cada paso $c=(a+b)/2$ y se conserva la mitad que mantiene signos opuestos. El ancho final acota el error en la raíz, bajo continuidad.
+\begin{center}\begin{tabular}{rrrrr}
+\toprule Paso & $a$ & $b$ & $c$ & $f(c)$\\\midrule
+$1$ & $0$ & $0.2$ & $0.1$ & $20627.98$\\
+$2$ & $0$ & $0.1$ & $0.05$ & $5668.519$\\
+$3$ & $0$ & $0.05$ & $0.025$ & $-1775.67$\\
+$4$ & $0.025$ & $0.05$ & $0.0375$ & $1944.144$\\
+$8$ & $0.0296875$ & $0.03125$ & $0.03046875$ & $-148.7602$\\
+$16$ & $0.03096313$ & $0.03096924$ & $0.03096619$ & $-0.7388058$\\
+$24$ & $0.03096867$ & $0.03096869$ & $0.03096868$ & $0.002594401$\\
+$35$ & $0.03096867$ & $0.03096867$ & $0.03096867$ & $1.425818\times10^{-6}$\\
+\bottomrule\end{tabular}\end{center}
+El resultado queda en $[0.03096866928,0.03096866928]\,\mathrm{rad}$. Después se recuperan $\delta$ y $T$ con las dos relaciones despejadas, se comprueban sus límites y se sustituyen en los tres residuos. No se impone $L=W$ porque el empuje tiene componente vertical.

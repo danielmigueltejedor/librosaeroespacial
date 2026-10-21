@@ -103,11 +103,15 @@ El modelo es $\sigma=F/A$, $\varepsilon=\sigma/E$ y $\Delta L=\varepsilon L$. Co
 \[\sigma=\frac{9000}{60\times10^{-6}}=150\,\mathrm{MPa},\quad \varepsilon=0{,}002,\quad\Delta L=0{,}480\,\mathrm{mm}.\]
 La fuerza reconstruida es $150\times10^6(60\times10^{-6})=9000$ N y $0{,}480/240=0{,}002$. La deformación es adimensional. Falta el límite elástico para contrastar la hipótesis material; no se infiere vida ni aceptabilidad de una pieza real.
 
+
+\input{solutions/generated/S01-1.tex}
 \section{2. Grieta central y tamaño crítico}
 Se usa semilongitud $ a=0{,}003$ m. El modelo da
 \[K_I=150\sqrt{\pi(0{,}003)}=14.5622\,\mathrm{MPa\sqrt m}.\]
 De $K_I=K_{IC}$ se despeja $ a_c=(30/150)^2/\pi=12.7324$ mm; la longitud total crítica es $2a_c=25.4648$ mm. Sustituir $ a_c $ recupera la tenacidad. La comparación es estática y condicionada: no se han verificado espesor, pequeña plastificación, espectro de fatiga ni ambiente; no se autoriza el defecto por resultar $K_I<K_{IC}$.
 
+
+\input{solutions/generated/S01-2.tex}
 \section{3. Microestructura y selección}
 La selección requiere temperatura, tiempo, carga, ambiente, geometría y proceso. Algunas aleaciones metálicas son compatibles con ese intervalo y otras pueden degradar sus propiedades; la temperatura aislada no decide. Se comparan datos del producto y estado, con sus límites. El fallo adhesivo se localiza en la interfaz adhesivo--sustrato; el cohesivo, dentro del adhesivo; el del sustrato, en el material unido. La ubicación se interpreta con evidencia y no equivale automáticamente a una causa única.
 
@@ -120,20 +124,28 @@ Con $R=0$, $\sigma_a=\sigma_m=\sigma_{max}/2$. Al sustituir en $\sigma_a/S_e+\si
 \[\sigma_{max}=\frac{2}{1/220+1/660}=330\,\mathrm{MPa},\quad \sigma_a=\sigma_m=165\,\mathrm{MPa}.\]
 La comprobación da $165/220+165/660=1$. El criterio es aproximado y no establece vida infinita universal; los datos deben corresponder a la misma condición de referencia. No se han comprobado dispersión ni ambiente.
 
+
+\input{solutions/generated/S02-1.tex}
 \section{2. Propagación de grieta}
 Se separan variables:
 \[N=\frac{1}{C(\Delta\sigma\sqrt\pi)^3}\int_{a_i}^{a_f}a^{-3/2}da=\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\Delta\sigma\sqrt\pi)^3}.\]
 Con longitudes en metros,$N=3060750.3$ ciclos. La primitiva es $-2a^{-1/2}$ y su derivada recupera el integrando. Se usa rango de tensión, no amplitud. No se calcula iniciación, ni se verifica tenacidad o detectabilidad por esta integral.
 
+
+\input{solutions/generated/S02-2.tex}
 \section{3. Activación térmica de fluencia}
 El cociente elimina el prefactor a igual tensión:
 \[\dot\varepsilon_2/\dot\varepsilon_1=\exp\left[-\frac{240000}{8{,}314462618}\left(\frac1{1000}-\frac1{950}\right)\right]=4.568705.\]
 El exponente es adimensional y el signo da incremento de tasa con temperatura. Una tasa secundaria no contiene por sí sola la evolución primaria, terciaria, daño y criterio de rotura. Además, se ha supuesto un mecanismo constante; no se extrapola fuera del dominio de calibración.
 
+
+\input{solutions/generated/S02-3.tex}
 \section{4. Compuesto longitudinal}
 En isodeformación longitudinal,$E_L=V_fE_f+(1-V_f)E_m=0{,}55(200)+0{,}45(4)=111{,}8$ GPa. El valor queda entre los módulos de las fases. Se supone unión perfecta, fibras continuas alineadas y respuesta lineal. Otra dirección requiere otro modelo y parámetros; la rotura exige resistencias y mecanismos, que no se obtienen de este módulo.
 
 \chapter{Soluciones de S03}
+
+\input{solutions/generated/S02-4.tex}
 \section{1. Ámbito y operación}
 El artículo 3.1--3.2 del 1321/2014 se lee con sus condiciones. Bajo las hipótesis, el avión corresponde a la categoría de 3.2(a)y se estudia Parte ML. La inclusión en el AOC de una compañía aérea con licencia 1008/2008 conduce a la excepción de Parte M. No se confunde instrucción con esa condición de AOC ni se deducen por la masa todas las aprobaciones de mantenimiento. Se declara que el ámbito y complejidad son supuestos del caso.
 
@@ -143,6 +155,8 @@ El IPC ayuda a identificar piezas y relaciones; el AMM aporta instrucciones de m
 \section{3. Directiva académica repetitiva}
 El umbral inicial era 2050 h; la inspección a 2030 hse hizo antes de ese umbral, bajo la regla ficticia. El siguiente vence a 2130 hporque la repetición se cuenta desde ejecución real. El margen actual es 20 h. Deben constar acción, datos y revisión, resultados, fecha, acumulados y certificación pertinente. El cálculo no demuestra por sí solo cumplimiento si la inspección no corresponde a la acción requerida. No se transfiere esta regla a una AD real con otra referencia temporal.
 
+
+\input{solutions/generated/S03-3.tex}
 \section{4. Privilegios personales}
 Se comprueban privilegios y condiciones de 66.A.20, anotaciones de 66.A.45 y autorización organizativa de 145.A.35. La licencia no elimina límites ni acredita automáticamente configuración, tipo, competencia reciente o autorización específica. Con los datos del caso no se demuestra el derecho a emitir el CRS de esa tarea. La conclusión debe enumerar pendientes concretos, sin inventar requisitos numéricos ni declarar que todas las tareas exigen exactamente la misma ruta.
 
@@ -150,6 +164,8 @@ Se comprueban privilegios y condiciones de 66.A.20, anotaciones de 66.A.45 y aut
 \section{1. Tres contadores}
 Avence a 1250 hy 15 noviembre 2026, con 70 hde margen. Bvence a 1050 ciclos, con 20 de margen. El LLPtiene 100 ciclos restantes. La previsión de uso da 7 jornadas, 4 jornadas y 20 jornadas, respectivamente; Bse aproxima antes por uso. El calendario también se conserva y debe compararse con la programación concreta. Estos intervalos y límites son ficticios y no hay tolerancias. Jornada de operación no equivale necesariamente a día natural.
 
+
+\input{solutions/generated/S04-1.tex}
 \section{2. Revisión ARC y cambio de texto}
 Se identifica el punto de la consolidación 1321/2014 de 7 agosto 2026 y se compara con el Reglamento 2026/100 y sus fechas de aplicación. La revisión actual se explica con M.A.901 y M.A.903, sin copiar numeración antigua. ARC registra el proceso de revisión correspondiente; CRS certifica mantenimiento en su alcance; certificado de tipo corresponde al diseño. El hecho de que un documento sea oficial no garantiza que su explicación esté actualizada para otra fecha.
 
@@ -163,12 +179,18 @@ BOE-A-2022-21487 es una convocatoria de empleo público, no el Reglamento de Aer
 \section{1. Restricción térmica}
 La compatibilidad impone $0=\sigma/E+\alpha\Delta T$. Por ello $\sigma=-115\times10^9(9\times10^{-6})(60)=-62{,}1$ MPa. El signo de compresión compensa la expansión térmica. Al sustituir, se anula la deformación total. Apoyos flexibles permiten desplazamiento y modifican la tensión; la fluencia puede provocar relajación. El modelo no comprueba pandeo ni cedencia.
 
+
+\input{solutions/generated/S05-1.tex}
 \section{2. Fiabilidad y disponibilidad}
 La tasa observada es 0,0001 h\(^{-1}\)y R(200)=exp(-0,02)=0,9801987. Los cocientes de disponibilidad son 10000/10006=0,9994004 y 10000/10024=0,9976057. Se mantienen separados sus alcances temporales. La estimación estadística no establece límite de vida ni demuestra el modelo; faltan incertidumbre y análisis de población.
 
+
+\input{solutions/generated/S05-2.tex}
 \section{3. Tensión media en una unión adherida}
 La media es $\tau_{med}=F/(bL)=3000/(0{,}020\cdot0{,}040)=3{,}75$ MPa. Las unidades son N/m\(^{2}\). La carga reconstruida coincide con 3000 N. El máximo local puede diferir por concentraciones y pelado; importan espesor, rigidez, preparación y curado. Fallo adhesivo: interfaz; cohesivo: interior del adhesivo; del sustrato: material unido. No se deduce un margen real con una resistencia de catálogo aislada.
 
+
+\input{solutions/generated/S05-3.tex}
 \section{4. Una tendencia no es un diagnóstico}
 Primero se validan condiciones, sensores y correcciones: ambiente, régimen, configuración y evento. Se identifica respecto a qué rotor se calcula la orden. Se revisan tendencias e historial y se construyen hipótesis, como degradación aerodinámica, holguras o problemas de medida. Se buscan evidencias discriminantes mediante los datos y procedimientos aplicables. Ninguna de las dos señales demuestra por sí sola una causa. La intervención y aceptación requieren el proceso autorizado.
 
@@ -178,11 +200,15 @@ Se calcula $P=900(20+\log_{10}10000)=21600$ K. Entonces
 \[\log_{10}t_2=21600/940-20,\quad t_2=952.18954\,\mathrm h.\]
 La sustitución recupera P. La temperatura es absoluta y la unidad de tiempo es la de calibración. Un servicio variable con cambios de tensión, mecanismo, microestructura o ambiente no queda descrito por esta equivalencia; el resultado no es una vida aprobada.
 
+
+\input{solutions/generated/S06-1.tex}
 \section{2. Fractura, propagación e intervalo académico}
 El tamaño crítico es $ a_c=(28/180)^2/\pi=7.70231$ mm y $ a_f=6.16185$ mm. La amplitud no es el rango: $\Delta\sigma=(1-R)\sigma_{max}=162$ MPa. La integración da
 \[N=\frac{2(a_i^{-1/2}-a_f^{-1/2})}{3\times10^{-12}(162\sqrt\pi)^3}=270942.9\ \text{ciclos}.\]
 El intervalo ficticio es $N/3=90314.3$ ciclos. Se comprueba $ a_f>a_i $ y $K_{max}(a_f)=\sqrt{0{,}8}K_{IC}<K_{IC}$. No se han validado detección, dispersión o espectro real; un tercio no es una regla reglamentaria.
 
+
+\input{solutions/generated/S06-2.tex}
 \section{3. Revisión de SB y AD}
 Se lee la AD y sus condiciones para uso de revisiones posteriores, crédito por acciones previas y AMOC. Una revisión nueva del SB no modifica por sí sola el requisito de la directiva. Se comparan cambios y se sigue la vía permitida o de aprobación aplicable. El registro conserva la revisión realmente utilizada y la evidencia. El caso no concluye que toda revisión posterior esté prohibida: depende del texto y de la aprobación correspondiente.
 

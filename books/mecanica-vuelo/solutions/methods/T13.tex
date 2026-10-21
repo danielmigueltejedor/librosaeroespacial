@@ -1,0 +1,20 @@
+\textbf{Integración de masa, tiempo y avance, sin congelar el peso.} Se toma altura como variable independiente porque el ascenso es monótono. En cada etapa, obtener $\rho(h)$, $T(h)=9500[\rho(h)/1.225]^{0.8}$, $qS=\rho(h)V^2S/2$, $C_L=mg_0/(qS)$, $D=qS(0.025+0.047C_L^2)$ y $c=(T-D)V/(mg_0)$. Comprobar $c>0$ antes de dividir.\[\fitmath{\frac{d}{dh}\begin{pmatrix}m\\t\\x\end{pmatrix}=\boldsymbol f(h,\boldsymbol y)=\begin{pmatrix}-c_TT/c\\1/c\\V/c\end{pmatrix},\qquad\boldsymbol y(1200)=\begin{pmatrix}5300\\0\\0\end{pmatrix}}\]Un paso de Runge--Kutta de cuarto orden de altura $\Delta h$ usa $k_1=f(h,y)$, $k_2=f(h+\Delta h/2,y+\Delta hk_1/2)$, $k_3=f(h+\Delta h/2,y+\Delta hk_2/2)$ y $k_4=f(h+\Delta h,y+\Delta hk_3)$. La actualización es $y_{nuevo}=y+\Delta h(k_1+2k_2+2k_3+k_4)/6$. Para el primer paso de 125 m, las tres componentes de cada pendiente son:\begin{center}\begin{tabular}{rrrr}
+\toprule Etapa & $dm/dh$ & $dt/dh$ & $dx/dh$\\\midrule
+$1$ & $-0.02089955$ & $0.1341895$ & $12.07705$\\
+$2$ & $-0.02092203$ & $0.1349986$ & $12.14988$\\
+$3$ & $-0.02092202$ & $0.1349986$ & $12.14987$\\
+$4$ & $-0.02094513$ & $0.1358176$ & $12.22358$\\
+\bottomrule\end{tabular}\end{center}Aplicar la suma ponderada produce el primer estado y repetirla da la evolución siguiente:\begin{center}\begin{tabular}{rrrr}
+\toprule $h$ (m) & $m$ (kg) & $t$ (s) & $x$ (m)\\\midrule
+$1200$ & $5300$ & $0$ & $0$\\
+$1325$ & $5297.385$ & $16.87503$ & $1518.753$\\
+$1950$ & $5284.214$ & $104.4454$ & $9400.083$\\
+$2700$ & $5268.15$ & $217.3289$ & $19559.6$\\
+$3450$ & $5251.711$ & $340.1632$ & $30614.69$\\
+$4200$ & $5234.768$ & $474.9348$ & $42744.13$\\
+\bottomrule\end{tabular}\end{center}La comprobación de refinamiento mantiene el mismo problema y reduce el paso de altura:\begin{center}\begin{tabular}{rrrr}
+\toprule $\Delta h$ (m) & $m_f$ (kg) & $t_f$ (s) & $x_f$ (m)\\\midrule
+$250$ & $5234.768$ & $474.9348$ & $42744.13$\\
+$125$ & $5234.768$ & $474.9348$ & $42744.13$\\
+$62.5$ & $5234.768$ & $474.9348$ & $42744.13$\\
+\bottomrule\end{tabular}\end{center}El combustible es $5300-m_f=65.23183\,\mathrm{kg}$. En esta aproximación, $x_f=90t_f$ ofrece un contraste adicional. Conservar $L\simeq W$ y $\dot x\simeq V$ es parte del modelo impuesto, no de la precisión del integrador.

@@ -312,6 +312,7 @@ VOL04_SPEC: dict[str, object] = {
                         "(IEEE Std 1003.1), la gestión de recursos que pueden fallar en cascada dentro de una misma función se "
                         "estructura idiomáticamente mediante el patrón de limpieza centralizada con etiquetas `goto cleanup:`:\n"
                         "```c\n"
+                        "#include <stddef.h>\n#include <stdint.h>\n#include <stdlib.h>\n\n"
                         "int process_file_buffer(size_t bytes) {\n"
                         "    int rc = -1;\n"
                         "    uint8_t *buf_a = malloc(bytes);\n"
@@ -1877,7 +1878,7 @@ VOL05_SPEC: dict[str, object] = {
         },
         {
             "id": "cap08-interoperabilidad-comparativa-arquitectura-python-js-ts",
-            "title": "Arquitectura Comparada, Interoperabilidad (FFI, WebAssembly, REST/JSON) y Rúbrica de Python, JavaScript y TypeScript",
+            "title": "Comparación e interoperabilidad de Python, JavaScript y TypeScript",
             "part_id": "parte-v-monografia-js-ts",
             "part_title": "Monografías Autónomas de JavaScript (ES2024+) y TypeScript (5.x)",
             "sources": ["src-python-ref", "src-typescript-handbook"],

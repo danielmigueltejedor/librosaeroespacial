@@ -1,0 +1,61 @@
+name: Publish complete library bundle
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: New release tag
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: complete-library-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate a new tag
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ "$TAG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]+$ ]]
+          if gh release view "$TAG" >/dev/null 2>&1; then exit 1; fi
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then exit 1; fi
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements-audit.txt -r enciclopedia-programacion/requirements.txt
+          sudo apt-get update -qq
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern poppler-utils
+      - name: Worked solution regressions
+        run: |
+          python books/mecanica-fluidos/scripts/check_solution_procedures.py
+          python -m pytest -q tests/test_solution_procedures.py
+
+      - name: Build every registered book
+        run: |
+          python scripts/build-studium-books.py all
+          python scripts/check-solution-builds.py
+          python enciclopedia-programacion/tools/build_collection.py all --review-copy
+          python enciclopedia-programacion/tools/check_integral.py
+      - name: Check packaging contracts and build complete ZIP
+        run: |
+          python -m pytest -q tests/test_release_bundle.py
+          python scripts/package-release-bundle.py
+          python scripts/package-release-bundle.py --verify-only
+          sha256sum dist/release/LibrosStudium-bundle-completo.zip > dist/release/SHA256SUMS.txt
+      - name: Create draft, upload bundle and publish review edition
+        env:
+          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" --target "$GITHUB_SHA" --draft --prerelease --title "Libros Studium — $TAG" --notes "Colección completa organizada por asignatura y tema. Incluye la edición de programación en revisión; no implica aprobación académica independiente." dist/release/LibrosStudium-bundle-completo.zip dist/release/SHA256SUMS.txt
+          gh release download "$TAG" --pattern LibrosStudium-bundle-completo.zip --dir "$RUNNER_TEMP/release-check"
+          python scripts/package-release-bundle.py --verify-only --output "$RUNNER_TEMP/release-check/LibrosStudium-bundle-completo.zip"
+          gh release edit "$TAG" --draft=false --prerelease --latest=false

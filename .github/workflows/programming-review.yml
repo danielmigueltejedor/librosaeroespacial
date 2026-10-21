@@ -1,0 +1,64 @@
+name: Programming encyclopedia review artifacts
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'enciclopedia-programacion/**'
+      - 'shared/latex/**'
+      - 'tests/test_programming_pipeline.py'
+      - '.github/workflows/programming-review.yml'
+permissions:
+  contents: read
+jobs:
+  review-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.27.3'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.426'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+      - name: Install pinned TypeScript
+        run: npm install --global typescript@5.9.3
+      - name: Install pinned authoring dependencies
+        run: python -m pip install -r enciclopedia-programacion/requirements.txt
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-fonts-recommended texlive-lang-spanish lmodern poppler-utils
+      - name: Preservation and navigation regressions
+        run: python -m pytest -q tests/test_programming_pipeline.py
+      - name: Execute authored beginner examples
+        run: python enciclopedia-programacion/tools/verify_learning.py --trusted
+      - name: Compile explicit review copies
+        run: python enciclopedia-programacion/tools/build_collection.py all --review-copy
+      - name: Inventory and integral link check
+        run: |
+          python enciclopedia-programacion/tools/audit_collection.py
+          python enciclopedia-programacion/tools/check_integral.py
+          python enciclopedia-programacion/tools/render_specimen.py
+          python enciclopedia-programacion/tools/check_literal_fidelity.py
+      - name: Upload review evidence (not an academic release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: programming-review-pdfs-and-reports
+          path: |
+            enciclopedia-programacion/dist/review/
+            enciclopedia-programacion/reports/current-inventory.json
+            enciclopedia-programacion/reports/integral-navigation.json
+            enciclopedia-programacion/reports/editorial-specimen.json
+            enciclopedia-programacion/reports/literal-fidelity.json
+            enciclopedia-programacion/reports/learning-verification.json

@@ -1,0 +1,37 @@
+\noindent\textbf{Elección del procedimiento.} Fijamos el eje positivo hacia delante, $t=0$ al iniciar la carrera, $v_0=0$ y $s_0=0$. La fuerza dada ya es neta: no se vuelve a restar resistencia. Como $m$ y $F$ son constantes, $F=ma$ da aceleración constante. Primero se obtiene $a$; después se integra $dv/dt=a$ y finalmente $ds/dt=v$.
+
+\begin{enumerate}
+
+\item De $F=ma$ dividimos por la masa. Esta aceleración, no una velocidad, determina cuánto aumenta $v$ cada segundo.
+
+\[\fitmath{a=\frac{F}{m}}\]
+
+\[\fitmath{a=\frac{(150000)}{(70000)}\approx 2.142857\,\mathrm{m/s^{2}}}\]
+
+\item Integrar entre $0$ y $t$ da $V-v_0=at$. Como $v_0=0$, despejar el instante de rotación da $t=V/a$.
+
+\[\fitmath{t=\frac{V}{a}}\]
+
+\[\fitmath{t=\frac{(75)}{(2.142857143)}\approx 35\,\mathrm{s}}\]
+
+\item La velocidad crece desde cero; por ello no se usa $Vt$. La integral $s=\int_0^t a\xi\,d\xi$ da $at^2/2$.
+
+\[\fitmath{s=\frac{a\cdot {t}^{2}}{2}}\]
+
+\[\fitmath{s=\frac{(2.142857143)\cdot {(35)}^{2}}{2}\approx 1312.5\,\mathrm{m}}\]
+
+\item Contraste de trabajo: una fuerza constante y paralela al desplazamiento realiza $W=Fs$.
+
+\[\fitmath{W=F\cdot s}\]
+
+\[\fitmath{W=(150000)\cdot (1312.5)\approx 1.96875\times10^{8}\,\mathrm{J}}\]
+
+\item La energía cinética inicial es cero. El mismo trabajo debe coincidir con $mV^2/2$.
+
+\[\fitmath{E=\frac{m\cdot {V}^{2}}{2}}\]
+
+\[\fitmath{E=\frac{(70000)\cdot {(75)}^{2}}{2}\approx 1.96875\times10^{8}\,\mathrm{J}}\]
+
+\end{enumerate}
+
+\noindent\textbf{Contraste y comparación.} Las dos energías coinciden: $Fs=196\,875\,000\,\mathrm{J}$. Además, la velocidad media es $(0+75)/2=37.5\,\mathrm{m/s}$ y $s=37.5(35)=1312.5\,\mathrm m$. También es válida la ruta directa $s=mV^2/(2F)$ para hallar la distancia. Si tu resultado es $2625$ m, probablemente usaste la velocidad final durante toda la carrera; si difiere por mil, revisa kN frente a N.

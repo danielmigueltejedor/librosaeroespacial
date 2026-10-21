@@ -1,0 +1,51 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} Un ciclo de cuatro tiempos ocupa dos vueltas: la frecuencia de ciclos es $n/2$. El trabajo de un ciclo es $p_{me}V_d$. Después se propagan potencia y par por el reductor y por la hélice, cada uno con su rendimiento.
+
+\begin{enumerate}
+
+\item Convertir rpm a vueltas por segundo.
+
+\[\fitmath{n=\frac{2400}{60}\approx 40\,\mathrm{1/s}}\]
+
+\item Trabajo por ciclo por ciclos por segundo.
+
+\[\fitmath{\mathrm{Pb}=\frac{900000\cdot 0.006\cdot n}{2}}\]
+
+\[\fitmath{\mathrm{Pb}=\frac{900000\cdot 0.006\cdot (40)}{2}\approx 108000\,\mathrm{W}}\]
+
+\item Despejar combustible del rendimiento al freno.
+
+\[\fitmath{\mathrm{mf}=\frac{\mathrm{Pb}}{0.3\cdot 43000000}}\]
+
+\[\fitmath{\mathrm{mf}=\frac{(108000)}{0.3\cdot 43000000}\approx 0.008372093\,\mathrm{kg/s}}\]
+
+\item Potencia dividida por velocidad angular.
+
+\[\fitmath{\mathrm{Cm}=\frac{\mathrm{Pb}}{2\cdot \pi\cdot n}}\]
+
+\[\fitmath{\mathrm{Cm}=\frac{(108000)}{2\cdot \pi\cdot (40)}\approx 429.7183\,\mathrm{N\,m}}\]
+
+\item Velocidad de giro tras reducción.
+
+\[\fitmath{\mathrm{nh}=\frac{n}{1.5}}\]
+
+\[\fitmath{\mathrm{nh}=\frac{(40)}{1.5}\approx 26.66667\,\mathrm{1/s}}\]
+
+\item Potencia tras pérdidas de engranajes.
+
+\[\fitmath{\mathrm{Ph}=0.97\cdot \mathrm{Pb}}\]
+
+\[\fitmath{\mathrm{Ph}=0.97\cdot (108000)\approx 104760\,\mathrm{W}}\]
+
+\item Par de la hélice.
+
+\[\fitmath{\mathrm{Ch}=\frac{\mathrm{Ph}}{2\cdot \pi\cdot \mathrm{nh}}}\]
+
+\[\fitmath{\mathrm{Ch}=\frac{(104760)}{2\cdot \pi\cdot (26.66666667)}\approx 625.2402\,\mathrm{N\,m}}\]
+
+\item Potencia útil propulsiva.
+
+\[\fitmath{\mathrm{Pu}=0.8\cdot \mathrm{Ph}}\]
+
+\[\fitmath{\mathrm{Pu}=0.8\cdot (104760)\approx 83808\,\mathrm{W}}\]
+
+\end{enumerate}

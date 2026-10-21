@@ -1,0 +1,49 @@
+\textbf{Desarrollo de las magnitudes intermedias.} De $dm/dt=-c_TD=-c_Tmg_0/(L/D)$, separar variables da $E=(L/D)\ln(m_i/m_f)/(g_0c_T)$. Con CL fijo, $V=\sqrt{2g_0m/(\rho SC_L)}$; sustituir en $dx=Vdt$ deja integrar $m^{-1/2}$, cuya primitiva es $2\sqrt m$. Por eso $R=K_m(\sqrt{m_i}-\sqrt{m_f})$, con $K_m=2(L/D)\sqrt{2g_0/(\rho SC_L)}/(g_0c_T)$. Para reactor a CL constante, máximo alcance se obtiene maximizando $\sqrt{C_L}/C_D$, que da $C_L=\sqrt{C_{D0}/(3k)}$. Despejar la masa inicial requiere primero $\sqrt{m_i}=\sqrt{m_f}+R/K_m$ y después elevar al cuadrado.\begin{enumerate}
+
+\item Elegir el óptimo de alcance de reactor.
+
+\[\fitmath{C_L=\sqrt{\frac{0.024}{3\cdot 0.044}}\approx 0.4264014\,}\]
+
+\item Evaluar resistencia adimensional.
+
+\[\fitmath{C_D=0.024+0.044\cdot {C_L}^{2}}\]
+
+\[\fitmath{C_D=0.024+0.044\cdot {(0.4264014327)}^{2}\approx 0.032\,}\]
+
+\item Obtener eficiencia de esa condición.
+
+\[\fitmath{\mathrm{LD}=\frac{C_L}{C_D}}\]
+
+\[\fitmath{\mathrm{LD}=\frac{(0.4264014327)}{(0.032)}\approx 13.32504\,}\]
+
+\item Calcular el coeficiente completo de la integral.
+
+\[\fitmath{\mathrm{Km}=\frac{2\cdot \mathrm{LD}}{9.80665\cdot 1.7\times10^{-5}}\cdot \sqrt{\frac{2\cdot 9.80665}{0.589500721\cdot 42\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Km}=\frac{2\cdot (13.32504477)}{9.80665\cdot 1.7\times10^{-5}}\cdot \sqrt{\frac{2\cdot 9.80665}{0.589500721\cdot 42\cdot (0.4264014327)}}\approx 217885.5\,\mathrm{m/kg^{.5}}}\]
+
+\item Cerrar el alcance prescrito antes de estimar combustible.
+
+\[\fitmath{\mathrm{mi}={\left(\sqrt{6500}+\frac{1400000}{\mathrm{Km}}\right)}^{2}}\]
+
+\[\fitmath{\mathrm{mi}={\left(\sqrt{6500}+\frac{1400000}{(217885.4692)}\right)}^{2}\approx 7577.349\,\mathrm{kg}}\]
+
+\item Restar masa final que ya incluye reserva.
+
+\[\fitmath{\mathrm{fuel}=\mathrm{mi}-6500}\]
+
+\[\fitmath{\mathrm{fuel}=(7577.34935)-6500\approx 1077.349\,\mathrm{kg}}\]
+
+\item Comprobar velocidad inicial.
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot \mathrm{mi}\cdot 9.80665}{0.589500721\cdot 42\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot (7577.34935)\cdot 9.80665}{0.589500721\cdot 42\cdot (0.4264014327)}}\approx 118.6473\,\mathrm{m/s}}\]
+
+\item Comprobar velocidad final.
+
+\[\fitmath{\mathrm{Vf}=\sqrt{\frac{2\cdot 6500\cdot 9.80665}{0.589500721\cdot 42\cdot C_L}}}\]
+
+\[\fitmath{\mathrm{Vf}=\sqrt{\frac{2\cdot 6500\cdot 9.80665}{0.589500721\cdot 42\cdot (0.4264014327)}}\approx 109.8894\,\mathrm{m/s}}\]
+
+\end{enumerate}

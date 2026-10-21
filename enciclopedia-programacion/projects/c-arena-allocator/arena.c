@@ -15,9 +15,18 @@ void *arena_alloc_aligned(Arena *a, size_t size, size_t alignment) {
     if (!a || !a->buffer || size == 0 || !is_power_of_two(alignment)) {
         return NULL;
     }
+    if (a->offset > a->capacity) {
+        return NULL;
+    }
     uintptr_t base = (uintptr_t)(a->buffer);
+    if (a->offset > UINTPTR_MAX - base) {
+        return NULL;
+    }
     uintptr_t current = base + a->offset;
     size_t mask = alignment - 1;
+    if (mask > UINTPTR_MAX - current) {
+        return NULL;
+    }
     uintptr_t aligned = (current + mask) & ~((uintptr_t)mask);
     size_t padding = (size_t)(aligned - current);
     if (padding > a->capacity - a->offset || size > a->capacity - a->offset - padding) {

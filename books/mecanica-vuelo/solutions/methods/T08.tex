@@ -1,0 +1,13 @@
+\textbf{Resolución numérica que puede reproducirse.} El descenso exacto es $s=\sqrt{2W/(\rho S)}C_D(C_L^2+C_D^2)^{-3/4}$. Derivar su logaritmo y usar $C_D\prime=2kC_L$ lleva a $4kC_L^2-2kC_D^2-3C_D=0$. Se busca esa raíz; además se comparan los valores de descenso en ambos extremos del intervalo. Se elige un intervalo con cambio de signo. En cada paso $c=(a+b)/2$ y se conserva la mitad que mantiene signos opuestos. El ancho final acota el error en la raíz, bajo continuidad.
+\begin{center}\begin{tabular}{rrrrr}
+\toprule Paso & $a$ & $b$ & $c$ & $f(c)$\\\midrule
+$1$ & $0.3$ & $1.55$ & $0.925$ & $-0.01472959$\\
+$2$ & $0.925$ & $1.55$ & $1.2375$ & $0.006750944$\\
+$3$ & $0.925$ & $1.2375$ & $1.08125$ & $-0.004757909$\\
+$4$ & $1.08125$ & $1.2375$ & $1.159375$ & $0.000804783$\\
+$8$ & $1.139844$ & $1.149609$ & $1.144727$ & $-0.0002674575$\\
+$16$ & $1.148389$ & $1.148427$ & $1.148408$ & $7.302288\times10^{-7}$\\
+$24$ & $1.148398$ & $1.148398$ & $1.148398$ & $-3.714471\times10^{-9}$\\
+$35$ & $1.148398$ & $1.148398$ & $1.148398$ & $-7.038536\times10^{-13}$\\
+\bottomrule\end{tabular}\end{center}
+El resultado queda en $[1.148397738,1.148397738]\,$. Una raíz de derivada no basta por sí sola: el signo cambia de negativo a positivo para el descenso y el mínimo queda por debajo de los extremos. La fórmula tendida $\sqrt{3C_{D0}/k}$ omite términos de $C_D^2$.

@@ -1,0 +1,100 @@
+\subsection*{Procedimiento y operaciones del simulacro 1}
+Primero se obtiene el estado ISA con la altitud geopotencial. Después, la ley del gas permite calcular ambas densidades y Arquímedes cierra el equilibrio. En el Pitot se despeja Mach de la relación isentrópica antes de calcular TAS; continuidad constituye un balance separado.
+
+\begin{enumerate}
+
+\item Integrar el gradiente troposférico.
+
+\[\fitmath{\mathrm{Tg}=288.15-0.0065\cdot 3500\approx 265.4\,\mathrm{K}}\]
+
+\item Integrar equilibrio hidrostático y gas perfecto.
+
+\[\fitmath{\mathrm{pg}=101325\cdot {\left(\frac{\mathrm{Tg}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{\mathrm{pg}=101325\cdot {\left(\frac{(265.4)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 65764.06\,\mathrm{Pa}}\]
+
+\item Densidad del aire.
+
+\[\fitmath{\mathrm{rg}=\frac{\mathrm{pg}}{287.05287\cdot \mathrm{Tg}}}\]
+
+\[\fitmath{\mathrm{rg}=\frac{(65764.06436)}{287.05287\cdot (265.4)}\approx 0.8632286\,\mathrm{kg/m^{3}}}\]
+
+\item Densidad del helio, con su propia constante de gas.
+
+\[\fitmath{\mathrm{rh}=\frac{\mathrm{pg}}{2077.1\cdot \mathrm{Tg}}}\]
+
+\[\fitmath{\mathrm{rh}=\frac{(65764.06436)}{2077.1\cdot (265.4)}\approx 0.1192972\,\mathrm{kg/m^{3}}}\]
+
+\item Despejar carga del balance de empuje y pesos, incluyendo helio.
+
+\[\fitmath{\mu=\left(\mathrm{rg}-\mathrm{rh}\right)\cdot 450-100}\]
+
+\[\fitmath{\mu=\left((0.863228626)-(0.1192972195)\right)\cdot 450-100\approx 234.7691\,\mathrm{kg}}\]
+
+\item Restar cinco kilogramos de carga al equilibrio.
+
+\[\fitmath{\mathrm{Fnet}=5\cdot 9.80665\approx 49.03325\,\mathrm{N}}\]
+
+\item Estado ISA del segundo vehículo.
+
+\[\fitmath{\mathrm{Tp}=288.15-0.0065\cdot 5500\approx 252.4\,\mathrm{K}}\]
+
+\item Presión estática ISA.
+
+\[\fitmath{\mathrm{pp}=101325\cdot {\left(\frac{\mathrm{Tp}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{\mathrm{pp}=101325\cdot {\left(\frac{(252.4)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 50506.78\,\mathrm{Pa}}\]
+
+\item Densidad local.
+
+\[\fitmath{\mathrm{rp}=\frac{\mathrm{pp}}{287.05287\cdot \mathrm{Tp}}}\]
+
+\[\fitmath{\mathrm{rp}=\frac{(50506.7782)}{287.05287\cdot (252.4)}\approx 0.6971054\,\mathrm{kg/m^{3}}}\]
+
+\item Aislar Mach; comprobar que es menor que uno.
+
+\[\fitmath{M=\sqrt{\frac{2}{1.4-1}\cdot \left({\left(\frac{53800}{\mathrm{pp}}\right)}^{\frac{1.4-1}{1.4}}-1\right)}}\]
+
+\[\fitmath{M=\sqrt{\frac{2}{1.4-1}\cdot \left({\left(\frac{53800}{(50506.7782)}\right)}^{\frac{1.4-1}{1.4}}-1\right)}\approx 0.3017552\,}\]
+
+\item Velocidad local del sonido.
+
+\[\fitmath{a=\sqrt{1.4\cdot 287.05287\cdot \mathrm{Tp}}}\]
+
+\[\fitmath{a=\sqrt{1.4\cdot 287.05287\cdot (252.4)}\approx 318.4855\,\mathrm{m/s}}\]
+
+\item TAS compresible.
+
+\[\fitmath{V=M\cdot a}\]
+
+\[\fitmath{V=(0.3017552296)\cdot (318.4854818)\approx 96.10466\,\mathrm{m/s}}\]
+
+\item Aplicar por separado la aproximación incompresible.
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot \left(53800-\mathrm{pp}\right)}{\mathrm{rp}}}}\]
+
+\[\fitmath{\mathrm{Vi}=\sqrt{\frac{2\cdot \left(53800-(50506.7782)\right)}{(0.6971053601)}}\approx 97.20224\,\mathrm{m/s}}\]
+
+\item Error relativo en porcentaje.
+
+\[\fitmath{\mathrm{error}=100\cdot \left(\frac{\mathrm{Vi}}{V}-1\right)}\]
+
+\[\fitmath{\mathrm{error}=100\cdot \left(\frac{(97.20224096)}{(96.1046597)}-1\right)\approx 1.142069\,}\]
+
+\item Reconstruir presión total como comprobación.
+
+\[\fitmath{\mathrm{ptback}=\mathrm{pp}\cdot {\left(1+0.2\cdot {M}^{2}\right)}^{3.5}}\]
+
+\[\fitmath{\mathrm{ptback}=(50506.7782)\cdot {\left(1+0.2\cdot {(0.3017552296)}^{2}\right)}^{3.5}\approx 53800\,\mathrm{Pa}}\]
+
+\item Continuidad: entrada másica.
+
+\[\fitmath{\mathrm{md}=1.15\cdot 0.5\cdot 80\approx 46\,\mathrm{kg/s}}\]
+
+\item Despejar velocidad de salida y verificar el mismo caudal.
+
+\[\fitmath{V_{2}=\frac{\mathrm{md}}{1.05\cdot 0.35}}\]
+
+\[\fitmath{V_{2}=\frac{(46)}{1.05\cdot 0.35}\approx 125.1701\,\mathrm{m/s}}\]
+
+\end{enumerate}

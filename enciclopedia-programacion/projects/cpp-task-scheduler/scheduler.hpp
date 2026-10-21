@@ -10,6 +10,11 @@
 #include <optional>
 #include <ranges>
 #include <vector>
+#include <functional>
+#include <type_traits>
+#include <utility>
+#include <limits>
+#include <stdexcept>
 
 template <typename F>
 concept ExecutableTask = std::invocable<F> && std::same_as<std::invoke_result_t<F>, int64_t>;
@@ -52,9 +57,17 @@ private:
 inline int64_t sum_squares_of_even_above(const std::vector<int64_t>& values, int64_t threshold) {
     auto view = values
         | std::views::filter([threshold](int64_t x) { return x > threshold && (x % 2 == 0); })
-        | std::views::transform([](int64_t x) { return x * x; });
+        | std::views::transform([](int64_t x) {
+            if (x > 3037000499LL || x < -3037000499LL) {
+                throw std::overflow_error("square exceeds int64_t");
+            }
+            return x * x;
+        });
     int64_t total = 0;
     for (int64_t v : view) {
+        if (total > std::numeric_limits<int64_t>::max() - v) {
+            throw std::overflow_error("sum exceeds int64_t");
+        }
         total += v;
     }
     return total;
