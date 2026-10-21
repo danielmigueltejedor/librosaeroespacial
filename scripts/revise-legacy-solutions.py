@@ -67,6 +67,7 @@ EXPLAIN={
 records=[]
 book=ROOT/'books/estructuras-aeroespaciales';folder=book/'solutions/generated';folder.mkdir(parents=True,exist_ok=True)
 bank=json.loads((ROOT/'reports/bundle-audit/structures-problem-bank.json').read_text())['problems']
+manuscript=(book/'latex/manual.tex').read_text();visible_derivations=[]
 for p in bank:
  s=p['solution'];steps=[]
  for j,row in enumerate(s['steps'],1):
@@ -76,13 +77,33 @@ for p in bank:
  development=s.get('development',[])
  out=[]
  if p['id'] in EXPLAIN:out.append(r'\noindent\textbf{Por qué se usa este procedimiento.} '+EXPLAIN[p['id']])
- if development:out += [r'\begin{enumerate}',*[r'\item '+prose_tex(x) for x in development],r'\end{enumerate}']
+ if development:
+  location=manuscript.find('../solutions/generated/'+p['id']+'.tex')
+  if location>=0:
+   start=manuscript.rfind(r'\noindent\textbf{Enunciado}',0,location)
+   prefix=manuscript[start:location]
+  else:
+   # A previous source generator may have restored the original development.
+   # Inspect only text before that section: it is the part we will preserve.
+   marks=list(re.finditer(re.escape(r'\noindent\textbf{Enunciado}'),manuscript));candidates=[]
+   for index,mark in enumerate(marks):
+    end=marks[index+1].start() if index+1<len(marks) else len(manuscript)
+    block=manuscript[mark.start():end]
+    written=block[len(mark[0]):].lstrip().split('\n\n')[0]
+    score=difflib.SequenceMatcher(None,norm(written),norm(p['prompt'])).ratio()
+    candidates.append((score,block))
+   score,block=max(candidates,key=lambda x:x[0]);assert score>=.84,p['id']
+   prefix=block.split(r'\noindent\textbf{Desarrollo}',1)[0]
+  already_visible=all(norm(x) in norm(prefix) for x in development)
+  if already_visible:visible_derivations.append(p['id'])
+  else:out += [r'\begin{enumerate}',*[r'\item '+prose_tex(x) for x in development],r'\end{enumerate}']
  out += [r'\noindent\textbf{Operaciones y resultados intermedios.}',numeric]
  (folder/(p['id']+'.tex')).write_text('\n\n'.join(out)+'\n')
  # A renderer can print exact equations from the bank as well as their complete
  # substitutions. The public corpus retains original numerical precision.
  records.append(dict(book=book.name,key=p['id'],steps=checks))
 replace_development(book/'latex/manual.tex',bank,lambda p:p['id'],lambda p:p['prompt'],None,'../solutions/generated')
+(ROOT/'reports/solution-reasoning-deduplication.json').write_text(json.dumps(dict(scope='Avoid repeating complete derivations already visible earlier in the same manual problem; numeric steps retained',existing_derivations=visible_derivations),indent=2)+'\n')
 # The companion generator shares these authored notes and arithmetic routines.
 notes=book/'solutions/reasoning.json';notes.write_text(json.dumps(EXPLAIN,ensure_ascii=False,indent=2)+'\n')
 

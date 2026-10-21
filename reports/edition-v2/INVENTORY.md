@@ -4,7 +4,7 @@ Los recuentos se obtienen de entradas registradas e inclusiones TeX. Los bloques
 
 | Asignatura | Volumen | Capítulos | Apéndices | Páginas | Bloques matemáticos | Compilación |
 |---|---|---:|---:|---:|---:|---|
-| Teoría de Estructuras | manual | 8 | 6 | 312 | 1084 | COMPILED |
+| Teoría de Estructuras | manual | 8 | 6 | 304 | 1084 | COMPILED |
 | Teoría de Estructuras | problemas | 8 | 0 | 157 | 596 | COMPILED |
 | Teoría de Estructuras | simulacros | 8 | 0 | 50 | 132 | COMPILED |
 | Materiales y Mantenimiento de Motores Aeroespaciales | manual | 25 | 4 | 113 | 80 | COMPILED |

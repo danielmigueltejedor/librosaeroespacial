@@ -34,7 +34,7 @@ en los PDF previstos: este número incluye rutas compartidas y no equivale a
 etiquetas y dibujos de las fuentes revisadas; se revisan visualmente páginas
 seleccionadas y sus continuaciones, no todas las páginas.
 
-Pruebas: 85 y siete subtests del repositorio de libros; 329 controles del banco
+Pruebas: 86 y siete subtests del repositorio de libros; 329 controles del banco
 de Fluidos; cero discrepancias relevantes con los valores históricos en los
 registros numéricos reproducidos de bancos nativos y heredados. Los controles
 no prueban por sí solos que los modelos representen máquinas reales.
@@ -56,7 +56,7 @@ interior registra hashes, páginas y procedencia. Esta entrega es una revisión
 del mismo modelo autor, sin autoaprobación ni cierre académico independiente.
 
 La pasada ampliada reproduce los 16 grupos de controles existentes y todos pasan.
-Las 2461 páginas de ingeniería pasan el control automático de límites de texto,
+Las 2453 páginas de ingeniería pasan el control automático de límites de texto,
 páginas vacías, caracteres de sustitución, destinos internos y composición. Esta
 comprobación no es una revisión visual de cada página. La auditoría bibliográfica
 localiza 350 registros de ingeniería y mantiene 211 pendientes de revisión
@@ -67,3 +67,5 @@ El turborreactor distingue el rendimiento solicitado sin combustible (0,5882)
 del contraste que lo conserva coherentemente (0,5940), y no deduce un consumo
 sin disponer de un modelo térmico. La política de publicación distingue su
 primera instalación de una política previamente instalada que haya desaparecido.
+
+Se evitan 40 repeticiones completas de desarrollos ya visibles en el mismo problema de Estructuras; se conserva una explicación y todas las operaciones.

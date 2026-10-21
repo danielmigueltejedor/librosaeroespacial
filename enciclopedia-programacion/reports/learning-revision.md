@@ -46,7 +46,7 @@ desarrollo de las soluciones aunque no tengan figuras y muestra el resultado
 calculado, sin copiar una respuesta esperada incorrecta. En GitHub pasan 1113
 pruebas con Python 3.11 y otras 1113 con Python 3.12; cada trabajo omite una
 prueba de idioma alemán TeX no instalado. Ruff y Pyright pasan. El repositorio
-de libros supera 85 pruebas y siete subtests.
+de libros supera 86 pruebas y siete subtests.
 
 El inventario genérico de código mantiene 83 fragmentos, cero fallos y
 37 entradas pendientes o ilustrativas. Algunos ejemplos nuevos se verifican mediante

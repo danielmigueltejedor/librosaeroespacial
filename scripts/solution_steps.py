@@ -18,6 +18,9 @@ NAMES = {'rho':r'\rho','mu':r'\mu','nu':r'\nu','Omega':r'\Omega','Om':r'\Omega',
 NAMES.update(Tz=r'T_0',pz=r'p_0',gam=r'\gamma',Rg=r'R_g',etap=r'\eta_p',
              t99=r't_{99}',TperL=r'T\prime',PperL=r'P\prime')
 
+for greek in ('gamma delta epsilon eta kappa lambda xi sigma psi chi upsilon pi').split():
+    NAMES.setdefault(greek, chr(92)+greek)
+
 def expression(raw, names=()):
     tree=ast.parse(raw,mode='eval')
     for node in ast.walk(tree):
@@ -46,6 +49,9 @@ def symbol(name):
     if len(name)>1 and name.isalpha():return r'\mathrm{'+name+'}'
     if '_' in name:
         a,b=name.split('_',1);return symbol(a)+'_{'+b.replace('_',r'\,')+'}'
+    import re
+    indexed=re.fullmatch(r'([A-Za-z]+)([0-9]+)',name)
+    if indexed:return symbol(indexed[1])+'_{'+indexed[2]+'}'
     return name
 
 def unit(raw):

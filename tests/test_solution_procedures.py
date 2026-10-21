@@ -122,3 +122,11 @@ def test_jet_efficiency_respects_the_requested_negligible_fuel_approximation():
     source=(ROOT/'books/mecanica-fluidos/latex/manual.tex').read_text()
     assert r'\eta_p \approx 0{,}594' not in source
     assert source.count(r'\eta_p \approx 0{,}5882')>=2
+
+
+def test_station_indices_and_greek_parameters_keep_their_mathematical_notation():
+    from solution_steps import scalar_tex
+    tex=scalar_tex('v0**2/(rho1*A2)')
+    assert 'v_{0}' in tex and r'\rho_{1}' in tex and 'A_{2}' in tex
+    tex=scalar_tex('eta/(gamma-1)')
+    assert r'\eta' in tex and r'\gamma' in tex

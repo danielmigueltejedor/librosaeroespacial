@@ -502,19 +502,19 @@ $t$ & $4\,\mathrm{s}$ & tiempo\\
 
 \item Obtener $v$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{v=\frac{v0}{1+\frac{k\cdot v0\cdot t}{m}}}\]
+\[\fitmath{v=\frac{v_{0}}{1+\frac{k\cdot v_{0}\cdot t}{m}}}\]
 
 \[\fitmath{v=\frac{(10)}{1+\frac{(0.6)\cdot (10)\cdot (4)}{(30)}}\approx 5.555556\,\mathrm{m/s}}\]
 
 \item Obtener $x$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{x=\frac{m}{k}\cdot \ln\left(1+\frac{k\cdot v0\cdot t}{m}\right)}\]
+\[\fitmath{x=\frac{m}{k}\cdot \ln\left(1+\frac{k\cdot v_{0}\cdot t}{m}\right)}\]
 
 \[\fitmath{x=\frac{(30)}{(0.6)}\cdot \ln\left(1+\frac{(0.6)\cdot (10)\cdot (4)}{(30)}\right)\approx 29.38933\,\mathrm{m}}\]
 
 \item Obtener $\Delta E$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{loss}=\frac{m\cdot \left({v0}^{2}-{v}^{2}\right)}{2}}\]
+\[\fitmath{\mathrm{loss}=\frac{m\cdot \left({v_{0}}^{2}-{v}^{2}\right)}{2}}\]
 
 \[\fitmath{\mathrm{loss}=\frac{(30)\cdot \left({(10)}^{2}-{(5.555555556)}^{2}\right)}{2}\approx 1037.037\,\mathrm{J}}\]
 
@@ -658,7 +658,7 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 
 \item Obtener $h_c$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{hc}=h0+\frac{L\cdot \sin\left(\theta\right)}{2}}\]
+\[\fitmath{\mathrm{hc}=h_{0}+\frac{L\cdot \sin\left(\theta\right)}{2}}\]
 
 \[\fitmath{\mathrm{hc}=(0.3)+\frac{(1.8)\cdot \sin\left((0.7853981634)\right)}{2}\approx 0.9363961\,\mathrm{m}}\]
 
@@ -670,7 +670,7 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 
 \item Obtener $M$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{M=\rho\cdot g\cdot b\cdot \left(\frac{h0\cdot {L}^{2}}{2}+\frac{\sin\left(\theta\right)\cdot {L}^{3}}{3}\right)}\]
+\[\fitmath{M=\rho\cdot g\cdot b\cdot \left(\frac{h_{0}\cdot {L}^{2}}{2}+\frac{\sin\left(\theta\right)\cdot {L}^{3}}{3}\right)}\]
 
 \[\fitmath{M=(1000)\cdot (9.81)\cdot (1)\cdot \left(\frac{(0.3)\cdot {(1.8)}^{2}}{2}+\frac{\sin\left((0.7853981634)\right)\cdot {(1.8)}^{3}}{3}\right)\approx 18252.64\,\mathrm{N\,m}}\]
 
@@ -1124,19 +1124,19 @@ $y$ & $0.0008\,\mathrm{m}$ & distancia a pared\\
 
 \item Obtener $\delta$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{delta}=\sqrt{\frac{2\cdot \nu}{\omega}}}\]
+\[\fitmath{\delta=\sqrt{\frac{2\cdot \nu}{\omega}}}\]
 
-\[\fitmath{\mathrm{delta}=\sqrt{\frac{2\cdot (1\times10^{-5})}{(18.84955592)}}\approx 0.001030065\,\mathrm{m}}\]
+\[\fitmath{\delta=\sqrt{\frac{2\cdot (1\times10^{-5})}{(18.84955592)}}\approx 0.001030065\,\mathrm{m}}\]
 
 \item Obtener $|u|$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{amp}=U\cdot \exp\left(\frac{-y}{\mathrm{delta}}\right)}\]
+\[\fitmath{\mathrm{amp}=U\cdot \exp\left(\frac{-y}{\delta}\right)}\]
 
 \[\fitmath{\mathrm{amp}=(0.15)\cdot \exp\left(\frac{-(0.0008)}{(0.001030064539)}\right)\approx 0.06899161\,\mathrm{m/s}}\]
 
 \item Obtener $\varphi$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{phase}=\frac{y}{\mathrm{delta}}}\]
+\[\fitmath{\mathrm{phase}=\frac{y}{\delta}}\]
 
 \[\fitmath{\mathrm{phase}=\frac{(0.0008)}{(0.001030064539)}\approx 0.7766504\,}\]
 
@@ -1148,7 +1148,7 @@ $y$ & $0.0008\,\mathrm{m}$ & distancia a pared\\
 
 \item Obtener $\overline P/A$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{power}=\frac{\rho\cdot \nu\cdot {U}^{2}}{2\cdot \mathrm{delta}}}\]
+\[\fitmath{\mathrm{power}=\frac{\rho\cdot \nu\cdot {U}^{2}}{2\cdot \delta}}\]
 
 \[\fitmath{\mathrm{power}=\frac{(900)\cdot (1\times10^{-5})\cdot {(0.15)}^{2}}{2\cdot (0.001030064539)}\approx 0.09829481\,\mathrm{W/m^{2}}}\]
 
@@ -1340,9 +1340,9 @@ $L$ & $3\,\mathrm{m}$ & longitud\\
 
 \item Obtener $\Delta p_{Pois}$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{dp2=\frac{32\cdot \mu\cdot L\cdot V}{{D}^{2}}}\]
+\[\fitmath{\mathrm{dp}_{2}=\frac{32\cdot \mu\cdot L\cdot V}{{D}^{2}}}\]
 
-\[\fitmath{dp2=\frac{32\cdot (0.009)\cdot (3)\cdot (0.8)}{{(0.012)}^{2}}\approx 4800\,\mathrm{Pa}}\]
+\[\fitmath{\mathrm{dp}_{2}=\frac{32\cdot (0.009)\cdot (3)\cdot (0.8)}{{(0.012)}^{2}}\approx 4800\,\mathrm{Pa}}\]
 
 \end{enumerate}
 
@@ -1506,7 +1506,7 @@ $S$ & $14\,\mathrm{m^2}$ & superficie\\
 
 \item Obtener $C_{L,*}$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{C_L=\sqrt{\frac{cd0}{K}}}\]
+\[\fitmath{C_L=\sqrt{\frac{\mathrm{cd}_{0}}{K}}}\]
 
 \[\fitmath{C_L=\sqrt{\frac{(0.028)}{(0.052)}}\approx 0.7337994\,}\]
 
@@ -1518,7 +1518,7 @@ $S$ & $14\,\mathrm{m^2}$ & superficie\\
 
 \item Obtener $D_{min}$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{Dmin}=2\cdot W\cdot \sqrt{cd0\cdot K}}\]
+\[\fitmath{\mathrm{Dmin}=2\cdot W\cdot \sqrt{\mathrm{cd}_{0}\cdot K}}\]
 
 \[\fitmath{\mathrm{Dmin}=2\cdot (5000)\cdot \sqrt{(0.028)\cdot (0.052)}\approx 381.5757\,\mathrm{N}}\]
 
@@ -1617,7 +1617,7 @@ $\rho$ & $1000\,\mathrm{kg/m^3}$ & densidad\\
 
 \item Obtener $p_2-p_1$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{dp}=\frac{\rho\cdot \left({C}^{2}+{K}^{2}\right)\cdot \left(\frac{1}{{r1}^{2}}-\frac{1}{{r2}^{2}}\right)}{2}}\]
+\[\fitmath{\mathrm{dp}=\frac{\rho\cdot \left({C}^{2}+{K}^{2}\right)\cdot \left(\frac{1}{{r_{1}}^{2}}-\frac{1}{{r_{2}}^{2}}\right)}{2}}\]
 
 \[\fitmath{\mathrm{dp}=\frac{(1000)\cdot \left({(0.004)}^{2}+{(0.008)}^{2}\right)\cdot \left(\frac{1}{{(0.12)}^{2}}-\frac{1}{{(0.24)}^{2}}\right)}{2}\approx 2.083333\,\mathrm{Pa}}\]
 
@@ -1680,15 +1680,15 @@ $h_1$ & $0.8\,\mathrm{m}$ & nivel final sobre orificio\\
 
 \item Obtener $t$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{time}=\frac{2\cdot \mathrm{At}}{\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g}}\cdot \left(\sqrt{h0}-\sqrt{h1}\right)}\]
+\[\fitmath{\mathrm{time}=\frac{2\cdot \mathrm{At}}{\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g}}\cdot \left(\sqrt{h_{0}}-\sqrt{h_{1}}\right)}\]
 
 \[\fitmath{\mathrm{time}=\frac{2\cdot (1)}{(0.62)\cdot (0.0005)\cdot \sqrt{2\cdot (9.81)}}\cdot \left(\sqrt{(2.5)}-\sqrt{(0.8)}\right)\approx 1000.215\,\mathrm{s}}\]
 
 \item Obtener $Q_0$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{Q0=\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g\cdot h0}}\]
+\[\fitmath{Q_{0}=\mathrm{Cd}\cdot \mathrm{Ao}\cdot \sqrt{2\cdot g\cdot h_{0}}}\]
 
-\[\fitmath{Q0=(0.62)\cdot (0.0005)\cdot \sqrt{2\cdot (9.81)\cdot (2.5)}\approx 0.002171107\,\mathrm{m^{3}/s}}\]
+\[\fitmath{Q_{0}=(0.62)\cdot (0.0005)\cdot \sqrt{2\cdot (9.81)\cdot (2.5)}\approx 0.002171107\,\mathrm{m^{3}/s}}\]
 
 \item Obtener $A_o/A_t$ con la relación del modelo y los valores anteriores.
 
@@ -1853,13 +1853,13 @@ $t$ & $1\,\mathrm{s}$ & tiempo\\
 
 \item Obtener $A_{env}$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{env}=x0\cdot \sqrt{1+{\left(\frac{b}{2\cdot m\cdot \mathrm{wd}}\right)}^{2}}\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)}\]
+\[\fitmath{\mathrm{env}=x_{0}\cdot \sqrt{1+{\left(\frac{b}{2\cdot m\cdot \mathrm{wd}}\right)}^{2}}\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)}\]
 
 \[\fitmath{\mathrm{env}=(0.04)\cdot \sqrt{1+{\left(\frac{(6)}{2\cdot (3)\cdot (6.244997998)}\right)}^{2}}\cdot \exp\left(\frac{-(6)\cdot (1)}{2\cdot (3)}\right)\approx 0.01490264\,\mathrm{m}}\]
 
 \item Obtener $x$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{x=x0\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)\cdot \left(\cos\left(\mathrm{wd}\cdot t\right)+\frac{b\cdot \sin\left(\mathrm{wd}\cdot t\right)}{2\cdot m\cdot \mathrm{wd}}\right)}\]
+\[\fitmath{x=x_{0}\cdot \exp\left(\frac{-b\cdot t}{2\cdot m}\right)\cdot \left(\cos\left(\mathrm{wd}\cdot t\right)+\frac{b\cdot \sin\left(\mathrm{wd}\cdot t\right)}{2\cdot m\cdot \mathrm{wd}}\right)}\]
 
 \[\fitmath{x=(0.04)\cdot \exp\left(\frac{-(6)\cdot (1)}{2\cdot (3)}\right)\cdot \left(\cos\left((6.244997998)\cdot (1)\right)+\frac{(6)\cdot \sin\left((6.244997998)\cdot (1)\right)}{2\cdot (3)\cdot (6.244997998)}\right)\approx 0.01461449\,\mathrm{m}}\]
 
@@ -2109,9 +2109,9 @@ $t$ & $0.8\,\mathrm{s}$ & tiempo desde arranque\\
 
 \item Obtener $\delta_s$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{delta}=2\cdot \sqrt{\nu\cdot t}}\]
+\[\fitmath{\delta=2\cdot \sqrt{\nu\cdot t}}\]
 
-\[\fitmath{\mathrm{delta}=2\cdot \sqrt{(1\times10^{-6})\cdot (0.8)}\approx 0.001788854\,\mathrm{m}}\]
+\[\fitmath{\delta=2\cdot \sqrt{(1\times10^{-6})\cdot (0.8)}\approx 0.001788854\,\mathrm{m}}\]
 
 \end{enumerate}
 
@@ -2182,13 +2182,13 @@ $L$ & $0.012\,\mathrm{m}$ & longitud de referencia\\
 
 \item Obtener $\kappa_T$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{kappa}=\frac{\mathrm{kt}}{\rho\cdot \mathrm{cp}}}\]
+\[\fitmath{\kappa=\frac{\mathrm{kt}}{\rho\cdot \mathrm{cp}}}\]
 
-\[\fitmath{\mathrm{kappa}=\frac{(0.6)}{(1000)\cdot (4200)}\approx 1.428571\times10^{-7}\,\mathrm{m^{2}/s}}\]
+\[\fitmath{\kappa=\frac{(0.6)}{(1000)\cdot (4200)}\approx 1.428571\times10^{-7}\,\mathrm{m^{2}/s}}\]
 
 \item Obtener $\mathrm{Pr}$ con la relación del modelo y los valores anteriores.
 
-\[\fitmath{\mathrm{Pr}=\frac{\nu}{\mathrm{kappa}}}\]
+\[\fitmath{\mathrm{Pr}=\frac{\nu}{\kappa}}\]
 
 \[\fitmath{\mathrm{Pr}=\frac{(1\times10^{-6})}{(1.428571429\times10^{-7})}\approx 7\,}\]
 
