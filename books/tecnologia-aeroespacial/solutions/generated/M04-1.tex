@@ -1,0 +1,33 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} Integrar hidrostática con $T=T_0-\beta h$ y gas ideal da $p=p_0(T/T_0)^{g_0/(R\beta)}$. Después cerrar densidad y calcular sonido para el Mach.
+
+\begin{enumerate}
+
+\item Temperatura local.
+
+\[\fitmath{T=288.15-0.0065\cdot 4500\approx 258.9\,\mathrm{K}}\]
+
+\item Presión de la misma capa.
+
+\[\fitmath{p=101325\cdot {\left(\frac{T}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{p=101325\cdot {\left(\frac{(258.9)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 57728.3\,\mathrm{Pa}}\]
+
+\item Gas ideal local.
+
+\[\fitmath{\rho=\frac{p}{287.05287\cdot T}}\]
+
+\[\fitmath{\rho=\frac{(57728.30011)}{287.05287\cdot (258.9)}\approx 0.7767743\,\mathrm{kg/m^{3}}}\]
+
+\item Sonido adiabático a temperatura estática.
+
+\[\fitmath{a=\sqrt{1.4\cdot 287.05287\cdot T}}\]
+
+\[\fitmath{a=\sqrt{1.4\cdot 287.05287\cdot (258.9)}\approx 322.5604\,\mathrm{m/s}}\]
+
+\item Mach con la velocidad de ensayo prescrita.
+
+\[\fitmath{\mathrm{Ma}=\frac{140}{a}}\]
+
+\[\fitmath{\mathrm{Ma}=\frac{140}{(322.560356)}\approx 0.4340273\,}\]
+
+\end{enumerate}

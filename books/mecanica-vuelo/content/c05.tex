@@ -73,7 +73,9 @@ porque $\vect\omega\cdot(\vect\omega\times I\vect\omega)=0$. Sin momento externo
 I=\begin{bmatrix}8500&0&-620\\0&13000&0\\-620&0&17000\end{bmatrix}\SIu{kg\,m^2},\quad
 \vect\omega=(0.12,-0.08,0.15)\SIu{rad\,s^{-1}},
 \]
-y $\vect M=(950,-500,340)\SIu{N\,m}$. Se calcula primero $\vect H=I\vect\omega$ y después $\dot{\vect\omega}=I^{-1}[\vect M-\vect\omega\times\vect H]$. Sustituir el resultado en la ecuación vectorial recupera los tres momentos con residuo menor que $10^{-10}\SIu{N\,m}$ en doble precisión. El residuo comprueba esta operación, no la correspondencia de esos parámetros con un avión real. El archivo reproducible conserva el vector numérico sin redondeo.}
+y $\vect M=(950,-500,340)\SIu{N\,m}$. Se calcula primero $\vect H=I\vect\omega$ y después $\dot{\vect\omega}=I^{-1}[\vect M-\vect\omega\times\vect H]$. Sustituir el resultado en la ecuación vectorial recupera los tres momentos con residuo menor que $10^{-10}\SIu{N\,m}$ en doble precisión. El residuo comprueba esta operación, no la correspondencia de esos parámetros con un avión real. El archivo reproducible conserva el vector numérico sin redondeo.
+\input{solutions/methods/manual-c05.tex}
+}
 
 \section{Cierre del modelo de seis grados de libertad}
 Las tres ecuaciones traslacionales, tres rotacionales, tres de actitud y tres de posición forman un sistema de doce ecuaciones de primer orden. En forma compacta,

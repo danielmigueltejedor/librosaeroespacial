@@ -1,0 +1,47 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} La transferencia es una elipse con periapsis en la órbita inferior y apoapsis en la superior. Su semieje mayor es la media de radios. Vis-viva proporciona velocidades de la elipse; cada impulso es la diferencia con la velocidad circular local.
+
+\begin{enumerate}
+
+\item Semieje mayor de transferencia.
+
+\[\fitmath{\mathrm{at}=\frac{6871000+7371000}{2}\approx 7121000\,\mathrm{m}}\]
+
+\item Velocidad circular inferior.
+
+\[\fitmath{vc1=\sqrt{\frac{3.986004418\times10^{14}}{6871000}}\approx 7616.561\,\mathrm{m/s}}\]
+
+\item Velocidad de transferencia en periapsis.
+
+\[\fitmath{\mathrm{vp}=\sqrt{3.986004418\times10^{14}\cdot \left(\frac{2}{6871000}-\frac{1}{\mathrm{at}}\right)}}\]
+
+\[\fitmath{\mathrm{vp}=\sqrt{3.986004418\times10^{14}\cdot \left(\frac{2}{6871000}-\frac{1}{(7121000)}\right)}\approx 7749.106\,\mathrm{m/s}}\]
+
+\item Velocidad circular superior.
+
+\[\fitmath{vc2=\sqrt{\frac{3.986004418\times10^{14}}{7371000}}\approx 7353.696\,\mathrm{m/s}}\]
+
+\item Velocidad de transferencia en apoapsis.
+
+\[\fitmath{\mathrm{va}=\sqrt{3.986004418\times10^{14}\cdot \left(\frac{2}{7371000}-\frac{1}{\mathrm{at}}\right)}}\]
+
+\[\fitmath{\mathrm{va}=\sqrt{3.986004418\times10^{14}\cdot \left(\frac{2}{7371000}-\frac{1}{(7121000)}\right)}\approx 7223.458\,\mathrm{m/s}}\]
+
+\item Primer impulso progrado.
+
+\[\fitmath{dv1=\mathrm{vp}-vc1}\]
+
+\[\fitmath{dv1=(7749.10644)-(7616.560806)\approx 132.5456\,\mathrm{m/s}}\]
+
+\item Segundo impulso para circularizar.
+
+\[\fitmath{dv2=vc2-\mathrm{va}}\]
+
+\[\fitmath{dv2=(7353.696169)-(7223.458194)\approx 130.238\,\mathrm{m/s}}\]
+
+\item La transferencia recorre media órbita elíptica.
+
+\[\fitmath{t=\pi\cdot \sqrt{\frac{{\mathrm{at}}^{3}}{3.986004418\times10^{14}}}}\]
+
+\[\fitmath{t=\pi\cdot \sqrt{\frac{{(7121000)}^{3}}{3.986004418\times10^{14}}}\approx 2990.146\,\mathrm{s}}\]
+
+\end{enumerate}

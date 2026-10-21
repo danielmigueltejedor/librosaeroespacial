@@ -4,6 +4,9 @@ from copy import deepcopy
 import json, math
 from fluid_bank import cases, evaluate, CHAPTERS
 ROOT=Path(__file__).resolve().parents[1]
+import sys
+sys.path.insert(0,str(ROOT.parents[1]/"scripts"))
+from solution_steps import numeric_steps
 
 # Twenty new parameter sets. Families are reused explicitly, never counted as
 # twenty additional independent physical models.
@@ -99,7 +102,10 @@ def worked(p,exam=False):
     unknowns=r',\ '.join(row[3] for row in p['calc'])
     out=[r'\Needspace{.30\textheight}\section{'+p['id']+'. '+p['title']+'}',r'\begin{studiumworked}{'+p['id']+' · '+p['level']+'}',r'\textbf{Enunciado.} '+p['question'],table(p),r'\textbf{Incógnitas.} Se calculan $'+unknowns+r'$ y se interpreta el resultado bajo las hipótesis indicadas.',r'\textbf{Hipótesis.} '+p['hypotheses'],r'\textbf{Modelo y ecuaciones.}',r'\[\fitmath{'+p['model']+r'}\]',r'\textbf{Desarrollo.}\begin{enumerate}']
     out += [r'\item '+s for s in p['steps']]
-    out += [r'\end{enumerate}',r'\textbf{Resultados.}\begin{itemize}']
+    out += [r'\end{enumerate}',r'\textbf{Cálculo de cada magnitud.}']
+    calculation_rows=[dict(target=k,expression=e,unit=u,why=r'Obtener $'+tex+r'$ con la relación del modelo y los valores anteriores.') for k,e,u,tex in p['calc']]
+    calculated,_=numeric_steps(calculation_rows,dict(g=9.81,**{k:v for k,v,*_ in p['data']}))
+    out += [calculated,r'\textbf{Resultados.}\begin{itemize}']
     for r in evaluate(p):
         un='' if not r['unit'] else r'\,'+unit(r['unit'])
         out.append(r'\item $'+r['tex']+'='+num(r['value'])+un+'$.')

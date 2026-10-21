@@ -1,0 +1,19 @@
+\textbf{Resolución numérica que puede reproducirse.} Para cada $C_L$ se calcula $C_D=0.013+0.030C_L^2$, $\delta=\arctan(C_D/C_L)$, $V=\sqrt{2mg_0\cos\delta/(\rho SC_L)}$, $s=V\sin\delta$ y $G=(V\cos\delta-10)/s$. Se busca un cero de la derivada de $G$, aproximada aquí por diferencia centrada con incremento $10^{-5}$; esa aproximación de derivada se refina al contrastar el resultado. Se elige un intervalo con cambio de signo. En cada paso $c=(a+b)/2$ y se conserva la mitad que mantiene signos opuestos. El ancho final acota el error en la raíz, bajo continuidad.
+\begin{center}\begin{tabular}{rrrrr}
+\toprule Paso & $a$ & $b$ & $c$ & $f(c)$\\\midrule
+$1$ & $0.2$ & $1.6$ & $0.9$ & $-10.31761$\\
+$2$ & $0.2$ & $0.9$ & $0.55$ & $-1.875156$\\
+$3$ & $0.2$ & $0.55$ & $0.375$ & $13.96396$\\
+$4$ & $0.375$ & $0.55$ & $0.4625$ & $4.649684$\\
+$8$ & $0.5171875$ & $0.528125$ & $0.5226563$ & $-0.1117614$\\
+$16$ & $0.5210327$ & $0.5210754$ & $0.5210541$ & $-0.001024634$\\
+$24$ & $0.5210392$ & $0.5210394$ & $0.5210393$ & $1.351808\times10^{-7}$\\
+$35$ & $0.5210393$ & $0.5210393$ & $0.5210393$ & $1.776357\times10^{-9}$\\
+\bottomrule\end{tabular}\end{center}
+El resultado queda en $[0.521039309,0.5210393091]\,$. Comparar también $G(0.2)$ y $G(1.6)$. El máximo en calma usa $C_L=\sqrt{0.013/0.030}$ y no maximiza necesariamente el avance terrestre con viento.
+\begin{center}\begin{tabular}{rr}
+\toprule $C_L$ & $G$\\\midrule
+$0.2$ & $11.32904$\\
+$0.5210393$ & $16.88039$\\
+$1.6$ & $7.972082$\\
+\bottomrule\end{tabular}\end{center}

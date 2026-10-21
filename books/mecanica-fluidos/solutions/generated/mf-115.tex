@@ -1,0 +1,29 @@
+\noindent\textbf{Elección del procedimiento.} Las deceleraciones se dan como módulos positivos: $Ma_i=R+k_DV_i^2$. Restar las dos ecuaciones elimina la rodadura $R$; después sustituir $k_D$ en una de ellas. El coeficiente de rodadura se refiere al peso.
+
+\begin{enumerate}
+
+\item Usar diferencia de cuadrados de las dos velocidades.
+
+\[\fitmath{\mathrm{kD}=\frac{M\cdot \left(a1-a2\right)}{{V1}^{2}-{V2}^{2}}}\]
+
+\[\fitmath{\mathrm{kD}=\frac{(1500)\cdot \left((0.48)-(0.21)\right)}{{(30)}^{2}-{(15)}^{2}}\approx 0.6\,\mathrm{kg/m}}\]
+
+\item Recuperar la fuerza de rodadura del estado de menor velocidad.
+
+\[\fitmath{\mathrm{Rroll}=M\cdot a2-\mathrm{kD}\cdot {V2}^{2}}\]
+
+\[\fitmath{\mathrm{Rroll}=(1500)\cdot (0.21)-(0.6)\cdot {(15)}^{2}\approx 180\,\mathrm{N}}\]
+
+\item Normalizar la fuerza por el peso.
+
+\[\fitmath{\mathrm{cr}=\frac{\mathrm{Rroll}}{M\cdot g}}\]
+
+\[\fitmath{\mathrm{cr}=\frac{(180)}{(1500)\cdot (9.81)}\approx 0.01223242\,}\]
+
+\item Normalizar el término aerodinámico por densidad y área.
+
+\[\fitmath{C_D=\frac{2\cdot \mathrm{kD}}{\rho\cdot A}}\]
+
+\[\fitmath{C_D=\frac{2\cdot (0.6)}{(1.2)\cdot (2.3)}\approx 0.4347826\,}\]
+
+\end{enumerate}

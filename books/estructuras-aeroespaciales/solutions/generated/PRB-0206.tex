@@ -1,0 +1,35 @@
+\begin{enumerate}
+
+\item La figura establece qué partes pertenecen a la sección, la dirección de y y z y las dimensiones en milímetros.
+
+\item El área total suma las áreas macizas y resta los huecos; los primeros momentos proporcionan las coordenadas del centroide.
+
+\item Calcular I\_z por suma de las inercias propias de las piezas más A\_i por el cuadrado de cada distancia a G (Steiner).
+
+\item El verificador geométrico de Studium contrasta las inercias por otra vía: integración directa sobre los contornos.
+
+\item Si los ejes no son principales, obtener los valores propios de la matriz de inercias sin suponer que I\_yz = 0.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área algebraica de la sección, descontando los huecos.
+
+\[\fitmath{y_{1}=\left(10-0\right)\cdot \left(100-0\right)+\left(60-10\right)\cdot \left(100-90\right)\approx 1500\,\mathrm{mm^{2}}}\]
+
+\item Centroide en el eje vertical mediante primeros momentos.
+
+\[\fitmath{y_{2}=\frac{\frac{\left(10-0\right)\cdot \left(100-0\right)\cdot \left(0+100\right)}{2}+\frac{\left(60-10\right)\cdot \left(100-90\right)\cdot \left(90+100\right)}{2}}{\left(10-0\right)\cdot \left(100-0\right)+\left(60-10\right)\cdot \left(100-90\right)}\approx 65\,\mathrm{mm}}\]
+
+\item Momento de inercia I\_z mediante el teorema de Steiner.
+
+\[\fitmath{y_{3}=\frac{\left(10-0\right)\cdot {\left(100-0\right)}^{3}}{12}+\left(10-0\right)\cdot \left(100-0\right)\cdot {\left(\frac{0+100}{2}-65\right)}^{2}+\frac{\left(60-10\right)\cdot {\left(100-90\right)}^{3}}{12}+\left(60-10\right)\cdot \left(100-90\right)\cdot {\left(\frac{90+100}{2}-65\right)}^{2}\approx 1512500\,\mathrm{mm^{4}}}\]
+
+\item Momento principal máximo de inercia.
+
+\[\fitmath{y_{4}=50000\cdot \sqrt{202}+962500\approx 1673134\,\mathrm{mm^{4}}}\]
+
+\end{enumerate}

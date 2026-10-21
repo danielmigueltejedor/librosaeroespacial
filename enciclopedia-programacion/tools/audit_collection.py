@@ -70,7 +70,7 @@ def inventory(root: Path = ROOT) -> dict:
             exercise_inventory.append({'id': problem['id'], 'section': problem.get('section'), 'kind': problem.get('kind'),
                                        'declared_problem_type': problem.get('problem_type'), 'correct': problem.get('correct'),
                                        'source': str((volume / 'problems/problems.jsonl').relative_to(root)), 'has_structured_solution': bool(problem.get('solution')), 'has_rust_source': problem.get('kind') == 'rust',
-                                       'method_scope': 'Rust test replay' if problem.get('kind') == 'rust' else 'numeric/excerpt check; not a programming test',
+                                       'method_scope': 'Rust test replay' if problem.get('kind') == 'rust' else 'See learning-verification.json for the route-specific programming cases' if problem.get('kind') == 'programming' else 'numeric/excerpt check; not a programming test',
                                        'pedagogical_classification': 'manual_review_required'})
         volumes.append({'slug': volume.name, 'pdf_pages': len(pages) if pages else None, 'chapters': chapters,
                         'toc_chapter_page_labels': chapter_pages, 'sections_in_tex': len(re.findall(r'\\section\{', tex)),

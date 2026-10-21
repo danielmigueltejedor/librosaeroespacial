@@ -1,0 +1,13 @@
+\textbf{Resolución numérica que puede reproducirse.} Calcular $W=6200g_0$. La mínima resistencia es $D_{min}=2W\sqrt{0.023\cdot0.043}$. Su valor es $D_{min}=3824.199\,\mathrm N$. La ley de empuje da $\sigma=(D_{min}/18000)^{1/0.8}$ y $\rho_{obj}=0.1766937\,\mathrm{kg/m^3}$. Evaluar densidad en 11 km identifica la capa isoterma; allí $T=216.65$ K y $\rho(h)=\rho_{11}\exp[-g_0(h-11000)/(RT)]$. Se resuelve $f(h)=\rho(h)-\rho_{obj}=0$. Se elige un intervalo con cambio de signo. En cada paso $c=(a+b)/2$ y se conserva la mitad que mantiene signos opuestos. El ancho final acota el error en la raíz, bajo continuidad.
+\begin{center}\begin{tabular}{rrrrr}
+\toprule Paso & $a$ & $b$ & $c$ & $f(c)$\\\midrule
+$1$ & $11000$ & $20000$ & $15500$ & $0.002296165$\\
+$2$ & $15500$ & $20000$ & $17750$ & $-0.05116556$\\
+$3$ & $15500$ & $17750$ & $16625$ & $-0.02679952$\\
+$4$ & $15500$ & $16625$ & $16062.5$ & $-0.01289645$\\
+$8$ & $15570.31$ & $15640.62$ & $15605.47$ & $-0.0006560362$\\
+$16$ & $15581.85$ & $15582.12$ & $15581.99$ & $-2.952638\times10^{-6}$\\
+$24$ & $15581.88$ & $15581.88$ & $15581.88$ & $-8.173075\times10^{-9}$\\
+$35$ & $15581.88$ & $15581.88$ & $15581.88$ & $-6.425777\times10^{-12}$\\
+\bottomrule\end{tabular}\end{center}
+El resultado queda en $[15581.8795,15581.8795]\,\mathrm m$. En esta capa también se puede despejar directamente $h=11000-(RT/g_0)\ln(\rho_{obj}/\rho_{11})$. Sustituir esa altura en la ley de empuje debe recuperar $D_{min}$.

@@ -1,10 +1,12 @@
-# Libros Aeroespacial
+# Libros Studium
 
-Repositorio monorepo para libros universitarios en LaTeX de **Daniel Miguel Tejedor**, orientados al Grado en Ingeniería Aeroespacial.
+Repositorio monorepo para libros universitarios en LaTeX de **Daniel Miguel Tejedor**, de ingeniería, programación y otras materias.
 
-[Las siete asignaturas y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosaeroespacial/releases/tag/studium-coleccion-completa-2026-10-18) · [Auditoría de los veintiún volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
+[Las siete asignaturas y sus fuentes](books/) · [Descargar la colección PDF actualizada](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21) · [Auditoría de los veintiún volúmenes](reports/bundle-audit/README.md) · [Norma común de maquetación](shared/EDITORIAL_STANDARD.md)
 
 La colección está construida sobre **AeroBooks**, un framework editorial y de control de calidad diseñado para que crear, revisar y mantener libros académicos a partir de fuentes sea sencillo, reproducible y compatible con flujos de trabajo asistidos por IA.
+
+Cada publicación nueva debe incluir `LibrosStudium-bundle-completo.zip`, con todos los PDF del catálogo organizados por asignatura o tema. Véase [el contrato de publicación](docs/RELEASES.md).
 
 ## AeroBooks
 
@@ -239,7 +241,7 @@ python3 scripts/build-studium-books.py tecnologia-aeroespacial
 python3 scripts/build-studium-books.py turbomaquinas
 ```
 
-Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los veintiún PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosaeroespacial/releases).
+Requieren Python 3.11+ y pdfLaTeX (TeX Live con español, Latin Modern, TikZ y tcolorbox). Los veintiún PDF se generan bajo `dist/studium/`. GitHub Actions también los compila y publica en el artefacto **studium-pdfs**. Las entregas PDF de la importación se conservan en [Releases](https://github.com/danielmigueltejedor/librosstudium/releases).
 
 Consulta el README de cada libro para saber qué `.tex` editar. La maquetación de los veintiún volúmenes se controla en [`shared/EDITORIAL_STANDARD.md`](shared/EDITORIAL_STANDARD.md) y `shared/latex/`: una sola plantilla para portadas, capítulos, recuadros y páginas iniciales. Fluidos y Motores Cohete usan fotografías NASA de mayor resolución, con procedencia en sus archivos `cover-photo.json`.
 

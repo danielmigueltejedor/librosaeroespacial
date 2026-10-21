@@ -1,0 +1,43 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} Comparar siempre potencias a la misma frontera. La fuente limitada a 30 kW solo entrega $0.92P_s$ a la barra; el déficit de barra determina energía útil de batería y su rendimiento determina energía extraída.
+
+\begin{enumerate}
+
+\item Demanda normal de barra.
+
+\[\fitmath{\mathrm{Pbus}=12000+8000+4000\approx 24000\,\mathrm{W}}\]
+
+\item Demanda de entrada a la fuente.
+
+\[\fitmath{\mathrm{Pin}=\frac{\mathrm{Pbus}}{0.92}}\]
+
+\[\fitmath{\mathrm{Pin}=\frac{(24000)}{0.92}\approx 26086.96\,\mathrm{W}}\]
+
+\item Margen referido a entrada.
+
+\[\fitmath{\mathrm{margin}=30000-\mathrm{Pin}}\]
+
+\[\fitmath{\mathrm{margin}=30000-(26086.95652)\approx 3913.043\,\mathrm{W}}\]
+
+\item Máxima potencia entregable a la barra.
+
+\[\fitmath{\mathrm{Pavailable}=0.92\cdot 30000\approx 27600\,\mathrm{W}}\]
+
+\item Déficit transitorio en la misma frontera.
+
+\[\fitmath{\mathrm{deficit}=\mathrm{Pbus}+6000-\mathrm{Pavailable}}\]
+
+\[\fitmath{\mathrm{deficit}=(24000)+6000-(27600)\approx 2400\,\mathrm{W}}\]
+
+\item Energía extraída del almacenamiento.
+
+\[\fitmath{E=\frac{\mathrm{deficit}\cdot 20}{0.9}}\]
+
+\[\fitmath{E=\frac{(2400)\cdot 20}{0.9}\approx 53333.33\,\mathrm{J}}\]
+
+\item Convertir joules a Wh para comparar capacidad.
+
+\[\fitmath{\mathrm{Ewh}=\frac{E}{3600}}\]
+
+\[\fitmath{\mathrm{Ewh}=\frac{(53333.33333)}{3600}\approx 14.81481\,\mathrm{Wh}}\]
+
+\end{enumerate}

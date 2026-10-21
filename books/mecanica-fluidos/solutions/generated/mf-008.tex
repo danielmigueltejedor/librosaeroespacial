@@ -1,0 +1,31 @@
+\noindent\textbf{Elección del procedimiento.} Si una rama sube $x$, la otra baja $x$: el desnivel restaurador es $2x$. El balance de la columna da $\ddot x+(8\nu/R^2)\dot x+(2g/L)x=0$ con la aproximación viscosa cuasiestacionaria. Se compara con $\ddot x+2\zeta\omega_n\dot x+\omega_n^2x=0$.
+
+\begin{enumerate}
+
+\item Identificar el coeficiente de $x$ como $\omega_n^2$.
+
+\[\fitmath{\mathrm{wn}=\sqrt{\frac{2\cdot g}{L}}}\]
+
+\[\fitmath{\mathrm{wn}=\sqrt{\frac{2\cdot (9.81)}{(0.5)}}\approx 6.264184\,\mathrm{1/s}}\]
+
+\item Una oscilación sin amortiguamiento corresponde a $2\pi$ radianes.
+
+\[\fitmath{\mathrm{Tn}=\frac{2\cdot \pi}{\mathrm{wn}}}\]
+
+\[\fitmath{\mathrm{Tn}=\frac{2\cdot \pi}{(6.264183905)}\approx 1.003033\,\mathrm{s}}\]
+
+\item La penetración viscosa se compara con el radio mediante Womersley.
+
+\[\fitmath{\mathrm{Wo}=R\cdot \sqrt{\frac{\mathrm{wn}}{\nu}}}\]
+
+\[\fitmath{\mathrm{Wo}=(0.001)\cdot \sqrt{\frac{(6.264183905)}{(1.007\times10^{-6})}}\approx 2.494121\,}\]
+
+\item Igualar $2\zeta\omega_n=8\nu/R^2$ y despejar $\zeta$.
+
+\[\fitmath{\zeta=\frac{4\cdot \nu}{{R}^{2}\cdot \mathrm{wn}}}\]
+
+\[\fitmath{\zeta=\frac{4\cdot (1.007\times10^{-6})}{{(0.001)}^{2}\cdot (6.264183905)}\approx 0.6430207\,}\]
+
+\end{enumerate}
+
+\noindent\textbf{Contraste y comparación.} Womersley es del orden de 2.5, de modo que el perfil cuasiestacionario no es una aproximación asintótica excelente. El factor calculado pertenece al modelo simplificado, no a una predicción precisa del amortiguamiento real.

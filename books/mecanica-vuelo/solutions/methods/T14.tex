@@ -1,0 +1,8 @@
+\textbf{Barrido y frontera activa.} Partir de $W=4500g_0$, $A=\rho SC_{D0}/2$ y $B=2kW^2/(\rho S)$. En viraje, $C_L=nW/(qS)$ y $D=AV^2+Bn^2/V^2$. Imponer $D\le T$ y despejar $n$ da $n_T$; imponer $C_L\le C_{L,max}$ da $n_L$. Para cada velocidad se elige $n=\min(n_T,n_L,3)$ y solo se calcula radio finito si $n>1$.\[\fitmath{A=0.36,\qquad B=5972181,\qquad V_{stall}=42.88061\,\mathrm{m/s}}\]La rejilla usa 20001 puntos igualmente espaciados desde $1.001V_{stall}$ hasta 180 m/s. El factor 1.001 evita la singularidad de radio en la frontera $n=1$; no es un margen certificado. Las filas próximas al menor radio son:\begin{center}\begin{tabular}{rrrrr}
+\toprule $V$ & $n_T$ & $n_L$ & $n$ & $R$ (m)\\\midrule
+$58.17325$ & $1.841067$ & $1.840453$ & $1.840453$ & $223.3446$\\
+$58.18011$ & $1.84124$ & $1.840887$ & $1.840887$ & $223.3226$\\
+$58.18696$ & $1.841413$ & $1.841321$ & $1.841321$ & $223.3006$\\
+$58.19382$ & $1.841586$ & $1.841754$ & $1.841586$ & $223.3076$\\
+$58.20067$ & $1.841758$ & $1.842188$ & $1.841758$ & $223.3305$\\
+\bottomrule\end{tabular}\end{center}En cada fila puede verse qué límite fija $n$. El menor radio de esta rejilla es $223.3006\,\mathrm m$ a $V=58.18696\,\mathrm{m/s}$. La cifra se debe informar como resultado de rejilla y contrastarse refinando alrededor de la intersección de restricciones, no como un óptimo continuo demostrado.

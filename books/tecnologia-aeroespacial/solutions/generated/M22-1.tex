@@ -1,0 +1,41 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} La batería aporta tensión por capacidad, dando Wh. Aplicar fracción utilizable y rendimiento de conversión antes de dividir por cargas. El cálculo local de línea usa corriente estimada a tensión nominal y no vuelve a descontar pérdidas ya incluidas globalmente.
+
+\begin{enumerate}
+
+\item Energía nominal.
+
+\[\fitmath{\mathrm{En}=28\cdot 24\approx 672\,\mathrm{Wh}}\]
+
+\item Energía entregable a barra.
+
+\[\fitmath{\mathrm{Euse}=\mathrm{En}\cdot 0.75\cdot 0.9}\]
+
+\[\fitmath{\mathrm{Euse}=(672)\cdot 0.75\cdot 0.9\approx 453.6\,\mathrm{Wh}}\]
+
+\item Sumar cargas paralelas.
+
+\[\fitmath{P=180+120+60\approx 360\,\mathrm{W}}\]
+
+\item Wh dividido entre W entrega horas.
+
+\[\fitmath{t=\frac{\mathrm{Euse}}{P}}\]
+
+\[\fitmath{t=\frac{(453.6)}{(360)}\approx 1.26\,\mathrm{h}}\]
+
+\item Corriente nominal estimada de la línea principal.
+
+\[\fitmath{I=\frac{180}{28}\approx 6.428571\,\mathrm{A}}\]
+
+\item Caída óhmica.
+
+\[\fitmath{\mathrm{dV}=I\cdot 0.08}\]
+
+\[\fitmath{\mathrm{dV}=(6.428571429)\cdot 0.08\approx 0.5142857\,\mathrm{V}}\]
+
+\item Calentamiento de línea; contrastar con I por caída.
+
+\[\fitmath{\mathrm{PR}={I}^{2}\cdot 0.08}\]
+
+\[\fitmath{\mathrm{PR}={(6.428571429)}^{2}\cdot 0.08\approx 3.306122\,\mathrm{W}}\]
+
+\end{enumerate}

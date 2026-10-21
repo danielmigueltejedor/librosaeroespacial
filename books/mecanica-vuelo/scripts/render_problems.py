@@ -36,13 +36,7 @@ def solution(p,include_prompt=True):
     out += [r'\apartado{8. Desarrollo algebraico}{Las operaciones se realizan en este orden, conservando las condiciones del modelo.}',r'\begin{enumerate}']
     out += [r'\item '+prose(x) for x in p['steps']]
     out += [r'\end{enumerate}',r'\apartado{9. Sustitución numérica}{Se usan las magnitudes del apartado de datos en SI; los ángulos se convierten a radianes antes de evaluar funciones trigonométricas. Las densidades indicadas como ISA se obtienen de la capa correspondiente.}']
-    short=0
-    for t in p['tests']:
-        if len(t['expression'])<60 and short<3:
-            tex=sp.latex(sp.sympify(t['expression'],evaluate=False))
-            out += [r'\noindent '+prose(t['name'])+r':\quad $'+tex+r'\simeq '+num(t['expected'])+r'\,'+units[t['unit']]+r'$.\par']
-            short+=1
-    if not short:out += ['La evaluación conserva los parámetros intermedios sin redondear. El registro de cálculo del proyecto incluye la sustitución completa que reproduce cada valor de la tabla siguiente.']
+    out += [r'\input{solutions/generated/'+p['key']+'.tex}']
     out += [r'\apartado{10. Resultados con unidades}{Los resultados pertenecen al modelo y al intervalo de datos declarados.}',r'\begin{center}\begin{tabular}{lr}\toprule Magnitud&Resultado\\\midrule']
     for t in p['tests']:out += [prose(t['name'])+' & $'+num(t['expected'])+r'\,'+units[t['unit']]+r'$\\']
     out += [r'\bottomrule\end{tabular}\end{center}',r'\apartado{11. Interpretación}{'+prose(p['interpretation'])+'}',r'\apartado{12. Comprobación independiente y alcance}{'+prose(p['independent'])+'}',r'\apartado{13. Limitaciones}{'+prose(p['limits'])+'}']

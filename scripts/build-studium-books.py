@@ -106,6 +106,10 @@ def build(folder: Path, spec: dict, engine: str) -> list[dict]:
         source = Path(doc["source"])
         intermediate = output / source.stem
         intermediate.mkdir(exist_ok=True)
+        # An interrupted TeX process can leave an incomplete auxiliary command.
+        # Three passes resolve references from a clean state deterministically.
+        for suffix in ("aux", "toc", "lof", "lot", "out"):
+            (intermediate / f"{source.stem}.{suffix}").unlink(missing_ok=True)
         pdf = output / doc["output"]
         pdf.unlink(missing_ok=True)  # A failed rebuild must not expose a stale success.
         row = {"document": doc["title"], "source": str((work / source).relative_to(ROOT)),

@@ -1,0 +1,47 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} La cámara de extensión actúa sobre el pistón completo y la de retorno sobre el área anular. El equilibrio resta contrapresión y rozamiento. Continuidad da velocidad y caudal de retorno; el suministro de bomba se evalúa en su propia frontera.
+
+\begin{enumerate}
+
+\item Área completa de pistón.
+
+\[\fitmath{\mathrm{Ap}=\frac{\pi\cdot {0.05}^{2}}{4}\approx 0.001963495\,\mathrm{m^{2}}}\]
+
+\item Restar sección del vástago.
+
+\[\fitmath{\mathrm{Aa}=\frac{\pi\cdot \left({0.05}^{2}-{0.02}^{2}\right)}{4}\approx 0.001649336\,\mathrm{m^{2}}}\]
+
+\item Convertir litros por minuto.
+
+\[\fitmath{\mathrm{QA}=\frac{0.006}{60}\approx 0.0001\,\mathrm{m^{3}/s}}\]
+
+\item Fuerza útil al equilibrio.
+
+\[\fitmath{\mathrm{Fu}=12000000\cdot \mathrm{Ap}-1000000\cdot \mathrm{Aa}-800}\]
+
+\[\fitmath{\mathrm{Fu}=12000000\cdot (0.001963495408)-1000000\cdot (0.001649336143)-800\approx 21112.61\,\mathrm{N}}\]
+
+\item Velocidad por continuidad de entrada.
+
+\[\fitmath{v=\frac{\mathrm{QA}}{\mathrm{Ap}}}\]
+
+\[\fitmath{v=\frac{(0.0001)}{(0.001963495408)}\approx 0.05092958\,\mathrm{m/s}}\]
+
+\item Caudal de la cámara anular.
+
+\[\fitmath{\mathrm{QB}=\mathrm{Aa}\cdot v}\]
+
+\[\fitmath{\mathrm{QB}=(0.001649336143)\cdot (0.05092958179)\approx 8.4\times10^{-5}\,\mathrm{m^{3}/s}}\]
+
+\item Potencia de eje necesaria en la bomba.
+
+\[\fitmath{\mathrm{Pin}=\frac{12000000\cdot \mathrm{QA}}{0.85}}\]
+
+\[\fitmath{\mathrm{Pin}=\frac{12000000\cdot (0.0001)}{0.85}\approx 1411.765\,\mathrm{W}}\]
+
+\item Potencia que recibe la carga.
+
+\[\fitmath{\mathrm{Pu}=\mathrm{Fu}\cdot v}\]
+
+\[\fitmath{\mathrm{Pu}=(21112.60876)\cdot (0.05092958179)\approx 1075.256\,\mathrm{W}}\]
+
+\end{enumerate}

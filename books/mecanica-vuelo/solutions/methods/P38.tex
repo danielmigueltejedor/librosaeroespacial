@@ -1,0 +1,27 @@
+\textbf{Estado, presión de impacto y calibración.} En 6000 m ISA, $T=249.15\,\mathrm K$, $p=47181\,\mathrm{Pa}$, $\rho=0.6596968\,\mathrm{kg/m^3}$ y $a=\sqrt{1.4RT}=316.4284\,\mathrm{m/s}$. Para el sonido de referencia se usa $a_0=\sqrt{1.4R(288.15)}=340.294\,\mathrm{m/s}$. La relación $1+q_c/p=(1+0.2M^2)^{3.5}$ se despeja con potencia $2/7$, resta uno y raíz positiva.\begin{enumerate}
+
+\item Dividir TAS por sonido local.
+
+\[\fitmath{\mathrm{Ma}=\frac{170}{a}}\]
+
+\[\fitmath{\mathrm{Ma}=\frac{170}{(316.4283672)}\approx 0.5372464\,}\]
+
+\item Igualar presión dinámica a la referencia de densidad.
+
+\[\fitmath{\mathrm{EAS}=170\cdot \sqrt{\frac{\rho}{rho0}}}\]
+
+\[\fitmath{\mathrm{EAS}=170\cdot \sqrt{\frac{(0.6596967989)}{(1.225)}}\approx 124.7536\,\mathrm{m/s}}\]
+
+\item Calcular presión de impacto isentrópica, diferente de presión dinámica.
+
+\[\fitmath{\mathrm{qc}=p\cdot \left({\left(1+0.2\cdot {\mathrm{Ma}}^{2}\right)}^{3.5}-1\right)}\]
+
+\[\fitmath{\mathrm{qc}=(47181.00219)\cdot \left({\left(1+0.2\cdot {(0.5372463964)}^{2}\right)}^{3.5}-1\right)\approx 10240.47\,\mathrm{Pa}}\]
+
+\item Invertir la calibración isentrópica de nivel del mar.
+
+\[\fitmath{\mathrm{CAS}=a0\cdot \sqrt{5\cdot \left({\left(1+\frac{\mathrm{qc}}{p0}\right)}^{\frac{2}{7}}-1\right)}}\]
+
+\[\fitmath{\mathrm{CAS}=(340.293988)\cdot \sqrt{5\cdot \left({\left(1+\frac{(10240.47384)}{(101325)}\right)}^{\frac{2}{7}}-1\right)}\approx 127.0759\,\mathrm{m/s}}\]
+
+\end{enumerate}

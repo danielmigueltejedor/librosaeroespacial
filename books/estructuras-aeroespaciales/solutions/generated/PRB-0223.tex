@@ -1,0 +1,47 @@
+\begin{enumerate}
+
+\item Obtener área, centroide, I\_z, I\_y e I\_yz sumando aportaciones de pared y booms.
+
+\item Determinar los gradientes de tensión axial con ambos cortantes y el producto de inercia; integrar dq/ds en cada pared.
+
+\item Imponer continuidad y equilibrio en los nudos; en contornos abiertos q=0 en extremos libres y en celdas cerradas imponer compatibilidad de giros.
+
+\item Localizar el centro de cortadura anulando el torsor debido al flujo; calcular la tensión máxima por |q(s)|/t en paredes y puntos críticos.
+
+\item Las leyes completas q(s) por pared se indican a continuación; la coordenada s se mide desde el nudo inicial de cada pared y el sentido firmado sigue las flechas del diagrama. Los resultados geométricos se obtienen con la misma idealización de paredes y larguerillos del enunciado.
+
+\item Pared ala\_inferior: q(s) = $\frac{156}{7}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared alma: q(s) = $52$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared ala\_superior: q(s) = $\frac{156}{7}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared crítica: alma; s = 0 mm desde su nudo inicial.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área equivalente que soporta tensión axial.
+
+\[\fitmath{y_{1}=300+400+400+300\approx 1400\,\mathrm{mm^{2}}}\]
+
+\item Propiedades geométricas de la sección (centroide y momentos de inercia).
+
+\[\fitmath{z_G=30\,\mathrm{mm},\quad y_G=50\,\mathrm{mm}}\]
+
+\item Momentos de inercia del modelo en los ejes centroidales.
+
+\[\fitmath{I_z=3500000\,\mathrm{mm}^{4},\quad I_y=1680000\,\mathrm{mm}^{4},\quad I_{yz}=0\,\mathrm{mm}^{4}}\]
+
+\item Centro de cortadura a partir del equilibrio de los flujos; coordenadas del modelo.
+
+\[\fitmath{z_C=-30\,\mathrm{mm},\quad y_C=50\,\mathrm{mm}}\]
+
+\item Tensión máxima |q|/t en pared alma.
+
+\[\fitmath{y_{5}=\frac{\left|52\right|}{\frac{3}{2}}\approx 34.66667\,\mathrm{MPa}}\]
+
+\end{enumerate}

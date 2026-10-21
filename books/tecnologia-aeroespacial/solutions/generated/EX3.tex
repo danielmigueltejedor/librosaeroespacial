@@ -1,0 +1,114 @@
+\subsection*{Procedimiento y operaciones del simulacro 3}
+Para ascenso se calcula primero la resistencia nivelada y se usa la aproximación declarada de exceso de potencia. Para giro se exige $L=nW$, por lo que cambia la resistencia inducida. El cohete, la órbita y los circuitos se resuelven con balances separados; no se iguala velocidad orbital a incremento ideal de velocidad.
+
+\begin{enumerate}
+
+\item Escala de fuerza.
+
+\[\fitmath{\mathrm{qS}=0.5\cdot 0.9\cdot {65}^{2}\cdot 20\approx 38025\,\mathrm{N}}\]
+
+\item Sustentación nivelada.
+
+\[\fitmath{C_L=\frac{36000}{\mathrm{qS}}}\]
+
+\[\fitmath{C_L=\frac{36000}{(38025)}\approx 0.9467456\,}\]
+
+\item Polar nivelada.
+
+\[\fitmath{C_D=0.024+0.055\cdot {C_L}^{2}}\]
+
+\[\fitmath{C_D=0.024+0.055\cdot {(0.9467455621)}^{2}\approx 0.07329799\,}\]
+
+\item Resistencia nivelada.
+
+\[\fitmath{D=\mathrm{qS}\cdot C_D}\]
+
+\[\fitmath{D=(38025)\cdot (0.07329799377)\approx 2787.156\,\mathrm{N}}\]
+
+\item Exceso de potencia dividido por peso, aproximando sustentación por peso.
+
+\[\fitmath{\mathrm{hdot}=\frac{\left(4300-D\right)\cdot 65}{36000}}\]
+
+\[\fitmath{\mathrm{hdot}=\frac{\left(4300-(2787.156213)\right)\cdot 65}{36000}\approx 2.731524\,\mathrm{m/s}}\]
+
+\item Equilibrio vertical del giro coordinado.
+
+\[\fitmath{n=\frac{1}{\cos\left(\frac{\pi}{4}\right)}\approx 1.414214\,}\]
+
+\item Sustentación requerida en giro.
+
+\[\fitmath{\mathrm{CLt}=\frac{n\cdot 36000}{\mathrm{qS}}}\]
+
+\[\fitmath{\mathrm{CLt}=\frac{(1.414213562)\cdot 36000}{(38025)}\approx 1.3389\,}\]
+
+\item Polar con el nuevo coeficiente.
+
+\[\fitmath{\mathrm{CDt}=0.024+0.055\cdot {\mathrm{CLt}}^{2}}\]
+
+\[\fitmath{\mathrm{CDt}=0.024+0.055\cdot {(1.338900414)}^{2}\approx 0.122596\,}\]
+
+\item Resistencia de giro.
+
+\[\fitmath{\mathrm{Dt}=\mathrm{qS}\cdot \mathrm{CDt}}\]
+
+\[\fitmath{\mathrm{Dt}=(38025)\cdot (0.1225959875)\approx 4661.712\,\mathrm{N}}\]
+
+\item Margen de sustentación positivo.
+
+\[\fitmath{\mathrm{marginL}=1.45-\mathrm{CLt}}\]
+
+\[\fitmath{\mathrm{marginL}=1.45-(1.338900414)\approx 0.1110996\,}\]
+
+\item Margen de empuje negativo: el giro no se sostiene.
+
+\[\fitmath{\mathrm{marginT}=4300-\mathrm{Dt}}\]
+
+\[\fitmath{\mathrm{marginT}=4300-(4661.712426)\approx -361.7124\,\mathrm{N}}\]
+
+\item Integrar ecuación del cohete con impulso específico constante.
+
+\[\fitmath{\mathrm{dv}=298\cdot 9.80665\cdot \ln\left(\frac{1800}{650}\right)\approx 2976.649\,\mathrm{m/s}}\]
+
+\item Convertir radio orbital a SI.
+
+\[\fitmath{r=6971\cdot 1000\approx 6971000\,\mathrm{m}}\]
+
+\item Igualar aceleración gravitatoria y centrípeta.
+
+\[\fitmath{\mathrm{Vc}=\sqrt{\frac{3.986004418\times10^{14}}{r}}}\]
+
+\[\fitmath{\mathrm{Vc}=\sqrt{\frac{3.986004418\times10^{14}}{(6971000)}}\approx 7561.733\,\mathrm{m/s}}\]
+
+\item Longitud de la órbita dividida por velocidad circular.
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi\cdot r}{\mathrm{Vc}}}\]
+
+\[\fitmath{\mathrm{period}=\frac{2\cdot \pi\cdot (6971000)}{(7561.733137)}\approx 5792.334\,\mathrm{s}}\]
+
+\item Potencia hidráulica útil.
+
+\[\fitmath{\mathrm{Ph}=14000000\cdot 0.0003\approx 4200\,\mathrm{W}}\]
+
+\item Dividir por rendimiento global.
+
+\[\fitmath{\mathrm{Pin}=\frac{\mathrm{Ph}}{0.8}}\]
+
+\[\fitmath{\mathrm{Pin}=\frac{(4200)}{0.8}\approx 5250\,\mathrm{W}}\]
+
+\item Corriente nominal con la tensión ideal de carga especificada.
+
+\[\fitmath{I=\frac{1200}{28}\approx 42.85714\,\mathrm{A}}\]
+
+\item Disipación de ida y retorno.
+
+\[\fitmath{\mathrm{Ploss}={I}^{2}\cdot 0.04}\]
+
+\[\fitmath{\mathrm{Ploss}={(42.85714286)}^{2}\cdot 0.04\approx 73.46939\,\mathrm{W}}\]
+
+\item Caída de tensión asociada; cuantifica la aproximación de tensión nominal.
+
+\[\fitmath{\mathrm{drop}=I\cdot 0.04}\]
+
+\[\fitmath{\mathrm{drop}=(42.85714286)\cdot 0.04\approx 1.714286\,\mathrm{V}}\]
+
+\end{enumerate}

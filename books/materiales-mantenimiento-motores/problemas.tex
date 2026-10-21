@@ -16,7 +16,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Pequeñas deformaciones; sección constante; sin efectos térmicos; análisis lejos de los extremos.}
 \apartado{Ecuaciones}{\[\sigma=F/A,\quad\varepsilon=\sigma/E,\quad\Delta L=FL_0/(AE).\]}
 \apartado{Desarrollo algebraico}{De $F=\sigma A$ se aísla $\sigma$; Hooke da $\varepsilon=\sigma/E$ y la definición de deformación da $\Delta L=\varepsilon L_0$.}
-\apartado{Sustitución numérica}{$\sigma=8400/(70\times10^{-6})$ Pa; $\varepsilon=120\times10^6/(72\times10^9)$; $\Delta L=(1{,}6667\times10^{-3})(0{,}180)$ m.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P01.tex}
 \caso{Resultado}{$\sigma=120\,\mathrm{MPa}$, $\varepsilon=1{,}6667\times10^{-3}$, $\Delta L=0{,}300\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{Pa, m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La elongación responde a la rigidez axial; la tensión compara fuerza y área, sin verificar todavía cedencia.}
@@ -30,7 +31,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Temperatura uniforme; apoyos rígidos; propiedades constantes; se supone régimen elástico y no se estudia pandeo.}
 \apartado{Ecuaciones}{\[\varepsilon=\sigma/E+\alpha\Delta T=0,\quad\sigma=-E\alpha\Delta T,\quad\Delta L_{libre}=\alpha\Delta T L.\]}
 \apartado{Desarrollo algebraico}{La compatibilidad fija $0=\sigma/E+\alpha\Delta T$, de donde $\sigma=-E\alpha\Delta T$. En expansión libre, $\Delta L=\alpha\Delta T L$.}
-\apartado{Sustitución numérica}{$\Delta L=(9\times10^{-6})(80)(0{,}40)$ m; $\sigma=-(110\times10^9)(9\times10^{-6})(80)$ Pa.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P02.tex}
 \caso{Resultado}{$\Delta L_{libre}=0{,}288\,\mathrm{mm}$; $\sigma=-79{,}2\,\mathrm{MPa}$ (compresión).}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m, Pa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La compresión impide la expansión libre; una estructura flexible daría otra compatibilidad.}
@@ -45,7 +47,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Ecuaciones}{\[\sigma_{1,2}=60\pm\sqrt{90^2+40^2}\ \mathrm{MPa}.\]
 \[\sigma_{VM}=\sqrt{150^2-150(-30)+(-30)^2+3(40)^2}\ \mathrm{MPa}.\]}
 \apartado{Desarrollo algebraico}{La ecuación característica del bloque plano es $(150-s)(-30-s)-40^2=0$ en MPa. Sus raíces son $60\pm\sqrt{9700}$. Se añade la principal nula fuera del plano para el estado tridimensional.}
-\apartado{Sustitución numérica}{$\sigma_{VM}=\sqrt{150^2-150(-30)+(-30)^2+3(40)^2}=\sqrt{32700}$ MPa. El cociente frente al límite es $300/\sqrt{32700}$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P03.tex}
 \caso{Resultado}{$\sigma_1=158{,}489$, $\sigma_2=-38{,}489\,\mathrm{MPa}$; $\sigma_{VM}=180{,}831\,\mathrm{MPa}$; cociente $1{,}659$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El equivalente sirve para comparar cedencia en el modelo declarado, mientras las principales describen planos sin cortante.}
@@ -59,7 +62,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Radio medio; presión uniforme; extremos cerrados; sin concentraciones ni flexión local; tensión radial despreciable.}
 \apartado{Ecuaciones}{\[\sigma_\theta=pr/t,\quad\sigma_z=pr/(2 t),\quad\sigma_{VM}=\sqrt{\sigma_\theta^2-\sigma_\theta\sigma_z+\sigma_z^2}.\]}
 \apartado{Desarrollo algebraico}{El equilibrio de un corte diametral da $2\sigma_\theta t\ell=2pr\ell$; el del extremo cerrado da $\sigma_z(2\pi rt)=p\pi r^2$. Así se obtienen las dos tensiones.}
-\apartado{Sustitución numérica}{$\sigma_\theta=(2\times10^6)(0{,}05)/0{,}001$ Pa; $\sigma_z=\sigma_\theta/2$; $\sigma_{VM}=\sqrt{100^2-100(50)+50^2}$ MPa.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P04.tex}
 \caso{Resultado}{$\sigma_\theta=100\,\mathrm{MPa}$; $\sigma_z=50\,\mathrm{MPa}$; $\sigma_{VM}=86{,}603\,\mathrm{MPa}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{Pa, MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La geometría de equilibrio explica la razón dos entre tensiones; el equivalente combina ambas.}
@@ -73,7 +77,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Carga uniaxial uniforme y reversible; sin energía plástica ni térmica.}
 \apartado{Ecuaciones}{\[u=\int_0^{\varepsilon}E\eta\,d\eta=\sigma^2/(2 E),\quad U=u V.\]}
 \apartado{Desarrollo algebraico}{Se integra $du=\sigma\,d\varepsilon=E\varepsilon\,d\varepsilon$ desde cero. Resulta $u=E\varepsilon^2/2=\sigma^2/(2E)$; $U=uV$.}
-\apartado{Sustitución numérica}{$u=(160\times10^6)^2/[2(80\times10^9)]$ J/m$^3$; $U=160000(12\times10^{-6})$ J.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P05.tex}
 \caso{Resultado}{$ u=160\,000\,\mathrm{J/m^3}$; $U=1{,}92\,\mathrm J$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{Pa, J}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La energía es trabajo recuperable en el modelo elástico y no energía de rotura.}
@@ -87,7 +92,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{El valor de q es un dato ficticio válido solo para esta situación; la curva de referencia corresponde a material sin ese detalle.}
 \apartado{Ecuaciones}{\[K_f=1+q(K_t-1),\quad\sigma_{a, f}=K_f\sigma_a,\quad\sigma_{a, el}=K_t\sigma_a.\]}
 \apartado{Desarrollo algebraico}{Se calcula primero $K_f=1+q(K_t-1)$. Las dos amplificaciones se aplican por separado a la misma amplitud nominal, sin multiplicar $K_f$ por $K_t$.}
-\apartado{Sustitución numérica}{$K_f=1+0{,}70(2{,}4-1)=1{,}98$; $K_f\sigma_a=1{,}98(60)$ MPa; $K_t\sigma_a=2{,}4(60)$ MPa.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P06.tex}
 \caso{Resultado}{$K_f=1{,}98$; $\sigma_{a,f}=118{,}8\,\mathrm{MPa}$; pico elástico de amplitud $144\,\mathrm{MPa}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional, MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El efecto de entalla en fatiga es menor que la concentración elástica para la sensibilidad adoptada.}
@@ -101,7 +107,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Longitud y carga iguales; se puede elegir libremente área; no hay restricción de rigidez, unión ni temperatura.}
 \apartado{Ecuaciones}{\[A_{min}=F/\sigma_{adm},\quad m_{min}=\rho FL/\sigma_{adm}.\]}
 \apartado{Desarrollo algebraico}{El área mínima es $F/\sigma_{adm}$. Sustituir en $m=\rho AL$ da $m=\rho FL/\sigma_{adm}$, con un área distinta para cada material.}
-\apartado{Sustitución numérica}{$m_A=2800(40000)(0{,}50)/(300\times10^6)$ kg; $m_B=4500(40000)(0{,}50)/(650\times10^6)$ kg.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P34.tex}
 \caso{Resultado}{$A_A=133{,}333\,\mathrm{mm^2}$, $A_B=61{,}538\,\mathrm{mm^2}$; $ m_A=0.18667\,\mathrm{kg}$, $ m_B=0.13846\,\mathrm{kg}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{kg}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El material más denso puede producir menor masa cuando gobierna resistencia y cambia el área.}
@@ -117,7 +124,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Pequeña plastificación y tenacidad de deformación plana asumidas; carga remota; no crecimiento subcrítico.}
 \apartado{Ecuaciones}{\[K_I=Y\sigma\sqrt{\pi a}.\]}
 \apartado{Desarrollo algebraico}{Con $Y$ dado, se evalúa $K_I$ y se divide por la tenacidad supuesta: $K_I/K_{IC}=Y\sigma\sqrt{\pi a}/K_{IC}$. No se sustituye $a$ por una longitud total.}
-\apartado{Sustitución numérica}{$K_I=1{,}12(210)\sqrt{\pi(0{,}0018)}$ MPa$\sqrt{\mathrm m}$; el cociente divide ese valor por 42 en la misma unidad.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P07.tex}
 \caso{Resultado}{$K_I=17.6868\,\mathrm{MPa\sqrt m}$; $K_I/K_{IC}=0.4211$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad resulta inferior a la tenacidad supuesta, con una conclusión estática y condicionada.}
@@ -131,7 +139,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Y constante; tenacidad aplicable; carga uniforme y pequeña zona plástica.}
 \apartado{Ecuaciones}{\[a_c=(K_{IC}/\sigma)^2/\pi,\quad \sigma_c=K_{IC}/\sqrt{\pi a_i}.\]}
 \apartado{Desarrollo algebraico}{Elevar $K_{IC}=\sigma\sqrt{\pi a_c}$ al cuadrado y aislar da $a_c=K_{IC}^2/(\pi\sigma^2)$. Para el defecto inicial se aísla tensión, no tamaño.}
-\apartado{Sustitución numérica}{$a_i=0{,}0015$ m; $a_c=(36/240)^2/\pi$ m; $\sigma_c=36/\sqrt{\pi(0{,}0015)}$ MPa.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P08.tex}
 \caso{Resultado}{$ a_c=7.1620\,\mathrm{mm}$; $2a_c=14.3239\,\mathrm{mm}$; $\sigma_c=524.423\,\mathrm{MPa}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m, MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La longitud crítica total duplica la semilongitud; el defecto inicial requiere su propia tensión crítica.}
@@ -145,7 +154,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Se utiliza como condición necesaria de estudio; no como certificación de ensayo normalizado.}
 \apartado{Ecuaciones}{\[\ell_{min}=2{,}5(K/\sigma_y)^2.\]}
 \apartado{Desarrollo algebraico}{Se evalúa la longitud de cribado y después se compara con el espesor: $B/\ell_{min}$. No se invierte el sentido de la desigualdad.}
-\apartado{Sustitución numérica}{$\ell_{min}=2{,}5(48/900)^2$ m $=7{,}111$ mm; $B/\ell_{min}=5/7{,}111<1$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P09.tex}
 \caso{Resultado}{$\ell_{min}=7{,}111\,\mathrm{mm}>B=5\,\mathrm{mm}$; el espesor no satisface el cribado.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El espesor es insuficiente para el cribado, por lo que la denominación de tenacidad plana no está demostrada.}
@@ -159,7 +169,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Placa central pasante; convención W de anchura total; dominio de Y indicado; pequeña plastificación supuesta.}
 \apartado{Ecuaciones}{\[180\sqrt{\pi a/\cos(\pi a/0{,}08)}=30.\]}
 \apartado{Desarrollo algebraico}{La ecuación implícita es $f(a)=180\sqrt{\pi a/\cos(\pi a/0{,}08)}-30=0$. Se usa bisección en $0<a<0{,}04$ m; el argumento es positivo y la función crece en el dominio.}
-\apartado{Sustitución numérica}{La raíz se sustituye en $180\sqrt{\pi a/\cos(\pi a/0{,}08)}$. El valor de intensidad debe recuperar 30. La comparación de placa infinita es $a_{\infty}=(30/180)^2/\pi$ m.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P10.tex}
 \caso{Resultado}{$ a_c=8.36874\,\mathrm{mm}$; con $Y=1$, $ a_{c,\infty}=8.84194\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La corrección por anchura eleva intensidad y reduce el tamaño crítico respecto a la placa infinita.}
@@ -175,7 +186,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Datos ficticios para condiciones compatibles; no plasticidad y no factor de seguridad adicional.}
 \apartado{Ecuaciones}{\[\sigma_a=\sigma_m=\sigma_{max}/2,\quad\sigma_{max}=2/(1/S_e+1/S_u).\]}
 \apartado{Desarrollo algebraico}{Para $R=0$, $\sigma_a=\sigma_m=\sigma_{max}/2$. Goodman se convierte en $(\sigma_{max}/2)(1/S_e+1/S_u)=1$.}
-\apartado{Sustitución numérica}{$\sigma_{max}=2/(1/240+1/800)$ MPa. Amplitud y media son la mitad de ese máximo.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P11.tex}
 \caso{Resultado}{$\sigma_{max}=369{,}231\,\mathrm{MPa}$; $\sigma_a=\sigma_m=184{,}615\,\mathrm{MPa}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La tensión media consume parte del margen del modelo de Goodman; máximo y amplitud deben distinguirse.}
@@ -189,7 +201,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{R=-1; misma superficie y temperatura; se interpola dentro del dominio de los dos datos.}
 \apartado{Ecuaciones}{\[b=\ln(\sigma_{a 2}/\sigma_{a 1})/\ln(N_2/N_1),\quad A=\sigma_{a 1}/N_1^b,\quad N=(280/A)^{1/b}.\]}
 \apartado{Desarrollo algebraico}{Al dividir las dos leyes $\sigma_a=AN^b$ se elimina $A$: $\sigma_{a2}/\sigma_{a1}=(N_2/N_1)^b$. Un logaritmo permite aislar $b$, y después $A=\sigma_{a1}/N_1^b$.}
-\apartado{Sustitución numérica}{$b=\ln(220/400)/\ln(10^6/10^4)$; $A=400/(10^4)^b$ MPa; $N=(280/A)^{1/b}$ ciclos.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P12.tex}
 \caso{Resultado}{$ b=-0.129819$; $A=1322.3140\,\mathrm{MPa}$; $N=156033.6$ ciclos.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La interpolación asigna una vida solo dentro del tramo y convención de la curva ajustada.}
@@ -203,7 +216,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Niveles de carga definidos por vidas de referencia compatibles; no interacción ni efecto de secuencia.}
 \apartado{Ecuaciones}{\[n_1/N_1+n_2/N_2=1,\quad n_2=N_2(1-n_1/N_1).\]}
 \apartado{Desarrollo algebraico}{De $n_1/N_1+n_2/N_2=1$ se obtiene $n_2=N_2(1-n_1/N_1)$. El paréntesis debe ser no negativo para que exista margen en este modelo.}
-\apartado{Sustitución numérica}{$n_2=30000(1-18000/120000)=30000(0{,}85)$ ciclos.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P13.tex}
 \caso{Resultado}{$ n_2=25\,500$ ciclos.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El daño previo consume una fracción de la vida idealizada; la vida restante depende del siguiente nivel.}
@@ -217,7 +231,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Datos del mismo modelo de vida; secuencia no representada; sin dispersión.}
 \apartado{Ecuaciones}{\[D_b=120/60000+30/10000,\quad B=1/D_b.\]}
 \apartado{Desarrollo algebraico}{El daño de un bloque es suma de sus fracciones. Tras $B$ bloques, $D=B D_b$; el criterio unitario da $B=1/D_b$.}
-\apartado{Sustitución numérica}{$D_b=120/60000+30/10000=0{,}005$; $B=1/0{,}005=200$ bloques.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P14.tex}
 \caso{Resultado}{$D_b=0{,}005$; $B=200$ misiones al criterio. Tras 199, $D=0{,}995$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Los bloques acumulan daño linealmente y el fallo idealizado puede caer dentro de un bloque.}
@@ -231,7 +246,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Ambos extremos de carga en tracción; Y y a constantes durante el ciclo; tenacidad supuesta aplicable.}
 \apartado{Ecuaciones}{\[K_{max, min}=Y\sigma_{max, min}\sqrt{\pi a},\quad\Delta K=Y(\sigma_{max}-\sigma_{min})\sqrt{\pi a}.\]}
 \apartado{Desarrollo algebraico}{Se calcula $\sigma_{min}=R\sigma_{max}$ y después $\Delta\sigma=(1-R)\sigma_{max}$. La misma geometría permite escribir $\Delta K=(1-R)K_{max}$.}
-\apartado{Sustitución numérica}{$R=40/200=0{,}2$; $\Delta\sigma=200-40=160$ MPa. $K_{max}=1{,}1(200)\sqrt{\pi(0{,}0025)}$ y $\Delta K=1{,}1(160)\sqrt{\pi(0{,}0025)}$, ambos en MPa$\sqrt{\mathrm m}$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P15.tex}
 \caso{Resultado}{$K_{max}=19.4970$; $K_{min}=3.8994$; $\Delta K=15.5976\,\mathrm{MPa\sqrt m}$; $R=0{,}20$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad máxima y el rango responden a preguntas físicas distintas: inestabilidad y crecimiento.}
@@ -245,7 +261,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Grieta larga; región intermedia válida durante todo el intervalo supuesto; sin cierre, retardos ni iniciación. El estado final se supone admisible por un criterio independiente.}
 \apartado{Ecuaciones}{\[N=\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(\Delta\sigma\sqrt\pi)^3}.\]}
 \apartado{Desarrollo algebraico}{La separación da $dN=a^{-3/2}da/[C(\Delta\sigma\sqrt\pi)^3]$. La primitiva es $-2a^{-1/2}$ y al evaluar extremos queda una vida positiva.}
-\apartado{Sustitución numérica}{$N=2(0{,}001^{-1/2}-0{,}006^{-1/2})/[2\times10^{-12}(110\sqrt\pi)^3]$ ciclos.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P16.tex}
 \caso{Resultado}{$N=2524856.2$ ciclos de propagación.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La vida calculada cubre crecimiento entre tamaños, sin añadir iniciación ni certificar detectabilidad.}
@@ -259,7 +276,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Región de Paris y condiciones constantes asumidas; mismos límites físicos que P16.}
 \apartado{Ecuaciones}{\[N=\frac{\ln(a_f/a_i)}{C(\Delta\sigma\sqrt\pi)^2}.\]}
 \apartado{Desarrollo algebraico}{Con exponente dos, el integrando es proporcional a $1/a$. Se integra como $\ln a$; el cociente de tamaños dentro del logaritmo es adimensional.}
-\apartado{Sustitución numérica}{$N=\ln(0{,}005/0{,}0008)/[5\times10^{-10}(90\sqrt\pi)^2]$ ciclos.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P17.tex}
 \caso{Resultado}{$N=144031.8$ ciclos.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El exponente dos cambia la primitiva a un logaritmo y requiere mantener unidades del coeficiente.}
@@ -273,7 +291,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Región de Paris supuesta; tamaño inicial no representa una POD validada; el factor 0,4 no es reglamentario.}
 \apartado{Ecuaciones}{\[N=2(a_i^{-1/2}-a_f^{-1/2})/[C(\Delta\sigma\sqrt\pi)^3],\quad I=0{,}4 N.\]}
 \apartado{Desarrollo algebraico}{Se integra Paris con exponente tres antes de aplicar la fracción: $I=0{,}4N$. Si se exige entero, se redondea el intervalo hacia abajo.}
-\apartado{Sustitución numérica}{$N=2(0{,}0007^{-1/2}-0{,}004^{-1/2})/[1{,}5\times10^{-12}(100\sqrt\pi)^3]$ ciclos; después se multiplica por $0{,}4$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P18.tex}
 \caso{Resultado}{$N=5264311.3$ ciclos; $I=2105724.5$ ciclos, o 2105724 ciclos enteros redondeados hacia abajo.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La fracción académica reduce el intervalo respecto a la vida de propagación, sin ser regla reglamentaria.}
@@ -289,7 +308,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Misma microestructura y régimen; solo tramo secundario; tensión constante durante 20 h.}
 \apartado{Ecuaciones}{\[\dot\varepsilon_2=\dot\varepsilon_1(\sigma_2/\sigma_1)^n,\quad\Delta\varepsilon=\dot\varepsilon_2 t.\]}
 \apartado{Desarrollo algebraico}{A temperatura fija se divide la ley de Norton en ambos estados y se elimina el prefactor: $\dot\varepsilon_2/\dot\varepsilon_1=(\sigma_2/\sigma_1)^n$.}
-\apartado{Sustitución numérica}{$\dot\varepsilon_2=2\times10^{-8}(240/200)^5$ s$^{-1}$; $\Delta\varepsilon=\dot\varepsilon_2(20\times3600)$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P19.tex}
 \caso{Resultado}{$\dot\varepsilon_2=4{,}97664\times10^{-8}\,\mathrm{s^{-1}}$; $\Delta\varepsilon=0{,}00358318$ (0,3583\%).}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{1/s, adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La potencia de tensión amplifica un cambio moderado de carga; el tiempo convierte tasa en deformación.}
@@ -303,7 +323,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Mismos Q y n y estado; constantes con unidades coherentes; temperatura absoluta.}
 \apartado{Ecuaciones}{\[\dot\varepsilon_2/\dot\varepsilon_1=(200/180)^4\exp[-220000/R(1/980-1/930)].\]}
 \apartado{Desarrollo algebraico}{Al dividir Norton--Arrhenius se eliminan constantes comunes y se conservan razón de tensión y diferencia de inversas de temperatura. Cada factor es adimensional.}
-\apartado{Sustitución numérica}{$r=(200/180)^4\exp[-220000(1/980-1/930)/8{,}314462618]$; $\dot\varepsilon_2=r\,10^{-8}$ s$^{-1}$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P20.tex}
 \caso{Resultado}{Factor térmico 4.26998; razón total 6.50812; $\dot\varepsilon_2=6.508119\times10^{-8}\,\mathrm{s^{-1}}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Ambos cambios elevan la tasa del mecanismo asumido; no se deduce por ello una vida de rotura.}
@@ -317,7 +338,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Mismo material, estado, mecanismo y tensión; correlación supuesta válida.}
 \apartado{Ecuaciones}{\[P=T_1(C_{LM}+\log_{10}t_1),\quad \log_{10}t_2=P/T_2-C_{LM}.\]}
 \apartado{Desarrollo algebraico}{La igualdad de parámetros a igual tensión permite aislar $\log_{10}t_2=P/T_2-C_{LM}$; aplicar la potencia de diez devuelve horas.}
-\apartado{Sustitución numérica}{$P=900(20+\log_{10}10000)=21600$ K; $t_2=10^{21600/950-20}$ h.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P21.tex}
 \caso{Resultado}{$ t_2=545.5595\,\mathrm h $; $P=21600\,\mathrm K$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{h}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La exposición más caliente corresponde a menor tiempo bajo la correlación y la misma tensión.}
@@ -331,7 +353,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Carga y temperatura constantes; no primaria/terciaria; la tasa se asume válida durante todo el intervalo.}
 \apartado{Ecuaciones}{\[\varepsilon_e=\sigma/E,\quad t=(\varepsilon_{lim}-\varepsilon_e)/\dot\varepsilon_s.\]}
 \apartado{Desarrollo algebraico}{Se resta primero elasticidad: $\varepsilon_c=\varepsilon_{lim}-\sigma/E$. A tasa constante, $t=\varepsilon_c/\dot\varepsilon_s$.}
-\apartado{Sustitución numérica}{$\varepsilon_c=0{,}0012-100\times10^6/(200\times10^9)=0{,}0007$; $t=0{,}0007/(2\times10^{-8})$ s.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P22.tex}
 \caso{Resultado}{$ t=35000\,\mathrm s=9.72222\,\mathrm h $.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{s}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La elasticidad ya consume parte del límite; el tiempo usa únicamente la deformación todavía disponible.}
@@ -347,7 +370,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Isodeformación longitudinal; fases lineales; sin porosidad; no se calcula resistencia a rotura.}
 \apartado{Ecuaciones}{\[E_L=V_f E_f+(1-V_f)E_m,\quad\rho=V_f\rho_f+(1-V_f)\rho_m.\]}
 \apartado{Desarrollo algebraico}{La igualdad de deformación longitudinal permite sumar fuerzas de fases y obtener la regla de mezcla. Densidad usa la misma partición volumétrica sin vacíos.}
-\apartado{Sustitución numérica}{$E_L=0{,}58(240)+0{,}42(3{,}5)$ GPa; $\rho=0{,}58(1800)+0{,}42(1200)$ kg/m$^3$; se convierte GPa a Pa antes de dividir.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P23.tex}
 \caso{Resultado}{$E_L=140.670\,\mathrm{GPa}$; $\rho=1548.0\,\mathrm{kg/m^3}$; $E_L/\rho=9.08721\times10^{7}\,\mathrm{m^2/s^2}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{GPa}$, $\mathrm{kg\,m^{-3}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La fracción de fibra eleva rigidez longitudinal y modifica masa dentro de una idealización sin vacíos.}
@@ -361,7 +385,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Geometría idealizada; elasticidad de fases; se ignoran campos no uniformes e interfaces reales.}
 \apartado{Ecuaciones}{\[1/E_T=V_f/E_f+(1-V_f)/E_m.\]}
 \apartado{Desarrollo algebraico}{En serie se suman deformaciones ponderadas a igual tensión. Dividir por tensión da la suma de flexibilidades y después se invierte.}
-\apartado{Sustitución numérica}{$E_T=[0{,}58/240+0{,}42/3{,}5]^{-1}$ GPa; $E_L/E_T=140{,}67/E_T$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P24.tex}
 \caso{Resultado}{$E_T=8.16882\,\mathrm{GPa}$; cociente $E_L/E_T=17.220$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{GPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La matriz domina buena parte de la deformación transversal del modelo en serie.}
@@ -375,7 +400,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Unión perfecta; núcleo mantiene separación; se ignora cortadura del núcleo, inestabilidad y masa del mismo.}
 \apartado{Ecuaciones}{\[EI=2 E[bt^3/12+bt(h/2)^2],\quad EI_0=Eb(2 t)^3/12.\]}
 \apartado{Desarrollo algebraico}{Para cada cara, $I=bt^3/12+bt(h/2)^2$. Se suman las dos y se multiplica por $E$. La referencia monolítica usa espesor $2t$.}
-\apartado{Sustitución numérica}{$EI=2(70\times10^9)(0{,}04)(0{,}001)[0{,}03^2/4+0{,}001^2/12]$ N m$^2$; $EI_0=(70\times10^9)(0{,}04)(0{,}002)^3/12$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P25.tex}
 \caso{Resultado}{$EI=1260.4667\,\mathrm{N\,m^2}$; $EI_0=1.86667\,\mathrm{N\,m^2}$; razón 675.25.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{N\,m^{2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Separar caras aumenta inercia, pero el beneficio exige que núcleo y unión mantengan la arquitectura.}
@@ -389,7 +415,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Mismo mecanismo y ambiente; no desprendimiento; x es espesor de óxido, no pérdida de metal.}
 \apartado{Ecuaciones}{\[x=\sqrt{k_pt},\quad t(2 x)=4 t(x).\]}
 \apartado{Desarrollo algebraico}{De $x^2=k_pt$ resulta $x=\sqrt{k_pt}$ para espesor positivo. Con el mismo coeficiente, $(2x)^2=k_pt_2$ da $t_2=4t$.}
-\apartado{Sustitución numérica}{$t=250(3600)=900000$ s; $x=\sqrt{3\times10^{-16}(900000)}$ m; $t_2=4(250)$ h.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P26.tex}
 \caso{Resultado}{$ x=16.43168\,\mu\mathrm m $; doble espesor a 1000 h.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Duplicar espesor exige cuadruplicar tiempo en la ley parabólica, sin medir directamente metal consumido.}
@@ -403,7 +430,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Se descontó tiempo de acoplamiento; haz normal; trayectoria de ida y vuelta; material homogéneo.}
 \apartado{Ecuaciones}{\[d=vt/2.\]}
 \apartado{Desarrollo algebraico}{La distancia recorrida es $vt$ y corresponde a dos profundidades: $2d=vt$. Aislar da $d=vt/2$.}
-\apartado{Sustitución numérica}{$d=5900(8\times10^{-6})/2$ m.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P27.tex}
 \caso{Resultado}{$ d=23{,}6\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El factor dos procede del recorrido de retorno; el eco no caracteriza por sí solo tamaño o aceptación.}
@@ -417,7 +445,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Conductividad y permeabilidad constantes; geometría ideal; no se modeliza una sonda real.}
 \apartado{Ecuaciones}{\[\delta=1/\sqrt{\pi f\mu\sigma_e},\quad\delta(4 f)=\delta(f)/2.\]}
 \apartado{Desarrollo algebraico}{La profundidad depende de $f^{-1/2}$ a propiedades constantes. Por tanto $\delta(4f)/\delta(f)=4^{-1/2}=1/2$.}
-\apartado{Sustitución numérica}{$\delta=[\pi(100000)(4\pi\times10^{-7})(35\times10^6)]^{-1/2}$ m.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P28.tex}
 \caso{Resultado}{$\delta=0.26902\,\mathrm{mm}$; a 400 k Hz, $\delta=0.13451\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La mayor frecuencia reduce profundidad pelicular, sin fijar una detección garantizada.}
@@ -432,7 +461,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Ecuaciones}{\[q^{\prime\prime}=(T_g-T_c)/(1/h_g+\delta_r/k_r+\delta_m/k_m+1/h_c),\]
 \[T_{r-m}=T_g-q^{\prime\prime}/h_g-q^{\prime\prime}\delta_r/k_r.\]}
 \apartado{Desarrollo algebraico}{En régimen 1D estacionario el flujo es común a todas las resistencias. La suma de caídas da $T_g-T_c=q^{\prime\prime}R_{tot}$. Después se restan convección caliente y recubrimiento para hallar la interfaz.}
-\apartado{Sustitución numérica}{$R_{tot}=1/1000+0{,}0003/1{,}5+0{,}002/20+1/3000$ m$^2$ K/W; $q^{\prime\prime}=700/R_{tot}$; $T_{r-m}=1400-q^{\prime\prime}(1/1000+0{,}0003/1{,}5)$ K.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P35.tex}
 \caso{Resultado}{$ q^{\prime\prime}=428571.429\,\mathrm{W/m^2}$; $T_{r-m}=885.714\,\mathrm K$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{W\,m^{-2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El reparto de caídas térmicas determina la interfaz dentro de la pared plana idealizada.}
@@ -448,7 +478,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Eventos comparables; exposición conocida; modelo homogéneo; no se da intervalo de confianza en este caso.}
 \apartado{Ecuaciones}{\[\widehat\lambda=n/T,\quad MTBF=1/\widehat\lambda,\quad R(t)=e^{-\widehat\lambda t}.\]}
 \apartado{Desarrollo algebraico}{La estimación de tasa es eventos divididos por exposición. Bajo el modelo declarado, se integra tasa constante para obtener supervivencia exponencial.}
-\apartado{Sustitución numérica}{$\widehat\lambda=5/25000=0{,}0002$ h$^{-1}$; $MTBF=1/0{,}0002$ h; $R(100)=\exp[-0{,}0002(100)]$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P29.tex}
 \caso{Resultado}{$\widehat\lambda=2\times10^{-4}\,\mathrm{h^{-1}}$; $MTBF=5000\,\mathrm h $; $R(100)=0.9801987$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La tasa observada y supervivencia son estimaciones condicionadas al modelo y población.}
@@ -462,7 +493,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Tiempos medios representativos; no incluye mantenimiento programado ni otras paradas.}
 \apartado{Ecuaciones}{\[A_i=600/(600+3),\quad A_{ext}=600/(600+3+12).\]}
 \apartado{Desarrollo algebraico}{Cada cociente divide tiempo medio operativo por duración media del ciclo. La segunda definición añade espera al denominador y mantiene el mismo numerador.}
-\apartado{Sustitución numérica}{$A_i=600/(600+3)$; $A_{ext}=600/(600+3+12)$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P30.tex}
 \caso{Resultado}{$A_i=0.9950249$; $A_{ext}=0.9756098$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La espera logística reduce el cociente de disponibilidad aun manteniendo la reparación activa.}
@@ -476,7 +508,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Modelo y población supuestos conocidos; no actualiza parámetros por observar una sola unidad.}
 \apartado{Ecuaciones}{\[P(T>t_0+\Delta t\mid T>t_0)=\exp[-((t_0+\Delta t)/\eta)^\beta+(t_0/\eta)^\beta].\]}
 \apartado{Desarrollo algebraico}{Por definición condicional, la supervivencia entre edades es $R(t_0+\Delta t)/R(t_0)$. Se restan los exponentes de Weibull.}
-\apartado{Sustitución numérica}{$R(700)/R(500)=\exp[-(700/1000)^2+(500/1000)^2]$; la comparación incondicional es $R(200)=\exp[-(200/1000)^2]$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P31.tex}
 \caso{Resultado}{Probabilidad condicional 0.7866279; $R(200)=0.9607894$, que no coincide.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La edad cambia la supervivencia condicional con el parámetro de forma adoptado.}
@@ -490,7 +523,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Modelo de Poisson homogéneo; observación completa y definición de evento constante.}
 \apartado{Ecuaciones}{\[e^{-\lambda_U T}=0{,}05,\quad\lambda_U=-\ln(0{,}05)/T.\]}
 \apartado{Desarrollo algebraico}{Se fija $\exp(-\lambda_U T)=0{,}05$, se toma logaritmo natural y se divide por exposición: $\lambda_U=-\ln(0{,}05)/T$.}
-\apartado{Sustitución numérica}{$\lambda_U=-\ln(0{,}05)/15000$ h$^{-1}$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P32.tex}
 \caso{Resultado}{$\lambda_U=0.0001997155\,\mathrm{h^{-1}}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{1/h}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La ausencia de eventos acota la tasa solo con exposición y un nivel estadístico definido.}
@@ -504,7 +538,8 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Hipótesis}{Velocidad uniforme y referencia de rotor correcta; no se diagnostica el mecanismo.}
 \apartado{Ecuaciones}{\[f_{rot}=N/60,\quad o=f/f_{rot}.\]}
 \apartado{Desarrollo algebraico}{Una revolución por minuto equivale a $1/60$ Hz; la orden es el cociente entre pico y frecuencia de giro.}
-\apartado{Sustitución numérica}{$f_{rot}=9600/60=160$ Hz; $o=480/160=3$.}
+\apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
+\input{solutions/generated/P33.tex}
 \caso{Resultado}{Frecuencia de giro de 160 Hz; orden 3.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La orden relaciona el pico con el giro; no identifica por sí sola una causa de vibración.}

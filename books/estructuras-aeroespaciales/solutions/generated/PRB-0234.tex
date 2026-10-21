@@ -1,0 +1,75 @@
+\begin{enumerate}
+
+\item Formar la matriz del tensor de Cauchy y obtener las tensiones principales en el plano xy.
+
+\item Añadir la tensión normal sigma z, ordenar los tres autovalores y calcular la máxima cortadura absoluta.
+
+\item Obtener la tensión equivalente de von Mises y la magnitud equivalente de Tresca.
+
+\item Aplicar las relaciones de transformación al elemento girado.
+
+\item Utilizar la ley de Hooke generalizada para deformaciones y distorsión.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Centro del círculo en el plano xy.
+
+\[\fitmath{y_{1}=\frac{110+45}{2}\approx 77.5\,\mathrm{MPa}}\]
+
+\item Radio del círculo de Mohr.
+
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 47.76243\,\mathrm{MPa}}\]
+
+\item Tensión principal mayor en el plano.
+
+\[\fitmath{y_{3}=\frac{110+45}{2}+\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 125.2624\,\mathrm{MPa}}\]
+
+\item Tensión principal menor en el plano.
+
+\[\fitmath{y_{4}=\frac{110+45}{2}-\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 29.73757\,\mathrm{MPa}}\]
+
+\item Von Mises a partir de las componentes.
+
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(110-45\right)}^{2}+{\left(45-0\right)}^{2}+{\left(0-110\right)}^{2}+6\cdot {35}^{2}}}{\sqrt{2}}\approx 113.3578\,\mathrm{MPa}}\]
+
+\item Índice tensional de Tresca.
+
+\[\fitmath{y_{6}=2\cdot \left(\frac{5\cdot \sqrt{365}}{4}+\frac{155}{4}\right)\approx 125.2624\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara x prima.
+
+\[\fitmath{y_{7}=\frac{110+45}{2}+\frac{110-45}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)+35\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx 112.5\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara y prima.
+
+\[\fitmath{y_{8}=\frac{110+45}{2}-\frac{110-45}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)-35\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx 42.5\,\mathrm{MPa}}\]
+
+\item Cortante sobre el plano girado.
+
+\[\fitmath{y_{9}=-\left(\frac{110-45}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)+35\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx -32.5\,\mathrm{MPa}}\]
+
+\item Deformación epsilon x.
+
+\[\fitmath{y_{10}=\frac{110-0.33\cdot \left(45+0\right)}{71700}\approx 0.001327057\,}\]
+
+\item Deformación epsilon y.
+
+\[\fitmath{y_{11}=\frac{45-0.33\cdot \left(110+0\right)}{71700}\approx 0.0001213389\,}\]
+
+\item Deformación epsilon z.
+
+\[\fitmath{y_{12}=\frac{0-0.33\cdot \left(110+45\right)}{71700}\approx -0.0007133891\,}\]
+
+\item Distorsión ingenieril gamma xy.
+
+\[\fitmath{y_{13}=\frac{2\cdot \left(1+0.33\right)\cdot 35}{71700}\approx 0.001298466\,}\]
+
+\item Respuesta principal: comprobación final.
+
+\[\fitmath{y_{14}=\frac{0-0.33\cdot \left(110+45\right)}{71700}\approx -0.0007133891\,}\]
+
+\end{enumerate}

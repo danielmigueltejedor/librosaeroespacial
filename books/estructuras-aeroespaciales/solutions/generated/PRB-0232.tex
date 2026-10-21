@@ -1,0 +1,67 @@
+\begin{enumerate}
+
+\item Formar la matriz del tensor de Cauchy y obtener las tensiones principales en el plano xy.
+
+\item Añadir la tensión normal sigma z, ordenar los tres autovalores y calcular la máxima cortadura absoluta.
+
+\item Obtener la tensión equivalente de von Mises y la magnitud equivalente de Tresca.
+
+\item Aplicar las relaciones de transformación al elemento girado.
+
+\item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Centro del círculo en el plano xy.
+
+\[\fitmath{y_{1}=\frac{140+20}{2}\approx 80\,\mathrm{MPa}}\]
+
+\item Radio del círculo de Mohr.
+
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 75\,\mathrm{MPa}}\]
+
+\item Tensión principal mayor en el plano.
+
+\[\fitmath{y_{3}=\frac{140+20}{2}+\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 155\,\mathrm{MPa}}\]
+
+\item Tensión principal menor en el plano.
+
+\[\fitmath{y_{4}=\frac{140+20}{2}-\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 5\,\mathrm{MPa}}\]
+
+\item Von Mises a partir de las componentes.
+
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(140-20\right)}^{2}+{\left(20-0\right)}^{2}+{\left(0-140\right)}^{2}+6\cdot {45}^{2}}}{\sqrt{2}}\approx 152.5615\,\mathrm{MPa}}\]
+
+\item Índice tensional de Tresca.
+
+\[\fitmath{y_{6}=2\cdot \frac{155}{2}\approx 155\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara x prima.
+
+\[\fitmath{y_{7}=\frac{140+20}{2}+\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 148.9711\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara y prima.
+
+\[\fitmath{y_{8}=\frac{140+20}{2}-\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)-45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 11.02886\,\mathrm{MPa}}\]
+
+\item Cortante sobre el plano girado.
+
+\[\fitmath{y_{9}=-\left(\frac{140-20}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx -29.46152\,\mathrm{MPa}}\]
+
+\item Coeficiente de seguridad de von Mises.
+
+\[\fitmath{y_{10}=\frac{350}{35\cdot \sqrt{19}}\approx 2.294157\,}\]
+
+\item Coeficiente de seguridad de Tresca.
+
+\[\fitmath{y_{11}=\frac{350}{155}\approx 2.258065\,}\]
+
+\item Respuesta principal: comprobación final.
+
+\[\fitmath{y_{12}=\frac{140+20}{2}+\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 148.9711\,\mathrm{MPa}}\]
+
+\end{enumerate}

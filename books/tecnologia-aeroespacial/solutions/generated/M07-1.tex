@@ -1,0 +1,37 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} Continuidad obtiene velocidad de salida. Bernoulli horizontal calcula su presión. Solo entonces el balance de momento permite hallar la fuerza de pared sobre el fluido; la fuerza del fluido sobre el conducto tiene signo opuesto.
+
+\begin{enumerate}
+
+\item Conservar caudal volumétrico.
+
+\[\fitmath{U2=\frac{0.12\cdot 22}{0.06}\approx 44\,\mathrm{m/s}}\]
+
+\item Caudal másico de entrada.
+
+\[\fitmath{\mathrm{mdot}=1.19\cdot 0.12\cdot 22\approx 3.1416\,\mathrm{kg/s}}\]
+
+\item Despejar presión manométrica de salida.
+
+\[\fitmath{p2=3200+\frac{1.19\cdot \left({22}^{2}-{U2}^{2}\right)}{2}}\]
+
+\[\fitmath{p2=3200+\frac{1.19\cdot \left({22}^{2}-{(44)}^{2}\right)}{2}\approx 2336.06\,\mathrm{Pa}}\]
+
+\item Fuerza neta de las dos caras de presión.
+
+\[\fitmath{\mathrm{Fpressure}=3200\cdot 0.12-p2\cdot 0.06}\]
+
+\[\fitmath{\mathrm{Fpressure}=3200\cdot 0.12-(2336.06)\cdot 0.06\approx 243.8364\,\mathrm{N}}\]
+
+\item Restar las fuerzas de presión del cambio de flujo de momento.
+
+\[\fitmath{\mathrm{Fwall}=\mathrm{mdot}\cdot \left(U2-22\right)-\mathrm{Fpressure}}\]
+
+\[\fitmath{\mathrm{Fwall}=(3.1416)\cdot \left((44)-22\right)-(243.8364)\approx -174.7212\,\mathrm{N}}\]
+
+\item Aplicar acción y reacción para la fuerza sobre el conducto.
+
+\[\fitmath{\mathrm{Ffluid}=-\mathrm{Fwall}}\]
+
+\[\fitmath{\mathrm{Ffluid}=-(-174.7212)\approx 174.7212\,\mathrm{N}}\]
+
+\end{enumerate}

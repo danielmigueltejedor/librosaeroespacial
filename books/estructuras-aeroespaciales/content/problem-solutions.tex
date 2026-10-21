@@ -30,19 +30,21 @@ Masa de un tirante de rigidez dada.\[\fitmath{m = \frac{\rho\,k\,L^{2}}{E}}\]
 \item La masa es $m = \rho A L = \rho k L^{2}/E$.
 \item Para el acero se repite el cálculo con sus datos.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área necesaria con 7075.
 
-\[\fitmath{50000000.0 \cdot 2.0 \frac{1}{71700000000.0}\approx 1.3947\times10^{-3}\,\mathrm{m^2}}\]
+\[\fitmath{y_{1}=\frac{50000000\cdot 2}{7.17\times10^{10}}\approx 0.0013947\,\mathrm{m^{2}}}\]
 
 \item Masa del tirante de acero, para comparar.
 
-\[\fitmath{7900 \cdot 50000000.0 \cdot 2.0 \frac{1}{200000000000.0} \cdot 2.0\approx 7.9\,\mathrm{kg}}\]
+\[\fitmath{y_{2}=7900\cdot \frac{50000000\cdot 2}{2\times10^{11}}\cdot 2\approx 7.9\,\mathrm{kg}}\]
 
 \item Masa del tirante de 7075, m = rho A L.
 
-\[\fitmath{2810 \cdot 50000000.0 \cdot 2.0 \frac{1}{71700000000.0} \cdot 2.0\approx 7.838\,\mathrm{kg}}\]
+\[\fitmath{y_{3}=2810\cdot \frac{50000000\cdot 2}{7.17\times10^{10}}\cdot 2\approx 7.838215\,\mathrm{kg}}\]
 
 \end{enumerate}
 
@@ -83,13 +85,17 @@ $\rho$ & $1600\,\mathrm{kg/m^3}$ & densidad\\
 
 Masa de un tirante de rigidez dada.\[\fitmath{m = \frac{\rho\,k\,L^{2}}{E}}\]
 
+\textbf{Elección del procedimiento.} La exigencia $k=EA/L$ fija un área distinta para cada material: $A=kL/E$. Luego $m=\rho AL=\rho kL^2/E$. Comparar densidad sola sería incorrecto porque el área cambia.
+
 \textbf{Procedimiento.}\begin{itemize}\item La masa es $m = \rho k L^2/E$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Masa del tirante.
 
-\[\fitmath{1600 \cdot 50000000.0 {2.0}^{2} \frac{1}{181000000000.0}\approx 1.768\,\mathrm{kg}}\]
+\[\fitmath{y_{1}=\frac{1600\cdot 50000000\cdot {2}^{2}}{1.81\times10^{11}}\approx 1.767956\,\mathrm{kg}}\]
 
 \end{enumerate}
 
@@ -128,13 +134,17 @@ $\rho$ & $4500\,\mathrm{kg/m^3}$ & densidad\\
 
 Masa de un tirante de rigidez dada.\[\fitmath{m = \frac{\rho\,k\,L^{2}}{E}}\]
 
+\textbf{Elección del procedimiento.} Primero imponer la rigidez $EA/L=k$ y despejar $A=kL/E$; después calcular volumen $AL$ y masa $\rho AL$. La comparación se hace a igual rigidez, no a igual sección.
+
 \textbf{Procedimiento.}\begin{itemize}\item La masa es $m = \rho k L^2/E$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Masa del tirante.
 
-\[\fitmath{4500 \cdot 20000000.0 {1.0}^{2} \frac{1}{112500000000.0}\approx 0.8\,\mathrm{kg}}\]
+\[\fitmath{y_{1}=\frac{4500\cdot 20000000\cdot {1}^{2}}{1.125\times10^{11}}\approx 0.8\,\mathrm{kg}}\]
 
 \end{enumerate}
 
@@ -189,27 +199,29 @@ Alargamiento de una barra traccionada.\[\fitmath{\delta = \frac{F\,L}{E\,A},\qua
 \item La ley de Hooke da $\varepsilon = \sigma/E$ y el alargamiento es $\delta = \varepsilon L$.
 \item El coeficiente de seguridad respecto al límite elástico mínimo es $430/\sigma$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de la sección.
 
-\[\fitmath{\frac{{0.02}^{2} \pi}{4}\approx 3.1416\times10^{-4}\,\mathrm{m^2}}\]
+\[\fitmath{y_{1}=\frac{\pi\cdot {0.02}^{2}}{4}\approx 0.0003141593\,\mathrm{m^{2}}}\]
 
 \item Tensión normal sigma = F/A.
 
-\[\fitmath{\frac{60000}{1000000.0 \frac{{0.02}^{2} \pi}{4}}\approx 190.99\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{\frac{60000}{\frac{\pi\cdot {0.02}^{2}}{4}}}{1000000}\approx 190.9859\,\mathrm{MPa}}\]
 
 \item Deformación epsilon = sigma/E.
 
-\[\fitmath{\frac{60000}{71700000000.0 \frac{{0.02}^{2} \pi}{4}}\approx 2.6637\times10^{-3}}\]
+\[\fitmath{y_{3}=\frac{\frac{60000}{\frac{\pi\cdot {0.02}^{2}}{4}}}{7.17\times10^{10}}\approx 0.002663681\,}\]
 
 \item Coeficiente de seguridad respecto al límite elástico.
 
-\[\fitmath{\frac{430}{60000 \frac{1}{1000000.0} \frac{1}{{0.02}^{2} \cdot \frac{1}{4} \pi}}\approx 2.2515}\]
+\[\fitmath{y_{4}=\frac{430}{\frac{\frac{60000}{\frac{\pi\cdot {0.02}^{2}}{4}}}{1000000}}\approx 2.251475\,}\]
 
 \item Alargamiento total delta = epsilon L.
 
-\[\fitmath{60000 \frac{1}{{0.02}^{2} \cdot \frac{1}{4} \pi} \frac{1}{71700000000.0} \cdot 1.5 \cdot 1000\approx 3.9955\,\mathrm{mm}}\]
+\[\fitmath{y_{5}=\frac{\frac{60000}{\frac{\pi\cdot {0.02}^{2}}{4}}}{7.17\times10^{10}}\cdot 1.5\cdot 1000\approx 3.995522\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -252,11 +264,13 @@ Efecto Poisson.\[\fitmath{\Delta d = \nu\,\varepsilon_{a}\,d}\]
 \textbf{Procedimiento.}\begin{itemize}\item La deformación transversal es $\varepsilon_t = -\nu\varepsilon_a$.
 \item El cambio de diámetro es $\varepsilon_t d$ en valor absoluto.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Disminución del diámetro.
 
-\[\fitmath{0.33 \cdot 0.002 \cdot 20\approx 0.0132\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=0.33\cdot 0.002\cdot 20\approx 0.0132\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -294,18 +308,22 @@ $\tau$ & $50\,\mathrm{MPa}$ & tensión tangencial\\
 
 Módulo transversal y distorsión.\[\fitmath{\gamma = \frac{\tau}{G},\quad G = \frac{E}{2(1+\nu)}}\]
 
+\textbf{Elección del procedimiento.} Calcular primero $G=E/[2(1+\nu)]$ para el material isótropo. La ley de cortante $\tau=G\gamma$ se despeja como $\gamma=\tau/G$. El ángulo de distorsión sale adimensional, aproximadamente en radianes.
+
 \textbf{Procedimiento.}\begin{itemize}\item El módulo transversal es $G = E/[2(1+\nu)]$.
 \item La distorsión es $\gamma = \tau/G$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Módulo transversal.
 
-\[\fitmath{\frac{71700.0}{2 \left(0.33 + 1\right)}\approx 26955\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{71700}{2\cdot \left(1+0.33\right)}\approx 26954.89\,\mathrm{MPa}}\]
 
 \item Distorsión.
 
-\[\fitmath{\frac{50}{71700.0 \frac{1}{2 \left(0.33 + 1\right)}}\approx 1.855\times10^{-3}\,\mathrm{rad}}\]
+\[\fitmath{y_{2}=\frac{50}{\frac{71700}{2\cdot \left(1+0.33\right)}}\approx 0.001854951\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -341,13 +359,17 @@ $\theta$ & $30{}^{\circ}$ & ángulo del plano\\
 
 Tensión normal en un plano inclinado.\[\fitmath{\sigma_n = \sigma\cos^{2}\theta}\]
 
+\textbf{Elección del procedimiento.} La tracción es $\boldsymbol t=\boldsymbol\sigma\boldsymbol n$. En tracción uniaxial, proyectar sobre la normal da $\sigma_n=\sigma\cos^2\theta$. Hay dos proyecciones: una forma el vector tracción y otra su componente normal.
+
 \textbf{Procedimiento.}\begin{itemize}\item $\cos 30^{\circ} = \sqrt3/2$, de modo que $\cos^2 30^{\circ} = 3/4$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión normal.
 
-\[\fitmath{100 \cos^{2}{\left(\frac{\pi}{6} \right)}\approx 75.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=100\cdot {\cos\left(\frac{\pi}{6}\right)}^{2}\approx 75\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -384,11 +406,13 @@ Tensión tangencial máxima.\[\fitmath{\tau_{max} = \frac{\sigma}{2}}\]
 
 \textbf{Procedimiento.}\begin{itemize}\item $\tau_\theta = \tfrac12\sigma\sin 2\theta$ es máxima cuando $\sin 2\theta = 1$, es decir, $\theta = 45^{\circ}$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión tangencial máxima.
 
-\[\fitmath{100 \sin{\left(\frac{\pi}{4} \right)} \cos{\left(\frac{\pi}{4} \right)}\approx 50.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=100\cdot \sin\left(\frac{\pi}{4}\right)\cdot \cos\left(\frac{\pi}{4}\right)\approx 50\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -441,17 +465,17 @@ Steiner en una sección compuesta.\[\fitmath{I_z = \sum_i \left(I_i + A_i\,d_i^{
 \item El centro de gravedad es la media ponderada: $y_G = (A_1 \cdot 10 + A_2 \cdot 70)/(A_1 + A_2)$.
 \item Cada rectángulo aporta $b\,h^3/12$ propio más $A_i d_i^2$ por la distancia de su centro al centro de gravedad.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Posición del centro de gravedad.
 
-\[\fitmath{\frac{2400 \cdot 10 + 2000 \cdot 70}{2000 + 2400}\approx 37.27\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{2400\cdot 10+2000\cdot 70}{2400+2000}\approx 37.27273\,\mathrm{mm}}\]
 
 \item Momento de inercia del conjunto.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\left(-1\right) 10 + \frac{2400 \cdot 10 + 2000 \cdot 70}{4400}\\a_{2}=a_{1}^{2}\\a_{3}=2400 a_{2}\\a_{4}=70 - \frac{2400 \cdot 10 + 2000 \cdot 70}{4400}\\a_{5}=a_{4}^{2}\\a_{6}=2000 a_{5}\\a_{7}=a_{3} + a_{6} + \frac{120 \cdot 20^{3}}{12} + \frac{20 \cdot 100^{3}}{12}\\a_{7}\approx 5.674\times10^{6}\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{120\cdot {20}^{3}}{12}+2400\cdot {\left(\frac{2400\cdot 10+2000\cdot 70}{4400}-10\right)}^{2}+\frac{20\cdot {100}^{3}}{12}+2000\cdot {\left(70-\frac{2400\cdot 10+2000\cdot 70}{4400}\right)}^{2}\approx 5673939\,\mathrm{mm^{4}}}\]
 
 \end{enumerate}
 
@@ -919,23 +943,25 @@ Flector en el tramo derecho de la carga puntual.\[\fitmath{M_z(x) = R_A\,x - \fr
 \item En el tramo $x > a$ el cortante es $C_y = R_A - qx - P$ y se anula en $x = 2{,}5$ m.
 \item El flector máximo es el flector en ese punto.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en B, de los momentos respecto a A.
 
-\[\fitmath{\frac{18 \cdot 2 + 12 \cdot 6 \cdot 3}{6}\approx 42.0\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{12\cdot 6\cdot 3+18\cdot 2}{6}\approx 42\,\mathrm{kN}}\]
 
 \item Reacción en A, del equilibrio vertical.
 
-\[\fitmath{- \frac{18 \cdot 2 + 12 \cdot 6 \cdot 3}{6} + 18 + 12 \cdot 6\approx 48.0\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=12\cdot 6+18-\frac{12\cdot 6\cdot 3+18\cdot 2}{6}\approx 48\,\mathrm{kN}}\]
 
 \item Abscisa donde se anula el cortante (x mayor que a).
 
-\[\fitmath{\frac{48 - 18}{12}\approx 2.5\,\mathrm{m}}\]
+\[\fitmath{y_{3}=\frac{48-18}{12}\approx 2.5\,\mathrm{m}}\]
 
 \item Flector máximo.
 
-\[\fitmath{- \frac{12 {2.5}^{2}}{2} - 18 \left(2.5 - 2\right) + 48 \cdot 2.5\approx 73.5\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{4}=48\cdot 2.5-\frac{12\cdot {2.5}^{2}}{2}-18\cdot \left(2.5-2\right)\approx 73.5\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -2025,25 +2051,25 @@ Flector nulo en la rótula (parte derecha).\[\fitmath{R_B\,(x_B - x_H) + F\,(x_C
 \item Los tramos son $AH$, $HD$, $DB$ y $BC$. En $AH$ y $HD$ la ley es la misma, porque en la rótula no actúa ninguna carga; el cortante salta en $D$ y en $B$.
 \item El cortante del tramo $DB$ no se anula, de modo que el flector máximo positivo está en $D$, donde el cortante cambia de signo; el mínimo está en el empotramiento.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Momento de la carga de HB respecto a H.
 
-\[\fitmath{\frac{6 \cdot 4^{3}}{3 \cdot 7} + \frac{46 \cdot 4^{2}}{2 \cdot 7}\approx 70.857143\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{1}=\frac{\frac{46}{7}\cdot {4}^{2}}{2}+\frac{\frac{6}{7}\cdot {4}^{3}}{3}\approx 70.85714\,\mathrm{kN m}}\]
 
 \item Reacción en B (flector nulo en H).
 
-\[\fitmath{\frac{- 6 \cdot 6 + 15 \cdot 2 + \frac{496}{7}}{4}\approx 16.214286\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=\frac{\frac{496}{7}+15\cdot 2-6\cdot 6}{4}\approx 16.21429\,\mathrm{kN}}\]
 
 \item Reacción en A.
 
-\[\fitmath{- \frac{- 6 \cdot 6 + 15 \cdot 2 + \frac{496}{7}}{4} - 6 + 15 + \left(4 + 10\right) \frac{1}{2} \cdot 7\approx 41.785714\,\mathrm{kN}}\]
+\[\fitmath{y_{3}=\frac{4+10}{2}\cdot 7+15-6-\frac{\frac{496}{7}+15\cdot 2-6\cdot 6}{4}\approx 41.78571\,\mathrm{kN}}\]
 
 \item Flector en el empotramiento, con la parte derecha.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\left(- 6 \cdot 6 + 15 \cdot 2 + \frac{496}{7}\right) \frac{1}{4} \cdot 7\\a_{2}=\frac{4 \cdot 7^{2}}{2} + \frac{6 \cdot 7^{3}}{3 \cdot 7}\\a_{3}=- a_{2}\\a_{4}=a_{1} + a_{3} - 15 \cdot 5 + 6 \cdot 9\\a_{4}\approx -103.5\,\mathrm{kN\,m}\end{gathered}}\]
+\[\fitmath{y_{4}=\frac{\frac{496}{7}+15\cdot 2-6\cdot 6}{4}\cdot 7+6\cdot 9-\left(\frac{4\cdot {7}^{2}}{2}+\frac{\frac{6}{7}\cdot {7}^{3}}{3}\right)-15\cdot 5\approx -103.5\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -3575,23 +3601,25 @@ Componentes de la fuerza.\[\fitmath{F_x = F\cos 60^{\circ},\qquad F_y = F\sin 60
 \item Las reacciones verticales salen de los momentos respecto a $A$ y del equilibrio vertical con la componente vertical y el peso.
 \item El cortante cambia de signo en $C$, donde salta la componente vertical, y allí está el flector máximo.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Componente vertical de la fuerza.
 
-\[\fitmath{\frac{20 \sqrt{3}}{2}\approx 17.32\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{20\cdot \sqrt{3}}{2}\approx 17.32051\,\mathrm{kN}}\]
 
 \item Reacción vertical en B.
 
-\[\fitmath{\frac{3 \cdot 4 \cdot 2 + 20 \sqrt{3} \cdot \frac{1}{2} \cdot 1.5}{4}\approx 12.495\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=\frac{\frac{20\cdot \sqrt{3}}{2}\cdot 1.5+3\cdot 4\cdot 2}{4}\approx 12.49519\,\mathrm{kN}}\]
 
 \item Reacción vertical en A.
 
-\[\fitmath{- \frac{3 \cdot 4 \cdot 2 + 20 \sqrt{3} \cdot \frac{1}{2} \cdot 1.5}{4} + 3 \cdot 4 + \frac{20 \sqrt{3}}{2}\approx 16.825\,\mathrm{kN}}\]
+\[\fitmath{y_{3}=\frac{20\cdot \sqrt{3}}{2}+3\cdot 4-\frac{\frac{20\cdot \sqrt{3}}{2}\cdot 1.5+3\cdot 4\cdot 2}{4}\approx 16.82532\,\mathrm{kN}}\]
 
 \item Flector máximo, en C.
 
-\[\fitmath{- \frac{3 {1.5}^{2}}{2} + \left(- \frac{3 \cdot 4 \cdot 2 + 20 \sqrt{3} \cdot \frac{1}{2} \cdot 1.5}{4} + 3 \cdot 4 + \frac{20 \sqrt{3}}{2}\right) 1.5\approx 21.86\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{4}=\left(\frac{20\cdot \sqrt{3}}{2}+3\cdot 4-\frac{\frac{20\cdot \sqrt{3}}{2}\cdot 1.5+3\cdot 4\cdot 2}{4}\right)\cdot 1.5-\frac{3\cdot {1.5}^{2}}{2}\approx 21.86298\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4117,11 +4145,13 @@ Flector de una ménsula con carga en el extremo.\[\fitmath{M_z(0) = -P\,L}\]
 \textbf{Procedimiento.}\begin{itemize}\item En una sección de abscisa $x$ el flector es $M_z(x) = -P(L - x)$, negativo, porque la carga tracciona las fibras superiores.
 \item En $x = 0$ resulta $-PL$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Flector en el empotramiento.
 
-\[\fitmath{\left(-10\right) 2\approx -20.0\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{1}=-10\cdot 2\approx -20\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4160,11 +4190,13 @@ Flector máximo con carga central.\[\fitmath{M_{max} = \frac{P\,L}{4}}\]
 \textbf{Procedimiento.}\begin{itemize}\item Cada reacción vale $P/2 = 10$ kN.
 \item El flector en el centro es $R_A\,L/2 = P L/4$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Flector máximo.
 
-\[\fitmath{20 \cdot 5 \cdot \frac{1}{4}\approx 25.0\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{1}=\frac{20\cdot 5}{4}\approx 25\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4200,13 +4232,17 @@ $h$ & $120\,\mathrm{mm}$ & alto\\
 
 Inercia de un rectángulo.\[\fitmath{I_z = \frac{b\,h^{3}}{12}}\]
 
+\textbf{Elección del procedimiento.} La inercia respecto al eje horizontal es $I_z=\int_A y^2dA=b\int_{-h/2}^{h/2}y^2dy=bh^3/12$. La dimensión perpendicular al eje es la que aparece al cubo.
+
 \textbf{Procedimiento.}\begin{itemize}\item La altura es la dimensión perpendicular al eje, y entra al cubo.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Momento de inercia.
 
-\[\fitmath{\frac{50 \cdot 120^{3}}{12}\approx 7.2\times10^{6}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=\frac{50\cdot {120}^{3}}{12}\approx 7200000\,\mathrm{mm^{4}}}\]
 
 \end{enumerate}
 
@@ -4245,15 +4281,17 @@ Reacción por carga triangular.\[\fitmath{R_B = \frac{Q\cdot 2L/3}{L} = \frac{q_
 \textbf{Procedimiento.}\begin{itemize}\item La resultante es $Q = q_0 L/2 = 18$ kN, aplicada a $2L/3$ de $A$.
 \item Momentos respecto a $A$: $R_B L = Q\cdot 2L/3$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Resultante de la carga.
 
-\[\fitmath{9 \cdot 4 \cdot \frac{1}{2}\approx 18.0\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{9\cdot 4}{2}\approx 18\,\mathrm{kN}}\]
 
 \item Reacción en B.
 
-\[\fitmath{18 \cdot 2 \cdot 4 \cdot \frac{1}{3} \cdot \frac{1}{4}\approx 12.0\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=\frac{18\cdot \frac{2\cdot 4}{3}}{4}\approx 12\,\mathrm{kN}}\]
 
 \end{enumerate}
 
@@ -4292,11 +4330,13 @@ Steiner para un rectángulo.\[\fitmath{I_{z'} = \frac{b\,h^{3}}{12} + b\,h\left(
 \textbf{Procedimiento.}\begin{itemize}\item La inercia centroidal es $bh^3/12$.
 \item La distancia entre el eje centroidal y la base es $h/2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Momento de inercia respecto a la base.
 
-\[\fitmath{\frac{40 \cdot 100^{3}}{12} + 40 \cdot 100 \left(\frac{100}{2}\right)^{2}\approx 1.3333\times10^{7}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=\frac{40\cdot {100}^{3}}{12}+40\cdot 100\cdot {\left(\frac{100}{2}\right)}^{2}\approx 1.333333\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \end{enumerate}
 
@@ -4331,19 +4371,21 @@ $L$ & $5\,\mathrm{m}$ & luz\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en B.
 
-\[\fitmath{\frac{10 \cdot 1 + 20 \cdot 3}{5}\approx 14\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{10\cdot 1+20\cdot 3}{5}\approx 14\,\mathrm{kN}}\]
 
 \item Reacción en A.
 
-\[\fitmath{30 - 14\approx 16\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=30-14\approx 16\,\mathrm{kN}}\]
 
 \item Flector máximo, bajo la carga de 20 kN.
 
-\[\fitmath{14 \cdot 2\approx 28\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{3}=14\cdot 2\approx 28\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4378,15 +4420,17 @@ $q$ & $5\,\mathrm{kN/m}$ & carga repartida\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción vertical en A.
 
-\[\fitmath{4 + 5 \cdot 2\approx 14\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=5\cdot 2+4\approx 14\,\mathrm{kN}}\]
 
 \item Flector en el empotramiento.
 
-\[\fitmath{\left(-10\right) 3 - 8\approx -38\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{2}=-\left(5\cdot 2\cdot 3+4\cdot 2\right)\approx -38\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4421,15 +4465,17 @@ $q$ & $8\,\mathrm{kN/m}$ & carga del voladizo\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en A, de los momentos respecto a B.
 
-\[\fitmath{\frac{\left(-1\right) 1 \cdot 16}{4}\approx -4\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{-\left(8\cdot 2\cdot 1\right)}{4}\approx -4\,\mathrm{kN}}\]
 
 \item Flector sobre el apoyo B.
 
-\[\fitmath{- \frac{8 \cdot 2^{2}}{2}\approx -16\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{2}=\frac{-8\cdot {2}^{2}}{2}\approx -16\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4464,15 +4510,17 @@ $q$ & $4\,\mathrm{kN/m}$ & carga uniforme\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en C, flector nulo en H con la parte HC.
 
-\[\fitmath{\frac{4 \cdot 2.5 \cdot 2.5 \cdot \frac{1}{2} + 12 \cdot 1.5}{2.5}\approx 12.2\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{\frac{4\cdot 2.5\cdot 2.5}{2}+12\cdot 1.5}{2.5}\approx 12.2\,\mathrm{kN}}\]
 
 \item Flector sobre el apoyo B.
 
-\[\fitmath{- 3 \cdot 12 - \frac{4 \cdot 4^{2}}{2} + 12.2 \cdot 4\approx -19.2\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{2}=12.2\cdot 4-\frac{4\cdot {4}^{2}}{2}-12\cdot 3\approx -19.2\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4508,15 +4556,17 @@ $q_{0}$ & $6\,\mathrm{kN/m}$ & carga en el empotramiento\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Resultante de la carga (hacia arriba).
 
-\[\fitmath{6 \cdot 3 \cdot \frac{1}{2}\approx 9\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{6\cdot 3}{2}\approx 9\,\mathrm{kN}}\]
 
 \item Flector en el empotramiento.
 
-\[\fitmath{\left(-1\right) 4 + 9 \cdot 1\approx 5\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{2}=9\cdot 1-4\approx 5\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -4551,15 +4601,17 @@ $F$ & $16\,\mathrm{kN}$ & fuerza inclinada\\
 
 Equilibrio de la viga.\[\fitmath{\sum F_y = 0,\qquad \sum M = 0}\]
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Componente horizontal de la fuerza en C (hacia A).
 
-\[\fitmath{\frac{16 \sqrt{3}}{2}\approx 13.856\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{16\cdot \sqrt{3}}{2}\approx 13.85641\,\mathrm{kN}}\]
 
 \item Axil del tramo AC.
 
-\[\fitmath{6 - \frac{16 \sqrt{3}}{2}\approx -7.856\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=6-\frac{16\cdot \sqrt{3}}{2}\approx -7.856406\,\mathrm{kN}}\]
 
 \end{enumerate}
 
@@ -4855,23 +4907,25 @@ Resultante de la carga triangular.\[\fitmath{Q = \frac{q_0\,L}{2}}\]
 \item Con la parte derecha de la sección, la carga entre $x$ y $L$ y el momento $M_0$ dan $C_y(x) = q_0 (L^2 - x^2)/(2L)$ y $M_z(x) = -q_0 (L - x)^2 (2L + x)/(6L) + M_0$.
 \item En el empotramiento el flector es $M_z(0) = -q_0 L^2/3 + M_0$; en el extremo libre vale $M_0$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Resultante de la carga.
 
-\[\fitmath{8 \cdot 3 \cdot \frac{1}{2}\approx 12\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{8\cdot 3}{2}\approx 12\,\mathrm{kN}}\]
 
 \item Reacción vertical en A.
 
-\[\fitmath{8 \cdot 3 \cdot \frac{1}{2}\approx 12\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=\frac{8\cdot 3}{2}\approx 12\,\mathrm{kN}}\]
 
 \item Flector en el extremo libre.
 
-\[\fitmath{6\approx 6\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{3}=6\approx 6\,\mathrm{kN m}}\]
 
 \item Flector en el empotramiento.
 
-\[\fitmath{- \frac{8 \cdot 3^{2}}{3} + 6\approx -18\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{4}=\frac{-8\cdot {3}^{2}}{3}+6\approx -18\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -5575,23 +5629,25 @@ Momentos respecto al apoyo A.\[\fitmath{R_B\,L_{AB} = q\,L_{AB}\,\frac{L_{AB}}{2
 \item En $D$ el flector salta 12 kN m hacia los positivos, porque un momento horario sobre la parte izquierda comprime la fibra superior a su derecha.
 \item El cortante del tramo $AB$ se anula en $x = R_A/q$; ese punto queda a la izquierda de $D$, de modo que el flector máximo positivo está justo a la derecha del salto.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en B.
 
-\[\fitmath{\frac{12 + 10 \cdot 7 + 6 \cdot 5 \cdot 2.5}{5}\approx 31.4\,\mathrm{kN}}\]
+\[\fitmath{y_{1}=\frac{6\cdot 5\cdot 2.5+12+10\cdot 7}{5}\approx 31.4\,\mathrm{kN}}\]
 
 \item Reacción en A.
 
-\[\fitmath{\left(-1\right) 31.4 + 10 + 6 \cdot 5\approx 8.6\,\mathrm{kN}}\]
+\[\fitmath{y_{2}=6\cdot 5+10-31.4\approx 8.6\,\mathrm{kN}}\]
 
 \item Flector a la derecha de D.
 
-\[\fitmath{- \frac{6 {2.5}^{2}}{2} + 12 + 8.6 \cdot 2.5\approx 14.75\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{3}=8.6\cdot 2.5-\frac{6\cdot {2.5}^{2}}{2}+12\approx 14.75\,\mathrm{kN m}}\]
 
 \item Flector sobre el apoyo B.
 
-\[\fitmath{\left(-10\right) 2\approx -20\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{4}=-10\cdot 2\approx -20\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -6415,15 +6471,17 @@ Flexión simple.\[\fitmath{\sigma_{max} = \frac{M_z}{W_z},\quad W_z = \frac{b\,h
 \textbf{Procedimiento.}\begin{itemize}\item El módulo resistente es $W_z = b h^2/6$.
 \item La tensión máxima es $M_z/W_z$, en las fibras extremas: de compresión arriba y de tracción abajo.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Módulo resistente.
 
-\[\fitmath{\frac{50 \cdot 120^{2}}{6}\approx 1.2\times10^{5}\,\mathrm{mm^3}}\]
+\[\fitmath{y_{1}=\frac{50\cdot {120}^{2}}{6}\approx 120000\,\mathrm{mm^{3}}}\]
 
 \item Tensión máxima.
 
-\[\fitmath{\frac{10000000.0}{50 \cdot 120^{2} \cdot \frac{1}{6}}\approx 83.33\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{10000000}{\frac{50\cdot {120}^{2}}{6}}\approx 83.33333\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -6466,15 +6524,17 @@ Sección idealizada.\[\fitmath{I_z = 4\,B\,y_i^{2},\quad \sigma_i = \frac{M_z\,y
 \item La inercia es la suma de $B y_i^2$ de los cuatro largueros.
 \item La tensión es $\sigma_i = M_z y_i/I_z$, de compresión en los superiores y de tracción en los inferiores.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Inercia de la sección idealizada.
 
-\[\fitmath{4 \cdot 400 \cdot 100^{2}\approx 1.6\times10^{7}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=4\cdot 400\cdot {100}^{2}\approx 1.6\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \item Tensión en los largueros extremos.
 
-\[\fitmath{20000000.0 \cdot 100 \frac{1}{4 \cdot 400 \cdot 100^{2}}\approx 125.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{20000000\cdot 100}{4\cdot 400\cdot {100}^{2}}\approx 125\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -6520,23 +6580,21 @@ Tensión en una sección mixta.\[\fitmath{\sigma_2 = \frac{E_2\,M_z\,y}{E_1 I_1 
 \item La rigidez es la suma de $E_i (I_i + A_i d_i^2)$, con $d_i$ la distancia del centro de la capa al eje neutro.
 \item La tensión en la fibra inferior del acero, a $20 - y_n$ del eje neutro, es $E_2 M_z (20 - y_n)/\text{rigidez}$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Eje neutro desde la cara superior.
 
-\[\fitmath{\frac{71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15}{71700 \cdot 500 + 200000 \cdot 500}\approx 12.36\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}\approx 12.36106\,\mathrm{mm}}\]
 
 \item Rigidez a flexión de la sección mixta.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15\\a_{2}=\frac{a_{1}}{71700 \cdot 500 + 200000 \cdot 500}\\a_{3}=a_{2} - 5\\a_{4}=a_{3}^{2}\\a_{5}=500 a_{4}\\a_{6}=a_{5} + \frac{50 \cdot 10^{3}}{12}\\a_{7}=71700 a_{6}\\a_{8}=71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15\\a_{9}=\frac{a_{8}}{71700 \cdot 500 + 200000 \cdot 500}\\a_{10}=- a_{9}\\a_{11}=a_{10} + 15\\a_{12}=a_{11}^{2}\\a_{13}=500 a_{12}\\a_{14}=a_{13} + \frac{50 \cdot 10^{3}}{12}\\a_{15}=200000 a_{14}\\a_{16}=a_{15} + a_{7}\\a_{16}\approx 3.771\times10^{9}\,\mathrm{N\,mm^2}\end{gathered}}\]
+\[\fitmath{y_{2}=71700\cdot \left(\frac{50\cdot {10}^{3}}{12}+500\cdot {\left(\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}-5\right)}^{2}\right)+200000\cdot \left(\frac{50\cdot {10}^{3}}{12}+500\cdot {\left(15-\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}\right)}^{2}\right)\approx 3.771023\times10^{9}\,\mathrm{N mm^{2}}}\]
 
 \item Tensión máxima en la fibra inferior del acero.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15\\a_{2}=\frac{a_{1}}{71700 \cdot 500 + 200000 \cdot 500}\\a_{3}=- a_{2}\\a_{4}=a_{3} + 20\\a_{5}=71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15\\a_{6}=\frac{a_{5}}{71700 \cdot 500 + 200000 \cdot 500}\\a_{7}=a_{6} - 5\\a_{8}=a_{7}^{2}\\a_{9}=500 a_{8}\\a_{10}=a_{9} + \frac{50 \cdot 10^{3}}{12}\\a_{11}=71700 a_{10}\\a_{12}=71700 \cdot 500 \cdot 5 + 200000 \cdot 500 \cdot 15\\a_{13}=\frac{a_{12}}{71700 \cdot 500 + 200000 \cdot 500}\\a_{14}=- a_{13}\\a_{15}=a_{14} + 15\\a_{16}=a_{15}^{2}\\a_{17}=500 a_{16}\\a_{18}=a_{17} + \frac{50 \cdot 10^{3}}{12}\\a_{19}=200000 a_{18}\\a_{20}=a_{11} + a_{19}\\a_{21}=\frac{1}{a_{20}}\\a_{22}=200000 \cdot 500000.0 a_{4} a_{21}\\a_{22}\approx 202.6\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{200000\cdot 500000\cdot \left(20-\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}\right)}{71700\cdot \left(\frac{50\cdot {10}^{3}}{12}+500\cdot {\left(\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}-5\right)}^{2}\right)+200000\cdot \left(\frac{50\cdot {10}^{3}}{12}+500\cdot {\left(15-\frac{71700\cdot 500\cdot 5+200000\cdot 500\cdot 15}{71700\cdot 500+200000\cdot 500}\right)}^{2}\right)}\approx 202.5694\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -6582,15 +6640,17 @@ Flecha de ménsula con carga en el extremo.\[\fitmath{\delta_B = \frac{F\,L^{3}}
 \textbf{Procedimiento.}\begin{itemize}\item La inercia es $I = b h^3/12$ con $h$ la dimensión en el plano de flexión.
 \item La flecha es $\delta_B = F L^3/(3 E I)$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Inercia de la sección.
 
-\[\fitmath{\frac{40 \cdot 60^{3}}{12}\approx 7.2\times10^{5}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=\frac{40\cdot {60}^{3}}{12}\approx 720000\,\mathrm{mm^{4}}}\]
 
 \item Flecha en el extremo libre.
 
-\[\fitmath{\frac{800 \cdot 1200^{3}}{3 \cdot 40 \cdot 71700 \cdot \frac{1}{12} \cdot 60^{3}}\approx 8.926\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{800\cdot {1200}^{3}}{3\cdot 71700\cdot \frac{40\cdot {60}^{3}}{12}}\approx 8.926081\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -6633,15 +6693,17 @@ Alargamiento de una barra escalonada.\[\fitmath{\delta = \frac{N_1 L_1}{E A_1} +
 \textbf{Procedimiento.}\begin{itemize}\item El axil en $AB$ es $20 + 30 = 50$ kN y en $BC$ es $30$ kN, ambos de tracción.
 \item El alargamiento es la suma de los de los dos tramos.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Alargamiento del tramo AB.
 
-\[\fitmath{50000 \cdot 1000 \frac{1}{400 \cdot 71700}\approx 1.743\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{50000\cdot 1000}{71700\cdot 400}\approx 1.743375\,\mathrm{mm}}\]
 
 \item Alargamiento total.
 
-\[\fitmath{30000 \cdot 800 \frac{1}{200 \cdot 71700} + 50000 \cdot 1000 \frac{1}{400 \cdot 71700}\approx 3.417\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{50000\cdot 1000}{71700\cdot 400}+\frac{30000\cdot 800}{71700\cdot 200}\approx 3.417015\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -6680,13 +6742,17 @@ $I$ & $200\,\mathrm{cm^4}$ & inercia\\
 
 Flecha de viga biapoyada con carga uniforme.\[\fitmath{\delta_C = \frac{5\,q\,L^{4}}{384\,E\,I}}\]
 
+\textbf{Elección del procedimiento.} Con equilibrio y $EI\,v\prime\prime=M(x)$, integrar por tramos e imponer flecha nula en los dos apoyos da para carga uniforme $\delta_C=5qL^4/(384EI)$. Usar $q$ en N/mm cuando $L$ e inercia estén en mm; la flecha resulta en mm.
+
 \textbf{Procedimiento.}\begin{itemize}\item Se usan las unidades N y mm; $2$ kN/m $= 2$ N/mm.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Flecha en el centro.
 
-\[\fitmath{5 \cdot 2 \cdot 2000^{4} \frac{1}{384 \cdot 71700 \cdot 2000000.0}\approx 2.906\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{5\cdot 2\cdot {2000}^{4}}{384\cdot 71700\cdot 2000000}\approx 2.905625\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -6723,13 +6789,17 @@ $EI$ & $2.0\,\mathrm{kN\,m^2}$ & rigidez a flexión\\
 
 Ménsula con carga uniforme.\[\fitmath{\delta_B = \frac{q\,L^{4}}{8\,EI}}\]
 
+\textbf{Elección del procedimiento.} Para el voladizo, $M(x)=-q(L-x)^2/2$ con el convenio adoptado. Integrar $EI\,v\prime\prime=M$ e imponer $v(0)=v\prime(0)=0$ produce módulo de flecha final $qL^4/(8EI)$. El signo físico sigue el sentido de la carga.
+
 \textbf{Procedimiento.}\begin{itemize}\item Con q en N/mm, L en mm y EI en N mm$^2$ la flecha sale en mm.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Flecha en el extremo.
 
-\[\fitmath{\frac{0.002 \cdot 1000^{4}}{8 \cdot 2000000000.0}\approx 0.125\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{0.002\cdot {1000}^{4}}{8\cdot 2000000000}\approx 0.125\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -6765,17 +6835,21 @@ $M$ & $1.56\,\mathrm{kN\,m}$ & flector\\
 
 Flexión de un círculo.\[\fitmath{\sigma_{max} = \frac{M}{W},\quad W = \frac{\pi\,d^{3}}{32}}\]
 
+\textbf{Elección del procedimiento.} La ley de flexión es $\sigma=My/I$. En un círculo macizo, $I=\pi d^4/64$ e $y_{max}=d/2$; por tanto $W=I/y_{max}=\pi d^3/32$ y $\sigma_{max}=M/W$.
+
 \textbf{Procedimiento.}\begin{itemize}\item El módulo resistente es $\pi d^3/32$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Módulo resistente.
 
-\[\fitmath{\frac{50^{3} \pi}{32}\approx 1.227\times10^{4}\,\mathrm{mm^3}}\]
+\[\fitmath{y_{1}=\frac{\pi\cdot {50}^{3}}{32}\approx 12271.85\,\mathrm{mm^{3}}}\]
 
 \item Tensión máxima.
 
-\[\fitmath{\frac{1560000.0}{\frac{1}{32} \cdot 50^{3} \pi}\approx 127.1\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{1560000}{\frac{\pi\cdot {50}^{3}}{32}}\approx 127.1202\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -6810,13 +6884,17 @@ $h$ & $120\,\mathrm{mm}$ & altura\\
 
 Núcleo central del rectángulo.\[\fitmath{k_y = \frac{h}{6}}\]
 
+\textbf{Elección del procedimiento.} El límite del núcleo exige que la tensión no cambie de signo en ninguna esquina. Con axil excéntrico, $\sigma=N/A\pm Ne_y(h/2)/I_z\pm Ne_z(b/2)/I_y$. Imponer tensión nula en una esquina fija las intersecciones $h/6$ y $b/6$ del rombo.
+
 \textbf{Procedimiento.}\begin{itemize}\item El núcleo central es un rombo de semidiagonales $h/6$ y $b/6$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Semialtura del núcleo.
 
-\[\fitmath{\frac{120}{6}\approx 20.0\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{120}{6}\approx 20\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -6980,27 +7058,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.
 \item Comprobar explícitamente que y\_G es superior al espesor del ala y, por tanto, G está dentro del alma.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(70 - 50\right) \left(120 - 20\right) + \left(20 - 0\right) \left(120 - 0\right)\approx 4400\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(120-0\right)\cdot \left(20-0\right)+\left(70-50\right)\cdot \left(120-20\right)\approx 4400\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 20\right) \left(20 - 0\right) \left(120 - 0\right)}{2}\\a_{2}=\frac{\left(20 + 120\right) \left(70 - 50\right) \left(120 - 20\right)}{2}\\a_{3}=a_{1} + a_{2}\\a_{4}=\left(70 - 50\right) \left(120 - 20\right) + \left(20 - 0\right) \left(120 - 0\right)\\a_{5}=\frac{1}{a_{4}}\\a_{6}=a_{3} a_{5}\\a_{6}\approx 37.272727\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(120-0\right)\cdot \left(20-0\right)\cdot \left(0+20\right)}{2}+\frac{\left(70-50\right)\cdot \left(120-20\right)\cdot \left(20+120\right)}{2}}{\left(120-0\right)\cdot \left(20-0\right)+\left(70-50\right)\cdot \left(120-20\right)}\approx 37.27273\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(20 - 0\right)^{3} \left(120 - 0\right)}{12}\\a_{2}=\left(- \frac{410}{11} + \frac{0 + 20}{2}\right)^{2}\\a_{3}=a_{2} \left(20 - 0\right) \left(120 - 0\right)\\a_{4}=\frac{\left(70 - 50\right) \left(120 - 20\right)^{3}}{12}\\a_{5}=\left(- \frac{410}{11} + \frac{20 + 120}{2}\right)^{2}\\a_{6}=a_{5} \left(70 - 50\right) \left(120 - 20\right)\\a_{7}=a_{1} + a_{3} + a_{4} + a_{6}\\a_{7}\approx 5673939.4\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(120-0\right)\cdot {\left(20-0\right)}^{3}}{12}+\left(120-0\right)\cdot \left(20-0\right)\cdot {\left(\frac{0+20}{2}-\frac{410}{11}\right)}^{2}+\frac{\left(70-50\right)\cdot {\left(120-20\right)}^{3}}{12}+\left(70-50\right)\cdot \left(120-20\right)\cdot {\left(\frac{20+120}{2}-\frac{410}{11}\right)}^{2}\approx 5673939\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{\frac{682500}{4681}\approx 145.80218\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{682500}{4681}\approx 145.8022\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -7383,27 +7459,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item La tensión normal combina N/A y la flexión alrededor de los ejes centrales; si I\_yz no es cero se conserva en la relación general.
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(60 - 0\right) \left(120 - 110\right) + \left(10 - 0\right) \left(80 - 0\right) + \left(10 - 0\right) \left(110 - 10\right)\approx 2400\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(80-0\right)\cdot \left(10-0\right)+\left(10-0\right)\cdot \left(110-10\right)+\left(60-0\right)\cdot \left(120-110\right)\approx 2400\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 10\right) \left(10 - 0\right) \left(80 - 0\right)}{2}\\a_{2}=\frac{\left(10 + 110\right) \left(10 - 0\right) \left(110 - 10\right)}{2}\\a_{3}=\frac{\left(60 - 0\right) \left(110 + 120\right) \left(120 - 110\right)}{2}\\a_{4}=a_{1} + a_{2} + a_{3}\\a_{5}=\left(60 - 0\right) \left(120 - 110\right) + \left(10 - 0\right) \left(80 - 0\right) + \left(10 - 0\right) \left(110 - 10\right)\\a_{6}=\frac{1}{a_{5}}\\a_{7}=a_{4} a_{6}\\a_{7}\approx 55.416667\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(80-0\right)\cdot \left(10-0\right)\cdot \left(0+10\right)}{2}+\frac{\left(10-0\right)\cdot \left(110-10\right)\cdot \left(10+110\right)}{2}+\frac{\left(60-0\right)\cdot \left(120-110\right)\cdot \left(110+120\right)}{2}}{\left(80-0\right)\cdot \left(10-0\right)+\left(10-0\right)\cdot \left(110-10\right)+\left(60-0\right)\cdot \left(120-110\right)}\approx 55.41667\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(10 - 0\right)^{3} \left(80 - 0\right)}{12}\\a_{2}=\left(- \frac{665}{12} + \frac{0 + 10}{2}\right)^{2}\\a_{3}=a_{2} \left(10 - 0\right) \left(80 - 0\right)\\a_{4}=\frac{\left(10 - 0\right) \left(110 - 10\right)^{3}}{12}\\a_{5}=\left(- \frac{665}{12} + \frac{10 + 110}{2}\right)^{2}\\a_{6}=a_{5} \left(10 - 0\right) \left(110 - 10\right)\\a_{7}=\frac{\left(60 - 0\right) \left(120 - 110\right)^{3}}{12}\\a_{8}=\left(- \frac{665}{12} + \frac{110 + 120}{2}\right)^{2}\\a_{9}=a_{8} \left(60 - 0\right) \left(120 - 110\right)\\a_{10}=a_{1} + a_{3} + a_{4} + a_{6} + a_{7} + a_{9}\\a_{10}\approx 5029583.3\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(80-0\right)\cdot {\left(10-0\right)}^{3}}{12}+\left(80-0\right)\cdot \left(10-0\right)\cdot {\left(\frac{0+10}{2}-\frac{665}{12}\right)}^{2}+\frac{\left(10-0\right)\cdot {\left(110-10\right)}^{3}}{12}+\left(10-0\right)\cdot \left(110-10\right)\cdot {\left(\frac{10+110}{2}-\frac{665}{12}\right)}^{2}+\frac{\left(60-0\right)\cdot {\left(120-110\right)}^{3}}{12}+\left(60-0\right)\cdot \left(120-110\right)\cdot {\left(\frac{110+120}{2}-\frac{665}{12}\right)}^{2}\approx 5029583\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{\frac{2900375}{34591}\approx 83.847677\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{2900375}{34591}\approx 83.84768\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -7735,25 +7809,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item La tensión normal combina N/A y la flexión alrededor de los ejes centrales; si I\_yz no es cero se conserva en la relación general.
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(60 - 0\right) \left(120 - 0\right)\approx 7200\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(60-0\right)\cdot \left(120-0\right)\approx 7200\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-\[\fitmath{\frac{\left(0 + 120\right) \left(60 - 0\right) \left(120 - 0\right)}{2 \left(60 - 0\right) \left(120 - 0\right)}\approx 60\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(60-0\right)\cdot \left(120-0\right)\cdot \left(0+120\right)}{2}}{\left(60-0\right)\cdot \left(120-0\right)}\approx 60\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(60 - 0\right) \left(120 - 0\right)^{3}}{12}\\a_{2}=\left(\left(-1\right) 60 + \frac{0 + 120}{2}\right)^{2}\\a_{3}=a_{2} \left(60 - 0\right) \left(120 - 0\right)\\a_{4}=a_{1} + a_{3}\\a_{4}\approx 8640000\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(60-0\right)\cdot {\left(120-0\right)}^{3}}{12}+\left(60-0\right)\cdot \left(120-0\right)\cdot {\left(\frac{0+120}{2}-60\right)}^{2}\approx 8640000\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{\frac{250 \sqrt{3}}{9} + \frac{500}{9}\approx 103.66808\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{250\cdot \sqrt{3}}{9}+\frac{500}{9}\approx 103.6681\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8046,27 +8120,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item La tensión normal combina N/A y la flexión alrededor de los ejes centrales; si I\_yz no es cero se conserva en la relación general.
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{- \left(84 - 16\right) \left(184 - 16\right) + \left(100 - 0\right) \left(200 - 0\right)\approx 8576\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(100-0\right)\cdot \left(200-0\right)-\left(84-16\right)\cdot \left(184-16\right)\approx 8576\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 200\right) \left(100 - 0\right) \left(200 - 0\right)}{2}\\a_{2}=\frac{\left(16 + 184\right) \left(84 - 16\right) \left(184 - 16\right)}{2}\\a_{3}=- a_{2}\\a_{4}=a_{1} + a_{3}\\a_{5}=- \left(84 - 16\right) \left(184 - 16\right) + \left(100 - 0\right) \left(200 - 0\right)\\a_{6}=\frac{1}{a_{5}}\\a_{7}=a_{4} a_{6}\\a_{7}\approx 100\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(100-0\right)\cdot \left(200-0\right)\cdot \left(0+200\right)}{2}-\frac{\left(84-16\right)\cdot \left(184-16\right)\cdot \left(16+184\right)}{2}}{\left(100-0\right)\cdot \left(200-0\right)-\left(84-16\right)\cdot \left(184-16\right)}\approx 100\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(100 - 0\right) \left(200 - 0\right)^{3}}{12}\\a_{2}=\left(\left(-1\right) 100 + \frac{0 + 200}{2}\right)^{2}\\a_{3}=a_{2} \left(100 - 0\right) \left(200 - 0\right)\\a_{4}=\frac{\left(84 - 16\right) \left(184 - 16\right)^{3}}{12}\\a_{5}=\left(\left(-1\right) 100 + \frac{16 + 184}{2}\right)^{2}\\a_{6}=a_{5} \left(84 - 16\right) \left(184 - 16\right)\\a_{7}=a_{4} + a_{6}\\a_{8}=- a_{7}\\a_{9}=a_{1} + a_{3} + a_{8}\\a_{9}\approx 39797419\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(100-0\right)\cdot {\left(200-0\right)}^{3}}{12}+\left(100-0\right)\cdot \left(200-0\right)\cdot {\left(\frac{0+200}{2}-100\right)}^{2}-\left(\frac{\left(84-16\right)\cdot {\left(184-16\right)}^{3}}{12}+\left(84-16\right)\cdot \left(184-16\right)\cdot {\left(\frac{16+184}{2}-100\right)}^{2}\right)\approx 3.979742\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{\frac{17578125}{116594}\approx 150.76355\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{17578125}{116594}\approx 150.7635\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8302,27 +8374,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item La tensión normal combina N/A y la flexión alrededor de los ejes centrales; si I\_yz no es cero se conserva en la relación general.
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(60 - 40\right) \left(80 - 0\right) + \left(100 - 0\right) \left(100 - 80\right)\approx 3600\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(60-40\right)\cdot \left(80-0\right)+\left(100-0\right)\cdot \left(100-80\right)\approx 3600\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 80\right) \left(60 - 40\right) \left(80 - 0\right)}{2}\\a_{2}=\frac{\left(80 + 100\right) \left(100 - 0\right) \left(100 - 80\right)}{2}\\a_{3}=a_{1} + a_{2}\\a_{4}=\left(60 - 40\right) \left(80 - 0\right) + \left(100 - 0\right) \left(100 - 80\right)\\a_{5}=\frac{1}{a_{4}}\\a_{6}=a_{3} a_{5}\\a_{6}\approx 67.777778\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(60-40\right)\cdot \left(80-0\right)\cdot \left(0+80\right)}{2}+\frac{\left(100-0\right)\cdot \left(100-80\right)\cdot \left(80+100\right)}{2}}{\left(60-40\right)\cdot \left(80-0\right)+\left(100-0\right)\cdot \left(100-80\right)}\approx 67.77778\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(60 - 40\right) \left(80 - 0\right)^{3}}{12}\\a_{2}=\left(- \frac{610}{9} + \frac{0 + 80}{2}\right)^{2}\\a_{3}=a_{2} \left(60 - 40\right) \left(80 - 0\right)\\a_{4}=\frac{\left(100 - 0\right) \left(100 - 80\right)^{3}}{12}\\a_{5}=\left(- \frac{610}{9} + \frac{80 + 100}{2}\right)^{2}\\a_{6}=a_{5} \left(100 - 0\right) \left(100 - 80\right)\\a_{7}=a_{1} + a_{3} + a_{4} + a_{6}\\a_{7}\approx 3142222.2\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(60-40\right)\cdot {\left(80-0\right)}^{3}}{12}+\left(60-40\right)\cdot \left(80-0\right)\cdot {\left(\frac{0+80}{2}-\frac{610}{9}\right)}^{2}+\frac{\left(100-0\right)\cdot {\left(100-80\right)}^{3}}{12}+\left(100-0\right)\cdot \left(100-80\right)\cdot {\left(\frac{80+100}{2}-\frac{610}{9}\right)}^{2}\approx 3142222\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{\frac{122000}{707}\approx 172.56011\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{122000}{707}\approx 172.5601\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8373,23 +8443,21 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item El verificador geométrico de Studium contrasta las inercias por otra vía: integración directa sobre los contornos.
 \item Si los ejes no son principales, obtener los valores propios de la matriz de inercias sin suponer que I\_yz = 0.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(80 - 20\right) \left(180 - 172\right) + \left(12 - 0\right) \left(100 - 0\right) + \left(56 - 44\right) \left(172 - 12\right)\approx 3600\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(100-0\right)\cdot \left(12-0\right)+\left(56-44\right)\cdot \left(172-12\right)+\left(80-20\right)\cdot \left(180-172\right)\approx 3600\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 12\right) \left(12 - 0\right) \left(100 - 0\right)}{2}\\a_{2}=\frac{\left(12 + 172\right) \left(56 - 44\right) \left(172 - 12\right)}{2}\\a_{3}=\frac{\left(80 - 20\right) \left(172 + 180\right) \left(180 - 172\right)}{2}\\a_{4}=a_{1} + a_{2} + a_{3}\\a_{5}=\left(80 - 20\right) \left(180 - 172\right) + \left(12 - 0\right) \left(100 - 0\right) + \left(56 - 44\right) \left(172 - 12\right)\\a_{6}=\frac{1}{a_{5}}\\a_{7}=a_{4} a_{6}\\a_{7}\approx 74.533333\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(100-0\right)\cdot \left(12-0\right)\cdot \left(0+12\right)}{2}+\frac{\left(56-44\right)\cdot \left(172-12\right)\cdot \left(12+172\right)}{2}+\frac{\left(80-20\right)\cdot \left(180-172\right)\cdot \left(172+180\right)}{2}}{\left(100-0\right)\cdot \left(12-0\right)+\left(56-44\right)\cdot \left(172-12\right)+\left(80-20\right)\cdot \left(180-172\right)}\approx 74.53333\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(12 - 0\right)^{3} \left(100 - 0\right)}{12}\\a_{2}=\left(- \frac{1118}{15} + \frac{0 + 12}{2}\right)^{2}\\a_{3}=a_{2} \left(12 - 0\right) \left(100 - 0\right)\\a_{4}=\frac{\left(56 - 44\right) \left(172 - 12\right)^{3}}{12}\\a_{5}=\left(- \frac{1118}{15} + \frac{12 + 172}{2}\right)^{2}\\a_{6}=a_{5} \left(56 - 44\right) \left(172 - 12\right)\\a_{7}=\frac{\left(80 - 20\right) \left(180 - 172\right)^{3}}{12}\\a_{8}=\left(- \frac{1118}{15} + \frac{172 + 180}{2}\right)^{2}\\a_{9}=a_{8} \left(80 - 20\right) \left(180 - 172\right)\\a_{10}=a_{1} + a_{3} + a_{4} + a_{6} + a_{7} + a_{9}\\a_{10}\approx 15276736\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(100-0\right)\cdot {\left(12-0\right)}^{3}}{12}+\left(100-0\right)\cdot \left(12-0\right)\cdot {\left(\frac{0+12}{2}-\frac{1118}{15}\right)}^{2}+\frac{\left(56-44\right)\cdot {\left(172-12\right)}^{3}}{12}+\left(56-44\right)\cdot \left(172-12\right)\cdot {\left(\frac{12+172}{2}-\frac{1118}{15}\right)}^{2}+\frac{\left(80-20\right)\cdot {\left(180-172\right)}^{3}}{12}+\left(80-20\right)\cdot \left(180-172\right)\cdot {\left(\frac{172+180}{2}-\frac{1118}{15}\right)}^{2}\approx 1.527674\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \end{enumerate}
 
@@ -8438,27 +8506,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item El verificador geométrico de Studium contrasta las inercias por otra vía: integración directa sobre los contornos.
 \item Si los ejes no son principales, obtener los valores propios de la matriz de inercias sin suponer que I\_yz = 0.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(60 - 10\right) \left(100 - 90\right) + \left(10 - 0\right) \left(100 - 0\right)\approx 1500\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(10-0\right)\cdot \left(100-0\right)+\left(60-10\right)\cdot \left(100-90\right)\approx 1500\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(0 + 100\right) \left(10 - 0\right) \left(100 - 0\right)}{2}\\a_{2}=\frac{\left(60 - 10\right) \left(90 + 100\right) \left(100 - 90\right)}{2}\\a_{3}=a_{1} + a_{2}\\a_{4}=\left(60 - 10\right) \left(100 - 90\right) + \left(10 - 0\right) \left(100 - 0\right)\\a_{5}=\frac{1}{a_{4}}\\a_{6}=a_{3} a_{5}\\a_{6}\approx 65\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(10-0\right)\cdot \left(100-0\right)\cdot \left(0+100\right)}{2}+\frac{\left(60-10\right)\cdot \left(100-90\right)\cdot \left(90+100\right)}{2}}{\left(10-0\right)\cdot \left(100-0\right)+\left(60-10\right)\cdot \left(100-90\right)}\approx 65\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(10 - 0\right) \left(100 - 0\right)^{3}}{12}\\a_{2}=\left(\left(-1\right) 65 + \frac{0 + 100}{2}\right)^{2}\\a_{3}=a_{2} \left(10 - 0\right) \left(100 - 0\right)\\a_{4}=\frac{\left(60 - 10\right) \left(100 - 90\right)^{3}}{12}\\a_{5}=\left(\left(-1\right) 65 + \frac{90 + 100}{2}\right)^{2}\\a_{6}=a_{5} \left(60 - 10\right) \left(100 - 90\right)\\a_{7}=a_{1} + a_{3} + a_{4} + a_{6}\\a_{7}\approx 1512500\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(10-0\right)\cdot {\left(100-0\right)}^{3}}{12}+\left(10-0\right)\cdot \left(100-0\right)\cdot {\left(\frac{0+100}{2}-65\right)}^{2}+\frac{\left(60-10\right)\cdot {\left(100-90\right)}^{3}}{12}+\left(60-10\right)\cdot \left(100-90\right)\cdot {\left(\frac{90+100}{2}-65\right)}^{2}\approx 1512500\,\mathrm{mm^{4}}}\]
 
 \item Momento principal máximo de inercia.
 
-\[\fitmath{50000 \sqrt{202} + 962500\approx 1673133.5\,\mathrm{mm^4}}\]
+\[\fitmath{y_{4}=50000\cdot \sqrt{202}+962500\approx 1673134\,\mathrm{mm^{4}}}\]
 
 \end{enumerate}
 
@@ -8509,25 +8575,25 @@ Flexión compuesta en ejes generales.\[\fitmath{\sigma_x = \frac{N}{A}+\frac{(M_
 \item Determinar las fibras de tensión extrema evaluando la distribución lineal en los vértices y representar las zonas de compresión y tracción.
 \item Como las dos tensiones extremas son negativas, la sección entera trabaja a compresión y el eje neutro no la atraviesa.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área algebraica de la sección, descontando los huecos.
 
-\[\fitmath{\left(80 - 0\right) \left(160 - 0\right)\approx 12800\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=\left(80-0\right)\cdot \left(160-0\right)\approx 12800\,\mathrm{mm^{2}}}\]
 
 \item Centroide en el eje vertical mediante primeros momentos.
 
-\[\fitmath{\frac{\left(0 + 160\right) \left(80 - 0\right) \left(160 - 0\right)}{2 \left(80 - 0\right) \left(160 - 0\right)}\approx 80\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{\left(80-0\right)\cdot \left(160-0\right)\cdot \left(0+160\right)}{2}}{\left(80-0\right)\cdot \left(160-0\right)}\approx 80\,\mathrm{mm}}\]
 
 \item Momento de inercia I\_z mediante el teorema de Steiner.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{\left(80 - 0\right) \left(160 - 0\right)^{3}}{12}\\a_{2}=\left(\left(-1\right) 80 + \frac{0 + 160}{2}\right)^{2}\\a_{3}=a_{2} \left(80 - 0\right) \left(160 - 0\right)\\a_{4}=a_{1} + a_{3}\\a_{4}\approx 27306667\,\mathrm{mm^4}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{\left(80-0\right)\cdot {\left(160-0\right)}^{3}}{12}+\left(80-0\right)\cdot \left(160-0\right)\cdot {\left(\frac{0+160}{2}-80\right)}^{2}\approx 2.730667\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \item Tensión extrema: axil y flexión con el convenio declarado.
 
-\[\fitmath{- \frac{525}{32}\approx -16.40625\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{-525}{32}\approx -16.40625\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8583,19 +8649,21 @@ Giro de un tubo circular.\[\fitmath{\theta_x = \frac{M_x\,L}{G\,J},\quad J = \fr
 \item La tensión máxima está en el radio exterior.
 \item El giro total es el giro unitario por la longitud.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Constante de torsión.
 
-\[\fitmath{\frac{\pi \left(- 20^{4} + 25^{4}\right)}{2}\approx 3.6226\times10^{5}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=\frac{\pi\cdot \left({25}^{4}-{20}^{4}\right)}{2}\approx 362264.9\,\mathrm{mm^{4}}}\]
 
 \item Tensión tangencial máxima.
 
-\[\fitmath{1000000.0 \cdot 25 \frac{1}{\frac{1}{2} \pi \left(- 20^{4} + 25^{4}\right)}\approx 69.01\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{1000000\cdot 25}{\frac{\pi\cdot \left({25}^{4}-{20}^{4}\right)}{2}}\approx 69.01027\,\mathrm{MPa}}\]
 
 \item Giro entre extremos.
 
-\[\fitmath{1000000.0 \cdot 1000 \frac{1}{26950 \cdot \frac{1}{2} \pi \left(- 20^{4} + 25^{4}\right)}\approx 0.1024\,\mathrm{rad}}\]
+\[\fitmath{y_{3}=\frac{1000000\cdot 1000}{\frac{26950\cdot \pi\cdot \left({25}^{4}-{20}^{4}\right)}{2}}\approx 0.1024271\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -8641,23 +8709,25 @@ Giro por la fórmula de Bredt.\[\fitmath{\theta_x = \frac{M_x\,L}{G\,J},\quad J 
 \item La longitud de la línea media es $s_m = 2(a + b)$.
 \item La constante de torsión es $4 A_m^2 t/s_m$ y la tensión es $M_x/(2 A_m t)$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área encerrada.
 
-\[\fitmath{100 \cdot 60\approx 6000\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=100\cdot 60\approx 6000\,\mathrm{mm^{2}}}\]
 
 \item Tensión tangencial.
 
-\[\fitmath{\frac{1800000.0}{2 \cdot 2 \cdot 60 \cdot 100}\approx 75.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{1800000}{2\cdot 100\cdot 60\cdot 2}\approx 75\,\mathrm{MPa}}\]
 
 \item Constante de torsión.
 
-\[\fitmath{4 \left(100 \cdot 60\right)^{2} \cdot 2 \frac{1}{2 \left(60 + 100\right)}\approx 9.0\times10^{5}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{3}=\frac{4\cdot {\left(100\cdot 60\right)}^{2}\cdot 2}{2\cdot \left(100+60\right)}\approx 900000\,\mathrm{mm^{4}}}\]
 
 \item Giro entre extremos.
 
-\[\fitmath{1800000.0 \cdot 1000 \frac{1}{2 \cdot 4 \cdot 26950 \frac{1}{2 \left(60 + 100\right)} \left(100 \cdot 60\right)^{2}}\approx 0.07421\,\mathrm{rad}}\]
+\[\fitmath{y_{4}=\frac{1800000\cdot 1000}{\frac{26950\cdot 4\cdot {\left(100\cdot 60\right)}^{2}\cdot 2}{2\cdot \left(100+60\right)}}\approx 0.0742115\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -8703,33 +8773,29 @@ Flujo de la célula 1.\[\fitmath{f_1 = \frac{M_x}{2A_1 + 2A_2\,a/b}}\]
 \item Entonces $f_2 = f_1\,a/b$, y el equilibrio $M_x = 2A_1 f_1 + 2A_2 f_2$ da $f_1$.
 \item La tensión máxima es el mayor flujo dividido entre el espesor; la pared común soporta $f_1 - f_2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Coeficiente a.
 
-\[\fitmath{\frac{100}{6000} + \frac{100 + 300}{10000}\approx 0.056667\,\mathrm{1/mm}}\]
+\[\fitmath{y_{1}=\frac{300+100}{10000}+\frac{100}{6000}\approx 0.05666667\,\mathrm{1/mm}}\]
 
 \item Coeficiente b.
 
-\[\fitmath{\frac{100}{10000} + \frac{100 + 220}{6000}\approx 0.063333\,\mathrm{1/mm}}\]
+\[\fitmath{y_{2}=\frac{220+100}{6000}+\frac{100}{10000}\approx 0.06333333\,\mathrm{1/mm}}\]
 
 \item Flujo de la célula 1.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{1}{\frac{100}{10000} + \frac{100 + 220}{6000}}\\a_{2}=2 \cdot 6000 \left(\frac{100}{6000} + \frac{100 + 300}{10000}\right) a_{1}\\a_{3}=a_{2} + 2 \cdot 10000\\a_{4}=\frac{1}{a_{3}}\\a_{5}=4000000.0 a_{4}\\a_{5}\approx 130.14\,\mathrm{N/mm}\end{gathered}}\]
+\[\fitmath{y_{3}=\frac{4000000}{2\cdot 10000+\frac{2\cdot 6000\cdot \left(\frac{300+100}{10000}+\frac{100}{6000}\right)}{\frac{220+100}{6000}+\frac{100}{10000}}}\approx 130.137\,\mathrm{N/mm}}\]
 
 \item Flujo de la célula 2.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{1}{\frac{100}{10000} + \frac{100 + 220}{6000}}\\a_{2}=2 \cdot 6000 \left(\frac{100}{6000} + \frac{100 + 300}{10000}\right) a_{1}\\a_{3}=a_{2} + 2 \cdot 10000\\a_{4}=\frac{1}{a_{3}}\\a_{5}=\frac{1}{\frac{100}{10000} + \frac{100 + 220}{6000}}\\a_{6}=4000000.0 a_{4} a_{5} \left(\frac{100}{6000} + \frac{100 + 300}{10000}\right)\\a_{6}\approx 116.44\,\mathrm{N/mm}\end{gathered}}\]
+\[\fitmath{y_{4}=\frac{\frac{4000000}{2\cdot 10000+\frac{2\cdot 6000\cdot \left(\frac{300+100}{10000}+\frac{100}{6000}\right)}{\frac{220+100}{6000}+\frac{100}{10000}}}\cdot \left(\frac{300+100}{10000}+\frac{100}{6000}\right)}{\frac{220+100}{6000}+\frac{100}{10000}}\approx 116.4384\,\mathrm{N/mm}}\]
 
 \item Tensión máxima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{1}{\frac{100}{10000} + \frac{100 + 220}{6000}}\\a_{2}=2 \cdot 6000 \left(\frac{100}{6000} + \frac{100 + 300}{10000}\right) a_{1}\\a_{3}=a_{2} + 2 \cdot 10000\\a_{4}=\frac{1}{a_{3}}\\a_{5}=\frac{4000000.0 a_{4}}{2}\\a_{5}\approx 65.07\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{5}=\frac{\frac{4000000}{2\cdot 10000+\frac{2\cdot 6000\cdot \left(\frac{300+100}{10000}+\frac{100}{6000}\right)}{\frac{220+100}{6000}+\frac{100}{10000}}}}{2}\approx 65.06849\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8766,13 +8832,17 @@ $M_{x}$ & $500\,\mathrm{N\,m}$ & torsor\\
 
 Tensión máxima en un eje macizo.\[\fitmath{\tau_{max} = \frac{16\,M_x}{\pi\,D^{3}}}\]
 
+\textbf{Elección del procedimiento.} La torsión circular cumple $\tau=Tr/J$. Para sección maciza $J=\pi D^4/32$ y $r_{max}=D/2$; sustituir y cancelar un factor $D$ da $\tau_{max}=16T/(\pi D^3)$.
+
 \textbf{Procedimiento.}\begin{itemize}\item $J = \pi D^4/32$ y $R = D/2$, de modo que $\tau_{max} = 16 M_x/(\pi D^3)$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión tangencial máxima.
 
-\[\fitmath{16 \cdot 500000.0 \frac{1}{40^{3} \pi}\approx 39.79\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{16\cdot 500000}{\pi\cdot {40}^{3}}\approx 39.78874\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8808,13 +8878,17 @@ $t$ & $2\,\mathrm{mm}$ & espesor\\
 
 Cociente cerrado/abierto.\[\fitmath{\frac{J_c}{J_a} = \frac{3\,R^{2}}{t^{2}}}\]
 
+\textbf{Elección del procedimiento.} Para anillo cerrado delgado $J_c=2\pi R^3t$. Al abrirlo como tira, $J_a\simeq(2\pi R)t^3/3$. Dividir cancela $2\pi Rt$ y deja $J_c/J_a=3(R/t)^2$. No se usa el momento polar para la sección abierta.
+
 \textbf{Procedimiento.}\begin{itemize}\item $J_c = 2\pi R^3 t$ y $J_a = \tfrac{2}{3}\pi R t^3$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Cociente.
 
-\[\fitmath{\frac{3 \cdot 50^{2}}{2^{2}}\approx 1875}\]
+\[\fitmath{y_{1}=\frac{3\cdot {50}^{2}}{{2}^{2}}\approx 1875\,}\]
 
 \end{enumerate}
 
@@ -8851,13 +8925,17 @@ $M_{x}$ & $2000\,\mathrm{N\,m}$ & torsor\\
 
 Fórmula de Bredt en un tubo circular.\[\fitmath{\tau = \frac{M_x}{2\pi R^{2} t}}\]
 
+\textbf{Elección del procedimiento.} Bredt da flujo constante $q=T/(2A_m)$ en una célula cerrada. Como $A_m=\pi R^2$ y $\tau=q/t$, resulta $\tau=T/(2\pi R^2t)$. Las dimensiones son las de tensión.
+
 \textbf{Procedimiento.}\begin{itemize}\item El área encerrada es $A_m = \pi R^2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión tangencial.
 
-\[\fitmath{\frac{2000000.0}{1.5 \cdot 2 \cdot 40^{2} \pi}\approx 132.6\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{2000000}{2\cdot \pi\cdot {40}^{2}\cdot 1.5}\approx 132.6291\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -8893,17 +8971,21 @@ $L$ & $1000\,\mathrm{mm}$ & longitud\\
 
 Torsor para un giro dado.\[\fitmath{M_x = \frac{G\,J\,\theta_x}{L}}\]
 
+\textbf{Elección del procedimiento.} La ley de giro es $\theta=TL/(GJ)$. Despejar $T=GJ\theta/L$ exige convertir el grado a $\pi/180$ rad. En un tubo, $J=\pi(R_o^4-R_i^4)/2$ utiliza radios, no diámetros.
+
 \textbf{Procedimiento.}\begin{itemize}\item Un grado son $\pi/180$ rad y $J = \pi(25^4 - 20^4)/2$ mm$^4$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Torsor máximo en N mm.
 
-\[\fitmath{\frac{26950 \pi \pi \left(- 20^{4} + 25^{4}\right)}{2 \cdot 180 \cdot 1000}\approx 1.704\times10^{5}\,\mathrm{N\,mm}}\]
+\[\fitmath{y_{1}=\frac{26950\cdot \frac{\pi\cdot \left({25}^{4}-{20}^{4}\right)}{2}\cdot \frac{\pi}{180}}{1000}\approx 170397.2\,\mathrm{N mm}}\]
 
 \item Torsor máximo en N m.
 
-\[\fitmath{\frac{26950 \pi \pi \left(- 20^{4} + 25^{4}\right)}{2 \cdot 180 \cdot 1000 \cdot 1000}\approx 170.4\,\mathrm{N\,m}}\]
+\[\fitmath{y_{2}=\frac{\frac{26950\cdot \frac{\pi\cdot \left({25}^{4}-{20}^{4}\right)}{2}\cdot \frac{\pi}{180}}{1000}}{1000}\approx 170.3972\,\mathrm{N m}}\]
 
 \end{enumerate}
 
@@ -8940,13 +9022,17 @@ $T$ & $10000\,\mathrm{N\,mm}$ & torsor\\
 
 Tira delgada.\[\fitmath{\tau_{max} = \frac{3\,T}{a\,s^{2}}}\]
 
+\textbf{Elección del procedimiento.} Para una tira muy delgada de ancho $a$ y espesor $s$, el módulo torsional aproximado conduce a $\tau_{max}\simeq3T/(as^2)$. Verificar $a/s\gg1$ antes de usar esa aproximación; el espesor entra al cuadrado.
+
 \textbf{Procedimiento.}\begin{itemize}\item La relación a/s es $50$, de modo que la aproximación es buena.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión máxima.
 
-\[\fitmath{3 \cdot 10000 \frac{1}{100 \cdot 2^{2}}\approx 75.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{3\cdot 10000}{100\cdot {2}^{2}}\approx 75\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9017,42 +9103,29 @@ Torsión de pared delgada.\[\fitmath{J_{cerrada}=\frac{4A_m^2}{\oint ds/t},\qqua
 \item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de línea media.
 
-\[\fitmath{\begin{aligned}
-A_m &= a\,b\\
-&\approx 8400\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=8400\approx 8400\,\mathrm{mm^{2}}}\]
 
 \item Flujo cortante de Bredt.
 
-\[\fitmath{\begin{aligned}
-q &= \frac{M_x}{2A_m}\\
-&\approx 125\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{2}=\frac{2100000}{2\cdot 120\cdot 70}\approx 125\,\mathrm{N/mm}}\]
 
 \item Constante de torsión cerrada.
 
-\[\fitmath{\begin{aligned}
-J &= \frac{4A_m^2}{\sum_i \ell_i/t_i}\\
-&\approx 1485473{,}7\,\mathrm{mm}^{4}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{4\cdot {\left(120\cdot 70\right)}^{2}}{\frac{120}{2}+\frac{70}{2}+\frac{120}{2}+\frac{70}{2}}\approx 1485474\,\mathrm{mm^{4}}}\]
 
 \item Tensión tangencial en la pared.
 
-\[\fitmath{\begin{aligned}
-\tau &= \frac{|q|}{t}\\
-&\approx 62{,}5\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{2100000}{2\cdot 120\cdot 70\cdot 2}\approx 62.5\,\mathrm{MPa}}\]
 
 \item Giro de la barra.
 
-\[\fitmath{\begin{aligned}
-\theta &= \frac{M_xL}{GJ}\\
-&\approx 0{,}06293558\,\mathrm{rad}
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{2100000\cdot 1200}{26955\cdot \frac{4\cdot {\left(120\cdot 70\right)}^{2}}{\frac{120}{2}+\frac{70}{2}+\frac{120}{2}+\frac{70}{2}}}\approx 0.06293558\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -9126,42 +9199,29 @@ Torsión de pared delgada.\[\fitmath{J_{cerrada}=\frac{4A_m^2}{\oint ds/t},\qqua
 \item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de línea media.
 
-\[\fitmath{\begin{aligned}
-A_m &= a\,b\\
-&\approx 9600\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=9600\approx 9600\,\mathrm{mm^{2}}}\]
 
 \item Flujo cortante de Bredt.
 
-\[\fitmath{\begin{aligned}
-q &= \frac{M_x}{2A_m}\\
-&\approx 125\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{2}=\frac{2400000}{2\cdot 120\cdot 80}\approx 125\,\mathrm{N/mm}}\]
 
 \item Constante de torsión cerrada.
 
-\[\fitmath{\begin{aligned}
-J &= \frac{4A_m^2}{\sum_i \ell_i/t_i}\\
-&\approx 1675636{,}4\,\mathrm{mm}^{4}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{4\cdot {\left(120\cdot 80\right)}^{2}}{\frac{120}{3}+\frac{80}{1}+\frac{120}{2}+\frac{80}{2}}\approx 1675636\,\mathrm{mm^{4}}}\]
 
 \item Giro total entre extremos.
 
-\[\fitmath{\begin{aligned}
-\theta &= \frac{M_xL}{GJ}\\
-&\approx 0{,}0797046\,\mathrm{rad}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{2400000\cdot 1500}{26955\cdot \frac{4\cdot {\left(120\cdot 80\right)}^{2}}{\frac{120}{3}+\frac{80}{1}+\frac{120}{2}+\frac{80}{2}}}\approx 0.0797046\,\mathrm{rad}}\]
 
 \item Tensión tangencial máxima.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \frac{|q|}{t_{\min}}\\
-&\approx 125\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{2400000}{2\cdot 120\cdot 80\cdot 1}\approx 125\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9246,77 +9306,49 @@ Torsión de pared delgada.\[\fitmath{M_x=2\sum_i A_iq_i,\quad \theta_1\prime=\th
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.
 \item En las ecuaciones bicelulares, $P_1=2w_1+h$ y $P_2=2w_2+h$ son los recorridos exteriores de cada célula; $t_e$ es el espesor exterior y $t_c$ el compartido; $r=q_2/q_1$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de célula 1.
 
-\[\fitmath{\begin{aligned}
-A_1 &= w_1h\\
-&\approx 8000\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=100\cdot 80\approx 8000\,\mathrm{mm^{2}}}\]
 
 \item Área de célula 2.
 
-\[\fitmath{\begin{aligned}
-A_2 &= w_2h\\
-&\approx 4800\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{2}=60\cdot 80\approx 4800\,\mathrm{mm^{2}}}\]
 
 \item Coeficiente a de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-a &= \frac{P_1/t_e+h/t_c}{A_1}+\frac{h}{t_cA_2}\\
-&\approx 0{,}030833333\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}\approx 0.03083333\,\mathrm{1/mm^{2}}}\]
 
 \item Coeficiente b de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-b &= \frac{P_2/t_e+h/t_c}{A_2}+\frac{h}{t_cA_1}\\
-&\approx 0{,}034166667\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}\approx 0.03416667\,\mathrm{1/mm^{2}}}\]
 
 \item Relación de flujos q2/q1 por compatibilidad.
 
-\[\fitmath{\begin{aligned}
-r &= \frac{q_2}{q_1}=\frac{a}{b}\\
-&\approx 0{,}90243902
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 0.902439\,}\]
 
 \item Flujo circulante de la primera célula por equilibrio.
 
-\[\fitmath{\begin{aligned}
-q_1 &= \frac{M_x}{2(A_1+rA_2)}\\
-&\approx 145{,}96519\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{6}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\approx 145.9652\,\mathrm{N/mm}}\]
 
 \item Flujo circulante de la segunda célula.
 
-\[\fitmath{\begin{aligned}
-q_2 &= r\,q_1\\
-&\approx 131{,}72468\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{7}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 131.7247\,\mathrm{N/mm}}\]
 
 \item Flujo neto de la pared compartida.
 
-\[\fitmath{\begin{aligned}
-q_c &= q_1-q_2\\
-&\approx 14{,}240506\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{8}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}-\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 14.24051\,\mathrm{N/mm}}\]
 
 \item Giro unitario compatible de ambas células.
 
-\[\fitmath{\begin{aligned}
-\theta' &= \frac{q_1P_1/t_e+(q_1-q_2)h/t_c}{2GA_1}\\
-&\approx 4{,}8703271\times 10^{-5}\,\mathrm{rad/mm}
-\end{aligned}}\]
+\[\fitmath{y_{9}=\frac{\frac{\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot 280}{2}+\frac{\left(\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}-\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\right)\cdot 80}{2}}{2\cdot 26955\cdot 100\cdot 80}\approx 4.870327\times10^{-5}\,\mathrm{rad/mm}}\]
 
 \item Tensión tangencial máxima en las paredes.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \max\!\left(\frac{|q_1|}{t_e},\frac{|q_2|}{t_e},\frac{|q_1-q_2|}{t_c}\right)\\
-&\approx 72{,}982595\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{10}=\frac{\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}}{2}\approx 72.98259\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9387,28 +9419,21 @@ Torsión de pared delgada.\[\fitmath{J_{abierta}\simeq\frac13\sum_i b_i t_i^3,\q
 \item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Constante abierta de Saint-Venant (suma de tiras).
 
-\[\fitmath{\begin{aligned}
-J_{\mathrm{SV}} &= \frac{1}{3}\sum_i b_i t_i^3\\
-&\approx 2880\,\mathrm{mm}^{4}
-\end{aligned}}\]
+\[\fitmath{y_{1}=\frac{\left(120+80+120\right)\cdot {3}^{3}}{3}\approx 2880\,\mathrm{mm^{4}}}\]
 
 \item Tensión de Saint-Venant en tira abierta.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \frac{M_xt}{J_{\mathrm{SV}}}\\
-&\approx 20{,}833333\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{2}=\frac{20000\cdot 3}{\frac{\left(120+80+120\right)\cdot {3}^{3}}{3}}\approx 20.83333\,\mathrm{MPa}}\]
 
 \item Giro de la barra abierta.
 
-\[\fitmath{\begin{aligned}
-\theta &= \frac{M_xL}{GJ_{\mathrm{SV}}}\\
-&\approx 0{,}12881552\,\mathrm{rad}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{20000\cdot 500}{26955\cdot \frac{\left(120+80+120\right)\cdot {3}^{3}}{3}}\approx 0.1288155\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -9482,42 +9507,29 @@ Torsión de pared delgada.\[\fitmath{J_{cerrada}=\frac{4A_m^2}{\oint ds/t},\qqua
 \item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de línea media.
 
-\[\fitmath{\begin{aligned}
-A_m &= a\,b\\
-&\approx 8100\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=8100\approx 8100\,\mathrm{mm^{2}}}\]
 
 \item Flujo cortante de Bredt.
 
-\[\fitmath{\begin{aligned}
-q &= \frac{M_x}{2A_m}\\
-&\approx 55{,}555556\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{2}=\frac{900000}{2\cdot 90\cdot 90}\approx 55.55556\,\mathrm{N/mm}}\]
 
 \item Constante de torsión cerrada.
 
-\[\fitmath{\begin{aligned}
-J &= \frac{4A_m^2}{\sum_i \ell_i/t_i}\\
-&\approx 1093500\,\mathrm{mm}^{4}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{4\cdot {\left(90\cdot 90\right)}^{2}}{\frac{90}{1.5}+\frac{90}{1.5}+\frac{90}{1.5}+\frac{90}{1.5}}\approx 1093500\,\mathrm{mm^{4}}}\]
 
 \item Giro total entre extremos.
 
-\[\fitmath{\begin{aligned}
-\theta &= \frac{M_xL}{GJ}\\
-&\approx 0{,}024427239\,\mathrm{rad}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{900000\cdot 800}{26955\cdot \frac{4\cdot {\left(90\cdot 90\right)}^{2}}{\frac{4\cdot 90}{1.5}}}\approx 0.02442724\,\mathrm{rad}}\]
 
 \item Tensión tangencial máxima.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \frac{|q|}{t_{\min}}\\
-&\approx 37{,}037037\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{900000}{2\cdot 90\cdot 90\cdot 1.5}\approx 37.03704\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9602,77 +9614,49 @@ Torsión de pared delgada.\[\fitmath{M_x=2\sum_i A_iq_i,\quad \theta_1\prime=\th
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.
 \item En las ecuaciones bicelulares, $P_1=2w_1+h$ y $P_2=2w_2+h$ son los recorridos exteriores de cada célula; $t_e$ es el espesor exterior y $t_c$ el compartido; $r=q_2/q_1$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de célula 1.
 
-\[\fitmath{\begin{aligned}
-A_1 &= w_1h\\
-&\approx 4200\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=70\cdot 60\approx 4200\,\mathrm{mm^{2}}}\]
 
 \item Área de célula 2.
 
-\[\fitmath{\begin{aligned}
-A_2 &= w_2h\\
-&\approx 4200\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{2}=70\cdot 60\approx 4200\,\mathrm{mm^{2}}}\]
 
 \item Coeficiente a de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-a &= \frac{P_1/t_e+h/t_c}{A_1}+\frac{h}{t_cA_2}\\
-&\approx 0{,}038095238\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}\approx 0.03809524\,\mathrm{1/mm^{2}}}\]
 
 \item Coeficiente b de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-b &= \frac{P_2/t_e+h/t_c}{A_2}+\frac{h}{t_cA_1}\\
-&\approx 0{,}038095238\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}\approx 0.03809524\,\mathrm{1/mm^{2}}}\]
 
 \item Relación de flujos q2/q1 por compatibilidad.
 
-\[\fitmath{\begin{aligned}
-r &= \frac{q_2}{q_1}=\frac{a}{b}\\
-&\approx 1
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}\approx 1\,}\]
 
 \item Flujo circulante de la primera célula por equilibrio.
 
-\[\fitmath{\begin{aligned}
-q_1 &= \frac{M_x}{2(A_1+rA_2)}\\
-&\approx 100\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{6}=\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}\approx 100\,\mathrm{N/mm}}\]
 
 \item Flujo circulante de la segunda célula.
 
-\[\fitmath{\begin{aligned}
-q_2 &= r\,q_1\\
-&\approx 100\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{7}=\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}\approx 100\,\mathrm{N/mm}}\]
 
 \item Flujo neto de la pared compartida.
 
-\[\fitmath{\begin{aligned}
-q_c &= q_1-q_2\\
-&\approx 0\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{8}=\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}-\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}\approx 6.946121\times10^{-164}\,\mathrm{N/mm}}\]
 
 \item Giro unitario compatible de ambas células.
 
-\[\fitmath{\begin{aligned}
-\theta' &= \frac{q_1P_1/t_e+(q_1-q_2)h/t_c}{2GA_1}\\
-&\approx 4{,}416532\times 10^{-5}\,\mathrm{rad/mm}
-\end{aligned}}\]
+\[\fitmath{y_{9}=\frac{\frac{\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}\cdot 200}{2}+\frac{\left(\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}-\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}\right)\cdot 60}{2}}{2\cdot 26955\cdot 70\cdot 60}\approx 4.416532\times10^{-5}\,\mathrm{rad/mm}}\]
 
 \item Tensión tangencial máxima en las paredes.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \max\!\left(\frac{|q_1|}{t_e},\frac{|q_2|}{t_e},\frac{|q_1-q_2|}{t_c}\right)\\
-&\approx 50\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{10}=\frac{\frac{1680000}{2\cdot 70\cdot 60+2\cdot 70\cdot 60\cdot \frac{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}{\frac{\frac{200}{2}+\frac{60}{2}}{70\cdot 60}+\frac{60}{2\cdot 70\cdot 60}}}}{2}\approx 50\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9739,28 +9723,21 @@ Torsión de pared delgada.\[\fitmath{J_{abierta}\simeq\frac13\sum_i b_i t_i^3,\q
 \item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Constante abierta de Saint-Venant (suma de tiras).
 
-\[\fitmath{\begin{aligned}
-J_{\mathrm{SV}} &= \frac{1}{3}\sum_i b_i t_i^3\\
-&\approx 453{,}33333\,\mathrm{mm}^{4}
-\end{aligned}}\]
+\[\fitmath{y_{1}=\frac{\left(100+70\right)\cdot {2}^{3}}{3}\approx 453.3333\,\mathrm{mm^{4}}}\]
 
 \item Giro total entre extremos.
 
-\[\fitmath{\begin{aligned}
-\theta &= \frac{M_xL}{GJ}\\
-&\approx 0{,}098202887\,\mathrm{rad}
-\end{aligned}}\]
+\[\fitmath{y_{2}=\frac{4000\cdot 300}{26955\cdot \frac{\left(100+70\right)\cdot {2}^{3}}{3}}\approx 0.09820289\,\mathrm{rad}}\]
 
 \item Tensión máxima aproximada en tira delgada.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \frac{M_xt}{J_{\mathrm{SV}}}\\
-&\approx 17{,}647059\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{4000\cdot 2}{\frac{\left(100+70\right)\cdot {2}^{3}}{3}}\approx 17.64706\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9845,77 +9822,49 @@ Torsión de pared delgada.\[\fitmath{M_x=2\sum_i A_iq_i,\quad \theta_1\prime=\th
 \item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.
 \item En las ecuaciones bicelulares, $P_1=2w_1+h$ y $P_2=2w_2+h$ son los recorridos exteriores de cada célula; $t_e$ es el espesor exterior y $t_c$ el compartido; $r=q_2/q_1$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área de célula 1.
 
-\[\fitmath{\begin{aligned}
-A_1 &= w_1h\\
-&\approx 5400\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{1}=90\cdot 60\approx 5400\,\mathrm{mm^{2}}}\]
 
 \item Área de célula 2.
 
-\[\fitmath{\begin{aligned}
-A_2 &= w_2h\\
-&\approx 3600\,\mathrm{mm}^{2}
-\end{aligned}}\]
+\[\fitmath{y_{2}=60\cdot 60\approx 3600\,\mathrm{mm^{2}}}\]
 
 \item Coeficiente a de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-a &= \frac{P_1/t_e+h/t_c}{A_1}+\frac{h}{t_cA_2}\\
-&\approx 0{,}031481481\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{3}=\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}\approx 0.03148148\,\mathrm{1/mm^{2}}}\]
 
 \item Coeficiente b de compatibilidad.
 
-\[\fitmath{\begin{aligned}
-b &= \frac{P_2/t_e+h/t_c}{A_2}+\frac{h}{t_cA_1}\\
-&\approx 0{,}034259259\,\mathrm{mm}^{-2}
-\end{aligned}}\]
+\[\fitmath{y_{4}=\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}\approx 0.03425926\,\mathrm{1/mm^{2}}}\]
 
 \item Relación de flujos q2/q1 por compatibilidad.
 
-\[\fitmath{\begin{aligned}
-r &= \frac{q_2}{q_1}=\frac{a}{b}\\
-&\approx 0{,}91891892
-\end{aligned}}\]
+\[\fitmath{y_{5}=\frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 0.9189189\,}\]
 
 \item Flujo circulante de la primera célula por equilibrio.
 
-\[\fitmath{\begin{aligned}
-q_1 &= \frac{M_x}{2(A_1+rA_2)}\\
-&\approx 114{,}83551\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{6}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\approx 114.8355\,\mathrm{N/mm}}\]
 
 \item Flujo circulante de la segunda célula.
 
-\[\fitmath{\begin{aligned}
-q_2 &= r\,q_1\\
-&\approx 105{,}52452\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{7}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 105.5245\,\mathrm{N/mm}}\]
 
 \item Flujo neto de la pared compartida.
 
-\[\fitmath{\begin{aligned}
-q_c &= q_1-q_2\\
-&\approx 9{,}310987\,\mathrm{N/mm}
-\end{aligned}}\]
+\[\fitmath{y_{8}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}-\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 9.310987\,\mathrm{N/mm}}\]
 
 \item Giro unitario compatible de ambas células.
 
-\[\fitmath{\begin{aligned}
-\theta' &= \frac{q_1P_1/t_e+(q_1-q_2)h/t_c}{2GA_1}\\
-&\approx 4{,}7975983\times 10^{-5}\,\mathrm{rad/mm}
-\end{aligned}}\]
+\[\fitmath{y_{9}=\frac{\frac{\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot 240}{2}+\frac{\left(\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}-\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\right)\cdot 60}{3}}{2\cdot 26955\cdot 90\cdot 60}\approx 4.797598\times10^{-5}\,\mathrm{rad/mm}}\]
 
 \item Tensión tangencial máxima en las paredes.
 
-\[\fitmath{\begin{aligned}
-\tau_{\max} &= \max\!\left(\frac{|q_1|}{t_e},\frac{|q_2|}{t_e},\frac{|q_1-q_2|}{t_c}\right)\\
-&\approx 57{,}417753\,\mathrm{MPa}
-\end{aligned}}\]
+\[\fitmath{y_{10}=\frac{\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}}{2}\approx 57.41775\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -9972,21 +9921,21 @@ Centro de cortadura del perfil en C.\[\fitmath{e_c = \frac{3\,b^{2}}{h + 6b}}\]
 \item El flujo en el eje neutro es $C_y Q_{max}/I_z$ con $Q_{max} = t\,(b h/2 + h^2/8)$.
 \item El centro de cortadura está a $3b^2/(h + 6b)$ de la línea media del alma, en el lado opuesto al de las alas.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Inercia del perfil.
 
-\[\fitmath{\frac{2 \cdot 100^{2} \left(100 + 6 \cdot 50\right)}{12}\approx 6.667\times10^{5}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=\frac{2\cdot {100}^{2}\cdot \left(100+6\cdot 50\right)}{12}\approx 666666.7\,\mathrm{mm^{4}}}\]
 
 \item Flujo máximo en el alma.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{100^{2}}{8} + 50 \cdot 100 \cdot \frac{1}{2}\\a_{2}=\frac{2 \cdot 100^{2} \left(100 + 6 \cdot 50\right)}{12}\\a_{3}=\frac{1}{a_{2}}\\a_{4}=2000 \cdot 2 a_{1} a_{3}\\a_{4}\approx 22.5\,\mathrm{N/mm}\end{gathered}}\]
+\[\fitmath{y_{2}=\frac{2000\cdot 2\cdot \left(\frac{50\cdot 100}{2}+\frac{{100}^{2}}{8}\right)}{\frac{2\cdot {100}^{2}\cdot \left(100+6\cdot 50\right)}{12}}\approx 22.5\,\mathrm{N/mm}}\]
 
 \item Distancia del centro de cortadura al alma.
 
-\[\fitmath{\frac{3 \cdot 50^{2}}{100 + 6 \cdot 50}\approx 18.75\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{3\cdot {50}^{2}}{100+6\cdot 50}\approx 18.75\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -10030,19 +9979,21 @@ Flujo en un alma idealizada.\[\fitmath{f = \frac{C_y\,B\,y}{I_z},\quad I_z = 4\,
 \item El flujo en cada alma es el salto en el larguero superior.
 \item La tensión tangencial es el flujo dividido entre el espesor.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Inercia.
 
-\[\fitmath{4 \cdot 400 \cdot 100^{2}\approx 1.6\times10^{7}\,\mathrm{mm^4}}\]
+\[\fitmath{y_{1}=4\cdot 400\cdot {100}^{2}\approx 1.6\times10^{7}\,\mathrm{mm^{4}}}\]
 
 \item Flujo en las almas.
 
-\[\fitmath{10000 \cdot 400 \cdot 100 \frac{1}{4 \cdot 400 \cdot 100^{2}}\approx 25.0\,\mathrm{N/mm}}\]
+\[\fitmath{y_{2}=\frac{10000\cdot 400\cdot 100}{4\cdot 400\cdot {100}^{2}}\approx 25\,\mathrm{N/mm}}\]
 
 \item Tensión tangencial.
 
-\[\fitmath{10000 \cdot 400 \cdot 100 \frac{1}{4 \cdot 400 \cdot 100^{2}} \cdot \frac{1}{2}\approx 12.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{\frac{10000\cdot 400\cdot 100}{4\cdot 400\cdot {100}^{2}}}{2}\approx 12.5\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10079,13 +10030,17 @@ $C_{y}$ & $5000\,\mathrm{N}$ & cortante\\
 
 Tubo circular delgado.\[\fitmath{\tau_{max} = \frac{C_y}{\pi\,R\,t}}\]
 
+\textbf{Elección del procedimiento.} Para el anillo circular delgado, la ley de cortante alcanza un máximo que es dos veces la media $C_y/(2\pi Rt)$. Sustituir esa sección resistente da $\tau_{max}=C_y/(\pi Rt)$.
+
 \textbf{Procedimiento.}\begin{itemize}\item La tensión máxima es el doble de la media.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión máxima.
 
-\[\fitmath{\frac{5000}{1.5 \cdot 40 \pi}\approx 26.53\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{5000}{\pi\cdot 40\cdot 1.5}\approx 26.52582\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10123,13 +10078,17 @@ $C_{y}$ & $2000\,\mathrm{N}$ & cortante\\
 
 Fuerza en el ala.\[\fitmath{F = \frac{C_y\,h\,t\,b^{2}}{4\,I_z}}\]
 
+\textbf{Elección del procedimiento.} Calcular primero $I_z$ de alma y alas. La ley $q=C_yQ/I_z$ se integra sobre el ala: $F=\int_0^b C_y(th/2)s/I_z\,ds=C_yhtb^2/(4I_z)$. No se multiplica el flujo máximo por toda la anchura.
+
 \textbf{Procedimiento.}\begin{itemize}\item La inercia es $t h^2 (h + 6b)/12$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Fuerza en cada ala.
 
-\[\fitmath{2000 \cdot 100 \cdot 2 \cdot 50^{2} \frac{1}{2 \cdot 4 \cdot 100^{2} \cdot \frac{1}{12} \left(100 + 6 \cdot 50\right)}\approx 375.0\,\mathrm{N}}\]
+\[\fitmath{y_{1}=\frac{2000\cdot 100\cdot 2\cdot {50}^{2}}{4\cdot \frac{2\cdot {100}^{2}\cdot \left(100+6\cdot 50\right)}{12}}\approx 375\,\mathrm{N}}\]
 
 \end{enumerate}
 
@@ -10166,13 +10125,17 @@ $C_{y}$ & $6000\,\mathrm{N}$ & cortante\\
 
 Salto de flujo.\[\fitmath{\Delta f = \frac{C_y\,B\,y}{I_z}}\]
 
+\textbf{Elección del procedimiento.} La idealización concentra área axial en cuatro larguerillos: $I_z=\sum B_i y_i^2=4By^2$. Al cruzar un larguerillo, el primer momento cambia en $By$, de modo que el salto de flujo es $\Delta q=C_yBy/I_z$.
+
 \textbf{Procedimiento.}\begin{itemize}\item La inercia es $4 B y^2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Salto de flujo.
 
-\[\fitmath{6000 \cdot 300 \cdot 80 \frac{1}{4 \cdot 300 \cdot 80^{2}}\approx 18.75\,\mathrm{N/mm}}\]
+\[\fitmath{y_{1}=\frac{6000\cdot 300\cdot 80}{4\cdot 300\cdot {80}^{2}}\approx 18.75\,\mathrm{N/mm}}\]
 
 \end{enumerate}
 
@@ -10208,13 +10171,17 @@ $b$ & $60\,\mathrm{mm}$ & ancho del ala\\
 
 Centro de cortadura.\[\fitmath{e_c = \frac{3\,b^{2}}{h + 6b}}\]
 
+\textbf{Elección del procedimiento.} Integrar los flujos de las alas da un par respecto al alma. Igualar ese par a $C_y e_c$ y usar $I_z=th^2(h+6b)/12$ elimina $t$ y permite despejar $e_c=3b^2/(h+6b)$. La distancia se mide desde el alma.
+
 \textbf{Procedimiento.}\begin{itemize}\item No depende del espesor.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Distancia al alma.
 
-\[\fitmath{\frac{3 \cdot 60^{2}}{120 + 6 \cdot 60}\approx 22.5\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{3\cdot {60}^{2}}{120+6\cdot 60}\approx 22.5\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -10251,13 +10218,17 @@ $C_{y}$ & $8000\,\mathrm{N}$ & cortante\\
 
 Tubo circular delgado.\[\fitmath{\tau_{max} = \frac{C_y}{\pi\,R\,t}}\]
 
+\textbf{Elección del procedimiento.} El área de pared es aproximadamente $2\pi Rt$, por lo que la tensión media es $C_y/(2\pi Rt)$. La distribución de cortante del anillo eleva el máximo al doble. No confundir media y máxima.
+
 \textbf{Procedimiento.}\begin{itemize}\item La tensión media es $C_y/(2\pi R t)$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión máxima.
 
-\[\fitmath{\frac{8000}{2 \cdot 50 \pi}\approx 25.46\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{8000}{\pi\cdot 50\cdot 2}\approx 25.46479\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10329,11 +10300,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared ala\_superior: q(s) = $\frac{280}{9} - \frac{4 s}{9}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: alma; s = 60 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 70 + 2 \cdot 70 + 2 \cdot 120\approx 520\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 70+2\cdot 120+2\cdot 70\approx 520\,\mathrm{mm^{2}}}\]
 
 \item Área que soporta esfuerzo normal en la idealización de paredes delgadas.
 
@@ -10353,7 +10326,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared alma.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 22.2222222\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=\frac{\left|\frac{400}{9}\right|}{2}\approx 22.22222\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10439,11 +10412,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared ala\_2: q(s) = $\frac{39574 s^{2} - 8389800 s}{12082785} + \frac{19826910}{805519}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: alma; s = 53.1279568 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 45 + 2 \cdot 60 + 2 \cdot 110\approx 430\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 60+2\cdot 110+2\cdot 45\approx 430\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10459,7 +10434,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared alma.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 22.1793313\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{1.651933571\times10^{11}}{3724038263}\right|}{2}\approx 22.17933\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10544,11 +10519,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared izquierda: q(s) = $\frac{46593 s^{2} - 3309120 s}{5065280} - \frac{762930}{15829}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: derecha; s = 45.7871354 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 80 + 3 \cdot 80 + 2 \cdot 140 + 3 \cdot 140\approx 1100\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 140+2\cdot 80+3\cdot 140+3\cdot 80\approx 1100\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10564,7 +10541,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared derecha.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 24.3847029\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{3996493470}{81946733}\right|}{2}\approx 24.3847\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10654,11 +10631,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared izquierda: q(s) = $- \frac{450}{7}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: derecha; s = 0 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{250 + 250 + 350 + 350\approx 1200\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=350+250+350+250\approx 1200\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10674,7 +10653,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared derecha.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 42.8571429\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{450}{7}\right|}{\frac{3}{2}}\approx 42.85714\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10755,11 +10734,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared alma: q(s) = $\frac{- 680754 s^{2} + 33229020 s}{87613075} + \frac{1514688}{28963}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: alma; s = 24.4060409 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 65 + 2 \cdot 75 + 2 \cdot 110\approx 500\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 65+2\cdot 75+2\cdot 110\approx 500\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10775,7 +10756,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared alma.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 28.4627929\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{8133213402}{142874479}\right|}{2}\approx 28.46279\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10851,11 +10832,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared ala: q(s) = $\frac{1023 s^{2} - 152320 s}{153600} + \frac{881}{24}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: alma; s = 63.5081263 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 80 + 2 \cdot 100\approx 360\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 100+2\cdot 80\approx 360\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10871,7 +10854,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared alma.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 27.4011103\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{4289041}{78264}\right|}{2}\approx 27.40111\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -10969,11 +10952,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared comun: q(s) = $\frac{- 13 s^{2} + 780 s}{876} + \frac{1378650}{29273}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: comun; s = 30 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{2 \cdot 60 + 2 \cdot 60 + 2 \cdot 70 + 2 \cdot 70 + 2.5 \cdot 60 + 2 \cdot 80 + 2 \cdot 80\approx 990\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=2\cdot 80+2\cdot 70+2\cdot 60+2\cdot 70+2\cdot 80+2\cdot 60+2.5\cdot 60\approx 990\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -10989,7 +10974,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared comun.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 24.1809859\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|\frac{1769625}{29273}\right|}{\frac{5}{2}}\approx 24.18099\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -11075,11 +11060,13 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Pared ala\_superior: q(s) = $\frac{156}{7}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: alma; s = 0 mm desde su nudo inicial.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Área equivalente que soporta tensión axial.
 
-\[\fitmath{300 + 300 + 400 + 400\approx 1400\,\mathrm{mm^2}}\]
+\[\fitmath{y_{1}=300+400+400+300\approx 1400\,\mathrm{mm^{2}}}\]
 
 \item Propiedades geométricas de la sección (centroide y momentos de inercia).
 
@@ -11095,7 +11082,7 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 
 \item Tensión máxima |q|/t en pared alma.
 
-\[\fitmath{\tau_{\max}=\frac{|q(s_*)|}{t_{\mathrm{crit}}}\approx 34.6666667\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\left|52\right|}{\frac{3}{2}}\approx 34.66667\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -11157,19 +11144,21 @@ Energía de una barra a axil.\[\fitmath{U = \frac{N^{2}\,L}{2\,E\,A}}\]
 \item La energía es $N^2 L/(2 E A)$, en N mm.
 \item Se comprueba con $\tfrac12 N\delta$ y se pasa a julios.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Alargamiento.
 
-\[\fitmath{50000 \cdot 1000 \frac{1}{400 \cdot 71700}\approx 1.743\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{50000\cdot 1000}{71700\cdot 400}\approx 1.743375\,\mathrm{mm}}\]
 
 \item Mitad del producto de la fuerza por el alargamiento (N mm).
 
-\[\fitmath{0.5 \cdot 50000 \cdot 50000 \cdot 1000 \frac{1}{400 \cdot 71700}\approx 43584\,\mathrm{N\,mm}}\]
+\[\fitmath{y_{2}=0.5\cdot 50000\cdot \frac{50000\cdot 1000}{71700\cdot 400}\approx 43584.38\,\mathrm{N mm}}\]
 
 \item Energía de deformación en julios.
 
-\[\fitmath{50000^{2} \cdot 1000 \frac{1}{2 \cdot 400 \cdot 71700} \cdot \frac{1}{1000}\approx 43.58\,\mathrm{J}}\]
+\[\fitmath{y_{3}=\frac{\frac{{50000}^{2}\cdot 1000}{2\cdot 71700\cdot 400}}{1000}\approx 43.58438\,\mathrm{J}}\]
 
 \end{enumerate}
 
@@ -11212,15 +11201,17 @@ Flecha con carga central.\[\fitmath{\delta_C = \frac{P\,L^{3}}{48\,E\,I}}\]
 \textbf{Procedimiento.}\begin{itemize}\item En $0 \le x \le L/2$ el flector real es $Px/2$ y el virtual $x/2$.
 \item La integral de $x^2/4$ en media luz es $L^3/96$ y, por dos mitades, $L^3/48$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral de M por M barra, ya multiplicada por 2.
 
-\[\fitmath{\frac{10000 \cdot 3000^{3}}{48}\approx 5.625\times10^{12}\,\mathrm{N\,mm^3}}\]
+\[\fitmath{y_{1}=\frac{10000\cdot {3000}^{3}}{48}\approx 5.625\times10^{12}\,\mathrm{N mm^{3}}}\]
 
 \item Flecha en el centro.
 
-\[\fitmath{\frac{10000 \cdot 3000^{3}}{48 \cdot 71700 \cdot 80000000.0}\approx 0.9806\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{10000\cdot {3000}^{3}}{48\cdot 71700\cdot 80000000}\approx 0.9806485\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -11261,19 +11252,21 @@ Momento de empotramiento.\[\fitmath{M_A = \frac{q\,L^{2}}{8}}\]
 \item La reacción en el empotramiento es $qL - X = 5qL/8$.
 \item El momento de empotramiento es $qL^2/8$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en el apoyo.
 
-\[\fitmath{3 \cdot 5 \cdot 4000 \cdot \frac{1}{8}\approx 7500\,\mathrm{N}}\]
+\[\fitmath{y_{1}=\frac{3\cdot 5\cdot 4000}{8}\approx 7500\,\mathrm{N}}\]
 
 \item Reacción en el empotramiento.
 
-\[\fitmath{5 \cdot 5 \cdot 4000 \cdot \frac{1}{8}\approx 12500\,\mathrm{N}}\]
+\[\fitmath{y_{2}=\frac{5\cdot 5\cdot 4000}{8}\approx 12500\,\mathrm{N}}\]
 
 \item Momento de empotramiento en kN m.
 
-\[\fitmath{\frac{5 \cdot 4000^{2}}{8 \cdot 1000000.0}\approx 10.0\,\mathrm{kN\,m}}\]
+\[\fitmath{y_{3}=\frac{\frac{5\cdot {4000}^{2}}{8}}{1000000}\approx 10\,\mathrm{kN m}}\]
 
 \end{enumerate}
 
@@ -11311,13 +11304,17 @@ $I$ & $72\,\mathrm{cm^4}$ & inercia\\
 
 Giro por la carga unitaria.\[\fitmath{\phi = \frac{P\,L^{2}}{2\,E\,I}}\]
 
+\textbf{Elección del procedimiento.} Con fuerza final $P$ en un voladizo, $M=P(L-x)$. El giro por trabajo virtual usa momento virtual unidad, de modo que $\phi=\int_0^L M/(EI)dx=PL^2/(2EI)$. La flecha usaría otra ley virtual.
+
 \textbf{Procedimiento.}\begin{itemize}\item La integral de $P(L - x)$ entre 0 y $L$ es $P L^2/2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Giro del extremo.
 
-\[\fitmath{\frac{800 \cdot 1200^{2}}{2 \cdot 71700 \cdot 720000.0}\approx 0.01116\,\mathrm{rad}}\]
+\[\fitmath{y_{1}=\frac{800\cdot {1200}^{2}}{2\cdot 71700\cdot 720000}\approx 0.0111576\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -11352,13 +11349,17 @@ $r$ & $5$ & reacciones desconocidas\\
 
 Grado de hiperestatismo.\[\fitmath{g = r - 3}\]
 
+\textbf{Elección del procedimiento.} Identificar reacciones escalares independientes $r$. Un sólido plano conectado aporta tres ecuaciones independientes de equilibrio. Cuando no hay mecanismos ni restricciones redundantes adicionales, el exceso es $g=r-3$; contar apoyos sin analizar su vínculo puede fallar.
+
 \textbf{Procedimiento.}\begin{itemize}\item Hay tres ecuaciones de equilibrio en el plano.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Grado de hiperestatismo.
 
-\[\fitmath{5 - 3\approx 2}\]
+\[\fitmath{y_{1}=5-3\approx 2\,}\]
 
 \end{enumerate}
 
@@ -11396,13 +11397,17 @@ $I$ & $200\,\mathrm{cm^4}$ & inercia\\
 
 Energía de flexión.\[\fitmath{U = \frac{q^{2}\,L^{5}}{240\,E\,I}}\]
 
+\textbf{Elección del procedimiento.} Para viga biapoyada con carga uniforme, $M=qx(L-x)/2$. Sustituir en $U=\int M^2/(2EI)dx$ deja $q^2\int_0^Lx^2(L-x)^2dx/(8EI)$. Expandir el polinomio e integrar da $L^5/30$ y finalmente $U=q^2L^5/(240EI)$.
+
 \textbf{Procedimiento.}\begin{itemize}\item La integral de $x^2 (L - x)^2$ en $[0, L]$ es $L^5/30$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Energía de flexión.
 
-\[\fitmath{\frac{2^{2} \cdot 2000^{5}}{240 \cdot 71700 \cdot 2000000.0}\approx 3719\,\mathrm{N\,mm}}\]
+\[\fitmath{y_{1}=\frac{{2}^{2}\cdot {2000}^{5}}{240\cdot 71700\cdot 2000000}\approx 3719.2\,\mathrm{N mm}}\]
 
 \end{enumerate}
 
@@ -11438,13 +11443,17 @@ $L$ & $3000\,\mathrm{mm}$ & luz\\
 
 Reacción en el apoyo.\[\fitmath{X = \frac{3\,q\,L}{8}}\]
 
+\textbf{Elección del procedimiento.} Liberar el apoyo redundante y exigir desplazamiento nulo en su posición. En el voladizo base, la carga uniforme da $qL^4/(8EI)$ y la reacción ascendente $X$ da $XL^3/(3EI)$. Igualarlas permite despejar $X=3qL/8$.
+
 \textbf{Procedimiento.}\begin{itemize}\item La carga total es $24$ kN.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Reacción en el apoyo.
 
-\[\fitmath{3 \cdot 8 \cdot 3000 \cdot \frac{1}{8}\approx 9000\,\mathrm{N}}\]
+\[\fitmath{y_{1}=\frac{3\cdot 8\cdot 3000}{8}\approx 9000\,\mathrm{N}}\]
 
 \end{enumerate}
 
@@ -11481,13 +11490,17 @@ $d$ & $0.5\,\mathrm{m}$ & flector virtual en el extremo\\
 
 Producto de leyes lineales.\[\fitmath{\int_0^L M\bar{M}\,\mathrm{d}x = \frac{L\,c\,d}{3}}\]
 
+\textbf{Elección del procedimiento.} Las dos leyes triangulares de momento son $M=cx/L$ y $\bar M=dx/L$. Su producto integra $cd\int_0^Lx^2dx/L^2=cdL/3$. No se multiplica simplemente área por ordenada máxima.
+
 \textbf{Procedimiento.}\begin{itemize}\item Con $a = b = 0$ queda $L \cdot 2 c d/6 = L c d/3$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral del producto.
 
-\[\fitmath{\frac{4 \left(2 \cdot 0 \cdot 0 + 0 \cdot 0.5 + 0 \cdot 20 + 2 \cdot 20 \cdot 0.5\right)}{6}\approx 13.33\,\mathrm{kN\,m^2}}\]
+\[\fitmath{y_{1}=\frac{4\cdot \left(2\cdot 0\cdot 0+0\cdot 0.5+0\cdot 20+2\cdot 20\cdot 0.5\right)}{6}\approx 13.33333\,\mathrm{kN m^{2}}}\]
 
 \end{enumerate}
 
@@ -11719,19 +11732,21 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item La posición de la carga no está en el centro: dividir las integrales en los dos tramos; contrastar con el resultado de Castigliano P a\textsuperscript{2} b\textsuperscript{2}/(3 L E I).\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 2000 mm.
 
-\[\fitmath{\frac{5760000000000}{3585000000000}\approx 1.60669456\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{5.76\times10^{12}}{3.585\times10^{12}}\approx 1.606695\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 2000 a 5000 mm.
 
-\[\fitmath{\frac{8640000000000}{3585000000000}\approx 2.41004184\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{8.64\times10^{12}}{3.585\times10^{12}}\approx 2.410042\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{5760000000000}{3585000000000} + \frac{8640000000000}{3585000000000}\approx 4.0167364\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{5.76\times10^{12}}{3.585\times10^{12}}+\frac{8.64\times10^{12}}{3.585\times10^{12}}\approx 4.016736\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -12266,19 +12281,21 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Con $x$ medido desde el extremo libre, $M(x)=P x+M_0$ y $U(M_0)=\int_0^L \frac{(P x+M_0)^2}{2EI}\,\mathrm{d}x=\frac{P^2L^3}{6EI}+\frac{PM_0L^2}{2EI}+\frac{M_0^2L}{2EI}$.
 \item La derivada energética es $\varphi=\left.\frac{\partial U}{\partial M_0}\right|_{M_0=0}=\frac{PL^2}{2EI}$, con el signo ligado al convenio de giro.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 2500 mm.
 
-\[\fitmath{\frac{9375000000}{3585000000000}\approx 0.00261506276\,\mathrm{rad}}\]
+\[\fitmath{y_{1}=\frac{9375000000}{3.585\times10^{12}}\approx 0.002615063\,\mathrm{rad}}\]
 
 \item Verificación por Castigliano con momento ficticio.
 
-\[\fitmath{\varphi=\left.\frac{\partial U}{\partial M_0}\right|_{M_0=0}=\frac{PL^2}{2EI}\approx 0{,}00261506276\,\mathrm{rad}}\]
+\[\fitmath{y_{2}=\frac{3000\cdot {2500}^{2}}{2\cdot 71700\cdot 50000000}\approx 0.002615063\,\mathrm{rad}}\]
 
-\item Giro total por suma de tramos.
+\item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{9375000000}{3585000000000}\approx 0.00261506276\,\mathrm{rad}}\]
+\[\fitmath{y_{3}=\frac{9375000000}{3.585\times10^{12}}\approx 0.002615063\,\mathrm{rad}}\]
 
 \end{enumerate}
 
@@ -12882,19 +12899,21 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item El momento real es cúbico por la carga lineal. Multiplicar por la ley flectora virtual, integrar en dos mitades y usar las reacciones correctas.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 2000 mm.
 
-\[\fitmath{\frac{28600000000000}{9 \cdot 6453000000000}\approx 0.492449679\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{\frac{2.86\times10^{13}}{9}}{6.453\times10^{12}}\approx 0.4924497\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 2000 a 4000 mm.
 
-\[\fitmath{\frac{31400000000000}{9 \cdot 6453000000000}\approx 0.540661536\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{3.14\times10^{13}}{9}}{6.453\times10^{12}}\approx 0.5406615\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{28600000000000}{9 \cdot 6453000000000} + \frac{31400000000000}{9 \cdot 6453000000000}\approx 1.03311121\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{\frac{2.86\times10^{13}}{9}}{6.453\times10^{12}}+\frac{\frac{3.14\times10^{13}}{9}}{6.453\times10^{12}}\approx 1.033111\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -13614,19 +13633,21 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item Elegir como sistema base la ménsula sin rodillo: X = P a\textsuperscript{2}(3L-a)/(2L\textsuperscript{3}). El giro y la flecha incluyen la deformabilidad de la viga.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 1500 mm.
 
-\[\fitmath{\frac{1356756591796875}{1024 \cdot 4302000000000}\approx 0.307986427\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{\frac{1.356756592\times10^{15}}{1024}}{4.302\times10^{12}}\approx 0.3079864\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 1500 a 4000 mm.
 
-\[\fitmath{\frac{1090118408203125}{1024 \cdot 4302000000000}\approx 0.247459033\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{1.090118408\times10^{15}}{1024}}{4.302\times10^{12}}\approx 0.247459\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{1090118408203125}{1024 \cdot 4302000000000} + \frac{1356756591796875}{1024 \cdot 4302000000000}\approx 0.55544546\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{\frac{1.356756592\times10^{15}}{1024}}{4.302\times10^{12}}+\frac{\frac{1.090118408\times10^{15}}{1024}}{4.302\times10^{12}}\approx 0.5554455\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -14065,15 +14086,17 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item Integrar en cada sección el momento que produce la carga triangular. Como contraste independiente, integrar la contribución de cada carga elemental al movimiento de extremo: delta = 11 q0 L4/(120 EI).\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 3000 mm.
 
-\[\fitmath{\frac{14850000000000}{5377500000000}\approx 2.76150628\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{1.485\times10^{13}}{5.3775\times10^{12}}\approx 2.761506\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{14850000000000}{5377500000000}\approx 2.76150628\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{1.485\times10^{13}}{5.3775\times10^{12}}\approx 2.761506\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -14123,29 +14146,29 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item Escribir las leyes reales de tres tramos y la ley virtual para una fuerza unidad en x = 3 m. Comprobar por superposición de las cargas.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 2000 mm.
 
-\[\fitmath{\frac{56000000000000}{9 \cdot 5736000000000}\approx 1.08476678\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{\frac{5.6\times10^{13}}{9}}{5.736\times10^{12}}\approx 1.084767\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 2000 a 3000 mm.
 
-\[\fitmath{\frac{109000000000000}{9 \cdot 5736000000000}\approx 2.11142104\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{1.09\times10^{14}}{9}}{5.736\times10^{12}}\approx 2.111421\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 3: 3000 a 4000 mm.
 
-\[\fitmath{\frac{116000000000000}{9 \cdot 5736000000000}\approx 2.24701689\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{\frac{1.16\times10^{14}}{9}}{5.736\times10^{12}}\approx 2.247017\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 4: 4000 a 6000 mm.
 
-\[\fitmath{\frac{64000000000000}{9 \cdot 5736000000000}\approx 1.23973346\,\mathrm{mm}}\]
+\[\fitmath{y_{4}=\frac{\frac{6.4\times10^{13}}{9}}{5.736\times10^{12}}\approx 1.239733\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{56000000000000}{9 \cdot 5736000000000} + \frac{64000000000000}{9 \cdot 5736000000000} + \frac{109000000000000}{9 \cdot 5736000000000} + \frac{116000000000000}{9 \cdot 5736000000000}\\a_{1}\approx 6.68293817\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{5}=\frac{\frac{5.6\times10^{13}}{9}}{5.736\times10^{12}}+\frac{\frac{1.09\times10^{14}}{9}}{5.736\times10^{12}}+\frac{\frac{1.16\times10^{14}}{9}}{5.736\times10^{12}}+\frac{\frac{6.4\times10^{13}}{9}}{5.736\times10^{12}}\approx 6.682938\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -14195,19 +14218,21 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item Liberar el rodillo y anular su flecha: X = P(3L-a)/(2a) cuando L es la longitud TOTAL y a la posición del rodillo.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 3000 mm.
 
-\[\fitmath{\frac{4218750000000}{4660500000000}\approx 0.905214033\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{4.21875\times10^{12}}{4.6605\times10^{12}}\approx 0.905214\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 3000 a 4500 mm.
 
-\[\fitmath{\frac{2812500000000}{4660500000000}\approx 0.603476022\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{2.8125\times10^{12}}{4.6605\times10^{12}}\approx 0.603476\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-\[\fitmath{\frac{2812500000000}{4660500000000} + \frac{4218750000000}{4660500000000}\approx 1.50869005\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{4.21875\times10^{12}}{4.6605\times10^{12}}+\frac{2.8125\times10^{12}}{4.6605\times10^{12}}\approx 1.50869\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -14256,29 +14281,29 @@ Trabajo virtual de flexión.\[\fitmath{\delta = \int_{0}^{L}\frac{M(x)\,\overlin
 \item Verificar el resultado mediante la elástica calculada con constantes de integración y condiciones de apoyo.
 \item El flector no presenta salto en el cambio de sección, pero la curvatura sí cambia por ser EI distinto; usar EI(x) en las integrales.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Integral M por M virtual dividida por EI, tramo 1: 0 a 1000 mm.
 
-\[\fitmath{\frac{250000000000}{2868000000000}\approx 0.0871687587\,\mathrm{mm}}\]
+\[\fitmath{y_{1}=\frac{2.5\times10^{11}}{2.868\times10^{12}}\approx 0.08716876\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 2: 1000 a 2000 mm.
 
-\[\fitmath{\frac{2750000000000}{3 \cdot 2868000000000}\approx 0.319618782\,\mathrm{mm}}\]
+\[\fitmath{y_{2}=\frac{\frac{2.75\times10^{12}}{3}}{2.868\times10^{12}}\approx 0.3196188\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 3: 2000 a 3000 mm.
 
-\[\fitmath{\frac{2750000000000}{3 \cdot 5736000000000}\approx 0.159809391\,\mathrm{mm}}\]
+\[\fitmath{y_{3}=\frac{\frac{2.75\times10^{12}}{3}}{5.736\times10^{12}}\approx 0.1598094\,\mathrm{mm}}\]
 
 \item Integral M por M virtual dividida por EI, tramo 4: 3000 a 4000 mm.
 
-\[\fitmath{\frac{250000000000}{5736000000000}\approx 0.0435843794\,\mathrm{mm}}\]
+\[\fitmath{y_{4}=\frac{2.5\times10^{11}}{5.736\times10^{12}}\approx 0.04358438\,\mathrm{mm}}\]
 
 \item Desplazamiento total por suma de tramos.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\frac{250000000000}{5736000000000} + \frac{250000000000}{2868000000000} + \frac{2750000000000}{3 \cdot 5736000000000} + \frac{2750000000000}{3 \cdot 2868000000000}\\a_{1}\approx 0.610181311\,\mathrm{mm}\end{gathered}}\]
+\[\fitmath{y_{5}=\frac{2.5\times10^{11}}{2.868\times10^{12}}+\frac{\frac{2.75\times10^{12}}{3}}{2.868\times10^{12}}+\frac{\frac{2.75\times10^{12}}{3}}{5.736\times10^{12}}+\frac{2.5\times10^{11}}{5.736\times10^{12}}\approx 0.6101813\,\mathrm{mm}}\]
 
 \end{enumerate}
 
@@ -14333,19 +14358,21 @@ Deformación en el espesor.\[\fitmath{\varepsilon_z = -\frac{\nu}{E}\left(\sigma
 \textbf{Procedimiento.}\begin{itemize}\item $\varepsilon_x = (\sigma_x - \nu\sigma_y)/E$ y $\varepsilon_y = (\sigma_y - \nu\sigma_x)/E$.
 \item $\varepsilon_z = -\nu(\sigma_x + \sigma_y)/E$ porque $\sigma_z = 0$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Deformación en x.
 
-\[\fitmath{\frac{100 - 0.33 \cdot 50}{71700}\approx 1.165\times10^{-3}}\]
+\[\fitmath{y_{1}=\frac{100-0.33\cdot 50}{71700}\approx 0.001164575\,}\]
 
 \item Deformación en y.
 
-\[\fitmath{\frac{50 - 0.33 \cdot 100}{71700}\approx 2.371\times10^{-4}}\]
+\[\fitmath{y_{2}=\frac{50-0.33\cdot 100}{71700}\approx 0.000237099\,}\]
 
 \item Deformación en z.
 
-\[\fitmath{- \frac{0.33 \left(50 + 100\right)}{71700}\approx -6.904\times10^{-4}}\]
+\[\fitmath{y_{3}=\frac{-0.33\cdot \left(100+50\right)}{71700}\approx -0.0006903766\,}\]
 
 \end{enumerate}
 
@@ -14388,19 +14415,21 @@ Von Mises en un cilindro a presión.\[\fitmath{\sigma_v = \frac{\sqrt{3}}{2}\,\f
 \item La longitudinal es la mitad.
 \item Con $\sigma_1 = \sigma_\theta$ y $\sigma_2 = \sigma_x = \sigma_\theta/2$, $\sigma_v = \sigma_\theta\sqrt{3}/2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión circunferencial.
 
-\[\fitmath{0.06 \cdot 1900 \frac{1}{1.6}\approx 71.25\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{0.06\cdot 1900}{1.6}\approx 71.25\,\mathrm{MPa}}\]
 
 \item Tensión longitudinal.
 
-\[\fitmath{0.06 \cdot 1900 \frac{1}{1.6 \cdot 2}\approx 35.63\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{0.06\cdot 1900}{2\cdot 1.6}\approx 35.625\,\mathrm{MPa}}\]
 
 \item Tensión de von Mises.
 
-\[\fitmath{\sqrt{3} \cdot \frac{1}{2} \cdot 0.06 \cdot 1900 \frac{1}{1.6}\approx 61.70\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{\frac{\sqrt{3}}{2}\cdot 0.06\cdot 1900}{1.6}\approx 61.70431\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -14437,13 +14466,17 @@ $\tau_{xy}$ & $40\,\mathrm{MPa}$ & tensión tangencial\\
 
 Tensión principal mayor.\[\fitmath{\sigma_1 = \frac{\sigma_x + \sigma_y}{2} + R}\]
 
+\textbf{Elección del procedimiento.} La ecuación característica del bloque plano da media $c=(\sigma_x+\sigma_y)/2$ y radio $R=\sqrt{[(\sigma_x-\sigma_y)/2]^2+\tau_{xy}^2}$. Las dos principales son $c+R$ y $c-R$; se conserva además la principal fuera del plano cuando corresponda.
+
 \textbf{Procedimiento.}\begin{itemize}\item El radio vale $50$ MPa, un resultado exacto.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión principal mayor.
 
-\[\fitmath{\frac{0 + 60}{2} + \sqrt{\left(\frac{60 - 0}{2}\right)^{2} + 40^{2}}\approx 80.0\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{60+0}{2}+\sqrt{{\left(\frac{60-0}{2}\right)}^{2}+{40}^{2}}\approx 80\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -14479,13 +14512,17 @@ $\nu$ & $0.3$ & coeficiente de Poisson\\
 
 Módulo transversal.\[\fitmath{G = \frac{E}{2\,(1 + \nu)}}\]
 
+\textbf{Elección del procedimiento.} La relación isótropa $E=2G(1+\nu)$ se resuelve dividiendo ambos lados por $2(1+\nu)$. Conservar la unidad del módulo de entrada: dividir por un número adimensional no la modifica.
+
 \textbf{Procedimiento.}\begin{itemize}\item $2(1 + \nu) = 2{,}6$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Módulo transversal.
 
-\[\fitmath{\frac{200000}{2 \left(0.3 + 1\right)}\approx 76923\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{200000}{2\cdot \left(1+0.3\right)}\approx 76923.08\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -14520,13 +14557,17 @@ $\sigma_{Y}$ & $430\,\mathrm{MPa}$ & límite elástico\\
 
 Coeficiente de Tresca.\[\fitmath{n = \frac{\sigma_{\mathrm{Y}}}{\max|\sigma_i - \sigma_j|}}\]
 
+\textbf{Elección del procedimiento.} El criterio de Tresca utiliza la mayor diferencia entre las tres principales, incluyendo la nula fuera del plano en tensión plana. Se evalúan todos los pares, se toma su máximo absoluto y se divide el límite uniaxial por ese valor.
+
 \textbf{Procedimiento.}\begin{itemize}\item La mayor diferencia es $120 - (-40) = 160$ MPa.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Coeficiente de seguridad.
 
-\[\fitmath{\frac{430}{120 - -40}\approx 2.688}\]
+\[\fitmath{y_{1}=\frac{430}{120--40}\approx 2.6875\,}\]
 
 \end{enumerate}
 
@@ -14563,13 +14604,17 @@ $\nu$ & $0.33$ & coeficiente de Poisson\\
 
 Deformación volumétrica.\[\fitmath{e = \frac{3\,(1 - 2\nu)\,\sigma}{E}}\]
 
+\textbf{Elección del procedimiento.} La deformación volumétrica lineal es la traza: $e=\varepsilon_x+\varepsilon_y+\varepsilon_z$. Sumar las tres leyes de Hooke da $e=(1-2\nu)(\sigma_x+\sigma_y+\sigma_z)/E$. Para tres tensiones iguales, la suma es $3\sigma$.
+
 \textbf{Procedimiento.}\begin{itemize}\item La suma de las tres tensiones es $-150$ MPa.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Deformación volumétrica.
 
-\[\fitmath{\left(1 - 2 \cdot 0.33\right) \left(-150\right) \frac{1}{71700}\approx -7.113\times10^{-4}}\]
+\[\fitmath{y_{1}=\frac{\left(1-2\cdot 0.33\right)\cdot -150}{71700}\approx -0.0007112971\,}\]
 
 \end{enumerate}
 
@@ -14612,23 +14657,25 @@ Tensión principal mayor.\[\fitmath{\sigma_1 = \frac{\sigma_x + \sigma_y}{2} + \
 \item Las tensiones principales son el centro más y menos el radio; el radio es la tensión tangencial máxima.
 \item El ángulo se obtiene de $\tan 2\theta_p = 2\tau_{xy}/(\sigma_x - \sigma_y)$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{30^{2} + \left(\frac{80 - -20}{2}\right)^{2}}\approx 58.31\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\sqrt{{\left(\frac{80--20}{2}\right)}^{2}+{30}^{2}}\approx 58.30952\,\mathrm{MPa}}\]
 
 \item Tensión principal menor.
 
-\[\fitmath{- \sqrt{30^{2} + \left(\frac{80 - -20}{2}\right)^{2}} + \frac{-20 + 80}{2}\approx -28.31\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\frac{80+-20}{2}-\sqrt{{\left(\frac{80--20}{2}\right)}^{2}+{30}^{2}}\approx -28.30952\,\mathrm{MPa}}\]
 
 \item Ángulo del plano principal en grados.
 
-\[\fitmath{\operatorname{atan}{\left(2 \cdot 30 \frac{1}{80 - -20} \right)} \frac{1}{2} \cdot 180 \frac{1}{\pi}\approx 15.48{}^{\circ}}\]
+\[\fitmath{y_{3}=\frac{\frac{\arctan\left(\frac{2\cdot 30}{80--20}\right)}{2}\cdot 180}{\pi}\approx 15.48188\,{}^{\circ}}\]
 
 \item Tensión principal mayor.
 
-\[\fitmath{\frac{-20 + 80}{2} + \sqrt{30^{2} + \left(\frac{80 - -20}{2}\right)^{2}}\approx 88.31\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{80+-20}{2}+\sqrt{{\left(\frac{80--20}{2}\right)}^{2}+{30}^{2}}\approx 88.30952\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -14664,13 +14711,17 @@ $\tau_{xy}$ & $100\,\mathrm{MPa}$ & tensión tangencial\\
 
 Von Mises en cortadura pura.\[\fitmath{\sigma_v = \sqrt{3}\,|\tau|}\]
 
+\textbf{Elección del procedimiento.} En cortante puro, $\sigma_x=\sigma_y=\sigma_z=0$. En la expresión de von Mises quedan tres veces los cuadrados de cortante; con una sola componente $\sigma_v^2=3\tau^2$. La raíz positiva da $\sqrt3|\tau|$.
+
 \textbf{Procedimiento.}\begin{itemize}\item Con $\sigma_x = \sigma_y = 0$, $\sigma_v^2 = 3\tau^2$.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Tensión de von Mises.
 
-\[\fitmath{\sqrt{3} \cdot 100\approx 173.2\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\sqrt{3}\cdot 100\approx 173.2051\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -14718,61 +14769,57 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Aplicar las relaciones de transformación al elemento girado.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{20 + 140}{2}\approx 80\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{140+20}{2}\approx 80\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{45^{2} + \left(\frac{140 - 20}{2}\right)^{2}}\approx 75\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 75\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\sqrt{45^{2} + \left(\frac{140 - 20}{2}\right)^{2}} + \frac{20 + 140}{2}\approx 155\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{140+20}{2}+\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 155\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{45^{2} + \left(\frac{140 - 20}{2}\right)^{2}} + \frac{20 + 140}{2}\approx 5\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{140+20}{2}-\sqrt{{\left(\frac{140-20}{2}\right)}^{2}+{45}^{2}}\approx 5\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(20 - 0\right)^{2} + 6 \cdot 45^{2} + \left(140 - 20\right)^{2} + \left(\left(-1\right) 140 + 0\right)^{2}}}{\sqrt{2}}\approx 152.561463\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(140-20\right)}^{2}+{\left(20-0\right)}^{2}+{\left(0-140\right)}^{2}+6\cdot {45}^{2}}}{\sqrt{2}}\approx 152.5615\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \cdot 155 \cdot \frac{1}{2}\approx 155\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \frac{155}{2}\approx 155\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara x prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(140 - 20\right)}{2}\\a_{3}=\sin{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{4}=45 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{20 + 140}{2}\\a_{5}\approx 148.971143\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{7}=\frac{140+20}{2}+\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 148.9711\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara y prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(140 - 20\right)}{2}\\a_{3}=- a_{2}\\a_{4}=\sin{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{5}=45 a_{4}\\a_{6}=- a_{5}\\a_{7}=a_{3} + a_{6} + \frac{20 + 140}{2}\\a_{7}\approx 11.0288568\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{8}=\frac{140+20}{2}-\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)-45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 11.02886\,\mathrm{MPa}}\]
 
 \item Cortante sobre el plano girado.
 
-\[\fitmath{- \frac{140 - 20}{2} \sin{\left(2 \pi 30 \cdot \frac{1}{180} \right)} + 45 \cos{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\approx -29.4615242\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=-\left(\frac{140-20}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx -29.46152\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{350}{35 \sqrt{19}}\approx 2.29415734}\]
+\[\fitmath{y_{10}=\frac{350}{35\cdot \sqrt{19}}\approx 2.294157\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{350}{155}\approx 2.25806452}\]
+\[\fitmath{y_{11}=\frac{350}{155}\approx 2.258065\,}\]
 
 \item Respuesta principal: comprobación final.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(140 - 20\right)}{2}\\a_{3}=\sin{\left(2 \pi 30 \cdot \frac{1}{180} \right)}\\a_{4}=45 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{20 + 140}{2}\\a_{5}\approx 148.971143\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{12}=\frac{140+20}{2}+\frac{140-20}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 30}{180}\right)+45\cdot \sin\left(\frac{2\cdot \pi\cdot 30}{180}\right)\approx 148.9711\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -15129,43 +15176,45 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Contrastar los resultados con los invariantes del tensor.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{-90 + 25}{2}\approx -32.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{-90+25}{2}\approx -32.5\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{\left(-55\right)^{2} + \left(\frac{-90 - 25}{2}\right)^{2}}\approx 79.5691523\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{-90-25}{2}\right)}^{2}+{\left(-55\right)}^{2}}\approx 79.56915\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\frac{-90 + 25}{2} + \sqrt{\left(-55\right)^{2} + \left(\frac{-90 - 25}{2}\right)^{2}}\approx 47.0691523\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{-90+25}{2}+\sqrt{{\left(\frac{-90-25}{2}\right)}^{2}+{\left(-55\right)}^{2}}\approx 47.06915\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{\left(-55\right)^{2} + \left(\frac{-90 - 25}{2}\right)^{2}} + \frac{-90 + 25}{2}\approx -112.069152\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{-90+25}{2}-\sqrt{{\left(\frac{-90-25}{2}\right)}^{2}+{\left(-55\right)}^{2}}\approx -112.0692\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(-40 - -90\right)^{2} + \left(25 - -40\right)^{2} + \left(-90 - 25\right)^{2} + 6 \left(-55\right)^{2}}}{\sqrt{2}}\approx 138.021737\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(-90-25\right)}^{2}+{\left(25--40\right)}^{2}+{\left(-40--90\right)}^{2}+6\cdot {\left(-55\right)}^{2}}}{\sqrt{2}}\approx 138.0217\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \cdot 5 \sqrt{1013} \cdot \frac{1}{2}\approx 159.138305\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \frac{5\cdot \sqrt{1013}}{2}\approx 159.1383\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{260}{\sqrt{2} \cdot \frac{1}{4} \sqrt{\left(-15 + 5 \sqrt{1013}\right)^{2} + \left(15 + 5 \sqrt{1013}\right)^{2} + 101300}}\approx 1.88376125}\]
+\[\fitmath{y_{7}=\frac{260}{\frac{\sqrt{2}\cdot \sqrt{{\left(-15+5\cdot \sqrt{1013}\right)}^{2}+{\left(15+5\cdot \sqrt{1013}\right)}^{2}+101300}}{4}}\approx 1.883761\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{260}{5 \sqrt{1013}}\approx 1.63379898}\]
+\[\fitmath{y_{8}=\frac{260}{5\cdot \sqrt{1013}}\approx 1.633799\,}\]
 
 \item Respuesta principal: comprobación final.
 
-\[\fitmath{\frac{- \frac{65}{2} + \frac{5 \sqrt{1013}}{2} - \left(- \frac{5 \sqrt{1013}}{2} - \frac{65}{2}\right)}{2}\approx 79.5691523\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=\frac{\frac{-65}{2}+\frac{5\cdot \sqrt{1013}}{2}-\left(\frac{-5\cdot \sqrt{1013}}{2}-\frac{65}{2}\right)}{2}\approx 79.56915\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -15524,67 +15573,65 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Aplicar las relaciones de transformación al elemento girado.
 \item Utilizar la ley de Hooke generalizada para deformaciones y distorsión.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{45 + 110}{2}\approx 77.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{110+45}{2}\approx 77.5\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{\left(\frac{110 - 45}{2}\right)^{2} + 35^{2}}\approx 47.7624329\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 47.76243\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\sqrt{\left(\frac{110 - 45}{2}\right)^{2} + 35^{2}} + \frac{45 + 110}{2}\approx 125.262433\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{110+45}{2}+\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 125.2624\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{\left(\frac{110 - 45}{2}\right)^{2} + 35^{2}} + \frac{45 + 110}{2}\approx 29.7375671\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{110+45}{2}-\sqrt{{\left(\frac{110-45}{2}\right)}^{2}+{35}^{2}}\approx 29.73757\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(45 - 0\right)^{2} + \left(110 - 45\right)^{2} + 6 \cdot 35^{2} + \left(\left(-1\right) 110 + 0\right)^{2}}}{\sqrt{2}}\approx 113.35784\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(110-45\right)}^{2}+{\left(45-0\right)}^{2}+{\left(0-110\right)}^{2}+6\cdot {35}^{2}}}{\sqrt{2}}\approx 113.3578\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \left(\frac{5 \sqrt{365}}{4} + \frac{155}{4}\right)\approx 125.262433\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \left(\frac{5\cdot \sqrt{365}}{4}+\frac{155}{4}\right)\approx 125.2624\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara x prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(110 - 45\right)}{2}\\a_{3}=\sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{4}=35 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{45 + 110}{2}\\a_{5}\approx 112.5\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{7}=\frac{110+45}{2}+\frac{110-45}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)+35\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx 112.5\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara y prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(110 - 45\right)}{2}\\a_{3}=- a_{2}\\a_{4}=\sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{5}=35 a_{4}\\a_{6}=- a_{5}\\a_{7}=a_{3} + a_{6} + \frac{45 + 110}{2}\\a_{7}\approx 42.5\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{8}=\frac{110+45}{2}-\frac{110-45}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)-35\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx 42.5\,\mathrm{MPa}}\]
 
 \item Cortante sobre el plano girado.
 
-\[\fitmath{- \frac{110 - 45}{2} \sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)} + 35 \cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\approx -32.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=-\left(\frac{110-45}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)+35\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx -32.5\,\mathrm{MPa}}\]
 
 \item Deformación epsilon x.
 
-\[\fitmath{\frac{110 - 0.33 \left(0 + 45\right)}{71700}\approx 0.00132705718}\]
+\[\fitmath{y_{10}=\frac{110-0.33\cdot \left(45+0\right)}{71700}\approx 0.001327057\,}\]
 
 \item Deformación epsilon y.
 
-\[\fitmath{\frac{45 - 0.33 \left(0 + 110\right)}{71700}\approx 0.000121338912}\]
+\[\fitmath{y_{11}=\frac{45-0.33\cdot \left(110+0\right)}{71700}\approx 0.0001213389\,}\]
 
 \item Deformación epsilon z.
 
-\[\fitmath{\frac{- 0.33 \left(45 + 110\right) + 0}{71700}\approx -0.000713389121}\]
+\[\fitmath{y_{12}=\frac{0-0.33\cdot \left(110+45\right)}{71700}\approx -0.0007133891\,}\]
 
 \item Distorsión ingenieril gamma xy.
 
-\[\fitmath{2 \left(0.33 + 1\right) 35 \cdot \frac{1}{71700}\approx 0.00129846583}\]
+\[\fitmath{y_{13}=\frac{2\cdot \left(1+0.33\right)\cdot 35}{71700}\approx 0.001298466\,}\]
 
 \item Respuesta principal: comprobación final.
 
-\[\fitmath{\frac{- 0.33 \left(45 + 110\right) + 0}{71700}\approx -0.000713389121}\]
+\[\fitmath{y_{14}=\frac{0-0.33\cdot \left(110+45\right)}{71700}\approx -0.0007133891\,}\]
 
 \end{enumerate}
 
@@ -15941,43 +15988,45 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Contrastar los resultados con los invariantes del tensor.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{45 + 190}{2}\approx 117.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{190+45}{2}\approx 117.5\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{60^{2} + \left(\frac{190 - 45}{2}\right)^{2}}\approx 94.1076511\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{190-45}{2}\right)}^{2}+{60}^{2}}\approx 94.10765\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\sqrt{60^{2} + \left(\frac{190 - 45}{2}\right)^{2}} + \frac{45 + 190}{2}\approx 211.607651\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{190+45}{2}+\sqrt{{\left(\frac{190-45}{2}\right)}^{2}+{60}^{2}}\approx 211.6077\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{60^{2} + \left(\frac{190 - 45}{2}\right)^{2}} + \frac{45 + 190}{2}\approx 23.3923489\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{190+45}{2}-\sqrt{{\left(\frac{190-45}{2}\right)}^{2}+{60}^{2}}\approx 23.39235\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(45 - -30\right)^{2} + \left(190 - 45\right)^{2} + 6 \cdot 60^{2} + \left(\left(-1\right) 190 - 30\right)^{2}}}{\sqrt{2}}\approx 219.829479\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(190-45\right)}^{2}+{\left(45--30\right)}^{2}+{\left(-30-190\right)}^{2}+6\cdot {60}^{2}}}{\sqrt{2}}\approx 219.8295\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \left(\frac{5 \sqrt{1417}}{4} + \frac{295}{4}\right)\approx 241.607651\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \left(\frac{5\cdot \sqrt{1417}}{4}+\frac{295}{4}\right)\approx 241.6077\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{255}{\sqrt{2} \cdot \frac{1}{4} \sqrt{\left(295 - 5 \sqrt{1417}\right)^{2} + 141700 + \left(-295 - 5 \sqrt{1417}\right)^{2}}}\approx 1.15999001}\]
+\[\fitmath{y_{7}=\frac{255}{\frac{\sqrt{2}\cdot \sqrt{{\left(295-5\cdot \sqrt{1417}\right)}^{2}+141700+{\left(-295-5\cdot \sqrt{1417}\right)}^{2}}}{4}}\approx 1.15999\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{255}{\frac{5 \sqrt{1417}}{2} + \frac{295}{2}}\approx 1.05543015}\]
+\[\fitmath{y_{8}=\frac{255}{\frac{5\cdot \sqrt{1417}}{2}+\frac{295}{2}}\approx 1.05543\,}\]
 
 \item Respuesta principal: comprobación final.
 
-\[\fitmath{\frac{\sqrt{\left(45 - -30\right)^{2} + \left(190 - 45\right)^{2} + 6 \cdot 60^{2} + \left(\left(-1\right) 190 - 30\right)^{2}}}{\sqrt{2}}\approx 219.829479\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=\frac{\sqrt{{\left(190-45\right)}^{2}+{\left(45--30\right)}^{2}+{\left(-30-190\right)}^{2}+6\cdot {60}^{2}}}{\sqrt{2}}\approx 219.8295\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -16335,61 +16384,57 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Aplicar las relaciones de transformación al elemento girado.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{-135 - 35}{2}\approx -85\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{-135+-35}{2}\approx -85\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{\left(\frac{-135 - -35}{2}\right)^{2} + 50^{2}}\approx 70.7106781\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx 70.71068\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\frac{-135 - 35}{2} + \sqrt{\left(\frac{-135 - -35}{2}\right)^{2} + 50^{2}}\approx -14.2893219\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{-135+-35}{2}+\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx -14.28932\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{\frac{-135 - 35}{2} - \sqrt{\left(\frac{-135 - -35}{2}\right)^{2} + 50^{2}}\approx -155.710678\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{-135+-35}{2}-\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx -155.7107\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(-35 - 0\right)^{2} + \left(-135 - -35\right)^{2} + 6 \cdot 50^{2} + \left(0 - -135\right)^{2}}}{\sqrt{2}}\approx 149.080515\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(-135--35\right)}^{2}+{\left(-35-0\right)}^{2}+{\left(0--135\right)}^{2}+6\cdot {50}^{2}}}{\sqrt{2}}\approx 149.0805\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \left(25 \sqrt{2} + \frac{85}{2}\right)\approx 155.710678\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \left(25\cdot \sqrt{2}+\frac{85}{2}\right)\approx 155.7107\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara x prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(-135 - -35\right)}{2}\\a_{3}=\sin{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{4}=50 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{-135 - 35}{2}\\a_{5}\approx -153.30127\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{7}=\frac{-135+-35}{2}+\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -153.3013\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara y prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(-135 - -35\right)}{2}\\a_{3}=- a_{2}\\a_{4}=\sin{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{5}=50 a_{4}\\a_{6}=- a_{5}\\a_{7}=a_{3} + a_{6} + \frac{-135 - 35}{2}\\a_{7}\approx -16.6987298\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{8}=\frac{-135+-35}{2}-\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)-50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -16.69873\,\mathrm{MPa}}\]
 
 \item Cortante sobre el plano girado.
 
-\[\fitmath{- \frac{-135 - -35}{2} \sin{\left(2 \pi \left(-30\right) \frac{1}{180} \right)} + 50 \cos{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\approx -18.3012702\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=-\left(\frac{-135--35}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -18.30127\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{230}{\frac{1}{2} \sqrt{2} \sqrt{\left(85 - 50 \sqrt{2}\right)^{2} + 20000 + \left(-85 - 50 \sqrt{2}\right)^{2}}}\approx 1.54279048}\]
+\[\fitmath{y_{10}=\frac{230}{\frac{\sqrt{2}\cdot \sqrt{{\left(85-50\cdot \sqrt{2}\right)}^{2}+20000+{\left(-85-50\cdot \sqrt{2}\right)}^{2}}}{2}}\approx 1.54279\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{230}{50 \sqrt{2} + 85}\approx 1.47709844}\]
+\[\fitmath{y_{11}=\frac{230}{50\cdot \sqrt{2}+85}\approx 1.477098\,}\]
 
 \item Respuesta principal: comprobación final.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(-135 - -35\right)}{2}\\a_{3}=\sin{\left(2 \pi \left(-30\right) \frac{1}{180} \right)}\\a_{4}=50 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{-135 - 35}{2}\\a_{5}\approx -153.30127\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{12}=\frac{-135+-35}{2}+\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -153.3013\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -16441,61 +16486,57 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Aplicar las relaciones de transformación al elemento girado.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{-50 + 75}{2}\approx 12.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{75+-50}{2}\approx 12.5\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{\left(\frac{75 - -50}{2}\right)^{2} + \left(-65\right)^{2}}\approx 90.173444\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{75--50}{2}\right)}^{2}+{\left(-65\right)}^{2}}\approx 90.17344\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\frac{-50 + 75}{2} + \sqrt{\left(\frac{75 - -50}{2}\right)^{2} + \left(-65\right)^{2}}\approx 102.673444\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{75+-50}{2}+\sqrt{{\left(\frac{75--50}{2}\right)}^{2}+{\left(-65\right)}^{2}}\approx 102.6734\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{\left(\frac{75 - -50}{2}\right)^{2} + \left(-65\right)^{2}} + \frac{-50 + 75}{2}\approx -77.673444\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{75+-50}{2}-\sqrt{{\left(\frac{75--50}{2}\right)}^{2}+{\left(-65\right)}^{2}}\approx -77.67344\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(-50 - 0\right)^{2} + \left(\left(-1\right) 75 + 0\right)^{2} + \left(75 - -50\right)^{2} + 6 \left(-65\right)^{2}}}{\sqrt{2}}\approx 156.684396\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(75--50\right)}^{2}+{\left(-50-0\right)}^{2}+{\left(0-75\right)}^{2}+6\cdot {\left(-65\right)}^{2}}}{\sqrt{2}}\approx 156.6844\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \cdot 5 \sqrt{1301} \cdot \frac{1}{2}\approx 180.346888\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot \frac{5\cdot \sqrt{1301}}{2}\approx 180.3469\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara x prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(75 - -50\right)}{2}\\a_{3}=\sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{4}=- 65 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{-50 + 75}{2}\\a_{5}\approx -52.5\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{7}=\frac{75+-50}{2}+\frac{75--50}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)+-65\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx -52.5\,\mathrm{MPa}}\]
 
 \item Tensión normal sobre la cara y prima.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(75 - -50\right)}{2}\\a_{3}=- a_{2}\\a_{4}=\sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{5}=- 65 a_{4}\\a_{6}=- a_{5}\\a_{7}=a_{3} + a_{6} + \frac{-50 + 75}{2}\\a_{7}\approx 77.5\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{8}=\frac{75+-50}{2}-\frac{75--50}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)--65\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx 77.5\,\mathrm{MPa}}\]
 
 \item Cortante sobre el plano girado.
 
-\[\fitmath{- \frac{75 - -50}{2} \sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)} - 65 \cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\approx -62.5\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=-\left(\frac{75--50}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)+-65\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx -62.5\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{240}{\sqrt{2} \cdot \frac{1}{4} \sqrt{\left(-25 + 5 \sqrt{1301}\right)^{2} + \left(25 + 5 \sqrt{1301}\right)^{2} + 130100}}\approx 1.53174155}\]
+\[\fitmath{y_{10}=\frac{240}{\frac{\sqrt{2}\cdot \sqrt{{\left(-25+5\cdot \sqrt{1301}\right)}^{2}+{\left(25+5\cdot \sqrt{1301}\right)}^{2}+130100}}{4}}\approx 1.531742\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{240}{5 \sqrt{1301}}\approx 1.33076874}\]
+\[\fitmath{y_{11}=\frac{240}{5\cdot \sqrt{1301}}\approx 1.330769\,}\]
 
 \item Respuesta principal: comprobación final.
 
-Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.
-
-\[\fitmath{\begin{gathered}a_{1}=\cos{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{2}=\frac{a_{1} \left(75 - -50\right)}{2}\\a_{3}=\sin{\left(2 \pi 45 \cdot \frac{1}{180} \right)}\\a_{4}=- 65 a_{3}\\a_{5}=a_{2} + a_{4} + \frac{-50 + 75}{2}\\a_{5}\approx -52.5\,\mathrm{MPa}\end{gathered}}\]
+\[\fitmath{y_{12}=\frac{75+-50}{2}+\frac{75--50}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot 45}{180}\right)+-65\cdot \sin\left(\frac{2\cdot \pi\cdot 45}{180}\right)\approx -52.5\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -16546,43 +16587,45 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Contrastar los resultados con los invariantes del tensor.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{-110 + 80}{2}\approx -15\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{80+-110}{2}\approx -15\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{40^{2} + \left(\frac{80 - -110}{2}\right)^{2}}\approx 103.077641\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{80--110}{2}\right)}^{2}+{40}^{2}}\approx 103.0776\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\frac{-110 + 80}{2} + \sqrt{40^{2} + \left(\frac{80 - -110}{2}\right)^{2}}\approx 88.0776406\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{80+-110}{2}+\sqrt{{\left(\frac{80--110}{2}\right)}^{2}+{40}^{2}}\approx 88.07764\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{40^{2} + \left(\frac{80 - -110}{2}\right)^{2}} + \frac{-110 + 80}{2}\approx -118.077641\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{80+-110}{2}-\sqrt{{\left(\frac{80--110}{2}\right)}^{2}+{40}^{2}}\approx -118.0776\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(55 - 80\right)^{2} + 6 \cdot 40^{2} + \left(-110 - 55\right)^{2} + \left(80 - -110\right)^{2}}}{\sqrt{2}}\approx 191.768089\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(80--110\right)}^{2}+{\left(-110-55\right)}^{2}+{\left(55-80\right)}^{2}+6\cdot {40}^{2}}}{\sqrt{2}}\approx 191.7681\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \cdot 25 \sqrt{17}\approx 206.155281\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot 25\cdot \sqrt{17}\approx 206.1553\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{280}{\frac{1}{2} \sqrt{2} \sqrt{\left(-70 + 25 \sqrt{17}\right)^{2} + \left(70 + 25 \sqrt{17}\right)^{2} + 42500}}\approx 1.46009694}\]
+\[\fitmath{y_{7}=\frac{280}{\frac{\sqrt{2}\cdot \sqrt{{\left(-70+25\cdot \sqrt{17}\right)}^{2}+{\left(70+25\cdot \sqrt{17}\right)}^{2}+42500}}{2}}\approx 1.460097\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{280}{50 \sqrt{17}}\approx 1.3581995}\]
+\[\fitmath{y_{8}=\frac{280}{50\cdot \sqrt{17}}\approx 1.3582\,}\]
 
 \item Respuesta principal: comprobación final.
 
-\[\fitmath{\frac{-15 + 25 \sqrt{17} - \left(- 25 \sqrt{17} - 15\right)}{2}\approx 103.077641\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=\frac{-15+25\cdot \sqrt{17}-\left(-25\cdot \sqrt{17}-15\right)}{2}\approx 103.0776\,\mathrm{MPa}}\]
 
 \end{enumerate}
 
@@ -16633,47 +16676,49 @@ Círculo de Mohr y tensiones equivalentes.\[\fitmath{R=\sqrt{\left(\frac{\sigma_
 \item Contrastar los resultados con los invariantes del tensor.
 \item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.\end{itemize}
 
-\textbf{Cálculo de los pasos.}\begin{enumerate}
+\textbf{Cálculo de los pasos.}
+
+\begin{enumerate}
 
 \item Centro del círculo en el plano xy.
 
-\[\fitmath{\frac{90 + 110}{2}\approx 100\,\mathrm{MPa}}\]
+\[\fitmath{y_{1}=\frac{90+110}{2}\approx 100\,\mathrm{MPa}}\]
 
 \item Radio del círculo de Mohr.
 
-\[\fitmath{\sqrt{\left(\frac{90 - 110}{2}\right)^{2} + 15^{2}}\approx 18.0277564\,\mathrm{MPa}}\]
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{90-110}{2}\right)}^{2}+{15}^{2}}\approx 18.02776\,\mathrm{MPa}}\]
 
 \item Tensión principal mayor en el plano.
 
-\[\fitmath{\sqrt{\left(\frac{90 - 110}{2}\right)^{2} + 15^{2}} + \frac{90 + 110}{2}\approx 118.027756\,\mathrm{MPa}}\]
+\[\fitmath{y_{3}=\frac{90+110}{2}+\sqrt{{\left(\frac{90-110}{2}\right)}^{2}+{15}^{2}}\approx 118.0278\,\mathrm{MPa}}\]
 
 \item Tensión principal menor en el plano.
 
-\[\fitmath{- \sqrt{\left(\frac{90 - 110}{2}\right)^{2} + 15^{2}} + \frac{90 + 110}{2}\approx 81.9722436\,\mathrm{MPa}}\]
+\[\fitmath{y_{4}=\frac{90+110}{2}-\sqrt{{\left(\frac{90-110}{2}\right)}^{2}+{15}^{2}}\approx 81.97224\,\mathrm{MPa}}\]
 
 \item Von Mises a partir de las componentes.
 
-\[\fitmath{\frac{\sqrt{\left(110 - 100\right)^{2} + \left(100 - 90\right)^{2} + \left(90 - 110\right)^{2} + 6 \cdot 15^{2}}}{\sqrt{2}}\approx 31.22499\,\mathrm{MPa}}\]
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(90-110\right)}^{2}+{\left(110-100\right)}^{2}+{\left(100-90\right)}^{2}+6\cdot {15}^{2}}}{\sqrt{2}}\approx 31.22499\,\mathrm{MPa}}\]
 
 \item Índice tensional de Tresca.
 
-\[\fitmath{2 \cdot 5 \sqrt{13}\approx 36.0555128\,\mathrm{MPa}}\]
+\[\fitmath{y_{6}=2\cdot 5\cdot \sqrt{13}\approx 36.05551\,\mathrm{MPa}}\]
 
 \item Coeficiente de seguridad de von Mises.
 
-\[\fitmath{\frac{170}{5 \sqrt{39}}\approx 5.44435723}\]
+\[\fitmath{y_{7}=\frac{170}{5\cdot \sqrt{39}}\approx 5.444357\,}\]
 
 \item Coeficiente de seguridad de Tresca.
 
-\[\fitmath{\frac{170}{10 \sqrt{13}}\approx 4.71495167}\]
+\[\fitmath{y_{8}=\frac{170}{10\cdot \sqrt{13}}\approx 4.714952\,}\]
 
 \item Tensión media hidrostática.
 
-\[\fitmath{\frac{90 + 100 + 110}{3}\approx 100\,\mathrm{MPa}}\]
+\[\fitmath{y_{9}=\frac{90+110+100}{3}\approx 100\,\mathrm{MPa}}\]
 
 \item Respuesta principal: comprobación final.
 
-\[\fitmath{\frac{\sqrt{\left(110 - 100\right)^{2} + \left(100 - 90\right)^{2} + \left(90 - 110\right)^{2} + 6 \cdot 15^{2}}}{\sqrt{2}}\approx 31.22499\,\mathrm{MPa}}\]
+\[\fitmath{y_{10}=\frac{\sqrt{{\left(90-110\right)}^{2}+{\left(110-100\right)}^{2}+{\left(100-90\right)}^{2}+6\cdot {15}^{2}}}{\sqrt{2}}\approx 31.22499\,\mathrm{MPa}}\]
 
 \end{enumerate}
 

@@ -1,0 +1,29 @@
+\par\textbf{Desarrollo para comparar tu intento.} En tensión plana, los autovalores del bloque de dos dimensiones son $c\pm R$, con $c=(\sigma_x+\sigma_y)/2$ y $R=\sqrt{[(\sigma_x-\sigma_y)/2]^2+\tau^2}$. Se calcula aparte von Mises y se compara con un límite de cedencia, distinto de la componente de tensión $\sigma_y$.
+
+\begin{enumerate}
+
+\item Hallar el centro del círculo de Mohr.
+
+\[\fitmath{\mathrm{center}=\frac{120+40}{2}\approx 80\,\mathrm{MPa}}\]
+
+\item Hallar su radio.
+
+\[\fitmath{\mathrm{radius}=\sqrt{{\left(\frac{120-40}{2}\right)}^{2}+{30}^{2}}\approx 50\,\mathrm{MPa}}\]
+
+\item Sumar radio al centro.
+
+\[\fitmath{principal1=\frac{120+40}{2}+\sqrt{{\left(\frac{120-40}{2}\right)}^{2}+{30}^{2}}\approx 130\,\mathrm{MPa}}\]
+
+\item Restar radio al centro; la tercera principal es cero.
+
+\[\fitmath{principal2=\frac{120+40}{2}-\sqrt{{\left(\frac{120-40}{2}\right)}^{2}+{30}^{2}}\approx 30\,\mathrm{MPa}}\]
+
+\item Usar la expresión de tensión plana.
+
+\[\fitmath{\mathrm{mises}=\sqrt{{120}^{2}-120\cdot 40+{40}^{2}+3\cdot {30}^{2}}\approx 117.8983\,\mathrm{MPa}}\]
+
+\item Dividir el límite de cedencia supuesto por la tensión equivalente.
+
+\[\fitmath{\mathrm{margin}=\frac{240}{\sqrt{{120}^{2}-120\cdot 40+{40}^{2}+3\cdot {30}^{2}}}\approx 2.035653\,}\]
+
+\end{enumerate}

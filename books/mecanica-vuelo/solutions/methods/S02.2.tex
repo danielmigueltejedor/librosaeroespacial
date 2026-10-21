@@ -1,0 +1,27 @@
+\textbf{Desarrollo de las magnitudes intermedias.} Al cambiar a TAS fija, la resistencia pasa a $D=A+BW^2$, con $A=qSC_{D0}$ y $B=k/(qS)$. Separar la ecuación de consumo y sustituir $u=W\sqrt{B/A}$ produce la primitiva arcotangente; la masa de enlace es la calculada en la fase anterior.\begin{enumerate}
+
+\item Término parásito a TAS fija.
+
+\[\fitmath{A=0.5\cdot 0.623843718\cdot {175}^{2}\cdot 52\cdot 0.024\approx 11921.65\,\mathrm{N}}\]
+
+\item Coeficiente del peso al cuadrado.
+
+\[\fitmath{B=\frac{2\cdot 0.044}{0.623843718\cdot {175}^{2}\cdot 52}\approx 8.857832\times10^{-8}\,\mathrm{1/N}}\]
+
+\item Evaluar la diferencia de primitivas.
+
+\[\fitmath{E=\frac{\arctan\left(11075.13882\cdot 9.80665\cdot \sqrt{\frac{B}{A}}\right)-\arctan\left(9300\cdot 9.80665\cdot \sqrt{\frac{B}{A}}\right)}{9.80665\cdot 1.68\times10^{-5}\cdot \sqrt{A\cdot B}}}\]
+
+\[\fitmath{E=\frac{\arctan\left(11075.13882\cdot 9.80665\cdot \sqrt{\frac{(8.857831713\times10^{-8})}{(11921.65345)}}\right)-\arctan\left(9300\cdot 9.80665\cdot \sqrt{\frac{(8.857831713\times10^{-8})}{(11921.65345)}}\right)}{9.80665\cdot 1.68\times10^{-5}\cdot \sqrt{(11921.65345)\cdot (8.857831713\times10^{-8})}}\approx 8250.161\,\mathrm{s}}\]
+
+\item En esta fase sí es válida distancia igual a TAS constante por tiempo.
+
+\[\fitmath{R=175\cdot E}\]
+
+\[\fitmath{R=175\cdot (8250.160621)\approx 1443778\,\mathrm{m}}\]
+
+\item Cerrar consumo de la segunda fase.
+
+\[\fitmath{\mathrm{fuel}=11075.13882-9300\approx 1775.139\,\mathrm{kg}}\]
+
+\end{enumerate}

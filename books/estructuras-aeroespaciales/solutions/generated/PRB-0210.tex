@@ -1,0 +1,61 @@
+\begin{enumerate}
+
+\item Identificar si la sección está abierta, cerrada unicelular o bicelular; dibujar su geometría y espesores.
+
+\item Para cada célula cerrada imponer equilibrio del par y compatibilidad del giro; el flujo común es la diferencia entre circulaciones.
+
+\item Comprobar que el par exterior coincide con el que transmiten los flujos, si la sección es cerrada.
+
+\item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
+
+\item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.
+
+\item En las ecuaciones bicelulares, $P_1=2w_1+h$ y $P_2=2w_2+h$ son los recorridos exteriores de cada célula; $t_e$ es el espesor exterior y $t_c$ el compartido; $r=q_2/q_1$.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área de célula 1.
+
+\[\fitmath{y_{1}=100\cdot 80\approx 8000\,\mathrm{mm^{2}}}\]
+
+\item Área de célula 2.
+
+\[\fitmath{y_{2}=60\cdot 80\approx 4800\,\mathrm{mm^{2}}}\]
+
+\item Coeficiente a de compatibilidad.
+
+\[\fitmath{y_{3}=\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}\approx 0.03083333\,\mathrm{1/mm^{2}}}\]
+
+\item Coeficiente b de compatibilidad.
+
+\[\fitmath{y_{4}=\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}\approx 0.03416667\,\mathrm{1/mm^{2}}}\]
+
+\item Relación de flujos q2/q1 por compatibilidad.
+
+\[\fitmath{y_{5}=\frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 0.902439\,}\]
+
+\item Flujo circulante de la primera célula por equilibrio.
+
+\[\fitmath{y_{6}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\approx 145.9652\,\mathrm{N/mm}}\]
+
+\item Flujo circulante de la segunda célula.
+
+\[\fitmath{y_{7}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 131.7247\,\mathrm{N/mm}}\]
+
+\item Flujo neto de la pared compartida.
+
+\[\fitmath{y_{8}=\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}-\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\approx 14.24051\,\mathrm{N/mm}}\]
+
+\item Giro unitario compatible de ambas células.
+
+\[\fitmath{y_{9}=\frac{\frac{\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot 280}{2}+\frac{\left(\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}-\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}\right)\cdot 80}{2}}{2\cdot 26955\cdot 100\cdot 80}\approx 4.870327\times10^{-5}\,\mathrm{rad/mm}}\]
+
+\item Tensión tangencial máxima en las paredes.
+
+\[\fitmath{y_{10}=\frac{\frac{3600000}{2\cdot 100\cdot 80+2\cdot 60\cdot 80\cdot \frac{\frac{\frac{280}{2}+\frac{80}{2}}{100\cdot 80}+\frac{80}{2\cdot 60\cdot 80}}{\frac{\frac{200}{2}+\frac{80}{2}}{60\cdot 80}+\frac{80}{2\cdot 100\cdot 80}}}}{2}\approx 72.98259\,\mathrm{MPa}}\]
+
+\end{enumerate}

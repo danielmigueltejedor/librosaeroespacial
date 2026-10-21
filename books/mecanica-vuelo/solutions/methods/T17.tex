@@ -1,0 +1,17 @@
+\textbf{De fuerzas a aceleración y a distancia.} Se calcula primero $C_D=C_{D0}+kC_L^2=0.0542419$. Para cada velocidad terrestre, $V_a=V_g+U$, $q=\rho V_a^2/2$, $L=qSC_L$ y $N=mg_0-L$; la fuerza de rueda utiliza esa reacción normal, no todo el peso. El balance horizontal es $ma=T-D-\mu_rN$.\[\fitmath{a(V_g)=2.920086214+(-0.0002549665643)(V_g+5)^2\quad[\mathrm{m/s^2}]}\]\begin{center}\begin{tabular}{rrrrr}
+\toprule $V_g$ & $V_a$ & $D$ (N) & $\mu N$ (N) & $a(V_g)$\\\midrule
+$0$ & $5$ & $16.4353$ & $488.5285$ & $2.913712$\\
+$7.25$ & $12.25$ & $98.65286$ & $459.8806$ & $2.881825$\\
+$14.5$ & $19.5$ & $249.9808$ & $407.1521$ & $2.823135$\\
+$21.75$ & $26.75$ & $470.4193$ & $330.3427$ & $2.737642$\\
+$29$ & $34$ & $759.9681$ & $229.4526$ & $2.625345$\\
+\bottomrule\end{tabular}\end{center}Como $ds/dt=V_g$ y $dV_g/dt$ es la aceleración con signo, se cambia la variable de integración. Con aceleración o desaceleración positiva en los límites elegidos:\[\fitmath{s=\int_0^{V_{g,f}}\frac{V_g}{a(V_g)}dV_g,\qquad t=\int_0^{V_{g,f}}\frac{1}{a(V_g)}dV_g}\]Para reproducir el cálculo a mano o con una hoja, Simpson compuesto usa un número par $n$ de intervalos, $h=V_{g,f}/n$ y $I\simeq(h/3)[f_0+f_n+4\sum_{i\ impar}f_i+2\sum_{i\ par,\ interior}f_i]$. Se aplica una vez con $f=V_g/a(V_g)$ y otra con $f=1/a(V_g)$. El refinamiento da:\begin{center}\begin{tabular}{rrr}
+\toprule $n$ & $s$ (m) & $t$ (s)\\\midrule
+$4$ & $152.6383$ & $10.34735$\\
+$8$ & $152.6349$ & $10.3473$\\
+$16$ & $152.6347$ & $10.3473$\\
+$32$ & $152.6347$ & $10.3473$\\
+$64$ & $152.6347$ & $10.3473$\\
+\bottomrule\end{tabular}\end{center}
+
+\textbf{Contraste en calma.}\input{solutions/methods/T17-calm.tex}

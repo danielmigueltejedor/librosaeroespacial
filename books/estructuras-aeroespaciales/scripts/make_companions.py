@@ -14,6 +14,10 @@ from sympy.parsing.sympy_parser import parse_expr
 BOOK = Path(__file__).resolve().parents[1]
 ROOT = BOOK.parents[1]
 BANK = ROOT / 'reports/bundle-audit/structures-problem-bank.json'
+import sys
+sys.path.insert(0,str(ROOT/'scripts'))
+from solution_steps import numeric_steps
+REASONING=json.loads((BOOK/'solutions/reasoning.json').read_text())
 CHAPTERS = [
     'Introducción: rigidez y masa', 'Tensión y deformación',
     'Modelo monodimensional', 'Esfuerzo axil y momento flector',
@@ -204,18 +208,12 @@ def worked(p, exam=False, closing=None):
     for m in s['model']:
         out += [text(m['name'])+r'.\[\fitmath{'+mathtex(m['latex'])+r'}\]']
     development=[x.replace('Comprobación independiente por Castigliano','Contraste por Castigliano') for x in s.get('development',[])]
-    out += [items('Procedimiento',development),r'\textbf{Cálculo de los pasos.}\begin{enumerate}']
-    for step in s['steps']:
-        label=step['text']
-        if p['id']=='PRB-0225':label=label.replace('Desplazamiento total','Giro total')
-        out.append(r'\item '+text(label)+'.')
-        if step.get('equation'): eq=step['equation']
-        else:
-            lines=numerical_lines(step['expression'],step['expected'],step.get('unit',''))
-            if len(lines)>1:out.append('Se separa la sustitución en auxiliares numéricos $a_i$, locales a este paso; las unidades corresponden al resultado final.')
-            eq=r'\begin{gathered}'+r'\\'.join(lines)+r'\end{gathered}' if len(lines)>1 else lines[0]
-        out.append(r'\[\fitmath{'+mathtex(eq)+r'}\]')
-    out += [r'\end{enumerate}',manual_figures(p,False),r'\textbf{Resultado e interpretación.}\[\fitmath{'+result_tex(s['result'])+r'}\]',text(s['interpretation']),
+    if p['id'] in REASONING:out.append(r'\textbf{Elección del procedimiento.} '+REASONING[p['id']])
+    out += [items('Procedimiento',development),r'\textbf{Cálculo de los pasos.}']
+    rows=[dict(target=f'y_{i}',expression=step.get('expression'),equation=step.get('equation'),expected=step.get('expected'),unit=step.get('unit',''),why=text(step['text'])+'.') for i,step in enumerate(s['steps'],1)]
+    calculated,_=numeric_steps(rows)
+    out.append(calculated)
+    out += [manual_figures(p,False),r'\textbf{Resultado e interpretación.}\[\fitmath{'+result_tex(s['result'])+r'}\]',text(s['interpretation']),
             r'\par\textbf{Comprobación.} '+(CHECKS[int(p['ch'][1:])-1] if exam else 'Recalcula los pasos con unidades coherentes y aplica el control específico indicado en la orientación del capítulo.'),
             r'\par\noindent\begin{minipage}{\linewidth}' if closing else '',
             items('Límites',s['limitations']),items('Errores frecuentes',s['mistakes'])]

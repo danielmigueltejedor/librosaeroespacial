@@ -1,0 +1,37 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} Las fuerzas de frenado del modelo dependen de velocidad terrestre prescrita, mientras el dato de aproximación es aéreo. Primero hacer la suma vectorial longitudinal del viento; separar demora a velocidad constante y frenado uniforme.
+
+\begin{enumerate}
+
+\item Con viento de cara la velocidad terrestre es menor.
+
+\[\fitmath{\mathrm{Vhead}=32-6\approx 26\,\mathrm{m/s}}\]
+
+\item Con viento de cola es mayor.
+
+\[\fitmath{\mathrm{Vtail}=32+6\approx 38\,\mathrm{m/s}}\]
+
+\item Recorrido previo al frenado con cara.
+
+\[\fitmath{\mathrm{delayhead}=\mathrm{Vhead}\cdot 1.5}\]
+
+\[\fitmath{\mathrm{delayhead}=(26)\cdot 1.5\approx 39\,\mathrm{m}}\]
+
+\item Integrar frenado uniforme desde la velocidad terrestre.
+
+\[\fitmath{\mathrm{brakehead}=\frac{{\mathrm{Vhead}}^{2}}{2\cdot 2.2}}\]
+
+\[\fitmath{\mathrm{brakehead}=\frac{{(26)}^{2}}{2\cdot 2.2}\approx 153.6364\,\mathrm{m}}\]
+
+\item Sumar fases del caso con cara.
+
+\[\fitmath{\mathrm{shead}=\mathrm{delayhead}+\mathrm{brakehead}}\]
+
+\[\fitmath{\mathrm{shead}=(39)+(153.6363636)\approx 192.6364\,\mathrm{m}}\]
+
+\item Repetir ambas fases con cola.
+
+\[\fitmath{\mathrm{stail}=\mathrm{Vtail}\cdot 1.5+\frac{{\mathrm{Vtail}}^{2}}{2\cdot 2.2}}\]
+
+\[\fitmath{\mathrm{stail}=(38)\cdot 1.5+\frac{{(38)}^{2}}{2\cdot 2.2}\approx 385.1818\,\mathrm{m}}\]
+
+\end{enumerate}

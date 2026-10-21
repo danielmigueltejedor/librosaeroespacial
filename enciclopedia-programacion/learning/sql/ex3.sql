@@ -1,0 +1,1 @@
+SELECT id FROM orders WHERE COALESCE(paid, 0) = 0 ORDER BY id;

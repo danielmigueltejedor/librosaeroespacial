@@ -1,0 +1,67 @@
+\begin{enumerate}
+
+\item Formar la matriz del tensor de Cauchy y obtener las tensiones principales en el plano xy.
+
+\item Añadir la tensión normal sigma z, ordenar los tres autovalores y calcular la máxima cortadura absoluta.
+
+\item Obtener la tensión equivalente de von Mises y la magnitud equivalente de Tresca.
+
+\item Aplicar las relaciones de transformación al elemento girado.
+
+\item Si se proporciona el límite elástico, comparar ambos criterios de fluencia.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Centro del círculo en el plano xy.
+
+\[\fitmath{y_{1}=\frac{-135+-35}{2}\approx -85\,\mathrm{MPa}}\]
+
+\item Radio del círculo de Mohr.
+
+\[\fitmath{y_{2}=\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx 70.71068\,\mathrm{MPa}}\]
+
+\item Tensión principal mayor en el plano.
+
+\[\fitmath{y_{3}=\frac{-135+-35}{2}+\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx -14.28932\,\mathrm{MPa}}\]
+
+\item Tensión principal menor en el plano.
+
+\[\fitmath{y_{4}=\frac{-135+-35}{2}-\sqrt{{\left(\frac{-135--35}{2}\right)}^{2}+{50}^{2}}\approx -155.7107\,\mathrm{MPa}}\]
+
+\item Von Mises a partir de las componentes.
+
+\[\fitmath{y_{5}=\frac{\sqrt{{\left(-135--35\right)}^{2}+{\left(-35-0\right)}^{2}+{\left(0--135\right)}^{2}+6\cdot {50}^{2}}}{\sqrt{2}}\approx 149.0805\,\mathrm{MPa}}\]
+
+\item Índice tensional de Tresca.
+
+\[\fitmath{y_{6}=2\cdot \left(25\cdot \sqrt{2}+\frac{85}{2}\right)\approx 155.7107\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara x prima.
+
+\[\fitmath{y_{7}=\frac{-135+-35}{2}+\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -153.3013\,\mathrm{MPa}}\]
+
+\item Tensión normal sobre la cara y prima.
+
+\[\fitmath{y_{8}=\frac{-135+-35}{2}-\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)-50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -16.69873\,\mathrm{MPa}}\]
+
+\item Cortante sobre el plano girado.
+
+\[\fitmath{y_{9}=-\left(\frac{-135--35}{2}\right)\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -18.30127\,\mathrm{MPa}}\]
+
+\item Coeficiente de seguridad de von Mises.
+
+\[\fitmath{y_{10}=\frac{230}{\frac{\sqrt{2}\cdot \sqrt{{\left(85-50\cdot \sqrt{2}\right)}^{2}+20000+{\left(-85-50\cdot \sqrt{2}\right)}^{2}}}{2}}\approx 1.54279\,}\]
+
+\item Coeficiente de seguridad de Tresca.
+
+\[\fitmath{y_{11}=\frac{230}{50\cdot \sqrt{2}+85}\approx 1.477098\,}\]
+
+\item Respuesta principal: comprobación final.
+
+\[\fitmath{y_{12}=\frac{-135+-35}{2}+\frac{-135--35}{2}\cdot \cos\left(\frac{2\cdot \pi\cdot -30}{180}\right)+50\cdot \sin\left(\frac{2\cdot \pi\cdot -30}{180}\right)\approx -153.3013\,\mathrm{MPa}}\]
+
+\end{enumerate}

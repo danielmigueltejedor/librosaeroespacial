@@ -1,0 +1,402 @@
+{
+  "scope": "Eleven numeric manual cases expanded; qualitative cases retain their evidence-based reasoning, not independent approval",
+  "records": [
+    {
+      "key": "M01",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ratioA",
+          "expression": "2800/(280e6)",
+          "value": 1e-05,
+          "unit": "s**2/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ratioB",
+          "expression": "4500/(600e6)",
+          "value": 7.5e-06,
+          "unit": "s**2/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "massRatio",
+          "expression": "(4500/600e6)/(2800/280e6)",
+          "value": 0.75,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "saving",
+          "expression": "1-(4500/600e6)/(2800/280e6)",
+          "value": 0.25,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M02",
+      "steps": [
+        {
+          "index": 1,
+          "target": "center",
+          "expression": "(120+40)/2",
+          "value": 80.0,
+          "unit": "MPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "radius",
+          "expression": "sqrt(((120-40)/2)**2+30**2)",
+          "value": 50.0,
+          "unit": "MPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "principal1",
+          "expression": "(120+40)/2+sqrt(((120-40)/2)**2+30**2)",
+          "value": 130.0,
+          "unit": "MPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "principal2",
+          "expression": "(120+40)/2-sqrt(((120-40)/2)**2+30**2)",
+          "value": 30.0,
+          "unit": "MPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "mises",
+          "expression": "sqrt(120**2-120*40+40**2+3*30**2)",
+          "value": 117.89826122551597,
+          "unit": "MPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "margin",
+          "expression": "240/sqrt(120**2-120*40+40**2+3*30**2)",
+          "value": 2.03565343123193,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M03",
+      "steps": [
+        {
+          "index": 1,
+          "target": "a",
+          "expression": "4e-3/2",
+          "value": 0.002,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "KI",
+          "expression": "180*sqrt(pi*0.002)",
+          "value": 14.26797827138164,
+          "unit": "MPa*m**.5",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ac",
+          "expression": "(32/180)**2/pi",
+          "value": 0.010060164304080297,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "total",
+          "expression": "2*(32/180)**2/pi",
+          "value": 0.020120328608160595,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M04",
+      "steps": [
+        {
+          "index": 1,
+          "target": "D1",
+          "expression": "2000/100000",
+          "value": 0.02,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "D2",
+          "expression": "500/20000",
+          "value": 0.025,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Db",
+          "expression": "2000/100000+500/20000",
+          "value": 0.045,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "blocks",
+          "expression": "1/(2000/100000+500/20000)",
+          "value": 22.22222222222222,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "D22",
+          "expression": "22*(2000/100000+500/20000)",
+          "value": 0.99,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M05",
+      "steps": [
+        {
+          "index": 1,
+          "target": "inverseDifference",
+          "expression": "1/950-1/900",
+          "value": -5.847953216374269e-05,
+          "unit": "1/K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "exponent",
+          "expression": "-250000/8.314462618*(1/950-1/900)",
+          "value": 1.758367763814952,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "rateRatio",
+          "expression": "exp(-250000/8.314462618*(1/950-1/900))",
+          "value": 5.802957862286398,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M06",
+      "steps": [
+        {
+          "index": 1,
+          "target": "t100",
+          "expression": "100*3600",
+          "value": 360000.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "x100",
+          "expression": "sqrt(4e-16*100*3600)",
+          "value": 1.2e-05,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "x400",
+          "expression": "sqrt(4e-16*400*3600)",
+          "value": 2.4e-05,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M09",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vm",
+          "expression": "1-.60",
+          "value": 0.4,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "EL",
+          "expression": ".60*230+.40*3",
+          "value": 139.2,
+          "unit": "GPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ET",
+          "expression": "1/(.60/230+.40/3)",
+          "value": 7.356076759061834,
+          "unit": "GPa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M12",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ai",
+          "expression": "800/(800+4)",
+          "value": 0.9950248756218906,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Aextended",
+          "expression": "800/(800+4+20)",
+          "value": 0.970873786407767,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M17",
+      "steps": [
+        {
+          "index": 1,
+          "target": "limit",
+          "expression": "2400+500",
+          "value": 2900.0,
+          "unit": "h",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "remaining",
+          "expression": "2400+500-2810",
+          "value": 90.0,
+          "unit": "h",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "weeks",
+          "expression": "(2400+500-2810)/30",
+          "value": 3.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M22",
+      "steps": [
+        {
+          "index": 1,
+          "target": "frot",
+          "expression": "12000/60",
+          "value": 200.0,
+          "unit": "Hz",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "order",
+          "expression": "400/(12000/60)",
+          "value": 2.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "key": "M24",
+      "steps": [
+        {
+          "index": 1,
+          "target": "rateA",
+          "expression": "4/20000",
+          "value": 0.0002,
+          "unit": "1/h",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "rateB",
+          "expression": "6/60000",
+          "value": 0.0001,
+          "unit": "1/h",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ratio",
+          "expression": "(6/60000)/(4/20000)",
+          "value": 0.5,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    }
+  ]
+}

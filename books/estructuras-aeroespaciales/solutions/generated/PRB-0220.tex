@@ -1,0 +1,47 @@
+\begin{enumerate}
+
+\item Obtener área, centroide, I\_z, I\_y e I\_yz sumando aportaciones de pared y booms.
+
+\item Determinar los gradientes de tensión axial con ambos cortantes y el producto de inercia; integrar dq/ds en cada pared.
+
+\item Imponer continuidad y equilibrio en los nudos; en contornos abiertos q=0 en extremos libres y en celdas cerradas imponer compatibilidad de giros.
+
+\item Localizar el centro de cortadura anulando el torsor debido al flujo; calcular la tensión máxima por |q(s)|/t en paredes y puntos críticos.
+
+\item Las leyes completas q(s) por pared se indican a continuación; la coordenada s se mide desde el nudo inicial de cada pared y el sentido firmado sigue las flechas del diagrama. Los resultados geométricos se obtienen con la misma idealización de paredes y larguerillos del enunciado.
+
+\item Pared ala\_izquierda: q(s) = $\frac{- 414 s^{2} + 328440 s}{724075}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared ala\_derecha: q(s) = $\frac{- 414 s^{2} + 274620 s}{724075} - \frac{730710}{28963}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared alma: q(s) = $\frac{- 680754 s^{2} + 33229020 s}{87613075} + \frac{1514688}{28963}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared crítica: alma; s = 24.4060409 mm desde su nudo inicial.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área equivalente que soporta tensión axial.
+
+\[\fitmath{y_{1}=2\cdot 65+2\cdot 75+2\cdot 110\approx 500\,\mathrm{mm^{2}}}\]
+
+\item Propiedades geométricas de la sección (centroide y momentos de inercia).
+
+\[\fitmath{z_G=2.8\,\mathrm{mm},\quad y_G=24.2\,\mathrm{mm}}\]
+
+\item Momentos de inercia del modelo en los ejes centroidales.
+
+\[\fitmath{I_z=594513.333\,\mathrm{mm}^{4},\quad I_y=460413.333\,\mathrm{mm}^{4},\quad I_{yz}=-33880\,\mathrm{mm}^{4}}\]
+
+\item Centro de cortadura a partir del equilibrio de los flujos; coordenadas del modelo.
+
+\[\fitmath{z_C=0\,\mathrm{mm},\quad y_C=0\,\mathrm{mm}}\]
+
+\item Tensión máxima |q|/t en pared alma.
+
+\[\fitmath{y_{5}=\frac{\left|\frac{8133213402}{142874479}\right|}{2}\approx 28.46279\,\mathrm{MPa}}\]
+
+\end{enumerate}

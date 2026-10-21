@@ -11,6 +11,20 @@ aritmética, diversidad bibliográfica y compilación no validan una implementac
 ni la suficiencia de su explicación. La revisión curricular de los 75 capítulos
 sigue abierta; los recuentos de palabras no la sustituyen.
 
+## Aprender mediante práctica
+
+La edición incorpora once recorridos iniciales: Python, JavaScript, TypeScript,
+Rust, C, C++, Java, C#, Go, SQL y Bash. Cada uno contiene un primer programa,
+contrato de entrada, traza explicada, errores frecuentes y tres ejercicios con
+soluciones separadas. Los ejemplos impresos y las referencias completas se
+ejecutan con herramientas reales; los resultados están en
+`reports/learning-verification.json` y el código editable en `learning/`.
+La guía del volumen 0 indica el orden recomendado y los prerrequisitos.
+
+[Descarga de la colección completa organizada por temas](https://github.com/danielmigueltejedor/librosstudium/releases/tag/librosstudium-aprendizaje-2026-10-21).
+La revisión curricular independiente de los 75 capítulos sigue pendiente;
+estos recorridos no certifican los capítulos avanzados ni los demás lenguajes.
+
 ## Edición de lectura depurada
 
 Se elimina la hoja de fórmulas vacía y los apéndices de notación, auditoría interna
@@ -21,8 +35,9 @@ los dos primeros volúmenes no duplican en un apéndice los desarrollos ya resue
 
 Se retiran mediante revisiones, conservando su historial, 192 ejercicios de
 plantilla sin escenario técnico y 20 ejercicios de inventario del volumen guía.
-Quedan 299 actividades activas: 291 numéricas y 8 pruebas Rust. No se presentan
-como 299 programas verificados. Las correcciones focalizadas están registradas
+Con los 33 ejercicios nuevos quedan 332 actividades activas: 291 numéricas,
+8 pruebas Rust y 33 de programación. No se presentan como 332 programas
+verificados. Las correcciones focalizadas están registradas
 en `reports/reader-cleanup.json`; los controles de toda la colección, en
 `reports/reader-edition-checks.json`.
 
@@ -64,11 +79,14 @@ clon de Studium, instalar explícitamente ese clon en el entorno con `pip instal
 LaTeX: pdfLaTeX o Tectonic; con TeX Live instalar `latex-base`, `latex-extra`,
 `latex-recommended`, `fonts-recommended`, `lang-spanish`, Latin Modern y TikZ.
 En Debian/Ubuntu esos nombres llevan el prefijo `texlive-`, salvo `lmodern`.
-Poppler permite renderizar las páginas para revisión visual.
+Los paquetes `upquote` y `accsupp` preservan comillas y el texto Unicode literal.
+Poppler permite renderizar las páginas para revisión visual y comprobar el texto extraído.
 
 Compiladores opcionales en PATH: Rust/rustc y Cargo, C17, C++20, Node.js 24 y
 TypeScript 5.9.3 (`tsc`). Los proyectos Python necesitan pytest; SQLite procede
-del módulo estándar Python. Su versión real se registra. La ausencia de una
+del módulo estándar Python. Los recorridos iniciales también usan Java/JDK 11,
+.NET SDK 8, Go y Bash; la configuración reproducible está en el flujo
+`programming-review.yml`. Su versión real se registra. La ausencia de una
 herramienta deja un pendiente, nunca una comprobación ficticia.
 
 ## Compilar sin regenerar la autoría
@@ -139,3 +157,22 @@ educativo Python en `content/revisions/`, incorporados al manuscrito mediante
 revisiones de los mismos párrafos. El resto de los capítulos todavía necesita
 ampliación y revisión individual. Estos cambios no justifican llamar «experto» a
 un ejemplo breve ni cerrar itinerarios autónomos de lenguajes completos.
+
+## Auditoría de práctica y caracteres
+
+```sh
+python enciclopedia-programacion/tools/verify_learning.py --trusted
+python enciclopedia-programacion/tools/audit_learning.py
+python enciclopedia-programacion/tools/check_literal_fidelity.py
+```
+
+Usar `--trusted` únicamente tras revisar estas fuentes propias. El comprobador
+registra casos finitos, versiones, salidas y hashes; no ejecuta código arbitrario
+con aislamiento. El control de caracteres recorre los literales activos y
+compara fixtures extraídos del PDF, excluyendo espacios de maquetación. El
+archivo editable conserva la indentación exacta. Un carácter literal sin soporte
+provoca un diagnóstico explícito en vez de sustituirlo silenciosamente.
+
+La auditoría `reports/pedagogical-audit.json` inventaría los 75 capítulos y
+separa los once recorridos incorporados del material que requiere ampliación
+y revisión independiente.

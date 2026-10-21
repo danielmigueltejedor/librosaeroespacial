@@ -1,0 +1,49 @@
+\begin{enumerate}
+
+\item Obtener área, centroide, I\_z, I\_y e I\_yz sumando aportaciones de pared y booms.
+
+\item Determinar los gradientes de tensión axial con ambos cortantes y el producto de inercia; integrar dq/ds en cada pared.
+
+\item Imponer continuidad y equilibrio en los nudos; en contornos abiertos q=0 en extremos libres y en celdas cerradas imponer compatibilidad de giros.
+
+\item Localizar el centro de cortadura anulando el torsor debido al flujo; calcular la tensión máxima por |q(s)|/t en paredes y puntos críticos.
+
+\item Las leyes completas q(s) por pared se indican a continuación; la coordenada s se mide desde el nudo inicial de cada pared y el sentido firmado sigue las flechas del diagrama. Los resultados geométricos se obtienen con la misma idealización de paredes y larguerillos del enunciado.
+
+\item Pared inferior: q(s) = $\frac{9 s^{2} + 86370 s}{158290} - \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared derecha: q(s) = $\frac{- 15531 s^{2} + 1422240 s}{2532640} + \frac{568470}{15829}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared superior: q(s) = $\frac{- 27 s^{2} - 199260 s}{316580} + \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared izquierda: q(s) = $\frac{46593 s^{2} - 3309120 s}{5065280} - \frac{762930}{15829}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared crítica: derecha; s = 45.7871354 mm desde su nudo inicial.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área equivalente que soporta tensión axial.
+
+\[\fitmath{y_{1}=2\cdot 140+2\cdot 80+3\cdot 140+3\cdot 80\approx 1100\,\mathrm{mm^{2}}}\]
+
+\item Propiedades geométricas de la sección (centroide y momentos de inercia).
+
+\[\fitmath{z_G=64.9090909\,\mathrm{mm},\quad y_G=45.0909091\,\mathrm{mm}}\]
+
+\item Momentos de inercia del modelo en los ejes centroidales.
+
+\[\fitmath{I_z=1304824.24\,\mathrm{mm}^{4},\quad I_y=3074824.24\,\mathrm{mm}^{4},\quad I_{yz}=28509.0909\,\mathrm{mm}^{4}}\]
+
+\item Centro de cortadura a partir del equilibrio de los flujos; coordenadas del modelo.
+
+\[\fitmath{z_C=59.1760692\,\mathrm{mm},\quad y_C=49.364584\,\mathrm{mm}}\]
+
+\item Tensión máxima |q|/t en pared derecha.
+
+\[\fitmath{y_{5}=\frac{\left|\frac{3996493470}{81946733}\right|}{2}\approx 24.3847\,\mathrm{MPa}}\]
+
+\end{enumerate}

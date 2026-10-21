@@ -1,0 +1,59 @@
+\textbf{Desarrollo de las magnitudes intermedias.} Para hélice, $P_e=DV/\eta_p=mg_0V/[\eta_p(L/D)]$ y $dm/dt=-c_PP_e$. Introducir $V=\sqrt{2g_0m/(\rho SC_L)}$ deja $dt=-(\eta_p L/D)/(g_0c_P)\sqrt{\rho SC_L/(2g_0)}m^{-3/2}dm$. Integrar usa la primitiva $-2m^{-1/2}$ para tiempo; en distancia, $dx=Vdt$ deja $dm/m$ y un logaritmo. El consumo se convierte: $c_P=0.295/(3.6\times10^6)$ kg/J. Se comparan $C_{L,R}=\sqrt{C_{D0}/k}$ y $C_{L,E}=\sqrt{3C_{D0}/k}$ bajo las mismas masas y altitud.\begin{enumerate}
+
+\item Elegir el CL según el objetivo de la ley.
+
+\[\fitmath{\mathrm{CLR}=\sqrt{\frac{0.026}{0.047}}\approx 0.7437684\,}\]
+
+\item Evaluar la polar.
+
+\[\fitmath{\mathrm{CLRCD}=0.026+0.047\cdot {\mathrm{CLR}}^{2}}\]
+
+\[\fitmath{\mathrm{CLRCD}=0.026+0.047\cdot {(0.743768438)}^{2}\approx 0.052\,}\]
+
+\item Calcular eficiencia.
+
+\[\fitmath{\mathrm{CLRLD}=\frac{\mathrm{CLR}}{\mathrm{CLRCD}}}\]
+
+\[\fitmath{\mathrm{CLRLD}=\frac{(0.743768438)}{(0.052)}\approx 14.30324\,}\]
+
+\item Evaluar la integral de distancia.
+
+\[\fitmath{\mathrm{CLRR}=\frac{0.8\cdot \mathrm{CLRLD}}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \ln\left(\frac{1850}{1510}\right)}\]
+
+\[\fitmath{\mathrm{CLRR}=\frac{0.8\cdot (14.30323919)}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \ln\left(\frac{1850}{1510}\right)\approx 2891630\,\mathrm{m}}\]
+
+\item Evaluar la integral de tiempo con ambas masas.
+
+\[\fitmath{\mathrm{CLRE}=\frac{2\cdot 0.8\cdot \mathrm{CLRLD}}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \sqrt{\frac{1.006490097\cdot 19.4\cdot \mathrm{CLR}}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1510}}-\frac{1}{\sqrt{1850}}\right)}\]
+
+\[\fitmath{\mathrm{CLRE}=\frac{2\cdot 0.8\cdot (14.30323919)}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \sqrt{\frac{1.006490097\cdot 19.4\cdot (0.743768438)}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1510}}-\frac{1}{\sqrt{1850}}\right)\approx 60889.35\,\mathrm{s}}\]
+
+\item Elegir el CL según el objetivo de la ley.
+
+\[\fitmath{\mathrm{CLE}=\sqrt{\frac{3\cdot 0.026}{0.047}}\approx 1.288245\,}\]
+
+\item Evaluar la polar.
+
+\[\fitmath{\mathrm{CLECD}=0.026+0.047\cdot {\mathrm{CLE}}^{2}}\]
+
+\[\fitmath{\mathrm{CLECD}=0.026+0.047\cdot {(1.288244724)}^{2}\approx 0.104\,}\]
+
+\item Calcular eficiencia.
+
+\[\fitmath{\mathrm{CLELD}=\frac{\mathrm{CLE}}{\mathrm{CLECD}}}\]
+
+\[\fitmath{\mathrm{CLELD}=\frac{(1.288244724)}{(0.104)}\approx 12.38697\,}\]
+
+\item Evaluar la integral de distancia.
+
+\[\fitmath{\mathrm{CLER}=\frac{0.8\cdot \mathrm{CLELD}}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \ln\left(\frac{1850}{1510}\right)}\]
+
+\[\fitmath{\mathrm{CLER}=\frac{0.8\cdot (12.3869685)}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \ln\left(\frac{1850}{1510}\right)\approx 2504225\,\mathrm{m}}\]
+
+\item Evaluar la integral de tiempo con ambas masas.
+
+\[\fitmath{\mathrm{CLEE}=\frac{2\cdot 0.8\cdot \mathrm{CLELD}}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \sqrt{\frac{1.006490097\cdot 19.4\cdot \mathrm{CLE}}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1510}}-\frac{1}{\sqrt{1850}}\right)}\]
+
+\[\fitmath{\mathrm{CLEE}=\frac{2\cdot 0.8\cdot (12.3869685)}{9.80665\cdot 8.194444444\times10^{-8}}\cdot \sqrt{\frac{1.006490097\cdot 19.4\cdot (1.288244724)}{2\cdot 9.80665}}\cdot \left(\frac{1}{\sqrt{1510}}-\frac{1}{\sqrt{1850}}\right)\approx 69398.85\,\mathrm{s}}\]
+
+\end{enumerate}

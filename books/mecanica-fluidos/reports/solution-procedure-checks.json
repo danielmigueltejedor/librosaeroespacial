@@ -1,0 +1,4234 @@
+{
+  "scope": "128 existing manual solutions, algebra and computed intermediate values; authored model review, not independent academic approval",
+  "reviewer": "same authoring model",
+  "solutions": 128,
+  "steps": 370,
+  "records": [
+    {
+      "index": 1,
+      "prompt_sha256": "5b07e5c8e064d980a126a3a71df74b85131e56b5a16859b066cacb06c7be2cd4",
+      "steps": [
+        {
+          "index": 1,
+          "target": "a",
+          "expression": "F/m",
+          "value": 2.142857142857143,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "t",
+          "expression": "V/a",
+          "value": 35.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "s",
+          "expression": "a*t**2/2",
+          "value": 1312.5,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "W",
+          "expression": "F*s",
+          "value": 196875000.0,
+          "unit": "J",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "E",
+          "expression": "m*V**2/2",
+          "value": 196875000.0,
+          "unit": "J",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "b796929badc74d733c27e10316c1a3ddb882c23d68955ef5024734dfd8e36ec5"
+    },
+    {
+      "index": 2,
+      "prompt_sha256": "02106d1328598eb4e75c8b9c0a9f226ac69e75e02695ed2a887b0cf44dfe3727",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Om",
+          "expression": "sqrt(n*g/R)",
+          "value": 2.4761361028828768,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "N",
+          "expression": "Om*60/(2*pi)",
+          "value": 23.645358032526705,
+          "unit": "1/min",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "aC",
+          "expression": "2*Om*v",
+          "value": 2.4761361028828768,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "124af69f16f46d375996b4c6130db1f90c361195b390749122056e230bbb4cea"
+    },
+    {
+      "index": 3,
+      "prompt_sha256": "c1f30313c1490ecd53b691fa78a1ba5680faafc00a07bded41dcaaeb67d20787",
+      "steps": [
+        {
+          "index": 1,
+          "target": "om",
+          "expression": "2*pi*N/60",
+          "value": 314.1592653589793,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "U",
+          "expression": "om*R",
+          "value": 7.853981633974483,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tau",
+          "expression": "mu*U/c",
+          "value": 2356.194490192345,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "M",
+          "expression": "tau*2*pi*R*L*R",
+          "value": 0.740220330081702,
+          "unit": "N*m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "P",
+          "expression": "M*om",
+          "value": 232.54707510224867,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "cd026515b551ae143a5c0a4c3ef46585da2ae85936c76da4d737f21ed11b0f41"
+    },
+    {
+      "index": 4,
+      "prompt_sha256": "63060abd0a5c4508298739fc51512bcd97dd8ecb08c804bb824a1ca1f4871270",
+      "steps": [
+        {
+          "index": 1,
+          "target": "uL",
+          "expression": "2*U0",
+          "value": 20.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "grad",
+          "expression": "U0/L",
+          "value": 20.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "aL",
+          "expression": "uL*grad",
+          "value": 400.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "t",
+          "expression": "L/U0*log(2)",
+          "value": 0.03465735902799726,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "4985a53a195bf58c8576b59c94b439ff7bf935bf358cc7a8f5267e41382293b8"
+    },
+    {
+      "index": 5,
+      "prompt_sha256": "ecf7ce4dca55b0f60155dcc79bec1b7e74e529698ae64dfdde3cc5c81bf06d26",
+      "steps": [
+        {
+          "index": 1,
+          "target": "hc",
+          "expression": "ht+H/2",
+          "value": 2.5,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "A",
+          "expression": "b*H",
+          "value": 6.0,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F",
+          "expression": "rho*g*hc*A",
+          "value": 147150.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "IG",
+          "expression": "b*H**3/12",
+          "value": 4.5,
+          "unit": "m**4",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "hcp",
+          "expression": "hc+IG/(hc*A)",
+          "value": 2.8,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "a2ef9461d336b2e685309ec9c9fa2b2bd67c95b5a72b5accda7684f691a5cf5c"
+    },
+    {
+      "index": 6,
+      "prompt_sha256": "54fe211564a2d2e738138791f7c4466e77e39a03d1d547e85b891c0d15e57018",
+      "steps": [
+        {
+          "index": 1,
+          "target": "A",
+          "expression": "pi*D**2/4",
+          "value": 2.827433388230814e-05,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "V",
+          "expression": "Q/A",
+          "value": 5.305164769729845,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Re",
+          "expression": "rho*V*D/mu",
+          "value": 1352.8170162811105,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Le",
+          "expression": "0.0575*Re*D",
+          "value": 0.46672187061698317,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "dp",
+          "expression": "128*mu*L*Q/(pi*D**4)",
+          "value": 282942.12105225836,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "P",
+          "expression": "dp*Q",
+          "value": 42.44131815783875,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "68087665f6b63953ac8f703d65c0058e325255979343c1d9dc4e6d6e6a7048b0"
+    },
+    {
+      "index": 7,
+      "prompt_sha256": "00b612336623000ca6b403f88bb90c4ee1493ee03ed196c0b125e231d826485d",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vs",
+          "expression": "sqrt(2*m*g/(rho*S*CLmax))",
+          "value": 26.071156771794787,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "q",
+          "expression": "rho*V**2/2",
+          "value": 1852.8125,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "CL",
+          "expression": "m*g/(q*S)",
+          "value": 0.3595135023706452,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "CD",
+          "expression": "CD0+K*CL**2",
+          "value": 0.033979497752887625,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "D",
+          "expression": "q*S*CD",
+          "value": 1019.9137385204081,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "P",
+          "expression": "D*V",
+          "value": 56095.25561862245,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "520e9f5045b17f2bda5a30c5b2f9f58bfacfbe233c13bb99ac744d3cf9f44319"
+    },
+    {
+      "index": 8,
+      "prompt_sha256": "aefb34779a766a0f7e9c0f704e3722fca6451420d0dfb6a1eec72392e50568fb",
+      "steps": [
+        {
+          "index": 1,
+          "target": "wn",
+          "expression": "sqrt(2*g/L)",
+          "value": 6.26418390534633,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Tn",
+          "expression": "2*pi/wn",
+          "value": 1.0030333403553238,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Wo",
+          "expression": "R*sqrt(wn/nu)",
+          "value": 2.494120973277147,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "zeta",
+          "expression": "4*nu/(R**2*wn)",
+          "value": 0.6430207128117996,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "2607ed1c9d0459deb80aac8b45f329a9edb6d541786381fd145d1861149817e6"
+    },
+    {
+      "index": 9,
+      "prompt_sha256": "b6b7052f2f8cc97a2ab78ccba3e097d1f81ea2fdfe8b79fdb5abfbff4ba0ebfb",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mg",
+          "expression": "ma+mf",
+          "value": 51.0,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "F",
+          "expression": "mg*ve-ma*v0",
+          "value": 18100.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Pu",
+          "expression": "F*v0",
+          "value": 4525000.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Pjet",
+          "expression": "(mg*ve**2-ma*v0**2)/2",
+          "value": 7617500.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "etap",
+          "expression": "Pu/Pjet",
+          "value": 0.5940269117164424,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "etaApprox",
+          "expression": "2*v0/(ve+v0)",
+          "value": 0.5882352941176471,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "3d769261e751e46465eab7b34332ec672016e27dec3d715370ec09274738be7e"
+    },
+    {
+      "index": 10,
+      "prompt_sha256": "e49d90dc8a4bc8d25e8d536c5194d7654b9f536da35afc4e6b20ff09f7e74798",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Rep",
+          "expression": "rho*Vp*Lp/mu",
+          "value": 11980272.717111882,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Vatm",
+          "expression": "Vp*Lp/Lm",
+          "value": 700.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Mam",
+          "expression": "Vm/asound",
+          "value": 0.23529411764705882,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "pm",
+          "expression": "p0*Vp*Lp/(Vm*Lm)",
+          "value": 886593.75,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "5bb4d70197206f01740c2df4a7b64cff0464fb33d3530a2ed6d8d90955769d75"
+    },
+    {
+      "index": 11,
+      "prompt_sha256": "056b77e47d29de32af3695202e1fb55f6fa73026dc25c6539981f228b460bc0f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Om",
+          "expression": "Gamma/(2*pi*a**2)",
+          "value": 7.07355302630646,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "wz",
+          "expression": "2*Om",
+          "value": 14.14710605261292,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "umax",
+          "expression": "Om*a",
+          "value": 21.22065907891938,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "ur",
+          "expression": "Gamma/(2*pi*r)",
+          "value": 2.1220659078919377,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "288deac5e1357fdca91e5b0703e8c372c28e19013f28d75c26877ec85e13d270"
+    },
+    {
+      "index": 12,
+      "prompt_sha256": "880d69eece8a4a37f9703d9c2349f27282d2a93d1e42e1842ac5dfda754f243c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "V",
+          "expression": "sqrt(2*dp/rho)",
+          "value": 87.74920512899243,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Vi",
+          "expression": "sqrt(2*dp/rho0)",
+          "value": 75.59289460184544,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Ma",
+          "expression": "V/asound",
+          "value": 0.26703957738585643,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "55deacb48883d3c50aaad10e8ea85c221d3ded8a5f79d426ffcd78d413b1a38b"
+    },
+    {
+      "index": 13,
+      "prompt_sha256": "efe7a0de1264ea0367029d6ff305ca8f11ac5bfa9c624b19208d1d6577591078",
+      "steps": [
+        {
+          "index": 1,
+          "target": "div",
+          "expression": "a-a",
+          "value": 0.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "wz",
+          "expression": "c-b",
+          "value": -160.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tauxx",
+          "expression": "2*mu*a",
+          "value": 0.0017894,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "tauxy",
+          "expression": "mu*(b+c)",
+          "value": 0.00143152,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "4ea5c393425649800ef586f0f5b400ff62561d4244819de76c7485b11d44f005"
+    },
+    {
+      "index": 14,
+      "prompt_sha256": "ab4ecdc668740887ef11789eb488d9939d2f44e44ab573df366b5ad17c1dfb6c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "kw",
+          "expression": "2*pi/lw",
+          "value": 62.83185307179586,
+          "unit": "1/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "thalf",
+          "expression": "log(2)/(4*nu*kw**2)",
+          "value": 43.58893543488263,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tair",
+          "expression": "log(2)/(4*nuair*(2*pi/lair)**2)",
+          "value": 0.7512503933546724,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9dc5305d093ad437f7ae9e6c27809286980860ab53f7d47a20716f8312d702eb"
+    },
+    {
+      "index": 15,
+      "prompt_sha256": "f23b3c1b9417110a7400e2776a62990ac5b191d0649f2f5e8037ca281939838f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "us",
+          "expression": "g*s*h**2/(2*nu)",
+          "value": 0.2191906653426018,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "q",
+          "expression": "g*s*h**3/(3*nu)",
+          "value": 4.383813306852036e-05,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Re",
+          "expression": "q/nu",
+          "value": 43.53339927360513,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "db6056e69b798dfa88f5574df3a08871a0aba34f4f6b767eb3cdd402cd8ee617"
+    },
+    {
+      "index": 16,
+      "prompt_sha256": "181e8598a12298682f152519cd2a2d7f1b1b7f883fe681c29eb3e1086b70483e",
+      "steps": [
+        {
+          "index": 1,
+          "target": "fcalc",
+          "expression": "2*Om*sin(phi)",
+          "value": 0.00010312586718180846,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "gradp",
+          "expression": "dp/dn",
+          "value": 0.001,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Vg",
+          "expression": "gradp/(rho*fcalc)",
+          "value": 8.0807401295757,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Ro",
+          "expression": "Vg/(fcalc*Lscale)",
+          "value": 0.07835803325008212,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "788108750faa54a77236791ed4190ba20e924acea07ccb0b52278e0988308f27"
+    },
+    {
+      "index": 17,
+      "prompt_sha256": "43ccb70cd37e96af9f927ce4a3de200907dc10a9f591c54da7e3aed22e77ace6",
+      "steps": [
+        {
+          "index": 1,
+          "target": "T",
+          "expression": "T0-L*z",
+          "value": 216.65,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "aexp",
+          "expression": "g/(Rg*L)",
+          "value": 5.255879812716677,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "p",
+          "expression": "p0*(T/T0)**aexp",
+          "value": 22632.0400950078,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "952ae88a3428f022489bf49ed96872be8a622ca3c7be305d93ac128b56cdf7cd"
+    },
+    {
+      "index": 18,
+      "prompt_sha256": "97254168792a976836ba381f763162d7e7da88af1c5b08f4dadac23d248d109b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "vx",
+          "expression": "v0*cos(theta)",
+          "value": 22.981333293569342,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "vy",
+          "expression": "v0*sin(theta)",
+          "value": 19.28362829059618,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tf",
+          "expression": "2*vy/g",
+          "value": 3.931422689214308,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "R",
+          "expression": "vx*tf",
+          "value": 90.34933513873469,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "a7cb999f1eb932ab2bb10622bc03eb5ee0eda3489e3d34d1b2acbbef078a9dd3"
+    },
+    {
+      "index": 19,
+      "prompt_sha256": "598d0bf93179cecbb690172acef72076e3fa90067df8a53c5013b94057b0415e",
+      "steps": [
+        {
+          "index": 1,
+          "target": "A2",
+          "expression": "pi*d2**2/4",
+          "value": 0.001963495408493621,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "V2",
+          "expression": "sqrt(2*dp/(rho*(1-beta**4)))",
+          "value": 6.538514434386761,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Q",
+          "expression": "A2*V2",
+          "value": 0.01283834307028767,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "6d2b2b0c5087155a3e2e1ae0cf3001d8d7e7ac8ffac72a2809658a54f82fbf41"
+    },
+    {
+      "index": 20,
+      "prompt_sha256": "57d064edb9b17c158e3818c5f82af93d3d9b6f8a9d1ec5b256c4e72316c289b2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tnu",
+          "expression": "h**2/nu",
+          "value": 100.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "7a1079e6a3c98a0463c702d95eacdb3098525ab6f6af498f10db8e2b3474ea65"
+    },
+    {
+      "index": 21,
+      "prompt_sha256": "1fc7547f2d12df957499f48571abbc661a3bd2c588e37e59dbf092a92ed87165",
+      "steps": [
+        {
+          "index": 1,
+          "target": "va",
+          "expression": "-mh*vh/ma",
+          "value": -0.375,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "p",
+          "expression": "ma*va+mh*vh",
+          "value": 0.0,
+          "unit": "kg*m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "8247f1e50db67d6d9fce6b1c8978ddedafb5b5ac2d4827adc8cfca91a0fe5a7d"
+    },
+    {
+      "index": 22,
+      "prompt_sha256": "5ea1a11633dc52636073d649583438c89f34099dec8cc095353e49704dfae745",
+      "steps": [
+        {
+          "index": 1,
+          "target": "H",
+          "expression": "I1*Omega1",
+          "value": 2400.0,
+          "unit": "kg*m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Omega2",
+          "expression": "H/I2",
+          "value": 1.3333333333333333,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9024cd1b5e38e68c1f8c2519eec6cb74136dc4b08beb48938589862306adfa70"
+    },
+    {
+      "index": 23,
+      "prompt_sha256": "cf76785b17b9da48a9d76fde2113b5df79c0eeab7ef161547fe0fb39e9ac9679",
+      "steps": [
+        {
+          "index": 1,
+          "target": "v2sq",
+          "expression": "v1**2+2*g*dz-2*WD/m",
+          "value": 4897.0,
+          "unit": "m**2/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "v2",
+          "expression": "sqrt(v2sq)",
+          "value": 69.97856814768362,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "93ff030e0a7e54d2c7ba9ee15e71683db94fcce1e3003debabe4355b9bd9fc7a"
+    },
+    {
+      "index": 24,
+      "prompt_sha256": "3548a4ab788ea84f8808e0d5efcfb6990e345a64cc68eff11ad24c405d33f096",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dpave",
+          "expression": "m*V",
+          "value": 144.0,
+          "unit": "kg*m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Fmean",
+          "expression": "dpave/dt",
+          "value": 72000.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "b4ceec3ba8d53c7a5b64f204bd7fd4cbea0630ae6b39f3283d032d48e5036b2b"
+    },
+    {
+      "index": 25,
+      "prompt_sha256": "0816da42870c92d3734b0f6a672fbf654686eb53526917ed4a8843eb367b3b96",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ib",
+          "expression": "mb*Lb**2/3",
+          "value": 1470.0,
+          "unit": "kg*m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "I",
+          "expression": "4*Ib",
+          "value": 5880.0,
+          "unit": "kg*m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "alpha",
+          "expression": "tau/I",
+          "value": 2.0408163265306123,
+          "unit": "1/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "t",
+          "expression": "Omega/alpha",
+          "value": 14.7,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "b755cd616fb6e5a93ed161fdebdd28dc5376a695bfbc8919af3a04ec818fc0d2"
+    },
+    {
+      "index": 26,
+      "prompt_sha256": "3da284d0ddfcbec5202ddf4322d9e86febc2dad740a4c43eafffb046c9e8393a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "f",
+          "expression": "2*Omega*sin(phi)",
+          "value": 1.3217837906968586e-05,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "fLeon",
+          "expression": "2*Omega*sin(phiLeon)",
+          "value": 9.871559141851924e-05,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ratio",
+          "expression": "f/fLeon",
+          "value": 0.13389817876823149,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "20e38058cbac605f103fec95830c4e0001a036d9c394f8fccd37d2d741ef6f6a"
+    },
+    {
+      "index": 27,
+      "prompt_sha256": "710486567138fa89834dfed61be8aa21833ff3e4ba764a600d85cf4110b76a25",
+      "steps": [
+        {
+          "index": 1,
+          "target": "cose",
+          "expression": "g/(W**2*R)",
+          "value": 0.545,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "thetae",
+          "expression": "acos(cose)*180/pi",
+          "value": 56.97533636833414,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Wcrit",
+          "expression": "sqrt(g/R)",
+          "value": 4.4294469180700204,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "09358ff9ad315dc08a46b46ae26f1dc40ab3d116aa6bac0944da8e774834f5ec"
+    },
+    {
+      "index": 28,
+      "prompt_sha256": "23d48f4ee4a093b34c2768b1b642e15e59994d6b3356815fe7bfb5c7900f2bda",
+      "steps": [
+        {
+          "index": 1,
+          "target": "xs",
+          "expression": "1-1/r",
+          "value": 0.6428571428571429,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "mult",
+          "expression": "2-r",
+          "value": -0.8,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "c92ed62b8e5e7b7b9aa6d123e766c6a4a10ab52d7f4055c59a000babb53c4e8f"
+    },
+    {
+      "index": 29,
+      "prompt_sha256": "0aa9d8e85796df36e993d568a27fcf963ff76ed25d7e2b874eacc58b657dd2d9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "wn",
+          "expression": "sqrt(g/l)",
+          "value": 3.5017852589786256,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "T",
+          "expression": "2*pi/wn",
+          "value": 1.7942805861865496,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "50f0a0c53ba8cec74549cd714a3a0ceab0310c5597e64d80a7fc3b54cace3c37"
+    },
+    {
+      "index": 30,
+      "prompt_sha256": "da4c0e0214b18b2ebd10dd301370265cfea19872c9006ee10164cbea140a5956",
+      "steps": [
+        {
+          "index": 1,
+          "target": "rho",
+          "expression": "p/(Ra*T)",
+          "value": 1.0065609096120014,
+          "unit": "kg/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "a6df3b9a630f80e3b6049c8938e3c72b27e725c0538a64008f6d14dd6b52e7d1"
+    },
+    {
+      "index": 31,
+      "prompt_sha256": "f2492c4e084dc857a08b4e71953c8a03f515f5514f9de59bd63b366b80d08b77",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Kn",
+          "expression": "lam/D",
+          "value": 0.0088,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "8a3c74e552a7d8f84b53258c16c5b453347bb6104e5cbd9e2af46d6b10a2e657"
+    },
+    {
+      "index": 32,
+      "prompt_sha256": "8f1e8465302b59012c3001b0aeeb17dded141f96b3e8760144f1ebcb242d094f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mu288",
+          "expression": "mu0*(Tcmp/T0)**1.5*(T0+S)/(Tcmp+S)",
+          "value": 1.7885738021598945e-05,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "muT",
+          "expression": "mu0*(T/T0)**1.5*(T0+S)/(T+S)",
+          "value": 4.152006361141094e-05,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "39649b522a6e4e5fbf5652e429253aae10847c7246ea8872d6d448060515ae6e"
+    },
+    {
+      "index": 33,
+      "prompt_sha256": "a25dd9ad105e08042b283f89e86cbcfe4aba6955396f6256342c3328b679b035",
+      "steps": [
+        {
+          "index": 1,
+          "target": "nua",
+          "expression": "mua/rhoa",
+          "value": 1.460734693877551e-05,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "nuw",
+          "expression": "muw/rhow",
+          "value": 1.0068122620717291e-06,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ratio",
+          "expression": "nua/nuw",
+          "value": 14.508511158493247,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "bc1c49ea36e53f02b36325e65c8a094386e07bc176c5c0aa6029b6c3714c6fad"
+    },
+    {
+      "index": 34,
+      "prompt_sha256": "d333e0a131be0c3282210379b4e58f9326656b1732a776f6704824437e2ce0d9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mu",
+          "expression": "M*c/(2*pi*R**3*L*omega)",
+          "value": 0.5968310365946075,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "6c11a4663e91359c94cfa7477638f0095a249ed2e3a83d9499e8c003fe388ab3"
+    },
+    {
+      "index": 35,
+      "prompt_sha256": "4641b31d35034e1d291884c958035998ad11a9c6cfb693c7ac7231ab1e885380",
+      "steps": [
+        {
+          "index": 1,
+          "target": "grad",
+          "expression": "U/h",
+          "value": 2000.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "tau",
+          "expression": "mu*grad",
+          "value": 580.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F",
+          "expression": "tau*A",
+          "value": 290.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "80bb68cf136e46e9bc079ebaeec54418c683ae859f459cac5c9b734bfd270302"
+    },
+    {
+      "index": 36,
+      "prompt_sha256": "243f16b514ec78dc25691eeb46bb7985663dfd4d4314bdfe4eb2d1adaaea8713",
+      "steps": [
+        {
+          "index": 1,
+          "target": "DT",
+          "expression": "u*G",
+          "value": 1.0,
+          "unit": "K/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "d359920a86832267234dff726114c11fd54c54f23e0f77ed8c64ab842ca74078"
+    },
+    {
+      "index": 37,
+      "prompt_sha256": "23ca80b8c83384ce646a192613edb3fadc3bedeb32fc0e62a0361dc7b1399555",
+      "steps": [
+        {
+          "index": 1,
+          "target": "xt",
+          "expression": "x0*exp(k*t)",
+          "value": 2.718281828459045,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "yt",
+          "expression": "y0*exp(-k*t)",
+          "value": 0.7357588823428847,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ax",
+          "expression": "k**2*xt",
+          "value": 10.87312731383618,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "ay",
+          "expression": "k**2*yt",
+          "value": 2.9430355293715387,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "amag",
+          "expression": "sqrt(ax**2+ay**2)",
+          "value": 11.264384391081192,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "8837132282e9ef629afa299c3d05d825322a2348fe353ea53c41eef33eec69dc"
+    },
+    {
+      "index": 38,
+      "prompt_sha256": "38606a3461b65e3f34e70a658071d326234e292ed4c4f8d6b0ae0ca0b952dfc9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ut",
+          "expression": "U0+beta*t",
+          "value": 15.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "uloc",
+          "expression": "Ut*(1+x/L)",
+          "value": 22.5,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "aloc",
+          "expression": "beta*(1+x/L)",
+          "value": 7.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "aconv",
+          "expression": "uloc*Ut/L",
+          "value": 675.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "atot",
+          "expression": "aloc+aconv",
+          "value": 682.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "5029918c09cb85c920fdeb44cb973bff7426edba4dda279c146ef29952f1765f"
+    },
+    {
+      "index": 39,
+      "prompt_sha256": "ae09b831f9f0163248c770aca0574bd38813726d7e52cad501dfb485b79ed9b0",
+      "steps": [
+        {
+          "index": 1,
+          "target": "slope",
+          "expression": "a*tobs/u0",
+          "value": 0.5,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ystream",
+          "expression": "slope*x",
+          "value": 2.0,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tpart",
+          "expression": "x/u0",
+          "value": 2.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "ypart",
+          "expression": "a*tpart**2/2",
+          "value": 1.0,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "10560f81523988262fde3b63547a6ea2f4e6067176d79ccb983f753a3f6e3d42"
+    },
+    {
+      "index": 40,
+      "prompt_sha256": "7fdf8bad40fa3cd292a693a422e9fd35354598d7623eb0b1fc051f217424edd1",
+      "steps": [
+        {
+          "index": 1,
+          "target": "pg",
+          "expression": "rho*g*h",
+          "value": 98100.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9881cdbb8ed7e3825f27bda5cea283990d4ef9f35a2f0757245d0e402c8f55fa"
+    },
+    {
+      "index": 41,
+      "prompt_sha256": "b817bfa06b8311d6d79bb7ed19abe18f96b323d1a0517dda081b6b66a7e0cdd1",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dp",
+          "expression": "rhom*g*h",
+          "value": 1468.557,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "20f7c17f3e8da5251c96b1dd1d1520c990a8eb0116f4fc7836fd0eaa9ecc6013"
+    },
+    {
+      "index": 42,
+      "prompt_sha256": "54e0439bc80fe2a10fec8a7131b1aee6d99ce11066ab3857e4e93504567ac470",
+      "steps": [
+        {
+          "index": 1,
+          "target": "h",
+          "expression": "L*sin(theta)",
+          "value": 0.031058240462074494,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "amp",
+          "expression": "1/sin(theta)",
+          "value": 3.863708897048856,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "dp",
+          "expression": "rhom*g*h",
+          "value": 240.69825775703112,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f593bf465d001fab867da5765e4773dc1cf7c060148c3ec752118f0132052d12"
+    },
+    {
+      "index": 43,
+      "prompt_sha256": "822df58990b1ab6a7358662fa966da28bf5405f0cda13b86268822950ab33d9c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Omega",
+          "expression": "sqrt(2*g*dz)/r",
+          "value": 7.003570517957251,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f3389a791a5e333bb3377dac0d52546f5c4a66efdd937c3479936d6fc89f55c0"
+    },
+    {
+      "index": 44,
+      "prompt_sha256": "84522c24da0059e72239b6c3221fa93095fd534722e118825cd6a851293d469a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "rhoe",
+          "expression": "p/(Ra*Te)",
+          "value": 1.2250122659906943,
+          "unit": "kg/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "rhoi",
+          "expression": "p/(Ra*Ti)",
+          "value": 0.945966191733133,
+          "unit": "kg/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "m",
+          "expression": "(rhoe-rhoi)*V",
+          "value": 781.3290079211716,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "414455adc376bccea2130582ebd6f1ec0272f94bd7c5b9a1bb38598d6d37b04a"
+    },
+    {
+      "index": 45,
+      "prompt_sha256": "b33fd2f7b86380ad242d3dfe484ae8368ac7eb05122ddfb0afdc4dc05768988f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "T",
+          "expression": "T0-G*z",
+          "value": 236.15,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "piso",
+          "expression": "p0*exp(-g*z/(Ra*T0))",
+          "value": 39245.602198134366,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "p",
+          "expression": "p0*(T/T0)**(g/(Ra*G))",
+          "value": 35599.41290798699,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "462f265034f0eed5679ae26b3b10038a9cd2454089058afe31d0ebc6fb3cee3c"
+    },
+    {
+      "index": 46,
+      "prompt_sha256": "a0c1b1adb8e971d414546df7e4e1729597e75f7f6197d93410af14a8832f92d9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "rho*V*D/mu",
+          "value": 348.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "fD",
+          "expression": "64/Re",
+          "value": 0.1839080459770115,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "dp",
+          "expression": "fD*L/D*rho*V**2/2",
+          "value": 57600.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Q",
+          "expression": "pi*D**2*V/4",
+          "value": 1.5079644737231008e-05,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "P",
+          "expression": "dp*Q",
+          "value": 0.8685875368645061,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "916b3f527d6c3de7b760e1534f1d84822d290780e20f1ca3188823535bf0048b"
+    },
+    {
+      "index": 47,
+      "prompt_sha256": "800eb05b29a9c6e839f102b75ebcd3511cd16a94cb85592bd20f471181e6dc68",
+      "steps": [
+        {
+          "index": 1,
+          "target": "q",
+          "expression": "U*h/2",
+          "value": 0.00075,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "tau",
+          "expression": "mu*U/h",
+          "value": 600.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "0a16d9ac20ecd99a6a824886958d9ad394ef1d2b63be637461ddc35a0d559398"
+    },
+    {
+      "index": 48,
+      "prompt_sha256": "50e3aceb186740a9c4952138d3f619da749d11c73009541fbc3d96c8abc4af4d",
+      "steps": [
+        {
+          "index": 1,
+          "target": "G",
+          "expression": "Dp/Ls",
+          "value": 2000000000.0,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Q",
+          "expression": "G*h**3*b/(12*mu)",
+          "value": 4.4444444444444444e-07,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "0eaced2862a6446f5d864b85f4a564a0987f83f168c078a64f690b37239cd154"
+    },
+    {
+      "index": 49,
+      "prompt_sha256": "54bb226c402e308d34c42170bf5bc035c4b959f1935d341158435a0c3d6cb305",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mu",
+          "expression": "pi*R**4*Dp/(8*L*Q)",
+          "value": 0.004908738521234052,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "49ae7bf888fdef2e7cbc6800f0251ba056251887d44a8c7a9cd81303d9313863"
+    },
+    {
+      "index": 50,
+      "prompt_sha256": "6e07fdd12b31950b7c92f2c07f9318710e236e14bfab33973e1c71964bd7485d",
+      "steps": [
+        {
+          "index": 1,
+          "target": "q",
+          "expression": "rho*V**2/2",
+          "value": 3001.25,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "D",
+          "expression": "q*A*CD",
+          "value": 1080.45,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "219941ca67ba96fdd717c28d061941761cb3653952f95457787b5af1a32fe603"
+    },
+    {
+      "index": 51,
+      "prompt_sha256": "7c2bddcac067a742b55d13f9f2cca36b1f93d10b574157b035cb805145627c98",
+      "steps": [
+        {
+          "index": 1,
+          "target": "W",
+          "expression": "m*g",
+          "value": 647460.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "q",
+          "expression": "rho*V**2/2",
+          "value": 9625.684,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "CL",
+          "expression": "W/(q*S)",
+          "value": 0.5486443012366087,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "55ad564eab6d8cf2e0b8ac9f3c468a2f29f3b67c79eef821a71fb95035f643eb"
+    },
+    {
+      "index": 52,
+      "prompt_sha256": "6cc22c0484fd7d3eec9d97ee3b211df1805a3bbfa498402f58f62805bf9f2680",
+      "steps": [
+        {
+          "index": 1,
+          "target": "K",
+          "expression": "1/(pi*e*AR)",
+          "value": 0.04086134610831716,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "CLopt",
+          "expression": "sqrt(CD0/K)",
+          "value": 0.6637123788858852,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "LDmax",
+          "expression": "CLopt/(CD0+K*CLopt**2)",
+          "value": 18.436454969052367,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "6af102f101745585167d2f5d798c0a0528ab6993eaa97aa09eb9142d760f8195"
+    },
+    {
+      "index": 53,
+      "prompt_sha256": "cf3df34f4abadb0c374a6577cdb65ae80cd2f382d6eb12dfaba6fe5a8536aaca",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vsea",
+          "expression": "sqrt(2*m*g/(rho0*A*CD))",
+          "value": 42.783610387439914,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Vt",
+          "expression": "sqrt(2*m*g/(rho*A*CD))",
+          "value": 49.663765672953936,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "8282d9702773dfeb45a60263b0b243352fa061eed96891f4edc994d6547d8e1a"
+    },
+    {
+      "index": 54,
+      "prompt_sha256": "ae4b951145a94e0216ea53062cc1542c364871c4d8481283723b084ceaf37e0b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vt",
+          "expression": "(rhop-rhof)*g*d**2/(18*mu)",
+          "value": 0.06849497806527327,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Re",
+          "expression": "rhof*Vt*d/mu",
+          "value": 0.14067231719564058,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "d9b0495ec13a9153635f217c276c168e4b13b44d064abac1591778890aa747f1"
+    },
+    {
+      "index": 55,
+      "prompt_sha256": "4568ea8ffa88f3b386f6cada76ccd7b45ce78382713aa27904d36db18e3f2b26",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ma",
+          "expression": "V/asound",
+          "value": 0.20588235294117646,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "dratio",
+          "expression": "Ma**2/2",
+          "value": 0.021193771626297576,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "e5d10755dd63db691cb7fe41aa0c7bfa16719a7190b4f6391f38f4f3d67fcde9"
+    },
+    {
+      "index": 56,
+      "prompt_sha256": "b48d752f02c55e67934b82ecc01fa8d8028e2caa11618bacdc17e6afc6dd8976",
+      "steps": [
+        {
+          "index": 1,
+          "target": "k",
+          "expression": "rho*g*Aw",
+          "value": 8044.2,
+          "unit": "N/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "wn",
+          "expression": "sqrt(k/m)",
+          "value": 4.4844732132102205,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "T",
+          "expression": "2*pi/wn",
+          "value": 1.4010977451422335,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "780e59f62ffd574b043e6da34c8ec8494c3412d86dbf060dd517f20127a18a93"
+    },
+    {
+      "index": 57,
+      "prompt_sha256": "3d0f194772e2a2c21b744262186df73985a7b68ec75c9fab16f62c7106f7b726",
+      "steps": [
+        {
+          "index": 1,
+          "target": "delta",
+          "expression": "log(x1/x2)",
+          "value": 0.5108256237659907,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "zeta",
+          "expression": "delta/sqrt(4*pi**2+delta**2)",
+          "value": 0.0810330596653058,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "49aa27f3da2a8fa7e44d30c0249b17ddde8a5b3e19de3889bede4dab02a3fbfa"
+    },
+    {
+      "index": 58,
+      "prompt_sha256": "52c64a69222ec77b74c8e210e1be2b17de5c1a78717f743a19fd5b819e2cbfb5",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "V*d/nu",
+          "value": 51345.24543027316,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "fs",
+          "expression": "St*V/d",
+          "value": 60.0,
+          "unit": "Hz",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "92bdbe5e1f76eeda4faff765acd304156e743daef511b44604ea91376dc80710"
+    },
+    {
+      "index": 59,
+      "prompt_sha256": "b577d051953366a45dea3dd66da7885082883289437cd8849c2c94daaca8e39e",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vc",
+          "expression": "fn*d/St",
+          "value": 27.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "b70ab8b35cd86d6cf8d16e7a643c5a1c9f2bc25abe60e9fbe53c7d0f6309257b"
+    },
+    {
+      "index": 60,
+      "prompt_sha256": "2435d6491c216adb3a61c215e8fd52a4f74269053e787eb5f04deb5766af8fb4",
+      "steps": [
+        {
+          "index": 1,
+          "target": "M1",
+          "expression": "1/(2*zeta)",
+          "value": 10.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Mhalf",
+          "expression": "1/sqrt((1-.5**2)**2+(2*zeta*.5)**2)",
+          "value": 1.3303802104754785,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Mr",
+          "expression": "1/sqrt((1-r**2)**2+(2*zeta*r)**2)",
+          "value": 4.756514941544941,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "ff6c0aa01749100284f0d24ec7441d68bdce2e91fa06cef9a4c3b66421f40e6e"
+    },
+    {
+      "index": 61,
+      "prompt_sha256": "e3835ae78b436aaafb67b131a4bc5cca4b5da8fd10ce87c2c268343eef7b193c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Fkin",
+          "expression": "md*ve",
+          "value": 725000.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Fp",
+          "expression": "dp*Ae",
+          "value": 24000.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F",
+          "expression": "Fkin+Fp",
+          "value": 749000.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "2853f94ad89930428a6ae1f0b77e9c8e66f6233201ef36d40e70a4eafeada044"
+    },
+    {
+      "index": 62,
+      "prompt_sha256": "1118409587f22029e569d96c875d616449944b58166a06b566a7dbd0c8e74ce9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "A",
+          "expression": "pi*D**2/4",
+          "value": 11309.733552923255,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Pwind",
+          "expression": "rho*A*V**3/2",
+          "value": 6927211.801165494,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Pmax",
+          "expression": "16*Pwind/27",
+          "value": 4105014.400690663,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f7b2e97e912e551f5a96ad912ac356eea477b71d5522a93fa3dbf985bc4abd59"
+    },
+    {
+      "index": 63,
+      "prompt_sha256": "7b8be0b4553182ec31704ee0537ca56ed45f2cecae7e34a8f0603dbeac3e90aa",
+      "steps": [
+        {
+          "index": 1,
+          "target": "T",
+          "expression": "m*g",
+          "value": 49050.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "A",
+          "expression": "pi*R**2",
+          "value": 201.06192982974676,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "vi",
+          "expression": "sqrt(T/(2*rho*A))",
+          "value": 9.978644262093246,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "P",
+          "expression": "T*vi",
+          "value": 489452.5010556737,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "e5ccc9040e25ba137badfac39a8dfa55b8f889560c200da8f73990b65f2f9a69"
+    },
+    {
+      "index": 64,
+      "prompt_sha256": "35b0bfeec21bb121fab66284539ed75369e562ce594b637dd892e9bf8925a5da",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mdj",
+          "expression": "F/(vej-v0)",
+          "value": 54.054054054054056,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "etaj",
+          "expression": "2*v0/(vej+v0)",
+          "value": 0.5542168674698795,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "mdfan",
+          "expression": "F/(ve-v0)",
+          "value": 200.0,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "etafan",
+          "expression": "2*v0/(ve+v0)",
+          "value": 0.8214285714285714,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "70a508a711e01819e6e92fda2065de78eae4df00faec0936a68ef73915b783e5"
+    },
+    {
+      "index": 65,
+      "prompt_sha256": "282e1d31c3a5202160e853f267f2ae4bc7d44522cc92538339b3b8d6650463eb",
+      "steps": [
+        {
+          "index": 1,
+          "target": "c",
+          "expression": "Isp*g0",
+          "value": 2941.995,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ratio",
+          "expression": "m0/mf",
+          "value": 4.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "dv",
+          "expression": "c*log(ratio)",
+          "value": 4078.4710789429128,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f2857a2d2f62ddb1716041c5fd644f94a358d9c9d058344f641a7bfbe55ef83b"
+    },
+    {
+      "index": 66,
+      "prompt_sha256": "fd444b7e2197ab0a83a7fd858138abf38a2389a875bb01b194458a429174531a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "p",
+          "expression": "n-k",
+          "value": 4.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9c985e2f9f9f300e6be07a358f428e7d6aae3b32010133705e7c20d96dd9747c"
+    },
+    {
+      "index": 67,
+      "prompt_sha256": "2db7b8d7d13b428d5c5b72fec1ed7a00a868c4dc9fa96cef574431b976a198a4",
+      "steps": [
+        {
+          "index": 1,
+          "target": "muloc",
+          "expression": "mu0*(T/T0)**1.5*(T0+S)/(T+S)",
+          "value": 1.421547414882352e-05,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "asound",
+          "expression": "sqrt(gamma*Ra*T)",
+          "value": 295.06801842964956,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Ma",
+          "expression": "V/asound",
+          "value": 0.7794812912089178,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Re",
+          "expression": "rho*V*c/muloc",
+          "value": 23552249.92813263,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "5861da2e8c1db189f4bb6639f50d6e627b386ab89995bfd08028b59287c5eac4"
+    },
+    {
+      "index": 68,
+      "prompt_sha256": "48a940a0025326422d0c7e809813391ede9690e1730ce0a5739a0fd37147d819",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Vm",
+          "expression": "Vp/sqrt(lam)",
+          "value": 1.4142135623730951,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "2044c60974fc7e4bf05468234f80f25501636cd7bd995871e0656e046bc8616d"
+    },
+    {
+      "index": 69,
+      "prompt_sha256": "2edd5ba5a590ad686b8825a544a27a90f2baee21c1c1ef887a135375af40b7ba",
+      "steps": [
+        {
+          "index": 1,
+          "target": "V",
+          "expression": "J*n*D",
+          "value": 60.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "T",
+          "expression": "CT*rho*n**2*D**4",
+          "value": 7656.25,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "ae3b0f2458534080eaa8a89ed968846b2ef3528d59fe9a269767abcd9d4774ec"
+    },
+    {
+      "index": 70,
+      "prompt_sha256": "d8df9b60d13c5b6318b6fc1ddb0bfa0b78ba33d9d572901e56237991f6014154",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "V*D/nu",
+          "value": 99304.86593843099,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "fD",
+          "expression": "(-1.8*log((eps/(3.7*D))**1.11+6.9/Re,10))**(-2)",
+          "value": 0.019873973153327597,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "dp",
+          "expression": "fD*L/D*rho*V**2/2",
+          "value": 9919.100000825803,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "5220bc4bdbe4a8d3b8998426650763dd5fffbb5c6dfa44cf651d5b346dd3da98"
+    },
+    {
+      "index": 71,
+      "prompt_sha256": "cd386b10cc143eefbc8b5e294014f9143afcb5f519bea59d811a871de2a3ded5",
+      "steps": [
+        {
+          "index": 1,
+          "target": "wz",
+          "expression": "-gd",
+          "value": -100.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "spin",
+          "expression": "wz/2",
+          "value": -50.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "153de9c88d22364c5726fe84249690e4e33e731ce8a27392ae9a4a99edaf38e1"
+    },
+    {
+      "index": 72,
+      "prompt_sha256": "d16e451b0f0362bf83bc449765842cdc5b2ef25a1729f667f0aaa98650fa843e",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Umean",
+          "expression": "Umax/2",
+          "value": 1.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Q",
+          "expression": "pi*R**2*Umean",
+          "value": 0.007853981633974483,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "06ab0d1a8173db328a52f4a89858aa3b27cc6a3c8dce5817aecd1803ed217b88"
+    },
+    {
+      "index": 73,
+      "prompt_sha256": "786c646730100e2d1c7780a855b6b615db2ed482a46dda3ae4c21510dd911e12",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Gdirect",
+          "expression": "W*R*2*pi*R",
+          "value": 3.0159289474462017,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Gstokes",
+          "expression": "2*W*pi*R**2",
+          "value": 3.0159289474462017,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "678c9e636585b611911af8ccac3c00cb41a27bed20fbb30a28e79e8457340e98"
+    },
+    {
+      "index": 74,
+      "prompt_sha256": "334bba4ecaa48515bb5faeabb7dc064349785bdbd975628718505cc748885ddc",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Qsurface",
+          "expression": "k*R*4*pi*R**2",
+          "value": 10.053096491487338,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Qvolume",
+          "expression": "3*k*4*pi*R**3/3",
+          "value": 10.053096491487338,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "816ac78e53caf65ffe02393015822eff04dbf6f9e3a579f2a3963ea0815c01f6"
+    },
+    {
+      "index": 75,
+      "prompt_sha256": "8876f423e710eaaa17bbb982bd698e4973bd5d440f35fed0063ff6caefa343a5",
+      "steps": [
+        {
+          "index": 1,
+          "target": "div",
+          "expression": "a+b+c",
+          "value": 0.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "4b51e755d6ee7f2ee35a5b1331c3496ffb4da818cad57ce0cd0b1ccfd4cf65be"
+    },
+    {
+      "index": 76,
+      "prompt_sha256": "0ae5491878751522dde36f12ab521e1fc0dd3bbb48ad4a6e5ae96b812c1d19a6",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Q",
+          "expression": "A1*V1",
+          "value": 0.1,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "V2",
+          "expression": "Q/A2",
+          "value": 10.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "692f412da918f65896601ab74c6c3af918302adc9be8134ff6a0fc8d05469001"
+    },
+    {
+      "index": 77,
+      "prompt_sha256": "5687a84248f0bcb5b8fdbdac6657e8cd37bbc1d5865f5db4db591ef19075ad62",
+      "steps": [
+        {
+          "index": 1,
+          "target": "V",
+          "expression": "sqrt(2*g*h)",
+          "value": 8.858893836140041,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "1d5d0435239f46f654169effe1074671aa57762a528ed5c461fe4f8fb77eef9f"
+    },
+    {
+      "index": 78,
+      "prompt_sha256": "5e95e2bee45e085dcb6009d30cf230d20e5a9728f2dd18391f8a3e73a45e0d3b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "A1",
+          "expression": "pi*D1**2/4",
+          "value": 0.007853981633974483,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "A2",
+          "expression": "pi*D2**2/4",
+          "value": 0.001963495408493621,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "V2",
+          "expression": "sqrt(2*dp/(rho*(1-(A2/A1)**2)))",
+          "value": 5.662519603190176,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Q",
+          "expression": "A2*V2",
+          "value": 0.011118331241369031,
+          "unit": "m**3/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "efd15c5e66badb2e5d8e36fb9342084d74f25a857cf45464c5bb1396f90d1dba"
+    },
+    {
+      "index": 79,
+      "prompt_sha256": "b4a10ab656a4bd0a2f61bccd1ed724773deee3217997795716186bf4681afa2d",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Lp",
+          "expression": "rho*V*G",
+          "value": 2940.0,
+          "unit": "N/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "cl",
+          "expression": "2*G/(V*c)",
+          "value": 0.8888888888888888,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "alpha",
+          "expression": "cl/(2*pi)*180/pi",
+          "value": 8.10569469138702,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "94c23a69ca3fc737a56b095df9f697ca04f5141517392e7a100d861764a57336"
+    },
+    {
+      "index": 80,
+      "prompt_sha256": "22e1529dc0d92ac26931e0a32fa99b1bddd49511429df21f07ea928762cac360",
+      "steps": [
+        {
+          "index": 1,
+          "target": "q",
+          "expression": "rho*U**2/2",
+          "value": 245.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "dp",
+          "expression": "q*(1-4*sin(th)**2)",
+          "value": -734.9999999999993,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "1358185aa995b3e998af86b11ec5eebebb7100932c1cf13060d6a8471ea5bad1"
+    },
+    {
+      "index": 81,
+      "prompt_sha256": "176faa69758eeeef22f88fccd6df308c460e69eb30688079f04225d19bf62430",
+      "steps": [
+        {
+          "index": 1,
+          "target": "qflux",
+          "expression": "k*dT/L",
+          "value": 300.0,
+          "unit": "W/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "ab8bd14f46eed9c13490d9fd43ed1c77df47172dbed729bc528ff418cdbb97f7"
+    },
+    {
+      "index": 82,
+      "prompt_sha256": "d2bd1a5e770f7edcdc3eaa76a1bc4330e31c7286a3c9c8ba49f5166d11b6c6c2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "twater",
+          "expression": "L**2/nuwater",
+          "value": 99.30486593843098,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "tair",
+          "expression": "L**2/nu",
+          "value": 6.846032724036421,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "dd4bd495afd492f4fcd9186ba6e59ba55a9a0e244163fdf04315221a4e955532"
+    },
+    {
+      "index": 83,
+      "prompt_sha256": "7de17f4b2eda7a7e0b4841ab6c66c770761307b124f029d7bc51f5581ee39710",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dp",
+          "expression": "muB*divu",
+          "value": 0.001,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "69ea449432652519bf33ff72ce7b99dd67536a3220d33eb818087397ecc808cb"
+    },
+    {
+      "index": 84,
+      "prompt_sha256": "65cb9e92db26f8a6bf67aa43b4595292be5591f36d8ad41345a323efee01c419",
+      "steps": [
+        {
+          "index": 1,
+          "target": "t",
+          "expression": "L**2/D",
+          "value": 500.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "8bc77ca96198cad820d0ed504593d27db2d013b8fc4e539f85e14e0067ec0bd6"
+    },
+    {
+      "index": 85,
+      "prompt_sha256": "778457805df5ebec29ddba81c0d4a88a758b0567f29712e6e3d8a29d8800a960",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tx",
+          "expression": "-p*cos(th)+tau*sin(th)",
+          "value": -86577.53915730216,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ty",
+          "expression": "tau*cos(th)-p*sin(th)",
+          "value": -49956.700843670114,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "sn",
+          "expression": "tx*cos(th)+ty*sin(th)",
+          "value": -99956.6987285907,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "06133fd9c6e0e58c7bcecba38b4cd5b3b4b2b0502c70f26673533e5308b2a8c5"
+    },
+    {
+      "index": 86,
+      "prompt_sha256": "90e5761a14f6c183a8ff0c212d5f6a03b19b42db95e9002e9efc57aac79f546a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dpdx",
+          "expression": "-rho*a",
+          "value": -1996.0,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9793c4d0dbe02591ad66d67b9047fcd1b24240d81919631d07333e452bae80da"
+    },
+    {
+      "index": 87,
+      "prompt_sha256": "10068a7f96467f29ff1b092135b150990672e18a67c30214fc99698cb56d589a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tau",
+          "expression": "mu*U/h",
+          "value": 300.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Parea",
+          "expression": "mu*U**2/h",
+          "value": 900.0,
+          "unit": "W/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Pwall",
+          "expression": "tau*U",
+          "value": 900.0,
+          "unit": "W/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "aeb145dad40db5916f055cc4e73f0f570b6fd6ed021b5f1fe4c4fab6fe207028"
+    },
+    {
+      "index": 88,
+      "prompt_sha256": "ec0f97a7a8178d1295545b8448c35b2bda48e85c85afbe96d25dcbe81b36e4af",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ratio",
+          "expression": "nu/(U*L)",
+          "value": 1.4607e-05,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "fd33af7d46d4e3c9166a3b0f653cf3cd440fc1b872d86e5957b517ef4cb899ea"
+    },
+    {
+      "index": 89,
+      "prompt_sha256": "e493f895944d5f73b88fc29c20cc65ea217b9c5a5beffac7ada0c6faecc4fa72",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dp",
+          "expression": "rho*W**2*r**2/2",
+          "value": 4491.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "7fb0e2578addcb9f472fc12e5f6d8094c7bb97db11e98e3062f4875ec6effd69"
+    },
+    {
+      "index": 90,
+      "prompt_sha256": "e6b087f65c57fcec463fe2aaa74bbaf85c1490f0bcb3007670ca06d73a643184",
+      "steps": [
+        {
+          "index": 1,
+          "target": "kw",
+          "expression": "2*pi/lw",
+          "value": 125.66370614359172,
+          "unit": "1/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "t",
+          "expression": "log(2)/(4*nu*kw**2)",
+          "value": 0.7512503933546725,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "670e1418d7b65b010f5b65075eef7c70415e7d229c1123cf50d12d9a70f44650"
+    },
+    {
+      "index": 91,
+      "prompt_sha256": "6f1fc78ceaad7e13eb9e27e466aee248ccba7063f405fb0e31a0b62be73fc55f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "U*L/nu",
+          "value": 0.09930486593843098,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "68c85f373cb4dead05f20669c1ef86e0a4bbe9a13f66ce47b6c983b8832f6b03"
+    },
+    {
+      "index": 92,
+      "prompt_sha256": "df22e32be9f589f184d3e1a9340b126dba99465625ba7a120a61b9176e07a33e",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "U*L/nu",
+          "value": 9584445.81365099,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "delta",
+          "expression": "sqrt(nu*L/U)",
+          "value": 0.0006460207869278334,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "d9cf03720e0db9977e81101598f520f0c6bede82ba5ef327ac9f07fcff12513f"
+    },
+    {
+      "index": 93,
+      "prompt_sha256": "6ea8c7092a8376b900182f0391f606ab4f2d2a484d498b8f8c779150a157ae51",
+      "steps": [
+        {
+          "index": 1,
+          "target": "az",
+          "expression": "W/T",
+          "value": 1.1574074074074074e-07,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ratio",
+          "expression": "az/g",
+          "value": 1.1798240646354816e-08,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f760c1fa21f90defabc71ff855b9bc22cdcfc913b18afa89cb97358d630b8285"
+    },
+    {
+      "index": 94,
+      "prompt_sha256": "e1796638b3f2b47fe0350abfffe05626ad60e1cbfe8c3285ca864289d82941b3",
+      "steps": [
+        {
+          "index": 1,
+          "target": "us",
+          "expression": "g*s*h**2/(2*nu)",
+          "value": 0.0085174344,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "q",
+          "expression": "g*s*h**3/(3*nu)",
+          "value": 5.6782896e-06,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Re",
+          "expression": "q/nu",
+          "value": 0.056782896,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "fd0747964187fc94d7c6e1609b229252bb83ef668a90e36d1a8ef3c47a26c35b"
+    },
+    {
+      "index": 95,
+      "prompt_sha256": "69a0f8cc5c9a4411d65cab50df4cdfd17ed1d6b9c85c58a22c912f24bbfb5189",
+      "steps": [
+        {
+          "index": 1,
+          "target": "c",
+          "expression": "sqrt(g*H)",
+          "value": 198.09088823063013,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ts",
+          "expression": "distance/c",
+          "value": 10096.375546923045,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "th",
+          "expression": "ts/3600",
+          "value": 2.804548763034179,
+          "unit": "h",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "20eafc3de09205ee5562ef9b760ceaf86626539993f3105350b98e0482e83261"
+    },
+    {
+      "index": 96,
+      "prompt_sha256": "2c19ffe0883c1a29360ab4994822e6c5705e2dfecd775603d54db8cedaa0f6a6",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ro",
+          "expression": "U/(f*L)",
+          "value": 333.3333333333333,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "58866c94e2a8e674f90f53f7d857bb530e8c47aaa5435a9c95d6ea18991c409c"
+    },
+    {
+      "index": 97,
+      "prompt_sha256": "9c59887a910259009d76643bce47957425cdd703e23da3f36f934ebc0884934c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dratio",
+          "expression": "1-T0/T",
+          "value": 0.09375,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "gp",
+          "expression": "g*dratio",
+          "value": 0.9196875,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f37a8c8989e376d6714b6d16421cf3090104be4ad45f0fc28c18f2126992a966"
+    },
+    {
+      "index": 98,
+      "prompt_sha256": "c2a492dd117d3f4fdecb0f0fbb3a3e4e6da2d588218f7cc7268d16cde58fc536",
+      "steps": [
+        {
+          "index": 1,
+          "target": "f",
+          "expression": "2*W*sin(phi)",
+          "value": 9.871691711356557e-05,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Vg",
+          "expression": "dpdn/(rho*f)",
+          "value": 18.418138160556126,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "13913367c52174e18fd252c60115d717fd1324b67701055c3c87f407802dda16"
+    },
+    {
+      "index": 99,
+      "prompt_sha256": "6af84e079c1025d418a9a8a69bac945195d3aad722c251da6a0a12e325b7ad13",
+      "steps": [
+        {
+          "index": 1,
+          "target": "f",
+          "expression": "2*W",
+          "value": 2.0,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Ro",
+          "expression": "U/(f*L)",
+          "value": 0.025,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "3017cbaf91e7fc5e6033a0ea35fd7567bf9136a4524ee460f8d49af6ddeaa647"
+    },
+    {
+      "index": 100,
+      "prompt_sha256": "64412496f46ee28741645490250956e690f7fd300ee96865f77a6811ea2b57bd",
+      "steps": [
+        {
+          "index": 1,
+          "target": "N",
+          "expression": "sqrt(g*G/rho0)",
+          "value": 0.013835267765617746,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "T",
+          "expression": "2*pi/N",
+          "value": 454.1426601654964,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "a295b22b529680177a42c3793c90f61432d3462715443e78e426a0c291c709c3"
+    },
+    {
+      "index": 101,
+      "prompt_sha256": "2c240a61b916f9fef57afbe7ca6751b5911eee6d17a2fa0d78e6ee0bdca76c0b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "a",
+          "expression": "k*g",
+          "value": 29.43,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "N",
+          "expression": "m*(g+a)",
+          "value": 2943.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "d15a5443647928fb5ea757c632b24ff0092634f057c7da9caf9d0efe33c6aa9e"
+    },
+    {
+      "index": 102,
+      "prompt_sha256": "9f56c95295a489bf97d8e1ea7faaada0f1ed52fbe8e9189e79ec0f107129333f",
+      "steps": [
+        {
+          "index": 1,
+          "target": "dpdx",
+          "expression": "2*mu*U/h**2",
+          "value": 200000.0,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "a499162aabec109d3525614ecfd5c655d057f64a1b5d084c20f312fc6ecc625c"
+    },
+    {
+      "index": 103,
+      "prompt_sha256": "07d8c0a5170625b3c2284c0190500623027454c3b1fa0ee0a15c2ec0994d9b05",
+      "steps": [
+        {
+          "index": 1,
+          "target": "TperL",
+          "expression": "T/L",
+          "value": 0.02,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "mugap",
+          "expression": "T*(R2-R1)/(2*pi*R1**3*L*W1)",
+          "value": 0.039788735772973836,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "muexact",
+          "expression": "T*(R2**2-R1**2)/(4*pi*L*W1*R1**2*R2**2)",
+          "value": 0.03699179516308225,
+          "unit": "Pa*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "2e7284ef001c03407f30c1ca4fd1faf35d225df19e9a17442d0181cd9f795230"
+    },
+    {
+      "index": 104,
+      "prompt_sha256": "8a47514f85330a1c918f305639c44198f94b7e59d24675c99027e6b16194deee",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Acoef",
+          "expression": "W2*R2**2/(R2**2-R1**2)",
+          "value": 55.55555555555556,
+          "unit": "1/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Bcoef",
+          "expression": "-Acoef*R1**2",
+          "value": -0.08888888888888889,
+          "unit": "m**2/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "T",
+          "expression": "4*pi*mu*L*(-Bcoef)",
+          "value": 0.3149970233999366,
+          "unit": "N*m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "P",
+          "expression": "T*W2",
+          "value": 6.299940467998732,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "dd7bdaab00fb11ec701b5739318ff0cad86a3e763f86d026fe4c003617c77d2d"
+    },
+    {
+      "index": 105,
+      "prompt_sha256": "42079b5863a70e161556f29296a67e204f3c77f7cf05253f688808c15189734c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "u",
+          "expression": "3*K*x*y**2",
+          "value": 0.03,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "v",
+          "expression": "-K*y**3",
+          "value": -0.01,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ax",
+          "expression": "3*K**2*x*y**4",
+          "value": 0.0003,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "ay",
+          "expression": "3*K**2*y**5",
+          "value": 0.0003,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "fx",
+          "expression": "rho*ax",
+          "value": 0.27,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "fy",
+          "expression": "rho*ay",
+          "value": 0.27,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "vxforce",
+          "expression": "mu*6*K*x",
+          "value": 0.03,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "vyforce",
+          "expression": "-mu*6*K*y",
+          "value": -0.03,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "px",
+          "expression": "-fx+vxforce",
+          "value": -0.24,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "py",
+          "expression": "-fy+vyforce",
+          "value": -0.3,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "fnet",
+          "expression": "sqrt(fx**2+fy**2)",
+          "value": 0.38183766184073564,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "fvis",
+          "expression": "sqrt(vxforce**2+vyforce**2)",
+          "value": 0.042426406871192854,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "gradp",
+          "expression": "sqrt(px**2+py**2)",
+          "value": 0.3841874542459709,
+          "unit": "Pa/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "821b4c9e1176da2980012bafaea3f6a8d3732d21a47c9611267e48c0cc6b4773"
+    },
+    {
+      "index": 106,
+      "prompt_sha256": "669da024ca955fd9b5d716a6d2d38cce7e0dbf64c1efd6cc1e94ec2c7cba4118",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ratio",
+          "expression": "1/sqrt(1-f)",
+          "value": 3.1622776601683795,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "r",
+          "expression": "R*ratio",
+          "value": 0.047434164902525694,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "7ced5e4d1509a71cf97e6d32d7699636ce170dcfe6d322112284caf23e6ec7ea"
+    },
+    {
+      "index": 107,
+      "prompt_sha256": "d3ecabf0a1510650b1de98b54c731617747fadab6d9dd6af6dfc2edf54c208b9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Re",
+          "expression": "rho*W*R**2/mu",
+          "value": 38.8,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "dp",
+          "expression": "rho*W**2*R**2/2",
+          "value": 485.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "TperL",
+          "expression": "4*pi*mu*W*R**2",
+          "value": 0.12566370614359174,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "PperL",
+          "expression": "TperL*W",
+          "value": 6.283185307179587,
+          "unit": "W/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "dde4290542407693f282b370267623cf53e9d6e01749a8a67e437eabf5d6bad5"
+    },
+    {
+      "index": 108,
+      "prompt_sha256": "50e16ca642cd5847933476d4484839e0178b37d468304eb6a549c80f14761bd0",
+      "steps": [
+        {
+          "index": 1,
+          "target": "u",
+          "expression": "-6*K*x*y",
+          "value": -1.2,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "v",
+          "expression": "-3*K*(x**2-y**2)",
+          "value": 0.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "speed",
+          "expression": "sqrt(u**2+v**2)",
+          "value": 1.2,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "9543f251f6773219d74c5fccdb8aceb5bbcf0604e29c041fb22f407a8ffc1437"
+    },
+    {
+      "index": 109,
+      "prompt_sha256": "4d3b5b26d5226925d490ba025e03eb222ea6fa06bf00079747713f512bc220cc",
+      "steps": [
+        {
+          "index": 1,
+          "target": "u",
+          "expression": "K*(2*x*y-x**2)",
+          "value": 0.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "v",
+          "expression": "K*(2*x*y-y**2)",
+          "value": 9.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "ax",
+          "expression": "u*2*K*(y-x)+v*2*K*x",
+          "value": 108.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "ay",
+          "expression": "u*2*K*y+v*2*K*(x-y)",
+          "value": 54.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "fx",
+          "expression": "rho*ax",
+          "value": 129.6,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "fy",
+          "expression": "rho*ay",
+          "value": 64.8,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "fmag",
+          "expression": "sqrt(fx**2+fy**2)",
+          "value": 144.89720494198636,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "angle",
+          "expression": "atan(ay/ax)*180/pi",
+          "value": 26.56505117707799,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "fb1eebffc240b13b088b9637a1f89baa262bc76967eb82ff171ba6cb655c798e"
+    },
+    {
+      "index": 110,
+      "prompt_sha256": "d98049c6fd273e9295a42a89b33cd814ca28b8d64e0f1381c7afce2c2256966a",
+      "steps": [
+        {
+          "index": 1,
+          "target": "At",
+          "expression": "K*(1+t/tau)",
+          "value": 2.0,
+          "unit": "1/(m*s)",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Adot",
+          "expression": "K/tau",
+          "value": 0.5,
+          "unit": "1/(m*s**2)",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "u",
+          "expression": "At*(x**2+2*x*y)",
+          "value": 6.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "v",
+          "expression": "-At*(2*x*y+y**2)",
+          "value": -6.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "alx",
+          "expression": "Adot*(x**2+2*x*y)",
+          "value": 1.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "aly",
+          "expression": "-Adot*(2*x*y+y**2)",
+          "value": -1.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "acx",
+          "expression": "u*At*(2*x+2*y)+v*At*2*x",
+          "value": 24.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "acy",
+          "expression": "-u*At*2*y-v*At*(2*x+2*y)",
+          "value": 24.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "ax",
+          "expression": "alx+acx",
+          "value": 25.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "ay",
+          "expression": "aly+acy",
+          "value": 22.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "fx",
+          "expression": "rho*ax",
+          "value": 25500.0,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "fy",
+          "expression": "rho*ay",
+          "value": 22500.0,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "fmag",
+          "expression": "sqrt(fx**2+fy**2)",
+          "value": 34007.352146263904,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f2032274f0219b4f053c50bfd28dd3a9784fd1bf05b8bcba2de0bbeebfe6b48b"
+    },
+    {
+      "index": 111,
+      "prompt_sha256": "a45a89991db7ea58864dbc8cc20ba52e1b322c8b8b633ac3b2cb4c3dc8d86d50",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ax",
+          "expression": "K**2*x**3*y**2",
+          "value": 2.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ay",
+          "expression": "K**2*x**2*y**3",
+          "value": 1.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "amag",
+          "expression": "sqrt(ax**2+ay**2)",
+          "value": 2.23606797749979,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "6d3e7182e0ab9cb1312e9e19a3a83272485c3543bda79ccbb6cf1c64fa8fe1dc"
+    },
+    {
+      "index": 112,
+      "prompt_sha256": "b7cf5a0c4763d1c155560077932325bc534da268c2e9c3cdbcf3f5083a7b4f23",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Fslope",
+          "expression": "M*g*slope/sqrt(1+slope**2)",
+          "value": 52.87890348370416,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "CDA",
+          "expression": "2*Fslope/(rho*V**2)",
+          "value": 0.39169558136077154,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "2ba4fb81086c0e5cfe097add29f0f1167b02011594580e89b83af9228717c632"
+    },
+    {
+      "index": 113,
+      "prompt_sha256": "8edbf95d4a8f3f990670ae3dddaa6ad345e27bf185863694132f77b67c3796c2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Sg",
+          "expression": "M*g*slope/sqrt(1+slope**2)",
+          "value": 470.66824692261207,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "kD",
+          "expression": "Sg*(V1+V2)/(V2**3-V1**3)",
+          "value": 0.41353464244556964,
+          "unit": "kg/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "CD",
+          "expression": "2*kD/(rho*A)",
+          "value": 0.2996627843808476,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "P",
+          "expression": "Sg*V1+kD*V1**3",
+          "value": 30030.54369816112,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "d02e615f970f5fa3ef43d4da6623679f91d9dc8b645b6e5e53afab089640877a"
+    },
+    {
+      "index": 114,
+      "prompt_sha256": "ea196052f3a475993bd0cbfa3092ecf9f05e6f3c1da4deac5b9079962b14795b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Sg",
+          "expression": "M*g*slope/sqrt(1+slope**2)",
+          "value": 470.66824692261207,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "kD",
+          "expression": "2*Sg/(V2**2-V1**2)",
+          "value": 0.6298039633661554,
+          "unit": "kg/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Ft",
+          "expression": "Sg+kD*V1**2",
+          "value": 1148.2365428704568,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "P1",
+          "expression": "Ft*V1",
+          "value": 37662.15860615098,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "P2",
+          "expression": "Ft*V2",
+          "value": 58215.59272353216,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "CD",
+          "expression": "2*kD/(rho*A)",
+          "value": 0.4563796835986633,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "e7c02e1f96ed88aed85ee0f3a7806ad03ce3b770279042c10441eaee780555c6"
+    },
+    {
+      "index": 115,
+      "prompt_sha256": "ed7b1fce34464d64a1c8c881fa02f09c5363be6280c520680e265d0d9b0e56f2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "kD",
+          "expression": "M*(a1-a2)/(V1**2-V2**2)",
+          "value": 0.6,
+          "unit": "kg/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Rroll",
+          "expression": "M*a2-kD*V2**2",
+          "value": 180.0,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "cr",
+          "expression": "Rroll/(M*g)",
+          "value": 0.012232415902140673,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "CD",
+          "expression": "2*kD/(rho*A)",
+          "value": 0.43478260869565216,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "4591e9b1f0efc1c43c5577c887825b7b454fd81fc8e456790b29b18152e96ba3"
+    },
+    {
+      "index": 116,
+      "prompt_sha256": "37973940b0f7bac21393897f258fc2f03d99ac9c30f7374ee3b051ba91cdc790",
+      "steps": [
+        {
+          "index": 1,
+          "target": "kD",
+          "expression": "M*g*sin(phi2-phi1)/(V2**2*cos(phi1)-V1**2*cos(phi2))",
+          "value": 0.25004888597897884,
+          "unit": "kg/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "muf",
+          "expression": "(M*g*sin(phi1)-kD*V1**2)/(M*g*cos(phi1))",
+          "value": 0.050003223672164705,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "CDA",
+          "expression": "2*kD/rho",
+          "value": 0.41674814329829807,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f57904ec4548ac792b41da942d5c3c115e18cda42571ab76b9922dd29ce89cbc"
+    },
+    {
+      "index": 117,
+      "prompt_sha256": "145e33f545bc51c9b186c6cefd7c2e589a50fa76099c64f7634eb82a06ad4c5d",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ar",
+          "expression": "rho*B*d**3/mu**2",
+          "value": 2560.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "3e1c786641a1f64fb7e55694aa1efba8e2a2101b2662ed858f15f2077d43782d"
+    },
+    {
+      "index": 118,
+      "prompt_sha256": "5c7935fc1d22c096bb018d68eea56c937658b3a3170f7e639ae554db74e9c9b6",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ar2",
+          "expression": "rho*B2*d2**3/mu**2",
+          "value": 5120.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Uc2",
+          "expression": "U1*d1/d2",
+          "value": 0.0324,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "4bf89e0307ad7fc882c0a6f61d5c3029d335dbd2035fa454a48833d94fe80a32"
+    },
+    {
+      "index": 119,
+      "prompt_sha256": "bab41cf91cf96665564ab4177160632cd15e6566fedd50b3d9036130c92ea4b6",
+      "steps": [
+        {
+          "index": 1,
+          "target": "B2",
+          "expression": "B1*(mu2/mu1)**2",
+          "value": 80.0,
+          "unit": "N/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Uc2",
+          "expression": "U1*mu2/mu1",
+          "value": 0.0856,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "ffde5a8a63f1dd090b5a47aa5f198d60007cdbf64c0d28d6fd90c89e1f1a70a6"
+    },
+    {
+      "index": 120,
+      "prompt_sha256": "b7451937943ecfdf2b7ce47d5938522c6e07cd4077a8ee04b35a51ea64f24e0c",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ar",
+          "expression": "rho*B*d**3/mu**2",
+          "value": 1920.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "n",
+          "expression": "log(U40/U20)/log(2)",
+          "value": 0.3001921652360677,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Uc",
+          "expression": "U20*(B/B20)**n",
+          "value": 0.04833981515027593,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Ri",
+          "expression": "B*d/(rho*Uc**2)",
+          "value": 0.051353645093723185,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "dnew",
+          "expression": "d*(B/Bnew)**(1/3)",
+          "value": 0.002,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "7f15ca443f8fa582cb591388c5305f9cd0e29df67c227bc695a89aa7ed8e9776"
+    },
+    {
+      "index": 121,
+      "prompt_sha256": "8f9aa4ade4176bee1faccdc043e3eebb45aeb8be3bed275b73a0c4416e8f2f53",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ax",
+          "expression": "18*K**2*x*(x**2+y**2)",
+          "value": 22.5,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "ay",
+          "expression": "18*K**2*y*(x**2+y**2)",
+          "value": 45.0,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "amag",
+          "expression": "sqrt(ax**2+ay**2)",
+          "value": 50.31152949374527,
+          "unit": "m/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "3d4fe2d34bbb2480827bd93330802f54d4a7861b1379c38d73c66163658ae883"
+    },
+    {
+      "index": 122,
+      "prompt_sha256": "7162d09bca9e5912b4d88300176f1636eced06c06fd6b526b4ec68bcc2dab3d9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ar",
+          "expression": "rho*B*d**3/mu**2",
+          "value": 1920.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Rec",
+          "expression": "C*Ar**n",
+          "value": 193.21412992332407,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Uc",
+          "expression": "mu*Rec/(rho*d)",
+          "value": 0.04830353248083102,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "ef710b474fbe77cc918068ad6c3b03b2e183590b0fd72596111521e21dd77aa0"
+    },
+    {
+      "index": 123,
+      "prompt_sha256": "a3bf5598844c4ee5cccadddcdf0271c37958e3f0d726c59fec64bd08d5a6117b",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tnu",
+          "expression": "h**2/nu",
+          "value": 100.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "term2",
+          "expression": "2*exp(-4*pi**2*nu*tcheck/h**2)",
+          "value": 5.3505759821484795e-09,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "t99",
+          "expression": "h**2*log(200)/(pi**2*nu)",
+          "value": 53.68317868914011,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "0c4825f0b794781860f02f8d2ffe0ae1c6969e8944f4498e5c24b416077662c4"
+    },
+    {
+      "index": 124,
+      "prompt_sha256": "c6c714f3bb2cb32153b71a033db966dd2f52aed6ff485859de675ea0f693eaaa",
+      "steps": [
+        {
+          "index": 1,
+          "target": "T",
+          "expression": "T0-G*z",
+          "value": 255.65,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "p",
+          "expression": "p0*(T/T0)**(g0/(Ra*G))",
+          "value": 54019.88818814578,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "rho",
+          "expression": "p/(Ra*T)",
+          "value": 0.7361155473991517,
+          "unit": "kg/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "752bf4f647f9b79f1e8061307b3382b502f585daa01eb3e87d09fa3eb339a13a"
+    },
+    {
+      "index": 125,
+      "prompt_sha256": "23ed7de4ca9d6dd195cf0e7079ebb7094d57dafd479cb8bdba292dba385c7519",
+      "steps": [
+        {
+          "index": 1,
+          "target": "T0",
+          "expression": "2*pi*sqrt(L/g)",
+          "value": 2.0060666807106475,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Texact",
+          "expression": "4*K*sqrt(L/g)",
+          "value": 2.3678419765646943,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "excess",
+          "expression": "Texact/T0-1",
+          "value": 0.18034061346649166,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f6e77b8978260d3ff8e94fb4c2fc4317ab438855afc6aeae427348383150cd9a"
+    },
+    {
+      "index": 126,
+      "prompt_sha256": "da35f025b83e2d0e3d639e72bd7158678f11dcef4d81feb072a62b6ca782a0b9",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tv",
+          "expression": "A/a*sqrt(2*h0/g)",
+          "value": 319.27542840705047,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "tupper",
+          "expression": "A/a*sqrt(2/g)*(sqrt(h0)-sqrt(h0/2))",
+          "value": 93.51360791418502,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "tlower",
+          "expression": "tv-tupper",
+          "value": 225.76182049286544,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "fraction",
+          "expression": "tlower/tv",
+          "value": 0.7071067811865475,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "1610ed3c81d3e548d20a46337815874fe12a9f0d830c67387b3483a80cf7d178"
+    },
+    {
+      "index": 127,
+      "prompt_sha256": "4be18737af11e9e11d9a90b88af8f51a1d5046d4ca9d41b9d80ccb5620f2a7b7",
+      "steps": [
+        {
+          "index": 1,
+          "target": "excess4",
+          "expression": "1/(4**2-1)",
+          "value": 0.06666666666666667,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "rmin",
+          "expression": "sqrt((1+e)/e)",
+          "value": 4.58257569495584,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "f45a014681a226f9441ddf2c402c79a73c2ebc6dfcaef19d0b18a8bf4fcc1754"
+    },
+    {
+      "index": 128,
+      "prompt_sha256": "2ef457de9e80cee349a161e07ea004438bfd13219e7631fbc6de1b8304f02209",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Tfree",
+          "expression": "4*pi*mu*W*R**2",
+          "value": 0.0942477796076938,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Twall",
+          "expression": "Tfree*R2**2/(R2**2-R**2)",
+          "value": 0.3084472787160888,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Pfree",
+          "expression": "Tfree*W",
+          "value": 14.13716694115407,
+          "unit": "W/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Pwall",
+          "expression": "Twall*W",
+          "value": 46.26709180741332,
+          "unit": "W/m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ],
+      "source_sha256": "99a68fa3ac3ef4d8117caf66272a16b814003b41d4a62c893dc812183a6e3d8f"
+    }
+  ]
+}

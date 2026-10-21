@@ -51,7 +51,7 @@ class TurbomachineryNotationTests(unittest.TestCase):
         pub = ROOT / "books/turbomaquinas/publication"
         for fname in ("turbomaquinas-ule-2026.tex", "problemas-resueltos.tex", "simulacros-originales.tex"):
             content = (pub / fname).read_text(encoding="utf-8")
-            self.assertNotIn(r"\mathit{", content, f"\mathit leak in {fname}")
+            self.assertNotIn(r"\mathit{", content, rf"\mathit leak in {fname}")
             self.assertNotIn("en dimensionless", content, f"English dimensionless in {fname}")
             self.assertNotIn(r"\textasciicircum", content, f"\textasciicircum in {fname}")
             self.assertNotIn("C_	heta", content, f"TAB control character in {fname}")

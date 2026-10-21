@@ -1,0 +1,23 @@
+\noindent\textbf{Elección del procedimiento.} Sustituir gas ideal en hidrostática y separar variables: $dp/p=-g\,dz/[R_a(T_0-Gz)]$. La integral da $p=p_0[(T_0-Gz)/T_0]^{g/(R_aG)}$. La comparación isoterma usa otra hipótesis, $T=T_0$ constante, y una exponencial.
+
+\begin{enumerate}
+
+\item Comprobar que la temperatura sea positiva dentro de la capa.
+
+\[\fitmath{T=T0-G\cdot z}\]
+
+\[\fitmath{T=(288.15)-(0.0065)\cdot (8000)\approx 236.15\,\mathrm{K}}\]
+
+\item Integrar la misma ecuación manteniendo constante la temperatura de referencia.
+
+\[\fitmath{\mathrm{piso}=p0\cdot \exp\left(\frac{-g\cdot z}{\mathrm{Ra}\cdot T0}\right)}\]
+
+\[\fitmath{\mathrm{piso}=(101325)\cdot \exp\left(\frac{-(9.80665)\cdot (8000)}{(287.05)\cdot (288.15)}\right)\approx 39245.6\,\mathrm{Pa}}\]
+
+\item Usar el modelo de gradiente térmico para la respuesta solicitada.
+
+\[\fitmath{p=p0\cdot {\left(\frac{T}{T0}\right)}^{\frac{g}{\mathrm{Ra}\cdot G}}}\]
+
+\[\fitmath{p=(101325)\cdot {\left(\frac{(236.15)}{(288.15)}\right)}^{\frac{(9.80665)}{(287.05)\cdot (0.0065)}}\approx 35599.41\,\mathrm{Pa}}\]
+
+\end{enumerate}

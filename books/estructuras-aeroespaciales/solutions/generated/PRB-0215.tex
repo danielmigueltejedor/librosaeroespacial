@@ -1,0 +1,61 @@
+\begin{enumerate}
+
+\item Identificar si la sección está abierta, cerrada unicelular o bicelular; dibujar su geometría y espesores.
+
+\item Para cada célula cerrada imponer equilibrio del par y compatibilidad del giro; el flujo común es la diferencia entre circulaciones.
+
+\item Comprobar que el par exterior coincide con el que transmiten los flujos, si la sección es cerrada.
+
+\item Calcular el giro total con theta = M\_x L/(G J), o con la compatibilidad de las celdas.
+
+\item Las magnitudes de la solución se han contrastado mediante cálculo analítico y el motor estructural de Studium cuando éste ofrece esa comprobación.
+
+\item En las ecuaciones bicelulares, $P_1=2w_1+h$ y $P_2=2w_2+h$ son los recorridos exteriores de cada célula; $t_e$ es el espesor exterior y $t_c$ el compartido; $r=q_2/q_1$.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área de célula 1.
+
+\[\fitmath{y_{1}=90\cdot 60\approx 5400\,\mathrm{mm^{2}}}\]
+
+\item Área de célula 2.
+
+\[\fitmath{y_{2}=60\cdot 60\approx 3600\,\mathrm{mm^{2}}}\]
+
+\item Coeficiente a de compatibilidad.
+
+\[\fitmath{y_{3}=\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}\approx 0.03148148\,\mathrm{1/mm^{2}}}\]
+
+\item Coeficiente b de compatibilidad.
+
+\[\fitmath{y_{4}=\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}\approx 0.03425926\,\mathrm{1/mm^{2}}}\]
+
+\item Relación de flujos q2/q1 por compatibilidad.
+
+\[\fitmath{y_{5}=\frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 0.9189189\,}\]
+
+\item Flujo circulante de la primera célula por equilibrio.
+
+\[\fitmath{y_{6}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\approx 114.8355\,\mathrm{N/mm}}\]
+
+\item Flujo circulante de la segunda célula.
+
+\[\fitmath{y_{7}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 105.5245\,\mathrm{N/mm}}\]
+
+\item Flujo neto de la pared compartida.
+
+\[\fitmath{y_{8}=\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}-\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\approx 9.310987\,\mathrm{N/mm}}\]
+
+\item Giro unitario compatible de ambas células.
+
+\[\fitmath{y_{9}=\frac{\frac{\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot 240}{2}+\frac{\left(\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}-\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}\right)\cdot 60}{3}}{2\cdot 26955\cdot 90\cdot 60}\approx 4.797598\times10^{-5}\,\mathrm{rad/mm}}\]
+
+\item Tensión tangencial máxima en las paredes.
+
+\[\fitmath{y_{10}=\frac{\frac{2000000}{2\cdot 90\cdot 60+2\cdot 60\cdot 60\cdot \frac{\frac{\frac{240}{2}+\frac{60}{3}}{90\cdot 60}+\frac{60}{3\cdot 60\cdot 60}}{\frac{\frac{180}{2}+\frac{60}{3}}{60\cdot 60}+\frac{60}{3\cdot 90\cdot 60}}}}{2}\approx 57.41775\,\mathrm{MPa}}\]
+
+\end{enumerate}

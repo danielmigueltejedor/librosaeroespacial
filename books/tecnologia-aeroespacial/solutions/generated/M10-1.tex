@@ -1,0 +1,51 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} La geometría determina $S$ y $AR$. La inducción modifica la pendiente, de modo que el ángulo fija $C_L$ del ala. Con el peso impuesto, ese coeficiente determina velocidad; por último, polar y presión dinámica determinan resistencia.
+
+\begin{enumerate}
+
+\item Sumar las dos semialas trapezoidales.
+
+\[\fitmath{S=\frac{14\cdot 2.4\cdot \left(1+0.45\right)}{2}\approx 24.36\,\mathrm{m^{2}}}\]
+
+\item Alargamiento.
+
+\[\fitmath{\mathrm{AR}=\frac{{14}^{2}}{S}}\]
+
+\[\fitmath{\mathrm{AR}=\frac{{14}^{2}}{(24.36)}\approx 8.045977\,}\]
+
+\item Pendiente tridimensional.
+
+\[\fitmath{a=\frac{6}{1+\frac{6}{\pi\cdot 0.9\cdot \mathrm{AR}}}}\]
+
+\[\fitmath{a=\frac{6}{1+\frac{6}{\pi\cdot 0.9\cdot (8.045977011)}}\approx 4.747803\,\mathrm{1/rad}}\]
+
+\item Coeficiente correspondiente al ángulo.
+
+\[\fitmath{C_L=\frac{a\cdot \left(4--2\right)\cdot \pi}{180}}\]
+
+\[\fitmath{C_L=\frac{(4.747802744)\cdot \left(4--2\right)\cdot \pi}{180}\approx 0.4971887\,}\]
+
+\item Sumar resistencia inducida y término cuadrático de perfil.
+
+\[\fitmath{K=\frac{1}{\pi\cdot 0.9\cdot \mathrm{AR}}+0.008}\]
+
+\[\fitmath{K=\frac{1}{\pi\cdot 0.9\cdot (8.045977011)}+0.008\approx 0.05195708\,}\]
+
+\item Despejar velocidad del equilibrio de sustentación.
+
+\[\fitmath{V=\sqrt{\frac{2\cdot 40000}{0.95\cdot S\cdot C_L}}}\]
+
+\[\fitmath{V=\sqrt{\frac{2\cdot 40000}{0.95\cdot (24.36)\cdot (0.4971887407)}}\approx 83.38423\,\mathrm{m/s}}\]
+
+\item Presión dinámica compatible.
+
+\[\fitmath{q=\frac{0.95\cdot {V}^{2}}{2}}\]
+
+\[\fitmath{q=\frac{0.95\cdot {(83.38422686)}^{2}}{2}\approx 3302.641\,\mathrm{Pa}}\]
+
+\item Evaluar resistencia total.
+
+\[\fitmath{D=q\cdot S\cdot \left(0.028+K\cdot {C_L}^{2}\right)}\]
+
+\[\fitmath{D=(3302.641413)\cdot (24.36)\cdot \left(0.028+(0.05195707952)\cdot {(0.4971887407)}^{2}\right)\approx 3285.965\,\mathrm{N}}\]
+
+\end{enumerate}

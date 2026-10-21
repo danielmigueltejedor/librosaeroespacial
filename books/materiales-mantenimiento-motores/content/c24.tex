@@ -10,7 +10,9 @@ Una tasa $\hat\lambda=n/T$ usa número de eventos $n$ y exposición $T$. Su inte
 En un modelo de tasa constante, $R(t)=e^{-\lambda t}$ y $MTBF=1/\lambda$. La distribución exponencial no tiene memoria y no describe envejecimiento creciente por el solo hecho de usar horas. Adoptarla es una hipótesis, no una consecuencia automática de haber calculado un promedio.
 \begin{equation}R(t)=\exp(-\lambda t),\quad [\lambda]=\mathrm{tiempo}^{-1}.\label{eq:fiabilidadexp}\end{equation}
 Con muestras pequeñas, la incertidumbre puede ser grande. Cero eventos en un periodo no demuestra tasa cero. En un modelo de Poisson y un límite unilateral del 95\,\%, cero eventos en exposición $T$ produce la escala $\lambda_U=-\ln(0{,}05)/T$. Se declara la hipótesis y el tipo de intervalo; no se interpreta como una garantía de seguridad.
-\caso{M24. La exposición cambia la comparación}{Una flota ficticia registra 4 eventos en 20\,000 horas y otra 6 en 60\,000. Las tasas son $2\times10^{-4}$ y $1\times10^{-4}\,\mathrm{h^{-1}}$. La segunda tiene más eventos, pero menor tasa observada. Sin intervalos de incertidumbre, equivalencia de población y definición de evento no se concluye que una política sea mejor.}
+\caso{M24. La exposición cambia la comparación}{Una flota ficticia registra 4 eventos en 20\,000 horas y otra 6 en 60\,000. Las tasas son $2\times10^{-4}$ y $1\times10^{-4}\,\mathrm{h^{-1}}$. La segunda tiene más eventos, pero menor tasa observada. Sin intervalos de incertidumbre, equivalencia de población y definición de evento no se concluye que una política sea mejor.
+\input{solutions/generated/M24.tex}
+}
 \section{Weibull y tendencias}
 La distribución de Weibull se utiliza con fiabilidad $R(t)=\exp[-(t/\eta)^\beta]$. El parámetro de forma modifica la tasa de riesgo: $\beta<1$ permite una tasa decreciente, $\beta=1$ es exponencial y $\beta>1$ creciente dentro del modelo. Un ajuste a datos mezclados puede crear una aparente tendencia que no corresponda a un mecanismo único.
 

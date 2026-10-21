@@ -1,0 +1,29 @@
+\noindent\textbf{Elección del procedimiento.} El equilibrio geostrófico iguala gradiente horizontal de presión y Coriolis. En módulo, $\rho fV_g=\Delta p/\Delta n$. Se calcula primero $f=2\Omega\sin\varphi$, después $V_g$ y por último el Rossby $V_g/(fL)$ con la escala horizontal elegida.
+
+\begin{enumerate}
+
+\item Usar latitud en radianes y la componente vertical de la rotación.
+
+\[\fitmath{\mathrm{fcalc}=2\cdot \Omega\cdot \sin\left(\varphi\right)}\]
+
+\[\fitmath{\mathrm{fcalc}=2\cdot (7.2921\times10^{-5})\cdot \sin\left((0.7853981634)\right)\approx 0.0001031259\,\mathrm{1/s}}\]
+
+\item Convertir 4 hPa a 400 Pa y 400 km a 400000 m.
+
+\[\fitmath{\mathrm{gradp}=\frac{\mathrm{dp}}{\mathrm{dn}}}\]
+
+\[\fitmath{\mathrm{gradp}=\frac{(400)}{(400000)}\approx 0.001\,\mathrm{Pa/m}}\]
+
+\item Despejar la velocidad del balance geostrófico.
+
+\[\fitmath{\mathrm{Vg}=\frac{\mathrm{gradp}}{\rho\cdot \mathrm{fcalc}}}\]
+
+\[\fitmath{\mathrm{Vg}=\frac{(0.001)}{(1.2)\cdot (0.0001031258672)}\approx 8.08074\,\mathrm{m/s}}\]
+
+\item La escala de 1000 km del enunciado permite comparar inercia con Coriolis.
+
+\[\fitmath{\mathrm{Ro}=\frac{\mathrm{Vg}}{\mathrm{fcalc}\cdot \mathrm{Lscale}}}\]
+
+\[\fitmath{\mathrm{Ro}=\frac{(8.08074013)}{(0.0001031258672)\cdot (1000000)}\approx 0.07835803\,}\]
+
+\end{enumerate}

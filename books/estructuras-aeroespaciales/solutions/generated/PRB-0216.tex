@@ -1,0 +1,51 @@
+\begin{enumerate}
+
+\item Obtener área, centroide, I\_z, I\_y e I\_yz sumando aportaciones de pared y booms.
+
+\item Determinar los gradientes de tensión axial con ambos cortantes y el producto de inercia; integrar dq/ds en cada pared.
+
+\item Imponer continuidad y equilibrio en los nudos; en contornos abiertos q=0 en extremos libres y en celdas cerradas imponer compatibilidad de giros.
+
+\item Localizar el centro de cortadura anulando el torsor debido al flujo; calcular la tensión máxima por |q(s)|/t en paredes y puntos críticos.
+
+\item Las leyes completas q(s) por pared se indican a continuación; la coordenada s se mide desde el nudo inicial de cada pared y el sentido firmado sigue las flechas del diagrama. Los resultados geométricos se obtienen con la misma idealización de paredes y larguerillos del enunciado.
+
+\item Pared ala\_inferior: q(s) = $\frac{4 s}{9}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared alma: q(s) = $\frac{- s^{2} + 120 s}{270} + \frac{280}{9}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared ala\_superior: q(s) = $\frac{280}{9} - \frac{4 s}{9}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+
+\item Pared crítica: alma; s = 60 mm desde su nudo inicial.
+
+\end{enumerate}
+
+\noindent\textbf{Operaciones y resultados intermedios.}
+
+\begin{enumerate}
+
+\item Área equivalente que soporta tensión axial.
+
+\[\fitmath{y_{1}=2\cdot 70+2\cdot 120+2\cdot 70\approx 520\,\mathrm{mm^{2}}}\]
+
+\item Área que soporta esfuerzo normal en la idealización de paredes delgadas.
+
+\[\fitmath{A=520\,\mathrm{mm^2}}\]
+
+\item Propiedades geométricas de la sección (centroide y momentos de inercia).
+
+\[\fitmath{z_G=18.8461538\,\mathrm{mm},\quad y_G=60\,\mathrm{mm}}\]
+
+\item Momentos de inercia del modelo en los ejes centroidales.
+
+\[\fitmath{I_z=1296000\,\mathrm{mm}^{4},\quad I_y=272641.026\,\mathrm{mm}^{4},\quad I_{yz}=0\,\mathrm{mm}^{4}}\]
+
+\item Centro de cortadura a partir del equilibrio de los flujos; coordenadas del modelo.
+
+\[\fitmath{z_C=-27.2222222\,\mathrm{mm},\quad y_C=60\,\mathrm{mm}}\]
+
+\item Tensión máxima |q|/t en pared alma.
+
+\[\fitmath{y_{6}=\frac{\left|\frac{400}{9}\right|}{2}\approx 22.22222\,\mathrm{MPa}}\]
+
+\end{enumerate}

@@ -1,0 +1,188 @@
+\subsection*{Procedimiento y operaciones del simulacro 2}
+La geometría fija superficie y alargamiento antes de evaluar la polar. El equilibrio vertical fija el coeficiente de sustentación; de él salen incidencia, resistencia y potencia. Para buscar el mínimo se escribe $D=AV^2+B/V^2$, se deriva y se impone $AV^2=B/V^2$. Las raíces de equilibrio son las de la cuadrática en $V^2$ y exigen discriminante no negativo.
+
+\begin{enumerate}
+
+\item Área del trapecio.
+
+\[\fitmath{S=\frac{12\cdot 2.1\cdot \left(1+0.5\right)}{2}\approx 18.9\,\mathrm{m^{2}}}\]
+
+\item Alargamiento geométrico.
+
+\[\fitmath{\mathrm{AR}=\frac{{12}^{2}}{S}}\]
+
+\[\fitmath{\mathrm{AR}=\frac{{12}^{2}}{(18.9)}\approx 7.619048\,}\]
+
+\item Coeficiente de resistencia inducida.
+
+\[\fitmath{\mathrm{Ki}=\frac{1}{\pi\cdot 0.91\cdot \mathrm{AR}}}\]
+
+\[\fitmath{\mathrm{Ki}=\frac{1}{\pi\cdot 0.91\cdot (7.619047619)}\approx 0.04591008\,}\]
+
+\item Sumar término dependiente del perfil.
+
+\[\fitmath{K=\mathrm{Ki}+0.007}\]
+
+\[\fitmath{K=(0.04591007974)+0.007\approx 0.05291008\,}\]
+
+\item Despejar eficiencia global; difiere de la eficiencia de sustentación.
+
+\[\fitmath{\mathrm{eO}=\frac{1}{\pi\cdot \mathrm{AR}\cdot K}}\]
+
+\[\fitmath{\mathrm{eO}=\frac{1}{\pi\cdot (7.619047619)\cdot (0.05291007974)}\approx 0.7896071\,}\]
+
+\item ISA local.
+
+\[\fitmath{T=288.15-0.0065\cdot 2500\approx 271.9\,\mathrm{K}}\]
+
+\item Presión ISA.
+
+\[\fitmath{p=101325\cdot {\left(\frac{T}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{p=101325\cdot {\left(\frac{(271.9)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 74682.52\,\mathrm{Pa}}\]
+
+\item Densidad local.
+
+\[\fitmath{\rho=\frac{p}{287.05287\cdot T}}\]
+
+\[\fitmath{\rho=\frac{(74682.51762)}{287.05287\cdot (271.9)}\approx 0.9568588\,\mathrm{kg/m^{3}}}\]
+
+\item Escala de fuerza aerodinámica.
+
+\[\fitmath{\mathrm{qS}=0.5\cdot \rho\cdot {72}^{2}\cdot S}\]
+
+\[\fitmath{\mathrm{qS}=0.5\cdot (0.9568587862)\cdot {72}^{2}\cdot (18.9)\approx 46875.36\,\mathrm{N}}\]
+
+\item Imponer sustentación igual al peso.
+
+\[\fitmath{C_L=\frac{34000}{\mathrm{qS}}}\]
+
+\[\fitmath{C_L=\frac{34000}{(46875.36371)}\approx 0.7253277\,}\]
+
+\item Pendiente tridimensional del modelo lineal.
+
+\[\fitmath{a=\frac{6}{1+\frac{6}{\pi\cdot 0.91\cdot \mathrm{AR}}}}\]
+
+\[\fitmath{a=\frac{6}{1+\frac{6}{\pi\cdot 0.91\cdot (7.619047619)}}\approx 4.704183\,\mathrm{1/rad}}\]
+
+\item Convertir el incremento angular a grados y sumar ángulo de sustentación nula.
+
+\[\fitmath{\alpha=-2+\frac{\frac{C_L}{a}\cdot 180}{\pi}}\]
+
+\[\fitmath{\alpha=-2+\frac{\frac{(0.7253277055)}{(4.704183392)}\cdot 180}{\pi}\approx 6.83431\,{}^{\circ}}\]
+
+\item Parte inducida.
+
+\[\fitmath{\mathrm{CDi}=\mathrm{Ki}\cdot {C_L}^{2}}\]
+
+\[\fitmath{\mathrm{CDi}=(0.04591007974)\cdot {(0.7253277055)}^{2}\approx 0.02415331\,}\]
+
+\item Parte de perfil dependiente de sustentación.
+
+\[\fitmath{\mathrm{CDp}=0.007\cdot {C_L}^{2}}\]
+
+\[\fitmath{\mathrm{CDp}=0.007\cdot {(0.7253277055)}^{2}\approx 0.003682702\,}\]
+
+\item Coeficiente total.
+
+\[\fitmath{C_D=0.026+\mathrm{CDi}+\mathrm{CDp}}\]
+
+\[\fitmath{C_D=0.026+(0.02415330582)+(0.003682701962)\approx 0.05383601\,}\]
+
+\item Equilibrio horizontal requiere este empuje.
+
+\[\fitmath{D=\mathrm{qS}\cdot C_D}\]
+
+\[\fitmath{D=(46875.36371)\cdot (0.05383600778)\approx 2523.582\,\mathrm{N}}\]
+
+\item Potencia aerodinámica.
+
+\[\fitmath{P=D\cdot 72}\]
+
+\[\fitmath{P=(2523.582445)\cdot 72\approx 181697.9\,\mathrm{W}}\]
+
+\item Comprobar Mach bajo.
+
+\[\fitmath{\mathrm{Mach}=\frac{72}{\sqrt{1.4\cdot 287.05287\cdot T}}}\]
+
+\[\fitmath{\mathrm{Mach}=\frac{72}{\sqrt{1.4\cdot 287.05287\cdot (271.9)}}\approx 0.2178126\,}\]
+
+\item Margen de coeficiente respecto de pérdida.
+
+\[\fitmath{\mathrm{CLmargin}=1.45-C_L}\]
+
+\[\fitmath{\mathrm{CLmargin}=1.45-(0.7253277055)\approx 0.7246723\,}\]
+
+\item Coeficiente del término cuadrático de velocidad.
+
+\[\fitmath{A=0.5\cdot \rho\cdot S\cdot 0.026}\]
+
+\[\fitmath{A=0.5\cdot (0.9568587862)\cdot (18.9)\cdot 0.026\approx 0.2351002\,\mathrm{kg/m}}\]
+
+\item Coeficiente del término inverso cuadrático.
+
+\[\fitmath{B=\frac{2\cdot K\cdot {34000}^{2}}{\rho\cdot S}}\]
+
+\[\fitmath{B=\frac{2\cdot (0.05291007974)\cdot {34000}^{2}}{(0.9568587862)\cdot (18.9)}\approx 6764202\,\mathrm{kg\,m^{3}/s^{4}}}\]
+
+\item Resolver la condición de derivada nula.
+
+\[\fitmath{\mathrm{Vmin}={\left(\frac{B}{A}\right)}^{0.25}}\]
+
+\[\fitmath{\mathrm{Vmin}={\left(\frac{(6764202.374)}{(0.2351002038)}\right)}^{0.25}\approx 73.23875\,\mathrm{m/s}}\]
+
+\item Sustituir en resistencia.
+
+\[\fitmath{\mathrm{Dmin}=2\cdot \sqrt{A\cdot B}}\]
+
+\[\fitmath{\mathrm{Dmin}=2\cdot \sqrt{(0.2351002038)\cdot (6764202.374)}\approx 2522.114\,\mathrm{N}}\]
+
+\item Empuje tras la reducción prescrita.
+
+\[\fitmath{\mathrm{Td}=0.8\cdot D}\]
+
+\[\fitmath{\mathrm{Td}=0.8\cdot (2523.582445)\approx 2018.866\,\mathrm{N}}\]
+
+\item Discriminante negativo: ningún equilibrio nivelado del modelo.
+
+\[\fitmath{\mathrm{Delta}={\mathrm{Td}}^{2}-4\cdot A\cdot B}\]
+
+\[\fitmath{\mathrm{Delta}={(2018.865956)}^{2}-4\cdot (0.2351002038)\cdot (6764202.374)\approx -2285242\,\mathrm{N^{2}}}\]
+
+\item Empuje de la última cuestión.
+
+\[\fitmath{\mathrm{Tplus}=1.2\cdot \mathrm{Dmin}}\]
+
+\[\fitmath{\mathrm{Tplus}=1.2\cdot (2522.114475)\approx 3026.537\,\mathrm{N}}\]
+
+\item Discriminante del caso que sí admite raíces.
+
+\[\fitmath{\mathrm{Dp}={\mathrm{Tplus}}^{2}-4\cdot A\cdot B}\]
+
+\[\fitmath{\mathrm{Dp}={(3026.53737)}^{2}-4\cdot (0.2351002038)\cdot (6764202.374)\approx 2798867\,\mathrm{N^{2}}}\]
+
+\item Raíz inferior positiva.
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{\mathrm{Tplus}-\sqrt{\mathrm{Dp}}}{2\cdot A}}}\]
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{(3026.53737)-\sqrt{(2798867.028)}}{2\cdot (0.2351002038)}}\approx 53.65332\,\mathrm{m/s}}\]
+
+\item Raíz superior positiva.
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{\mathrm{Tplus}+\sqrt{\mathrm{Dp}}}{2\cdot A}}}\]
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{(3026.53737)+\sqrt{(2798867.028)}}{2\cdot (0.2351002038)}}\approx 99.97357\,\mathrm{m/s}}\]
+
+\item Aplicar límite de sustentación a la primera raíz.
+
+\[\fitmath{\mathrm{CLlo}=\frac{34000}{0.5\cdot \rho\cdot S\cdot {\mathrm{Vlo}}^{2}}}\]
+
+\[\fitmath{\mathrm{CLlo}=\frac{34000}{0.5\cdot (0.9568587862)\cdot (18.9)\cdot {(53.65331944)}^{2}}\approx 1.306189\,}\]
+
+\item Repetir para la segunda raíz; el equilibrio no prueba estabilidad.
+
+\[\fitmath{\mathrm{CLhi}=\frac{34000}{0.5\cdot \rho\cdot S\cdot {\mathrm{Vhi}}^{2}}}\]
+
+\[\fitmath{\mathrm{CLhi}=\frac{34000}{0.5\cdot (0.9568587862)\cdot (18.9)\cdot {(99.97356919)}^{2}}\approx 0.3762087\,}\]
+
+\end{enumerate}

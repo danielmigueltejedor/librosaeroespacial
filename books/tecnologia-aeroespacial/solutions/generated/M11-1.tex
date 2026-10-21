@@ -1,0 +1,39 @@
+\par\textbf{Procedimiento completo para comparar tu solución.} En vuelo nivelado, sustituir $C_L=W/(qS)$ en la polar da $D=AV^2+B/V^2$. Imponer $D=T_A$, multiplicar por $V^2$ y resolver la cuadrática en $V^2$. Se comprueba además pérdida y el Mach límite del modelo.
+
+\begin{enumerate}
+
+\item Coeficiente parásito.
+
+\[\fitmath{A=\frac{0.95\cdot 24.36\cdot 0.028}{2}\approx 0.323988\,\mathrm{kg/m}}\]
+
+\item Coeficiente inversamente cuadrático.
+
+\[\fitmath{B=\frac{2\cdot 0.0519571\cdot {40000}^{2}}{0.95\cdot 24.36}\approx 7184458\,\mathrm{N\,m^{2}/s^{2}}}\]
+
+\item Comprobar discriminante.
+
+\[\fitmath{\mathrm{disc}={3800}^{2}-4\cdot A\cdot B}\]
+
+\[\fitmath{\mathrm{disc}={3800}^{2}-4\cdot (0.323988)\cdot (7184457.696)\approx 5129288\,\mathrm{N^{2}}}\]
+
+\item Raíz lenta calculada sin cancelación.
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{2\cdot B}{3800+\sqrt{\mathrm{disc}}}}}\]
+
+\[\fitmath{\mathrm{Vlo}=\sqrt{\frac{2\cdot (7184457.696)}{3800+\sqrt{(5129287.68)}}}\approx 48.67478\,\mathrm{m/s}}\]
+
+\item Raíz rápida.
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{3800+\sqrt{\mathrm{disc}}}{2\cdot A}}}\]
+
+\[\fitmath{\mathrm{Vhi}=\sqrt{\frac{3800+\sqrt{(5129287.68)}}{2\cdot (0.323988)}}\approx 96.745\,\mathrm{m/s}}\]
+
+\item Límite de pérdida.
+
+\[\fitmath{\mathrm{Vs}=\sqrt{\frac{2\cdot 40000}{0.95\cdot 24.36\cdot 1.4}}\approx 49.69132\,\mathrm{m/s}}\]
+
+\item Convertir Mach límite a TAS con temperatura local.
+
+\[\fitmath{\mathrm{Vlimit}=0.3\cdot \sqrt{1.4\cdot 287.05287\cdot 275}\approx 99.73155\,\mathrm{m/s}}\]
+
+\end{enumerate}
