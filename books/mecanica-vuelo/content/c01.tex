@@ -37,7 +37,7 @@ Un avión detenido sobre una pista puede tener velocidad y aceleración nulas gr
 También cambia el significado de ``constante'' al cambiar de referencia. En un viraje coordinado, las componentes de velocidad en ejes cuerpo pueden permanecer constantes mientras el vector velocidad gira respecto al horizonte local. El teorema de transporte permite relacionar ambas descripciones. Se desarrollará antes de utilizar las ecuaciones de Newton en ejes del avión.
 
 \section{Unidades, datos y precisión}
-La masa se expresará en kilogramos y el peso en newtons. Un dato denominado coloquialmente ``peso de 4.000 kg'' se interpretará como masa y se convertirá mediante $W=mg$. Los cálculos emplean $g_0=9.80665\SIu{m\,s^{-2}}$ salvo indicación. Una densidad de referencia no convierte una atmósfera real en ISA; es una condición de comparación.
+La masa se expresará en kilogramos y el peso en newtons. Un dato denominado coloquialmente ``peso de 4000 kg'' se interpretará como masa y se convertirá mediante $W=mg$. Los cálculos emplean $g_0=9.80665\SIu{m\,s^{-2}}$ salvo indicación. Una densidad de referencia no convierte una atmósfera real en ISA; es una condición de comparación.
 
 \begin{center}\begin{tabular}{lll}\toprule
 Magnitud & Unidad SI & Relación de conversión\\\midrule
@@ -52,7 +52,7 @@ La precisión del resultado debe corresponder a la calidad de los datos. Con una
 \section{Cómo se trabaja un problema}
 Conviene seguir una secuencia estable: dibujar los ejes, identificar velocidad respecto al aire y al suelo, escribir los balances, declarar las aproximaciones, resolver simbólicamente y sustituir al final. El resultado se contrasta con unidades, límites y un segundo cálculo cuando sea posible. Si una velocidad óptima cae por debajo de la pérdida, la respuesta física está en una frontera admisible, aunque la derivada de la función objetivo sea cero en otro punto.
 
-\caso{Ejemplo: una condición que no puede conservarse}{En vuelo horizontal, $C_L=2mg/(\rho V^2S)$. Si se consumen $500\SIu{kg}$ de una masa inicial de $5.000\SIu{kg}$ manteniendo $V$, $h$ y $S$, la sustentación adimensional final es $0.9C_{L,i}$. Mantener también $C_L$ exigiría cambiar la densidad o la velocidad. La comprobación consiste en sustituir la masa final en $L=\tfrac12\rho V^2SC_L$; conservar simultáneamente las tres condiciones daría una sustentación un 11.1\% mayor que el peso final.}
+\caso{Ejemplo: una condición que no puede conservarse}{En vuelo horizontal, $C_L=2mg/(\rho V^2S)$. Si se consumen $500\SIu{kg}$ de una masa inicial de $5000\SIu{kg}$ manteniendo $V$, $h$ y $S$, la sustentación adimensional final es $0.9C_{L,i}$. Mantener también $C_L$ exigiría cambiar la densidad o la velocidad. La comprobación consiste en sustituir la masa final en $L=\tfrac12\rho V^2SC_L$; conservar simultáneamente las tres condiciones daría una sustentación un 11.1\% mayor que el peso final.}
 
 \section{Lectura de esta edición}
 Los capítulos de actuaciones siguen el núcleo de la guía ULE 2026/2027. La estabilidad dinámica constituye una ampliación explícita. La simulación acompaña a los balances analíticos y ayuda a examinar sus límites. Los modelos de JSBSim empleados son modelos educativos abiertos, con advertencias propias sobre su validación; sus resultados no son datos medidos de un avión real.
