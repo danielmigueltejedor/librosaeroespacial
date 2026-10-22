@@ -22,6 +22,8 @@ def catalog(root: Path) -> list[dict]:
     required.update(f'enciclopedia-programacion/dist/review/{v.name}.pdf'
                     for v in (root / 'enciclopedia-programacion/volumes').glob('vol*') if v.is_dir())
     required.add('enciclopedia-programacion/dist/review/ENCICLOPEDIA_COMPLETA_INTEGRAL.pdf')
+    required.update(f'dist/humanidades-y-ciencias/{p.parent.name}.pdf'
+                    for p in (root / 'humanidades-y-ciencias').glob('*/project.toml'))
     topics = {e['topic'] for e in entries}
     for folder in (root / 'books').iterdir():
         if folder.is_dir() and (folder/'book.toml').is_file() and folder.name not in topics:

@@ -1,0 +1,1419 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{upquote}
+\usepackage{accsupp}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\ifdefined\studiumcustomtitle
+\studiumcustomtitle
+\else
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Historia moderna de España: de los Reyes Católicos a la Guerra de Sucesión\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Apuntes de trabajo\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\fi
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+\part{Historia moderna de España: de los Reyes Católicos a la Guerra de Sucesión}
+
+\chapter{Los Reyes Católicos: unión dinástica, Granada y 1492}
+\label{chap:hist-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+\noindent\textit{El reinado de Isabel de Castilla y Fernando de Aragón es el puente entre la Edad Media y la Edad Moderna en la historiografía española. Este capítulo explica cómo se unieron las dos coronas sin fundirse, cómo terminó la Reconquista con la guerra de Granada, qué sucedió en 1492 con los judíos y con Colón, y cómo se repartió el Atlántico con Portugal.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+Isabel y Fernando se casaron en Valladolid el 19 de octubre de 1469, con dieciocho y diecisiete años respectivamente, y eran primos segundos, de modo que necesitaron una dispensa papal para casarse. El matrimonio implicó la unión dinástica de dos coronas, no la creación de un estado único: Castilla y Aragón siguieron siendo reinos distintos hasta los decretos de Nueva Planta de 1707-1716, que se estudian en el último capítulo de este libro.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+Isabel accedió al trono de Castilla en 1474, al proclamarse reina tras la muerte de su hermano Enrique IV, y eso provocó una guerra de sucesión entre 1475 y 1479 contra los partidarios de Juana, hija del rey. En 1479 Fernando heredó la corona de Aragón al morir su padre. Isabel y Fernando reinaron juntos hasta la muerte de ella en 1504, y Fernando conservó después el control de Castilla como regente de su hija Juana hasta su propia muerte en 1516.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+Las fuentes discrepan sobre cuándo recibieron el título de Reyes Católicos. Una dice que el papa Alejandro VI se lo concedió en 1494; otra sostiene que la bula Si convenit se expidió el 19 de diciembre de 1496, y una tercera coincide con 1496. La fecha detallada, con el día y el nombre de la bula, es más verificable que la fecha suelta, y por eso este libro usa 1496 y señala que una fuente propone 1494, quizá porque ese año el nuncio ya había aconsejado al papa aceptar la petición de dar a los reyes el título de Muy Católicos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+La guerra de Granada fue el conjunto de campañas que, entre 1482 y 1492, enfrentaron a los Reyes Católicos con el reino nazarí de Granada. Los diez años de guerra no fueron un esfuerzo continuo, sino una sucesión de campañas que empezaban en primavera y se detenían en invierno. Pesaron en el resultado las divisiones internas del bando musulmán y el uso eficaz de la artillería, que permitió tomar rápidamente plazas que de otro modo habrían exigido largos asedios. La mayor parte de las tropas y del dinero salió de Castilla; Aragón, aparte de la presencia del propio Fernando, aportó apoyo naval, artilleros y préstamos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+El 2 de enero de 1492 el sultán Boabdil entregó Granada y la Alhambra, y con ello terminó el último reino musulmán de la península. La guerra se considera en la historiografía tradicional la última de la Reconquista, aunque también se ha dicho que fue una de las primeras guerras de la Edad Moderna por el papel de los asedios resueltos con artillería. Las consecuencias fueron religiosas: según una de las fuentes, los judíos tuvieron que convertirse o exiliarse en 1492 y, en 1501, los musulmanes de Granada tuvieron que convertirse, ser esclavizados o exiliarse.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+El 31 de marzo de 1492, en la Alhambra, los Reyes Católicos promulgaron el edicto que ordenaba la expulsión de los judíos no convertidos de las coronas de Castilla y de Aragón; el plazo final era el 31 de julio, aunque por motivos logísticos se amplió al 2 de agosto. Las cifras son objeto de debate. De unos 300 000 judíos, entre 40 000 y 100 000 habrían sido expulsados, pero las dos fuentes difieren en cuántos se convirtieron: entre 100 000 y 200 000 según una, más de 200 000 según la otra. Por eso conviene dar un intervalo y no una cifra única.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+La Inquisición se fundó en 1478 por iniciativa de los Reyes Católicos, bajo control directo de la Corona, para mantener la ortodoxia católica. Los primeros inquisidores se nombraron en 1480. Se estima que procesó a unas 150 000 personas, de las que entre 3000 y 5000 fueron entregadas al Estado para su ejecución, sobre todo en los primeros cincuenta años. Su blanco inicial fueron los conversos sospechosos de seguir practicando el judaísmo o el islam en secreto. La Inquisición fue, según Henry Kamen, la única institución cuya autoridad abarcaba todos los reinos de España.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+La corona respaldó el proyecto de Colón siete años después de rechazarlo, una vez terminada la conquista de Granada. Las Capitulaciones de Santa Fe, firmadas cerca de Granada el 17 de abril de 1492, nombraban a Colón almirante, virrey y gobernador general de las tierras que descubriera. El texto original de las Capitulaciones lo dice con otras palabras: los reyes hacen a Colón «su almirante» y «su visorey e gouernador general», y le conceden «la dezena parte» de las mercancías, «quedando las otras nueve partes» para los reyes, descontados los gastos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+En el regreso de su primer viaje, en 1493, Colón hizo escala en Lisboa, y el rey de Portugal escribió a los Reyes Católicos que, por el Tratado de Alcáçovas de 1479 y por una bula papal de 1481, las tierras descubiertas eran portuguesas. La disputa se resolvió con el Tratado de Tordesillas, firmado el 7 de junio de 1494, que trazó una línea de demarcación a 370 leguas al oeste de las islas de Cabo Verde: lo que quedara al este pertenecería a Portugal y lo que quedara al oeste, a Castilla. Las dos fuentes expresan la distancia en kilómetros con valores distintos, unos 2062 km y unos 2100 km, que dependen de la longitud de legua que se adopte.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+Cuando dos fuentes dan fechas o cifras distintas, anótelas las dos con su procedencia y busque una tercera o el dato más detallado, como el nombre de la bula y el día. No promedie ni escoja la cifra que mejor encaje. En este capítulo ocurre con el título de Reyes Católicos (1494 o 1496) y con el número de judíos convertidos y expulsados en 1492.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+Unión dinástica o monarquía compuesta: unión de varios reinos bajo un mismo monarca en la que cada reino conserva sus propias leyes e instituciones. La unión de Castilla y Aragón fue de este tipo hasta los decretos de Nueva Planta.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+\noindent\textbf{Enunciado}
+Según las Capitulaciones de Santa Fe, Colón recibe la décima parte de las mercancías ganadas en su almirantazgo, descontados los gastos, y las otras nueve partes son para los reyes. Si en una expedición hipotética el beneficio neto, una vez pagados todos los costes, fuese de 4 000 000 de maravedís, calcule cuántos maravedís corresponderían a la Corona.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $B = 4000000$ — beneficio neto, en maravedís (cifra hipotética)
+\item $f = 0.1$ — fracción para Colón: la décima parte
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+La cantidad que corresponde a Colón y la que corresponde a la Corona.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Parte de Colón}
+
+\[
+C = f\,B
+\]
+
+\noindent\textit{Parte de la Corona}
+
+\[
+R = B - C = (1-f)\,B
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item La cifra de 4 000 000 de maravedís es hipotética y sirve solo para ilustrar la proporción.
+\item La décima parte se calcula una vez descontados todos los gastos, como dice el texto.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La décima parte es una fracción de 1/10 y las otras nueve partes son las 9/10 restantes.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Parte de Colón
+
+
+\[
+C = 0{,}1 \cdot 4\,000\,000
+\]
+
+\[
+\left(0.1\cdot 4000000\right) = 400000
+\]
+\item
+Parte de la Corona
+
+
+\[
+R = 4\,000\,000 - 400\,000
+\]
+
+\[
+\left(4000000-400000\right) = 3600000
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(4000000\right) \left(0.1\right)
+\]
+
+\noindent\textbf{Resultado}
+A Colón le corresponderían 400 000 maravedís y a la Corona 3 600 000, es decir, el 90 \% del beneficio neto.
+
+
+\noindent\textbf{Interpretación}
+La proporción de nueve a uno muestra que la corona conservaba casi todo el beneficio, mientras que Colón recibía además los títulos hereditarios de almirante, virrey y gobernador.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El ejemplo supone que los costes ya están descontados; en la práctica el cálculo dependía de cómo se contabilizaran.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Aplicar la décima parte al total bruto en lugar de al beneficio una vez descontados los gastos.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+
+¿Por qué la unión de Castilla y Aragón no creó un estado único? ¿Qué sucedió en 1492 y qué relación tuvieron entre sí la toma de Granada, el edicto de los judíos y las Capitulaciones de Santa Fe? ¿Cómo explica la diferencia entre 1494 y 1496 para el título de Reyes Católicos?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImhpc3QtMDEifQ==
+\end{tcolorbox}
+
+\chapter{Carlos I: Comunidades e Imperio}
+\label{chap:hist-02}
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+\noindent\textit{Carlos I de España y V del Sacro Imperio Romano Germánico reunió por primera vez en una misma persona las coronas de Castilla y Aragón y, a la vez, el patrimonio de los Habsburgo. Este capítulo explica cómo heredó sus dominios, qué fue la guerra de las Comunidades, qué guerras sostuvo y cómo las financió, y por qué su herencia se dividió en 1556.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Carlos nació en Gante el 24 de febrero de 1500, hijo de Juana de Castilla y de Felipe el Hermoso, y nieto por vía materna de los Reyes Católicos y por vía paterna del emperador Maximiliano I. Tras la muerte de su padre en 1506 heredó los Países Bajos borgoñones; en 1516 se convirtió en rey de España junto con su madre, Juana, que desde 1506 no ejercía ningún poder efectivo. Con la muerte de Maximiliano en 1519 heredó los territorios hereditarios de Austria y fue elegido emperador.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Las fechas de su título imperial difieren entre las fuentes y conviene entender por qué. Una dice que fue emperador de 1520 a 1558; otra, que lo fue de 1519 a 1556. Las fuentes no explican la divergencia, pero es compatible con que la elección (1519), la coronación y la abdicación de 1556 sean momentos distintos de un mismo proceso; la fecha de su muerte, 1558, es la que sí coincide en las dos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+El joven rey llegó a Asturias en octubre de 1517 sin apenas saber castellano y acompañado de un gran número de nobles y clérigos flamencos, lo que despertó recelos entre las élites castellanas, que temieron perder poder y estatus. A las Cortes de Valladolid de 1518 llegó sin saber hablar apenas castellano, y ese recelo pasó después a las capas populares. Las demandas fiscales que acompañaron su marcha a Alemania para la elección imperial en 1520 detonaron una serie de revueltas urbanas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Las ciudades sublevadas, con Toledo, Segovia y Valladolid a la cabeza, buscaron una candidata alternativa en la reina Juana, a la que se esperaba poder controlar por su supuesta incapacidad. La Junta de Ávila redactó la llamada Ley Perpetua, que una de las fuentes describe como el primer proyecto de constitución política en la historia de España, aunque nunca llegó a firmarse. Pasado casi un año, los partidarios del emperador, sobre todo la alta nobleza, se reorganizaron y derrotaron a los comuneros en Villalar el 23 de abril de 1521. Al día siguiente se decapitó a Padilla, Bravo y Maldonado.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Las fuentes no coinciden en cuándo se rindió Toledo, el último foco de resistencia. Una dice que fue el 3 de febrero de 1522, casi un año después de Villalar; la otra, en octubre de 1521. La diferencia de cuatro meses es un buen ejemplo de por qué no se debe tomar como definitiva una sola fecha de enciclopedia: las dos describen el mismo hecho, la capitulación de la ciudad que dirigía María Pacheco, y las fuentes no explican la discrepancia.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+El carácter de la revuelta es discutido. Algunos estudiosos la califican de revuelta antiseñorial y otros, de una de las primeras revoluciones de la Edad Moderna, por su rechazo a la injusticia social y por sus ideales de libertad. Una tercera lectura la ve como un movimiento antifiscal y particularista, de índole medievalizante, y otra, como una rebelión típica contra los altos impuestos y el control extranjero. Estas lecturas no se excluyen del todo, pero muestran que un mismo hecho admite varias interpretaciones.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Carlos pasó gran parte de su vida en guerra. En 1521 Francisco I de Francia, rodeado por los territorios de los Habsburgo, inició una guerra en Italia que lo llevó a ser capturado en la batalla de Pavía, en 1525. En 1527 un ejército de soldados amotinados del emperador saqueó Roma. Después, Carlos defendió Viena de los turcos y fue coronado rey de Italia y emperador por el papa Clemente VII; en 1535 tomó posesión de Milán y capturó Túnez.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Aunque su imperio le llegó pacíficamente, Carlos pasó la mayor parte de su vida librando guerras, agotando sus ingresos y dejando deudas. Pidió dinero prestado a banqueros alemanes e italianos y, para devolverlo, dependió de la riqueza de los Países Bajos y del flujo de plata de Nueva España y Perú. Las dos fuentes añaden una consecuencia económica: la llegada de plata provocó una inflación generalizada.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+El emperador no tuvo capital fija. Realizó cuarenta viajes por los distintos territorios que gobernaba y dedicó una cuarta parte de su reinado a viajar dentro de sus reinos. Cuando salió hacia Alemania en 1520 dejó el gobierno de Castilla al cardenal Adriano de Utrecht.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+En 1556 Carlos aceptó la Paz de Augsburgo y abandonó su proyecto multinacional con abdicaciones que dividieron sus dominios entre los Habsburgo españoles, encabezados por su hijo Felipe II, y los Habsburgo austriacos, encabezados por su hermano Fernando. En 1557 se retiró al monasterio de Yuste, en Extremadura, donde murió un año después. La división de 1556 explica que a partir de entonces haya dos ramas de los Habsburgo y que el siguiente capítulo trate de la Monarquía Hispánica de Felipe II.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Cuando una fecha dependa de un acto (elección, coronación, abdicación), anote el acto junto con la fecha. Así evitará contradicciones aparentes, como las de su título imperial o la rendición de Toledo, y sabrá qué momento exacto documenta cada fuente.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+Monarquía universal: concepto medieval que Carlos revitalizó. Su dominio reunió territorios europeos y americanos y fue el primer conjunto de reinos al que se llamó «el imperio en el que nunca se pone el sol».
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+\noindent\textbf{Enunciado}
+Carlos reinó en España de 1516 a 1556, hizo 40 viajes por sus dominios y dedicó una cuarta parte de su reinado a viajar. Calcule cuántos años pasó viajando y cuántos meses duró, en promedio, cada viaje.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $a_{i} = 1516$ — año de inicio del reinado en España
+\item $a_{f} = 1556$ — año de la abdicación
+\item $f = 0.25$ — fracción del reinado dedicada a viajar
+\item $n = 40$ — número de viajes
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Los años de viaje totales y los meses de cada viaje en promedio.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Años de reinado}
+
+\[
+D = a_f - a_i
+\]
+
+\noindent\textit{Años de viaje}
+
+\[
+V = f\,D
+\]
+
+\noindent\textit{Meses por viaje}
+
+\[
+m = 12\,V/n
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se toma el reinado de 1516 a 1556 como 40 años completos.
+\item Se supone que los 40 viajes tuvieron la misma duración, aunque en realidad fueron muy desiguales.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La cuarta parte de un reinado de 40 años son 10 años; esos años se reparten entre 40 viajes.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Años de reinado
+
+
+\[
+D = 1556 - 1516
+\]
+
+\[
+\left(1556-1516\right) = 40
+\]
+\item
+Años de viaje
+
+
+\[
+V = 0{,}25 \cdot 40
+\]
+
+\[
+\left(0.25\cdot 40\right) = 10
+\]
+\item
+Meses por viaje
+
+
+\[
+m = 12 \cdot 10 / 40
+\]
+
+\[
+\frac{\left(12\cdot 10\right)}{40} = 3
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(1556\right) - \left(1516\right)
+\]
+
+\noindent\textbf{Resultado}
+Carlos pasó unos 10 años viajando, y cada viaje duró en promedio 3 meses.
+
+
+\noindent\textbf{Interpretación}
+El promedio de tres meses por viaje muestra por qué Carlos gobernó desde el camino: viajar no era un paréntesis, sino una forma de gobierno.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El promedio oculta viajes muy distintos: algunos duraron semanas y otros, años.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Tomar los 40 viajes como 40 años, o confundir el reinado de 40 años con la duración total de su vida.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMiIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+
+¿Por qué la llegada de Carlos I a Castilla provocó recelos? ¿Qué hechos permiten decir que las Comunidades terminaron en Villalar, aunque Toledo resistiera más? ¿De qué modo financió Carlos sus guerras y qué consecuencia económica tuvo?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImhpc3QtMDIifQ==
+\end{tcolorbox}
+
+\chapter{Felipe II: guerras, finanzas y Armada}
+\label{chap:hist-03}
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+\noindent\textit{Con Felipe II la Monarquía Hispánica alcanzó, según las fuentes, el apogeo de su influencia y poder, y a la vez acumuló guerras simultáneas y deudas que la dejaron al borde de la quiebra. Este capítulo recorre su reinado a través de cuatro episodios: la unión con Portugal, Lepanto, la Armada de 1588 y las bancarrotas, y propone una regla práctica: contrastar siempre cifras de fuentes distintas.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Felipe II nació en Valladolid el 21 de mayo de 1527, hijo de Carlos I e Isabel de Portugal, y fue rey de España desde 1556 hasta su muerte en 1598, de Nápoles y Sicilia desde 1554 y de Portugal desde 1580. Fue también rey de Inglaterra e Irlanda por su matrimonio con María I, entre 1554 y 1558. Heredó el Imperio español de su padre, y era además duque de Milán desde 1540 y señor de los Países Bajos desde 1555.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+En 1580 Felipe ascendió al trono portugués tras una crisis dinástica y formó la Unión Ibérica, una unión dinástica que duró sesenta años. Una de las fuentes lo cuenta entre sus logros: aseguró el reino de Portugal y su imperio, y con ellos el conjunto de dominios de Felipe llegó a abarcar territorios en todos los continentes conocidos entonces por los europeos. Como la unión de Castilla y Aragón, fue una unión dinástica.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Felipe se veía a sí mismo como defensor de la Europa católica frente al Imperio otomano y la Reforma, y empeñó la hegemonía española en varios frentes simultáneos. En los Países Bajos, la decisión de aplicar los acuerdos de Trento provocó un ambiente de revolución que desembocó en la guerra de los Ochenta Años. En 1584 firmó el Tratado de Joinville, por el que financió a la Liga Católica francesa contra los hugonotes durante la década siguiente.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+La batalla de Lepanto se libró el 7 de octubre de 1571 en el golfo de Patras. La Liga Santa, una coalición católica organizada por el papa Pío V, derrotó a la armada otomana. El mando general lo ejerció Juan de Austria, hermano de Felipe II, y España fue el mayor contribuyente financiero, aunque Venecia aportó más barcos. Fue la mayor batalla naval de la historia occidental desde la Antigüedad clásica y el último gran combate librado casi exclusivamente entre naves de remo, es decir, galeras y galeazas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Las cifras de las fuerzas difieren según la fuente. Una cuenta 198 galeras, 11 galeazas, un galeón y 7 naves más, con 1300 cañones y 48 000 hombres; otra, 206 galeras y seis galeazas cristianas. La flota otomana, según la segunda fuente, tenía 211 galeras, 63 galeotas y algunas naves menores. Las diferencias de recuento (galeras entre 198 y 206, galeazas entre 6 y 11) no cambian el resultado, pero sirven de recordatorio de que las cifras de una batalla antigua son estimaciones.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Las bajas también se estiman de modos distintos. Una fuente cuenta la pérdida de 12 galeras cristianas y de 7600 hombres, de los cuales 2000 eran españoles, 880 de la escuadra papal y 4800 venecianos, y entre 25 000 y 30 000 muertos turcos; la otra, unos 7500 cristianos y 30 000 turcos muertos, y añade que otras fuentes elevan las cifras a 10 000 y 40 000. Obsérvese que las partes de la primera fuente, 2000 + 880 + 4800, suman 7680, ochenta más que el total de 7600 que da.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Las fuentes valoran de modos distintos los efectos de la victoria. Según una de ellas, frenó el expansionismo otomano en el Mediterráneo oriental durante algunas décadas, y los turcos reconstruyeron rápidamente su flota, aunque las pérdidas de tripulaciones experimentadas hicieron que la marina otomana perdiera la iniciativa a partir de la década de 1580. Venecia, por su parte, firmó una paz por separado en 1573 en condiciones de perdedora: cedió Chipre a los otomanos y pagó una indemnización de 300 000 ducados.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+En 1588 Felipe envió la Armada, que la tradición llamó Invencible, para invadir la Inglaterra protestante, derrocar a Isabel I y restablecer allí el catolicismo. El plan consistía en que la flota española transportara el ejército de Parma desde los Países Bajos. La flota fue rechazada en una escaramuza y sufrió las tormentas en el retorno. Según una fuente, 87 barcos, unas dos terceras partes de la flota, volvieron a España; según la otra, hasta 24 naves naufragaron por el camino.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Hay discrepancia sobre el tamaño de la flota. Una fuente habla de 130 barcos al zarpar y, más adelante, de 137 navíos españoles; la otra explica que, tras varias incidencias, quedaron 137 barcos que navegaron hacia el Canal. Casi la mitad no eran buques de guerra: la armada incluía 24 buques de guerra construidos como tales, 44 mercantes armados, 38 buques auxiliares y 34 de aprovisionamiento. El problema resuelto de este capítulo contrasta cuál de las dos cifras, 130 o 137, encaja con la fracción de dos tercios de supervivientes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Al año siguiente Inglaterra envió una expedición contra España, la llamada Invencible Inglesa o Contraarmada de 1589, que también fracasó. Felipe envió nuevas armadas en 1596 y 1597, y su hijo otra en 1601, pero todas terminaron igualmente en fracaso. Aun así, una de las fuentes recuerda que, aunque los fracasos de Felipe han sido magnificados por la propaganda hostil, en su momento no provocaron grandes cambios en el equilibrio de poder en Europa.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Las guerras fueron costosas. Felipe heredó de su padre una deuda de unos veinte millones de ducados y dejó a su sucesor otra que la quintuplicaba. Los ingresos de la Corona se cuadruplicaron durante el reinado, porque la carga fiscal sobre Castilla se cuadruplicó y llegó plata de América, pero no bastaron: se declaró la bancarrota, es decir, se suspendieron los pagos de la deuda, en 1557, 1560, 1569, 1575 y 1596, según las dos fuentes principales. Una sección de una de ellas cuenta solo tres, las de 1557, 1575 y 1596, lo que indica que ese texto no es coherente consigo mismo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Cuando la misma magnitud aparezca con dos valores, compruebe si alguna relación del texto elige uno de ellos. Aquí, la frase «unas dos terceras partes de la flota» permite comparar 87/130 con 87/137 y ver cuál encaja mejor. Es un ejemplo de cómo una verificación aritmética sencilla orienta la crítica de fuentes, sin sustituirla.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+Bancarrota de la Corona: suspensión de pagos de la deuda real. En 1557, poco después de que Felipe II llegase al poder, la Corona suspendió los pagos de sus deudas, y esta fue la primera de las bancarrotas de su reinado.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+\noindent\textbf{Enunciado}
+Una fuente dice que de la Armada de 1588 regresaron a España 87 barcos, «unas dos terceras partes de la flota». La misma fuente da 130 barcos al zarpar y, más adelante, habla de 137 navíos españoles; otra fuente da 137. Calcule qué porcentaje de la flota representan los 87 barcos si se toma 130 como total, comparándolo con dos tercios (66,7 \%) y con lo que resultaría tomando 137.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $r = 87$ — barcos que regresaron
+\item $N_{1} = 130$ — flota según la primera cifra
+\item $N_{2} = 137$ — flota según la segunda cifra
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El porcentaje de barcos que regresaron con cada total y su distancia a dos tercios.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Porcentaje con el total N}
+
+\[
+p(N) = 100\,\frac{r}{N}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se compara cada porcentaje con \(100\cdot2/3 = 66,67\) \%, la fracción que dice el texto.
+\item La frase «unas dos terceras partes» es aproximada; el resultado solo permite descartar la cifra que se aleje mucho de ella.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Un porcentaje más cercano a 66,67 \% es más compatible con la frase «unas dos terceras partes».
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Con 130 barcos
+
+
+\[
+p(130) = 100 \cdot 87/130
+\]
+
+\[
+\frac{\left(100\cdot 87\right)}{130} \approx 66.923077
+\]
+\item
+Con 137 barcos
+
+
+\[
+p(137) = 100 \cdot 87/137
+\]
+
+\[
+\frac{\left(100\cdot 87\right)}{137} \approx 63.50365
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+Con 130 barcos regresó el 66,9 \% de la flota, casi exactamente dos tercios; con 137 sería el 63,5 \%, algo menos de dos tercios.
+
+
+\noindent\textbf{Interpretación}
+La frase «unas dos terceras partes» encaja mejor con 130 barcos que con 137. Eso no demuestra que 130 sea la cifra correcta, porque la otra fuente habla de 137, pero sugiere que la primera fuente usó 130 de manera consistente.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item «Dos terceras partes» es una expresión aproximada: 63,5 \% también podría redondearse así. El cálculo sirve para ordenar la plausibilidad, no para resolver la discrepancia.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Concluir que 130 es el dato verdadero porque encaja con una fracción redondeada, o dividir 87 por el número de barcos de guerra y no por el de toda la flota.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMyIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+
+¿Qué rasgos tuvo la unión de Portugal con Castilla en 1580? ¿Qué efectos tuvo Lepanto a corto y a largo plazo según las fuentes? ¿Cuántas bancarrotas declaró Felipe II según cada fuente y cómo se explica la diferencia?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImhpc3QtMDMifQ==
+\end{tcolorbox}
+
+\chapter{El Imperio americano y su administración}
+\label{chap:hist-04}
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+\noindent\textit{A partir de 1492 la Corona de Castilla incorporó un inmenso territorio americano que había que conquistar, gobernar, defender y explotar. Este capítulo explica cómo se organizó esa administración con la Casa de Contratación y el Consejo de Indias, cómo circulaba la plata y qué costes tuvo para la economía de la península, y señala dónde las fuentes se contradicen.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+La conquista del continente se llevó a cabo con expediciones como la de Hernán Cortés, que organizó una expedición de 550 conquistadores que zarpó hacia la costa de México en marzo de 1519; la conquista del Imperio azteca se sitúa en 1521. En 1532 Francisco Pizarro conquistó el Imperio inca al capturar a su líder, Atahualpa, en una emboscada en Cajamarca. Estas conquistas pusieron bajo la autoridad de Carlos I la plata de Nueva España y Perú.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+Los territorios americanos se organizaron inicialmente en dos virreinatos: el de Nueva España y el del Perú. Según una de las fuentes, la conquista del Imperio inca facilitó la creación del virreinato del Perú en 1542. Con el descubrimiento y asentamiento de archipiélagos del Pacífico a finales del siglo XVI se sumaron las Indias orientales españolas, entre ellas las Filipinas, bajo la jurisdicción de Nueva España.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+La Casa de la Contratación de Indias se fundó en Sevilla en 1503. Fiscalizaba todo lo relacionado con el comercio con las Indias, actuaba como escuela de pilotos y tenía funciones judiciales. Entre sus tareas estaban organizar las flotas, supervisar la navegabilidad de los barcos, controlar la hacienda real, conceder licencias de embarque y cartografiar el Nuevo Mundo. En teoría, ningún español podía navegar a las Indias sin su aprobación, aunque el contrabando fue frecuente. Entre 1717 y 1790 tuvo su sede en Cádiz.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+La Corona cobraba impuestos sobre el comercio y la minería. Según una fuente, la Casa de Contratación cobraba un impuesto del 20 \% sobre todos los metales preciosos que entraban en España, el llamado quinto real, y otros impuestos podían llegar hasta el 40 \% para financiar la protección naval de los barcos o bajar al 10 \% en épocas de crisis. Otra fuente explica que los empresarios mineros asumían todo el riesgo y la Corona obtenía el quinto real, el 20 \% de los beneficios, además del monopolio del suministro de mercurio, que se usaba para separar la plata pura.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+El Consejo de Indias fue la organización más importante de la administración indiana: asesoraba a los virreyes de América en la función ejecutiva y judicial. Una fuente dice que Carlos V lo creó en 1524, tras la conquista del Imperio azteca, y que Felipe II lo constituyó como un órgano autónomo con funciones legislativas, ejecutivas y judiciales y lo fijó en Madrid en 1561. Otra afirma que se formó como una sección del Consejo de Castilla para pasar a ser entidad propia en 1807. Las fuentes no aclaran si las fechas de 1561 y 1807 describen el mismo hecho.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+El trato a los pueblos indígenas dio lugar a una legislación específica. Según una fuente, la Corona se dio relativa prisa en dictar leyes para protegerlos: las Leyes de Burgos de 1512 fueron sustituidas por las Leyes Nuevas de Indias de 1542. La otra fuente añade que Carlos reorganizó el Consejo en 1542 con las llamadas Leyes Nuevas, que limitaron los derechos de los encomenderos españoles sobre el trabajo indígena. Las fuentes no permiten juzgar aquí cuánto se cumplieron estas leyes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+La Corona organizó un sistema de flotas para proteger el transporte de plata a Sevilla. Según una de las fuentes, de unas seiscientas flotas fletadas por España (dos por año durante unos trescientos años) solo dos cayeron en manos enemigas, y ambas por marinas de guerra, no por piratas ni corsarios. Los ataques corsarios, con Francis Drake como figura destacada, obligaron a establecer convoyes y a aumentar los gastos defensivos. Las inclemencias meteorológicas bloquearon más el comercio que los piratas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+Las cantidades de metales preciosos fueron enormes. Una fuente recoge que desde 1503 y durante los 160 años siguientes llegaron desde la América española 16 900 toneladas de plata y 181 toneladas de oro, con cuentas que se detallan en 16 886 815 303 gramos de plata y 181 333 180 gramos de oro. La otra fuente señala que los metales de Zacatecas, Guanajuato y Potosí enriquecieron a la Corona y financiaron sus empresas militares y su expansión territorial.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+Esa riqueza tuvo un coste. Bajo Felipe II el imperio se convirtió en una nueva fuente de riqueza y de poder, pero también contribuyó a elevar la inflación, lo que perjudicó a la industria de la península. Una fuente añade que el comercio con las Indias seguía formalmente en manos de España, aunque en la práctica enriqueció a otros países europeos que producían los bienes de consumo enviados a América. Las dos fuentes sobre Carlos I coinciden en que la llegada de plata provocó una inflación generalizada.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+El Tratado de Tordesillas de 1494 fijó la línea de demarcación con Portugal a 370 leguas al oeste de Cabo Verde. Una fuente dice que esa distancia equivale a unos 2062 km y la otra, a unos 2100 km, de modo que la longitud de legua que se deduce no coincide. Fuera del Atlántico, el reparto del otro lado del mundo se fijó décadas después con el Tratado de Zaragoza de 1529, que definió el antimeridiano de la línea de Tordesillas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+Al comparar fuentes sobre instituciones, fíjese en qué hecho describe cada fecha: fundación, constitución como órgano autónomo o fin formal. Así, 1524, 1561 y 1807 para el Consejo de Indias pueden no contradecirse, aunque haga falta una tercera fuente para saberlo con seguridad.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+Quinto real: impuesto del 20 \% que la Corona cobraba sobre los metales preciosos que entraban en España o sobre los beneficios mineros. Es un ejemplo de cómo la riqueza americana llegaba a la Hacienda real por la vía fiscal, no solo por la propiedad directa de las minas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+\noindent\textbf{Enunciado}
+El Tratado de Tordesillas fija la línea a 370 leguas al oeste de Cabo Verde. Una fuente la equipara a unos 2062 km y la otra a unos 2100 km. Calcule la longitud de legua (en km) que implica cada cifra y la diferencia relativa entre ambas.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $D_{1} = 2062$ — distancia según la primera fuente, en km
+\item $D_{2} = 2100$ — distancia según la segunda fuente, en km
+\item $N = 370$ — número de leguas
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+La longitud de legua implícita en cada fuente y la diferencia relativa entre ellas.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Longitud de legua}
+
+\[
+\ell = D / N
+\]
+
+\noindent\textit{Diferencia relativa}
+
+\[
+\delta = 100\,\frac{D_2 - D_1}{D_1}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Las dos cifras en km se toman como aproximaciones de la misma distancia de 370 leguas.
+\item Se ignora que la legua castellana y la portuguesa podían diferir y que la longitud de la legua en el siglo XV no era única.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Cada fuente fija una distancia total distinta para el mismo número de leguas, así que implica una longitud de legua distinta.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Legua según la primera fuente
+
+
+\[
+\ell_1 = 2062 / 370
+\]
+
+\[
+\frac{2062}{370} \approx 5.572973
+\]
+\item
+Legua según la segunda fuente
+
+
+\[
+\ell_2 = 2100 / 370
+\]
+
+\[
+\frac{2100}{370} \approx 5.6756757
+\]
+\item
+Diferencia relativa
+
+
+\[
+\delta = 100 \cdot (2100 - 2062)/2062
+\]
+
+\[
+\frac{\left(100\cdot \left(2100-2062\right)\right)}{2062} \approx 1.842871
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(2062\right)}{\left(370\right)}
+\]
+
+\noindent\textbf{Resultado}
+La primera fuente implica una legua de unos 5,57 km y la segunda, de unos 5,68 km; las cifras difieren un 1,8 \%.
+
+
+\noindent\textbf{Interpretación}
+Una diferencia del 1,8 \% es pequeña y se explica porque las dos fuentes redondean o usan una legua ligeramente distinta; no es una contradicción histórica, sino una diferencia de conversión de unidades.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La longitud histórica de la legua no está fijada por las fuentes, y ninguna de las dos justifica la conversión que usa.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Interpretar la diferencia entre 2062 km y 2100 km como un desacuerdo sobre la línea de Tordesillas, cuando ambas fuentes coinciden en las 370 leguas.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNCIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+
+¿Qué funciones tenía la Casa de Contratación y qué era el quinto real? ¿Por qué es posible que las fuentes den fechas distintas para el Consejo de Indias? ¿Qué consecuencias tuvo la llegada de metales preciosos para la economía de la península?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImhpc3QtMDQifQ==
+\end{tcolorbox}
+
+\chapter{Los Austrias del siglo XVII: moriscos, Olivares y declive}
+\label{chap:hist-05}
+% studium:record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+\noindent\textit{En el siglo XVII la Monarquía Hispánica siguió siendo una gran potencia, pero con crecientes dificultades internas y externas. Este capítulo estudia cuatro episodios: la expulsión de los moriscos bajo Felipe III, el programa de Olivares bajo Felipe IV, la paz con Francia en 1659 y el reinado de Carlos II, que terminó sin heredero. Como en capítulos anteriores, se señalan las cifras que las fuentes no consiguen conciliar.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+La expulsión de los moriscos, descendientes de la población musulmana que había sido obligada a convertirse, fue ordenada por Felipe III. Una fuente da como fecha del decreto el 9 de abril de 1609 y habla de decretos hasta 1614; la otra la sitúa entre 1609 y 1613 y detalla el calendario por territorios: Valencia (22 de septiembre de 1609), Andalucía (10 de enero de 1610), Corona de Aragón (29 de mayo de 1610), Extremadura y las dos Castillas (10 de julio de 1610) y Murcia (de octubre de 1610 a octubre de 1613).
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Las cifras de la expulsión no concuerdan. Una fuente dice que fueron expulsadas unas 350 000 personas, pero también que la población morisca era de unas 325 000, de modo que la cifra de expulsados supera la de moriscos que existían, una incoherencia que se calcula en el problema resuelto de este capítulo. La otra fuente recoge estimaciones de entre 275 000 y 300 000 expulsados, un 4 \% de la población española, y señala que historiadores recientes, como Trevor Dadson, calculan una población morisca de 500 000, de la que cerca del 40 \% evitó la expulsión.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+El impacto fue desigual. Según una fuente, los más afectados fueron Valencia y Aragón, que perdieron un tercio y un sexto de su población, respectivamente. La otra fuente añade que en Valencia, donde los musulmanes eran la mayor parte del campesinado, la expulsión fue más severa y provocó el hundimiento económico y la despoblación de gran parte del territorio, agravados por la peste que llegó pocos años después. Entre 30 000 y 75 000 de los expulsados habrían regresado.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Gaspar de Guzmán, conde-duque de Olivares, fue el valido de Felipe IV, que subió al trono en 1621 con dieciséis años. Olivares fue una figura clave en la política del Estado hasta enero de 1643. Según una fuente, durante su gobierno forzó a España en la política exterior y no consiguió llevar a cabo una reforma interior. Quiso recuperar los Países Bajos, lo que renovó la guerra de los Ochenta Años mientras España estaba también implicada en la guerra de los Treinta Años (1618-1648).
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+El proyecto de Olivares era una reforma de la monarquía compuesta, formada por reinos con distintos impuestos, privilegios y obligaciones militares. Su Unión de Armas pretendía que los diferentes territorios aportaran cuotas fijas de soldados según su tamaño y población. Una fuente la sitúa en 1624 y otra señala que en 1626 se convocaron cortes en Aragón, Cataluña y Valencia; las Cortes de Aragón aprobaron 144 000 libras jaquesas en quince años, con las que solo se podían costear 2000 hombres, frente a los 3333 listos para la guerra que Olivares había previsto. El plan fracasó por la oposición de las provincias, sobre todo Cataluña.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Los intentos de centralizar el poder y de aumentar los impuestos de guerra provocaron las sublevaciones de Cataluña y Portugal, que precipitaron la caída de Olivares. Francia apoyó a los catalanes sublevados desde 1640, y España respondió apoyando a la Fronda. En las negociaciones de Westfalia, en 1648, Francia se quedó con territorios de Alsacia y controló Lorena, con lo que cerró el llamado Camino Español que unía las posesiones españolas de Italia y Flandes. España firmó la paz con las Provincias Unidas pero continuó la guerra con Francia.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+La guerra con Francia terminó con el Tratado de los Pirineos, firmado el 7 de noviembre de 1659 en la isla de los Faisanes por Luis de Haro y por el cardenal Mazarino. Francia recibió en el norte plazas de Artois y de Flandes, y en el sur el Rosellón, el Conflent, el Vallespir y parte de la Cerdaña, de modo que la frontera con España se fijó desde entonces siguiendo los Pirineos, salvo el enclave de Llivia y el Valle de Arán. España había perdido en 1658 la batalla de las Dunas contra Francia y su aliada Inglaterra.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Carlos II nació en Madrid el 6 de noviembre de 1661 y fue rey de 1665 a 1700, con cuatro años, bajo la regencia de su madre, Mariana de Austria, hasta 1675. Fue el último monarca de la Casa de Habsburgo, que gobernaba España desde 1516. Sufrió problemas de salud durante toda su vida, cuyas causas se discuten: se ha atribuido a los matrimonios consanguíneos de su familia, y se han propuesto diagnósticos como el síndrome de Klinefelter o el síndrome X frágil. Su apodo, el Hechizado, viene de la atribución posterior de su estado a la brujería.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+% studium:record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Como Carlos II no tenía hijos, la cuestión de su sucesión fue durante gran parte de su reinado un asunto central de la diplomacia europea. Los principales candidatos eran Carlos de Austria, hijo menor del emperador Leopoldo I, y Felipe de Anjou, nieto de Luis XIV. En septiembre de 1700 Carlos cayó enfermo y, según una fuente, Portocarrero lo convenció de que nombrase heredero a Felipe de Anjou. Murió el 1 de noviembre de 1700, a los 38 años, y su muerte sin descendencia dio origen a la guerra de Sucesión.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Cuando una cifra histórica parezca inverosímil, compruebe primero su coherencia interna: si el número de expulsados es mayor que la población que debía ser expulsada, al menos una de las dos cifras es errónea o se refiere a otra cosa. Solo después busque una tercera fuente.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+Valido: favorito del rey que ejerce de hecho el gobierno. Olivares lo fue de Felipe IV: cuando el rey subió al trono, ordenó que todos los papeles que requiriesen su firma se enviaran primero al conde-duque.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+\noindent\textbf{Enunciado}
+Una fuente afirma que fueron expulsadas unas 350 000 personas y que la población morisca era de unas 325 000. Calcule qué porcentaje de la población morisca representan los expulsados si se toman las dos cifras al pie de la letra, y comente qué conclusión puede sacarse.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $E = 350000$ — expulsados según la fuente
+\item $M = 325000$ — población morisca según la misma fuente
+\item $M_{D} = 500000$ — población morisca según Dadson, en la otra fuente
+\item $a = 0.4$ — fracción que evitó la expulsión según Dadson
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El porcentaje E/M y, como contraste, los expulsados que resultan de la estimación de Dadson.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Proporción de expulsados}
+
+\[
+p = 100\,\frac{E}{M}
+\]
+
+\noindent\textit{Expulsados según Dadson}
+
+\[
+E_D = (1-a)\,M_D
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se toman las cifras al pie de la letra, aunque son estimaciones.
+\item La estimación de Dadson se aplica a su propia población de 500 000, sin mezclarla con la otra fuente.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Si los expulsados superan a la población total, las dos cifras no pueden ser ciertas a la vez: eso no dice cuál es la errónea.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Proporción de expulsados
+
+
+\[
+p = 100 \cdot 350\,000 / 325\,000
+\]
+
+\[
+\frac{\left(100\cdot 350000\right)}{325000} \approx 107.69231
+\]
+\item
+Expulsados según Dadson
+
+
+\[
+E_D = (1 - 0{,}4) \cdot 500\,000
+\]
+
+\[
+\left(\left(1-0.4\right)\cdot 500000\right) = 300000
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{100 \left(350000\right)}{\left(325000\right)}
+\]
+
+\noindent\textbf{Resultado}
+Con las cifras de la primera fuente, los expulsados serían el 107,7 \% de la población morisca, que es imposible; con la estimación de Dadson, serían unos 300 000, cifra compatible con el rango de 275 000 a 300 000 de Lapeyre.
+
+
+\noindent\textbf{Interpretación}
+Un porcentaje superior al 100 \% indica que al menos una de las dos cifras de la primera fuente es errónea o no mide lo mismo. La estimación de 500 000 moriscos, con un 40 \% que evitó la expulsión, da un número de expulsados coherente con las estimaciones tradicionales.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El cálculo no demuestra cuál de las dos cifras es la errónea ni cuál es la población morisca real.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Corregir la incoherencia ajustando una de las cifras hasta que cuadre, sin tener una tercera fuente que la respalde.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+
+¿Por qué las cifras sobre los moriscos expulsados son problemáticas? ¿Qué pretendía la Unión de Armas y por qué fracasó? ¿Qué se pactó en el Tratado de los Pirineos? ¿Por qué la muerte de Carlos II desembocó en una guerra?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImhpc3QtMDUifQ==
+\end{tcolorbox}
+
+\chapter{La Guerra de Sucesión y la Nueva Planta}
+\label{chap:hist-06}
+% studium:record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+\noindent\textit{La muerte de Carlos II en 1700 sin descendencia abrió una guerra europea por el control del Imperio español y terminó con la instauración de la dinastía Borbón y con la abolición de las leyes propias de la Corona de Aragón. Este capítulo explica quiénes se enfrentaron, qué se pactó en Utrecht, qué supusieron los decretos de Nueva Planta y cómo se relacionan con la unión dinástica estudiada en el primer capítulo.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3MSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+El candidato oficial, designado por Carlos II poco antes de morir, era Felipe de Anjou, nieto de Luis XIV de Francia, que fue proclamado rey de España el 16 de noviembre de 1700. Su rival era el archiduque Carlos de Austria, hijo menor del emperador Leopoldo I, que contaba con el apoyo de la Gran Alianza, formada, entre otros, por Austria, las Provincias Unidas y Gran Bretaña. La posibilidad de que Francia o Austria adquiriese el conjunto del imperio amenazaba el equilibrio de poder europeo, y por eso la proclamación de Felipe condujo a la guerra.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3MiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Las fuentes datan la guerra de maneras distintas. Una dice que duró de 1701 hasta la firma del Tratado de Utrecht en 1714; en otro punto, la misma fuente sitúa la Paz de Utrecht en 1713, seguida de los tratados de Rastatt y Baden en 1714. Otra de las fuentes habla de la guerra de sucesión española como de 1701 a 1715. Las tres fechas pueden reconciliarse: Utrecht fue en 1713, Rastatt y Baden en 1714, y en España los últimos focos de resistencia austracista se extinguieron en 1714 con Barcelona y en 1715 con Mallorca.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3MyIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+En España la guerra fue también una guerra civil entre borbónicos, con su principal apoyo en Castilla, y austracistas, mayoritarios en Aragón. En 1705 el Pacto de Génova entre representantes catalanes y Gran Bretaña abrió un segundo frente en el nordeste, y Carlos convocó en Barcelona las últimas Cortes Generales de Cataluña. Para 1709, aunque la Gran Alianza había obligado a Francia a ponerse a la defensiva, Felipe ya había consolidado su posición en España.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MyIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3NCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Un acontecimiento dinástico cambió el cálculo de los aliados: cuando murió el emperador José I en 1711, el archiduque Carlos le sucedió como emperador. Como una unión de España y Austria resultaba tan mal recibida como una con Francia, el nuevo gobierno británico argumentó que no tenía sentido continuar, y el apoyo de Gran Bretaña, cuyos subsidios mantenían a los aliados, se retiró. Esa retirada condujo a la Paz de Utrecht.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3NSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+En Utrecht, Felipe V fue confirmado como rey de España, pero renunció a su derecho y al de sus descendientes al trono francés. España perdió sus posesiones europeas: gran parte de los territorios italianos pasaron a Saboya y a Austria, que obtuvo también los Países Bajos españoles. Gran Bretaña recibió Gibraltar y Menorca y el asiento de negros, con el que podía enviar a la América española un total de 144 000 esclavos durante treinta años. España firmó con Saboya y con Gran Bretaña el 13 de julio de 1713.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3NiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+La guerra dejó a la Monarquía Hispánica sin sus posesiones europeas, aunque permaneció prácticamente intacta fuera de Europa. Gran Bretaña pasó a ocupar el lugar de las Provincias Unidas como principal potencia naval y comercial europea. Francia quedó exhausta económicamente, pero consiguió su objetivo: romper el cerco de los Habsburgo con un Borbón en el trono de España.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3NyIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Los decretos de Nueva Planta, promulgados entre 1707 y 1716 por Felipe V, abolieron las leyes e instituciones propias del Reino de Valencia y del Reino de Aragón el 29 de junio de 1707, del Reino de Mallorca el 28 de noviembre de 1715 y del Principado de Cataluña el 16 de enero de 1716. Se aplicaron a los territorios de la Corona de Aragón que se habían decantado por el archiduque Carlos y pusieron fin a la estructura compuesta de la Monarquía de los Austrias. Formalmente eran reales cédulas que establecían la nueva planta de las reales audiencias.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NyIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3OCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Los efectos fueron de gran alcance. Según una de las fuentes, los decretos crearon un estado español centralizado al abolir las distinciones legales entre castellanos y aragoneses, catalanes, valencianos y mallorquines, suprimieron las instituciones políticas de los territorios, como las Cortes de Aragón, de Cataluña y de Valencia, y eliminaron las fronteras y aranceles internos, salvo en el territorio vasco. Los altos funcionarios pasaron a nombrarse desde Madrid y el castellano se convirtió en la única lengua de gobierno. Navarra y los territorios vascos conservaron sus fueros porque Felipe V renunció a suprimirlos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3OCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+% studium:record eyJpZCI6ICJQQVItMDA3OSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Esta reforma culminó un viejo problema de la monarquía. Hasta 1700 la monarquía de los Austrias había sido un conglomerado dinástico de «Reinos, Estados y Señoríos» unidos según la fórmula aeque principaliter, bajo la cual cada reino conservaba sus propias leyes, fueros y privilegios. La Nueva Planta suprimió ese modelo para los reinos de la Corona de Aragón, y una de las fuentes lo explica por el modelo de Francia: la monarquía de Luis XIV había alcanzado un grado de unidad muy superior, y Felipe V, nacido en Francia, la tomó como modelo de estado centralizado. Es la conclusión del hilo que empezó con la unión dinástica de Isabel y Fernando y que Olivares había intentado reformar sin éxito.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3OSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA4MSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Cuando una guerra tiene varias fechas de final, distinga entre la paz internacional y la capitulación de los últimos reductos internos. En esta guerra, Utrecht (1713), Rastatt y Baden (1714), Barcelona (1714) y Mallorca (1715) son cuatro finales distintos de un mismo conflicto, y las fuentes pueden tomar uno u otro como cierre.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA4MSIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA4MCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+Decretos de Nueva Planta: conjunto de decretos que Felipe V promulgó entre 1707 y 1716 para abolir las leyes e instituciones propias de los reinos de la Corona de Aragón y establecer en ellos la «nueva planta» de las audiencias, a la manera de Castilla.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA4MCIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+\noindent\textbf{Enunciado}
+Los decretos de Nueva Planta se promulgaron para Valencia y Aragón el 29 de junio de 1707 y para Cataluña el 16 de enero de 1716. Entre las dos fechas hay 3123 días. Calcule cuántos años (con una cifra decimal) pasaron entre el primer y el último decreto, tomando 365,25 días por año.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $d = 3123$ — días entre el 29-06-1707 y el 16-01-1716
+\item $y = 365.25$ — días por año medio
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El número de años entre el primer y el último decreto.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Años entre decretos}
+
+\[
+T = d / y
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se cuentan los días de calendario gregoriano.
+\item Se consideran solo los decretos de Valencia, Aragón, Mallorca y Cataluña; la fecha del de Mallorca, 28 de noviembre de 1715, cae dentro del intervalo.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+El primer decreto es el de Valencia y Aragón y el último es el de Cataluña, así que el intervalo mide el tiempo que tardó la Corona en completar la reforma.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Años entre decretos
+
+
+\[
+T = 3123 / 365{,}25
+\]
+
+\[
+\frac{3123}{365.25} \approx 8.550308
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(3123\right)}{\left(365.25\right)}
+\]
+
+\noindent\textbf{Resultado}
+Pasaron unos 8,6 años entre el primer decreto y el último.
+
+
+\noindent\textbf{Interpretación}
+La reforma no se impuso de golpe: se aplicó territorio a territorio, según se iba ganando la guerra, en un lapso de más de ocho años.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El cálculo mide fechas de promulgación, no de aplicación efectiva.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Restar solo los años, 1716 - 1707 = 9, que sobrestima el intervalo en cerca de cinco meses.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA4MiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+
+¿Qué pretendían la Gran Alianza y Francia con la sucesión de Carlos II? ¿Qué se concedió a Gran Bretaña en Utrecht? ¿Qué instituciones abolió la Nueva Planta y por qué se dice que puso fin a la monarquía compuesta de los Austrias?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA4MiIsICJzZWN0aW9uIjogImhpc3QtMDYifQ==
+\end{tcolorbox}
+\appendix
+\chapter{Soluciones}
+
+\section{Los Reyes Católicos: unión dinástica, Granada y 1492}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+Según las Capitulaciones de Santa Fe, Colón recibe la décima parte de las mercancías ganadas en su almirantazgo, descontados los gastos, y las otras nueve partes son para los reyes. Si en una expedición hipotética el beneficio neto, una vez pagados todos los costes, fuese de 4 000 000 de maravedís, calcule cuántos maravedís corresponderían a la Corona.
+
+
+\noindent\textbf{Respuesta}
+A Colón le corresponderían 400 000 maravedís y a la Corona 3 600 000, es decir, el 90 \% del beneficio neto.
+
+
+\section{Carlos I: Comunidades e Imperio}
+
+\noindent\textbf{Problema resuelto [PRB-0002]}
+
+Carlos reinó en España de 1516 a 1556, hizo 40 viajes por sus dominios y dedicó una cuarta parte de su reinado a viajar. Calcule cuántos años pasó viajando y cuántos meses duró, en promedio, cada viaje.
+
+
+\noindent\textbf{Respuesta}
+Carlos pasó unos 10 años viajando, y cada viaje duró en promedio 3 meses.
+
+
+\section{Felipe II: guerras, finanzas y Armada}
+
+\noindent\textbf{Problema resuelto [PRB-0003]}
+
+Una fuente dice que de la Armada de 1588 regresaron a España 87 barcos, «unas dos terceras partes de la flota». La misma fuente da 130 barcos al zarpar y, más adelante, habla de 137 navíos españoles; otra fuente da 137. Calcule qué porcentaje de la flota representan los 87 barcos si se toma 130 como total, comparándolo con dos tercios (66,7 \%) y con lo que resultaría tomando 137.
+
+
+\noindent\textbf{Respuesta}
+Con 130 barcos regresó el 66,9 \% de la flota, casi exactamente dos tercios; con 137 sería el 63,5 \%, algo menos de dos tercios.
+
+
+\section{El Imperio americano y su administración}
+
+\noindent\textbf{Problema resuelto [PRB-0004]}
+
+El Tratado de Tordesillas fija la línea a 370 leguas al oeste de Cabo Verde. Una fuente la equipara a unos 2062 km y la otra a unos 2100 km. Calcule la longitud de legua (en km) que implica cada cifra y la diferencia relativa entre ambas.
+
+
+\noindent\textbf{Respuesta}
+La primera fuente implica una legua de unos 5,57 km y la segunda, de unos 5,68 km; las cifras difieren un 1,8 \%.
+
+
+\section{Los Austrias del siglo XVII: moriscos, Olivares y declive}
+
+\noindent\textbf{Problema resuelto [PRB-0005]}
+
+Una fuente afirma que fueron expulsadas unas 350 000 personas y que la población morisca era de unas 325 000. Calcule qué porcentaje de la población morisca representan los expulsados si se toman las dos cifras al pie de la letra, y comente qué conclusión puede sacarse.
+
+
+\noindent\textbf{Respuesta}
+Con las cifras de la primera fuente, los expulsados serían el 107,7 \% de la población morisca, que es imposible; con la estimación de Dadson, serían unos 300 000, cifra compatible con el rango de 275 000 a 300 000 de Lapeyre.
+
+
+\section{La Guerra de Sucesión y la Nueva Planta}
+
+\noindent\textbf{Problema resuelto [PRB-0006]}
+
+Los decretos de Nueva Planta se promulgaron para Valencia y Aragón el 29 de junio de 1707 y para Cataluña el 16 de enero de 1716. Entre las dos fechas hay 3123 días. Calcule cuántos años (con una cifra decimal) pasaron entre el primer y el último decreto, tomando 365,25 días por año.
+
+
+\noindent\textbf{Respuesta}
+Pasaron unos 8,6 años entre el primer decreto y el último.
+
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 41 pendientes. Los conflictos almacenados quedan fuera (0). Un libro de tema no usa una guía universitaria, así que no citada no es una regla de apoyo. Recuento de no citadas: 0.
+
+\noindent ¶1\(-\)¶82: dos testimonios.
+
+\medskip
+
+\noindent Reyes Católicos \(-\) Wikipedia (es) (PENDING) --- \P1, \P2, \P3, \P4, \P8, \P9, \P11, \P12, \P43.
+
+\noindent Catholic Monarchs of Spain \(-\) Wikipedia (en) (PENDING) --- \P1, \P2, \P3, \P4, \P11, \P79.
+
+\noindent Guerra de Granada \(-\) Wikipedia (es) (PENDING) --- \P4, \P5, \P6, \P13.
+
+\noindent Granada War \(-\) Wikipedia (en) (PENDING) --- \P5, \P6.
+
+\noindent Edicto de Granada \(-\) Wikipedia (es) (PENDING) --- \P7.
+
+\noindent Alhambra Decree \(-\) Wikipedia (en) (PENDING) --- \P7, \P12, \P13.
+
+\noindent Inquisición española \(-\) Wikipedia (es) (PENDING) --- \P8.
+
+\noindent Spanish Inquisition \(-\) Wikipedia (en) (PENDING) --- \P8.
+
+\noindent Capitulaciones de Santa Fe \(-\) Wikisource (es) (PENDING) --- \P9.
+
+\noindent Tratado de Tordesillas \(-\) Wikipedia (es) (PENDING) --- \P10, \P53.
+
+\noindent Treaty of Tordesillas \(-\) Wikipedia (en) (PENDING) --- \P10, \P53.
+
+\noindent Carlos I de España \(-\) Wikipedia (es) (PENDING) --- \P14, \P15, \P16, \P21, \P22, \P23, \P24, \P25, \P52.
+
+\noindent Charles V, Holy Roman Emperor \(-\) Wikipedia (en) (PENDING) --- \P14, \P15, \P16, \P21, \P22, \P23, \P24, \P25, \P26, \P27, \P52.
+
+\noindent Guerra de las Comunidades de Castilla \(-\) Wikipedia (es) (PENDING) --- \P17, \P18, \P19, \P20, \P26, \P27.
+
+\noindent Revolt of the Comuneros \(-\) Wikipedia (en) (PENDING) --- \P17, \P18, \P19, \P20, \P23.
+
+\noindent Felipe II de España \(-\) Wikipedia (es) (PENDING) --- \P28, \P29, \P30, \P31, \P36, \P39, \P40, \P42.
+
+\noindent Philip II of Spain \(-\) Wikipedia (en) (PENDING) --- \P28, \P29, \P30, \P31, \P38, \P39, \P40.
+
+\noindent Batalla de Lepanto \(-\) Wikipedia (es) (PENDING) --- \P32, \P33, \P34, \P35.
+
+\noindent Battle of Lepanto \(-\) Wikipedia (en) (PENDING) --- \P32, \P33, \P34, \P35, \P42.
+
+\noindent Spanish Armada \(-\) Wikipedia (en) (PENDING) --- \P36, \P37, \P38, \P41.
+
+\noindent Armada Invencible \(-\) Wikipedia (es) (PENDING) --- \P36, \P37, \P38, \P41.
+
+\noindent Spanish Empire \(-\) Wikipedia (en) (PENDING) --- \P43, \P44, \P45, \P47, \P50, \P51, \P52, \P54.
+
+\noindent Imperio español \(-\) Wikipedia (es) (PENDING) --- \P44, \P45, \P49, \P50, \P51, \P52.
+
+\noindent Council of the Indies \(-\) Wikipedia (en) (PENDING) --- \P44, \P48, \P49, \P55.
+
+\noindent Casa de la Contratación de Indias \(-\) Wikipedia (es) (PENDING) --- \P46, \P56.
+
+\noindent Casa de Contratación \(-\) Wikipedia (en) (PENDING) --- \P46, \P47, \P54, \P56.
+
+\noindent Consejo de Indias \(-\) Wikipedia (es) (PENDING) --- \P48, \P55.
+
+\noindent Expulsión de los moriscos \(-\) Wikipedia (es) (PENDING) --- \P57, \P58, \P59, \P60, \P68.
+
+\noindent Gaspar de Guzmán, Count-Duke of Olivares \(-\) Wikipedia (en) (PENDING) --- \P57, \P61, \P62, \P63, \P67, \P69.
+
+\noindent Expulsion of the Moriscos \(-\) Wikipedia (en) (PENDING) --- \P58, \P59, \P60, \P68.
+
+\noindent Conde-duque de Olivares \(-\) Wikipedia (es) (PENDING) --- \P61, \P62, \P67.
+
+\noindent Tratado de los Pirineos \(-\) Wikipedia (es) (PENDING) --- \P63, \P64, \P69.
+
+\noindent Treaty of the Pyrenees \(-\) Wikipedia (en) (PENDING) --- \P64.
+
+\noindent Carlos II de España \(-\) Wikipedia (es) (PENDING) --- \P65, \P66.
+
+\noindent Charles II of Spain \(-\) Wikipedia (en) (PENDING) --- \P65, \P66, \P71.
+
+\noindent Guerra de sucesión española \(-\) Wikipedia (es) (PENDING) --- \P70, \P71, \P72, \P73, \P74, \P75, \P76, \P81, \P82.
+
+\noindent Nueva Planta decrees \(-\) Wikipedia (en) (PENDING) --- \P70, \P77, \P78, \P79, \P80, \P82.
+
+\noindent War of the Spanish Succession \(-\) Wikipedia (en) (PENDING) --- \P71, \P73, \P74, \P76.
+
+\noindent Decretos de Nueva Planta \(-\) Wikipedia (es) (PENDING) --- \P72, \P77, \P78, \P79, \P80.
+
+\noindent Tratado de Utrecht \(-\) Wikipedia (es) (PENDING) --- \P75.
+
+\noindent Peace of Utrecht \(-\) Wikipedia (en) (PENDING) --- \P75, \P81.
+
+\noindent REV-0001\(-\)REV-0183: historical
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Reyes Católicos \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Reyes_Cat%C3%B3licos}
+\bibitem{src2} Catholic Monarchs of Spain \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Catholic_Monarchs_of_Spain}
+\bibitem{src3} Guerra de Granada \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Guerra_de_Granada}
+\bibitem{src4} Granada War \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Granada_War}
+\bibitem{src5} Edicto de Granada \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Edicto_de_Granada}
+\bibitem{src6} Alhambra Decree \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Alhambra_Decree}
+\bibitem{src7} Inquisición española \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Inquisici%C3%B3n_espa%C3%B1ola}
+\bibitem{src8} Spanish Inquisition \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Spanish_Inquisition}
+\bibitem{src9} Capitulaciones de Santa Fe \(-\) Wikisource (es). \url{https://es.wikisource.org/wiki/Capitulaciones_de_Santa_Fe}
+\bibitem{src10} Tratado de Tordesillas \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Tratado_de_Tordesillas}
+\bibitem{src11} Treaty of Tordesillas \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Treaty_of_Tordesillas}
+\bibitem{src12} Carlos I de España \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Carlos_I_de_Espa%C3%B1a}
+\bibitem{src13} Charles V, Holy Roman Emperor \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Charles_V,_Holy_Roman_Emperor}
+\bibitem{src14} Guerra de las Comunidades de Castilla \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Guerra_de_las_Comunidades_de_Castilla}
+\bibitem{src15} Revolt of the Comuneros \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Revolt_of_the_Comuneros}
+\bibitem{src16} Felipe II de España \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Felipe_II_de_Espa%C3%B1a}
+\bibitem{src17} Philip II of Spain \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Philip_II_of_Spain}
+\bibitem{src18} Batalla de Lepanto \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Batalla_de_Lepanto}
+\bibitem{src19} Battle of Lepanto \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Battle_of_Lepanto}
+\bibitem{src20} Armada Invencible \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Armada_Invencible}
+\bibitem{src21} Spanish Armada \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Spanish_Armada}
+\bibitem{src22} Casa de la Contratación de Indias \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Casa_de_la_Contrataci%C3%B3n_de_Indias}
+\bibitem{src23} Casa de Contratación \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Casa_de_Contrataci%C3%B3n}
+\bibitem{src24} Consejo de Indias \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Consejo_de_Indias}
+\bibitem{src25} Council of the Indies \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Council_of_the_Indies}
+\bibitem{src26} Imperio español \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Imperio_espa%C3%B1ol}
+\bibitem{src27} Spanish Empire \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Spanish_Empire}
+\bibitem{src28} Expulsión de los moriscos \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Expulsi%C3%B3n_de_los_moriscos}
+\bibitem{src29} Expulsion of the Moriscos \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Expulsion_of_the_Moriscos}
+\bibitem{src30} Conde-duque de Olivares \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Conde-duque_de_Olivares}
+\bibitem{src31} Gaspar de Guzmán, Count-Duke of Olivares \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Gaspar_de_Guzm%C3%A1n,_Count-Duke_of_Olivares}
+\bibitem{src32} Tratado de los Pirineos \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Tratado_de_los_Pirineos}
+\bibitem{src33} Treaty of the Pyrenees \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Treaty_of_the_Pyrenees}
+\bibitem{src34} Carlos II de España \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Carlos_II_de_Espa%C3%B1a}
+\bibitem{src35} Charles II of Spain \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Charles_II_of_Spain}
+\bibitem{src36} Guerra de sucesión española \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Guerra_de_sucesi%C3%B3n_espa%C3%B1ola}
+\bibitem{src37} War of the Spanish Succession \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/War_of_the_Spanish_Succession}
+\bibitem{src38} Decretos de Nueva Planta \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Decretos_de_Nueva_Planta}
+\bibitem{src39} Nueva Planta decrees \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Nueva_Planta_decrees}
+\bibitem{src40} Tratado de Utrecht \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Tratado_de_Utrecht}
+\bibitem{src41} Peace of Utrecht \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Peace_of_Utrecht}
+\end{thebibliography}
+\end{document}

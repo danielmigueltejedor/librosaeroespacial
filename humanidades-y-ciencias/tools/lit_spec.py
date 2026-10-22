@@ -1,0 +1,45 @@
+def S(lang, title, file, label=None):
+    host = f'{lang}.wikipedia.org'
+    return dict(title=f'{label or title} — Wikipedia ({lang})', url=f'https://{host}/wiki/' + title.replace(' ', '_'), file=file)
+SOURCES = {
+ 'es_cid': S('es', 'Cantar de mio Cid', 'es_Cantar_de_mio_Cid.txt'),
+ 'en_cid': S('en', 'Cantar de mio Cid', 'en_Cantar_de_mio_Cid.txt'),
+ 'es_mester': S('es', 'Mester de clerecía', 'es_Mester_de_clerec_a.txt'),
+ 'en_mester': S('en', 'Mester de clerecía', 'en_Mester_de_clerec_a.txt'),
+ 'es_berceo': S('es', 'Gonzalo de Berceo', 'es_Gonzalo_de_Berceo.txt'),
+ 'en_berceo': S('en', 'Gonzalo de Berceo', 'en_Gonzalo_de_Berceo.txt'),
+ 'es_lba': S('es', 'Libro de buen amor', 'es_Libro_de_buen_amor.txt'),
+ 'en_lba': S('en', 'Book of Good Love', 'en_Book_of_Good_Love.txt', 'The Book of Good Love'),
+ 'es_coplas': S('es', 'Coplas por la muerte de su padre', 'es_Coplas_a_la_muerte_de_su_padre.txt'),
+ 'en_manrique': S('en', 'Jorge Manrique', 'en_Coplas_por_la_muerte_de_su_padre.txt'),
+ 'es_celestina': S('es', 'La Celestina', 'es_La_Celestina.txt'),
+ 'en_celestina': S('en', 'La Celestina', 'en_La_Celestina.txt'),
+ 'es_garcilaso': S('es', 'Garcilaso de la Vega', 'es_Garcilaso_de_la_Vega.txt'),
+ 'en_garcilaso': S('en', 'Garcilaso de la Vega (poet)', 'en_Garcilaso_de_la_Vega_poet_.txt', 'Garcilaso de la Vega (poet)'),
+ 'es_lazarillo': S('es', 'La vida de Lazarillo de Tormes', 'es_Lazarillo_de_Tormes.txt'),
+ 'en_lazarillo': S('en', 'Lazarillo de Tormes', 'en_Lazarillo_de_Tormes.txt'),
+ 'es_quijote': S('es', 'Don Quijote de la Mancha', 'es_Don_Quijote_de_la_Mancha.txt'),
+ 'en_quijote': S('en', 'Don Quixote', 'en_Don_Quixote.txt'),
+ 'es_lope': S('es', 'Lope de Vega', 'es_Lope_de_Vega.txt'),
+ 'en_lope': S('en', 'Lope de Vega', 'en_Lope_de_Vega.txt'),
+ 'es_arte_nuevo': S('es', 'Arte nuevo de hacer comedias en este tiempo', 'es_Arte_nuevo_de_hacer_comedias.txt'),
+ 'es_gongora': S('es', 'Luis de Góngora', 'es_Luis_de_G_ngora.txt'),
+ 'en_gongora': S('en', 'Luis de Góngora', 'en_Luis_de_G_ngora.txt'),
+ 'es_quevedo': S('es', 'Francisco de Quevedo', 'es_Francisco_de_Quevedo.txt'),
+ 'en_quevedo': S('en', 'Francisco de Quevedo', 'en_Francisco_de_Quevedo.txt'),
+ 'es_culteranismo': S('es', 'Culteranismo', 'es_Culteranismo.txt'),
+ 'es_conceptismo': S('es', 'Conceptismo', 'es_Conceptismo.txt'),
+ 'es_siglo_oro': S('es', 'Siglo de Oro', 'es_Siglo_de_Oro.txt'),
+ 'en_golden_age': S('en', 'Spanish Golden Age', 'en_Spanish_Golden_Age.txt'),
+}
+BLUEPRINT = [
+ ('lit-01', 'La épica castellana: el Cantar de mio Cid'),
+ ('lit-02', 'El mester de clerecía y Gonzalo de Berceo'),
+ ('lit-03', 'Del Libro de buen amor a las Coplas de Jorge Manrique'),
+ ('lit-04', 'La Celestina y la narrativa del Renacimiento: el Lazarillo'),
+ ('lit-05', 'Garcilaso de la Vega y la lírica renacentista'),
+ ('lit-06', 'Cervantes y el Quijote'),
+ ('lit-07', 'El Barroco: Lope de Vega, Góngora y Quevedo'),
+]
+CHAPTERS = {}
+spec = dict(book='literatura-espanola', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='literary')
