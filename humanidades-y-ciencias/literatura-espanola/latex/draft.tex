@@ -1,0 +1,1505 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{upquote}
+\usepackage{accsupp}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\ifdefined\studiumcustomtitle
+\studiumcustomtitle
+\else
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Literatura española: de la Edad Media al Siglo de Oro\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Apuntes de trabajo\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\fi
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+\part{Literatura española: de la Edad Media al Siglo de Oro}
+
+\chapter{La épica castellana: el Cantar de mio Cid}
+\label{chap:lit-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+\noindent\textit{El Cantar de mio Cid es la primera obra poética extensa de la literatura española y el único cantar épico castellano conservado casi completo. Este capítulo explica cómo ha llegado hasta nosotros, cómo se organiza su relato, qué forma métrica emplea y por qué su tono sobrio inaugura una tradición literaria.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+El poema se conserva en un único manuscrito, hoy en la Biblioteca Nacional de España, que forma parte de un códice del siglo XIV y está incompleto: faltan la primera hoja y otras dos del interior. El colofón menciona a Per Abbat y la fecha de 1207, pero esa fecha se refiere a la copia que sirvió de modelo y no demuestra que Per Abbat fuera el autor; la crítica actual sitúa la composición de la versión conservada hacia el año 1200. Conviene distinguir, por tanto, tres momentos: la historia del Cid real, que murió en 1099, la composición del poema, y la copia material del códice.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+La cuestión de la autoría enfrenta a dos tradiciones críticas. Ramón Menéndez Pidal incluyó el Cantar en la tradición popular que llamó mester de juglaría: poemas transmitidos de generación en generación, que los juglares recitaban en público y modificaban según la ocasión. Los llamados individualistas, en cambio, atribuyen el poema a un autor concreto, culto y con formación jurídica. El propio texto conserva señales de oralidad: termina con una petición de vino para quien lo ha recitado, y su repertorio de frases hechas ayudaba al juglar a recordar o improvisar el verso.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+Los editores dividen el poema en tres cantares desde la edición de Menéndez Pidal de 1913. La división podría reflejar las tres sesiones en que el autor consideraba conveniente que el juglar recitara la gesta, y el propio texto la señala con versos como «Aquí compieça la gesta de mio Çid el de Bivar» al comienzo del segundo cantar. El primero es el Cantar del destierro, el segundo el Cantar de las bodas de las hijas del Cid y el tercero el Cantar de la afrenta de Corpes. El manuscrito, sin embargo, es un texto seguido, sin separación entre cantares.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+Más allá de esa división externa, la estructura interna del poema gira en torno a la honra del héroe. El Cid pierde la honra con el destierro, la recupera al conquistar Valencia y obtener el perdón del rey, vuelve a perderla cuando los infantes de Carrión maltratan a sus hijas en el robledal de Corpes y la restaura, ya multiplicada, mediante el juicio en las Cortes y los nuevos matrimonios de sus hijas. Es una curva de pérdida y restauración en la que la segunda ascensión supera a la primera, de modo que el tema profundo es el ascenso social del infanzón que alcanza un señorío hereditario por su propio esfuerzo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+La forma métrica es singular. Los versos son anisosilábicos, aunque predominan los de catorce a dieciséis sílabas, y se dividen en dos hemistiquios separados por una cesura. No se agrupan en estrofas, sino en tiradas: series de longitud variable cuyos versos comparten una misma rima asonante. En la edición de Menéndez Pidal la longitud de las tiradas varía entre 3 y 190 versos y suele coincidir con una unidad de contenido. La asonancia, a diferencia de la rima consonante, atiende solo a las vocales desde la última sílaba tónica, y la «e» final no cuenta a efectos de rima.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+El tono del Cantar es realista, algo poco habitual en la épica medieval europea. No hay magia: incluso la aparición del arcángel Gabriel ocurre en un sueño. El realismo y la sobriedad retórica son rasgos importantes porque, según la crítica, imprimen un sello definitorio a la literatura española posterior, desde La Celestina y la novela picaresca hasta el Quijote. El poema, además, se aparta a veces de la verdad histórica: no menciona a un hijo del Cid y las hijas, que en la realidad no se llamaban Elvira y Sol, no llegaron a ser reinas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+Al leer el Cantar, no busque un verso de medida fija: cuente primero los hemistiquios y atienda a la asonancia de cada tirada. Observará que el ritmo descansa en la cesura y en las fórmulas repetidas, no en un número rígido de sílabas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+Cantar de gesta: poema narrativo de tema heroico, compuesto para ser recitado en público por juglares, escrito en versos irregulares y de rima asonante, agrupados en tiradas en lugar de estrofas. El Cantar de mio Cid es el único ejemplar castellano conservado casi completo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwOSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+\noindent\textbf{Enunciado}
+Según la numeración tradicional de versos del Cantar de mio Cid, el tercer cantar, el de la afrenta de Corpes, comprende los versos 2278 a 3730, y el poema completo llega hasta el verso 3730. Calcule cuántos versos tiene ese cantar y qué porcentaje del poema representa.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $v_{i} = 2278$ — primer verso del tercer cantar
+\item $v_{f} = 3730$ — último verso del poema
+\item $N = 3730$ — versos totales (numeración tradicional)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El número de versos del tercer cantar y su porcentaje sobre el poema.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Versos de un intervalo cerrado}
+
+\[
+n_3 = v_f - v_i + 1
+\]
+
+\noindent\textit{Porcentaje}
+
+\[
+p_3 = 100\,\frac{n_3}{N}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item La numeración es la de la edición de Menéndez Pidal, que numera los versos de forma continua.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Un intervalo cerrado de versos incluye ambos extremos, por lo que se suma uno a la diferencia.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Versos del tercer cantar
+
+
+\[
+n_3 = 3730 - 2278 + 1
+\]
+
+\[
+\left(\left(3730-2278\right)+1\right) = 1453
+\]
+\item
+Porcentaje del poema
+
+
+\[
+p_3 = 100 \cdot 1453/3730
+\]
+
+\[
+\frac{\left(100\cdot 1453\right)}{3730} \approx 38.954424
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(3730\right) - \left(2278\right) + 1
+\]
+
+\noindent\textbf{Resultado}
+El tercer cantar tiene 1453 versos, es decir, aproximadamente el 38,95 \% del poema.
+
+
+\noindent\textbf{Interpretación}
+El cantar más extenso es el último, el de la afrenta de Corpes, porque concentra el juicio y el reto.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La numeración de los cantares varía ligeramente entre ediciones: algunas sitúan el final del primer cantar en el verso 1086, pero el tercero siempre va de 2278 a 3730.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Olvidar sumar uno al restar los extremos de un intervalo cerrado.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwOSIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+
+¿Por qué la fecha de 1207 del colofón no basta para atribuir el poema a Per Abbat? ¿Qué diferencia hay entre una tirada y una estrofa? ¿Cómo se manifiestan en el texto la pérdida y la restauración de la honra del Cid?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImxpdC0wMSJ9
+\end{tcolorbox}
+
+\chapter{El mester de clerecía y Gonzalo de Berceo}
+\label{chap:lit-02}
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+\noindent\textit{A comienzos del siglo XIII aparece en Castilla una poesía narrativa distinta de la de los juglares: la escriben clérigos, cuenta el número de sílabas y trata asuntos religiosos y morales. Este capítulo describe el mester de clerecía, su estrofa característica, la cuaderna vía, y la obra de su principal representante, Gonzalo de Berceo.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+La palabra mester procede del latín ministerium, «oficio», y las tres escuelas literarias medievales corresponden a los tres estamentos de la sociedad: el mester de juglaría, popular y recitado en plazas y castillos; el mester de cortesía, escrito en prosa en el ámbito de la corte, y el mester de clerecía, nacido en ambientes eclesiásticos cultos como los estudios generales y las escuelas catedralicias. Los clérigos que lo cultivaban no eran necesariamente sacerdotes: bastaba con haber cursado los estudios superiores de la época, de modo que podían ser nobles, judíos o incluso musulmanes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+Frente al verso irregular y la rima asonante de los juglares, los poetas de clerecía escribieron en verso regular. Su estrofa es la cuaderna vía, un tetrástrofo monorrimo: cuatro versos alejandrinos de catorce sílabas, divididos en dos hemistiquios de siete separados por una cesura, que comparten una misma rima consonante. La consonante, más exigente que la asonante, exige que coincidan todos los sonidos desde la vocal tónica, y por eso la clerecía se presentaba a sí misma como un arte de poetas que contaban sílabas con cuidado y buscaban versos perfectos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+La finalidad de esta poesía era a la vez estética y didáctica. Sus autores querían entretener, enseñar e impulsar a la virtud y a la piedad, y por eso tratan temas religiosos e historiográficos tomados casi siempre de obras latinas medievales. Dos rasgos separan la clerecía de la juglaría: el didactismo y la erudición. El vocabulario está lleno de cultismos, palabras tomadas directamente del latín, y los versos, aunque pensados para recitarse, expresan una conciencia clara de querer hacer «otra cosa» que los juglares.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+Gonzalo de Berceo, nacido hacia 1196 en la aldea riojana de Berceo, junto al monasterio de San Millán de la Cogolla, es el principal representante de la escuela. Fue diácono en 1221 y presbítero en 1237, y se formó entre 1222 y 1227 en los estudios generales de Palencia, los primeros que hubo en España, con cátedras de teología, derecho canónico, lógica y artes. No fue fraile, como se suele creer, sino clérigo y notario eclesiástico de los monasterios de San Millán y de Santo Domingo de Silos. Murió hacia 1264.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+La obra de Berceo es toda religiosa. Se compone sobre todo de hagiografías, biografías de santos vinculados a los monasterios en que trabajó, como la Vida de San Millán de la Cogolla, la Vida de Santo Domingo de Silos y la Vida de Santa Oria, y de obras marianas y teológicas. Su título más conocido son los Milagros de Nuestra Señora, que comienzan con una introducción alegórica en un prado idealizado y siguen con veinticinco milagros realizados por la Virgen en favor de personas de distintos grupos sociales. Berceo no inventa los relatos: los traduce y amplifica a partir de textos latinos, y su originalidad está en el tratamiento, el estilo y los detalles costumbristas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+La crítica ha discutido los móviles de Berceo. Su cercanía a San Millán y sus hagiografías, que fomentaban la devoción, las peregrinaciones y las donaciones en torno a las reliquias del monasterio, han llevado a considerarlo un propagandista de los intereses de la abadía en un momento de decadencia. Otros críticos presentan al poeta como menos movido por esos intereses. Ambas lecturas coinciden en que la poesía de clerecía tenía una función práctica además de la literaria: llegar a un público de aldeanos que no leía latín.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+El mester de clerecía evolucionó con la sociedad. En el siglo XIII predominan la monometría, el seguimiento estricto de las fuentes y los temas religiosos y morales. En el siglo XIV la cuaderna vía se flexibiliza con versos más largos, zéjeles y rimas internas, entran los temas profanos y el autor empieza a ser artista en lugar de artesano, como ocurre con Juan Ruiz en el Libro de buen amor. En el siglo XV, tras la peste negra y el cisma de Occidente, se vuelve a una religiosidad más sombría y a cuadernas vías de versos de dieciséis sílabas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+Para reconocer un texto de clerecía, compruebe primero la regularidad: cuente los siete más siete sílabas de cada verso y verifique que los cuatro versos riman entre sí con rima consonante. Si encuentra versos de medida irregular y rima asonante, está ante la tradición juglaresca.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+Cuaderna vía: estrofa característica del mester de clerecía, formada por cuatro versos alejandrinos de catorce sílabas, divididos en dos hemistiquios de siete, que comparten una misma rima consonante. También se llama tetrástrofo monorrimo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+\noindent\textbf{Enunciado}
+Una cuaderna vía está formada por cuatro versos alejandrinos de catorce sílabas. Un poema hipotético en cuaderna vía tiene 120 estrofas. Calcule cuántos versos y cuántas sílabas métricas nominales contiene, y cuántas sílabas corresponden a cada hemistiquio de siete.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $E = 120$ — número de estrofas
+\item $v = 4$ — versos por estrofa
+\item $s = 14$ — sílabas por verso alejandrino
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El número de versos, el de sílabas nominales y las sílabas de cada hemistiquio.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Versos totales}
+
+\[
+V = E\,v
+\]
+
+\noindent\textit{Sílabas totales}
+
+\[
+S = E\,v\,s
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se cuenta el número nominal de sílabas métricas; sinalefas, hiatos y licencias hacen que el cómputo real varíe en versos concretos.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Cada verso se divide en dos hemistiquios de siete sílabas separados por una cesura.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Versos del poema
+
+
+\[
+V = 120 \cdot 4
+\]
+
+\[
+\left(120\cdot 4\right) = 480
+\]
+\item
+Sílabas nominales
+
+
+\[
+S = 480 \cdot 14
+\]
+
+\[
+\left(480\cdot 14\right) = 6720
+\]
+\item
+Sílabas por hemistiquio
+
+
+\[
+h = 14/2
+\]
+
+\[
+\frac{14}{2} = 7
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(120\right) \left(4\right)
+\]
+
+\noindent\textbf{Resultado}
+El poema tiene 480 versos y 6720 sílabas nominales; cada hemistiquio tiene 7.
+
+
+\noindent\textbf{Interpretación}
+La regularidad de la cuaderna vía permite calcular la extensión de un poema contando solo estrofas, algo imposible en el verso irregular del Cantar.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El cómputo es nominal: la sinalefa y la diéresis modifican el número real de sílabas métricas.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Contar solo versos y olvidar que cada verso tiene catorce sílabas.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxMCIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+
+¿Por qué Berceo no puede considerarse un fraile ni un autor plenamente original? ¿Qué rasgos métricos distinguen la cuaderna vía del verso del Cantar de mio Cid? ¿Qué cambios temáticos introduce el siglo XIV respecto del XIII?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImxpdC0wMiJ9
+\end{tcolorbox}
+
+\chapter{Del Libro de buen amor a las Coplas de Jorge Manrique}
+\label{chap:lit-03}
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+\noindent\textit{En los siglos XIV y XV la literatura castellana se abre a la experiencia personal, a la sátira y a la reflexión sobre el tiempo. Este capítulo estudia dos obras muy distintas: el Libro de buen amor de Juan Ruiz, una colección heterogénea de materiales en torno a una autobiografía fingida, y las Coplas de Jorge Manrique, una elegía de cuarenta estrofas sobre la muerte de su padre.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+El Libro de buen amor se atribuye a Juan Ruiz, arcipreste de Hita. Sus manuscritos no dan título: el nombre actual lo propuso Ramón Menéndez Pidal en 1898 a partir de pasajes del propio libro, sobre todo de la cuaderna 933b, cuyo primer hemistiquio dice «Buen amor dixe al libro». Se conservan tres manuscritos, ninguno completo, y la fecha de redacción varía según el códice: en uno el autor afirma haber terminado la obra en 1330 y en otro en 1343, de modo que la segunda versión sería una revisión de la primera con composiciones añadidas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+La obra es una composición extensa, de más de 1700 estrofas de carácter variado, cuyo hilo conductor es una autobiografía ficticia del arcipreste. En ella el autor, representado en un episodio por don Melón de la Huerta, cuenta sus amores con mujeres de condición muy distinta \(-\)una monja, una mora, una panadera, varias serranas\(-\) ayudado por la alcahueta Urraca, llamada Trotaconventos, precedente claro de La Celestina. A través de sus amantes aparecen representadas todas las capas de la sociedad bajomedieval española.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+La variedad es la señal de identidad del libro: de contenido, con ejemplos, narraciones amorosas, serranillas, fábulas y composiciones líricas; de métrica, pues además de la cuaderna vía emplea estrofas de dieciséis versos y estrofas zejelescas, y de tono, que oscila entre lo serio y lo festivo, lo religioso y lo profano. Gran parte de los materiales narrativos parodia las comedias elegíacas latinas de ámbito escolar, como el Pamphilus, que sirve de base al episodio de don Melón y doña Endrina, y también se parodia la liturgia de las horas canónicas en el combate de don Carnal con doña Cuaresma.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+El libro pertenece al mester de clerecía, pero lo renueva. La crítica actual considera que desciende de la literatura latina medieval clerical, aunque se hayan propuesto fuentes árabes, y la sátira social gana un lugar propio: Juan Ruiz critica el poder igualador del dinero, que permite quebrar las barreras entre estamentos. Este rasgo revela la tensión de una sociedad en la que el desarrollo de la burguesía disuelve poco a poco el orden de los tres estamentos medievales.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+Un siglo más tarde, Jorge Manrique escribe las Coplas por la muerte de su padre, elegía por la muerte del maestre de Santiago Rodrigo Manrique, fallecido el 11 de noviembre de 1476. Pertenece al género medieval del planto y es una reflexión sobre la vida, la fama, la fortuna y la muerte con resignación cristiana, inspirada en precedentes clásicos y medievales y en el Eclesiastés. Manrique, nacido hacia 1440, pertenecía a una familia noble de gran importancia literaria \(-\)era sobrino de Gómez Manrique y sobrino nieto del marqués de Santillana\(-\) y murió en 1479 durante un asalto al castillo de Garcimuñoz.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+La forma métrica es la que hoy se llama copla manriqueña o copla de pie quebrado: cuarenta estrofas, cada una de ellas una sextilla doble de doce versos, con octosílabos en primero, segundo, cuarto y quinto lugar y tetrasílabos en el tercero y el sexto, con rima abc abc def def. Manrique no inventó este esquema, que ya habían usado Juan de Mena y su tío Gómez Manrique, pero lo elevó a la máxima categoría. La alternancia de versos largos y breves daba a la estrofa flexibilidad para sonar grave o ligera.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+La estructura del poema sigue un movimiento de lo general a lo particular. La primera parte (coplas I-XIV) reflexiona sobre la vida y la muerte y se parece más a un sermón filosófico que a una elegía. La segunda (XV-XXIV) concreta esas ideas en ejemplos de muertes recientes mediante la interrogación retórica del ubi sunt. La tercera (XXV-XL) es la elegía propiamente dicha: retrata a Rodrigo Manrique como caballero que cumplió los deberes de la nobleza y termina con un diálogo dramático entre el maestre y la Muerte. El poema distingue además tres tipos de vida: la terrenal, la de la fama y la eterna.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+Los temas de las Coplas son tópicos de larga tradición: el paso inexorable del tiempo (tempus fugit), la vida como camino (homo viator) y como río que desemboca en la muerte, la muerte que iguala a ricos y pobres y la vanidad de las cosas mundanas. Manrique los trata con un lenguaje preciso y sin adorno, que se centra en lo que se dice más que en cómo se dice. Lope de Vega consideró la obra digna de ser impresa con letras de oro.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+Cuando analice una copla manriqueña, escriba en una columna el número de sílabas de cada verso y compruebe el patrón 8-8-4, 8-8-4 en cada sextilla. Si un verso corto parece de cinco sílabas, mire si el verso anterior termina en palabra aguda: la ley de compensación explica la diferencia.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+Ubi sunt: tópico medieval, tomado de la expresión latina «¿dónde están?», que consiste en preguntar retóricamente por personas y bienes desaparecidos para mostrar que todas las cosas de este mundo son perecederas. Las Coplas de Manrique lo emplean con frecuencia en su segunda parte.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+\noindent\textbf{Enunciado}
+Las Coplas de Manrique tienen cuarenta estrofas de doce versos. Según una división habitual, la tercera parte, dedicada al padre del poeta, abarca las coplas XXV a XL. Calcule cuántas estrofas y cuántos versos tiene esa parte y qué porcentaje del poema representa.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $c_{i} = 25$ — primera copla de la tercera parte
+\item $c_{f} = 40$ — última copla del poema
+\item $v = 12$ — versos por copla
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El número de coplas, el de versos de la tercera parte y su porcentaje sobre el poema.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Estrofas de un intervalo cerrado}
+
+\[
+n = c_f - c_i + 1
+\]
+
+\noindent\textit{Versos}
+
+\[
+V = n\,v
+\]
+
+\noindent\textit{Porcentaje}
+
+\[
+p = 100\,\frac{n}{c_f}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Las coplas se numeran de la I a la XL sin saltos y todas tienen doce versos.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Como en el cantar del Cid, el intervalo es cerrado: se incluyen ambos extremos.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Estrofas de la tercera parte
+
+
+\[
+n = 40 - 25 + 1
+\]
+
+\[
+\left(\left(40-25\right)+1\right) = 16
+\]
+\item
+Versos de la tercera parte
+
+
+\[
+V = 16 \cdot 12
+\]
+
+\[
+\left(16\cdot 12\right) = 192
+\]
+\item
+Porcentaje del poema
+
+
+\[
+p = 100 \cdot 16/40
+\]
+
+\[
+\frac{\left(100\cdot 16\right)}{40} = 40
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(40\right) - \left(25\right) + 1
+\]
+
+\noindent\textbf{Resultado}
+La tercera parte tiene 16 coplas y 192 versos, el 40 \% del poema.
+
+
+\noindent\textbf{Interpretación}
+La elegía propiamente dicha ocupa menos de la mitad del poema: casi dos tercios de las coplas preparan la alabanza del padre con reflexiones generales y ejemplos.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Otras descripciones del poema dividen las coplas de manera distinta, por ejemplo en secciones de 1-24, 25-32, 33-39 y 40.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Restar 40 - 25 sin sumar uno e inferir 15 coplas.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxMSIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+
+¿Qué rasgos del Libro de buen amor lo apartan de la clerecía del siglo XIII? ¿Por qué se considera a Trotaconventos un precedente de La Celestina? ¿Cómo se organizan las tres partes de las Coplas y qué función cumple el ubi sunt?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImxpdC0wMyJ9
+\end{tcolorbox}
+
+\chapter{La Celestina y la narrativa del Renacimiento: el Lazarillo}
+\label{chap:lit-04}
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+\noindent\textit{Entre 1499 y 1554 aparecen dos obras que cambian el rumbo de la narrativa en castellano: La Celestina, una obra dialogada que es a la vez drama y novela, y el Lazarillo de Tormes, relato autobiográfico y anónimo que funda la novela picaresca. Ambas descubren la prosa realista, el interés por los marginados y una mirada crítica sobre la sociedad.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+La Celestina se atribuye a Fernando de Rojas, bachiller nacido en La Puebla de Montalbán que estudió en Salamanca. Rojas declara en un texto preliminar que encontró un esbozo anónimo, que se identifica con el primer acto, y lo continuó. Su composición se remonta a los últimos años del siglo XV, durante el reinado de los Reyes Católicos, y su enorme éxito editorial se prolongó hasta su prohibición en 1792. Es una obra «sui generis»: por su forma dialogada y su probable vinculación al ambiente universitario se la ha considerado una comedia humanística, pero también un híbrido entre novela y drama.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+La historia editorial es compleja. La primera versión impresa es la Comedia de Calisto y Melibea, de dieciséis actos, de la que se conocen tres ediciones, entre ellas la de Burgos atribuida a Fadrique de Basilea en 1499 (aunque la fecha es discutida) y la de Toledo de 1500. La segunda versión, la Tragicomedia, añade cinco actos entre el catorce y el diecinueve y alcanza los veintiún actos; se conocen más de cien ediciones en castellano. Más tarde se añadió incluso un Acto de Traso, que lleva el total a veintidós en una edición de Toledo de 1526.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+El argumento es sencillo. Calisto, un joven noble, se enamora de Melibea, una muchacha recluida por sus padres, y recurre a la vieja alcahueta Celestina para conseguir su amor. Los criados de Calisto, Pármeno y Sempronio, se asocian con ella por interés y acaban matándola por la codicia. Calisto muere al caer de una escala al salir del jardín de Melibea, y esta se arroja desde una torre. El desenlace trágico responde a una intención moralizante: el naturalismo crudo de la obra solo era soportable, según los criterios de la época, si los culpables eran castigados.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+Lo más moderno de La Celestina son sus personajes. Celestina, Sempronio, Pármeno, Elicia y Areúsa no son héroes ni santos, sino gente del común movida por el interés. Se ha visto en Calisto el nuevo estilo de vida de una clase ociosa, y en Sempronio y Pármeno la ruptura de los lazos feudales. El diálogo, que sustituye a la narración, permite que cada personaje se defina por su propia voz, y esa forma ha hecho que la crítica hable de un género celestinesco que alcanza a muchas comedias y novelas posteriores.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+El Lazarillo de Tormes es una novela anónima, escrita en primera persona y en forma epistolar, cuyas ediciones más antiguas datan de 1554. Se conservan cuatro ediciones de ese año, impresas en Burgos, Amberes, Alcalá de Henares y Medina del Campo, aunque es probable que hubiera otra anterior. Cuenta de forma autobiográfica la vida de Lázaro desde su miserable infancia hasta su matrimonio, en siete tratados, y es en realidad una larga carta a un corresponsal al que llama «Vuestra Merced», que le pide explicar «el caso».
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+Lázaro sirve a una serie de amos \(-\)un ciego, un clérigo avaro, un escudero arruinado y otros\(-\) que le enseñan a sobrevivir. El hambre, la hipocresía y la honra vacía son los motores del relato, y a través del servicio a varios amos se ofrece un retrato irónico y despiadado de la sociedad del momento, sobre todo de los clérigos y religiosos. La estructura itinerante, la narración en primera persona, el realismo y la ideología moralizante y pesimista son los rasgos que hacen del Lazarillo el precursor de la novela picaresca.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+La obra se publicó anónima por su contenido anticlerical y su autor probablemente simpatizaba con las ideas de Erasmo de Róterdam. La Inquisición la incluyó en el Índice de libros prohibidos y más tarde permitió una versión expurgada de los pasajes anticlericales; no volvió a publicarse íntegramente hasta el siglo XIX. Se han propuesto varios autores, entre ellos fray Juan de Ortega, a quien atribuyó la obra en 1605 el fraile José de Sigüenza, pero ninguna atribución ha obtenido consenso.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+Para comparar La Celestina y el Lazarillo, fíjese en quién habla: en la primera, cada personaje se expresa en diálogo directo y el autor desaparece; en el segundo, un único narrador se justifica ante «Vuestra Merced» y selecciona los hechos de su vida. Esa diferencia de voz explica casi todas las diferencias de enfoque.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+Novela picaresca: género narrativo nacido con el Lazarillo, en el que un pícaro cuenta en primera persona su vida como servidor de varios amos, con un tono realista y crítico que pone al descubierto la injusticia social mientras entretiene al lector.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+\noindent\textbf{Enunciado}
+La Comedia de Calisto y Melibea tiene dieciséis actos y la Tragicomedia añade cinco más. Calcule cuántos actos tiene la Tragicomedia y en qué porcentaje aumentó el número de actos respecto de la Comedia.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $A_{C} = 16$ — actos de la Comedia
+\item $a = 5$ — actos añadidos
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El número de actos de la Tragicomedia y el aumento porcentual.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Actos de la Tragicomedia}
+
+\[
+A_T = A_C + a
+\]
+
+\noindent\textit{Variación porcentual}
+
+\[
+\Delta = 100\,\frac{a}{A_C}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se comparan solo las dos versiones principales; no se cuenta el Acto de Traso, que solo aparece en algunas ediciones posteriores.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La variación relativa se refiere al número de actos de la versión de partida.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Actos de la Tragicomedia
+
+
+\[
+A_T = 16 + 5
+\]
+
+\[
+\left(16+5\right) = 21
+\]
+\item
+Aumento porcentual
+
+
+\[
+\Delta = 100 \cdot 5/16
+\]
+
+\[
+\frac{\left(100\cdot 5\right)}{16} \approx 31.25
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(16\right) + \left(5\right)
+\]
+
+\noindent\textbf{Resultado}
+La Tragicomedia tiene 21 actos, un 31,25 \% más que la Comedia.
+
+
+\noindent\textbf{Interpretación}
+Rojas amplió casi un tercio la obra, pero las ampliaciones no son meros añadidos: el cambio de título refleja una nueva concepción de la obra como tragicomedia.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El porcentaje depende de contar el Acto de Traso o no; con él la Tragicomedia llegaría a 22 actos en algunas ediciones.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Dividir por 21 en lugar de por 16 al calcular el aumento relativo.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxMiIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+
+¿Qué diferencias hay entre la Comedia y la Tragicomedia de Calisto y Melibea? ¿Por qué se publicó el Lazarillo de forma anónima y por qué lo prohibió la Inquisición? ¿Qué rasgos del Lazarillo se convertirán en convenciones de la novela picaresca?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImxpdC0wNCJ9
+\end{tcolorbox}
+
+\chapter{Garcilaso de la Vega y la lírica renacentista}
+\label{chap:lit-05}
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+\noindent\textit{Con Garcilaso de la Vega la poesía castellana adopta las formas italianas del Renacimiento: el verso endecasílabo, el soneto, la lira, la égloga. Este capítulo recorre su biografía de soldado y poeta, sus obras, la revolución métrica que introdujo y el modo en que se publicó y se leyó su obra durante el siglo XVI.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+Garcilaso nació en Toledo en fecha incierta: las fuentes sitúan el nacimiento entre 1491 y 1503, y la incertidumbre es un recordatorio de que las biografías renacentistas tienen huecos. Recibió una educación cortesana esmerada, aprendió latín, griego, italiano y francés, y conoció en 1519 a Juan Boscán, su gran amigo. En 1520 entró al servicio de Carlos I y en 1523 fue armado caballero de la Orden de Santiago. Murió el 14 de octubre de 1536 en Niza, a consecuencia de una herida recibida en combate.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+Su vida es la de un soldado-poeta, representante del tópico renacentista de las armas y las letras. Luchó en la guerra de las Comunidades, participó en la campaña de Fuenterrabía, acompañó al emperador por Europa y sufrió un breve destierro en una isla del Danubio cerca de Ratisbona, que describe en su Canción III. El propio Garcilaso se definió atrapado en esta dualidad con el verso «tomando ora la espada, ora la pluma».
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+La poesía de Garcilaso se divide en etapas. Antes de su estancia en Nápoles (1522-1523 y 1533) su verso no estaba marcado por rasgos petrarquistas; en Nápoles descubrió a los autores italianos, entre ellos Petrarca y Sannazaro, cuya Arcadia le inspiró el mundo pastoril, y fortaleció su clasicismo con la lectura de Virgilio, Ovidio y Horacio. La crítica distingue así un período español, de versos octosílabos; otro petrarquista, de sonetos y canciones, y otro clasicista, de églogas, elegías y epístolas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+La novedad decisiva es métrica. Garcilaso adaptó al castellano el verso endecasílabo, de once sílabas, más flexible que el rígido y monótono dodecasílabo, y con él introdujo, junto con Boscán y Diego Hurtado de Mendoza, el terceto, el soneto, la lira, la octava real, los endecasílabos sueltos y la canción en estancias. La lira se compone de tres versos de siete sílabas y dos de once; la estancia combina endecasílabos y heptasílabos. Una de las fuentes resume el efecto así: la poesía española no volvió a ser la misma.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+Su obra es breve: cuarenta sonetos, cinco canciones, ocho coplas castellanas, tres églogas, dos elegías y una epístola, además de una oda en liras y de composiciones latinas. Se publicó póstumamente en 1543, como apéndice de las obras de Juan Boscán, por iniciativa de su viuda, y se reimprimió casi cada año durante más de una década. En 1569 un librero salmantino publicó por primera vez solo la poesía de Garcilaso, edición que sirvió de base a la comentada del Brocense (1574), a la que siguió la de Fernando de Herrera en 1580.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+El estilo de Garcilaso se caracteriza por la claridad y la naturalidad, en línea con el ideal lingüístico de su amigo Juan de Valdés: selección de palabras, precisión y preferencia por las voces usuales sobre los cultismos. Cuida además la musicalidad mediante la aliteración y un ritmo apoyado en los ejes del endecasílabo. En su Égloga tercera defiende evitar la retórica pomposa para que la poesía parezca sincera y espontánea: el objetivo de la poesía es comunicar sentimientos, no despertar admiración cortesana.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+La influencia posterior fue inmensa. La crítica lo considera el «príncipe de los poetas castellanos» y el paradigma del poeta-soldado; su obra influyó en la mayoría de los poetas posteriores, como Fray Luis de León, San Juan de la Cruz, Cervantes, Lope de Vega, Góngora y Quevedo. Poetas del siglo XX como Rafael Alberti y Miguel Hernández le dedicaron homenajes poéticos, y el término garcilasismo designa una corriente de posguerra.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+Al leer un soneto de Garcilaso, marque los acentos de cada endecasílabo y observe cómo las sinalefas reducen las sílabas gramaticales a once métricas. Comprobará que la flexibilidad del verso nace de la combinación de acentos, no de una medida mecánica.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+Endecasílabo: verso de once sílabas métricas que Garcilaso adaptó del modelo italiano y que se convirtió en el verso principal de la poesía culta castellana. Permite componer sonetos, tercetos, liras y octavas reales.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+\noindent\textbf{Enunciado}
+Las fuentes coinciden en que Garcilaso escribió cuarenta sonetos, cinco canciones, ocho coplas castellanas, tres églogas, dos elegías y una epístola. Calcule cuántas composiciones castellanas suman estas categorías y qué porcentaje de ellas son sonetos (sin contar la oda en liras, que solo cita una de las fuentes).
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $n_{s} = 40$ — sonetos
+\item $n_{c} = 5$ — canciones
+\item $n_{o} = 8$ — coplas castellanas
+\item $n_{e} = 3$ — églogas
+\item $n_{l} = 2$ — elegías
+\item $n_{p} = 1$ — epístola
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El total de composiciones contadas y el porcentaje de sonetos.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Total de composiciones}
+
+\[
+N = n_s + n_c + n_o + n_e + n_l + n_p
+\]
+
+\noindent\textit{Porcentaje de sonetos}
+
+\[
+p_s = 100\,\frac{n_s}{N}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se cuentan solo las categorías comunes a las dos fuentes; la oda en liras y las composiciones latinas quedan fuera.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Cada categoría se cuenta una sola vez, y el porcentaje se calcula sobre el total de esas categorías.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Composiciones castellanas contadas
+
+
+\[
+N = 40 + 5 + 8 + 3 + 2 + 1
+\]
+
+\[
+\left(\left(\left(\left(\left(40+5\right)+8\right)+3\right)+2\right)+1\right) = 59
+\]
+\item
+Porcentaje de sonetos
+
+
+\[
+p_s = 100 \cdot 40/59
+\]
+
+\[
+\frac{\left(100\cdot 40\right)}{59} \approx 67.79661
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\left(5\right) + \left(3\right) + \left(2\right) + \left(8\right) + \left(1\right) + \left(40\right)
+\]
+
+\noindent\textbf{Resultado}
+Suman 59 composiciones, y aproximadamente el 67,8 \% son sonetos.
+
+
+\noindent\textbf{Interpretación}
+Dos de cada tres composiciones son sonetos, lo que muestra hasta qué punto la forma italiana ocupa el centro de su obra.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La cifra cambia si se incluye la oda en liras: 60 composiciones y 66,7 \% de sonetos.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Incluir en el total las composiciones latinas, que no pertenecen a la obra en castellano.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxMyIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+
+¿Qué estrofas introdujo Garcilaso en la poesía castellana? ¿Por qué se dice que su etapa napolitana marcó un cambio en su obra? ¿Cómo se publicó su poesía en el siglo XVI y qué papel desempeñó el Brocense?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImxpdC0wNSJ9
+\end{tcolorbox}
+
+\chapter{Cervantes y el Quijote}
+\label{chap:lit-06}
+% studium:record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+\noindent\textit{Don Quijote de la Mancha, de Miguel de Cervantes, es la obra más destacada de la literatura española y una de las primeras novelas modernas. Este capítulo explica cómo se publicó, cómo se estructuran sus dos partes, qué técnicas narrativas la hacen innovadora y por qué ha influido tanto en la narrativa posterior.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+La primera parte, El ingenioso hidalgo don Quijote de la Mancha, lleva fecha de 1605, aunque se imprimió en diciembre de 1604. Cervantes redactó el prólogo en agosto de 1604, el privilegio real se firmó el 26 de septiembre y el editor fue Francisco de Robles, que encargó la impresión a la casa de Juan de la Cuesta. La edición tuvo una calidad mediocre y muchas erratas, y se reimprimió en el mismo año, de modo que existen dos ediciones autorizadas de 1605, además de dos piratas publicadas en Lisboa. Según una fuente en inglés, el libro salió a la venta el 16 de enero de 1605.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+Cervantes no ganó mucho dinero con el éxito: había vendido todos los derechos de la obra a su editor. La primera parte triunfó como obra cómica, no como obra seria. Esto, unido al ataque a Lope de Vega del prólogo, provocó que en 1614 apareciese una segunda parte apócrifa firmada por Alonso Fernández de Avellaneda, con pie de imprenta falso, cuyo prólogo insultaba a Cervantes. Nadie sabe con certeza quién fue Avellaneda, y las propuestas son numerosas, entre ellas la de Jerónimo de Pasamonte, defendida por Martín de Riquer.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+La verdadera segunda parte se publicó en 1615 con el título de Segunda parte del ingenioso caballero don Quijote de la Mancha. En ella los protagonistas saben que su historia ya es un libro: otros personajes han leído la primera parte y los reconocen, y Cervantes responde con ironía a Avellaneda, hasta el punto de que don Quijote y Sancho se topan con Álvaro Tarfe, un personaje de la continuación apócrifa, y le hacen jurar que el otro don Quijote es un impostor.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+La estructura de la primera parte imita la del Amadís de Gaula: la obra consta de cincuenta y dos capítulos separados en cuatro partes de 8, 6, 14 y 24 capítulos. La segunda parte tiene setenta y cuatro capítulos. Para sus primeros lectores, sin embargo, era un libro de un solo volumen, dividido internamente en cuatro partes, no la primera mitad de una obra en dos. En ambas se intercalan historias de varios géneros, como la de Grisóstomo y Marcela o la novela de El curioso impertinente, y la primera parte se narra en tres salidas: dos en la primera, con la segunda ya acompañado de Sancho, y la tercera en la segunda parte.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+El argumento arranca con un hidalgo pobre de La Mancha, Alonso Quijano, de casi cincuenta años según una fuente, que enloquece leyendo libros de caballerías y se cree caballero andante. Se pone por nombre don Quijote de la Mancha, bautiza a su caballo Rocinante, elige como dama a una labradora, Aldonza Lorenzo, a la que llama Dulcinea del Toboso, y es armado caballero en una venta que confunde con un castillo. En su segunda salida lo acompaña como escudero el labrador Sancho Panza, al que promete el gobierno de una ínsula, y juntos viven aventuras como la de los molinos de viento, que don Quijote toma por gigantes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+La técnica más característica es el contraste entre lo idealizado y lo real, que se da en todos los niveles: en el estilo, que unas veces usa toda la retórica y otras imita el lenguaje popular, y en los personajes, que Cervantes coloca en parejas para que se construyan mediante el diálogo. Con el avance de la obra, don Quijote se sanchifica y Sancho se quijotiza. A esta mezcla de puntos de vista se le llama perspectivismo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+Cervantes juega además con la metaficción. En el capítulo 9 explica que no tenía el resto del manuscrito, que atribuye a un historiador árabe, Cide Hamete Benengeli, y que lo encontró paseando por Toledo. Estos intermediarios narrativos difuminan al autor y hacen la obra menos literaria y más realista. En palabras de la crítica, la primera parte es una ficción de segundo grado, en la que el personaje influye en los hechos, y la segunda, una de tercer grado, en la que el personaje transforma los hechos y es transformado por ellos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+El lenguaje también es un recurso. Los nombres juegan con la contradicción y la ironía: Rocinante es una inversión y Dulcinea alude a la ilusión. Según una de las fuentes, don Quijote habla un castellano antiguo, imitación del de los libros de caballerías, que provoca risa porque muchas veces nadie lo entiende, mientras el resto de los personajes habla el español de finales del siglo XVI. Otra fuente añade que la oralidad del lenguaje cervantino acerca al lector a los personajes y favorece su identificación con ellos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+La obra influyó de modo enorme en la narrativa posterior: se ha llegado a decir que toda novela posterior reescribe el Quijote o lo contiene implícitamente. Sin embargo, en España Cervantes casi no tuvo seguidores hasta el realismo del siglo XIX, con Benito Pérez Galdós. Fuera de España, el Quijote dio la palabra quixotic al inglés y la expresión tilting at windmills, que significa atacar enemigos imaginarios. En 2002, en una votación entre cien escritores de 54 nacionalidades, ocupó el primer puesto entre las mejores obras literarias de la historia.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+Al leer el Quijote, distinga siempre quién cuenta cada episodio y con qué grado de fiabilidad: el narrador, el supuesto historiador árabe, don Quijote o Sancho. Anotar quién interpreta cada escena le ayudará a ver cómo el mismo hecho, como los molinos, cambia de sentido según la voz.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+Perspectivismo: procedimiento narrativo por el que cada hecho es descrito por cada personaje desde una cosmovisión distinta, de modo que la realidad se vuelve compleja y rica en matices. En el Quijote nace del diálogo entre don Quijote y Sancho; un ejemplo es la oposición entre quijotización y sanchificación que señaló Salvador de Madariaga.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxNCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+\noindent\textbf{Enunciado}
+La primera parte del Quijote se publicó en 1605 y la segunda, la auténtica, en 1615. En 1614 apareció la continuación apócrifa de Avellaneda. Calcule cuántos años separan las dos partes de Cervantes y qué porcentaje de ese intervalo había transcurrido cuando salió la obra apócrifa.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $a_{1} = 1605$ — año de la primera parte
+\item $a_{2} = 1615$ — año de la segunda parte auténtica
+\item $a_{A} = 1614$ — año de la continuación apócrifa
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Los años entre las dos partes y el porcentaje transcurrido cuando salió la apócrifa.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Intervalo entre las partes}
+
+\[
+\Delta = a_2 - a_1
+\]
+
+\noindent\textit{Porcentaje transcurrido}
+
+\[
+p = 100\,\frac{a_A - a_1}{\Delta}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Solo se cuentan años de calendario, sin distinguir el mes de publicación.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La obra apócrifa se sitúa dentro del intervalo entre las dos partes de Cervantes, así que el porcentaje debe estar entre 0 y 100.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Años entre las dos partes
+
+
+\[
+\Delta = 1615 - 1605
+\]
+
+\[
+\left(1615-1605\right) = 10
+\]
+\item
+Porcentaje transcurrido
+
+
+\[
+p = 100 \cdot (1614 - 1605)/10
+\]
+
+\[
+\frac{\left(100\cdot \left(1614-1605\right)\right)}{\left(1615-1605\right)} = 90
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+- \left(1605\right) + \left(1615\right)
+\]
+
+\noindent\textbf{Resultado}
+Entre las dos partes pasaron 10 años, y la obra apócrifa apareció cuando ya había transcurrido el 90 \% de ese intervalo.
+
+
+\noindent\textbf{Interpretación}
+Avellaneda se adelantó a Cervantes un año antes de su continuación, lo que ayuda a explicar que la segunda parte auténtica responda a su rival dentro de la propia novela.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Las fechas de portada no siempre coinciden con las de impresión: la primera parte se imprimió en diciembre de 1604 aunque lleva fecha de 1605.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Dividir por 1614 - 1605 en lugar de por el intervalo total entre las dos partes auténticas.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxNCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+
+¿Por qué se publicó una segunda parte apócrifa en 1614 y cómo responde Cervantes a ella dentro de la novela? ¿Qué diferencias hay entre la ficción de segundo grado y la de tercer grado? ¿Qué significa que don Quijote se sanchifica y Sancho se quijotiza?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImxpdC0wNiJ9
+\end{tcolorbox}
+
+\chapter{El Barroco: Lope de Vega, Góngora y Quevedo}
+\label{chap:lit-07}
+% studium:record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+\noindent\textit{El Siglo de Oro español abarca dos fases estéticas: el Renacimiento del siglo XVI y el Barroco del siglo XVII. Este capítulo estudia la segunda con tres figuras que la definen y que se conocieron y se enfrentaron entre sí: Lope de Vega, que renovó el teatro; Luis de Góngora, máximo exponente del culteranismo; y Francisco de Quevedo, escritor del conceptismo.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+El Siglo de Oro no se enmarca en fechas concretas, aunque suele situarse entre 1492 y 1659, año del Tratado de los Pirineos, y se prolonga en términos culturales hasta 1681, año de la muerte de Calderón de la Barca. El término Siglo de Oro surgió en el siglo XVIII por analogía con las edades del hombre de Hesíodo. Al lenguaje claro y popular del siglo XVI sucede en el Barroco una lengua más oscura, propia de una reacción religiosa, nobiliaria y cortesana que corresponde a una época de crisis política, económica y social.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3MSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Lope de Vega nació en Madrid el 25 de noviembre de 1562 y murió allí el 27 de agosto de 1635. Cervantes lo llamó Fénix de los ingenios y Monstruo de Naturaleza. Es, junto con Tirso de Molina y Calderón, uno de los máximos exponentes del teatro barroco español, y fue también un gran lírico: se le atribuyen unos tres mil sonetos. Su vida fue tan extrema como su obra: fue condenado al destierro por injurias contra el comediante Jerónimo Velázquez y se ordenó sacerdote el 24 de mayo de 1614, tras la muerte de su hijo Carlos Félix y de su esposa Juana de Guardo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3MiIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+La cantidad de su obra dramática no es cierta, y las fuentes discrepan. Una afirma que se le atribuyen varios centenares de comedias, hasta 1800 según su biógrafo Juan Pérez de Montalbán; otra habla de unas quinientas; otra, de alrededor de mil, de las que se conservan más de cuatrocientas. Conviene citar la cifra con su fuente y no elegir una: un lector prudente trata el número exacto como una incógnita y retiene solo lo común, que escribió centenares de comedias y que es uno de los autores más prolíficos de la literatura universal.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MiIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3MyIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+En 1609 Lope leyó ante la Academia de Madrid el Arte nuevo de hacer comedias en este tiempo, un texto en verso de 389 versos que se publicó ese mismo año junto a sus sonetos. En él defiende un teatro basado en el gusto del público de los corrales de comedias sin enfrentarse a la tradición académica: declara conocer la Poética de Aristóteles y haber compuesto seis comedias según las unidades, pero afirma haber encerrado «los preceptos con seis llaves» porque los tiempos reclamaban otro espectáculo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MyIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3NCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+La comedia nueva de Lope rompe con los preceptos clásicos en varios puntos: divide la trama en tres actos, que corresponden a planteamiento, nudo y desenlace, y adopta la tragicomedia, que mezcla lo risible y lo serio en una misma obra, rasgo muy barroco por su búsqueda de variedad y fusión de contrarios. Entre sus obras más celebradas están Peribáñez y el comendador de Ocaña (1610), Fuenteovejuna (1612-1614), La dama boba (1613) y El caballero de Olmedo, que se divide en tres episodios que corresponden a planteamiento, nudo y desenlace.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3NSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Luis de Góngora nació en Córdoba el 11 de julio de 1561 y murió allí en 1627, en la pobreza y tras perder la memoria por una grave enfermedad. Las dos fuentes difieren en un día: una fecha su muerte el 23 de mayo de 1627 y la otra el 24 de mayo. Fue canónigo de la catedral de Córdoba, sacerdote y capellán real de Felipe III desde 1617. Se le considera el poeta más original e influyente del Barroco español, y entre sus obras mayores figuran la Fábula de Polifemo y Galatea y las Soledades.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3NiIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+La poesía de Góngora suele dividirse en dos períodos. Hasta 1610 usa metros cortos y temas ligeros, como décimas, romances y letrillas; después se vuelve culterano, con metáforas difíciles, alusiones mitológicas, cultismos e hipérbatos. Dámaso Alonso demostró, sin embargo, que estas dificultades ya aparecían en su primera época y que la segunda es una intensificación de los mismos recursos por motivos estéticos. En 1613 difundió en la Corte las Soledades, que desataron una gran polémica por su oscuridad y afectación.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NiIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3NyIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Francisco de Quevedo nació en Madrid el 14 de septiembre de 1580 y murió en Villanueva de los Infantes el 8 de septiembre de 1645. Nació cojo y con severa miopía, y su nombre en plural, quevedos, pasó a designar unos anteojos. Fue caballero de la Orden de Santiago, estudió con los jesuitas y fue secretario del duque de Osuna. Escribió poesía, la novela picaresca La vida del Buscón, los Sueños y tratados políticos y morales como la Política de Dios. Hacia el final de su vida fue encarcelado en el convento de San Marcos de León sin proceso.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3NyIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+% studium:record eyJpZCI6ICJQQVItMDA3OCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Góngora y Quevedo mantuvieron una célebre enemistad, que algunos críticos consideran un ejercicio de rivalidad frecuente en la poesía barroca. Según la tradición, empezó en Valladolid hacia 1603, cuando los primeros poemas de Quevedo imitaban o parodiaban los de Góngora, y Góngora lo atacó con una serie de versos. Quevedo respondió con sátiras tan duras como «A una nariz». Hay que tomar con cautela las atribuciones de las sátiras a uno y otro, porque son bastante dudosas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3OCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA4MCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Cuando lea a Góngora, no se detenga en cada palabra difícil: identifique primero el esqueleto de la oración, desplazado por el hipérbaton, y después las alusiones mitológicas. Con Quevedo, en cambio, busque el doble sentido y la elipsis, que concentran en pocos versos lo que Góngora dispersa en un laberinto. Así distinguirá por el procedimiento, y no por la fama, una poesía de la otra.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA4MCIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA3OSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+Culteranismo y conceptismo son las dos grandes corrientes del Barroco literario español. El culteranismo, también llamado gongorismo, aboga por la perífrasis embellecedora y por la latinización de la sintaxis y el léxico mediante el hipérbaton y los cultismos. El conceptismo busca una concisión exacta, que concentre el máximo significado en las menores palabras posibles, mediante juegos de palabras y dobles sentidos; para Baltasar Gracián, el concepto es un acto del entendimiento que expresa la correspondencia que se halla entre los objetos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3OSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+\noindent\textbf{Enunciado}
+Quevedo nació el 14 de septiembre de 1580 y Góngora murió el 23 de mayo de 1627. Calcule durante cuántos años (con una cifra decimal) coincidieron vivos ambos poetas. Entre las dos fechas hay 17 052 días; use 365,25 días por año.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $d = 17052$ — días entre el 14-09-1580 y el 23-05-1627
+\item $y = 365.25$ — días por año medio
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Los años en que ambos poetas estuvieron vivos a la vez.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Años de coincidencia}
+
+\[
+T = d / y
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Ambos poetas están vivos desde el nacimiento de Quevedo hasta la muerte de Góngora.
+\item Se cuentan los días del calendario gregoriano proléptico, sin corregir los diez días de la reforma de 1582.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Como Góngora nació antes que Quevedo y murió antes, el intervalo de coincidencia va del nacimiento del más joven a la muerte del mayor.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Años de coincidencia
+
+
+\[
+T = 17052 / 365.25
+\]
+
+\[
+\frac{17052}{365.25} \approx 46.685832
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(17052\right)}{\left(365.25\right)}
+\]
+
+\noindent\textbf{Resultado}
+Coincidieron vivos unos 46,7 años.
+
+
+\noindent\textbf{Interpretación}
+Coincidieron casi medio siglo, tiempo suficiente para la enemistad literaria y para que Quevedo conociera la obra de Góngora, que circulaba en manuscritos.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La corrección de diez días del calendario cambia el resultado en 0,03 años, que no altera la cifra redondeada.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Restar solo los años 1627 - 1580 = 47, que ignora los meses y exagera el intervalo en unos cuatro meses.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAxNSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA4MSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+
+¿Qué defendió Lope en el Arte nuevo y por qué lo hizo ante la Academia? ¿En qué se diferencian el culteranismo de Góngora y el conceptismo de Quevedo? ¿Por qué debe citarse con su fuente el número de comedias de Lope?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA4MSIsICJzZWN0aW9uIjogImxpdC0wNyJ9
+\end{tcolorbox}
+\appendix
+\chapter{Soluciones}
+
+\section{La épica castellana: el Cantar de mio Cid}
+
+\noindent\textbf{Problema resuelto [PRB-0009]}
+
+Según la numeración tradicional de versos del Cantar de mio Cid, el tercer cantar, el de la afrenta de Corpes, comprende los versos 2278 a 3730, y el poema completo llega hasta el verso 3730. Calcule cuántos versos tiene ese cantar y qué porcentaje del poema representa.
+
+
+\noindent\textbf{Respuesta}
+El tercer cantar tiene 1453 versos, es decir, aproximadamente el 38,95 \% del poema.
+
+
+\section{El mester de clerecía y Gonzalo de Berceo}
+
+\noindent\textbf{Problema resuelto [PRB-0010]}
+
+Una cuaderna vía está formada por cuatro versos alejandrinos de catorce sílabas. Un poema hipotético en cuaderna vía tiene 120 estrofas. Calcule cuántos versos y cuántas sílabas métricas nominales contiene, y cuántas sílabas corresponden a cada hemistiquio de siete.
+
+
+\noindent\textbf{Respuesta}
+El poema tiene 480 versos y 6720 sílabas nominales; cada hemistiquio tiene 7.
+
+
+\section{Del Libro de buen amor a las Coplas de Jorge Manrique}
+
+\noindent\textbf{Problema resuelto [PRB-0011]}
+
+Las Coplas de Manrique tienen cuarenta estrofas de doce versos. Según una división habitual, la tercera parte, dedicada al padre del poeta, abarca las coplas XXV a XL. Calcule cuántas estrofas y cuántos versos tiene esa parte y qué porcentaje del poema representa.
+
+
+\noindent\textbf{Respuesta}
+La tercera parte tiene 16 coplas y 192 versos, el 40 \% del poema.
+
+
+\section{La Celestina y la narrativa del Renacimiento: el Lazarillo}
+
+\noindent\textbf{Problema resuelto [PRB-0012]}
+
+La Comedia de Calisto y Melibea tiene dieciséis actos y la Tragicomedia añade cinco más. Calcule cuántos actos tiene la Tragicomedia y en qué porcentaje aumentó el número de actos respecto de la Comedia.
+
+
+\noindent\textbf{Respuesta}
+La Tragicomedia tiene 21 actos, un 31,25 \% más que la Comedia.
+
+
+\section{Garcilaso de la Vega y la lírica renacentista}
+
+\noindent\textbf{Problema resuelto [PRB-0013]}
+
+Las fuentes coinciden en que Garcilaso escribió cuarenta sonetos, cinco canciones, ocho coplas castellanas, tres églogas, dos elegías y una epístola. Calcule cuántas composiciones castellanas suman estas categorías y qué porcentaje de ellas son sonetos (sin contar la oda en liras, que solo cita una de las fuentes).
+
+
+\noindent\textbf{Respuesta}
+Suman 59 composiciones, y aproximadamente el 67,8 \% son sonetos.
+
+
+\section{Cervantes y el Quijote}
+
+\noindent\textbf{Problema resuelto [PRB-0014]}
+
+La primera parte del Quijote se publicó en 1605 y la segunda, la auténtica, en 1615. En 1614 apareció la continuación apócrifa de Avellaneda. Calcule cuántos años separan las dos partes de Cervantes y qué porcentaje de ese intervalo había transcurrido cuando salió la obra apócrifa.
+
+
+\noindent\textbf{Respuesta}
+Entre las dos partes pasaron 10 años, y la obra apócrifa apareció cuando ya había transcurrido el 90 \% de ese intervalo.
+
+
+\section{El Barroco: Lope de Vega, Góngora y Quevedo}
+
+\noindent\textbf{Problema resuelto [PRB-0015]}
+
+Quevedo nació el 14 de septiembre de 1580 y Góngora murió el 23 de mayo de 1627. Calcule durante cuántos años (con una cifra decimal) coincidieron vivos ambos poetas. Entre las dos fechas hay 17 052 días; use 365,25 días por año.
+
+
+\noindent\textbf{Respuesta}
+Coincidieron vivos unos 46,7 años.
+
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 29 pendientes. Los conflictos almacenados quedan fuera (0). Un libro de tema no usa una guía universitaria, así que no citada no es una regla de apoyo. Recuento de no citadas: 0.
+
+\noindent ¶1\(-\)¶81: dos testimonios.
+
+\medskip
+
+\noindent Cantar de mio Cid \(-\) Wikipedia, la enciclopedia libre (PENDING) --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P8, \P9, \P10.
+
+\noindent Cantar de mio Cid \(-\) Wikipedia (en) (PENDING) --- \P1, \P2, \P3, \P4, \P5, \P6, \P7, \P9, \P10.
+
+\noindent Mester de clerecía \(-\) Wikipedia (es) (PENDING) --- \P8, \P11, \P12, \P13, \P14, \P18, \P19, \P20, \P26.
+
+\noindent Mester de clerecía \(-\) Wikipedia (en) (PENDING) --- \P11, \P12, \P13, \P14, \P18, \P19, \P20, \P21.
+
+\noindent Gonzalo de Berceo \(-\) Wikipedia (es) (PENDING) --- \P15, \P16, \P17, \P21.
+
+\noindent Gonzalo de Berceo \(-\) Wikipedia (en) (PENDING) --- \P15, \P16, \P17.
+
+\noindent Libro de buen amor \(-\) Wikipedia (es) (PENDING) --- \P22, \P23, \P24, \P25, \P26, \P33.
+
+\noindent The Book of Good Love \(-\) Wikipedia (en) (PENDING) --- \P22, \P23, \P24, \P25.
+
+\noindent Coplas por la muerte de su padre \(-\) Wikipedia (es) (PENDING) --- \P27, \P28, \P29, \P30, \P31, \P32.
+
+\noindent Jorge Manrique \(-\) Wikipedia (en) (PENDING) --- \P27, \P28, \P29, \P30, \P31, \P32, \P33.
+
+\noindent La Celestina \(-\) Wikipedia (es) (PENDING) --- \P34, \P35, \P36, \P37, \P38.
+
+\noindent Lazarillo de Tormes \(-\) Wikipedia (en) (PENDING) --- \P34, \P39, \P40, \P41, \P42.
+
+\noindent La Celestina \(-\) Wikipedia (en) (PENDING) --- \P35, \P36, \P37, \P38, \P43, \P44.
+
+\noindent La vida de Lazarillo de Tormes \(-\) Wikipedia (es) (PENDING) --- \P39, \P40, \P41, \P42, \P43, \P44.
+
+\noindent Garcilaso de la Vega \(-\) Wikipedia (es) (PENDING) --- \P45, \P46, \P47, \P48, \P49, \P50, \P51, \P52, \P53, \P54, \P55.
+
+\noindent Garcilaso de la Vega (poet) \(-\) Wikipedia (en) (PENDING) --- \P45, \P46, \P47, \P48, \P49, \P50, \P51, \P52, \P53, \P54, \P55.
+
+\noindent Don Quijote de la Mancha \(-\) Wikipedia (es) (PENDING) --- \P56, \P57, \P58, \P59, \P60, \P61, \P62, \P63, \P64, \P65, \P66, \P67, \P68.
+
+\noindent Don Quixote \(-\) Wikipedia (en) (PENDING) --- \P56, \P57, \P58, \P59, \P60, \P61, \P62, \P63, \P64, \P65, \P66, \P67, \P68.
+
+\noindent Siglo de Oro \(-\) Wikipedia (es) (PENDING) --- \P69, \P70.
+
+\noindent Spanish Golden Age \(-\) Wikipedia (en) (PENDING) --- \P69, \P70, \P72, \P81.
+
+\noindent Lope de Vega \(-\) Wikipedia (es) (PENDING) --- \P71, \P72, \P73, \P74.
+
+\noindent Lope de Vega \(-\) Wikipedia (en) (PENDING) --- \P71, \P72.
+
+\noindent Arte nuevo de hacer comedias en este tiempo \(-\) Wikipedia (es) (PENDING) --- \P73, \P74, \P81.
+
+\noindent Luis de Góngora \(-\) Wikipedia (es) (PENDING) --- \P75, \P76, \P78.
+
+\noindent Luis de Góngora \(-\) Wikipedia (en) (PENDING) --- \P75, \P76, \P78, \P80.
+
+\noindent Francisco de Quevedo \(-\) Wikipedia (es) (PENDING) --- \P77, \P78.
+
+\noindent Francisco de Quevedo \(-\) Wikipedia (en) (PENDING) --- \P77, \P79.
+
+\noindent Culteranismo \(-\) Wikipedia (es) (PENDING) --- \P79, \P80.
+
+\noindent Conceptismo \(-\) Wikipedia (es) (PENDING) --- \P79, \P80.
+
+\noindent REV-0001\(-\)REV-0164: literary
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Cantar de mio Cid \(-\) Wikipedia, la enciclopedia libre. \url{https://es.wikipedia.org/wiki/Cantar_de_mio_Cid}
+\bibitem{src2} Cantar de mio Cid \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Cantar_de_mio_Cid}
+\bibitem{src3} Mester de clerecía \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Mester_de_clerec%C3%ADa}
+\bibitem{src4} Mester de clerecía \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Mester_de_clerec%C3%ADa}
+\bibitem{src5} Gonzalo de Berceo \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Gonzalo_de_Berceo}
+\bibitem{src6} Gonzalo de Berceo \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Gonzalo_de_Berceo}
+\bibitem{src7} Libro de buen amor \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Libro_de_buen_amor}
+\bibitem{src8} The Book of Good Love \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Book_of_Good_Love}
+\bibitem{src9} Coplas por la muerte de su padre \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Coplas_por_la_muerte_de_su_padre}
+\bibitem{src10} Jorge Manrique \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Jorge_Manrique}
+\bibitem{src11} La Celestina \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/La_Celestina}
+\bibitem{src12} La Celestina \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/La_Celestina}
+\bibitem{src13} Garcilaso de la Vega \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Garcilaso_de_la_Vega}
+\bibitem{src14} La vida de Lazarillo de Tormes \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/La_vida_de_Lazarillo_de_Tormes}
+\bibitem{src15} Lazarillo de Tormes \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Lazarillo_de_Tormes}
+\bibitem{src16} Don Quijote de la Mancha \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Don_Quijote_de_la_Mancha}
+\bibitem{src17} Don Quixote \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Don_Quixote}
+\bibitem{src18} Lope de Vega \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Lope_de_Vega}
+\bibitem{src19} Lope de Vega \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Lope_de_Vega}
+\bibitem{src20} Arte nuevo de hacer comedias en este tiempo \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Arte_nuevo_de_hacer_comedias_en_este_tiempo}
+\bibitem{src21} Luis de Góngora \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Luis_de_G%C3%B3ngora}
+\bibitem{src22} Luis de Góngora \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Luis_de_G%C3%B3ngora}
+\bibitem{src23} Francisco de Quevedo \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Francisco_de_Quevedo}
+\bibitem{src24} Francisco de Quevedo \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Francisco_de_Quevedo}
+\bibitem{src25} Culteranismo \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Culteranismo}
+\bibitem{src26} Conceptismo \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Conceptismo}
+\bibitem{src27} Siglo de Oro \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Siglo_de_Oro}
+\bibitem{src28} Spanish Golden Age \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Spanish_Golden_Age}
+\bibitem{src29} Garcilaso de la Vega (poet) \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Garcilaso_de_la_Vega_(poet)}
+\end{thebibliography}
+\end{document}

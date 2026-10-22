@@ -1,0 +1,1373 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{upquote}
+\usepackage{accsupp}
+\usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\contentsname}{Índice}}
+\AtBeginDocument{\spanishdeactivate{"~<>}}
+\addto\extrasspanish{\spanishdeactivate{"~<>}}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\filright}{\large\scshape\chaptertitlename\ \thechapter}{1ex}{\huge\bfseries}
+\titlespacing*{\chapter}{0pt}{2.5ex plus 1ex minus .2ex}{2.3ex}
+\titleformat{name=\chapter,numberless}[display]
+  {\normalfont\filright}{}{0pt}{\huge\bfseries}
+\titleformat{\section}{\Large\bfseries}{{\thesection}}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{{\thesubsection}}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{longtable}
+\newcounter{studiumfigure}
+\definecolor{studiumInk}{RGB}{28,40,58}
+\definecolor{studiumRule}{RGB}{28,40,58}
+\definecolor{studiumTipBack}{RGB}{232,244,236}
+\definecolor{studiumTipFrame}{RGB}{27,107,58}
+\definecolor{studiumDefBack}{RGB}{232,240,250}
+\definecolor{studiumDefFrame}{RGB}{24,74,130}
+\definecolor{studiumWorkedBack}{RGB}{255,244,230}
+\definecolor{studiumWorkedFrame}{RGB}{138,78,12}
+\definecolor{studiumCheckBack}{RGB}{243,236,248}
+\definecolor{studiumCheckFrame}{RGB}{96,48,130}
+\definecolor{studiumCodeBack}{RGB}{245,245,242}
+\definecolor{studiumCodeRule}{RGB}{48,48,52}
+\usepackage{listings}
+\lstset{defaultdialect=[5.3]Lua}
+\lstdefinelanguage{Rust}{
+  morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,loop,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,unsafe,use,where,while},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,for,func,go,goto,if,import,interface,map,package,range,return,select,struct,switch,type,var},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"}
+}
+\lstdefinelanguage{JavaScript}{
+  morekeywords={break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,let,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]{"},
+  morestring=[b]{'},
+}
+\lstdefinestyle{studium}{
+  basicstyle=\ttfamily\small,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  frame=leftline,
+  framerule=1.15pt,
+  rulecolor=\color{studiumCodeRule},
+  backgroundcolor=\color{studiumCodeBack},
+  xleftmargin=1.15em,
+  framexleftmargin=0.75em,
+  aboveskip=0.9em,
+  belowskip=0.7em,
+  tabsize=4,
+  keywordstyle=\ttfamily\bfseries,
+  commentstyle=\ttfamily\itshape,
+  stringstyle=\ttfamily
+}
+\lstset{style=studium}
+\usepackage[breakable,skins]{tcolorbox}
+\tcbset{
+  studiumtip/.style={colback=studiumTipBack,colframe=studiumTipFrame,colbacktitle=studiumTipFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumdef/.style={colback=studiumDefBack,colframe=studiumDefFrame,colbacktitle=studiumDefFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumworked/.style={colback=studiumWorkedBack,colframe=studiumWorkedFrame,colbacktitle=studiumWorkedFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt},
+  studiumcheck/.style={colback=studiumCheckBack,colframe=studiumCheckFrame,colbacktitle=studiumCheckFrame,coltitle=white,coltext=black,fonttitle=\bfseries,boxrule=0.65pt,arc=0.7pt,left=1.7mm,right=1.7mm,top=1.3mm,bottom=1.3mm,before skip=10pt,after skip=10pt}
+}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.7em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\thepage\hspace{1.5em}\scshape\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\scshape\nouppercase{\rightmark}\hspace{1.5em}\thepage}
+\fancyfoot[C]{\small Borrador}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\small Borrador}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{1.5em}
+\makeatletter
+\@openrightfalse
+\let\cleardoublepage\clearpage
+\makeatother
+\begin{document}
+\frontmatter
+\ifdefined\studiumcustomtitle
+\studiumcustomtitle
+\else
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\vspace*{0.08\textheight}
+{\normalsize\scshape\color{studiumInk} Studium\par}
+\vspace{0.55em}
+{\color{studiumRule}\rule{\linewidth}{0.9pt}\par}
+\vspace{0.16\textheight}
+{\raggedright\Huge\bfseries Biología celular y molecular\par}
+\vspace{0.9em}
+{\raggedright\Large\color{studiumInk} Apuntes de trabajo\par}
+\vfill
+{\color{studiumRule}\rule{0.36\linewidth}{0.45pt}\par}
+\vspace{1.05em}
+{\large\scshape Borrador\par}
+\vspace{0.45em}
+{\normalsize Edición 0.1.0 --- No publicado\par}
+\vspace{0.4em}
+{\normalsize\today\par}
+\vspace*{0.08\textheight}
+\clearpage
+\fi
+\chapter{Prefacio}
+\noindent Este libro presenta el tema con el lenguaje del curso. Cada capítulo abre con una entrada breve, sigue con la explicación y cierra con un problema resuelto y una autoficha.
+\chapter{Cómo usar este libro}
+\noindent Lee el capítulo seguido. El consejo, la definición, el problema resuelto y la autoficha van en recuadros. La explicación es el cuerpo del texto.
+
+\noindent Un capítulo lleva una entrada en cursiva, la explicación en el cuerpo, como mucho un consejo, definiciones solo al introducir un término, un problema resuelto y una autoficha.
+\tableofcontents
+\mainmatter
+\part{Biología celular y molecular}
+
+\chapter{La célula como unidad de la vida}
+\label{chap:bio-01}
+% studium:record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+\noindent\textit{La célula es la unidad de estructura y función de los seres vivos. Este capítulo presenta la teoría celular, distingue las células procariotas de las eucariotas, da órdenes de magnitud de sus tamaños y explica por qué el tamaño de una célula no es arbitrario, para llegar a un cálculo sencillo de la relación entre superficie y volumen.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Las células se descubrieron en 1665, cuando Robert Hooke las observó y las llamó así por su parecido con las celdas de un monasterio. La teoría celular se desarrolló a partir de los trabajos de Matthias Schleiden, en 1838 para los vegetales, y de Theodor Schwann, en 1839 para los animales. Postula que todos los organismos están compuestos por una o más células, que la célula es la unidad fundamental de estructura y función de todos los organismos, y que todas las células derivan de otras preexistentes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMiIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+El último postulado se asocia a Rudolf Virchow, que en 1855 afirmó que las células nuevas proceden de otras por división celular, y lo resumió en la frase omnis cellula ex cellula. Con ese postulado cada célula se entiende como descendiente de otra. Eso explica por qué la división celular y la replicación del ADN, que se estudian en los capítulos siguientes, ocupan un lugar central en la biología.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwMyIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Los organismos se agrupan en procariotas y eucariotas. Las células procariotas, que son las de las bacterias y las arqueas, no tienen un núcleo rodeado por una membrana y poseen en cambio una región llamada nucleoide. En las células eucariotas, el núcleo está encerrado por la membrana nuclear y hay además otros orgánulos delimitados por membranas, como las mitocondrias, que proporcionan energía a la célula, y los cloroplastos de las plantas, que producen azúcares por fotosíntesis. Los organismos procariotas son unicelulares, mientras que los eucariotas pueden ser unicelulares o pluricelulares.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+El tamaño varía en órdenes de magnitud. Una fuente indica que las células suelen medir unos \(10\,\mu\mathrm{m}\) y tener una masa de 1 ng, aunque existen células mucho mayores. La célula más pequeña observada en condiciones normales es Mycoplasma genitalium, de \(0{,}2\,\mu\mathrm{m}\), cerca del límite teórico de \(0{,}17\,\mu\mathrm{m}\). Los procariotas más pequeños miden entre 0,1 y \(5{,}0\,\mu\mathrm{m}\) de diámetro, y existen bacterias de 1 a \(2\,\mu\mathrm{m}\) de longitud; en cambio, la bacteria más grande conocida, Thiomargarita magnifica, es visible a simple vista, con una longitud media de 1 cm.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Entre las células humanas hay también una gran variedad: los glóbulos rojos miden unas 7 micras, los hepatocitos 20 micras, los espermatozoides \(53\,\mu\mathrm{m}\) y los óvulos \(150\,\mu\mathrm{m}\), y algunas neuronas llegan a tener en torno a un metro de longitud. El número de células de un organismo también varía mucho: de unos pocos cientos en algunos nematodos a cientos de billones \((10^{14})\) en el ser humano, según una fuente, y entre 10 y 100 billones según otra.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNiIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Las dos cifras sobre el número de células humanas son compatibles solo si se interpretan con cuidado. En español, un billón es un millón de millones, es decir, \(10^{12}\); «cientos de billones» son entonces cientos de \(10^{12}\), hasta \(10^{14}\). La otra fuente, en inglés, usa trillion con el mismo valor de \(10^{12}\) y da entre 10 y 100 de ellos, es decir, entre \(10^{13}\) y \(10^{14}\). Los dos intervalos coinciden en el extremo superior, y la fuente en español queda con el de mayor magnitud. Es un ejemplo de por qué una cifra con nombre de orden de magnitud debe escribirse también en potencias de diez.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwNyIsICJzZWN0aW9uIjogImJpby0wMSJ9
+% studium:record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Las células no pueden crecer sin límite, y una razón es geométrica. Para una célula esférica de radio r, la superficie crece con r al cuadrado y el volumen con r al cubo, de modo que la relación superficie/volumen es 3/r y disminuye al aumentar el radio. Una célula más grande tiene, por unidad de volumen, menos membrana por la que absorber nutrientes y expulsar desechos. Este razonamiento es una inferencia geométrica y no un resultado que las fuentes citen, pero encaja con lo que dicen las fuentes: el tamaño típico es de unos \(10\,\mu\mathrm{m}\) y las células mucho mayores son una excepción.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Cuando una fuente dé una magnitud con unidad, como \(10\,\mu\mathrm{m}\) o 1 ng, haga un cálculo de plausibilidad antes de usarla. Una esfera de \(10\,\mu\mathrm{m}\) de diámetro con una masa de 1 ng tendría una densidad cercana a \(1{,}9\,\mathrm{g/cm}^{3}\), casi el doble de la del agua, lo que indica que las dos cifras son órdenes de magnitud típicos y no medidas de una misma célula.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMCIsICJzZWN0aW9uIjogImJpby0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+Célula: unidad básica de estructura y función de los seres vivos. Una célula procariota carece de núcleo rodeado por membrana; una eucariota tiene núcleo y orgánulos delimitados por membranas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAwOSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+\noindent\textbf{Enunciado}
+Una fuente da longitudes de 1 a \(2\,\mu\mathrm{m}\) para bacterias y de \(20\,\mu\mathrm{m}\) para los hepatocitos humanos. Suponiendo células esféricas de diámetro \(2\,\mu\mathrm{m}\) y \(20\,\mu\mathrm{m}\), calcule la relación superficie/volumen de cada una y cuántas veces mayor es la de la bacteria.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $d_{b} = 2$ — diámetro de la bacteria, en \(\mu\mathrm{m}\)
+\item $d_{h} = 20$ — diámetro del hepatocito, en \(\mu\mathrm{m}\)
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+La relación superficie/volumen de cada célula y su cociente.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Esfera de radio r}
+
+\[
+\frac{S}{V} = \frac{4\pi r^{2}}{\frac{4}{3}\pi r^{3}} = \frac{3}{r}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Las dos células se modelan como esferas, aunque las bacterias suelen ser bastones y los hepatocitos son poliédricos.
+\item El diámetro de la bacteria se toma de la longitud de \(2\,\mu\mathrm{m}\) que da la fuente.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+El radio es la mitad del diámetro; la relación depende solo del radio.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Relación de la bacteria
+
+
+\[
+S/V = 3/r = 3/1
+\]
+
+\[
+\frac{3}{1} = 3
+\]
+\item
+Relación del hepatocito
+
+
+\[
+S/V = 3/r = 3/10
+\]
+
+\[
+\frac{3}{10} \approx 0.3
+\]
+\item
+Cociente entre ambas
+
+
+\[
+3 / 0{,}3
+\]
+
+\[
+\frac{3}{0.3} = 10
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+La relación superficie/volumen es \(3\,\mu\mathrm{m}^{-1}\) en la bacteria y \(0{,}3\,\mu\mathrm{m}^{-1}\) en el hepatocito, y la de la bacteria es 10 veces mayor.
+
+
+\noindent\textbf{Interpretación}
+Por cada unidad de volumen, la bacteria dispone de diez veces más membrana que el hepatocito, lo que favorece el intercambio de sustancias.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La forma real de las células modifica la relación; el cálculo solo da el orden de magnitud.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Usar el diámetro en vez del radio en 3/r, que divide la relación entre dos.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+
+¿Qué afirma la teoría celular? ¿En qué se diferencia una célula procariota de una eucariota? ¿Por qué una célula más grande tiene menos superficie por unidad de volumen?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMSIsICJzZWN0aW9uIjogImJpby0wMSJ9
+\end{tcolorbox}
+
+\chapter{La membrana plasmática y el transporte de iones}
+\label{chap:bio-02}
+% studium:record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+\noindent\textit{La membrana plasmática separa el interior de la célula del medio exterior y controla lo que entra y sale. Este capítulo explica su estructura de bicapa lipídica, cómo se llegó a ella, cómo la bomba de sodio y potasio crea gradientes de iones y cómo la ecuación de Nernst relaciona esos gradientes con el potencial de membrana.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+La membrana plasmática es una bicapa lipídica formada sobre todo por fosfolípidos, que son anfipáticos: tienen una cabeza fosfato hidrofílica y colas hidrofóbicas, y por eso se agrupan en capas sin aporte de energía. Los lípidos de membrana son insolubles en agua. Las membranas de eucariotas y de algunas arqueas contienen además esteroles, como el colesterol en los animales, que mantienen una fluidez adecuada a distintas temperaturas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxMyIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+La membrana contiene también proteínas. Las proteínas integrales atraviesan la membrana y actúan como transportadores; las periféricas se unen a su superficie y actúan como enzimas. Entre las funciones de la membrana están la protección de la célula, el anclaje del citoesqueleto, la semipermeabilidad, la ósmosis para la difusión pasiva de solutos y la unión entre células mediante proteínas especializadas, como las cadherinas, que forman tejidos.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+La membrana no se conoció de golpe. En 1895 Ernest Overton propuso que las membranas celulares estaban hechas de lípidos. En 1925 Gorter y Grendel extrajeron los lípidos de glóbulos rojos humanos, midieron la superficie que cubrían al extenderlos sobre agua y compararon esa superficie con la de las células de las que procedían: la razón fue de aproximadamente 2 a 1, de lo que concluyeron que la membrana contiene una bicapa lipídica. Eligieron los glóbulos rojos porque no tienen orgánulos membranosos que interfieran con el análisis.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+Las fuentes dan una medida aproximada del grosor de la membrana de 7,4 nm (74 Å), demasiado pequeña para verse con el microscopio óptico pero visible con el electrónico. La otra fuente recoge una medida histórica distinta: en 1925 se determinó que el grosor de las membranas de eritrocitos y de levaduras estaba entre 3,3 y 4 nm, compatible con una monocapa lipídica. La fuente en inglés añade que la elección de la constante dieléctrica usada en aquellos estudios fue puesta en duda, y presenta la medida como parte de la historia de la discusión sobre la bicapa, no como una estimación actual.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+Muchas sustancias necesitan transporte activo, que consume energía. La bomba de sodio y potasio, o Na+/K+-ATPasa, es una enzima que se encuentra en la membrana plasmática de todas las células animales. Por cada molécula de ATP que usa, exporta tres iones de sodio e importa dos de potasio, de modo que cada ciclo saca una carga positiva neta. El efecto es una concentración extracelular de sodio cinco veces mayor que la intracelular y una concentración intracelular de potasio treinta veces mayor que la extracelular.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxNyIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+La bomba fue descubierta en 1957 por el científico danés Jens Christian Skou, que recibió el Premio Nobel en 1997. Mantiene el potencial de reposo, interviene en el transporte y regula el volumen celular. Es responsable de mantener las diferencias de concentración de sodio y de potasio a través de la membrana y de establecer un voltaje eléctrico negativo en el interior de las células. Es una ATPasa de tipo P: sufre fosforilaciones reversibles durante el transporte.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+% studium:record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+La ecuación de Nernst permite calcular el potencial de un ion de carga z a través de una membrana a partir de sus concentraciones dentro y fuera de la célula. Para un ion con una sola especie permeable en equilibrio, el potencial de membrana coincide con su potencial de Nernst. A temperatura ambiente \((25 ^{\circ}C)\) la tensión térmica RT/F vale aproximadamente 25,693 mV. En la célula real, el potencial de membrana se acerca al de Nernst del potasio porque la membrana es muy permeable a ese ion.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAxOSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+Al aplicar la ecuación de Nernst, fije primero el signo: con el ion fuera sobre dentro en el logaritmo, un ion positivo más concentrado dentro que fuera da un potencial negativo. Comprobarlo con el potasio, que está treinta veces más concentrado en el interior, evita errores de signo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMSIsICJzZWN0aW9uIjogImJpby0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+Transporte activo: transporte de una sustancia a través de la membrana en contra de su gradiente de concentración, que consume energía en forma de ATP. La bomba de sodio y potasio es el ejemplo clásico.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMCIsICJzZWN0aW9uIjogImJpby0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+\noindent\textbf{Enunciado}
+Según una fuente, la concentración intracelular de potasio es 30 veces la extracelular. Con una tensión térmica de 25,693 mV a \(25\,{}^{\circ}\mathrm{C}\) y z = +1, calcule el potencial de Nernst del potasio, \(E = V_T\) ln([K]fuera/[K]dentro), en milivoltios.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $V_{T} = 25.693\,\mathrm{mV}$ — tensión térmica RT/F a \(25\,{}^{\circ}\mathrm{C}\)
+\item $r = 30$ — cociente [K]dentro/[K]fuera
+\item $z = 1$ — carga del ion potasio
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+El potencial de Nernst del potasio.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Potencial de Nernst}
+
+\[
+E_{K} = \frac{V_T}{z}\,\ln\frac{[K]_{\mathrm{fuera}}}{[K]_{\mathrm{dentro}}}
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item La membrana solo es permeable al potasio y está en equilibrio.
+\item Se usan concentraciones en lugar de actividades.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+El potasio está 30 veces más concentrado dentro, así que el cociente fuera/dentro es 1/30 y su logaritmo es negativo.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Logaritmo del cociente
+
+
+\[
+\ln(1/30)
+\]
+
+\[
+\operatorname{log}\left(\frac{1}{30}\right) \approx -3.4011974
+\]
+\item
+Potencial de Nernst
+
+
+\[
+E_K = 25{,}693 \cdot \ln(1/30)
+\]
+
+\[
+\left(25.693\cdot \operatorname{log}\left(\frac{1}{30}\right)\right) \approx -87.386964\quad \mathrm{mV}
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(25.693\,\mathrm{mV}\right) \log{\left(\frac{1}{\left(30\right)} \right)}}{\left(1\right)}
+\]
+
+\noindent\textbf{Resultado}
+El potencial de Nernst del potasio es de unos -87,4 mV a \(25\,{}^{\circ}\mathrm{C}\).
+
+
+\noindent\textbf{Interpretación}
+El valor es negativo porque el potasio sale de la célula siguiendo su gradiente, y es cercano al potencial de reposo de las células animales, que es negativo en el interior.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item A la temperatura corporal de \(37\,{}^{\circ}\mathrm{C}\) la tensión térmica es algo mayor y el potencial cambia en proporción.
+\item El potencial de reposo real también depende de otros iones, como el sodio.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Invertir el cociente de concentraciones, que da un potencial positivo.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+
+¿Por qué la bicapa lipídica se forma sin aporte de energía? ¿Cuántos iones de cada tipo mueve la bomba de sodio y potasio por ATP y qué carga neta exporta? ¿Qué tensión térmica se usa en la ecuación de Nernst a \(25\,{}^{\circ}\mathrm{C}\)?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMiIsICJzZWN0aW9uIjogImJpby0wMiJ9
+\end{tcolorbox}
+
+\chapter{Energía celular: ATP, mitocondrias y respiración}
+\label{chap:bio-03}
+% studium:record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+\noindent\textit{Las células obtienen la energía que usan de una molécula, el ATP, y la producen sobre todo en las mitocondrias mediante la respiración celular. Este capítulo describe el ATP y su energía, las etapas de la respiración, cuánto ATP rinde una molécula de glucosa y por qué las fuentes dan cifras distintas, y el papel de las mitocondrias.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+El ATP, adenosín trifosfato, está formado por un azúcar de tipo ribosa unido a una base nitrogenada, la adenina, y a tres grupos fosfato. Su fórmula molecular es C10H16N5O13P3. Se produce durante la fotofosforilación y la respiración celular, y lo consumen muchas enzimas en la catálisis de numerosos procesos. Cuando se consume en un proceso metabólico, el ATP se convierte en ADP o en AMP, y otros procesos, como la fosforilación oxidativa, lo regeneran.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+Las fuentes dan dos valores para la energía del ATP y es importante no confundirlos. La hidrólisis de ATP a ADP y fosfato inorgánico libera \(-30,5 kJ/mol (-7,3 kcal/mol)\) en condiciones estándar, cuando todos los metabolitos están a 1 mol/L. En cambio, el inicio de una de las fuentes habla de una energía libre de aproximadamente 58 kJ/mol para impulsar los procesos celulares. La fuente explica que la energía libre real depende de las concentraciones y que, en condiciones citoplasmáticas, con la relación ADP/ATP a diez órdenes de magnitud del equilibrio, es de alrededor de \(-57 kJ/mol\). Así, 30,5 kJ/mol es la cifra estándar y los 58 kJ/mol del inicio de la fuente son una cifra en condiciones celulares, no una contradicción.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+El ATP no se almacena, se recicla. Un adulto recicla cada día, por síntesis e hidrólisis, unos 50 kilogramos de ATP, que son unos 100 moles. La energía usada por las células de un adulto exige la hidrólisis de entre 100 y 150 mol de ATP al día, de modo que una persona usa en un día una cantidad de ATP comparable a su peso. Cada molécula de ATP se recicla entre 1000 y 1500 veces en un solo día, a unos \(9\times10^{20}\) moléculas por segundo. Las células vivas mantienen la proporción de ATP a ADP lejos del equilibrio, con concentraciones de ATP cinco veces mayores que la de ADP.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNiIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+La respiración celular es un proceso metabólico que consiste en oxidar nutrientes y obtener energía de ellos en forma de ATP, para lo cual se requiere un aceptor final de electrones. Si el aceptor es el oxígeno, se habla de respiración aeróbica, y si es otra molécula, de respiración anaeróbica. Los carbohidratos, lípidos y proteínas pueden consumirse como fuente de energía y terminan oxidados a dióxido de carbono y agua. En las eucariotas, la respiración aeróbica tiene lugar en las mitocondrias, aunque la fase previa de glucólisis es citosólica.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyNyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+La respiración aeróbica se produce en tres etapas: glucólisis, ciclo de Krebs y cadena de transporte de electrones. La glucólisis consta de diez reacciones enzimáticas en las que la glucosa, de seis carbonos, se convierte en dos moléculas de piruvato, de tres carbonos, sin pérdida de carbono en forma de CO2. Los electrones que pierden los sustratos son recogidos por coenzimas y se transfieren a la cadena de transporte de electrones, donde se produce ATP durante la fosforilación oxidativa. También se producen pequeñas cantidades de ATP en la glucólisis y en el ciclo de Krebs por fosforilación a nivel de sustrato.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+El rendimiento de ATP por molécula de glucosa muestra cómo cambia una cifra al precisar su condición. Se suele decir que el máximo teórico es de 36 a 38 ATP, con 2 de la glucólisis, 2 del ciclo de Krebs y el resto de la fosforilación oxidativa. Pero las dos fuentes advierten de que esa cifra no se alcanza porque hay pérdidas por membranas con fugas y por el coste de mover piruvato, fosfato y ADP a la matriz mitocondrial, y estiman en condiciones reales entre 29 y 30 ATP por glucosa.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAyOSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+Las dos fuentes comparan también la respiración aeróbica con la fermentación anaerobia, que produce solo 2 ATP por glucosa, pero dan razones distintas: una dice que el metabolismo aeróbico es 19 veces más eficiente y la otra que lo es hasta 15 veces. Los dos números son coherentes con el rendimiento que cada una tiene en mente: 38 dividido entre 2 es 19, y 30 dividido entre 2 es 15. La diferencia de «19 veces» frente a «15 veces» se debe, por tanto, a si se usa el máximo teórico o la estimación realista, no a un desacuerdo sobre la fermentación.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+Las mitocondrias son orgánulos con doble membrana que usan respiración aeróbica para generar ATP, que se emplea en toda la célula como fuente de energía química. Fueron descubiertas por Albert von Kölliker en 1857 en los músculos voluntarios de insectos, y el término mitocondria, «gránulo en forma de hilo», lo acuñó Carl Benda en 1898. Contienen sus propios cromosomas pequeños.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+% studium:record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+Según la teoría endosimbiótica, hace unos 2500 millones de años una célula procariota capaz de usar oxígeno molecular como oxidante fue fagocitada por otra célula sin ser digerida, y se estableció una simbiosis permanente en la que la célula fagocitada proporcionaba energía en forma de ATP. Es la base de la aceptación general de la simbiogénesis: los ancestros procariotas de las mitocondrias modernas se fusionaron con células eucariotas hace mucho tiempo. Las mitocondrias, y por tanto su ADN, se heredan solo de la madre, con raras excepciones.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMiIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+Cuando dos fuentes den cifras de rendimiento distintas, pregunte siempre por la condición: máximo teórico o estimación real, condiciones estándar o fisiológicas. Compruebe además si la razón que citan, como 19 o 15 veces, sale de dividir sus propias cifras.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNCIsICJzZWN0aW9uIjogImJpby0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+ATP: nucleótido formado por adenina, ribosa y tres grupos fosfato, que transfiere energía química en la célula. Se produce en la respiración celular y se recicla constantemente a partir de ADP.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+\noindent\textbf{Enunciado}
+Una fuente dice que un adulto recicla al día unos 50 kg de ATP, unos 100 moles. Otra da la fórmula C10H16N5O13P3 para el ATP. Con masas atómicas de C 12,011, H 1,008, N 14,007, O 15,999 y P 30,974 g/mol, calcule la masa molar del ATP, los moles que corresponden a 50 kg y comprobar si encajan con los 100 moles de la fuente.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $m = 50\,\mathrm{kg}$ — masa de ATP reciclada por día
+\item $n_{C} = 10$ — átomos de C
+\item $n_{H} = 16$ — átomos de H
+\item $n_{N} = 5$ — átomos de N
+\item $n_{O} = 13$ — átomos de O
+\item $n_{P} = 3$ — átomos de P
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+La masa molar del ATP, los moles en 50 kg y su comparación con 100 mol.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Masa molar}
+
+\[
+M = 10\,M_C + 16\,M_H + 5\,M_N + 13\,M_O + 3\,M_P
+\]
+
+\noindent\textit{Moles}
+
+\[
+n = m / M
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se usan masas atómicas estándar redondeadas a tres decimales.
+\item Se desprecia la forma iónica del ATP en solución.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La masa molar se obtiene sumando las masas de los átomos de la fórmula; los 50 kg se pasan a gramos antes de dividir.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Masa molar del ATP, en g/mol
+
+
+\[
+M = 10(12{,}011)+16(1{,}008)+5(14{,}007)+13(15{,}999)+3(30{,}974)
+\]
+
+\[
+\left(\left(\left(\left(\left(10\cdot 12.011\right)+\left(16\cdot 1.008\right)\right)+\left(5\cdot 14.007\right)\right)+\left(13\cdot 15.999\right)\right)+\left(3\cdot 30.974\right)\right) \approx 507.182
+\]
+\item
+Moles en 50 kg
+
+
+\[
+n = 50\,000 / 507{,}181
+\]
+
+\[
+\frac{50000}{507.181} \approx 98.584135
+\]
+\end{enumerate}
+
+\noindent\textbf{Resultado}
+La masa molar del ATP es de unos 507,2 g/mol y 50 kg equivalen a unos 98,6 mol, que concuerdan con los «unos 100 moles» de la fuente (diferencia del 1,4 \%).
+
+
+\noindent\textbf{Interpretación}
+La relación de 50 kg a 100 mol es coherente con la fórmula química, así que las dos cifras de la fuente se pueden usar juntas.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item La cifra de 100 mol es redondeada; el cálculo comprueba el orden de magnitud, no el valor exacto.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Dividir 50 kg entre 507 g/mol sin pasar los kilogramos a gramos.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwMyIsICJzZWN0aW9uIjogImJpby0wMyJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+
+¿Qué diferencia hay entre los 30,5 kJ/mol y los 58 kJ/mol que las fuentes dan para el ATP? ¿Qué tres etapas tiene la respiración aeróbica? ¿Por qué se dice a veces que el aeróbico es 19 veces más eficiente y otras 15 veces?
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNSIsICJzZWN0aW9uIjogImJpby0wMyJ9
+\end{tcolorbox}
+
+\chapter{El ADN y su replicación}
+\label{chap:bio-04}
+% studium:record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+\noindent\textit{El ADN guarda las instrucciones genéticas de la célula y se copia antes de cada división. Este capítulo describe su estructura química, cómo se organiza en cromosomas, el mecanismo semiconservador de la replicación y un cálculo que muestra por qué un genoma grande no puede copiarse desde un único punto de origen.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+El ADN es un polímero de nucleótidos. Cada nucleótido está formado por un azúcar, la desoxirribosa, una base nitrogenada, que puede ser adenina, timina, citosina o guanina, y un grupo fosfato. Los nucleótidos se unen en una cadena por enlaces covalentes entre el azúcar de uno y el fosfato del siguiente, lo que da un esqueleto alternante de azúcar y fosfato. Lo que distingue a un polinucleótido de otro es la base nitrogenada, y por eso la secuencia del ADN se especifica nombrando solo sus bases.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzNyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+Dos cadenas de ADN se enroscan para formar una doble hélice. Las bases de las dos cadenas se unen según reglas de apareamiento, adenina con timina y citosina con guanina, mediante puentes de hidrógeno. Como esos puentes no son enlaces covalentes, pueden romperse y recomponerse con relativa facilidad, de modo que las dos cadenas se pueden separar como una cremallera. El modelo de la doble hélice lo propusieron James Watson y Francis Crick en 1953; el surco mayor mide 22 ångström (2,2 nm) de ancho y el menor 12 Å (1,2 nm).
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+El tamaño de una molécula de ADN se indica por su número de pares de bases, con la kilobase (kb) igual a 1000 pares y la megabase (Mb) igual a un millón. El genoma humano haploide tiene alrededor de 3000 millones de pares de bases, y el mayor cromosoma humano, el 1, tiene aproximadamente 220 millones según una fuente. Otra fuente, el glosario del Instituto Nacional de Investigación del Genoma Humano de Estados Unidos, indica casi tres mil millones de pares de bases por copiar, lo que concuerda.
+
+% studium:end-record eyJpZCI6ICJQQVItMDAzOSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+El ADN se organiza en cromosomas, estructuras filamentosas formadas por proteína y una sola molécula de ADN que llevan la información genómica de una célula a otra. En el ser humano hay 22 pares de cromosomas numerados, los autosomas, y un par de cromosomas sexuales, en total 46, y cada par tiene un cromosoma de cada progenitor. La cifra de 46 se determinó en 1956 por Joe Hin Tjio; antes se creía que eran 48. Los procariotas tienen típicamente un solo cromosoma circular.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+La replicación es el proceso por el que una célula hace copias exactas de su ADN, esencial para la herencia, la división celular y la reparación de tejidos. Es semiconservadora: las dos cadenas se separan y cada una sirve de molde para sintetizar una cadena complementaria nueva, de modo que cada molécula hija contiene una cadena original y una nueva. El experimento de Meselson y Stahl de 1958, con Escherichia coli cultivada con nitrógeno-15, un isótopo más pesado, permitió demostrar que el mecanismo real es el semiconservador.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+La replicación empieza en puntos concretos llamados orígenes de replicación, repartidos por el genoma. Las helicasas desenrollan el ADN en el origen y se forman horquillas de replicación que crecen en las dos direcciones. La ADN polimerasa sintetiza las cadenas nuevas incorporando nucleótidos complementarios a los de la cadena molde. La cadena que se sintetiza en el sentido de avance de la horquilla, o conductora, se sintetiza de forma continua; la otra, la rezagada, se sintetiza de forma discontinua en fragmentos de Okazaki, de 1000 a 2000 nucleótidos en bacterias y de 100 a 400 en eucariontes.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+La replicación es muy rápida y muy fiel. En el fago T4, que infecta a E. coli, la velocidad de elongación del ADN durante el aumento exponencial a \(37\,{}^{\circ}\mathrm{C}\) fue de 749 nucleótidos por segundo, y la tasa de mutación por par de bases y replicación fue de 1,7 por \(10^8\). Los mecanismos celulares de lectura de prueba y de comprobación de errores aseguran una fidelidad casi perfecta. Es la velocidad medida en un fago; las fuentes no dan la equivalente para células humanas, y por eso este libro no la extrapola sin avisar.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0MyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+% studium:record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+Con esas cifras se puede probar por qué el genoma humano necesita muchos orígenes. A 749 nucleótidos por segundo, una sola horquilla tardaría 3000 millones dividido entre 749, es decir, unos 4,0 millones de segundos, más de 46 días. Dos horquillas que avancen en direcciones opuestas desde un solo origen reducirían ese tiempo a la mitad, unos 23 días, que sigue sin acercarse a las pocas horas que da el glosario del instituto. Hacen falta muchas horquillas simultáneas, y eso es coherente con que los orígenes de replicación estén repartidos por todo el genoma. El cálculo es una estimación de orden de magnitud con la velocidad de un fago, no de una célula humana.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NCIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+Cuando una velocidad proceda de un organismo o de un virus concreto, anótelo junto con la cifra. Los 749 nucleótidos por segundo son del fago T4 en E. coli; usarlos para el ser humano da solo una estimación de orden de magnitud, no una predicción.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NiIsICJzZWN0aW9uIjogImJpby0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+Replicación semiconservadora: mecanismo por el cual cada molécula de ADN hija contiene una cadena original, que sirvió de molde, y una cadena nueva complementaria.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+\noindent\textbf{Enunciado}
+El genoma humano haploide tiene unos 3000 millones de pares de bases y, en el fago T4, una horquilla de replicación avanza a 749 nucleótidos por segundo. Calcule cuántos días tardaría una sola horquilla en copiarlo y cuántas horquillas simultáneas harían falta para copiarlo en 8 horas.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $N = 3000000000$ — pares de bases del genoma haploide
+\item $v = 749$ — nucleótidos por segundo por horquilla
+\item $t_{c} = 28800\,\mathrm{s}$ — tiempo disponible, 8 h
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Los días que tarda una horquilla y las horquillas necesarias para copiar en 8 h.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Tiempo con una horquilla}
+
+\[
+t_1 = N / v
+\]
+
+\noindent\textit{Horquillas necesarias}
+
+\[
+n = t_1 / t_c
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Cada horquilla copia un nucleótido por posición a velocidad constante.
+\item Se usa la velocidad del fago T4, que es la única velocidad de horquilla que dan las fuentes.
+\item Se ignoran las pausas, y se cuenta cada par de bases una sola vez.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+El tiempo en segundos se divide entre 86 400 para tener días; las horquillas necesarias salen de dividir ese tiempo entre las 8 h disponibles.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Segundos con una horquilla
+
+
+\[
+t_1 = 3\,000\,000\,000 / 749
+\]
+
+\[
+\frac{3000000000}{749} \approx 4005340.5\quad \mathrm{s}
+\]
+\item
+Días con una horquilla
+
+
+\[
+t_1 / 86\,400
+\]
+
+\[
+\frac{\frac{3000000000}{749}}{86400} \approx 46.358107\quad \mathrm{d}
+\]
+\item
+Horquillas necesarias en 8 h
+
+
+\[
+n = t_1 / 28\,800
+\]
+
+\[
+\frac{\frac{3000000000}{749}}{28800} \approx 139.07432
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(3000000000\right)}{\left(749\right)}
+\]
+
+\noindent\textbf{Resultado}
+Una sola horquilla tardaría unos 46,4 días; para copiarlo en 8 horas harían falta unas 139 horquillas simultáneas.
+
+
+\noindent\textbf{Interpretación}
+Un solo origen es inviable para un genoma de este tamaño, lo que concuerda con los muchos orígenes de replicación repartidos por el genoma.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item Si la velocidad en células humanas fuera otra, el resultado cambiaría en proporción inversa; las fuentes no la dan.
+\item El genoma diploide tiene el doble de ADN que el haploide.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Olvidar que las horquillas avanzan en dos direcciones desde cada origen, lo que reduce a la mitad el número de orígenes necesarios.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNSIsICJzZWN0aW9uIjogImJpby0wNCJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+
+¿Qué significa que la replicación sea semiconservadora y qué experimento lo demostró? ¿Por qué el genoma humano no puede copiarse desde un único origen? ¿Qué diferencia hay entre la hebra conductora y la rezagada?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0NyIsICJzZWN0aW9uIjogImJpby0wNCJ9
+\end{tcolorbox}
+
+\chapter{El código genético y la síntesis de proteínas}
+\label{chap:bio-05}
+% studium:record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+\noindent\textit{La información del ADN se convierte en proteínas con la ayuda del ARN. Este capítulo explica la transcripción y la traducción, qué es el código genético y por qué tiene 64 codones, cómo se descifró y qué significa que sea redundante pero no ambiguo, y termina con un cálculo de cuántos codones corresponden, de media, a cada aminoácido.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+La transcripción es el proceso de hacer una copia de ARN de la secuencia de ADN de un gen. Esa copia, llamada ARN mensajero (ARNm), lleva la información proteica codificada en el ADN. En los humanos y otros organismos complejos, el ARNm pasa del núcleo al citoplasma, donde se usa para sintetizar la proteína codificada. La traducción es el proceso por el que la información del ARNm dirige la adición de aminoácidos durante la síntesis de proteínas, y tiene lugar en los ribosomas del citoplasma.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA0OSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+La traducción la realiza el ribosoma, que une los aminoácidos en el orden que especifica el ARN mensajero, usando moléculas de ARN de transferencia (ARNt) que transportan los aminoácidos y leen el ARNm de tres en tres nucleótidos. El código genético es muy similar en todos los organismos y puede expresarse en una tabla sencilla de 64 entradas. Es común a todos los seres vivos y todos los virus, aunque hay pequeñas variaciones, lo que indica un origen único y que es universal, al menos en el contexto de nuestro planeta.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+La razón del número 64 es combinatoria. El material genético se compone de cuatro bases, que se representan con las letras A, T, G y C en el ADN y A, U, G y C en el ARN. Un codón es una secuencia de tres nucleótidos, así que el número de codones posibles es \(4 \times 4 \times 4 = 64\). De ellos, 61 codifican aminoácidos, entre ellos el codón de inicio AUG, y los tres restantes, UAA, UAG y UGA, son sitios de parada. El glosario del instituto de genómica lo confirma: hay 64 codones diferentes, 61 que especifican aminoácidos y 3 señales de parada.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+¿Por qué tripletes y no pares? Con cuatro bases, dos nucleótidos darían solo \(4 \times 4 = 16\) combinaciones, menos que los veinte aminoácidos que hay que codificar. Hacen falta al menos tres. Esa inferencia aritmética es la que anticipó George Gamow, que fue el primero en dar un esquema viable de síntesis de proteínas a partir del ADN, postulando que grupos de tres bases debían codificar cada aminoácido. La primera demostración experimental de que los codones constan de tres nucleótidos la proporcionó el experimento de Crick, Brenner y colaboradores.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+El código se descifró experimentalmente en los años sesenta. En 1961, Marshall Nirenberg y Heinrich Matthaei revelaron la primera correspondencia entre un codón y un aminoácido. Con un sistema sin células tradujeron una secuencia de ARN de poliuracilo, UUUU..., y vieron que el polipéptido sintetizado solo contenía fenilalanina, con lo que dedujeron que el codón UUU especifica fenilalanina. Antes, en 1955, Severo Ochoa y Marianne Grunberg-Manago habían aislado la enzima polinucleótido fosforilasa, capaz de sintetizar ARNm sin molde.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1MyIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+El código tiene redundancia, pero no ambigüedad. Por ejemplo, los codones GAA y GAG especifican ambos el ácido glutámico, pero ningún codón especifica dos aminoácidos distintos. Las diferencias entre los codones que codifican un mismo aminoácido suelen estar en la tercera posición, y por eso la tolerancia al cambio es mayor en esa posición que en la primera y la segunda. A esta redundancia se le llama degeneración. Es una propiedad que se puede cuantificar: con 61 codones con sentido para 20 aminoácidos, el promedio es de 3,05 codones por aminoácido, aunque no todos los aminoácidos tienen el mismo número.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+% studium:record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+El ADN y el ARN usan bases distintas: en el ARN el uracilo sustituye a la timina. La secuencia del ADN que se transcribe a ARN tiene por tanto una T allí donde el ARNm tiene una U, y por eso el codón de inicio se escribe AUG en el ARN y ATG en el ADN. El código estándar es el que usa la gran mayoría de los genes, pero existen códigos variantes, como el de las mitocondrias, de modo que el mismo codón puede significar otra cosa en ellas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NSIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+Para leer una secuencia de ARNm, localice primero el codón de inicio AUG y divida a partir de ahí en grupos de tres letras hasta un codón de parada. Si empieza en una posición distinta, cambia todo el marco de lectura.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NyIsICJzZWN0aW9uIjogImJpby0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+Codón: secuencia de tres nucleótidos de ADN o de ARN que forma una unidad de información genómica y codifica un aminoácido concreto o una señal de parada de la síntesis de proteínas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1NiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+\noindent\textbf{Enunciado}
+El código genético tiene cuatro bases y codones de tres nucleótidos; las fuentes dicen que 61 codones especifican aminoácidos y que hay 20 aminoácidos. Calcule cuántos codones hay en total, cuántos habría con codones de dos nucleótidos y cuántos codones con sentido corresponden, de media, a cada aminoácido.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $b = 4$ — bases distintas
+\item $n_{s} = 61$ — codones con sentido
+\item $a = 20$ — aminoácidos
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+Los codones de tres nucleótidos, los de dos y los codones por aminoácido.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Codones de longitud k}
+
+\[
+N_k = b^{k}
+\]
+
+\noindent\textit{Codones por aminoácido}
+
+\[
+\bar{c} = n_s / a
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item Se cuentan los 20 aminoácidos canónicos.
+\item Cada posición del codón puede ser cualquiera de las cuatro bases.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+Un código de longitud 2 daría 16 palabras, que no bastan para 20 aminoácidos, así que hace falta como mínimo la longitud 3.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Codones de tres nucleótidos
+
+
+\[
+N_3 = 4^3
+\]
+
+\[
+\left(4\right)^{3} = 64
+\]
+\item
+Codones de dos nucleótidos
+
+
+\[
+N_2 = 4^2
+\]
+
+\[
+\left(4\right)^{2} = 16
+\]
+\item
+Codones con sentido por aminoácido
+
+
+\[
+\bar{c} = 61/20
+\]
+
+\[
+\frac{61}{20} \approx 3.05
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\frac{\left(61\right)}{\left(20\right)}
+\]
+
+\noindent\textbf{Resultado}
+Hay 64 codones de tres nucleótidos, frente a solo 16 de dos; y a cada aminoácido le corresponden, de media, 3,05 codones con sentido.
+
+
+\noindent\textbf{Interpretación}
+16 < 20 explica por qué hacen falta tripletes, y 64 > 20 explica la redundancia del código.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El promedio oculta la distribución: algunos aminoácidos tienen un solo codón y otros seis.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Dividir 64 entre 20 y contar los tres codones de parada como si codificaran aminoácidos.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNiIsICJzZWN0aW9uIjogImJpby0wNSJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+
+¿Por qué el código usa tripletes y no pares de bases? ¿Cuántos codones especifican aminoácidos y cuántos son señales de parada? ¿Qué quiere decir que el código sea redundante pero no ambiguo?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OCIsICJzZWN0aW9uIjogImJpby0wNSJ9
+\end{tcolorbox}
+
+\chapter{Herencia mendeliana y genética de poblaciones}
+\label{chap:bio-06}
+% studium:record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+\noindent\textit{La genética mendeliana explica cómo se transmiten los caracteres de padres a hijos, y la genética de poblaciones estudia cómo se reparten los alelos en un grupo de individuos. Este capítulo presenta los experimentos de Mendel, los conceptos de alelo, dominante y recesivo, y el principio de Hardy-Weinberg, y lo aplica a un cálculo de portadores de una enfermedad recesiva.}
+
+% studium:end-record eyJpZCI6ICJQQVItMDA1OSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+Gregor Mendel fue un monje agustino que cultivó y estudió unos 28 000 guisantes entre 1856 y 1863. Presentó sus experimentos en la Sociedad de Historia Natural de Brno los días 8 de febrero y 8 de marzo de 1865, y se publicaron en 1866. Sus resultados fueron en gran parte ignorados y se redescubrieron en 1900. Una de las fuentes lo valora como un hito comparable, en biología, a las leyes de Newton en física, y destaca que expresó los resultados de forma cuantitativa mediante la estadística.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+La teoría de la herencia por mezcla suponía que los caracteres se transmiten por fluidos que, una vez mezclados, no se pueden separar. Frente a ella, Mendel formuló una teoría con unidades discretas. Una fuente señala que un obstáculo para entender su importancia fue que los biólogos del siglo XIX daban mucho peso a la aparente mezcla de muchos rasgos heredados, que hoy se sabe debida a interacciones entre varios genes, a diferencia de los caracteres binarios que estudió Mendel.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+Un alelo es una de las versiones de una secuencia de ADN en una posición concreta del genoma. Cada individuo hereda dos alelos, uno de cada progenitor. Si los dos son iguales es homocigoto para ese alelo, y si son distintos, heterocigoto. Si los alelos de un gen son diferentes, uno se expresa, que es el dominante, y el efecto del otro, llamado recesivo, queda enmascarado. Un rasgo recesivo solo se expresa cuando están presentes las dos copias del alelo.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MiIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+En un cruce monohíbrido entre dos heterocigotos, Aa por Aa, los descendientes son AA, Aa, Aa y aa, de modo que una cuarta parte es homocigota dominante, la mitad es heterocigota y una cuarta parte es homocigota recesiva. La razón genotípica es 1:2:1 y la fenotípica, 3:1, es decir, tres cuartos con el carácter dominante y un cuarto con el recesivo. En los cruces dihíbridos Mendel encontró proporciones 9:3:3:1, lo que muestra que cada par de alelos se hereda de forma independiente, con una razón fenotípica de 3:1 para cada uno.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2MyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+Las proporciones de Mendel son esperanzas, no resultados exactos en cada familia. Una fuente indica que, según las leyes de Mendel, existe un 25 \% de probabilidad en cada embarazo de que ambos padres portadores transmitan el alelo mutado de una enfermedad recesiva, con independencia del sexo del hijo. Esa probabilidad se aplica por separado a cada embarazo y no se acumula: haber tenido un hijo afectado no cambia el 25 \% del siguiente.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+El principio de Hardy-Weinberg establece que las frecuencias de alelos y de genotipos de una población se mantienen constantes de una generación a otra mientras no actúen otras influencias evolutivas, como la selección natural, la mutación, la deriva genética o el flujo génico. Lo establecieron de forma independiente en 1908 el matemático G. H. Hardy y el médico Wilhelm Weinberg. En su forma más simple, con un locus de dos alelos A y a de frecuencias p y q, predice las frecuencias \(p^{2}\) para AA, 2pq para Aa y \(q^{2}\) para aa.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+El principio permite estimar la frecuencia de portadores de una enfermedad recesiva a partir de la frecuencia de enfermos. Una fuente en español lo ilustra con la fenilcetonuria: su incidencia es de 0,0001, que corresponde a \(q^{2}\), de modo que q es la raíz cuadrada, 0,01; la enfermedad afecta a 1 de cada 10 000 individuos pero la frecuencia del gen es 100 veces mayor, 1 de cada 100. La fuente en inglés usa la fibrosis quística, con 1 de cada 2500 recién nacidos homocigotos en poblaciones del norte de Europa, de donde q es 1/50 y los portadores, 2pq, son aproximadamente 1/25.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NiIsICJzZWN0aW9uIjogImJpby0wNiJ9
+% studium:record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+La suma de las tres frecuencias genotípicas es la unidad: \(p^{2} + 2\)pq \(+ q^{2} = (p + q)^{2} = 1\). Por eso, conocido q, el resto sale por cálculo: p es el complemento de q. La fuente en inglés toma p como 1 cuando q es pequeño, lo que da unos 2/50, es decir, 1/25; el cálculo exacto con p igual a 0,98 y q igual a 0,02 da \(2 \times 0,98 \times 0,02\), es decir, 0,0392 o un 3,92 \%. La diferencia entre el 4 \% y el 3,92 \% es el error de esa aproximación de p.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2NyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+\begin{tcolorbox}[title={Consejo}, studiumtip, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+Al aplicar Hardy-Weinberg, anote qué condición supone: apareamiento al azar y ausencia de selección, mutación y deriva. Si la población no cumple esas condiciones, el resultado es una estimación y no un valor medido; por eso se usa para contrastar si hay estratificación u otras formas de apareamiento no aleatorio.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OSIsICJzZWN0aW9uIjogImJpby0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Definición}, studiumdef, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+Equilibrio de Hardy-Weinberg: situación en la que, para un locus con dos alelos de frecuencias p y q, las frecuencias genotípicas son \(p^{2}\), 2pq y \(q^{2}\) y se mantienen constantes de una generación a otra mientras no actúen la selección, la mutación, la deriva ni otras fuerzas evolutivas.
+
+% studium:end-record eyJpZCI6ICJQQVItMDA2OCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Problema resuelto}, studiumworked, breakable]
+% studium:record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+\noindent\textbf{Enunciado}
+En poblaciones del norte de Europa nace con fibrosis quística 1 de cada 2500 bebés, la frecuencia de homocigotos recesivos. Suponiendo equilibrio de Hardy-Weinberg, calcule la frecuencia q del alelo y el porcentaje exacto de portadores heterocigotos, 2pq.
+
+
+\noindent\textbf{Datos}
+\begin{itemize}
+\item $q_{2} = 0.0004$ — frecuencia de homocigotos recesivos, 1/2500
+\end{itemize}
+
+\noindent\textbf{Incógnita}
+La frecuencia del alelo recesivo y la de portadores.
+
+
+\noindent\textbf{Modelo}
+
+\noindent\textit{Alelo recesivo}
+
+\[
+q = \sqrt{q^{2}}
+\]
+
+\noindent\textit{Portadores}
+
+\[
+2pq = 2(1-q)\,q
+\]
+
+\noindent\textbf{Hipótesis}
+\begin{itemize}
+\item La población está en equilibrio de Hardy-Weinberg: apareamiento al azar, sin selección, mutación ni deriva apreciables.
+\item La enfermedad es autosómica recesiva con un solo locus de dos alelos.
+\end{itemize}
+
+\noindent\textbf{Pasos}
+\begin{enumerate}
+\item
+La frecuencia de enfermos es \(q^{2}\), porque solo los homocigotos recesivos están afectados; los portadores son los heterocigotos.
+
+\end{enumerate}
+
+\noindent\textbf{Desarrollo}
+\begin{enumerate}
+\item
+Frecuencia del alelo
+
+
+\[
+q = \sqrt{1/2500}
+\]
+
+\[
+\sqrt{\frac{1}{2500}} \approx 0.02
+\]
+\item
+Frecuencia de portadores
+
+
+\[
+2pq = 2(0{,}98)(0{,}02)
+\]
+
+\[
+\left(\left(2\cdot 0.98\right)\cdot 0.02\right) \approx 0.0392
+\]
+\end{enumerate}
+
+\noindent\textbf{Sustitución numérica}
+
+\[
+\sqrt{\left(0.0004\right)}
+\]
+
+\noindent\textbf{Resultado}
+La frecuencia del alelo es q = 0,02 (1 de cada 50) y los portadores son el 3,92 \% de la población, aproximadamente 1 de cada 25.
+
+
+\noindent\textbf{Interpretación}
+Aunque solo 1 de cada 2500 bebés padece la enfermedad, unas 1 de cada 25 personas porta el alelo, lo que explica que la enfermedad aparezca en familias sin antecedentes.
+
+
+\noindent\textbf{Limitaciones}
+\begin{itemize}
+\item El resultado depende del supuesto de equilibrio y de que la incidencia de 1/2500 sea correcta; la fuente la da como aproximada.
+\end{itemize}
+
+\noindent\textbf{Errores frecuentes}
+\begin{itemize}
+\item Tomar \(q^{2}\) como la frecuencia del alelo en lugar de su raíz cuadrada.
+\end{itemize}
+% studium:end-record eyJpZCI6ICJQUkItMDAwNyIsICJzZWN0aW9uIjogImJpby0wNiJ9
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={Autoficha}, studiumcheck, breakable]
+% studium:record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+
+¿Qué proporciones fenotípicas da un cruce monohíbrido entre heterocigotos? ¿Qué predice Hardy-Weinberg para las frecuencias genotípicas? Si 1 de cada 10 000 individuos padece una enfermedad recesiva, ¿qué fracción lleva el alelo en estado heterocigoto, aproximadamente?
+
+% studium:end-record eyJpZCI6ICJQQVItMDA3MCIsICJzZWN0aW9uIjogImJpby0wNiJ9
+\end{tcolorbox}
+\appendix
+\chapter{Soluciones}
+
+\section{La célula como unidad de la vida}
+
+\noindent\textbf{Problema resuelto [PRB-0001]}
+
+Una fuente da longitudes de 1 a \(2\,\mu\mathrm{m}\) para bacterias y de \(20\,\mu\mathrm{m}\) para los hepatocitos humanos. Suponiendo células esféricas de diámetro \(2\,\mu\mathrm{m}\) y \(20\,\mu\mathrm{m}\), calcule la relación superficie/volumen de cada una y cuántas veces mayor es la de la bacteria.
+
+
+\noindent\textbf{Respuesta}
+La relación superficie/volumen es \(3\,\mu\mathrm{m}^{-1}\) en la bacteria y \(0{,}3\,\mu\mathrm{m}^{-1}\) en el hepatocito, y la de la bacteria es 10 veces mayor.
+
+
+\section{La membrana plasmática y el transporte de iones}
+
+\noindent\textbf{Problema resuelto [PRB-0002]}
+
+Según una fuente, la concentración intracelular de potasio es 30 veces la extracelular. Con una tensión térmica de 25,693 mV a \(25\,{}^{\circ}\mathrm{C}\) y z = +1, calcule el potencial de Nernst del potasio, \(E = V_T\) ln([K]fuera/[K]dentro), en milivoltios.
+
+
+\noindent\textbf{Respuesta}
+El potencial de Nernst del potasio es de unos -87,4 mV a \(25\,{}^{\circ}\mathrm{C}\).
+
+
+\section{Energía celular: ATP, mitocondrias y respiración}
+
+\noindent\textbf{Problema resuelto [PRB-0003]}
+
+Una fuente dice que un adulto recicla al día unos 50 kg de ATP, unos 100 moles. Otra da la fórmula C10H16N5O13P3 para el ATP. Con masas atómicas de C 12,011, H 1,008, N 14,007, O 15,999 y P 30,974 g/mol, calcule la masa molar del ATP, los moles que corresponden a 50 kg y comprobar si encajan con los 100 moles de la fuente.
+
+
+\noindent\textbf{Respuesta}
+La masa molar del ATP es de unos 507,2 g/mol y 50 kg equivalen a unos 98,6 mol, que concuerdan con los «unos 100 moles» de la fuente (diferencia del 1,4 \%).
+
+
+\section{El ADN y su replicación}
+
+\noindent\textbf{Problema resuelto [PRB-0005]}
+
+El genoma humano haploide tiene unos 3000 millones de pares de bases y, en el fago T4, una horquilla de replicación avanza a 749 nucleótidos por segundo. Calcule cuántos días tardaría una sola horquilla en copiarlo y cuántas horquillas simultáneas harían falta para copiarlo en 8 horas.
+
+
+\noindent\textbf{Respuesta}
+Una sola horquilla tardaría unos 46,4 días; para copiarlo en 8 horas harían falta unas 139 horquillas simultáneas.
+
+
+\section{El código genético y la síntesis de proteínas}
+
+\noindent\textbf{Problema resuelto [PRB-0006]}
+
+El código genético tiene cuatro bases y codones de tres nucleótidos; las fuentes dicen que 61 codones especifican aminoácidos y que hay 20 aminoácidos. Calcule cuántos codones hay en total, cuántos habría con codones de dos nucleótidos y cuántos codones con sentido corresponden, de media, a cada aminoácido.
+
+
+\noindent\textbf{Respuesta}
+Hay 64 codones de tres nucleótidos, frente a solo 16 de dos; y a cada aminoácido le corresponden, de media, 3,05 codones con sentido.
+
+
+\section{Herencia mendeliana y genética de poblaciones}
+
+\noindent\textbf{Problema resuelto [PRB-0007]}
+
+En poblaciones del norte de Europa nace con fibrosis quística 1 de cada 2500 bebés, la frecuencia de homocigotos recesivos. Suponiendo equilibrio de Hardy-Weinberg, calcule la frecuencia q del alelo y el porcentaje exacto de portadores heterocigotos, 2pq.
+
+
+\noindent\textbf{Respuesta}
+La frecuencia del alelo es q = 0,02 (1 de cada 50) y los portadores son el 3,92 \% de la población, aproximadamente 1 de cada 25.
+
+\chapter{Auditoría de fuentes}
+
+\noindent Estado de las fuentes: PENDING. 38 pendientes. Los conflictos almacenados quedan fuera (0). Un libro de tema no usa una guía universitaria, así que no citada no es una regla de apoyo. Recuento de no citadas: 0.
+
+\noindent ¶1\(-\)¶50: dos testimonios.
+
+\noindent ¶51: dos testimonios. Ecuaciones: 1 reproducida numéricamente.
+
+\noindent ¶52: dos testimonios. Ecuaciones: 1 reproducida numéricamente.
+
+\noindent ¶53\(-\)¶66: dos testimonios.
+
+\noindent ¶67: dos testimonios. Ecuaciones: 1 respaldada por una fuente.
+
+\noindent ¶68: dos testimonios.
+
+\noindent ¶69: dos testimonios.
+
+\noindent ¶70: dos testimonios.
+
+\medskip
+
+\noindent Célula \(-\) Wikipedia (es) (PENDING) --- \P1, \P2, \P3, \P5, \P6, \P7, \P8, \P10.
+
+\noindent Cell (biology) \(-\) Wikipedia (en) (PENDING) --- \P1, \P2, \P3, \P4, \P5, \P8, \P9, \P10, \P11.
+
+\noindent Cell \(-\) NHGRI Talking Glossary (PENDING) --- \P4, \P6, \P7, \P9, \P11.
+
+\noindent Membrana celular \(-\) Wikipedia (es) (PENDING) --- \P12, \P13, \P14, \P15, \P16, \P22.
+
+\noindent Cell membrane \(-\) Wikipedia (en) (PENDING) --- \P12, \P13, \P14, \P15, \P16.
+
+\noindent Bomba de sodio-potasio \(-\) Wikipedia (es) (PENDING) --- \P17, \P18, \P20, \P21.
+
+\noindent Na+/K+-ATPase \(-\) Wikipedia (en) (PENDING) --- \P17, \P18, \P19, \P20, \P21, \P22.
+
+\noindent Nernst equation \(-\) Wikipedia (en) (PENDING) --- \P19.
+
+\noindent Adenosín trifosfato \(-\) Wikipedia (es) (PENDING) --- \P23, \P24, \P25, \P26, \P33, \P35.
+
+\noindent Adenosine triphosphate \(-\) Wikipedia (en) (PENDING) --- \P23, \P24, \P25, \P26, \P33.
+
+\noindent Respiración celular \(-\) Wikipedia (es) (PENDING) --- \P27, \P28, \P29, \P30, \P34.
+
+\noindent Cellular respiration \(-\) Wikipedia (en) (PENDING) --- \P27, \P28, \P29, \P30, \P34, \P35.
+
+\noindent Mitochondrion \(-\) Wikipedia (en) (PENDING) --- \P31, \P32.
+
+\noindent Mitochondria \(-\) NHGRI Talking Glossary (PENDING) --- \P31, \P32.
+
+\noindent Mitocondria \(-\) Wikipedia (es) (PENDING) --- \P32.
+
+\noindent ADN \(-\) Wikipedia (es) (PENDING) --- \P36, \P37, \P38, \P39, \P44.
+
+\noindent DNA \(-\) Wikipedia (en) (PENDING) --- \P36, \P37, \P38.
+
+\noindent DNA Replication \(-\) NHGRI Talking Glossary (PENDING) --- \P39, \P43, \P44, \P46.
+
+\noindent Chromosome \(-\) NHGRI Talking Glossary (PENDING) --- \P40.
+
+\noindent Chromosome \(-\) Wikipedia (en) (PENDING) --- \P40.
+
+\noindent Cromosoma \(-\) Wikipedia (es) (PENDING) --- \P40.
+
+\noindent DNA replication \(-\) Wikipedia (en) (PENDING) --- \P41, \P42, \P43, \P44, \P45, \P46, \P47.
+
+\noindent Replicación del ADN \(-\) Wikipedia (es) (PENDING) --- \P41, \P42, \P45, \P47.
+
+\noindent Genetic Code \(-\) NHGRI Talking Glossary (PENDING) --- \P48.
+
+\noindent Código genético \(-\) Wikipedia (es) (PENDING) --- \P48, \P50, \P51, \P52, \P53, \P54, \P55, \P56, \P58.
+
+\noindent Transcription \(-\) NHGRI Talking Glossary (PENDING) --- \P49.
+
+\noindent Translation \(-\) NHGRI Talking Glossary (PENDING) --- \P49.
+
+\noindent Genetic code \(-\) Wikipedia (en) (PENDING) --- \P50, \P51, \P52, \P53, \P54, \P55, \P57.
+
+\noindent Codon \(-\) NHGRI Talking Glossary (PENDING) --- \P51, \P56, \P57, \P58.
+
+\noindent Leyes de Mendel \(-\) Wikipedia (es) (PENDING) --- \P59, \P60, \P61, \P63, \P64.
+
+\noindent Hardy\(-\)Weinberg principle \(-\) Wikipedia (en) (PENDING) --- \P59, \P65, \P66, \P67, \P68, \P69.
+
+\noindent Mendelian inheritance \(-\) Wikipedia (en) (PENDING) --- \P60, \P61, \P63, \P64, \P70.
+
+\noindent Allele \(-\) NHGRI Talking Glossary (PENDING) --- \P62.
+
+\noindent Dominant Traits and Alleles \(-\) NHGRI Talking Glossary (PENDING) --- \P62.
+
+\noindent Recessive Traits and Alleles \(-\) NHGRI Talking Glossary (PENDING) --- \P62.
+
+\noindent Principio de Hardy-Weinberg \(-\) Wikipedia (es) (PENDING) --- \P65, \P66, \P67, \P68, \P69, \P70.
+
+\noindent REV-0001\(-\)REV-0078: scientific
+\backmatter
+\begin{thebibliography}{99}
+\bibitem{src1} Célula \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/C%C3%A9lula}
+\bibitem{src2} Teoría celular \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Teor%C3%ADa_celular}
+\bibitem{src3} Cell (biology) \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Cell_(biology)}
+\bibitem{src4} Cell \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Cell}
+\bibitem{src5} Membrana celular \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Membrana_celular}
+\bibitem{src6} Cell membrane \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Cell_membrane}
+\bibitem{src7} Bomba de sodio-potasio \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Bomba_de_sodio-potasio}
+\bibitem{src8} Na+/K+-ATPase \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Na%2B%2FK%2B-ATPase}
+\bibitem{src9} Ecuación de Nernst \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Ecuaci%C3%B3n_de_Nernst}
+\bibitem{src10} Nernst equation \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Nernst_equation}
+\bibitem{src11} Respiración celular \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Respiraci%C3%B3n_celular}
+\bibitem{src12} Cellular respiration \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Cellular_respiration}
+\bibitem{src13} Adenosín trifosfato \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Adenos%C3%ADn_trifosfato}
+\bibitem{src14} Adenosine triphosphate \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Adenosine_triphosphate}
+\bibitem{src15} Mitocondria \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Mitocondria}
+\bibitem{src16} Mitochondrion \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Mitochondrion}
+\bibitem{src17} Mitochondria \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Mitochondria}
+\bibitem{src18} ADN \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/ADN}
+\bibitem{src19} DNA \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/DNA}
+\bibitem{src20} Replicación del ADN \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Replicaci%C3%B3n_del_ADN}
+\bibitem{src21} DNA replication \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/DNA_replication}
+\bibitem{src22} DNA Replication \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/DNA-Replication}
+\bibitem{src23} Cromosoma \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Cromosoma}
+\bibitem{src24} Chromosome \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Chromosome}
+\bibitem{src25} Chromosome \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Chromosome}
+\bibitem{src26} Código genético \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/C%C3%B3digo_gen%C3%A9tico}
+\bibitem{src27} Genetic code \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Genetic_code}
+\bibitem{src28} Codon \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Codon}
+\bibitem{src29} Genetic Code \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Genetic-Code}
+\bibitem{src30} Translation \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Translation}
+\bibitem{src31} Transcription \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Transcription}
+\bibitem{src32} Leyes de Mendel \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Leyes_de_Mendel}
+\bibitem{src33} Mendelian inheritance \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Mendelian_inheritance}
+\bibitem{src34} Principio de Hardy-Weinberg \(-\) Wikipedia (es). \url{https://es.wikipedia.org/wiki/Principio_de_Hardy-Weinberg}
+\bibitem{src35} Hardy\(-\)Weinberg principle \(-\) Wikipedia (en). \url{https://en.wikipedia.org/wiki/Hardy%E2%80%93Weinberg_principle}
+\bibitem{src36} Allele \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Allele}
+\bibitem{src37} Dominant Traits and Alleles \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Dominant}
+\bibitem{src38} Recessive Traits and Alleles \(-\) NHGRI Talking Glossary. \url{https://www.genome.gov/genetics-glossary/Recessive}
+\end{thebibliography}
+\end{document}
