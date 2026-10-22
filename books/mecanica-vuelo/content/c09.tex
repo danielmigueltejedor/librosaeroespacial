@@ -2,7 +2,7 @@
 \objetivos{Integrar alcance y tiempo con densidad variable; interpretar ISA; separar alcance aéreo y terrestre; comprobar una integración mediante una solución cerrada.}
 
 \section{De actuaciones en el punto a una trayectoria}
-Una tasa de descenso calculada a $3.000\SIu m$ no permite multiplicar sin más ese valor por todo el tiempo del vuelo. Durante el descenso cambian densidad, TAS y, si no se adapta la velocidad, $C_L$. Una ley de pilotaje especifica cómo se recorre la familia de equilibrios. Se estudiará $C_L$ constante, masa constante y polar independiente de altura; es una hipótesis adecuada para entender la diferencia entre el alcance geométrico y la duración.
+Una tasa de descenso calculada a $3000\SIu m$ no permite multiplicar sin más ese valor por todo el tiempo del vuelo. Durante el descenso cambian densidad, TAS y, si no se adapta la velocidad, $C_L$. Una ley de pilotaje especifica cómo se recorre la familia de equilibrios. Se estudiará $C_L$ constante, masa constante y polar independiente de altura; es una hipótesis adecuada para entender la diferencia entre el alcance geométrico y la duración.
 
 En planeo estacionario de ángulo constante,
 \begin{equation}
@@ -78,7 +78,7 @@ Un cálculo reproducible evalúa $\rho(h)$, obtiene el equilibrio local, calcula
 
 El algoritmo debe detenerse si se viola $C_{L\max}$, Mach máximo o alguna restricción. También se evita integrar hasta una altitud por debajo del terreno final. Un resultado algebraico de altura final negativa en una misión de retorno indica que la ruta no se completa antes de tocar el terreno; no describe un vuelo subterráneo.
 
-\caso{Ejemplo original: plan de cálculo completo}{Un planeador docente de $420\SIu{kg}$ parte de $3.200\SIu m$ y termina a $400\SIu m$ geopotenciales, con $S=15.8\SIu{m^2}$ y polar $0.013+0.031C_L^2$. Se calcula $C_{L,E}=0.6476$, $E_{a,\max}=24.91$, y un alcance aéreo de unos $69.74\SIu{km}$. Para la duración se evalúa la ecuación~\eqref{eq:glider-ISA-integral} con su $\delta$ exacto y se contrasta con cuadratura. El alcance con viento de cara de $8\SIu{m\,s^{-1}}$ se obtiene restando $8E$, sin reutilizar la TAS de salida como si fuera constante. La solución numérica íntegra aparece en el cuaderno con otros problemas nuevos.}
+\caso{Ejemplo original: plan de cálculo completo}{Un planeador docente de $420\SIu{kg}$ parte de $3200\SIu m$ y termina a $400\SIu m$ geopotenciales, con $S=15.8\SIu{m^2}$ y polar $0.013+0.031C_L^2$. Se calcula $C_{L,E}=0.6476$, $E_{a,\max}=24.91$, y un alcance aéreo de unos $69.74\SIu{km}$. Para la duración se evalúa la ecuación~\eqref{eq:glider-ISA-integral} con su $\delta$ exacto y se contrasta con cuadratura. El alcance con viento de cara de $8\SIu{m\,s^{-1}}$ se obtiene restando $8E$, sin reutilizar la TAS de salida como si fuera constante. La solución numérica íntegra aparece en el cuaderno con otros problemas nuevos.}
 
 \section{Cuasiestacionariedad y aceleración omitida}
 Mantener $C_L$ mientras cambia la densidad requiere cambiar TAS. Por tanto, una sucesión de equilibrios con $\dot V=0$ localmente no es una solución exacta de la ecuación dinámica completa. Se aproxima cuando la aceleración de adaptación es pequeña respecto a las fuerzas dominantes. El procedimiento integral conserva la variación de velocidad en la cinemática, pero desprecia su término inercial en el balance de fuerzas. Esta limitación debe declararse al comparar con una trayectoria de seis grados de libertad.

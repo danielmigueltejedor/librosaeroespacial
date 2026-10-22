@@ -48,7 +48,7 @@ V_y^2=\frac{T+\sqrt{T^2+12AB}}{6A}.\label{eq:Vy-jet}
 \end{equation}
 Sólo la raíz positiva corresponde a velocidad real. Cuando $T=D_{\min}$, $V_y=V_E$ y la máxima tasa es cero: Vx y Vy se aproximan en el techo de este modelo. Si el empuje es mayor, Vy suele superar Vx. La raíz se recorta al dominio físico antes de declararla óptima.
 
-\ilustra{ascenso}{Tasa de ascenso por exceso de potencia con empuje de $6.500\SIu N$. Las zonas de tasa negativa representan incapacidad de ascenso estacionario a esa velocidad, dentro del modelo declarado.}
+\ilustra{ascenso}{Tasa de ascenso por exceso de potencia con empuje de $6500\SIu N$. Las zonas de tasa negativa representan incapacidad de ascenso estacionario a esa velocidad, dentro del modelo declarado.}
 
 \section{Techo absoluto y techo de servicio}
 El techo absoluto se define aquí por $\max_V\dot h=0$. Con empuje constante con velocidad y polar fija equivale a $T_{d,\max}=D_{\min}$, siempre que la velocidad de mínimo arrastre sea admisible. Con $T_{d,\max}=T_0\sigma^x$,
@@ -90,7 +90,7 @@ En cada evaluación se actualizan masa, atmósfera, motor y resistencia. Si se p
 \subsection{Cambios de fase}
 Al terminar el ascenso, el crucero recibe la masa restante y la posición recorrida. Si se aproxima el ascenso con masa constante, se declara y se calcula el combustible de la fase para actualizar al menos la masa de salida. Esa aproximación sólo es defendible si la variación relativa es suficientemente pequeña para el objetivo del ejercicio; no se reutiliza automáticamente durante varias horas.
 
-\caso{Ejemplo original: dos óptimos}{Para la polar docente de $4.800\SIu{kg}$ y $T=6.500\SIu N$ a $4.500\SIu m$ ISA, se calculan $A$ y $B$. Vx se obtiene con $(B/A)^{1/4}$ y Vy con la ecuación~\eqref{eq:Vy-jet}. Se comparan ambas con pérdida y se evalúan $\gamma$ y $\dot h$ en cada una. La comprobación independiente consiste en maximizar numéricamente $T-D$ y $V(T-D)$ sobre el intervalo admisible, sin sustituir una función por la otra.}
+\caso{Ejemplo original: dos óptimos}{Para la polar docente de $4800\SIu{kg}$ y $T=6500\SIu N$ a $4500\SIu m$ ISA, se calculan $A$ y $B$. Vx se obtiene con $(B/A)^{1/4}$ y Vy con la ecuación~\eqref{eq:Vy-jet}. Se comparan ambas con pérdida y se evalúan $\gamma$ y $\dot h$ en cada una. La comprobación independiente consiste en maximizar numéricamente $T-D$ y $V(T-D)$ sobre el intervalo admisible, sin sustituir una función por la otra.}
 
 \section{Descenso con y sin motor}
 Si $T<D$, una condición estacionaria tiene $\gamma<0$. Con empuje residual, $\sin\gamma=(T-D)/W$; con motor apagado se recupera el planeo. El motor apagado puede añadir resistencia de hélice o rotor, y la polar puede cambiar: un planeo de avión con motor no es necesariamente la polar limpia del crucero.

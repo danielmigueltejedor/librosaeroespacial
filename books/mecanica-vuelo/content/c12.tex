@@ -104,7 +104,7 @@ Cada fase recibe la masa final y posición final de la anterior. Una tabla míni
 
 Para dimensionar combustible con peso seco y ruta prescritos, la masa inicial es una incógnita que también aumenta la resistencia. Se resuelve una ecuación de cierre $m_i=m_{\rm seco}+m_{\rm combustible}(m_i)+m_{\rm reserva}$. Una iteración que no converge o viola capacidad de tanque indica un diseño o misión inviables bajo esas hipótesis, no un motivo para fijar masa constante.
 
-\caso{Ejemplo original y comprobación por ODE}{Se emplea $m_i=4.800\SIu{kg}$, $m_f=3.900\SIu{kg}$, $S=28\SIu{m^2}$, polar $0.024+0.046C_L^2$, $h=4.500\SIu m$ ISA, $V=105\SIu{m\,s^{-1}}$ y $c_T=1.65\times10^{-5}\SIu{kg/(N\,s)}$. La ecuación~\eqref{eq:jet-arctan} se compara con integrar $\dot m=-c_TD(V,m)$ y $\dot x=V$ hasta el evento $m=3.900\SIu{kg}$. Se repite con pasos máximos de 300, 120 y 30 s. Las tres comparaciones pasan un error relativo de tiempo de $2\times10^{-7}$. No se compara con una ecuación logarítmica de hipótesis diferentes.}
+\caso{Ejemplo original y comprobación por ODE}{Se emplea $m_i=4800\SIu{kg}$, $m_f=3900\SIu{kg}$, $S=28\SIu{m^2}$, polar $0.024+0.046C_L^2$, $h=4500\SIu m$ ISA, $V=105\SIu{m\,s^{-1}}$ y $c_T=1.65\times10^{-5}\SIu{kg/(N\,s)}$. La ecuación~\eqref{eq:jet-arctan} se compara con integrar $\dot m=-c_TD(V,m)$ y $\dot x=V$ hasta el evento $m=3900\SIu{kg}$. Se repite con pasos máximos de 300, 120 y 30 s. Las tres comparaciones pasan un error relativo de tiempo de $2\times10^{-7}$. No se compara con una ecuación logarítmica de hipótesis diferentes.}
 
 \ilustra{jet-consumo}{Alcance calculado al variar combustible consumido: una ley conserva $C_L$ de máximo alcance y otra conserva TAS de $105\SIu{m\,s^{-1}}$. Ambas usan masa variable y la misma polar docente.}
 

@@ -7,7 +7,7 @@ Las cuatro familias siguen las competencias de las prácticas facilitadas: vuelo
 Cada experimento conserva entradas, salidas con unidades, registro de ejecución y limitaciones. Los gráficos del libro se reconstruyen a partir de los CSV o de las ecuaciones indicadas. Un gráfico sintético lleva esa identificación; uno procedente de JSBSim indica el modelo y condiciones.
 
 \section{Familia 1: barrido de vuelo horizontal}
-La rejilla original del T-6 combina masas nominales de 5.600 y 5.850 lbm, altitudes de 5.000 y 9.000 ft y once CAS entre 115 y 215 kt. Se obtienen 44 trimas longitudinales. Se registran EAS y TAS resultantes: el eje de resistencia se dibuja frente a EAS, aunque la condición de entrada sea CAS.
+La rejilla original del T-6 combina masas nominales de 5600 y 5850 lbm, altitudes de 5000 y 9000 ft y once CAS entre 115 y 215 kt. Se obtienen 44 trimas longitudinales. Se registran EAS y TAS resultantes: el eje de resistencia se dibuja frente a EAS, aunque la condición de entrada sea CAS.
 
 En una polar ideal, a igual masa y configuración, la resistencia frente a EAS depende poco de altitud si los coeficientes permanecen constantes. En un modelo completo pueden aparecer variaciones por Mach, Reynolds, trim, empuje inclinado y dispositivos. La coincidencia aproximada no debe imponerse por construcción.
 
@@ -29,7 +29,7 @@ Es una estimación de actuaciones a partir de trimas horizontales, con $L\simeq 
 La tabla de motor puede usar Mach y altitud de densidad en pies. Leerla como altitud geométrica en metros produce una consulta incorrecta aunque la interpolación funcione. Multiplicar un empuje por un coeficiente tabulado sigue dando empuje: la velocidad TAS es necesaria para convertirlo en potencia.
 
 \section{Familia 3: crucero del 747 con consumo}
-Se inicializa el modelo B747 a 27.000 ft y CAS de 260 kt, con 36.000 lbm de combustible repartido entre los cuatro depósitos alimentadores y el quinto vacío. Se simulan 1.800 s con paso de 0.05 s y un control docente explícito de altura y TAS. No se impone masa constante.
+Se inicializa el modelo B747 a 27\,000 ft y CAS de 260 kt, con 36\,000 lbm de combustible repartido entre los cuatro depósitos alimentadores y el quinto vacío. Se simulan 1800 s con paso de 0.05 s y un control docente explícito de altura y TAS. No se impone masa constante.
 
 El control usa error de velocidad y su integral para gases y error de altura, velocidad vertical, cabeceo y tasa de cabeceo para elevador. Añade amortiguación lateral sencilla. Los mandos se limitan al intervalo permitido. Se registran errores máximos de seguimiento y no se describe el vuelo como altitud y velocidad exactamente constantes si los datos muestran deriva.
 
@@ -43,16 +43,16 @@ La masa de combustible se contrasta con $\int\sum_i\dot m_{f,i}\,\dd t$. El peso
 La ventana de media hora se complementa con dos simulaciones completas hasta agotar los depósitos alimentadores: 28\,000 y 36\,000 lbm iniciales, con el quinto depósito vacío. Se conserva el mismo esquema docente de control. La terminación se identifica mediante el contenido total accesible; el último paso tiene resolución temporal de 0.1 s.
 
 \begin{center}\begin{tabular}{rrrr}\toprule
-Combustible inicial (lbm)&Tiempo simulado (s)&Modelo equivalente (s)&Diferencia\\\midrule
+Combustible inicial (lbm)&Tiempo simulado (s)&Modelo equivalente (s)&Diferencia (\%)\\\midrule
 28000&4113.0&4105.3&0.187\\
 36000&5264.4&5313.6&-0.926\\
 \bottomrule\end{tabular}\end{center}
 El modelo equivalente ajusta $D=A_V+B_VW^2$ a cinco trimas del mismo modelo de avión y usa un consumo específico efectivo inicial. No es una fuente independiente ni una identificación experimental. El ajuste de resistencia tiene un error relativo máximo inferior al 0.01\% en esos cinco puntos; no describe por ello cualquier condición de vuelo.
 
-Las alturas derivan hasta aproximadamente 58 y 75 m respecto al objetivo en las dos autonomías, aunque el error máximo de TAS permanece por debajo de 0.06 m/s. Por tanto, la comparación no cumple exactamente altitud constante. El consumo inicial registrado también puede diferir ligeramente del que se establece al avanzar el motor. Esas limitaciones se conservan en el informe. La auditoría adicional repite ambas autonomías completas con pasos de 0,1, 0,05 y 0,025 s. Entre los dos pasos menores las duraciones difieren en menos de 0,026 s, con resolución del cruce del umbral de combustible limitada por el paso. Esta convergencia numérica no se presenta como validación experimental.
+Las alturas derivan hasta aproximadamente 58 y 75 m respecto al objetivo en las dos autonomías, aunque el error máximo de TAS permanece por debajo de 0.06 m/s. Por tanto, la comparación no cumple exactamente altitud constante. El consumo inicial registrado también puede diferir ligeramente del que se establece al avanzar el motor. Esas limitaciones se conservan en el informe. La auditoría adicional repite ambas autonomías completas con pasos de 0.1, 0.05 y 0.025 s. Entre los dos pasos menores las duraciones difieren en menos de 0.026 s, con resolución del cruce del umbral de combustible limitada por el paso. Esta convergencia numérica no se presenta como validación experimental.
 
 \section{Convergencia temporal en un caso libre}
-El T-6 parte del mismo trim a CAS 155 kt y 5.000 ft y se integra libremente durante 60 s con pasos 0.10, 0.05 y 0.025 s. Se comparan altura, TAS, masa, actitud y aceleraciones finales. La diferencia entre resultados sucesivos aporta una estimación empírica de sensibilidad al paso.
+El T-6 parte del mismo trim a CAS 155 kt y 5000 ft y se integra libremente durante 60 s con pasos 0.10, 0.05 y 0.025 s. Se comparan altura, TAS, masa, actitud y aceleraciones finales. La diferencia entre resultados sucesivos aporta una estimación empírica de sensibilidad al paso.
 
 No se obtiene un orden formal sólo porque dos diferencias decrezcan. Los estados de motor, actualización de combustible, tolerancia de trim y términos terrestres pueden limitar el régimen asintótico. Se exige convergencia de las magnitudes de interés para ese caso, y se conserva como alcance separado de la convergencia de la ODE analítica de crucero.
 

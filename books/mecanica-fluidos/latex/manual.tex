@@ -11441,7 +11441,7 @@ Con 101 puntos, la diferencia máxima entre la solución numérica y la serie es
 
 Esfuerzo en la placa fija y condicionamiento. El esfuerzo que el fluido transmite a la placa fija crece desde cero hasta el valor estacionario \(\mu U/h = 0{,}01\) Pa. A 10, 30 y 60 s la solución numérica da el 29,40 \%, el 89,53 \% y el 99,35 \% de ese valor, frente al 29,29 \%, el 89,65 \% y el 99,46 \% de la serie: el esfuerzo, que es una derivada, tiene un error del orden del 0,1 \%, mayor que el de la velocidad. El instante en que el esfuerzo alcanza el 99 \% es 53,68 s según la serie analítica y se comunica como 55,1 s para la simulación indicada. La diferencia no demuestra por sí misma que la solución numérica sea correcta: al tiempo de 55,1 s, la serie predice aproximadamente el 99,1305 \% del esfuerzo estacionario; bastaría un sesgo numérico de unas 0,1305 unidades porcentuales de ese esfuerzo para desplazar así el cruce. El cálculo debe reproducirse y contrastarse refinando el método de derivación espacial y las tolerancias temporales:
 \begin{lstlisting}[style=studium]
-tauFija[t_?NumericQ] := -(10^-3) Derivative[1, 0][sol][h, t];      (* mu = 1\times 10^{-3} Pa s *)
+tauFija[t_?NumericQ] := -(10^-3) Derivative[1, 0][sol][h, t];      (* mu = 10^-3 Pa s *)
 tauEst = 10^-3 U/h;
 razonSerie[t_?NumericQ] := 1 + 2 Sum[(-1)^n If[n^2 Pi^2 nu t/h^2 < 700, Exp[-n^2 Pi^2 nu t/h^2], 0], {n, 1, 40}];
 Print["C: tau/tau_est en t = 10, 30, 60 s, NDSolve: ", Table[tauFija[tt]/tauEst, {tt, {10., 30., 60.}}], " ; serie: ", Table[razonSerie[tt], {tt, {10., 30., 60.}}]];

@@ -109,7 +109,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{El área mínima es $F/\sigma_{adm}$. Sustituir en $m=\rho AL$ da $m=\rho FL/\sigma_{adm}$, con un área distinta para cada material.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P34.tex}
-\caso{Resultado}{$A_A=133{,}333\,\mathrm{mm^2}$, $A_B=61{,}538\,\mathrm{mm^2}$; $ m_A=0.18667\,\mathrm{kg}$, $ m_B=0.13846\,\mathrm{kg}$.}
+\caso{Resultado}{$A_A=133{,}333\,\mathrm{mm^2}$, $A_B=61{,}538\,\mathrm{mm^2}$; $ m_A=0{,}18667\,\mathrm{kg}$, $ m_B=0{,}13846\,\mathrm{kg}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{kg}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El material más denso puede producir menor masa cuando gobierna resistencia y cambia el área.}
 \apartado{Verificación}{Las tensiones de cada sección recuperan el admisible. El material más denso produce menor masa en este problema.}
@@ -126,7 +126,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Con $Y$ dado, se evalúa $K_I$ y se divide por la tenacidad supuesta: $K_I/K_{IC}=Y\sigma\sqrt{\pi a}/K_{IC}$. No se sustituye $a$ por una longitud total.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P07.tex}
-\caso{Resultado}{$K_I=17.6868\,\mathrm{MPa\sqrt m}$; $K_I/K_{IC}=0.4211$.}
+\caso{Resultado}{$K_I=17{,}6868\,\mathrm{MPa\sqrt m}$; $K_I/K_{IC}=0{,}4211$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad resulta inferior a la tenacidad supuesta, con una conclusión estática y condicionada.}
 \apartado{Verificación}{Elevar al cuadrado permite comprobar $K_I^2/(Y^2\sigma^2)=\pi a $. La comparación resulta inferior a uno dentro del modelo.}
@@ -141,7 +141,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Elevar $K_{IC}=\sigma\sqrt{\pi a_c}$ al cuadrado y aislar da $a_c=K_{IC}^2/(\pi\sigma^2)$. Para el defecto inicial se aísla tensión, no tamaño.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P08.tex}
-\caso{Resultado}{$ a_c=7.1620\,\mathrm{mm}$; $2a_c=14.3239\,\mathrm{mm}$; $\sigma_c=524.423\,\mathrm{MPa}$.}
+\caso{Resultado}{$ a_c=7{,}1620\,\mathrm{mm}$; $2a_c=14{,}3239\,\mathrm{mm}$; $\sigma_c=524{,}423\,\mathrm{MPa}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m, MPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La longitud crítica total duplica la semilongitud; el defecto inicial requiere su propia tensión crítica.}
 \apartado{Verificación}{Sustituir $a_c$ en $K_I$ recupera $36\,\mathrm{MPa\sqrt m}$. Duplicar tensión reduce el tamaño crítico a un cuarto si $Y$ permanece constante.}
@@ -171,7 +171,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La ecuación implícita es $f(a)=180\sqrt{\pi a/\cos(\pi a/0{,}08)}-30=0$. Se usa bisección en $0<a<0{,}04$ m; el argumento es positivo y la función crece en el dominio.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P10.tex}
-\caso{Resultado}{$ a_c=8.36874\,\mathrm{mm}$; con $Y=1$, $ a_{c,\infty}=8.84194\,\mathrm{mm}$.}
+\caso{Resultado}{$ a_c=8{,}36874\,\mathrm{mm}$; con $Y=1$, $ a_{c,\infty}=8{,}84194\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La corrección por anchura eleva intensidad y reduce el tamaño crítico respecto a la placa infinita.}
 \apartado{Verificación}{La sustitución de la raíz en la expresión completa recupera 30 MPa raíz de m; el tamaño finito es menor porque Y>1. Se comprueba ac<W/2.}
@@ -203,7 +203,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Al dividir las dos leyes $\sigma_a=AN^b$ se elimina $A$: $\sigma_{a2}/\sigma_{a1}=(N_2/N_1)^b$. Un logaritmo permite aislar $b$, y después $A=\sigma_{a1}/N_1^b$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P12.tex}
-\caso{Resultado}{$ b=-0.129819$; $A=1322.3140\,\mathrm{MPa}$; $N=156033.6$ ciclos.}
+\caso{Resultado}{$ b=-0{,}129819$; $A=1322{,}3140\,\mathrm{MPa}$; $N=156033{,}6$ ciclos.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La interpolación asigna una vida solo dentro del tramo y convención de la curva ajustada.}
 \apartado{Verificación}{Sustituir $10^4$ y $10^6$ ciclos recupera 400 y 220 MPa. La vida objetivo queda entre ambas.}
@@ -248,7 +248,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Se calcula $\sigma_{min}=R\sigma_{max}$ y después $\Delta\sigma=(1-R)\sigma_{max}$. La misma geometría permite escribir $\Delta K=(1-R)K_{max}$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P15.tex}
-\caso{Resultado}{$K_{max}=19.4970$; $K_{min}=3.8994$; $\Delta K=15.5976\,\mathrm{MPa\sqrt m}$; $R=0{,}20$.}
+\caso{Resultado}{$K_{max}=19{,}4970$; $K_{min}=3{,}8994$; $\Delta K=15{,}5976\,\mathrm{MPa\sqrt m}$; $R=0{,}20$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{MPa\,m^{1/2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La intensidad máxima y el rango responden a preguntas físicas distintas: inestabilidad y crecimiento.}
 \apartado{Verificación}{$K_{min}/K_{max}=R$ y $K_{max}-K_{min}=\Delta K$. La intensidad máxima queda por debajo de la tenacidad supuesta en el modelo.}
@@ -263,7 +263,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La separación da $dN=a^{-3/2}da/[C(\Delta\sigma\sqrt\pi)^3]$. La primitiva es $-2a^{-1/2}$ y al evaluar extremos queda una vida positiva.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P16.tex}
-\caso{Resultado}{$N=2524856.2$ ciclos de propagación.}
+\caso{Resultado}{$N=2524856{,}2$ ciclos de propagación.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La vida calculada cubre crecimiento entre tamaños, sin añadir iniciación ni certificar detectabilidad.}
 \apartado{Verificación}{La derivada de la primitiva reproduce $a^{-3/2}$; una cuadratura numérica independiente se registra en el informe. N crece al reducir el rango de tensión.}
@@ -278,7 +278,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Con exponente dos, el integrando es proporcional a $1/a$. Se integra como $\ln a$; el cociente de tamaños dentro del logaritmo es adimensional.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P17.tex}
-\caso{Resultado}{$N=144031.8$ ciclos.}
+\caso{Resultado}{$N=144031{,}8$ ciclos.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El exponente dos cambia la primitiva a un logaritmo y requiere mantener unidades del coeficiente.}
 \apartado{Verificación}{La cuadratura del integrando coincide con el logaritmo. Si los tamaños final e inicial coinciden, el logaritmo y la vida de propagación son cero.}
@@ -293,7 +293,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Se integra Paris con exponente tres antes de aplicar la fracción: $I=0{,}4N$. Si se exige entero, se redondea el intervalo hacia abajo.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P18.tex}
-\caso{Resultado}{$N=5264311.3$ ciclos; $I=2105724.5$ ciclos, o 2105724 ciclos enteros redondeados hacia abajo.}
+\caso{Resultado}{$N=5264311{,}3$ ciclos; $I=2105724{,}5$ ciclos, o 2105724 ciclos enteros redondeados hacia abajo.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La fracción académica reduce el intervalo respecto a la vida de propagación, sin ser regla reglamentaria.}
 \apartado{Verificación}{La fracción del intervalo respecto a la vida calculada es 0,4. Una integración numérica independiente contrasta la vida.}
@@ -325,7 +325,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Al dividir Norton--Arrhenius se eliminan constantes comunes y se conservan razón de tensión y diferencia de inversas de temperatura. Cada factor es adimensional.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P20.tex}
-\caso{Resultado}{Factor térmico 4.26998; razón total 6.50812; $\dot\varepsilon_2=6.508119\times10^{-8}\,\mathrm{s^{-1}}$.}
+\caso{Resultado}{Factor térmico 4{,}26998; razón total 6{,}50812; $\dot\varepsilon_2=6{,}508119\times10^{-8}\,\mathrm{s^{-1}}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Ambos cambios elevan la tasa del mecanismo asumido; no se deduce por ello una vida de rotura.}
 \apartado{Verificación}{La tasa aumenta por ambos cambios. El exponente es adimensional y la temperatura no se introduce en grados Celsius.}
@@ -340,7 +340,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La igualdad de parámetros a igual tensión permite aislar $\log_{10}t_2=P/T_2-C_{LM}$; aplicar la potencia de diez devuelve horas.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P21.tex}
-\caso{Resultado}{$ t_2=545.5595\,\mathrm h $; $P=21600\,\mathrm K$.}
+\caso{Resultado}{$ t_2=545{,}5595\,\mathrm h $; $P=21600\,\mathrm K$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{h}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La exposición más caliente corresponde a menor tiempo bajo la correlación y la misma tensión.}
 \apartado{Verificación}{Sustituir t 2 con horas recupera P. A mayor temperatura, menor tiempo equivalente en el ajuste.}
@@ -355,7 +355,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Se resta primero elasticidad: $\varepsilon_c=\varepsilon_{lim}-\sigma/E$. A tasa constante, $t=\varepsilon_c/\dot\varepsilon_s$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P22.tex}
-\caso{Resultado}{$ t=35000\,\mathrm s=9.72222\,\mathrm h $.}
+\caso{Resultado}{$ t=35000\,\mathrm s=9{,}72222\,\mathrm h $.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{s}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La elasticidad ya consume parte del límite; el tiempo usa únicamente la deformación todavía disponible.}
 \apartado{Verificación}{Al sumar las contribuciones elástica y de fluencia se recupera la deformación límite. La diferencia debe ser positiva antes de dividir.}
@@ -372,7 +372,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La igualdad de deformación longitudinal permite sumar fuerzas de fases y obtener la regla de mezcla. Densidad usa la misma partición volumétrica sin vacíos.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P23.tex}
-\caso{Resultado}{$E_L=140.670\,\mathrm{GPa}$; $\rho=1548.0\,\mathrm{kg/m^3}$; $E_L/\rho=9.08721\times10^{7}\,\mathrm{m^2/s^2}$.}
+\caso{Resultado}{$E_L=140{,}670\,\mathrm{GPa}$; $\rho=1548{,}0\,\mathrm{kg/m^3}$; $E_L/\rho=9{,}08721\times10^{7}\,\mathrm{m^2/s^2}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{GPa}$, $\mathrm{kg\,m^{-3}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La fracción de fibra eleva rigidez longitudinal y modifica masa dentro de una idealización sin vacíos.}
 \apartado{Verificación}{Ambas propiedades quedan entre las de las fases. Con fracción de fibra cero se recuperan propiedades de matriz.}
@@ -387,7 +387,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{En serie se suman deformaciones ponderadas a igual tensión. Dividir por tensión da la suma de flexibilidades y después se invierte.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P24.tex}
-\caso{Resultado}{$E_T=8.16882\,\mathrm{GPa}$; cociente $E_L/E_T=17.220$.}
+\caso{Resultado}{$E_T=8{,}16882\,\mathrm{GPa}$; cociente $E_L/E_T=17{,}220$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{GPa}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La matriz domina buena parte de la deformación transversal del modelo en serie.}
 \apartado{Verificación}{La rigidez transversal idealizada es muy inferior a la longitudinal y permanece entre los módulos de las fases.}
@@ -402,7 +402,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Para cada cara, $I=bt^3/12+bt(h/2)^2$. Se suman las dos y se multiplica por $E$. La referencia monolítica usa espesor $2t$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P25.tex}
-\caso{Resultado}{$EI=1260.4667\,\mathrm{N\,m^2}$; $EI_0=1.86667\,\mathrm{N\,m^2}$; razón 675.25.}
+\caso{Resultado}{$EI=1260{,}4667\,\mathrm{N\,m^2}$; $EI_0=1{,}86667\,\mathrm{N\,m^2}$; razón 675{,}25.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{N\,m^{2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Separar caras aumenta inercia, pero el beneficio exige que núcleo y unión mantengan la arquitectura.}
 \apartado{Verificación}{Ambas expresiones tienen unidades de rigidez a flexión. Si h=t, las caras contiguas recuperan la inercia de espesor 2 t.}
@@ -417,7 +417,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{De $x^2=k_pt$ resulta $x=\sqrt{k_pt}$ para espesor positivo. Con el mismo coeficiente, $(2x)^2=k_pt_2$ da $t_2=4t$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P26.tex}
-\caso{Resultado}{$ x=16.43168\,\mu\mathrm m $; doble espesor a 1000 h.}
+\caso{Resultado}{$ x=16{,}43168\,\mu\mathrm m $; doble espesor a 1000 h.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{Duplicar espesor exige cuadruplicar tiempo en la ley parabólica, sin medir directamente metal consumido.}
 \apartado{Verificación}{$x^2/t$ recupera $k_p$. El tiempo crece con el cuadrado del espesor en esta ley.}
@@ -447,7 +447,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La profundidad depende de $f^{-1/2}$ a propiedades constantes. Por tanto $\delta(4f)/\delta(f)=4^{-1/2}=1/2$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P28.tex}
-\caso{Resultado}{$\delta=0.26902\,\mathrm{mm}$; a 400 k Hz, $\delta=0.13451\,\mathrm{mm}$.}
+\caso{Resultado}{$\delta=0{,}26902\,\mathrm{mm}$; a 400 k Hz, $\delta=0{,}13451\,\mathrm{mm}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{m}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La mayor frecuencia reduce profundidad pelicular, sin fijar una detección garantizada.}
 \apartado{Verificación}{La ley de escala $f^{-1/2}$ ofrece una comprobación independiente.}
@@ -463,7 +463,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{En régimen 1D estacionario el flujo es común a todas las resistencias. La suma de caídas da $T_g-T_c=q^{\prime\prime}R_{tot}$. Después se restan convección caliente y recubrimiento para hallar la interfaz.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P35.tex}
-\caso{Resultado}{$ q^{\prime\prime}=428571.429\,\mathrm{W/m^2}$; $T_{r-m}=885.714\,\mathrm K$.}
+\caso{Resultado}{$ q^{\prime\prime}=428571{,}429\,\mathrm{W/m^2}$; $T_{r-m}=885{,}714\,\mathrm K$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: $\mathrm{W\,m^{-2}}$. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{El reparto de caídas térmicas determina la interfaz dentro de la pared plana idealizada.}
 \apartado{Verificación}{La suma de caídas térmicas es 700 K; la interfaz queda entre las temperaturas de los fluidos.}
@@ -480,7 +480,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{La estimación de tasa es eventos divididos por exposición. Bajo el modelo declarado, se integra tasa constante para obtener supervivencia exponencial.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P29.tex}
-\caso{Resultado}{$\widehat\lambda=2\times10^{-4}\,\mathrm{h^{-1}}$; $MTBF=5000\,\mathrm h $; $R(100)=0.9801987$.}
+\caso{Resultado}{$\widehat\lambda=2\times10^{-4}\,\mathrm{h^{-1}}$; $MTBF=5000\,\mathrm h $; $R(100)=0{,}9801987$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La tasa observada y supervivencia son estimaciones condicionadas al modelo y población.}
 \apartado{Verificación}{El exponente es adimensional. R(0)=1 y decrece con t para tasa positiva.}
@@ -495,7 +495,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Cada cociente divide tiempo medio operativo por duración media del ciclo. La segunda definición añade espera al denominador y mantiene el mismo numerador.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P30.tex}
-\caso{Resultado}{$A_i=0.9950249$; $A_{ext}=0.9756098$.}
+\caso{Resultado}{$A_i=0{,}9950249$; $A_{ext}=0{,}9756098$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La espera logística reduce el cociente de disponibilidad aun manteniendo la reparación activa.}
 \apartado{Verificación}{Añadir espera disminuye disponibilidad. Ambos cocientes están entre cero y uno.}
@@ -510,7 +510,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Por definición condicional, la supervivencia entre edades es $R(t_0+\Delta t)/R(t_0)$. Se restan los exponentes de Weibull.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P31.tex}
-\caso{Resultado}{Probabilidad condicional 0.7866279; $R(200)=0.9607894$, que no coincide.}
+\caso{Resultado}{Probabilidad condicional 0{,}7866279; $R(200)=0{,}9607894$, que no coincide.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{adimensional}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La edad cambia la supervivencia condicional con el parámetro de forma adoptado.}
 \apartado{Verificación}{Con beta igual a uno, la diferencia de exponentes depende solo del incremento y reaparece la propiedad sin memoria.}
@@ -525,7 +525,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Desarrollo algebraico}{Se fija $\exp(-\lambda_U T)=0{,}05$, se toma logaritmo natural y se divide por exposición: $\lambda_U=-\ln(0{,}05)/T$.}
 \apartado{Sustitución numérica}{Se desarrolla cada operación con las unidades del resultado.}
 \input{solutions/generated/P32.tex}
-\caso{Resultado}{$\lambda_U=0.0001997155\,\mathrm{h^{-1}}$.}
+\caso{Resultado}{$\lambda_U=0{,}0001997155\,\mathrm{h^{-1}}$.}
 \apartado{Unidades}{Magnitudes de los controles numéricos: \texttt{1/h}. Las unidades tipográficas del resultado se muestran junto a cada valor; las conversiones se realizan antes de operar.}
 \apartado{Interpretación}{La ausencia de eventos acota la tasa solo con exposición y un nivel estadístico definido.}
 \apartado{Verificación}{Sustituir el límite en la probabilidad de cero eventos devuelve 0,05.}
@@ -559,7 +559,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Una orden de trabajo académica utilizó una revisión de un manual que no corresponde al estado de modificación de la pieza. La tarea aparece marcada como terminada.}
 \apartado{Documentación disponible}{Orden, identidad de componente, registro de modificación y dos revisiones de datos ficticios.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{1321/2014,145.A.45 y 145.A.50;748/2012,21.A.7.}
+\apartado{Normativa y alcance}{1321/2014, 145.A.45 y 145.A.50; 748/2012, 21.A.7.}
 \apartado{Procedimiento y justificación}{Se identifica qué instrucción era aplicable, qué diferencias técnicas existen y qué se realizó realmente. Se documenta la discrepancia, se evita tratar la casilla de cierre como prueba suficiente y se remite la evaluación al procedimiento competente. Se estudia la causa de selección de la copia incorrecta.}
 \apartado{Resultado académico}{El estado académico es pendiente de evaluación y corrección documentada. Cambiar la referencia escrita sin evaluar el trabajo no acredita conformidad.}
 \apartado{Limitaciones}{Sin datos de mantenimiento no se prescribe repetir un paso, desmontar ni liberar el componente.}
@@ -567,7 +567,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Tras una tarea ficticia se ha emitido un CRS. El propietario piensa que con ello empieza automáticamente un nuevo periodo de ARC.}
 \apartado{Documentación disponible}{Certificado de tarea, fecha de ARC y configuración académicos.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{1321/2014,145.A.50 y M.A.901--903, consolidación 20260807.}
+\apartado{Normativa y alcance}{1321/2014, 145.A.50 y M.A.901--903, consolidación 20260807.}
 \apartado{Procedimiento y justificación}{Se separa la certificación del mantenimiento ordenado de la revisión de aeronavegabilidad. Se identifican organización, privilegios y documentos requeridos para cada proceso. El CRS se incorpora como evidencia pertinente, pero no se transforma en ARC.}
 \apartado{Resultado académico}{No hay renovación automática del ARC por el solo CRS. Debe analizarse el proceso de revisión y sus condiciones.}
 \apartado{Limitaciones}{No se determina la validez de un ARC real ni se presupone que una revisión ya esté completada.}
@@ -575,7 +575,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Una persona ficticia posee un grado universitario y ha cursado materiales y mantenimiento. Se le pide firmar un CRS de tareas en aeronave.}
 \apartado{Documentación disponible}{Título académico y experiencia de laboratorio, pero sin licencia, habilitación ni autorización acreditadas.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{1321/2014,66.A.20,.25,.30,.45 y 145.A.35.}
+\apartado{Normativa y alcance}{1321/2014, 66.A.20, 66.A.25, 66.A.30, 66.A.45 y 145.A.35.}
 \apartado{Procedimiento y justificación}{Se identifica tarea y régimen. Se comprueban licencia, categoría, limitaciones, habilitación, experiencia y autorización organizativa. Los posibles créditos o rutas para titulados se estudian en su disposición concreta, no se inventa equivalencia total.}
 \apartado{Resultado académico}{Con la documentación dada no se demuestra capacidad reglamentaria para emitir ese CRS. Se produce un mapa de requisitos pendientes, sin atribuir una denegación administrativa al ejercicio.}
 \apartado{Limitaciones}{La formación académica puede ser relevante; el caso no evalúa un expediente personal real ni sustituye a la autoridad.}
@@ -583,7 +583,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Un estudiante recibe la hoja aportada de TB20 y concluye que todas las AD del motor están incluidas porque hay una columna de modelo.}
 \apartado{Documentación disponible}{Hoja histórica proporcionada, con identificadores, asuntos y estado Current de la exportación.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{748/2012,21.A.3 B;1321/2014, M.A.303; fuente original de cada AD.}
+\apartado{Normativa y alcance}{748/2012, 21.A.3B; 1321/2014, M.A.303; fuente original de cada AD.}
 \apartado{Procedimiento y justificación}{Se revisan objeto y clasificación. La hoja se organiza por modelos de aeronave y no demuestra exhaustividad para motor, hélice y componentes. Se identifica cada producto instalado y se consulta la autoridad y base pertinentes con fecha de corte.}
 \apartado{Resultado académico}{Se conserva la hoja como índice de candidatos y queda pendiente una búsqueda por productos y componentes. No se declara cumplida una flota a partir de la exportación.}
 \apartado{Limitaciones}{La obra no aporta una lista actualizada completa de AD para ningún modelo real.}
@@ -607,7 +607,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Un equipo ficticio presenta una anomalía. Un estudiante busca un procedimiento de reparación en la MEL y afirma que cualquier elemento listado puede quedar diferido.}
 \apartado{Documentación disponible}{Extracto académico de MEL, configuración y descripción incompleta del fallo.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{Régimen operacional y MEL aplicable;1321/2014, M.A.403; datos de mantenimiento. No se fija una disposición operacional concreta sin el escenario completo.}
+\apartado{Normativa y alcance}{Régimen operacional y MEL aplicable; 1321/2014, M.A.403; datos de mantenimiento. No se fija una disposición operacional concreta sin el escenario completo.}
 \apartado{Procedimiento y justificación}{Se distingue autorización de despacho bajo condiciones de la instrucción técnica de reparación. Se comprueban sistema exacto, fallo, condiciones, procedimientos y límites del documento aplicable. Una entrada de MEL no cubre automáticamente cualquier fallo de ese sistema.}
 \apartado{Resultado académico}{Se requiere completar datos y usar el procedimiento correspondiente. No puede cerrarse la reparación con la MEL ni diferirse por simple semejanza del nombre.}
 \apartado{Limitaciones}{La norma operacional y MEL reales no se han proporcionado; esa parte queda expresamente pendiente.}
@@ -621,9 +621,9 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Limitaciones}{No se asume reconocimiento automático de licencias u organizaciones por existir EMAR.}
 \Needspace{.36\textheight}\section{C10. Fecha de aplicación de una modificación}
 \apartado{Situación inicial}{Un resumen de 2025 describe revisión ARC. En octubre 2026 se pretende utilizarlo sin consultar cambios posteriores.}
-\apartado{Documentación disponible}{EAR de septiembre 2025, consolidación 1321/2014 deagosto 2026 y Reglamento 2026/100 descargados.}
+\apartado{Documentación disponible}{EAR de septiembre 2025, consolidación 1321/2014 de agosto 2026 y Reglamento 2026/100 descargados.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{2026/100, artículo 4;1321/2014, M.A.901--903.}
+\apartado{Normativa y alcance}{2026/100, artículo 4; 1321/2014, M.A.901--903.}
 \apartado{Procedimiento y justificación}{Se compara fecha documental, entrada en vigor y aplicación. El artículo 4 fija aplicación general desde 7 agosto 2026 y excepciones concretas. Se lee el punto de la consolidación actual en lugar de conservar automáticamente numeración antigua.}
 \apartado{Resultado académico}{La explicación académica se actualiza a M.A.901 y M.A.903 vigentes en la fecha de corte; el resumen 2025 queda como referencia histórica parcial.}
 \apartado{Limitaciones}{El caso no demuestra que todo el contenido de cualquier EAR2025 sea obsoleto: se analiza la disposición concreta.}
@@ -631,7 +631,7 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Situación inicial}{Una indicación ficticia está fuera de los límites de reparación de la instrucción disponible. El material propuesto como parche tiene mayor resistencia nominal.}
 \apartado{Documentación disponible}{Identidad y medida de daño académicas, extracto de datos y ficha nominal sin base de reparación.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{1321/2014, M.A.304 y 145.A.45;748/2012, Parte 21 según ruta de diseño de reparación.}
+\apartado{Normativa y alcance}{1321/2014, M.A.304 y 145.A.45; 748/2012, Parte 21 según ruta de diseño de reparación.}
 \apartado{Procedimiento y justificación}{Se conserva la discrepancia y se solicita el dato de reparación adecuado o la evaluación correspondiente. Se consideran geometría, fatiga, corrosión, uniones y compatibilidad. Mayor resistencia nominal no demuestra equivalencia ni conformidad.}
 \apartado{Resultado académico}{La documentación proporcionada no permite definir ni autorizar la reparación. Se entrega una lista concreta de información necesaria.}
 \apartado{Limitaciones}{No se propone material, espesor, adhesivo ni proceso para una pieza real.}
@@ -645,17 +645,17 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Limitaciones}{La selección de técnicas adicionales y aceptación real requiere los datos y autoridad técnica aplicables.}
 \Needspace{.36\textheight}\section{C13. Repuesto con documento pero sin compatibilidad}
 \apartado{Situación inicial}{Un componente ficticio tiene documento de liberación, pero no se ha demostrado que su configuración sea elegible para la instalación prevista.}
-\apartado{Documentación disponible}{Documento de liberación, IPCde la aeronave y registro de modificación incompleto.}
+\apartado{Documentación disponible}{Documento de liberación, IPC de la aeronave y registro de modificación incompleto.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{1321/2014,145.A.42,.45 y.50; datos de elegibilidad/configuración del producto.}
+\apartado{Normativa y alcance}{1321/2014, 145.A.42, 145.A.45 y 145.A.50; datos de elegibilidad/configuración del producto.}
 \apartado{Procedimiento y justificación}{Se verifica identidad, estado, alcance del documento y compatibilidad con la instalación. Se contrasta P/N, modificación y condiciones. El documento de componente no se transforma en aprobación de cualquier instalación.}
 \apartado{Resultado académico}{La instalación queda pendiente de demostrar elegibilidad. La existencia del documento no completa el análisis de configuración.}
 \apartado{Limitaciones}{No se declara defectuoso el componente por falta de datos; se distingue estado físico de evidencia de elegibilidad.}
 \Needspace{.36\textheight}\section{C14. Aplicabilidad de la AD 2024-14-03}
-\apartado{Situación inicial}{Una aeronave ficticia coincide con un modelo de la tabla de la ADoriginal, pero no consta si incorpora el piloto automático definido.}
-\apartado{Documentación disponible}{Hoja histórica aportada y publicación FAAoriginal 2024-15529; no hay expediente STC ni equipo confirmado.}
+\apartado{Situación inicial}{Una aeronave ficticia coincide con un modelo de la tabla de la AD original, pero no consta si incorpora el piloto automático definido.}
+\apartado{Documentación disponible}{Hoja histórica aportada y publicación FAA original 2024-15529; no hay expediente STC ni equipo confirmado.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
-\apartado{Normativa y alcance}{FAA AD 2024-14-03, apartados(a),(c),(g)y(i)en publicación original; aplicabilidad jurisdiccional yestado vigente en DRS por comprobar.}
+\apartado{Normativa y alcance}{FAA AD 2024-14-03, apartados (a), (c), (g) e (i) en la publicación original; aplicabilidad jurisdiccional y estado vigente en DRS por comprobar.}
 \apartado{Procedimiento y justificación}{Se confirma efectividad histórica 20 agosto 2024 y la combinación modelo/instalación definida. Antes de calcular plazo se busca evidencia de equipo y STC. También se comprueba si la directiva ha sido sustituida o modificada en la fecha de análisis.}
 \apartado{Resultado académico}{Estado: pendiente de configuración y de comprobación actual de sustitución/cancelación. No es un caso cerrado de cumplimiento.}
 \apartado{Limitaciones}{La publicación original no prueba por sí sola vigencia actual. El caso no es específico del motor: trata un sistema de piloto automático.}
@@ -668,11 +668,11 @@ Fecha normativa de referencia: 18 de octubre de 2026, con las versiones y pendie
 \apartado{Resultado académico}{Estado académico: PENDIENTE DE HISTORIAL. No se calcula un margen positivo acreditado ni se declara condición servible.}
 \apartado{Limitaciones}{La reconstrucción de historial debe seguir el sistema y los datos aplicables; el ejercicio no describe una vía de regularización real.}
 \Needspace{.36\textheight}\section{C16. Vencimiento simultáneo por uso y calendario}
-\apartado{Situación inicial}{Una tarea ficticia vence cada 200 horaso 6 meses, lo primero. Se realizó el 30 abril 2026 a 1000 h. El 18 octubre se acumulan 1190 h.}
-\apartado{Documentación disponible}{Registro académico de tarea ylectura actual; sin tolerancias autorizadas.}
+\apartado{Situación inicial}{Una tarea ficticia vence cada 200 horas o 6 meses, lo primero. Se realizó el 30 abril 2026 a 1000 h. El 18 octubre se acumulan 1190 h.}
+\apartado{Documentación disponible}{Registro académico de tarea y lectura actual; sin tolerancias autorizadas.}
 \apartado{Fecha de referencia}{18 de octubre de 2026}
 \apartado{Normativa y alcance}{Reglas de programa aplicables; intervalos y fechas numéricos inventados para el ejercicio.}
-\apartado{Procedimiento y justificación}{Se calcula umbral 1200 h, margen 10 h, y fecha 30 octubre 2026. Ambos límites se conservan. Con una previsión de 5 hpor jornada, se alcanzaría el umbral tras 2 jornadas de operación, siempre que no domine antes el calendario.}
-\apartado{Resultado académico}{La planificación debe considerar 10 hy la fecha 30 octubre, con evidencia del ritmo de utilización. No se convierte 2 jornadas automáticamente en 2 días naturales.}
+\apartado{Procedimiento y justificación}{Se calcula umbral 1200 h, margen 10 h y fecha 30 octubre 2026. Ambos límites se conservan. Con una previsión de 5 h por jornada, se alcanzaría el umbral tras 2 jornadas de operación, siempre que no domine antes el calendario.}
+\apartado{Resultado académico}{La planificación debe considerar 10 h y la fecha 30 octubre, con evidencia del ritmo de utilización. No se convierte 2 jornadas automáticamente en 2 días naturales.}
 \apartado{Limitaciones}{El caso no autoriza extensiones ni interpreta 6 meses como 180 días.}
 \end{document}
