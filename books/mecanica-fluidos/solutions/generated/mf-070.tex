@@ -1,4 +1,4 @@
-\noindent\textbf{Elección del procedimiento.} Para régimen turbulento se usa la correlación de Haaland dada en el capítulo: $f_D=[-1.8\log_{10}((\varepsilon/(3.7D))^{1.11}+6.9/\mathrm{Re})]^{-2}$. Primero se calcula Reynolds y después se introduce el factor de Darcy en la pérdida de presión.
+\noindent\textbf{Elección del procedimiento.} Para régimen turbulento se usa la correlación de Haaland dada en el capítulo: $f_D=[-1{,}8\log_{10}((\varepsilon/(3.7D))^{1.11}+6.9/\mathrm{Re})]^{-2}$. Primero se calcula Reynolds y después se introduce el factor de Darcy en la pérdida de presión.
 
 \begin{enumerate}
 
@@ -6,18 +6,18 @@
 
 \[\fitmath{\mathrm{Re}=\frac{V\cdot D}{\nu}}\]
 
-\[\fitmath{\mathrm{Re}=\frac{(1)\cdot (0.1)}{(1.007\times10^{-6})}\approx 99304.87\,}\]
+\[\fitmath{\mathrm{Re}=\frac{(1)\cdot (0{,}1)}{(1{,}007\times10^{-6})}\approx 99304{,}87\,}\]
 
 \item Usar logaritmo decimal y rugosidad en las mismas unidades que diámetro.
 
-\[\fitmath{\mathrm{fD}={\left(-1.8\cdot \frac{\ln\left({\left(\frac{\mathrm{eps}}{3.7\cdot D}\right)}^{1.11}+\frac{6.9}{\mathrm{Re}}\right)}{\ln\left(10\right)}\right)}^{-2}}\]
+\[\fitmath{\mathrm{fD}={\left(-1{,}8\cdot \frac{\ln\left({\left(\frac{\mathrm{eps}}{3.7\cdot D}\right)}^{1.11}+\frac{6.9}{\mathrm{Re}}\right)}{\ln\left(10\right)}\right)}^{-2}}\]
 
-\[\fitmath{\mathrm{fD}={\left(-1.8\cdot \frac{\ln\left({\left(\frac{(4.5\times10^{-5})}{3.7\cdot (0.1)}\right)}^{1.11}+\frac{6.9}{(99304.86594)}\right)}{\ln\left(10\right)}\right)}^{-2}\approx 0.01987397\,}\]
+\[\fitmath{\mathrm{fD}={\left(-1{,}8\cdot \frac{\ln\left({\left(\frac{(4{,}5\times10^{-5})}{3.7\cdot (0{,}1)}\right)}^{1.11}+\frac{6.9}{(99304{,}86594)}\right)}{\ln\left(10\right)}\right)}^{-2}\approx 0{,}01987397\,}\]
 
 \item Aplicar Darcy--Weisbach con el factor de Darcy calculado.
 
 \[\fitmath{\mathrm{dp}=\frac{\frac{\mathrm{fD}\cdot L}{D}\cdot \rho\cdot {V}^{2}}{2}}\]
 
-\[\fitmath{\mathrm{dp}=\frac{\frac{(0.01987397315)\cdot (100)}{(0.1)}\cdot (998.2)\cdot {(1)}^{2}}{2}\approx 9919.1\,\mathrm{Pa}}\]
+\[\fitmath{\mathrm{dp}=\frac{\frac{(0{,}01987397315)\cdot (100)}{(0{,}1)}\cdot (998{,}2)\cdot {(1)}^{2}}{2}\approx 9919{,}1\,\mathrm{Pa}}\]
 
 \end{enumerate}
