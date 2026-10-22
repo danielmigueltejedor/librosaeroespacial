@@ -46,6 +46,11 @@ jobs:
           python enciclopedia-programacion/tools/check_integral.py
           python enciclopedia-programacion/tools/check_prose_formatting.py
           python enciclopedia-programacion/tools/check_literal_fidelity.py
+      - name: Build literature, history and biology review editions
+        run: |
+          python -m venv "$RUNNER_TEMP/humanities"
+          "$RUNNER_TEMP/humanities/bin/python" -m pip install -r humanidades-y-ciencias/requirements.txt
+          "$RUNNER_TEMP/humanities/bin/python" humanidades-y-ciencias/tools/build_books.py
       - name: Check packaging contracts and build complete ZIP
         run: |
           python -m pytest -q tests/test_release_bundle.py
