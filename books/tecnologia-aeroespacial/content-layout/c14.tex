@@ -54,7 +54,7 @@ Existe una solución geométrica hacia delante sólo si la componente transversa
 La magnitud de velocidad sobre el suelo determina el tiempo: $t=d/V_g$ para un tramo recto con viento y velocidad constantes. El consumo depende del tiempo y del régimen propulsivo, por lo que una diferencia de viento puede afectar autonomía aunque la trayectoria geométrica sea idéntica. Para viento variable se integran tramos o se resuelve una evolución; utilizar la media de direcciones sin componentes puede dar un viento medio incorrecto.
 
 \section{Estima y navegación observada}
-La navegación a estima propaga una posición conocida usando rumbo, velocidad y tiempo, junto con una estimación de viento. Es sencilla y permite una comprobación independiente de otros sistemas, pero acumula errores. Una desviación angular pequeña mantenida durante distancia $s$ produce un error transversal aproximadamente $s\Delta\psi$, con $\Delta\psi$ en radianes. Así, un grado durante cien kilómetros genera cerca de $1{,}75\ \mathrm{km}$ de separación lateral.
+La navegación a estima propaga una posición conocida usando rumbo, velocidad y tiempo, junto con una estimación de viento. Es sencilla y permite una comprobación independiente de otros sistemas, pero acumula errores. Una desviación angular pequeña mantenida durante distancia $s$ produce un error transversal aproximadamente $s\Delta\psi$, con $\Delta\psi$ en radianes. Así, un grado durante cien kilómetros genera cerca de $1.75\ \mathrm{km}$ de separación lateral.
 
 La navegación visual compara el terreno con referencias cartográficas. La calidad depende de visibilidad, identificación inequívoca y distribución de puntos. Confundir una referencia puede producir un error sistemático mayor que el de una medida ruidosa. Varias observaciones independientes ayudan a detectar incoherencias; varias observaciones del mismo punto mal identificado pueden reforzar el mismo error.
 
@@ -84,17 +84,17 @@ La integración de sistemas puede combinar continuidad inercial con referencias 
 \begin{studiumworked}{Problema resuelto: compensación de viento cruzado}
 
 \paragraph{1. Enunciado.} Calcule el rumbo para recorrer un tramo exactamente hacia el este y su tiempo de vuelo con viento uniforme del norte.
-\paragraph{2. Datos.} Derrota verdadera deseada $090^\circ$, rapidez aérea $55{,}0\ \mathrm{m/s}$, viento del norte de $20{,}0\ \mathrm{m/s}$ y distancia sobre el terreno $100{,}0\ \mathrm{km}$.
+\paragraph{2. Datos.} Derrota verdadera deseada $090^\circ$, rapidez aérea $55.0\ \mathrm{m/s}$, viento del norte de $20.0\ \mathrm{m/s}$ y distancia sobre el terreno $100.0\ \mathrm{km}$.
 \paragraph{3. Incógnitas.} Rumbo verdadero $\psi$, velocidad sobre el suelo y tiempo.
 \paragraph{4. Esquema verbal.} El viento desplaza al avión hacia el sur. El morro debe apuntar al norte de la derrota para que la componente norte de velocidad aérea lo compense.
 \paragraph{5. Hipótesis.} Tierra localmente plana, altura constante, viento uniforme y todas las direcciones referidas al norte verdadero. No se calcula consumo.
 \paragraph{6. Modelo físico.} Se suman vectores de velocidad y se anula la componente norte de la velocidad sobre el suelo.
 \paragraph{7. Ecuaciones simbólicas.} $V_{g,N}=55\cos\psi-20=0$, $V_{g,E}=55\sin\psi$ y $t=d/V_{g,E}$.
 \paragraph{8. Despeje.} $\psi=\arccos(20/55)$ para la solución con avance hacia el este; $V_g=\sqrt{55^2-20^2}$.
-\paragraph{9. Sustitución.} $\psi=\arccos(0{,}363636)$ y $t=100000/\sqrt{3025-400}$.
-\paragraph{10. Resultado con unidades.} $\psi=68{,}676^\circ$, $V_g=51{,}235\ \mathrm{m/s}$ y $t=1951{,}80\ \mathrm s=32{,}530\ \mathrm{min}$.
-\paragraph{11. Interpretación.} La corrección es $21{,}324^\circ$ hacia el norte. La velocidad sobre el suelo es menor que la aérea porque parte de ésta compensa el viento lateral.
-\paragraph{12. Comprobación independiente.} Las componentes aéreas son $(51{,}235,20{,}000)\ \mathrm{m/s}$ en orden este--norte. Al sumar viento $(0,-20{,}000)$ queda $(51{,}235,0)$; su módulo aéreo original recupera $55\ \mathrm{m/s}$ por Pitágoras.
+\paragraph{9. Sustitución.} $\psi=\arccos(0.363636)$ y $t=100000/\sqrt{3025-400}$.
+\paragraph{10. Resultado con unidades.} $\psi=68.676^\circ$, $V_g=51.235\ \mathrm{m/s}$ y $t=1951.80\ \mathrm s=32.530\ \mathrm{min}$.
+\paragraph{11. Interpretación.} La corrección es $21.324^\circ$ hacia el norte. La velocidad sobre el suelo es menor que la aérea porque parte de ésta compensa el viento lateral.
+\paragraph{12. Comprobación independiente.} Las componentes aéreas son $(51.235,20.000)\ \mathrm{m/s}$ en orden este--norte. Al sumar viento $(0,-20.000)$ queda $(51.235,0)$; su módulo aéreo original recupera $55\ \mathrm{m/s}$ por Pitágoras.
 \paragraph{13. Limitaciones.} No se aplican declinación ni desviación de brújula porque no se han suministrado. Variaciones de viento o curvatura apreciable de ruta exigirían actualizar rumbo y tiempo.
 
 \input{../solutions/generated/M14-1.tex}
@@ -103,9 +103,9 @@ La integración de sistemas puede combinar continuidad inercial con referencias 
 \section{Ejercicios propuestos y guía de respuestas}
 \begin{enumerate}
 \item Con rumbo verdadero $100^\circ$ y declinación este de $4^\circ$, calcule rumbo magnético. Respuesta: $96^\circ$, con la convención del texto.
-\item Convierta $90\ \mathrm{kt}$ a SI. Respuesta: $46{,}30\ \mathrm{m/s}$.
+\item Convierta $90\ \mathrm{kt}$ a SI. Respuesta: $46.30\ \mathrm{m/s}$.
 \item Un DME indica $5\ \mathrm{km}$ y existe diferencia vertical de $3\ \mathrm{km}$. Obtenga separación horizontal ideal. Respuesta: $4\ \mathrm{km}$.
-\item Un sesgo de aceleración de $0{,}002\ \mathrm{m/s^2}$ actúa sin corregir durante $100\ \mathrm s$. Estime error de posición unidimensional. Respuesta: $10\ \mathrm m$, con estado inicial exacto.
+\item Un sesgo de aceleración de $0.002\ \mathrm{m/s^2}$ actúa sin corregir durante $100\ \mathrm s$. Estime error de posición unidimensional. Respuesta: $10\ \mathrm m$, con estado inicial exacto.
 \item ¿Por qué cuatro observaciones satelitales pueden dar una solución pobre? Guía: analizar geometría, errores comunes y falta de redundancia; cuatro ecuaciones no garantizan una solución robusta.
 \end{enumerate}
 \section{Resumen y autoevaluación}

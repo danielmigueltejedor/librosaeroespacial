@@ -11,15 +11,15 @@ q=\int_0^h u(y)\,dy=\frac{Uh}{2}+\frac{Gh^3}{12\mu}.
 La velocidad puede cambiar de signo cerca de la pared inferior aunque el \emph{caudal neto} conserve el signo positivo. Definiendo \(P=Gh^2/(2\mu U)\), la pendiente en \(y=0\) es \(du/dy|_0=(U/h)(1+P)\). La inversión local exige \(P<-1\), mientras que el caudal neto es positivo siempre que \(P>-3\). Así, \(-3<P<-1\) describe exactamente un flujo neto hacia delante con contraflujo junto a la pared fija. Este resultado es algebraico y no demuestra, por sí solo, que el flujo real sea estable ante perturbaciones tridimensionales.
 
 \begin{tcolorbox}[title={Ejemplo guiado original: caudal y esfuerzos}, studiumdef, breakable]
-Con \(h=0{,}002\,\mathrm{m}\), \(U=0{,}4\,\mathrm{m\,s^{-1}}\), \(\mu=0{,}020\,\mathrm{Pa\,s}\) y \(G=-8000\,\mathrm{Pa\,m^{-1}}\), resulta \(P=-2\) y \(dp/dx=+8000\,\mathrm{Pa\,m^{-1}}\), un gradiente adverso. La distribución es
+Con \(h=0.002\,\mathrm{m}\), \(U=0.4\,\mathrm{m\,s^{-1}}\), \(\mu=0.020\,\mathrm{Pa\,s}\) y \(G=-8000\,\mathrm{Pa\,m^{-1}}\), resulta \(P=-2\) y \(dp/dx=+8000\,\mathrm{Pa\,m^{-1}}\), un gradiente adverso. La distribución es
 \[
  u(y)=200\,y(1000y-1)\quad\text{(en SI, con \(y\) en metros)}.
 \]
-En \(0<y<0{,}001\,\mathrm{m}\) el fluido retrocede; en la otra mitad avanza. Sin embargo,
+En \(0<y<0.001\,\mathrm{m}\) el fluido retrocede; en la otra mitad avanza. Sin embargo,
 \[
- q=\frac{0{,}4\cdot0{,}002}{2}
-    -\frac{8000(0{,}002)^3}{12\cdot0{,}020}
-   =\mathbf{1{,}3333\cdot10^{-4}\,\mathrm{m^2\,s^{-1}}}>0.
+ q=\frac{0.4\cdot0.002}{2}
+    -\frac{8000(0.002)^3}{12\cdot0.020}
+   =\mathbf{1.3333\cdot10^{-4}\,\mathrm{m^2\,s^{-1}}}>0.
 \]
 Los esfuerzos \emph{internos} \(\tau_{xy}=\mu\,du/dy\) en ambas paredes son \(\tau_{xy}(0)=-4\,\mathrm{Pa}\) y \(\tau_{xy}(h)=+12\,\mathrm{Pa}\). Al calcular fuerzas \emph{sobre las paredes}, debe utilizarse la normal y el signo correspondientes: no son automáticamente esos mismos vectores de tracción. La comprobación dimensional de \(q\) arroja \(\mathrm{m^2\,s^{-1}}\), al tratarse de caudal por unidad de anchura.
 \end{tcolorbox}

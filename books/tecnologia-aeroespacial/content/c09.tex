@@ -53,7 +53,7 @@ c_l=a_0(\alpha-\alpha_{l=0}),\qquad a_0\simeq2\pi\ \mathrm{rad^{-1}}.
 \end{equation}
 El ángulo $\alpha_{l=0}$ depende de la línea media. Es cero en un perfil simétrico ideal; suele ser negativo para una curvatura convencional. La expresión equivale a $c_l=c_{l0}+a_0\alpha$, con $c_{l0}=-a_0\alpha_{l=0}$. El intercepto no es una sustentación dimensional fija: a $\alpha=0$, la fuerza continúa variando con $q_\infty c$.
 
-La pendiente por grado es la pendiente por radián multiplicada por $\pi/180$. Así, $2\pi\ \mathrm{rad^{-1}}$ equivale aproximadamente a $0{,}1097$ por grado. Introducir un ángulo numérico en grados dentro de una fórmula calibrada por radián produce un error de factor $57{,}3$. Es buena práctica escribir la conversión en el cálculo, incluso cuando una calculadora acepte ambos modos.
+La pendiente por grado es la pendiente por radián multiplicada por $\pi/180$. Así, $2\pi\ \mathrm{rad^{-1}}$ equivale aproximadamente a $0.1097$ por grado. Introducir un ángulo numérico en grados dentro de una fórmula calibrada por radián produce un error de factor $57.3$. Es buena práctica escribir la conversión en el cálculo, incluso cuando una calculadora acepte ambos modos.
 
 Una interpretación del resultado procede de la circulación: imponer que el flujo se ajuste a una placa ligeramente inclinada genera una intensidad de vorticidad proporcional a $V_\infty\alpha$. Integrada sobre la cuerda, da $\Gamma\propto V_\infty c\alpha$. Al usar \eqref{eq:09-kj}, la sustentación adimensional resulta proporcional a $\alpha$. El coeficiente $2\pi$ pertenece a la solución del problema linealizado; no puede obtenerse sólo con análisis dimensional.
 \figura{liftcurve}{Comparación de las pendientes lineales de sustentación de un perfil y un ala finita. Este modelo no describe el máximo ni la pérdida.}
@@ -81,7 +81,7 @@ Para $c_m<0$ y sustentación positiva, el centro de presión queda detrás del c
 \section{Compresibilidad y validez de los datos}
 El número de Mach compara velocidad y propagación acústica. En flujo subsónico lineal y suficientemente alejado de ondas de choque, ciertas correcciones potenciales predicen un incremento de la pendiente al aumentar $M$. La expresión de Prandtl--Glauert $c_l\simeq c_{l,\mathrm{inc}}/\sqrt{1-M_\infty^2}$ es una aproximación, no una ley válida hasta Mach uno. Su singularidad denuncia el fallo de la linealización.
 
-El flujo sobre el extradós puede alcanzar velocidad sónica aunque la corriente libre sea subsónica. El Mach crítico depende del perfil y de su sustentación. Cerca del régimen transónico, ondas de choque, capa límite y separación interactúan; cambian tanto sustentación como resistencia y momento. Una polar obtenida a baja velocidad no justifica calcular empuje a $M=0{,}8$ sin información adicional. Si se utiliza con fines de ejercicio, debe declararse expresamente como extrapolación académica limitada, sin atribuir precisión predictiva al avión real.
+El flujo sobre el extradós puede alcanzar velocidad sónica aunque la corriente libre sea subsónica. El Mach crítico depende del perfil y de su sustentación. Cerca del régimen transónico, ondas de choque, capa límite y separación interactúan; cambian tanto sustentación como resistencia y momento. Una polar obtenida a baja velocidad no justifica calcular empuje a $M=0.8$ sin información adicional. Si se utiliza con fines de ejercicio, debe declararse expresamente como extrapolación académica limitada, sin atribuir precisión predictiva al avión real.
 
 \section{Resistencia de perfil y balance en la estela}
 En un flujo potencial bidimensional estacionario, sin separación y sin viscosidad, la integración de presiones predice resistencia nula. Este resultado, conocido como paradoja de d'Alembert, no afirma que un perfil real carezca de resistencia: muestra qué mecanismo ha eliminado el modelo. La sustentación puede conservar una aproximación útil porque la circulación y la presión exterior dominan su valor; la resistencia, mucho menor, es especialmente sensible a las capas viscosas y a la estela.
@@ -113,26 +113,26 @@ Una ficha útil de perfil acompaña las curvas con condiciones, ejes, unidades y
 
 \section{Problema resuelto: sección en túnel y posición de la resultante}
 \paragraph{1. Enunciado.} Una sección de ensayo se modela con teoría de perfil delgado. Determine sustentación por unidad de envergadura, momento respecto al centro aerodinámico y centro de presión. Compruebe la escala viscosa.
-\paragraph{2. Datos.} $c=1{,}40\ \mathrm m$, $V=45{,}0\ \mathrm{m/s}$, $\rho=1{,}05\ \mathrm{kg/m^3}$, $\mu=1{,}75\,10^{-5}\ \mathrm{Pa\,s}$, $\alpha=4^\circ$, $\alpha_{l=0}=-2^\circ$, $a_0=2\pi\ \mathrm{rad^{-1}}$, $c_{m,\mathrm{ac}}=-0{,}060$ y $x_{\mathrm{ac}}/c=0{,}25$.
+\paragraph{2. Datos.} $c=1.40\ \mathrm m$, $V=45.0\ \mathrm{m/s}$, $\rho=1.05\ \mathrm{kg/m^3}$, $\mu=1.75\,10^{-5}\ \mathrm{Pa\,s}$, $\alpha=4^\circ$, $\alpha_{l=0}=-2^\circ$, $a_0=2\pi\ \mathrm{rad^{-1}}$, $c_{m,\mathrm{ac}}=-0.060$ y $x_{\mathrm{ac}}/c=0.25$.
 \paragraph{3. Incógnitas.} $q_\infty,c_l,l,m_{\mathrm{ac}},x_{\mathrm{cp}}$ y $Re$.
 \paragraph{4. Esquema verbal.} La corriente llega horizontalmente; la sustentación actúa hacia arriba y el momento aerodinámico produce picado. Trasladar la fuerza hacia atrás reproduce ese momento.
 \paragraph{5. Hipótesis.} Flujo bidimensional, estacionario, adherido y de baja compresibilidad; el intervalo angular pertenece al tramo lineal. No se calcula resistencia con un modelo inviscido.
 \paragraph{6. Modelo físico.} La fuerza se obtiene de la presión dinámica y del coeficiente; la equivalencia estática de fuerza y par determina el centro de presión.
-\paragraph{7. Ecuaciones simbólicas.} Se usan $q=\rho V^2/2$, $c_l=a_0(\alpha-\alpha_{l=0})$, $l=qcc_l$, $m_{\mathrm{ac}}=qc^2c_{m,\mathrm{ac}}$, $x_{\mathrm{cp}}/c=0{,}25-c_{m,\mathrm{ac}}/c_l$ y $Re=\rho Vc/\mu$.
+\paragraph{7. Ecuaciones simbólicas.} Se usan $q=\rho V^2/2$, $c_l=a_0(\alpha-\alpha_{l=0})$, $l=qcc_l$, $m_{\mathrm{ac}}=qc^2c_{m,\mathrm{ac}}$, $x_{\mathrm{cp}}/c=0.25-c_{m,\mathrm{ac}}/c_l$ y $Re=\rho Vc/\mu$.
 \paragraph{8. Despeje.} Las fórmulas ya están despejadas; para una comprobación alternativa se obtiene $\Gamma=c_lVc/2$.
-\paragraph{9. Sustitución.} El intervalo angular es $6\pi/180=0{,}104720\ \mathrm{rad}$. Así, $q=1{,}05(45)^2/2=1063{,}125\ \mathrm{Pa}$ y $c_l=2\pi(0{,}104720)=0{,}657974$. Entonces $l=1063{,}125(1{,}4)(0{,}657974)$.
-\paragraph{10. Resultado con unidades.} $l=979{,}31\ \mathrm{N/m}$; $m_{\mathrm{ac}}=-125{,}02\ \mathrm{N}$; $x_{\mathrm{cp}}/c=0{,}34119$, es decir, $x_{\mathrm{cp}}=0{,}47766\ \mathrm m$; $Re=3{,}78\,10^6$.
+\paragraph{9. Sustitución.} El intervalo angular es $6\pi/180=0.104720\ \mathrm{rad}$. Así, $q=1.05(45)^2/2=1063.125\ \mathrm{Pa}$ y $c_l=2\pi(0.104720)=0.657974$. Entonces $l=1063.125(1.4)(0.657974)$.
+\paragraph{10. Resultado con unidades.} $l=979.31\ \mathrm{N/m}$; $m_{\mathrm{ac}}=-125.02\ \mathrm{N}$; $x_{\mathrm{cp}}/c=0.34119$, es decir, $x_{\mathrm{cp}}=0.47766\ \mathrm m$; $Re=3.78\,10^6$.
 \paragraph{11. Interpretación.} La circulación sustenta y la curvatura genera un par de picado. La resultante equivalente se sitúa detrás del cuarto de cuerda, de acuerdo con el signo del momento.
-\paragraph{12. Comprobación independiente.} $\Gamma=20{,}726\ \mathrm{m^2/s}$ y $\rho V\Gamma=979{,}31\ \mathrm{N/m}$. Además, el brazo $0{,}12766\ \mathrm m$ por $979{,}31\ \mathrm{N/m}$ reproduce $125{,}02\ \mathrm N$. Ambas rutas concuerdan dentro del redondeo.
+\paragraph{12. Comprobación independiente.} $\Gamma=20.726\ \mathrm{m^2/s}$ y $\rho V\Gamma=979.31\ \mathrm{N/m}$. Además, el brazo $0.12766\ \mathrm m$ por $979.31\ \mathrm{N/m}$ reproduce $125.02\ \mathrm N$. Ambas rutas concuerdan dentro del redondeo.
 \paragraph{13. Limitaciones.} Reynolds no garantiza adherencia ni transición conocida. Harían falta la temperatura para verificar Mach y datos experimentales para justificar $a_0$, el momento y la distancia a la pérdida.
 
 \figura{stall}{Curva cualitativa original de sustentación con un máximo y descenso posterior por pérdida. No procede de medidas ni determina el comportamiento de una aeronave concreta.}
 
 \section{Ejercicios propuestos y guía de respuestas}
 \begin{enumerate}
-\item Un perfil tiene $a_0=5{,}8\ \mathrm{rad^{-1}}$ y $\alpha_{l=0}=-1{,}5^\circ$. Calcule $c_l$ a $3^\circ$. Respuesta: $0{,}4555$.
+\item Un perfil tiene $a_0=5.8\ \mathrm{rad^{-1}}$ y $\alpha_{l=0}=-1.5^\circ$. Calcule $c_l$ a $3^\circ$. Respuesta: $0.4555$.
 \item Si se duplica la velocidad conservando $c_l$, densidad y cuerda, ¿cómo cambian $l$ y $Re$? Respuesta: $l$ se cuadruplica y $Re$ se duplica; debe comprobarse que $c_l$ sigue siendo aplicable.
-\item Con $c_l=0{,}8$, $c_{m,\mathrm{ac}}=-0{,}04$ y centro aerodinámico a $0{,}25c$, localice el centro de presión. Respuesta: $0{,}30c$.
+\item Con $c_l=0.8$, $c_{m,\mathrm{ac}}=-0.04$ y centro aerodinámico a $0.25c$, localice el centro de presión. Respuesta: $0.30c$.
 \item Dos distribuciones tienen igual pico de succión pero diferente anchura. Diseñe un procedimiento para decidir cuál sustenta más. Guía: integrar la diferencia completa entre intradós y extradós, utilizando las mismas referencias.
 \item Una ficha sólo proporciona la pendiente lineal y pide el ángulo de pérdida. Explique si el problema está determinado. Guía: falta la evolución no lineal o un valor de $c_{l,\max}$ y, aun con éste, la extrapolación lineal requiere justificación.
 \end{enumerate}

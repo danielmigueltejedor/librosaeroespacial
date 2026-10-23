@@ -122,17 +122,17 @@ Un objeto compacto y otro ligero de gran área responden de manera distinta al a
 \begin{studiumworked}{Problema resuelto 1: satélite circular a quinientos kilómetros}
 
 \paragraph{1. Enunciado.} Calcule rapidez, período y aceleración gravitatoria de un satélite en órbita circular e interprete la aparente ingravidez.
-\paragraph{2. Datos.} Radio terrestre esférico $R_E=6371\ \mathrm{km}$, altura $H=500\ \mathrm{km}$, $\mu_E=3{,}986004418\,10^{14}\ \mathrm{m^3/s^2}$ y masa del satélite $m=100\ \mathrm{kg}$.
+\paragraph{2. Datos.} Radio terrestre esférico $R_E=6371\ \mathrm{km}$, altura $H=500\ \mathrm{km}$, $\mu_E=3.986004418\,10^{14}\ \mathrm{m^3/s^2}$ y masa del satélite $m=100\ \mathrm{kg}$.
 \paragraph{3. Incógnitas.} $r,v_c,P,g(r)$ y fuerza gravitatoria.
 \paragraph{4. Esquema verbal.} El satélite se mueve tangencialmente y acelera hacia el centro terrestre; no hay fuerza de apoyo que equilibre la gravedad.
 \paragraph{5. Hipótesis.} Tierra esférica, satélite de masa despreciable frente a ella, órbita circular, ausencia de atmósfera y perturbaciones.
 \paragraph{6. Modelo físico.} La gravitación proporciona la aceleración centrípeta y el período es longitud de la circunferencia dividida por rapidez.
 \paragraph{7. Ecuaciones simbólicas.} $r=R_E+H$, $v_c=\sqrt{\mu_E/r}$, $P=2\pi\sqrt{r^3/\mu_E}$, $g=\mu_E/r^2$ y $F=mg$.
 \paragraph{8. Despeje.} Todas las expresiones están despejadas; se convierten kilómetros a metros antes de utilizar $\mu_E$ en SI.
-\paragraph{9. Sustitución.} \[\begin{gathered}r=(6371+500)10^3=6{,}871\,10^6\ \mathrm m,\\ v_c=\sqrt{3{,}986004418\,10^{14}/6{,}871\,10^6}.\end{gathered}\]
-\paragraph{10. Resultado con unidades.} $v_c=7616{,}56\ \mathrm{m/s}$, $P=5668{,}14\ \mathrm s=94{,}469\ \mathrm{min}$, $g=8{,}44302\ \mathrm{m/s^2}$ y $F=844{,}302\ \mathrm N$.
+\paragraph{9. Sustitución.} \[\begin{gathered}r=(6371+500)10^3=6.871\,10^6\ \mathrm m,\\ v_c=\sqrt{3.986004418\,10^{14}/6.871\,10^6}.\end{gathered}\]
+\paragraph{10. Resultado con unidades.} $v_c=7616.56\ \mathrm{m/s}$, $P=5668.14\ \mathrm s=94.469\ \mathrm{min}$, $g=8.44302\ \mathrm{m/s^2}$ y $F=844.302\ \mathrm N$.
 \paragraph{11. Interpretación.} La gravedad es considerable. La sensación de microgravedad se debe a la caída libre compartida, no a una fuerza gravitatoria nula.
-\paragraph{12. Comprobación independiente.} $v_c^2/r=8{,}44302\ \mathrm{m/s^2}$ reproduce $g$ y $2\pi r/v_c$ reproduce el período. La masa se cancela del balance orbital, de acuerdo con el principio de caída libre.
+\paragraph{12. Comprobación independiente.} $v_c^2/r=8.44302\ \mathrm{m/s^2}$ reproduce $g$ y $2\pi r/v_c$ reproduce el período. La masa se cancela del balance orbital, de acuerdo con el principio de caída libre.
 \paragraph{13. Limitaciones.} El período corresponde al modelo kepleriano circular; una órbita real requiere especificar elementos, campo gravitatorio y perturbaciones. No se ha calculado el coste de lanzamiento.
 
 \input{../solutions/generated/M15-1.tex}
@@ -142,15 +142,15 @@ Un objeto compacto y otro ligero de gran área responden de manera distinta al a
 \begin{studiumworked}{Problema resuelto 2: elevación ideal de órbita}
 
 \paragraph{1. Enunciado.} Calcule los dos impulsos y el tiempo de una transferencia coplanar desde la órbita anterior hasta otra circular a $1000\ \mathrm{km}$.
-\paragraph{2. Datos.} Se mantienen $R_E$ y $\mu_E$; $r_1=6{,}871\,10^6\ \mathrm m$ y $r_2=7{,}371\,10^6\ \mathrm m$.
+\paragraph{2. Datos.} Se mantienen $R_E$ y $\mu_E$; $r_1=6.871\,10^6\ \mathrm m$ y $r_2=7.371\,10^6\ \mathrm m$.
 \paragraph{3. Incógnitas.} $a_t,\Delta V_1,\Delta V_2,\Delta V_{\mathrm{total}}$ y $t_t$.
 \paragraph{4. Esquema verbal.} Un primer impulso progrado inicia una elipse cuyo periapsis está en la órbita inicial; tras media vuelta, otro impulso progrado circulariza en el apoapsis.
 \paragraph{5. Hipótesis.} Dos cuerpos, impulsos instantáneos, ninguna inclinación relativa y ausencia de restricciones de cita o atmósfera.
 \paragraph{6. Modelo físico.} Se compara, en cada extremo, la velocidad elíptica obtenida por vis-viva con la velocidad circular local.
 \paragraph{7. Ecuaciones simbólicas.} $a_t=(r_1+r_2)/2$, $v_p=\sqrt{\mu(2/r_1-1/a_t)}$, $v_a=\sqrt{\mu(2/r_2-1/a_t)}$, $\Delta V_1=v_p-v_{c1}$ y $\Delta V_2=v_{c2}-v_a$.
 \paragraph{8. Despeje.} El tiempo es media órbita elíptica: $t_t=\pi\sqrt{a_t^3/\mu}$. El coste escalar suma magnitudes de impulsos, no velocidades finales de la nave.
-\paragraph{9. Sustitución.} \[a_t=7{,}121\,10^6\ \mathrm m\]; las velocidades se evalúan con ambos radios geocéntricos y el mismo parámetro gravitatorio.
-\paragraph{10. Resultado con unidades.} $\Delta V_1=132{,}546\ \mathrm{m/s}$, $\Delta V_2=130{,}238\ \mathrm{m/s}$, $\Delta V_{\mathrm{total}}=262{,}784\ \mathrm{m/s}$ y $t_t=2990{,}15\ \mathrm s=49{,}836\ \mathrm{min}$.
+\paragraph{9. Sustitución.} \[a_t=7.121\,10^6\ \mathrm m\]; las velocidades se evalúan con ambos radios geocéntricos y el mismo parámetro gravitatorio.
+\paragraph{10. Resultado con unidades.} $\Delta V_1=132.546\ \mathrm{m/s}$, $\Delta V_2=130.238\ \mathrm{m/s}$, $\Delta V_{\mathrm{total}}=262.784\ \mathrm{m/s}$ y $t_t=2990.15\ \mathrm s=49.836\ \mathrm{min}$.
 \paragraph{11. Interpretación.} Ambos impulsos son positivos aunque la velocidad circular final sea menor. Entre impulsos la gravedad transforma energía cinética y potencial.
 \paragraph{12. Comprobación independiente.} El momento angular de la elipse debe cumplir $r_1v_p=r_2v_a$. Su energía calculada en ambos extremos debe ser $-\mu/(2a_t)$; las dos comprobaciones coinciden dentro del redondeo.
 \paragraph{13. Limitaciones.} No se incluyen pérdidas por empuje finito, navegación ni cambios de plano. El tiempo no garantiza encuentro con otro satélite sin ajustar fase orbital.
@@ -162,8 +162,8 @@ Un objeto compacto y otro ligero de gran área responden de manera distinta al a
 \begin{enumerate}
 \item Si el radio circular se multiplica por cuatro, ¿cómo cambian rapidez y período? Respuesta: la rapidez se divide por dos y el período se multiplica por ocho.
 \item Para una elipse con $r_p=7000\ \mathrm{km}$ y $r_a=14000\ \mathrm{km}$, calcule $a$ y $e$. Respuesta: $a=10500\ \mathrm{km}$ y $e=1/3$.
-\item Calcule la velocidad de escape a la altura del primer problema. Respuesta: $10771{,}44\ \mathrm{m/s}$, en el modelo de dos cuerpos.
-\item Un motor ideal tiene $v_e=3000\ \mathrm{m/s}$ y relación $m_0/m_f=2$. Obtenga $\Delta V$. Respuesta: $2079{,}44\ \mathrm{m/s}$, sin pérdidas externas.
+\item Calcule la velocidad de escape a la altura del primer problema. Respuesta: $10771.44\ \mathrm{m/s}$, en el modelo de dos cuerpos.
+\item Un motor ideal tiene $v_e=3000\ \mathrm{m/s}$ y relación $m_0/m_f=2$. Obtenga $\Delta V$. Respuesta: $2079.44\ \mathrm{m/s}$, sin pérdidas externas.
 \item Un satélite tiene período sidéreo, pero inclinación de $20^\circ$. ¿Es geoestacionario? Guía: no; el sincronismo del período no elimina el movimiento aparente norte--sur.
 \end{enumerate}
 \section{Resumen y autoevaluación}

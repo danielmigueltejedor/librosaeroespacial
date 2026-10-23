@@ -93,7 +93,7 @@ A igualdad de $L$, densidad y velocidad, aumentar la envergadura reduce la resis
 
 Los flaps aumentan generalmente $C_{L,\max}$ y reducen la velocidad mínima de sustentación para un peso dado. También desplazan la polar y producen momentos que requieren compensación. Cerca del suelo, el campo inducido cambia; el modelo de ala aislada en espacio libre deja de ser suficiente. La flecha modifica componentes normales de velocidad y contribuye al comportamiento de compresibilidad, pero también altera la distribución de carga y la pérdida. Estas interacciones explican por qué una sola cifra de eficiencia no caracteriza toda la envolvente.
 
-Al cambiar de punto de vuelo, la polar puede depender de $M$, $Re$, configuración y estado superficial. Una comparación a altura fija no mantiene automáticamente Mach constante: si cambia $V$, cambia $M$. Para los ejemplos siguientes se supone un intervalo de baja compresibilidad con temperatura suficiente para que $M<0{,}3$; los coeficientes se consideran constantes sólo dentro de esa idealización. No se extrapolan a transporte transónico.
+Al cambiar de punto de vuelo, la polar puede depender de $M$, $Re$, configuración y estado superficial. Una comparación a altura fija no mantiene automáticamente Mach constante: si cambia $V$, cambia $M$. Para los ejemplos siguientes se supone un intervalo de baja compresibilidad con temperatura suficiente para que $M<0.3$; los coeficientes se consideran constantes sólo dentro de esa idealización. No se extrapolan a transporte transónico.
 
 \section{Carga local, pérdida y momento de raíz}
 El coeficiente global de sustentación es una integral de las secciones:
@@ -124,40 +124,40 @@ Finalmente, debe contarse la información de equilibrio. Con $W$, $\rho$, $S$ y 
 
 \section{Problema resuelto 1: geometría, sustentación y velocidad compatible}
 \paragraph{1. Enunciado.} Determine la velocidad de equilibrio horizontal y la resistencia de una aeronave idealizada cuya ala trapezoidal utiliza perfiles de pendiente conocida. Compare las pendientes de perfil y ala.
-\paragraph{2. Datos.} $b=14{,}0\ \mathrm m$, $c_r=2{,}40\ \mathrm m$, $\lambda=0{,}45$, $a_0=6{,}00\ \mathrm{rad^{-1}}$, $e_i=0{,}90$, $k_{\mathrm{perfil}}=0{,}0080$, $C_{D0}=0{,}0280$, $W=40000\ \mathrm N$, $\rho=0{,}950\ \mathrm{kg/m^3}$, $\alpha=4^\circ$ y $\alpha_{L=0}=-2^\circ$.
+\paragraph{2. Datos.} $b=14.0\ \mathrm m$, $c_r=2.40\ \mathrm m$, $\lambda=0.45$, $a_0=6.00\ \mathrm{rad^{-1}}$, $e_i=0.90$, $k_{\mathrm{perfil}}=0.0080$, $C_{D0}=0.0280$, $W=40000\ \mathrm N$, $\rho=0.950\ \mathrm{kg/m^3}$, $\alpha=4^\circ$ y $\alpha_{L=0}=-2^\circ$.
 \paragraph{3. Incógnitas.} $S,AR,a,C_L,V,K,D$.
 \paragraph{4. Esquema verbal.} En vuelo rectilíneo horizontal, la sustentación vertical equilibra el peso y el empuje horizontal equilibra la resistencia. La inducción reduce la incidencia efectiva de las secciones.
 \paragraph{5. Hipótesis.} Aeronave representada por el ala para la ley de sustentación; configuración fija, flujo adherido, pequeño ángulo inducido y baja compresibilidad. $C_D$ representa la configuración completa con la misma superficie de referencia.
 \paragraph{6. Modelo físico.} Geometría trapezoidal, pendiente finita aproximada, equilibrio $qSC_L=W$ y polar total.
 \paragraph{7. Ecuaciones simbólicas.} Se emplean \eqref{eq:10-geom}, \eqref{eq:10-slope} y \eqref{eq:10-k}, junto a $V=\sqrt{2W/(\rho SC_L)}$ y $D=qS(C_{D0}+KC_L^2)$.
 \paragraph{8. Despeje.} Primero se obtiene $S$; después $AR$, $a$ y $C_L$. Con $C_L$ fijado por el ángulo, el equilibrio determina $V$, no una sustentación arbitraria adicional.
-\paragraph{9. Sustitución.} $S=14(2{,}4)(1{,}45)/2=24{,}36\ \mathrm{m^2}$; $AR=196/24{,}36=8{,}04598$. Entonces $a=6/[1+6/(\pi\,0{,}9\,8{,}04598)]=4{,}74780\ \mathrm{rad^{-1}}$ y $C_L=4{,}74780(6\pi/180)=0{,}497189$.
-\paragraph{10. Resultado con unidades.} $K=0{,}0519571$, $V=83{,}384\ \mathrm{m/s}$ y $D=3285{,}96\ \mathrm N$. La pendiente del ala es un $20{,}9\%$ menor que la de perfil.
+\paragraph{9. Sustitución.} $S=14(2.4)(1.45)/2=24.36\ \mathrm{m^2}$; $AR=196/24.36=8.04598$. Entonces $a=6/[1+6/(\pi\,0.9\,8.04598)]=4.74780\ \mathrm{rad^{-1}}$ y $C_L=4.74780(6\pi/180)=0.497189$.
+\paragraph{10. Resultado con unidades.} $K=0.0519571$, $V=83.384\ \mathrm{m/s}$ y $D=3285.96\ \mathrm N$. La pendiente del ala es un $20.9\%$ menor que la de perfil.
 \paragraph{11. Interpretación.} A este ángulo y peso hay una velocidad compatible con el equilibrio. Imponer además otra velocidad, conservando todos los datos, sobredeterminaría el vuelo nivelado estacionario.
-\paragraph{12. Comprobación independiente.} Usando directamente $D/W=C_D/C_L$ se obtiene $D/W=0{,}0821491$, que reproduce la resistencia. La unidad de $2W/(\rho SC_L)$ es $\mathrm{m^2/s^2}$.
+\paragraph{12. Comprobación independiente.} Usando directamente $D/W=C_D/C_L$ se obtiene $D/W=0.0821491$, que reproduce la resistencia. La unidad de $2W/(\rho SC_L)$ es $\mathrm{m^2/s^2}$.
 \paragraph{13. Limitaciones.} El valor de $e_i$ cierra de forma aproximada la pendiente y el arrastre. La sustentación de cola y fuselaje, así como la variación con Mach y Reynolds, exigen un modelo más completo.
 
 \section{Problema resuelto 2: óptimo con resistencia viscosa dependiente de carga}
 \paragraph{1. Enunciado.} Para la aeronave anterior, calcule la máxima eficiencia y compruebe qué contribuciones de resistencia se igualan.
-\paragraph{2. Datos.} Se conservan $C_{D0}=0{,}0280$, $K=0{,}0519571$, $k_i=1/(\pi e_i AR)=0{,}0439571$, $W=40000\ \mathrm N$, $S=24{,}36\ \mathrm{m^2}$ y $\rho=0{,}950\ \mathrm{kg/m^3}$.
+\paragraph{2. Datos.} Se conservan $C_{D0}=0.0280$, $K=0.0519571$, $k_i=1/(\pi e_i AR)=0.0439571$, $W=40000\ \mathrm N$, $S=24.36\ \mathrm{m^2}$ y $\rho=0.950\ \mathrm{kg/m^3}$.
 \paragraph{3. Incógnitas.} $C_{L,E},E_{\max},V_E,D_{\min}$ y reparto adimensional de resistencia.
 \paragraph{4. Esquema verbal.} Se busca la tangente desde el origen a la polar y el vuelo horizontal que corresponde a ese punto.
 \paragraph{5. Hipótesis.} El óptimo pertenece al tramo adherido y a un intervalo donde los coeficientes permanecen constantes; el empuje se puede ajustar.
 \paragraph{6. Modelo físico.} Se maximiza una razón aerodinámica a peso dado, sin optimizar consumo de combustible.
 \paragraph{7. Ecuaciones simbólicas.} $C_{L,E}=\sqrt{C_{D0}/K}$, $E_{\max}=1/(2\sqrt{C_{D0}K})$, $V_E=\sqrt{2W/(\rho SC_{L,E})}$ y $D_{\min}=W/E_{\max}$.
 \paragraph{8. Despeje.} No se sustituye $K$ por $k_i$; se descompone después $KC_L^2=k_iC_L^2+k_{\mathrm{perfil}}C_L^2$.
-\paragraph{9. Sustitución.} $C_{L,E}=\sqrt{0{,}028/0{,}0519571}=0{,}734102$. La resistencia total adimensional es $C_D=2(0{,}028)=0{,}056$.
-\paragraph{10. Resultado con unidades.} $E_{\max}=13{,}1090$, $V_E=68{,}622\ \mathrm{m/s}$ y $D_{\min}=3051{,}35\ \mathrm N$. En el óptimo, $C_{D_i}=0{,}023689$ y la parte viscosa cuadrática es $0{,}004311$.
-\paragraph{11. Interpretación.} Ambas contribuciones suman $0{,}028$, pero la inducida aislada es menor. El óptimo usa una velocidad inferior y un coeficiente de sustentación superior a los del primer problema.
+\paragraph{9. Sustitución.} $C_{L,E}=\sqrt{0.028/0.0519571}=0.734102$. La resistencia total adimensional es $C_D=2(0.028)=0.056$.
+\paragraph{10. Resultado con unidades.} $E_{\max}=13.1090$, $V_E=68.622\ \mathrm{m/s}$ y $D_{\min}=3051.35\ \mathrm N$. En el óptimo, $C_{D_i}=0.023689$ y la parte viscosa cuadrática es $0.004311$.
+\paragraph{11. Interpretación.} Ambas contribuciones suman $0.028$, pero la inducida aislada es menor. El óptimo usa una velocidad inferior y un coeficiente de sustentación superior a los del primer problema.
 \paragraph{12. Comprobación independiente.} Para $C_L>0$, $C_D/C_L=C_{D0}/C_L+KC_L\geq2\sqrt{C_{D0}K}$ por la desigualdad aritmético--geométrica. La igualdad reproduce el mismo óptimo sin derivar.
 \paragraph{13. Limitaciones.} Máxima eficiencia no significa mínima potencia ni máximo alcance para cualquier propulsión. La pérdida y los límites de operación pueden impedir utilizar ese punto.
 
 \section{Ejercicios propuestos y guía de respuestas}
 \begin{enumerate}
-\item Un ala rectangular tiene $b=10\ \mathrm m$ y $c=1{,}25\ \mathrm m$. Calcule $S$ y $AR$. Respuesta: $12{,}5\ \mathrm{m^2}$ y $8$.
-\item Con $C_L=0{,}7$, $AR=9$ y $e_i=0{,}85$, calcule $C_{D_i}$. Respuesta: $0{,}02039$.
-\item Una polar tiene $C_{D0}=0{,}025$ y $K=0{,}050$. Calcule el óptimo. Respuesta: $C_L=0{,}7071$, $E_{\max}=14{,}142$.
-\item Si $e_i=0{,}90$, $AR=8$ y $k_{\mathrm{perfil}}=0{,}010$, obtenga $e_O$. Respuesta: aproximadamente $0{,}734$; justificar por qué es menor que $e_i$.
+\item Un ala rectangular tiene $b=10\ \mathrm m$ y $c=1.25\ \mathrm m$. Calcule $S$ y $AR$. Respuesta: $12.5\ \mathrm{m^2}$ y $8$.
+\item Con $C_L=0.7$, $AR=9$ y $e_i=0.85$, calcule $C_{D_i}$. Respuesta: $0.02039$.
+\item Una polar tiene $C_{D0}=0.025$ y $K=0.050$. Calcule el óptimo. Respuesta: $C_L=0.7071$, $E_{\max}=14.142$.
+\item Si $e_i=0.90$, $AR=8$ y $k_{\mathrm{perfil}}=0.010$, obtenga $e_O$. Respuesta: aproximadamente $0.734$; justificar por qué es menor que $e_i$.
 \item Se conoce la cuerda de raíz y el estrechamiento, pero no la envergadura ni una relación adicional. ¿Puede obtenerse el área? Guía: no; escriba $S=bc_r(1+\lambda)/2$ e identifique el dato independiente que falta.
 \end{enumerate}
 \section{Resumen y autoevaluación}

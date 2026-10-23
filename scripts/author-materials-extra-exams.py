@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera los simulacros S07 a S10 de Materiales y Mantenimiento (decimales con coma)."""
+"""Genera los simulacros S07 a S10 de Materiales y Mantenimiento (decimales con punto)."""
 from pathlib import Path
 import sys
 
@@ -16,7 +16,7 @@ def main() -> None:
         files=dict(statements='content/simulacros-extra-enunciados.tex',
                    solutions='content/simulacros-extra-soluciones.tex'),
         section=r'\chapter{Soluciones de {N}}', input_prefix='',
-        report='reports/exam-solution-procedures-extra.json', decimal_comma=True)
+        report='reports/exam-solution-procedures-extra.json')
     lib.include_once(BOOK / 'simulacros.tex', r'\input{content/simulacros-extra-enunciados.tex}',
                      r'\part{Soluciones y criterios de corrección}')
     lib.include_once(BOOK / 'simulacros.tex', r'\input{content/simulacros-extra-soluciones.tex}', r'\backmatter')

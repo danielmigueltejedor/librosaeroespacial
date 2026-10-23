@@ -121,8 +121,8 @@ def test_jet_efficiency_respects_the_requested_negligible_fuel_approximation():
     assert math.isclose(values['etaApprox'],10/17)
     assert values['etap']>values['etaApprox']
     source=(ROOT/'books/mecanica-fluidos/latex/manual.tex').read_text()
-    assert r'\eta_p \approx 0{,}594' not in source
-    assert source.count(r'\eta_p \approx 0{,}5882')>=2
+    assert r'\eta_p \approx 0.594' not in source
+    assert source.count(r'\eta_p \approx 0.5882')>=2
 
 
 def test_station_indices_and_greek_parameters_keep_their_mathematical_notation():

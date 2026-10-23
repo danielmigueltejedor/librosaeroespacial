@@ -116,25 +116,25 @@ La validación puede combinar cálculos de derivadas, ensayos en túnel, simulac
 
 \section{Problema resuelto: margen estático y elevador de equilibrio}
 \paragraph{1. Enunciado.} Una aeronave tiene una ley lineal de momento conocida. Determine si presenta tendencia estática restauradora y la deflexión necesaria para equilibrar un ángulo de ataque dado.
-\paragraph{2. Datos.} $a=4{,}80\ \mathrm{rad^{-1}}$, $h=0{,}28$, $h_N=0{,}40$, $C_{m0}=0{,}060$, $C_{m\delta_e}=-0{,}800\ \mathrm{rad^{-1}}$ y $\alpha=5^\circ$. Deflexión positiva: borde de salida hacia abajo.
+\paragraph{2. Datos.} $a=4.80\ \mathrm{rad^{-1}}$, $h=0.28$, $h_N=0.40$, $C_{m0}=0.060$, $C_{m\delta_e}=-0.800\ \mathrm{rad^{-1}}$ y $\alpha=5^\circ$. Deflexión positiva: borde de salida hacia abajo.
 \paragraph{3. Incógnitas.} $SM,C_{m\alpha},\delta_{e,\mathrm{trim}}$ y signo del momento ante $\Delta\alpha>0$.
 \paragraph{4. Esquema verbal.} El centro de gravedad se encuentra por delante del punto neutro. Una perturbación que aumenta incidencia debe generar picado para que exista tendencia restauradora.
 \paragraph{5. Hipótesis.} Mandos fijos al evaluar la estabilidad, pequeñas perturbaciones, configuración fija y recorrido de elevador suficiente. La ley suministrada pertenece al avión completo.
 \paragraph{6. Modelo físico.} Se usa el margen estático para la derivada de momento y después se impone suma de momentos nula.
 \paragraph{7. Ecuaciones simbólicas.} $SM=h_N-h$, $C_{m\alpha}=-aSM$ y $\delta_e=-(C_{m0}+C_{m\alpha}\alpha)/C_{m\delta_e}$.
 \paragraph{8. Despeje.} La deflexión se calcula con el ángulo en radianes; no se cambia el signo de la derivada por intuición sobre el movimiento del mando.
-\paragraph{9. Sustitución.} $SM=0{,}12$, $C_{m\alpha}=-4{,}8(0{,}12)=-0{,}576\ \mathrm{rad^{-1}}$ y $\delta_e=-[0{,}060-0{,}576(5\pi/180)]/(-0{,}800)$.
-\paragraph{10. Resultado con unidades.} $\delta_e=0{,}012168\ \mathrm{rad}=0{,}6972^\circ$. El margen estático equivale al $12\%$ de la cuerda de referencia.
+\paragraph{9. Sustitución.} $SM=0.12$, $C_{m\alpha}=-4.8(0.12)=-0.576\ \mathrm{rad^{-1}}$ y $\delta_e=-[0.060-0.576(5\pi/180)]/(-0.800)$.
+\paragraph{10. Resultado con unidades.} $\delta_e=0.012168\ \mathrm{rad}=0.6972^\circ$. El margen estático equivale al $12\%$ de la cuerda de referencia.
 \paragraph{11. Interpretación.} A ese ángulo queda un pequeño momento de encabritado que el elevador hacia abajo compensa con picado. Un incremento positivo de incidencia genera incremento negativo de momento, de modo que existe estabilidad estática de mandos fijos.
-\paragraph{12. Comprobación independiente.} $0{,}060-0{,}576(0{,}0872665)-0{,}800(0{,}0121681)$ es cero dentro del redondeo. Para $\Delta\alpha=1^\circ$, $\Delta C_m=-0{,}01005$, comprobación directa del carácter restaurador.
+\paragraph{12. Comprobación independiente.} $0.060-0.576(0.0872665)-0.800(0.0121681)$ es cero dentro del redondeo. Para $\Delta\alpha=1^\circ$, $\Delta C_m=-0.01005$, comprobación directa del carácter restaurador.
 \paragraph{13. Limitaciones.} No se demuestra estabilidad dinámica; faltan inercias y derivadas de velocidad angular. Tampoco se comprueba equilibrio vertical porque no se han dado peso, velocidad ni intercepto de sustentación.
 
 \section{Ejercicios propuestos y guía de respuestas}
 \begin{enumerate}
-\item Con $h_N=0{,}38$ y $h=0{,}31$, calcule margen estático. Respuesta: $0{,}07$ o $7\%$ de cuerda.
-\item Para $a=5\ \mathrm{rad^{-1}}$ y $SM=-0{,}02$, determine $C_{m\alpha}$. Respuesta: $+0{,}10\ \mathrm{rad^{-1}}$, tendencia estática desestabilizadora.
-\item Un modelo tiene $\omega_n=2\ \mathrm{s^{-1}}$ y $\zeta=0{,}35$. Calcule frecuencia amortiguada y período. Respuesta: $\omega_d=1{,}8735\ \mathrm{s^{-1}}$ y período $3{,}354\ \mathrm s$.
-\item Una ráfaga de $3\ \mathrm{m/s}$ actúa sobre un avión a $60\ \mathrm{m/s}$. Estime el incremento angular inicial. Respuesta: $0{,}05\ \mathrm{rad}\simeq2{,}86^\circ$, dentro del modelo de pequeña ráfaga.
+\item Con $h_N=0.38$ y $h=0.31$, calcule margen estático. Respuesta: $0.07$ o $7\%$ de cuerda.
+\item Para $a=5\ \mathrm{rad^{-1}}$ y $SM=-0.02$, determine $C_{m\alpha}$. Respuesta: $+0.10\ \mathrm{rad^{-1}}$, tendencia estática desestabilizadora.
+\item Un modelo tiene $\omega_n=2\ \mathrm{s^{-1}}$ y $\zeta=0.35$. Calcule frecuencia amortiguada y período. Respuesta: $\omega_d=1.8735\ \mathrm{s^{-1}}$ y período $3.354\ \mathrm s$.
+\item Una ráfaga de $3\ \mathrm{m/s}$ actúa sobre un avión a $60\ \mathrm{m/s}$. Estime el incremento angular inicial. Respuesta: $0.05\ \mathrm{rad}\simeq2.86^\circ$, dentro del modelo de pequeña ráfaga.
 \item Una aeronave tiene $C_{m\alpha}<0$ y oscilaciones crecientes. ¿Existe contradicción? Guía: no; distinga rigidez estática de amortiguamiento y acoplamiento dinámico.
 \end{enumerate}
 \section{Resumen y autoevaluación}

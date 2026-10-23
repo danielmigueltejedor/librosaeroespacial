@@ -13,15 +13,15 @@ Para una sonda Pitot-estática ideal, aproximadamente a la misma cota, la difere
 La primera fórmula exige condiciones de calibración apropiadas y efectos de compresibilidad pequeños. La segunda es un diferencial de primer orden, útil para estimar la sensibilidad, no una identidad exacta para incertidumbres finitas.
 
 \begin{tcolorbox}[title={Ejemplo guiado original: velocidad e incertidumbre}, studiumdef, breakable]
-Un tubo Pitot-estático mide \(\Delta p=240\,\mathrm{Pa}\) en aire cuya densidad local estimada es \(1{,}20\,\mathrm{kg\,m^{-3}}\). El modelo ideal arroja
+Un tubo Pitot-estático mide \(\Delta p=240\,\mathrm{Pa}\) en aire cuya densidad local estimada es \(1.20\,\mathrm{kg\,m^{-3}}\). El modelo ideal arroja
 \[
- V=\sqrt{\frac{2\cdot240}{1{,}20}}=\mathbf{20{,}0\,\mathrm{m\,s^{-1}}}.
+ V=\sqrt{\frac{2\cdot240}{1.20}}=\mathbf{20.0\,\mathrm{m\,s^{-1}}}.
 \]
-Si las cotas de error son \(|\delta(\Delta p)|\leq2\,\mathrm{Pa}\) y \(|\delta\rho|\leq0{,}02\,\mathrm{kg\,m^{-3}}\), la propagación lineal conservadora da
+Si las cotas de error son \(|\delta(\Delta p)|\leq2\,\mathrm{Pa}\) y \(|\delta\rho|\leq0.02\,\mathrm{kg\,m^{-3}}\), la propagación lineal conservadora da
 \[
  \frac{|\delta V|}{V}\ \lesssim\
- \frac12\left(\frac{2}{240}+\frac{0{,}02}{1{,}20}\right)
- =0{,}0125=1{,}25\,\%.
+ \frac12\left(\frac{2}{240}+\frac{0.02}{1.20}\right)
+ =0.0125=1.25\,\%.
 \]
 Es una estimación de primer orden: no incorpora desalineación de la sonda, calibración, sesgo ni compresibilidad. Si se especificasen incertidumbres estándar independientes, su combinación estadística sería distinta de la suma conservadora.
 \end{tcolorbox}
