@@ -26,7 +26,7 @@ Los 25 capítulos son una organización editorial de los trece temas de la guía
 
 Se inventariaron los cinco PDF docentes TAE y dos exámenes anteriores facilitados: nombre, páginas, caracteres extraídos y SHA-256 constan en `evidence/input-inventory.json`. TAE0 fija contexto y evaluación; TAE1 orienta la historia; TAE2, la atmósfera y meteorología; TAE3, los fundamentos de fluidos; el documento de ISA y globos orienta competencias de cálculo. Los exámenes se analizaron para identificar geometría alar, polar, equilibrio, actuaciones y relaciones atmosféricas. No se presuponen correctas sus soluciones ni se reproducen sus páginas, figuras o enunciados.
 
-Los ejemplos, el banco P01–P30 y los tres simulacros son nuevos. Los originales privados y sus extracciones extensas no se redistribuyen en el paquete de entrega; sus huellas permiten cotejarlos con los archivos del usuario.
+Los ejemplos, el banco P01–P30 y los ocho simulacros son nuevos (los simulacros 4 a 8 se generan con `scripts/author-technology-extra-exams.py`; sus cifras son aritmética reproducida de datos docentes, sin aprobación académica independiente). Los originales privados y sus extracciones extensas no se redistribuyen en el paquete de entrega; sus huellas permiten cotejarlos con los archivos del usuario.
 
 Fuentes públicas descargadas y consultadas con alcance parcial, salvo la guía de siete páginas:
 

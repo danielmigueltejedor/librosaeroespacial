@@ -89,9 +89,10 @@ def test_every_method_and_solution_is_included_in_the_reader_sources():
         assert any(token in p.read_text() for p in sources),(row['book'],row['key'])
         if row['book']=='mecanica-vuelo' and row.get('non_scalar_results'):
             assert 'solutions/methods/'+row['key']+'.tex' in (book/'solutions/generated'/(row['key']+'.tex')).read_text()
-    technology=ROOT/'books/tecnologia-aeroespacial/content/exam-solutions.tex'
-    for n in (1,2,3):
-        assert f'solutions/generated/EX{n}.tex' in technology.read_text()
+    technology=ROOT/'books/tecnologia-aeroespacial/content'
+    technology=(technology/'exam-solutions.tex').read_text()+(technology/'exam-solutions-extra.tex').read_text()
+    for n in range(1,9):
+        assert f'solutions/generated/EX{n}.tex' in technology
     fluid=(ROOT/'books/mecanica-fluidos/latex/manual.tex').read_text()
     assert fluid.count(r'\hyperref[solution:mf-')==16
 

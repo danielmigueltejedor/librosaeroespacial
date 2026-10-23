@@ -1,0 +1,202 @@
+\subsection*{Procedimiento y operaciones del simulacro 4}
+La atmósfera ISA da el estado antes del choque. Para el choque normal se usan las relaciones de Rankine-Hugoniot en función de $M_1$; la presión de remanso medida por un Pitot supersónico sigue la fórmula de Rayleigh. En el choque oblicuo, la relación $\theta$-$\beta$-$M$ da la desviación y las relaciones normales se aplican a $M_1\sin\beta$. En el perfil se usa $\rho Vc/\mu$ y la corrección lineal subsónica.
+
+\begin{enumerate}
+
+\item Temperatura de la base de la capa isoterma.
+
+\[\fitmath{T_{11}=288.15-0.0065\cdot 11000\approx 216.65\,\mathrm{K}}\]
+
+\item Presión a 11 km por la integral de la capa troposférica.
+
+\[\fitmath{p_{11}=101325\cdot {\left(\frac{T_{11}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{p_{11}=101325\cdot {\left(\frac{(216.65)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 22632.04\,\mathrm{Pa}}\]
+
+\item Presión a 12 km con la integral isoterma.
+
+\[\fitmath{p_{1}=p_{11}\cdot \exp\left(\frac{-9.80665\cdot \left(12000-11000\right)}{287.05287\cdot T_{11}}\right)}\]
+
+\[\fitmath{p_{1}=(22632.0401)\cdot \exp\left(\frac{-9.80665\cdot \left(12000-11000\right)}{287.05287\cdot (216.65)}\right)\approx 19330.38\,\mathrm{Pa}}\]
+
+\item Densidad por la ecuación de estado con la temperatura de la capa.
+
+\[\fitmath{\rho_{1}=\frac{p_{1}}{287.05287\cdot T_{11}}}\]
+
+\[\fitmath{\rho_{1}=\frac{(19330.38251)}{287.05287\cdot (216.65)}\approx 0.3108278\,\mathrm{kg/m^{3}}}\]
+
+\item Velocidad del sonido local.
+
+\[\fitmath{a_{1}=\sqrt{1.4\cdot 287.05287\cdot T_{11}}}\]
+
+\[\fitmath{a_{1}=\sqrt{1.4\cdot 287.05287\cdot (216.65)}\approx 295.0695\,\mathrm{m/s}}\]
+
+\item Mach de vuelo dado.
+
+\[\fitmath{M_{1}=2\approx 2\,}\]
+
+\item Velocidad verdadera.
+
+\[\fitmath{V_{1}=M_{1}\cdot a_{1}}\]
+
+\[\fitmath{V_{1}=(2)\cdot (295.0694935)\approx 590.139\,\mathrm{m/s}}\]
+
+\item Mach detrás del choque normal.
+
+\[\fitmath{M_{2}=\sqrt{\frac{1+0.2\cdot {M_{1}}^{2}}{1.4\cdot {M_{1}}^{2}-0.2}}}\]
+
+\[\fitmath{M_{2}=\sqrt{\frac{1+0.2\cdot {(2)}^{2}}{1.4\cdot {(2)}^{2}-0.2}}\approx 0.5773503\,}\]
+
+\item Salto de presión estática a través del choque.
+
+\[\fitmath{\mathrm{pr}=1+\frac{2\cdot 1.4}{2.4}\cdot \left({M_{1}}^{2}-1\right)}\]
+
+\[\fitmath{\mathrm{pr}=1+\frac{2\cdot 1.4}{2.4}\cdot \left({(2)}^{2}-1\right)\approx 4.5\,}\]
+
+\item Salto de densidad por Rankine-Hugoniot.
+
+\[\fitmath{\mathrm{rr}=\frac{2.4\cdot {M_{1}}^{2}}{0.4\cdot {M_{1}}^{2}+2}}\]
+
+\[\fitmath{\mathrm{rr}=\frac{2.4\cdot {(2)}^{2}}{0.4\cdot {(2)}^{2}+2}\approx 2.666667\,}\]
+
+\item Cociente de temperaturas por gas perfecto.
+
+\[\fitmath{\mathrm{Tr}=\frac{\mathrm{pr}}{\mathrm{rr}}}\]
+
+\[\fitmath{\mathrm{Tr}=\frac{(4.5)}{(2.666666667)}\approx 1.6875\,}\]
+
+\item Pérdida de presión total por choque normal.
+
+\[\fitmath{\mathrm{ptr}=\frac{{\left(\frac{2.4\cdot {M_{1}}^{2}}{0.4\cdot {M_{1}}^{2}+2}\right)}^{\frac{1.4}{0.4}}}{{\left(\frac{2.8}{2.4}\cdot {M_{1}}^{2}-\frac{0.4}{2.4}\right)}^{\frac{1}{0.4}}}}\]
+
+\[\fitmath{\mathrm{ptr}=\frac{{\left(\frac{2.4\cdot {(2)}^{2}}{0.4\cdot {(2)}^{2}+2}\right)}^{\frac{1.4}{0.4}}}{{\left(\frac{2.8}{2.4}\cdot {(2)}^{2}-\frac{0.4}{2.4}\right)}^{\frac{1}{0.4}}}\approx 0.7208739\,}\]
+
+\item Presión de remanso medida tras el choque (Rayleigh-Pitot).
+
+\[\fitmath{\mathrm{pt}_{2}=\frac{p_{1}\cdot {\left(\frac{2.4}{2}\cdot {M_{1}}^{2}\right)}^{\frac{1.4}{0.4}}}{{\left(\frac{2\cdot 1.4}{2.4}\cdot {M_{1}}^{2}-\frac{0.4}{2.4}\right)}^{\frac{1}{0.4}}}}\]
+
+\[\fitmath{\mathrm{pt}_{2}=\frac{(19330.38251)\cdot {\left(\frac{2.4}{2}\cdot {(2)}^{2}\right)}^{\frac{1.4}{0.4}}}{{\left(\frac{2\cdot 1.4}{2.4}\cdot {(2)}^{2}-\frac{0.4}{2.4}\right)}^{\frac{1}{0.4}}}\approx 109031.9\,\mathrm{Pa}}\]
+
+\item Mach que se leería aplicando la fórmula subsónica a esa presión.
+
+\[\fitmath{\mathrm{Mfalse}=\sqrt{5\cdot \left({\left(\frac{\mathrm{pt}_{2}}{p_{1}}\right)}^{\frac{0.4}{1.4}}-1\right)}}\]
+
+\[\fitmath{\mathrm{Mfalse}=\sqrt{5\cdot \left({\left(\frac{(109031.8784)}{(19330.38251)}\right)}^{\frac{0.4}{1.4}}-1\right)}\approx 1.787889\,}\]
+
+\item Ángulo del choque oblicuo en radianes.
+
+\[\fitmath{\beta=\frac{\pi\cdot 40}{180}\approx 0.6981317\,\mathrm{rad}}\]
+
+\item Mach aguas arriba del choque oblicuo.
+
+\[\fitmath{\mathrm{Mi}=2.5\approx 2.5\,}\]
+
+\item Componente normal del Mach incidente.
+
+\[\fitmath{\mathrm{Mn}_{1}=\mathrm{Mi}\cdot \sin\left(\beta\right)}\]
+
+\[\fitmath{\mathrm{Mn}_{1}=(2.5)\cdot \sin\left((0.6981317008)\right)\approx 1.606969\,}\]
+
+\item Ángulo de desviación de la cuña por la relación theta-beta-M.
+
+\[\fitmath{\theta=\arctan\left(\frac{\frac{2}{\tan\left(\beta\right)}\cdot \left({\mathrm{Mi}}^{2}\cdot {\sin\left(\beta\right)}^{2}-1\right)}{{\mathrm{Mi}}^{2}\cdot \left(1.4+\cos\left(2\cdot \beta\right)\right)+2}\right)}\]
+
+\[\fitmath{\theta=\arctan\left(\frac{\frac{2}{\tan\left((0.6981317008)\right)}\cdot \left({(2.5)}^{2}\cdot {\sin\left((0.6981317008)\right)}^{2}-1\right)}{{(2.5)}^{2}\cdot \left(1.4+\cos\left(2\cdot (0.6981317008)\right)\right)+2}\right)\approx 0.3084949\,\mathrm{rad}}\]
+
+\item Ángulo de la cuña en grados.
+
+\[\fitmath{\mathrm{thetadeg}=\frac{\theta\cdot 180}{\pi}}\]
+
+\[\fitmath{\mathrm{thetadeg}=\frac{(0.3084949364)\cdot 180}{\pi}\approx 17.67546\,{}^{\circ}}\]
+
+\item Salto de presión por la componente normal.
+
+\[\fitmath{\mathrm{pr}_{2}=1+\frac{2\cdot 1.4}{2.4}\cdot \left({\mathrm{Mn}_{1}}^{2}-1\right)}\]
+
+\[\fitmath{\mathrm{pr}_{2}=1+\frac{2\cdot 1.4}{2.4}\cdot \left({(1.606969024)}^{2}-1\right)\approx 2.846074\,}\]
+
+\item Salto de densidad por la componente normal.
+
+\[\fitmath{\mathrm{rr}_{2}=\frac{2.4\cdot {\mathrm{Mn}_{1}}^{2}}{0.4\cdot {\mathrm{Mn}_{1}}^{2}+2}}\]
+
+\[\fitmath{\mathrm{rr}_{2}=\frac{2.4\cdot {(1.606969024)}^{2}}{0.4\cdot {(1.606969024)}^{2}+2}\approx 2.043443\,}\]
+
+\item Mach normal posterior.
+
+\[\fitmath{\mathrm{Mn}_{2}=\sqrt{\frac{1+0.2\cdot {\mathrm{Mn}_{1}}^{2}}{1.4\cdot {\mathrm{Mn}_{1}}^{2}-0.2}}}\]
+
+\[\fitmath{\mathrm{Mn}_{2}=\sqrt{\frac{1+0.2\cdot {(1.606969024)}^{2}}{1.4\cdot {(1.606969024)}^{2}-0.2}}\approx 0.6663512\,}\]
+
+\item Mach aguas abajo, recomponiendo con la desviación.
+
+\[\fitmath{\mathrm{Mo}_{2}=\frac{\mathrm{Mn}_{2}}{\sin\left(\beta-\theta\right)}}\]
+
+\[\fitmath{\mathrm{Mo}_{2}=\frac{(0.6663511504)}{\sin\left((0.6981317008)-(0.3084949364)\right)}\approx 1.754237\,}\]
+
+\item Temperatura ISA a 3000 m.
+
+\[\fitmath{\mathrm{Tc}=288.15-0.0065\cdot 3000\approx 268.65\,\mathrm{K}}\]
+
+\item Presión ISA a 3000 m.
+
+\[\fitmath{\mathrm{pc}=101325\cdot {\left(\frac{\mathrm{Tc}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{\mathrm{pc}=101325\cdot {\left(\frac{(268.65)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 70108.53\,\mathrm{Pa}}\]
+
+\item Densidad por gas perfecto.
+
+\[\fitmath{\mathrm{rhoc}=\frac{\mathrm{pc}}{287.05287\cdot \mathrm{Tc}}}\]
+
+\[\fitmath{\mathrm{rhoc}=\frac{(70108.5265)}{287.05287\cdot (268.65)}\approx 0.9091219\,\mathrm{kg/m^{3}}}\]
+
+\item Velocidad del sonido ISA.
+
+\[\fitmath{\mathrm{ac}=\sqrt{1.4\cdot 287.05287\cdot \mathrm{Tc}}}\]
+
+\[\fitmath{\mathrm{ac}=\sqrt{1.4\cdot 287.05287\cdot (268.65)}\approx 328.5779\,\mathrm{m/s}}\]
+
+\item Viscosidad de Sutherland.
+
+\[\fitmath{\mathrm{muc}=\frac{1.716\times10^{-5}\cdot {\left(\frac{\mathrm{Tc}}{273.15}\right)}^{1.5}\cdot \left(273.15+110.4\right)}{\mathrm{Tc}+110.4}}\]
+
+\[\fitmath{\mathrm{muc}=\frac{1.716\times10^{-5}\cdot {\left(\frac{(268.65)}{273.15}\right)}^{1.5}\cdot \left(273.15+110.4\right)}{(268.65)+110.4}\approx 1.69364\times10^{-5}\,\mathrm{Pa\,s}}\]
+
+\item Mach de vuelo.
+
+\[\fitmath{\mathrm{Mc}=0.6\approx 0.6\,}\]
+
+\item Velocidad verdadera.
+
+\[\fitmath{\mathrm{Vc}=\mathrm{Mc}\cdot \mathrm{ac}}\]
+
+\[\fitmath{\mathrm{Vc}=(0.6)\cdot (328.5779283)\approx 197.1468\,\mathrm{m/s}}\]
+
+\item Reynolds con cuerda de 1.8 m.
+
+\[\fitmath{\mathrm{Re}=\frac{\mathrm{rhoc}\cdot \mathrm{Vc}\cdot 1.8}{\mathrm{muc}}}\]
+
+\[\fitmath{\mathrm{Re}=\frac{(0.9091218612)\cdot (197.146757)\cdot 1.8}{(1.693640497\times10^{-5})}\approx 1.90486\times10^{7}\,}\]
+
+\item Pendiente 2 pi, incidencia 4 grados, alfa0 -1.5 grados.
+
+\[\fitmath{\mathrm{Cl}_{0}=\frac{2\cdot \pi\cdot \left(4+1.5\right)\cdot \pi}{180}\approx 0.6031425\,}\]
+
+\item Factor de Prandtl-Glauert.
+
+\[\fitmath{\mathrm{bPG}=\sqrt{1-{\mathrm{Mc}}^{2}}}\]
+
+\[\fitmath{\mathrm{bPG}=\sqrt{1-{(0.6)}^{2}}\approx 0.8\,}\]
+
+\item Corrección subsónica de Prandtl-Glauert.
+
+\[\fitmath{\mathrm{Clc}=\frac{\mathrm{Cl}_{0}}{\mathrm{bPG}}}\]
+
+\[\fitmath{\mathrm{Clc}=\frac{(0.6031424912)}{(0.8)}\approx 0.7539281\,}\]
+
+\item Cociente de temperaturas por gas perfecto.
+
+\[\fitmath{\mathrm{Tr}_{2}=\frac{\mathrm{pr}_{2}}{\mathrm{rr}_{2}}}\]
+
+\[\fitmath{\mathrm{Tr}_{2}=\frac{(2.846074352)}{(2.043442706)}\approx 1.392784\,}\]
+
+\end{enumerate}

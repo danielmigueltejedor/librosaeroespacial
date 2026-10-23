@@ -1,0 +1,226 @@
+\subsection*{Procedimiento y operaciones del simulacro 5}
+En el ciclo Otto se encadenan las dos isentrópicas con el aporte a volumen constante. En el turborreactor se aplica la cantidad de movimiento con tobera adaptada, de modo que no hay término de presión. En la tobera de cohete se usan el gasto crítico, la velocidad de salida isentrópica y la continuidad para el área de salida; el empuje añade el término de presión $(p_e-p_a)A_e$.
+
+\begin{enumerate}
+
+\item Relación de compresión dada.
+
+\[\fitmath{r=9\approx 9\,}\]
+
+\item Temperatura de admisión.
+
+\[\fitmath{T_{1}=300\approx 300\,\mathrm{K}}\]
+
+\item Presión de admisión.
+
+\[\fitmath{p_{1}=95000\approx 95000\,\mathrm{Pa}}\]
+
+\item Calor aportado por kilogramo de mezcla.
+
+\[\fitmath{q=1200000\approx 1200000\,\mathrm{J/kg}}\]
+
+\item Calor específico a volumen constante de gas perfecto con gamma 1.4.
+
+\[\fitmath{\mathrm{cv}=\frac{287.05287}{0.4}\approx 717.6322\,\mathrm{J/(kg\,K)}}\]
+
+\item Compresión isentrópica.
+
+\[\fitmath{T_{2}=T_{1}\cdot {r}^{0.4}}\]
+
+\[\fitmath{T_{2}=(300)\cdot {(9)}^{0.4}\approx 722.4674\,\mathrm{K}}\]
+
+\item Presión tras la compresión isentrópica.
+
+\[\fitmath{p_{2}=p_{1}\cdot {r}^{1.4}}\]
+
+\[\fitmath{p_{2}=(95000)\cdot {(9)}^{1.4}\approx 2059032\,\mathrm{Pa}}\]
+
+\item Aporte de calor a volumen constante.
+
+\[\fitmath{T_{3}=T_{2}+\frac{q}{\mathrm{cv}}}\]
+
+\[\fitmath{T_{3}=(722.4674056)+\frac{(1200000)}{(717.632175)}\approx 2394.633\,\mathrm{K}}\]
+
+\item A volumen constante la presión crece como la temperatura.
+
+\[\fitmath{p_{3}=\frac{p_{2}\cdot T_{3}}{T_{2}}}\]
+
+\[\fitmath{p_{3}=\frac{(2059032.106)\cdot (2394.633233)}{(722.4674056)}\approx 6824705\,\mathrm{Pa}}\]
+
+\item Expansión isentrópica.
+
+\[\fitmath{T_{4}=\frac{T_{3}}{{r}^{0.4}}}\]
+
+\[\fitmath{T_{4}=\frac{(2394.633233)}{{(9)}^{0.4}}\approx 994.3562\,\mathrm{K}}\]
+
+\item Rendimiento térmico del ciclo Otto ideal.
+
+\[\fitmath{\eta=1-{r}^{-0.4}}\]
+
+\[\fitmath{\eta=1-{(9)}^{-0.4}\approx 0.5847564\,}\]
+
+\item Trabajo neto específico.
+
+\[\fitmath{w=\eta\cdot q}\]
+
+\[\fitmath{w=(0.5847563535)\cdot (1200000)\approx 701707.6\,\mathrm{J/kg}}\]
+
+\item Calor cedido a volumen constante.
+
+\[\fitmath{\mathrm{qout}=q-w}\]
+
+\[\fitmath{\mathrm{qout}=(1200000)-(701707.6242)\approx 498292.4\,\mathrm{J/kg}}\]
+
+\item Comprobación de calor cedido desde las temperaturas.
+
+\[\fitmath{\mathrm{qout}_{2}=\mathrm{cv}\cdot \left(T_{4}-T_{1}\right)}\]
+
+\[\fitmath{\mathrm{qout}_{2}=(717.632175)\cdot \left((994.356236)-(300)\right)\approx 498292.4\,\mathrm{J/kg}}\]
+
+\item Gasto de aire.
+
+\[\fitmath{\mathrm{mdot}=45\approx 45\,\mathrm{kg/s}}\]
+
+\item Dosado másico combustible/aire.
+
+\[\fitmath{f=0.015\approx 0.015\,}\]
+
+\item Velocidad de vuelo.
+
+\[\fitmath{V_{0}=220\approx 220\,\mathrm{m/s}}\]
+
+\item Velocidad de salida con tobera adaptada.
+
+\[\fitmath{\mathrm{Ve}=620\approx 620\,\mathrm{m/s}}\]
+
+\item Empuje con tobera adaptada.
+
+\[\fitmath{F=\mathrm{mdot}\cdot \left(\left(1+f\right)\cdot \mathrm{Ve}-V_{0}\right)}\]
+
+\[\fitmath{F=(45)\cdot \left(\left(1+(0.015)\right)\cdot (620)-(220)\right)\approx 18418.5\,\mathrm{N}}\]
+
+\item Potencia propulsiva.
+
+\[\fitmath{\mathrm{Pu}=F\cdot V_{0}}\]
+
+\[\fitmath{\mathrm{Pu}=(18418.5)\cdot (220)\approx 4052070\,\mathrm{W}}\]
+
+\item Incremento de energía cinética de la corriente.
+
+\[\fitmath{\mathrm{dKE}=\frac{\mathrm{mdot}\cdot \left(\left(1+f\right)\cdot {\mathrm{Ve}}^{2}-{V_{0}}^{2}\right)}{2}}\]
+
+\[\fitmath{\mathrm{dKE}=\frac{(45)\cdot \left(\left(1+(0.015)\right)\cdot {(620)}^{2}-{(220)}^{2}\right)}{2}\approx 7689735\,\mathrm{W}}\]
+
+\item Rendimiento propulsivo.
+
+\[\fitmath{\eta_p=\frac{\mathrm{Pu}}{\mathrm{dKE}}}\]
+
+\[\fitmath{\eta_p=\frac{(4052070)}{(7689735)}\approx 0.5269453\,}\]
+
+\item Consumo específico de empuje.
+
+\[\fitmath{\mathrm{TSFC}=\frac{f\cdot \mathrm{mdot}}{F}}\]
+
+\[\fitmath{\mathrm{TSFC}=\frac{(0.015)\cdot (45)}{(18418.5)}\approx 3.664794\times10^{-5}\,\mathrm{kg/(N\,s)}}\]
+
+\item Mismo consumo en unidades por hora.
+
+\[\fitmath{\mathrm{TSFCh}=\mathrm{TSFC}\cdot 3600}\]
+
+\[\fitmath{\mathrm{TSFCh}=(3.66479355\times10^{-5})\cdot 3600\approx 0.1319326\,\mathrm{kg/(N\,h)}}\]
+
+\item Razón de calores específicos de los gases de combustión.
+
+\[\fitmath{\gamma=1.2\approx 1.2\,}\]
+
+\item Constante del gas.
+
+\[\fitmath{R_g=380\approx 380\,\mathrm{J/(kg\,K)}}\]
+
+\item Temperatura de cámara.
+
+\[\fitmath{\mathrm{Tc}=3400\approx 3400\,\mathrm{K}}\]
+
+\item Presión de cámara.
+
+\[\fitmath{\mathrm{pc}=5000000\approx 5000000\,\mathrm{Pa}}\]
+
+\item Área de garganta.
+
+\[\fitmath{\mathrm{At}=0.04\approx 0.04\,\mathrm{m^{2}}}\]
+
+\item Presión de salida de diseño.
+
+\[\fitmath{\mathrm{pe}=60000\approx 60000\,\mathrm{Pa}}\]
+
+\item Presión ambiente a nivel del mar.
+
+\[\fitmath{\mathrm{pa}=101325\approx 101325\,\mathrm{Pa}}\]
+
+\item Gasto crítico en la garganta bloqueada.
+
+\[\fitmath{\mathrm{mdotc}=\mathrm{pc}\cdot \mathrm{At}\cdot \sqrt{\frac{\gamma}{R_g\cdot \mathrm{Tc}}}\cdot {\left(\frac{2}{\gamma+1}\right)}^{\frac{\gamma+1}{2\cdot \left(\gamma-1\right)}}}\]
+
+\[\fitmath{\mathrm{mdotc}=(5000000)\cdot (0.04)\cdot \sqrt{\frac{(1.2)}{(380)\cdot (3400)}}\cdot {\left(\frac{2}{(1.2)+1}\right)}^{\frac{(1.2)+1}{2\cdot \left((1.2)-1\right)}}\approx 114.1115\,\mathrm{kg/s}}\]
+
+\item Temperatura de salida isentrópica.
+
+\[\fitmath{\mathrm{Te}=\mathrm{Tc}\cdot {\left(\frac{\mathrm{pe}}{\mathrm{pc}}\right)}^{\frac{\gamma-1}{\gamma}}}\]
+
+\[\fitmath{\mathrm{Te}=(3400)\cdot {\left(\frac{(60000)}{(5000000)}\right)}^{\frac{(1.2)-1}{(1.2)}}\approx 1626.831\,\mathrm{K}}\]
+
+\item Velocidad de salida.
+
+\[\fitmath{\mathrm{Vex}=\sqrt{\frac{2\cdot \gamma}{\gamma-1}\cdot R_g\cdot \mathrm{Tc}\cdot \left(1-{\left(\frac{\mathrm{pe}}{\mathrm{pc}}\right)}^{\frac{\gamma-1}{\gamma}}\right)}}\]
+
+\[\fitmath{\mathrm{Vex}=\sqrt{\frac{2\cdot (1.2)}{(1.2)-1}\cdot (380)\cdot (3400)\cdot \left(1-{\left(\frac{(60000)}{(5000000)}\right)}^{\frac{(1.2)-1}{(1.2)}}\right)}\approx 2843.528\,\mathrm{m/s}}\]
+
+\item Densidad de salida.
+
+\[\fitmath{\mathrm{rhoe}=\frac{\mathrm{pe}}{R_g\cdot \mathrm{Te}}}\]
+
+\[\fitmath{\mathrm{rhoe}=\frac{(60000)}{(380)\cdot (1626.83107)}\approx 0.09705663\,\mathrm{kg/m^{3}}}\]
+
+\item Área de salida por continuidad.
+
+\[\fitmath{\mathrm{Ae}=\frac{\mathrm{mdotc}}{\mathrm{rhoe}\cdot \mathrm{Vex}}}\]
+
+\[\fitmath{\mathrm{Ae}=\frac{(114.1115471)}{(0.09705662733)\cdot (2843.527795)}\approx 0.4134728\,\mathrm{m^{2}}}\]
+
+\item Relación de áreas de la tobera.
+
+\[\fitmath{\mathrm{eps}=\frac{\mathrm{Ae}}{\mathrm{At}}}\]
+
+\[\fitmath{\mathrm{eps}=\frac{(0.4134727761)}{(0.04)}\approx 10.33682\,}\]
+
+\item Empuje al nivel del mar.
+
+\[\fitmath{\mathrm{Fsl}=\mathrm{mdotc}\cdot \mathrm{Vex}+\left(\mathrm{pe}-\mathrm{pa}\right)\cdot \mathrm{Ae}}\]
+
+\[\fitmath{\mathrm{Fsl}=(114.1115471)\cdot (2843.527795)+\left((60000)-(101325)\right)\cdot (0.4134727761)\approx 307392.6\,\mathrm{N}}\]
+
+\item Empuje en vacío.
+
+\[\fitmath{\mathrm{Fvac}=\mathrm{mdotc}\cdot \mathrm{Vex}+\mathrm{pe}\cdot \mathrm{Ae}}\]
+
+\[\fitmath{\mathrm{Fvac}=(114.1115471)\cdot (2843.527795)+(60000)\cdot (0.4134727761)\approx 349287.7\,\mathrm{N}}\]
+
+\item Impulso específico al nivel del mar.
+
+\[\fitmath{\mathrm{Ispsl}=\frac{\mathrm{Fsl}}{\mathrm{mdotc}\cdot 9.80665}}\]
+
+\[\fitmath{\mathrm{Ispsl}=\frac{(307392.5935)}{(114.1115471)\cdot 9.80665}\approx 274.6902\,\mathrm{s}}\]
+
+\item Impulso específico en vacío.
+
+\[\fitmath{\mathrm{Ispvac}=\frac{\mathrm{Fvac}}{\mathrm{mdotc}\cdot 9.80665}}\]
+
+\[\fitmath{\mathrm{Ispvac}=\frac{(349287.7225)}{(114.1115471)\cdot 9.80665}\approx 312.1282\,\mathrm{s}}\]
+
+\item Mach de salida.
+
+\[\fitmath{\mathrm{Mex}=\frac{\mathrm{Vex}}{\sqrt{\gamma\cdot R_g\cdot \mathrm{Te}}}}\]
+
+\[\fitmath{\mathrm{Mex}=\frac{(2843.527795)}{\sqrt{(1.2)\cdot (380)\cdot (1626.83107)}}\approx 3.301443\,}\]
+
+\end{enumerate}

@@ -1,0 +1,140 @@
+\subsection*{Procedimiento y operaciones del simulacro 8}
+En el actuador se aplican $F=pA$ y $v=Q/A$ con el área útil de cada cámara; las potencias salen del balance hidráulico. La batería se trata como reserva energética utilizable y el cable como una resistencia en serie. El alcance sigue la integración de Breguet para reactor con $L/D$ y consumo constantes.
+
+\begin{enumerate}
+
+\item Presión del sistema.
+
+\[\fitmath{p=21000000\approx 2.1\times10^{7}\,\mathrm{Pa}}\]
+
+\item Área del pistón.
+
+\[\fitmath{\mathrm{Ap}=\frac{\pi}{4}\cdot {0.05}^{2}\approx 0.001963495\,\mathrm{m^{2}}}\]
+
+\item Área del vástago.
+
+\[\fitmath{\mathrm{Ar}=\frac{\pi}{4}\cdot {0.025}^{2}\approx 0.0004908739\,\mathrm{m^{2}}}\]
+
+\item Fuerza máxima en extensión.
+
+\[\fitmath{\mathrm{Fext}=p\cdot \mathrm{Ap}}\]
+
+\[\fitmath{\mathrm{Fext}=(21000000)\cdot (0.001963495408)\approx 41233.4\,\mathrm{N}}\]
+
+\item Fuerza máxima en retracción, con área anular.
+
+\[\fitmath{\mathrm{Fret}=p\cdot \left(\mathrm{Ap}-\mathrm{Ar}\right)}\]
+
+\[\fitmath{\mathrm{Fret}=(21000000)\cdot \left((0.001963495408)-(0.0004908738521)\right)\approx 30925.05\,\mathrm{N}}\]
+
+\item Caudal.
+
+\[\fitmath{Q=0.001\approx 0.001\,\mathrm{m^{3}/s}}\]
+
+\item Velocidad de extensión.
+
+\[\fitmath{\mathrm{vext}=\frac{Q}{\mathrm{Ap}}}\]
+
+\[\fitmath{\mathrm{vext}=\frac{(0.001)}{(0.001963495408)}\approx 0.5092958\,\mathrm{m/s}}\]
+
+\item Velocidad de retracción para el mismo caudal.
+
+\[\fitmath{\mathrm{vret}=\frac{Q}{\mathrm{Ap}-\mathrm{Ar}}}\]
+
+\[\fitmath{\mathrm{vret}=\frac{(0.001)}{(0.001963495408)-(0.0004908738521)}\approx 0.6790611\,\mathrm{m/s}}\]
+
+\item Potencia hidráulica entregada al actuador.
+
+\[\fitmath{\mathrm{Ph}=p\cdot Q}\]
+
+\[\fitmath{\mathrm{Ph}=(21000000)\cdot (0.001)\approx 21000\,\mathrm{W}}\]
+
+\item Potencia mecánica útil con carga de 30 kN.
+
+\[\fitmath{\mathrm{Pu}=30000\cdot \mathrm{vext}}\]
+
+\[\fitmath{\mathrm{Pu}=30000\cdot (0.5092958179)\approx 15278.87\,\mathrm{W}}\]
+
+\item Potencia disipada como calor en válvulas y fugas.
+
+\[\fitmath{\mathrm{loss}=\mathrm{Ph}-\mathrm{Pu}}\]
+
+\[\fitmath{\mathrm{loss}=(21000)-(15278.87454)\approx 5721.125\,\mathrm{W}}\]
+
+\item Potencia de entrada a la bomba con rendimiento 0.85.
+
+\[\fitmath{\mathrm{Pin}=\frac{\mathrm{Ph}}{0.85}}\]
+
+\[\fitmath{\mathrm{Pin}=\frac{(21000)}{0.85}\approx 24705.88\,\mathrm{W}}\]
+
+\item Calentamiento si 18 kg de fluido absorben el calor sin enfriar.
+
+\[\fitmath{\mathrm{dTdt}=\frac{\mathrm{loss}}{18\cdot 1900}}\]
+
+\[\fitmath{\mathrm{dTdt}=\frac{(5721.125463)}{18\cdot 1900}\approx 0.1672844\,\mathrm{K/s}}\]
+
+\item Autonomía con 80 % de la capacidad utilizable.
+
+\[\fitmath{t=\frac{0.8\cdot 40}{15}\approx 2.133333\,\mathrm{h}}\]
+
+\item Resistencia del cableado de cobre de ida y vuelta.
+
+\[\fitmath{R=\frac{1.72\times10^{-8}\cdot 12}{6\times10^{-6}}\approx 0.0344\,\mathrm{ohm}}\]
+
+\item Caída de tensión en el cable.
+
+\[\fitmath{\mathrm{dV}=15\cdot R}\]
+
+\[\fitmath{\mathrm{dV}=15\cdot (0.0344)\approx 0.516\,\mathrm{V}}\]
+
+\item Pérdida por efecto Joule en el cable.
+
+\[\fitmath{\mathrm{Ploss}={15}^{2}\cdot R}\]
+
+\[\fitmath{\mathrm{Ploss}={15}^{2}\cdot (0.0344)\approx 7.74\,\mathrm{W}}\]
+
+\item Tensión en la carga.
+
+\[\fitmath{\mathrm{Vload}=24-\mathrm{dV}}\]
+
+\[\fitmath{\mathrm{Vload}=24-(0.516)\approx 23.484\,\mathrm{V}}\]
+
+\item Caída relativa en por ciento.
+
+\[\fitmath{\mathrm{frac}=\frac{\mathrm{dV}}{24}\cdot 100}\]
+
+\[\fitmath{\mathrm{frac}=\frac{(0.516)}{24}\cdot 100\approx 2.15\,}\]
+
+\item Velocidad de crucero.
+
+\[\fitmath{V=230\approx 230\,\mathrm{m/s}}\]
+
+\item Consumo específico por unidad de peso de empuje.
+
+\[\fitmath{\mathrm{cw}=1.7\times10^{-5}\cdot 9.80665\approx 0.000166713\,\mathrm{1/s}}\]
+
+\item Eficiencia aerodinámica.
+
+\[\fitmath{\mathrm{LD}=16\approx 16\,}\]
+
+\item Logaritmo de la razón de pesos inicial y final.
+
+\[\fitmath{\mathrm{lnW}=\ln\left(1.25\right)\approx 0.2231436\,}\]
+
+\item Alcance de Breguet.
+
+\[\fitmath{\mathrm{Rbr}=\frac{V}{\mathrm{cw}}\cdot \mathrm{LD}\cdot \mathrm{lnW}}\]
+
+\[\fitmath{\mathrm{Rbr}=\frac{(230)}{(0.00016671305)}\cdot (16)\cdot (0.2231435513)\approx 4925639\,\mathrm{m}}\]
+
+\item Autonomía de Breguet.
+
+\[\fitmath{\mathrm{Eh}=\frac{\frac{\mathrm{LD}\cdot \mathrm{lnW}}{\mathrm{cw}}}{3600}}\]
+
+\[\fitmath{\mathrm{Eh}=\frac{\frac{(16)\cdot (0.2231435513)}{(0.00016671305)}}{3600}\approx 5.948839\,\mathrm{h}}\]
+
+\item Fracción de combustible respecto al peso inicial.
+
+\[\fitmath{\mathrm{ff}=1-\frac{1}{1.25}\approx 0.2\,}\]
+
+\end{enumerate}

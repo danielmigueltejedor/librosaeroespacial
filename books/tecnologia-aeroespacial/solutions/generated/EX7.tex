@@ -1,0 +1,192 @@
+\subsection*{Procedimiento y operaciones del simulacro 7}
+El triángulo de vientos se resuelve proyectando el viento sobre la derrota; la corrección de deriva sale del seno del ángulo transversal. La distancia ortodrómica usa la fórmula haversine y el rumbo inicial la ecuación de rumbo esférico. El despegue se reduce a movimiento uniformemente acelerado hasta $V_{LOF}=1.2V_s$ con la densidad de cada caso.
+
+\begin{enumerate}
+
+\item Velocidad verdadera.
+
+\[\fitmath{\mathrm{TAS}=75\approx 75\,\mathrm{m/s}}\]
+
+\item Intensidad del viento.
+
+\[\fitmath{\mathrm{Vw}=15\approx 15\,\mathrm{m/s}}\]
+
+\item Ángulo entre la procedencia del viento y la derrota.
+
+\[\fitmath{\mathrm{ang}=\frac{\pi\cdot 60}{180}\approx 1.047198\,\mathrm{rad}}\]
+
+\item Componente transversal del viento.
+
+\[\fitmath{\mathrm{cross}=\mathrm{Vw}\cdot \sin\left(\mathrm{ang}\right)}\]
+
+\[\fitmath{\mathrm{cross}=(15)\cdot \sin\left((1.047197551)\right)\approx 12.99038\,\mathrm{m/s}}\]
+
+\item Componente longitudinal del viento, de cara.
+
+\[\fitmath{\mathrm{head}=\mathrm{Vw}\cdot \cos\left(\mathrm{ang}\right)}\]
+
+\[\fitmath{\mathrm{head}=(15)\cdot \cos\left((1.047197551)\right)\approx 7.5\,\mathrm{m/s}}\]
+
+\item Ángulo de corrección de deriva.
+
+\[\fitmath{\mathrm{WCA}=\arcsin\left(\frac{\mathrm{cross}}{\mathrm{TAS}}\right)}\]
+
+\[\fitmath{\mathrm{WCA}=\arcsin\left(\frac{(12.99038106)}{(75)}\right)\approx 0.174083\,\mathrm{rad}}\]
+
+\item Ángulo de deriva en grados.
+
+\[\fitmath{\mathrm{WCAdeg}=\frac{\mathrm{WCA}\cdot 180}{\pi}}\]
+
+\[\fitmath{\mathrm{WCAdeg}=\frac{(0.1740830106)\cdot 180}{\pi}\approx 9.974222\,{}^{\circ}}\]
+
+\item Velocidad respecto al suelo.
+
+\[\fitmath{\mathrm{GS}=\mathrm{TAS}\cdot \cos\left(\mathrm{WCA}\right)-\mathrm{head}}\]
+
+\[\fitmath{\mathrm{GS}=(75)\cdot \cos\left((0.1740830106)\right)-(7.5)\approx 66.36643\,\mathrm{m/s}}\]
+
+\item Tiempo del tramo de 180 km.
+
+\[\fitmath{\mathrm{tmin}=\frac{\frac{180000}{\mathrm{GS}}}{60}}\]
+
+\[\fitmath{\mathrm{tmin}=\frac{\frac{180000}{(66.36643351)}}{60}\approx 45.20357\,\mathrm{min}}\]
+
+\item Latitud del origen.
+
+\[\fitmath{\mathrm{ph}_{1}=\frac{\pi\cdot 40.47}{180}\approx 0.7063347\,\mathrm{rad}}\]
+
+\item Latitud del destino.
+
+\[\fitmath{\mathrm{ph}_{2}=\frac{\pi\cdot 41.3}{180}\approx 0.720821\,\mathrm{rad}}\]
+
+\item Diferencia de longitud, de oeste a este.
+
+\[\fitmath{\mathrm{dlam}=\frac{\pi\cdot \left(2.08+3.56\right)}{180}\approx 0.09843657\,\mathrm{rad}}\]
+
+\item Haversine del ángulo central.
+
+\[\fitmath{\mathrm{hav}={\sin\left(\frac{\mathrm{ph}_{2}-\mathrm{ph}_{1}}{2}\right)}^{2}+\cos\left(\mathrm{ph}_{1}\right)\cdot \cos\left(\mathrm{ph}_{2}\right)\cdot {\sin\left(\frac{\mathrm{dlam}}{2}\right)}^{2}}\]
+
+\[\fitmath{\mathrm{hav}={\sin\left(\frac{(0.7208209811)-(0.7063347483)}{2}\right)}^{2}+\cos\left((0.7063347483)\right)\cdot \cos\left((0.7208209811)\right)\cdot {\sin\left(\frac{(0.09843656981)}{2}\right)}^{2}\approx 0.00143582\,}\]
+
+\item Ángulo central.
+
+\[\fitmath{\mathrm{cang}=2\cdot \arcsin\left(\sqrt{\mathrm{hav}}\right)}\]
+
+\[\fitmath{\mathrm{cang}=2\cdot \arcsin\left(\sqrt{(0.001435819614)}\right)\approx 0.07580257\,\mathrm{rad}}\]
+
+\item Distancia ortodrómica con radio medio.
+
+\[\fitmath{\mathrm{dist}=6371\cdot \mathrm{cang}}\]
+
+\[\fitmath{\mathrm{dist}=6371\cdot (0.07580256811)\approx 482.9382\,\mathrm{km}}\]
+
+\item Numerador de la ecuación del rumbo inicial.
+
+\[\fitmath{\mathrm{by}=\sin\left(\mathrm{dlam}\right)\cdot \cos\left(\mathrm{ph}_{2}\right)}\]
+
+\[\fitmath{\mathrm{by}=\sin\left((0.09843656981)\right)\cdot \cos\left((0.7208209811)\right)\approx 0.07383249\,}\]
+
+\item Denominador de la ecuación del rumbo inicial.
+
+\[\fitmath{\mathrm{bx}=\cos\left(\mathrm{ph}_{1}\right)\cdot \sin\left(\mathrm{ph}_{2}\right)-\sin\left(\mathrm{ph}_{1}\right)\cdot \cos\left(\mathrm{ph}_{2}\right)\cdot \cos\left(\mathrm{dlam}\right)}\]
+
+\[\fitmath{\mathrm{bx}=\cos\left((0.7063347483)\right)\cdot \sin\left((0.7208209811)\right)-\sin\left((0.7063347483)\right)\cdot \cos\left((0.7208209811)\right)\cdot \cos\left((0.09843656981)\right)\approx 0.01684622\,}\]
+
+\item Rumbo inicial, válido porque el denominador es positivo.
+
+\[\fitmath{\mathrm{brg}=\frac{\arctan\left(\frac{\mathrm{by}}{\mathrm{bx}}\right)\cdot 180}{\pi}}\]
+
+\[\fitmath{\mathrm{brg}=\frac{\arctan\left(\frac{(0.07383249289)}{(0.01684622024)}\right)\cdot 180}{\pi}\approx 77.14696\,{}^{\circ}}\]
+
+\item Peso al despegue.
+
+\[\fitmath{\mathrm{Wt}=15000\approx 15000\,\mathrm{N}}\]
+
+\item Superficie alar.
+
+\[\fitmath{\mathrm{Sw}=16\approx 16\,\mathrm{m^{2}}}\]
+
+\item Temperatura ISA a 2000 m.
+
+\[\fitmath{\mathrm{Tisa}=288.15-0.0065\cdot 2000\approx 275.15\,\mathrm{K}}\]
+
+\item Presión ISA a 2000 m.
+
+\[\fitmath{p2k=101325\cdot {\left(\frac{\mathrm{Tisa}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{p2k=101325\cdot {\left(\frac{(275.15)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 79495.2\,\mathrm{Pa}}\]
+
+\item Temperatura ISA+20.
+
+\[\fitmath{\mathrm{Thot}=\mathrm{Tisa}+20}\]
+
+\[\fitmath{\mathrm{Thot}=(275.15)+20\approx 295.15\,\mathrm{K}}\]
+
+\item Densidad del día cálido.
+
+\[\fitmath{\mathrm{rhoh}=\frac{p2k}{287.05287\cdot \mathrm{Thot}}}\]
+
+\[\fitmath{\mathrm{rhoh}=\frac{(79495.20193)}{287.05287\cdot (295.15)}\approx 0.9382882\,\mathrm{kg/m^{3}}}\]
+
+\item Velocidad de pérdida a nivel del mar.
+
+\[\fitmath{\mathrm{Vs}_{1}=\sqrt{\frac{2\cdot \mathrm{Wt}}{1.225\cdot \mathrm{Sw}\cdot 1.6}}}\]
+
+\[\fitmath{\mathrm{Vs}_{1}=\sqrt{\frac{2\cdot (15000)}{1.225\cdot (16)\cdot 1.6}}\approx 30.92948\,\mathrm{m/s}}\]
+
+\item Velocidad de despegue a nivel del mar.
+
+\[\fitmath{\mathrm{Vlof}_{1}=1.2\cdot \mathrm{Vs}_{1}}\]
+
+\[\fitmath{\mathrm{Vlof}_{1}=1.2\cdot (30.92947871)\approx 37.11537\,\mathrm{m/s}}\]
+
+\item Aceleración media con empuje constante y rozamiento.
+
+\[\fitmath{a_{1}=9.80665\cdot \left(\frac{3200}{\mathrm{Wt}}-0.03\right)}\]
+
+\[\fitmath{a_{1}=9.80665\cdot \left(\frac{3200}{(15000)}-0.03\right)\approx 1.797886\,\mathrm{m/s^{2}}}\]
+
+\item Recorrido de despegue a nivel del mar.
+
+\[\fitmath{s_{1}=\frac{{\mathrm{Vlof}_{1}}^{2}}{2\cdot a_{1}}}\]
+
+\[\fitmath{s_{1}=\frac{{(37.11537445)}^{2}}{2\cdot (1.797885833)}\approx 383.103\,\mathrm{m}}\]
+
+\item Velocidad de pérdida en el día cálido.
+
+\[\fitmath{\mathrm{Vs}_{2}=\sqrt{\frac{2\cdot \mathrm{Wt}}{\mathrm{rhoh}\cdot \mathrm{Sw}\cdot 1.6}}}\]
+
+\[\fitmath{\mathrm{Vs}_{2}=\sqrt{\frac{2\cdot (15000)}{(0.9382881596)\cdot (16)\cdot 1.6}}\approx 35.34049\,\mathrm{m/s}}\]
+
+\item Velocidad de despegue.
+
+\[\fitmath{\mathrm{Vlof}_{2}=1.2\cdot \mathrm{Vs}_{2}}\]
+
+\[\fitmath{\mathrm{Vlof}_{2}=1.2\cdot (35.34048674)\approx 42.40858\,\mathrm{m/s}}\]
+
+\item Empuje reducido proporcionalmente a la densidad.
+
+\[\fitmath{T_{2}=\frac{3200\cdot \mathrm{rhoh}}{1.225}}\]
+
+\[\fitmath{T_{2}=\frac{3200\cdot (0.9382881596)}{1.225}\approx 2451.038\,\mathrm{N}}\]
+
+\item Aceleración media.
+
+\[\fitmath{a_{2}=9.80665\cdot \left(\frac{T_{2}}{\mathrm{Wt}}-0.03\right)}\]
+
+\[\fitmath{a_{2}=9.80665\cdot \left(\frac{(2451.038458)}{(15000)}-0.03\right)\approx 1.308232\,\mathrm{m/s^{2}}}\]
+
+\item Recorrido de despegue en el día cálido.
+
+\[\fitmath{s_{2}=\frac{{\mathrm{Vlof}_{2}}^{2}}{2\cdot a_{2}}}\]
+
+\[\fitmath{s_{2}=\frac{{(42.40858409)}^{2}}{2\cdot (1.308232253)}\approx 687.3734\,\mathrm{m}}\]
+
+\item Cociente de recorridos.
+
+\[\fitmath{\mathrm{ratio}=\frac{s_{2}}{s_{1}}}\]
+
+\[\fitmath{\mathrm{ratio}=\frac{(687.3733623)}{(383.1030299)}\approx 1.794226\,}\]
+
+\end{enumerate}

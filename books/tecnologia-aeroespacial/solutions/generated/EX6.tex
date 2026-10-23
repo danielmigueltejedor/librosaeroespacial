@@ -1,0 +1,134 @@
+\subsection*{Procedimiento y operaciones del simulacro 6}
+La presión de cabina y la exterior salen de ISA; el recipiente delgado se resuelve con equilibrio de fuerzas en cada dirección. La barra se estudia con Euler y se compara con la carga de fluencia. La maniobra sigue $n=(V/V_s)^2$ y la ráfaga discreta se aproxima con $\Delta n=\rho_0U_{de}Va/(2W/S)$.
+
+\begin{enumerate}
+
+\item Temperatura ISA a la altitud de cabina.
+
+\[\fitmath{\mathrm{Tcab}=288.15-0.0065\cdot 2400\approx 272.55\,\mathrm{K}}\]
+
+\item Presión de cabina a 2400 m.
+
+\[\fitmath{\mathrm{pcab}=101325\cdot {\left(\frac{\mathrm{Tcab}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{\mathrm{pcab}=101325\cdot {\left(\frac{(272.55)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 75625.66\,\mathrm{Pa}}\]
+
+\item Temperatura ISA en la base de la estratosfera.
+
+\[\fitmath{T_{11}=288.15-0.0065\cdot 11000\approx 216.65\,\mathrm{K}}\]
+
+\item Presión exterior de crucero a 11000 m.
+
+\[\fitmath{\mathrm{pext}=101325\cdot {\left(\frac{T_{11}}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}}\]
+
+\[\fitmath{\mathrm{pext}=101325\cdot {\left(\frac{(216.65)}{288.15}\right)}^{\frac{9.80665}{287.05287\cdot 0.0065}}\approx 22632.04\,\mathrm{Pa}}\]
+
+\item Diferencia de presión que soporta el fuselaje.
+
+\[\fitmath{\mathrm{dp}=\mathrm{pcab}-\mathrm{pext}}\]
+
+\[\fitmath{\mathrm{dp}=(75625.66139)-(22632.0401)\approx 52993.62\,\mathrm{Pa}}\]
+
+\item Tensión circunferencial de recipiente cilíndrico de pared delgada.
+
+\[\fitmath{\mathrm{sth}=\frac{\mathrm{dp}\cdot 1.9}{0.0016}}\]
+
+\[\fitmath{\mathrm{sth}=\frac{(52993.6213)\cdot 1.9}{0.0016}\approx 6.292993\times10^{7}\,\mathrm{Pa}}\]
+
+\item Tensión longitudinal.
+
+\[\fitmath{\mathrm{sx}=\frac{\mathrm{sth}}{2}}\]
+
+\[\fitmath{\mathrm{sx}=\frac{(62929925.29)}{2}\approx 3.146496\times10^{7}\,\mathrm{Pa}}\]
+
+\item Límite elástico docente.
+
+\[\fitmath{\mathrm{sy}=300000000\approx 3\times10^{8}\,\mathrm{Pa}}\]
+
+\item Tensión equivalente de von Mises biaxial.
+
+\[\fitmath{\mathrm{svm}=\sqrt{{\mathrm{sth}}^{2}-\mathrm{sth}\cdot \mathrm{sx}+{\mathrm{sx}}^{2}}}\]
+
+\[\fitmath{\mathrm{svm}=\sqrt{{(62929925.29)}^{2}-(62929925.29)\cdot (31464962.65)+{(31464962.65)}^{2}}\approx 5.449891\times10^{7}\,\mathrm{Pa}}\]
+
+\item Coeficiente de seguridad estático frente a fluencia.
+
+\[\fitmath{\mathrm{SF}=\frac{\mathrm{sy}}{\mathrm{svm}}}\]
+
+\[\fitmath{\mathrm{SF}=\frac{(300000000)}{(54498913.96)}\approx 5.504697\,}\]
+
+\item Momento de inercia del tubo.
+
+\[\fitmath{I=\frac{\pi}{64}\cdot \left({0.04}^{4}-{0.036}^{4}\right)\approx 4.321575\times10^{-8}\,\mathrm{m^{4}}}\]
+
+\item Área de la sección anular.
+
+\[\fitmath{A=\frac{\pi}{4}\cdot \left({0.04}^{2}-{0.036}^{2}\right)\approx 0.000238761\,\mathrm{m^{2}}}\]
+
+\item Módulo de Young docente.
+
+\[\fitmath{E=7\times10^{10}\approx 7\times10^{10}\,\mathrm{Pa}}\]
+
+\item Carga crítica de Euler biarticulada.
+
+\[\fitmath{\mathrm{Pcr}=\frac{{\pi}^{2}\cdot E\cdot I}{{1.2}^{2}}}\]
+
+\[\fitmath{\mathrm{Pcr}=\frac{{\pi}^{2}\cdot (7\times10^{10})\cdot (4.321574854\times10^{-8})}{{1.2}^{2}}\approx 20733.72\,\mathrm{N}}\]
+
+\item Carga de fluencia a compresión.
+
+\[\fitmath{\mathrm{Py}=\mathrm{sy}\cdot A}\]
+
+\[\fitmath{\mathrm{Py}=(300000000)\cdot (0.0002387610417)\approx 71628.31\,\mathrm{N}}\]
+
+\item Radio de giro de la sección.
+
+\[\fitmath{\mathrm{rg}=\sqrt{\frac{I}{A}}}\]
+
+\[\fitmath{\mathrm{rg}=\sqrt{\frac{(4.321574854\times10^{-8})}{(0.0002387610417)}}\approx 0.01345362\,\mathrm{m}}\]
+
+\item Esbeltez.
+
+\[\fitmath{\mathrm{lam}=\frac{1.2}{\mathrm{rg}}}\]
+
+\[\fitmath{\mathrm{lam}=\frac{1.2}{(0.01345362405)}\approx 89.1953\,}\]
+
+\item Esbeltez límite de validez de la fórmula de Euler.
+
+\[\fitmath{\mathrm{lamc}=\pi\cdot \sqrt{\frac{E}{\mathrm{sy}}}}\]
+
+\[\fitmath{\mathrm{lamc}=\pi\cdot \sqrt{\frac{(7\times10^{10})}{(300000000)}}\approx 47.98862\,}\]
+
+\item Peso de la aeronave.
+
+\[\fitmath{W=11800\approx 11800\,\mathrm{N}}\]
+
+\item Superficie alar.
+
+\[\fitmath{S=16\approx 16\,\mathrm{m^{2}}}\]
+
+\item Velocidad de pérdida a nivel del mar con n=1.
+
+\[\fitmath{\mathrm{Vs}=\sqrt{\frac{2\cdot W}{1.225\cdot S\cdot 1.5}}}\]
+
+\[\fitmath{\mathrm{Vs}=\sqrt{\frac{2\cdot (11800)}{1.225\cdot (16)\cdot 1.5}}\approx 28.33233\,\mathrm{m/s}}\]
+
+\item Velocidad de maniobra para el factor de carga límite.
+
+\[\fitmath{\mathrm{VA}=\mathrm{Vs}\cdot \sqrt{3.8}}\]
+
+\[\fitmath{\mathrm{VA}=(28.33233292)\cdot \sqrt{3.8}\approx 55.22988\,\mathrm{m/s}}\]
+
+\item Incremento del factor de carga por ráfaga discreta sin atenuación.
+
+\[\fitmath{\mathrm{dn}=\frac{1.225\cdot 45\cdot 5\cdot 7.6}{2\cdot \frac{W}{S}}}\]
+
+\[\fitmath{\mathrm{dn}=\frac{1.225\cdot 45\cdot 5\cdot 7.6}{2\cdot \frac{(11800)}{(16)}}\approx 1.420169\,}\]
+
+\item Factor de carga resultante en la ráfaga.
+
+\[\fitmath{\mathrm{nR}=1+\mathrm{dn}}\]
+
+\[\fitmath{\mathrm{nR}=1+(1.420169492)\approx 2.420169\,}\]
+
+\end{enumerate}

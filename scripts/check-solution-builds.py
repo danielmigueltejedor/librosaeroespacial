@@ -28,7 +28,7 @@ for r in json.loads((ROOT/'reports/solution-procedure-native.json').read_text())
 for book,pattern in [('materiales-mantenimiento-motores','M*.tex'),('tecnologia-aeroespacial','M*.tex')]:
  for p in (ROOT/'books'/book/'solutions/generated').glob(pattern):require(book,'manual',p.stem)
 for p in (ROOT/'books/tecnologia-aeroespacial/solutions/generated').glob('P*.tex'):require('tecnologia-aeroespacial','problemas',p.stem)
-for n in (1,2,3):require('tecnologia-aeroespacial','problemas',f'EX{n}')
+for n in range(1,9):require('tecnologia-aeroespacial','problemas',f'EX{n}')
 for n in (1,2):require('motores-cohete','manual',f'M{n:02}')
 expect[('mecanica-vuelo','manual')].add('books/mecanica-vuelo/solutions/methods/manual-c05.tex')
 # Structures companions intentionally inline these same operations. Bind each

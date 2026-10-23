@@ -9,7 +9,7 @@ La entrega contiene:
 | Documento | Páginas A4 | Contenido |
 |---|---:|---|
 | Manual | 164 | 25 capítulos en diez partes, apéndices y bibliografía |
-| Problemas | 38 | P01–P30 y soluciones de los tres simulacros |
+| Problemas | 38 | P01–P30 y soluciones de los ocho simulacros |
 | Simulacros | 7 | Tres enunciados originales, sin las soluciones del cuaderno |
 
 El manual incluye 29 casos desarrollados, 107 ejercicios propuestos con orientación de respuesta y 27 figuras originales. El proyecto nativo estima alrededor de 51 000 palabras. El objetivo orientativo de 300–450 páginas **no se alcanza** en esta maquetación compacta. No se añadieron páginas vacías o duplicaciones para simularlo. La profundidad de varios capítulos sigue siendo un aspecto a valorar en la revisión académica; la presencia de todos los temas no la resuelve por sí sola.

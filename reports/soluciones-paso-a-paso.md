@@ -19,7 +19,7 @@ durante toda la carrera. Los índices de respuestas enlazan con los desarrollos.
 | Mecánica de Vuelo | 84 casos de bancos, talleres y simulacros; métodos específicos con matrices, bisección, integrales, refinamiento y trazas temporales; ejemplo del tensor desarrollado |
 | Materiales y Mantenimiento | 11 ejemplos numéricos del manual y 48 casos numéricos del cuaderno y simulacros; se mantienen los razonamientos cualitativos |
 | Motores Cohete | 28 ejemplos del manual, 36 problemas y 15 casos de simulacro con operaciones visibles |
-| Tecnología Aeroespacial | 29 ejemplos de manual, 30 problemas y desarrollo numérico de los tres simulacros |
+| Tecnología Aeroespacial | 29 ejemplos de manual, 30 problemas y desarrollo numérico de los ocho simulacros |
 
 Se muestran las expresiones tal como están escritas, sin simplificar constantes
 antes de la sustitución. El resultado se calcula; una respuesta esperada no se
