@@ -40,6 +40,12 @@ BLUEPRINT = [
  ('lit-05', 'Garcilaso de la Vega y la lírica renacentista'),
  ('lit-06', 'Cervantes y el Quijote'),
  ('lit-07', 'El Barroco: Lope de Vega, Góngora y Quevedo'),
+ ('lit-08', 'La Ilustración y el neoclasicismo'),
+ ('lit-09', 'El Romanticismo'),
+ ('lit-10', 'Realismo y naturalismo'),
+ ('lit-11', 'Modernismo y Generación del 98'),
+ ('lit-12', 'La Generación del 27 y Federico García Lorca'),
+ ('lit-13', 'Taller: métrica, retórica y comentario de texto'),
 ]
 CHAPTERS = {}
 spec = dict(book='literatura-espanola', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='literary')

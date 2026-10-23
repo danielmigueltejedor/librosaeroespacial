@@ -51,6 +51,12 @@ BLUEPRINT = [
  ('bio-04', 'El ADN y su replicación'),
  ('bio-05', 'El código genético y la síntesis de proteínas'),
  ('bio-06', 'Herencia mendeliana y genética de poblaciones'),
+ ('bio-07', 'Ciclo celular, mitosis, meiosis y cáncer'),
+ ('bio-08', 'Regulación de la expresión génica y epigenética'),
+ ('bio-09', 'Mutación, selección natural y evolución'),
+ ('bio-10', 'Fotosíntesis'),
+ ('bio-11', 'Biotecnología: PCR, clonación y CRISPR'),
+ ('bio-12', 'Taller de diseño experimental y análisis de datos'),
 ]
 CHAPTERS = {}
 spec = dict(book='biologia-celular-molecular', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='scientific')

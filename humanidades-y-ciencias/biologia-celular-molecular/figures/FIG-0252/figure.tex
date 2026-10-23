@@ -1,0 +1,20 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+\tikzset{every node/.append style={align=center}}
+
+\draw[thick, fill=green!8] (0,0) ellipse (6.2 and 3.4);
+\draw[thick, fill=green!20] (-3.2,0) ellipse (1.6 and 1.6); \node[font=\scriptsize, align=center] at (-3.2,0) {tilacoides\\ (fase\\ luminosa)};
+\node[font=\scriptsize, align=center] at (1.6,0.2) {estroma\\ (ciclo de Calvin)};
+\node[font=\scriptsize] at (-7.2,2.0) {luz}; \draw[->, thick, yellow!70!orange] (-6.8,1.8) -- (-4.4,0.7);
+\node[font=\scriptsize] at (-7.2,-1.2) {H$_2$O}; \draw[->, thick] (-6.8,-1.2) -- (-4.8,-0.4);
+\draw[->, thick] (-3.2,1.7) -- (-3.2,2.9) node[above, font=\scriptsize] {O$_2$};
+\draw[->, thick] (-1.6,0.4) -- (-0.2,0.4) node[midway, above, font=\scriptsize] {ATP, NADPH}; \draw[->, thick] (-0.2,-0.4) -- (-1.6,-0.4) node[midway, below, font=\scriptsize] {ADP, NADP$^+$};
+\node[font=\scriptsize] at (7.2,2.0) {CO$_2$}; \draw[->, thick] (6.8,1.8) -- (3.8,0.9);
+\draw[->, thick] (3.8,-0.9) -- (6.8,-1.8) node[right, font=\scriptsize] {azúcares};
+
+\end{tikzpicture}
+\end{document}

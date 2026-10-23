@@ -104,10 +104,114 @@ def _problem(self, section, pr, idx=0):
     self.state['problems'][key] = {'id': r['problem']['id'], 'hash': h}; self.save()
     return r['problem']['id']
 Builder.problem = _problem
-_old_chapter = Builder.chapter
-def _chapter(self, section):
-    _old_chapter(self, section)
+
+# ---------------------------------------------------------------- v2
+import commons
+
+def S(lang, title, file, label=None, host=None):
+    import urllib.parse
+    host = host or f'{lang}.wikipedia.org'
+    path = urllib.parse.quote(title.replace(' ', '_'), safe="_()',-")
+    name = 'Wikisource' if 'wikisource' in host else 'Wikipedia'
+    return dict(title=f'{label or title} — {name} ({lang})', url=f'https://{host}/wiki/' + path, file=file)
+
+def _ids(self, quotes):
+    return [self.excerpt(k, q) for k, q in quotes]
+Builder.ids = _ids
+
+def _translate(self, obj):
+    """Replace every 'quotes': [(source key, verbatim text)] of an exercise by stored excerpt ids."""
+    if isinstance(obj, dict):
+        out = {}
+        for k, v in obj.items():
+            if k == 'quotes': out['excerpts'] = self.ids(v)
+            else: out[k] = self.translate(v)
+        return out
+    if isinstance(obj, list): return [self.translate(x) for x in obj]
+    return obj
+Builder.translate = _translate
+
+def _exercise_args(self, ex):
+    args = {k: v for k, v in ex.items() if k != 'source'}
+    src = ex.get('source')
+    if src:
+        s = dict(src); key = s.pop('key'); lines = s.pop('lines', None); quote = s.pop('quote', None)
+        text = '\n'.join(lines) if lines else quote
+        args['source'] = dict(excerpt=self.excerpt(key, text), quote=text, **s)
+    if 'quotes' in args:  # numeric problem: quotes is the pair of witnesses
+        args['excerpts'] = self.ids(args.pop('quotes'))
+    for k in ('answer', 'solution'):
+        if k in args: args[k] = self.translate(args[k])
+    return args
+Builder.exercise_args = _exercise_args
+
+def _put_exercise(self, section, key, ex):
+    h = hashlib.sha1(json.dumps(ex, ensure_ascii=False, sort_keys=True, default=str).encode()).hexdigest()
+    old = self.state['problems'].get(key)
+    if old and old['hash'] == h: return old['id']
+    if old: call(self.book, 'studium_problem_remove', id=old['id'])
+    r = call(self.book, 'studium_problem_record', section=section, **self.exercise_args(ex))
+    if r.get('status') != 'recorded' or 'problem' not in r:
+        raise RuntimeError(f'exercise fail {key}: {json.dumps(r, ensure_ascii=False)[:900]}')
+    if ex.get('problem_type') and r['problem'].get('status') != 'two_witnesses':
+        print('  WARN exercise not witnessed (needs two different sources):', key)
+    self.state['problems'][key] = {'id': r['problem']['id'], 'hash': h}; self.save()
+    return r['problem']['id']
+Builder.put_exercise = _put_exercise
+
+def _put_figure(self, section, fig):
+    key = f"{section}:fig:{fig['key']}"
+    pre = r'\tikzset{every node/.append style={align=center}}' + '\n' if (fig['kind'] == 'tikz' and '\\\\' in fig['source'] and 'every node' not in fig['source']) else ''
+    h = hashlib.sha1((json.dumps(fig, ensure_ascii=False, sort_keys=True, default=str) + pre + ('|img640' if fig['kind'] == 'image' else '')).encode()).hexdigest()
+    st = self.state.setdefault('figures', {})
+    old = st.get(key)
+    if old and old['hash'] == h: return old['id']
+    if old: call(self.book, 'studium_figure_remove', id=old['id'])
+    args = dict(section=section, caption=fig['caption'], key=fig['key'], kind=fig['kind'], excerpts=self.ids(fig['quotes']))
+    if fig['kind'] == 'image':
+        args['image'] = commons.download(fig['commons'], self.book, fig['key'], width=fig.get('width', 900))
+    else:
+        args['source'] = pre + fig['source']
+    r = call(self.book, 'studium_figure_record', **args)
+    if r.get('status') != 'recorded': raise RuntimeError(f'figure fail {key}: {json.dumps(r, ensure_ascii=False)[:900]}')
+    fid = r['figure']['id']
+    c = call(self.book, 'studium_figure_check', id=fid)
+    if c.get('status') != 'checked': raise RuntimeError(f'figure not checked {key}: {json.dumps(c, ensure_ascii=False)[:900]}')
+    st[key] = {'id': fid, 'hash': h}; self.save()
+    return fid
+Builder.put_figure = _put_figure
+
+def _migrate_slots(self, section):
+    """Renumber stored paragraph keys of a section to consecutive creation-order slots 0..n-1."""
+    keys = [k for k in self.state['paragraphs'] if k.startswith(section + ':')]
+    nums = sorted(int(k.split(':')[1]) for k in keys)
+    if nums == list(range(len(nums))): return
+    old = {n: self.state['paragraphs'].pop(f'{section}:{n}') for n in nums}
+    for new, n in enumerate(nums): self.state['paragraphs'][f'{section}:{new}'] = old[n]
+    self.save()
+Builder.migrate_slots = _migrate_slots
+
+def _chapter2(self, section):
     ch = self.spec['chapters'][section]
+    self.migrate_slots(section)
+    final = ch.get('final') or (ch['paragraphs'] + ch.get('extend', []))
+    for k, p in enumerate(final): self._para(section, k, p)
+    for fig in ch.get('figures', []): self.put_figure(section, fig)
+    keep = set()
     for i, pr in enumerate(ch.get('problems', [])):
-        self.problem(section, pr, i)
-Builder.chapter = _chapter
+        keep.add(f'{section}:{i}'); self.put_exercise(section, f'{section}:{i}', pr)
+    for i, ex in enumerate(ch.get('exercises', [])):
+        keep.add(f'{section}:x{i}'); self.put_exercise(section, f'{section}:x{i}', ex)
+    for key in [k for k in self.state['problems'] if k.startswith(section + ':') and k not in keep]:
+        call(self.book, 'studium_problem_remove', id=self.state['problems'][key]['id']); del self.state['problems'][key]; self.save()
+    n = len(final)
+    print('chapter', section, 'paragraphs', n, 'figures', len(ch.get('figures', [])), 'exercises', len(ch.get('exercises', [])) + len(ch.get('problems', [])))
+
+def _para(self, section, idx, p):
+    pid = self.paragraph(section, idx, p)
+    if p.get('audit', True):
+        ex = self.state['paragraphs'][f'{section}:{idx}']['ex']
+        if len({k for k, _ in p['quotes']}) >= 2: self.audit(pid, self.spec.get('audit_kind', 'historical'), ex, p['text'])
+        else: print('  WARN needs 2 sources for audit:', section, idx)
+Builder._para = _para
+Builder.chapter = _chapter2

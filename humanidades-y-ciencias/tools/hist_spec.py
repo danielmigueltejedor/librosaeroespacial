@@ -49,10 +49,16 @@ SOURCES = {
 BLUEPRINT = [
  ('hist-01', 'Los Reyes Católicos: unión dinástica, Granada y 1492'),
  ('hist-02', 'Carlos I: Comunidades e Imperio'),
+ ('hist-07', 'La conquista de América: Cortés, Pizarro y el debate sobre los indios'),
  ('hist-03', 'Felipe II: guerras, finanzas y Armada'),
  ('hist-04', 'El Imperio americano y su administración'),
+ ('hist-08', 'Economía y sociedad en el siglo XVI'),
+ ('hist-09', 'Instituciones y gobierno de la Monarquía'),
+ ('hist-10', 'Religión y disidencia: Inquisición, Trento y moriscos'),
  ('hist-05', 'Los Austrias del siglo XVII: moriscos, Olivares y declive'),
+ ('hist-11', 'La crisis de 1640: Cataluña, Portugal y la guerra de los Treinta Años'),
  ('hist-06', 'La Guerra de Sucesión y la Nueva Planta'),
+ ('hist-12', 'Taller del historiador: fuentes, cronología y debates'),
 ]
 CHAPTERS = {}
 spec = dict(book='historia-moderna-espana', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='historical')

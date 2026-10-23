@@ -44,3 +44,232 @@ def problems(spec):
           interpretation='16 < 20 explica por qué hacen falta tripletes, y 64 > 20 explica la redundancia del código.',
           limitations=['El promedio oculta la distribución: algunos aminoácidos tienen un solo codón y otros seis.'],
           mistakes=['Dividir 64 entre 20 y contar los tres codones de parada como si codificaran aminoácidos.']))]
+
+
+from bio_spec import S
+from bio_num import num
+SOURCES = {
+ 'es_arn': S('es', 'Ácido ribonucleico', 'es__cido_ribonucleico.txt'),
+ 'en_rna': S('en', 'RNA', 'en_RNA.txt'),
+ 'es_arnm': S('es', 'ARN mensajero', 'es_ARN_mensajero.txt'),
+ 'en_mrna': S('en', 'Messenger RNA', 'en_Messenger_RNA.txt'),
+ 'es_arnt': S('es', 'ARN de transferencia', 'es_ARN_de_transferencia.txt'),
+ 'es_ribosoma': S('es', 'Ribosoma', 'es_Ribosoma.txt'),
+ 'en_ribosome': S('en', 'Ribosome', 'en_Ribosome.txt'),
+ 'es_transcripcion': S('es', 'Transcripción genética', 'es_Transcripci_n_gen_tica.txt'),
+ 'en_transcription': S('en', 'Transcription (biology)', 'en_Transcription_biology_.txt'),
+ 'es_intron': S('es', 'Intrón', 'es_Intr_n.txt'),
+ 'en_intron': S('en', 'Intron', 'en_Intron.txt'),
+ 'en_altsplice': S('en', 'Alternative splicing', 'en_Alternative_splicing.txt'),
+ 'es_empalme': S('es', 'Empalme alternativo', 'es_Empalme_alternativo.txt'),
+ 'es_traduccion': S('es', 'Traducción (genética)', 'es_Traducci_n_gen_tica_.txt'),
+ 'en_translation': S('en', 'Translation (biology)', 'en_Translation_biology_.txt'),
+ 'es_proteina': S('es', 'Proteína', 'es_Prote_na.txt'),
+ 'en_protein': S('en', 'Protein', 'en_Protein.txt'),
+ 'es_estructura_prot': S('es', 'Estructura de las proteínas', 'es_Estructura_de_las_prote_nas.txt'),
+ 'en_protein_structure': S('en', 'Protein structure', 'en_Protein_structure.txt'),
+ 'es_mutacion_puntual': S('es', 'Mutación puntual', 'es_Mutaci_n_puntual.txt'),
+ 'en_point_mutation': S('en', 'Point mutation', 'en_Point_mutation.txt'),
+ 'es_hemoglobina': S('es', 'Hemoglobina', 'es_Hemoglobina.txt'),
+ 'en_hemoglobin': S('en', 'Hemoglobin', 'en_Hemoglobin.txt'),
+ 'es_falciforme': S('es', 'Anemia de células falciformes', 'es_Anemia_de_c_lulas_falciformes.txt'),
+ 'en_sickle': S('en', 'Sickle cell disease', 'en_Sickle_cell_disease.txt'),
+ 'es_crick': S('es', 'Francis Crick', 'es_Francis_Crick.txt'),
+}
+HEADS = {1: 'Transcripción', 2: 'Traducción', 3: 'Por qué 64 codones', 4: 'Tripletes y no pares', 5: 'Cómo se descifró el código', 6: 'Redundancia sin ambigüedad', 7: 'Del ADN al ARN'}
+
+
+def extend(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    P = []
+    P.append(dict(text='El dogma central\nFrancis Crick formuló el llamado «dogma central» de la biología molecular: la información genética pasa del ADN al ARN y del ARN a las proteínas. El ADN se copia a sí mismo en la replicación, se copia a ARN en la transcripción y el ARN dirige la síntesis de proteínas en la traducción. El ARN mensajero lleva la información sobre la secuencia de una proteína hasta los ribosomas, las fábricas de proteínas de la célula. El dogma no dice que la información no pueda tener otros flujos, sino que no pasa de la proteína a los ácidos nucleicos.',
+        quotes=[Q('es_crick', 'Crick estableció el llamado «dogma central» de la biología'), Q('en_rna', 'Messenger RNA (mRNA) carries information about a protein sequence to the ribosomes, the protein synthesis factories in the cell.'), Q('en_rna', 'Cellular organisms use messenger RNA (mRNA) to convey genetic information (using the nitrogenous bases of guanine, uracil, adenine, and cytosine, denoted by the letters G, U, A, and C) that directs synthesis of specific proteins.')]))
+    P.append(dict(text='Tres clases de ARN\nEl ARN es un polímero que cumple casi todas las funciones biológicas bien por sí mismo (ARN no codificante) o bien como molde para producir proteínas (ARN mensajero). Intervienen tres clases en la síntesis de proteínas. El ARN mensajero (ARNm) transmite la información del ADN. El ARN de transferencia (ARNt) transporta los aminoácidos a los ribosomas y tiene un anticodón que se une al codón complementario. El ARN ribosómico (ARNr) forma, junto con proteínas, los ribosomas, representa unas dos terceras partes de ellos y ayuda a leer el ARNm y a catalizar la síntesis proteica. En el ARN, el uracilo sustituye a la timina del ADN.',
+        quotes=[Q('en_rna', 'Ribonucleic acid (RNA) is a polymeric molecule that is essential for most biological functions, either by performing the function itself (non-coding RNA) or by forming a template for the production of proteins (messenger RNA).'), Q('es_arn', 'Las clases de ARN, según la fase, son los siguientes: ARNm, transmite la información del ADN, para la síntesis de proteínas.'), Q('es_arn', 'El ARN ribosómico (ARNr) se halla combinado con proteínas para formar los ribosomas, donde representa unas 2/3 partes de los mismos.'), Q('en_rna', 'This process uses transfer RNA (tRNA) molecules to deliver amino acids to the ribosome, where ribosomal RNA (rRNA) then links amino acids together to form coded proteins.')]))
+    P.append(dict(text='Etapas de la transcripción\nLa ARN polimerasa lee una secuencia de ADN y produce una cadena de ARN complementaria, el transcrito primario. La transcripción comienza cuando la ARN polimerasa, junto con uno o más factores de transcripción generales, se une a una secuencia de ADN, el promotor, situado en el extremo 5\' del gen. La polimerasa abre una burbuja de transcripción que separa las dos hebras. En la elongación sintetiza ARN a velocidades de unos 10 a 100 nucleótidos por segundo, y en la terminación, señalada por secuencias especiales del ADN, el ARN se separa del ADN y de la enzima. Los potenciadores, a veces muy alejados del promotor, pueden aumentar hasta cien veces la transcripción de un gen.',
+        quotes=[Q('en_transcription', 'During transcription, a DNA sequence is read by an RNA polymerase, which produces a complementary RNA strand called a primary transcript.'), Q('es_transcripcion', 'Esta secuencia de ADN en la que se ensamblan los complejos de transcripción se llama promotor.'), Q('es_transcripcion', 'La ARN polimerasa genera una burbuja de transcripción, que separa las dos hebras de la hélice del ADN.'), Q('es_transcripcion', 'Las tasas de elongación características son de alrededor de 10-100 nts/s'), Q('es_transcripcion', 'La terminación está señalizada por la información contenida en sitios de la secuencia del ADN que se está transcribiendo, por lo que la ARN polimerasa se detiene al transcribir algunas secuencias especiales del ADN.'), Q('en_transcription', 'An enhancer localized in a DNA region distant from the promoter of a gene can have a very large effect on gene transcription, with some genes undergoing up to 100-fold increased transcription due to an activated enhancer.')]))
+    P.append(dict(text='Procesamiento del ARNm: caperuza, cola poli-A e intrones\nEn los eucariotas, el transcrito primario (pre-ARNm) sufre un procesamiento antes de salir del núcleo: se le añade una caperuza en el extremo 5\' (un residuo de 7-metilguanosina), se le añade una cola de poli-A en el extremo 3\' y se eliminan los intrones. La cola protege al ARNm de la degradación y aumenta su vida media en el citosol, de modo que se puede sintetizar más proteína. Los intrones son secuencias internas no codificantes que se eliminan, y los exones, que se unen, forman el ARNm maduro. Las bacterias y arqueas casi no tienen intrones. Los intrones los elimina el espliceosoma.',
+        quotes=[Q('en_mrna', 'This pre-mRNA must undergo extensive processing (including 5\' capping, splicing to remove non-coding introns, and 3\' polyadenylation) to become mature mRNA.'), Q('en_mrna', 'The 5\' cap consists of a terminal 7-methylguanosine residue that is linked through a 5\'-5\'-triphosphate bond to the first transcribed nucleotide.'), Q('es_arnm', 'Esta cola protege al ARNm de la degradación, y aumenta su vida media en el citosol, de modo que se puede sintetizar mayor cantidad de proteína.'), Q('es_intron', 'Un intrón es una región del ADN que forma parte de la transcripción primaria de ARN, pero a diferencia de los exones, son eliminados del transcrito maduro, previamente a su traducción.'), Q('en_intron', 'Introns are rare in bacteria and archaea (prokaryotes).'), Q('en_intron', 'The substrate of the reaction is a long RNA molecule, and the transesterification reactions catalyzed by the spliceosome require the bringing together of sites that may be thousands of nucleotides apart.')]))
+    P.append(dict(text='Empalme alternativo\nEl empalme alternativo de exones dentro de un gen permite generar varias proteínas relacionadas a partir de un solo gen y de un solo transcrito precursor, lo que introduce una mayor variabilidad de las secuencias proteicas. Así, el número de proteínas distintas puede ser mayor que el de genes que codifican proteínas. Una mutación puntual puede hacer que un exón se incluya o se excluya, y producir una isoforma nueva sin perder la proteína original. Un ejemplo son las dos isoformas normales del receptor Fas en humanos, que se producen por salto de exón.',
+        quotes=[Q('es_intron', 'El empalme alternativo de exones dentro de un gen después de la escisión del intrón actúa para introducir una mayor variabilidad de secuencias de proteínas traducidas de un solo gen'), Q('en_altsplice', 'A single point mutation may cause a given exon to be occasionally excluded or included from a transcript during splicing, allowing production of a new protein isoform without loss of the original protein.'), Q('en_altsplice', 'Two normally occurring isoforms in humans are produced by an exon-skipping mechanism.')]))
+    P.append(dict(text='El ARN de transferencia y el anticodón\nCada ARNt se combina específicamente con uno de los 20 aminoácidos que se incorporan a las proteínas, y hay más de una molécula de ARNt para cada aminoácido. Tiene un extremo 3\' donde se fija el aminoácido y, en un bucle, el anticodón, un triplete de bases que se une al codón complementario del ARNm por puentes de hidrógeno. Es el adaptador del código: el ARNt «cargado» reconoce al ARNm por el anticodón y deposita el aminoácido que corresponde. Por eso la fidelidad del código depende de que cada ARNt se cargue con el aminoácido correcto.',
+        quotes=[Q('es_arnt', 'Cada tipo de ARNt se combina específicamente con 1 de los 20 aminoácidos que se van a incorporar en las proteínas.'), Q('es_arn', 'Tienen un sitio específico para la fijación del aminoácido (extremo 3\') y un anticodón formado por un triplete de nucleótidos que se une al codón complementario del ARNm mediante puentes de hidrógeno.'), Q('es_arnt', 'Cada ARNt «cargado» con su correspondiente aminoácido se une al ARNm, mediante la región del anticodón, con tripletes de bases del ARNm'), Q('en_rna', 'Messenger RNA (mRNA) carries information about a protein sequence to the ribosomes, the protein synthesis factories in the cell.')]))
+    P.append(dict(text='El ribosoma, una ribozima\nCada ribosoma consta de una subunidad pequeña y otra grande, formadas por moléculas de ARN ribosómico y muchas proteínas ribosómicas. Las subunidades salen del núcleo por separado y se unen para traducir. Un ribosoma está compuesto en gran parte por ARNr no codificante, y la actividad catalítica de peptidil transferasa que une los aminoácidos la realiza el propio ARN ribosómico: por eso se dice que los ribosomas son ribozimas. Los ribosomas procariotas tienen una estructura diferente de los eucariotas, y eso permite que los antibióticos ataquen específicamente infecciones bacterianas sin dañar al hospedador.',
+        quotes=[Q('en_ribosome', 'Each ribosome comprises a small and a large subunit, each composed of one or more ribosomal RNA (rRNA) molecules and many ribosomal proteins.'), Q('es_ribosoma', 'El ribosoma consta de dos partes, la subunidad mayor y una menor, estas salen del núcleo celular por separado.'), Q('en_ribosome', 'Ribosomes are a kind of enzyme, called ribozymes because the catalytic peptidyl transferase activity that links amino acids together is performed by the ribosomal RNA.'), Q('en_translation', 'Prokaryotic ribosomes have a different structure from that of eukaryotic ribosomes, and thus antibiotics can specifically target bacterial infections without harming a eukaryotic host\'s cells.')]))
+    P.append(dict(text='Fases de la traducción\nLa traducción tiene tres fases: iniciación, elongación y terminación. En la iniciación se ensambla el ribosoma sobre el ARNm y el primer ARNt, cargado con metionina en eucariotas, se une al codón de inicio, normalmente AUG. En la elongación, el ribosoma añade un aminoácido cada vez al extremo de la cadena que se forma, mientras nuevos aminoacil-ARNt llegan al sitio A. La terminación ocurre cuando uno de los tres codones de parada (UAA, UGA o UAG) entra en el sitio A: un factor de liberación reconoce los tres, el ribosoma se desensambla y el polipéptido completo se libera. Los ribosomas pueden reutilizarse.',
+        quotes=[Q('en_translation', 'The three stages of translation are initiation, elongation, and termination.'), Q('en_translation', 'In eukaryotes and archaea, the amino acid encoded by the start codon is methionine.'), Q('es_traduccion', 'La elongación de la cadena polipeptídica consiste en la adición de aminoácidos al extremo carboxilo de la cadena.'), Q('es_traduccion', 'La terminación ocurre cuando uno de los tres codones de terminación o de parada entra en el sitio A.'), Q('en_translation', 'Termination of elongation depends on the release factor eRF1 that recognizes all three stop codons.'), Q('en_ribosome', 'When a ribosome finishes reading an mRNA molecule, the two subunits separate and are usually broken up but can be reused.')]))
+    P.append(dict(text='Los cuatro niveles de la estructura de las proteínas\nLas proteínas son macromoléculas formadas por una o más cadenas largas de aminoácidos; su secuencia, dictada por el gen, hace que la proteína se pliegue en una estructura tridimensional específica que determina su actividad. La estructura primaria es la secuencia de aminoácidos unidos por enlaces peptídicos. La secundaria son las subestructuras locales regulares, la hélice α y la lámina β, que Linus Pauling propuso en 1951 y que se definen por enlaces de hidrógeno. La terciaria es la forma tridimensional de una sola cadena. La cuaternaria es la agregación de dos o más cadenas (subunidades) en una unidad funcional. La desnaturalización por temperatura o por otros agentes rompe los niveles superiores, pero no la estructura primaria.',
+        quotes=[Q('en_protein', 'Proteins differ from one another primarily in their sequence of amino acids, which is dictated by the nucleotide sequence of their genes, and which usually results in protein folding into a specific 3D structure that determines its activity.'), Q('es_estructura_prot', 'La estructura primaria de las proteínas se refiere a la secuencia de aminoácidos, es decir, la combinación lineal de los aminoácidos mediante un tipo de enlace covalente, el enlace peptídico.'), Q('en_protein_structure', 'Two main types of secondary structure, the α-helix and the β-strand or β-sheets, were suggested in 1951 by Linus Pauling.'), Q('en_protein_structure', 'Tertiary structure refers to the three-dimensional structure created by a single protein molecule (a single polypeptide chain).'), Q('en_protein_structure', 'Quaternary structure is the three-dimensional structure consisting of the aggregation of two or more individual polypeptide chains (subunits) that operate as a single functional unit (multimer).'), Q('es_estructura_prot', 'La estructura primaria, la secuencia de aminoácidos ligados por enlaces peptídicos, no es interrumpida por las desnaturalización.')]))
+    P.append(dict(text='Mutaciones puntuales\nUna mutación puntual cambia una sola base. Puede ser silenciosa (sinónima), si el codón nuevo codifica el mismo aminoácido y la proteína funciona igual; de sentido erróneo (missense), si codifica otro aminoácido; o sin sentido, si introduce un codón de parada. También hay inserciones y deleciones de nucleótidos, que pueden desplazar el marco de lectura. Las consecuencias van de ningún efecto a efectos graves, y las mutaciones puntuales suelen producirse durante la replicación del ADN. Este es el vínculo entre el código y la salud: un cambio en un nucleótido puede cambiar un aminoácido y, con él, la estructura y la función de la proteína.',
+        quotes=[Q('en_point_mutation', 'Silent mutations code for the same amino acid (a "synonymous substitution").'), Q('en_point_mutation', 'Missense mutations code for a different amino acid.'), Q('es_mutacion_puntual', 'Además, pueden dar lugar a mutaciones sin sentido si se introduce un codón de terminación.'), Q('es_mutacion_puntual', 'Mutación por inserción de nuevos nucleótidos: Dentro de la secuencia del ADN se introducen nucleótidos adicionales, interpuestos entre los que ya había, alargándose correspondientemente la cadena.'), Q('en_point_mutation', 'Point mutations usually take place during DNA replication.')]))
+    P.append(dict(text='Un caso: la anemia falciforme\nLa hemoglobina del adulto es un tetrámero de dos cadenas α, de 141 aminoácidos, y dos β, de 146. La anemia de células falciformes la causa una mutación puntual en el gen HBB (cromosoma 11) que cambia un codón GAG por GUG: el ácido glutámico, de carga negativa, se sustituye por valina, hidrófoba, en la posición 6 de la cadena β. En condiciones de poco oxígeno la hemoglobina S polimeriza en fibras dentro del eritrocito y lo deforma en media luna. La enfermedad es de herencia autosómica recesiva: solo la padecen los homocigotos. Un cambio de 1 de los 146 aminoácidos de la cadena β basta para producir la enfermedad.',
+        quotes=[Q('en_hemoglobin', 'In adult humans, the most common hemoglobin type is a tetramer (which contains four subunit proteins) called hemoglobin A, consisting of two α and two β subunits non-covalently bound, each made of 141 and 146 amino acid residues, respectively.'), Q('es_falciforme', 'La enfermedad está causada por una mutación puntual en el gen HBB, que provoca la sustitución del ácido glutámico por valina en la posición seis de la cadena β de la hemoglobina.'), Q('en_point_mutation', 'For example, sickle-cell disease is caused by a single point mutation (a missense mutation) in the beta-hemoglobin gene that converts a GAG codon into GUG, which encodes the amino acid valine rather than glutamic acid.'), Q('en_sickle', 'Under conditions of low oxygen concentration in the bloodstream, such as exercise, stress, altitude, or dehydration, HbS polymerisation forms fibrous precipitates within the red blood cell.'), Q('es_falciforme', 'La transmisión génica se debe a un gen de herencia autosómica recesiva del cromosoma 11; así pues los individuos homocigóticos recesivos (SS) sólo producen globina beta con valina.')]))
+    P.append(dict(text='Errores frecuentes\nSon cinco. Primero, decir que el ARN tiene timina: la sustituye el uracilo. Segundo, confundir transcripción y traducción: la primera copia ADN a ARN, y la segunda lee el ARN para hacer una proteína. Tercero, creer que cada ARNt reconoce un solo codón o que hay un ARNt por aminoácido: hay más de una molécula de ARNt por aminoácido. Cuarto, pensar que toda mutación puntual cambia la proteína: las silenciosas no la cambian. Quinto, olvidar que el ARNm eucariota se procesa antes de traducirse.',
+        quotes=[Q('en_rna', 'A base is attached to the 1\' position, in general, adenine (A), cytosine (C), guanine (G), or uracil (U).'), Q('en_translation', 'The three stages of translation are initiation, elongation, and termination.'), Q('es_arnt', 'Existe más de una molécula de ARNt para cada aminoácido.'), Q('en_point_mutation', 'A silent mutation does not affect the functioning of the protein.'), Q('en_mrna', 'This pre-mRNA must undergo extensive processing (including 5\' capping, splicing to remove non-coding introns, and 3\' polyadenylation) to become mature mRNA.')]))
+    return P
+
+
+ORDER = ['b0', 'x0', 'b1', 'x1', 'x2', 'x3', 'x4', 'b2', 'x5', 'x6', 'x7', 'b3', 'b4', 'b5', 'b6', 'b7', 'x8', 'x9', 'x10', 'x11', 'b8', 'b9', 'b10']
+
+
+def figures(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    dogma = r"""
+\node[draw, rounded corners, fill=blue!12, minimum width=2.4cm, minimum height=1.1cm] (a) at (0,0) {ADN};
+\node[draw, rounded corners, fill=green!12, minimum width=2.4cm, minimum height=1.1cm] (r) at (5,0) {ARN};
+\node[draw, rounded corners, fill=orange!15, minimum width=2.4cm, minimum height=1.1cm] (p) at (10,0) {Proteína};
+\draw[->, thick] (a) -- node[above, font=\scriptsize] {transcripción} (r);
+\draw[->, thick] (r) -- node[above, font=\scriptsize] {traducción} (p);
+\draw[->, thick] (a) to[out=120, in=60, looseness=7] node[above, font=\scriptsize] {replicación} (a);
+"""
+    proc = r"""
+\foreach \x/\w/\c/\t in {0/1.6/blue!25/exón 1, 1.7/1.4/gray!30/intrón, 3.2/1.6/blue!25/exón 2, 4.9/1.4/gray!30/intrón, 6.4/1.6/blue!25/exón 3} {\draw[fill=\c] (\x,2.2) rectangle (\x+\w,2.8); \node[font=\scriptsize] at (\x+\w/2,2.5) {\t};}
+\node[font=\scriptsize, left] at (-0.1,2.5) {pre-ARNm};
+\node[draw, rounded corners, fill=orange!30, font=\scriptsize, inner sep=2pt] at (-0.7,2.5) {};
+\node[font=\scriptsize] at (4,3.4) {caperuza 5' \quad \quad \quad cola poli-A 3'};
+\draw[->, thick] (4,2.0) -- (4,1.2) node[midway, right, font=\scriptsize] {empalme (splicing)};
+\foreach \x/\w/\t in {0.8/1.6/exón 1, 2.4/1.6/exón 2, 4.0/1.6/exón 3} {\draw[fill=blue!25] (\x,0.4) rectangle (\x+\w,1.0); \node[font=\scriptsize] at (\x+\w/2,0.7) {\t};}
+\node[font=\scriptsize, left] at (0.7,0.7) {ARNm maduro};
+\draw[->, thick] (5.8,0.7) -- (7.2,0.7) node[right, font=\scriptsize] {al citoplasma};
+"""
+    trna = r"""
+\draw[thick, fill=green!15] (0,0) .. controls (-0.8,1.2) and (-0.8,3.0) .. (0,3.6) -- (1.6,3.6) .. controls (2.4,3.0) and (2.4,1.2) .. (1.6,0) -- cycle;
+\node[font=\scriptsize, align=center] at (0.8,2.4) {ARNt};
+\draw[fill=orange!40] (1.9,3.7) circle (0.28); \node[font=\scriptsize] at (3.1,3.8) {aminoácido (extremo 3')};
+\foreach \x in {0.2,0.8,1.4} {\fill[red!70] (\x,-0.25) circle (0.12);}
+\node[font=\scriptsize] at (0.8,-0.75) {anticodón};
+\foreach \x in {0.2,0.8,1.4} {\fill[blue!70] (\x,-1.4) circle (0.12);} \draw[thick] (-0.4,-1.4) -- (2.0,-1.4);
+\node[font=\scriptsize] at (3.9,-1.4) {codón del ARNm};
+\foreach \x in {0.2,0.8,1.4} {\draw[dotted] (\x,-0.4) -- (\x,-1.25);}
+"""
+    prot = r"""
+\foreach \x/\t in {0/primaria, 3.6/secundaria, 7.2/terciaria, 10.8/cuaternaria} {\node[font=\bfseries\scriptsize] at (\x+0.9,3.2) {\t};}
+\foreach \i in {0,1,2,3,4,5} {\fill[blue!50] (0.2+\i*0.3,1.2) circle (0.11);} \draw[thick] (0.2,1.2) -- (1.7,1.2);
+\draw[thick, red] plot[smooth] coordinates {(3.7,0.6) (4.0,1.4) (4.3,0.6) (4.6,1.4) (4.9,0.6) (5.2,1.4) (5.5,0.6)};
+\draw[thick, green!50!black] plot[smooth] coordinates {(7.4,0.4) (8.2,1.8) (8.7,0.5) (9.1,1.7) (8.2,1.2) (7.7,1.9) (7.5,1.0)};
+\foreach \x/\y in {10.9/0.6, 12.0/0.6, 10.9/1.8, 12.0/1.8} {\draw[thick, fill=orange!30] (\x,\y) circle (0.38);}
+\node[font=\scriptsize, align=center] at (1,0.2) {secuencia de\\ aminoácidos}; \node[font=\scriptsize, align=center] at (4.6,0.1) {hélice $\alpha$}; \node[font=\scriptsize, align=center] at (8.2,0.0) {una cadena plegada}; \node[font=\scriptsize, align=center] at (11.4,-0.1) {varias subunidades};
+"""
+    sick = r"""
+\node[font=\bfseries\scriptsize] at (0,3.2) {Hemoglobina normal (HbA)}; \node[font=\bfseries\scriptsize] at (7.2,3.2) {Hemoglobina S (HbS)};
+\node[draw, fill=blue!10, minimum width=2.8cm] at (0,2.5) {ADN: GAG\,\ldots}; \node[draw, fill=red!10, minimum width=2.8cm] at (7.2,2.5) {ADN: GTG\,\ldots};
+\draw[->, thick] (0,2.1) -- (0,1.6); \draw[->, thick] (7.2,2.1) -- (7.2,1.6);
+\node[draw, fill=blue!10, minimum width=2.8cm] at (0,1.2) {ARNm: GAG}; \node[draw, fill=red!10, minimum width=2.8cm] at (7.2,1.2) {ARNm: GUG};
+\draw[->, thick] (0,0.8) -- (0,0.3); \draw[->, thick] (7.2,0.8) -- (7.2,0.3);
+\node[draw, fill=blue!10, minimum width=3.2cm] at (0,-0.1) {ácido glutámico (carga $-$)}; \node[draw, fill=red!10, minimum width=3.2cm] at (7.2,-0.1) {valina (hidrófoba)};
+\draw[->, thick] (0,-0.5) -- (0,-1.0); \draw[->, thick] (7.2,-0.5) -- (7.2,-1.0);
+\node[font=\scriptsize, align=center] at (0,-1.5) {eritrocito bicóncavo}; \node[font=\scriptsize, align=center] at (7.2,-1.5) {polimerización y eritrocito falciforme};
+\node[font=\scriptsize] at (3.6,0.3) {posición 6 de la cadena $\beta$};
+"""
+    return [
+        dict(kind='tikz', key='dogma-central', source=dogma,
+             caption='Dogma central: la información fluye del ADN al ARN (transcripción) y del ARN a la proteína (traducción); el ADN se copia en la replicación.',
+             quotes=[Q('es_crick', 'Crick estableció el llamado «dogma central» de la biología'), Q('en_transcription', 'During transcription, a DNA sequence is read by an RNA polymerase, which produces a complementary RNA strand called a primary transcript.')]),
+        dict(kind='tikz', key='procesamiento-arnm', source=proc,
+             caption='Procesamiento del ARN mensajero eucariota: caperuza, cola poli-A y eliminación de intrones.',
+             quotes=[Q('en_mrna', 'This pre-mRNA must undergo extensive processing (including 5\' capping, splicing to remove non-coding introns, and 3\' polyadenylation) to become mature mRNA.'), Q('es_intron', 'Un intrón es una región del ADN que forma parte de la transcripción primaria de ARN, pero a diferencia de los exones, son eliminados del transcrito maduro, previamente a su traducción.')]),
+        dict(kind='tikz', key='arn-transferencia', source=trna,
+             caption='Esquema del ARN de transferencia: extremo 3\' con el aminoácido y anticodón que se aparea con el codón del ARNm.',
+             quotes=[Q('es_arn', 'Tienen un sitio específico para la fijación del aminoácido (extremo 3\') y un anticodón formado por un triplete de nucleótidos que se une al codón complementario del ARNm mediante puentes de hidrógeno.'), Q('es_arnt', 'Cada tipo de ARNt se combina específicamente con 1 de los 20 aminoácidos que se van a incorporar en las proteínas.')]),
+        dict(kind='tikz', key='niveles-proteina', source=prot,
+             caption='Los cuatro niveles de la estructura de una proteína, de la secuencia de aminoácidos a las subunidades.',
+             quotes=[Q('en_protein_structure', 'Two main types of secondary structure, the α-helix and the β-strand or β-sheets, were suggested in 1951 by Linus Pauling.'), Q('en_protein_structure', 'Quaternary structure is the three-dimensional structure consisting of the aggregation of two or more individual polypeptide chains (subunits) that operate as a single functional unit (multimer).')]),
+        dict(kind='tikz', key='falciforme-mutacion', source=sick,
+             caption='Efecto de una mutación puntual: GAG → GUG en el gen de la cadena β sustituye el ácido glutámico por valina y origina la hemoglobina S.',
+             quotes=[Q('en_point_mutation', 'For example, sickle-cell disease is caused by a single point mutation (a missense mutation) in the beta-hemoglobin gene that converts a GAG codon into GUG, which encodes the amino acid valine rather than glutamic acid.'), Q('es_falciforme', 'La enfermedad está causada por una mutación puntual en el gen HBB, que provoca la sustitución del ácido glutámico por valina en la posición seis de la cadena β de la hemoglobina.')]),
+        dict(kind='image', key='frotis-falciforme', commons='File:Sickle Cell Blood Smear.JPG',
+             caption='Frotis de sangre de anemia falciforme teñido con Giemsa: se aprecian eritrocitos con forma de hoz.',
+             quotes=[Q('es_falciforme', 'La transformación del eritrocito se produce cuando no transporta oxígeno, pues con oxihemoglobina el glóbulo tiene la forma clásica bicóncava.'), Q('en_sickle', 'Under conditions of low oxygen concentration in the bloodstream, such as exercise, stress, altitude, or dehydration, HbS polymerisation forms fibrous precipitates within the red blood cell.')]),
+        dict(kind='image', key='hemoglobina-3d', commons='File:Hemoglobin-3D-model-ribbons.png',
+             caption='Estructura tridimensional de la hemoglobina (modelo de cintas): cuatro subunidades.',
+             quotes=[Q('es_hemoglobina', 'La hemoglobina es una proteína de estructura cuaternaria, que consta de cuatro subunidades.'), Q('en_hemoglobin', 'The mammalian hemoglobin molecule can bind and transport up to four oxygen molecules.')]),
+        dict(kind='image', key='nirenberg', commons='File:Marshall Nirenberg.jpg',
+             caption='Marshall Nirenberg (NIH), que con Heinrich Matthaei reveló en 1961 la primera correspondencia del código genético.',
+             quotes=[Q('en_code', 'Leder and Nirenberg were able to determine the sequences of 54 out of 64 codons in their experiments.'), Q('es_codigo', 'Marshall Warren Nirenberg y Heinrich J. Matthaei en 1961 en los Institutos Nacionales de Salud descubrieron la primera correspondencia codón-aminoácido.')]),
+    ]
+
+
+def exercises(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    return [
+        num('practice', 'La cadena β de la hemoglobina humana tiene 146 aminoácidos. Calcule cuántos nucleótidos de ARNm codifican esos aminoácidos más un codón de parada, sabiendo que cada codón es un triplete.', '441',
+            [Q('es_hemoglobina', 'La cadena α consta de 141 aminoácidos y una secuencia específica, mientras que la cadena β consiste de 146 aminoácidos con una secuencia diferente.'), Q('es_codigo', 'Para un codón de tres nucleótidos (un triplete) son posibles 4³ = 64 combinaciones diferentes; los 64 codones están asignados a un aminoácido o a señales de parada en la traducción.')],
+            'Número de codones por tres',
+            [('n', 146, 'dimensionless', 'aminoácidos de la cadena β'), ('s', 1, 'dimensionless', 'codón de parada'), ('t', 3, 'dimensionless', 'nucleótidos por codón')],
+            'La longitud, en nucleótidos, de la región codificante con el codón de parada.',
+            [('Longitud codificante', 'L = 3\\,(n + s)', 't*(n+s)')],
+            ['Un codón por aminoácido y un codón de parada; se ignoran el codón de inicio y las regiones no traducidas.'],
+            ['Cada aminoácido está codificado por un triplete; el codón de parada añade otros tres nucleótidos.'],
+            [('Codones', '146 + 1', '146+1', 147, 'dimensionless'), ('Nucleótidos', '3 × 147', '3*(146+1)', 441, 'dimensionless')],
+            'La región codificante tiene 441 nucleótidos (147 codones).',
+            'El ARNm real es más largo, porque tiene además una caperuza, regiones no traducidas y una cola poli-A; y el gen, más aún, por tener intrones.',
+            ['No cuenta el codón de inicio ni las regiones no traducidas.'],
+            ['Olvidar el codón de parada.']),
+        num('practice', 'Una mutación puntual cambia un solo aminoácido de la cadena β de la hemoglobina (146 aminoácidos) y un solo nucleótido de la región codificante de 441 nucleótidos. Calcule el porcentaje de aminoácidos y el de nucleótidos que cambian, y comente la importancia de un cambio tan pequeño.', '0.685',
+            [Q('en_point_mutation', 'For example, sickle-cell disease is caused by a single point mutation (a missense mutation) in the beta-hemoglobin gene that converts a GAG codon into GUG, which encodes the amino acid valine rather than glutamic acid.'), Q('es_falciforme', 'La enfermedad está causada por una mutación puntual en el gen HBB, que provoca la sustitución del ácido glutámico por valina en la posición seis de la cadena β de la hemoglobina.')],
+            'Porcentaje = parte / total',
+            [('a', 1, 'dimensionless', 'aminoácidos que cambian'), ('A', 146, 'dimensionless', 'aminoácidos de la cadena β'), ('b', 1, 'dimensionless', 'nucleótidos que cambian'), ('B', 441, 'dimensionless', 'nucleótidos de la región codificante')],
+            'El porcentaje de aminoácidos y el de nucleótidos que cambian.',
+            [('Porcentaje', 'p = 100\\,\\frac{a}{A}', '100*a/A')],
+            ['La región codificante es de 441 nucleótidos, con el codón de parada.'],
+            ['Se divide el número de posiciones que cambian entre el total.'],
+            [('Aminoácidos', '100/146', '100/146', 0.6849, 'dimensionless'), ('Nucleótidos', '100/441', '100/441', 0.2268, 'dimensionless')],
+            'Cambia el 0,685 % de los aminoácidos y el 0,227 % de los nucleótidos de la región codificante.',
+            'Una modificación de menos del 1 % de la proteína es suficiente para producir una enfermedad grave: el efecto no depende de cuánto cambia, sino de qué posición y de qué propiedades tiene el aminoácido nuevo.',
+            ['El porcentaje de cambio no mide la gravedad.'],
+            ['Confundir el porcentaje de nucleótidos con el de aminoácidos.']),
+        num('practice', 'La ARN polimerasa sintetiza ARN a unos 10-100 nucleótidos por segundo. Una proteína de 1000 aminoácidos tiene una región codificante de 1000 codones más un codón de parada. Calcule el tiempo mínimo y máximo, en segundos, para transcribir esa región codificante, sin intrones.', '30.03',
+            [Q('es_transcripcion', 'Las tasas de elongación características son de alrededor de 10-100 nts/s'), Q('es_codigo', 'Para un codón de tres nucleótidos (un triplete) son posibles 4³ = 64 combinaciones diferentes; los 64 codones están asignados a un aminoácido o a señales de parada en la traducción.')],
+            'Tiempo = longitud / velocidad',
+            [('L', 3003, 'dimensionless', 'nucleótidos de 1001 codones'), ('v_min', 10, 'dimensionless', 'velocidad mínima, nt/s'), ('v_max', 100, 'dimensionless', 'velocidad máxima, nt/s')],
+            'El tiempo de transcripción mínimo y máximo.',
+            [('Tiempo', 't = \\frac{L}{v}', 'L/v_max')],
+            ['La velocidad es constante y no hay pausas ni intrones.'],
+            ['La longitud es 3 × 1001 = 3003 nucleótidos.'],
+            [('Tiempo mínimo', '3003/100', '3003/100', 30.03, 'dimensionless'), ('Tiempo máximo', '3003/10', '3003/10', 300.3, 'dimensionless')],
+            'La región codificante se transcribe en entre 30 y 300 segundos.',
+            'Son de 30 s a 5 minutos para una región codificante de 3 kb; los genes eucariotas son mucho mayores por los intrones, y tardan más.',
+            ['Se ignoran las pausas de la polimerasa y el procesamiento.'],
+            ['Usar aminoácidos en lugar de nucleótidos.']),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='MECHANISM_EXPLANATION',
+             prompt='Describa, paso a paso, cómo se obtiene una proteína a partir de un gen de una célula eucariota: transcripción, procesamiento del ARNm, exportación, traducción y plegamiento. Indique en cada paso dónde ocurre y qué moléculas intervienen.',
+             questions=['¿Qué ocurre en el núcleo?', '¿Qué pasa con el pre-ARNm?', '¿Cómo se traduce y qué pasa después?'],
+             answer=dict(summary='La ARN polimerasa transcribe el gen en el núcleo; el pre-ARNm se procesa (caperuza, empalme y cola poli-A); el ARNm sale al citoplasma y los ribosomas lo traducen con ayuda de los ARNt; la cadena se pliega en una proteína.',
+                sections=[
+                  dict(label='Transcripción', points=[dict(text='La ARN polimerasa, con factores de transcripción, se une al promotor y copia el ADN en un transcrito primario de ARN complementario.', quotes=[Q('es_transcripcion', 'La transcripción se realiza en los siguientes pasos generales: La ARN polimerasa, junto con uno o más factores de transcripción generales, se une al ADN promotor.'), Q('en_transcription', 'During transcription, a DNA sequence is read by an RNA polymerase, which produces a complementary RNA strand called a primary transcript.')])]),
+                  dict(label='Procesamiento', points=[dict(text='El pre-ARNm recibe una caperuza en 5\', se eliminan los intrones y se une los exones, y se añade una cola poli-A en 3\' que lo protege de la degradación.', quotes=[Q('en_mrna', 'This pre-mRNA must undergo extensive processing (including 5\' capping, splicing to remove non-coding introns, and 3\' polyadenylation) to become mature mRNA.'), Q('es_arnm', 'Esta cola protege al ARNm de la degradación, y aumenta su vida media en el citosol, de modo que se puede sintetizar mayor cantidad de proteína.')])]),
+                  dict(label='Traducción', points=[dict(text='En el ribosoma, los ARNt aportan los aminoácidos y se aparean con los codones del ARNm por sus anticodones; el ribosoma une los aminoácidos y se detiene en un codón de parada, y la cadena liberada se pliega en su estructura tridimensional, que determina su actividad.', quotes=[Q('es_arn', 'Tienen un sitio específico para la fijación del aminoácido (extremo 3\') y un anticodón formado por un triplete de nucleótidos que se une al codón complementario del ARNm mediante puentes de hidrógeno.'), Q('en_translation', 'Termination of elongation depends on the release factor eRF1 that recognizes all three stop codons.'), Q('en_protein', 'Proteins differ from one another primarily in their sequence of amino acids, which is dictated by the nucleotide sequence of their genes, and which usually results in protein folding into a specific 3D structure that determines its activity.')])]),
+                ],
+                mistakes=['Traducir antes de procesar el ARNm en eucariotas.', 'Olvidar los intrones.'],
+                criteria=['Ordena los pasos y su localización.', 'Nombra las moléculas.'])),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='DATA_INTERPRETATION',
+             prompt='El codón 6 de la cadena β de la hemoglobina normal es GAG y en la hemoglobina S es GUG (ARNm). Con la información de las fuentes, indique qué aminoácido codifica cada uno, clasifique la mutación y prediga una consecuencia en la proteína y en el eritrocito.',
+             questions=['¿Qué aminoácidos codifican?', '¿Qué tipo de mutación puntual es?', '¿Qué consecuencia tiene?'],
+             answer=dict(summary='GAG codifica ácido glutámico y GUG codifica valina: es una mutación de sentido erróneo que sustituye un aminoácido con carga por uno hidrófobo, lo que favorece la polimerización de la hemoglobina S y la forma de hoz.',
+                sections=[
+                  dict(label='Aminoácidos', points=[dict(text='En la hemoglobina normal, GAG codifica ácido glutámico; en la hemoglobina S, GUG codifica valina, en la posición 6 de la cadena β.', quotes=[Q('en_point_mutation', 'For example, sickle-cell disease is caused by a single point mutation (a missense mutation) in the beta-hemoglobin gene that converts a GAG codon into GUG, which encodes the amino acid valine rather than glutamic acid.'), Q('es_falciforme', 'La enfermedad está causada por una mutación puntual en el gen HBB, que provoca la sustitución del ácido glutámico por valina en la posición seis de la cadena β de la hemoglobina.')])]),
+                  dict(label='Tipo de mutación', points=[dict(text='Como el codón nuevo codifica un aminoácido distinto, es una mutación de sentido erróneo (missense); no es silenciosa, que codificaría el mismo aminoácido, ni sin sentido, que introduciría un codón de parada.', quotes=[Q('en_point_mutation', 'Missense mutations code for a different amino acid.'), Q('en_point_mutation', 'Silent mutations code for the same amino acid (a "synonymous substitution").')])]),
+                  dict(label='Consecuencia', points=[dict(text='El ácido glutámico tiene carga negativa y la valina es hidrófoba, lo que promueve polímeros cruzados que deforman el glóbulo rojo; con poco oxígeno la hemoglobina S polimeriza en fibras dentro del eritrocito.', quotes=[Q('es_falciforme', 'El ácido glutámico tiene carga negativa y la valina es hidrófoba, entonces se forman contactos con alanina, fenilalanina y leucina, lo que promueve polímeros cruzados que deforman el glóbulo rojo.'), Q('en_sickle', 'Under conditions of low oxygen concentration in the bloodstream, such as exercise, stress, altitude, or dehydration, HbS polymerisation forms fibrous precipitates within the red blood cell.')])]),
+                ],
+                mistakes=['Clasificarla como sin sentido.', 'Decir que cambia un nucleótido del ADN pero no la proteína.'])),
+        dict(role='practice', difficulty='ADVANCED', problem_type='EXPERIMENT_DESIGN',
+             prompt='Diseñe un experimento, como el de Nirenberg y Matthaei en 1961, para descubrir qué aminoácido codifica el codón UUU. Indique el sistema, el ARN sintético, qué mide y cómo interpreta el resultado.',
+             questions=['¿Qué sistema usa?', '¿Qué ARN introduce?', '¿Qué obtiene y qué concluye?'],
+             answer=dict(summary='En un sistema de traducción sin células se añade un ARN de poli-uracilo y se analiza el polipéptido sintetizado; si solo contiene fenilalanina, UUU codifica fenilalanina.',
+                sections=[
+                  dict(label='Sistema', points=[dict(text='Un sistema sin células con todo lo necesario para traducir (ribosomas, ARNt, aminoácidos), al que se aporta el ARN.', quotes=[Q('es_codigo', 'Empleando un sistema sin células, tradujeron una secuencia ARN de poli-uracilo (UUU...) y descubrieron que el polipéptido que se sintetizaba solo contenía fenilalanina.'), Q('en_code', 'Marshall Nirenberg and J. Heinrich Matthaei were the first to reveal the nature of a codon in 1961.')])]),
+                  dict(label='ARN sintético', points=[dict(text='Un ARN sintético de poli-uracilo (UUU…) tiene un solo tipo de codón, así que el polipéptido sintetizado refleja el aminoácido que le corresponde.', quotes=[Q('es_codigo', 'Empleando un sistema sin células, tradujeron una secuencia ARN de poli-uracilo (UUU...) y descubrieron que el polipéptido que se sintetizaba solo contenía fenilalanina.'), Q('en_code', 'He postulated that sets of three bases (triplets) must be employed to encode the 20 standard amino acids used by living cells to build proteins')])]),
+                  dict(label='Interpretación', points=[dict(text='El polipéptido contenía solo fenilalanina, de modo que UUU codifica fenilalanina; repitiendo con otros ARN se fue completando la tabla, que Khorana terminó.', quotes=[Q('es_codigo', 'Posteriormente, Har Gobind Khorana completó el código'), Q('en_code', 'Leder and Nirenberg were able to determine the sequences of 54 out of 64 codons in their experiments.')])]),
+                ],
+                mistakes=['Usar células vivas, en las que hay otros ARN.', 'Concluir sin analizar el polipéptido.'],
+                criteria=['Elige un ARN de un solo codón.', 'Analiza el producto.', 'Generaliza a los demás codones.'])),
+        dict(role='practice', difficulty='EXAM_LEVEL', problem_type='DEVELOPMENT_QUESTION',
+             prompt='Desarrolle: las propiedades del código genético (tripletes, redundancia sin ambigüedad, universalidad, codones de inicio y de parada) y cómo se descifró.',
+             answer=dict(summary='El código es de tripletes, redundante pero no ambiguo, casi universal, con un codón de inicio (AUG) y tres de parada, y se descifró en los años sesenta con ARN sintéticos.',
+                sections=[
+                  dict(label='Tripletes', points=[dict(text='Con cuatro bases y tripletes hay 64 codones, más que suficientes para 20 aminoácidos y señales de parada.', quotes=[Q('es_codigo', 'Para un codón de tres nucleótidos (un triplete) son posibles 4³ = 64 combinaciones diferentes; los 64 codones están asignados a un aminoácido o a señales de parada en la traducción.'), Q('en_code', 'He postulated that sets of three bases (triplets) must be employed to encode the 20 standard amino acids used by living cells to build proteins')])]),
+                  dict(label='Redundancia y universalidad', points=[dict(text='Hay redundancia (GAA y GAG codifican ácido glutámico) pero no ambigüedad (ningún codón codifica dos aminoácidos). El código es común a todos los seres vivos y a los virus, con pequeñas variaciones.', quotes=[Q('en_code', 'For example, although codons GAA and GAG both specify glutamic acid (redundancy), neither specifies another amino acid (no ambiguity).'), Q('es_codigo', 'Este código es común en todos los seres vivos y todos los virus (aunque hay pequeñas variaciones), lo cual demuestra que ha tenido un origen único y es universal, al menos en el contexto de nuestro planeta.')])]),
+                  dict(label='Inicio, parada y descifrado', points=[dict(text='La traducción comienza en un codón de inicio, normalmente AUG, que codifica metionina, y termina en uno de los tres codones de parada. El código se descifró en 1961 con la primera correspondencia codón-aminoácido de Nirenberg y Matthaei.', quotes=[Q('en_translation', 'In eukaryotes and archaea, the amino acid encoded by the start codon is methionine.'), Q('es_codigo', 'Marshall Warren Nirenberg y Heinrich J. Matthaei en 1961 en los Institutos Nacionales de Salud descubrieron la primera correspondencia codón-aminoácido.')])]),
+                ],
+                criteria=['Cita las propiedades con ejemplos.', 'Incluye el descifrado.'])),
+    ]

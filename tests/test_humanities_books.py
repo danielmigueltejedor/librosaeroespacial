@@ -8,9 +8,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 FOLDER = ROOT / 'humanidades-y-ciencias'
 EXPECTED = {
-    'literatura-espanola': ('HUMANITIES', 7),
-    'historia-moderna-espana': ('HUMANITIES', 6),
-    'biologia-celular-molecular': ('LIFE_SCIENCES', 6),
+    'literatura-espanola': ('HUMANITIES', 13),
+    'historia-moderna-espana': ('HUMANITIES', 12),
+    'biologia-celular-molecular': ('LIFE_SCIENCES', 12),
 }
 
 
@@ -36,7 +36,7 @@ def test_project_declares_its_profile_and_language(slug):
 
 
 @pytest.mark.parametrize('slug', sorted(EXPECTED))
-def test_every_chapter_has_cited_audited_paragraphs_and_a_two_witness_problem(slug):
+def test_every_chapter_has_cited_audited_paragraphs_and_witnessed_exercises(slug):
     project = FOLDER / slug
     sections = json.loads((project / 'blueprint/outline.jsonl').read_text(encoding='utf-8').splitlines()[-1])['sections']
     assert len(sections) == EXPECTED[slug][1]
@@ -53,9 +53,10 @@ def test_every_chapter_has_cited_audited_paragraphs_and_a_two_witness_problem(sl
             assert audit is not None, paragraph['id']
             assert audit['evidence']['excerpts_result'] == 'two_witnesses'
             assert audit['binding']['passages'][paragraph['id']] == paragraph['text_sha256'], paragraph['id']
-        worked = [p for p in problems.values() if p['section'] == section['id']]
-        assert len(worked) == 1, section['id']
-        assert worked[0]['status'] == 'two_witnesses'
+        exercises = [p for p in problems.values() if p['section'] == section['id']]
+        assert len(exercises) >= 5, section['id']
+        assert sum(1 for p in exercises if p.get('role') == 'worked') >= 1, section['id']
+        assert all(p['status'] == 'two_witnesses' for p in exercises), section['id']
 
 
 @pytest.mark.parametrize('slug', sorted(EXPECTED))
@@ -73,3 +74,17 @@ def test_no_private_or_machine_specific_paths_are_stored():
     for path in FOLDER.rglob('*'):
         if path.is_file() and path.suffix in {'.py', '.jsonl', '.toml', '.json', '.md'}:
             assert '/Users/' not in path.read_text(encoding='utf-8', errors='ignore'), path
+
+
+@pytest.mark.parametrize('slug', sorted(EXPECTED))
+def test_image_figures_keep_author_licence_page_and_file(slug):
+    project = FOLDER / slug
+    figures = {k: v for k, v in fold(project / 'figures/figures.jsonl').items() if not v.get('deleted')}
+    images = [f for f in figures.values() if f['kind'] == 'image']
+    assert len(images) >= 15
+    for record in images:
+        image = record['image']
+        assert image['author'] and image['url'].startswith('https://commons.wikimedia.org/'), record['id']
+        assert image['license'].lower().startswith(('public domain', 'cc0', 'cc by')), (record['id'], image['license'])
+        assert (project / record['output']).is_file(), record['id']
+        assert image['bytes'] < 400_000, record['id']

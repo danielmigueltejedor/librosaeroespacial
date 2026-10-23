@@ -47,3 +47,213 @@ def problems(spec):
           interpretation='La relación de 50 kg a 100 mol es coherente con la fórmula química, así que las dos cifras de la fuente se pueden usar juntas.',
           limitations=['La cifra de 100 mol es redondeada; el cálculo comprueba el orden de magnitud, no el valor exacto.'],
           mistakes=['Dividir 50 kg entre 507 g/mol sin pasar los kilogramos a gramos.']))]
+
+
+from bio_spec import S
+from bio_num import num
+SOURCES = {
+ 'es_metabolismo': S('es', 'Metabolismo', 'es_Metabolismo.txt'),
+ 'en_metabolism': S('en', 'Metabolism', 'en_Metabolism.txt'),
+ 'es_enzima': S('es', 'Enzima', 'es_Enzima.txt'),
+ 'en_enzyme': S('en', 'Enzyme', 'en_Enzyme.txt'),
+ 'nhgri_enzyme': dict(title='Enzyme — NHGRI Talking Glossary', url='https://www.genome.gov/genetics-glossary/Enzyme', file='nhgri_Enzyme.txt', kind='glossary', authors='National Human Genome Research Institute'),
+ 'es_cinetica': S('es', 'Cinética enzimática', 'es_Cin_tica_enzim_tica.txt'),
+ 'en_kinetics': S('en', 'Enzyme kinetics', 'en_Enzyme_kinetics.txt'),
+ 'es_glucolisis': S('es', 'Glucólisis', 'es_Gluc_lisis.txt'),
+ 'en_glycolysis': S('en', 'Glycolysis', 'en_Glycolysis.txt'),
+ 'es_krebs': S('es', 'Ciclo de Krebs', 'es_Ciclo_de_Krebs.txt'),
+ 'en_citric': S('en', 'Citric acid cycle', 'en_Citric_acid_cycle.txt'),
+ 'es_nadh': S('es', 'Nicotinamida adenina dinucleótido', 'es_NADH.txt'),
+ 'en_nad': S('en', 'Nicotinamide adenine dinucleotide', 'en_Nicotinamide_adenine_dinucleotide.txt'),
+ 'es_etc': S('es', 'Cadena de transporte de electrones', 'es_Cadena_de_transporte_de_electrones.txt'),
+ 'en_etc': S('en', 'Electron transport chain', 'en_Electron_transport_chain.txt'),
+ 'es_oxphos': S('es', 'Fosforilación oxidativa', 'es_Fosforilaci_n_oxidativa.txt'),
+ 'en_oxphos': S('en', 'Oxidative phosphorylation', 'en_Oxidative_phosphorylation.txt'),
+ 'es_fermentacion': S('es', 'Fermentación', 'es_Fermentaci_n.txt'),
+ 'en_fermentation': S('en', 'Fermentation', 'en_Fermentation.txt'),
+}
+HEADS = {1: 'Estructura del ATP', 2: 'Dos energías distintas del ATP', 3: 'Un ciclo de ATP', 4: 'Respiración celular', 5: 'Las tres etapas de la respiración aeróbica', 6: 'Rendimiento de ATP por glucosa', 7: 'Respiración y fermentación', 8: 'Las mitocondrias', 9: 'Origen de las mitocondrias'}
+
+
+def extend(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    P = []
+    P.append(dict(text='Metabolismo: catabolismo y anabolismo\nEl metabolismo reúne las reacciones químicas de la célula. El catabolismo degrada moléculas complejas, como glúcidos, lípidos y proteínas, en otras más sencillas y obtiene energía; el anabolismo sintetiza macromoléculas a partir de precursores sencillos con la energía que aportan las reacciones catabólicas. El ATP actúa de puente entre ambos: las reacciones catabólicas lo generan y las anabólicas lo consumen. Hay una cantidad pequeña de ATP en las células, pero como se regenera de forma continua el cuerpo humano puede usar un peso de ATP similar al suyo propio en un día. La separación entre catabolismo y anabolismo es cada vez más difusa, porque algunas rutas, las anfibólicas, comparten metabolitos.',
+        quotes=[Q('es_metabolismo', 'El catabolismo consiste, por tanto, en la degradación de moléculas complejas, como glúcidos, lípidos y proteínas; en moléculas más sencillas, obteniendo energía en el proceso.'), Q('es_metabolismo', 'Por su parte, en el anabolismo se sintetizan macromoléculas a partir de precursores sencillos, mediante reacciones que requieren la energía producida en las reacciones catabólicas.'), Q('en_metabolism', 'There is only a small amount of ATP in cells, but as it is continuously regenerated, the human body can use about its own weight in ATP per day.'), Q('en_metabolism', 'ATP acts as a bridge between catabolism and anabolism.'), Q('es_metabolismo', 'Estas rutas que comparten metabolitos se denominan rutas anfibólicas.')]))
+    P.append(dict(text='Las enzimas, catalizadores biológicos\nUna enzima es un catalizador biológico, casi siempre una proteína, que no se destruye en la reacción y se usa una y otra vez. Las enzimas aceleran las reacciones al disminuir la energía de activación, a menudo por factores de millones. Las moléculas sobre las que actúan se llaman sustratos y se transforman en productos. Son muy selectivas con sus sustratos, de modo que el conjunto de enzimas de una célula determina el tipo de metabolismo que tiene. Siguiendo el ejemplo de Buchner, que en 1897 estudió la fermentación con extractos de levadura sin células vivas, se nombran con el sufijo -asa añadido al sustrato o al tipo de reacción: lactasa, ADN polimerasa.',
+        quotes=[Q('nhgri_enzyme', 'An enzyme is a biological catalyst and is almost always a protein.'), Q('en_enzyme', 'Enzymes increase the reaction rate by lowering a reaction\'s activation energy, often by factors of millions.'), Q('es_enzima', 'Debido a que las enzimas son extremadamente selectivas con sus sustratos y su velocidad crece solo con algunas reacciones, el conjunto (set) de enzimas presentes en una célula determina el tipo de metabolismo que tiene esa célula.'), Q('es_enzima', 'En 1897 Eduard Buchner comenzó a estudiar la capacidad de los extractos de levadura para fermentar azúcar a pesar de la ausencia de células vivientes de levadura.'), Q('es_enzima', 'Normalmente, el sufijo "-asa" es agregado al nombre del sustrato (p. ej., la lactasa es la enzima que degrada lactosa) o al tipo de reacción (p. ej., la ADN polimerasa forma polímeros de ADN).')]))
+    P.append(dict(text='Cómo se explica la especificidad\nPara explicar la especificidad de las enzimas, Emil Fischer propuso en 1894 el modelo de la llave y la cerradura: la enzima y el sustrato tienen formas geométricas complementarias que encajan exactamente. Es un modelo que explica la especificidad pero no la estabilización del estado de transición. En 1958 Daniel Koshland lo modificó con el ajuste inducido: las enzimas son estructuras flexibles y el sitio activo se remodela continuamente por su interacción con el sustrato. La actividad de una enzima depende además de la temperatura, del pH, de su propia concentración y de la del sustrato; los activadores la aumentan y los inhibidores la disminuyen, y muchos fármacos son inhibidores.',
+        quotes=[Q('en_enzyme', 'To explain the observed specificity of enzymes, in 1894 Emil Fischer proposed that both the enzyme and the substrate possess specific complementary geometric shapes that fit exactly into one another.'), Q('en_enzyme', 'In 1958, Daniel Koshland suggested a modification to the lock and key model: since enzymes are rather flexible structures, the active site is continuously reshaped by interactions with the substrate as the substrate interacts with the enzyme.'), Q('es_enzima', 'Igualmente, la actividad es afectada por la temperatura, el pH, la concentración de la propia enzima y del sustrato, y otros factores físico-químicos.'), Q('en_enzyme', 'Enzyme activity can be enhanced by activators or diminished by inhibitors, many of which serve as drugs or poisons.')]))
+    P.append(dict(text='Cinética de Michaelis-Menten\nA diferencia de las reacciones no catalizadas, las reacciones catalizadas por enzimas muestran cinética de saturación: a concentraciones bajas de sustrato la velocidad crece con la concentración, pero a concentraciones altas casi todos los sitios activos están ocupados y la velocidad se acerca a un máximo, Vmax, que depende de la velocidad intrínseca de la enzima. La constante de Michaelis, Km, se define como la concentración de sustrato a la que la velocidad es la mitad de la máxima. Michaelis y Menten dedujeron la ecuación v = Vmax[S]/(Km + [S]), base de la mayoría de las cinéticas enzimáticas de un solo sustrato. Algunas reacciones dan curvas sigmoideas, señal de unión cooperativa del sustrato.',
+        quotes=[Q('en_kinetics', 'However, unlike uncatalysed chemical reactions, enzyme-catalysed reactions display saturation kinetics.'), Q('en_kinetics', 'However, at relatively high substrate concentrations, the reaction rate asymptotically approaches the theoretical maximum; the enzyme active sites are almost all occupied by substrates resulting in saturation, and the reaction rate is determined by the intrinsic turnover rate of the enzyme.'), Q('en_kinetics', 'Thus, KM is the substrate concentration at which the reaction velocity is half of the maximum velocity.'), Q('es_cinetica', 'Esta famosa ecuación es la base de la mayoría de las cinéticas enzimáticas de sustrato único.'), Q('es_cinetica', 'Algunas reacciones enzimáticas dan lugar a curvas sigmoideas, al ser representadas en una curva de saturación, lo que suele indicar una unión cooperativa del sustrato al centro catalítico de la enzima.')]))
+    P.append(dict(text='La glucólisis\nLa glucólisis es la vía metabólica que convierte la glucosa en piruvato mediante una secuencia de diez reacciones catalizadas por enzimas; en la mayoría de los organismos ocurre en el citosol. Tiene una fase de inversión de energía y una fase de rendimiento, que acaba con una ganancia neta de 2 ATP y 2 NADH por molécula de glucosa. Con oxígeno, las células eucariotas continúan con el piruvato por el ciclo del ácido cítrico y la cadena de transporte de electrones, que producen mucho más ATP; sin oxígeno, el NADH reduce el piruvato a lactato o a etanol y CO₂ sin obtención adicional de energía.',
+        quotes=[Q('en_glycolysis', 'Glycolysis is the metabolic pathway that converts glucose (C6H12O6) into pyruvate and, in most organisms, occurs in the liquid part of cells (the cytosol).'), Q('en_glycolysis', 'Glycolysis is a sequence of ten reactions catalyzed by enzymes.'), Q('en_glycolysis', 'This yields 2 NADH molecules and 4 ATP molecules, leading to a net gain of 2 NADH molecules and 2 ATP molecules from the glycolytic pathway per glucose.'), Q('es_glucolisis', 'Consiste en 10 reacciones enzimáticas consecutivas que convierten a la glucosa en dos moléculas de piruvato, el cual es capaz de seguir otras vías metabólicas y así continuar entregando energía al organismo.'), Q('en_glycolysis', 'In high-oxygen (aerobic) conditions, eukaryotic cells can continue from glycolysis to metabolise the pyruvate through the citric acid cycle or the electron transport chain to produce significantly more ATP.')]))
+    P.append(dict(text='El ciclo de Krebs\nEl ciclo del ácido cítrico, o ciclo de Krebs, es una serie de reacciones que liberan la energía almacenada en los nutrientes mediante la oxidación del acetil-CoA. En las células eucariotas ocurre en la matriz mitocondrial. Ocho enzimas oxidan por completo el acetilo, de dos carbonos, y liberan dióxido de carbono; al final de cada vuelta se regenera el oxaloacetato de cuatro carbonos y el ciclo continúa. Reduce NAD⁺ a NADH y FAD a FADH₂, que entregan sus electrones a la cadena de transporte. Fue identificado en 1937 por Hans Adolf Krebs y William Arthur Johnson, y Krebs recibió el Premio Nobel de Fisiología o Medicina en 1953. Además de energía, el ciclo proporciona precursores de aminoácidos.',
+        quotes=[Q('en_citric', 'The citric acid cycle—also known as the Krebs cycle, Szent–Györgyi–Krebs cycle, or TCA cycle (tricarboxylic acid cycle)—is a series of biochemical reactions that release the energy stored in nutrients through acetyl-CoA oxidation.'), Q('en_citric', 'In eukaryotic cells, the citric acid cycle occurs in the mitochondrial matrix.'), Q('es_krebs', 'Las reacciones del ciclo son llevadas a cabo por 8 enzimas que oxidan completamente el acetilo, en forma de acetil-CoA'), Q('es_krebs', 'Al final de cada ciclo, el oxaloacetato de cuatro carbonos ha sido regenerado, y el ciclo continúa.'), Q('en_citric', 'The citric acid cycle itself was finally identified in 1937 by Hans Adolf Krebs and William Arthur Johnson while at the University of Sheffield, for which the former received the Nobel Prize for Physiology or Medicine in 1953'), Q('en_citric', 'In addition, the cycle provides precursors of certain amino acids, as well as the reducing agent NADH, which are used in other reactions.')]))
+    P.append(dict(text='NAD⁺ y NADH, el transporte de electrones\nEl NAD⁺ es una coenzima central en el metabolismo. Existe en dos formas: el NAD⁺ es un agente oxidante que acepta electrones de otras moléculas y se reduce; con H⁺ forma NADH, que actúa como agente reductor y dona electrones. Lleva así electrones de una reacción a otra, y su función principal es el intercambio de electrones y protones. El potencial del par NAD⁺/NADH es de −0,32 V, lo que hace del NADH un agente reductor moderadamente fuerte. La coenzima se obtiene en parte de la niacina (vitamina B3). Para que el metabolismo continúe, el NADH debe reoxidarse a NAD⁺, y la respiración o la fermentación son dos formas de hacerlo.',
+        quotes=[Q('en_nad', 'Nicotinamide adenine dinucleotide (NAD+) is a coenzyme central to metabolism.'), Q('en_nad', 'In cellular metabolism, NAD is involved in redox reactions, carrying electrons from one reaction to another, so it is found in two forms: NAD+ is an oxidizing agent, accepting electrons from other molecules and becoming reduced; with H+, this reaction forms NADH, which can be used as a reducing agent to donate electrons.'), Q('en_nad', 'The midpoint potential of the NAD+/NADH redox pair is −0.32 volts, which makes NADH a moderately strong reducing agent.'), Q('es_nadh', 'Como alternativa, se pueden obtener componentes más completos de la coenzima a partir de los alimentos, como la niacina (vitamina B3) .'), Q('es_fermentacion', 'Por el contrario, el NADH debe volver a oxidarse a NAD+ para permitir que continúe el metabolismo celular.')]))
+    P.append(dict(text='La cadena de transporte y la quimiosmosis\nLa cadena de transporte de electrones es una serie de complejos proteicos de la membrana interna mitocondrial que transfieren electrones de donadores a aceptores mediante reacciones redox y acoplan ese traspaso al bombeo de protones a través de la membrana. En la respiración aeróbica, el oxígeno es el aceptor final de los electrones y se reduce a agua. La energía liberada se usa para bombear protones hacia el espacio intermembrana, y crea un gradiente electroquímico, la fuerza protón-motriz. Los protones vuelven a la matriz por la ATP sintasa, que usa esa energía para fosforilar ADP a ATP: es la quimiosmosis. La teoría quimiosmótica la publicó Peter Mitchell en 1961; fue controvertida al principio, y le valió el Nobel de Química en 1978.',
+        quotes=[Q('en_etc', 'An electron transport chain (ETC) is a series of protein complexes and other molecules which transfer electrons from electron donors to electron acceptors via redox reactions (both reduction and oxidation occurring simultaneously) and couples this electron transfer with the transfer of protons (H+ ions) across a membrane.'), Q('en_etc', 'In aerobic respiration, the flow of electrons terminates with molecular oxygen as the final electron acceptor.'), Q('en_etc', 'The energy released by reactions of oxygen and reduced compounds such as cytochrome c and (indirectly) NADH and FADH2 is used by the electron transport chain to pump protons into the intermembrane space, generating the electrochemical gradient over the inner mitochondrial membrane.'), Q('en_oxphos', 'This store of energy is tapped when protons flow back across the membrane through ATP synthase in a process called chemiosmosis.'), Q('en_oxphos', 'At first, this proposal was highly controversial, but it was slowly accepted and Mitchell was awarded a Nobel prize in 1978.')]))
+    P.append(dict(text='Fermentación\nLa fermentación es un proceso anaeróbico: el aceptor final de los electrones del NADH producido en la glucólisis no es el oxígeno, sino un compuesto orgánico que se reduce para reoxidar el NADH a NAD⁺. Louis Pasteur la describió como «la vie sans l\'air», la vida sin el aire. Entre las más conocidas están la alcohólica, que produce etanol, y la láctica, que produce lactato. Algunas células, como los eritrocitos, carecen de mitocondrias y están obligadas a fermentar; el músculo fermenta cuando el oxígeno no basta para el metabolismo aerobio, porque necesita energía más deprisa de lo que la sangre aporta oxígeno. La fermentación rinde mucho menos ATP que la respiración, pero permite seguir obteniendo energía sin oxígeno.',
+        quotes=[Q('es_fermentacion', 'El proceso de fermentación es anaeróbico, es decir, se produce en ausencia de oxígeno; eso significa que el aceptor final de los electrones del NADH producido en la glucólisis no es el oxígeno, sino un compuesto orgánico que se reducirá para poder reoxidar el NADH a NAD+.'), Q('en_fermentation', 'In 1876, before the discovery of anaerobic respiration, Louis Pasteur described it as "la vie sans air" (life without air).'), Q('es_fermentacion', 'Algunas células, como los eritrocitos, carecen de mitocondrias y se ven obligadas a fermentar'), Q('en_fermentation', 'It occurs in the muscles of animals when they need energy faster than the blood can supply oxygen.'), Q('es_glucolisis', 'si no hay dioxígeno, se usa para reducir el piruvato a lactato (fermentación láctica), o a CO2 y etanol (fermentación alcohólica), sin obtención adicional de energía.')]))
+    P.append(dict(text='Errores frecuentes\nSon habituales cinco errores. Primero, creer que la glucólisis necesita oxígeno: ocurre en el citosol y el oxígeno solo hace falta después. Segundo, decir que las enzimas aportan energía: solo bajan la energía de activación y no se consumen. Tercero, interpretar Km como una medida de velocidad, cuando es una concentración de sustrato. Cuarto, afirmar que el ATP se almacena, cuando se regenera de forma continua. Quinto, usar una cifra de ATP por glucosa sin decir la condición: el máximo teórico es de 36 a 38, pero las estimaciones realistas rondan los 29 a 30.',
+        quotes=[Q('en_glycolysis', 'Glycolysis is the metabolic pathway that converts glucose (C6H12O6) into pyruvate and, in most organisms, occurs in the liquid part of cells (the cytosol).'), Q('nhgri_enzyme', 'The enzyme is not destroyed during the reaction and is used over and over.'), Q('en_kinetics', 'Thus, KM is the substrate concentration at which the reaction velocity is half of the maximum velocity.'), Q('es_metabolismo', 'En las células hay solo una pequeña parte de ATP, pero como se regenera en forma continua el cuerpo puede llegar a utilizar su propio peso en ATP por día.'), Q('es_krebs', 'El transporte de estos dos equivalentes en la mitocondria consume dos equivalentes de ATP, reduciendo de este modo la producción neta de ATP a treinta y seis.'), Q('en_respiration', 'current estimates range around 29 to 30 ATP per glucose')]))
+    return P
+
+
+ORDER = ['b0', 'b1', 'b2', 'b3', 'x0', 'b4', 'x1', 'x2', 'x3', 'b5', 'x4', 'x5', 'x6', 'x7', 'b6', 'b7', 'x8', 'b8', 'b9', 'x9', 'b10', 'b11', 'b12']
+
+
+def figures(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    vmax, km = 10.0, 2.0
+    pts = ' '.join('(%.2f,%.2f)' % (s * 0.6, 0.5 * vmax * s / (km + s)) for s in [0, 0.5, 1, 2, 3, 4, 6, 8, 12, 16])
+    mm = r"""
+\draw[->] (0,0) -- (10.2,0) node[right, font=\scriptsize] {[S]};
+\draw[->] (0,0) -- (0,5.8) node[above, font=\scriptsize] {$v$};
+\draw[dashed] (0,5) -- (9.6,5) node[right, font=\scriptsize] {$V_{max}$};
+\draw[dashed] (0,2.5) -- (1.2,2.5); \draw[dashed] (1.2,0) -- (1.2,2.5);
+\node[font=\scriptsize, left] at (0,2.5) {$V_{max}/2$}; \node[font=\scriptsize, below] at (1.2,0) {$K_m$};
+\draw[thick, blue] plot[smooth] coordinates {""" + pts + r"""};
+\node[font=\scriptsize, align=center] at (6.6,1.2) {$v$ crece con [S]\\ y se satura};
+"""
+    act = r"""
+\draw[->] (0,0) -- (0,4.8) node[above, font=\scriptsize] {energía}; \draw[->] (0,0) -- (9.2,0) node[right, font=\scriptsize] {avance de la reacción};
+\draw[thick, red] plot[smooth] coordinates {(0.3,1.2) (1.8,1.3) (3.2,4.0) (4.2,4.2) (5.2,3.8) (6.5,1.0) (8.5,0.8)};
+\draw[thick, blue] plot[smooth] coordinates {(0.3,1.2) (1.8,1.3) (3.2,2.7) (4.2,2.9) (5.2,2.6) (6.5,1.0) (8.5,0.8)};
+\node[red, font=\scriptsize] at (6.6,4.3) {sin enzima}; \node[blue, font=\scriptsize] at (6.6,3.0) {con enzima};
+\draw[<->] (4.2,2.95) -- (4.2,4.15) node[midway, right, font=\scriptsize] {menor $E_a$};
+\node[font=\scriptsize] at (0.9,0.6) {sustratos}; \node[font=\scriptsize] at (8.2,0.3) {productos};
+"""
+    ruta = r"""
+\def\bx#1#2#3#4{\node[draw, rounded corners, fill=#4, minimum width=2.6cm, minimum height=1.1cm, align=center] (#1) at (#2) {#3};}
+\bx{g}{0,0}{Glucosa}{yellow!20}
+\bx{p}{3.7,0}{2 piruvato}{yellow!35}
+\bx{a}{7.4,0}{acetil-CoA}{orange!25}
+\bx{k}{11.1,0}{Ciclo de Krebs}{orange!40}
+\bx{e}{11.1,-2.4}{Cadena de transporte\\ y ATP sintasa}{red!25}
+\bx{o}{7.4,-2.4}{O$_2$ $\to$ H$_2$O\\ y ATP}{red!15}
+\draw[->, thick] (g) -- node[above, font=\scriptsize] {glucólisis} (p);
+\draw[->, thick] (p) -- (a); \draw[->, thick] (a) -- (k);
+\draw[->, thick] (k) -- node[right, font=\scriptsize] {NADH, FADH$_2$} (e);
+\draw[->, thick] (e) -- (o);
+\node[font=\scriptsize] at (0,-0.9) {citosol}; \node[font=\scriptsize] at (11.1,0.9) {matriz}; \node[font=\scriptsize] at (11.1,-3.3) {membrana interna};
+"""
+    mito = r"""
+\draw[thick, fill=orange!8] (0,0) ellipse (5.2 and 2.4); \draw[thick, fill=orange!18] (0,0) ellipse (4.5 and 1.8);
+\node[font=\scriptsize] at (0,0.0) {matriz mitocondrial};
+\node[font=\scriptsize] at (0,2.15) {espacio intermembrana: acumulación de H$^+$};
+\foreach \x in {-2.8,-1.2} {\draw[fill=blue!25] (\x,1.0) rectangle (\x+0.9,1.8); \draw[->, thick, red] (\x+0.45,1.0) -- (\x+0.45,2.1);}
+\draw[fill=blue!25] (0.6,1.0) rectangle (1.5,1.8);
+\draw[fill=green!30] (2.4,0.9) circle (0.45); \node[font=\scriptsize] at (2.4,0.9) {ATP s.};
+\draw[->, thick, red] (2.4,2.1) -- (2.4,1.4); \node[font=\scriptsize, red] at (3.6,1.9) {H$^+$ de vuelta};
+\node[font=\scriptsize] at (-1.8,-1.2) {NADH $\to$ NAD$^+$}; \node[font=\scriptsize] at (1.8,-1.2) {ADP + P $\to$ ATP};
+"""
+    ferm = r"""
+\def\bx#1#2#3#4{\node[draw, rounded corners, fill=#4, minimum width=2.4cm, minimum height=1.0cm, align=center] (#1) at (#2) {#3};}
+\bx{g}{0,0}{Glucosa}{yellow!20}
+\bx{p}{4,0}{Piruvato}{yellow!35}
+\bx{l}{8.4,1.1}{Lactato}{blue!15}
+\bx{e}{8.4,-1.1}{Etanol + CO$_2$}{green!15}
+\draw[->, thick] (g) -- node[above, font=\scriptsize] {glucólisis: 2 ATP, 2 NADH} (p);
+\draw[->, thick] (p) -- node[above, font=\scriptsize, sloped] {fermentación láctica} (l);
+\draw[->, thick] (p) -- node[below, font=\scriptsize, sloped] {fermentación alcohólica} (e);
+\node[font=\scriptsize, align=center] at (6.1,-2.4) {NADH $\to$ NAD$^+$: se regenera la coenzima y la glucólisis continúa};
+"""
+    return [
+        dict(kind='tikz', key='ruta-respiracion', source=ruta,
+             caption='Esquema de la respiración aeróbica: glucólisis en el citosol, ciclo de Krebs en la matriz y cadena de transporte en la membrana interna.',
+             quotes=[Q('en_glycolysis', 'In high-oxygen (aerobic) conditions, eukaryotic cells can continue from glycolysis to metabolise the pyruvate through the citric acid cycle or the electron transport chain to produce significantly more ATP.'), Q('en_citric', 'In eukaryotic cells, the citric acid cycle occurs in the mitochondrial matrix.'), Q('en_etc', 'At the inner mitochondrial membrane, electrons from NADH and FADH2 pass through the electron transport chain to oxygen, which provides the energy driving the process as it is reduced to water.')]),
+        dict(kind='tikz', key='energia-activacion', source=act,
+             caption='Perfil de energía de una reacción con y sin enzima: la enzima disminuye la energía de activación.',
+             quotes=[Q('en_enzyme', 'Enzymes increase the reaction rate by lowering a reaction\'s activation energy, often by factors of millions.'), Q('es_enzima', 'Como todos los catalizadores, las enzimas funcionan disminuyendo la energía de activación (ΔG‡) de una reacción, de forma que la presencia de la enzima acelera sustancialmente la tasa de reacción.')]),
+        dict(kind='tikz', key='michaelis-menten', source=mm,
+             caption='Curva de saturación de Michaelis-Menten (ejemplo con V_max = 10 y K_m = 2 en unidades arbitrarias): a [S] = K_m la velocidad es la mitad de la máxima.',
+             quotes=[Q('en_kinetics', 'Thus, KM is the substrate concentration at which the reaction velocity is half of the maximum velocity.'), Q('es_cinetica', 'Esta famosa ecuación es la base de la mayoría de las cinéticas enzimáticas de sustrato único.')]),
+        dict(kind='tikz', key='quimiosmosis', source=mito,
+             caption='Quimiosmosis: la cadena de transporte bombea protones al espacio intermembrana y la ATP sintasa los devuelve a la matriz sintetizando ATP.',
+             quotes=[Q('en_etc', 'The energy released by reactions of oxygen and reduced compounds such as cytochrome c and (indirectly) NADH and FADH2 is used by the electron transport chain to pump protons into the intermembrane space, generating the electrochemical gradient over the inner mitochondrial membrane.'), Q('en_oxphos', 'This store of energy is tapped when protons flow back across the membrane through ATP synthase in a process called chemiosmosis.')]),
+        dict(kind='tikz', key='vias-fermentacion', source=ferm,
+             caption='Vías de fermentación a partir del piruvato: láctica y alcohólica, que regeneran el NAD⁺.',
+             quotes=[Q('es_fermentacion', 'El proceso de fermentación es anaeróbico, es decir, se produce en ausencia de oxígeno; eso significa que el aceptor final de los electrones del NADH producido en la glucólisis no es el oxígeno, sino un compuesto orgánico que se reducirá para poder reoxidar el NADH a NAD+.'), Q('es_glucolisis', 'si no hay dioxígeno, se usa para reducir el piruvato a lactato (fermentación láctica), o a CO2 y etanol (fermentación alcohólica), sin obtención adicional de energía.')]),
+        dict(kind='image', key='hans-krebs', commons='File:Hans Adolf Krebs (cropped).jpg',
+             caption='Hans Adolf Krebs, Premio Nobel de Fisiología o Medicina en 1953.',
+             quotes=[Q('en_citric', 'The citric acid cycle itself was finally identified in 1937 by Hans Adolf Krebs and William Arthur Johnson while at the University of Sheffield, for which the former received the Nobel Prize for Physiology or Medicine in 1953'), Q('es_krebs', 'ya que fue descubierto por el alemán Hans Adolf Krebs, quien obtuvo el Premio Nobel de Fisiología o Medicina en 1953')]),
+        dict(kind='image', key='pasteur-nadar', commons='File:Louis Pasteur, foto av Paul Nadar, Crisco edit.jpg',
+             caption='Louis Pasteur, que describió la fermentación como «la vida sin el aire».',
+             quotes=[Q('en_fermentation', 'In 1876, before the discovery of anaerobic respiration, Louis Pasteur described it as "la vie sans air" (life without air).'), Q('es_fermentacion', 'Fue descubierta por Louis Pasteur, quien la describió como «la vie sans l\'air» (la vida sin el aire).')]),
+    ]
+
+
+def exercises(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    return [
+        num('practice', 'Una enzima que sigue la cinética de Michaelis-Menten tiene Vmax = 120 µmol/min y Km = 4 mM. Calcule su velocidad cuando [S] = 12 mM y compruebe que, cuando [S] = Km, la velocidad es la mitad de Vmax.', '90',
+            [Q('es_cinetica', 'Esta famosa ecuación es la base de la mayoría de las cinéticas enzimáticas de sustrato único.'), Q('en_kinetics', 'Thus, KM is the substrate concentration at which the reaction velocity is half of the maximum velocity.')],
+            'Ecuación de Michaelis-Menten',
+            [('V_max', 120, 'dimensionless', 'velocidad máxima, en µmol/min'), ('K_m', 4, 'dimensionless', 'constante de Michaelis, en mM'), ('S', 12, 'dimensionless', 'concentración de sustrato, en mM')],
+            'La velocidad v a [S] = 12 mM y a [S] = Km.',
+            [('Michaelis-Menten', 'v = \\frac{V_{max}[S]}{K_m + [S]}', 'V_max*S/(K_m+S)')],
+            ['La enzima sigue la cinética de un solo sustrato de Michaelis-Menten.', 'La concentración de enzima es constante.'],
+            ['A [S] = Km el denominador es 2 Km, así que v = Vmax/2.'],
+            [('Velocidad a 12 mM', 'v = 120 \\cdot 12/(4+12)', '120*12/(4+12)', 90, 'dimensionless'), ('Velocidad a [S] = Km', 'v = 120 \\cdot 4/(4+4)', '120*4/(4+4)', 60, 'dimensionless')],
+            'A 12 mM la velocidad es de 90 µmol/min, tres cuartas partes de la máxima; y a [S] = Km = 4 mM es de 60 µmol/min, la mitad de Vmax.',
+            'Con una concentración de sustrato igual a tres veces Km la enzima ya trabaja al 75 % de su máximo, y aumentarla más rinde cada vez menos porque los sitios activos se saturan.',
+            ['El modelo no recoge inhibición ni cooperatividad.'],
+            ['Confundir Km con la velocidad a la mitad en lugar de la concentración.']),
+        num('practice', 'Una célula necesita 600 ATP. Calcule cuántas moléculas de glucosa debe consumir si solo las degrada por fermentación (2 ATP por glucosa) y cuántas si lo hace por respiración aeróbica con el rendimiento realista de 30 ATP por glucosa, y cuántas veces menos glucosa se necesita en el segundo caso.', '300',
+            [Q('en_glycolysis', 'This yields 2 NADH molecules and 4 ATP molecules, leading to a net gain of 2 NADH molecules and 2 ATP molecules from the glycolytic pathway per glucose.'), Q('en_respiration', 'current estimates range around 29 to 30 ATP per glucose')],
+            'Cociente entre ATP necesarios y ATP por glucosa',
+            [('A', 600, 'dimensionless', 'ATP necesarios'), ('y_f', 2, 'dimensionless', 'ATP por glucosa en la fermentación'), ('y_r', 30, 'dimensionless', 'ATP por glucosa en la respiración aeróbica')],
+            'Las moléculas de glucosa en cada caso y su cociente.',
+            [('Glucosa necesaria', 'N = \\frac{A}{y}', 'A/y_f')],
+            ['Los rendimientos son constantes y todas las glucosas se degradan por la misma vía.', 'Se usa el valor realista (30 ATP) y no el máximo teórico.'],
+            ['El número de glucosas es el cociente entre ATP necesarios y ATP por glucosa.'],
+            [('Fermentación', 'N_f = 600/2', '600/2', 300, 'dimensionless'), ('Respiración aeróbica', 'N_r = 600/30', '600/30', 20, 'dimensionless'), ('Cociente', 'N_f/N_r', '(600/2)/(600/30)', 15, 'dimensionless')],
+            'Por fermentación hacen falta 300 glucosas; por respiración, 20: quince veces menos.',
+            'Por eso las células con oxígeno disponible usan la respiración, y los tejidos que fermentan, como el músculo en esfuerzo intenso, consumen glucosa mucho más rápido.',
+            ['El número de ATP por glucosa varía con el modelo; con 38 el cociente sería 19.'],
+            ['Usar el máximo teórico y compararlo con una estimación real.']),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='MECHANISM_EXPLANATION',
+             prompt='Explique cómo la oxidación del NADH en la membrana interna de la mitocondria conduce a la síntesis de ATP según la teoría quimiosmótica. Indique el papel del oxígeno y de la ATP sintasa.',
+             questions=['¿Qué ocurre con los electrones del NADH?', '¿Cómo se forma el gradiente de protones?', '¿Cómo se sintetiza el ATP y qué papel tiene el oxígeno?'],
+             answer=dict(summary='Los electrones del NADH pasan por la cadena de transporte hasta el oxígeno; la energía liberada bombea protones al espacio intermembrana, y su regreso por la ATP sintasa fosforila el ADP.',
+                sections=[
+                  dict(label='Transferencia de electrones', points=[dict(text='Los electrones del NADH y del FADH₂ pasan por la cadena de transporte de electrones; la transferencia ocurre mediante reacciones redox entre complejos proteicos y termina en el oxígeno, que se reduce a agua.', quotes=[Q('en_etc', 'At the inner mitochondrial membrane, electrons from NADH and FADH2 pass through the electron transport chain to oxygen, which provides the energy driving the process as it is reduced to water.'), Q('en_etc', 'In aerobic respiration, the flow of electrons terminates with molecular oxygen as the final electron acceptor.')])]),
+                  dict(label='Gradiente de protones', points=[dict(text='La energía liberada se usa para bombear protones al espacio intermembrana, lo que crea un gradiente electroquímico (la fuerza protón-motriz) con una diferencia de pH y otra de potencial eléctrico.', quotes=[Q('en_etc', 'The energy released by reactions of oxygen and reduced compounds such as cytochrome c and (indirectly) NADH and FADH2 is used by the electron transport chain to pump protons into the intermembrane space, generating the electrochemical gradient over the inner mitochondrial membrane.'), Q('es_oxphos', 'Este gradiente tiene dos componentes: una diferencia en la concentración de protones (un gradiente de pH) y una diferencia en el potencial eléctrico')])]),
+                  dict(label='Síntesis de ATP', points=[dict(text='Los protones regresan a la matriz a través de la ATP sintasa, que usa esa energía para convertir ADP en ATP; es la quimiosmosis. La ATP sintasa es una especie de motor mecánico rotatorio.', quotes=[Q('en_oxphos', 'This store of energy is tapped when protons flow back across the membrane through ATP synthase in a process called chemiosmosis.'), Q('en_oxphos', 'The ATP synthase is a rotary mechanical motor.')])]),
+                ],
+                mistakes=['Decir que el oxígeno participa en la síntesis de ATP directamente: es el aceptor final de los electrones.', 'Olvidar el gradiente de protones.'],
+                criteria=['Ordena electrones, protones y síntesis.', 'Explica el papel del oxígeno.'])),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='EXPERIMENT_DESIGN',
+             prompt='Diseñe un experimento para estudiar cómo afecta la temperatura a la actividad de una enzima. Indique la variable independiente, la dependiente, las variables controladas, el control y cómo analizaría los resultados.',
+             questions=['¿Qué variable cambia y cuál se mide?', '¿Qué hay que mantener constante?', '¿Qué resultado esperaría y qué precauciones tomaría?'],
+             answer=dict(summary='Se mide la velocidad de reacción a varias temperaturas con el mismo sustrato, el mismo pH y la misma cantidad de enzima, y se espera que aumente con la temperatura hasta un máximo y luego caiga.',
+                sections=[
+                  dict(label='Variables', points=[dict(text='La variable independiente es la temperatura; la dependiente, la velocidad de reacción (producto formado por unidad de tiempo). La actividad enzimática también depende del pH, de la concentración de enzima y de la de sustrato, que deben mantenerse constantes.', quotes=[Q('es_enzima', 'Igualmente, la actividad es afectada por la temperatura, el pH, la concentración de la propia enzima y del sustrato, y otros factores físico-químicos.'), Q('en_kinetics', 'However, at relatively high substrate concentrations, the reaction rate asymptotically approaches the theoretical maximum; the enzyme active sites are almost all occupied by substrates resulting in saturation, and the reaction rate is determined by the intrinsic turnover rate of the enzyme.')])]),
+                  dict(label='Control', points=[dict(text='Un tubo sin enzima a cada temperatura permite descartar reacciones espontáneas; un ensayo enzimático mide la velocidad de la reacción en el laboratorio.', quotes=[Q('es_cinetica', 'Un ensayo enzimático es un procedimiento, llevado a cabo en un laboratorio, mediante el cual se puede medir la velocidad de una reacción enzimática.'), Q('nhgri_enzyme', 'The enzyme is not destroyed during the reaction and is used over and over.')])]),
+                  dict(label='Resultado esperado', points=[dict(text='El incremento de temperatura facilita la acción de la enzima y aumenta su velocidad, hasta que a temperaturas altas la proteína se desnaturaliza y la actividad cae. Se repite cada medida varias veces y se representa velocidad frente a temperatura.', quotes=[Q('es_enzima', 'El incremento de temperatura facilita la acción de la enzima y permite que se incremente aún más su velocidad de reacción.'), Q('es_enzima', 'Igualmente, la actividad es afectada por la temperatura, el pH, la concentración de la propia enzima y del sustrato, y otros factores físico-químicos.')])]),
+                ],
+                mistakes=['Variar a la vez la temperatura y el pH.', 'Medir una sola vez.'],
+                criteria=['Identifica variables.', 'Incluye un control.', 'Predice la forma de la curva.'])),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='DATA_INTERPRETATION',
+             prompt='Una enzima da estas velocidades iniciales (en µmol/min) para concentraciones de sustrato de 0,5; 1; 2; 4; 8 y 16 mM: 1,9; 3,4; 5,1; 6,6; 8,1 y 8,8. Estime Vmax y Km y explique cómo lo ha hecho.',
+             questions=['¿Qué forma tiene la curva?', '¿Qué valor aproximado de Vmax sugiere?', '¿Cómo se obtiene Km?'],
+             answer=dict(summary='La curva sube y se satura hacia unos 10 µmol/min; la velocidad es la mitad (unos 5) cerca de 2 mM, por lo que Vmax ≈ 10 µmol/min y Km ≈ 2 mM.',
+                sections=[
+                  dict(label='Forma', points=[dict(text='La velocidad crece de forma casi lineal con [S] bajas y se aplana a [S] altas, la cinética de saturación típica de las enzimas.', quotes=[Q('en_kinetics', 'However, unlike uncatalysed chemical reactions, enzyme-catalysed reactions display saturation kinetics.'), Q('es_cinetica', 'En ese momento se habrá alcanzado el punto de saturación de la enzima y, aunque se añada más sustrato, no aumentará más la eficiencia de la misma.')])]),
+                  dict(label='Vmax', points=[dict(text='Los valores tienden a un máximo; de 8 a 16 mM la velocidad sólo pasa de 8,1 a 8,8, y la extrapolación hacia [S] muy alta da una Vmax de unos 10 µmol/min.', quotes=[Q('en_kinetics', 'The two important properties of enzyme kinetics are how easily the enzyme can be saturated with a substrate, and the maximum rate it can achieve.'), Q('en_kinetics', 'However, at relatively high substrate concentrations, the reaction rate asymptotically approaches the theoretical maximum; the enzyme active sites are almost all occupied by substrates resulting in saturation, and the reaction rate is determined by the intrinsic turnover rate of the enzyme.')])]),
+                  dict(label='Km', points=[dict(text='Km es la concentración a la que la velocidad es la mitad de la máxima: con Vmax ≈ 10, la mitad es 5, y la tabla da 5,1 para 2 mM, de modo que Km ≈ 2 mM.', quotes=[Q('en_kinetics', 'Thus, KM is the substrate concentration at which the reaction velocity is half of the maximum velocity.'), Q('en_kinetics', 'The Michaelis constant KM is experimentally defined as the concentration at which the rate of the enzyme reaction is half Vmax')])]),
+                ],
+                mistakes=['Tomar la velocidad más alta medida como Vmax sin saturar.', 'Leer Km como una velocidad.'])),
+        dict(role='practice', difficulty='ADVANCED', problem_type='CAUSAL_ANALYSIS',
+             prompt='Durante un esfuerzo muy intenso el músculo produce lactato. Explique las causas, por qué la célula necesita regenerar NAD⁺ y qué ventaja y qué límite tiene este proceso.',
+             questions=['¿Por qué se fermenta?', '¿Qué papel tiene el NAD⁺?', '¿Qué ventaja y qué límite tiene?'],
+             answer=dict(summary='El músculo fermenta cuando el oxígeno no llega con la rapidez necesaria; la reducción del piruvato a lactato reoxida el NADH a NAD⁺, lo que permite seguir con la glucólisis, aunque rinde mucho menos ATP.',
+                sections=[
+                  dict(label='Causa', points=[dict(text='La fermentación láctica ocurre en el músculo cuando necesita energía más deprisa de lo que la sangre aporta oxígeno.', quotes=[Q('es_fermentacion', 'el tejido muscular de los animales realiza la fermentación láctica cuando el aporte de oxígeno a las células musculares no es suficiente para el metabolismo aerobio y la contracción muscular'), Q('en_fermentation', 'It occurs in the muscles of animals when they need energy faster than the blood can supply oxygen.')])]),
+                  dict(label='NAD⁺', points=[dict(text='La glucólisis produce NADH, que debe reoxidarse a NAD⁺ para que el metabolismo continúe; sin oxígeno, el NADH cede sus electrones a compuestos orgánicos, como el piruvato, que se reduce a lactato.', quotes=[Q('es_fermentacion', 'Por el contrario, el NADH debe volver a oxidarse a NAD+ para permitir que continúe el metabolismo celular.'), Q('es_fermentacion', 'Esto se debe a la oxidación del NADH que, en lugar de penetrar en la cadena respiratoria, cede sus electrones a compuestos orgánicos con poco poder oxidante.')])]),
+                  dict(label='Ventaja y límite', points=[dict(text='La ventaja es que se sigue obteniendo ATP sin oxígeno; el límite es que el rendimiento es solo de 2 ATP por glucosa, frente a unos 30 de la respiración aeróbica.', quotes=[Q('en_glycolysis', 'This yields 2 NADH molecules and 4 ATP molecules, leading to a net gain of 2 NADH molecules and 2 ATP molecules from the glycolytic pathway per glucose.'), Q('en_respiration', 'current estimates range around 29 to 30 ATP per glucose')])]),
+                ],
+                mistakes=['Decir que el lactato produce ATP: lo que produce ATP es la glucólisis.'])),
+    ]

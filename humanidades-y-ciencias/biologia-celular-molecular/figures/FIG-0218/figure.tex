@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (1.50,3.40) {AABB};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (2.75,3.40) {AABb};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (4.00,3.40) {AaBB};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (5.25,3.40) {AaBb};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (1.50,2.55) {AABb};
+\node[draw, fill=yellow!35, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (2.75,2.55) {AAbb};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (4.00,2.55) {AaBb};
+\node[draw, fill=yellow!35, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (5.25,2.55) {Aabb};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (1.50,1.70) {AaBB};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (2.75,1.70) {AaBb};
+\node[draw, fill=orange!30, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (4.00,1.70) {aaBB};
+\node[draw, fill=orange!30, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (5.25,1.70) {aaBb};
+\node[draw, fill=green!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (1.50,0.85) {AaBb};
+\node[draw, fill=yellow!35, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (2.75,0.85) {Aabb};
+\node[draw, fill=orange!30, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (4.00,0.85) {aaBb};
+\node[draw, fill=red!25, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (5.25,0.85) {aabb};
+\node[font=\scriptsize\bfseries] at (1.50,4.15) {AB}; \node[font=\scriptsize\bfseries] at (0.45,3.40) {AB};
+\node[font=\scriptsize\bfseries] at (2.75,4.15) {Ab}; \node[font=\scriptsize\bfseries] at (0.45,2.55) {Ab};
+\node[font=\scriptsize\bfseries] at (4.00,4.15) {aB}; \node[font=\scriptsize\bfseries] at (0.45,1.70) {aB};
+\node[font=\scriptsize\bfseries] at (5.25,4.15) {ab}; \node[font=\scriptsize\bfseries] at (0.45,0.85) {ab};
+\foreach \y/\c/\t in {3.8/green!25/9 A\_B\_, 3.3/yellow!35/3 A\_bb, 2.8/orange!30/3 aaB\_, 2.3/red!25/1 aabb} {\node[draw, fill=\c, minimum size=0.4cm] at (7.6,\y) {}; \node[font=\scriptsize, right] at (7.9,\y) {\t};}
+
+\end{tikzpicture}
+\end{document}
