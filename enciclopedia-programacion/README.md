@@ -44,26 +44,33 @@ en `reports/reader-cleanup.json`; los controles de toda la colección, en
 Cada `project.toml` selecciona explícitamente las secciones de lectura mediante
 `[render]`. Los libros STEM sin esa configuración conservan sus apéndices.
 
-## Comprobación de respuestas (2026-10-23)
+## Ejercicios: programas que escribir (2026-10-23)
 
-- `tools/replay_answers.py` añadió a 220 respuestas numéricas de los volúmenes 3 a 9
-  una solución con datos, fórmula y reproducción aritmética (revisión append-only,
-  sin borrar el registro anterior). Datos de cada una en `tools/answer_specs/`;
-  registro en `reports/answer-replay.json`.
-- `tools/verify_answers.py` pregunta a toolchains reales (rustc, clang y clang++,
-  swiftc, Python, Node, Ruby, SQLite, bash, gfortran, Lua y Git) por la cantidad
-  que hay detrás de 57 respuestas; resultado y versiones en
-  `reports/answer-verification.json`. Un acierto confirma esa afirmación en esas
-  versiones, no aprueba el volumen.
-- Se corrigieron siete enunciados: el quantum de reducciones de la BEAM (2000
-  frente a 4000 actual), los elementos que inspecciona `take` sobre `filter` en
-  C++20 (12 y no 10, comprobado con clang), un ejemplo de Flexbox sin datos
-  suficientes, un mensaje Protobuf sin contar la etiqueta, el presupuesto de un
-  fotograma a 120 Hz (8,33 ms y no 8 ms), una descomposición que «reducía» la
-  complejidad ciclomática total y un FCP calculado al revés.
-- Las respuestas de los volúmenes 3 a 7 siguen sin dos testimonios válidos: el
-  segundo extracto que citaban es un texto genérico que la migración de integridad
-  retiró. Ese hueco de evidencia queda abierto y se mide con `studium_problem_check`.
+Los ejercicios de cálculo aritmético se han retirado (la revisión conserva su
+historial) y los volúmenes 1 a 9 piden ahora **programas**: 218 ejercicios con
+enunciado, solución de referencia, casos comprobados y una breve explicación de
+por qué funciona. Cada solución de referencia se ejecuta con su pruebas antes de
+registrarse, con toolchains reales: Rust, C, C++, Zig, ensamblador AArch64,
+Fortran, Python, JavaScript, TypeScript, Java, Go, C#, Kotlin, Swift, SQL, Bash,
+PHP, Ruby, Haskell, OCaml, Elixir, Clojure, Scala, Julia, R, Lua, Perl, Prolog y
+Objective-C. Faltan Ada, Dart y GDScript por no disponer de su toolchain.
+
+- `tools/exercise_specs/volNN.py`: enunciados, soluciones y pruebas.
+- `tools/exercises.py verify|record|retire`: ejecuta, registra como contrato de
+  programación de Studium y retira los ejercicios numéricos.
+- `reports/exercise-verification.json`: versión de cada herramienta, huella del
+  programa y salida observada. Un acierto significa que la solución cumple los
+  casos indicados en esa versión; no es una aprobación del volumen.
+- Los enunciados que el primer intento de comprobación dejó mal (un `take` sobre
+  `filter` en C++20, el quantum de la BEAM, un mensaje Protobuf sin etiqueta, la
+  complejidad ciclomática de una refactorización) ya no existen: sus
+  ejercicios se sustituyeron por programas.
+
+Pendiente: el segundo extracto que citaban los ejercicios antiguos de los
+volúmenes 3 a 7 era texto inventado que la migración de integridad retiró, y
+44 de los 50 párrafos de cada uno de esos volúmenes carecen de extractos
+verificados. Siguen abiertos: es el motivo de la nota «REVISIÓN DE FUENTES
+PENDIENTE» de esos volúmenes.
 
 ## Resultados y estado
 
