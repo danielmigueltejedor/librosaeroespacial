@@ -1,0 +1,568 @@
+{
+ "review_id": "scientific-review-2026-10-23",
+ "reviewer": "Claude (same-model pass; not independent academic review)",
+ "scope": "Correcciones propuestas que Studium no puede registrar porque los extractos citados fueron retirados (reports/evidence-integrity-migration.json). Texto exacto antiguo -> nuevo; aplicar tras re-fundamentar con fuentes reales.",
+ "paragraphs": [
+  {
+   "volume": "vol03-monografia-rust",
+   "id": "PAR-0026",
+   "replace": [
+    {
+     "old": "captura las variables libres de su entorno por el modo menos restrictivo posible: por referencia compartida `&T` (implementa `Fn`, `FnMut` y `FnOnce`), por referencia mutable `&mut T` (implementa `FnMut` y `FnOnce`) o por valor consumiendo la variable (implementa únicamente `FnOnce`, o cuando se fuerza la captura con la palabra clave `move`).",
+     "new": "captura las variables libres de su entorno por el modo menos restrictivo que permita su cuerpo: por referencia compartida `&T`, por referencia mutable `&mut T` o por valor (cuando el cuerpo mueve la variable o se fuerza la captura con la palabra clave `move`). Los rasgos que implementa dependen de lo que el cuerpo hace con lo capturado, no del modo de captura: si solo lee, implementa `Fn`, `FnMut` y `FnOnce` (también con `move`); si muta, `FnMut` y `FnOnce`; si consume una variable capturada, únicamente `FnOnce`."
+    }
+   ]
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PAR-0021",
+   "replace": [
+    {
+     "old": "de lo contrario, cae de vuelta a copiar cada elemento",
+     "new": "de lo contrario, y si el tipo es copiable, cae de vuelta a copiar cada elemento"
+    }
+   ]
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PAR-0026",
+   "replace": [
+    {
+     "old": "En nuestro proyecto verificado `projects/cpp-task-scheduler`, el concepto `ExecutableTask` exige que cualquier tipo de tarea proporcione `id()`, `priority()` convertible a `int` y `execute()` convertible a `int64_t`:",
+     "new": "El proyecto `projects/cpp-task-scheduler` define un concepto `ExecutableTask` más simple (exige un objeto invocable que devuelva `int64_t`); como ilustración de un concepto con varios requisitos, el fragmento siguiente, que no forma parte del proyecto, exige que cualquier tipo de tarea proporcione `id()`, `priority()` convertible a `int` y `execute()` convertible a `int64_t`:"
+    },
+    {
+     "old": "que especifican formalmente los requisitos sintácticos y semánticos de un parámetro de plantilla",
+     "new": "que especifican formalmente los requisitos sintácticos de un parámetro de plantilla (los requisitos puramente semánticos solo pueden documentarse)"
+    }
+   ]
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PAR-0040",
+   "replace": [
+    {
+     "old": "`x19–x28, x29, x30` en AAPCS64)",
+     "new": "`x19–x29` en AAPCS64, donde además el llamado debe conservar la dirección de retorno de `x30` hasta su `ret`)"
+    }
+   ]
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PAR-0045",
+   "replace": [
+    {
+     "old": "el estándar Fortran garantiza por defecto que los argumentos `intent(in)` e `intent(inout)` de una subrutina `pure` **no presentan alias entre sí** (a menos que tengan el atributo `pointer` o `target`)",
+     "new": "el estándar Fortran exige que los argumentos ficticios de un procedimiento que se modifican **no presenten alias con otros argumentos** (a menos que tengan el atributo `pointer` o `target`)"
+    },
+    {
+     "old": "realiza transferencias RDMA de un solo lado entre nodos de un clúster sin llamadas verbosas a MPI",
+     "new": "se traduce en accesos remotos entre imágenes (en muchas implementaciones, transferencias de un solo lado, p. ej. RDMA) sin llamadas verbosas a MPI"
+    }
+   ]
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PAR-0008",
+   "replace": [
+    {
+     "old": "lo que aporta flexibilidad pero añade más de $100\\text{ B}$ de sobrecoste por objeto",
+     "new": "lo que aporta flexibilidad pero añade un sobrecoste por objeto que depende de la versión de CPython y del número de atributos (del orden de decenas a más de un centenar de bytes)"
+    }
+   ]
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PAR-0011",
+   "replace": [
+    {
+     "old": "reduce el consumo de memoria entre un 40 % y un 60 % y acelera el acceso a atributos",
+     "new": "reduce el consumo de memoria por instancia (en una medición con CPython 3.13 de una clase con dos atributos, de unos 128 B a unos 88 B, un 31 %; el ahorro depende de la versión y del número de atributos) y suele acelerar el acceso a atributos"
+    }
+   ]
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PAR-0014",
+   "replace": [
+    {
+     "old": "evitando en el 95 % de los casos la complejidad",
+     "new": "evitando en muchos casos la complejidad"
+    }
+   ]
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PAR-0026",
+   "replace": [
+    {
+     "old": "// Orden determinista de salida: [1, 4, 3, 2]",
+     "new": "// Orden de ejecución: 1 y 4 (síncronos), 3 (microtarea), 2 (macrotarea).\n// El array devuelto contiene [1, 4] al retornar y termina en [1, 4, 3, 2] cuando se vacían las colas."
+    }
+   ]
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PAR-0045",
+   "replace": [
+    {
+     "old": "Tanto el sistema de anotaciones de Python (`typing`, PEP 484/695) como TypeScript aplican borrado de tipos en tiempo de ejecución (*type erasure*).",
+     "new": "Ni las anotaciones de Python (`typing`, PEP 484/695) ni las de TypeScript se verifican durante la ejecución: TypeScript las borra (*type erasure*) al emitir JavaScript y Python las conserva sin aplicarlas."
+    },
+    {
+     "old": "Sin embargo, dado que en Python las anotaciones pueden conservarse opcionalmente en el diccionario",
+     "new": "Precisamente porque en Python las anotaciones se conservan en el diccionario"
+    },
+    {
+     "old": "garantizando consistencia matemática entre ambos extremos",
+     "new": "reduciendo el riesgo de inconsistencia entre ambos extremos"
+    }
+   ]
+  },
+  {
+   "volume": "vol06-monografias-jvm-dotnet-go-movil",
+   "id": "PAR-0040",
+   "replace": [
+    {
+     "old": "donde `completion` almacena el índice `label` del estado actual y las variables locales vivas entre puntos de suspensión.",
+     "new": "donde `completion` es la continuación del llamador; el compilador genera además un objeto de continuación propio (la máquina de estados) que almacena el índice `label` del estado actual y las variables locales vivas entre puntos de suspensión."
+    }
+   ]
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PAR-0002",
+   "replace": [
+    {
+     "old": "la expresión `id <> v1 AND id <> NULL` evalúa a `UNKNOWN` para todas las filas y la consulta devuelve un conjunto vacío",
+     "new": "la expresión `id <> v1 AND id <> NULL` nunca evalúa a `TRUE` (es `FALSE` si `id` coincide con algún valor y `UNKNOWN` en otro caso) y la consulta devuelve un conjunto vacío"
+    }
+   ]
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PAR-0021",
+   "replace": [
+    {
+     "old": "que se componen sin posibilidad de interbloqueos (*deadlocks*), ya que",
+     "new": "que se componen sin los interbloqueos por orden de adquisición de cerrojos (no excluye el bloqueo indefinido, p. ej. un `retry` que nadie reactiva), ya que"
+    }
+   ]
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PAR-0026",
+   "replace": [
+    {
+     "old": "un recolector generacional incremental de latencias sub-milisegundo",
+     "new": "un recolector generacional con fase mayor incremental"
+    }
+   ]
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PAR-0033",
+   "replace": [
+    {
+     "old": "Clojure aporta además vectores y mapas persistentes inmutables implementados como árboles trie de factor de ramificación 32 (**HAMT**, *Hash Array Mapped Trie* con compartición estructural $O(\\log_{32} N)$)",
+     "new": "Clojure aporta además vectores persistentes inmutables (tries de bits con factor de ramificación 32) y mapas persistentes (**HAMT**, *Hash Array Mapped Trie*), ambos con compartición estructural y coste $O(\\log_{32} N)$"
+    }
+   ]
+  }
+ ],
+ "problems": [
+  {
+   "volume": "vol03-monografia-rust",
+   "id": "PRB-0029",
+   "section": "cap05-closures-iteradores-smart-pointers-mutabilidad-interior",
+   "prompt": "En una arquitectura de 64 bits ($W = 8\\text{ B}$), se aloja un bloque `Rc< [u8; 1024] >` ($S_T = 1024\\text{ B}$) y se crean $k = 5$ manejadores `Rc::clone` en distintas estructuras en la pila. Calcula la memoria total consumida (los 5 punteros en la pila más el único bloque `RcBox` en el montículo con sus 2 contadores `usize` y los 1024 bytes de datos).",
+   "expected": "1080",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "El conjunto completo ocupa 1080 bytes (40 B en la pila y 1040 B en el montículo), ahorrando 4096 bytes de datos frente a mantener cinco copias independientes del búfer (5 · 1024 − 1024).",
+    "result": "Resultado = 1080. El conjunto completo ocupa 1080 bytes (40 B en la pila y 1040 B en el montículo), ahorrando 4096 bytes de datos frente a mantener cinco copias independientes del búfer (5 · 1024 − 1024).",
+    "given": [
+     {
+      "symbol": "W",
+      "value": "8",
+      "unit": "B",
+      "meaning": "Tamaño de usize y puntero en 64 bits"
+     },
+     {
+      "symbol": "k",
+      "value": "5",
+      "unit": "adimensional",
+      "meaning": "Número de manejadores Rc<T> en la pila"
+     },
+     {
+      "symbol": "S_T",
+      "value": "1024",
+      "unit": "B",
+      "meaning": "Tamaño del valor compartido en el montículo"
+     }
+    ],
+    "model": [
+     {
+      "name": "Consumo de memoria de Rc<T> con k referencias compartidas",
+      "latex": "M = 5 \\cdot 8 + (2 \\cdot 8 + 1024)"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Sumamos los 5 punteros de 8 B en pila más el RcBox (16 B de contadores + 1024 B de datos)",
+      "equation": "M = 5 \\cdot 8 + (2 \\cdot 8 + 1024)",
+      "expression": "5 * 8 + (2 * 8 + 1024)",
+      "expected": "1080"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol03-monografia-rust",
+   "id": "PRB-0050",
+   "section": "cap08-ecosistema-herramientas-evaluacion-proyectos-rust",
+   "prompt": "En un modelo de serialización con el formato de tramas de `rust-kv-engine`, cada trama del Write-Ahead Log (WAL) tiene una cabecera fija de $13\\text{ B}$ (4 B de CRC32, 1 B de código de operación, 4 B de longitud de clave y 4 B de longitud de valor). Si se registran $N = 2000$ operaciones `SET` donde cada clave mide $L_k = 16\\text{ B}$ y cada valor mide $L_v = 99\\text{ B}$, calcula el tamaño en bytes de la secuencia de tramas. No supongas que el laboratorio escribe un fichero o implementa compactación.",
+   "expected": "256000",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "La secuencia de tramas ocupa 256 000 bytes (250 KiB) según el modelo; el laboratorio no escribe ningún fichero.",
+    "result": "Resultado = 256000. La secuencia de tramas ocupa 256 000 bytes (250 KiB) según el modelo; el laboratorio no escribe ningún fichero.",
+    "given": [
+     {
+      "symbol": "N",
+      "value": "2000",
+      "unit": "adimensional",
+      "meaning": "Número de operaciones SET registradas"
+     },
+     {
+      "symbol": "H",
+      "value": "13",
+      "unit": "B",
+      "meaning": "Cabecera binaria fija por trama WAL"
+     },
+     {
+      "symbol": "L_k__L_v",
+      "value": "16",
+      "unit": "B, 99 B",
+      "meaning": "Longitudes de clave y valor"
+     }
+    ],
+    "model": [
+     {
+      "name": "Tamaño total del fichero Write-Ahead Log (WAL) para N tramas",
+      "latex": "B_{\\text{WAL}} = 2000 \\cdot (13 + 16 + 99)"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Calculamos 13 + 16 + 99 = 128 B por trama y multiplicamos por 2000 tramas",
+      "equation": "B_{\\text{WAL}} = 2000 \\cdot (13 + 16 + 99)",
+      "expression": "2000 * (13 + 16 + 99)",
+      "expected": "256000"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PRB-0016",
+   "section": "cap03-c-experto-atomicos-posix-sanitizers-ecosistema-proyectos",
+   "prompt": "Un diseñador propone añadir un checksum aditivo a la trama que analiza `parse_telemetry_packet` de `projects/c-arena-allocator` (el laboratorio real valida `magic` y la longitud, pero no incluye ningún checksum): la suma de los campos `magic` (10), `version` (2), `flags` (3) y `payload_len` (25). ¿Cuál sería su valor?",
+   "expected": "40",
+   "solution": null
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PRB-0025",
+   "section": "cap05-cpp-templates-concepts-ranges-concurrencia-proyectos",
+   "prompt": "Considera un planificador con prioridades como el que sugiere ampliar el laboratorio `projects/cpp-task-scheduler` (el laboratorio real solo implementa `BoundedTaskQueue` y no incluye `execute_filtered`). Se encolan cuatro tareas `(id, prioridad, base_cost)`: `(1, 2, 10)`, `(2, 9, 10)`, `(3, 5, 20)` y `(4, 9, 15)`. Si una función hipotética `execute_filtered(5)` filtra las tareas con `priority >= 5` y suma `base_cost * priority` de cada una, calcula el resultado exacto.",
+   "expected": "325",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "El planificador devuelve exactamente 325, según el modelo del enunciado; el laboratorio no implementa esta función.",
+    "result": "Resultado = 325. El planificador devuelve exactamente 325, según el modelo del enunciado; el laboratorio no implementa esta función.",
+    "given": [
+     {
+      "symbol": "T_2",
+      "value": "prioridad 9, coste 10",
+      "unit": "adimensional",
+      "meaning": "Aporta 9 * 10 = 90"
+     },
+     {
+      "symbol": "T_4",
+      "value": "prioridad 9, coste 15",
+      "unit": "adimensional",
+      "meaning": "Aporta 9 * 15 = 135"
+     },
+     {
+      "symbol": "T_3",
+      "value": "prioridad 5, coste 20",
+      "unit": "adimensional",
+      "meaning": "Aporta 5 * 20 = 100"
+     }
+    ],
+    "model": [
+     {
+      "name": "Filtrado y reducción en cpp-task-scheduler con std::views",
+      "latex": "R = 9 \\cdot 10 + 9 \\cdot 15 + 5 \\cdot 20"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Descartamos la tarea 1 (prioridad 2 < 5) y sumamos los productos de las tres restantes",
+      "equation": "R = 9 \\cdot 10 + 9 \\cdot 15 + 5 \\cdot 20",
+      "expression": "9 * 10 + 9 * 15 + 5 * 20",
+      "expected": "325"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol04-monografias-c-cpp-sistemas",
+   "id": "PRB-0027",
+   "section": "cap05-cpp-templates-concepts-ranges-concurrencia-proyectos",
+   "prompt": "Una tarea hipotética `ComputeTask{id=10, prioridad=7, coste=12}` (el laboratorio `cpp-task-scheduler` no define ese tipo) ejecuta `coste × prioridad`. ¿Qué valor devuelve su método `execute()` ($12 \\times 7$)?",
+   "expected": "84",
+   "solution": null
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PRB-0006",
+   "section": "cap01-python-fundamentos-modelo-objetos-nivel-principiante",
+   "prompt": "En el proyecto `projects/python-bytecode-vm`, la función compila y evalúa `(x + 4) * (y - 2) + 10` para $x = 6, y = 9$. ¿Cuál es el resultado entero devuelto?",
+   "expected": "80",
+   "solution": null
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PRB-0007",
+   "section": "cap02-python-intermedio-avanzado-modelo-datos-tipado-iteradores",
+   "prompt": "En una aplicación de procesamiento de grafos y con un modelo simplificado de CPython de 64 bits (las cifras reales dependen de la versión y no incluyen aquí la cabecera del recolector de ciclos), una clase `Edge` con $k = 3$ atributos ocupa $16 + 3 \\times 8 = 40\\text{ B}$ cuando se declara con `__slots__`, mientras que sin `__slots__` cada instancia aloja además un `__dict__` que añade $112\\text{ B}$ por objeto ($152\\text{ B}$ en total). Calcula cuántos megabytes exactos (dividiendo entre $10^6$) se ahorran al instanciar $N = 1000000$ de aristas con `__slots__`.",
+   "expected": "112",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "El uso de __slots__ ahorra exactamente 112 MB de memoria RAM.",
+    "result": "Resultado = 112",
+    "given": [
+     {
+      "symbol": "N",
+      "value": "1000000",
+      "unit": "adimensional",
+      "meaning": "Un millón de instancias de Edge"
+     },
+     {
+      "symbol": "S_con_dict",
+      "value": "152",
+      "unit": "B",
+      "meaning": "Tamaño por instancia con __dict__"
+     },
+     {
+      "symbol": "S_con_slots",
+      "value": "40",
+      "unit": "B",
+      "meaning": "Tamaño por instancia con __slots__"
+     }
+    ],
+    "model": [
+     {
+      "name": "Ahorro de RAM con __slots__ en millones de instancias en CPython",
+      "latex": "\\Delta M_{\\text{MB}} = \\frac{10^6 \\cdot (152 - 40)}{10^6}"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Multiplicamos el millón de instancias por los 112 B ahorrados y dividimos entre 10^6",
+      "equation": "\\Delta M_{\\text{MB}} = \\frac{10^6 \\cdot (152 - 40)}{10^6}",
+      "expression": "(1000000 * (152 - 40)) / 1000000",
+      "expected": "112"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PRB-0009",
+   "section": "cap02-python-intermedio-avanzado-modelo-datos-tipado-iteradores",
+   "prompt": "En CPython de 64 bits, ¿cuántos bytes ocupa una instancia con `__slots__` de 4 atributos (16 B de cabecera más $4 \\times 8$ B, en un modelo simplificado que no cuenta la cabecera del recolector de ciclos)?",
+   "expected": "48",
+   "solution": null
+  },
+  {
+   "volume": "vol05-monografias-python-js-ts",
+   "id": "PRB-0036",
+   "section": "cap06-typescript-fundamentos-sistema-tipos-estructural-uniones",
+   "prompt": "En `projects/ts-reactive-http`, `TokenBucketLimiter` se inicializa con capacidad 3 y sin recarga, y se llama cuatro veces seguidas a `allow` con la misma clave y el mismo instante. ¿Cuántas llamadas devuelven `true` antes de la primera `false`? (El laboratorio no incluye servidor HTTP; en una aplicación real esa primera `false` se traduciría en una respuesta `429`.)",
+   "expected": "3",
+   "solution": null
+  },
+  {
+   "volume": "vol06-monografias-jvm-dotnet-go-movil",
+   "id": "PRB-0031",
+   "section": "cap06-go-avanzado-experto-goroutines-gmp-canales-context-proyectos",
+   "prompt": "Cada goroutine recién creada en Go 1.22 reserva una pila inicial de $S_G = 2\\text{ KiB}$ ($2048\\text{ B}$), mientras que, como valor de referencia, un hilo nativo de sistema operativo reserva una pila de $S_M = 2048\\text{ KiB}$ ($2\\text{ MiB}$; el valor real depende del sistema operativo y de la configuración). Si un servidor de telemetría en Go mantiene $N = 100000$ goroutines activas sobre $M = 16$ hilos del sistema operativo, calcula cuántos mebibytes totales (dividiendo los KiB entre 1024) ocupan las pilas de las 100 000 goroutines más los 16 hilos OS.",
+   "expected": "227.3125",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "Las 100 000 goroutines más los 16 hilos del sistema operativo consumen tan solo 227.3125 MiB de memoria de pila.",
+    "result": "Resultado = 227.3125",
+    "given": [
+     {
+      "symbol": "N",
+      "value": "100000",
+      "unit": "adimensional",
+      "meaning": "Número de goroutines concurrentes"
+     },
+     {
+      "symbol": "S_G",
+      "value": "2",
+      "unit": "KiB",
+      "meaning": "Pila inicial por goroutine"
+     },
+     {
+      "symbol": "M",
+      "value": "16",
+      "unit": "adimensional",
+      "meaning": "Hilos del sistema operativo de 2048 KiB"
+     }
+    ],
+    "model": [
+     {
+      "name": "Consumo de memoria de pilas en el modelo M:N de Go",
+      "latex": "M_{\\text{MiB}} = \\frac{100000 \\cdot 2 + 16 \\cdot 2048}{1024}"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Sumamos los KiB de las goroutines (200000 KiB) y de los 16 hilos OS (32768 KiB) y dividimos entre 1024",
+      "equation": "M_{\\text{MiB}} = \\frac{100000 \\cdot 2 + 16 \\cdot 2048}{1024}",
+      "expression": "(100000 * 2 + 16 * 2048) / 1024",
+      "expected": "227.3125"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PRB-0001",
+   "section": "cap01-monografia-sql-ddl-dml-cte-ventanas-optimizacion",
+   "prompt": "En el proyecto `projects/sql-transactional-ledger`, la cuenta 3 (Cuentas por Cobrar) recibe dos apuntes, con `signed_cents` igual a 250000 (asiento 101) y −150000 (asiento 102). Calcula el saldo acumulado en céntimos que devuelve `SUM(signed_cents) OVER (PARTITION BY account_id ORDER BY posted_at, entry_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)` en la segunda fila.",
+   "expected": "100000",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "El saldo acumulado en la segunda fila es 100 000 céntimos (1000,00 EUR), el valor que comprueba `verify_ledger.py`.",
+    "result": "Resultado = 100000",
+    "given": [
+     {
+      "symbol": "s_1",
+      "value": "250000",
+      "unit": "centimos",
+      "meaning": "Factura de licencia de software (asiento 101)"
+     },
+     {
+      "symbol": "s_2",
+      "value": "-150000",
+      "unit": "centimos",
+      "meaning": "Cobro parcial por transferencia (asiento 102)"
+     }
+    ],
+    "model": [
+     {
+      "name": "Saldo acumulado por función de ventana SQL en sql-transactional-ledger",
+      "latex": "B_2 = 250000 + (-150000)"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Sumamos los dos apuntes de la partición account_id = 3",
+      "equation": "B_2 = 250000 + (-150000)",
+      "expression": "250000 + (-150000)",
+      "expected": "100000"
+     }
+    ]
+   }
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PRB-0012",
+   "section": "cap02-monografia-bash-posix-shell-automatizacion-sistemas",
+   "prompt": "Una máscara `umask 027` se aplica a los permisos base `666` (octal) para la creación de ficheros regulares desactivando los bits que la máscara tiene activos (`666 & ~027`; dígito a dígito, $6$ sin los bits de $0$ es $6$, $6$ sin los bits de $2$ es $4$ y $6$ sin los bits de $7$ es $0$). ¿Cuál es el permiso octal resultante expresado como entero de tres dígitos?",
+   "expected": "640",
+   "solution": null
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PRB-0034",
+   "section": "cap06-monografias-beam-elixir-erlang-scala3-clojure-lisp",
+   "prompt": "En el planificador preventivo de la BEAM, cada proceso dispone de un presupuesto de `4000` reducciones (valor de `CONTEXT_REDS` en las versiones recientes de OTP) (llamadas a función) antes de ceder la CPU a otro proceso. Si un proceso ejecuta 16 000 llamadas a función, ¿cuántas rodajas de planificación (*context switches*) consume?",
+   "expected": "4",
+   "solution": null
+  },
+  {
+   "volume": "vol07-monografias-sql-shell-funcional-especializados",
+   "id": "PRB-0043",
+   "section": "cap08-monografias-lua-perl-objc-prolog-gdscript",
+   "prompt": "En la implementación C de las tablas híbridas de Lua 5.4, cuando una tabla almacena claves enteras consecutivas `1..N`, se alojan en la parte array (`TValue` de $16\\text{ B}$ por elemento: 8 B de valor más 1 B de etiqueta alineado), mientras que en la parte hash cada nodo (`Node`) ocupa $24\\text{ B}$ (clave + valor + enlace `next`). Calcula cuántos bytes ahorra una tabla Lua de $N = 4000$ elementos al indexarse secuencialmente desde `1` hasta `4000` (parte array de $16\\text{ B}$) frente a usar claves dispersas en la parte hash ($24\\text{ B}$ por nodo).",
+   "expected": "32000",
+   "solution": {
+    "assumptions": [
+     "Evaluación determinista bajo el modelo formal del capítulo"
+    ],
+    "unknown": "Magnitud objetivo solicitada en el enunciado",
+    "interpretation": "Usar índices enteros consecutivos desde 1 ahorra 32 000 bytes (un tercio de la memoria) y evita el cálculo de hashes.",
+    "result": "Resultado = 32000",
+    "given": [
+     {
+      "symbol": "N",
+      "value": "4000",
+      "unit": "adimensional",
+      "meaning": "Elementos en la tabla Lua"
+     },
+     {
+      "symbol": "S_hash",
+      "value": "24",
+      "unit": "B",
+      "meaning": "Tamaño por nodo en la parte hash"
+     },
+     {
+      "symbol": "S_array",
+      "value": "16",
+      "unit": "B",
+      "meaning": "Tamaño por TValue en la parte array"
+     }
+    ],
+    "model": [
+     {
+      "name": "Ahorro de memoria de la parte Array frente a la parte Hash en tablas híbridas de Lua 5.4",
+      "latex": "\\Delta M = 4000 \\cdot (24 - 16)"
+     }
+    ],
+    "steps": [
+     {
+      "text": "Multiplicamos los 4000 elementos por los 8 B ahorrados (24 − 16) al residir en la parte array",
+      "equation": "\\Delta M = 4000 \\cdot (24 - 16)",
+      "expression": "4000 * (24 - 16)",
+      "expected": "32000"
+     }
+    ]
+   }
+  }
+ ]
+}
