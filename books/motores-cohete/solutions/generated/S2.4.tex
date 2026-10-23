@@ -1,15 +1,37 @@
 \begin{enumerate}
 
-\item Magnitud 1.
+\item Velocidad de escape.
 
-\[\fitmath{y_{1}=\frac{2\cdot 0.6\cdot 2960}{22400}\approx 0.1585714\,\mathrm{N}}\]
+\[\fitmath{\mathrm{ve}=1800\cdot 9.80665\approx 17651.97\,\mathrm{m/s}}\]
 
-\item Magnitud 2.
+\item Propulsante por la ecuación del cohete.
 
-\[\fitmath{y_{2}=\frac{2\cdot 0.6\cdot 2960}{{22400}^{2}}\approx 7.079082\times10^{-6}\,\mathrm{kg/s}}\]
+\[\fitmath{\mathrm{mp}=900\cdot \left(1-\exp\left(\frac{-450}{\mathrm{ve}}\right)\right)}\]
 
-\item Magnitud 3.
+\[\fitmath{\mathrm{mp}=900\cdot \left(1-\exp\left(\frac{-450}{(17651.97)}\right)\right)\approx 22.65363\,\mathrm{kg}}\]
 
-\[\fitmath{y_{3}=22400\cdot \ln\left(\frac{450}{450-0.285994898}\right)\approx 14.24072\,\mathrm{m/s}}\]
+\item Empuje de potencia de chorro.
+
+\[\fitmath{F=\frac{2\cdot 0.55\cdot 1350}{\mathrm{ve}}}\]
+
+\[\fitmath{F=\frac{2\cdot 0.55\cdot 1350}{(17651.97)}\approx 0.08412659\,\mathrm{N}}\]
+
+\item Gasto.
+
+\[\fitmath{\mathrm{md}=\frac{F}{\mathrm{ve}}}\]
+
+\[\fitmath{\mathrm{md}=\frac{(0.08412658757)}{(17651.97)}\approx 4.765847\times10^{-6}\,\mathrm{kg/s}}\]
+
+\item Tiempo de maniobra.
+
+\[\fitmath{t=\frac{\mathrm{mp}}{\mathrm{md}}}\]
+
+\[\fitmath{t=\frac{(22.65363447)}{(4.76584696\times10^{-6})}\approx 4753328\,\mathrm{s}}\]
+
+\item Tiempo en días.
+
+\[\fitmath{\mathrm{dias}=\frac{t}{86400}}\]
+
+\[\fitmath{\mathrm{dias}=\frac{(4753328.139)}{86400}\approx 55.01537\,\mathrm{d}}\]
 
 \end{enumerate}

@@ -1,0 +1,223 @@
+{
+  "scope": "Original numeric exam data and authored derivations; no independent approval",
+  "records": [
+    {
+      "problem": "S2.2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "md",
+          "expression": "260/38",
+          "value": 6.842105263157895,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "F",
+          "expression": "262*9.80665*md",
+          "value": 17579.71047368421,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "I",
+          "expression": "F*38",
+          "value": 668028.998,
+          "unit": "N*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "dv",
+          "expression": "262*9.80665*log((260+175)/175)",
+          "value": 2339.5404715648892,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "tw",
+          "expression": "F/((260+175)*9.80665)",
+          "value": 4.120992135511192,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "S3.2",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Kmax",
+          "expression": "6e6/(1760*.007*1480)*(8.5e6/6e6)**(1-.33)",
+          "value": 415.5546722583129,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "rpmax",
+          "expression": "Kmax*.0014/(2*pi*1.2)",
+          "value": 0.07716051025065018,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "Kn",
+          "expression": "2*pi*.10*1.2/.0014",
+          "value": 538.5587406153932,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "pc",
+          "expression": "6e6*(1760*.007*1480*Kn/6e6)**(1/(1-.33))",
+          "value": 12516587.917110784,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "frac",
+          "expression": "pc/8.5e6*100",
+          "value": 147.253975495421,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "S2.4",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ve",
+          "expression": "1800*9.80665",
+          "value": 17651.969999999998,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "mp",
+          "expression": "900*(1-exp(-450/ve))",
+          "value": 22.653634465103316,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F",
+          "expression": "2*.55*1350/ve",
+          "value": 0.0841265875706791,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "md",
+          "expression": "F/ve",
+          "value": 4.765846960462719e-06,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "t",
+          "expression": "mp/md",
+          "value": 4753328.139371026,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "dias",
+          "expression": "t/86400",
+          "value": 55.01537198346095,
+          "unit": "d",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "S3.4",
+      "steps": [
+        {
+          "index": 1,
+          "target": "F1",
+          "expression": "2*.65*2500/30000",
+          "value": 0.10833333333333334,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "nex",
+          "expression": ".30/F1",
+          "value": 2.769230769230769,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F3",
+          "expression": "3*F1",
+          "value": 0.325,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "P",
+          "expression": "3*2500",
+          "value": 7500.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "md",
+          "expression": "F3/30000",
+          "value": 1.0833333333333334e-05,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "A",
+          "expression": "P/150",
+          "value": 50.0,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    }
+  ]
+}
