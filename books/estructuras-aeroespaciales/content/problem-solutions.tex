@@ -3252,7 +3252,7 @@ Flector nulo en la rótula (parte derecha).\[\fitmath{R_B\,(x_B - x_H) + F\,(x_C
 \studiumcaption{fig:e2-c03-gerber-esfuerzos}{Diagramas de la viga Gerber: flector nulo en la rótula, saltos del cortante en \(D\), \(B\) y \(C\), y extremos del flector en el empotramiento y en \(D\).}
 \end{minipage}\par\medskip
 
-\textbf{Resultado e interpretación.}\[\fitmath{\begin{gathered}R_A = 41{,}79\ \mathrm{kN}\\R_B = 16{,}21\ \mathrm{kN}\\M_A = 103{,}5\ \mathrm{kN\,m}\ \text{(horario)}\\M_{z,\max} = 37{,}57\ \mathrm{kN\,m}\ (x = 5)\\M_{z,\min} = -103{,}5\ \mathrm{kN\,m}\ (x = 0)\end{gathered}}\]
+\textbf{Resultado e interpretación.}\[\fitmath{\begin{gathered}R_A = 41{,}79\ \mathrm{kN}\\R_B = 16{,}21\ \mathrm{kN}\\M_A = 103{,}5\ \mathrm{kN\,m}\ \text{(antihorario)}\\M_{z,\max} = 37{,}57\ \mathrm{kN\,m}\ (x = 5)\\M_{z,\min} = -103{,}5\ \mathrm{kN\,m}\ (x = 0)\end{gathered}}\]
 
 La rótula fija un cero del flector en $x = 3$ m: a su izquierda el empotramiento trabaja como una ménsula, con flexión negativa grande, y a su derecha el tramo $HB$ se comporta como una viga apoyada en la rótula y en $B$, con flexión positiva. La fuerza hacia arriba en el voladizo reduce la reacción en $B$ y produce un flector positivo sobre el apoyo.
 
@@ -10362,7 +10362,7 @@ El centro de cortadura de una sección C abierta no coincide con el centroide; e
 
 \section{PRB-0217 · Perfil abierto en Z}
 
-\textbf{Enunciado.} Un perfil abierto Z con ala inferior de 60 mm a la izquierda, alma de 110 mm y ala superior de 45 mm a la derecha, espesor 2 mm, recibe simultáneamente V\_y=4,2 kN y V\_z=1,2 kN. Determine los flujos por tramos, la tensión tangencial máxima y el centro de cortadura.
+\textbf{Enunciado.} Un perfil abierto Z con ala superior de 60 mm a la izquierda, alma de 110 mm y ala inferior de 45 mm a la derecha, espesor 2 mm, recibe simultáneamente V\_y=4,2 kN y V\_z=1,2 kN. Determine los flujos por tramos, la tensión tangencial máxima y el centro de cortadura.
 
 \par\medskip\noindent\begin{tabular}{@{}p{.18\linewidth}p{.26\linewidth}p{.48\linewidth}@{}}
 \toprule Símbolo & Valor y unidad & Significado\\\midrule
@@ -10465,7 +10465,7 @@ Una sección abierta sin simetría requiere conservar el producto de inercia y r
 
 \section{PRB-0218 · Cajón unicelular no uniforme}
 
-\textbf{Enunciado.} Un cajón unicelular de línea media 140 \ensuremath{\times} 80 mm tiene espesor de 2 mm en cara inferior y derecha, y de 3 mm en cara superior e izquierda. Para V\_y=8 kN aplicado en el centro de cortadura, determine los flujos por pared, la tensión tangencial máxima y la posición del centro de cortadura.
+\textbf{Enunciado.} Un cajón unicelular de línea media 140 \ensuremath{\times} 80 mm tiene espesor de 2 mm en cara superior y derecha, y de 3 mm en cara inferior e izquierda. Para V\_y=8 kN aplicado en el centro de cortadura, determine los flujos por pared, la tensión tangencial máxima y la posición del centro de cortadura.
 
 \par\medskip\noindent\begin{tabular}{@{}p{.18\linewidth}p{.26\linewidth}p{.48\linewidth}@{}}
 \toprule Símbolo & Valor y unidad & Significado\\\midrule
@@ -10513,9 +10513,9 @@ Equilibrio de pared delgada.\[\fitmath{\frac{\mathrm{d}q}{\mathrm{d}s}=-t(\alpha
 \item Imponer continuidad y equilibrio en los nudos; en contornos abiertos q=0 en extremos libres y en celdas cerradas imponer compatibilidad de giros.
 \item Localizar el centro de cortadura anulando el torsor debido al flujo; calcular la tensión máxima por |q(s)|/t en paredes y puntos críticos.
 \item Las leyes completas q(s) por pared se indican a continuación; la coordenada s se mide desde el nudo inicial de cada pared y el sentido firmado sigue las flechas del diagrama. Los resultados geométricos se obtienen con la misma idealización de paredes y larguerillos del enunciado.
-\item Pared inferior: q(s) = $\frac{9 s^{2} + 86370 s}{158290} - \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+\item Pared superior: q(s) = $\frac{9 s^{2} + 86370 s}{158290} - \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared derecha: q(s) = $\frac{- 15531 s^{2} + 1422240 s}{2532640} + \frac{568470}{15829}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
-\item Pared superior: q(s) = $\frac{- 27 s^{2} - 199260 s}{316580} + \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
+\item Pared inferior: q(s) = $\frac{- 27 s^{2} - 199260 s}{316580} + \frac{59850}{1439}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared izquierda: q(s) = $\frac{46593 s^{2} - 3309120 s}{5065280} - \frac{762930}{15829}$ N/mm; s en mm desde su nudo inicial, con signo según el recorrido.
 \item Pared crítica: derecha; s = 45.7871354 mm desde su nudo inicial.\end{itemize}
 
