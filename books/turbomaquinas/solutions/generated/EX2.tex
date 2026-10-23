@@ -1,0 +1,160 @@
+\subsection*{Procedimiento y operaciones del simulacro D}
+El escalón repetitivo con descarga axial se resuelve con Euler; la reacción sale de la caída estática del rotor entre el trabajo, con radio constante. La pala se trata como barra uniforme sometida a fuerza centrífuga y la pared como una red térmica de tres resistencias en serie.
+
+\begin{enumerate}
+
+\item Temperatura total de entrada a la turbina.
+
+\[\fitmath{T_{01}=1400\approx 1400\,\mathrm{K}}\]
+
+\item Calor específico del gas caliente.
+
+\[\fitmath{\mathrm{cp}=1150\approx 1150\,\mathrm{J/(kg\,K)}}\]
+
+\item Razón de calores del gas caliente.
+
+\[\fitmath{\gamma=1.33\approx 1.33\,}\]
+
+\item Velocidad periférica al radio medio.
+
+\[\fitmath{U=320\approx 320\,\mathrm{m/s}}\]
+
+\item Velocidad axial constante.
+
+\[\fitmath{\mathrm{Cx}=200\approx 200\,\mathrm{m/s}}\]
+
+\item Remolino absoluto a la salida del estator.
+
+\[\fitmath{\mathrm{Cth}_{2}=384\approx 384\,\mathrm{m/s}}\]
+
+\item Trabajo específico con descarga axial.
+
+\[\fitmath{w=U\cdot \mathrm{Cth}_{2}}\]
+
+\[\fitmath{w=(320)\cdot (384)\approx 122880\,\mathrm{J/kg}}\]
+
+\item Coeficiente de carga.
+
+\[\fitmath{\psi=\frac{w}{{U}^{2}}}\]
+
+\[\fitmath{\psi=\frac{(122880)}{{(320)}^{2}}\approx 1.2\,}\]
+
+\item Coeficiente de flujo.
+
+\[\fitmath{\varphi=\frac{\mathrm{Cx}}{U}}\]
+
+\[\fitmath{\varphi=\frac{(200)}{(320)}\approx 0.625\,}\]
+
+\item Caída de temperatura total.
+
+\[\fitmath{\mathrm{dT}_{0}=\frac{w}{\mathrm{cp}}}\]
+
+\[\fitmath{\mathrm{dT}_{0}=\frac{(122880)}{(1150)}\approx 106.8522\,\mathrm{K}}\]
+
+\item Rendimiento total-total.
+
+\[\fitmath{\eta=0.9\approx 0.9\,}\]
+
+\item Razón de expansión total-total.
+
+\[\fitmath{\mathrm{pr}={\left(1-\frac{\mathrm{dT}_{0}}{\eta\cdot T_{01}}\right)}^{\frac{-\gamma}{\gamma-1}}}\]
+
+\[\fitmath{\mathrm{pr}={\left(1-\frac{(106.8521739)}{(0.9)\cdot (1400)}\right)}^{\frac{-(1.33)}{(1.33)-1}}\approx 1.429251\,}\]
+
+\item Ángulo absoluto a la entrada del rotor.
+
+\[\fitmath{a_{2}=\frac{\arctan\left(\frac{\mathrm{Cth}_{2}}{\mathrm{Cx}}\right)\cdot 180}{\pi}}\]
+
+\[\fitmath{a_{2}=\frac{\arctan\left(\frac{(384)}{(200)}\right)\cdot 180}{\pi}\approx 62.488\,{}^{\circ}}\]
+
+\item Cuadrado de la velocidad relativa a la entrada del rotor.
+
+\[\fitmath{W2sq={\mathrm{Cx}}^{2}+{\left(\mathrm{Cth}_{2}-U\right)}^{2}}\]
+
+\[\fitmath{W2sq={(200)}^{2}+{\left((384)-(320)\right)}^{2}\approx 44096\,\mathrm{m^{2}/s^{2}}}\]
+
+\item Cuadrado de la velocidad relativa a la salida, con descarga axial.
+
+\[\fitmath{W3sq={\mathrm{Cx}}^{2}+{U}^{2}}\]
+
+\[\fitmath{W3sq={(200)}^{2}+{(320)}^{2}\approx 142400\,\mathrm{m^{2}/s^{2}}}\]
+
+\item Reacción como cociente de caída estática del rotor y trabajo del escalón repetitivo.
+
+\[\fitmath{R=\frac{W3sq-W2sq}{2\cdot w}}\]
+
+\[\fitmath{R=\frac{(142400)-(44096)}{2\cdot (122880)}\approx 0.4\,}\]
+
+\item Densidad del material de la pala.
+
+\[\fitmath{\rho=8200\approx 8200\,\mathrm{kg/m^{3}}}\]
+
+\item Régimen de giro.
+
+\[\fitmath{\mathrm{Nb}=9000\approx 9000\,\mathrm{min^{-1}}}\]
+
+\item Velocidad angular.
+
+\[\fitmath{\mathrm{om}=\frac{2\cdot \pi\cdot \mathrm{Nb}}{60}}\]
+
+\[\fitmath{\mathrm{om}=\frac{2\cdot \pi\cdot (9000)}{60}\approx 942.4778\,\mathrm{rad/s}}\]
+
+\item Tensión centrífuga de una barra uniforme entre cubo y punta.
+
+\[\fitmath{\mathrm{sig}=\frac{\rho\cdot {\mathrm{om}}^{2}\cdot \left({0.45}^{2}-{0.35}^{2}\right)}{2}}\]
+
+\[\fitmath{\mathrm{sig}=\frac{(8200)\cdot {(942.4777961)}^{2}\cdot \left({0.45}^{2}-{0.35}^{2}\right)}{2}\approx 2.913507\times10^{8}\,\mathrm{Pa}}\]
+
+\item Velocidad periférica en la punta.
+
+\[\fitmath{\mathrm{Ut}=\mathrm{om}\cdot 0.45}\]
+
+\[\fitmath{\mathrm{Ut}=(942.4777961)\cdot 0.45\approx 424.115\,\mathrm{m/s}}\]
+
+\item Tensión admisible docente a la temperatura de la pala.
+
+\[\fitmath{\mathrm{sa}=400000000\approx 4\times10^{8}\,\mathrm{Pa}}\]
+
+\item Coeficiente de seguridad.
+
+\[\fitmath{\mathrm{SF}=\frac{\mathrm{sa}}{\mathrm{sig}}}\]
+
+\[\fitmath{\mathrm{SF}=\frac{(400000000)}{(291350721.9)}\approx 1.372916\,}\]
+
+\item Temperatura de recuperación exterior.
+
+\[\fitmath{\mathrm{Tg}=1500\approx 1500\,\mathrm{K}}\]
+
+\item Temperatura del refrigerante.
+
+\[\fitmath{\mathrm{Tc}=700\approx 700\,\mathrm{K}}\]
+
+\item Resistencia térmica por área de la red de pared.
+
+\[\fitmath{\mathrm{Rt}=\frac{1}{1800}+\frac{0.0015}{25}+\frac{1}{2500}\approx 0.001015556\,\mathrm{m^{2}\,K/W}}\]
+
+\item Flujo de calor estacionario.
+
+\[\fitmath{q=\frac{\mathrm{Tg}-\mathrm{Tc}}{\mathrm{Rt}}}\]
+
+\[\fitmath{q=\frac{(1500)-(700)}{(0.001015555556)}\approx 787746.2\,\mathrm{W/m^{2}}}\]
+
+\item Temperatura de la pared caliente.
+
+\[\fitmath{\mathrm{Twh}=\mathrm{Tg}-\frac{q}{1800}}\]
+
+\[\fitmath{\mathrm{Twh}=(1500)-\frac{(787746.1707)}{1800}\approx 1062.363\,\mathrm{K}}\]
+
+\item Diferencia de temperatura a través de la pared.
+
+\[\fitmath{\mathrm{dTw}=\frac{q\cdot 0.0015}{25}}\]
+
+\[\fitmath{\mathrm{dTw}=\frac{(787746.1707)\cdot 0.0015}{25}\approx 47.26477\,\mathrm{K}}\]
+
+\item Tensión térmica con restricción total uniaxial.
+
+\[\fitmath{\mathrm{sth}=1.9\times10^{11}\cdot 1.4\times10^{-5}\cdot \mathrm{dTw}}\]
+
+\[\fitmath{\mathrm{sth}=1.9\times10^{11}\cdot 1.4\times10^{-5}\cdot (47.26477024)\approx 1.257243\times10^{8}\,\mathrm{Pa}}\]
+
+\end{enumerate}

@@ -1,0 +1,98 @@
+\subsection*{Procedimiento y operaciones del simulacro E}
+La corrección usa los cocientes $\theta=T/T_{ref}$ y $\delta=p/p_{ref}$: $N/\sqrt\theta$ y $\dot m\sqrt\theta/\delta$. El acoplamiento iguala la potencia del compresor con la de la turbina multiplicada por el rendimiento mecánico, y la razón de expansión sale de la caída de temperatura con el rendimiento total-total.
+
+\begin{enumerate}
+
+\item Temperatura total de entrada en el ensayo.
+
+\[\fitmath{\mathrm{Tin}=250\approx 250\,\mathrm{K}}\]
+
+\item Presión total de entrada en el ensayo.
+
+\[\fitmath{\mathrm{pin}=70000\approx 70000\,\mathrm{Pa}}\]
+
+\item Caudal másico medido.
+
+\[\fitmath{m=14\approx 14\,\mathrm{kg/s}}\]
+
+\item Régimen medido.
+
+\[\fitmath{N=10200\approx 10200\,\mathrm{min^{-1}}}\]
+
+\item Cociente de temperatura respecto a la referencia.
+
+\[\fitmath{\mathrm{th}=\frac{\mathrm{Tin}}{288.15}}\]
+
+\[\fitmath{\mathrm{th}=\frac{(250)}{288.15}\approx 0.8676037\,}\]
+
+\item Cociente de presión respecto a la referencia.
+
+\[\fitmath{\mathrm{de}=\frac{\mathrm{pin}}{101325}}\]
+
+\[\fitmath{\mathrm{de}=\frac{(70000)}{101325}\approx 0.6908463\,}\]
+
+\item Régimen corregido.
+
+\[\fitmath{\mathrm{Nc}=\frac{N}{\sqrt{\mathrm{th}}}}\]
+
+\[\fitmath{\mathrm{Nc}=\frac{(10200)}{\sqrt{(0.8676036786)}}\approx 10950.64\,\mathrm{min^{-1}}}\]
+
+\item Caudal corregido.
+
+\[\fitmath{\mathrm{mc}=\frac{m\cdot \sqrt{\mathrm{th}}}{\mathrm{de}}}\]
+
+\[\fitmath{\mathrm{mc}=\frac{(14)\cdot \sqrt{(0.8676036786)}}{(0.6908462867)}\approx 18.87588\,\mathrm{kg/s}}\]
+
+\item Cociente de temperatura del punto equivalente.
+
+\[\fitmath{\mathrm{th}_{2}=\frac{320}{288.15}\approx 1.110533\,}\]
+
+\item Régimen físico con el mismo régimen corregido.
+
+\[\fitmath{N_{2}=\mathrm{Nc}\cdot \sqrt{\mathrm{th}_{2}}}\]
+
+\[\fitmath{N_{2}=(10950.63943)\cdot \sqrt{(1.110532709)}\approx 11539.98\,\mathrm{min^{-1}}}\]
+
+\item Caudal físico a 101325 Pa con el mismo caudal corregido.
+
+\[\fitmath{m_{2}=\frac{\mathrm{mc}}{\sqrt{\mathrm{th}_{2}}}}\]
+
+\[\fitmath{m_{2}=\frac{(18.87588403)}{\sqrt{(1.110532709)}}\approx 17.9119\,\mathrm{kg/s}}\]
+
+\item Caudal del compresor.
+
+\[\fitmath{\mathrm{mcomp}=22\approx 22\,\mathrm{kg/s}}\]
+
+\item Aumento de temperatura total del compresor.
+
+\[\fitmath{\mathrm{dTc}=240\approx 240\,\mathrm{K}}\]
+
+\item Potencia absorbida por el compresor.
+
+\[\fitmath{\mathrm{Pc}=\mathrm{mcomp}\cdot 1005\cdot \mathrm{dTc}}\]
+
+\[\fitmath{\mathrm{Pc}=(22)\cdot 1005\cdot (240)\approx 5306400\,\mathrm{W}}\]
+
+\item Caudal de la turbina con combustible y sangrado.
+
+\[\fitmath{\mathrm{mt}=\left(1+0.02-0.05\right)\cdot \mathrm{mcomp}}\]
+
+\[\fitmath{\mathrm{mt}=\left(1+0.02-0.05\right)\cdot (22)\approx 21.34\,\mathrm{kg/s}}\]
+
+\item Caída de temperatura total requerida en la turbina.
+
+\[\fitmath{\mathrm{dTt}=\frac{\mathrm{Pc}}{0.99\cdot \mathrm{mt}\cdot 1150}}\]
+
+\[\fitmath{\mathrm{dTt}=\frac{(5306400)}{0.99\cdot (21.34)\cdot 1150}\approx 218.41\,\mathrm{K}}\]
+
+\item Temperatura total de entrada a la turbina.
+
+\[\fitmath{T_{04}=1450\approx 1450\,\mathrm{K}}\]
+
+\item Razón de expansión total-total de la turbina.
+
+\[\fitmath{\mathrm{prt}={\left(1-\frac{\mathrm{dTt}}{0.88\cdot T_{04}}\right)}^{\frac{-1.33}{0.33}}}\]
+
+\[\fitmath{\mathrm{prt}={\left(1-\frac{(218.4100077)}{0.88\cdot (1450)}\right)}^{\frac{-1.33}{0.33}}\approx 2.131101\,}\]
+
+\end{enumerate}

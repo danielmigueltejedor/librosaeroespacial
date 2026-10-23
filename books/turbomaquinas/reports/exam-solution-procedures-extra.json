@@ -1,0 +1,758 @@
+{
+  "scope": "Original numeric exam data and authored derivations; no independent approval",
+  "records": [
+    {
+      "exam": 1,
+      "steps": [
+        {
+          "index": 1,
+          "target": "T01",
+          "expression": "288.15",
+          "value": 288.15,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "p01",
+          "expression": "101325.0",
+          "value": 101325.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "U",
+          "expression": "250.0",
+          "value": 250.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "Cx",
+          "expression": "160.0",
+          "value": 160.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "Cth1",
+          "expression": "70.0",
+          "value": 70.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "Cth2",
+          "expression": "180.0",
+          "value": 180.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "cp",
+          "expression": "1005.0",
+          "value": 1005.0,
+          "unit": "J/(kg*K)",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "mdot",
+          "expression": "20.0",
+          "value": 20.0,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "w",
+          "expression": "U*(Cth2-Cth1)",
+          "value": 27500.0,
+          "unit": "J/kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "dT0",
+          "expression": "w/cp",
+          "value": 27.36318407960199,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "T02",
+          "expression": "T01+dT0",
+          "value": 315.513184079602,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "eta",
+          "expression": ".88",
+          "value": 0.88,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "pr",
+          "expression": "(1+eta*dT0/T01)**(1.4/.4)",
+          "value": 1.3243234838710225,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 14,
+          "target": "p02",
+          "expression": "p01*pr",
+          "value": 134187.07700323136,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 15,
+          "target": "P",
+          "expression": "mdot*w",
+          "value": 550000.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 16,
+          "target": "R",
+          "expression": "1-(Cth1+Cth2)/(2*U)",
+          "value": 0.5,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 17,
+          "target": "W1",
+          "expression": "sqrt(Cx**2+(U-Cth1)**2)",
+          "value": 240.8318915758459,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 18,
+          "target": "W2",
+          "expression": "sqrt(Cx**2+(U-Cth2)**2)",
+          "value": 174.64249196572982,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 19,
+          "target": "DH",
+          "expression": "W2/W1",
+          "value": 0.725163477407348,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 20,
+          "target": "b1",
+          "expression": "atan((U-Cth1)/Cx)*180/pi",
+          "value": 48.3664606634298,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 21,
+          "target": "b2",
+          "expression": "atan((U-Cth2)/Cx)*180/pi",
+          "value": 23.629377730656817,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 22,
+          "target": "N",
+          "expression": "36000.0",
+          "value": 36000.0,
+          "unit": "min**-1",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 23,
+          "target": "om",
+          "expression": "2*pi*N/60",
+          "value": 3769.9111843077517,
+          "unit": "rad/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 24,
+          "target": "U2",
+          "expression": "om*.30/2",
+          "value": 565.4866776461628,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 25,
+          "target": "sg",
+          "expression": ".85",
+          "value": 0.85,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 26,
+          "target": "Cth2r",
+          "expression": "sg*U2",
+          "value": 480.66367599923836,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 27,
+          "target": "wr",
+          "expression": "U2*Cth2r",
+          "value": 271808.90520600096,
+          "unit": "J/kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 28,
+          "target": "T01r",
+          "expression": "300.0",
+          "value": 300.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 29,
+          "target": "dT0r",
+          "expression": "wr/cp",
+          "value": 270.45662209552336,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 30,
+          "target": "etar",
+          "expression": ".80",
+          "value": 0.8,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 31,
+          "target": "prr",
+          "expression": "(1+etar*dT0r/T01r)**(1.4/.4)",
+          "value": 6.689987030863942,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 32,
+          "target": "a01",
+          "expression": "sqrt(1.4*287.05287*T01r)",
+          "value": 347.22068688371667,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 33,
+          "target": "Mu",
+          "expression": "U2/a01",
+          "value": 1.6286088329626018,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 34,
+          "target": "Pr",
+          "expression": "1.2*wr",
+          "value": 326170.6862472011,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "exam": 2,
+      "steps": [
+        {
+          "index": 1,
+          "target": "T01",
+          "expression": "1400.0",
+          "value": 1400.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "cp",
+          "expression": "1150.0",
+          "value": 1150.0,
+          "unit": "J/(kg*K)",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "gam",
+          "expression": "1.33",
+          "value": 1.33,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "U",
+          "expression": "320.0",
+          "value": 320.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "Cx",
+          "expression": "200.0",
+          "value": 200.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "Cth2",
+          "expression": "384.0",
+          "value": 384.0,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "w",
+          "expression": "U*Cth2",
+          "value": 122880.0,
+          "unit": "J/kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "psi",
+          "expression": "w/U**2",
+          "value": 1.2,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "phi",
+          "expression": "Cx/U",
+          "value": 0.625,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "dT0",
+          "expression": "w/cp",
+          "value": 106.85217391304347,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "eta",
+          "expression": ".90",
+          "value": 0.9,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "pr",
+          "expression": "(1-dT0/(eta*T01))**(-gam/(gam-1))",
+          "value": 1.4292508894533322,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "a2",
+          "expression": "atan(Cth2/Cx)*180/pi",
+          "value": 62.48799737614855,
+          "unit": "degree",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 14,
+          "target": "W2sq",
+          "expression": "Cx**2+(Cth2-U)**2",
+          "value": 44096.0,
+          "unit": "m**2/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 15,
+          "target": "W3sq",
+          "expression": "Cx**2+U**2",
+          "value": 142400.0,
+          "unit": "m**2/s**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 16,
+          "target": "R",
+          "expression": "(W3sq-W2sq)/(2*w)",
+          "value": 0.4,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 17,
+          "target": "rho",
+          "expression": "8200.0",
+          "value": 8200.0,
+          "unit": "kg/m**3",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 18,
+          "target": "Nb",
+          "expression": "9000.0",
+          "value": 9000.0,
+          "unit": "min**-1",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 19,
+          "target": "om",
+          "expression": "2*pi*Nb/60",
+          "value": 942.4777960769379,
+          "unit": "rad/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 20,
+          "target": "sig",
+          "expression": "rho*om**2*(.45**2-.35**2)/2",
+          "value": 291350721.9201579,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 21,
+          "target": "Ut",
+          "expression": "om*.45",
+          "value": 424.11500823462205,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 22,
+          "target": "sa",
+          "expression": "400e6",
+          "value": 400000000.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 23,
+          "target": "SF",
+          "expression": "sa/sig",
+          "value": 1.3729157675113517,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 24,
+          "target": "Tg",
+          "expression": "1500.0",
+          "value": 1500.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 25,
+          "target": "Tc",
+          "expression": "700.0",
+          "value": 700.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 26,
+          "target": "Rt",
+          "expression": "1/1800+.0015/25+1/2500",
+          "value": 0.0010155555555555556,
+          "unit": "m**2*K/W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 27,
+          "target": "q",
+          "expression": "(Tg-Tc)/Rt",
+          "value": 787746.170678337,
+          "unit": "W/m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 28,
+          "target": "Twh",
+          "expression": "Tg-q/1800",
+          "value": 1062.363238512035,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 29,
+          "target": "dTw",
+          "expression": "q*.0015/25",
+          "value": 47.26477024070022,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 30,
+          "target": "sth",
+          "expression": "190e9*14e-6*dTw",
+          "value": 125724288.84026259,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "exam": 3,
+      "steps": [
+        {
+          "index": 1,
+          "target": "Tin",
+          "expression": "250.0",
+          "value": 250.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "pin",
+          "expression": "70000.0",
+          "value": 70000.0,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "m",
+          "expression": "14.0",
+          "value": 14.0,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "N",
+          "expression": "10200.0",
+          "value": 10200.0,
+          "unit": "min**-1",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "th",
+          "expression": "Tin/288.15",
+          "value": 0.8676036786395975,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "de",
+          "expression": "pin/101325",
+          "value": 0.690846286701209,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "Nc",
+          "expression": "N/sqrt(th)",
+          "value": 10950.6394333847,
+          "unit": "min**-1",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "mc",
+          "expression": "m*sqrt(th)/de",
+          "value": 18.875884030099126,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "th2",
+          "expression": "320/288.15",
+          "value": 1.1105327086586847,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "N2",
+          "expression": "Nc*sqrt(th2)",
+          "value": 11539.982668964454,
+          "unit": "min**-1",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "m2",
+          "expression": "mc/sqrt(th2)",
+          "value": 17.911898650931732,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "mcomp",
+          "expression": "22.0",
+          "value": 22.0,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "dTc",
+          "expression": "240.0",
+          "value": 240.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 14,
+          "target": "Pc",
+          "expression": "mcomp*1005*dTc",
+          "value": 5306400.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 15,
+          "target": "mt",
+          "expression": "(1+.02-.05)*mcomp",
+          "value": 21.34,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 16,
+          "target": "dTt",
+          "expression": "Pc/(.99*mt*1150)",
+          "value": 218.4100077421458,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 17,
+          "target": "T04",
+          "expression": "1450.0",
+          "value": 1450.0,
+          "unit": "K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 18,
+          "target": "prt",
+          "expression": "(1-dTt/(.88*T04))**(-1.33/.33)",
+          "value": 2.1311012055565524,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    }
+  ]
+}

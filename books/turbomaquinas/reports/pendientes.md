@@ -8,3 +8,4 @@
 6. Calibrar cualquier mapa o modelo de estabilidad si se pretende usarlo para una máquina; aquí no hay mapas experimentales ni línea de bombeo predicha.
 7. Contrastar dificultad y rúbricas de simulacros con el criterio del profesorado. Son originales y no oficiales.
 8. Comprobar en el ejemplar el año de la edición india de Hill y Peterson: la guía indica 2010 y la lista editorial consultada 2009 para el mismo ISBN.
+9. Las limitaciones de cada problema resuelto se redactan por modelo (`scripts/specific-turbomachinery-limits.py`) y los simulacros C a E se generan con `scripts/author-turbomachinery-extra-exams.py`; ninguno ha tenido revisión académica independiente.

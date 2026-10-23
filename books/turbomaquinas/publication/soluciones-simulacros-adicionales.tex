@@ -1,0 +1,29 @@
+\chapter{Soluciones de los simulacros adicionales C a E}
+Las cifras se calculan con las operaciones mostradas; son aritmética reproducida de datos docentes, sin aprobación académica independiente.
+
+\section{Simulacro C}
+\textbf{Cuestiones.} El trabajo de Euler es el cambio del flujo de momento angular y solo depende de la cinemática, $w=U\,\Delta C_\theta$; la eficiencia determina qué parte de ese trabajo se convierte en aumento de presión total y qué parte se pierde como entropía, de modo que a igual $w$ una eficiencia menor da menor razón de presiones. El cociente $W_2/W_1$ mide la desaceleración relativa en el rotor y es un indicador de difusión: por debajo de unos $0.7$ el riesgo de desprendimiento aumenta, aunque el umbral depende del perfil y no se universaliza. El deslizamiento reduce el remolino de salida porque el flujo no sigue el álabe, con lo que cae $C_{\theta2}$ y el trabajo.
+
+\textbf{Escalón axial.} $w=U(C_{\theta2}-C_{\theta1})=27500\,\mathrm{J/kg}$ y $\Delta T_0=27.3632\,\mathrm K$, de modo que $T_{02}=315.513\,\mathrm K$. La razón de presiones es $1.32432$ y $p_{02}=134187\,\mathrm{Pa}$. La potencia es $\dot m w=550000\,\mathrm W$ y la reacción $1-(C_{\theta1}+C_{\theta2})/(2U)=0.5$. Las velocidades relativas son $W_1=240.832\,\mathrm{m/s}$ y $W_2=174.642\,\mathrm{m/s}$, con ángulos $48.3665^\circ$ y $23.6294^\circ$ respecto al eje. El cociente $W_2/W_1=0.725163$ está justo por encima de $0.72$, valor que suele citarse como límite para evitar difusión excesiva; se trata de un criterio orientativo.
+
+\textbf{Rodete.} $U_2=565.487\,\mathrm{m/s}$ y $C_{\theta2}=\sigma U_2=480.664\,\mathrm{m/s}$. El trabajo es $w=U_2C_{\theta2}=271809\,\mathrm{J/kg}$ y $\Delta T_0=270.457\,\mathrm K$, con razón de presiones $6.68999$. El Mach periférico es $U_2/a_{01}=1.62861$ con $a_{01}=347.221\,\mathrm{m/s}$, y la potencia con $1.2\,\mathrm{kg/s}$ es $326171\,\mathrm W$. Un Mach periférico supersónico obliga a vigilar el choque en el difusor, y la tensión del rodete limita la velocidad periférica; ninguno de los dos efectos entra en este cálculo ideal.
+
+\input{../solutions/generated/EX1.tex}
+
+\section{Simulacro D}
+\textbf{Cuestiones.} El coeficiente de carga $\psi=w/U^2$ mide el trabajo extraído por unidad de energía cinética periférica y el de flujo $\phi=C_x/U$ el caudal axial adimensional; juntos fijan los ángulos de los triángulos y, con ellos, la difusión y las pérdidas. La reacción es el cociente de la caída de entalpía estática del rotor entre la del escalón; con radio constante y rotor adiabático la caída estática del rotor es $(W_3^2-W_2^2)/2$, y en un escalón repetitivo ($C_3=C_1$) la caída del escalón coincide con el trabajo. En una barra uniforme la tensión en la raíz es el peso centrífugo del material por encima de ella dividido por el área, y el área se cancela.
+
+\textbf{Escalón.} $w=UC_{\theta2}=122880\,\mathrm{J/kg}$, $\psi=1.2$, $\phi=0.625$ y $\Delta T_0=106.852\,\mathrm K$. La razón de expansión es $1.42925$ y el ángulo absoluto de entrada al rotor es $62.488^\circ$. Las velocidades relativas al cuadrado son $W_2^2=44096\,\mathrm{m^2/s^2}$ y $W_3^2=142400\,\mathrm{m^2/s^2}$, y la reacción es $(W_3^2-W_2^2)/(2w)=0.4$.
+
+\textbf{Pala.} $\sigma=\rho\omega^2(r_t^2-r_h^2)/2=2.91351\times10^{8}\,\mathrm{Pa}$ con $U_t=424.115\,\mathrm{m/s}$, de modo que el coeficiente de seguridad frente a $400\,\mathrm{MPa}$ es $1.37292$. La red térmica tiene $R=0.00101556\,\mathrm{m^2K/W}$, un flujo $q=787746\,\mathrm{W/m^2}$, una pared caliente a $1062.36\,\mathrm K$ y una diferencia de temperatura de $47.2648\,\mathrm K$ a través de la pared. La tensión térmica con restricción total es $E\alpha\Delta T=1.25724\times10^{8}\,\mathrm{Pa}$. El modelo deja fuera la concentración de tensiones en la raíz, la fluencia a esa temperatura, la fatiga, la película de refrigeración y el gradiente térmico bidimensional en el borde de ataque.
+
+\input{../solutions/generated/EX2.tex}
+
+\section{Simulacro E}
+\textbf{Cuestiones.} El régimen corregido $N/\sqrt\theta$ y el caudal corregido $\dot m\sqrt\theta/\delta$ agrupan los efectos de la temperatura y la presión de entrada si el gas es el mismo, el número de Reynolds es comparable y la cinemática es semejante; entonces la razón de presiones y el rendimiento son iguales. Un margen de bombeo es una distancia a la línea de bombeo del mapa, y esa línea solo se conoce con datos experimentales del compresor completo. La turbina entrega la potencia que absorbe el compresor y los auxiliares, más las pérdidas mecánicas, porque comparten eje: si hubiera un exceso, el régimen aumentaría.
+
+\textbf{Corrección.} $\theta=0.867604$ y $\delta=0.690846$. El régimen corregido es $10950.6\,\mathrm{min^{-1}}$ y el caudal corregido $18.8759\,\mathrm{kg/s}$. Para $T=320\,\mathrm K$ y $p=101325\,\mathrm{Pa}$, $\theta=1.11053$ y $\delta=1$: el régimen físico es $11540\,\mathrm{min^{-1}}$ y el caudal físico $17.9119\,\mathrm{kg/s}$. Se supone el mismo gas, número de Reynolds comparable y la misma cinemática; no se corrige por holguras ni por cambios de $\gamma$.
+
+\textbf{Generador de gas.} La potencia del compresor es $5.3064\times10^{6}\,\mathrm W$. El caudal de turbina es $21.34\,\mathrm{kg/s}$ y la caída de temperatura total necesaria, $\Delta T_{0t}=P_c/(\eta_m\dot m_tc_{p})=218.41\,\mathrm K$. Con $\eta_t=0.88$ y $T_{04}=1450\,\mathrm K$ la razón de expansión total-total es $2.1311$. El modelo omite el aire de refrigeración reinyectado, la variación de $c_p$ con la temperatura y la potencia de los auxiliares.
+
+\input{../solutions/generated/EX3.tex}

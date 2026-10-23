@@ -1,0 +1,184 @@
+\subsection*{Procedimiento y operaciones del simulacro C}
+Se aplica la ecuación de Euler con radio constante en el escalón axial y con $C_{\theta1}=0$ en el rodete. La razón de presiones sale del rendimiento total-total; la reacción, de la cinemática con $C_x$ constante.
+
+\begin{enumerate}
+
+\item Temperatura total de entrada.
+
+\[\fitmath{T_{01}=288.15\approx 288.15\,\mathrm{K}}\]
+
+\item Presión total de entrada.
+
+\[\fitmath{p_{01}=101325\approx 101325\,\mathrm{Pa}}\]
+
+\item Velocidad periférica al radio medio.
+
+\[\fitmath{U=250\approx 250\,\mathrm{m/s}}\]
+
+\item Velocidad axial, constante en el escalón.
+
+\[\fitmath{\mathrm{Cx}=160\approx 160\,\mathrm{m/s}}\]
+
+\item Remolino absoluto a la entrada del rotor.
+
+\[\fitmath{\mathrm{Cth}_{1}=70\approx 70\,\mathrm{m/s}}\]
+
+\item Remolino absoluto a la salida del rotor.
+
+\[\fitmath{\mathrm{Cth}_{2}=180\approx 180\,\mathrm{m/s}}\]
+
+\item Calor específico.
+
+\[\fitmath{\mathrm{cp}=1005\approx 1005\,\mathrm{J/(kg\,K)}}\]
+
+\item Caudal másico.
+
+\[\fitmath{\mathrm{mdot}=20\approx 20\,\mathrm{kg/s}}\]
+
+\item Trabajo específico de Euler con radio constante.
+
+\[\fitmath{w=U\cdot \left(\mathrm{Cth}_{2}-\mathrm{Cth}_{1}\right)}\]
+
+\[\fitmath{w=(250)\cdot \left((180)-(70)\right)\approx 27500\,\mathrm{J/kg}}\]
+
+\item Aumento de temperatura total, adiabático.
+
+\[\fitmath{\mathrm{dT}_{0}=\frac{w}{\mathrm{cp}}}\]
+
+\[\fitmath{\mathrm{dT}_{0}=\frac{(27500)}{(1005)}\approx 27.36318\,\mathrm{K}}\]
+
+\item Temperatura total de salida.
+
+\[\fitmath{T_{02}=T_{01}+\mathrm{dT}_{0}}\]
+
+\[\fitmath{T_{02}=(288.15)+(27.36318408)\approx 315.5132\,\mathrm{K}}\]
+
+\item Rendimiento total-total del escalón.
+
+\[\fitmath{\eta=0.88\approx 0.88\,}\]
+
+\item Razón de presiones total-total.
+
+\[\fitmath{\mathrm{pr}={\left(1+\frac{\eta\cdot \mathrm{dT}_{0}}{T_{01}}\right)}^{\frac{1.4}{0.4}}}\]
+
+\[\fitmath{\mathrm{pr}={\left(1+\frac{(0.88)\cdot (27.36318408)}{(288.15)}\right)}^{\frac{1.4}{0.4}}\approx 1.324323\,}\]
+
+\item Presión total de salida.
+
+\[\fitmath{p_{02}=p_{01}\cdot \mathrm{pr}}\]
+
+\[\fitmath{p_{02}=(101325)\cdot (1.324323484)\approx 134187.1\,\mathrm{Pa}}\]
+
+\item Potencia absorbida por el escalón.
+
+\[\fitmath{P=\mathrm{mdot}\cdot w}\]
+
+\[\fitmath{P=(20)\cdot (27500)\approx 550000\,\mathrm{W}}\]
+
+\item Reacción de un escalón de radio y velocidad axial constantes.
+
+\[\fitmath{R=1-\frac{\mathrm{Cth}_{1}+\mathrm{Cth}_{2}}{2\cdot U}}\]
+
+\[\fitmath{R=1-\frac{(70)+(180)}{2\cdot (250)}\approx 0.5\,}\]
+
+\item Velocidad relativa a la entrada del rotor.
+
+\[\fitmath{W_{1}=\sqrt{{\mathrm{Cx}}^{2}+{\left(U-\mathrm{Cth}_{1}\right)}^{2}}}\]
+
+\[\fitmath{W_{1}=\sqrt{{(160)}^{2}+{\left((250)-(70)\right)}^{2}}\approx 240.8319\,\mathrm{m/s}}\]
+
+\item Velocidad relativa a la salida del rotor.
+
+\[\fitmath{W_{2}=\sqrt{{\mathrm{Cx}}^{2}+{\left(U-\mathrm{Cth}_{2}\right)}^{2}}}\]
+
+\[\fitmath{W_{2}=\sqrt{{(160)}^{2}+{\left((250)-(180)\right)}^{2}}\approx 174.6425\,\mathrm{m/s}}\]
+
+\item Cociente de velocidades relativas (de Haller).
+
+\[\fitmath{\mathrm{DH}=\frac{W_{2}}{W_{1}}}\]
+
+\[\fitmath{\mathrm{DH}=\frac{(174.642492)}{(240.8318916)}\approx 0.7251635\,}\]
+
+\item Ángulo relativo de entrada respecto al eje.
+
+\[\fitmath{b_{1}=\frac{\arctan\left(\frac{U-\mathrm{Cth}_{1}}{\mathrm{Cx}}\right)\cdot 180}{\pi}}\]
+
+\[\fitmath{b_{1}=\frac{\arctan\left(\frac{(250)-(70)}{(160)}\right)\cdot 180}{\pi}\approx 48.36646\,{}^{\circ}}\]
+
+\item Ángulo relativo de salida respecto al eje.
+
+\[\fitmath{b_{2}=\frac{\arctan\left(\frac{U-\mathrm{Cth}_{2}}{\mathrm{Cx}}\right)\cdot 180}{\pi}}\]
+
+\[\fitmath{b_{2}=\frac{\arctan\left(\frac{(250)-(180)}{(160)}\right)\cdot 180}{\pi}\approx 23.62938\,{}^{\circ}}\]
+
+\item Régimen del rodete radial.
+
+\[\fitmath{N=36000\approx 36000\,\mathrm{min^{-1}}}\]
+
+\item Velocidad angular.
+
+\[\fitmath{\mathrm{om}=\frac{2\cdot \pi\cdot N}{60}}\]
+
+\[\fitmath{\mathrm{om}=\frac{2\cdot \pi\cdot (36000)}{60}\approx 3769.911\,\mathrm{rad/s}}\]
+
+\item Velocidad periférica de salida del rodete de 0.30 m de diámetro.
+
+\[\fitmath{U_{2}=\frac{\mathrm{om}\cdot 0.3}{2}}\]
+
+\[\fitmath{U_{2}=\frac{(3769.911184)\cdot 0.3}{2}\approx 565.4867\,\mathrm{m/s}}\]
+
+\item Factor de deslizamiento.
+
+\[\fitmath{\mathrm{sg}=0.85\approx 0.85\,}\]
+
+\item Remolino de salida, sin prerrotación.
+
+\[\fitmath{Cth2r=\mathrm{sg}\cdot U_{2}}\]
+
+\[\fitmath{Cth2r=(0.85)\cdot (565.4866776)\approx 480.6637\,\mathrm{m/s}}\]
+
+\item Trabajo específico de Euler.
+
+\[\fitmath{\mathrm{wr}=U_{2}\cdot Cth2r}\]
+
+\[\fitmath{\mathrm{wr}=(565.4866776)\cdot (480.663676)\approx 271808.9\,\mathrm{J/kg}}\]
+
+\item Temperatura total de entrada del rodete.
+
+\[\fitmath{T01r=300\approx 300\,\mathrm{K}}\]
+
+\item Aumento de temperatura total.
+
+\[\fitmath{dT0r=\frac{\mathrm{wr}}{\mathrm{cp}}}\]
+
+\[\fitmath{dT0r=\frac{(271808.9052)}{(1005)}\approx 270.4566\,\mathrm{K}}\]
+
+\item Rendimiento total-total.
+
+\[\fitmath{\mathrm{etar}=0.8\approx 0.8\,}\]
+
+\item Razón de presiones total-total.
+
+\[\fitmath{\mathrm{prr}={\left(1+\frac{\mathrm{etar}\cdot dT0r}{T01r}\right)}^{\frac{1.4}{0.4}}}\]
+
+\[\fitmath{\mathrm{prr}={\left(1+\frac{(0.8)\cdot (270.4566221)}{(300)}\right)}^{\frac{1.4}{0.4}}\approx 6.689987\,}\]
+
+\item Velocidad del sonido total de entrada.
+
+\[\fitmath{a_{01}=\sqrt{1.4\cdot 287.05287\cdot T01r}}\]
+
+\[\fitmath{a_{01}=\sqrt{1.4\cdot 287.05287\cdot (300)}\approx 347.2207\,\mathrm{m/s}}\]
+
+\item Mach periférico de salida.
+
+\[\fitmath{\mathrm{Mu}=\frac{U_{2}}{a_{01}}}\]
+
+\[\fitmath{\mathrm{Mu}=\frac{(565.4866776)}{(347.2206869)}\approx 1.628609\,}\]
+
+\item Potencia con 1.2 kg/s.
+
+\[\fitmath{\mathrm{Pr}=1.2\cdot \mathrm{wr}}\]
+
+\[\fitmath{\mathrm{Pr}=1.2\cdot (271808.9052)\approx 326170.7\,\mathrm{W}}\]
+
+\end{enumerate}
