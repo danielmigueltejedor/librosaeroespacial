@@ -31,4 +31,4 @@ Las referencias EASA/FAA/AESA se verifican en su texto vigente en la fecha de co
 
 ## Separador decimal
 
-Los libros de ingeniería escriben los decimales con punto (`9.81`, `0.5882`), tanto en prosa como en modo matemático: era la forma de la inmensa mayoría de los problemas resueltos y mezclarla con `9{,}81` dentro del mismo libro era la inconsistencia señalada en la auditoría del 22 de octubre de 2026. `scripts/unify-decimal-point.py` convierte `1{,}5` y las comas decimales de la prosa con unidad; no toca coordenadas de TikZ ni listados. Al añadir contenido, usa punto.
+Los libros de ingeniería escriben los decimales con punto (`9.81`, `0.5882`), tanto en prosa como en modo matemático: era la forma de la inmensa mayoría de los problemas resueltos y mezclarla con `9{,}81` dentro del mismo libro era la inconsistencia señalada en la auditoría del 22 de octubre de 2026. `scripts/unify-decimal-point.py` convierte `1{,}5` y las comas decimales de la prosa con unidad; no toca los bloques `tikzpicture` (tienen recibo de revisión visual) ni listados. Al añadir contenido, usa punto.

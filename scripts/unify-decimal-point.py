@@ -41,7 +41,13 @@ WORD_RULE = re.compile(r'(\b(?:y|a|e|o|de|por|entre|es|vale|con|hasta|unos|casi|
 BRACE = re.compile(r'(\d)\{,\}(\d)')
 
 
+TIKZ = re.compile(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', re.S)
+
+
 def transform(text: str) -> str:
+    # Las figuras con recibo de revisión visual (audit-figure-review.py) no se tocan.
+    figures: list[str] = []
+    text = TIKZ.sub(lambda m: figures.append(m.group(0)) or f'\x01{len(figures) - 1}\x01', text)
     text = BRACE.sub(r'\1.\2', text)
     holders: list[str] = []
 
@@ -67,7 +73,8 @@ def transform(text: str) -> str:
         if part.startswith(MATH_START):
             part = MATH_RULE.sub(r'\1\2.\3', part)
         return part
-    return re.sub(r'\x00(\d+)\x00', restore, masked)
+    text = re.sub(r'\x00(\d+)\x00', restore, masked)
+    return re.sub(r'\x01(\d+)\x01', lambda m: figures[int(m.group(1))], text)
 
 
 def main() -> None:

@@ -1,20 +1,20 @@
 {
-  "run_at": "2026-10-21T05:08:32.257841+00:00",
-  "python": "3.12.15 (main, Sep 30 2026, 22:04:19) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "run_at": "2026-10-23T18:16:49.990246+00:00",
+  "python": "3.14.9 (main, Oct 21 2026, 06:02:15) [Clang 21.0.0 (clang-2100.3.34.2)]",
   "packages": {
     "sympy": "1.14.0",
     "numpy": "2.5.4",
     "scipy": "1.18.1",
     "pint": "0.26.2",
-    "pymupdf": "1.28.2"
+    "pymupdf": "2.0"
   },
-  "status": "PASSED",
+  "status": "FAILED",
   "scope": "Existing audits plus selected independently derived checks; no automatic expert approval.",
   "runs": [
     {
       "id": "structures",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/audit-estructuras.py"
       ],
       "exit_code": 0,
@@ -24,7 +24,7 @@
     {
       "id": "structures-companions",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/audit-estructuras-companions.py"
       ],
       "exit_code": 0,
@@ -34,7 +34,7 @@
     {
       "id": "turbomachinery",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/audit-turbomaquinas.py"
       ],
       "exit_code": 0,
@@ -44,10 +44,10 @@
     {
       "id": "fluids-symbolic",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-fluidos/scripts/verificaciones_simbolicas_fase6.py",
         "--json",
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/librosaeroespacial/reports/edition-v2/fluids-symbolic.json"
+        "/Users/danielmigueltejedor/Developer/work/librosstudium-books2/reports/edition-v2/fluids-symbolic.json"
       ],
       "exit_code": 0,
       "script_sha256": "34f0a33ecd1f9a2a56d7542018d601a6480850eed9720bddeda0f9b4ee22421b",
@@ -56,7 +56,7 @@
     {
       "id": "fluids-bank",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-fluidos/scripts/check_fluid_bank.py"
       ],
       "exit_code": 0,
@@ -66,7 +66,7 @@
     {
       "id": "technology-models",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/tecnologia-aeroespacial/scripts/check_science.py"
       ],
       "exit_code": 0,
@@ -76,7 +76,7 @@
     {
       "id": "technology-bank",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/tecnologia-aeroespacial/scripts/check_bank.py"
       ],
       "exit_code": 0,
@@ -86,7 +86,7 @@
     {
       "id": "rocket-models",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/motores-cohete/scripts/check_science.py"
       ],
       "exit_code": 0,
@@ -96,7 +96,7 @@
     {
       "id": "flight-models",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-vuelo/scripts/verify_models.py"
       ],
       "exit_code": 0,
@@ -106,7 +106,7 @@
     {
       "id": "flight-additional",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-vuelo/scripts/additional_checks.py"
       ],
       "exit_code": 0,
@@ -116,7 +116,7 @@
     {
       "id": "flight-bank",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-vuelo/scripts/validate_problem_bank.py"
       ],
       "exit_code": 0,
@@ -126,7 +126,7 @@
     {
       "id": "flight-all-cases",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "books/mecanica-vuelo/scripts/validate_all_cases.py"
       ],
       "exit_code": 0,
@@ -136,7 +136,7 @@
     {
       "id": "independent-models",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/verify-library-models.py"
       ],
       "exit_code": 0,
@@ -146,7 +146,7 @@
     {
       "id": "figure-science",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/verify-figure-science.py"
       ],
       "exit_code": 0,
@@ -156,21 +156,21 @@
     {
       "id": "figure-review",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/audit-figure-review.py"
       ],
-      "exit_code": 0,
+      "exit_code": 1,
       "script_sha256": "0a2a29e73371673ebffd5ecfa379da03b0fa721c8125c5e419f21db66d640e6c",
       "output": "figure-review.txt"
     },
     {
       "id": "preservation",
       "command": [
-        "/Users/danielmigueltejedor/Documents/Codex/2026-10-20/files-pasted-by-the-user-prompt/work/reader-runtime.nosync/bin/python",
+        "/Users/danielmigueltejedor/Developer/work/venv/bin/python",
         "scripts/check-library-preservation.py"
       ],
       "exit_code": 0,
-      "script_sha256": "51a731b5745e7807fe77746350a507c1f2a01362b91d9d0f242218900e72080f",
+      "script_sha256": "7cba43e96bd06e29d3f0d679903c86f2c1f2aa307422abf51ed939d13e00b4b2",
       "output": "preservation.txt"
     }
   ]

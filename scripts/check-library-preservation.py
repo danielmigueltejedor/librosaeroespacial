@@ -12,6 +12,12 @@ for name in paths:
     old=subprocess.check_output(['git','show',f'{BASE}:{name}'],cwd=ROOT,text=True)
     path=ROOT/name
     if not path.is_file():
+        removed=[]
+        for registry in (ROOT/'books').glob('*/studium-import.json'):
+            record=json.loads(registry.read_text()).get('removed_after_import')
+            if record:removed+=[str(registry.parent.relative_to(ROOT)/f) for f in record['files']]
+        if name in removed:
+            rows.append(dict(path=name,passed=True,note='Removed after import with a recorded reason'));continue
         rows.append(dict(path=name,passed=False,error='Original TeX document removed'));continue
     new=path.read_text()
     for category,pattern in [('bibliography',r'\\bibitem(?:\[[^]]*\])?\{([^}]+)\}'),
