@@ -88,3 +88,16 @@ def test_image_figures_keep_author_licence_page_and_file(slug):
         assert image['license'].lower().startswith(('public domain', 'cc0', 'cc by')), (record['id'], image['license'])
         assert (project / record['output']).is_file(), record['id']
         assert image['bytes'] < 400_000, record['id']
+
+
+@pytest.mark.parametrize('slug', sorted(EXPECTED))
+def test_cover_photograph_keeps_author_licence_source_and_hash(slug):
+    import hashlib
+    folder = FOLDER / slug / 'cover'
+    cover = json.loads((folder / 'cover.json').read_text(encoding='utf-8'))
+    assert cover['author'] and cover['description'] and cover['short_title']
+    assert cover['source_page'].startswith('https://commons.wikimedia.org/wiki/File:')
+    assert cover['licence'].lower().startswith(('public domain', 'cc0', 'cc by'))
+    data = (folder / cover['file']).read_bytes()
+    assert hashlib.sha256(data).hexdigest() == cover['sha256']
+    assert len(data) < 2_500_000

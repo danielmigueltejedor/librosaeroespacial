@@ -12,9 +12,12 @@ import hashlib
 import json
 import re
 import shutil
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 HERE = Path(__file__).resolve().parent.parent
 ROOT = HERE.parent
@@ -23,6 +26,23 @@ DIST = ROOT / 'dist' / 'humanidades-y-ciencias'
 
 def projects() -> list[str]:
     return sorted(p.parent.name for p in HERE.glob('*/project.toml'))
+
+
+def retitle_footer(stage: Path, source: Path) -> None:
+    """Running footer shows the book title instead of the draft badge; the pages stay where they were."""
+    cover = source / 'cover' / 'cover.json'
+    if not cover.is_file():
+        return
+    title = json.loads(cover.read_text())['short_title']
+    tex = stage / 'latex' / 'draft.tex'
+    text = tex.read_text()
+    text = re.sub(r'(\\fancyfoot\[C\]\{\\small )Borrador\}', lambda m: m.group(1) + title + '}', text)
+    tex.write_text(text)
+    for _ in range(2):
+        run = subprocess.run(['pdflatex', '-interaction=nonstopmode', '-halt-on-error', 'draft.tex'], cwd=tex.parent,
+                             capture_output=True, text=True, errors='replace', check=False)
+        if run.returncode:
+            raise RuntimeError('footer recompilation failed:\n' + run.stdout[-1500:])
 
 
 def build(slug: str) -> dict[str, object]:
@@ -39,6 +59,7 @@ def build(slug: str) -> dict[str, object]:
         rendered = render_draft(stage)
         if rendered.get('status') != 'rendered':
             raise RuntimeError(f'{slug}: {rendered.get("status")}: {rendered.get("message")}')
+        retitle_footer(stage, source)
         log = (stage / 'latex/draft.log').read_text(errors='replace')
         fatal = re.findall(r'^!.*|Missing character:.*|(?:Reference|Citation) [^\n]*undefined', log, re.M)
         if fatal:
@@ -47,6 +68,9 @@ def build(slug: str) -> dict[str, object]:
         DIST.mkdir(parents=True, exist_ok=True)
         target = DIST / f'{slug}.pdf'
         shutil.copyfile(pdf, target)
+        if (source / 'cover' / 'cover.json').is_file():
+            from cover import replace_title_page
+            replace_title_page(slug, target)
         report = {
             'slug': slug,
             'status': 'review_copy',

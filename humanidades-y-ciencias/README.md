@@ -63,6 +63,23 @@ python humanidades-y-ciencias/tools/build_books.py biologia-celular-molecular
 Los PDF se generan en `dist/humanidades-y-ciencias/` y no se versionan, igual
 que el resto de la colección. El catálogo `release-bundle.json` los incluye.
 
+## Portadas
+
+Cada libro lleva la portada compartida de la biblioteca con una fotografía de
+licencia abierta, igual que los manuales de ingeniería. La fotografía, su autor,
+licencia, página de origen y huella están en `<libro>/cover/cover.json`; la
+compilación no necesita red. Para regenerarlas: `python humanidades-y-ciencias/tools/fetch_covers.py`.
+
+| Libro | Imagen | Licencia |
+|---|---|---|
+| Literatura española | Don Quijote y Sancho Panza, monumento a Cervantes (Madrid), foto de José María Mateos | CC BY 2.0 |
+| Historia moderna de España | Velázquez, *La rendición de Breda* (Museo del Prado) | Dominio público |
+| Biología celular y molecular | Células endoteliales con núcleos, mitocondrias y actina, foto de Erin Rod | CC BY 4.0 |
+
+La portada ocupa el lugar de la portada provisional, así que la paginación no cambia.
+El pie de página muestra el título del libro. El estado de las fuentes sigue
+documentado en el apéndice «Auditoría de fuentes» y en «Límites conocidos».
+
 ## Límites conocidos
 
 - Las fuentes son enciclopédicas y de divulgación. Un libro que se use para

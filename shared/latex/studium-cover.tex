@@ -8,6 +8,7 @@
 \providecommand{\studiumcovercategory}{MANUAL UNIVERSITARIO}
 \providecommand{\studiumphotocredit}{Crédito y procedencia en el proyecto del libro.}
 \providecommand{\studiumphototop}{89.5}
+\providecommand{\studiumcovercredit}{}
 \providecommand{\studiumcovertitlesize}{32}
 \providecommand{\studiumcovertitleleading}{35}
 \newsavebox{\studiumPhotoBox}
@@ -25,6 +26,7 @@
  \node[anchor=north,inner sep=0pt] at (297.638,\studiumphototop){\usebox{\studiumPhotoBox}};
 \fi
 \end{scope}
+\ifx\studiumcovercredit\empty\else\node[anchor=south east,text=white,fill=studiumInk,fill opacity=.62,text opacity=1,font=\sffamily\fontsize{6.2}{7.4}\selectfont,inner sep=3pt,align=right,text width=330pt] at (595.276,585.5){\studiumcovercredit};\fi
 \fill[white] (0,0) rectangle (595.276,89.5);
 \node[anchor=west,text=studiumInk,font=\sffamily\bfseries\fontsize{18}{20}\selectfont,inner sep=0pt] at (51.223,38.5){STUDIUM};
 \fill[studiumCyan] (51.223,61.5) rectangle (80.8,63.7);
