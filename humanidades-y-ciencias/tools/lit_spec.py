@@ -48,4 +48,4 @@ BLUEPRINT = [
  ('lit-13', 'Taller: métrica, retórica y comentario de texto'),
 ]
 CHAPTERS = {}
-spec = dict(book='literatura-espanola', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='literary')
+spec = dict(book='literatura-espanola', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='literary', place_figs=True)

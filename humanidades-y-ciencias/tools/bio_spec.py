@@ -59,4 +59,4 @@ BLUEPRINT = [
  ('bio-12', 'Taller de diseño experimental y análisis de datos'),
 ]
 CHAPTERS = {}
-spec = dict(book='biologia-celular-molecular', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='scientific')
+spec = dict(book='biologia-celular-molecular', sources=SOURCES, blueprint=BLUEPRINT, chapters=CHAPTERS, audit_kind='scientific', place_figs=True)

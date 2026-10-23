@@ -2,7 +2,7 @@
 
 Automated observations; expert scientific review remains required.
 
-Counts: {'ERROR': 0, 'WARNING': 34, 'INFO': 92}
+Counts: {'ERROR': 0, 'WARNING': 34, 'INFO': 97}
 
 ## PUB-0001 — WARNING: latex_warning
 
@@ -70,7 +70,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0009 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 171
+Record: PAR-0003; chapter: bio-01; line: 171
 
 Overfull \hbox (2.55548pt too wide) detected at line 171
 
@@ -78,7 +78,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0010 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 172
+Record: PAR-0003; chapter: bio-01; line: 172
 
 Overfull \hbox (2.55548pt too wide) detected at line 172
 
@@ -86,7 +86,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0011 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 173
+Record: PAR-0003; chapter: bio-01; line: 173
 
 Overfull \hbox (2.55548pt too wide) detected at line 173
 
@@ -94,7 +94,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0012 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 184
+Record: FIG-0184; chapter: bio-01; line: 184
 
 Overfull \hbox (2.55548pt too wide) detected at line 184
 
@@ -102,7 +102,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0013 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 185
+Record: FIG-0184; chapter: bio-01; line: 185
 
 Overfull \hbox (2.55548pt too wide) detected at line 185
 
@@ -110,7 +110,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0014 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 186
+Record: FIG-0184; chapter: bio-01; line: 186
 
 Overfull \hbox (2.55548pt too wide) detected at line 186
 
@@ -118,7 +118,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0015 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 187
+Record: FIG-0184; chapter: bio-01; line: 187
 
 Overfull \hbox (2.55548pt too wide) detected at line 187
 
@@ -126,7 +126,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0016 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 188
+Record: FIG-0184; chapter: bio-01; line: 188
 
 Overfull \hbox (2.55548pt too wide) detected at line 188
 
@@ -134,7 +134,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0017 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 189
+Record: FIG-0184; chapter: bio-01; line: 189
 
 Overfull \hbox (2.55548pt too wide) detected at line 189
 
@@ -142,7 +142,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0018 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 190
+Record: FIG-0184; chapter: bio-01; line: 190
 
 Overfull \hbox (2.55548pt too wide) detected at line 190
 
@@ -150,7 +150,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0019 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 191
+Record: FIG-0184; chapter: bio-01; line: 191
 
 Overfull \hbox (2.55548pt too wide) detected at line 191
 
@@ -158,7 +158,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0020 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 202
+Record: FIG-0184; chapter: bio-01; line: 202
 
 Overfull \hbox (2.55548pt too wide) detected at line 202
 
@@ -166,7 +166,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0021 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 203
+Record: FIG-0184; chapter: bio-01; line: 203
 
 Overfull \hbox (2.55548pt too wide) detected at line 203
 
@@ -174,7 +174,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0022 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 204
+Record: FIG-0184; chapter: bio-01; line: 204
 
 Overfull \hbox (2.55548pt too wide) detected at line 204
 
@@ -182,7 +182,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0023 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 205
+Record: FIG-0184; chapter: bio-01; line: 205
 
 Overfull \hbox (2.55548pt too wide) detected at line 205
 
@@ -190,7 +190,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0024 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 206
+Record: FIG-0184; chapter: bio-01; line: 206
 
 Overfull \hbox (2.55548pt too wide) detected at line 206
 
@@ -198,7 +198,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0025 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 207
+Record: FIG-0184; chapter: bio-01; line: 207
 
 Overfull \hbox (2.55548pt too wide) detected at line 207
 
@@ -206,7 +206,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0026 — WARNING: overfull_box
 
-Record: FIG-0180; chapter: bio-01; line: 208
+Record: FIG-0184; chapter: bio-01; line: 208
 
 Overfull \hbox (2.55548pt too wide) detected at line 208
 
@@ -232,7 +232,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 2126) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -240,7 +240,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 7379) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -328,7 +328,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2057) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -336,7 +336,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 7981) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -424,7 +424,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 7869) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -512,7 +512,7 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1067) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
@@ -540,45 +540,45 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0068 — WARNING: latex_warning
+## PUB-0068 — INFO: underfull_box
 
 Record: None; chapter: None; line: None
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+Underfull \vbox (badness 7081) has occurred while \output is active []
 
-Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
+Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0069 — WARNING: latex_warning
+## PUB-0069 — INFO: underfull_box
 
 Record: None; chapter: None; line: None
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
+Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0070 — INFO: underfull_box
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 3735) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0071 — INFO: underfull_box
+## PUB-0071 — WARNING: latex_warning
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
-Inspect the page; align long equations or revise table and figure width.
+Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
 
-## PUB-0072 — INFO: underfull_box
+## PUB-0072 — WARNING: latex_warning
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
-Inspect the page; align long equations or revise table and figure width.
+Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
 
 ## PUB-0073 — INFO: underfull_box
 
@@ -632,35 +632,19 @@ Inspect the page; align long equations or revise table and figure width.
 
 Record: None; chapter: None; line: None
 
-Underfull \vbox (badness 2142) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0080 — WARNING: latex_warning
+## PUB-0080 — INFO: underfull_box
 
 Record: None; chapter: None; line: None
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+Underfull \vbox (badness 5954) has occurred while \output is active []
 
-Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
+Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0081 — WARNING: latex_warning
-
-Record: None; chapter: None; line: None
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-
-Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
-
-## PUB-0082 — WARNING: latex_warning
-
-Record: None; chapter: None; line: None
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-
-Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
-
-## PUB-0083 — INFO: underfull_box
+## PUB-0081 — INFO: underfull_box
 
 Record: None; chapter: None; line: None
 
@@ -668,343 +652,399 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0084 — INFO: underfull_box
+## PUB-0082 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16894
+Record: None; chapter: None; line: None
 
-Underfull \hbox (badness 1253) in paragraph at lines 16894--16895
-
-Inspect the page; align long equations or revise table and figure width.
-
-## PUB-0085 — INFO: underfull_box
-
-Record: None; chapter: None; line: 16895
-
-Underfull \hbox (badness 3343) in paragraph at lines 16895--16896
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0083 — WARNING: latex_warning
+
+Record: None; chapter: None; line: None
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+
+Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
+
+## PUB-0084 — WARNING: latex_warning
+
+Record: None; chapter: None; line: None
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+
+Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
+
+## PUB-0085 — WARNING: latex_warning
+
+Record: None; chapter: None; line: None
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+
+Inspect the full compiler log for missing symbols, font substitutions or rerun requests.
 
 ## PUB-0086 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16897
+Record: None; chapter: None; line: None
 
-Underfull \hbox (badness 1577) in paragraph at lines 16897--16898
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0087 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16899
+Record: None; chapter: None; line: None
 
-Underfull \hbox (badness 10000) in paragraph at lines 16899--16900
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0088 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16914
+Record: None; chapter: None; line: 16957
 
-Underfull \hbox (badness 10000) in paragraph at lines 16914--16915
+Underfull \hbox (badness 1253) in paragraph at lines 16957--16958
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0089 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16915
+Record: None; chapter: None; line: 16958
 
-Underfull \hbox (badness 1215) in paragraph at lines 16915--16916
-
-Inspect the page; align long equations or revise table and figure width.
-
-## PUB-0090 — WARNING: overfull_box
-
-Record: None; chapter: None; line: 16920
-
-Overfull \hbox (58.5045pt too wide) in paragraph at lines 16920--16921
+Underfull \hbox (badness 3343) in paragraph at lines 16958--16959
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0091 — WARNING: overfull_box
+## PUB-0090 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16922
+Record: None; chapter: None; line: 16960
 
-Overfull \hbox (4.55984pt too wide) in paragraph at lines 16922--16923
+Underfull \hbox (badness 1577) in paragraph at lines 16960--16961
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0091 — INFO: underfull_box
+
+Record: None; chapter: None; line: 16962
+
+Underfull \hbox (badness 10000) in paragraph at lines 16962--16963
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0092 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16933
+Record: None; chapter: None; line: 16977
 
-Underfull \hbox (badness 1824) in paragraph at lines 16933--16934
+Underfull \hbox (badness 10000) in paragraph at lines 16977--16978
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0093 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16947
+Record: None; chapter: None; line: 16978
 
-Underfull \hbox (badness 1406) in paragraph at lines 16947--16948
-
-Inspect the page; align long equations or revise table and figure width.
-
-## PUB-0094 — INFO: underfull_box
-
-Record: None; chapter: None; line: 16949
-
-Underfull \hbox (badness 8038) in paragraph at lines 16949--16950
+Underfull \hbox (badness 1215) in paragraph at lines 16978--16979
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0095 — INFO: underfull_box
+## PUB-0094 — WARNING: overfull_box
 
-Record: None; chapter: None; line: 16950
+Record: None; chapter: None; line: 16983
 
-Underfull \hbox (badness 7649) in paragraph at lines 16950--16951
+Overfull \hbox (58.5045pt too wide) in paragraph at lines 16983--16984
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0095 — WARNING: overfull_box
+
+Record: None; chapter: None; line: 16985
+
+Overfull \hbox (4.55984pt too wide) in paragraph at lines 16985--16986
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0096 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16953
+Record: None; chapter: None; line: 16995
 
-Underfull \hbox (badness 4479) in paragraph at lines 16953--16954
+Underfull \hbox (badness 1097) in paragraph at lines 16995--16996
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0097 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16961
+Record: None; chapter: None; line: 16996
 
-Underfull \hbox (badness 5388) in paragraph at lines 16961--16962
+Underfull \hbox (badness 1824) in paragraph at lines 16996--16997
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0098 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16962
+Record: None; chapter: None; line: 17010
 
-Underfull \hbox (badness 2080) in paragraph at lines 16962--16963
+Underfull \hbox (badness 1406) in paragraph at lines 17010--17011
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0099 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16965
+Record: None; chapter: None; line: 17012
 
-Underfull \hbox (badness 2435) in paragraph at lines 16965--16966
+Underfull \hbox (badness 8038) in paragraph at lines 17012--17013
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0100 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16966
+Record: None; chapter: None; line: 17013
 
-Underfull \hbox (badness 10000) in paragraph at lines 16966--16967
+Underfull \hbox (badness 7649) in paragraph at lines 17013--17014
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0101 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16967
+Record: None; chapter: None; line: 17016
 
-Underfull \hbox (badness 4441) in paragraph at lines 16967--16968
+Underfull \hbox (badness 4479) in paragraph at lines 17016--17017
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0102 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16969
+Record: None; chapter: None; line: 17024
 
-Underfull \hbox (badness 10000) in paragraph at lines 16969--16970
+Underfull \hbox (badness 5388) in paragraph at lines 17024--17025
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0103 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16977
+Record: None; chapter: None; line: 17025
 
-Underfull \hbox (badness 3407) in paragraph at lines 16977--16978
+Underfull \hbox (badness 2080) in paragraph at lines 17025--17026
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0104 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16986
+Record: None; chapter: None; line: 17028
 
-Underfull \hbox (badness 3168) in paragraph at lines 16986--16987
+Underfull \hbox (badness 2435) in paragraph at lines 17028--17029
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0105 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16988
+Record: None; chapter: None; line: 17029
 
-Underfull \hbox (badness 3525) in paragraph at lines 16988--16989
+Underfull \hbox (badness 10000) in paragraph at lines 17029--17030
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0106 — INFO: underfull_box
 
-Record: None; chapter: None; line: 16993
+Record: None; chapter: None; line: 17030
 
-Underfull \hbox (badness 10000) in paragraph at lines 16993--16994
+Underfull \hbox (badness 4441) in paragraph at lines 17030--17031
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0107 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17018
+Record: None; chapter: None; line: 17032
 
-Underfull \hbox (badness 6477) in paragraph at lines 17018--17019
+Underfull \hbox (badness 10000) in paragraph at lines 17032--17033
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0108 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17019
+Record: None; chapter: None; line: 17040
 
-Underfull \hbox (badness 6510) in paragraph at lines 17019--17020
+Underfull \hbox (badness 3407) in paragraph at lines 17040--17041
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0109 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17021
+Record: None; chapter: None; line: 17049
 
-Underfull \hbox (badness 4673) in paragraph at lines 17021--17022
+Underfull \hbox (badness 3168) in paragraph at lines 17049--17050
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0110 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17023
+Record: None; chapter: None; line: 17051
 
-Underfull \hbox (badness 1859) in paragraph at lines 17023--17024
+Underfull \hbox (badness 3525) in paragraph at lines 17051--17052
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0111 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17027
+Record: None; chapter: None; line: 17056
 
-Underfull \hbox (badness 10000) in paragraph at lines 17027--17028
+Underfull \hbox (badness 10000) in paragraph at lines 17056--17057
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0112 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17028
+Record: None; chapter: None; line: 17081
 
-Underfull \hbox (badness 4242) in paragraph at lines 17028--17029
+Underfull \hbox (badness 6477) in paragraph at lines 17081--17082
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0113 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17044
+Record: None; chapter: None; line: 17082
 
-Underfull \hbox (badness 1082) in paragraph at lines 17044--17045
+Underfull \hbox (badness 6510) in paragraph at lines 17082--17083
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0114 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17046
+Record: None; chapter: None; line: 17084
 
-Underfull \hbox (badness 10000) in paragraph at lines 17046--17047
+Underfull \hbox (badness 4673) in paragraph at lines 17084--17085
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0115 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17050
+Record: None; chapter: None; line: 17086
 
-Underfull \hbox (badness 10000) in paragraph at lines 17050--17051
+Underfull \hbox (badness 1859) in paragraph at lines 17086--17087
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0116 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17060
+Record: None; chapter: None; line: 17090
 
-Underfull \hbox (badness 4886) in paragraph at lines 17060--17061
+Underfull \hbox (badness 10000) in paragraph at lines 17090--17091
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0117 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17079
+Record: None; chapter: None; line: 17091
 
-Underfull \hbox (badness 1389) in paragraph at lines 17079--17080
+Underfull \hbox (badness 4242) in paragraph at lines 17091--17092
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0118 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17080
+Record: None; chapter: None; line: 17107
 
-Underfull \hbox (badness 10000) in paragraph at lines 17080--17081
+Underfull \hbox (badness 1082) in paragraph at lines 17107--17108
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0119 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17102
+Record: None; chapter: None; line: 17109
 
-Underfull \hbox (badness 10000) in paragraph at lines 17102--17103
+Underfull \hbox (badness 10000) in paragraph at lines 17109--17110
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0120 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17125
+Record: None; chapter: None; line: 17113
 
-Underfull \hbox (badness 10000) in paragraph at lines 17125--17126
+Underfull \hbox (badness 10000) in paragraph at lines 17113--17114
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0121 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17141
+Record: None; chapter: None; line: 17123
 
-Underfull \hbox (badness 10000) in paragraph at lines 17141--17142
+Underfull \hbox (badness 4886) in paragraph at lines 17123--17124
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0122 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17151
+Record: None; chapter: None; line: 17142
 
-Underfull \hbox (badness 10000) in paragraph at lines 17151--17152
+Underfull \hbox (badness 1389) in paragraph at lines 17142--17143
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0123 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17168
+Record: None; chapter: None; line: 17143
 
-Underfull \hbox (badness 10000) in paragraph at lines 17168--17169
+Underfull \hbox (badness 10000) in paragraph at lines 17143--17144
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0124 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17173
+Record: None; chapter: None; line: 17165
 
-Underfull \hbox (badness 4913) in paragraph at lines 17173--17174
+Underfull \hbox (badness 10000) in paragraph at lines 17165--17166
 
 Inspect the page; align long equations or revise table and figure width.
 
 ## PUB-0125 — INFO: underfull_box
 
-Record: None; chapter: None; line: 17183
+Record: None; chapter: None; line: 17188
 
-Underfull \hbox (badness 3039) in paragraph at lines 17183--17184
+Underfull \hbox (badness 10000) in paragraph at lines 17188--17189
 
 Inspect the page; align long equations or revise table and figure width.
 
-## PUB-0126 — WARNING: latex_warning
+## PUB-0126 — INFO: underfull_box
+
+Record: None; chapter: None; line: 17204
+
+Underfull \hbox (badness 10000) in paragraph at lines 17204--17205
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0127 — INFO: underfull_box
+
+Record: None; chapter: None; line: 17214
+
+Underfull \hbox (badness 10000) in paragraph at lines 17214--17215
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0128 — INFO: underfull_box
+
+Record: None; chapter: None; line: 17231
+
+Underfull \hbox (badness 10000) in paragraph at lines 17231--17232
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0129 — INFO: underfull_box
+
+Record: None; chapter: None; line: 17236
+
+Underfull \hbox (badness 4913) in paragraph at lines 17236--17237
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0130 — INFO: underfull_box
+
+Record: None; chapter: None; line: 17246
+
+Underfull \hbox (badness 3039) in paragraph at lines 17246--17247
+
+Inspect the page; align long equations or revise table and figure width.
+
+## PUB-0131 — WARNING: latex_warning
 
 Record: None; chapter: None; line: None
 

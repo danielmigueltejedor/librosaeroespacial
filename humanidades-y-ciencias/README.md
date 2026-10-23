@@ -6,9 +6,9 @@ académica ni se declara científicamente certificada.
 
 | Libro | Perfil Studium | Capítulos | Párrafos citados | Palabras | Fuentes | Figuras | Ejercicios | Páginas |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Literatura española: de la Edad Media al siglo XX](literatura-espanola/) | `HUMANITIES` | 13 | 337 | 36 000 | 218 | 86 | 90 | 184 |
+| [Literatura española: de la Edad Media al siglo XX](literatura-espanola/) | `HUMANITIES` | 13 | 337 | 36 000 | 218 | 86 | 90 | 188 |
 | [Historia moderna de España: de los Reyes Católicos a la Guerra de Sucesión](historia-moderna-espana/) | `HUMANITIES` | 12 | 304 | 30 700 | 143 | 59 | 68 | 139 |
-| [Biología celular y molecular](biologia-celular-molecular/) | `LIFE_SCIENCES` | 12 | 260 | 25 800 | 253 | 103 | 94 | 196 |
+| [Biología celular y molecular](biologia-celular-molecular/) | `LIFE_SCIENCES` | 12 | 260 | 25 800 | 253 | 103 | 94 | 198 |
 
 Cada disciplina tiene sus propios tipos de ejercicio (Studium elige el tipo
 según el perfil del libro):
@@ -20,7 +20,7 @@ según el perfil del libro):
 Las figuras son diagramas TikZ con extractos que los respaldan e imágenes con
 licencia abierta (dominio público, CC0, CC BY o CC BY-SA) tomadas de Wikimedia
 Commons; el autor, la licencia y el enlace figuran bajo cada imagen y en la
-lista de créditos de cada libro. Las imágenes se guardan reducidas (640 px).
+lista de créditos de cada libro. Las imágenes se guardan reducidas (640 px). Cada figura se coloca justo después del párrafo que la explica: el párrafo la cita con una referencia y Studium dibuja la figura a continuación; `tools/place_figs.py` elige el párrafo y deja ajustes manuales en `OVERRIDES`.
 
 ## Cómo se escribieron
 

@@ -2,8 +2,7 @@
 Chapter modules <prefix>N may define: build(spec) base paragraphs, extend(spec) more paragraphs,
 figures(spec), exercises(spec), problems(spec) (numeric, legacy), SOURCES (extra sources)."""
 import sys, importlib, json
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, '/Users/danielmigueltejedor/Developer/work/tools')
 from engine import *
 mod, prefix, idp = sys.argv[1:4]; only = sys.argv[4:]
 spec = importlib.import_module(mod).spec
@@ -26,6 +25,12 @@ for n, m in mods.items():
         ext = ch.get('extend', [])
         ch['final'] = [base[int(o[1:])] if o[0] == 'b' else ext[int(o[1:])] for o in m.ORDER]
         assert len(ch['final']) == len(base) + len(ext) and len(set(m.ORDER)) == len(m.ORDER), 'ORDER must use every paragraph once'
+    if spec.get('place_figs') and ch.get('figures'):
+        import place_figs
+        base_list = ch.get('final') or (ch['paragraphs'] + ch.get('extend', []))
+        placed_list, placed, missing = place_figs.apply(base_list, ch['figures'])
+        assert not missing, f'{sid}: figures without a paragraph: {missing}'
+        ch['final'] = placed_list
     spec['chapters'][sid] = ch
 b = Builder(spec)
 b.blueprint(); b.save()
