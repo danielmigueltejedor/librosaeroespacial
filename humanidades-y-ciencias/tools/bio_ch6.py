@@ -45,3 +45,246 @@ def problems(spec):
           interpretation='Aunque solo 1 de cada 2500 bebés padece la enfermedad, unas 1 de cada 25 personas porta el alelo, lo que explica que la enfermedad aparezca en familias sin antecedentes.',
           limitations=['El resultado depende del supuesto de equilibrio y de que la incidencia de 1/2500 sea correcta; la fuente la da como aproximada.'],
           mistakes=['Tomar q² como la frecuencia del alelo en lugar de su raíz cuadrada.']))]
+
+
+from bio_spec import S
+from bio_num import num
+SOURCES = {
+ 'es_gregor': S('es', 'Gregor Mendel', 'es_Gregor_Mendel.txt'),
+ 'en_gregor': S('en', 'Gregor Mendel', 'en_Gregor_Mendel.txt'),
+ 'es_punnett': S('es', 'Cuadro de Punnett', 'es_Cuadro_de_Punnett.txt'),
+ 'en_punnett': S('en', 'Punnett square', 'en_Punnett_square.txt'),
+ 'en_testcross': S('en', 'Test cross', 'en_Test_cross.txt'),
+ 'en_dihybrid': S('en', 'Dihybrid cross', 'en_Dihybrid_cross.txt'),
+ 'en_linkage': S('en', 'Genetic linkage', 'en_Genetic_linkage.txt'),
+ 'en_crossover': S('en', 'Chromosomal crossover', 'en_Chromosomal_crossover.txt'),
+ 'es_crossover': S('es', 'Entrecruzamiento cromosómico', 'es_Entrecruzamiento_cromos_mico.txt'),
+ 'es_ligada_sexo': S('es', 'Herencia ligada al sexo', 'es_Herencia_ligada_al_sexo.txt'),
+ 'en_sexlinkage': S('en', 'Sex linkage', 'en_Sex_linkage.txt'),
+ 'es_daltonismo': S('es', 'Daltonismo', 'es_Daltonismo.txt'),
+ 'es_hemofilia': S('es', 'Hemofilia', 'es_Hemofilia.txt'),
+ 'en_haemophilia': S('en', 'Haemophilia', 'en_Haemophilia.txt'),
+ 'es_grupo': S('es', 'Grupo sanguíneo', 'es_Grupo_sangu_neo.txt'),
+ 'en_blood': S('en', 'Blood type', 'en_Blood_type.txt'),
+ 'es_factor_rh': S('es', 'Factor Rh', 'es_Factor_Rh.txt'),
+ 'es_pku': S('es', 'Fenilcetonuria', 'es_Fenilcetonuria.txt'),
+ 'en_pku': S('en', 'Phenylketonuria', 'en_Phenylketonuria.txt'),
+ 'es_albinismo': S('es', 'Albinismo', 'es_Albinismo.txt'),
+ 'es_fq': S('es', 'Fibrosis quística', 'es_Fibrosis_qu_stica.txt'),
+ 'es_cariotipo': S('es', 'Cariotipo', 'es_Cariotipo.txt'),
+ 'es_down': S('es', 'Síndrome de Down', 'es_S_ndrome_de_Down.txt'),
+ 'en_down': S('en', 'Down syndrome', 'en_Down_syndrome.txt'),
+ 'es_deriva': S('es', 'Deriva genética', 'es_Deriva_gen_tica.txt'),
+ 'en_drift': S('en', 'Genetic drift', 'en_Genetic_drift.txt'),
+ 'es_seleccion': S('es', 'Selección natural', 'es_Selecci_n_natural.txt'),
+ 'en_selection': S('en', 'Natural selection', 'en_Natural_selection.txt'),
+}
+HEADS = {1: 'Mendel y sus guisantes', 2: 'Herencia por mezcla', 3: 'Alelos y genotipos', 4: 'Cruce monohíbrido', 5: 'Las proporciones son esperanzas', 6: 'Hardy-Weinberg', 7: 'Portadores de una enfermedad recesiva', 8: 'Las frecuencias genotípicas'}
+
+
+def extend(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    P = []
+    P.append(dict(text='Las leyes de Mendel\nMendel trabajó con siete caracteres del guisante: altura de la planta, forma y color de la vaina, forma y color de la semilla, posición y color de la flor. Cruzó líneas puras y observó que los híbridos de la primera generación filial (F1) eran uniformes en el fenotipo; es la ley de la uniformidad. En los cruces monohíbridos entre heterocigotos obtuvo una proporción idealizada de 3:1 entre fenotipos dominante y recesivo (ley de la segregación). En los cruces dihíbridos halló una proporción 9:3:3:1, porque cada par de alelos se hereda de forma independiente del otro (ley de la distribución independiente). Publicó su trabajo en 1866, pero apenas tuvo impacto y fue citado unas tres veces en los treinta y cinco años siguientes.',
+        quotes=[Q('en_gregor', 'Mendel worked with seven characteristics of pea plants: plant height, pod shape and colour, seed shape and colour, and flower position and colour.'), Q('es_mendel', 'Como resultado obtenía la primera generación filial (F1), en la cual observó la uniformidad fenotípica de los híbridos.'), Q('en_mendel', 'In his monohybrid crosses, an idealized 3:1 ratio between dominant and recessive phenotypes resulted.'), Q('en_mendel', 'In dihybrid crosses, however, he found a 9:3:3:1 ratios.'), Q('en_gregor', 'When Mendel\'s paper was published in 1866 in Verhandlungen des naturforschenden Vereines in Brünn, it was seen as essentially about hybridization rather than inheritance, had little impact, and was cited only about three times over the next thirty-five years.')]))
+    P.append(dict(text='Dominancia y sus excepciones\nLa uniformidad de los híbridos no es una ley de transmisión, sino consecuencia de la dominancia, que tiene que ver con la expresión del genotipo y no con la transmisión. En la dominancia completa, el alelo dominante tiene el mismo efecto fenotípico presente en una o en dos copias. Hay excepciones a la regla de Mendel: en la dominancia incompleta, como en la flor «dondiego de noche» (Mirabilis jalapa), los híbridos son intermedios; y en la codominancia, como en el grupo sanguíneo AB, los dos alelos se expresan. El resto del capítulo muestra que las proporciones de Mendel son la regla básica, pero que muchos caracteres exigen modificarla.',
+        quotes=[Q('es_mendel', 'Es un error muy extendido suponer que la uniformidad de los híbridos que Mendel observó en sus experimentos es una ley de transmisión, pero la dominancia nada tiene que ver con la transmisión, sino con la expresión del genotipo.'), Q('en_mendel', 'In this situation of "complete dominance", the dominant allele had the same phenotypic effect whether present in one or two copies.'), Q('en_mendel', 'A cross between two four o\'clock (Mirabilis jalapa) plants shows an exception to Mendel\'s principle, called incomplete dominance.'), Q('es_grupo', 'Las personas AB tienen ambos genotipos debido a que la relación entre los alelos A y B es de codominancia.')]))
+    P.append(dict(text='El cuadro de Punnett y el cruce de prueba\nEl cuadro de Punnett, ideado por Reginald Punnett en 1905, es un resumen tabular de las combinaciones posibles de los alelos maternos con los paternos: en un lado se colocan los gametos de un progenitor y en el otro los del otro. Solo muestra posibilidades, no resultados. Para saber si un individuo de fenotipo dominante es homocigoto o heterocigoto se usa el cruce de prueba: se cruza con un homocigoto recesivo, de modo que el alelo que éste aporta es siempre recesivo y el fenotipo de la descendencia revela el alelo del individuo estudiado. Si toda la descendencia expresa el rasgo dominante, es homocigoto dominante.',
+        quotes=[Q('es_punnett', 'El cuadro de Punnett es un resumen tabular de las posibles combinaciones de alelos maternos con alelos paternos.'), Q('es_punnett', 'Cabe señalar que el cuadro de Punnett solo muestra las posibilidades para genes.'), Q('en_testcross', 'In a test cross, the individual in question is bred with another individual that is homozygous for the recessive trait and the offspring of the test cross are examined.'), Q('en_testcross', 'Since the homozygous recessive individual can only pass on recessive alleles, the allele the individual in question passes on determines the phenotype of the offspring.'), Q('en_testcross', 'If all of the offspring produced express the dominant trait, the individual in question is homozygous for the dominant allele.')]))
+    P.append(dict(text='El cruce dihíbrido\nUn cruce dihíbrido es un cruce entre dos individuos para dos caracteres controlados por dos genes distintos. Mendel lo planteó con guisantes amarillos o verdes y lisos o rugosos. Aplicó las reglas del cruce monohíbrido a cada carácter, de modo que cada uno da una proporción 3:1 y, al ser independientes, se multiplican las probabilidades. Al cruzar dos dihíbridos heterocigotos (AaBb × AaBb) la proporción esperada de fenotipos es 9:3:3:1, y en un cruce de prueba de un dihíbrido se observa 1:1:1:1.',
+        quotes=[Q('en_dihybrid', 'Dihybrid cross is a cross between two individuals with two observed traits that are controlled by two distinct genes.'), Q('en_dihybrid', 'The idea of a dihybrid cross came from Gregor Mendel when he observed pea plants that were either yellow or green and either round or wrinkled.'), Q('en_mendel', 'This shows that each of the two alleles is inherited independently from the other, with a 3:1 phenotypic ratio for each.'), Q('en_dihybrid', 'The expected phenotypic ratio of crossing heterozygous parents would be 9:3:3:1.'), Q('en_testcross', 'In such a test cross, if the individual being tested is heterozygous, a phenotypic ratio of 1:1:1:1 is typically observed.')]))
+    P.append(dict(text='Ligamiento y entrecruzamiento\nLa distribución independiente solo vale para genes en cromosomas distintos o muy alejados. Los genes que están físicamente cerca tienden a heredarse juntos, porque es poco probable que se separen en el entrecruzamiento: están ligados. El entrecruzamiento (crossing-over) es el intercambio de material genético entre cromátidas no hermanas de cromosomas homólogos durante la profase I de la meiosis, y produce cromosomas recombinantes. Thomas Hunt Morgan observó que la cantidad de entrecruzamiento entre genes ligados varía y propuso que la frecuencia de recombinación indica la distancia entre genes. Harriet Creighton y Barbara McClintock demostraron en 1931 su base física.',
+        quotes=[Q('en_linkage', 'Two genetic markers that are physically near to each other are unlikely to be separated onto different chromatids during chromosomal crossover, and are therefore said to be more linked than markers that are far apart.'), Q('es_crossover', 'El sobrecruzamiento, crossing-over o entrecruzamiento cromosómico es el proceso por el cual las cromátidas de cromosomas homólogos se aparean e intercambian secciones de su ADN durante la profase I de la meiosis.'), Q('en_crossover', 'Chromosomal crossover, or crossing over, is the exchange of genetic material during sexual reproduction between two homologous chromosomes\' non-sister chromatids that results in recombinant chromosomes.'), Q('en_linkage', 'Morgan\'s observation that the amount of crossing over between linked genes differs led to the idea that crossover frequency might indicate the distance separating genes on the chromosome.'), Q('en_crossover', 'The physical basis of crossing over was first demonstrated by Harriet Creighton and Barbara McClintock in 1931.')]))
+    P.append(dict(text='Herencia ligada al sexo\nLos genes situados en un cromosoma sexual siguen patrones de herencia propios. Como los varones solo tienen un cromosoma X, un varón con un alelo recesivo ligado al X siempre lo expresa (es hemicigoto), mientras que una mujer necesita dos copias; por eso los trastornos recesivos ligados al X afectan mucho más a varones. Las mujeres pueden ser portadoras sin manifestar el rasgo. Dos ejemplos: el daltonismo, que afecta aproximadamente al 8 % de los hombres y al 0,5 % de las mujeres, y la hemofilia, por déficit del factor VIII (A) o del IX (B) de coagulación, que afecta a 1 de cada 5000-10 000 varones al nacer en el tipo A. El varón no hereda el rasgo del padre, porque recibe de él el cromosoma Y.',
+        quotes=[Q('en_sexlinkage', 'In X-linked recessive inheritance, females (XX) must have two copies of the allele (homozygous), while males (XY) require only one copy of the allele (hemizygous) to display the phenotype.'), Q('en_sexlinkage', 'Only females are able to be carriers for X-linked conditions; males will always be affected by any X-linked condition, since they have no second X chromosome with a healthy copy of the gene.'), Q('es_daltonismo', 'Por ello el daltonismo afecta aproximadamente al 8 % de los hombres y solo al 0,5 % de las mujeres.'), Q('es_hemofilia', 'Está relacionada con el cromosoma X en los dos principales tipos: la hemofilia A, cuando hay un déficit del factor VIII de coagulación y la hemofilia B (enfermedad de Christmas) cuando hay un déficit del factor IX de coagulación.'), Q('en_haemophilia', 'Haemophilia A affects about 1 in 5,000–10,000, while haemophilia B affects about 1 in 40,000 males at birth.'), Q('es_ligada_sexo', 'Los hombres solo pueden heredar un cromosoma X.')]))
+    P.append(dict(text='Grupos sanguíneos ABO y Rh\nEl sistema ABO lo descubrió Karl Landsteiner en 1901 (Nobel en 1930), y es el primero que se conoció. Lo controla un solo gen con tres alelos, 0, A y B, siendo A y B dominantes sobre 0 y codominantes entre sí: 00 da tipo 0; AA o A0 dan tipo A; BB o B0 dan tipo B; y AB da el tipo AB. Cada grupo tiene anticuerpos naturales contra los antígenos que no posee, y las personas AB, que no los tienen, son receptores universales de glóbulos rojos. El sistema Rh es el segundo en importancia para la transfusión, con unos 50 antígenos; alrededor del 85 % de la población lleva la proteína dominante Rh⁺.',
+        quotes=[Q('es_grupo', 'El sistema AB0 fue descubierto por Karl Landsteiner en 1901, y fue el primer sistema de grupo sanguíneo conocido'), Q('es_grupo', 'Son controlados por un solo gen con tres alelos: 0 (sin, por no poseer los antígenos del grupo A ni del grupo B), A, y B.'), Q('es_grupo', 'Así, las personas que heredan dos alelos 00 tienen tipo 0; AA o A0 dan lugar a tipos A; y BB o B0 dan lugar a tipos B.'), Q('es_grupo', 'siendo los individuos AB quienes no poseen anticuerpos naturales regulares para el grupo ABO, y siendo gracias a esto los receptores universales de sangre'), Q('es_factor_rh', 'Un 85% de la población tiene en esa proteína una estructura dominante, que corresponde a una determinada secuencia de aminoácidos que en lenguaje común son denominados habitualmente Rh+.'), Q('en_blood', 'The two most important blood group systems are ABO and Rh; they determine someone\'s blood type (A, B, AB, and O, with + or − denoting RhD status) for suitability in blood transfusion.')]))
+    P.append(dict(text='Enfermedades monogénicas recesivas\nVarias enfermedades siguen la herencia autosómica recesiva. La fenilcetonuria (PKU) la causa una deficiencia de la fenilalanina hidroxilasa, que impide transformar fenilalanina en tirosina; se trata con una dieta baja en fenilalanina, que debe empezar cuanto antes y mantenerse toda la vida. En el albinismo falla la formación de melanina a partir de tirosina por la enzima tirosinasa. La fibrosis quística, causada por mutaciones del gen CFTR (cromosoma 7), es entre los europeos la más frecuente de las enfermedades autosómicas recesivas potencialmente fatales. En todas, un heterocigoto es portador sano y la enfermedad aparece cuando los dos progenitores portadores transmiten el alelo mutado.',
+        quotes=[Q('es_pku', 'La fenilcetonuria, conocida también como PKU, Hiperfenilalaninemia, deficiencia de HAP, es una alteración congénita del metabolismo causada por la carencia de la enzima fenilalanina hidroxilasa'), Q('en_pku', 'Treatment is with a diet low in foods that contain phenylalanine and includes special supplements.'), Q('en_pku', 'The diet should begin as soon as possible after birth and continue for life.'), Q('es_albinismo', 'La melanina se sintetiza tras una serie de reacciones enzimáticas (ruta metabólica) por las cuales se produce la transformación del mencionado aminoácido en melanina por acción de la enzima tirosinasa.'), Q('es_fq', 'Entre las personas de ascendencia europea, la fibrosis quística es la más frecuente de las enfermedades autosómicas recesivas potencialmente fatales.'), Q('es_fq', 'La responsable es una mutación en el gen, localizado en el brazo largo del cromosoma 7, que codifica la proteína reguladora de la conductancia transmembrana de la fibrosis quística (CFTR).')]))
+    P.append(dict(text='Cariotipo y alteraciones cromosómicas\nEl cariotipo es el conjunto completo de cromosomas de una especie, descrito por su número y sus características. El ser humano tiene 46 cromosomas en cada célula: 22 pares de autosomas y un par sexual (XY en el hombre y XX en la mujer). Las técnicas de tinción, como las bandas G, permiten reconocer cada cromosoma por su patrón de bandas. Las alteraciones del número, como el síndrome de Down, se ven en el cariotipo: es la trisomía del cromosoma 21, con un tercer cromosoma 21 completo o en parte, y es la anomalía cromosómica más frecuente: en torno a 1 de cada 1000 nacimientos en el mundo.',
+        quotes=[Q('es_cariotipo', 'Como ejemplo: el ser humano tiene 46 cromosomas en el núcleo de cada célula,'), Q('es_cariotipo', 'Cada brazo del cromosoma se divide en zonas y cada zona, a su vez, en bandas e incluso las bandas en sub-bandas, gracias a las técnicas de marcado o tinción.'), Q('es_down', 'El síndrome de Down es un trastorno genético causado por la trisomía del cromosoma 21 o de una parte de él.'), Q('en_down', 'Down syndrome is the most common chromosomal abnormality, occurring in about 1 in 1,000 babies born worldwide, and one in 700 in the US.')]))
+    P.append(dict(text='Deriva genética y selección natural\nLas frecuencias alélicas pueden cambiar. La deriva genética es una fuerza evolutiva que actúa junto con la selección natural y cambia al azar la frecuencia de alelos de una generación a otra; el azar influye en qué alelos hay en la muestra limitada que se reproduce. Tiende a perder los alelos menos frecuentes y a fijar los más comunes, lo que disminuye la diversidad genética, y es más intensa en poblaciones pequeñas, en las que la fijación puede producirse en pocas generaciones. La selección natural, propuesta por Darwin y, de forma independiente, por Wallace, actúa cuando hay variación heredable y supervivencia o reproducción diferencial. Estos factores rompen las condiciones de Hardy-Weinberg.',
+        quotes=[Q('es_deriva', 'Se trata de un cambio aleatorio en la frecuencia de alelos de una generación a otra.'), Q('es_deriva', 'En poblaciones pequeñas, la fijación puede ocurrir en sólo unas pocas generaciones.'), Q('en_drift', 'The law of large numbers predicts that when the absolute number of copies of the allele is small (e.g., in small populations), the magnitude of drift on allele frequencies per generation is larger.'), Q('es_seleccion', 'En su formulación inicial, la teoría de la evolución por selección natural constituye el gran aporte'), Q('en_selection', 'As long as there is some variation between them and that variation is heritable, there will be an inevitable selection of individuals with the most advantageous variations.'), Q('en_hw', 'In the absence of selection, mutation, genetic drift, or other forces, allele frequencies p and q are constant between generations, so equilibrium is reached.')]))
+    P.append(dict(text='Hardy-Weinberg y caracteres ligados al sexo\nEl principio se amplía a los caracteres ligados al sexo: para un carácter del cromosoma X, las frecuencias genotípicas son p y q en el sexo heterogamético (los varones, con un solo X) y p², 2pq y q² en el homogamético (las mujeres). Por eso, en el daltonismo la frecuencia en varones es q y en mujeres q²: una fuente da el 8 % en hombres y el 0,5 % en mujeres, y q² = 0,08² = 0,64 %, cifra cercana a la observada. La comparación permite comprobar si la población cumple el equilibrio o si hay otros factores.',
+        quotes=[Q('en_hw', 'The genotype frequencies at equilibrium are p and q for the heterogametic sex but p2, 2pq and q2 for the homogametic sex.'), Q('en_hw', 'For example, in humans red–green colorblindness is an X-linked recessive trait.'), Q('es_daltonismo', 'Por ello el daltonismo afecta aproximadamente al 8 % de los hombres y solo al 0,5 % de las mujeres.'), Q('es_hw', 'Es relativamente sencillo expandir la definición del EHW para que incluya modificaciones de estas suposiciones, por ejemplo las de los caracteres ligados al sexo.')]))
+    P.append(dict(text='Errores frecuentes\nSon cuatro. Primero, suponer que la proporción 3:1 se cumple en cada familia: son esperanzas, y en una familia de cuatro hijos puede no haber ninguno afectado. Segundo, confundir dominante con más frecuente: un alelo dominante puede ser raro. Tercero, aplicar la distribución independiente a genes ligados, cuando los genes cercanos se heredan juntos. Cuarto, pensar que los varones heredan el rasgo ligado al X del padre: heredan de él el cromosoma Y.',
+        quotes=[Q('en_mendel', 'In his monohybrid crosses, an idealized 3:1 ratio between dominant and recessive phenotypes resulted.'), Q('es_mendel', 'Es un error muy extendido suponer que la uniformidad de los híbridos que Mendel observó en sus experimentos es una ley de transmisión, pero la dominancia nada tiene que ver con la transmisión, sino con la expresión del genotipo.'), Q('en_linkage', 'Two genetic markers that are physically near to each other are unlikely to be separated onto different chromatids during chromosomal crossover, and are therefore said to be more linked than markers that are far apart.'), Q('es_ligada_sexo', 'Los hombres solo pueden heredar un cromosoma X.')]))
+    return P
+
+
+ORDER = ['b0', 'b1', 'x0', 'b2', 'x1', 'b3', 'b4', 'x2', 'x3', 'b5', 'x4', 'x5', 'x6', 'x7', 'x8', 'b6', 'x9', 'x10', 'b7', 'b8', 'x11', 'b9', 'b10', 'b11']
+
+
+def figures(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    pun = r"""
+\node[font=\scriptsize] at (0.5,3.9) {Aa $\times$ Aa};
+\node[font=\bfseries] at (2.2,3.4) {A}; \node[font=\bfseries] at (4.2,3.4) {a};
+\node[font=\bfseries] at (0.4,2.2) {A}; \node[font=\bfseries] at (0.4,0.2) {a};
+\draw[thick] (1.2,3.0) rectangle (5.2,-0.8); \draw[thick] (3.2,3.0) -- (3.2,-0.8); \draw[thick] (1.2,1.1) -- (5.2,1.1);
+\node[fill=blue!15, minimum width=1.9cm, minimum height=1.8cm] at (2.2,2.0) {AA}; \node[fill=blue!15, minimum width=1.9cm, minimum height=1.8cm] at (4.2,2.0) {Aa};
+\node[fill=blue!15, minimum width=1.9cm, minimum height=1.8cm] at (2.2,0.1) {Aa}; \node[fill=orange!25, minimum width=1.9cm, minimum height=1.8cm] at (4.2,0.1) {aa};
+\node[font=\scriptsize, align=center] at (7.7,1.6) {genotipos 1 AA : 2 Aa : 1 aa\\ fenotipos 3 dominante : 1 recesivo};
+"""
+    cells = []
+    gam = ['AB', 'Ab', 'aB', 'ab']
+    for i, r in enumerate(gam):
+        for j, c in enumerate(gam):
+            a1, b1 = r[0], r[1]; a2, b2 = c[0], c[1]
+            geno = (a1 + a2 if a1 == 'A' else (a2 + a1 if a2 == 'A' else a1 + a2))
+            geno = ''.join(sorted(a1 + a2)) if False else ''.join(sorted(a1 + a2, key=lambda x: (x.islower(), x))) + ''.join(sorted(b1 + b2, key=lambda x: (x.islower(), x)))
+            dom_a = 'A' in (a1 + a2); dom_b = 'B' in (b1 + b2)
+            col = 'green!25' if dom_a and dom_b else ('yellow!35' if dom_a else ('orange!30' if dom_b else 'red!25'))
+            cells.append(r'\node[draw, fill=%s, minimum width=1.25cm, minimum height=0.85cm, font=\scriptsize] at (%.2f,%.2f) {%s};' % (col, 1.5 + j * 1.25, 3.4 - i * 0.85, geno))
+    for k, g in enumerate(gam):
+        cells.append(r'\node[font=\scriptsize\bfseries] at (%.2f,4.15) {%s}; \node[font=\scriptsize\bfseries] at (0.45,%.2f) {%s};' % (1.5 + k * 1.25, g, 3.4 - k * 0.85, g))
+    dih = '\n'.join(cells) + r"""
+\foreach \y/\c/\t in {3.8/green!25/9 A\_B\_, 3.3/yellow!35/3 A\_bb, 2.8/orange!30/3 aaB\_, 2.3/red!25/1 aabb} {\node[draw, fill=\c, minimum size=0.4cm] at (7.6,\y) {}; \node[font=\scriptsize, right] at (7.9,\y) {\t};}
+"""
+    link = r"""
+\draw[thick, blue!60] (0,2.2) -- (5,2.2); \draw[thick, red!60] (0,1.6) -- (5,1.6);
+\draw[thick, blue!60] (0,0.6) -- (5,0.6); \draw[thick, red!60] (0,0) -- (5,0);
+\node[font=\scriptsize] at (-0.8,1.9) {homólogos}; \node[font=\scriptsize] at (-0.8,0.3) {tras la meiosis};
+\foreach \x/\l in {1.0/A, 4.0/B} {\fill (\x,2.2) circle (2pt) node[above, font=\scriptsize] {\l}; \fill (\x,1.6) circle (2pt) node[below, font=\scriptsize] {\l};}
+\draw[thick, blue!60] (0,2.2) -- (2.5,2.2); \draw[thick, red!60] (2.5,2.2) -- (5,1.6);
+\node[font=\scriptsize] at (2.5,2.7) {quiasma (entrecruzamiento)};
+\draw[->, thick] (2.5,1.2) -- (2.5,0.9);
+\node[draw, fill=white, font=\scriptsize, inner sep=2pt] at (8.0,1.9) {genes cercanos: casi siempre juntos};
+\node[draw, fill=white, font=\scriptsize, inner sep=2pt] at (8.0,0.8) {genes lejanos: más recombinación};
+"""
+    xlinked = r"""
+\def\sq#1#2#3{\node[draw, fill=#3, minimum size=0.9cm] at (#1,#2) {};}
+\def\ci#1#2#3{\node[draw, circle, fill=#3, minimum size=0.9cm] at (#1,#2) {};}
+\sq{0}{3.2}{white}\node[font=\scriptsize] at (0,2.45) {padre sano X$^A$Y}; \ci{3.0}{3.2}{blue!15}\node[font=\scriptsize] at (3.0,2.45) {madre portadora X$^A$X$^a$};
+\draw (0.5,3.2) -- (2.5,3.2); \draw (1.5,3.2) -- (1.5,1.8);
+\ci{0}{1.2}{white}\ci{2.0}{1.2}{blue!15}\sq{4.0}{1.2}{white}\sq{6.0}{1.2}{red!40}
+\node[font=\scriptsize, align=center] at (0,0.4) {hija sana}; \node[font=\scriptsize, align=center] at (2.0,0.4) {hija portadora}; \node[font=\scriptsize, align=center] at (4.0,0.4) {hijo sano}; \node[font=\scriptsize, align=center] at (6.0,0.4) {hijo afectado};
+\draw (0,1.8) -- (6,1.8); \foreach \x in {0,2,4,6} {\draw (\x,1.8) -- (\x,1.65);}
+\node[font=\scriptsize, align=left] at (9.5,2.4) {Cada hijo varón: 50 \% afectado\\ Cada hija: 50 \% portadora};
+"""
+    abo = r"""
+\node[font=\bfseries\scriptsize] at (2.0,3.6) {genotipo}; \node[font=\bfseries\scriptsize] at (6.0,3.6) {grupo sanguíneo}; \node[font=\bfseries\scriptsize] at (9.6,3.6) {antígenos};
+\foreach \y/\g/\f/\a/\c in {2.8/{AA, A0}/A/antígeno A/red!20, 2.0/{BB, B0}/B/antígeno B/blue!20, 1.2/AB/AB/antígenos A y B/violet!25, 0.4/00/0/ninguno/gray!20} {\node[draw, fill=\c, minimum width=2.6cm, minimum height=0.6cm] at (2.0,\y) {\g}; \node[draw, fill=\c, minimum width=2.6cm, minimum height=0.6cm] at (6.0,\y) {\f}; \node[draw, fill=\c, minimum width=3.0cm, minimum height=0.6cm, font=\scriptsize] at (9.6,\y) {\a};}
+"""
+    return [
+        dict(kind='tikz', key='cuadro-punnett', source=pun,
+             caption='Cuadro de Punnett de un cruce monohíbrido Aa × Aa: proporciones genotípica 1:2:1 y fenotípica 3:1.',
+             quotes=[Q('es_punnett', 'El cuadro de Punnett es un resumen tabular de las posibles combinaciones de alelos maternos con alelos paternos.'), Q('en_mendel', 'In his monohybrid crosses, an idealized 3:1 ratio between dominant and recessive phenotypes resulted.')]),
+        dict(kind='tikz', key='cruce-dihibrido', source=dih,
+             caption='Cuadro de Punnett de un cruce dihíbrido AaBb × AaBb: proporción fenotípica 9:3:3:1.',
+             quotes=[Q('en_dihybrid', 'The expected phenotypic ratio of crossing heterozygous parents would be 9:3:3:1.'), Q('en_mendel', 'This shows that each of the two alleles is inherited independently from the other, with a 3:1 phenotypic ratio for each.')]),
+        dict(kind='tikz', key='entrecruzamiento', source=link,
+             caption='Entrecruzamiento entre cromátidas de cromosomas homólogos: los genes cercanos se heredan juntos y los alejados se recombinan más.',
+             quotes=[Q('en_crossover', 'Chromosomal crossover, or crossing over, is the exchange of genetic material during sexual reproduction between two homologous chromosomes\' non-sister chromatids that results in recombinant chromosomes.'), Q('en_linkage', 'In other words, the nearer two genes are on a chromosome, the lower the chance of recombination between them, and the more likely they are to be inherited together.')]),
+        dict(kind='tikz', key='herencia-ligada-x', source=xlinked,
+             caption='Herencia recesiva ligada al X: una madre portadora y un padre sano; la mitad de los hijos varones queda afectada y la mitad de las hijas es portadora.',
+             quotes=[Q('en_sexlinkage', 'Only females are able to be carriers for X-linked conditions; males will always be affected by any X-linked condition, since they have no second X chromosome with a healthy copy of the gene.'), Q('es_daltonismo', 'Si un varón hereda un cromosoma X con el alelo alterado será daltónico.')]),
+        dict(kind='tikz', key='grupos-abo', source=abo,
+             caption='Sistema ABO: tres alelos (0, A, B), con A y B codominantes y dominantes sobre 0.',
+             quotes=[Q('es_grupo', 'Así, las personas que heredan dos alelos 00 tienen tipo 0; AA o A0 dan lugar a tipos A; y BB o B0 dan lugar a tipos B.'), Q('es_grupo', 'Las personas AB tienen ambos genotipos debido a que la relación entre los alelos A y B es de codominancia.')]),
+        dict(kind='image', key='mendel-retrato', commons='File:Gregor Mendel portrait.jpg',
+             caption='Gregor Mendel (1822-1884).',
+             quotes=[Q('es_gregor', 'Formuló, por medio de los trabajos que llevó a cabo con diversa variedad de guisantes y arvejas (Pisum sativum), las hoy llamadas leyes de Mendel que dieron origen a la herencia genética.'), Q('en_gregor', 'He published his work in 1866, demonstrating the actions of invisible "factors"—now called genes—in predictably determining the traits of an organism.')]),
+        dict(kind='image', key='morgan', commons='File:Thomas Hunt Morgan.jpg',
+             caption='Thomas Hunt Morgan, que describió el entrecruzamiento y propuso usar su frecuencia para medir distancias entre genes.',
+             quotes=[Q('en_crossover', 'Crossing over was described, in theory, by Thomas Hunt Morgan; the term crossover was coined by Morgan and Eleth Cattell.'), Q('en_linkage', 'Morgan\'s observation that the amount of crossing over between linked genes differs led to the idea that crossover frequency might indicate the distance separating genes on the chromosome.')]),
+        dict(kind='image', key='landsteiner', commons='File:Karl Landsteiner nobel2.jpg',
+             caption='Karl Landsteiner, premio Nobel de Fisiología o Medicina en 1930 por la clasificación de los grupos sanguíneos ABO.',
+             quotes=[Q('es_grupo', 'El científico austriaco Karl Landsteiner recibió el Premio Nobel de Fisiología o Medicina en 1930 por sus trabajos en la caracterización de los tipos sanguíneos AB0.'), Q('en_blood', 'This was the discovery of blood groups for which Landsteiner was awarded the Nobel Prize in Physiology or Medicine in 1930.')]),
+    ]
+
+
+def exercises(spec):
+    Q = lambda k, a, b=None: span(spec, k, a, b)
+    return [
+        num('practice', 'Se cruzan dos guisantes dihíbridos heterocigotos (AaBb × AaBb), con A y B dominantes y los dos genes en cromosomas distintos. De una descendencia de 160 plantas, calcule cuántas se esperan con el fenotipo dominante para los dos caracteres (A-B-), cuántas con cada fenotipo mixto y cuántas con el doble recesivo.', '90',
+            [Q('en_dihybrid', 'The expected phenotypic ratio of crossing heterozygous parents would be 9:3:3:1.'), Q('en_mendel', 'This shows that each of the two alleles is inherited independently from the other, with a 3:1 phenotypic ratio for each.')],
+            'Proporción 9:3:3:1 aplicada a un total',
+            [('N', 160, 'dimensionless', 'plantas de la descendencia'), ('a', 9, 'dimensionless', 'partes del fenotipo A-B-'), ('b', 3, 'dimensionless', 'partes de cada fenotipo mixto'), ('c', 1, 'dimensionless', 'partes del doble recesivo')],
+            'El número esperado de plantas de cada fenotipo.',
+            [('Reparto proporcional', 'n_i = N\\,\\frac{k_i}{16}', 'N*a/(a+2*b+c)')],
+            ['Los genes se heredan de forma independiente y cada cruce es independiente.', 'Se calcula la esperanza, no el resultado exacto de una descendencia concreta.'],
+            ['La proporción 9:3:3:1 suma 16 partes.'],
+            [('A-B-', '160 × 9/16', '160*9/16', 90, 'dimensionless'), ('Cada mixto', '160 × 3/16', '160*3/16', 30, 'dimensionless'), ('Doble recesivo', '160 × 1/16', '160*1/16', 10, 'dimensionless')],
+            'Se esperan 90 plantas A-B-, 30 A-bb, 30 aaB- y 10 aabb.',
+            'Las cifras son esperanzas; una descendencia real de 160 plantas rara vez da exactamente 90, 30, 30 y 10, pero se aproxima. Para decidir si la desviación es compatible con el azar se usa la prueba χ².',
+            ['Si los genes estuvieran ligados, las proporciones serían otras.'],
+            ['Calcular 9/16 de otro total, o confundir las partes con los porcentajes.']),
+        num('practice', 'El daltonismo es un carácter recesivo ligado al X. Si la frecuencia del alelo daltónico es q = 0,08 y la población está en equilibrio de Hardy-Weinberg, calcule la proporción esperada de mujeres daltónicas (q²), compárela con el 0,5 % que da la fuente y calcule la proporción de mujeres portadoras (2pq).', '0.0064',
+            [Q('es_daltonismo', 'Por ello el daltonismo afecta aproximadamente al 8 % de los hombres y solo al 0,5 % de las mujeres.'), Q('en_hw', 'The genotype frequencies at equilibrium are p and q for the heterogametic sex but p2, 2pq and q2 for the homogametic sex.')],
+            'Hardy-Weinberg para un carácter ligado al X',
+            [('q', 0.08, 'dimensionless', 'frecuencia del alelo daltónico, igual a la de los varones afectados'), ('p', 0.92, 'dimensionless', 'frecuencia del alelo normal')],
+            'La proporción de mujeres afectadas y de portadoras.',
+            [('Mujeres afectadas', 'f_{aa} = q^{2}', 'q**2')],
+            ['La población está en equilibrio de Hardy-Weinberg y el apareamiento es al azar.', 'La frecuencia del alelo es igual a la frecuencia de varones afectados.'],
+            ['En los varones, la frecuencia del fenotipo es q; en las mujeres, q² para las afectadas y 2pq para las portadoras.'],
+            [('Mujeres daltónicas', '0{,}08^2', '0.08**2', 0.0064, 'dimensionless'), ('Mujeres portadoras', '2 × 0{,}92 × 0{,}08', '2*0.92*0.08', 0.1472, 'dimensionless')],
+            'Se esperan un 0,64 % de mujeres daltónicas y un 14,7 % de portadoras.',
+            'El 0,64 % esperado es muy cercano al 0,5 % observado, lo que apoya el modelo; casi una de cada siete mujeres sería portadora sin saberlo. Las diferencias pueden deberse a que el 8 % y el 0,5 % son valores aproximados y a que la población no cumple exactamente las condiciones.',
+            ['Los datos de las fuentes son aproximados y varían entre poblaciones.'],
+            ['Usar q² para los varones: en ellos, la frecuencia es q.']),
+        num('practice', 'Un hombre de grupo A (genotipo A0) y una mujer de grupo B (genotipo B0) tienen hijos. Con el modelo de tres alelos del sistema ABO, calcule la probabilidad de que un hijo sea del grupo 0 y la de que sea del grupo AB.', '0.25',
+            [Q('es_grupo', 'Así, las personas que heredan dos alelos 00 tienen tipo 0; AA o A0 dan lugar a tipos A; y BB o B0 dan lugar a tipos B.'), Q('en_blood', 'The two most important blood group systems are ABO and Rh; they determine someone\'s blood type (A, B, AB, and O, with + or − denoting RhD status) for suitability in blood transfusion.')],
+            'Cuadro de Punnett con alelos A, 0, B y 0',
+            [('P_A', 0.5, 'dimensionless', 'probabilidad de que el padre transmita A'), ('P_B', 0.5, 'dimensionless', 'probabilidad de que la madre transmita B'), ('P_0m', 0.5, 'dimensionless', 'probabilidad de que la madre transmita 0'), ('P_0p', 0.5, 'dimensionless', 'probabilidad de que el padre transmita 0')],
+            'Las probabilidades de los grupos 0 y AB.',
+            [('Probabilidad de 00', 'P(00) = P_{0p}\\,P_{0m}', 'P_0p*P_0m')],
+            ['Los gametos se forman con la misma probabilidad y los alelos se combinan al azar.'],
+            ['De A0 × B0 salen cuatro combinaciones equiprobables: AB, A0, B0 y 00.'],
+            [('Grupo 0 (00)', '0{,}5 × 0{,}5', '0.5*0.5', 0.25, 'dimensionless'), ('Grupo AB', 'P_A P_B', '0.5*0.5', 0.25, 'dimensionless')],
+            'Cada hijo tiene una probabilidad de 1/4 de ser del grupo 0 y de 1/4 de ser del grupo AB; 1/4 serán A y 1/4 B.',
+            'Una pareja de grupos A y B puede tener hijos de los cuatro grupos, algo que muestra la codominancia y la presencia del alelo recesivo 0 en cada progenitor.',
+            ['No incluye el factor Rh.'],
+            ['Pensar que los hijos de una pareja A y B solo pueden ser AB.']),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='EXPERIMENT_DESIGN',
+             prompt='Una planta de guisante tiene flores púrpura (fenotipo dominante). Diseñe un cruce de prueba para determinar si es homocigótica (PP) o heterocigótica (Pp). Indique con qué se cruza, qué resultados esperaría en cada caso y qué limitación tiene la conclusión.',
+             questions=['¿Con qué planta se cruza?', '¿Qué descendencia da cada genotipo?', '¿Qué limitación tiene?'],
+             answer=dict(summary='Se cruza con una planta homocigótica recesiva (pp, flores blancas): si toda la descendencia es púrpura, la planta es PP; si hay mitad púrpura y mitad blanca, es Pp.',
+                sections=[
+                  dict(label='Cruce', points=[dict(text='Se cruza la planta con un individuo homocigoto recesivo para el carácter; como éste solo aporta alelos recesivos, el fenotipo de la descendencia depende del alelo que aporta la planta estudiada.', quotes=[Q('en_testcross', 'In a test cross, the individual in question is bred with another individual that is homozygous for the recessive trait and the offspring of the test cross are examined.'), Q('en_testcross', 'Since the homozygous recessive individual can only pass on recessive alleles, the allele the individual in question passes on determines the phenotype of the offspring.')])]),
+                  dict(label='Resultados esperados', points=[dict(text='Si todos los descendientes expresan el rasgo dominante, la planta es homocigota dominante. Si es heterocigota, la mitad de los descendientes expresará el recesivo.', quotes=[Q('en_testcross', 'If all of the offspring produced express the dominant trait, the individual in question is homozygous for the dominant allele.'), Q('en_testcross', 'By performing a test cross, one can determine whether the individual is heterozygous or homozygous dominant.')])]),
+                  dict(label='Limitación', points=[dict(text='Con pocos descendientes la conclusión puede ser errónea, porque las proporciones son esperanzas y no resultados exactos: hace falta una descendencia numerosa para descartar el azar.', quotes=[Q('en_mendel', 'In his monohybrid crosses, an idealized 3:1 ratio between dominant and recessive phenotypes resulted.'), Q('es_punnett', 'Cabe señalar que el cuadro de Punnett solo muestra las posibilidades para genes.')])]),
+                ],
+                mistakes=['Cruzarla con otra planta heterocigótica.', 'Concluir con dos o tres descendientes.'],
+                criteria=['Elige el homocigoto recesivo.', 'Predice por genotipo.', 'Reconoce la limitación estadística.'])),
+        dict(role='practice', difficulty='ADVANCED', problem_type='DATA_INTERPRETATION',
+             prompt='En un cruce de prueba de un dihíbrido PpLl con un doble recesivo ppll se obtienen 1000 descendientes (datos ilustrativos): 430 PL, 430 pl, 70 Pl y 70 pL. Interprete: ¿se cumple la distribución independiente?, ¿qué indican los grupos de menor frecuencia?, ¿qué frecuencia de recombinación hay?',
+             questions=['¿Qué proporción esperaría con genes independientes?', '¿Qué indican los datos?', '¿Qué frecuencia de recombinación hay?'],
+             answer=dict(summary='Con genes independientes se esperaría 1:1:1:1, pero hay un exceso de los tipos parentales: los genes están ligados y los recombinantes (Pl y pL) son el 14 % de la descendencia.',
+                sections=[
+                  dict(label='Esperado', points=[dict(text='Si los dos genes se heredaran de forma independiente, el cruce de prueba daría cuatro fenotipos en proporción 1:1:1:1, es decir, 250 de cada.', quotes=[Q('en_testcross', 'In such a test cross, if the individual being tested is heterozygous, a phenotypic ratio of 1:1:1:1 is typically observed.'), Q('en_mendel', 'Different traits have independent assortment.')])]),
+                  dict(label='Observado', points=[dict(text='Los fenotipos parentales (PL y pl) son mucho más frecuentes que los recombinantes (Pl y pL): los genes están cerca en el mismo cromosoma y tienden a heredarse juntos.', quotes=[Q('en_linkage', 'The frequency of P occurring together with L and p occurring together with l is greater than that of the recombinant Pl and pL.'), Q('en_linkage', 'Two genetic markers that are physically near to each other are unlikely to be separated onto different chromatids during chromosomal crossover, and are therefore said to be more linked than markers that are far apart.')])]),
+                  dict(label='Recombinación', points=[dict(text='Los recombinantes son 70 + 70 = 140 de 1000, el 14 %, menos del 50 % que se daría con genes independientes; esa frecuencia de recombinación se usa como medida de la distancia entre los genes.', quotes=[Q('en_linkage', 'The recombination frequency is more difficult to compute in an F2 cross than a backcross, but the lack of fit between observed and expected numbers of progeny in the above table indicate it is less than 50%.'), Q('en_linkage', 'Morgan\'s observation that the amount of crossing over between linked genes differs led to the idea that crossover frequency might indicate the distance separating genes on the chromosome.')])]),
+                ],
+                mistakes=['Concluir que el entrecruzamiento no ocurre.', 'Calcular la frecuencia sobre los parentales.'])),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='MECHANISM_EXPLANATION',
+             prompt='Explique por qué los varones son daltónicos con más frecuencia que las mujeres, e indique cómo puede una mujer sin daltonismo tener un hijo daltónico.',
+             questions=['¿Dónde está el gen?', '¿Qué diferencia hay entre varón y mujer?', '¿Cómo se transmite?'],
+             answer=dict(summary='El gen está en el cromosoma X: el varón, con un solo X, expresa el alelo alterado; la mujer necesita dos copias y, con una, es portadora que puede transmitirlo a sus hijos.',
+                sections=[
+                  dict(label='Localización', points=[dict(text='Los genes de las formas más comunes de daltonismo se encuentran en el cromosoma X.', quotes=[Q('es_daltonismo', 'Los varones tienen más probabilidades de ser daltónicos que las mujeres, porque los genes responsables de las formas más comunes de daltonismo se encuentran en el cromosoma X, las mujeres no daltónicas pueden portar genes de daltonismo y transmitirlos a sus hijos.'), Q('en_sexlinkage', 'There are many more X-linked conditions than Y-linked conditions, since humans have several times as many genes on the X chromosome than the Y chromosome.')])]),
+                  dict(label='Varón y mujer', points=[dict(text='Un varón con un cromosoma X con el alelo alterado será daltónico; la mujer, con dos cromosomas X, solo lo será si hereda dos copias, por lo que la frecuencia es mucho menor (aproximadamente 8 % frente a 0,5 %).', quotes=[Q('es_daltonismo', 'Si un varón hereda un cromosoma X con el alelo alterado será daltónico.'), Q('en_sexlinkage', 'In X-linked recessive inheritance, females (XX) must have two copies of the allele (homozygous), while males (XY) require only one copy of the allele (hemizygous) to display the phenotype.')])]),
+                  dict(label='Transmisión', points=[dict(text='Una mujer portadora (heterocigota) no es daltónica, pero transmite el X con el alelo alterado a la mitad de sus hijos varones, que serán daltónicos; el varón no hereda el rasgo del padre, pues de él recibe el cromosoma Y.', quotes=[Q('es_daltonismo', 'Los varones tienen más probabilidades de ser daltónicos que las mujeres, porque los genes responsables de las formas más comunes de daltonismo se encuentran en el cromosoma X, las mujeres no daltónicas pueden portar genes de daltonismo y transmitirlos a sus hijos.'), Q('es_ligada_sexo', 'Los hombres solo pueden heredar un cromosoma X.')])]),
+                ],
+                mistakes=['Decir que el gen está en el cromosoma Y.', 'Pensar que la portadora está afectada.'])),
+        dict(role='practice', difficulty='INTERMEDIATE', problem_type='DATA_INTERPRETATION',
+             prompt='Un cariotipo se describe como 47,XY,+21. Interprételo: cuántos cromosomas tiene, de qué sexo es el individuo, qué alteración muestra y qué síndrome causa.',
+             questions=['¿Cuántos cromosomas hay frente a lo normal?', '¿Qué indica XY?', '¿Qué significa +21?'],
+             answer=dict(summary='Tiene 47 cromosomas, uno más que los 46 normales; es varón (XY) y presenta una trisomía del cromosoma 21, que causa el síndrome de Down.',
+                sections=[
+                  dict(label='Número', points=[dict(text='El ser humano tiene 46 cromosomas en cada célula, 22 pares de autosomas y un par sexual; 47 significa un cromosoma de más.', quotes=[Q('es_cariotipo', 'Como ejemplo: el ser humano tiene 46 cromosomas en el núcleo de cada célula,'), Q('es_cariotipo', 'El cariotipo es característico de cada especie, al igual que el número de cromosomas.')])]),
+                  dict(label='Sexo y alteración', points=[dict(text='XY indica un varón. «+21» indica un cromosoma 21 adicional, es decir, tres copias: una trisomía del 21.', quotes=[Q('es_cariotipo', 'Como ejemplo: el ser humano tiene 46 cromosomas en el núcleo de cada célula,'), Q('en_down', 'The most common, trisomy 21, involves an extra copy of chromosome 21 in all cells.')])]),
+                  dict(label='Síndrome', points=[dict(text='La trisomía del cromosoma 21 (o de una parte) causa el síndrome de Down, la anomalía cromosómica más frecuente, de aproximadamente 1 de cada 1000 nacimientos en el mundo.', quotes=[Q('es_down', 'El síndrome de Down es un trastorno genético causado por la trisomía del cromosoma 21 o de una parte de él.'), Q('en_down', 'Down syndrome is the most common chromosomal abnormality, occurring in about 1 in 1,000 babies born worldwide, and one in 700 in the US.')])]),
+                ],
+                mistakes=['Pensar que tiene 47 pares.', 'Confundir el síndrome de Down con una enfermedad de herencia mendeliana.'])),
+        dict(role='practice', difficulty='ADVANCED', problem_type='CAUSAL_ANALYSIS',
+             prompt='Explique por qué una enfermedad autosómica recesiva grave, como la fibrosis quística, persiste en una población: papel de los portadores, de la ventaja del heterocigoto, de la deriva genética y de la selección natural.',
+             questions=['¿Dónde se «esconde» el alelo?', '¿Qué es la ventaja del heterocigoto?', '¿Qué papel tienen la deriva y la selección?'],
+             answer=dict(summary='El alelo recesivo se esconde en los portadores heterocigotos, que no enferman, y la selección solo actúa contra los homocigotos; además puede mantenerse por ventaja heterocigota o aumentar por deriva en poblaciones pequeñas.',
+                sections=[
+                  dict(label='Portadores', points=[dict(text='En una enfermedad autosómica recesiva, los padres son portadores sanos y la enfermedad se expresa en los descendientes que heredan el alelo de ambos; el alelo se transmite sin manifestarse.', quotes=[Q('es_pku', 'La fenilcetonuria tiene como rasgo principal la herencia genética autosómica recesiva, es decir, los padres son portadores de los genes defectuosos y al ser traspasados de ambos progenitores la enfermedad se expresa en los descendientes.'), Q('es_fq', 'La fibrosis quística (FQ) es una enfermedad genética de herencia autosómica recesiva')])]),
+                  dict(label='Ventaja del heterocigoto', points=[dict(text='Algunas enfermedades autosómicas recesivas comunes, como la anemia falciforme, protegen a sus portadores de otras afecciones, concepto conocido como ventaja heterocigota, y eso mantiene el alelo en la población.', quotes=[Q('es_fq', 'Algunas enfermedades autosómicas recesivas comunes como la anemia de células falciformes han revelado la propiedad de proteger a sus portadores de otras afecciones, concepto conocido como ventaja heterocigota.'), Q('es_seleccion', 'En su formulación inicial, la teoría de la evolución por selección natural constituye el gran aporte')])]),
+                  dict(label='Deriva y selección', points=[dict(text='La deriva genética cambia al azar las frecuencias alélicas y es más fuerte en poblaciones pequeñas, en las que un alelo puede fijarse en pocas generaciones; la selección natural, en cambio, actúa sobre la variación heredable favoreciendo o desfavoreciendo fenotipos.', quotes=[Q('es_deriva', 'En poblaciones pequeñas, la fijación puede ocurrir en sólo unas pocas generaciones.'), Q('en_selection', 'As long as there is some variation between them and that variation is heritable, there will be an inevitable selection of individuals with the most advantageous variations.')])]),
+                ],
+                mistakes=['Decir que el alelo desaparece por completo porque los afectados no se reproducen.', 'Confundir deriva con selección.'])),
+    ]

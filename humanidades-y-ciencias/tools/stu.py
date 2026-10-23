@@ -3,8 +3,7 @@ import json, sys
 from pathlib import Path
 from studium.mcp.server import dispatch, open_workspace
 
-import os
-WS = Path(os.environ.get('STUDIUM_WS', Path.home()/'studium-ws'))
+WS = Path.home()/'Developer/work/ws'
 
 def session(book):
     root = WS/book

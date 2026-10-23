@@ -4,11 +4,23 @@ Tres libros escritos con Studium para comprobar cómo se comporta el framework
 fuera de la ingeniería. Son **ediciones de revisión**: ninguna tiene aprobación
 académica ni se declara científicamente certificada.
 
-| Libro | Perfil Studium | Capítulos | Párrafos citados | Fuentes | Páginas |
-| --- | --- | --- | --- | --- | --- |
-| [Literatura española: de la Edad Media al Siglo de Oro](literatura-espanola/) | `HUMANITIES` | 7 | 81 | 29 | 31 |
-| [Historia moderna de España: de los Reyes Católicos a la Guerra de Sucesión](historia-moderna-espana/) | `HUMANITIES` | 6 | 82 | 41 | 28 |
-| [Biología celular y molecular](biologia-celular-molecular/) | `LIFE_SCIENCES` | 6 | 70 | 38 | 28 |
+| Libro | Perfil Studium | Capítulos | Párrafos citados | Palabras | Fuentes | Figuras | Ejercicios | Páginas |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Literatura española: de la Edad Media al siglo XX](literatura-espanola/) | `HUMANITIES` | 13 | 337 | 36 000 | 218 | 86 | 90 | 184 |
+| [Historia moderna de España: de los Reyes Católicos a la Guerra de Sucesión](historia-moderna-espana/) | `HUMANITIES` | 12 | 304 | 30 700 | 143 | 59 | 68 | 139 |
+| [Biología celular y molecular](biologia-celular-molecular/) | `LIFE_SCIENCES` | 12 | 260 | 25 800 | 253 | 103 | 94 | 196 |
+
+Cada disciplina tiene sus propios tipos de ejercicio (Studium elige el tipo
+según el perfil del libro):
+
+- **Literatura**: comentario de texto, análisis literario, cronologías y preguntas de desarrollo, con un fragmento citado de Wikisource.
+- **Historia**: preguntas de desarrollo, comentario de fuente, cronologías, análisis de causas y consecuencias y comparaciones. Ningún ejercicio numérico.
+- **Biología**: problemas numéricos propios de la biología (Nernst, Michaelis-Menten, Hardy-Weinberg, estequiometría de la fotosíntesis, PCR, χ²), más explicación de mecanismos, interpretación de datos, diseño experimental y análisis de causas.
+
+Las figuras son diagramas TikZ con extractos que los respaldan e imágenes con
+licencia abierta (dominio público, CC0, CC BY o CC BY-SA) tomadas de Wikimedia
+Commons; el autor, la licencia y el enlace figuran bajo cada imagen y en la
+lista de créditos de cada libro. Las imágenes se guardan reducidas (640 px).
 
 ## Cómo se escribieron
 
@@ -16,8 +28,8 @@ académica ni se declara científicamente certificada.
   tiene una auditoría registrada (`two_witnesses`). Eso comprueba que el
   párrafo está respaldado por dos textos; no comprueba que las fuentes sean
   correctas.
-- Cada capítulo tiene un problema resuelto numérico con su resultado
-  recalculado. Varios sirven para comprobar la coherencia entre fuentes
+- Cada capítulo tiene un ejercicio resuelto y varios ejercicios propuestos
+  con solución modelo; la respuesta de cada ejercicio cita extractos de al menos dos fuentes distintas. Varios sirven para comprobar la coherencia entre fuentes
   (por ejemplo, 350 000 moriscos expulsados frente a una población de 325 000,
   o «19 veces» frente a «15 veces» de eficiencia aeróbica).
 - Cuando dos fuentes discrepan (el título de Reyes Católicos, 1494 o 1496; el
@@ -56,7 +68,13 @@ que el resto de la colección. El catálogo `release-bundle.json` los incluye.
 - Las fuentes son enciclopédicas y de divulgación. Un libro que se use para
   estudiar necesita contraste con manuales y fuentes primarias; la revisión
   académica sigue pendiente.
-- Los problemas son aritmética y comprobaciones de coherencia, no el modelo de
-  problemas de un examen de la materia.
+- Los ejercicios son una propuesta de práctica con respuesta modelo respaldada
+  por fuentes, no el modelo de un examen oficial. Las respuestas de comentario
+  y desarrollo son una lectura posible, no la única.
+- Los datos de algunos ejercicios son ilustrativos y así se dice en el
+  enunciado (por ejemplo, un cruce de 160 plantas o un gel de PCR).
+- Hay discrepancias entre fuentes que los libros señalan y no resuelven (por
+  ejemplo, el año del descubrimiento del aparato de Golgi, 1889 o 1898, o el
+  porcentaje de genomas bacterianos con CRISPR, 40 % o 50 %).
 - Studium no detecta contradicciones entre dos frases en prosa; las
   discrepancias entre fuentes de estos libros se marcaron a mano.
