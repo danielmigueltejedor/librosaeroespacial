@@ -2,7 +2,8 @@
 Chapter modules <prefix>N may define: build(spec) base paragraphs, extend(spec) more paragraphs,
 figures(spec), exercises(spec), problems(spec) (numeric, legacy), SOURCES (extra sources)."""
 import sys, importlib, json
-sys.path.insert(0, '/Users/danielmigueltejedor/Developer/work/tools')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from engine import *
 mod, prefix, idp = sys.argv[1:4]; only = sys.argv[4:]
 spec = importlib.import_module(mod).spec
