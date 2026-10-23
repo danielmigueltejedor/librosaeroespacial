@@ -7,6 +7,7 @@ Cada libro aporta dos módulos en `books/<libro>/solutions/`: `extra_exams_steps
 """
 from pathlib import Path
 import json
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +25,8 @@ def load(book: Path):
 
 
 def render(book: Path, *, files: dict, section: str, input_prefix: str, report: str,
-           statement_marker: str, solution_marker: str, solutions_head: str = '') -> list[int]:
+           statement_marker: str = '', solution_marker: str = '', solutions_head: str = '',
+           decimal_comma: bool = False) -> list[int]:
     """files: nombres de salida relativos al libro. section: comando de sección de la solución."""
     steps, text = load(book)
     statements, solutions, reports = [], [], []
@@ -32,6 +34,10 @@ def render(book: Path, *, files: dict, section: str, input_prefix: str, report: 
         rows = [dict(target=k, expression=e, unit=u, why=w) for k, e, u, w in steps.STEPS[n]]
         body, checks = numeric_steps(rows)
         values = {c['target']: number(c['value'], 6) for c in checks}
+        if decimal_comma:
+            comma = lambda s: re.sub(r'(?<=\d)\.(?=\d)', '{,}', s)
+            values = {k: comma(v) for k, v in values.items()}
+            body = comma(body)
         generated = (r'\subsection*{Procedimiento y operaciones del simulacro ' + text.LABEL[n] + '}\n'
                      + text.STRATEGY[n] + '\n\n' + body + '\n')
         (book / 'solutions/generated' / f'EX{n}.tex').write_text(generated)

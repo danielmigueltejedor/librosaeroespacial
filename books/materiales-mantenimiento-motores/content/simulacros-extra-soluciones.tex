@@ -1,0 +1,59 @@
+\chapter{Soluciones de S07}
+\section{1. Estado plano de tensiones}
+El centro del círculo de Mohr es $(\sigma_x+\sigma_y)/2=40\,\mathrm{MPa}$ y su radio $100\,\mathrm{MPa}$. Las tensiones principales son $\sigma_1=140\,\mathrm{MPa}$ y $\sigma_2=-60\,\mathrm{MPa}$, la tangencial máxima en el plano $100\,\mathrm{MPa}$ y el plano principal mayor forma $18{,}4349^\circ$ con el eje $x$. La tensión de von Mises es $\sqrt{\sigma_1^2-\sigma_1\sigma_2+\sigma_2^2}=177{,}764\,\mathrm{MPa}$ y el coeficiente de seguridad estático $350/177{,}764=1{,}9689$. No cubre fatiga, concentraciones de tensión, tensiones residuales ni inestabilidad.
+
+\section{2. Parámetro de Larson-Miller}
+$P=T(C+\log_{10}t)=22000\,\mathrm K$. Con el mismo $P$ a $1050\,\mathrm K$, $t=10^{P/T-C}=8{,}96151\,\mathrm h$. El método supone que el mecanismo de fluencia no cambia con la temperatura y que $C$ es constante para el material, y no sustituye ensayos del lote y de la condición de servicio; la sensibilidad a la temperatura es grande: $50\,\mathrm K$ más reducen el tiempo de rotura más de diez veces.
+
+\section{3. Profundidad de cementación}
+$D=D_0e^{-Q/(RT)}=1{,}09833\times10^{-11}\,\mathrm{m^2/s}$. Con $t=14400\,\mathrm s$, $\sqrt{Dt}=0{,}000397693\,\mathrm m$, es decir, unos $0{,}4\,\mathrm{mm}$. Es una escala de penetración del carbono; el perfil de dureza depende además de la concentración superficial, el temple y la transformación martensítica, y la profundidad de capa efectiva se define con un umbral de dureza.
+
+\section{4. Ultrasonidos por pulso-eco}
+$t=2d/v=7{,}93651\,\mu\mathrm s$ para $25\,\mathrm{mm}$. El eco a $4{,}76\,\mu\mathrm s$ está a $vt/2=14{,}994\,\mathrm{mm}$. La razón de amplitudes 3 equivale a $20\log_{10}3=9{,}54243\,\mathrm{dB}$. La amplitud depende de la orientación, la rugosidad, el acoplamiento y la atenuación además del tamaño, de modo que no determina por sí sola el tamaño del defecto; para dimensionar se usan bloques de calibración y procedimientos cualificados.
+
+\input{solutions/generated/EX1.tex}
+
+\chapter{Soluciones de S08}
+\section{1. Curva de Basquin}
+Despejando, $2N_f=(\sigma_a/\sigma_f')^{1/b}=200146$ y $N_f=100073$ ciclos. La ecuación describe la región de vida alta con amplitud constante; no incluye tensión media, entallas, acabado superficial, tamaño ni ambiente, y no es válida cerca de la rotura estática ni con plasticidad importante.
+
+\section{2. Regla de Miner}
+Los daños parciales son $0{,}2$, $0{,}1$ y $0{,}05$, de modo que $D=0{,}35$ por bloque y el fallo se predice tras $1/D=2{,}85714$ bloques. La regla es lineal e independiente del orden; en la práctica el orden de aplicación importa y $D$ en el fallo oscila notablemente respecto a la unidad, por lo que se emplea con factores de dispersión.
+
+\section{3. Lámina unidireccional}
+$E_L=V_fE_f+(1-V_f)E_m=111{,}8\,\mathrm{GPa}$, $E_T=1/(V_f/E_f+(1-V_f)/E_m)=8{,}67679\,\mathrm{GPa}$, $\rho=1530\,\mathrm{kg/m^3}$ y $E_L/\rho=7{,}30719\times10^{7}\,\mathrm{J/kg}$. La rigidez en la dirección de la fibra es más de diez veces la transversal, que depende de la matriz; por eso un laminado se compone con orientaciones distintas para dar propiedades útiles en varias direcciones.
+
+\section{4. Resistencia residual}
+$\sigma_c=K_{IC}/(Y\sqrt{\pi a})$ da $318{,}594\,\mathrm{MPa}$ con $4\,\mathrm{mm}$ y $225{,}28\,\mathrm{MPa}$ con $8\,\mathrm{mm}$. A $250\,\mathrm{MPa}$ el tamaño crítico es $a_c=6{,}49612\,\mathrm{mm}$. La curva de resistencia residual muestra cuánta carga soporta una pieza dañada según el tamaño de grieta y permite fijar el tamaño detectable y los intervalos de inspección; en este problema se supone una tenacidad constante y una geometría con $Y$ fijo.
+
+\input{solutions/generated/EX2.tex}
+
+\chapter{Soluciones de S09}
+\section{1. Intervalo con dos contadores}
+Han transcurrido $220$ días desde el 2 de marzo, de modo que el margen de calendario es $365-220=145$ días. El margen en horas es $3100+200-3250=50\,\mathrm{FH}$, equivalente a $8{,}33333$ días de uso: gobierna el contador de horas. Las reglas reales de tolerancia, uso de «lo que ocurra antes» y registro de la ejecución son las del programa aplicable, no las de este ejercicio.
+
+\section{2. Pieza de vida limitada}
+Restan $2550$ ciclos, es decir $510$ días de uso. El plazo de aprovisionamiento consume $450$ ciclos, así que el último momento para pedir es dentro de $420$ días. El cálculo supone un uso uniforme; con variaciones de ciclos por día conviene recalcular y mantener un margen de seguridad logístico.
+
+\section{3. Fiabilidad básica}
+$\lambda=6/18000=0{,}000333333\,\mathrm{FH^{-1}}$ y $\mathrm{MTBUR}=3000\,\mathrm{FH}$. La probabilidad de no retirada en $500\,\mathrm{FH}$ es $e^{-\lambda t}=0{,}846482$. La flota acumula $480\,\mathrm{FH}$ al mes, con $0{,}16$ retiradas esperadas al mes. La tasa constante equivale a una distribución exponencial y no describe desgaste ni mortalidad infantil; con muy pocos sucesos la incertidumbre es grande.
+
+\section{4. Tendencia de un parámetro de motor}
+Hasta la alerta faltan $(38-15)/0{,}9\cdot100=2555{,}56\,\mathrm{FH}$, es decir, $425{,}926$ días de uso. La extrapolación lineal supone una pendiente constante, y el deterioro real puede acelerarse; además, el parámetro depende de la corrección por condiciones ambientales y de la calidad de los datos, por lo que se compara con los límites y la acción definidos por el fabricante.
+
+\input{solutions/generated/EX3.tex}
+
+\chapter{Soluciones de S10}
+\section{1. Fluencia de Norton}
+El cociente es $(180/150)^5=2{,}48832$ y la velocidad nueva $2{,}48832\times10^{-8}\,\mathrm{s^{-1}}$. El tiempo hasta $1\,\%$ es $277{,}778\,\mathrm h$ con $150\,\mathrm{MPa}$ y $111{,}633\,\mathrm h$ con $180\,\mathrm{MPa}$. El modelo describe solo la fluencia secundaria: no incluye la primaria ni la terciaria, que acorta la vida real.
+
+\section{2. Tensión térmica}
+La deformación libre es $\alpha\Delta T=0{,}00325$, la tensión con coacción total $E\alpha\Delta T=650\,\mathrm{MPa}$ y con coacción del $50\,\%$ $325\,\mathrm{MPa}$. La primera supera el límite elástico docente de $400\,\mathrm{MPa}$, de modo que habría plastificación y el cálculo elástico deja de valer; en la segunda se queda por debajo, aunque sin margen para ciclos repetidos.
+
+\section{3. Velocidad de corrosión}
+La penetración es $\Delta m/(\rho At)=2{,}27111\,\mathrm{mm/año}$ sobre una probeta uniforme. No se extrapola porque el ensayo acelerado puede tener otro mecanismo, la corrosión real es localizada (picaduras, exfoliación, fisuración) y depende de la protección, el ambiente y el tiempo de humectación.
+
+\section{4. Propagación de grieta}
+Para $m=3$, $N=2(a_i^{-1/2}-a_f^{-1/2})/[C(Y\Delta\sigma\sqrt\pi)^3]=1{,}38169\times10^{6}$ ciclos. Se supone región de Paris, amplitud constante y $Y$ constante; el cálculo omite el umbral, la zona de rotura rápida, la plasticidad en punta, el cierre de grieta y los efectos del ambiente, y no sustituye un análisis de tolerancia al daño con datos verificados.
+
+\input{solutions/generated/EX4.tex}
