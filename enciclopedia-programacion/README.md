@@ -49,7 +49,7 @@ Cada `project.toml` selecciona explícitamente las secciones de lectura mediante
 Los ejercicios de cálculo aritmético se han retirado (la revisión conserva su
 historial) y los volúmenes 1 a 9 piden ahora **programas**: 218 ejercicios con
 enunciado, solución de referencia, casos comprobados y una breve explicación de
-por qué funciona. Cada solución de referencia se ejecuta con su pruebas antes de
+por qué funciona. Cada solución de referencia se ejecuta con sus pruebas antes de
 registrarse, con toolchains reales: Rust, C, C++, Zig, ensamblador AArch64,
 Fortran, Python, JavaScript, TypeScript, Java, Go, C#, Kotlin, Swift, SQL, Bash,
 PHP, Ruby, Haskell, OCaml, Elixir, Clojure, Scala, Julia, R, Lua, Perl, Prolog y
