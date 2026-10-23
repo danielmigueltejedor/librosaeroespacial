@@ -393,191 +393,183 @@ Este cuaderno añade 36 problemas con datos nuevos. Los niveles son orientativos
 \textbf{Límites.} No se predicen capa límite, cargas laterales ni química. La compatibilidad de umbrales es del modelo inviscido y no una garantía de adherencia real.
 \end{studiumworked}
 \chapter{Bloque 3. Motores de propulsante sólido}
-\section{P13. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P13. Superficie y garganta variables: modelo normalizado · Básico}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.35$. Entre dos estados el área activa se multiplica por $1.27$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P13. Presión de cámara en equilibrio de un grano}
+\begin{studiumworked}{P13. Presión de cámara en equilibrio de un grano · Básico}
+\textbf{Enunciado.} Un grano de propulsante sólido tiene densidad $1750\,\mathrm{kg/m^3}$ y velocidad de regresión $8.0\,\mathrm{mm/s}$ a $6.9\,\mathrm{MPa}$, con exponente $n=0.35$. La velocidad característica es $c^*=1520\,\mathrm{m/s}$, el área de garganta $0.0030\,\mathrm{m^2}$ y el área de combustión $0.72\,\mathrm{m^2}$. Calcule la presión de cámara de equilibrio, la velocidad de regresión y el gasto, comprobando éste por las dos vías.
 
-\textbf{Datos.} Exponente local: $0.35$; Razón de área activa: $1.27$; Razón de garganta: $1.02$.
+\textbf{Datos.} Densidad: $1750\,\mathrm{kg/m^3}$; $r_{ref}=8.0\,\mathrm{mm/s}$ a $p_{ref}=6.9\,\mathrm{MPa}$; $n=0.35$; $c^*=1520\,\mathrm{m/s}$; $A_t=0.0030\,\mathrm{m^2}$; $A_b=0.72\,\mathrm{m^2}$.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} Presión de cámara, velocidad de regresión y gasto.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Régimen cuasiestacionario y descarga ahogada; ley de Saint-Robert con coeficiente constante; $c^*$ constante y sin erosión.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
+\textbf{Modelo físico.} Equilibrio entre masa generada y masa descargada.
 \[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\[K_n=A_b/A_t,\quad p_c=p_{ref}\left[\rho_pr_{ref}c^*K_n/p_{ref}\right]^{1/(1-n)}\]
+\[r=r_{ref}(p_c/p_{ref})^n,\quad \dot m=\rho_pA_br=p_cA_t/c^*\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.35}=1.27/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.401093$. La regresión aumenta por un factor $P^n=1.125287$. El caudal generado cambia por $\alpha P^n=1.429115$.
-\item La descarga produce independientemente $P\tau=1.429115$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item Se calcula $K_n=240$ y el parámetro $\rho_pr_{ref}c^*K_n/p_{ref}=0.740174$.
+\item Se eleva a $1/(1-n)$ para obtener $p_c=4.34334\times10^{6}\,\mathrm{Pa}$.
+\item La velocidad es $r=0.00680348\,\mathrm{m/s}$ y el gasto generado $\rho_pA_br=8.57239\,\mathrm{kg/s}$, igual al descargado $p_cA_t/c^*=8.57239\,\mathrm{kg/s}$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P13.tex}
-\textbf{Resultados.} $p_2/p_1=1.401093$; $r_{b,2}/r_{b,1}=1.125287$; $\dot m_2/\dot m_1=F_2/F_1=1.429115$.
+\textbf{Resultados.} $p_c=4.34334\times10^{6}\,\mathrm{Pa}$; $r=0.00680348\,\mathrm{m/s}$; $\dot m=8.57239\,\mathrm{kg/s}$.
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} La presión queda por debajo de la de referencia porque $K_n$ es menor que el valor que daría $6.9\,\mathrm{MPa}$; con $n<1$ el equilibrio es estable frente a pequeñas perturbaciones de presión.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} Los dos gastos coinciden. Si $n\geq1$ no existe equilibrio estable, y para $K_n$ mayor sube la presión.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} No se incluyen el transitorio de encendido, la erosión de la garganta ni la variación del exponente con la presión. Un $n$ local no garantiza estabilidad acústica.
 \end{studiumworked}
-\section{P14. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P14. Superficie y garganta variables: modelo normalizado · Básico}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.352$. Entre dos estados el área activa se multiplica por $1.28$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P14. Grano de combustión frontal: duración, impulso y velocidad ideal}
+\begin{studiumworked}{P14. Grano de combustión frontal: duración, impulso y velocidad ideal · Básico}
+\textbf{Enunciado.} Un grano cilíndrico de combustión frontal tiene $1.10\,\mathrm m$ de longitud, $0.30\,\mathrm m$ de diámetro y densidad $1780\,\mathrm{kg/m^3}$ y arde a $7.2\,\mathrm{mm/s}$ constante. El motor entrega $I_{sp}=240\,\mathrm s$. La masa inerte del vehículo con la carga útil es $90\,\mathrm{kg}$. Calcule duración, gasto, empuje, impulso total y velocidad ideal.
 
-\textbf{Datos.} Exponente local: $0.352$; Razón de área activa: $1.28$; Razón de garganta: $1.02$.
+\textbf{Datos.} $L=1.10\,\mathrm m$; $D=0.30\,\mathrm m$; $\rho_p=1780\,\mathrm{kg/m^3}$; $r=7.2\,\mathrm{mm/s}$; $I_{sp}=240\,\mathrm s$; masa inerte $90\,\mathrm{kg}$.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} Duración, gasto, empuje, impulso total y $\Delta v$.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Combustión frontal con superficie constante; empuje y $I_{sp}$ constantes; sin fuerzas externas.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
-\[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\textbf{Modelo físico.} Grano neutro y ecuación del cohete.
+\[A_b=\pi D^2/4,\quad t_b=L/r,\quad \dot m=\rho_pA_br\]
+\[F=I_{sp}g_0\dot m,\quad I=Ft_b=I_{sp}g_0m_p\]
+\[\Delta v=I_{sp}g_0\ln\frac{m_p+m_i}{m_i}\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.352}=1.28/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.419631$. La regresión aumenta por un factor $P^n=1.131269$. El caudal generado cambia por $\alpha P^n=1.448024$.
-\item La descarga produce independientemente $P\tau=1.448024$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item La superficie es $A_b=0.0706858\,\mathrm{m^2}$ y la duración $t_b=152.778\,\mathrm s$.
+\item El gasto es $0.90591\,\mathrm{kg/s}$ y el empuje $2132.15\,\mathrm N$, con propulsante $m_p=138.403\,\mathrm{kg}$.
+\item El impulso es $325744\,\mathrm{N\,s}$ y la velocidad ideal $2191.91\,\mathrm{m/s}$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P14.tex}
-\textbf{Resultados.} $p_2/p_1=1.419631$; $r_{b,2}/r_{b,1}=1.131269$; $\dot m_2/\dot m_1=F_2/F_1=1.448024$.
+\textbf{Resultados.} $t_b=152.778\,\mathrm s$; $\dot m=0.90591\,\mathrm{kg/s}$; $F=2132.15\,\mathrm N$; $I=325744\,\mathrm{N\,s}$; $\Delta v=2191.91\,\mathrm{m/s}$.
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} Un grano frontal da empuje constante, pero su longitud limita la duración a $L/r$; para empujes mayores se necesita más superficie, con perforación interior.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} $I/(m_pg_0)$ recupera $I_{sp}=240\,\mathrm s$. La velocidad ideal es una cota: no incluye gravedad, resistencia ni la masa de la carcasa que se consume.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} Se desprecian el transitorio, la erosión y la variación de $I_{sp}$ con la presión; la velocidad de regresión se toma constante.
 \end{studiumworked}
-\section{P15. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P15. Superficie y garganta variables: modelo normalizado · Intermedio}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.354$. Entre dos estados el área activa se multiplica por $1.29$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P15. Perforación cilíndrica: presión al inicio y al final}
+\begin{studiumworked}{P15. Perforación cilíndrica: presión al inicio y al final · Intermedio}
+\textbf{Enunciado.} Un grano de combustión interior tiene longitud $1.4\,\mathrm m$ y radio de perforación que crece de $0.040\,\mathrm m$ a $0.090\,\mathrm m$. La garganta es $0.0016\,\mathrm{m^2}$, el propulsante $1750\,\mathrm{kg/m^3}$, $r_{ref}=6.0\,\mathrm{mm/s}$ a $5\,\mathrm{MPa}$, $n=0.30$ y $c^*=1500\,\mathrm{m/s}$. Calcule la presión de cámara al inicio y al final, su cociente y el cociente de empujes con $C_F$ constante.
 
-\textbf{Datos.} Exponente local: $0.354$; Razón de área activa: $1.29$; Razón de garganta: $1.02$.
+\textbf{Datos.} $L=1.4\,\mathrm m$; $r_{p,i}=0.040\,\mathrm m$; $r_{p,f}=0.090\,\mathrm m$; $A_t=0.0016\,\mathrm{m^2}$; $\rho_p=1750\,\mathrm{kg/m^3}$; $r_{ref}=6.0\,\mathrm{mm/s}$ a $5\,\mathrm{MPa}$; $n=0.30$; $c^*=1500\,\mathrm{m/s}$.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} Presiones inicial y final, cociente y cociente de empujes.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Equilibrio cuasiestacionario en cada instante; $A_b=2\pi r_pL$ (solo la perforación); $C_F$ y $c^*$ constantes; sin erosión.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
-\[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\textbf{Modelo físico.} Equilibrio con área de combustión variable.
+\[A_b=2\pi r_pL,\quad K_n=A_b/A_t\]
+\[p_c=p_{ref}\left[\rho_pr_{ref}c^*K_n/p_{ref}\right]^{1/(1-n)}\]
+\[F\propto p_c\ \text{con}\ C_F\ \text{y}\ A_t\ \text{constantes}\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.354}=1.29/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.438396$. La regresión aumenta por un factor $P^n=1.137337$. El caudal generado cambia por $\alpha P^n=1.467164$.
-\item La descarga produce independientemente $P\tau=1.467164$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item Con $K_n=219.911$ al inicio y $494.801$ al final se obtienen $p_{c,i}=2.95935\times10^{6}\,\mathrm{Pa}$ y $p_{c,f}=9.42571\times10^{6}\,\mathrm{Pa}$.
+\item El cociente es $p_{c,f}/p_{c,i}=3.18506$, igual a $(r_{p,f}/r_{p,i})^{1/(1-n)}$ por la proporcionalidad de $K_n$ con $r_p$: $3.18506$.
+\item Con $C_F$ y $A_t$ fijos, el empuje crece en el mismo factor.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P15.tex}
-\textbf{Resultados.} $p_2/p_1=1.438396$; $r_{b,2}/r_{b,1}=1.137337$; $\dot m_2/\dot m_1=F_2/F_1=1.467164$.
+\textbf{Resultados.} $p_{c,i}=2.95935\times10^{6}\,\mathrm{Pa}$; $p_{c,f}=9.42571\times10^{6}\,\mathrm{Pa}$; $p_{c,f}/p_{c,i}=F_f/F_i=3.18506$.
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} La perforación cilíndrica es progresiva: la superficie crece y la presión y el empuje aumentan con el tiempo; la envolvente estructural debe dimensionarse para la presión final, no la inicial.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} Los dos cocientes coinciden. Para $r_p$ constante se recupera el cociente 1.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} No se consideran la erosión por flujo cruzado en el conducto, el cambio de $c^*$ con la presión ni la velocidad de regresión transitoria.
 \end{studiumworked}
-\section{P16. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P16. Superficie y garganta variables: modelo normalizado · Intermedio}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.356$. Entre dos estados el área activa se multiplica por $1.3$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P16. Sensibilidad de la presión a la temperatura del grano}
+\begin{studiumworked}{P16. Sensibilidad de la presión a la temperatura del grano · Intermedio}
+\textbf{Enunciado.} Un propulsante tiene sensibilidad de la velocidad de regresión a la temperatura $\sigma_p=0.0020\,\mathrm{K^{-1}}$ y exponente $n=0.35$. Calcule la sensibilidad de presión $\pi_K$ y los cocientes de presión y de empuje para un grano $+35\,\mathrm K$ y $-20\,\mathrm K$ respecto a la referencia.
 
-\textbf{Datos.} Exponente local: $0.356$; Razón de área activa: $1.3$; Razón de garganta: $1.02$.
+\textbf{Datos.} $\sigma_p=0.0020\,\mathrm{K^{-1}}$; $n=0.35$; $\Delta T=+35\,\mathrm K$ y $-20\,\mathrm K$.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} $\pi_K$ y cocientes $p_c/p_{c,ref}$ y $F/F_{ref}$.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Sensibilidades constantes en el intervalo; $K_n$ y $C_F$ constantes; empuje proporcional a la presión de cámara.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
-\[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\textbf{Modelo físico.} Sensibilidad exponencial de la presión a la temperatura.
+\[\pi_K=\sigma_p/(1-n)\]
+\[p_c/p_{c,ref}=e^{\pi_K\Delta T}\]
+\[F/F_{ref}=p_c/p_{c,ref}\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.356}=1.3/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.457392$. La regresión aumenta por un factor $P^n=1.143492$. El caudal generado cambia por $\alpha P^n=1.48654$.
-\item La descarga produce independientemente $P\tau=1.48654$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item La sensibilidad de presión es $\pi_K=0.00307692\,\mathrm{K^{-1}}$.
+\item Para $+35\,\mathrm K$, el cociente es $1.11371$; para $-20\,\mathrm K$, $0.940317$.
+\item El empuje cambia en el mismo factor.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P16.tex}
-\textbf{Resultados.} $p_2/p_1=1.457392$; $r_{b,2}/r_{b,1}=1.143492$; $\dot m_2/\dot m_1=F_2/F_1=1.48654$.
+\textbf{Resultados.} $\pi_K=0.00307692\,\mathrm{K^{-1}}$; $p_c/p_{c,ref}=1.11371$ ($+35\,\mathrm K$) y $0.940317$ ($-20\,\mathrm K$).
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} Un grano caliente eleva la presión y el empuje, y exige un diseño estructural para el extremo caliente, mientras que uno frío reduce el empuje y puede dar un quemado más largo; la relación entre extremos es $1.18439$.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} Para $\Delta T=0$ el cociente es 1. El aumento de presión por $1\,\mathrm K$ es $\pi_K\approx0.3\,\%$.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} La sensibilidad no es exactamente constante, ni la presión es la única variable afectada: cambian también el tiempo de quemado y la distribución de tensiones del grano.
 \end{studiumworked}
-\section{P17. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P17. Superficie y garganta variables: modelo normalizado · Avanzado}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.358$. Entre dos estados el área activa se multiplica por $1.31$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P17. Fracción másica y velocidad ideal de un motor sólido}
+\begin{studiumworked}{P17. Fracción másica y velocidad ideal de un motor sólido · Avanzado}
+\textbf{Enunciado.} Un motor sólido tiene $420\,\mathrm{kg}$ de propulsante, $70\,\mathrm{kg}$ de masa inerte del motor y soporta una carga útil de $110\,\mathrm{kg}$. Entrega $I_{sp}=245\,\mathrm s$. Calcule la fracción másica de propulsante del motor, la razón de masas, la velocidad ideal y cómo cambia si el $I_{sp}$ real es el $97\,\%$ del nominal.
 
-\textbf{Datos.} Exponente local: $0.358$; Razón de área activa: $1.31$; Razón de garganta: $1.02$.
+\textbf{Datos.} $m_p=420\,\mathrm{kg}$; $m_i=70\,\mathrm{kg}$; $m_{pl}=110\,\mathrm{kg}$; $I_{sp}=245\,\mathrm s$.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} Fracción másica, razón de masas, $\Delta v$ ideal y con $I_{sp}$ reducido.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Impulso específico constante; sin gravedad ni resistencia; la carga útil permanece unida al final.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
-\[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\textbf{Modelo físico.} Ecuación del cohete de una sola etapa.
+\[\zeta=m_p/(m_p+m_i),\quad \mathcal R=\frac{m_p+m_i+m_{pl}}{m_i+m_{pl}}\]
+\[\Delta v=I_{sp}g_0\ln\mathcal R\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.358}=1.31/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.476623$. La regresión aumenta por un factor $P^n=1.149737$. El caudal generado cambia por $\alpha P^n=1.506156$.
-\item La descarga produce independientemente $P\tau=1.506156$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item La fracción másica del motor es $\zeta=0.857143$ y la razón de masas $\mathcal R=3.33333$.
+\item La velocidad ideal es $2892.7\,\mathrm{m/s}$ y con el $97\,\%$ de $I_{sp}$ es $2805.92\,\mathrm{m/s}$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P17.tex}
-\textbf{Resultados.} $p_2/p_1=1.476623$; $r_{b,2}/r_{b,1}=1.149737$; $\dot m_2/\dot m_1=F_2/F_1=1.506156$.
+\textbf{Resultados.} $\zeta=0.857143$; $\mathcal R=3.33333$; $\Delta v=2892.7\,\mathrm{m/s}$; con $97\,\%$ de $I_{sp}$, $2805.92\,\mathrm{m/s}$ (pérdida $86.781\,\mathrm{m/s}$).
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} Una reducción del $3\,\%$ en el impulso específico produce la misma reducción relativa en $\Delta v$; reducir la masa inerte del motor mejoraría la razón de masas.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} Sin carga útil $\mathcal R$ sería $(420+70)/70$ y la velocidad mayor. La razón de masas es mayor que 1.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} La velocidad real se reduce por gravedad, resistencia y orientación del empuje; esta es una cota ideal.
 \end{studiumworked}
-\section{P18. Superficie y garganta variables: modelo normalizado}
-\begin{studiumworked}{P18. Superficie y garganta variables: modelo normalizado · De examen}
-\textbf{Enunciado.} En un modelo académico de regresión se conserva densidad, temperatura y $c^*$. La ley es $r_b/r_{ref}=(p_c/p_{ref})^n$, con $n=0.36$. Entre dos estados el área activa se multiplica por $1.32$ y la garganta por 1.02. Calcule razones de presión, regresión y caudal. Determine la razón de empuje si $C_F$ se mantiene.
+\section{P18. Garganta que se erosiona durante el quemado}
+\begin{studiumworked}{P18. Garganta que se erosiona durante el quemado · De examen}
+\textbf{Enunciado.} En un motor sólido el área de combustión se mantiene y la garganta crece por erosión de $0.00160$ a $0.00176\,\mathrm{m^2}$, un $10\,\%$ más. El exponente es $n=0.32$. Con $C_F$ constante, calcule el cociente de presiones, de empujes y de gastos entre el final y el inicio, y la pérdida relativa de empuje.
 
-\textbf{Datos.} Exponente local: $0.36$; Razón de área activa: $1.32$; Razón de garganta: $1.02$.
+\textbf{Datos.} $A_{t,i}=0.00160\,\mathrm{m^2}$; $A_{t,f}=0.00176\,\mathrm{m^2}$; $n=0.32$; $A_b$, $c^*$ y $C_F$ constantes.
 
-\textbf{Incógnitas.} Cocientes de presión, regresión, masa y empuje.
+\textbf{Incógnitas.} Cocientes de presión, empuje y gasto, y pérdida relativa de empuje.
 
-\textbf{Hipótesis.} Cuasiestacionario; descarga ahogada. Propiedades y CF fijos; ejemplo normalizado sin asignación a propulsante real.
+\textbf{Hipótesis.} Cuasiestacionario y descarga ahogada; $A_b$ y propiedades constantes; $C_F$ constante.
 
-\textbf{Modelo físico.} Equilibrio de generación y descarga.
-\[\rho_pA_br_{ref}(p_c/p_{ref})^n=p_cA_t/c^*\]
-\[P^{1-n}=\frac{A_{b,2}/A_{b,1}}{A_{t,2}/A_{t,1}}\]
-\[P=(\alpha/\tau)^{1/(1-n)},\quad r_{b,2}/r_{b,1}=P^n\]
-\[\dot m_2/\dot m_1=P\tau,\quad F_2/F_1=P\tau\ (C_F\ fijo)\]
+\textbf{Modelo físico.} Equilibrio de generación y descarga con garganta variable.
+\[K_n=A_b/A_t,\quad p_c\propto K_n^{1/(1-n)}\]
+\[p_f/p_i=(A_{t,i}/A_{t,f})^{1/(1-n)}\]
+\[F\propto p_cA_t,\quad \dot m\propto p_cA_t\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item Dividir los equilibrios elimina los parámetros dimensionales comunes. Queda $P^{1-0.36}=1.32/1.02$. Se despeja elevando a $1/(1-n)$, porque $n<1$.
-\item Sustituir da $P=1.496094$. La regresión aumenta por un factor $P^n=1.156073$. El caudal generado cambia por $\alpha P^n=1.526016$.
-\item La descarga produce independientemente $P\tau=1.526016$, igual al caudal generado. Con $C_F$ fijo, $F=C_Fp_cA_t$ da el mismo factor de empuje; usar sólo $P$ omitiría el cambio de garganta.
+\item El cociente de áreas de garganta es $1.1$.
+\item La presión se reduce en $0.869217$.
+\item El empuje y el gasto varían en $0.956139$, es decir, una pérdida del $4.38609\,\%$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P18.tex}
-\textbf{Resultados.} $p_2/p_1=1.496094$; $r_{b,2}/r_{b,1}=1.156073$; $\dot m_2/\dot m_1=F_2/F_1=1.526016$.
+\textbf{Resultados.} $p_f/p_i=0.869217$; $F_f/F_i=\dot m_f/\dot m_i=0.956139$; pérdida de empuje $4.38609\,\%$.
 
-\textbf{Interpretación.} El aumento de garganta compensa parte del efecto de área activa. La hipótesis de CF fijo es adicional y podría fallar si cambia la expansión o presión ambiente.
+\textbf{Interpretación.} Aumentar la garganta reduce la presión más que proporcionalmente, porque $1/(1-n)>1$, y el empuje baja aunque la garganta sea mayor: $F=C_Fp_cA_t$ y la caída de $p_c$ domina.
 
-\textbf{Comprobación.} El cierre $\alpha P^n=P\tau$ se verifica por ambas rutas. Todos los cocientes son adimensionales. Para $\alpha=\tau=1$ se recupera equilibrio inicial.
+\textbf{Comprobación.} Para $A_{t,f}=A_{t,i}$ los cocientes valen 1. El gasto y el empuje cambian igual porque $C_F$ y $c^*$ son constantes.
 
-\textbf{Límites.} No se incluye almacenamiento, erosión predictiva, cinética de superficie ni inestabilidad acústica. Un exponente local no es una garantía de estabilidad real.
+\textbf{Límites.} La erosión real de la garganta no es uniforme, cambia $C_F$ y $c^*$ efectivos y depende del material; el modelo da solo la tendencia.
 \end{studiumworked}
 \chapter{Bloque 4. Motores de propulsante líquido}
 \section{P19. Dos corrientes, duración y volumen almacenado}
@@ -761,191 +753,178 @@ Este cuaderno añade 36 problemas con datos nuevos. Los niveles son orientativos
 \textbf{Límites.} No se comprueban ebullición, resistencia del material ni geometría de un motor; si la subida del líquido fuese grande, habría que resolver la variación axial.
 \end{studiumworked}
 \chapter{Bloque 5. Propulsión eléctrica}
-\section{P25. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P25. Potencia, empuje y duración de maniobra · Básico}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2280\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $20700\,\mathrm{m/s}$. Funciona $38700\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P25. Propulsor iónico: haz, empuje e impulso específico}
+\begin{studiumworked}{P25. Propulsor iónico: haz, empuje e impulso específico · Básico}
+\textbf{Enunciado.} Un propulsor iónico de xenón (masa iónica $131.293\,\mathrm u$) acelera iones simples con una tensión efectiva de $1100\,\mathrm V$ y una corriente de haz de $0.45\,\mathrm A$. El factor de divergencia del haz es $0.97$ y la utilización de masa $0.88$. Calcule la velocidad de los iones, el gasto de iones, el empuje, el gasto total de propulsante, el $I_{sp}$ y la potencia del haz.
 
-\textbf{Datos.} Potencia eléctrica: $2280\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $20700\,\mathrm{m/s}$; Duración: $38700\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $m_i=131.293\,\mathrm u$; $V=1100\,\mathrm V$; $I_b=0.45\,\mathrm A$; divergencia $0.97$; utilización $0.88$.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} Velocidad, gasto, empuje, $I_{sp}$ y potencia del haz.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Iones simples con carga $e$ y partida del reposo; haz monoenergético; neutros sin empuje.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Energía cinética de iones acelerados.
+\[v=\sqrt{2eV/m_i},\quad \dot m_i=I_bm_i/e\]
+\[F=\lambda\dot m_iv,\quad \dot m=\dot m_i/\eta_m\]
+\[I_{sp}=F/(\dot mg_0),\quad P_b=I_bV\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1368\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.385213\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1321739\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2110.813$ s. En el intervalo se consumen $0.2471078\,\mathrm{kg}$ y el impulso es $5115.13\,\mathrm{N s}$. La masa final es $449.7529\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $11.37008\,\mathrm{m/s}$. La aproximación $I/m_0=11.36696$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.06608696\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item La velocidad es $v=40208.8\,\mathrm{m/s}$ y el gasto de iones $6.1234\times10^{-7}\,\mathrm{kg/s}$.
+\item El empuje es $F=0.0238828\,\mathrm N$ y el gasto total $6.95841\times10^{-7}\,\mathrm{kg/s}$, con $I_{sp}=3499.89\,\mathrm s$.
+\item La potencia del haz es $495\,\mathrm W$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P25.tex}
-\textbf{Resultados.} $F=0.1321739$ N; $\dot m=6.385213\times10^{-6}$ kg/s; $m_p=0.2471078$ kg; $\Delta v=11.37008$ m/s.
+\textbf{Resultados.} $v=40208.8\,\mathrm{m/s}$; $F=0.0238828\,\mathrm N$; $\dot m=6.95841\times10^{-7}\,\mathrm{kg/s}$; $I_{sp}=3499.89\,\mathrm s$; $P_b=495\,\mathrm W$.
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} El empuje es de unas decenas de milinewtons con velocidades de escape de decenas de kilómetros por segundo: alto $I_{sp}$, bajo empuje.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1368$ W y $I=m_pv_e=5115.13$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} La relación $F^2/(2\dot mP_b)=0.827992$ resume divergencia y utilización de masa. El orden de magnitud del empuje es el habitual de un propulsor iónico de unos 500 W de haz.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} No se incluyen iones con doble carga, la potencia de neutralizador, las pérdidas de ionización ni la erosión de rejillas.
 \end{studiumworked}
-\section{P26. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P26. Potencia, empuje y duración de maniobra · Básico}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2320\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $20800\,\mathrm{m/s}$. Funciona $38800\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P26. Propulsor Hall: empuje, caudal y propulsante consumido}
+\begin{studiumworked}{P26. Propulsor Hall: empuje, caudal y propulsante consumido · Básico}
+\textbf{Enunciado.} Un propulsor Hall recibe $1500\,\mathrm W$ con rendimiento total $0.50$ y $I_{sp}=1600\,\mathrm s$. Funciona 30 días seguidos. Calcule la velocidad de escape, el empuje, el gasto y la masa de propulsante consumida, y el empuje si se duplica el $I_{sp}$ con la misma potencia y rendimiento.
 
-\textbf{Datos.} Potencia eléctrica: $2320\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $20800\,\mathrm{m/s}$; Duración: $38800\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $P=1500\,\mathrm W$; $\eta=0.50$; $I_{sp}=1600\,\mathrm s$; duración 30 días.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} $v_e$, $F$, $\dot m$, masa consumida y empuje con $2I_{sp}$.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Rendimiento total constante; escape axial uniforme con velocidad $I_{sp}g_0$; potencia constante.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Potencia del chorro y empuje.
+\[v_e=I_{sp}g_0,\quad F=2\eta P/v_e,\quad \dot m=F/v_e\]
+\[m_p=\dot mt\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1392\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.434911\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1338462\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2121.01$ s. En el intervalo se consumen $0.2496746\,\mathrm{kg}$ y el impulso es $5193.231\,\mathrm{N s}$. La masa final es $449.7503\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $11.54372\,\mathrm{m/s}$. La aproximación $I/m_0=11.54051$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.06692308\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item La velocidad de escape es $15690.6\,\mathrm{m/s}$ y el empuje $0.0955984\,\mathrm N$.
+\item El gasto es $6.0927\times10^{-6}\,\mathrm{kg/s}$ y en $2.592\times10^{6}\,\mathrm s$ se consumen $15.7923\,\mathrm{kg}$.
+\item Con $2I_{sp}$, el empuje es $0.0477992\,\mathrm N$, la mitad.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P26.tex}
-\textbf{Resultados.} $F=0.1338462$ N; $\dot m=6.434911\times10^{-6}$ kg/s; $m_p=0.2496746$ kg; $\Delta v=11.54372$ m/s.
+\textbf{Resultados.} $v_e=15690.6\,\mathrm{m/s}$; $F=0.0955984\,\mathrm N$; $\dot m=6.0927\times10^{-6}\,\mathrm{kg/s}$; $m_p=15.7923\,\mathrm{kg}$; $F_2=0.0477992\,\mathrm N$.
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} Con potencia fija, el empuje es inversamente proporcional al impulso específico: más $I_{sp}$ ahorra propulsante pero da menos empuje y obliga a tiempos de maniobra mayores.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1392$ W y $I=m_pv_e=5193.231$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} $F/(\dot mg_0)$ reproduce $I_{sp}=1600\,\mathrm s$. Con $\eta=0$ el empuje sería nulo.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} El rendimiento real varía con el punto de funcionamiento; no se incluyen la divergencia, la utilización de masa ni las pérdidas del cátodo.
 \end{studiumworked}
-\section{P27. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P27. Potencia, empuje y duración de maniobra · Intermedio}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2360\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $20900\,\mathrm{m/s}$. Funciona $38900\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P27. Transferencia de baja empuje entre órbitas circulares}
+\begin{studiumworked}{P27. Transferencia de baja empuje entre órbitas circulares · Intermedio}
+\textbf{Enunciado.} Un satélite de $600\,\mathrm{kg}$ debe pasar de una órbita circular de $400\,\mathrm{km}$ de altitud a otra de $800\,\mathrm{km}$ en el mismo plano con un propulsor eléctrico de empuje constante $0.045\,\mathrm N$ y velocidad de escape $15000\,\mathrm{m/s}$. Calcule el $\Delta v$ de la espiral, el tiempo de maniobra y la masa de propulsante. Use $\mu=3.986004418\times10^{14}\,\mathrm{m^3/s^2}$ y $R_T=6378\,\mathrm{km}$.
 
-\textbf{Datos.} Potencia eléctrica: $2360\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $20900\,\mathrm{m/s}$; Duración: $38900\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $m_0=600\,\mathrm{kg}$; altitudes $400$ y $800\,\mathrm{km}$; $F=0.045\,\mathrm N$; $v_e=15000\,\mathrm{m/s}$; $\mu$ y $R_T$ dados.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} $\Delta v$, tiempo y masa de propulsante.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Espiral coplanar con empuje tangencial; $\Delta v=|v_1-v_2|$ de las velocidades circulares; empuje constante con masa variable.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Velocidades circulares y ecuación del cohete con empuje constante.
+\[v_c=\sqrt{\mu/r},\quad \Delta v=v_{c1}-v_{c2}\]
+\[m_p=m_0[1-e^{-\Delta v/v_e}],\quad t=m_pv_e/F\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1416\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.483368\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1355024\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2131.207$ s. En el intervalo se consumen $0.252203\,\mathrm{kg}$ y el impulso es $5271.043\,\mathrm{N s}$. La masa final es $449.7478\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $11.71671\,\mathrm{m/s}$. La aproximación $I/m_0=11.71343$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.0677512\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item Las velocidades circulares son $7668.64\,\mathrm{m/s}$ y $7451.9\,\mathrm{m/s}$, de modo que $\Delta v=216.733\,\mathrm{m/s}$.
+\item La masa de propulsante es $8.607\,\mathrm{kg}$ y el tiempo $2.869\times10^{6}\,\mathrm s$, unos $33.206$ días.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P27.tex}
-\textbf{Resultados.} $F=0.1355024$ N; $\dot m=6.483368\times10^{-6}$ kg/s; $m_p=0.252203$ kg; $\Delta v=11.71671$ m/s.
+\textbf{Resultados.} $\Delta v=216.733\,\mathrm{m/s}$; $m_p=8.607\,\mathrm{kg}$; $t=2.869\times10^{6}\,\mathrm s$ ($33.206$ días).
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} El $\Delta v$ es casi el mismo que el de una transferencia de dos impulsos, pero la espiral tarda semanas; la baja aceleración hace útil el alto $I_{sp}$.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1416$ W y $I=m_pv_e=5271.043$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} $m_p\,v_e/F$ y $m_0\Delta v/F$ dan prácticamente el mismo tiempo porque $\Delta v/v_e\ll1$.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} Se ignoran los eclipses, el empuje no tangencial, la resistencia atmosférica a $400\,\mathrm{km}$, los cambios de empuje con la potencia y el $J_2$.
 \end{studiumworked}
-\section{P28. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P28. Potencia, empuje y duración de maniobra · Intermedio}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2400\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $21000\,\mathrm{m/s}$. Funciona $39000\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P28. Potencia solar disponible y empuje con la distancia al Sol}
+\begin{studiumworked}{P28. Potencia solar disponible y empuje con la distancia al Sol · Intermedio}
+\textbf{Enunciado.} Un panel solar entrega $2.4\,\mathrm{kW}$ a $1\,\mathrm{UA}$ y su potencia varía con el inverso del cuadrado de la distancia. Alimenta un propulsor de rendimiento $0.55$ e $I_{sp}=3000\,\mathrm s$. Calcule el empuje a $1\,\mathrm{UA}$ y a $1.5\,\mathrm{UA}$, y el cociente entre ambos.
 
-\textbf{Datos.} Potencia eléctrica: $2400\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $21000\,\mathrm{m/s}$; Duración: $39000\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $P_1=2.4\,\mathrm{kW}$ a $1\,\mathrm{UA}$; distancias $1$ y $1.5\,\mathrm{UA}$; $\eta=0.55$; $I_{sp}=3000\,\mathrm s$.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} Potencias, empujes y su cociente.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Potencia $\propto1/d^2$; rendimiento e $I_{sp}$ constantes; toda la potencia se dedica al propulsor.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Empuje proporcional a la potencia con velocidad de escape fija.
+\[P(d)=P_1/d^2,\quad v_e=I_{sp}g_0\]
+\[F=2\eta P/v_e\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1440\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.530612\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1371429\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2141.404$ s. En el intervalo se consumen $0.2546939\,\mathrm{kg}$ y el impulso es $5348.571\,\mathrm{N s}$. La masa final es $449.7453\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $11.88908\,\mathrm{m/s}$. La aproximación $I/m_0=11.88571$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.06857143\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item A $1.5\,\mathrm{UA}$ la potencia es $1066.67\,\mathrm W$.
+\item Los empujes son $0.089735\,\mathrm N$ y $0.0398822\,\mathrm N$, cociente $0.444444$, que coincide con $1/d^2$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P28.tex}
-\textbf{Resultados.} $F=0.1371429$ N; $\dot m=6.530612\times10^{-6}$ kg/s; $m_p=0.2546939$ kg; $\Delta v=11.88908$ m/s.
+\textbf{Resultados.} $F_1=0.089735\,\mathrm N$; $F_2=0.0398822\,\mathrm N$; $F_2/F_1=0.444444$.
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} A mayor distancia solar el empuje cae como $1/d^2$, de modo que las maniobras se alargan; una misión al exterior del sistema solar requiere otra fuente de energía o una velocidad de escape menor.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1440$ W y $I=m_pv_e=5348.571$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} El cociente de empujes iguala el de potencias. Con $d=1$ ambos empujes coinciden.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} No se incluye la degradación de los paneles, la potencia que consumen los demás sistemas ni la variación de $\eta$ con la potencia.
 \end{studiumworked}
-\section{P29. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P29. Potencia, empuje y duración de maniobra · Avanzado}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2440\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $21100\,\mathrm{m/s}$. Funciona $39100\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P29. Velocidad de escape que maximiza la carga útil}
+\begin{studiumworked}{P29. Velocidad de escape que maximiza la carga útil · Avanzado}
+\textbf{Enunciado.} Un vehículo con $\Delta v=2000\,\mathrm{m/s}$ usa un sistema eléctrico de masa específica $\alpha=25\,\mathrm{kg/kW}$, rendimiento $0.60$ y tiempo de empuje $2\times10^7\,\mathrm s$. La masa de la planta de potencia es $\alpha P$, con $P=\dot mv_e^2/(2\eta)$. Para velocidades de escape de $10$, $20$, $30$ y $40\,\mathrm{km/s}$, calcule la fracción de masa inicial que es propulsante y la de la planta, y la fracción de carga útil resultante.
 
-\textbf{Datos.} Potencia eléctrica: $2440\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $21100\,\mathrm{m/s}$; Duración: $39100\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $\Delta v=2000\,\mathrm{m/s}$; $\alpha=25\,\mathrm{kg/kW}$; $\eta=0.60$; $t=2\times10^7\,\mathrm s$; $v_e=10$, $20$, $30$, $40\,\mathrm{km/s}$.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} Fracciones de propulsante, de planta y de carga útil para cada $v_e$.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Empuje constante durante $t$; potencia constante; la masa de la planta es proporcional a la potencia; sin otras masas.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Compromiso entre masa de propulsante y masa de la planta de potencia.
+\[m_p/m_0=1-e^{-\Delta v/v_e}\]
+\[P=m_pv_e^2/(2\eta t),\quad m_{pot}/m_0=\alpha P/m_0=(\alpha v_e^2/(2\eta t))(m_p/m_0)\]
+\[m_{pl}/m_0=1-m_p/m_0-m_{pot}/m_0\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1464\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.576672\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1387678\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2151.601$ s. En el intervalo se consumen $0.2571479\,\mathrm{kg}$ y el impulso es $5425.82\,\mathrm{N s}$. La masa final es $449.7429\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $12.06082\,\mathrm{m/s}$. La aproximación $I/m_0=12.05738$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.06938389\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item Las fracciones de propulsante para $v_e=10$, $20$, $30$ y $40\,\mathrm{km/s}$ son $0.181269$, $0.0951626$, $0.064493$ y $0.0487706$; las de la planta, $0.0188822$, $0.0396511$, $0.0604622$ y $0.0812843$. Las fracciones de carga útil son $0.799849$, $0.865186$, $0.875045$ y $0.869945$.
+\item El máximo de las cuatro es el de $30\,\mathrm{km/s}$; hay un óptimo de $v_e$ entre un extremo con demasiado propulsante y otro con demasiada planta.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P29.tex}
-\textbf{Resultados.} $F=0.1387678$ N; $\dot m=6.576672\times10^{-6}$ kg/s; $m_p=0.2571479$ kg; $\Delta v=12.06082$ m/s.
+\textbf{Resultados.} Fracción de carga útil: $0.799849$ ($10$), $0.865186$ ($20$), $0.875045$ ($30$), $0.869945$ ($40\,\mathrm{km/s}$).
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} Por debajo del óptimo se gasta demasiado propulsante y por encima domina la masa de la planta de potencia. La velocidad de escape óptima crece con el tiempo de empuje disponible y disminuye con la masa específica de la planta.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1464$ W y $I=m_pv_e=5425.82$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} La suma de las fracciones vale 1 en cada caso. La planta se hace despreciable cuando $v_e\to0$ y el propulsante se hace despreciable cuando $v_e\to\infty$.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} La masa de la planta se toma proporcional a la potencia; no incluye estructura, propulsante no utilizable ni la variación del rendimiento con $v_e$.
 \end{studiumworked}
-\section{P30. Potencia, empuje y duración de maniobra}
-\begin{studiumworked}{P30. Potencia, empuje y duración de maniobra · De examen}
-\textbf{Enunciado.} Un propulsor eléctrico académico recibe $2480\,\mathrm{W}$ con rendimiento cinético 0.60 y escape axial uniforme a $21200\,\mathrm{m/s}$. Funciona $39200\,\mathrm{s}$ sobre un vehículo de masa inicial 450 kg, sin fuerzas externas. Halle empuje, caudal, $I_{sp}$, consumo, impulso y delta-v ideal. Compare el empuje al duplicar rapidez con igual potencia.
+\section{P30. Maniobra orbital eléctrica completa: de la potencia al delta-v}
+\begin{studiumworked}{P30. Maniobra orbital eléctrica completa: de la potencia al delta-v · De examen}
+\textbf{Enunciado.} Un satélite de $450\,\mathrm{kg}$ dispone de $1.2\,\mathrm{kW}$ para propulsión, con rendimiento $0.60$ y escape de $18000\,\mathrm{m/s}$. Funciona durante $40$ días seguidos. Calcule el empuje, el gasto, el propulsante consumido, la masa final, el $\Delta v$ ideal y compárelo con el $\Delta v$ de $216\,\mathrm{m/s}$ que exige una espiral entre dos órbitas dadas.
 
-\textbf{Datos.} Potencia eléctrica: $2480\,\mathrm{W}$; Rendimiento cinético: $0.6$; Rapidez uniforme: $21200\,\mathrm{m/s}$; Duración: $39200\,\mathrm{s}$; Masa inicial: $450\,\mathrm{kg}$.
+\textbf{Datos.} $m_0=450\,\mathrm{kg}$; $P=1.2\,\mathrm{kW}$; $\eta=0.60$; $v_e=18000\,\mathrm{m/s}$; $t=40$ días; $\Delta v_{req}=216\,\mathrm{m/s}$.
 
-\textbf{Incógnitas.} Prestaciones instantáneas e integradas.
+\textbf{Incógnitas.} $F$, $\dot m$, $m_p$, $m_f$, $\Delta v$ y margen frente al requerido.
 
-\textbf{Hipótesis.} Haz axial monocinético, sin presión de salida. Potencia, velocidad y rendimiento constantes; masa consumida positiva menor que m0.
+\textbf{Hipótesis.} Potencia, rendimiento y escape constantes; sin fuerzas externas; masa consumida menor que $m_0$.
 
-\textbf{Modelo físico.} Energía cinética, momento y masa variable.
-\[P_j=\eta P_{el}=\dot m v_e^2/2,\quad F=\dot m v_e\]
-\[F=2\eta P_{el}/v_e,\quad \dot m=2\eta P_{el}/v_e^2\]
-\[m_p=\dot mt,\quad I=Ft,\quad \Delta v=v_e\ln[m_0/(m_0-m_p)]\]
+\textbf{Modelo físico.} Potencia de chorro, empuje y ecuación del cohete.
+\[F=2\eta P/v_e,\quad \dot m=F/v_e,\quad m_p=\dot mt\]
+\[\Delta v=v_e\ln[m_0/(m_0-m_p)]\]
 \textbf{Desarrollo.}
 \begin{enumerate}
-\item La potencia dirigida es $1488\,\mathrm{W}$. Despejar del balance de energía da $\dot m=6.621574\times10^{-6}$ kg/s y multiplicar por velocidad produce $0.1403774\,\mathrm{N}$.
-\item La conversión convencional da $I_{sp}=2161.798$ s. En el intervalo se consumen $0.2595657\,\mathrm{kg}$ y el impulso es $5502.792\,\mathrm{N s}$. La masa final es $449.7404\,\mathrm{kg}$, positiva.
-\item La integración de masa variable da $12.23196\,\mathrm{m/s}$. La aproximación $I/m_0=12.22843$ m/s es algo menor porque ignora el incremento de aceleración al reducir masa.
-\item Al duplicar rapidez, el empuje baja a $0.07018868\,\mathrm{N}$ y el caudal a la cuarta parte. No se ha mejorado simultáneamente tiempo de maniobra y consumo.
+\item El empuje es $0.08\,\mathrm N$ y el gasto $4.44444\times10^{-6}\,\mathrm{kg/s}$.
+\item En $3.456\times10^{6}\,\mathrm s$ se consumen $15.36\,\mathrm{kg}$, quedan $434.64\,\mathrm{kg}$ y el $\Delta v$ es $625.131\,\mathrm{m/s}$.
+\item El margen sobre los $216\,\mathrm{m/s}$ es de $409.131\,\mathrm{m/s}$.
 \end{enumerate}
 \textbf{Operaciones para contrastar el cálculo.}
 \input{../solutions/generated/P30.tex}
-\textbf{Resultados.} $F=0.1403774$ N; $\dot m=6.621574\times10^{-6}$ kg/s; $m_p=0.2595657$ kg; $\Delta v=12.23196$ m/s.
+\textbf{Resultados.} $F=0.08\,\mathrm N$; $m_p=15.36\,\mathrm{kg}$; $\Delta v=625.131\,\mathrm{m/s}$; margen $409.131\,\mathrm{m/s}$.
 
-\textbf{Interpretación.} El impulso específico alto reduce consumo dentro del modelo, pero la potencia limita fuerza. La masa del sistema eléctrico sigue incluida en la masa inicial del vehículo.
+\textbf{Interpretación.} Un empuje de decenas de milinewtons sostenido 40 días da más que el $\Delta v$ requerido, a costa de un tiempo de maniobra largo; la aproximación $Ft/m_0=614.4\,\mathrm{m/s}$ queda algo por debajo porque ignora la reducción de masa.
 
-\textbf{Comprobación.} $Fv_e/2=\eta P_{el}=1488$ W y $I=m_pv_e=5502.792$ N s. Para consumo pequeño, la solución logarítmica tiende a $I/m_0$.
+\textbf{Comprobación.} La masa final es positiva y el margen es positivo. Con $P=0$ no hay empuje.
 
-\textbf{Límites.} No incluye gravedad, variación de potencia, divergencia, masa variable de otros consumibles ni trayectoria orbital real.
+\textbf{Límites.} No se incluyen eclipses, la potencia de los demás sistemas ni el empuje fuera de la dirección tangencial.
 \end{studiumworked}
 \chapter{Bloque 6. Vehículos propulsados por motores cohete}
 \section{P31. Capacidad de una etapa y masa requerida}

@@ -1,0 +1,812 @@
+{
+  "scope": "Original numeric exercise data and authored derivations; no independent approval",
+  "records": [
+    {
+      "problem": "P13",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Kn",
+          "expression": ".72/.0030",
+          "value": 240.0,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "w",
+          "expression": "1750*.008*1520*Kn/6.9e6",
+          "value": 0.7401739130434782,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "pc",
+          "expression": "6.9e6*w**(1/(1-.35))",
+          "value": 4343343.010073977,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "r",
+          "expression": ".008*(pc/6.9e6)**.35",
+          "value": 0.006803482158637182,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "m1",
+          "expression": "1750*.72*r",
+          "value": 8.572387519882849,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "m2",
+          "expression": "pc*.0030/1520",
+          "value": 8.572387519882849,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P14",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Ab",
+          "expression": "pi*.30**2/4",
+          "value": 0.07068583470577035,
+          "unit": "m**2",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "tb",
+          "expression": "1.10/.0072",
+          "value": 152.7777777777778,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "md",
+          "expression": "1780*Ab*.0072",
+          "value": 0.9059096575891528,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "F",
+          "expression": "240*9.80665*md",
+          "value": 2132.1453464631995,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "mp",
+          "expression": "1780*Ab*1.10",
+          "value": 138.40286435389837,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "I",
+          "expression": "F*tb",
+          "value": 325744.4279318777,
+          "unit": "N*s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "Ispc",
+          "expression": "I/(mp*9.80665)",
+          "value": 239.99999999999994,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "dv",
+          "expression": "240*9.80665*log((mp+90)/90)",
+          "value": 2191.9071282169725,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P15",
+      "steps": [
+        {
+          "index": 1,
+          "target": "Kni",
+          "expression": "2*pi*.040*1.4/.0016",
+          "value": 219.9114857512855,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "Knf",
+          "expression": "2*pi*.090*1.4/.0016",
+          "value": 494.8008429403924,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "wi",
+          "expression": "1750*.006*1500*Kni/5e6",
+          "value": 0.6927211801165493,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "wf",
+          "expression": "1750*.006*1500*Knf/5e6",
+          "value": 1.558622655262236,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "pci",
+          "expression": "5e6*wi**(1/(1-.30))",
+          "value": 2959350.362390051,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "pcf",
+          "expression": "5e6*wf**(1/(1-.30))",
+          "value": 9425714.217751887,
+          "unit": "Pa",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "rp",
+          "expression": "pcf/pci",
+          "value": 3.185061943844806,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "rp2",
+          "expression": "(.090/.040)**(1/(1-.30))",
+          "value": 3.1850619438448056,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P16",
+      "steps": [
+        {
+          "index": 1,
+          "target": "pik",
+          "expression": ".0020/(1-.35)",
+          "value": 0.003076923076923077,
+          "unit": "1/K",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "hot",
+          "expression": "exp(pik*35)",
+          "value": 1.1137050141953897,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "cold",
+          "expression": "exp(-pik*20)",
+          "value": 0.940316779013957,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "spread",
+          "expression": "hot/cold",
+          "value": 1.184393428949819,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P17",
+      "steps": [
+        {
+          "index": 1,
+          "target": "zeta",
+          "expression": "420/(420+70)",
+          "value": 0.8571428571428571,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "R",
+          "expression": "(420+70+110)/(70+110)",
+          "value": 3.3333333333333335,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "dv",
+          "expression": "245*9.80665*log(R)",
+          "value": 2892.7002758780204,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "dv2",
+          "expression": ".97*245*9.80665*log(R)",
+          "value": 2805.9192676016796,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "loss",
+          "expression": "dv-dv2",
+          "value": 86.7810082763408,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P18",
+      "steps": [
+        {
+          "index": 1,
+          "target": "tau",
+          "expression": ".00176/.00160",
+          "value": 1.1,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "pr",
+          "expression": "(1/tau)**(1/(1-.32))",
+          "value": 0.8692173854566803,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "fr",
+          "expression": "pr*tau",
+          "value": 0.9561391240023484,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "loss",
+          "expression": "(1-fr)*100",
+          "value": 4.38608759976516,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P25",
+      "steps": [
+        {
+          "index": 1,
+          "target": "mion",
+          "expression": "131.293*1.66053906892e-27",
+          "value": 2.1801715597571356e-25,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "v",
+          "expression": "sqrt(2*1.602176634e-19*1100/mion)",
+          "value": 40208.80834771114,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "mi",
+          "expression": ".45*mion/1.602176634e-19",
+          "value": 6.123402258347447e-07,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "F",
+          "expression": ".97*mi*v",
+          "value": 0.023882826660657906,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "md",
+          "expression": "mi/.88",
+          "value": 6.958411657213009e-07,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "isp",
+          "expression": "F/(md*9.80665)",
+          "value": 3499.894337577687,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "Pb",
+          "expression": ".45*1100",
+          "value": 495.0,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "eta",
+          "expression": "F**2/(2*md*Pb)",
+          "value": 0.8279919999999997,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P26",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ve",
+          "expression": "1600*9.80665",
+          "value": 15690.64,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "F",
+          "expression": "2*.50*1500/ve",
+          "value": 0.09559839496668077,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "md",
+          "expression": "F/ve",
+          "value": 6.092702080136997e-06,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "t",
+          "expression": "30*86400",
+          "value": 2592000.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "mp",
+          "expression": "md*t",
+          "value": 15.792283791715096,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "F2",
+          "expression": "2*.50*1500/(2*ve)",
+          "value": 0.04779919748334038,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P27",
+      "steps": [
+        {
+          "index": 1,
+          "target": "r1",
+          "expression": "(6378+400)*1000",
+          "value": 6778000.0,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "r2",
+          "expression": "(6378+800)*1000",
+          "value": 7178000.0,
+          "unit": "m",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "v1",
+          "expression": "sqrt(3.986004418e14/r1)",
+          "value": 7668.635675197651,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "v2",
+          "expression": "sqrt(3.986004418e14/r2)",
+          "value": 7451.902446332566,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "dv",
+          "expression": "v1-v2",
+          "value": 216.73322886508498,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "mp",
+          "expression": "600*(1-exp(-dv/15000))",
+          "value": 8.606998661041583,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "t",
+          "expression": "mp*15000/.045",
+          "value": 2868999.5536805275,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "dias",
+          "expression": "t/86400",
+          "value": 33.206013352783884,
+          "unit": "d",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P28",
+      "steps": [
+        {
+          "index": 1,
+          "target": "ve",
+          "expression": "3000*9.80665",
+          "value": 29419.949999999997,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "P2",
+          "expression": "2400/1.5**2",
+          "value": 1066.6666666666667,
+          "unit": "W",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "F1",
+          "expression": "2*.55*2400/ve",
+          "value": 0.08973502674205769,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "F2",
+          "expression": "2*.55*P2/ve",
+          "value": 0.0398822341075812,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "q",
+          "expression": "F2/F1",
+          "value": 0.4444444444444445,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P29",
+      "steps": [
+        {
+          "index": 1,
+          "target": "a",
+          "expression": ".025/(2*.60*2e7)",
+          "value": 1.0416666666666667e-09,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "mp10",
+          "expression": "1-exp(-2000/10000)",
+          "value": 0.18126924692201815,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "mp20",
+          "expression": "1-exp(-2000/20000)",
+          "value": 0.09516258196404043,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "mp30",
+          "expression": "1-exp(-2000/30000)",
+          "value": 0.06449301496838226,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "mp40",
+          "expression": "1-exp(-2000/40000)",
+          "value": 0.04877057549928599,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "po10",
+          "expression": "mp10*a*10000**2",
+          "value": 0.018882213221043557,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "po20",
+          "expression": "mp20*a*20000**2",
+          "value": 0.03965107581835018,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "po30",
+          "expression": "mp30*a*30000**2",
+          "value": 0.06046220153285837,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 9,
+          "target": "po40",
+          "expression": "mp40*a*40000**2",
+          "value": 0.08128429249880999,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 10,
+          "target": "pl10",
+          "expression": "1-mp10*(1+a*10000**2)",
+          "value": 0.7998485398569383,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 11,
+          "target": "pl20",
+          "expression": "1-mp20*(1+a*20000**2)",
+          "value": 0.8651863422176094,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 12,
+          "target": "pl30",
+          "expression": "1-mp30*(1+a*30000**2)",
+          "value": 0.8750447834987594,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 13,
+          "target": "pl40",
+          "expression": "1-mp40*(1+a*40000**2)",
+          "value": 0.869945132001904,
+          "unit": "",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    },
+    {
+      "problem": "P30",
+      "steps": [
+        {
+          "index": 1,
+          "target": "F",
+          "expression": "2*.60*1200/18000",
+          "value": 0.08,
+          "unit": "N",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 2,
+          "target": "md",
+          "expression": "F/18000",
+          "value": 4.444444444444444e-06,
+          "unit": "kg/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 3,
+          "target": "t",
+          "expression": "40*86400",
+          "value": 3456000.0,
+          "unit": "s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 4,
+          "target": "mp",
+          "expression": "md*t",
+          "value": 15.359999999999998,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 5,
+          "target": "mf",
+          "expression": "450-mp",
+          "value": 434.64,
+          "unit": "kg",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 6,
+          "target": "dv",
+          "expression": "18000*log(450/mf)",
+          "value": 625.1306493797605,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 7,
+          "target": "margin",
+          "expression": "dv-216",
+          "value": 409.1306493797605,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        },
+        {
+          "index": 8,
+          "target": "approx",
+          "expression": "F*t/450",
+          "value": 614.4,
+          "unit": "m/s",
+          "historic_expected": null,
+          "historic_mismatch": false
+        }
+      ]
+    }
+  ]
+}

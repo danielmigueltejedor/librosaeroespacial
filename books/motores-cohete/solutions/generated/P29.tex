@@ -1,15 +1,71 @@
 \begin{enumerate}
 
-\item Magnitud 1.
+\item Coeficiente de la planta por unidad de velocidad al cuadrado.
 
-\[\fitmath{y_{1}=\frac{2\cdot 0.6\cdot 2440}{21100}\approx 0.1387678\,\mathrm{N}}\]
+\[\fitmath{a=\frac{0.025}{2\cdot 0.6\cdot 20000000}\approx 1.041667\times10^{-9}\,}\]
 
-\item Magnitud 2.
+\item Fracción de propulsante con 10 km/s.
 
-\[\fitmath{y_{2}=\frac{2\cdot 0.6\cdot 2440}{{21100}^{2}}\approx 6.576672\times10^{-6}\,\mathrm{kg/s}}\]
+\[\fitmath{\mathrm{mp}_{10}=1-\exp\left(\frac{-2000}{10000}\right)\approx 0.1812692\,}\]
 
-\item Magnitud 3.
+\item Fracción de propulsante con 20 km/s.
 
-\[\fitmath{y_{3}=21100\cdot \ln\left(\frac{450}{450-0.2571478628}\right)\approx 12.06082\,\mathrm{m/s}}\]
+\[\fitmath{\mathrm{mp}_{20}=1-\exp\left(\frac{-2000}{20000}\right)\approx 0.09516258\,}\]
+
+\item Fracción de propulsante con 30 km/s.
+
+\[\fitmath{\mathrm{mp}_{30}=1-\exp\left(\frac{-2000}{30000}\right)\approx 0.06449301\,}\]
+
+\item Fracción de propulsante con 40 km/s.
+
+\[\fitmath{\mathrm{mp}_{40}=1-\exp\left(\frac{-2000}{40000}\right)\approx 0.04877058\,}\]
+
+\item Fracción de planta de potencia con 10 km/s.
+
+\[\fitmath{\mathrm{po}_{10}=\mathrm{mp}_{10}\cdot a\cdot {10000}^{2}}\]
+
+\[\fitmath{\mathrm{po}_{10}=(0.1812692469)\cdot (1.041666667\times10^{-9})\cdot {10000}^{2}\approx 0.01888221\,}\]
+
+\item Fracción de planta de potencia con 20 km/s.
+
+\[\fitmath{\mathrm{po}_{20}=\mathrm{mp}_{20}\cdot a\cdot {20000}^{2}}\]
+
+\[\fitmath{\mathrm{po}_{20}=(0.09516258196)\cdot (1.041666667\times10^{-9})\cdot {20000}^{2}\approx 0.03965108\,}\]
+
+\item Fracción de planta de potencia con 30 km/s.
+
+\[\fitmath{\mathrm{po}_{30}=\mathrm{mp}_{30}\cdot a\cdot {30000}^{2}}\]
+
+\[\fitmath{\mathrm{po}_{30}=(0.06449301497)\cdot (1.041666667\times10^{-9})\cdot {30000}^{2}\approx 0.0604622\,}\]
+
+\item Fracción de planta de potencia con 40 km/s.
+
+\[\fitmath{\mathrm{po}_{40}=\mathrm{mp}_{40}\cdot a\cdot {40000}^{2}}\]
+
+\[\fitmath{\mathrm{po}_{40}=(0.0487705755)\cdot (1.041666667\times10^{-9})\cdot {40000}^{2}\approx 0.08128429\,}\]
+
+\item Fracción de carga útil con 10 km/s.
+
+\[\fitmath{\mathrm{pl}_{10}=1-\mathrm{mp}_{10}\cdot \left(1+a\cdot {10000}^{2}\right)}\]
+
+\[\fitmath{\mathrm{pl}_{10}=1-(0.1812692469)\cdot \left(1+(1.041666667\times10^{-9})\cdot {10000}^{2}\right)\approx 0.7998485\,}\]
+
+\item Fracción de carga útil con 20 km/s.
+
+\[\fitmath{\mathrm{pl}_{20}=1-\mathrm{mp}_{20}\cdot \left(1+a\cdot {20000}^{2}\right)}\]
+
+\[\fitmath{\mathrm{pl}_{20}=1-(0.09516258196)\cdot \left(1+(1.041666667\times10^{-9})\cdot {20000}^{2}\right)\approx 0.8651863\,}\]
+
+\item Fracción de carga útil con 30 km/s.
+
+\[\fitmath{\mathrm{pl}_{30}=1-\mathrm{mp}_{30}\cdot \left(1+a\cdot {30000}^{2}\right)}\]
+
+\[\fitmath{\mathrm{pl}_{30}=1-(0.06449301497)\cdot \left(1+(1.041666667\times10^{-9})\cdot {30000}^{2}\right)\approx 0.8750448\,}\]
+
+\item Fracción de carga útil con 40 km/s.
+
+\[\fitmath{\mathrm{pl}_{40}=1-\mathrm{mp}_{40}\cdot \left(1+a\cdot {40000}^{2}\right)}\]
+
+\[\fitmath{\mathrm{pl}_{40}=1-(0.0487705755)\cdot \left(1+(1.041666667\times10^{-9})\cdot {40000}^{2}\right)\approx 0.8699451\,}\]
 
 \end{enumerate}

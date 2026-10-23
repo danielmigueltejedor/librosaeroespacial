@@ -1,15 +1,47 @@
 \begin{enumerate}
 
-\item Magnitud 1.
+\item Empuje de potencia de chorro.
 
-\[\fitmath{y_{1}=\frac{2\cdot 0.6\cdot 2480}{21200}\approx 0.1403774\,\mathrm{N}}\]
+\[\fitmath{F=\frac{2\cdot 0.6\cdot 1200}{18000}\approx 0.08\,\mathrm{N}}\]
 
-\item Magnitud 2.
+\item Gasto másico.
 
-\[\fitmath{y_{2}=\frac{2\cdot 0.6\cdot 2480}{{21200}^{2}}\approx 6.621574\times10^{-6}\,\mathrm{kg/s}}\]
+\[\fitmath{\mathrm{md}=\frac{F}{18000}}\]
 
-\item Magnitud 3.
+\[\fitmath{\mathrm{md}=\frac{(0.08)}{18000}\approx 4.444444\times10^{-6}\,\mathrm{kg/s}}\]
 
-\[\fitmath{y_{3}=21200\cdot \ln\left(\frac{450}{450-0.2595656817}\right)\approx 12.23196\,\mathrm{m/s}}\]
+\item Duración en segundos.
+
+\[\fitmath{t=40\cdot 86400\approx 3456000\,\mathrm{s}}\]
+
+\item Propulsante consumido.
+
+\[\fitmath{\mathrm{mp}=\mathrm{md}\cdot t}\]
+
+\[\fitmath{\mathrm{mp}=(4.444444444\times10^{-6})\cdot (3456000)\approx 15.36\,\mathrm{kg}}\]
+
+\item Masa final.
+
+\[\fitmath{\mathrm{mf}=450-\mathrm{mp}}\]
+
+\[\fitmath{\mathrm{mf}=450-(15.36)\approx 434.64\,\mathrm{kg}}\]
+
+\item Incremento de velocidad ideal.
+
+\[\fitmath{\mathrm{dv}=18000\cdot \ln\left(\frac{450}{\mathrm{mf}}\right)}\]
+
+\[\fitmath{\mathrm{dv}=18000\cdot \ln\left(\frac{450}{(434.64)}\right)\approx 625.1306\,\mathrm{m/s}}\]
+
+\item Margen sobre el delta-v requerido.
+
+\[\fitmath{\mathrm{margin}=\mathrm{dv}-216}\]
+
+\[\fitmath{\mathrm{margin}=(625.1306494)-216\approx 409.1306\,\mathrm{m/s}}\]
+
+\item Aproximación impulso entre masa inicial.
+
+\[\fitmath{\mathrm{approx}=\frac{F\cdot t}{450}}\]
+
+\[\fitmath{\mathrm{approx}=\frac{(0.08)\cdot (3456000)}{450}\approx 614.4\,\mathrm{m/s}}\]
 
 \end{enumerate}

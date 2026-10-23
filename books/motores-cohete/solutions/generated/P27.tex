@@ -1,15 +1,47 @@
 \begin{enumerate}
 
-\item Magnitud 1.
+\item Radio de la órbita inicial.
 
-\[\fitmath{y_{1}=\frac{2\cdot 0.6\cdot 2360}{20900}\approx 0.1355024\,\mathrm{N}}\]
+\[\fitmath{r_{1}=\left(6378+400\right)\cdot 1000\approx 6778000\,\mathrm{m}}\]
 
-\item Magnitud 2.
+\item Radio de la órbita final.
 
-\[\fitmath{y_{2}=\frac{2\cdot 0.6\cdot 2360}{{20900}^{2}}\approx 6.483368\times10^{-6}\,\mathrm{kg/s}}\]
+\[\fitmath{r_{2}=\left(6378+800\right)\cdot 1000\approx 7178000\,\mathrm{m}}\]
 
-\item Magnitud 3.
+\item Velocidad circular inicial.
 
-\[\fitmath{y_{3}=20900\cdot \ln\left(\frac{450}{450-0.2522030173}\right)\approx 11.71671\,\mathrm{m/s}}\]
+\[\fitmath{v_{1}=\sqrt{\frac{3.986004418\times10^{14}}{r_{1}}}}\]
+
+\[\fitmath{v_{1}=\sqrt{\frac{3.986004418\times10^{14}}{(6778000)}}\approx 7668.636\,\mathrm{m/s}}\]
+
+\item Velocidad circular final.
+
+\[\fitmath{v_{2}=\sqrt{\frac{3.986004418\times10^{14}}{r_{2}}}}\]
+
+\[\fitmath{v_{2}=\sqrt{\frac{3.986004418\times10^{14}}{(7178000)}}\approx 7451.902\,\mathrm{m/s}}\]
+
+\item Incremento de velocidad de la espiral.
+
+\[\fitmath{\mathrm{dv}=v_{1}-v_{2}}\]
+
+\[\fitmath{\mathrm{dv}=(7668.635675)-(7451.902446)\approx 216.7332\,\mathrm{m/s}}\]
+
+\item Masa de propulsante.
+
+\[\fitmath{\mathrm{mp}=600\cdot \left(1-\exp\left(\frac{-\mathrm{dv}}{15000}\right)\right)}\]
+
+\[\fitmath{\mathrm{mp}=600\cdot \left(1-\exp\left(\frac{-(216.7332289)}{15000}\right)\right)\approx 8.606999\,\mathrm{kg}}\]
+
+\item Tiempo con gasto de propulsante constante.
+
+\[\fitmath{t=\frac{\mathrm{mp}\cdot 15000}{0.045}}\]
+
+\[\fitmath{t=\frac{(8.606998661)\cdot 15000}{0.045}\approx 2869000\,\mathrm{s}}\]
+
+\item Tiempo en días.
+
+\[\fitmath{\mathrm{dias}=\frac{t}{86400}}\]
+
+\[\fitmath{\mathrm{dias}=\frac{(2868999.554)}{86400}\approx 33.20601\,\mathrm{d}}\]
 
 \end{enumerate}
