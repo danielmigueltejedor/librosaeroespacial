@@ -44,6 +44,27 @@ en `reports/reader-cleanup.json`; los controles de toda la colección, en
 Cada `project.toml` selecciona explícitamente las secciones de lectura mediante
 `[render]`. Los libros STEM sin esa configuración conservan sus apéndices.
 
+## Comprobación de respuestas (2026-10-23)
+
+- `tools/replay_answers.py` añadió a 220 respuestas numéricas de los volúmenes 3 a 9
+  una solución con datos, fórmula y reproducción aritmética (revisión append-only,
+  sin borrar el registro anterior). Datos de cada una en `tools/answer_specs/`;
+  registro en `reports/answer-replay.json`.
+- `tools/verify_answers.py` pregunta a toolchains reales (rustc, clang y clang++,
+  swiftc, Python, Node, Ruby, SQLite, bash, gfortran, Lua y Git) por la cantidad
+  que hay detrás de 57 respuestas; resultado y versiones en
+  `reports/answer-verification.json`. Un acierto confirma esa afirmación en esas
+  versiones, no aprueba el volumen.
+- Se corrigieron siete enunciados: el quantum de reducciones de la BEAM (2000
+  frente a 4000 actual), los elementos que inspecciona `take` sobre `filter` en
+  C++20 (12 y no 10, comprobado con clang), un ejemplo de Flexbox sin datos
+  suficientes, un mensaje Protobuf sin contar la etiqueta, el presupuesto de un
+  fotograma a 120 Hz (8,33 ms y no 8 ms), una descomposición que «reducía» la
+  complejidad ciclomática total y un FCP calculado al revés.
+- Las respuestas de los volúmenes 3 a 7 siguen sin dos testimonios válidos: el
+  segundo extracto que citaban es un texto genérico que la migración de integridad
+  retiró. Ese hueco de evidencia queda abierto y se mide con `studium_problem_check`.
+
 ## Resultados y estado
 
 - `reports/baseline-inventory.json`: referencia Git, inventario y recompilación
