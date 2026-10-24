@@ -1,50 +1,98 @@
-# Publicaciones de Libros Studium
+# Publicación de ediciones de Libros Studium
 
-Toda nueva publicación, incluso una revisión de un único libro, debe adjuntar
-`LibrosStudium-bundle-completo.zip`. No basta con el ZIP automático de GitHub
-(código fuente) ni con un paquete parcial de una asignatura.
+## Versionado estable y fecha
 
-El catálogo `release-bundle.json` contiene todos los documentos registrados:
-manual, problemas y simulacros de cada asignatura, los diez volúmenes de
-programación y su edición integral. Al añadir una asignatura se debe actualizar
-el catálogo; la comprobación compara ambos inventarios y rechaza omisiones.
+**Una release estable se publica desde un tag `vMAJOR.MINOR.PATCH`** que apunte a
+un commit ya fusionado en `main` (por ejemplo, `v1.0.0`). El workflow
+`.github/workflows/release-bundle.yml` se activa automáticamente al enviar
+un tag estable. También puede relanzarse manualmente indicando **ese mismo
+tag ya existente**, sin publicar una versión distinta por accidente.
 
-El ZIP contiene una subcarpeta por asignatura o tema. `programacion/volumenes/`
-agrupa las monografías y `programacion/Enciclopedia-integral.pdf` la colección
-unida. `INVENTARIO.json` conserva páginas, tamaño, SHA-256 y procedencia de cada
-PDF. Es un inventario de entrega, no un cierre o aprobación académica.
+La release se titula **Edición DD/MM/AAAA**: día, mes y año UTC en que se
+preparó la publicación del bundle, no una fecha ficticia introducida en el
+nombre del tag. La versión se indica dentro de las notas y del manifiesto
+`RELEASE.json`. Las etiquetas `-rc`, `-beta` o `-alpha` **no publican
+automáticamente una edición estable**.
 
-Usar el flujo **Publish complete library bundle**, indicando una etiqueta nueva.
-Compila toda la colección, comprueba y reabre el ZIP, crea una publicación en
-borrador, sube el paquete completo y solo entonces publica. Ante un error no se
-publica. Las ediciones de programación siguen marcadas como revisión.
+Comandos de ejemplo, **solo cuando la nueva versión esté lista**:
 
-Para preparar una entrega manual:
-
-```sh
-python scripts/build-studium-books.py all
-python enciclopedia-programacion/tools/build_collection.py all --review-copy
-python scripts/package-release-bundle.py
-python scripts/package-release-bundle.py --verify-only
+```bash
+git switch main
+git pull --ff-only origin main
+git tag -a v1.0.0 -m "Primera edición estable del bundle Studium"
+git push origin v1.0.0
 ```
 
-No publicar solo archivos sueltos. Si se reutilizan PDF ya publicados, el
-argumento `--provenance` debe identificar su etiqueta y hash; no atribuirlos a una
-compilación nueva. Las ediciones históricas conservan su contenido original.
-El administrador puede publicar manualmente fuera de GitHub Actions; esta
-política no sustituye las restricciones de acceso de GitHub.
+El workflow impide publicar si faltan PDFs o fallan las verificaciones, y
+no publica etiquetas de ramas que no estén integradas en `main`.
+No se crea una release estable hasta que se ha validado el contenido concreto
+del tag.
 
-El guard `release-bundle-guard.yml` revisa también las publicaciones manuales:
-si no puede descargar y validar el paquete completo contra el catálogo vigente,
-devuelve la publicación a borrador y deja el trabajo en error. La política y el verificador deben
-fusionarse en la rama predeterminada para que el guard aplique sus comprobaciones. Las publicaciones
-creadas por el token de Actions no disparan otro flujo; el publicador comprueba
-por sí mismo el ZIP descargado antes de publicar.
+## Contenido obligatorio de CADA release
 
-El evento de publicación puede cargar un workflow desde la etiqueta antes de
-que la PR esté fusionada. Por eso el guard detecta si la política aún no ha
-existido en la historia de la rama predeterminada: únicamente en esa primera
-instalación omite su actuación para una edición en revisión. El publicador
-sigue comprobando el ZIP descargado. Si la política ya existió y desaparece
-o queda incompleta, el control sigue siendo obligatorio y falla de forma
-visible. Se comprueba esa diferencia con repositorios Git temporales.
+- `LibrosStudium-bundle-completo.zip`: todos los PDF registrados, agrupados
+  por asignatura o tema.
+- `LibrosStudium-fuentes-vX.Y.Z.tar.gz`: instantánea del código fuente del
+  commit etiquetado, producida con `git archive` (no incluye archivos
+  ignorados, secretos ni PDFs generados).
+- `SHA256SUMS.txt`: digests SHA-256 verificables del ZIP completo, archivo
+  de fuentes y metadatos.
+- `RELEASE.json`: fecha y hora UTC, tag, SHA Git completo, número de
+  PDF, temas y SHA-256 de los archivos.
+- `NOTAS-EDICION.md`: notas de la release con el commit y los SHA-256.
+
+GitHub muestra además sus propios **Source code (zip)** y
+**Source code (tar.gz)** del commit etiquetado. Esos enlaces automáticos
+son adicionales al archivo de fuentes con hash explícito.
+
+El catálogo `release-bundle.json` contiene los manuales, cuadernos de
+problemas y simulacros aeroespaciales, la colección de programación, y los
+libros de humanidades y ciencias. El empaquetador compara el catálogo con
+todos los proyectos de origen y exige que aparezcan todos los PDF.
+Al añadir un libro hay que actualizar el catálogo y el proceso de compilación.
+
+El ZIP contiene `INVENTARIO.json` con los hashes SHA-256 individuales,
+tamaños y páginas de los PDF. **Un SHA demuestra identidad de bytes; no
+certifica la exactitud científica de la edición**.
+
+## Etapas y garantías
+
+1. Validación de formato del tag, de su SHA Git y de su procedencia desde `main`.
+2. Ejecución de tests, reconstrucción de los PDF y auditorías técnicas.
+3. Compilación y verificación del ZIP completo contra `release-bundle.json`.
+4. Creación del archivo de fuentes, `RELEASE.json`, notas y hashes.
+5. Creación de release como **draft** y subida de todos los activos.
+6. Descarga de los activos desde GitHub, `sha256sum --check` y segunda
+   verificación del contenido del ZIP.
+7. Promoción a release **estable y pública** solo tras superar todos los pasos.
+
+Si una ejecución falla antes de publicar, no se anuncia una versión estable.
+Una ejecución interrumpida con un draft puede relanzarse con el mismo tag;
+el workflow sustituye sus activos tras reconstruirlos y revalidarlos.
+Una release ya publicada **no se sobreescribe automáticamente**.
+
+El guard `.github/workflows/release-bundle-guard.yml` revisa publicaciones
+manuales. Las releases creadas con `GITHUB_TOKEN` no disparan necesariamente
+un nuevo workflow, por lo que el publicador ya ejecuta las mismas
+comprobaciones antes de dar publicidad al draft.
+
+Para verificar localmente un ZIP ya compilado:
+
+```bash
+python scripts/package-release-bundle.py --verify-only
+cd dist/release
+sha256sum --check SHA256SUMS.txt
+```
+
+Para reconstruir la entrega hacen falta el entorno de compilación,
+las dependencias de Python y LaTeX y los tres pipelines de ingeniería,
+programación y humanidades.
+
+## Estado editorial
+
+Una versión **estable del bundle** significa que se ha empaquetado y
+verificado correctamente el conjunto de archivos; **no implica** que todos
+los libros hayan superado una revisión experta independiente. Los contenidos
+que todavía estén `EN REVISIÓN` conservarán ese estado y no se presentan
+como certificados por la ULE. Los informes de evidencia y las limitaciones
+científicas no se sustituyen por un número de versión.
