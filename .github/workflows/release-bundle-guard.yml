@@ -25,6 +25,12 @@ jobs:
             echo '::notice::Review release before the bundle policy is installed on the default branch; the publisher must verify its ZIP. Merge the policy PR to enable this guard.'
           fi
           echo "enabled=$enabled" >> "$GITHUB_OUTPUT"
+      - name: Check out the exact release tag for the matching catalog
+        if: steps.policy.outputs.enabled == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
