@@ -57,17 +57,17 @@ def create_cover(photo: dict, data: bytes) -> bytes:
 
 
 def cover_credit(photo: dict) -> str:
-    return (
-        f"\\noindent\\textbf{{Imagen de portada.}} Fotografía {photo['author']},\\n"
+    lines = [
+        rf"\noindent\textbf{{Imagen de portada.}} Fotografía {photo['author']},",
         f"{photo['description']}, ID {photo['photo_id']}. Fuente: "
-        f"\\href{{{photo['source']}}}{{Wikimedia Commons}}.\\n"
+        + rf"\href{{{photo['source']}}}{{Wikimedia Commons}}.",
         "Dominio público en Estados Unidos (autoría NASA); reutilización educativa conforme a "
-        "\\href{https://www.nasa.gov/nasa-brand-center/images-and-media/}"
-        "{las condiciones NASA}. "
-        "Recorte proporcional y remuestreo a 1800 por 1500 píxeles; "
-        "sin alteración generativa del contenido. "
-        f"Consulta: {photo['consulted_on']}. No implica respaldo institucional.\\n"
-    )
+        + r"\href{https://www.nasa.gov/nasa-brand-center/images-and-media/}{las condiciones NASA}. "
+        + "Recorte proporcional y remuestreo a 1800 por 1500 píxeles; "
+        + "sin alteración generativa del contenido. "
+        + f"Consulta: {photo['consulted_on']}. No implica respaldo institucional.",
+    ]
+    return "\n".join(lines) + "\n"
 
 
 def regenerate(source_dir: Path | None = None) -> None:
