@@ -30,6 +30,16 @@ La evaluación de riesgos identifica peligros, probabilidad, severidad y medidas
 Se compara plan con ejecución y se investigan desviaciones. Las retiradas repetidas pueden revelar diagnóstico incompleto, dificultades de acceso o datos insuficientes. El seguimiento del cumplimiento y el sistema de gestión de seguridad utilizan esa experiencia con funciones diferenciadas.
 
 Un informe útil identifica acción, responsable, plazo y evidencia de eficacia. Informar una mejoría de un promedio sin comprobar si cambió exposición, definición o población puede ocultar deterioro. La gestión del mantenimiento se apoya en datos técnicamente significativos y decisiones trazables.
+\section{Fiabilidad condicional y su interpretación}
+Para una Weibull ideal de escala $\eta$ y forma $\beta$, la supervivencia es $R(t)=\exp[-(t/\eta)^\beta]$. Con $\beta=2$ la tasa de riesgo $h(t)=(\beta/\eta)(t/\eta)^{\beta-1}$ crece con la edad del modelo. Si una unidad ha sobrevivido hasta $t_0$, la probabilidad de sobrevivir otras $\Delta t$ es
+\[
+P(T>t_0+\Delta t\mid T>t_0)=\frac{R(t_0+\Delta t)}{R(t_0)};
+\]
+no debe calcularse como $R(\Delta t)$ salvo condiciones especiales como la distribución exponencial sin memoria.
+
+Para datos ficticios $\eta=1500\,\mathrm h$, $\beta=2$ y $t_0=1000\,\mathrm h$ resulta $R(1000)\simeq0.64118$; la probabilidad condicional de sobrevivir hasta 1100 h, tras haber llegado a 1000, es $0.91089$. Ningún resultado permite establecer por sí solo un límite de vida autorizado.
+\repaso{¿Puede utilizarse un MTBF observado de pocas averías como evidencia suficiente para ampliar vida límite?}{No. Faltan población, dispersión, modelo y base técnica y normativa; MTBF y límite de vida son conceptos distintos.}
+
 \input{content/e24.tex}
 \resumen{Los eventos necesitan exposición y definición. MTBF y tasa no son límites de vida. Exponencial y Weibull son modelos, no etiquetas que prueben un mecanismo. Logística y coste se optimizan entre soluciones admisibles; no eliminan obligaciones o trazabilidad.}
 \fuentes{Reglamento 1321/2014, M.A.302(g)--(h), 145.A.47 y .200 \cite{EU1321}; materiales docentes de gestión; FAA--General, factores humanos y registros \cite{FAA-G}. Las distribuciones se presentan como modelos matemáticos explícitos, con comprobaciones en el cuaderno.}
