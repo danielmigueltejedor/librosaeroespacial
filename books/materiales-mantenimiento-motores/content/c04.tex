@@ -45,6 +45,16 @@ El tamaño final debe respetar tanto la resistencia frente a inestabilidad al m�
 
 El intervalo académico puede tomarse como una fracción explícita del crecimiento calculado para explorar márgenes, pero la fracción no se presenta como un requisito reglamentario. Deben declararse fiabilidad de detección, espectro, dispersión del crecimiento y revisión de hipótesis. Los ejercicios de propagación del cuaderno separan claramente el resultado matemático de una decisión de mantenimiento.
 \ilustra{sn-paris}{Curvas esquemáticas de tensión--vida y de crecimiento de grieta. Se señalan dominios de ajuste; no son datos de una aleación certificada.}
+\section{Curvas S--N: tres cálculos que no deben confundirse}
+La forma $\sigma_a=A N^b$ y la forma $\sigma_a=\sigma_f'(2N_f)^b$ no emplean la misma convención del número de ciclos e inversiones. Si se proporcionan dos puntos de una región representable como potencia, se obtiene
+\[
+ b=\frac{\ln(\sigma_{a2}/\sigma_{a1})}{\ln(N_2/N_1)},\qquad
+ \sigma_a(N)=\sigma_{a1}(N/N_1)^b.
+\]
+La interpolación requiere mantener las hipótesis del ensayo y no garantiza extrapolaciones a vida infinita.
+
+Para tensión oscilante entre cero y $\sigma_{\max}$, se tiene $R=0$ y $\sigma_a=\sigma_m=\sigma_{\max}/2$; para inversión completa, $R=-1$ y $\sigma_m=0$. Los modelos de Goodman y Miner deben recibir estas magnitudes correctamente definidas. Para propagación, el rango es $\Delta K=K_{\max}-K_{\min}$ en el dominio del modelo de Paris; la vida de propagación no incluye automáticamente iniciación, umbral y fractura rápida.
+
 \input{content/e04.tex}
 \resumen{Un ciclo necesita máximos y mínimos. S--N estima vida bajo condiciones de ensayo; Paris estima propagación en un dominio distinto. Miner es acumulación lineal aproximada. $K_{\max}$ comprueba inestabilidad y $\Delta K$ impulsa el modelo de crecimiento; ni uno ni otro sustituye al otro.}
 \fuentes{Roylance, \textit{Fatigue} y \textit{Introduction to Fracture Mechanics} \cite{MIT-FAT,MIT-FRAC}; materiales docentes de fatiga, pp. 1--37.}

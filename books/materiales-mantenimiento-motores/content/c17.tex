@@ -28,6 +28,11 @@ Los datos incluyen fallos, retiradas, demoras técnicas, hallazgos y utilizació
 La orden de trabajo debe identificar la tarea, los datos utilizados y los resultados. El sistema conserva fecha y acumulados de ejecución, discrepancias, acciones y certificación. El estado «cerrado» de una aplicación informática no sustituye esa evidencia.
 
 Para practicar se construye un modelo con datos ficticios, separado de un documento aprobado. El capítulo~\ref{ch:25} desarrolla columnas, validaciones y ejemplos completos, incluyendo qué hacer cuando falta un registro o se aproxima un vencimiento concurrente.
+\section{Vencimientos simultáneos: un caso resuelto}
+Una tarea ficticia ejecutada a 3900 FH el 1 de abril, con repetición cada 100 FH o seis meses, vencería a 4000 FH o el 1 de octubre, lo que ocurra antes. Si al 1 de junio se acumulan 3960 FH, restan 40 FH y cuatro meses. A 5 FH por jornada equivaldría a unas ocho jornadas de uso, pero sin conocer la planificación no hay una fecha de vencimiento única estimada por horas.
+
+El AMP debe relacionar tarea, origen de intervalo, condición aplicable, versión, configuración y evidencia de la última ejecución. El vencimiento calculado no demuestra ejecución ni crea extensiones de vida. Los contadores desconocidos no se rellenan con cero.
+
 \input{content/e17.tex}
 \resumen{El AMP se apoya en fuentes y configuración. Umbral, repetición y evento de referencia son datos distintos. Horas, ciclos y calendario se controlan simultáneamente. La revisión y las extensiones no reinician automáticamente la vida ni eliminan requisitos obligatorios.}
 \fuentes{Reglamento 1321/2014, M.A.302, M.A.305, ML.A.302 y disposiciones aplicables de Parte CAMO/CAO \cite{EU1321}; documentación docente de programas y ARC.}
