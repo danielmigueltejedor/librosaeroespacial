@@ -1,0 +1,71 @@
+\chapter{Soluciones guiadas de los problemas preexamen}
+\label{ch:soluciones-problemas-preexamen}
+
+\section*{PE01. Fractura}
+La grieta total de 6 mm implica $a=0.003\,\mathrm m$. Se adopta el modelo $K_I=Y\sigma\sqrt{\pi a}$, con unidades de $\mathrm{MPa\sqrt m}$.
+\[
+K_I=1.12(200)\sqrt{\pi(0.003)}\simeq21.7462\,\mathrm{MPa\sqrt m}.
+\]
+La condición ideal de rotura es $K_I=K_{\mathrm{mat}}$, de donde
+\[
+a_c=\frac1{\pi}\left(\frac{38}{1.12(200)}\right)^2\simeq0.0091605\,\mathrm m,
+\qquad 2a_c\simeq18.3211\,\mathrm{mm}.
+\]
+Comprobación: el $K_I$ aumenta con $\sqrt a$. Antes de usar el modelo sobre una pieza real, comprobar tamaño y tipo de defecto, factor geométrico, espesor, plasticidad, estado de tensiones, temperatura y tenacidad aplicable. No equivale a aceptar una grieta en servicio.
+
+\section*{PE02. Curva S--N}
+Tomando logaritmos de $\sigma_a=AN^b$:
+\[
+b=\frac{\log(250/500)}{\log(10^6/10^3)}\simeq-0.1003433.
+\]
+Se puede evaluar sin hallar expresamente $A$:
+\[
+\sigma_a(10^5)=500\left(\frac{10^5}{10^3}\right)^b\simeq314.98\,\mathrm{MPa}.
+\]
+Los puntos determinan la recta en escala logarítmica solo dentro del modelo y del intervalo. No se han considerado tensión media, entallas, ambiente, dispersión ni modificación de mecanismo.
+
+\section*{PE03. Ley de Paris}
+Usando metros para $a$:
+\[
+\frac{da}{dN}=C(Y\Delta\sigma\sqrt{\pi})^3a^{3/2},\qquad
+N=\frac{2(a_i^{-1/2}-a_f^{-1/2})}{C(Y\Delta\sigma\sqrt\pi)^3}.
+\]
+La sustitución de los datos da $N\simeq2.35860\times10^6$ ciclos. Debe comprobarse que todo el recorrido es válido para Paris, geometría, amplitud, cierre de grieta y condición final. No incluye iniciación ni garantiza un intervalo certificado.
+
+\section*{PE04. Norton}
+Con tensión y temperatura constantes:
+\[
+\frac{\dot\varepsilon_2}{\dot\varepsilon_1}=(120/100)^4=2.0736,
+\qquad \dot\varepsilon_2=2.0736\times10^{-9}\,\mathrm{s^{-1}}.
+\]
+Si la tasa es constante en el intervalo idealizado, $t=\varepsilon_c/\dot\varepsilon$:
+\[
+t_1=\frac{0.005}{10^{-9}}=5.00\times10^6\,\mathrm s\simeq1388.89\,\mathrm h,
+\quad t_2\simeq669.80\,\mathrm h.
+\]
+La fluencia primaria y terciaria, la rotura, oxidación y cambios de sección no están modelados.
+
+\section*{PE05. Tensión térmica}
+La deformación térmica libre es $\varepsilon_T=\alpha\Delta T=0.00072$. La compatibilidad de alargamiento total cero exige $\varepsilon_e=-\varepsilon_T$ y, por tanto,
+\[
+\sigma=-E\alpha\Delta T=-(110000)(9\times10^{-6})(80)=-79.2\,\mathrm{MPa}.
+\]
+Es compresión. La magnitud predicha supera el límite elástico supuesto de 60 MPa: no puede mantenerse la hipótesis de elasticidad lineal hasta esa tensión; habría que estudiar plastificación y restricciones reales.
+
+\section*{PE06. Ultrasonidos}
+El eco recorre dos veces la distancia $d$:
+\[
+d=\frac{vt}{2}=\frac{5900(5\times10^{-6})}{2}
+=0.01475\,\mathrm m=14.75\,\mathrm{mm}.
+\]
+Posibles fuentes de error: orientación del reflector, trayectoria no normal, cambios de velocidad con material y temperatura, calibración y atenuación. La profundidad equivalente no es la altura ni la longitud del defecto.
+
+\section*{PE07. Vencimiento}
+La fecha límite idealizada es 1 de octubre de 2026 y el contador límite es $3900+100=4000\,\mathrm{FH}$. Al estado declarado quedan $40\,\mathrm{FH}$ y cuatro meses de calendario; a 5 FH por jornada, aproximadamente 8 jornadas por horas. Gobierna la primera limitación que se alcance con el uso real. Aparte del cálculo se necesita identificación de aeronave/tarea, edición aplicable del AMP, contadores y registros válidos de la última ejecución.
+
+\section*{PE08. Fiabilidad}
+La tasa estimada en el modelo es $\widehat\lambda=4/20000=2\times10^{-4}\,\mathrm{FH^{-1}}$. Su tiempo medio es $1/\widehat\lambda=5000\,\mathrm{FH}$. Para $200\,\mathrm{FH}$,
+\[
+R(200)=\exp(-\widehat\lambda\cdot200)=e^{-0.04}\simeq0.960789.
+\]
+Una muestra de cuatro eventos tiene incertidumbre importante; la tasa constante puede no representar desgaste o diferentes unidades. Tampoco define una vida limitada legal ni justifica extensiones de vida.
