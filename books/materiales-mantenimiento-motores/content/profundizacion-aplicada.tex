@@ -1,0 +1,125 @@
+\chapter{Profundización aplicada: del material a la evidencia}
+\label{ch:matmo-profundizacion}
+\objetivos{Derivar modelos, distinguir hipótesis y criterios de daño, y conectar inspección y decisiones documentadas para resolver teoría y problemas de examen.}
+\noindent Este complemento utiliza cifras ficticias y modelos simplificados. No contiene límites de aceptación ni intervalos de inspección aprobados.
+
+\section{Tensión multiaxial: del tensor al criterio de cedencia}
+Un material bajo $\sigma_x$, $\sigma_y$ y $\tau_{xy}$ no tiene una única tensión que sustituya todas las comprobaciones. Para tensión plana, las tensiones principales son los autovalores del tensor:
+\begin{equation}
+\sigma_m=\frac{\sigma_x+\sigma_y}{2},\quad
+R=\sqrt{\left(\frac{\sigma_x-\sigma_y}{2}\right)^2+\tau_{xy}^2},\quad
+\sigma_{1,2}=\sigma_m\pm R.
+\label{eq:av-matmo-mohr}
+\end{equation}
+El criterio de Von Mises surge de la parte desviadora del estado tensional:
+\begin{equation}
+\sigma_{\mathrm{VM}}=\sqrt{\sigma_x^2-\sigma_x\sigma_y+\sigma_y^2+3\tau_{xy}^2}.
+\label{eq:av-matmo-mises}
+\end{equation}
+\caso{Ejemplo A. Cedencia frente a fractura}
+{Con datos ficticios $\sigma_x=120\,\mathrm{MPa}$, $\sigma_y=-40\,\mathrm{MPa}$ y $\tau_{xy}=30\,\mathrm{MPa}$, el centro es $40\,\mathrm{MPa}$ y el radio $85.440\,\mathrm{MPa}$. Se obtiene $\sigma_1=125.440\,\mathrm{MPa}$, $\sigma_2=-45.440\,\mathrm{MPa}$ y $\sigma_{\mathrm{VM}}=153.297\,\mathrm{MPa}$. Para un metal compatible con el criterio, un límite elástico de $200\,\mathrm{MPa}$ no predice cedencia en ese punto idealizado. Nada se ha demostrado sobre fatiga, fractura o concentración geométrica.}
+\paragraph{Pregunta de teoría.} ¿Por qué la principal máxima y Von Mises son distintas? Porque describen magnitudes diferentes derivadas del tensor y se comparan con criterios de daño diferentes.
+
+\section{Fractura: significado de la semilongitud y crecimiento}
+En una placa con grieta central pasante de longitud total $2a$, el factor de intensidad para el modelo geométrico adecuado puede escribirse
+\begin{equation}
+K_I=Y\sigma\sqrt{\pi a},\qquad
+a_c=\frac{1}{\pi}\left(\frac{K_{\mathrm{mat}}}{Y\sigma}\right)^2.
+\label{eq:av-matmo-k}
+\end{equation}
+El factor $Y$ no es universal para grietas de borde o superficiales. Antes de comparar con una tenacidad se comprueban espesor, plastificación, estado de tensiones, orientación de la grieta y condiciones de validez de MFEL.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=.9cm,y=.8cm,font=\small]
+ \draw[thick,fill=studiumLight] (0,0) rectangle (10,4);
+ \draw[->,thick] (.6,1)--(3,1) node[midway,below] {$\sigma$};
+ \draw[->,thick] (9.4,3)--(7,3) node[midway,above] {$\sigma$};
+ \draw[very thick,studiumInk] (3.4,2)--(6.6,2);
+ \draw[densely dashed] (5,1.25)--(5,2.9);
+ \fill[studiumInk] (3.4,2) circle (2pt); \fill[studiumInk] (6.6,2) circle (2pt);
+ \draw[<->] (3.4,2.65)--(5,2.65) node[midway,above] {$a$};
+ \draw[<->] (5,2.65)--(6.6,2.65) node[midway,above] {$a$};
+ \node at (7.6,.65) {grieta total: $2a$};
+\end{tikzpicture}
+\caption{Convención conceptual de semilongitud de grieta central; no representa una solución de geometría finita.}
+\label{fig:av-matmo-grieta}
+\end{figure}
+
+El tramo de crecimiento de grieta que se aproxima mediante Paris sigue
+\begin{equation}
+\frac{\mathrm da}{\mathrm dN}=C(\Delta K)^m,\quad
+\Delta K=Y\Delta\sigma\sqrt{\pi a}.
+\end{equation}
+Para $m=2$, si $C$, $Y$ y $\Delta\sigma$ son constantes:
+\begin{equation}
+N=\frac{\ln(a_f/a_i)}{C\pi(Y\Delta\sigma)^2}.
+\label{eq:av-matmo-paris2}
+\end{equation}
+\caso{Ejemplo B. Integración comprobable}
+{Para $Y=1.05$, $\Delta\sigma=80\,\mathrm{MPa}$, $C=10^{-11}\,\mathrm{m\,ciclo^{-1}}(\mathrm{MPa}\sqrt{\mathrm m})^{-2}$, $a_i=1\,\mathrm{mm}$ y $a_f=4\,\mathrm{mm}$,
+\[
+N=\frac{\ln4}{10^{-11}\pi(1.05\cdot80)^2}\simeq6.254\times10^6\ \mathrm{ciclos}.
+\]
+La tasa de crecimiento y el número de ciclos solo representan ese intervalo idealizado. No se han incluido iniciación, umbral, propagación rápida, dispersión, temperatura o carga variable.}
+\paragraph{Comprobación de coherencia.} Para $m=2$ se obtiene una dependencia logarítmica con $a_f/a_i$, no proporcional al tamaño final. La unidad de $C$ debe elegirse según el exponente y las unidades de $\Delta K$.
+
+\section{Fatiga S--N y daño de Miner}
+La forma $\sigma_a=A N^b$ es una correlación regional. Si otro texto utiliza $\sigma_a=\sigma'_f(2N_f)^b$, diferencia ciclos de inversiones. Con dos datos del mismo régimen:
+\begin{equation}
+b=\frac{\ln(\sigma_{a2}/\sigma_{a1})}{\ln(N_2/N_1)},\qquad
+\sigma_a(N)=\sigma_{a1}(N/N_1)^b.
+\end{equation}
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[x=.9cm,y=.7cm,font=\small]
+ \draw[->] (0,0)--(10.2,0) node[right] {$\log N$};
+ \draw[->] (0,0)--(0,5.4) node[above] {$\log\sigma_a$};
+ \draw[very thick,studiumBlue] (1,4.65)--(9.3,1.1);
+ \fill[studiumInk] (2.5,4.01) circle (2pt);
+ \fill[studiumInk] (7.8,1.74) circle (2pt);
+ \draw[dotted] (2.5,0)--(2.5,4.01); \draw[dotted] (7.8,0)--(7.8,1.74);
+ \node[above right] at (2.5,4.01) {ensayo 1};
+ \node[above right] at (7.8,1.74) {ensayo 2};
+ \node[align=center,fill=white] at (6.0,4.2) {tramo ideal de Basquin\\sin extrapolación validada};
+\end{tikzpicture}
+\caption{Curva S--N conceptual en escala logarítmica. No representa mediciones de un material real.}
+\label{fig:av-matmo-basquin}
+\end{figure}
+La regla lineal de Miner acumula fracciones $D=\sum_i n_i/N_i$. Si un bloque tiene $12\,000/100\,000$ y otro $9\,000/30\,000$, resulta $D=0.12+0.30=0.42$. Su complemento aritmético no es una probabilidad de supervivencia ni un factor de seguridad. El orden de los bloques, las tensiones medias y el ambiente requieren otros modelos o datos.
+
+\section{Compuestos: dos direcciones, dos idealizaciones}
+Con $V_f$ fracción volumétrica de fibra y $V_m=1-V_f$, bajo deformación común longitudinal se utiliza:
+\begin{equation}
+E_L=V_fE_f+V_mE_m,\qquad
+E_T^{\mathrm{ideal}}=\left(V_f/E_f+V_m/E_m\right)^{-1}.
+\end{equation}
+La segunda es una cota/idealización de igual tensión y no una predicción universal de cada módulo transversal. Para $V_f=0.55$, $E_f=200\,\mathrm{GPa}$ y $E_m=3\,\mathrm{GPa}$ se obtiene $E_L=111.35\,\mathrm{GPa}$ y $E_T^{\mathrm{ideal}}=6.547\,\mathrm{GPa}$. Para $\rho_f=1800$ y $\rho_m=1200\,\mathrm{kg\,m^{-3}}$ se obtiene $\rho=1530\,\mathrm{kg\,m^{-3}}$. Los vacíos, la interfase y el laminado real modifican la respuesta.
+\paragraph{Distinción de examen.} Fallo adhesivo es separación en la interfaz; cohesivo es rotura dentro del adhesivo; del sustrato es rotura del material unido. La matriz de un compuesto participa en la transmisión de cargas, no es un mero separador pasivo.
+
+\section{END y decisiones: del indicio a la trazabilidad}
+El método de ensayo no destructivo depende de material, posición, tamaño y orientación del defecto, sensibilidad validada y accesibilidad. Los penetrantes detectan discontinuidades abiertas a superficie no porosa; las partículas magnéticas exigen ferromagnetismo; las corrientes inducidas exigen conductividad; los ultrasonidos requieren trayectoria/calibración; la radiografía depende del contraste y orientación; la termografía interpreta respuesta radiativa o transitoria. Resolución nominal no equivale a probabilidad de detección.
+
+\begin{figure}[htbp]\centering
+\begin{tikzpicture}[>=Stealth,font=\scriptsize]
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (a) at (0,1.8) {Indicio y modo\\de daño plausible};
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (b) at (4.7,1.8) {Material y procedimiento\\END aplicable};
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (c) at (9.4,1.8) {Indicación, límite,\\evaluación documentada};
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (d) at (9.4,-.1) {Registros, AD, AMP,\\trazabilidad};
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (e) at (4.7,-.1) {Personal y organización\\con privilegios};
+ \node[draw,rounded corners,fill=studiumLight,align=center,text width=3.1cm,minimum height=10mm] (f) at (0,-.1) {Decisión según\\datos y ámbito};
+ \draw[->,thick] (a)--(b); \draw[->,thick] (b)--(c); \draw[->,thick] (c)--(d);
+ \draw[->,thick] (d)--(e); \draw[->,thick] (e)--(f);
+\end{tikzpicture}
+\caption{Cadena conceptual entre anomalía, evidencia y decisión; no sustituye datos de mantenimiento aprobados.}
+\label{fig:av-matmo-evidencia}
+\end{figure}
+
+\section{Cuatro casos de razonamiento normativo}
+\paragraph{Caso ARC.} Una revisión detecta un hallazgo abierto. La FAQ oficial de EASA indica que no se emite ARC ni recomendación con hallazgos abiertos: requieren acción correctora y verificación. Un ARC anterior no resuelve por sí solo el defecto.
+\paragraph{Caso plazo.} Según EASA, la anticipación de una extensión del ARC hasta 30 días sin perder el patrón exige cumplir las condiciones del régimen; anticipar más cambia la base de expiración. Nunca crea una tolerancia general para el AMP ni un margen de vida para una LLP.
+\paragraph{Caso AD.} Una AD incorpora un SB de revisión determinada. No se supone que la revisión más reciente sea automáticamente equivalente; se verifica el texto de la AD, los métodos admitidos y el proceso de aprobación aplicable.
+\paragraph{Caso datos ausentes.} Si no se conocen los ciclos totales trazables de una LLP, no se interpreta una casilla vacía como cero. Se conserva el estado pendiente y se busca evidencia según documentación y responsabilidades aplicables.
+
+\section{Rúbrica para una respuesta de nivel alto}
+En problemas, presentar datos, hipótesis, modelo, derivación, unidades, cálculo, plausibilidad y límite de validez. En teoría, separar definiciones de deducciones, documentar el ámbito, distinguir fuente académica y norma exigible e identificar excepciones. Una conclusión condicional correctamente argumentada puede ser mejor que una afirmación absoluta no demostrada.
+
+\fuentes{MIT, Roylance \cite{MIT-SS,MIT-ELAS}; FAA Aviation Maintenance Technician Handbook, General \cite{FAA-G}; EASA Continuing Airworthiness y Reglamento 1321/2014 \cite{EU1321,EASA-CAW}; pregunta frecuente oficial sobre ARC \url{https://www.easa.europa.eu/en/the-agency/faqs/airworthiness-review}, consultada el 24 de octubre de 2026.}
