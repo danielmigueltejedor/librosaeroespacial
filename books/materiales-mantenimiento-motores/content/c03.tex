@@ -42,6 +42,11 @@ Si la plasticidad no es pequeña pueden necesitarse parámetros elasto-plástico
 
 La tolerancia al daño combina tamaño inicial supuesto, crecimiento, detectabilidad y tamaño final admisible. No utiliza el tamaño mínimo nominal de detección como garantía determinista: se consideran probabilidad de detección, accesibilidad, orientación y dispersión. El intervalo de inspección depende del tiempo de crecimiento entre estados justificadamente definidos y de márgenes adicionales.
 \ilustra{fractura-critica}{Intensidad aplicada frente a semilongitud de grieta para el ejemplo M03. La intersección ilustra el criterio idealizado, no un límite de mantenimiento real.}
+\section{Protocolo de solución para fractura}
+Primero se identifica la geometría: una grieta central de longitud total $2a$ implica utilizar la semilongitud $a$ en la expresión adecuada de $K_I$. El factor geométrico $Y$ de una placa idealmente ancha no se traslada automáticamente a una grieta de borde o superficial. Después se convierten las longitudes a metros al trabajar con $\mathrm{MPa\sqrt m}$ y se comprueba el resultado reintroduciendo el tamaño crítico en la ecuación.
+
+Finalmente se razona la validez: distinguir tenacidad aplicable de intensidad solicitante, confirmar hipótesis elásticas, tamaño de zona plástica y efecto del espesor. En condiciones normalizadas de deformación plana pueden exigirse dimensiones mínimas del orden de $2.5(K_{IC}/\sigma_y)^2$ para las variables geométricas pertinentes, pero no se debe utilizar este criterio fuera del procedimiento al que pertenece. Una predicción estática de fractura tampoco establece por sí sola la vida a fatiga ni autoriza conservar la pieza en servicio.
+
 \input{content/e03.tex}
 \resumen{\textbf{Preguntas de control.} $K_t$ es adimensional; $K_I$ tiene unidades de tensión por raíz de longitud. La longitud total de una grieta central es $2a$. $K_{IC}$ no es un esfuerzo aplicado. La comparación estática no excluye propagación subcrítica. El espesor y el ligamento forman parte de la validez.}
 \fuentes{Roylance, \textit{Introduction to Fracture Mechanics}, apartados de Griffith, intensidad y tenacidad \cite{MIT-FRAC}; documentos docentes de fractura, pp. 1--46. El criterio dimensional se explica como cribado; no se afirma haber ejecutado un ensayo ASTM E399.}
