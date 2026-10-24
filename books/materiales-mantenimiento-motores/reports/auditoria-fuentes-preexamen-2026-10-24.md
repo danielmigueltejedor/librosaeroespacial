@@ -6,7 +6,7 @@
 - `wuolah-premium-Ejercicios-materiales.pdf` (10 pp): ejercicios de fractura y tamaño crítico de grieta, concentración de tensiones, vida a fatiga y curvas S--N, integración de Paris, y álabe en fluencia por carga centrífuga.
 - `wuolah-premium-preguntas-de-teoria.pdf` (17 pp): test y notas de materiales, algunas respuestas erróneas o excesivamente generalizadas. Es **fuente de temas y estilo de examen, no autoridad científica**.
 - `Mantenimiento-MATMO-1-temas.zip`: presentación de la asignatura, introducción, marco normativo civil y militar, Parte 21/CS, programa de mantenimiento, HTML resumen y BOE-A-2022-21487.
-- `Mantenimiento-MATMO-2-ARC-normativa-ADs.zip`: presentación ARC, copias históricas de 748/2012, 1321/2014 y 2018/1139, más siete ficheros Excel de listados de AD por modelo de aeronave (CESSNA, TB, PA-28).
+- `Mantenimiento-MATMO-2-ARC-normativa-ADs.zip`: presentación ARC, copias históricas de 748/2012, 1321/2014 y 2018/1139, más ocho ficheros Excel de listados de AD por modelo de aeronave (CESSNA, TB, PA-28).
 - Guía docente ULE 2026-2027, asignatura 0710341, 4.º curso, 6 ECTS: https://www.unileon.es/estudiantes/oferta-academica/grados/grado-en-ingenieria-aeroespacial/plan-estudios?cursoa=2026&id=0710341&te=G y https://guiadocenteapi.unileon.es/syllabuses/downloadPdf/2026-2027/0710341 . El repositorio contiene previamente `reports/Contraste_guia_docente.md`.
 
 ## Errores o generalizaciones problemáticas en los apuntes de alumnos
