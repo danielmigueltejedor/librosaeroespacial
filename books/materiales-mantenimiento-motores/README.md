@@ -7,6 +7,8 @@ Edición completa de estudio, 2026. Estado: **EN REVISIÓN**. Fecha normativa de
 - `main.tex`: manual de 25 capítulos, 23 figuras originales, ejemplos, preguntas de comprensión con respuesta, fórmulas, glosario y bibliografía.
 - `problemas.tex`: 35 problemas originales resueltos y 16 casos académicos de mantenimiento.
 - `simulacros.tex`: diez pruebas originales (cuatro de materiales, tres de mantenimiento y tres combinadas), con 40 preguntas y soluciones separadas; S07 a S10 se generan con `scripts/author-materials-extra-exams.py`.
+  - Añadido para preparación preexamen: **36 preguntas originales de test con respuestas razonadas** y **8 problemas complementarios con solución analítica** (fractura, S--N, Paris, Norton, tensión térmica, ultrasonidos, vencimientos y fiabilidad). Las nuevas secciones se integran en `simulacros.tex` con archivos separados para enunciados y soluciones.
+  - Informe de contraste: `reports/auditoria-fuentes-preexamen-2026-10-24.md`. Señala errores de apuntes de alumnos, límites de fuentes, normas a actualizar y controles pendientes. Es material de revisión, no cobertura total garantizada del examen.
 
 En este repositorio los PDF compilados no se versionan: el compilador del monorepo los genera en `dist/studium/materiales-mantenimiento-motores/`. Los datos de ejercicios y del taller AULA-01 son ficticios. No son instrucciones aprobadas, autorizaciones, límites certificados ni un trabajo evaluable presentado como realización personal de un estudiante.
 
