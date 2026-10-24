@@ -21,27 +21,27 @@ De acuerdo con los principios de honestidad científica del proyecto, **no se de
 
 | Asignatura (Guía ULE 2026/2027) | Volumen | Archivo fuente principal | Capítulos / Secciones | Apéndices | Páginas PDF | Figuras / Diagramas revisados | Ejercicios / Casos verificados | Estado de compilación |
 |---|---|---|---:|---:|---:|---:|---:|---|
-| **Teoría de Estructuras** (`0710323`) | Manual | `books/estructuras-aeroespaciales/latex/manual.tex` | 8 | 6 | 279 | 128 TikZ + 27 Fig | 105 casos en banco | COMPILED (0 err) |
-| **Teoría de Estructuras** (`0710323`) | Problemas | `books/estructuras-aeroespaciales/problemas.tex` | 8 | 0 | 163 | Integrados | 105 resueltos | COMPILED (0 err) |
-| **Teoría de Estructuras** (`0710323`) | Simulacros | `books/estructuras-aeroespaciales/simulacros.tex` | 8 | 0 | 51 | Integrados | 4 simulacros | COMPILED (0 err) |
-| **Mecánica de Fluidos** (`0710315`) | Manual | `books/mecanica-fluidos/latex/manual.tex` | 23 (16 + 7 práct.) | 5 | 316 | 21 PDF/PNG + TikZ | 48 casos + 7 talleres | COMPILED (0 err) |
-| **Mecánica de Fluidos** (`0710315`) | Problemas | `books/mecanica-fluidos/latex/problemas.tex` | 23 | 0 | 67 | Integrados | 48 problemas | COMPILED (0 err) |
-| **Mecánica de Fluidos** (`0710315`) | Simulacros | `books/mecanica-fluidos/latex/simulacros.tex` | 8 | 0 | 36 | Integrados | 20 variantes | COMPILED (0 err) |
-| **Turbomáquinas** (`0710327`) | Manual | `books/turbomaquinas/publication/turbomaquinas-ule-2026.tex` | 19 | 5 | 282 | 30 PDF + 78 TikZ | 150 casos (72 R + 78 P) | COMPILED (0 err) |
-| **Turbomáquinas** (`0710327`) | Problemas | `books/turbomaquinas/publication/problemas-resueltos.tex` | 19 | 0 | 199 | 78 TikZ | 150 desarrollados | COMPILED (0 err) |
-| **Turbomáquinas** (`0710327`) | Simulacros | `books/turbomaquinas/publication/simulacros-originales.tex` | 2 | 0 | 10 | 12 PDF | 2 exámenes (6 casos) | COMPILED (0 err) |
-| **Tecnología Aeroespacial** (`0710310`) | Manual | `books/tecnologia-aeroespacial/latex/manual.tex` | 25 | 6 | 164 | 27 PDF | 30 casos + ejemplos | COMPILED (0 err) |
-| **Tecnología Aeroespacial** (`0710310`) | Problemas | `books/tecnologia-aeroespacial/latex/problemas.tex` | 1 | 0 | 37 | Integrados | 30 resueltos | COMPILED (0 err) |
-| **Tecnología Aeroespacial** (`0710310`) | Simulacros | `books/tecnologia-aeroespacial/latex/simulacros.tex` | 3 | 0 | 7 | Integrados | 3 simulacros | COMPILED (0 err) |
-| **Motores Cohete** (`0710336`) | Manual | `books/motores-cohete/latex/manual.tex` | 28 | 13 | 160 | 30 PDF | 28 casos M + propuestos | COMPILED (0 err) |
-| **Motores Cohete** (`0710336`) | Problemas | `books/motores-cohete/latex/problemas.tex` | 6 | 0 | 35 | Integrados | 28 problemas | COMPILED (0 err) |
-| **Motores Cohete** (`0710336`) | Simulacros | `books/motores-cohete/latex/simulacros.tex` | 6 | 0 | 25 | Integrados | 6 simulacros | COMPILED (0 err) |
+| **Teoría de Estructuras** (`0710321`) | Manual | `books/estructuras-aeroespaciales/latex/manual.tex` | 8 | 6 | 279 | 128 TikZ + 27 Fig | 105 casos en banco | COMPILED (0 err) |
+| **Teoría de Estructuras** (`0710321`) | Problemas | `books/estructuras-aeroespaciales/problemas.tex` | 8 | 0 | 163 | Integrados | 105 resueltos | COMPILED (0 err) |
+| **Teoría de Estructuras** (`0710321`) | Simulacros | `books/estructuras-aeroespaciales/simulacros.tex` | 8 | 0 | 51 | Integrados | 4 simulacros | COMPILED (0 err) |
+| **Mecánica de Fluidos** (`0710311`) | Manual | `books/mecanica-fluidos/latex/manual.tex` | 23 (16 + 7 práct.) | 5 | 316 | 21 PDF/PNG + TikZ | 48 casos + 7 talleres | COMPILED (0 err) |
+| **Mecánica de Fluidos** (`0710311`) | Problemas | `books/mecanica-fluidos/latex/problemas.tex` | 23 | 0 | 67 | Integrados | 48 problemas | COMPILED (0 err) |
+| **Mecánica de Fluidos** (`0710311`) | Simulacros | `books/mecanica-fluidos/latex/simulacros.tex` | 8 | 0 | 36 | Integrados | 20 variantes | COMPILED (0 err) |
+| **Turbomáquinas** (`0710340`) | Manual | `books/turbomaquinas/publication/turbomaquinas-ule-2026.tex` | 19 | 5 | 282 | 30 PDF + 78 TikZ | 150 casos (72 R + 78 P) | COMPILED (0 err) |
+| **Turbomáquinas** (`0710340`) | Problemas | `books/turbomaquinas/publication/problemas-resueltos.tex` | 19 | 0 | 199 | 78 TikZ | 150 desarrollados | COMPILED (0 err) |
+| **Turbomáquinas** (`0710340`) | Simulacros | `books/turbomaquinas/publication/simulacros-originales.tex` | 2 | 0 | 10 | 12 PDF | 2 exámenes (6 casos) | COMPILED (0 err) |
+| **Tecnología Aeroespacial** (`0710312`) | Manual | `books/tecnologia-aeroespacial/latex/manual.tex` | 25 | 6 | 164 | 27 PDF | 30 casos + ejemplos | COMPILED (0 err) |
+| **Tecnología Aeroespacial** (`0710312`) | Problemas | `books/tecnologia-aeroespacial/latex/problemas.tex` | 1 | 0 | 37 | Integrados | 30 resueltos | COMPILED (0 err) |
+| **Tecnología Aeroespacial** (`0710312`) | Simulacros | `books/tecnologia-aeroespacial/latex/simulacros.tex` | 3 | 0 | 7 | Integrados | 3 simulacros | COMPILED (0 err) |
+| **Motores Cohete** (`0710342`) | Manual | `books/motores-cohete/latex/manual.tex` | 28 | 13 | 160 | 30 PDF | 28 casos M + propuestos | COMPILED (0 err) |
+| **Motores Cohete** (`0710342`) | Problemas | `books/motores-cohete/latex/problemas.tex` | 6 | 0 | 35 | Integrados | 28 problemas | COMPILED (0 err) |
+| **Motores Cohete** (`0710342`) | Simulacros | `books/motores-cohete/latex/simulacros.tex` | 6 | 0 | 25 | Integrados | 6 simulacros | COMPILED (0 err) |
 | **Mecánica de Vuelo** (`0710325`) | Manual | `books/mecanica-vuelo/main.tex` | 23 | 18 | 144 | 25 PDF + portada AD-1 | 84 casos / 284 cálculos | COMPILED (0 err) |
 | **Mecánica de Vuelo** (`0710325`) | Problemas | `books/mecanica-vuelo/problemas.tex` | 4 | 0 | 50 | Portada cabina X-29 | 43 problemas | COMPILED (0 err) |
 | **Mecánica de Vuelo** (`0710325`) | Simulacros | `books/mecanica-vuelo/simulacros.tex` | 12 | 0 | 31 | Portada X-29 viraje | 6 simulacros | COMPILED (0 err) |
-| **Materiales y Mantenimiento** (`0710329`) | Manual | `books/materiales-mantenimiento-motores/main.tex` | 25 | 4 | 108 | 23 PDF | 35 cuant. + 16 norm. | COMPILED (0 err) |
-| **Materiales y Mantenimiento** (`0710329`) | Problemas | `books/materiales-mantenimiento-motores/problemas.tex` | 7 | 0 | 39 | Integrados | 35 problemas | COMPILED (0 err) |
-| **Materiales y Mantenimiento** (`0710329`) | Simulacros | `books/materiales-mantenimiento-motores/simulacros.tex` | 12 | 0 | 20 | Integrados | 6 simulacros | COMPILED (0 err) |
+| **Materiales y Mantenimiento** (`0710341`) | Manual | `books/materiales-mantenimiento-motores/main.tex` | 25 | 4 | 108 | 23 PDF | 35 cuant. + 16 norm. | COMPILED (0 err) |
+| **Materiales y Mantenimiento** (`0710341`) | Problemas | `books/materiales-mantenimiento-motores/problemas.tex` | 7 | 0 | 39 | Integrados | 35 problemas | COMPILED (0 err) |
+| **Materiales y Mantenimiento** (`0710341`) | Simulacros | `books/materiales-mantenimiento-motores/simulacros.tex` | 12 | 0 | 20 | Integrados | 6 simulacros | COMPILED (0 err) |
 
 ---
 

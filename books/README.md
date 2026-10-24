@@ -18,4 +18,4 @@ No se crean carpetas `v2`, `final-final` ni copias de trabajo privadas. Las fuen
 
 ## Fotografías de portada de Mecánica de Vuelo
 
-Los tres volúmenes de Vuelo usan fotografías NASA distintas con la misma plantilla: T-34C en maniobra para el manual, cabina del X-29 para problemas y X-29 en viraje para simulacros. Procedencia y licencias en `assets/cover-photo.json` y `assets/COVER-IMAGE.md`.
+Los tres volúmenes de Vuelo usan fotografías NASA distintas con la misma plantilla: NASA AD-1 en vuelo para el manual, cabina del X-29 para problemas y X-29 en viraje para simulacros. Procedencia y licencias en `assets/cover-photo.json` y `assets/COVER-IMAGE.md`.

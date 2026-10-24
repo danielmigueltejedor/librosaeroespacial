@@ -1,118 +1,111 @@
 #!/usr/bin/env python3
-"""Download three distinct NASA photographs for the Studium flight-book covers."""
+"""Reproduce the three NASA covers from credited, checksum-pinned originals."""
 from __future__ import annotations
-import argparse, hashlib, json
+
+import argparse
+from datetime import datetime, timezone
+import hashlib
 from io import BytesIO
+import json
 from pathlib import Path
 from urllib.request import Request, urlopen
 
 try:
     from PIL import Image, ImageOps
 except ImportError as exc:
-    raise SystemExit("Pillow no está instalado: python3 -m pip install Pillow") from exc
+    raise SystemExit("Instala Pillow: python3 -m pip install Pillow") from exc
 
-ROOT = Path(__file__).resolve().parents[1]
-ASSETS = ROOT / "assets"
-LOCAL_CACHE = {
-    "main": Path("/private/var/folders/1p/n97h5bgn69jgw_p0h3l9q5300000gn/T/opencode/covers/ad1.jpg"),
-    "problemas": Path("/private/var/folders/1p/n97h5bgn69jgw_p0h3l9q5300000gn/T/opencode/covers/cockpit.jpg"),
-    "simulacros": ROOT / "assets" / "cover-hero.jpg",
-}
+ASSETS = Path(__file__).resolve().parents[1] / "assets"
+MANIFEST = ASSETS / "cover-photo.json"
 
-VOLUMES = [
-    {
-        "volume": "main",
-        "output": "cover-manual.jpg",
-        "credit": "cover-credit-manual.tex",
-        "author": "NASA / Jim Ross",
-        "title": "NASA Armstrong Flight Research Center T-34C Aircraft in Flight",
-        "photo_id": "AFRC2023-0064-02",
-        "image_date": "2023-09-15",
-        "source": "https://commons.wikimedia.org/wiki/File:NASA_Armstrong_Flight_Research_Center_T-34C_Aircraft_in_Flight_(AFRC2023-0064-02).jpg",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/NASA_Armstrong_Flight_Research_Center_T-34C_Aircraft_in_Flight_%28AFRC2023-0064-02%29.jpg",
-        "description": "T-34C NASA en maniobra aerobática durante vuelo de competencia, 15 de septiembre de 2023.",
-        "centering": (0.5, 0.45),
-    },
-    {
-        "volume": "problemas",
-        "output": "cover-problemas.jpg",
-        "credit": "cover-credit-problemas.tex",
-        "author": "NASA / DFRC / Bob Brown",
-        "title": "Grumman X-29 Cockpit",
-        "photo_id": "EC89-0254-1",
-        "image_date": "1989-09",
-        "source": "https://commons.wikimedia.org/wiki/File:Grumman_X-29_Cockpit.jpg",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Grumman_X-29_Cockpit.jpg",
-        "description": "Cabina e instrumentación del X-29, fotografía técnica de ensayo, septiembre de 1989.",
-        "centering": (0.5, 0.5),
-    },
-    {
-        "volume": "simulacros",
-        "output": "cover-simulacros.jpg",
-        "credit": "cover-credit-simulacros.tex",
-        "author": "NASA",
-        "title": "X-29 in Banked Flight",
-        "photo_id": "EC87-0182-14",
-        "image_date": "1987-07-24",
-        "source": "https://commons.wikimedia.org/wiki/File:X-29_in_Banked_Flight.jpg",
-        "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/X-29_in_Banked_Flight.jpg",
-        "description": "X-29 número 1 en viraje sobre el desierto de Mojave, 24 de julio de 1987.",
-        "centering": (0.5, 0.5),
-    },
-]
 
-def fetch(volume):
-    cache = LOCAL_CACHE[volume["volume"]]
-    data = cache.read_bytes()
-    if not 50_000 < len(data) < 15 * 1024 * 1024:
-        raise RuntimeError(f"Tamaño inesperado para {volume['photo_id']}: {len(data)}")
-    original = Image.open(BytesIO(data)); original.verify()
-    image = Image.open(BytesIO(data)).convert("RGB")
-    if min(image.size) < 1100:
-        raise RuntimeError(f"Resolución demasiado baja: {image.size}")
-    cropped = ImageOps.fit(image, (1800, 1500), method=Image.Resampling.LANCZOS, centering=volume["centering"])
-    out = ASSETS / volume["output"]
-    tmp = out.with_suffix(".jpg.tmp")
-    cropped.save(tmp, format="JPEG", quality=93, optimize=True, progressive=True, subsampling=0)
-    tmp.replace(out)
-    return image.size, hashlib.sha256(data).hexdigest(), hashlib.sha256(out.read_bytes()).hexdigest()
-
-def main():
-    records = []
-    for volume in VOLUMES:
-        original_size, original_hash, output_hash = fetch(volume)
-        records.append({
-            "volume": volume["volume"],
-            "author": volume["author"],
-            "title": volume["title"],
-            "photo_id": volume["photo_id"],
-            "image_date": volume["image_date"],
-            "consulted_on": "2026-10-20",
-            "source": volume["source"],
-            "original_url": volume["url"],
-            "license": "PD-USGov-NASA (United States); educational reuse under NASA media guidelines",
-            "license_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-            "attribution": f"{volume['author']}; no institutional endorsement",
-            "modifications": "Proportional central crop and Lanczos resampling to 1800x1500; JPEG quality 93; no generative edits",
-            "original_dimensions": list(original_size),
-            "original_sha256": original_hash,
-            "output": f"assets/{volume['output']}",
-            "output_sha256": output_hash,
-            "description": volume["description"],
+def original_bytes(photo: dict, source_dir: Path | None) -> bytes:
+    if source_dir is not None:
+        data = (source_dir / (photo["photo_id"] + ".jpg")).read_bytes()
+    else:
+        request = Request(photo["original_url"], headers={
+            "User-Agent": "LibrosStudium-cover-reproducer/1.0 (educational edition)"
         })
-        credit = (
-            f"\\noindent\\textbf{{Imagen de portada.}} Fotografía {volume['author']},\n"
-            f"{volume['description']}, ID {volume['photo_id']}. Fuente: "
-            f"\\href{{{volume['source']}}}{{Wikimedia Commons}}.\n"
-            "Dominio público en Estados Unidos (autoría NASA); reutilización educativa conforme a "
-            "\\href{https://www.nasa.gov/nasa-brand-center/images-and-media/}{las condiciones NASA}. "
-            "Recorte proporcional y remuestreo a 1800 por 1500 píxeles; sin alteración del contenido. "
-            "Consulta: 19 de octubre de 2026. No implica respaldo institucional.\n"
+        with urlopen(request, timeout=40) as response:
+            data = response.read(16 * 1024 * 1024 + 1)
+    if not 50_000 < len(data) <= 16 * 1024 * 1024:
+        raise ValueError(f"Unexpected source size: {photo['photo_id']}")
+    actual = hashlib.sha256(data).hexdigest()
+    if actual != photo["original_sha256"]:
+        raise ValueError(
+            f"Source checksum changed for {photo['photo_id']}: {actual}. "
+            "Check the NASA source and update provenance through a reviewed change."
         )
-        (ASSETS / volume["credit"]).write_text(credit, encoding="utf-8")
-    ASSETS.mkdir(parents=True, exist_ok=True)
-    (ASSETS / "cover-photo.json").write_text(json.dumps({"volumes": records}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("Tres portadas de Vuelo generadas con fotografías NASA distintas.")
+    return data
+
+
+def create_cover(photo: dict, data: bytes) -> bytes:
+    with Image.open(BytesIO(data)) as image:
+        image.verify()
+    with Image.open(BytesIO(data)) as image:
+        if list(image.size) != photo["original_dimensions"]:
+            raise ValueError(f"Source dimensions changed: {photo['photo_id']}")
+        image = image.convert("RGB")
+        image = ImageOps.fit(
+            image, (1800, 1500), method=Image.Resampling.LANCZOS,
+            centering=(0.5, 0.5),
+        )
+        out = BytesIO()
+        image.save(out, format="JPEG", quality=93, optimize=True,
+                   progressive=True, subsampling=0)
+        return out.getvalue()
+
+
+def cover_credit(photo: dict) -> str:
+    lines = [
+        rf"\noindent\textbf{{Imagen de portada.}} Fotografía {photo['author']},",
+        f"{photo['description']}, ID {photo['photo_id']}. Fuente: "
+        + rf"\href{{{photo['source']}}}{{Wikimedia Commons}}.",
+        "Dominio público en Estados Unidos (autoría NASA); reutilización educativa conforme a "
+        + r"\href{https://www.nasa.gov/nasa-brand-center/images-and-media/}{las condiciones NASA}. "
+        + "Recorte proporcional y remuestreo a 1800 por 1500 píxeles; "
+        + "sin alteración generativa del contenido. "
+        + f"Consulta: {photo['consulted_on']}. No implica respaldo institucional.",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def regenerate(source_dir: Path | None = None) -> None:
+    record = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    volumes = record["volumes"]
+    if {v["volume"] for v in volumes} != {"main", "problemas", "simulacros"}:
+        raise ValueError("Expected three distinct, documented cover photographs")
+
+    # Validate every original before modifying ANY published asset.
+    generated = []
+    for photo in volumes:
+        source = original_bytes(photo, source_dir)
+        cover = create_cover(photo, source)
+        updated = dict(photo)
+        updated["output_sha256"] = hashlib.sha256(cover).hexdigest()
+        updated["consulted_on"] = datetime.now(timezone.utc).date().isoformat()
+        # Manifest destinations are relative to the book root: assets/cover-*.jpg.
+        destination = ASSETS.parent / updated["output"]
+        if destination.parent != ASSETS or destination.suffix.lower() != ".jpg":
+            raise ValueError("Unsafe cover output path")
+        generated.append((updated, destination, cover))
+
+    for photo, destination, cover in generated:
+        destination.write_bytes(cover)
+        credit_path = ASSETS / ("cover-credit-" + (
+            "manual" if photo["volume"] == "main" else photo["volume"]
+        ) + ".tex")
+        credit_path.write_text(cover_credit(photo), encoding="utf-8")
+    record["volumes"] = [photo for photo, _, _ in generated]
+    MANIFEST.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n",
+                        encoding="utf-8")
+    print("Tres portadas reproducidas con originales NASA y SHA-256 verificados.")
+
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source-dir", type=Path,
+        help="Offline directory with PHOTO_ID.jpg originals, verified by SHA-256"
+    )
+    regenerate(parser.parse_args().source_dir)

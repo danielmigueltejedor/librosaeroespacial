@@ -159,6 +159,9 @@ adjuntar `LibrosStudium-bundle-completo.zip` con todos los libros registrados,
 organizados por asignatura o tema. Usar `scripts/package-release-bundle.py` y el
 flujo `.github/workflows/release-bundle.yml`; verificar el ZIP descargado antes
 de publicar. El catálogo `release-bundle.json` debe crecer con la colección.
-Un paquete parcial o una carpeta sin sus PDF bloquea la publicación. Las
-revisiones pendientes se publican como prereleases con su estado explícito; el
-inventario de entrega no es una aprobación ni un release manifest académico.
+Un paquete parcial o una carpeta sin sus PDF bloquea la publicación. Las releases estables se activan con tags `vMAJOR.MINOR.PATCH`, se titulan
+`Edición DD/MM/AAAA` según la fecha UTC real de publicación y adjuntan archivo
+de fuentes, `SHA256SUMS.txt` y `RELEASE.json` con commit exacto. El hecho de
+publicar una versión estable del bundle no declara certificación académica:
+se mantienen todas las revisiones científicas pendientes y el inventario de
+entrega no es un release manifest académico.
