@@ -1,0 +1,116 @@
+\subsection*{Procedimiento y operaciones del simulacro S08}
+Se invierte la ecuación de Basquin, se suman fracciones de vida (Miner), se aplican las reglas de mezclas en paralelo y en serie y se usa $K_I=Y\sigma\sqrt{\pi a}$ igualada a $K_{IC}$.
+
+\begin{enumerate}
+
+\item Coeficiente de resistencia a fatiga.
+
+\[\fitmath{\mathrm{sf}=900\approx 900\,\mathrm{MPa}}\]
+
+\item Exponente de Basquin.
+
+\[\fitmath{b=-0.09\approx -0.09\,}\]
+
+\item Amplitud de tensión.
+
+\[\fitmath{\mathrm{sa}=300\approx 300\,\mathrm{MPa}}\]
+
+\item Reversiones hasta rotura.
+
+\[\fitmath{N_{2}={\left(\frac{\mathrm{sa}}{\mathrm{sf}}\right)}^{\frac{1}{b}}}\]
+
+\[\fitmath{N_{2}={\left(\frac{(300)}{(900)}\right)}^{\frac{1}{(-0.09)}}\approx 200146.2\,}\]
+
+\item Ciclos hasta rotura.
+
+\[\fitmath{\mathrm{Nf}=\frac{N_{2}}{2}}\]
+
+\[\fitmath{\mathrm{Nf}=\frac{(200146.1658)}{2}\approx 100073.1\,\mathrm{ciclos}}\]
+
+\item Daño del bloque a la amplitud mayor.
+
+\[\fitmath{d_{1}=\frac{20000}{100000}\approx 0.2\,}\]
+
+\item Daño del bloque a la amplitud intermedia.
+
+\[\fitmath{d_{2}=\frac{50000}{500000}\approx 0.1\,}\]
+
+\item Daño del bloque a la amplitud menor.
+
+\[\fitmath{d_{3}=\frac{100000}{2000000}\approx 0.05\,}\]
+
+\item Daño de Miner por bloque.
+
+\[\fitmath{\mathrm{Dm}=d_{1}+d_{2}+d_{3}}\]
+
+\[\fitmath{\mathrm{Dm}=(0.2)+(0.1)+(0.05)\approx 0.35\,}\]
+
+\item Bloques hasta D=1.
+
+\[\fitmath{\mathrm{nb}=\frac{1}{\mathrm{Dm}}}\]
+
+\[\fitmath{\mathrm{nb}=\frac{1}{(0.35)}\approx 2.857143\,}\]
+
+\item Fracción volumétrica de fibra.
+
+\[\fitmath{\mathrm{Vf}=0.55\approx 0.55\,}\]
+
+\item Módulo de la fibra.
+
+\[\fitmath{\mathrm{Ef}=200\approx 200\,\mathrm{GPa}}\]
+
+\item Módulo de la matriz.
+
+\[\fitmath{\mathrm{Em}=4\approx 4\,\mathrm{GPa}}\]
+
+\item Módulo longitudinal por la regla de mezclas.
+
+\[\fitmath{\mathrm{EL}=\mathrm{Vf}\cdot \mathrm{Ef}+\left(1-\mathrm{Vf}\right)\cdot \mathrm{Em}}\]
+
+\[\fitmath{\mathrm{EL}=(0.55)\cdot (200)+\left(1-(0.55)\right)\cdot (4)\approx 111.8\,\mathrm{GPa}}\]
+
+\item Módulo transversal por el modelo de Reuss.
+
+\[\fitmath{\mathrm{ET}=\frac{1}{\frac{\mathrm{Vf}}{\mathrm{Ef}}+\frac{1-\mathrm{Vf}}{\mathrm{Em}}}}\]
+
+\[\fitmath{\mathrm{ET}=\frac{1}{\frac{(0.55)}{(200)}+\frac{1-(0.55)}{(4)}}\approx 8.67679\,\mathrm{GPa}}\]
+
+\item Densidad del compuesto.
+
+\[\fitmath{\rho=\mathrm{Vf}\cdot 1800+\left(1-\mathrm{Vf}\right)\cdot 1200}\]
+
+\[\fitmath{\rho=(0.55)\cdot 1800+\left(1-(0.55)\right)\cdot 1200\approx 1530\,\mathrm{kg/m^{3}}}\]
+
+\item Módulo longitudinal específico.
+
+\[\fitmath{\mathrm{ELesp}=\frac{\mathrm{EL}\cdot 1000000000}{\rho}}\]
+
+\[\fitmath{\mathrm{ELesp}=\frac{(111.8)\cdot 1000000000}{(1530)}\approx 7.30719\times10^{7}\,\mathrm{J/kg}}\]
+
+\item Tenacidad a fractura en MPa por raíz de metro.
+
+\[\fitmath{K1c=40\approx 40\,}\]
+
+\item Factor geométrico de grieta superficial.
+
+\[\fitmath{Y=1.12\approx 1.12\,}\]
+
+\item Tensión de fallo con grieta de 4 mm.
+
+\[\fitmath{\mathrm{sc}_{1}=\frac{K1c}{Y\cdot \sqrt{\pi\cdot 0.004}}}\]
+
+\[\fitmath{\mathrm{sc}_{1}=\frac{(40)}{(1.12)\cdot \sqrt{\pi\cdot 0.004}}\approx 318.5936\,\mathrm{MPa}}\]
+
+\item Tensión de fallo con grieta de 8 mm.
+
+\[\fitmath{\mathrm{sc}_{2}=\frac{K1c}{Y\cdot \sqrt{\pi\cdot 0.008}}}\]
+
+\[\fitmath{\mathrm{sc}_{2}=\frac{(40)}{(1.12)\cdot \sqrt{\pi\cdot 0.008}}\approx 225.2797\,\mathrm{MPa}}\]
+
+\item Tamaño crítico a 250 MPa.
+
+\[\fitmath{\mathrm{ac}=\frac{{\left(\frac{K1c}{Y\cdot 250}\right)}^{2}}{\pi}\cdot 1000}\]
+
+\[\fitmath{\mathrm{ac}=\frac{{\left(\frac{(40)}{(1.12)\cdot 250}\right)}^{2}}{\pi}\cdot 1000\approx 6.49612\,\mathrm{mm}}\]
+
+\end{enumerate}

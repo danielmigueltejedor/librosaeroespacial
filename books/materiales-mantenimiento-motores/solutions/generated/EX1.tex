@@ -1,0 +1,142 @@
+\subsection*{Procedimiento y operaciones del simulacro S07}
+Se emplean el círculo de Mohr, la forma de Larson-Miller con logaritmo decimal, la ley de Arrhenius para el coeficiente de difusión y la relación entre tiempo de vuelo y profundidad $d=vt/2$.
+
+\begin{enumerate}
+
+\item Tensión normal en x.
+
+\[\fitmath{\mathrm{sx}=120\approx 120\,\mathrm{MPa}}\]
+
+\item Tensión normal en y.
+
+\[\fitmath{\mathrm{sy}=-40\approx -40\,\mathrm{MPa}}\]
+
+\item Tensión tangencial.
+
+\[\fitmath{\mathrm{txy}=60\approx 60\,\mathrm{MPa}}\]
+
+\item Centro del círculo de Mohr.
+
+\[\fitmath{c=\frac{\mathrm{sx}+\mathrm{sy}}{2}}\]
+
+\[\fitmath{c=\frac{(120)+(-40)}{2}\approx 40\,\mathrm{MPa}}\]
+
+\item Radio del círculo de Mohr.
+
+\[\fitmath{\mathrm{rad}=\sqrt{{\left(\frac{\mathrm{sx}-\mathrm{sy}}{2}\right)}^{2}+{\mathrm{txy}}^{2}}}\]
+
+\[\fitmath{\mathrm{rad}=\sqrt{{\left(\frac{(120)-(-40)}{2}\right)}^{2}+{(60)}^{2}}\approx 100\,\mathrm{MPa}}\]
+
+\item Tensión principal mayor.
+
+\[\fitmath{s_{1}=c+\mathrm{rad}}\]
+
+\[\fitmath{s_{1}=(40)+(100)\approx 140\,\mathrm{MPa}}\]
+
+\item Tensión principal menor.
+
+\[\fitmath{s_{2}=c-\mathrm{rad}}\]
+
+\[\fitmath{s_{2}=(40)-(100)\approx -60\,\mathrm{MPa}}\]
+
+\item Tensión tangencial máxima en el plano.
+
+\[\fitmath{\mathrm{tmax}=\mathrm{rad}}\]
+
+\[\fitmath{\mathrm{tmax}=(100)\approx 100\,\mathrm{MPa}}\]
+
+\item Orientación del plano principal respecto al eje x.
+
+\[\fitmath{\mathrm{th}=\frac{0.5\cdot \arctan\left(\frac{2\cdot \mathrm{txy}}{\mathrm{sx}-\mathrm{sy}}\right)\cdot 180}{\pi}}\]
+
+\[\fitmath{\mathrm{th}=\frac{0.5\cdot \arctan\left(\frac{2\cdot (60)}{(120)-(-40)}\right)\cdot 180}{\pi}\approx 18.43495\,{}^{\circ}}\]
+
+\item Tensión equivalente de von Mises en tensión plana.
+
+\[\fitmath{\mathrm{svm}=\sqrt{{s_{1}}^{2}-s_{1}\cdot s_{2}+{s_{2}}^{2}}}\]
+
+\[\fitmath{\mathrm{svm}=\sqrt{{(140)}^{2}-(140)\cdot (-60)+{(-60)}^{2}}\approx 177.7639\,\mathrm{MPa}}\]
+
+\item Coeficiente de seguridad frente a un límite elástico de 350 MPa.
+
+\[\fitmath{\mathrm{SF}=\frac{350}{\mathrm{svm}}}\]
+
+\[\fitmath{\mathrm{SF}=\frac{350}{(177.7638883)}\approx 1.968904\,}\]
+
+\item Temperatura de referencia.
+
+\[\fitmath{T_{1}=1000\approx 1000\,\mathrm{K}}\]
+
+\item Tiempo de rotura de referencia.
+
+\[\fitmath{t_{1}=100\approx 100\,\mathrm{h}}\]
+
+\item Constante de Larson-Miller.
+
+\[\fitmath{C=20\approx 20\,}\]
+
+\item Parámetro de Larson-Miller con tiempo en horas.
+
+\[\fitmath{\mathrm{LMP}=T_{1}\cdot \left(C+\frac{\ln\left(t_{1}\right)}{\ln\left(10\right)}\right)}\]
+
+\[\fitmath{\mathrm{LMP}=(1000)\cdot \left((20)+\frac{\ln\left((100)\right)}{\ln\left(10\right)}\right)\approx 22000\,\mathrm{K}}\]
+
+\item Nueva temperatura.
+
+\[\fitmath{T_{2}=1050\approx 1050\,\mathrm{K}}\]
+
+\item Tiempo de rotura a la nueva temperatura con el mismo parámetro.
+
+\[\fitmath{t_{2}=\exp\left(\left(\frac{\mathrm{LMP}}{T_{2}}-C\right)\cdot \ln\left(10\right)\right)}\]
+
+\[\fitmath{t_{2}=\exp\left(\left(\frac{(22000)}{(1050)}-(20)\right)\cdot \ln\left(10\right)\right)\approx 8.961505\,\mathrm{h}}\]
+
+\item Factor preexponencial de difusión del carbono en austenita.
+
+\[\fitmath{D_{0}=2.3\times10^{-5}\approx 2.3\times10^{-5}\,\mathrm{m^{2}/s}}\]
+
+\item Energía de activación.
+
+\[\fitmath{Q=148000\approx 148000\,\mathrm{J/mol}}\]
+
+\item Temperatura de cementación.
+
+\[\fitmath{\mathrm{Tc}=1223\approx 1223\,\mathrm{K}}\]
+
+\item Coeficiente de difusión de Arrhenius.
+
+\[\fitmath{D=D_{0}\cdot \exp\left(\frac{-Q}{8.314462618\cdot \mathrm{Tc}}\right)}\]
+
+\[\fitmath{D=(2.3\times10^{-5})\cdot \exp\left(\frac{-(148000)}{8.314462618\cdot (1223)}\right)\approx 1.098332\times10^{-11}\,\mathrm{m^{2}/s}}\]
+
+\item Tiempo de tratamiento.
+
+\[\fitmath{\mathrm{tc}=4\cdot 3600\approx 14400\,\mathrm{s}}\]
+
+\item Profundidad de difusión característica.
+
+\[\fitmath{x=\sqrt{D\cdot \mathrm{tc}}}\]
+
+\[\fitmath{x=\sqrt{(1.098332263\times10^{-11})\cdot (14400)}\approx 0.0003976932\,\mathrm{m}}\]
+
+\item Velocidad longitudinal del sonido en el aluminio, dato docente.
+
+\[\fitmath{v=6300\approx 6300\,\mathrm{m/s}}\]
+
+\item Tiempo de ida y vuelta en una pared de 25 mm.
+
+\[\fitmath{\mathrm{tf}=\frac{2\cdot 0.025}{v}\cdot 1000000}\]
+
+\[\fitmath{\mathrm{tf}=\frac{2\cdot 0.025}{(6300)}\cdot 1000000\approx 7.936508\,\mathrm{us}}\]
+
+\item Profundidad de un eco recibido a 4.76 microsegundos.
+
+\[\fitmath{\mathrm{de}=\frac{v\cdot 4.76\times10^{-6}}{2}\cdot 1000}\]
+
+\[\fitmath{\mathrm{de}=\frac{(6300)\cdot 4.76\times10^{-6}}{2}\cdot 1000\approx 14.994\,\mathrm{mm}}\]
+
+\item Diferencia de amplitud para una razón de 3.
+
+\[\fitmath{\mathrm{dB}=\frac{20\cdot \ln\left(3\right)}{\ln\left(10\right)}\approx 9.542425\,\mathrm{dB}}\]
+
+\end{enumerate}

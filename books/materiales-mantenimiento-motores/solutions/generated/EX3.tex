@@ -1,0 +1,74 @@
+\subsection*{Procedimiento y operaciones del simulacro S09}
+Se calculan márgenes en cada contador y se compara el tiempo de uso; la fiabilidad usa una tasa constante $\lambda=n/T$ y $R=e^{-\lambda t}$, y la tendencia se extrapola linealmente.
+
+\begin{enumerate}
+
+\item Días entre el 2 de marzo y el 8 de octubre de 2026.
+
+\[\fitmath{\mathrm{dias}=31+30+31+30+31+31+30+6\approx 220\,\mathrm{d}}\]
+
+\item Margen de calendario para un intervalo de 12 meses.
+
+\[\fitmath{\mathrm{mcal}=365-\mathrm{dias}}\]
+
+\[\fitmath{\mathrm{mcal}=365-(220)\approx 145\,\mathrm{d}}\]
+
+\item Margen en horas de vuelo.
+
+\[\fitmath{\mathrm{mh}=3100+200-3250\approx 50\,\mathrm{FH}}\]
+
+\item Días de uso con 6 FH al día hasta agotar el margen en horas.
+
+\[\fitmath{\mathrm{dh}=\frac{\mathrm{mh}}{6}}\]
+
+\[\fitmath{\mathrm{dh}=\frac{(50)}{6}\approx 8.333333\,\mathrm{d}}\]
+
+\item Ciclos restantes de la pieza de vida limitada.
+
+\[\fitmath{\mathrm{rest}=20000-17450\approx 2550\,\mathrm{ciclos}}\]
+
+\item Días hasta agotar la vida con 5 ciclos al día.
+
+\[\fitmath{\mathrm{dias}_{vida}=\frac{\mathrm{rest}}{5}}\]
+
+\[\fitmath{\mathrm{dias}_{vida}=\frac{(2550)}{5}\approx 510\,\mathrm{d}}\]
+
+\item Días hasta el último pedido si el plazo es de 90 días.
+
+\[\fitmath{\mathrm{pedido}=\frac{\mathrm{rest}-90\cdot 5}{5}}\]
+
+\[\fitmath{\mathrm{pedido}=\frac{(2550)-90\cdot 5}{5}\approx 420\,\mathrm{d}}\]
+
+\item Tasa de retirada.
+
+\[\fitmath{\mathrm{lam}=\frac{6}{18000}\approx 0.0003333333\,\mathrm{1/FH}}\]
+
+\item Tiempo medio entre retiradas.
+
+\[\fitmath{\mathrm{mtbur}=\frac{1}{\mathrm{lam}}}\]
+
+\[\fitmath{\mathrm{mtbur}=\frac{1}{(0.0003333333333)}\approx 3000\,\mathrm{FH}}\]
+
+\item Probabilidad de no retirada en 500 FH, con tasa constante.
+
+\[\fitmath{R=\exp\left(-\mathrm{lam}\cdot 500\right)}\]
+
+\[\fitmath{R=\exp\left(-(0.0003333333333)\cdot 500\right)\approx 0.8464817\,}\]
+
+\item Retiradas esperadas al mes con 12 aeronaves y 40 FH cada una.
+
+\[\fitmath{\mathrm{flota}=12\cdot 40\cdot \mathrm{lam}}\]
+
+\[\fitmath{\mathrm{flota}=12\cdot 40\cdot (0.0003333333333)\approx 0.16\,\mathrm{1/mes}}\]
+
+\item Horas hasta el umbral de alerta con tendencia lineal.
+
+\[\fitmath{\mathrm{egt}=\frac{38-15}{0.9}\cdot 100\approx 2555.556\,\mathrm{FH}}\]
+
+\item Días de uso hasta ese umbral.
+
+\[\fitmath{\mathrm{degt}=\frac{\mathrm{egt}}{6}}\]
+
+\[\fitmath{\mathrm{degt}=\frac{(2555.555556)}{6}\approx 425.9259\,\mathrm{d}}\]
+
+\end{enumerate}
