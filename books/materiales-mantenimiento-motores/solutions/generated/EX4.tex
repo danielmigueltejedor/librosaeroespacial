@@ -1,0 +1,82 @@
+\subsection*{Procedimiento y operaciones del simulacro S10}
+Se usa la ley de Norton $\dot\varepsilon\propto\sigma^n$, la deformación térmica $\alpha\Delta T$, la penetración como pérdida de masa entre densidad, área y tiempo, y la integral cerrada de Paris para $m=3$.
+
+\begin{enumerate}
+
+\item Exponente de Norton.
+
+\[\fitmath{n=5\approx 5\,}\]
+
+\item Velocidad de fluencia a 150 MPa y 1000 K.
+
+\[\fitmath{e_{0}=1\times10^{-8}\approx 1\times10^{-8}\,\mathrm{1/s}}\]
+
+\item Cociente de velocidades al subir la tensión a 180 MPa.
+
+\[\fitmath{\mathrm{rt}={\left(\frac{180}{150}\right)}^{n}}\]
+
+\[\fitmath{\mathrm{rt}={\left(\frac{180}{150}\right)}^{(5)}\approx 2.48832\,}\]
+
+\item Velocidad de fluencia a 180 MPa.
+
+\[\fitmath{e_{1}=e_{0}\cdot \mathrm{rt}}\]
+
+\[\fitmath{e_{1}=(1\times10^{-8})\cdot (2.48832)\approx 2.48832\times10^{-8}\,\mathrm{1/s}}\]
+
+\item Tiempo hasta 1 % de deformación a 150 MPa.
+
+\[\fitmath{t_{0}=\frac{\frac{0.01}{e_{0}}}{3600}}\]
+
+\[\fitmath{t_{0}=\frac{\frac{0.01}{(1\times10^{-8})}}{3600}\approx 277.7778\,\mathrm{h}}\]
+
+\item Tiempo hasta 1 % de deformación a 180 MPa.
+
+\[\fitmath{t_{1}=\frac{\frac{0.01}{e_{1}}}{3600}}\]
+
+\[\fitmath{t_{1}=\frac{\frac{0.01}{(2.48832\times10^{-8})}}{3600}\approx 111.6327\,\mathrm{h}}\]
+
+\item Deformación térmica libre para 250 K.
+
+\[\fitmath{\mathrm{eps}=1.3\times10^{-5}\cdot 250\approx 0.00325\,}\]
+
+\item Tensión con restricción total y E=200 GPa.
+
+\[\fitmath{\mathrm{sth}=200000\cdot \mathrm{eps}}\]
+
+\[\fitmath{\mathrm{sth}=200000\cdot (0.00325)\approx 650\,\mathrm{MPa}}\]
+
+\item Tensión con restricción del 50 %.
+
+\[\fitmath{\mathrm{sth}_{2}=0.5\cdot \mathrm{sth}}\]
+
+\[\fitmath{\mathrm{sth}_{2}=0.5\cdot (650)\approx 325\,\mathrm{MPa}}\]
+
+\item Pérdida de masa.
+
+\[\fitmath{\mathrm{dm}=0.84\approx 0.84\,\mathrm{g}}\]
+
+\item Velocidad de penetración con aluminio de 2.7 g/cm3 y 25 cm2 en 480 h.
+
+\[\fitmath{v=\frac{\mathrm{dm}}{2.7\cdot 25\cdot 480}\cdot 10\cdot 8760}\]
+
+\[\fitmath{v=\frac{(0.84)}{2.7\cdot 25\cdot 480}\cdot 10\cdot 8760\approx 2.271111\,\mathrm{mm/año}}\]
+
+\item Constante de Paris.
+
+\[\fitmath{C=3\times10^{-12}\approx 3\times10^{-12}\,}\]
+
+\item Semilongitud inicial.
+
+\[\fitmath{\mathrm{ai}=0.002\approx 0.002\,\mathrm{m}}\]
+
+\item Semilongitud final.
+
+\[\fitmath{\mathrm{af}=0.009\approx 0.009\,\mathrm{m}}\]
+
+\item Ciclos de propagación con m=3.
+
+\[\fitmath{\mathrm{Np}=\frac{2\cdot \left({\mathrm{ai}}^{-0.5}-{\mathrm{af}}^{-0.5}\right)}{C\cdot {\left(1.12\cdot 90\cdot \sqrt{\pi}\right)}^{3}}}\]
+
+\[\fitmath{\mathrm{Np}=\frac{2\cdot \left({(0.002)}^{-0.5}-{(0.009)}^{-0.5}\right)}{(3\times10^{-12})\cdot {\left(1.12\cdot 90\cdot \sqrt{\pi}\right)}^{3}}\approx 1381691\,\mathrm{ciclos}}\]
+
+\end{enumerate}
