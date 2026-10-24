@@ -1,0 +1,102 @@
+\chapter{Seis problemas integrados avanzados}
+\label{ch:matmo-problemas-avanzados}
+\noindent Ejercicios originales de la edición de refuerzo. Son adicionales a P01--P35 y a los 16 casos académicos. Todas las cifras, probabilidades y condiciones son ficticias; no definen propiedades admisibles ni decisiones de aeronavegabilidad. El alumno debe cubrir el desarrollo antes de leer la solución.
+
+\section{PA01. Transformación de tensiones y cedencia}
+\apartado{Enunciado}{En un punto interior idealizado, $\sigma_x=120\,\mathrm{MPa}$, $\sigma_y=-40\,\mathrm{MPa}$ y $\tau_{xy}=30\,\mathrm{MPa}$. Calcule tensiones principales y Von Mises. Con un límite elástico supuesto de $200\,\mathrm{MPa}$, razone qué comprobación es posible y qué daños no se han evaluado.}
+\apartado{Hipótesis}{Tensión plana; tensor simétrico, sin concentradores de tensión ni historia de fatiga. El metal considerado debe permitir aplicar Von Mises como criterio de cedencia.}
+\apartado{Resolución}{
+\[
+\sigma_m=(120-40)/2=40\,\mathrm{MPa},\quad
+R=\sqrt{80^2+30^2}=85.440\,\mathrm{MPa}.
+\]
+\[
+\sigma_1=125.440\,\mathrm{MPa},\quad
+\sigma_2=-45.440\,\mathrm{MPa}.
+\]
+\[
+\sigma_{\mathrm{VM}}=\sqrt{120^2-120(-40)+(-40)^2+3(30)^2}
+=\sqrt{23500}=153.297\,\mathrm{MPa}.
+\]
+El cociente respecto al límite supuesto es $153.297/200\simeq0.7665$. No se predice cedencia por ese criterio en el estado ideal; no se ha demostrado resistencia a fractura, vida de fatiga ni condición de servicio.}
+\apartado{Comprobación}{La suma de tensiones principales es $80\,\mathrm{MPa}$, igual a $\sigma_x+\sigma_y$.}
+
+\section{PA02. Integración exacta de Paris para $m=2$}
+\apartado{Enunciado}{Un modelo ficticio con $\Delta K=Y\Delta\sigma\sqrt{\pi a}$ usa $Y=1.05$, $\Delta\sigma=80\,\mathrm{MPa}$, $m=2$, $C=10^{-11}\,\mathrm{m\,ciclo^{-1}}(\mathrm{MPa}\sqrt{\mathrm m})^{-2}$, $a_i=1\,\mathrm{mm}$ y $a_f=4\,\mathrm{mm}$. Deduzca e integre $dN$ sin usar una fórmula memorizada.}
+\apartado{Hipótesis}{Geometría, carga y coeficientes constantes; ley de Paris válida entre ambos tamaños.}
+\apartado{Resolución}{
+\[
+\frac{\mathrm da}{\mathrm dN}=C(Y\Delta\sigma)^2\pi a
+\quad\Longrightarrow\quad
+\mathrm dN=\frac{\mathrm da}{C\pi(Y\Delta\sigma)^2a}.
+\]
+\[
+N=\frac{\ln(a_f/a_i)}{C\pi(Y\Delta\sigma)^2}
+=\frac{\ln(4)}{10^{-11}\pi(1.05\cdot80)^2}
+\simeq6.254\times10^6\ \mathrm{ciclos}.
+\]
+}
+\apartado{Comprobación}{La razón $a_f/a_i$ es adimensional y el factor que multiplica el logaritmo tiene unidades de ciclos. El ejercicio calcula propagación, no iniciación, ni proporciona un intervalo de inspección aprobado.}
+
+\section{PA03. Módulos direccionales y densidad en un compuesto}
+\apartado{Enunciado}{Con $V_f=0.55$, $E_f=200\,\mathrm{GPa}$, $E_m=3\,\mathrm{GPa}$, $\rho_f=1800\,\mathrm{kg\,m^{-3}}$ y $\rho_m=1200\,\mathrm{kg\,m^{-3}}$, calcule módulos longitudinal y transversal idealizados y densidad sin vacíos. ¿Por qué los módulos son tan distintos?}
+\apartado{Hipótesis}{Fibra larga alineada; unión perfecta; deformación longitudinal común para $E_L$ e idealización de igual tensión para $E_T$.}
+\apartado{Resolución}{
+\[
+V_m=0.45,\qquad E_L=0.55(200)+0.45(3)=111.35\,\mathrm{GPa}.
+\]
+\[
+E_T^{\mathrm{ideal}}=\left(\frac{0.55}{200}+\frac{0.45}{3}\right)^{-1}
+=6.547\,\mathrm{GPa}.
+\]
+\[
+\rho=0.55(1800)+0.45(1200)=1530\,\mathrm{kg\,m^{-3}}.
+\]
+Las fibras dominan la rigidez en su dirección, mientras la respuesta transversal exige representar otras deformaciones y transferencias.}
+\apartado{Comprobación}{Los módulos idealizados quedan entre $E_m$ y $E_f$. No debe deducirse resistencia transversal certificada a partir de esta interpolación.}
+
+\section{PA04. Una inspección negativa no garantiza ausencia de defecto}
+\apartado{Enunciado}{En un ejercicio estadístico se supone $P(\mathrm{defecto})=0.05$, una probabilidad condicional de detección $P(+\mid\mathrm{defecto})=0.90$ y una tasa de falso positivo $P(+\mid\mathrm{sin\ defecto})=0.02$. Si la inspección es negativa, halle la probabilidad posterior de defecto.}
+\apartado{Hipótesis}{Modelo probabilístico ficticio bien calibrado en la población considerada. Son datos suministrados, no capacidades universales de un equipo END.}
+\apartado{Resolución}{
+Por Bayes, usando $P(-\mid\mathrm{defecto})=0.10$ y especificidad $P(-\mid\mathrm{sin\ defecto})=0.98$,
+\[
+P(\mathrm{defecto}\mid-)
+=\frac{0.05(0.10)}{0.05(0.10)+0.95(0.98)}
+=\frac{0.005}{0.936}\simeq0.005342.
+\]
+Es aproximadamente $0.534\%$ bajo \emph{estos} supuestos.}
+\apartado{Interpretación}{La probabilidad posterior es distinta de cero. No autoriza aceptar un defecto; el procedimiento de inspección y los límites de aceptación aplicables siguen gobernando. Tampoco debe extrapolarse una POD ficticia a otra geometría, orientación o población.}
+
+\section{PA05. Selección por resistencia y rigidez, no solo por densidad}
+\apartado{Enunciado}{Una barra ideal de longitud $L=0.50\,\mathrm m$ soporta $F=15\,000\,\mathrm N$ y tiene elongación máxima $\delta_{\max}=1\,\mathrm{mm}$. Material A: $E=70\,\mathrm{GPa}$, $\rho=2800\,\mathrm{kg\,m^{-3}}$, tensión admisible supuesta $200\,\mathrm{MPa}$. Material B: $E=110\,\mathrm{GPa}$, $\rho=4500\,\mathrm{kg\,m^{-3}}$, tensión admisible supuesta $600\,\mathrm{MPa}$. Halle sección mínima y masa ideal por material.}
+\apartado{Hipótesis}{Barra de sección constante, carga axial centrada, pequeña deformación y sin uniones, pandeo ni efectos de fabricación.}
+\apartado{Resolución}{
+Para cada material se impone simultáneamente
+\[
+A_{\sigma}\geq F/\sigma_{\mathrm{adm}},
+\qquad A_{\delta}\geq FL/(E\delta_{\max}),
+\qquad A_{\min}=\max(A_\sigma,A_\delta).
+\]
+Material A: $A_\sigma=75.00\,\mathrm{mm^2}$; $A_\delta=107.143\,\mathrm{mm^2}$;
+$A_{\min}=107.143\,\mathrm{mm^2}$; $m=\rho LA_{\min}=0.1500\,\mathrm{kg}$.
+Material B: $A_\sigma=25.00\,\mathrm{mm^2}$; $A_\delta=68.182\,\mathrm{mm^2}$;
+$A_{\min}=68.182\,\mathrm{mm^2}$; $m=0.15341\,\mathrm{kg}$.}
+\apartado{Comprobación}{En ambos gobierna \emph{rigidez}; un material mucho más resistente no necesariamente genera la barra de menor masa bajo la restricción dominante. Recalcular con un límite de deformación diferente podría cambiar la decisión.}
+
+\section{PA06. Weibull y fiabilidad condicional}
+\apartado{Enunciado}{Una población académica de componentes sigue una Weibull ideal de forma $\beta=2$ y escala $\eta=1500\,\mathrm h$. Halle $R(1000\,\mathrm h)$ y la probabilidad condicional de sobrevivir 100 h adicionales sabiendo que el elemento llegó a 1000 h.}
+\apartado{Hipótesis}{Modelo continuo ajustado ficticiamente para una población homogénea. El componente real requeriría datos de ajuste, intervalos de confianza y restricciones normativas.}
+\apartado{Resolución}{
+\[
+R(t)=\exp\left[-\left(\frac{t}{\eta}\right)^\beta\right],
+\qquad R(1000)=e^{-(1000/1500)^2}\simeq0.64118.
+\]
+La supervivencia \emph{condicional} entre 1000 y 1100 horas no es $R(100)$:
+\[
+P(T>1100\mid T>1000)=\frac{R(1100)}{R(1000)}
+=\exp\left[-\frac{1100^2-1000^2}{1500^2}\right]
+\simeq0.91089.
+\]
+}
+\apartado{Comprobación}{La Weibull con $\beta=2$ tiene tasa de riesgo creciente. El tiempo hasta fallo estadístico no sustituye el intervalo de una tarea ni una vida límite aprobada.}

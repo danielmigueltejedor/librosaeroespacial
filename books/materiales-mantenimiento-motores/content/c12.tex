@@ -30,6 +30,12 @@ Los cambios de configuración y las sustituciones deben conservar trazabilidad. 
 La calidad del mantenimiento depende de herramientas, datos, acceso, formación y organización del trabajo. La fatiga humana, las interrupciones, el relevo y las comunicaciones influyen en errores. Un sistema de gestión necesita detectar peligros, evaluar riesgos y comprobar la eficacia de las medidas, además de verificar cumplimiento.
 
 El estudiante debe aprender a separar el cálculo académico, la recomendación técnica y la decisión autorizada. Los próximos capítulos explican quién establece requisitos, quién gestiona y quién certifica; mantener esas funciones distinguibles ayuda a interpretar los documentos sin reducirlos a una lista de siglas.
+\section{Relación entre función, fallo y tarea de mantenimiento}
+Para decidir si una tarea tiene sentido debe construirse una cadena explícita: función del sistema, fallo funcional, modo y mecanismo de fallo, consecuencia, posibilidad de detección, intervalo técnicamente defendible y datos de ejecución. Una inspección periódica no resulta automáticamente eficaz solo porque se pueda realizar; el defecto debe progresar de modo detectable y existir un intervalo adecuado entre condición detectable y pérdida de función.
+
+La fiabilidad $R(t)$ no es la disponibilidad $A$: una unidad puede presentar pocos fallos pero largos tiempos de reparación. Bajo simplificaciones de operación y reparación estacionarias, $A\simeq\mathrm{MTBF}/(\mathrm{MTBF}+\mathrm{MTTR})$. Esta identidad \emph{no} aplica sin matices a todos los sistemas con mantenimiento preventivo, repuestos limitados o cambios de población. Al decidir se respetan antes tareas obligatorias, límites de vida y documentación aplicable.
+\repaso{¿Por qué aumentar la frecuencia de una inspección puede no aumentar seguridad?}{Si el método no detecta el modo de daño en su fase relevante, el intervalo por sí solo no resuelve el problema; además la intervención puede introducir riesgos de mantenimiento.}
+
 \input{content/e12.tex}
 \resumen{Fiabilidad y disponibilidad no son sinónimos. MTBF no es un límite de vida. El mantenimiento por condición exige evidencia útil y no anula requisitos obligatorios. Cada tarea se relaciona con un modo de fallo y con consecuencias, detectabilidad y riesgos de ejecución.}
 \fuentes{Documentación docente de introducción, pp. 1--24; Reglamento 1321/2014, M.A.301, M.A.302 y 145.A.200 \cite{EU1321}; FAA--General, capítulos 2 y 14 \cite{FAA-G}.}

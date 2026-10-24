@@ -55,6 +55,12 @@ La validación del modelo académico contrasta fórmulas y escenarios; no valida
 Los errores más frecuentes son mezclar total y desde revisión, sumar meses como días fijos, reiniciar LLP tras overhaul, usar datos de otra configuración, sobrescribir eventos y marcar N/A sin evidencia. También se confunde una alerta de planificación con extensión autorizada o se interpreta «sin hallazgos» como eliminación de una tarea obligatoria.
 
 Una entrega académica responsable explica hipótesis, fuentes realmente consultadas, cálculos y limitaciones. Si un documento no se ha obtenido o una norma no se ha contrastado, se registra pendiente. El criterio de calidad no es imitar un sello oficial, sino que otra persona pueda comprender y revisar el razonamiento.
+\section{Prueba de integridad de datos: desconocido no significa cero}
+El modelo debe distinguir \emph{cero medido} de \emph{sin dato}. Si falta un contador de ciclos, el control académico no calculará un margen positivo a partir de ese campo: mostrará estado PENDIENTE DE DATOS. Para un vencimiento conjunto de 100 FH o seis meses, se conservarán ambos umbrales y se comparará cada uno con su contador o fecha. El primer límite alcanzado gobierna, sin tolerancias inventadas.
+
+Una comprobación sencilla y reproducible consiste en contrastar: (1) identificación de parte y serie; (2) registro de última intervención; (3) unidades de cada contador; (4) fecha base y calendario; (5) versión de la fuente; (6) estado de AD; (7) permisos de quien certifica; y (8) rastro de cambios. Se prueban deliberadamente entradas negativas, vacías, duplicadas y fuera de orden. Una hoja que calcula sin errores aritméticos pero no valida los datos de entrada no demuestra trazabilidad ni control fiable.
+\repaso{Si el sistema convierte una celda vacía en cero y genera una alerta verde, ¿qué debe hacerse?}{Tratarlo como fallo de validación y conservar el estado indeterminado hasta disponer de documentación; no usar el margen inventado.}
+
 \input{content/e25.tex}
 \resumen{El programa organiza tareas y fuentes; el registro conserva eventos y calcula estado. Datos faltantes no son cero. Previsión no cambia límite. Una ejecución nueva añade historia. El ejemplo permite aprender el método y no constituye un AMP aprobado ni una autorización para operar.}
 \fuentes{Reglamento 1321/2014, M.A.302, M.A.303, M.A.305, ML.A.302 y disposiciones de registros aplicables \cite{EU1321}; presentación docente de mantenimiento, trabajo práctico. Todos los datos de AULA-01 son ficticios.}
