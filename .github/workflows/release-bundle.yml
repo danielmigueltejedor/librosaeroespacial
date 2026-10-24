@@ -6,6 +6,10 @@ on:
         description: New release tag
         required: true
         type: string
+  push:
+    branches: [main]
+    paths:
+      - ".github/release-requests/matmo-2026-10-24-r2.md"
 permissions:
   contents: write
 concurrency:
@@ -22,7 +26,7 @@ jobs:
           python-version: '3.12'
       - name: Validate a new tag
         env:
-          TAG: ${{ inputs.tag }}
+          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
           GH_TOKEN: ${{ github.token }}
         run: |
           [[ "$TAG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]+$ ]]
@@ -57,12 +61,27 @@ jobs:
           python scripts/package-release-bundle.py
           python scripts/package-release-bundle.py --verify-only
           sha256sum dist/release/LibrosStudium-bundle-completo.zip > dist/release/SHA256SUMS.txt
+          for volume in manual problemas simulacros; do
+            cp "dist/studium/materiales-mantenimiento-motores/materiales-mantenimiento-motores-${volume}.pdf" dist/release/
+          done
+          (cd dist/release && sha256sum materiales-mantenimiento-motores-{manual,problemas,simulacros}.pdf > SHA256SUMS-MATMO.txt)
       - name: Create draft, upload bundle and publish review edition
         env:
-          TAG: ${{ inputs.tag }}
+          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$TAG" --target "$GITHUB_SHA" --draft --prerelease --title "Libros Studium — $TAG" --notes "Colección completa organizada por asignatura y tema. Incluye la edición de programación en revisión; no implica aprobación académica independiente." dist/release/LibrosStudium-bundle-completo.zip dist/release/SHA256SUMS.txt
+          gh release create "$TAG" --target "$GITHUB_SHA" --draft --prerelease \
+            --title "Libros Studium — $TAG" \
+            --notes "Edición de estudio y revisión 2026-10-24 r2. MATMO: manual revisado (17 capítulos ampliados y 32 preguntas de desarrollo razonadas), cuaderno de problemas, simulacros con 36 preguntas tipo test y ocho problemas adicionales resueltos. Incluye el ZIP verificado con la colección completa. No implica aprobación académica independiente." \
+            dist/release/LibrosStudium-bundle-completo.zip dist/release/SHA256SUMS.txt \
+            dist/release/materiales-mantenimiento-motores-manual.pdf \
+            dist/release/materiales-mantenimiento-motores-problemas.pdf \
+            dist/release/materiales-mantenimiento-motores-simulacros.pdf \
+            dist/release/SHA256SUMS-MATMO.txt
+          mkdir -p "$RUNNER_TEMP/release-check"
           gh release download "$TAG" --pattern LibrosStudium-bundle-completo.zip --dir "$RUNNER_TEMP/release-check"
           python scripts/package-release-bundle.py --verify-only --output "$RUNNER_TEMP/release-check/LibrosStudium-bundle-completo.zip"
+          gh release download "$TAG" --pattern 'materiales-mantenimiento-motores-*.pdf' --dir "$RUNNER_TEMP/release-check"
+          gh release download "$TAG" --pattern SHA256SUMS-MATMO.txt --dir "$RUNNER_TEMP/release-check"
+          (cd "$RUNNER_TEMP/release-check" && sha256sum -c SHA256SUMS-MATMO.txt)
           gh release edit "$TAG" --draft=false --prerelease --latest=false
