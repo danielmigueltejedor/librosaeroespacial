@@ -4,13 +4,20 @@ Edición completa de estudio, 2026. Estado: **EN REVISIÓN**. Fecha normativa de
 
 ## Documentos
 
-- `main.tex`: manual con 25 capítulos temáticos, un capítulo nuevo de repaso teórico (32 preguntas originales razonadas), 23 figuras originales, ejemplos, preguntas de comprensión con respuesta, fórmulas, glosario y bibliografía. En la rama de preparación de examen se han ampliado 17 capítulos y corregido la introducción para documentar el sistema de evaluación de los materiales aportados y sus límites.
-- `problemas.tex`: 35 problemas originales resueltos y 16 casos académicos de mantenimiento.
+- `main.tex`: manual con 25 capítulos temáticos, un capítulo de repaso teórico (32 preguntas originales razonadas) y otro nuevo de profundización científica aplicada, 23 figuras originales previas y 3 nuevos diagramas originales TikZ, ejemplos, preguntas de comprensión con respuesta, fórmulas, glosario y bibliografía. En la rama de preparación de examen se han ampliado 17 capítulos y corregido la introducción para documentar el sistema de evaluación de los materiales aportados y sus límites.
+- `problemas.tex`: 35 problemas originales resueltos, 6 problemas avanzados adicionales con resolución completa y 16 casos académicos de mantenimiento.
 - `simulacros.tex`: diez pruebas originales (cuatro de materiales, tres de mantenimiento y tres combinadas), con 40 preguntas y soluciones separadas; S07 a S10 se generan con `scripts/author-materials-extra-exams.py`.
+  - **Ampliación avanzada (posterior a r2):** 12 nuevos casos teóricos de desarrollo con respuestas modelo en archivos separados, introducidos como capítulo adicional; las diez pruebas S01--S10 siguen intactas.
   - Añadido para preparación preexamen: **36 preguntas originales de test con respuestas razonadas** y **8 problemas complementarios con solución analítica** (fractura, S--N, Paris, Norton, tensión térmica, ultrasonidos, vencimientos y fiabilidad). Las nuevas secciones se integran en `simulacros.tex` con archivos separados para enunciados y soluciones.
   - Informe de contraste: `reports/auditoria-fuentes-preexamen-2026-10-24.md`. Señala errores de apuntes de alumnos, límites de fuentes, normas a actualizar y controles pendientes. Es material de revisión, no cobertura total garantizada del examen.
 
 En este repositorio los PDF compilados no se versionan: el compilador del monorepo los genera en `dist/studium/materiales-mantenimiento-motores/`. Los datos de ejercicios y del taller AULA-01 son ficticios. No son instrucciones aprobadas, autorizaciones, límites certificados ni un trabajo evaluable presentado como realización personal de un estudiante.
+
+## Ampliación avanzada posterior a 2026-10-24 r2
+
+Se añade `content/profundizacion-aplicada.tex` al manual con derivaciones, cuatro ejemplos y **3 figuras TikZ originales**, y se profundizan los capítulos 02, 06, 12, 13, 15, 22, 24 y 25 con secciones nuevas. `content/problemas-avanzados-resueltos.tex` aporta PA01--PA06. En simulacros se incluyen AT01--AT12, con enunciados y solucionario separado.
+
+La matriz de cambios, hipótesis y fuentes está en `reports/ampliacion-avanzada-2026-10-24.md`. Esta edición requiere CI, revisión visual de los PDF y revisión científica externa antes de publicación; la release r2 permanece sin cambios.
 
 ## Editar y compilar
 
