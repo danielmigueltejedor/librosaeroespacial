@@ -32,6 +32,11 @@ La selección necesita prever qué daño es plausible y cómo se detectará. Una
 
 La secuencia de trabajo consiste en definir función y condiciones, enumerar modos de fallo, elegir modelos y datos, comparar alternativas, considerar fabricación e inspección y documentar incertidumbres. Se revisa cuando cambia la misión o aparece evidencia nueva. El análisis de servicio se desarrolla en los capítulos~\ref{ch:03}--\ref{ch:06}; la traducción a tareas y registros, en los capítulos~\ref{ch:17} y~\ref{ch:25}.
 \ilustra{cadena-material}{Cadena de decisión desde fabricación hasta seguimiento en servicio. Esquema conceptual original.}
+\section{Método de selección para preguntas de examen}
+No se selecciona un material únicamente por densidad, temperatura máxima o límite elástico: hay que identificar la condición de diseño que gobierna. Si una barra de longitud fija se dimensiona por tensión admisible, la masa idealizada es proporcional a $\rho/\sigma_{\rm adm}$; si el requisito dominante es rigidez o vida a fatiga, debe cambiarse el criterio. Trabajar por debajo de $200\,^{\circ}\mathrm C$ no descarta todos los metales ni garantiza que cualquier polímero funcione: intervienen temperatura de servicio, tiempo, ambiente, carga y estabilidad del material.
+
+\paragraph{Autocomprobación razonada.} ¿Una aleación más densa produce necesariamente mayor masa final? No, porque puede requerir menor sección. ¿Un módulo alto prueba elevada tenacidad? No, son propiedades distintas. ¿Un valor típico es una tensión admisible? No, faltan las condiciones y la base de diseño. Estas distinciones son esenciales en las preguntas de selección de materiales.
+
 \input{content/e01.tex}
 \resumen{\textbf{Autocomprobación.} ¿Una aleación más densa produce siempre una pieza más pesada? No: importa el criterio que determina la sección. ¿Un grano fino mejora siempre la vida a alta temperatura? No: hay que identificar el mecanismo dominante. ¿Una propiedad típica es un admisible? No: faltan condiciones, dispersión y criterios de diseño.}
 \fuentes{Material docente de introducción, pp. 1--34; FAA--General, cap. 7 \cite{FAA-G}; módulos de respuesta elástica de Roylance \cite{MIT-ELAS}.}
