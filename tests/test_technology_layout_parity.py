@@ -27,7 +27,7 @@ def _normalize_layout(text, chapter):
                 or chapter == 15 and line.startswith(r"\paragraph{9. Sustitución.}")):
             continue
         lines.append(line)
-    return lines
+    return [line for line in lines if line.strip()]
 
 
 def _normalize_source(text, chapter):
@@ -38,7 +38,7 @@ def _normalize_source(text, chapter):
     if chapter == 15:
         lines = [line for line in lines if not line.startswith(
             r"\paragraph{9. Sustitución.}")]
-    return lines
+    return [line for line in lines if line.strip()]
 
 
 def test_compiled_chapters_preserve_scientific_source():
