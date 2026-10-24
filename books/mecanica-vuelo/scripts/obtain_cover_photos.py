@@ -84,7 +84,8 @@ def regenerate(source_dir: Path | None = None) -> None:
         updated = dict(photo)
         updated["output_sha256"] = hashlib.sha256(cover).hexdigest()
         updated["consulted_on"] = datetime.now(timezone.utc).date().isoformat()
-        destination = ASSETS / updated["output"]
+        # Manifest destinations are relative to the book root: assets/cover-*.jpg.
+        destination = ASSETS.parent / updated["output"]
         if destination.parent != ASSETS or destination.suffix.lower() != ".jpg":
             raise ValueError("Unsafe cover output path")
         generated.append((updated, destination, cover))
