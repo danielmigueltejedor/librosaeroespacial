@@ -72,7 +72,8 @@ jobs:
       - name: Verify editorial and publication contracts
         run: |
           set -euo pipefail
-          python -m pytest -q tests/test_release_bundle.py tests/test_release_metadata.py
+          python -m pytest -q tests/test_release_bundle.py tests/test_release_metadata.py \
+            tests/test_technology_layout_parity.py tests/test_flight_cover_provenance.py
           python books/mecanica-fluidos/scripts/check_solution_procedures.py
           python -m pytest -q tests/test_solution_procedures.py
           python -m unittest discover -s tests -v
