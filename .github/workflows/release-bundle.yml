@@ -9,7 +9,7 @@ on:
   push:
     branches: [main]
     paths:
-      - ".github/release-requests/matmo-2026-10-24-r2.md"
+      - ".github/release-requests/matmo-2026-10-24-r3.md"
 permissions:
   contents: write
 concurrency:
@@ -26,7 +26,7 @@ jobs:
           python-version: '3.12'
       - name: Validate a new tag
         env:
-          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
+          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r3' || inputs.tag }}
           GH_TOKEN: ${{ github.token }}
         run: |
           [[ "$TAG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]+$ ]]
@@ -67,12 +67,12 @@ jobs:
           (cd dist/release && sha256sum materiales-mantenimiento-motores-{manual,problemas,simulacros}.pdf > SHA256SUMS-MATMO.txt)
       - name: Create draft, upload bundle and publish review edition
         env:
-          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
+          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r3' || inputs.tag }}
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$TAG" --target "$GITHUB_SHA" --draft --prerelease \
             --title "Libros Studium — $TAG" \
-            --notes "Edición de estudio y revisión 2026-10-24 r2. MATMO: manual revisado (17 capítulos ampliados y 32 preguntas de desarrollo razonadas), cuaderno de problemas, simulacros con 36 preguntas tipo test y ocho problemas adicionales resueltos. Incluye el ZIP verificado con la colección completa. No implica aprobación académica independiente." \
+            --notes "Edición de estudio y revisión 2026-10-24 r3. MATMO: contenido acumulado de r2 y nueva profundización con derivaciones científicas, 3 diagramas originales, 8 capítulos reforzados, 6 problemas avanzados resueltos y 12 casos de teoría con respuestas, además de los simulacros anteriores. Incluye ZIP completo y tres PDF individuales con comprobación de integridad SHA-256. Edición académica en revisión; no implica aprobación científica independiente." \
             dist/release/LibrosStudium-bundle-completo.zip dist/release/SHA256SUMS.txt \
             dist/release/materiales-mantenimiento-motores-manual.pdf \
             dist/release/materiales-mantenimiento-motores-problemas.pdf \
