@@ -67,3 +67,13 @@ def test_reject_invalid_sha_or_bundle(tmp_path):
     bundle.write_bytes(b"not a zip")
     with pytest.raises(ValueError, match="valid bundle ZIP"):
         metadata.prepare("v1.2.3", "a" * 40, bundle, source, tmp_path / "release")
+
+
+def test_release_workflow_is_tag_driven_and_verifies_downloads():
+    workflow = (ROOT / ".github/workflows/release-bundle.yml").read_text()
+    assert 'tags:\n      - "v*.*.*"' in workflow
+    assert ".github/release-requests/matmo-" not in workflow
+    assert "git merge-base --is-ancestor" in workflow
+    assert 'gh release edit "$TAG" --draft=false --prerelease=false' in workflow
+    assert "sha256sum --check SHA256SUMS.txt" in workflow
+    assert "LibrosStudium-fuentes-" in workflow
