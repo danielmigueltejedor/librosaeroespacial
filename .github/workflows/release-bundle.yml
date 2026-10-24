@@ -1,87 +1,181 @@
-name: Publish complete library bundle
+name: Publish tagged Studium edition
+
 on:
+  push:
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
     inputs:
       tag:
-        description: New release tag
+        description: "Existing stable tag (vMAJOR.MINOR.PATCH)"
         required: true
         type: string
-  push:
-    branches: [main]
-    paths:
-      - ".github/release-requests/matmo-2026-10-24-r2.md"
+
 permissions:
   contents: write
+
 concurrency:
-  group: complete-library-release
+  group: librosstudium-release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
   cancel-in-progress: false
+
 jobs:
   publish:
+    # -rc tags do not publish a stable edition.
+    if: ${{ github.event_name == 'workflow_dispatch' || (!contains(github.ref_name, '-') && !contains(github.ref_name, '+')) }}
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the exact tagged revision
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Validate stable tag and main ancestry
+        env:
+          REQUESTED_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="$REQUESTED_TAG"
+          if [[ ! "$TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error::Stable editions require a vMAJOR.MINOR.PATCH tag (example v1.0.0)."
+            exit 1
+          fi
+          git fetch --no-tags origin main
+          TAG_COMMIT="$(git rev-parse "refs/tags/${TAG}^{commit}")"
+          COMMIT_SHA="$(git rev-parse HEAD)"
+          if [[ "$TAG_COMMIT" != "$COMMIT_SHA" ]]; then
+            echo "::error::The tag does not match the checked-out commit."
+            exit 1
+          fi
+          if ! git merge-base --is-ancestor "$COMMIT_SHA" origin/main; then
+            echo "::error::Stable releases must point to a commit already merged into main."
+            exit 1
+          fi
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "COMMIT_SHA=$COMMIT_SHA" >> "$GITHUB_ENV"
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Validate a new tag
-        env:
-          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
-          GH_TOKEN: ${{ github.token }}
+          python-version: "3.12"
+
+      - name: Install build and audit dependencies
         run: |
-          [[ "$TAG" =~ ^[a-zA-Z0-9][a-zA-Z0-9._-]+$ ]]
-          if gh release view "$TAG" >/dev/null 2>&1; then exit 1; fi
-          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null 2>&1; then exit 1; fi
-      - name: Install dependencies
-        run: |
+          set -euo pipefail
           python -m pip install -r requirements-audit.txt -r enciclopedia-programacion/requirements.txt
           sudo apt-get update -qq
-          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern poppler-utils
-      - name: Worked solution regressions
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-extra texlive-fonts-recommended \
+            texlive-lang-spanish texlive-science lmodern poppler-utils
+
+      - name: Verify editorial and publication contracts
         run: |
+          set -euo pipefail
+          python -m pytest -q tests/test_release_bundle.py tests/test_release_metadata.py
           python books/mecanica-fluidos/scripts/check_solution_procedures.py
           python -m pytest -q tests/test_solution_procedures.py
+          python -m unittest discover -s tests -v
 
-      - name: Build every registered book
+      - name: Build and audit all 21 aerospace PDF volumes
         run: |
+          set -euo pipefail
           python scripts/build-studium-books.py all
           python scripts/check-solution-builds.py
+          python scripts/audit-studium-pdfs.py
+          python scripts/audit-library.py
+
+      - name: Build programming collection
+        run: |
+          set -euo pipefail
           python enciclopedia-programacion/tools/build_collection.py all --review-copy
           python enciclopedia-programacion/tools/check_integral.py
           python enciclopedia-programacion/tools/check_prose_formatting.py
           python enciclopedia-programacion/tools/check_literal_fidelity.py
-      - name: Build literature, history and biology review editions
+
+      - name: Build literature, history and biology collections
         run: |
+          set -euo pipefail
           python -m venv "$RUNNER_TEMP/humanities"
           "$RUNNER_TEMP/humanities/bin/python" -m pip install -r humanidades-y-ciencias/requirements.txt
           "$RUNNER_TEMP/humanities/bin/python" humanidades-y-ciencias/tools/build_books.py
-      - name: Check packaging contracts and build complete ZIP
+
+      - name: Package full bundle, source archive and release manifest
+        id: metadata
+        shell: bash
         run: |
-          python -m pytest -q tests/test_release_bundle.py
+          set -euo pipefail
           python scripts/package-release-bundle.py
           python scripts/package-release-bundle.py --verify-only
-          sha256sum dist/release/LibrosStudium-bundle-completo.zip > dist/release/SHA256SUMS.txt
-          for volume in manual problemas simulacros; do
-            cp "dist/studium/materiales-mantenimiento-motores/materiales-mantenimiento-motores-${volume}.pdf" dist/release/
-          done
-          (cd dist/release && sha256sum materiales-mantenimiento-motores-{manual,problemas,simulacros}.pdf > SHA256SUMS-MATMO.txt)
-      - name: Create draft, upload bundle and publish review edition
+          SOURCE_ARCHIVE="dist/release/LibrosStudium-fuentes-${TAG}.tar.gz"
+          git archive --format=tar.gz --prefix="librosstudium-${TAG}/" \
+            --output="$SOURCE_ARCHIVE" "$COMMIT_SHA"
+          python scripts/prepare-release-metadata.py \
+            --tag "$TAG" --commit "$COMMIT_SHA" \
+            --bundle dist/release/LibrosStudium-bundle-completo.zip \
+            --source "$SOURCE_ARCHIVE" --output-dir dist/release \
+            --github-output "$GITHUB_OUTPUT"
+          (cd dist/release && sha256sum --check SHA256SUMS.txt)
+
+      - name: Attach diagnostic logs when publication fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-diagnostics
+          path: |
+            dist/studium/**/pass-*.log
+            dist/studium/**/build-report.json
+            reports/edition-v2/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Create or resume draft and upload validated assets
         env:
-          TAG: ${{ github.event_name == 'push' && 'librosstudium-2026-10-24-r2' || inputs.tag }}
           GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ steps.metadata.outputs.title }}
+        shell: bash
         run: |
-          gh release create "$TAG" --target "$GITHUB_SHA" --draft --prerelease \
-            --title "Libros Studium — $TAG" \
-            --notes "Edición de estudio y revisión 2026-10-24 r2. MATMO: manual revisado (17 capítulos ampliados y 32 preguntas de desarrollo razonadas), cuaderno de problemas, simulacros con 36 preguntas tipo test y ocho problemas adicionales resueltos. Incluye el ZIP verificado con la colección completa. No implica aprobación académica independiente." \
-            dist/release/LibrosStudium-bundle-completo.zip dist/release/SHA256SUMS.txt \
-            dist/release/materiales-mantenimiento-motores-manual.pdf \
-            dist/release/materiales-mantenimiento-motores-problemas.pdf \
-            dist/release/materiales-mantenimiento-motores-simulacros.pdf \
-            dist/release/SHA256SUMS-MATMO.txt
-          mkdir -p "$RUNNER_TEMP/release-check"
-          gh release download "$TAG" --pattern LibrosStudium-bundle-completo.zip --dir "$RUNNER_TEMP/release-check"
-          python scripts/package-release-bundle.py --verify-only --output "$RUNNER_TEMP/release-check/LibrosStudium-bundle-completo.zip"
-          gh release download "$TAG" --pattern 'materiales-mantenimiento-motores-*.pdf' --dir "$RUNNER_TEMP/release-check"
-          gh release download "$TAG" --pattern SHA256SUMS-MATMO.txt --dir "$RUNNER_TEMP/release-check"
-          (cd "$RUNNER_TEMP/release-check" && sha256sum -c SHA256SUMS-MATMO.txt)
-          gh release edit "$TAG" --draft=false --prerelease --latest=false
+          set -euo pipefail
+          ASSETS=(
+            dist/release/LibrosStudium-bundle-completo.zip
+            "dist/release/LibrosStudium-fuentes-${TAG}.tar.gz"
+            dist/release/SHA256SUMS.txt
+            dist/release/RELEASE.json
+            dist/release/NOTAS-EDICION.md
+          )
+          if gh release view "$TAG" --json isDraft --jq '.isDraft' > "$RUNNER_TEMP/draft-status" 2>/dev/null; then
+            if [[ "$(cat "$RUNNER_TEMP/draft-status")" != "true" ]]; then
+              echo "::error::The release is already published; refusing to overwrite it."
+              exit 1
+            fi
+            gh release edit "$TAG" --title "$TITLE" --notes-file dist/release/NOTAS-EDICION.md
+            gh release upload "$TAG" "${ASSETS[@]}" --clobber
+          else
+            gh release create "$TAG" --verify-tag --target "$COMMIT_SHA" \
+              --draft --title "$TITLE" \
+              --notes-file dist/release/NOTAS-EDICION.md "${ASSETS[@]}"
+          fi
+
+      - name: Download and revalidate published assets before promotion
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_DIR="$RUNNER_TEMP/studium-release-verification"
+          mkdir -p "$CHECK_DIR"
+          gh release download "$TAG" --dir "$CHECK_DIR"
+          (cd "$CHECK_DIR" && sha256sum --check SHA256SUMS.txt)
+          python scripts/package-release-bundle.py --verify-only \
+            --output "$CHECK_DIR/LibrosStudium-bundle-completo.zip"
+          python - "$CHECK_DIR/RELEASE.json" "$COMMIT_SHA" "$TAG" <<'PY'
+          import json, sys
+          data = json.load(open(sys.argv[1], encoding="utf-8"))
+          assert data["commit_sha"] == sys.argv[2] and data["tag"] == sys.argv[3]
+          assert data["pdf_count"] >= 21
+          PY
+
+      - name: Publish stable edition
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "$TAG" --draft=false --prerelease=false --latest=true
