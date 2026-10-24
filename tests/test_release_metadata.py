@@ -56,7 +56,8 @@ def test_release_date_commit_and_asset_checksums(tmp_path):
     assert hashlib.sha256(bundle.read_bytes()).hexdigest() in notes
     for line in (tmp_path / "release/SHA256SUMS.txt").read_text().splitlines():
         checksum, name = line.split("  ", 1)
-        assert hashlib.sha256((tmp_path / "release" / name).read_bytes()).hexdigest() == checksum if name not in {bundle.name,source.name} else hashlib.sha256((tmp_path / name).read_bytes()).hexdigest() == checksum
+        asset_path = (tmp_path / name) if name in {bundle.name, source.name} else (tmp_path / "release" / name)
+        assert hashlib.sha256(asset_path.read_bytes()).hexdigest() == checksum
 
 
 def test_reject_invalid_sha_or_bundle(tmp_path):
