@@ -40,6 +40,16 @@ jobs:
           sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-lang-spanish texlive-science lmodern
       - name: Check and compile every registered volume
         run: python3 scripts/build-studium-books.py all
+      - name: Upload LaTeX diagnostic logs when compilation fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: studium-latex-failure-logs
+          path: |
+            dist/studium/**/pass-*.log
+            dist/studium/**/simulacros.log
+          if-no-files-found: warn
+          retention-days: 7
       - name: Install scientific audit dependencies
         run: python -m pip install -r requirements-audit.txt -r enciclopedia-programacion/requirements.txt
       - name: Test build evidence and framework contracts
