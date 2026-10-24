@@ -2,7 +2,7 @@
   "date": "2026-10-19",
   "baseline_commit": "1beabb98e96320e25fec131e96eba350f9227a83",
   "reviewer": "Same authoring model, visual inspection in this conversation; no independent reviewer",
-  "scope": "All 358 unique registered representations inspected visually. Identical branch copies and alternate formats deduplicated. Corrected representations reinspected; quantitative checks are explicitly scoped in figure-science-checks.json.",
+  "scope": "358 pre-existing representations previously reviewed and preserved; 3 additional MATMO TikZ diagrams visually inspected in a faithful standalone pdfLaTeX rendering on 2026-10-24. Independent scientific approval is still pending.",
   "figures": [
     {
       "id": "estructuras-aeroespaciales-tikz-001",
@@ -8872,6 +8872,78 @@
       "semantic_status": "REPRESENTATION_REVIEWED; SELECTED_INVARIANTS_CHECKED; EXPERT_APPROVAL_PENDING",
       "changed": false,
       "prior_sha256": "b26f0f55b6d62b6651dcaef183a5319d2439e49f22793bc313fa861855e838b6"
+    },
+    {
+      "id": "materiales-mantenimiento-motores-tikz-002",
+      "book": "materiales-mantenimiento-motores",
+      "kind": "inline-tikz",
+      "source": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+      "line": 33,
+      "occurrences": [
+        {
+          "file": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+          "line": 33
+        }
+      ],
+      "sha256": "daf29a977f8d48de4405a53a8b38f0cb4ad62e3e19514a9baf68c903c393ad54",
+      "atlas": "MATMO-advanced-standalone-pdflatex-2026-10-24.pdf",
+      "atlas_slot": 1,
+      "review_status": "VISUALLY_REVIEWED_BY_AUTHOR",
+      "semantic_status": "REPRESENTATION_REVIEWED; DIRECTION_AND_SEMANTICS_CHECKED; EXPERT_APPROVAL_PENDING",
+      "changed": true,
+      "prior_sha256": null,
+      "subject": "Central crack under tensile mode-I loading"
+    },
+    {
+      "id": "materiales-mantenimiento-motores-tikz-003",
+      "book": "materiales-mantenimiento-motores",
+      "kind": "inline-tikz",
+      "source": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+      "line": 75,
+      "occurrences": [
+        {
+          "file": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+          "line": 75
+        }
+      ],
+      "sha256": "446120708b44422542ed0a5b78aad4c8cc707942178da43855398cc0cf92eadc",
+      "atlas": "MATMO-advanced-standalone-pdflatex-2026-10-24.pdf",
+      "atlas_slot": 2,
+      "review_status": "VISUALLY_REVIEWED_BY_AUTHOR",
+      "semantic_status": "REPRESENTATION_REVIEWED; DIRECTION_AND_SEMANTICS_CHECKED; EXPERT_APPROVAL_PENDING",
+      "changed": true,
+      "prior_sha256": null,
+      "subject": "S-N logarithmic schematic without extrapolation"
+    },
+    {
+      "id": "materiales-mantenimiento-motores-tikz-004",
+      "book": "materiales-mantenimiento-motores",
+      "kind": "inline-tikz",
+      "source": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+      "line": 104,
+      "occurrences": [
+        {
+          "file": "books/materiales-mantenimiento-motores/content/profundizacion-aplicada.tex",
+          "line": 104
+        }
+      ],
+      "sha256": "4afd411a9add479fe033321ca4650b15dd8a2f0e11cfca7879d74fa386fabd74",
+      "atlas": "MATMO-advanced-standalone-pdflatex-2026-10-24.pdf",
+      "atlas_slot": 3,
+      "review_status": "VISUALLY_REVIEWED_BY_AUTHOR",
+      "semantic_status": "REPRESENTATION_REVIEWED; DIRECTION_AND_SEMANTICS_CHECKED; EXPERT_APPROVAL_PENDING",
+      "changed": true,
+      "prior_sha256": null,
+      "subject": "Maintenance inspection and evidence flow"
+    }
+  ],
+  "amendments": [
+    {
+      "date": "2026-10-24",
+      "reviewer": "Same authoring model; inspection of rendered pages in this conversation, not independent expert approval",
+      "scope": "Three new MATMO diagrams; initial direction and label issues fixed before this receipt",
+      "method": "Exact TikZ code rendered with pdfLaTeX to three PDF pages, rasterized at 1200 px, visually inspected individually; inspected source block SHA-256 values recorded",
+      "reviewed": 3
     }
   ]
 }
