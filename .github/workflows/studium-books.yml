@@ -50,6 +50,14 @@ jobs:
             dist/studium/**/simulacros.log
           if-no-files-found: warn
           retention-days: 7
+      - name: Keep MATMO PDFs for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: matmo-visual-review-pdfs
+          path: dist/studium/materiales-mantenimiento-motores/*.pdf
+          if-no-files-found: warn
+          retention-days: 7
       - name: Install scientific audit dependencies
         run: python -m pip install -r requirements-audit.txt -r enciclopedia-programacion/requirements.txt
       - name: Test build evidence and framework contracts
