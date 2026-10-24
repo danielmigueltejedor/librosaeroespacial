@@ -28,3 +28,4 @@ def test_cover_regenerator_has_no_author_specific_absolute_cache():
     assert "/Users/" not in script
     assert 'photo["original_sha256"]' in script
     assert 'photo["original_url"]' in script
+    assert 'ASSETS.parent / updated["output"]' in script
